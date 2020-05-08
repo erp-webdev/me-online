@@ -120,8 +120,7 @@ $(function() {
 																		<td class="centertalign"><input style="width: 50%" id="wfh_totalworkedhours<?php echo $key; ?>" type="number" name="wfh_totalworkedhours[<?php echo $key; ?>]" attribute="<?php echo $key; ?>" class="wfh_totalworkedhours"></td>
 																		<td class="centertalign">
 																			<textarea rows="1" style="display: none" name="wfh_activity[<?php echo $key; ?>]" id="wfh_activity<?php echo $key ?>" class="txtbox"></textarea>
-																			<input class="btn wfhshow" attribute1="<?php echo $key; ?>" type="button" name="wfhshow" value="Add" style="background-color: #3EC2FB;" />
-																			<input class='btn wfhremove' attribute1='"+arrayid+"' type='button' name='wfhshow' value='Remove' style='background-color: #EA171F;' />
+																			<input class="btn wfhshow" attribute1="<?php echo $key; ?>" type="button" name="wfhshow" value="Add Activities" style="background-color: #3EC2FB;" />
 																		</td>
 																	</tr>
 																	<tr id="wfhtbody<?php echo $key; ?>" style="display: none;">
@@ -129,6 +128,7 @@ $(function() {
 																				<td>TimeIn</td>
 																				<td>TimeOut</td>
 																				<td>Activities</td>
+																				<td>Action</td>
 																	</tr>
 
 																	<?php
@@ -187,7 +187,7 @@ $(function() {
 		$('.wfhshow').click(function() {
 			arrayid = $(this).attr('attribute1');
 
-			var new_row = "<tr class='trshow"+arrayid+"'><td>&nbsp;</td><td><input type='text' name='TimeIn["+arrayid+"]'></td><td><input type='text' name='TimeOut["+arrayid+"]'></td><td><input type='text' name='Activities["+arrayid+"]'></td></tr>";
+			var new_row = "<tr><td>&nbsp;</td><td><input type='text' name='TimeIn["+arrayid+"]'></td><td><input type='text' name='TimeOut["+arrayid+"]'></td><td><input type='text' name='Activities["+arrayid+"]'></td><td><input class='btn wfhremove' attribute1='"+arrayid+"' type='button' name='wfhshow' value='Remove' style='background-color: #EA171F;' /></td></tr>";
 
 			$('#wfhtbody'+arrayid).show();
 			$('#wfhtbody'+arrayid).after(new_row);
@@ -197,12 +197,13 @@ $(function() {
 
 
 		$('.wfhremove').click(function() {
-			alert('remove clicked'+arrayid);
-			arrayid = $(this).attr('attribute1');
-			$('#wfhtbody'+arrayid).hide();
-			$('#trshow'+arrayid).remove();
 
-		});
+			arrayid = $(this).attr('attribute1');
+			alert('clicked!'+arrayid);
+
+			$(this).parents("tr").remove();
+
+		}
 
 	});
 	</script>
