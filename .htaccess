@@ -1,0 +1,26 @@
+# allow all except those indicated here "FOR ATTACKERS"
+<Files *>
+order allow,deny
+allow from all
+deny from 27.159.206.135
+</Files>
+
+RewriteEngine on
+
+ErrorDocument 404 https://portal.megaworldcorp.com/me/404
+ErrorDocument 500 https://portal.megaworldcorp.com/me/500
+
+RewriteRule  ^([a-zA-Z0-9_-]+)/page/([0-9]+)/$									index.php?section=$1&page=$2 [L]
+RewriteRule  ^([a-zA-Z0-9_-]+)/page/([0-9]+)$									index.php?section=$1&page=$2 [QSA,L]
+RewriteRule  ^([a-zA-Z0-9_-]+)/$												index.php?section=$1 [L]
+RewriteRule  ^([a-zA-Z0-9_-]+)$													index.php?section=$1 [QSA,L]
+
+RewriteRule  ^regjson/([a-zA-Z0-9_-]+)/$	      								index.php?section=regjson&id=$1 [L]
+RewriteRule  ^regjson/([a-zA-Z0-9_-]+)$    									    index.php?section=regjson&id=$1 [QSA,L]
+RewriteRule  ^regjson/$												            index.php?section=regjson [L]
+RewriteRule  ^regjson$													        index.php?section=regjson [QSA,L]
+
+RewriteRule  ^qrcode/([a-zA-Z0-9_-]+)/$	      								    index.php?section=qrcode&id=$1 [L]
+RewriteRule  ^qrcode/([a-zA-Z0-9_-]+)$    									    index.php?section=qrcode&id=$1 [QSA,L]
+RewriteRule  ^qrcode/$												            index.php?section=qrcode [L]
+RewriteRule  ^qrcode$													        index.php?section=qrcode [QSA,L]

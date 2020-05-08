@@ -1,0 +1,118 @@
+#box {
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: auto;
+  width: auto;
+  padding: 1em;
+  color: #FFFFFF;
+  text-align: center;
+  overflow: visible;
+}
+
+#mainsplashtext {
+  background-color: rgba(0, 23, 45, 0.8);
+}
+
+h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 3em;
+  line-height: 1.3em;
+  letter-spacing: 2px;
+  margin: 0.8rem 0 0 0;
+  padding-bottom: 5px;
+}
+
+p {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 1em;
+  line-height: 1.65em;
+  margin: 0.6em auto 0.6em auto;
+  padding: 0;
+  width: 23em;
+}
+
+p.small {
+  font-size: 0.8em;
+}
+
+/*a,
+a:visited,
+
+a:hover {
+  color: #6969;
+  font-weight: 600;
+}*/
+
+.google-visualization-table-table{
+  background-color: transparent !important;
+}
+
+.google-visualization-table-tr-even,
+.google-visualization-table-tr-even td,
+.google-visualization-table-tr-even-nonstrict {
+  background-color: rgba(0, 23, 45, 0.25) !important;
+  border-bottom: 1px solid rgba(255,255,255,.25);
+  color: #fff !important;
+}
+
+.google-visualization-table-tr-odd,
+.google-visualization-table-tr-odd td,
+.google-visualization-table-tr-odd-nonstrict {
+  background-color: rgba(0, 23, 45, 0.25) !important;
+  border-bottom: 1px solid rgba(255,255,255,.25);
+  color: #fff !important;
+}
+
+.google-visualization-table-tr-sel,
+.google-visualization-table-tr-sel td,
+.google-visualization-table-tr-sel-nonstrict {
+  background-color: #fff !important;
+  border-bottom: 1px solid rgba(255,255,255,.25);
+  color: #000000 !important;
+}
+
+.google-visualization-table-tr-over,
+.google-visualization-table-tr-over td,
+.google-visualization-table-tr-over-nonstrict {
+  background-color: #fff !important;
+  border-bottom: 1px solid rgba(255,255,255,.25);
+  color: #000000 !important;
+}
+
+.google-visualization-table-td,
+.google-visualization-table-th {
+  border: none !important;
+  border-bottom: 1px solid rgba(255,255,255,.25);
+  color: #fff !important;
+}
+
+.google-visualization-table-tr-head,
+.google-visualization-table-tr-head td,
+.google-visualization-table-tr-head-nonstrict {
+  background-color: rgba(0, 23, 45, 0.25) !important;
+  border-bottom: 1px solid rgba(255,255,255,.25);
+  background-image: none !important;
+  color: #fff !important;
+}
+
+.google-visualization-table .gradient {
+  background-image: none !important;
+}
+
+/*
+::-moz-selection {
+  color: rgba(0, 23, 45, 0.9);
+  background: #fff;
+}
+
+::selection {
+  color: rgba(0, 23, 45, 0.9);
+  background: #fff;
+}
+*/

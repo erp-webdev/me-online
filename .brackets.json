@@ -1,0 +1,10 @@
+{
+    "jscodehints.detectedExclusions": [
+        "W:/sagada/js/plugins.php",
+        "W:/ssep/js/plugins.php",
+        "W:/mwssep/js/plugins.php",
+        "J:/mwsubs/js/plugins.php",
+        "C:/Web Server/xampp2/htdocs/mwsubs/js/plugins.php",
+        "C:/xampp/htdocs/mwsubs/js/plugins.php"
+    ]
+}
