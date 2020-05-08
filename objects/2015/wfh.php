@@ -34,6 +34,26 @@
                     endif;
                 endif;
 
+				$wfhitemcount = count($_POST['wfh_dayin']);
+
+				$wfhcnt = 1;
+				$wfherror = 0;
+                while($wfhcnt <= $wfhitemcount){
+
+					if($_POST['wfh_disable'][$wfhcnt]){
+						$wfhcnt++;
+						continue;
+					}
+                    if(!($_POST['wfh_totalworkedhours'][$wfhcnt] || $_POST['wfh_activity'][$wfhcnt])){
+						$wfherror = 1;
+					}
+					$wfhcnt++;
+                }
+				if($wfherror){
+					echo '{"success": false, "error": "All inputs on Work from Home must be completed (Total Worked Hours & Acitivities). Unless the date is excluded."}';
+					exit();
+				}
+
                 $wfhstart = date("Y-m-d", strtotime($_POST['wfh_from']));
                 $wfhend = date("Y-m-d", strtotime($_POST['wfh_to']));
 
@@ -57,6 +77,10 @@
 
                 while($cnti <= $wfhitemcount) :
 
+					if($_POST['wfh_disable'][$cnti]){
+						$cnti++;
+						continue;
+					}
                     $shiftdesc = $mainsql->get_shift($_POST['tsched_newsched'][$cnti]);
 
                     if ($cnti == 1) :

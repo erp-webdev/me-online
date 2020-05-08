@@ -1947,7 +1947,7 @@ $(function ()
 
 			if (!$('.wfh_msg').length)
 			{
-				$('#alert').after('<div class="mdtr_msg" style="display:none; padding:10px; text-align:center" />');
+				$('#alert').after('<div class="wfh_msg" style="display:none; padding:10px; text-align:center" />');
 			}
 
             if ($('#ndays').val() >= 1)
@@ -1955,7 +1955,7 @@ $(function ()
 
                 if ($('#wfh_from').val().length && $('#wfh_to').val().length)
                 {
-                    $('.mdtr_msg')
+                    $('.wfh_msg')
                     .html('<i class="fa fa-refresh fa-spin fa-lg"></i> Processing Work From Home&hellip;')
                     .css({
                         color : '#006100',
