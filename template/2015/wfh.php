@@ -123,8 +123,8 @@ $(function() {
 																			<input class="btn wfhshow" attribute1="<?php echo $key; ?>" type="button" name="wfhshow" value="Add Activities" style="background-color: #3EC2FB;" />
 																		</td>
 																	</tr>
-																	<tr id="wfhtbody<?php echo $key; ?>">
-																				<td width="15%">&nbsp;</td>
+																	<tr id="wfhtbody<?php echo $key; ?>" style="display: none;">
+																				<td>&nbsp;</td>
 																				<td>TimeIn</td>
 																				<td>TimeOut</td>
 																				<td>Activities</td>
@@ -190,6 +190,7 @@ $(function() {
 
 			var new_row = "<tr id='trshow"+arrayid+"'><td>&nbsp;</td><td><input type='text' name='TimeIn["+arrayid+"]'></td><td><input type='text' name='TimeOut["+arrayid+"]'></td><td><input type='text' name='Activities["+arrayid+"]'></td><td><input class='btn wfhremove' attribute1='"+arrayid+"' type='button' name='wfhshow' value='Remove' style='background-color: #EA171F;' /></td></tr>";
 
+			$('#wfhtbody'+arrayid).show();
 			$('#wfhtbody'+arrayid).after(new_row);
 
 
