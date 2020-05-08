@@ -120,7 +120,7 @@ $(function() {
 																		<td class="centertalign"><input style="width: 50%" id="wfh_totalworkedhours<?php echo $key; ?>" type="number" name="wfh_totalworkedhours[<?php echo $key; ?>]" attribute="<?php echo $key; ?>" class="wfh_totalworkedhours"></td>
 																		<td class="centertalign">
 																			<textarea rows="1" style="display: none" name="wfh_activity[<?php echo $key; ?>]" id="wfh_activity<?php echo $key ?>" class="txtbox"></textarea>
-																			<input id="wfhshow" attribute1="<?php $key; ?>" type="button" name="wfhshow" value="Add Activities" class="btn" style="background-color: #3EC2FB;" />
+																			<input class="wfhshow" attribute1="<?php $key; ?>" type="button" name="wfhshow" value="Add Activities" class="btn" style="background-color: #3EC2FB;" />
 																		</td>
 																	</tr>
 																	<tr>
@@ -185,18 +185,18 @@ $(function() {
 				</div>
 	<script>
 	$(document).ready(function() {
-		$('#wfhshow').click(function() {
-			alert('clicked!');
+		$('.wfhshow').click(function() {
 			arrayid = $(this).attr('attribute1');
+			alert('clicked!'+arrayid);
 
-			var new_row = "<tr id='trshow"+arrayid+"'><td><input type='text' name='TimeIn["+arrayid+"]'></td><td><input type='text' name='TimeOut["+arrayid+"]'></td><td><input type='text' name='Activities["+arrayid+"]'></td><td><input type='text' name='Activities["+arrayid+"]'></td><td><input id='wfhremove' attribute1='"+arrayid+"' type='button' name='wfhshow' value='Add Activities' class='btn' style='background-color: #3EC2FB;' /></td></tr>";
+			var new_row = "<tr id='trshow"+arrayid+"'><td><input type='text' name='TimeIn["+arrayid+"]'></td><td><input type='text' name='TimeOut["+arrayid+"]'></td><td><input type='text' name='Activities["+arrayid+"]'></td><td><input type='text' name='Activities["+arrayid+"]'></td><td><input class='wfhremove' attribute1='"+arrayid+"' type='button' name='wfhshow' value='Add Activities' class='btn' style='background-color: #3EC2FB;' /></td></tr>";
 
 			$('#wfhtbody'+arrayid).append(new_row);
 
 
 		});
 
-		$('#wfhremove').click(function() {
+		$('.wfhremove').click(function() {
 			arrayid = $(this).attr('attribute1');
 
 			$('#trshow'+arrayid).remove();
