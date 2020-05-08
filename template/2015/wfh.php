@@ -203,7 +203,7 @@ $(function() {
 
 			$(this).parents("tr").remove();
 
-		}
+		});
 
 	});
 	</script>
