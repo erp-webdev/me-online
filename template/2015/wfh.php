@@ -110,7 +110,7 @@ $(function() {
 
 
 
-																	<tr>
+																	<tr id="tr<?php echo $key; ?>">
 																		<td class="centertalign"><?php echo $key; ?></td>
 																		<td class="centertalign"><input type="hidden" name="wfh_disable[<?php echo $key; ?>]" id="wfh_disable<?php echo $key; ?>" value=0><input id="mdtr_absent<?php echo $key; ?>" type="checkbox" name="mdtr_absent[<?php echo $key; ?>]" attribute="<?php echo $key; ?>" class="mdtr_absent"></td>
 																		<td class="centertalign">
@@ -120,8 +120,21 @@ $(function() {
 																		<td class="centertalign"><input style="width: 50%" id="wfh_totalworkedhours<?php echo $key; ?>" type="number" name="wfh_totalworkedhours[<?php echo $key; ?>]" attribute="<?php echo $key; ?>" class="wfh_totalworkedhours"></td>
 																		<td class="centertalign">
 																			<textarea rows="1" style="display: none" name="wfh_activity[<?php echo $key; ?>]" id="wfh_activity<?php echo $key ?>" class="txtbox"></textarea>
-																			<input id="wfhshow" type="button" name="wfhshow" value="Show/Hide Activities" class="btn" style="background-color: #3EC2FB;" />
+																			<input id="wfhshow" attribute1="<?php $key; ?>" type="button" name="wfhshow" value="Add Activities" class="btn" style="background-color: #3EC2FB;" />
 																		</td>
+																	</tr>
+																	<tr>
+																		<table>
+																			<thead>
+																				<th>TimeIn</th>
+																				<th>TimeOut</th>
+																				<th>Activities</th>
+																				<th>Action</th>
+																			</thead>
+																			<tbody id="wfhtbody<?php echo $key; ?>">
+
+																			</tbody>
+																		</table>
 																	</tr>
 
 																	<?php
@@ -175,5 +188,32 @@ $(function() {
 						</div>
 					</div>
 				</div>
+	<script>
+		$('#wfhshow').click(function() {
+			arrayid = $(this).attr('attribute1');
+
+			var new_row = "<tr id='trshow"+arrayid+"'>
+				<td><input type='text' name='TimeIn["+arrayid+"]'></td>
+				<td><input type='text' name='TimeOut["+arrayid+"]'></td>
+				<td><input type='text' name='Activities["+arrayid+"]'></td>
+				<td><input type='text' name='Activities["+arrayid+"]'></td>
+				<td>
+					<input id='wfhremove' attribute1='"+arrayid+"' type='button' name='wfhshow' value='Add Activities' class='btn' style='background-color: #3EC2FB;' />
+				</td>
+			</tr>";
+
+			$('#wfhtbody'+arrayid).append(new_row);
+
+
+		});
+
+		$('#wfhremove').click(function() {
+			arrayid = $(this).attr('attribute1');
+
+			$('#trshow'+arrayid).remove();
+
+
+		});
+	</script>
 
 <?php include(TEMP."/footer.php"); ?>
