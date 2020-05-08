@@ -187,20 +187,10 @@ $(function() {
 		$('.wfhshow').click(function() {
 			arrayid = $(this).attr('attribute1');
 
-			var new_row = "<tr><td>&nbsp;</td><td><input type='text' name='TimeIn["+arrayid+"]'></td><td><input type='text' name='TimeOut["+arrayid+"]'></td><td><input type='text' name='Activities["+arrayid+"]'></td><td><input class='btn wfhremove' attribute1='"+arrayid+"' type='button' name='wfhshow' value='Remove' style='background-color: #EA171F;' /></td></tr>";
+			var new_row = "<tr><td>&nbsp;</td><td><input type='text' name='TimeIn["+arrayid+"]'></td><td><input type='text' name='TimeOut["+arrayid+"]'></td><td><input type='text' name='Activities["+arrayid+"]'></td><td><input class='btn wfhremove' onClick="(function(){ alert($(this).attr('attribute1')); return false; })();return false;" attribute1='"+arrayid+"' type='button' name='wfhshow' value='Remove' style='background-color: #EA171F;' /></td></tr>";
 
 			$('#wfhtbody'+arrayid).show();
 			$('#wfhtbody'+arrayid).after(new_row);
-
-
-		});
-
-		$('.wfhremove').click(function() {
-
-			arrayid = $(this).attr('attribute1');
-			alert('clicked!'+arrayid);
-
-			$(this).parents("tr").remove();
 
 
 		});
