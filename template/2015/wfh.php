@@ -120,7 +120,7 @@ $(function() {
 																		<td class="centertalign"><input style="width: 50%" id="wfh_totalworkedhours<?php echo $key; ?>" type="number" name="wfh_totalworkedhours[<?php echo $key; ?>]" attribute="<?php echo $key; ?>" class="wfh_totalworkedhours"></td>
 																		<td class="centertalign">
 																			<textarea rows="1" style="display: none" name="wfh_activity[<?php echo $key; ?>]" id="wfh_activity<?php echo $key ?>" class="txtbox"></textarea>
-																			<input id="wfhshow" type="button" name="wfhshow" value="Show/Hide Activities" class="btn margintop10" style="background-color: #3EC2FB;" />
+																			<input id="wfhshow" type="button" name="wfhshow" value="Show/Hide Activities" class="btn" style="background-color: #3EC2FB;" />
 																		</td>
 																	</tr>
 
