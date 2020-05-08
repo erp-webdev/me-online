@@ -197,7 +197,7 @@ $(function() {
 
 
 		$('.wfhremove').click(function() {
-
+			alert('remove clicked'+arrayid);
 			arrayid = $(this).attr('attribute1');
 			$('#wfhtbody'+arrayid).hide();
 			$('#trshow'+arrayid).remove();
