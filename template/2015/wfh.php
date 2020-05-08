@@ -187,15 +187,7 @@ $(function() {
 		$('#wfhshow').click(function() {
 			arrayid = $(this).attr('attribute1');
 
-			var new_row = "<tr id='trshow+arrayid+'>
-				<td><input type='text' name='TimeIn["+arrayid+"]'></td>
-				<td><input type='text' name='TimeOut["+arrayid+"]'></td>
-				<td><input type='text' name='Activities["+arrayid+"]'></td>
-				<td><input type='text' name='Activities["+arrayid+"]'></td>
-				<td>
-					<input id='wfhremove' attribute1='"+arrayid+"' type='button' name='wfhshow' value='Add Activities' class='btn' style='background-color: #3EC2FB;' />
-				</td>
-			</tr>";
+			var new_row = "<tr id='trshow"+arrayid+"'><td><input type='text' name='TimeIn["+arrayid+"]'></td><td><input type='text' name='TimeOut["+arrayid+"]'></td><td><input type='text' name='Activities["+arrayid+"]'></td><td><input type='text' name='Activities["+arrayid+"]'></td><td><input id='wfhremove' attribute1='"+arrayid+"' type='button' name='wfhshow' value='Add Activities' class='btn' style='background-color: #3EC2FB;' /></td></tr>";
 
 			$('#wfhtbody'+arrayid).append(new_row);
 
