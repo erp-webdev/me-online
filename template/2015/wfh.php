@@ -184,6 +184,7 @@ $(function() {
 					</div>
 				</div>
 	<script>
+	$(document).ready(function() {
 		$('#wfhshow').click(function() {
 			arrayid = $(this).attr('attribute1');
 
@@ -201,6 +202,8 @@ $(function() {
 
 
 		});
+
+	});
 	</script>
 
 <?php include(TEMP."/footer.php"); ?>
