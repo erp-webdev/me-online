@@ -124,19 +124,14 @@ $(function() {
 																		</td>
 																	</tr>
 																	<tr>
-																		<table>
-																			<thead>
 																				<th>TimeIn</th>
 																				<th>TimeOut</th>
 																				<th>Activities</th>
 																				<th>Action</th>
-																			</thead>
-																			<tbody id="wfhtbody<?php echo $key; ?>">
-
-																			</tbody>
-																		</table>
 																	</tr>
+																	<tr id="wfhtbody<?php echo $key; ?>">
 
+																	</tr>
 																	<?php
 																	$key++;
 
@@ -192,7 +187,7 @@ $(function() {
 		$('#wfhshow').click(function() {
 			arrayid = $(this).attr('attribute1');
 
-			var new_row = "<tr id='trshow"+arrayid+"'>
+			var new_row = "<tr id='trshow+arrayid+'>
 				<td><input type='text' name='TimeIn["+arrayid+"]'></td>
 				<td><input type='text' name='TimeOut["+arrayid+"]'></td>
 				<td><input type='text' name='Activities["+arrayid+"]'></td>
