@@ -37,9 +37,9 @@
 
 														<table width="100%" class="tdata vsmalltext" border="0" cellspacing="0">
 															<tr>
-																<th width="50px">#</th>
-																<th width="50px">Exclude</th>
-																<th width="150px">Date</th>
+																<th width="30px">#</th>
+																<th width="30px">Exclude</th>
+																<th width="100px">Date</th>
 																<th width="100px">Total Worked Hours</th>
 																<th width="">Activities</th>
 															</tr>
@@ -116,7 +116,7 @@ $(function() {
 																			<?php echo $days; ?>
 																			<input id="wfh_dayin<?php echo $key; ?>" type="hidden" name="wfh_dayin[<?php echo $key; ?>]" value="<?php echo $dates; ?>" class="wfh_dayin<?php echo $key; ?>" />
 																		</td>
-																		<td class="centertalign"><input style="width: 1000%" id="wfh_totalworkedhours<?php echo $key; ?>" type="number" name="wfh_totalworkedhours[<?php echo $key; ?>]" attribute="<?php echo $key; ?>" class="wfh_totalworkedhours"></td>
+																		<td class="centertalign"><input style="width: 100%" id="wfh_totalworkedhours<?php echo $key; ?>" type="number" name="wfh_totalworkedhours[<?php echo $key; ?>]" attribute="<?php echo $key; ?>" class="wfh_totalworkedhours"></td>
 																		<td class="centertalign">
 																			<textarea rows="1" style="display: none" name="wfh_activity[<?php echo $key; ?>]" id="wfh_activity<?php echo $key ?>" class="txtbox"></textarea>
 																		</td>
