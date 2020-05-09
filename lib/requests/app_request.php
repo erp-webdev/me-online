@@ -2940,7 +2940,7 @@
 							</td>
 							<td class="centertalign"><input style="width: 100%" id="wfh_totalworkedhours<?php echo $key; ?>" type="number" name="wfh_totalworkedhours[<?php echo $key; ?>]" attribute="<?php echo $key; ?>" class="wfh_totalworkedhours"></td>
 							<td class="centertalign">
-								<textarea rows="1" style="width: 100%; height: 50%;" name="wfh_activity[<?php echo $key; ?>]" id="wfh_activity<?php echo $key ?>" class="txtbox"></textarea>
+								<textarea rows="1" style="display:none" name="wfh_activity[<?php echo $key; ?>]" id="wfh_activity<?php echo $key ?>" class="txtbox"></textarea>
 							</td>
 						</tr>
                     </tr>
