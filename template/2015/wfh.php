@@ -40,7 +40,7 @@
 																<th width="30px">#</th>
 																<th width="30px">Exclude</th>
 																<th width="100px">Date</th>
-																<th width="100px">Total Worked Hours</th>
+																<th width="60px">Total Worked Hours</th>
 																<th width="">Activities</th>
 															</tr>
 
