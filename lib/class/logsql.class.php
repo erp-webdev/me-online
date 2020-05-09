@@ -96,16 +96,9 @@ class logsql {
     function check_member($username, $password = NULL)
 	{
 
-		$sql = "SELECT COUNT(EmpID) AS mcount FROM VIEWHREMPMASTER WHERE (EmpID = '".$username."' ";
+		$sql = "SELECT COUNT(EmpID) AS mcount FROM VIEWHREMPMASTER WHERE EmpID = '".$username."' ";
         $sql .= " AND CONVERT(VARBINARY(250),LTRIM(RTRIM(EPassword))) = CONVERT(VARBINARY(250),LTRIM(RTRIM('".$password."'))) ";
-        $sql .= " AND Active = 1)";
-        // allowed users on DEV portal;
-        $sql .= " OR " . "(EmpID = '".$username."' ";
-        $sql .= " AND CONVERT(VARBINARY(250),LTRIM(RTRIM(EPassword))) = CONVERT(VARBINARY(250),LTRIM(RTRIM('".$password."'))) ";
-        $sql .= " AND Active = 1 ";
-        // ADD EMPLOYEE NUMBER ON THE LIST TO ACCESS DEV PORTAL
-        $sql .= " AND DBNAME = 'DEV' AND EmpID IN ('2019-02-0033'))";
-
+        $sql .= " AND Active = 1";
 		$result = $this->get_row($sql);
 		if($result[0]['mcount'] <= 0) :
 			return FALSE;
