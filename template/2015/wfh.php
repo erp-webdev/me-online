@@ -37,11 +37,11 @@
 
 														<table width="100%" class="tdata vsmalltext" border="0" cellspacing="0">
 															<tr>
-																<th width="3%">#</th>
-																<th width="3%">Exclude</th>
-																<th width="4%">Date</th>
-																<th width="1%">Total Worked Hours</th>
-																<th width="15%">Activities</th>
+																<th width="50px">#</th>
+																<th width="50px">Exclude</th>
+																<th width="150px">Date</th>
+																<th width="100px">Total Worked Hours</th>
+																<th width="">Activities</th>
 															</tr>
 
 															<?php
@@ -116,16 +116,10 @@ $(function() {
 																			<?php echo $days; ?>
 																			<input id="wfh_dayin<?php echo $key; ?>" type="hidden" name="wfh_dayin[<?php echo $key; ?>]" value="<?php echo $dates; ?>" class="wfh_dayin<?php echo $key; ?>" />
 																		</td>
-																		<td class="centertalign"><input style="width: 50%" id="wfh_totalworkedhours<?php echo $key; ?>" type="number" name="wfh_totalworkedhours[<?php echo $key; ?>]" attribute="<?php echo $key; ?>" class="wfh_totalworkedhours"></td>
+																		<td class="centertalign"><input style="width: 1000%" id="wfh_totalworkedhours<?php echo $key; ?>" type="number" name="wfh_totalworkedhours[<?php echo $key; ?>]" attribute="<?php echo $key; ?>" class="wfh_totalworkedhours"></td>
 																		<td class="centertalign">
 																			<textarea rows="1" style="display: none" name="wfh_activity[<?php echo $key; ?>]" id="wfh_activity<?php echo $key ?>" class="txtbox"></textarea>
-																			<input class="btn wfhshow" attribute1="<?php echo $key; ?>" type="button" name="wfhshow" value="Add Activities" style="background-color: #3EC2FB;" />
 																		</td>
-																	</tr>
-																	<tr id="wfhtbody<?php echo $key; ?>" style="display: none;">
-																				<td>x</td>
-																				<td>Time</td>
-																				<td>Activities</td>
 																	</tr>
 
 																	<?php
@@ -179,21 +173,6 @@ $(function() {
 						</div>
 					</div>
 				</div>
-	<script>
-	$(document).ready(function() {
-		$('.wfhshow').click(function() {
-			arrayid = $(this).attr('attribute1');
-
-			var new_row = "<tr><td>x</td><td><input type='text' name='TimeOut["+arrayid+"]'></td><td><input type='text' name='Activities["+arrayid+"]'></td></tr>";
-
-			$('#wfhtbody'+arrayid).show();
-			$('#wfhtbody'+arrayid).after(new_row);
-
-
-		});
-
-
-	});
-	</script>
+	
 
 <?php include(TEMP."/footer.php"); ?>
