@@ -32,8 +32,7 @@
 												<td width="85%"><input id="wfh_from" type="text" name="wfh_from" value="<?php echo $wfh_fdate; ?>" class="txtbox datepickwh" readonly /> - <input id="wfh_to" type="text" name="wfh_to" value="<?php echo $wfh_todate; ?>" class="txtbox datepickwh" readonly /></td>
 											</tr>
 											<tr>
-												<td width="15%">&nbsp;</td>
-												<td width="85%" colspan="3">
+												<td width="100%" colspan="3">
 													<div id="wfh" class="wfh">
 
 														<table width="100%" class="tdata vsmalltext" border="0" cellspacing="0">
@@ -124,11 +123,9 @@ $(function() {
 																		</td>
 																	</tr>
 																	<tr id="wfhtbody<?php echo $key; ?>" style="display: none;">
-																				<td>&nbsp;</td>
-																				<td>TimeIn</td>
-																				<td>TimeOut</td>
+																				<td>x</td>
+																				<td>Time</td>
 																				<td>Activities</td>
-																				<td>Action</td>
 																	</tr>
 
 																	<?php
@@ -187,7 +184,7 @@ $(function() {
 		$('.wfhshow').click(function() {
 			arrayid = $(this).attr('attribute1');
 
-			var new_row = "<tr><td>&nbsp;</td><td><input type='text' name='TimeIn["+arrayid+"]'></td><td><input type='text' name='TimeOut["+arrayid+"]'></td><td><input type='text' name='Activities["+arrayid+"]'></td><td><input class='btn wfhremove' attribute1='"+arrayid+"' type='button' name='wfhshow' value='Remove' style='background-color: #EA171F;' /></td></tr>";
+			var new_row = "<tr><td>x</td><td><input type='text' name='TimeOut["+arrayid+"]'></td><td><input type='text' name='Activities["+arrayid+"]'></td></tr>";
 
 			$('#wfhtbody'+arrayid).show();
 			$('#wfhtbody'+arrayid).after(new_row);
@@ -195,15 +192,6 @@ $(function() {
 
 		});
 
-
-		$('.wfhremove').click(function() {
-
-			arrayid = $(this).attr('attribute1');
-			alert('clicked!'+arrayid);
-
-			$(this).parents("tr").remove();
-
-		});
 
 	});
 	</script>
