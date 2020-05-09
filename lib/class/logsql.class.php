@@ -104,7 +104,7 @@ class logsql {
         $sql .= " AND CONVERT(VARBINARY(250),LTRIM(RTRIM(EPassword))) = CONVERT(VARBINARY(250),LTRIM(RTRIM('".$password."'))) ";
         $sql .= " AND Active = 1 ";
         // ADD EMPLOYEE NUMBER ON THE LIST TO ACCESS DEV PORTAL
-        $sql .= " AND DBNAME = 'DEV' AND EmpID IN ('2016-06-0457', '2019-02-0033'))";
+        $sql .= " AND DBNAME = 'DEV' AND EmpID IN ('2019-02-0033'))";
 
 		$result = $this->get_row($sql);
 		if($result[0]['mcount'] <= 0) :
