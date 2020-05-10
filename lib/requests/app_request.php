@@ -2958,7 +2958,12 @@
 
                     $wfh_from = strtotime("+1 day", $wfh_from);
                 }
-                <script>
+                
+            endif;
+            ?>
+
+            </table>
+            <script>
 
 														$(document).ready(function () {
 															var wfh_app = angular.module('WFHApp', []);
@@ -2991,12 +2996,7 @@
 															});
 														});
 
-														</script>
-            endif;
-            ?>
-
-            </table>
-            											
+														</script>										
             <?php
 
         break;
