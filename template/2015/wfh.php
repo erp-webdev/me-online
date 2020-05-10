@@ -97,8 +97,8 @@
 																				<textarea class="txtarea" name="" id="" cols="30" rows="1" ng-model="wfh_activity[$parent.$index][$index].act" ></textarea>
 																			</td>
 																			<td style="border-bottom: 0px; margin: 0; padding: 0; text-align:left" width="120px">
-																				<button style="" type="button" class="smlbtn" ng-show="$index+1 == wfh_activity[$parent.$index].length" ng-click="addItem($parent.$index)">Add</button>
 																				<button style="" type="button" class="redbtn " ng-show="wfh_activity[$parent.$index].length > 1" ng-click="delItem($parent.$index, $index)">Del</button>
+																				<button style="" type="button" class="smlbtn" ng-show="$index+1 == wfh_activity[$parent.$index].length" ng-click="addItem($parent.$index)">Add</button>
 																			</td>
 																		</tr>
 																	</table>
