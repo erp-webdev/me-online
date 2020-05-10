@@ -2937,7 +2937,7 @@
                             
                             $scope.item = {time : '', act: ''};
                             
-                            <?php $key = 1; $wfh_from = $wfh_from_original; while($wfh_from <= $wfh_today) { ?>
+                            <?php  while($wfh_from <= $wfh_today) { ?>
 
                             $scope.wfh_activity<?php echo $key; ?> = [];
                             $scope.wfh_activity<?php echo $key; ?>.push(angular.copy($scope.item));
@@ -2947,7 +2947,7 @@
                                 console.log(JSON.stringify(newValue));
                             }, true);
 
-                            <?php $key++;  $wfh_from = strtotime("+1 day", $wfh_from); } ?>
+                            <?php  $wfh_from = strtotime("+1 day", $wfh_from); } ?>
 
                             // Add new activity item
                             $scope.addItem = function(act){
