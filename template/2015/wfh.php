@@ -197,11 +197,11 @@ $(document).ready(function () {
 		
 		<?php $key = 1; $wfh_from = $wfh_from_original; while($wfh_from <= $wfh_today) { ?>
 
-		$scope.wfh_activity1 = [];
-		$scope.wfh_activity1.push(angular.copy($scope.item));
+		$scope.wfh_activity<?php echo $key; ?> = [];
+		$scope.wfh_activity<?php echo $key; ?>.push(angular.copy($scope.item));
 
 		$scope.$watch('wfh_activity<?php echo $key; ?>', function(newValue, oldValue, scope){
-			$('#wfh_activity1').text( JSON.stringify(newValue) );
+			$('#wfh_activity<?php echo $key; ?>').text( JSON.stringify(newValue) );
 			console.log(JSON.stringify(newValue));
 		}, true);
 
