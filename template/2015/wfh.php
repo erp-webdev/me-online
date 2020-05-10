@@ -25,8 +25,8 @@
 										<li><a href="#lapprover">Approvers</a></li>
 									</ul>
 
-									<div id="ldetails"  ng-app="WFHApp" ng-controller="WFHController">
-										<table class="tdataform" border="0" cellspacing="0">
+									<div id="ldetails"  >
+										<table class="tdataform" border="0" cellspacing="0" ng-app="WFHApp" ng-controller="WFHController">
 											<tr>
 												<td width="15%"><b>DTR Date: </b></td>
 												<td width="85%"><input id="wfh_from" type="text" name="wfh_from" value="<?php echo $wfh_fdate; ?>" class="txtbox datepickwh" readonly /> - <input id="wfh_to" type="text" name="wfh_to" value="<?php echo $wfh_todate; ?>" class="txtbox datepickwh" readonly /></td>

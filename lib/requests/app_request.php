@@ -2848,7 +2848,7 @@
             ?>
 
 
-            <table width="100%" class="tdata vsmalltext" border="0" cellspacing="0">
+            <table width="100%" class="tdata vsmalltext" border="0" cellspacing="0" ng-app="WFHApp" ng-controller="WFHController">
             <tr>
                 <th width="15px">#</th>
                 <th width="15px">Exclude</th>
