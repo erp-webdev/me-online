@@ -2849,13 +2849,13 @@
 
 
             <table width="100%" class="tdata vsmalltext" border="0" cellspacing="0">
-				<tr>
-					<th width="30px">#</th>
-					<th width="30px">Exclude</th>
-					<th width="100px">Date</th>
-					<th width="60px">Total Worked Hours</th>
-					<th width="">Activities</th>
-				</tr>
+            <tr>
+                <th width="15px">#</th>
+                <th width="15px">Exclude</th>
+                <th width="90px">Date</th>
+                <th width="60px">Total Worked Hours</th>
+                <th width="">Activities</th>
+            </tr>
 
             <?php
 
@@ -2953,6 +2953,26 @@
                                 </table>
 							</td>
 						</tr>
+                    </tr><tr id="tr<?php echo $key; ?>">
+                        <td class="centertalign"><?php echo $key; ?></td>
+                        <td class="centertalign"><input type="hidden" name="wfh_disable[<?php echo $key; ?>]" id="wfh_disable<?php echo $key; ?>" value=0><input id="mdtr_absent<?php echo $key; ?>" type="checkbox" name="mdtr_absent[<?php echo $key; ?>]" attribute="<?php echo $key; ?>" class="mdtr_absent"></td>
+                        <td class="centertalign">
+                            <?php echo $days; ?>
+                            <input id="wfh_dayin<?php echo $key; ?>" type="hidden" name="wfh_dayin[<?php echo $key; ?>]" value="<?php echo $dates; ?>" class="wfh_dayin<?php echo $key; ?>" />
+                        </td>
+                        <td class="centertalign"><input style="width: 100%" id="wfh_totalworkedhours<?php echo $key; ?>" type="number" name="wfh_totalworkedhours[<?php echo $key; ?>]" attribute="<?php echo $key; ?>" class="wfh_totalworkedhours"></td>
+                        <td class="centertalign" >
+                            <textarea rows="1" style="display:none" name="wfh_activity[<?php echo $key; ?>]" id="wfh_activity<?php echo $key; ?>" class="txtbox"></textarea>
+                            <table>
+                                <tr ng-repeat="activity in wfh_activity<?php echo $key; ?>">
+                                    <td style="border-bottom: 0px; margin: 0; padding: 0" >
+                                        <input type="text" class="txtbox width90" ng-model="wfh_activity<?php echo $key; ?>[$index].time">
+                                    </td>
+                                    <td style="border-bottom: 0px; margin: 0; padding: 0" width="150px"><textarea class="txtarea" name="" id="" cols="35" rows="1" ng-model="wfh_activity<?php echo $key; ?>[$index].act" ng-click="check()"></textarea></td>
+                                    <td style="border-bottom: 0px; margin: 0; padding: 0; text-align:left" width="120px"><button style="" type="button" class="smlbtn" ng-show="$index+1 == wfh_activity<?php echo $key; ?>.length" ng-click="addItem('wfh_activity<?php echo $key; ?>')">Add</button><button style="" type="button" class="redbtn " ng-show="wfh_activity<?php echo $key; ?>.length > 1" ng-click="delItem('wfh_activity<?php echo $key; ?>', $index)">Del</button></td>
+                                </tr>
+                            </table>
+                        </td>
                     </tr>
 
                     <?php
@@ -2965,7 +2985,40 @@
             ?>
 
             </table>
+            <script>
 
+            $(document).ready(function () {
+                var wfh_app = angular.module('WFHApp', []);
+                wfh_app.controller('WFHController', function WFHController($scope){
+                    
+                    $scope.item = {time : '', act: ''};
+                    
+                    <?php $key = 1; $wfh_from = $wfh_from_original; while($wfh_from <= $wfh_today) { ?>
+
+                    $scope.wfh_activity<?php echo $key; ?> = [];
+                    $scope.wfh_activity<?php echo $key; ?>.push(angular.copy($scope.item));
+
+                    $scope.$watch('wfh_activity<?php echo $key; ?>', function(newValue, oldValue, scope){
+                        $('#wfh_activity<?php echo $key; ?>').text( JSON.stringify(newValue) );
+                        console.log(JSON.stringify(newValue));
+                    }, true);
+
+                    <?php $key++;  $wfh_from = strtotime("+1 day", $wfh_from); } ?>
+
+                    // Add new activity item
+                    $scope.addItem = function(act){
+                        $scope[act].push(angular.copy($scope.item));
+                    }
+
+                    // Remove item
+                    $scope.delItem = function(act, index){
+                        $scope[act].splice(index, 1);
+                    }
+
+                });
+            });
+
+            </script>
             <?php
 
         break;
