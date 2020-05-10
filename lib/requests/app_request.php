@@ -2881,7 +2881,7 @@ $(document).ready(function () {
 });
 
 </script>
-            <table width="100%" class="tdata vsmalltext" border="0" cellspacing="0" ng-app="WFHApp" ng-controller="WFHController">
+            <table width="100%" class="tdata vsmalltext" border="0" cellspacing="0" >
             <tr>
                 <th width="15px">#</th>
                 <th width="15px">Exclude</th>
