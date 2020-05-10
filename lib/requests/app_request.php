@@ -2940,16 +2940,17 @@
 							</td>
 							<td class="centertalign"><input style="width: 100%" id="wfh_totalworkedhours<?php echo $key; ?>" type="number" name="wfh_totalworkedhours[<?php echo $key; ?>]" attribute="<?php echo $key; ?>" class="wfh_totalworkedhours"></td>
 							<td class="centertalign">
-                                <textarea rows="1" style="display:none" name="wfh_activity[<?php echo $key; ?>]" id="wfh_activity<?php echo $key ?>" class="txtbox"></textarea>
-                                <div class="activities_wrapper">
-                                    <table>
-                                        <tr>
-                                            <td width="50px"><input type="text"></td>
-                                            <td><textarea name="" id="" rows="1"></textarea></td>
-                                        </tr>
-                                    </table>
-                                </div>
-                                <button class="smlbtn">Add Activity</button>
+                                <!-- <textarea rows="1" style="display:none" name="wfh_activity[<?php echo $key; ?>]" id="wfh_activity<?php echo $key ?>" class="txtbox"></textarea> -->
+                                <table>
+                                    <tr ng-repeat="">
+                                        <td style="border-bottom: 0px; margin: 0; padding: 0" width="30px">
+                                            <input type="text" class="txtbox width135 timepick hasDatepicker" readonly="">
+                                        </td>
+                                        <td style="border-bottom: 0px; margin: 0; padding: 0" width="150px"><textarea  name="" id="" cols="30" rows="1"></textarea></td>
+                                        <td style="border-bottom: 0px; margin: 0; padding: 0" width="30px"><button type="button" class="smlbtn">Add</button></td>
+                                    </tr>
+                                    
+                                </table>
 							</td>
 						</tr>
                     </tr>
