@@ -162,7 +162,7 @@
 			$scope.$watchGroup(['wfh_from', 'wfh_to'], function(newVal, oldVal){
 				$scope.wfh_days = [];
 				$scope.current_date = angular.copy($scope.wfh_from);
-				while(current_date <= $scope.wfh_to){
+				while($scope.current_date <= $scope.wfh_to){
 
 					$scope.wfh_days.push($scope.current_date);
 					$scope.current_date.addDays(1);
