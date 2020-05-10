@@ -126,7 +126,7 @@ $('.timepick').timepicker({
 																			<table>
 																				<tr ng-repeat="">
 																					<td style="border-bottom: 0px; margin: 0; padding: 0" width="30px">
-																						<input type="text" class="txtbox width135 timepick hasDatepicker" readonly="">
+																						<input type="text" class="txtbox width50 timepick hasDatepicker" readonly="">
 																					</td>
 																					<td style="border-bottom: 0px; margin: 0; padding: 0" width="150px"><textarea class="txtarea" name="" id="" cols="30" rows="1"></textarea></td>
 																					<td style="border-bottom: 0px; margin: 0; padding: 0" width="30px"><button type="button" class="smlbtn">Add</button></td>
