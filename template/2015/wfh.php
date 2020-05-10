@@ -124,7 +124,10 @@ $(function() {
 																					<td style="border-bottom: 0px" width="50px"><input type="text" class=""></td>
 																					<td style="border-bottom: 0px"><textarea name="" id="" cols="30" rows="1"></textarea></td>
 																				</tr>
-																				
+																				<tr ng-repeat="">
+																					<td style="border-bottom: 0px" width="50px"><input type="text" class=""></td>
+																					<td style="border-bottom: 0px"><textarea name="" id="" cols="30" rows="1"></textarea></td>
+																				</tr>
 																			</table>
 																		</td>
 																	</tr>
