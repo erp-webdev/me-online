@@ -128,7 +128,7 @@ $(function() {
 																						<input type="text" class="txtbox width80 " ng-model="wfh_activity<?php echo $key ?>[$index].time">
 																					</td>
 																					<td style="border-bottom: 0px; margin: 0; padding: 0" width="150px"><textarea class="txtarea" name="" id="" cols="30" rows="1" ng-model="wfh_activity<?php echo $key ?>[$index].act" ng-click="check()"></textarea></td>
-																					<td style="border-bottom: 0px; margin: 0; padding: 0" width="30px"><button style="" type="button" class="smlbtn" ng-show="$index+1 == wfh_activity<?php echo $key ?>.length" ng-click="addItem('wfh_activity<?php echo $key ?>')">Add</button><button style="" type="button" class="redbtn smlbtn" ng-show="$index != 0" ng-click="delItem('wfh_activity<?php echo $key ?>', $index)">Del</button></td>
+																					<td style="border-bottom: 0px; margin: 0; padding: 0" width="30px"><button style="" type="button" class="smlbtn" ng-show="$index+1 == wfh_activity<?php echo $key ?>.length" ng-click="addItem('wfh_activity<?php echo $key ?>')">Add</button><button style="" type="button" class="redbtn smlbtn" ng-show="$index != 0 || wfh_activity<?php echo $key ?>.length > 0" ng-click="delItem('wfh_activity<?php echo $key ?>', $index)">Del</button></td>
 																				</tr>
 																				
 																			</table>
