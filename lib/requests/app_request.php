@@ -2925,7 +2925,9 @@
 								$("#wfh_activity" + arrayid).prop("disabled", true);
 							}
 
-						});
+                        });
+                        
+                        
 
 					});
 					</script>
@@ -2961,9 +2963,40 @@
                 
             endif;
             ?>
-
+            
             </table>
-            										
+            <script>
+            $(document).ready(function () {
+                var wfh_app = angular.module('WFHApp', []);
+                wfh_app.controller('WFHController', function WFHController($scope){
+                    
+                    $scope.item = {time : '', act: ''};
+                    
+                    <?php $key = 1; $wfh_from = $wfh_from_original; while($wfh_from <= $wfh_today) { ?>
+
+                    $scope.wfh_activity<?php echo $key; ?> = [];
+                    $scope.wfh_activity<?php echo $key; ?>.push(angular.copy($scope.item));
+
+                    $scope.$watch('wfh_activity<?php echo $key; ?>', function(newValue, oldValue, scope){
+                        $('#wfh_activity<?php echo $key; ?>').text( JSON.stringify(newValue) );
+                        console.log(JSON.stringify(newValue));
+                    }, true);
+
+                    <?php $key++;  $wfh_from = strtotime("+1 day", $wfh_from); } ?>
+
+                    // Add new activity item
+                    $scope.addItem = function(act){
+                        $scope[act].push(angular.copy($scope.item));
+                    }
+
+                    // Remove item
+                    $scope.delItem = function(act, index){
+                        $scope[act].splice(index, 1);
+                    }
+
+                });
+            });
+            </script>										
             <?php
 
         break;

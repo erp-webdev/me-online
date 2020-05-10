@@ -187,7 +187,7 @@ $(function() {
 					</div>
 				</div>
 	
-				<script>
+				<!-- <script>
 
 $(document).ready(function () {
 	var wfh_app = angular.module('WFHApp', []);
@@ -220,5 +220,5 @@ $(document).ready(function () {
 	});
 });
 
-</script>
+</script> -->
 <?php include(TEMP."/footer.php"); ?>
