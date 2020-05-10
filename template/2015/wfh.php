@@ -89,9 +89,9 @@
 																<td class="centertalign" >
 																	<textarea rows="1" style="display:none" name="wfh_activity[{{ $index+1 }}]" id="wfh_activity{{ $index+1 }}" class="txtbox"></textarea>
 																	<table>
-																		<tr ng-repeat="activity in wfh_activity{{ $index+1 }}">
+																		<tr ng-repeat="activity in wfh_activity[$index]">
 																			<td style="border-bottom: 0px; margin: 0; padding: 0" >
-																				<input id="asd{{ $index }}" type="text" class="txtbox width80" ng-model="wfh_activity{{ $index+1 }}[$index].time">
+																				<input type="text" class="txtbox width80" ng-model="wfh_activity[$parent.$index].[$index].time">
 																			</td>
 																			<td style="border-bottom: 0px; margin: 0; padding: 0" width="150px">
 																				<textarea class="txtarea" name="" id="" cols="30" rows="1" ng-model="wfh_activity{{ $index+1 }}[$index].act" ng-click="check()"></textarea>
@@ -155,6 +155,8 @@
 	$(document).ready(function () {
 		var wfh_app = angular.module('WFHApp', []);
 		wfh_app.controller('WFHController', function WFHController($scope){
+			$scope.wfh_activity = [];
+			$scope.item = {time : '', act: ''};
 			// Dates
 			$scope.wfh_from = new Date().toISOString().split("T")[0];
 			$scope.wfh_to = new Date().toISOString().split("T")[0];
@@ -166,15 +168,16 @@
 
 					$scope.wfh_days.push($scope.current_date.toISOString().split("T")[0]);
 					$scope.current_date.setDate($scope.current_date.getDate()+1);
-					console.log($scope.current_date.getDate());
+					$scope.wfh_activity.push([angular.copy($scope.item)]);
+
 				}
-			})
+			});
 
-			// Activities and Items
-			$scope.item = {time : '', act: ''};
-			
+			$scope.$watch('wfh_activity', function($scope){
+				
 
-		
+
+			}, true);
 
 			// Add new activity item
 			$scope.addItem = function(act){
