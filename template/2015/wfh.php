@@ -50,7 +50,7 @@
 
 																$shiftsched = $mainsql->get_schedshift($profile_idnum);
 																$shiftlist = $mainsql->get_shift();
-
+																$wfh_from_original = $wfh_from;
 																while($wfh_from <= $wfh_today) {
 
 																	$udate = date("U", $wfh_from);
@@ -194,6 +194,8 @@ $(document).ready(function () {
 	wfh_app.controller('WFHController', function WFHController($scope){
 		
 		$scope.item = {time : '', act: ''};
+		
+		<?php $wfh_frm = $wfh_from_original; while($wfh_from <= $wfh_today) { ?>
 
 		$scope.wfh_activity1 = [];
 		$scope.wfh_activity1.push(angular.copy($scope.item));
@@ -202,6 +204,8 @@ $(document).ready(function () {
 			$('#wfh_activity1').text( JSON.stringify(newValue) );
 			console.log(JSON.stringify(newValue));
 		}, true);
+
+		<?php  $wfh_from = strtotime("+1 day", $wfh_from); } ?>
 
 		// Add new activity item
 		$scope.addItem = function(act){
