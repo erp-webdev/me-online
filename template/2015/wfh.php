@@ -121,12 +121,12 @@ $(function() {
 																			<!-- <textarea rows="1" style="display: none" name="wfh_activity[<?php echo $key; ?>]" id="wfh_activity<?php echo $key ?>" class="txtbox"></textarea> -->
 																			<table>
 																				<tr ng-repeat="">
-																					<td style="border-bottom: 0px" width="50px"><input type="text" class=""></td>
-																					<td style="border-bottom: 0px"><textarea name="" id="" cols="30" rows="1"></textarea></td>
+																					<td style="border-bottom: 0px; margin: 0; padding: 0" width="50px"><input type="text" class=""></td>
+																					<td style="border-bottom: 0px; margin: 0; padding: 0"><textarea name="" id="" cols="30" rows="1"></textarea></td>
 																				</tr>
 																				<tr ng-repeat="">
-																					<td style="border-bottom: 0px" width="50px"><input type="text" class=""></td>
-																					<td style="border-bottom: 0px"><textarea name="" id="" cols="30" rows="1"></textarea></td>
+																					<td style="border-bottom: 0px; margin: 0; padding: 0" width="50px"><input type="text" class=""></td>
+																					<td style="border-bottom: 0px; margin: 0; padding: 0"><textarea name="" id="" cols="30" rows="1"></textarea></td>
 																				</tr>
 																			</table>
 																		</td>
