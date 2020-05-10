@@ -174,14 +174,7 @@
 			$scope.item = {time : '', act: ''};
 			
 
-			// $scope.wfh_activity<?php //echo $key; ?> = [];
-			// $scope.wfh_activity<?php //echo $key; ?>.push(angular.copy($scope.item));
-
-			// $scope.$watch('wfh_activity<?php// echo $key; ?>', function(newValue, oldValue, scope){
-			// 	$('#wfh_activity<?php// echo $key; ?>').text( JSON.stringify(newValue) );
-			// 	console.log(JSON.stringify(newValue));
-			// }, true);
-
+		
 
 			// Add new activity item
 			$scope.addItem = function(act){
