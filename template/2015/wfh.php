@@ -116,7 +116,7 @@ $(document).ready(function () {
 		];
 
 		$scope.$watch('wfh_activity1', function(newValue, oldValue, scope){
-			$('#wfh_activity1').text(newValue);
+			$('#wfh_activity1').text( JSON.stringify(newValue) );
 		});
 	});
 });
