@@ -166,7 +166,7 @@
 
 					$scope.wfh_days.push($scope.current_date);
 					$scope.current_date.setDate($scope.current_date.getDate()+1);
-
+					console.log($scope.current_date.getDate());
 				}
 			})
 
