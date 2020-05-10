@@ -156,8 +156,8 @@
 		var wfh_app = angular.module('WFHApp', []);
 		wfh_app.controller('WFHController', function WFHController($scope){
 			// Dates
-			$scope.wfh_from = Date.now();
-			$scope.wfh_to = Date.now();
+			$scope.wfh_from = new Date().toISOString().split("T")[0];;
+			$scope.wfh_to = new Date().toISOString().split("T")[0];;
 			$scope.wfh_days = [];
 			$scope.$watchGroup(['wfh_from', 'wfh_to'], function(newVal, oldVal){
 				$scope.wfh_days = [];
