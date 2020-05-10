@@ -198,7 +198,7 @@ $(document).ready(function () {
 			{time : '13:00am - 14:00am', act: 'testing3'},
 		];
 
-		$scope.$watchCollection('wfh_activity1*', function(newValue, oldValue, scope){
+		$scope.$watchCollection('wfh_activity1', function(newValue, oldValue, scope){
 			$('#wfh_activity1').text( JSON.stringify(newValue) );
 			console.log(JSON.stringify(newValue));
 		});
