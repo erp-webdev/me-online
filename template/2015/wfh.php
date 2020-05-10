@@ -106,7 +106,7 @@ $(function() {
 
 });
 
-$(document).ready(function(), {
+$(document).ready(function () {
 	var wfh_app = angular.module('WFHApp', []);
 	wfh_app.controller('WFHController', function WFHController($scope){
 		$scope.wfh_activity1 = [
@@ -115,9 +115,8 @@ $(document).ready(function(), {
 			{time : '13:00am - 14:00am', act: 'testing3'},
 		];
 	});
-
-
 });
+
 </script>
 
 
