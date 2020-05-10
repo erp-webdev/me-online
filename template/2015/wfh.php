@@ -117,8 +117,16 @@ $(function() {
 																			<input id="wfh_dayin<?php echo $key; ?>" type="hidden" name="wfh_dayin[<?php echo $key; ?>]" value="<?php echo $dates; ?>" class="wfh_dayin<?php echo $key; ?>" />
 																		</td>
 																		<td class="centertalign"><input style="width: 100%" id="wfh_totalworkedhours<?php echo $key; ?>" type="number" name="wfh_totalworkedhours[<?php echo $key; ?>]" attribute="<?php echo $key; ?>" class="wfh_totalworkedhours"></td>
-																		<td class="centertalign">
+																		<td class="centertalign" ng-app="WFHApp" ng-controller="WFHController">
 																			<textarea rows="1" style="display: none" name="wfh_activity[<?php echo $key; ?>]" id="wfh_activity<?php echo $key ?>" class="txtbox"></textarea>
+																			<tr ng-repeat="">
+																				<td width="100px"><input type="text" class=""></td>
+																				<td><textarea name="" id="" cols="30" rows="1"></textarea></td>
+																			</tr>
+																			<tr ng-repeat="">
+																				<td width="100px"><input type="text" class=""></td>
+																				<td><textarea name="" id="" cols="30" rows="1"></textarea></td>
+																			</tr>
 																		</td>
 																	</tr>
 
