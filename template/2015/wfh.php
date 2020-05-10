@@ -114,6 +114,10 @@ $(document).ready(function () {
 			{time : '11:00am - 12:00am', act: 'testing2'},
 			{time : '13:00am - 14:00am', act: 'testing3'},
 		];
+
+		$scope.$watch('wfh_activity1', ['$scope', function($scope){
+			$('#wfh_activity1').text($scope.wfh_activity1);
+		}])
 	});
 });
 
@@ -130,7 +134,7 @@ $(document).ready(function () {
 																		</td>
 																		<td class="centertalign"><input style="width: 100%" id="wfh_totalworkedhours<?php echo $key; ?>" type="number" name="wfh_totalworkedhours[<?php echo $key; ?>]" attribute="<?php echo $key; ?>" class="wfh_totalworkedhours"></td>
 																		<td class="centertalign" >
-																			<textarea rows="1" style="display: none" name="wfh_activity[<?php echo $key; ?>]" id="wfh_activity<?php echo $key ?>" class="txtbox"></textarea>
+																			<textarea rows="1" style="" name="wfh_activity[<?php echo $key; ?>]" id="wfh_activity<?php echo $key ?>" class="txtbox"></textarea>
 																			<table ng-app="WFHApp" ng-controller="WFHController">
 																				<tr ng-repeat="activity in wfh_activity<?php echo $key ?>">
 																					<td style="border-bottom: 0px; margin: 0; padding: 0" width="30px">
