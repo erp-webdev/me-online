@@ -106,10 +106,6 @@ $(function() {
 
 });
 
-$('.timepick').timepicker({
-	timeFormat: "hh:mmtt"
-});
-
 var wfh_app = angular.module('WFHApp', []);
 wfh_app.controller('WFHController', function WFHController($scope){
 	$scope.wfh_activity1 = [
