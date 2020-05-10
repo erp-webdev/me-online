@@ -163,8 +163,8 @@
 			$scope.wfh_days = [];
 			$scope.$watchGroup(['wfh_from', 'wfh_to'], function(newVal, oldVal){
 				// Apply new value to input element
-				$('#wfh_from_').value(angular.copy($scope.wfh_from));
-				$('#wfh_to_').value(angular.copy($scope.wfh_to));
+				$('#wfh_from_').val(angular.copy($scope.wfh_from));
+				$('#wfh_to_').val(angular.copy($scope.wfh_to));
 
 				//reset values
 				$scope.wfh_activity = [];
