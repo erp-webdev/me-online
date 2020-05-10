@@ -195,7 +195,7 @@ $(document).ready(function () {
 		
 		$scope.item = {time : '', act: ''};
 		
-		<?php $wfh_frm = $wfh_from_original; while($wfh_from <= $wfh_today) { ?>
+		<?php $wfh_from = $wfh_from_original; while($wfh_from <= $wfh_today) { ?>
 
 		$scope.wfh_activity1 = [];
 		$scope.wfh_activity1.push(angular.copy($scope.item));
