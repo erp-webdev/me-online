@@ -120,14 +120,11 @@ $(function() {
 																		<td class="centertalign" ng-app="WFHApp" ng-controller="WFHController">
 																			<!-- <textarea rows="1" style="display: none" name="wfh_activity[<?php echo $key; ?>]" id="wfh_activity<?php echo $key ?>" class="txtbox"></textarea> -->
 																			<table>
-																				<tr style="border: 0px" ng-repeat="">
-																					<td  width="50px"><input type="text" class=""></td>
-																					<td><textarea name="" id="" cols="30" rows="1"></textarea></td>
-																				</tr>
 																				<tr ng-repeat="">
-																					<td style="border: 0px" width="500px"><input type="text" class=""></td>
-																					<td style="border: 0px" ><textarea name="" id="" cols="30" rows="1"></textarea></td>
-																				</tr>	
+																					<td style="border-bottom: 0px" width="50px"><input type="text" class=""></td>
+																					<td style="border-bottom: 0px"><textarea name="" id="" cols="30" rows="1"></textarea></td>
+																				</tr>
+																				
 																			</table>
 																		</td>
 																	</tr>
