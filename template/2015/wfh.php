@@ -128,7 +128,7 @@ $(function() {
 																						<input type="text" class="txtbox width80 " ng-model="wfh_activity<?php echo $key ?>[$index].time">
 																					</td>
 																					<td style="border-bottom: 0px; margin: 0; padding: 0" width="150px"><textarea class="txtarea" name="" id="" cols="30" rows="1" ng-model="wfh_activity<?php echo $key ?>[$index].act" ng-click="check()"></textarea></td>
-																					<td style="border-bottom: 0px; margin: 0; padding: 0" width="30px"><button type="button" class="smlbtn">Add</button></td>
+																					<td style="border-bottom: 0px; margin: 0; padding: 0" width="30px"><button style="" type="button" class="smlbtn">Add</button></td>
 																				</tr>
 																				
 																			</table>
