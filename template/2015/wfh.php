@@ -204,8 +204,8 @@ $(document).ready(function () {
 		}, true);
 
 		// Add new activity item
-		$scope.addItem = function(act){
-			$scope.act.push($scope.item);
+		$scope.addItem = function(){
+			$scope[act].push($scope.item);
 		}
 
 	});
