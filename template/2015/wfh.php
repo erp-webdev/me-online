@@ -122,8 +122,7 @@ $(function() {
 																			<table>
 																				<tr ng-repeat="">
 																					<td style="border-bottom: 0px; margin: 0; padding: 0" width="30px"><input type="text" class=""></td>
-																					<td style="border-bottom: 0px; margin: 0; padding: 0"><textarea  name="" id="" cols="50" rows="1"></textarea></td>
-																					<td width="30px" colspan="2"><button class="smlbtn">Add Activity</button></td>
+																					<td style="border-bottom: 0px; margin: 0; padding: 0"><textarea  name="" id="" cols="50" rows="1"></textarea><button class="smlbtn">Add Activity</button></td>
 																				</tr>
 																			</table>
 																		</td>
