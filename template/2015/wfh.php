@@ -165,7 +165,7 @@
 				while($scope.current_date <= $scope.wfh_to){
 
 					$scope.wfh_days.push($scope.current_date);
-					$scope.current_date.setDate($scope.current_date+1);
+					$scope.current_date = $scope.current_date+1;
 
 				}
 			})
