@@ -2927,7 +2927,11 @@
 
 						});
 
-					});
+                    });
+                    
+                    $('#timepick').timepicker({
+                        timeFormat: "hh:mmtt"
+                    });
 					</script>
 
                     <tr>
