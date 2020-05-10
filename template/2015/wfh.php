@@ -162,7 +162,10 @@
 			$scope.wfh_to = new Date().toISOString().split("T")[0];
 			$scope.wfh_days = [];
 			$scope.$watchGroup(['wfh_from', 'wfh_to'], function(newVal, oldVal){
+				//reset values
+				$scope.wfh_activity = [];
 				$scope.wfh_days = [];
+				
 				$scope.current_date = new Date(angular.copy($scope.wfh_from));
 				while($scope.current_date <= new Date(angular.copy($scope.wfh_to))){
 
