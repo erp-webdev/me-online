@@ -49,6 +49,7 @@
     <script type="text/javascript" src="<?php echo JS; ?>/colorpicker.js"></script>
     <script type="text/javascript" src="<?php echo JS; ?>/jquery-ui-timepicker-addon.js"></script>
     <script type="text/javascript" src="<?php echo JS; ?>/jquery.raty.js"></script>
+    <script type="text/javascript" src="<?php echo JS; ?>/angular.js"></script>
 
     <!-- FOR IFRAME UPLOAD -->
     <script type="text/javascript" src="<?php echo JS; ?>/jquery.iframe-post-form.js"></script>

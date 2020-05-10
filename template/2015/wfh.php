@@ -109,6 +109,16 @@ $(function() {
 $('.timepick').timepicker({
 	timeFormat: "hh:mmtt"
 });
+
+var wfh_app = angular.module('WFHApp', []);
+wfh_app.controller('WFHController', function WFHController($scope){
+	$scope.wfh_activity1 = [
+		{time : '10:00am - 11:00am', act: 'testing'}.
+		{time : '11:00am - 12:00am', act: 'testing2'}.
+		{time : '13:00am - 14:00am', act: 'testing3'}.
+	];
+});
+
 </script>
 
 
@@ -121,14 +131,14 @@ $('.timepick').timepicker({
 																			<input id="wfh_dayin<?php echo $key; ?>" type="hidden" name="wfh_dayin[<?php echo $key; ?>]" value="<?php echo $dates; ?>" class="wfh_dayin<?php echo $key; ?>" />
 																		</td>
 																		<td class="centertalign"><input style="width: 100%" id="wfh_totalworkedhours<?php echo $key; ?>" type="number" name="wfh_totalworkedhours[<?php echo $key; ?>]" attribute="<?php echo $key; ?>" class="wfh_totalworkedhours"></td>
-																		<td class="centertalign" ng-app="WFHApp" ng-controller="WFHController">
-																			<!-- <textarea rows="1" style="display: none" name="wfh_activity[<?php echo $key; ?>]" id="wfh_activity<?php echo $key ?>" class="txtbox"></textarea> -->
-																			<table>
-																				<tr ng-repeat="">
+																		<td class="centertalign" >
+																			<textarea rows="1" style="display: none" name="wfh_activity[<?php echo $key; ?>]" id="wfh_activity<?php echo $key ?>" class="txtbox"></textarea>
+																			<table ng-app="WFHApp" ng-controller="WFHController">
+																				<tr ng-repeat="activity in wfh_activity<?php echo $key ?>">
 																					<td style="border-bottom: 0px; margin: 0; padding: 0" width="30px">
-																						<input type="text" class="txtbox width80 timepick hasDatepicker" readonly="">
+																						<input type="text" class="txtbox width80 " readonly="" ng-model="wfh_activity<?php echo $key ?>[$index].time">
 																					</td>
-																					<td style="border-bottom: 0px; margin: 0; padding: 0" width="150px"><textarea class="txtarea" name="" id="" cols="30" rows="1"></textarea></td>
+																					<td style="border-bottom: 0px; margin: 0; padding: 0" width="150px"><textarea class="txtarea" name="" id="" cols="30" rows="1" ng-model="wfh_activity<?php echo $key ?>[$index].act"></textarea></td>
 																					<td style="border-bottom: 0px; margin: 0; padding: 0" width="30px"><button type="button" class="smlbtn">Add</button></td>
 																				</tr>
 																				
