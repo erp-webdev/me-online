@@ -97,7 +97,7 @@
 																				<textarea class="txtarea" name="" id="" cols="30" rows="1" ng-model="wfh_activity[$parent.$index][$index].act" ></textarea>
 																			</td>
 																			<td style="border-bottom: 0px; margin: 0; padding: 0; text-align:left" width="120px">
-																				<button style="" type="button" class="smlbtn" ng-show="$index+1 == wfh_activity{{ $index+1 }}.length" ng-click="addItem('wfh_activity{{ $index+1 }}')">Add</button>
+																				<button style="" type="button" class="smlbtn" ng-show="$index+1 == wfh_activity[$parent.$index].length" ng-click="addItem('wfh_activity[$parent.$index]')">Add</button>
 																				<button style="" type="button" class="redbtn " ng-show="wfh_activity{{ $index+1 }}.length > 1" ng-click="delItem('wfh_activity{{ $index+1 }}', $index)">Del</button>
 																			</td>
 																		</tr>
@@ -156,7 +156,7 @@
 		var wfh_app = angular.module('WFHApp', []);
 		wfh_app.controller('WFHController', function WFHController($scope){
 			$scope.wfh_activity = [];
-			$scope.item = {time : 'test', act: ''};
+			$scope.item = {time : '', act: ''};
 			// Dates
 			$scope.wfh_from = new Date().toISOString().split("T")[0];
 			$scope.wfh_to = new Date().toISOString().split("T")[0];
