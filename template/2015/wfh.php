@@ -105,6 +105,10 @@ $(function() {
 	});
 
 });
+
+$('.timepick').timepicker({
+	timeFormat: "hh:mmtt"
+});
 </script>
 
 
