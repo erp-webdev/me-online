@@ -159,7 +159,7 @@
 			$scope.wfh_from = Date.now();
 			$scope.wfh_to = Date.now();
 			$scope.wfh_days = [];
-			$scope.watchGroup(['wfh_from', 'wfh_to'], function(newVal, oldVal, scope){
+			$scope.watchGroup(['wfh_from', 'wfh_to'], function(newVal, oldVal){
 				$scope.wfh_days = [];
 				var current_date =$scope.wfh_from;
 				while(current_date <= $scope_wfh_to){
