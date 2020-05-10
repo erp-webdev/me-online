@@ -161,11 +161,11 @@
 			$scope.wfh_days = [];
 			$scope.$watchGroup(['wfh_from', 'wfh_to'], function(newVal, oldVal){
 				$scope.wfh_days = [];
-				var current_date =$scope.wfh_from;
+				$scope.current_date = angular.copy($scope.wfh_from);
 				while(current_date <= $scope.wfh_to){
 
-					$scope.wfh_days.push(current_date);
-					current_date.addDays(1);
+					$scope.wfh_days.push($scope.current_date);
+					$scope.current_date.addDays(1);
 
 				}
 			})
@@ -173,7 +173,15 @@
 			// Activities and Items
 			$scope.item = {time : '', act: ''};
 			
-			
+
+			// $scope.wfh_activity<?php //echo $key; ?> = [];
+			// $scope.wfh_activity<?php //echo $key; ?>.push(angular.copy($scope.item));
+
+			// $scope.$watch('wfh_activity<?php// echo $key; ?>', function(newValue, oldValue, scope){
+			// 	$('#wfh_activity<?php// echo $key; ?>').text( JSON.stringify(newValue) );
+			// 	console.log(JSON.stringify(newValue));
+			// }, true);
+
 
 			// Add new activity item
 			$scope.addItem = function(act){
