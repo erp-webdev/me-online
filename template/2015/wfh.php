@@ -125,10 +125,10 @@ $(function() {
 																			<table>
 																				<tr ng-repeat="activity in wfh_activity<?php echo $key; ?>">
 																					<td style="border-bottom: 0px; margin: 0; padding: 0" width="30px">
-																						<input type="text" class="txtbox width80 " ng-model="wfh_activity<?php echo $key; ?>[$index].time">
+																						<input type="text" class="txtbox width100 " ng-model="wfh_activity<?php echo $key; ?>[$index].time">
 																					</td>
 																					<td style="border-bottom: 0px; margin: 0; padding: 0" width="150px"><textarea class="txtarea" name="" id="" cols="30" rows="1" ng-model="wfh_activity<?php echo $key; ?>[$index].act" ng-click="check()"></textarea></td>
-																					<td style="border-bottom: 0px; margin: 0; padding: 0" width="50px"><button style="" type="button" class="smlbtn" ng-show="$index+1 == wfh_activity<?php echo $key; ?>.length" ng-click="addItem('wfh_activity<?php echo $key; ?>')">Add</button><button style="" type="button" class="redbtn " ng-show="wfh_activity<?php echo $key; ?>.length > 1" ng-click="delItem('wfh_activity<?php echo $key; ?>', $index)">Del</button></td>
+																					<td style="border-bottom: 0px; margin: 0; padding: 0; text-align:left" width="100px"><button style="" type="button" class="smlbtn" ng-show="$index+1 == wfh_activity<?php echo $key; ?>.length" ng-click="addItem('wfh_activity<?php echo $key; ?>')">Add</button><button style="" type="button" class="redbtn " ng-show="wfh_activity<?php echo $key; ?>.length > 1" ng-click="delItem('wfh_activity<?php echo $key; ?>', $index)">Del</button></td>
 																				</tr>
 																			</table>
 																		</td>
