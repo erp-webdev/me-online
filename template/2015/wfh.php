@@ -80,7 +80,7 @@
 																	<input type="hidden" name="wfh_disable[{{ $index+1 }}]" id="wfh_disable{{ $index+1 }}" value=0><input id="mdtr_absent{{ $index+1 }}" type="checkbox" name="mdtr_absent[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="mdtr_absent">
 																</td>
 																<td class="centertalign">
-																	{ wfh_day | date: 'EEE MM/dd/yy'}}
+																	{{ wfh_day | date: 'EEE MM/dd/yy'}}
 																	<input id="wfh_dayin{{ $index+1 }}" type="hidden" name="wfh_dayin[{{ $index+1 }}]" value="{{ $wfh_day | date: 'y-MM-dd'}}" class="wfh_dayin{{ $index+1 }}" />
 																</td>
 																<td class="centertalign">
