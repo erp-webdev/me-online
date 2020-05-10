@@ -81,7 +81,7 @@
 																</td>
 																<td class="centertalign">
 																	{{ wfh_day | date: 'EEE MM/dd/yy'}}
-																	<input id="wfh_dayin{{ $index+1 }}" type="hidden" name="wfh_dayin[{{ $index+1 }}]" value="{{ $wfh_day | date: 'y-MM-dd'}}" class="wfh_dayin{{ $index+1 }}" />
+																	<input id="wfh_dayin{{ $index+1 }}" type="hidden" name="wfh_dayin[{{ $index+1 }}]" value="{{ wfh_day | date: 'y-MM-dd'}}" class="wfh_dayin{{ $index+1 }}" />
 																</td>
 																<td class="centertalign">
 																	<input style="width: 100%" id="wfh_totalworkedhours{{ $index+1 }}" type="number" name="wfh_totalworkedhours[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="wfh_totalworkedhours">
