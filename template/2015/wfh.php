@@ -204,7 +204,7 @@ $(document).ready(function () {
 		}, true);
 
 		// Add new activity item
-		$scope.addItem = function(){
+		$scope.addItem = function(act){
 			$scope[act].push($scope.item);
 		}
 
