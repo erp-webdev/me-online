@@ -201,11 +201,8 @@ $(document).ready(function () {
 		$scope.$watchCollection('wfh_activity1', function(newValue, oldValue, scope){
 			$('#wfh_activity1').text( JSON.stringify(newValue) );
 			console.log(JSON.stringify(newValue));
-		});
+		}, true);
 
-		$scope.check = function(){
-			console.log(JSON.stringify($scope.wfh_activity1));
-		};
 	});
 });
 
