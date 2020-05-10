@@ -91,10 +91,10 @@
 																	<table>
 																		<tr ng-repeat="activity in wfh_activity[$index]">
 																			<td style="border-bottom: 0px; margin: 0; padding: 0" >
-																				<input type="text" class="txtbox width80" ng-model="wfh_activity[$parent.$index].[$index].time">
+																				<input type="text" class="txtbox width80" ng-model="wfh_activity[$parent.$index][$index].time">
 																			</td>
 																			<td style="border-bottom: 0px; margin: 0; padding: 0" width="150px">
-																				<textarea class="txtarea" name="" id="" cols="30" rows="1" ng-model="wfh_activity{{ $index+1 }}[$index].act" ng-click="check()"></textarea>
+																				<textarea class="txtarea" name="" id="" cols="30" rows="1" ng-model="wfh_activity[$parent.$index][$index].act" ></textarea>
 																			</td>
 																			<td style="border-bottom: 0px; margin: 0; padding: 0; text-align:left" width="120px">
 																				<button style="" type="button" class="smlbtn" ng-show="$index+1 == wfh_activity{{ $index+1 }}.length" ng-click="addItem('wfh_activity{{ $index+1 }}')">Add</button>
