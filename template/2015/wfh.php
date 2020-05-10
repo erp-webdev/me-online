@@ -156,15 +156,15 @@
 		var wfh_app = angular.module('WFHApp', []);
 		wfh_app.controller('WFHController', function WFHController($scope){
 			// Dates
-			$scope.wfh_from = new Date().toISOString().split("T")[0];;
-			$scope.wfh_to = new Date().toISOString().split("T")[0];;
+			$scope.wfh_from = new Date().toISOString().split("T")[0];
+			$scope.wfh_to = new Date().toISOString().split("T")[0];
 			$scope.wfh_days = [];
 			$scope.$watchGroup(['wfh_from', 'wfh_to'], function(newVal, oldVal){
 				$scope.wfh_days = [];
 				$scope.current_date = new Date(angular.copy($scope.wfh_from));
 				while($scope.current_date <= new Date(angular.copy($scope.wfh_to))){
 
-					$scope.wfh_days.push($scope.current_date);
+					$scope.wfh_days.push($scope.current_date.toISOString().split("T")[0]);
 					$scope.current_date.setDate($scope.current_date.getDate()+1);
 					console.log($scope.current_date.getDate());
 				}
