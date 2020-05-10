@@ -106,21 +106,7 @@ $(function() {
 
 });
 
-$(document).ready(function () {
-	var wfh_app = angular.module('WFHApp', []);
-	wfh_app.controller('WFHController', function WFHController($scope){
-		$scope.wfh_activity1 = [
-			{time : '10:00am - 11:00am', act: 'testing'},
-			{time : '11:00am - 12:00am', act: 'testing2'},
-			{time : '13:00am - 14:00am', act: 'testing3'},
-		];
 
-		$scope.$watch('wfh_activity1', function(newValue, oldValue, scope){
-			$('#wfh_activity1').text( JSON.stringify(newValue) );
-			console.log(JSON.stringify(newValue));
-		});
-	});
-});
 
 </script>
 
@@ -201,5 +187,23 @@ $(document).ready(function () {
 					</div>
 				</div>
 	
+<script>
 
+$(document).ready(function () {
+	var wfh_app = angular.module('WFHApp', []);
+	wfh_app.controller('WFHController', function WFHController($scope){
+		$scope.wfh_activity1 = [
+			{time : '10:00am - 11:00am', act: 'testing'},
+			{time : '11:00am - 12:00am', act: 'testing2'},
+			{time : '13:00am - 14:00am', act: 'testing3'},
+		];
+
+		$scope.$watch('wfh_activity1', function(newValue, oldValue, scope){
+			$('#wfh_activity1').text( JSON.stringify(newValue) );
+			console.log(JSON.stringify(newValue));
+		});
+	});
+});
+
+</script>
 <?php include(TEMP."/footer.php"); ?>
