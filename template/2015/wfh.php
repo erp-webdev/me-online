@@ -25,8 +25,8 @@
 										<li><a href="#lapprover">Approvers</a></li>
 									</ul>
 
-									<div id="ldetails"  >
-										<table class="tdataform" border="0" cellspacing="0" ng-app="WFHApp" ng-controller="WFHController">
+									<div id="ldetails"  ng-app="WFHApp" ng-controller="WFHController">
+										<table class="tdataform" border="0" cellspacing="0">
 											<tr>
 												<td width="15%"><b>DTR Date: </b></td>
 												<td width="85%"><input id="wfh_from" type="text" name="wfh_from" value="<?php echo $wfh_fdate; ?>" class="txtbox datepickwh" readonly /> - <input id="wfh_to" type="text" name="wfh_to" value="<?php echo $wfh_todate; ?>" class="txtbox datepickwh" readonly /></td>
@@ -144,38 +144,38 @@ $(function() {
 														</table>
 														<script>
 
-															$(document).ready(function () {
-																var wfh_app = angular.module('WFHApp', []);
-																wfh_app.controller('WFHController', function WFHController($scope){
-																	
-																	$scope.item = {time : '', act: ''};
-																	
-																	<?php $key = 1; $wfh_from = $wfh_from_original; while($wfh_from <= $wfh_today) { ?>
+														$(document).ready(function () {
+															var wfh_app = angular.module('WFHApp', []);
+															wfh_app.controller('WFHController', function WFHController($scope){
+																
+																$scope.item = {time : '', act: ''};
+																
+																<?php $key = 1; $wfh_from = $wfh_from_original; while($wfh_from <= $wfh_today) { ?>
 
-																	$scope.wfh_activity<?php echo $key; ?> = [];
-																	$scope.wfh_activity<?php echo $key; ?>.push(angular.copy($scope.item));
+																$scope.wfh_activity<?php echo $key; ?> = [];
+																$scope.wfh_activity<?php echo $key; ?>.push(angular.copy($scope.item));
 
-																	$scope.$watch('wfh_activity<?php echo $key; ?>', function(newValue, oldValue, scope){
-																		$('#wfh_activity<?php echo $key; ?>').text( JSON.stringify(newValue) );
-																		console.log(JSON.stringify(newValue));
-																	}, true);
+																$scope.$watch('wfh_activity<?php echo $key; ?>', function(newValue, oldValue, scope){
+																	$('#wfh_activity<?php echo $key; ?>').text( JSON.stringify(newValue) );
+																	console.log(JSON.stringify(newValue));
+																}, true);
 
-																	<?php $key++;  $wfh_from = strtotime("+1 day", $wfh_from); } ?>
+																<?php $key++;  $wfh_from = strtotime("+1 day", $wfh_from); } ?>
 
-																	// Add new activity item
-																	$scope.addItem = function(act){
-																		$scope[act].push(angular.copy($scope.item));
-																	}
+																// Add new activity item
+																$scope.addItem = function(act){
+																	$scope[act].push(angular.copy($scope.item));
+																}
 
-																	// Remove item
-																	$scope.delItem = function(act, index){
-																		$scope[act].splice(index, 1);
-																	}
+																// Remove item
+																$scope.delItem = function(act, index){
+																	$scope[act].splice(index, 1);
+																}
 
-																});
 															});
+														});
 
-															</script>
+														</script>
 													</div>
 												</td>
 											</tr>
