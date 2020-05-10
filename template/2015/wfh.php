@@ -122,7 +122,7 @@ $(function() {
 																			<table>
 																				<tr ng-repeat="">
 																					<td style="border-bottom: 0px; margin: 0; padding: 0" width="50px"><input type="text" class=""></td>
-																					<td style="border-bottom: 0px; margin: 0; padding: 0"><textarea  name="" id="" cols="30" rows="1"></textarea></td>
+																					<td style="border-bottom: 0px; margin: 0; padding: 0"><textarea  name="" id="" cols="50" rows="1"></textarea></td>
 																				</tr>
 																				<tr ng-repeat="">
 																					<td style="border-bottom: 0px; margin: 0; padding: 0" width="50px"><input type="text" class=""></td>
