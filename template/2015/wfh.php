@@ -123,6 +123,16 @@ $(function() {
 																				<tr ng-repeat="">
 																					<td style="border-bottom: 0px; margin: 0; padding: 0" width="30px"><input type="text" class="" width="30px"></td>
 																					<td style="border-bottom: 0px; margin: 0; padding: 0" width="150px"><textarea  name="" id="" cols="30" rows="1"></textarea></td>
+																					<td style="border-bottom: 0px; margin: 0; padding: 0" width="30px"></td>
+																				</tr>
+																				<tr ng-repeat="">
+																					<td style="border-bottom: 0px; margin: 0; padding: 0" width="30px"><input type="text" class="" width="30px"></td>
+																					<td style="border-bottom: 0px; margin: 0; padding: 0" width="150px"><textarea  name="" id="" cols="30" rows="1"></textarea></td>
+																					<td style="border-bottom: 0px; margin: 0; padding: 0" width="30px"></td>
+																				</tr>
+																				<tr ng-repeat="">
+																					<td style="border-bottom: 0px; margin: 0; padding: 0" width="30px"><input type="text" class="" width="30px"></td>
+																					<td style="border-bottom: 0px; margin: 0; padding: 0" width="150px"><textarea  name="" id="" cols="30" rows="1"></textarea></td>
 																					<td style="border-bottom: 0px; margin: 0; padding: 0" width="30px"><button type="button" class="smlbtn">Add</button></td>
 																				</tr>
 																			</table>
