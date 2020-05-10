@@ -196,7 +196,7 @@ $(document).ready(function () {
 		$scope.item = {time : '', act: ''};
 
 		$scope.wfh_activity1 = [];
-		$scope.wfh_activity1.push($scope.item);
+		$scope.wfh_activity1.push(angular.copy($scope.item));
 
 		$scope.$watch('wfh_activity1', function(newValue, oldValue, scope){
 			$('#wfh_activity1').text( JSON.stringify(newValue) );
@@ -205,7 +205,7 @@ $(document).ready(function () {
 
 		// Add new activity item
 		$scope.addItem = function(act){
-			$scope[act].push($scope.item);
+			$scope[act].push(angular.copy($scope.item));
 		}
 
 	});
