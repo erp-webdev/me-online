@@ -115,8 +115,8 @@ $(document).ready(function () {
 			{time : '13:00am - 14:00am', act: 'testing3'},
 		];
 
-		$scope.$watch('wfh_activity1', ['$scope', function($scope){
-			$('#wfh_activity1').text($scope.wfh_activity1);
+		$scope.$watch('wfh_activity1', function(newValue, oldValue, scope){
+			$('#wfh_activity1').text(newValue);
 		}])
 	});
 });
