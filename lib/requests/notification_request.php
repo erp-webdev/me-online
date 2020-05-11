@@ -6661,7 +6661,10 @@
 										</td>
 										<td class="centertalign">
 											<?php
-												var_dump( json_decode($value['Activities']) ); 
+												$wh_act = json_decode($value['Activities'], true); 
+												foreach($wh_act as $act_details){
+													echo $act_details['time']." ".$act_details['act'];
+												}
 											?>
 										</td>
 										<td class="centertalign">
