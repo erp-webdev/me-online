@@ -77,10 +77,10 @@
 
 																});
 															</script>
-															<tr ng-repeat="wfh_day in wfh_days" id="tr{{ $index+1 }}" ng-init="parentOrig=$index+1">
+															<tr ng-repeat="wfh_day in wfh_days" id="tr{{ $index+1 }}">
 																<td class="centertalign">{{ $index+1 }}</td>
 																<td class="centertalign">
-																	<input type="hidden" name="wfh_disable[{{ $index+1 }}]" id="wfh_disable{{ $index+1 }}" value=0><input ng-init="parentInd=parentOrig" id="mdtr_absent{{ $index+1 }}" type="checkbox" name="mdtr_absent[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="mdtr_absent" ng-click="myFunction($index+1)">
+																	<input type="hidden" name="wfh_disable[{{ $index+1 }}]" id="wfh_disable{{ $index+1 }}" value=0><input id="mdtr_absent{{ $index+1 }}" type="checkbox" name="mdtr_absent[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="mdtr_absent" ng-click="myFunction($index+1)">
 																</td>
 																<td class="centertalign">
 																	{{ wfh_day | date: 'EEE MM/dd/yy'}}
@@ -94,10 +94,10 @@
 																	<table>
 																		<tr ng-repeat="activity in wfh_activity[$index]">
 																			<td style="border-bottom: 0px; margin: 0; padding: 0" >
-																				<input type="text" placeholder="08:00-18:00" title="24 Hour Format" pattern="([0-1]{1}[0-9]{1}|20|21|22|23):[0-5]{1}[0-9]{1}-([0-1]{1}[0-9]{1}|20|21|22|23):[0-5]{1}[0-9]{1}" class="txtbox width80 wfh_time{{ parentInd }}" ng-model="wfh_activity[$parent.$index][$index].time" required>
+																				<input type="text" placeholder="08:00-18:00" title="24 Hour Format" pattern="([0-1]{1}[0-9]{1}|20|21|22|23):[0-5]{1}[0-9]{1}-([0-1]{1}[0-9]{1}|20|21|22|23):[0-5]{1}[0-9]{1}" class="txtbox width80 wfh_time{{ $parent.$index }}" ng-model="wfh_activity[$parent.$index][$index].time" required>
 																			</td>
 																			<td style="border-bottom: 0px; margin: 0; padding: 0" width="150px">
-																				<textarea class="txtarea wfh_act{{ parentInd }}" name="" id="" cols="30" rows="1" ng-model="wfh_activity[$parent.$index][$index].act" required></textarea>
+																				<textarea class="txtarea wfh_act{{ $parent.$index }}" name="" id="" cols="30" rows="1" ng-model="wfh_activity[$parent.$index][$index].act" required></textarea>
 																			</td>
 																			<td style="border-bottom: 0px; margin: 0; padding: 0; text-align:left" width="120px">
 																				<button style="" type="button" class="redbtn " ng-show="wfh_activity[$parent.$index].length > 1" ng-click="delItem($parent.$index, $index)">Del</button>
