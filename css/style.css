@@ -991,7 +991,7 @@ a { text-decoration: none; color: #333; }
 
 .floatdiv {
     position: fixed;
-    width: 150%;
+    width: 300%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 20;
@@ -1001,7 +1001,7 @@ a { text-decoration: none; color: #333; }
 
 .mfloatdiv {
     position: fixed;
-    width: 100%;
+    width: 300%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 20;
