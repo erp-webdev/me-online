@@ -161,8 +161,9 @@
 		wfh_app.controller('WFHController', function WFHController($scope){
 
 			$scope.myFunction = function(key){
-				
+
 				$(".wfh_act" + key).each(function() {
+					alert($(this).val());
 					if($(this).prop("disabled")){
 						$(this).prop("disabled", false);
 					}else{
@@ -170,7 +171,7 @@
 					}
 				});
 
-				$(".wfh_time" + arrayid).each(function() {
+				$(".wfh_time" + key).each(function() {
 					if($(this).prop("disabled")){
 						$(this).prop("disabled", false);
 					}else{
