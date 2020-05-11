@@ -258,7 +258,7 @@ a { text-decoration: none; color: #333; }
     overflow: auto;
 }
 
-.mainbody {    
+.mainbody {
 	display: block;
 	margin: 20px 0% 0% 2%;
 	width: 98%;
@@ -352,7 +352,7 @@ a { text-decoration: none; color: #333; }
 }
 
 .loglink a:hover {
-	color: #ea171f !important;	
+	color: #ea171f !important;
 }
 
 .search {
@@ -366,29 +366,29 @@ a { text-decoration: none; color: #333; }
 	text-align: center;
 }
 
-.searchborder { 
+.searchborder {
 	border: #e0e0e0 solid 1px;
 	display: block;
 	width: 260px;
 	background-color: #FFF;
 }
 
-.searchtext { 
-  padding: 5px; 
-  font-size: 2em; 
+.searchtext {
+  padding: 5px;
+  font-size: 2em;
   line-height: 30px;
 	display: inline-block;
 	border: none !important;
 }
 
-.searchtext:active { 
+.searchtext:active {
 	border: none !important;
 }
 
-.searchsub { 
-  text-indent: -99999px; 
-  width: 30px; 
-  height: 30px; 
+.searchsub {
+  text-indent: -99999px;
+  width: 30px;
+  height: 30px;
   display: inline-block;
   background: gray url(../images/search.gif) 0px 0px no-repeat;
 	border: none;
@@ -650,7 +650,7 @@ a { text-decoration: none; color: #333; }
     margin-bottom: 15px;
 }
 
-.dashlatest {    
+.dashlatest {
     width: 98%;
     height: 250px;
     background: #333 !important;
@@ -661,7 +661,7 @@ a { text-decoration: none; color: #333; }
     margin-top: 20px;
 }
 
-.dashshout {    
+.dashshout {
     width: 100%;
 }
 
@@ -678,19 +678,19 @@ a { text-decoration: none; color: #333; }
     margin-bottom: 10px;
 }
 
-.dashactivity {    
+.dashactivity {
     width: 47%;
     height: auto;
     padding: 1%;
 }
 
-.dashmemo {       
+.dashmemo {
     width: 47%;
     height: auto;
     padding: 1%;
 }
 
-.dashincentive {    
+.dashincentive {
     width: 84%;
     height: auto;
     padding: 3%;
@@ -702,7 +702,7 @@ a { text-decoration: none; color: #333; }
     margin-top: 10px;
 }
 
-.dashbday {    
+.dashbday {
     width: 94%;
     height: auto;
     padding: 3%;
@@ -723,7 +723,7 @@ a { text-decoration: none; color: #333; }
     color: #DDD;
 }
 
-.latest {    
+.latest {
     width: 100%;
     height: 250px;
 }
@@ -910,7 +910,7 @@ a { text-decoration: none; color: #333; }
 	border: none !important;
 	font-size: 18px;
 	outline: 0;
-	width: 96%;		
+	width: 96%;
 }
 
 .circount {
@@ -931,7 +931,7 @@ a { text-decoration: none; color: #333; }
 
 /* COMMENT */
 
-.comments {    
+.comments {
     border-top: 1px #666 dashed;
     margin: 10px auto 0px auto;
 }
@@ -991,7 +991,7 @@ a { text-decoration: none; color: #333; }
 
 .floatdiv {
     position: fixed;
-    width: 100%;
+    width: 150%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 20;
@@ -1102,7 +1102,7 @@ a { text-decoration: none; color: #333; }
     margin-top: 10px;
 }
 
-.notidatadiv {  
+.notidatadiv {
     height: auto;
     max-height: 120px;
     overflow: auto;
@@ -1198,12 +1198,12 @@ a { text-decoration: none; color: #333; }
 }
 
 .txtbox {
-    border: 1px solid #999; 
-    -webkit-border-radius: 3px; 
-    -moz-border-radius: 3px; 
-    border-radius: 3px; 
-    outline: 0; 
-    padding: 3px; 
+    border: 1px solid #999;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    outline: 0;
+    padding: 3px;
 }
 
 .txtfile {
@@ -1211,33 +1211,33 @@ a { text-decoration: none; color: #333; }
 }
 
 .smltxtbox {
-    border: 1px solid #999; 
-    -webkit-border-radius: 2px; 
-    -moz-border-radius: 2px; 
-    border-radius: 2px; 
-    outline: 0; 
-    padding: 3px; 
+    border: 1px solid #999;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    outline: 0;
+    padding: 3px;
     font-size: 10px !important;
 }
 
 .tinytxtbox {
-    border: 1px solid #999; 
-    -webkit-border-radius: 2px; 
-    -moz-border-radius: 2px; 
-    border-radius: 2px; 
-    outline: 0; 
-    padding: 3px; 
+    border: 1px solid #999;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    outline: 0;
+    padding: 3px;
     font-size: 9px !important;
 }
 
 .txtarea {
     font-family: "Verdana";
-    border: 1px solid #999; 
-    -webkit-border-radius: 2px; 
-    -moz-border-radius: 2px; 
-    border-radius: 2px; 
-    outline: 0; 
-    padding: 5px; 
+    border: 1px solid #999;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    outline: 0;
+    padding: 5px;
 }
 
 .lowersub {
@@ -1341,11 +1341,11 @@ a { text-decoration: none; color: #333; }
 	float: left;
 }
 
-.minheight150 {	
+.minheight150 {
 	min-height: 150px;
 }
 
-.minheight400 {	
+.minheight400 {
 	min-height: 400px;
 }
 
@@ -1391,13 +1391,13 @@ a { text-decoration: none; color: #333; }
     border: 1px solid #AAA;
     background: #FFF;
     padding: 10px;
-    margin-top: 10px;    
+    margin-top: 10px;
 }
 
 .calsel {
     font-weight: bold;
     background: #DDD !important;
-    border-bottom: 1px solid #DDD; 
+    border-bottom: 1px solid #DDD;
 }
 
 .calview1 {
@@ -1437,7 +1437,7 @@ a { text-decoration: none; color: #333; }
 	height: auto;
 	padding: 5px 0px;
 	background-color: #FFF;
-}	
+}
 
 .verticaltitletext {
 	display: inline-block;
@@ -1446,28 +1446,28 @@ a { text-decoration: none; color: #333; }
 	height: auto;
 	padding: 3px 0px 3px 15px;
 	text-align: left;
-}	
+}
 
-.verticaltitlemore, .verticaltitlemore2 {	
+.verticaltitlemore, .verticaltitlemore2 {
 	display: inline-block;
 	margin: 0px;
 	width: 285px;
 	height: auto;
 	padding: 3px 15px 3px 0px;
 	text-align: right;
-}	
+}
 
-.verticaltitlemoreb {	
+.verticaltitlemoreb {
 	display: none;
-}		
+}
 
 .verticaltitlemore a:hover {
 	color: #000;
-}		
+}
 
 .verticaltitlemore2 a:hover {
 	color: #FFF;
-}	
+}
 
 .latestdetail {
     width: 280px;
@@ -1513,7 +1513,7 @@ a { text-decoration: none; color: #333; }
 	height: auto;
 	padding: 10px 19px;
 	background-color: #FFF;
-	border: 1px solid #FFF; 
+	border: 1px solid #FFF;
 }
 
 .horizonlist {
@@ -1560,7 +1560,7 @@ a { text-decoration: none; color: #333; }
 	height: auto;
 	padding: 5px 0px;
 	border-bottom: solid 1px #333;
-}	
+}
 
 .quarterartlist {
 	display: inline-block;
@@ -1569,7 +1569,7 @@ a { text-decoration: none; color: #333; }
 	height: auto;
 	padding: 0px;
 	vertical-align: top;
-}	
+}
 
 .quarterartlist a:hover {
 	color: #ea171f !important;
@@ -1715,7 +1715,7 @@ a { text-decoration: none; color: #333; }
 	padding: 0px;
 	margin: 0px;
 	vertical-align: top;
-	list-style: none;	
+	list-style: none;
 }
 
 .sublinkdata ul li {
@@ -1833,36 +1833,36 @@ a { text-decoration: none; color: #333; }
 }
 
 .ridpic {
-    width: 200px; 
-    height: 125px; 
-    border: 2px solid #333; 
-    margin-left: 738px; 
-    margin-top: -100px; 
-    background: #eee; 
-    text-align: center; 
+    width: 200px;
+    height: 125px;
+    border: 2px solid #333;
+    margin-left: 738px;
+    margin-top: -100px;
+    background: #eee;
+    text-align: center;
     padding-top: 75px;
 }
 
 .uidpic {
-    width: 200px; 
-    height: 200px; 
-    border: 2px solid #333; 
-    margin-left: 500px; 
-    margin-top: 10px; 
-    background: #eee; 
+    width: 200px;
+    height: 200px;
+    border: 2px solid #333;
+    margin-left: 500px;
+    margin-top: 10px;
+    background: #eee;
     text-align: center;
 }
 
 /* PROFILE */
 
 .idpic {
-    width: 200px; 
-    height: 125px; 
-    border: 2px solid #333; 
-    margin-left: 500px; 
-    margin-top: 20px; 
-    background: #eee; 
-    text-align: center; 
+    width: 200px;
+    height: 125px;
+    border: 2px solid #333;
+    margin-left: 500px;
+    margin-top: 20px;
+    background: #eee;
+    text-align: center;
     padding-top: 75px;
 }
 
@@ -1887,7 +1887,7 @@ a { text-decoration: none; color: #333; }
 	height: auto;
 	clear: both;
 	margin-bottom: 30px;
-}	
+}
 
 /* GALLERY */
 
@@ -1896,8 +1896,8 @@ a { text-decoration: none; color: #333; }
 	width: 194px;
 	height: auto;
 	margin-bottom: 10px;
-    margin-right: 10px; 
-}	
+    margin-right: 10px;
+}
 
 .pixlist {
     display: block;
@@ -1912,7 +1912,7 @@ a { text-decoration: none; color: #333; }
 	clear: both;
 	margin-bottom: 10px;
     padding: 2%
-}	
+}
 
 .pixdel {
     margin-left: -13px;
@@ -1935,7 +1935,7 @@ a { text-decoration: none; color: #333; }
 	width: 194px;
 	height: auto;
 	margin-bottom: 20px;
-    margin-right: 10px; 
+    margin-right: 10px;
 }
 
 .porder {
@@ -1997,7 +1997,7 @@ a { text-decoration: none; color: #333; }
 	height: auto;
 	padding: 5px 0px;
 	background-color: #FFF;
-	text-align: center; 
+	text-align: center;
 }
 
 .artpagination {
@@ -2007,11 +2007,11 @@ a { text-decoration: none; color: #333; }
 	height: auto;
 	padding: 5px 0px;
 	background-color: #FFF;
-	text-align: center; 
+	text-align: center;
 }
 
 .pagination2 {
-	display: none; 
+	display: none;
 }
 
 .pageactive {
@@ -2020,9 +2020,9 @@ a { text-decoration: none; color: #333; }
 	height: auto;
 	padding: 5px;
 	background-color: #fa0;
-	text-align: center;  
+	text-align: center;
     border: 0px solid #fa0;
-    border-radius: 10px; 
+    border-radius: 10px;
 }
 
 .pagelink {
@@ -2042,7 +2042,7 @@ a { text-decoration: none; color: #333; }
 	background-color: #9cf;
 	text-align: center;
     border: 0px solid #9cf;
-    border-radius: 10px; 
+    border-radius: 10px;
 }
 
 /* MAIL DIV */
@@ -2055,30 +2055,30 @@ a { text-decoration: none; color: #333; }
 
 /* TABLE */
 
-.tdata, .tdatablk, .tdataform { 
+.tdata, .tdatablk, .tdataform {
 	border: none;
 }
 
-.tdataform3 { 
+.tdataform3 {
 	background: rgba(0, 0, 0, 0.25);
     padding: 2px;
     margin-top: 3px;
-    border-radius: 5px; 
+    border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
 }
 
-.tdataform td { 
+.tdataform td {
 	padding: 5px;
 }
 
-.tdatahead { 
+.tdatahead {
     table-layout: fixed;
     clear: both;
     width: 100%;
 }
 
-.tdatamid { 
+.tdatamid {
     table-layout: fixed;
     width: 100%;
 }
@@ -2093,10 +2093,10 @@ a { text-decoration: none; color: #333; }
 
 .tdatablk tr { color: #111; }
 
-.tdataform input, .tdataform select, .tdataform2 input, .tdataform2 select { 
-    font-size: 11px; 
-    font-family: "Verdana"; 
-    border: 1px solid #999; 
+.tdataform input, .tdataform select, .tdataform2 input, .tdataform2 select {
+    font-size: 11px;
+    font-family: "Verdana";
+    border: 1px solid #999;
 }
 
 th, td { padding: 5px; }
@@ -2356,7 +2356,7 @@ th, td { padding: 5px; }
 .lredtext {
 	color: #ffafaf !important;
 }
-	
+
 .lgraytext {
 	color: #d2d2d2 !important;
 }
@@ -2570,7 +2570,7 @@ th, td { padding: 5px; }
     -moz-column-gap: 20px;
     column-gap: 20px;
 }
-    
+
 /* MARGIN AND PADDING */
 
 .valigntop {
@@ -2971,7 +2971,7 @@ th, td { padding: 5px; }
 	padding: 8px 8px 0px 8px;1
 }
 
-.balloonholder, .balloonholderrev {	
+.balloonholder, .balloonholderrev {
 	margin: 10px 6px 0px 6px;
 	display: inline-block;
 	min-height: 55px;
@@ -2983,11 +2983,11 @@ th, td { padding: 5px; }
 
 .balloonholder {
 	background: url(../images/redbtip.png) bottom center no-repeat;
-}	
+}
 
 .balloonholderrev {
 	background: url(../images/redbtip2.png) bottom center no-repeat;
-}	
+}
 
 .wballoonholder {
 	margin: 10px 10px 0px 10px;
@@ -2997,22 +2997,22 @@ th, td { padding: 5px; }
 	text-align: center;
 	vertical-align: top;
 	cursor: pointer;
-}	
+}
 
 .tballoonholder {
 	display: block;
 	height: auto;
 	background: url(../images/redbtip.png) top center no-repeat;
 	cursor: pointer;
-}	
+}
 
 .balloonholder2 {
 	background: url(../images/blkbtip.png) bottom center no-repeat !important;
-}	
+}
 
 .tballoonholder2 {
 	background: url(../images/blkbtip.png) top center no-repeat !important;
-}	
+}
 
 .balloontop {
 	display: block;
@@ -3031,14 +3031,14 @@ th, td { padding: 5px; }
 	background: #000 !important;
 }
 
-.paddright7 {	
+.paddright7 {
 	padding-right: 7px !important;
 }
 
-.paddright10 {	
+.paddright10 {
 	padding-right: 10px !important;
 }
-	
+
 
 /* ==========================================================================
    Helper classes
@@ -3160,15 +3160,15 @@ th, td { padding: 5px; }
         box-shadow: none !important;
         text-shadow: none !important;
     }
-    
+
     .maincontainer, .mainsplash {
         width: 95% !important;
     }
-    
+
     .upper, .leftsplashtext, .topsplashtext, #mfooter, #footer, input, button, .psdetail {
         display: none !important;
     }
-    
+
     .rightsplashtext {
         width: 98% !important;
     }
