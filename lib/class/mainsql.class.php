@@ -1342,7 +1342,7 @@ class mainsql {
             break;
         }
 
-		return $result;
+		return $sql;
 	}
 
     function get_leavedata($leaveref = NULL)
