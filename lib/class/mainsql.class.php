@@ -1314,7 +1314,7 @@ class mainsql {
 
 			$sql = "SELECT [outer].* FROM ( ";
 			$sql .= " SELECT ROW_NUMBER() OVER(ORDER BY AppliedDate DESC) as ROW_NUMBER, ";
-			$sql .= " SeqID, EmpID, convert(varchar, AppliedDate, 121) as AppliedDate, FromDate, ToDate, Reference, ItemID, DTRDate, AppliedHrs, ApprovedHrs, TotalWorkedHrs, Activities, Status, Remarks, approvaldate, APPROVEDST, Approved FROM viewApplyWH ";
+			$sql .= "  EmpID,convert(varchar, AppliedDate, 121) as AppliedDate,FromDate,ToDate,Reference,Status,Approved FROM viewApplyWH ";
 			$sql .= " WHERE SeqID != 0 ";
 			if ($id != NULL) : $sql .= " AND Reference = '".$id."' "; endif;
 			if ($search != NULL) : $sql .= " AND Reference LIKE '%".$search."%' "; endif;
@@ -1324,7 +1324,7 @@ class mainsql {
 			if ($from && $to) :
 				$sql .= " AND AppliedDate BETWEEN '".$from." 00:00:00.000' AND '".$to." 23:59:59.000' ";
 			endif;
-			$sql .= ") AS [outer] ";
+			$sql .= "GROUP BY EmpID,convert(varchar, AppliedDate, 121) as AppliedDate,FromDate,ToDate,Reference,Status,Approved ) AS [outer] ";
 			if ($limit) :
 				$sql .= " WHERE [outer].[ROW_NUMBER] BETWEEN ".(intval($start) + 1)." AND ".intval($start + $limit)." ORDER BY [outer].[ROW_NUMBER] ";
 			endif;

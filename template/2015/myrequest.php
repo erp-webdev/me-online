@@ -72,8 +72,8 @@
 											<th width="5%">#</th>
 											<th width="10%">Ref. #</th>
 											<th width="10%">Date Applied</th>
-											<th width="5%">Approved Hours</th>
-											<th width="5%">Activities</th>
+											<th width="5%">Date From</th>
+											<th width="5%">Date To</th>
 											<th width="5%">Status</th>
 										</tr>
 
