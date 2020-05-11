@@ -1314,7 +1314,7 @@ class mainsql {
 
 			$sql = "SELECT [outer].* FROM ( ";
 			$sql .= " SELECT ROW_NUMBER() OVER(ORDER BY AppliedDate DESC) as ROW_NUMBER, ";
-			$sql .= "  EmpID,convert(varchar, AppliedDate, 121) as AppliedDate,FromDate,ToDate,Reference,Status,Approved FROM viewApplyWH ";
+			$sql .= "  EmpID,convert(varchar, AppliedDate, 121) as AppliedDate,convert(varchar, FromDate, 121) as FromDate,convert(varchar, ToDate, 121) as ToDate,Reference,Status,Approved FROM viewApplyWH ";
 			$sql .= " WHERE SeqID != 0 ";
 			if ($id != NULL) : $sql .= " AND Reference = '".$id."' "; endif;
 			if ($search != NULL) : $sql .= " AND Reference LIKE '%".$search."%' "; endif;
