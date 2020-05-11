@@ -87,7 +87,7 @@
 																	<input style="width: 100%" id="wfh_totalworkedhours{{ $index+1 }}" type="number" name="wfh_totalworkedhours[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="wfh_totalworkedhours txtbox">
 																</td>
 																<td class="centertalign" >
-																	<textarea rows="1" style="display:none" name="wfh_activity[{{ $index+1 }}]" id="wfh_activity{{ $index+1 }}" class="txtbox"></textarea>
+																	<textarea rows="1" name="wfh_activity[{{ $index+1 }}]" id="wfh_activity{{ $index+1 }}" class="txtbox"></textarea>
 																	<table>
 																		<tr ng-repeat="activity in wfh_activity[$index]">
 																			<td style="border-bottom: 0px; margin: 0; padding: 0" >
@@ -105,7 +105,7 @@
 																</td>
 															</tr>
 														</table>
-														
+
 													</div>
 												</td>
 											</tr>
@@ -149,7 +149,7 @@
 						</div>
 					</div>
 				</div>
-	
+
 <script>
 
 	$(document).ready(function () {
@@ -182,7 +182,7 @@
 				//reset values
 				$scope.wfh_activity = [];
 				$scope.wfh_days = [];
-				
+
 				$scope.current_date = new Date(angular.copy($scope.wfh_from));
 				while($scope.current_date <= new Date(angular.copy($scope.wfh_to))){
 
@@ -194,7 +194,10 @@
 			});
 
 			$scope.$watch('wfh_activity', function($scope){
-				
+
+				for(var i = 0; i < $scope.wfh_activity.length; i++){
+					$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_activity[i]));
+				}
 
 
 			}, true);
