@@ -193,7 +193,7 @@
 				}
 			});
 
-			$scope.$watch('wfh_activity', function($scope){
+			$scope.$watch('wfh_activity', function(newVal, oldVal, $scope){
 
 				for(var i = 0; i < $scope.wfh_activity.length; i++){
 					$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_activity[i]));
