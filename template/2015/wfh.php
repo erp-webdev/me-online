@@ -91,7 +91,7 @@
 																	<table>
 																		<tr ng-repeat="activity in wfh_activity[$index]">
 																			<td style="border-bottom: 0px; margin: 0; padding: 0" >
-																				<input type="text" class="txtbox width80" ng-model="wfh_activity[$parent.$index][$index].time">
+																				<input type="text" placeholder="hh:mm-hh:mm" pattern="([0-1]{1}[0-9]{1}|20|21|22|23):[0-5]{1}[0-9]{1}-([0-1]{1}[0-9]{1}|20|21|22|23):[0-5]{1}[0-9]{1}" class="txtbox width80" ng-model="wfh_activity[$parent.$index][$index].time">
 																			</td>
 																			<td style="border-bottom: 0px; margin: 0; padding: 0" width="150px">
 																				<textarea class="txtarea" name="" id="" cols="30" rows="1" ng-model="wfh_activity[$parent.$index][$index].act" ></textarea>
