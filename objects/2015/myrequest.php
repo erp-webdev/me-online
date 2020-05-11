@@ -69,7 +69,7 @@
 		$pages = $mainsql->pagination("myrequest", $mreq_count, NUM_ROWS, 9);
 
         //var_dump($mreqto);
-        var_dump($mreq_data);
+        //var_dump($mreq_data);
 
 	}
 	else

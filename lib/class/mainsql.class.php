@@ -1324,7 +1324,7 @@ class mainsql {
 			if ($from && $to) :
 				$sql .= " AND AppliedDate BETWEEN '".$from." 00:00:00.000' AND '".$to." 23:59:59.000' ";
 			endif;
-			$sql .= "GROUP BY EmpID,convert(varchar, AppliedDate, 121) as AppliedDate,FromDate,ToDate,Reference,Status,Approved ) AS [outer] ";
+			$sql .= "GROUP BY EmpID,AppliedDate,FromDate,ToDate,Reference,Status,Approved ) AS [outer] ";
 			if ($limit) :
 				$sql .= " WHERE [outer].[ROW_NUMBER] BETWEEN ".(intval($start) + 1)." AND ".intval($start + $limit)." ORDER BY [outer].[ROW_NUMBER] ";
 			endif;
@@ -1342,7 +1342,7 @@ class mainsql {
             break;
         }
 
-		return $sql;
+		return $result;
 	}
 
     function get_leavedata($leaveref = NULL)
