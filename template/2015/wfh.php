@@ -93,7 +93,7 @@
 															<tr ng-repeat="wfh_day in wfh_days" id="tr{{ $index+1 }}">
 																<td class="centertalign">{{ $index+1 }}</td>
 																<td class="centertalign">
-																	<input type="hidden" name="wfh_disable[{{ $index+1 }}]" id="wfh_disable{{ $index+1 }}" value=0><input id="mdtr_absent{{ $index+1 }}" type="checkbox" name="mdtr_absent[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="mdtr_absent">
+																	<input type="hidden" name="wfh_disable[{{ $index+1 }}]" id="wfh_disable{{ $index+1 }}" value=0><input id="mdtr_absent{{ $index+1 }}" type="checkbox" name="mdtr_absent[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="mdtr_absent" onclick="myFunction({{ $index+1 }});">
 																</td>
 																<td class="centertalign">
 																	{{ wfh_day | date: 'EEE MM/dd/yy'}}
@@ -170,14 +170,10 @@
 
 	$(document).ready(function () {
 
-		alert($("#mdtr_absent1").val());
-		$("#mdtr_absent1").click(function() {
 
-
-			arrayid = $(this).attr('attribute');
-			alert(arrayid);
-
-		});
+		function myFunction(key){
+			alert(key);
+		}
 
 		var wfh_app = angular.module('WFHApp', []);
 		wfh_app.controller('WFHController', function WFHController($scope){
