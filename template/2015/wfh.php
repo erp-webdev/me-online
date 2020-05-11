@@ -169,6 +169,13 @@
 <script>
 
 	$(document).ready(function () {
+		$(".mdtr_absent").change(function() {
+
+
+			arrayid = $(this).attr('attribute');
+			alert(arrayid);
+
+		});
 		var wfh_app = angular.module('WFHApp', []);
 		wfh_app.controller('WFHController', function WFHController($scope){
 			$scope.wfh_activity = [];
