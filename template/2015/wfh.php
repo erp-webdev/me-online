@@ -162,8 +162,11 @@
 			$scope.wfh_to = new Date().toISOString().split("T")[0];
 			$scope.wfh_days = [];
 			$scope.$watchGroup(['wfh_from', 'wfh_to'], function(newVal, oldVal){
-				if(new Date($scope.wfh_to) < new Date($scope.wfh_from))
-					$scope.wfh_from = angular.copy($scope.wfh_to);
+				if(new Date(newVal[0]) != new Date(oldVal[0]) && new Date(newVal[0]) > new Date($scope.wfh_to))
+					$scope.wfh_to = newVal[0];
+
+				if(new Date(newVal[1]) < new Date($scope.wfh_from))
+					$scope.wfh_from = angular.copy(newVal[1]);
 
 				// Apply new value to input element
 				$('#wfh_from_').val(angular.copy($scope.wfh_from));
