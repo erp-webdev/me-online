@@ -44,9 +44,6 @@
 																<th width="">Activities</th>
 															</tr>
 															<script>
-															function myFunction(key){
-																alert(key);
-															}
 
 																$(function() {
 
@@ -176,6 +173,11 @@
 
 		var wfh_app = angular.module('WFHApp', []);
 		wfh_app.controller('WFHController', function WFHController($scope){
+
+			$scope.myFunction = function(key){
+				alert(key);
+			}
+
 			$scope.wfh_activity = [];
 			$scope.item = {time : '', act: ''};
 			// Dates
