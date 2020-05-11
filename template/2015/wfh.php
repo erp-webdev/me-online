@@ -43,40 +43,7 @@
 																<th width="60px">Total Worked Hours</th>
 																<th width="">Activities</th>
 															</tr>
-															<script>
 
-																$(function() {
-
-																	$(".mdtr_absent").change(function() {
-
-
-																		arrayid = $(this).attr('attribute');
-																		alert(arrayid);
-
-																		if($("#wfh_disable" + arrayid).val() == 0){
-																			$("#wfh_disable" + arrayid).val(1);
-																		}else{
-																			$("#wfh_disable" + arrayid).val(0);
-																		}
-
-
-
-																		if($("#wfh_totalworkedhours" + arrayid).prop("disabled")){
-																			$("#wfh_totalworkedhours" + arrayid).prop("disabled", false);
-																		}else{
-																			$("#wfh_totalworkedhours" + arrayid).prop("disabled", true);
-																		}
-
-																		if($("#wfh_activity" + arrayid).prop("disabled")){
-																			$("#wfh_activity" + arrayid).prop("disabled", false);
-																		}else{
-																			$("#wfh_activity" + arrayid).prop("disabled", true);
-																		}
-
-																	});
-
-																});
-															</script>
 															<tr ng-repeat="wfh_day in wfh_days" id="tr{{ $index+1 }}">
 																<td class="centertalign">{{ $index+1 }}</td>
 																<td class="centertalign">
@@ -161,6 +128,24 @@
 		wfh_app.controller('WFHController', function WFHController($scope){
 
 			$scope.myFunction = function(key){
+
+				if($("#wfh_disable" + key).val() == 0){
+					$("#wfh_disable" + key).val(1);
+				}else{
+					$("#wfh_disable" + key).val(0);
+				}
+
+				if($("#wfh_totalworkedhours" + key).prop("disabled")){
+					$("#wfh_totalworkedhours" + key).prop("disabled", false);
+				}else{
+					$("#wfh_totalworkedhours" + key).prop("disabled", true);
+				}
+
+				if($("#wfh_activity" + key).prop("disabled")){
+					$("#wfh_activity" + key).prop("disabled", false);
+				}else{
+					$("#wfh_activity" + key).prop("disabled", true);
+				}
 
 				$(".wfh_act" + key).each(function() {
 					if($(this).prop("disabled")){
