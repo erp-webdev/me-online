@@ -44,6 +44,10 @@
 																<th width="">Activities</th>
 															</tr>
 															<script>
+															function myFunction(key){
+																alert("called");
+															}
+															
 																$(function() {
 
 																	$(".mdtr_absent").change(function() {
