@@ -59,21 +59,7 @@
 																			$("#wfh_disable" + arrayid).val(0);
 																		}
 
-																		$(".wfh_act" + arrayid).each(function() {
-																			if($(this).prop("disabled")){
-																				$(this).prop("disabled", false);
-																			}else{
-																				$(this).prop("disabled", true);
-																			}
-																		});
 
-																		$(".wfh_time" + arrayid).each(function() {
-																			if($(this).prop("disabled")){
-																				$(this).prop("disabled", false);
-																			}else{
-																				$(this).prop("disabled", true);
-																			}
-																		});
 
 																		if($("#wfh_totalworkedhours" + arrayid).prop("disabled")){
 																			$("#wfh_totalworkedhours" + arrayid).prop("disabled", false);
@@ -175,6 +161,7 @@
 		wfh_app.controller('WFHController', function WFHController($scope){
 
 			$scope.myFunction = function(key){
+				
 				$(".wfh_act" + key).each(function() {
 					if($(this).prop("disabled")){
 						$(this).prop("disabled", false);
@@ -182,6 +169,15 @@
 						$(this).prop("disabled", true);
 					}
 				});
+
+				$(".wfh_time" + arrayid).each(function() {
+					if($(this).prop("disabled")){
+						$(this).prop("disabled", false);
+					}else{
+						$(this).prop("disabled", true);
+					}
+				});
+
 			}
 
 			$scope.wfh_activity = [];
