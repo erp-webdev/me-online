@@ -6626,8 +6626,8 @@
 							<tr>
 								<th width="100px">DTR Date</th>
 								<th width="80px">Applied Hrs</th>
-								<th width="100px">Approved Hrs</th>
-								<th width="100px">Activities</th>
+								<th width="80px">Approved Hrs</th>
+								<th width="120px">Activities</th>
 								<th width="100px">Cancel</th>
 							</tr>
 							<?php
@@ -6663,7 +6663,7 @@
 											<?php
 												$wh_act = json_decode($value['Activities'], true);
 												foreach($wh_act as $act_details){
-													echo $act_details['time']." ".$act_details['act']."</br>";
+													echo $act_details['act']." (".$act_details['timein'].")</br>";
 												}
 											?>
 										</td>
