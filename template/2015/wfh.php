@@ -48,6 +48,8 @@
 
 																	$("#mdtr_absent<?php echo $key; ?>").change(function() {
 
+																		alert('changed');
+
 																		arrayid = $(this).attr('attribute');
 
 																		if($("#wfh_disable" + arrayid).val() == 0){
