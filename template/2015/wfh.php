@@ -45,13 +45,6 @@
 															</tr>
 															<script>
 																$(function() {
-																	$("#mdtr_absent1").click(function() {
-
-
-																		arrayid = $(this).attr('attribute');
-																		alert(arrayid);
-
-																	});
 
 																	$(".mdtr_absent").change(function() {
 
@@ -177,6 +170,7 @@
 
 	$(document).ready(function () {
 
+		alert($("#mdtr_absent1").val());
 		$("#mdtr_absent1").click(function() {
 
 
