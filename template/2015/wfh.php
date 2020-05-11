@@ -56,7 +56,21 @@
 																			$("#wfh_disable" + arrayid).val(0);
 																		}
 
+																		$(".wfh_act" + arrayid).each(function() {
+																			if($(this).prop("disabled")){
+																				$(this).prop("disabled", false);
+																			}else{
+																				$(this).prop("disabled", true);
+																			}
+																		});
 
+																		$(".wfh_time" + arrayid).each(function() {
+																			if($(this).prop("disabled")){
+																				$(this).prop("disabled", false);
+																			}else{
+																				$(this).prop("disabled", true);
+																			}
+																		});
 
 																		if($("#wfh_totalworkedhours" + arrayid).prop("disabled")){
 																			$("#wfh_totalworkedhours" + arrayid).prop("disabled", false);
@@ -91,10 +105,10 @@
 																	<table>
 																		<tr ng-repeat="activity in wfh_activity[$index]">
 																			<td style="border-bottom: 0px; margin: 0; padding: 0" >
-																				<input type="text" placeholder="08:00-18:00" title="24 Hour Format" pattern="([0-1]{1}[0-9]{1}|20|21|22|23):[0-5]{1}[0-9]{1}-([0-1]{1}[0-9]{1}|20|21|22|23):[0-5]{1}[0-9]{1}" class="txtbox width80" ng-model="wfh_activity[$parent.$index][$index].time" required>
+																				<input type="text" placeholder="08:00-18:00" title="24 Hour Format" pattern="([0-1]{1}[0-9]{1}|20|21|22|23):[0-5]{1}[0-9]{1}-([0-1]{1}[0-9]{1}|20|21|22|23):[0-5]{1}[0-9]{1}" class="txtbox width80 wfh_time<?php echo $key; ?>" ng-model="wfh_activity[$parent.$index][$index].time" required>
 																			</td>
 																			<td style="border-bottom: 0px; margin: 0; padding: 0" width="150px">
-																				<textarea class="txtarea" name="" id="" cols="30" rows="1" ng-model="wfh_activity[$parent.$index][$index].act" required></textarea>
+																				<textarea class="txtarea wfh_act<?php echo $key; ?>" name="" id="" cols="30" rows="1" ng-model="wfh_activity[$parent.$index][$index].act" required></textarea>
 																			</td>
 																			<td style="border-bottom: 0px; margin: 0; padding: 0; text-align:left" width="120px">
 																				<button style="" type="button" class="redbtn " ng-show="wfh_activity[$parent.$index].length > 1" ng-click="delItem($parent.$index, $index)">Del</button>
