@@ -84,7 +84,7 @@
 																	<input id="wfh_dayin{{ $index+1 }}" type="hidden" name="wfh_dayin[{{ $index+1 }}]" value="{{ wfh_day | date: 'y-MM-dd'}}" class="wfh_dayin{{ $index+1 }}" />
 																</td>
 																<td class="centertalign">
-																	<input style="width: 100%" id="wfh_totalworkedhours{{ $index+1 }}" type="number" name="wfh_totalworkedhours[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="wfh_totalworkedhours">
+																	<input style="width: 100%" id="wfh_totalworkedhours{{ $index+1 }}" type="number" name="wfh_totalworkedhours[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="wfh_totalworkedhours txtbox">
 																</td>
 																<td class="centertalign" >
 																	<textarea rows="1" style="display:none" name="wfh_activity[{{ $index+1 }}]" id="wfh_activity{{ $index+1 }}" class="txtbox"></textarea>
@@ -162,6 +162,9 @@
 			$scope.wfh_to = new Date().toISOString().split("T")[0];
 			$scope.wfh_days = [];
 			$scope.$watchGroup(['wfh_from', 'wfh_to'], function(newVal, oldVal){
+				if(new Date($scope.wfh_to) < new Date($scope.wfh_from))
+					$scope.wfh_from = angular.copy($scope.wfh_to);
+
 				// Apply new value to input element
 				$('#wfh_from_').val(angular.copy($scope.wfh_from));
 				$('#wfh_to_').val(angular.copy($scope.wfh_to));
