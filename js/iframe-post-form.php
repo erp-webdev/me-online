@@ -1953,7 +1953,7 @@ $(function ()
             if ($('#ndays').val() >= 1)
             {
 
-                if ($('#wfh_from').val().length && $('#wfh_to').val().length)
+                if ($('#wfh_from_').val().length && $('#wfh_to_').val().length)
                 {
                     $('.wfh_msg')
                     .html('<i class="fa fa-refresh fa-spin fa-lg"></i> Processing Work From Home&hellip;')
