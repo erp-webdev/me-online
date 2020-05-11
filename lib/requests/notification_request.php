@@ -3042,11 +3042,11 @@
             $apppost['REMARKS'] = $_POST['remarks'];
             $apppost['DBNAME'] = $_POST['dbname'];
 
-			if ($doctype == 'WH'):
-				$apppost['data'] = $_POST['data'];
-				$reqtype = 10;
-				$reqdesc = "WFH";
-				$app_request = $mainsql->wh_action($apppost, 'approve');
+						if ($doctype == 'WH'):
+							 $apppost['data'] = $_POST['data'];
+							 $reqtype = 10;
+							 $reqdesc = "WFH";
+							 $app_request = $mainsql->wh_action($apppost, 'approve');
             elseif ($doctype == 'OT') :
                 $reqtype = 1;
                 $reqdesc = "Overtime";
@@ -6659,7 +6659,11 @@
 											 	  }
 											 ?>
 										</td>
-										<td class="centertalign"><?php echo $value['Activities']; ?></td>
+										<td class="centertalign">
+											<?php
+												var_dump( json_decode($value['Activities']) ); 
+											?>
+										</td>
 										<td class="centertalign">
 											<?php if(in_array($profile_idnum, $approvers)){ ?>
 												<?php if ($appwh_count > 1) : ?>
