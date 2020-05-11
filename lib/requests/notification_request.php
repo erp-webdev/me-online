@@ -6663,7 +6663,7 @@
 											<?php
 												$wh_act = json_decode($value['Activities'], true);
 												foreach($wh_act as $act_details){
-													echo $act_details['act']." (".$act_details['time'].")</br>";
+													echo $act_details['time']." (".$act_details['act'].")</br>";
 												}
 											?>
 										</td>
