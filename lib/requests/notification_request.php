@@ -6627,8 +6627,8 @@
 								<th width="100px">DTR Date</th>
 								<th width="80px">Applied Hrs</th>
 								<th width="80px">Approved Hrs</th>
-								<th width="120px">Activities</th>
-								<th width="100px">Cancel</th>
+								<th width="140px">Activities</th>
+								<th width="80px">Cancel</th>
 							</tr>
 							<?php
 								$appwh_count = count($appwh_data);
@@ -6663,7 +6663,7 @@
 											<?php
 												$wh_act = json_decode($value['Activities'], true);
 												foreach($wh_act as $act_details){
-													echo $act_details['act']." (".$act_details['timein'].")</br>";
+													echo $act_details['act']." (".$act_details['time'].")</br>";
 												}
 											?>
 										</td>
