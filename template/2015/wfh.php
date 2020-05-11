@@ -163,7 +163,6 @@
 			$scope.myFunction = function(key){
 
 				$(".wfh_act" + key).each(function() {
-					alert($(this).val());
 					if($(this).prop("disabled")){
 						$(this).prop("disabled", false);
 					}else{
