@@ -1029,7 +1029,7 @@ a { text-decoration: none; color: #333; }
 
 .fvreg, .bdayview, .mfview, .fview, .freg, .fadd, .fdel, .fedit, .fback {
 	position: relative;
-	width: 750px !important;
+	width: 550px !important;
     min-height: 200px !important;
 	height: auto;
 	background-color: #FFF;
