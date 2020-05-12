@@ -6659,7 +6659,7 @@
 											 	  }
 											 ?>
 										</td>
-										<td style="border-bottom: 1px solid #888" class="leftalign">
+										<td style="border-bottom: 1px solid #888" width="100%" class="leftalign">
 											<?php
 												$wh_act = json_decode($value['Activities'], true);
 												foreach($wh_act as $act_details){
