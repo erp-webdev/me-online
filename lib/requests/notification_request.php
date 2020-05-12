@@ -6627,7 +6627,7 @@
 								<th width="70px">DTR Date</th>
 								<th width="50px">Applied Hrs</th>
 								<th width="50px">Approved Hrs</th>
-								<th width="">Activities</th>
+								<th width="100%">Activities</th>
 								<th width="10px">x</th>
 							</tr>
 							<?php
