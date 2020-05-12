@@ -6650,16 +6650,16 @@
 									<tr>
 										<td class="centertalign"><?php echo date('F j, Y', strtotime($value['DTRDate'])); ?></td>
 										<td class="centertalign"><?php echo $value['AppliedHrs']; ?></td>
-										<td class="leftalign">
+										<td class="centertalign">
 											<?php if(in_array($profile_idnum, $approvers)){ ?>
 												<input type="hidden" class="wfhseq" attribute="<?php echo $key; ?>" name="wfhSeq[<?php echo $key; ?>]" value="<?php echo $value['SeqID']; ?>">
-												<input style="width: 50%" value="<?php echo $value['ApprovedHrs'] ?>" id="wfhApprovedHrs<?php echo $key; ?>" type="number" name="wfhApprovedHrs[<?php echo $key; ?>]" attribute="<?php echo $key; ?>" class="ApprovedHrs">
+												<input value="<?php echo $value['ApprovedHrs'] ?>" id="wfhApprovedHrs<?php echo $key; ?>" type="number" name="wfhApprovedHrs[<?php echo $key; ?>]" attribute="<?php echo $key; ?>" class="ApprovedHrs">
 											<?php }else{
 													echo $value['ApprovedHrs'];
 											 	  }
 											 ?>
 										</td>
-										<td class="centertalign">
+										<td class="leftalign">
 											<?php
 												$wh_act = json_decode($value['Activities'], true);
 												foreach($wh_act as $act_details){
