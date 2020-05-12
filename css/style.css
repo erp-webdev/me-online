@@ -1125,7 +1125,7 @@ a { text-decoration: none; color: #333; }
 
 .notidatadiv {
     height: auto;
-    max-height: 120px;
+    max-height: 200px;
     overflow: auto;
 }
 
