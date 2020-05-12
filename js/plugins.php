@@ -4817,6 +4817,36 @@ $(function() {
           duration : 500,
           complete : hideOverlay
     });
+    $(".fview").hide({
+          effect : 'slide',
+          easing : 'easeOutQuart',
+          direction : 'up',
+          duration : 500,
+          complete : hideOverlay
+        });
+    $(".fadd").hide({
+          effect : 'slide',
+          easing : 'easeOutQuart',
+          direction : 'up',
+          duration : 500,
+          complete : hideOverlay
+        });
+    $(".fedit").hide({
+          effect : 'slide',
+          easing : 'easeOutQuart',
+          direction : 'up',
+          duration : 500,
+          complete : hideOverlay
+        });
+    $(".fback").hide({
+          effect : 'slide',
+          easing : 'easeOutQuart',
+          direction : 'up',
+          duration : 500,
+          complete : hideOverlay
+        });
+    });
+
     $(".closebutton").on("click", function() {
 		$("#nview").hide({
           effect : 'slide',
