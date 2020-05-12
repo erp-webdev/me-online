@@ -61,7 +61,8 @@
 																	<table>
 																		<tr ng-repeat="activity in wfh_activity[$index]">
 																			<td style="border-bottom: 0px; margin: 0; padding: 0" >
-																				<input type="text" placeholder="08:00-18:00" title="24 Hour Format" pattern="([0-1]{1}[0-9]{1}|20|21|22|23):[0-5]{1}[0-9]{1}-([0-1]{1}[0-9]{1}|20|21|22|23):[0-5]{1}[0-9]{1}" class="txtbox width80 wfh_time{{ $parent.$index+1 }}" ng-model="wfh_activity[$parent.$index][$index].time" required>
+																				<!-- PATTERN ([0-1]{1}[0-9]{1}|20|21|22|23):[0-5]{1}[0-9]{1}-([0-1]{1}[0-9]{1}|20|21|22|23):[0-5]{1}[0-9]{1} -->
+																				<input type="text" placeholder="08:00-18:00" title="8:00 - 9:00" pattern="" class="txtbox width80 wfh_time{{ $parent.$index+1 }}" ng-model="wfh_activity[$parent.$index][$index].time" required>
 																			</td>
 																			<td style="border-bottom: 0px; margin: 0; padding: 0" width="150px">
 																				<textarea class="txtarea wfh_act{{ $parent.$index+1 }}" name="" id="" cols="30" rows="1" ng-model="wfh_activity[$parent.$index][$index].act" required></textarea>
@@ -172,13 +173,15 @@
 			$scope.wfh_to = new Date().toISOString().split("T")[0];
 			$scope.wfh_days = [];
 			$scope.$watchGroup(['wfh_from', 'wfh_to'], function(newVal, oldVal){
-				if(new Date(newVal[0]) == new Date(oldVal[0]) && new Date(newVal[1]) != new Date(oldVal[1])){
+				
+				if(newVal[0] == oldVal[0] && newVal[1] != oldVal[1]){
 					// if wfh_to has been changed
 					if(new Date(newVal[1]) < new Date($scope.wfh_from)){
 						// if wfh_to is less than wfh_from
 						$scope.wfh_from = newVal[1];
 					}
-				}else if(new Date(newVal[0]) != new Date(oldVal[0]) && new Date(newVal[1]) == new Date(oldVal[1])){
+
+				}else ifnewVal[0] != oldVal[0] && newVal[1] == oldVal[1]){
 					// if wfh_from has been changed
 					if(new Date(newVal[0]) > new Date($scope.wfh_to)){
 						$scope.wfh_to = newVal[0];
