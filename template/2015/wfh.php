@@ -181,7 +181,7 @@
 						$scope.wfh_from = newVal[1];
 					}
 
-				}else ifnewVal[0] != oldVal[0] && newVal[1] == oldVal[1]){
+				}else if(newVal[0] != oldVal[0] && newVal[1] == oldVal[1]){
 					// if wfh_from has been changed
 					if(new Date(newVal[0]) > new Date($scope.wfh_to)){
 						$scope.wfh_to = newVal[0];
