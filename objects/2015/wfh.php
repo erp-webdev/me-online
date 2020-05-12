@@ -92,7 +92,7 @@
 					$wfhitempost['AppliedHrs'] = $_POST['wfh_totalworkedhours'][$cnti];
                     $wfhitempost['Activities'] = $_POST['wfh_activity'][$cnti];
                     $temp_activities = json_decode( $wfhitempost['Activities']);
-                        var_dump($temp_activities[0]); exit;
+                        var_dump($temp_activities[0]->act); exit;
                     for($j = 0; $j < count($temp_activities); $j++){
                         if(trim($temp_activities[j]->act) == ''){
                             unset($temp_activities[j]);
