@@ -4809,6 +4809,14 @@ $(function() {
 	    return false;
 	});
 
+    $(".rclose").on("click", function() {
+    $("#nview").hide({
+          effect : 'slide',
+          easing : 'easeOutQuart',
+          direction : 'up',
+          duration : 500,
+          complete : hideOverlay
+    });
     $(".closebutton").on("click", function() {
 		$("#nview").hide({
           effect : 'slide',
