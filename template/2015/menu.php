@@ -52,7 +52,9 @@
                             <?php if ($md_app) : ?><a href="<?php echo WEB; ?>/mandtr" onclick="clickAndDisable(this);"><div<?php if ($section == "mandtr") { ?> class="dselected"<?php } ?>>Manual DTR</div></a><?php endif; ?>
                             <?php if ($np_app) : ?><a href="<?php echo WEB; ?>/npa" onclick="clickAndDisable(this);"><div<?php if ($section == "npa") { ?> class="dselected"<?php } ?>>No Punching Authorization</div></a><?php endif; ?>
 							<?php if ($sc_app) : ?><a href="<?php echo WEB; ?>/timesched" onclick="clickAndDisable(this);"><div<?php if ($section == "timesched") { ?> class="dselected"<?php } ?>>Time Scheduler</div></a><?php endif; ?>
-                            <?php if ($wh_app && ($profile_idnum == "2019-02-0033" || $profile_idnum == "2016-06-0457" || $profile_idnum == "2018-07-0406")) : ?><a href="<?php echo WEB; ?>/wfh" onclick="clickAndDisable(this);"><div<?php if ($section == "wfh") { ?> class="dselected"<?php } ?>>Work From Home</div></a><?php endif; ?>
+                            <?php
+                            $empids_wfh = array("2004-04-8966","2016-06-0457","2000-06-8166","2018-11-0605","2016-06-0144","2010-12-V034","2020-03-0079","1999-09-8123","2019-02-0033","2007-06-M314","2015-03-0093","2019-01-0028","2019-02-0070","2018-08-0453","2016-06-0464","2019-07-0386","2017-04-0933","2018-07-0406","2019-07-0457","2009-07-V177","2011-08-U036");
+                            if ($wh_app && in_array($profile_idnum, $empids_wfh)) : ?><a href="<?php echo WEB; ?>/wfh" onclick="clickAndDisable(this);"><div<?php if ($section == "wfh") { ?> class="dselected"<?php } ?>>Work From Home</div></a><?php endif; ?>
                         </div>
                         <a id="applink" class="cursorpoint"><div<?php if ($section == "wfh" || $section == "leave" || $section == "overtime" || $section == "obt" || $section == "meal" || $section == "mandtr" || $section == "cts" || $section == "npa" || $section == "timesched") { ?> class="dselected"<?php } ?>>Application</div></a>
                         </div>

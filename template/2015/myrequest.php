@@ -30,7 +30,10 @@
                                                 <option value="6"<?php echo $mreqtype == 6 ? ' selected' : ''; ?>>NON PUNCHING AUTHORIZATION</option>
                                                 <option value="7"<?php echo $mreqtype == 7 ? ' selected' : ''; ?>>MANUAL DTR</option>
 												<option value="8"<?php echo $mreqtype == 8 ? ' selected' : ''; ?>>SCHEDULER</option>
-                                                <?php if(($profile_idnum == "2019-02-0033" || $profile_idnum == "2016-06-0457" || $profile_idnum == "2018-07-0406")){ ?>
+                                                <?php
+																								$empids_wfh = array("2004-04-8966","2016-06-0457","2000-06-8166","2018-11-0605","2016-06-0144","2010-12-V034","2020-03-0079","1999-09-8123","2019-02-0033","2007-06-M314","2015-03-0093","2019-01-0028","2019-02-0070","2018-08-0453","2016-06-0464","2019-07-0386","2017-04-0933","2018-07-0406","2019-07-0457","2009-07-V177","2011-08-U036");
+
+																								if(in_array($profile_idnum, $empids_wfh)){ ?>
 													<option value="10"<?php echo $mreqtype == 10 ? ' selected' : ''; ?>>WFH</option>
 												<?php } ?>
                                                 <!--option value="9"<?php echo $mreqtype == 9 ? ' selected' : ''; ?>>OFFSET</option-->

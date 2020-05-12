@@ -32,7 +32,9 @@
                                                 <option value="NP"<?php echo $_SESSION['pendtype'] == 'NP' ? ' selected' : ''; ?>>Non-Punching Authorization</option>
                                                 <option value="MD"<?php echo $_SESSION['pendtype'] == 'MD' ? ' selected' : ''; ?>>Manual DTR</option>
 												<option value="SC"<?php echo $_SESSION['pendtype'] == 'SC' ? ' selected' : ''; ?>>Time Scheduler</option>
-												<?php if(($profile_idnum == "2019-02-0033" || $profile_idnum == "2016-06-0457" || $profile_idnum == "2018-07-0406")){ ?>
+												<?php
+												$empids_wfh = array("2004-04-8966","2016-06-0457","2000-06-8166","2018-11-0605","2016-06-0144","2010-12-V034","2020-03-0079","1999-09-8123","2019-02-0033","2007-06-M314","2015-03-0093","2019-01-0028","2019-02-0070","2018-08-0453","2016-06-0464","2019-07-0386","2017-04-0933","2018-07-0406","2019-07-0457","2009-07-V177","2011-08-U036");
+												if(in_array($profile_idnum, $empids_wfh)){ ?>
 													<option value="WH"<?php echo $_SESSION['pendtype'] == 'WH' ? ' selected' : ''; ?>>Work from Home</option>
 												<?php } ?>
 										    </select>
