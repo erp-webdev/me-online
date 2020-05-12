@@ -98,7 +98,7 @@
                         } 
                     }
                     $wfhitempost['Activities'] = json_encode($temp_activities);
-
+                    var_dump($temp_activities); exit;
 
                             $add_wfhitem = $mainsql->wh_action($wfhitempost, 'add_item');
 							$cnti++;
