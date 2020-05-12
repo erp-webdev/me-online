@@ -4,8 +4,8 @@
 
                     <div id="floatdiv" class="floatdiv invisible">
                         <!-- VIEW NOTIFICATION - BEGIN -->
-                        <div id="nview" class="fview" style="display: none;">
-                            <div class="closebutton cursorpoint"><i class="fa fa-times-circle fa-3x redtext"></i></div>
+                        <div id="nview" class="rview" style="display: none;">
+                            <div class="rclose cursorpoint"><i class="fa fa-times-circle fa-3x redtext"></i></div>
                             <div id="pend_title" class="pend_title robotobold cattext dbluetext"></div>
                             <div id="pend_data">
 

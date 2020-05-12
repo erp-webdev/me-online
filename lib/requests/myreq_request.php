@@ -235,8 +235,8 @@
 						<td><?php echo $start + $key + 1; ?></td>
 						<td><?php echo $value['Reference']; ?></td>
 						<td><?php echo date("m/d/Y", strtotime($value['AppliedDate'])); ?></td>
-						<td><?php echo $value['ApprovedHrs']; ?></td>
-						<td><?php echo $value['Activities']; ?></td>
+						<td><?php echo date("m/d/Y", strtotime($value['FromDate'])); ?></td>
+						<td><?php echo date("m/d/Y", strtotime($value['ToDate'])); ?></td>
 						<td><?php
 							if ($appdata[0]['Approved'] == 1) :
 								echo 'APPROVED';
