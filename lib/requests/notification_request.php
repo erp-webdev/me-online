@@ -6648,9 +6648,9 @@
 									});
 									</script>
 									<tr>
-										<td style="border-bottom: 1px solid #888" class="centertalign"><?php echo date('F j, Y', strtotime($value['DTRDate'])); ?></td>
-										<td style="border-bottom: 1px solid #888" class="centertalign"><?php echo $value['AppliedHrs']; ?></td>
-										<td style="border-bottom: 1px solid #888" class="centertalign">
+										<td <?php if($key != 0){ ?>style="border-top: 1px solid #888"<?php } ?> class="centertalign"><?php echo date('F j, Y', strtotime($value['DTRDate'])); ?></td>
+										<td <?php if($key != 0){ ?>style="border-top: 1px solid #888"<?php } ?> class="centertalign"><?php echo $value['AppliedHrs']; ?></td>
+										<td <?php if($key != 0){ ?>style="border-top: 1px solid #888"<?php } ?> class="centertalign">
 											<?php if(in_array($profile_idnum, $approvers)){ ?>
 												<input type="hidden" class="wfhseq" attribute="<?php echo $key; ?>" name="wfhSeq[<?php echo $key; ?>]" value="<?php echo $value['SeqID']; ?>">
 												<input style="width: 50px;" value="<?php echo $value['ApprovedHrs'] ?>" id="wfhApprovedHrs<?php echo $key; ?>" type="number" name="wfhApprovedHrs[<?php echo $key; ?>]" attribute="<?php echo $key; ?>" class="txtbox ApprovedHrs">
@@ -6659,7 +6659,7 @@
 											 	  }
 											 ?>
 										</td>
-										<td style="border-bottom: 1px solid #888" width="100%" class="leftalign">
+										<td <?php if($key != 0){ ?>style="border-top: 1px solid #888"<?php } ?> width="100%" class="leftalign">
 											<?php
 												$wh_act = json_decode($value['Activities'], true);
 												foreach($wh_act as $act_details){
@@ -6667,7 +6667,7 @@
 												}
 											?>
 										</td>
-										<td style="border-bottom: 1px solid #888" class="centertalign">
+										<td <?php if($key != 0){ ?>style="border-top: 1px solid #888"<?php } ?> class="centertalign">
 											<?php if(in_array($profile_idnum, $approvers)){ ?>
 												<?php if ($appwh_count > 1) : ?>
 													<i class="wfhcancel<?php echo $key; ?> fa fa-times redtext cursorpoint" attribute="<?php echo $key; ?>"></i>
