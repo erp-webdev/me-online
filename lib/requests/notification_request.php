@@ -6628,7 +6628,7 @@
 								<th width="50px">Applied Hrs</th>
 								<th width="50px">Approved Hrs</th>
 								<th width="">Activities</th>
-								<th width="30px">Cancel</th>
+								<th  width="30px">Cancel</th>
 							</tr>
 							<?php
 								$appwh_count = count($appwh_data);
