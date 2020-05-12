@@ -6624,11 +6624,11 @@
 						<table class="tdatablk">
 							<?php $appwh_data = $tblsql->get_whdata($refnum); ?>
 							<tr>
-								<th width="100px">DTR Date</th>
-								<th width="80px">Applied Hrs</th>
-								<th width="80px">Approved Hrs</th>
-								<th width="140px">Activities</th>
-								<th width="80px">Cancel</th>
+								<th width="70px">DTR Date</th>
+								<th width="50px">Applied Hrs</th>
+								<th width="50px">Approved Hrs</th>
+								<th width="">Activities</th>
+								<th width="30px">Cancel</th>
 							</tr>
 							<?php
 								$appwh_count = count($appwh_data);
