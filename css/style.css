@@ -1028,7 +1028,7 @@ a { text-decoration: none; color: #333; }
 }
 .rview {
   position: relative;
-	width: 600px !important;
+	width: 700px !important;
     min-height: 200px !important;
 	height: auto;
 	background-color: #FFF;
@@ -1044,7 +1044,7 @@ a { text-decoration: none; color: #333; }
 	box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.75);
 }
 .rclose {
-  margin-left: 598px;
+  margin-left: 698px;
   margin-top: -26px;
 }
 
