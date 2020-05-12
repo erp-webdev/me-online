@@ -92,13 +92,12 @@
 					$wfhitempost['AppliedHrs'] = $_POST['wfh_totalworkedhours'][$cnti];
                     $wfhitempost['Activities'] = $_POST['wfh_activity'][$cnti];
                     $temp_activities = json_decode( $wfhitempost['Activities']);
-                        var_dump($temp_activities[0]->act); exit;
                     for($j = 0; $j < count($temp_activities); $j++){
-                        if(trim($temp_activities[j]->act) == ''){
-                            unset($temp_activities[j]);
+                        if(trim($temp_activities[$j]->act) == ''){
+                            unset($temp_activities[$j]);
                         } 
                     }
-                    $wfhitempost['Activities'] = json_encode($temp_activities);
+                            $wfhitempost['Activities'] = json_encode($temp_activities);
 
                             $add_wfhitem = $mainsql->wh_action($wfhitempost, 'add_item');
 							$cnti++;
