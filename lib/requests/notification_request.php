@@ -954,6 +954,9 @@
             else if (doctype == 'TS') {
                 title = "Change Schedule Application #";
             }
+						else if (doctype == 'WFH') {
+                title = "Work From Home #";
+            }
 
             $("#pend_title").html(title + ' ' + refnum);
             $(".floatdiv").removeClass("invisible");
