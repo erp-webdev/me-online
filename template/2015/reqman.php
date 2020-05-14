@@ -32,7 +32,7 @@
                                                 <option value="NP"<?php echo $_SESSION['rmantype'] == 'NP' ? ' selected' : ''; ?>>Non-Punching Authorization</option>
                                                 <option value="MD"<?php echo $_SESSION['rmantype'] == 'MD' ? ' selected' : ''; ?>>Manual DTR</option>
 																								<option value="SC"<?php echo $_SESSION['rmantype'] == 'SC' ? ' selected' : ''; ?>>Time Scheduler</option>
-                                                <option value="SC"<?php echo $_SESSION['rmantype'] == 'WH' ? ' selected' : ''; ?>>Work From Home</option>
+                                                <option value="WH"<?php echo $_SESSION['rmantype'] == 'WH' ? ' selected' : ''; ?>>Work From Home</option>
                                             </select>
                                             <input type="text" id="rmanfrom" name="rmanfrom" value="<?php echo $_SESSION['rmanfrom'] ? $_SESSION['rmanfrom'] : date('Y-m-d', strtotime("-6 months")); ?>" placeholder="From.." class="smltxtbox width55 datepick2" /> -
                                             <input type="text" id="rmanto" name="rmanto" value="<?php echo $_SESSION['rmanto'] ? $_SESSION['rmanto'] : date("Y-m-d"); ?>" placeholder="To..." class="smltxtbox width55 datepick2" /> by
