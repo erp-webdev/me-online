@@ -2645,7 +2645,8 @@
                 elseif ($value['DocType'] == 'OB') : $typestat = "OBT APPLICATION from ";
                 elseif ($value['DocType'] == 'NP') : $typestat = "NO PUNCH APPLICATION from ";
                 elseif ($value['DocType'] == 'MD') : $typestat = "MANUAL DTR APPLICATION from ";
-                elseif ($value['DocType'] == 'SC') : $typestat = "CHANGE SCHEDULE APPLICATION from ";
+								elseif ($value['DocType'] == 'SC') : $typestat = "CHANGE SCHEDULE APPLICATION from ";
+                elseif ($value['DocType'] == 'WH') : $typestat = "WORK FROM HOME from ";
                 endif;
 
                 $displaychk = 0;
