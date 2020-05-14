@@ -3730,11 +3730,9 @@ $(function() {
 
 	// WORK FROM HOME
 
-	$("#wfh_from").change(function() {
-		mfrom = $("#wfh_from").val();
-		mto = $("#wfh_to").val();
-		$("#btnmdapply").addClass("invisible");
-		$("#wfh").html('<i class="fa fa-refresh fa-spin fa-lg"></i> Loading...');
+	$("#wfh_from_").change(function() {
+		mfrom = $("#wfh_from_").val();
+		mto = $("#wfh_to_").val();
 
 		if (mfrom && mto) {
 
@@ -3748,46 +3746,12 @@ $(function() {
 				},
 				success: function(data) {
 
-					$('#wfh_to').datetimepicker('destroy');
-					$('#wfh_to').datepicker({
+					$('#wfh_to_').datetimepicker('destroy');
+					$('#wfh_to_').datepicker({
 						dateFormat: 'yy-mm-dd',
 						minDate: mfrom,
 						maxDate: data
 					});
-
-					$.ajax(
-					{
-						url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getwfh",
-						data: "from=" + mfrom + "&to=" + mto,
-						type: "POST",
-						complete: function(){
-							$("#loading").hide();
-						},
-						success: function(data) {
-							$("#wfh").html(data);
-
-						}
-					})
-
-					$.ajax(
-					{
-						url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getwfhdays",
-						data: "from=" + mfrom + "&to=" + data,
-						type: "POST",
-						complete: function(){
-							$("#loading").hide();
-						},
-						success: function(data) {
-							if (data == 0) {
-								$("#btnwfhapply").addClass("invisible");
-							}
-							else {
-								$("#btnwfhapply").removeClass("invisible");
-							}
-							$("#ndays").val(data);
-
-						}
-					})
 
 				}
 			})
