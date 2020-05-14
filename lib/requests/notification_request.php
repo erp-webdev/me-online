@@ -837,6 +837,9 @@
             else if (doctype == 'TS') {
                 title = "Change Schedule Application #";
             }
+						else if (doctype == 'WH') {
+                title = "Work From Home #";
+            }
 
             $("#noti_title").html(title + ' ' + refnum);
             $(".floatdiv").removeClass("invisible");
