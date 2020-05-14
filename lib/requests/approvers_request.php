@@ -125,7 +125,7 @@
                                         $("#appcount").val(data);
                                     }
                                     else {
-                                        $("#appcount").val(6);
+                                        $("#appcount").val(7);
                                     }
                                     $("#appempid").val(empid);
                                     $("#appdbname").val(dbnames);
