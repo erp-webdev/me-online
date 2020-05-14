@@ -954,7 +954,7 @@
             else if (doctype == 'TS') {
                 title = "Change Schedule Application #";
             }
-						else if (doctype == 'WFH') {
+						else if (doctype == 'WH') {
                 title = "Work From Home #";
             }
 
