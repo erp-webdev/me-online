@@ -7450,8 +7450,101 @@
 
                 <?php
             //endif;
+						if ($doctype == 'WH') : //WFH HERE
+							$application_data = $tblsql->get_mrequest(10, $refnum);
 
-            if ($doctype == 'OT') :
+							?>
+
+							<tr>
+								<td width="25%"><b>Status</b></td>
+								<td width="75%"><?php
+									if ($notification_data[0]['Approved'] == 2) :
+										echo "<span class='redtext'>REJECTED</span>";
+									elseif ($notification_data[0]['Approved'] == 1) :
+										echo "<span class='greentext'>APPROVED</span>";
+									elseif ($notification_data[0]['Approved'] == 3) :
+										echo "<span class='redtext'>CANCELLED</span>";
+									else :
+										echo "FOR APPROVAL";
+									endif;
+									?>
+								</td>
+							</tr>
+							<tr>
+								<td><b>Date Applied</b></td>
+								<td><?php echo date('F j, Y g:ia', strtotime($application_data[0]['AppliedDate'])); ?></td>
+							</tr>
+
+							<tr>
+								<td colspan="2">
+								<div class="divmddata width100per notidatadiv">
+									<table class="tdatablk">
+										<?php $appwh_data = $tblsql->get_whdata($refnum); ?>
+										<tr>
+											<th width="70px">DTR Date</th>
+											<th width="50px">Applied Hrs</th>
+											<th width="50px">Approved Hrs</th>
+											<th width="100%">Activities</th>
+											<th width="10px">x</th>
+										</tr>
+										<?php
+											$appwh_count = count($appwh_data);
+											$approvers = array($notification_data[0]['Signatory01'], $notification_data[0]['Signatory02'], $notification_data[0]['Signatory03'],
+																$notification_data[0]['Signatory04'], $notification_data[0]['Signatory05'], $notification_data[0]['Signatory06']);
+											foreach ($appwh_data as $key => $value) :
+												?>
+												<script>
+												$(function() {
+
+													$(".wfhcancel<?php echo $key; ?>").click(function() {
+														arrayid = $(this).attr('attribute');
+														$("#wfhApprovedHrs" + arrayid).val(0);
+
+													});
+
+												});
+												</script>
+												<tr>
+													<td <?php if($key != 0){ ?>style="border-top: 1px solid #888"<?php } ?> class="centertalign"><?php echo date('F j, Y', strtotime($value['DTRDate'])); ?></td>
+													<td <?php if($key != 0){ ?>style="border-top: 1px solid #888"<?php } ?> class="centertalign"><?php echo $value['AppliedHrs']; ?></td>
+													<td <?php if($key != 0){ ?>style="border-top: 1px solid #888"<?php } ?> class="centertalign">
+														<?php if(in_array($profile_idnum, $approvers)){ ?>
+															<input type="hidden" class="wfhseq" attribute="<?php echo $key; ?>" name="wfhSeq[<?php echo $key; ?>]" value="<?php echo $value['SeqID']; ?>">
+															<input style="width: 50px;" value="<?php echo $value['ApprovedHrs'] ?>" id="wfhApprovedHrs<?php echo $key; ?>" type="number" name="wfhApprovedHrs[<?php echo $key; ?>]" attribute="<?php echo $key; ?>" class="txtbox ApprovedHrs">
+														<?php }else{
+																echo $value['ApprovedHrs'];
+																}
+														 ?>
+													</td>
+													<td <?php if($key != 0){ ?>style="border-top: 1px solid #888"<?php } ?> width="100%" class="leftalign">
+														<?php
+															$wh_act = json_decode($value['Activities'], true);
+															foreach($wh_act as $act_details){
+																echo "(".$act_details['time'].") ".$act_details['act']."</br></br>";
+															}
+														?>
+													</td>
+													<td <?php if($key != 0){ ?>style="border-top: 1px solid #888"<?php } ?> class="centertalign">
+														<?php if(in_array($profile_idnum, $approvers)){ ?>
+															<?php if ($appwh_count > 1) : ?>
+																<i class="wfhcancel<?php echo $key; ?> fa fa-times redtext cursorpoint" attribute="<?php echo $key; ?>"></i>
+															<?php endif; ?>
+														<?php } ?>
+													</td>
+												</tr>
+												<?php
+												$pdtrto = strtotime($value['DTRDate']);
+											endforeach;
+
+										?>
+									</table>
+								</div>
+								</td>
+							</tr>
+
+							<?php
+
+            elseif ($doctype == 'OT') :
                 $application_data = $tblsql->get_nrequest(1, $refnum);
 
                 $chkexpire = $mainsql->check_appexpire($application_data[0]['DtrDate']);
