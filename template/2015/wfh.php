@@ -188,10 +188,6 @@
 					}
 				}
 
-				//reset values
-				$scope.wfh_activity = [];
-				$scope.wfh_days = [];
-
 				$("#wfh_from_").change(function() {
 					mfrom = $("#wfh_from_").val();
 					mto = $("#wfh_to_").val();
@@ -217,7 +213,9 @@
 			          $('#wfh_to_').val(data);
 								$('#wfh_to_').attr("value", data);
 								$scope.wfh_to = data;
-
+								//reset values
+								$scope.wfh_activity = [];
+								$scope.wfh_days = [];
 
 								$scope.current_date = new Date(angular.copy($scope.wfh_from));
 								while($scope.current_date <= new Date(angular.copy($scope.wfh_to))){
