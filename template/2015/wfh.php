@@ -191,7 +191,7 @@
 				// Apply new value to input element
 				$('#wfh_from_').val(angular.copy($scope.wfh_from));
 				$('#wfh_to_').val(angular.copy($scope.wfh_to));
-				alert(newVal[0]+"  "newVal[1]);
+				alert(newVal[0]+"  "+newVal[1]);
 				//reset values
 				$scope.wfh_activity = [];
 				$scope.wfh_days = [];
