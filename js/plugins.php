@@ -3737,7 +3737,7 @@ $(function() {
 		if (mfrom && mto) {
 
 			$.ajax(
-			{ 
+			{
 				url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=gettrueto3",
 				data: "from=" + mfrom,
 				type: "POST",
@@ -5226,7 +5226,7 @@ $(function() {
 
 	$(".datepickwh").datepicker({
         dateFormat: 'yy-mm-dd',
-        minDate: "<?php echo $limitdate; ?>",
+        minDate: "-7D",
         maxDate: "0D",
         changeMonth: true,
         changeYear: true
