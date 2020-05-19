@@ -188,10 +188,39 @@
 					}
 				}
 
+				$("#wfh_from_").change(function() {
+					mfrom = $("#wfh_from_").val();
+					mto = $("#wfh_to_").val();
+
+					if (mfrom && mto) {
+
+						$.ajax(
+						{
+							url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=gettrueto3",
+							data: "from=" + mfrom,
+							type: "POST",
+							complete: function(){
+								$("#loading").hide();
+							},
+							success: function(data) {
+
+								$('#wfh_to_').datetimepicker('destroy');
+								$('#wfh_to_').datepicker({
+									dateFormat: 'yy-mm-dd',
+									minDate: mfrom,
+									maxDate: data
+								});
+			          $('#wfh_to_').val(data);
+
+							}
+						})
+
+					}
+				});
+
 				// Apply new value to input element
-				alert($('#wfh_to_').val());
-				$('#wfh_from_').val(angular.copy($scope.wfh_from));
-				$('#wfh_to_').val(angular.copy($scope.wfh_to));
+				// $('#wfh_from_').val(angular.copy($scope.wfh_from));
+				// $('#wfh_to_').val(angular.copy($scope.wfh_to));
 
 				//reset values
 				$scope.wfh_activity = [];

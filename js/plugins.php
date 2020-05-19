@@ -3730,7 +3730,7 @@ $(function() {
 
 	// WORK FROM HOME
 
-	$("#wfh_from_").change(function() {
+	$("#wfh_from").change(function() {
 		mfrom = $("#wfh_from_").val();
 		mto = $("#wfh_to_").val();
 
