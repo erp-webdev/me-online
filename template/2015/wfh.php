@@ -185,7 +185,6 @@
 					// if wfh_from has been changed
 					$scope.wfh_to = new Date(angular.copy($scope.wfh_from));
 					$scope.wfh_to.setDate($scope.wfh_to.getDate()+6);
-					alert($scope.wfh_to);
 
 
 					if(new Date(newVal[0]) > new Date($scope.wfh_to)){
