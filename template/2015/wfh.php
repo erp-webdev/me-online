@@ -183,11 +183,10 @@
 
 				}else if(newVal[0] != oldVal[0] && newVal[1] == oldVal[1]){
 					// if wfh_from has been changed
-					$scope.wfh_to = $scope.wfh_from.getDate()+6;
+					$scope.wfh_to.setDate($scope.wfh_to.getDate()+6);
 					alert($scope.wfh_to);
 					if(new Date(newVal[0]) > new Date($scope.wfh_to)){
-						// $scope.wfh_to = newVal[0];
-						$scope.wfh_to = $scope.wfh_from.getDate()+6;
+						$scope.wfh_to = newVal[0];
 					}
 
 
