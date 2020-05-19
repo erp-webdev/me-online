@@ -188,6 +188,8 @@
 						$scope.wfh_to = $scope.wfh_from.getDate()+6;
 						alert($scope.wfh_to);
 					}
+					alert($scope.wfh_to);
+					
 				}
 
 				$("#wfh_from_").change(function() {
