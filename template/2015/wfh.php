@@ -213,16 +213,14 @@
 			          $('#wfh_to_').val(data);
 								$('#wfh_to_').attr("value", data);
 								$scope.wfh_to = data;
-
+								alert($scope.wfh_from+" "+$scope.wfh_to);
 								//reset values
 								$scope.wfh_activity = [];
 								$scope.wfh_days = [];
 
 								$scope.current_date = new Date(angular.copy($scope.wfh_from));
-								alert($scope.wfh_to);
-								alert($scope.current_date);
 								while($scope.current_date <= new Date(angular.copy($scope.wfh_to))){
-
+									alert('looping');
 									$scope.wfh_days.push($scope.current_date.toISOString().split("T")[0]);
 									$scope.current_date.setDate($scope.current_date.getDate()+1);
 									$scope.wfh_activity.push([angular.copy($scope.item)]);
