@@ -3753,7 +3753,7 @@ $(function() {
 						maxDate: data
 					});
           $('#wfh_to_').val(data);
-
+          $('#wfh_to_').attr("value", data);
 
 				}
 			})
