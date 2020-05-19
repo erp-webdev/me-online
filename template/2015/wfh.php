@@ -187,6 +187,8 @@
 						$scope.wfh_to = newVal[0];
 					}
 				}
+				var dateto = $scope.wfh_to;
+				displayDates(dateto);
 
 				$("#wfh_from_").change(function() {
 					mfrom = $("#wfh_from_").val();
@@ -212,8 +214,7 @@
 								});
 			          $('#wfh_to_').val(data);
 								$('#wfh_to_').attr("value", data);
-								$scope.wfh_to = data;
-								displayDates();
+								displayDates(data);
 
 
 							}
@@ -226,14 +227,13 @@
 				// $('#wfh_from_').val(angular.copy($scope.wfh_from));
 				// $('#wfh_to_').val(angular.copy($scope.wfh_to));
 				//reset values
-				displayDates();
-				function displayDates(){
-					alert('called');
+				function displayDates(dateto){
+					alert('dateto');
 					$scope.wfh_activity = [];
 					$scope.wfh_days = [];
 
 					$scope.current_date = new Date(angular.copy($scope.wfh_from));
-					while($scope.current_date <= new Date(angular.copy($scope.wfh_to))){
+					while($scope.current_date <= new Date(angular.copy(dateto))){
 						$scope.wfh_days.push($scope.current_date.toISOString().split("T")[0]);
 						$scope.current_date.setDate($scope.current_date.getDate()+1);
 						$scope.wfh_activity.push([angular.copy($scope.item)]);
