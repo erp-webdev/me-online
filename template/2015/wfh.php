@@ -212,6 +212,7 @@
 								});
 			          $('#wfh_to_').val(data);
 								$('#wfh_to_').attr("value", data);
+								$scope.wfh_to = data;
 								alert($scope.wfh_from+" "+$scope.wfh_to);
 								//reset values
 								$scope.wfh_activity = [];
