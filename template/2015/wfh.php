@@ -228,7 +228,7 @@
 				// $('#wfh_to_').val(angular.copy($scope.wfh_to));
 				//reset values
 				function displayDates(dateto){
-					alert('dateto');
+					alert(dateto);
 					$scope.wfh_activity = [];
 					$scope.wfh_days = [];
 
