@@ -3752,6 +3752,7 @@ $(function() {
 						minDate: mfrom,
 						maxDate: data
 					});
+          $('#wfh_to_').val(data);
 
 				}
 			})
