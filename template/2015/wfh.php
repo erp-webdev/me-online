@@ -174,22 +174,6 @@
 			$scope.wfh_days = [];
 			$scope.$watchGroup(['wfh_from', 'wfh_to'], function(newVal, oldVal){
 
-				if(newVal[0] == oldVal[0] && newVal[1] != oldVal[1]){
-					// if wfh_to has been changed
-					if(new Date(newVal[1]) < new Date($scope.wfh_from)){
-						// if wfh_to is less than wfh_from
-						$scope.wfh_from = newVal[1];
-					}
-
-				}else if(newVal[0] != oldVal[0] && newVal[1] == oldVal[1]){
-					// if wfh_from has been changed
-					if(new Date(newVal[0]) > new Date($scope.wfh_to)){
-						$scope.wfh_to = newVal[0];
-					}
-				}
-				var dateto = $scope.wfh_to;
-				displayDates(dateto);
-
 				$("#wfh_from_").change(function() {
 					mfrom = $("#wfh_from_").val();
 					mto = $("#wfh_to_").val();
@@ -214,9 +198,35 @@
 								});
 			          $('#wfh_to_').val(data);
 								$('#wfh_to_').attr("value", data);
-								displayDates(data);
+
+								if(newVal[0] == oldVal[0] && newVal[1] != oldVal[1]){
+									// if wfh_to has been changed
+									if(new Date(newVal[1]) < new Date($scope.wfh_from)){
+										// if wfh_to is less than wfh_from
+										$scope.wfh_from = newVal[1];
+									}
+
+								}else if(newVal[0] != oldVal[0] && newVal[1] == oldVal[1]){
+									// if wfh_from has been changed
+									if(new Date(newVal[0]) > new Date($scope.wfh_to)){
+										$scope.wfh_to = newVal[0];
+									}
+								}
 
 
+								$scope.wfh_to = data;
+
+								$scope.wfh_activity = [];
+								$scope.wfh_days = [];
+
+								$scope.current_date = new Date(angular.copy($scope.wfh_from));
+								while($scope.current_date <= new Date(angular.copy($scope.wfh_to))){
+									$scope.wfh_days.push($scope.current_date.toISOString().split("T")[0]);
+									$scope.current_date.setDate($scope.current_date.getDate()+1);
+									$scope.wfh_activity.push([angular.copy($scope.item)]);
+								}
+
+								
 							}
 						})
 
@@ -227,20 +237,7 @@
 				// $('#wfh_from_').val(angular.copy($scope.wfh_from));
 				// $('#wfh_to_').val(angular.copy($scope.wfh_to));
 				//reset values
-				function displayDates(dateto){
-					$scope.wfh_to = dateto;
 
-					alert($scope.wfh_to);
-					$scope.wfh_activity = [];
-					$scope.wfh_days = [];
-
-					$scope.current_date = new Date(angular.copy($scope.wfh_from));
-					while($scope.current_date <= new Date(angular.copy($scope.wfh_to))){
-						$scope.wfh_days.push($scope.current_date.toISOString().split("T")[0]);
-						$scope.current_date.setDate($scope.current_date.getDate()+1);
-						$scope.wfh_activity.push([angular.copy($scope.item)]);
-					}
-				}
 
 
 			});
