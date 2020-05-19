@@ -3752,7 +3752,9 @@ $(function() {
 						minDate: mfrom,
 						maxDate: data
 					});
-          $('#wfh_to_').val(data);
+
+          $('#wfh_to_').datepicker("setDate", $.datepicker.parseDate("yy-mm-dd", data));
+
 
 				}
 			})
