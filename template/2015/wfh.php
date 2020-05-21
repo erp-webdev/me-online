@@ -62,8 +62,8 @@
 																		<tr ng-repeat="activity in wfh_day.ACTIVITIES">
 																			<td style="border-bottom: 0px; margin: 0; padding: 0" >
 																				<!-- PATTERN ([0-1]{1}[0-9]{1}|20|21|22|23):[0-5]{1}[0-9]{1}-([0-1]{1}[0-9]{1}|20|21|22|23):[0-5]{1}[0-9]{1} -->
-																				<input type="text" readonly title="Start Time: eg. 8:00" timepicker class="txtbox width55 wfh_time{{ $parent.$index+1 }} timepick_angular" ng-model="wfh_days[$parent.$index].ACTIVITIES[$index].start_time" required>
-																				<input type="text" readonly title="End Time: eg. 9:00" timepicker class="txtbox width55 wfh_time{{ $parent.$index+1 }} timepick_angular" ng-model="wfh_days[$parent.$index].ACTIVITIES[$index].end_time" required>
+																				<input type="text" attribute1="wfh_day.DTR" readonly title="Start Time: eg. 8:00" timepicker class="txtbox width55 wfh_time{{ $parent.$index+1 }} timepick_angular" ng-model="wfh_days[$parent.$index].ACTIVITIES[$index].start_time" required>
+																				<input type="text" attribute1="wfh_day.DTR" readonly title="End Time: eg. 9:00" timepicker class="txtbox width55 wfh_time{{ $parent.$index+1 }} timepick_angular" ng-model="wfh_days[$parent.$index].ACTIVITIES[$index].end_time" required>
 																			</td>
 																			<td style="border-bottom: 0px; margin: 0; padding: 0" width="150px">
 																				<textarea class="txtarea wfh_act{{ $parent.$index+1 }}" name="" id="" cols="30" rows="1" ng-model="wfh_days[$parent.$index].ACTIVITIES[$index].act" required></textarea>
@@ -131,6 +131,7 @@
 			return {
 				restrict: 'A',
 				link: function(scope, element, attrs){
+
 					$('.timepick_angular').timepicker({
 							timeFormat: "hh:mmtt",
 			        stepHour: 1,
@@ -249,8 +250,6 @@
 				}
 
 				$("#wfh_from_").change(function() {
-
-
 
 					mfrom = $("#wfh_from_").val();
 					mto = $("#wfh_to_").val();
