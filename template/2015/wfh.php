@@ -158,7 +158,7 @@
 						$("#loading").hide();
 					},
 					success: function(data) {
-						console.log(data);
+						alert(data);
 					}
 				});
 
