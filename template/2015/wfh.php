@@ -124,24 +124,14 @@
 
 <script>
 
-$('.timepick_angular').on('click', function(){
-	alert('alert!');
-});
-
 	$(document).ready(function () {
-
-		$('.timepick_angular').timepicker({
-				timeFormat: "hh:mmtt"
-		});
-
-
 
 		var wfh_app = angular.module('WFHApp', []);
 		wfh_app.directive('timepicker', function(){
 			return {
 				restrict: 'A',
 				link: function(scope, element, attrs){
-					$('.timepick').timepicker({
+					$('.timepick_angular').timepicker({
 							timeFormat: "hh:mmtt",
 			        stepHour: 1,
 			        stepMinute: 30,
@@ -192,6 +182,14 @@ $('.timepick_angular').on('click', function(){
 
 			}
 
+			$('.timepick_angular').timepicker({
+					timeFormat: "hh:mmtt",
+					stepHour: 1,
+					stepMinute: 30,
+					hourMin: 6,
+					hourMax: 22
+			});
+			
 			$scope.wfh_activity = [];
 			$scope.item = {start_time : '', end_time : '', act: ''};
 			$scope.wfh_from = new Date().toISOString().split("T")[0];
