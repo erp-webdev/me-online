@@ -134,7 +134,8 @@
 				restrict: 'A',
 				link: function(scope, element, attrs){
 					$('.timepick').timepicker({
-							timeFormat: "hh:mmtt"
+							timeFormat: "hh:mmtt",
+							interval: 30
 					});
 				}
 			}
