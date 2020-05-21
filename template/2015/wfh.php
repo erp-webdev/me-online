@@ -129,10 +129,8 @@
 	$(document).ready(function () {
 
 
-		$('.timepick_angular').timepicker({
-				timeFormat: "hh:mmtt"
-		});
-		
+
+
 		var wfh_app = angular.module('WFHApp', []);
 		wfh_app.directive('timepicker', function(){
 			return {
@@ -150,7 +148,9 @@
 		});
 		wfh_app.controller('WFHController', function WFHController($scope){
 
-
+			$('.timepick_angular').timepicker({
+					timeFormat: "hh:mmtt"
+			});
 
 			$scope.excludeFunction = function(key){
 
