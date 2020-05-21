@@ -338,10 +338,7 @@
 
 				$scope.wfh_days[index].ACTIVITIES.push( angular.copy($scope.item));
 
-				$('.timepick').timepicker({
-		        timeFormat: "hh:mmtt"
-		    });
-				
+
 			}
 
 			// Remove item
