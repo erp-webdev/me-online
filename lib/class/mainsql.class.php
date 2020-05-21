@@ -1970,10 +1970,10 @@ class mainsql {
 		return $result;
     }
 
-    function get_shiftdtr($empid, $date, $dbname)
+    function get_shiftdtr()
     {
       $sql = "SELECT * FROM FN_GETSHIFT('".$empid."', '".$date."')";
-      $result = $this->get_row($sql, 'GL_S10');
+      -- $result = $this->get_row($sql, 'GL_S10');
 
       return $sql;
     }
