@@ -199,7 +199,7 @@
 					$scope.wfh_to.setDate($scope.wfh_to.getDate()+6);
 					$scope.wfh_to = new Date(angular.copy($scope.wfh_to)).toISOString().split("T")[0];
 
-					if($scope.date_original.getDate() < $scope.wfh_to.getDate()){
+					if($scope.date_original < $scope.wfh_to){
 						alert('to date exceeds!');
 					}else{
 						alert('normal');
