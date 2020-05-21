@@ -270,7 +270,6 @@
 
 				$scope.current_date = new Date(angular.copy($scope.wfh_from));
 				while($scope.current_date <= new Date(angular.copy($scope.wfh_to))){
-					$scope.current_date.setDate($scope.current_date.getDate());
 
 					var dtrdate = $scope.current_date.toISOString().split("T")[0];
 					var dtr = {
@@ -282,6 +281,7 @@
 					}
 
 					$scope.wfh_days.push( dtr );
+					$scope.current_date.setDate($scope.current_date.getDate()+1);
 				}
 
 
