@@ -254,7 +254,7 @@
 						$scope.wfh_days[index].ACTIVITIES.splice(0, index+1);
 					}
 
-					if(new Date($scope.wfh_to ) < new Date($scope.wfh_days[$scope.wfh_days.length].DTRDate) ){
+					if(new Date($scope.wfh_to ) < new Date($scope.wfh_days[$scope.wfh_days.length-1].DTR) ){
 						var dtrdate = new Date(angular.copy($scope.wfh_to)).toISOString().split("T")[0];
 						var index = $scope.wfh_days.map(function(e) { return e.DTR; }).indexOf(dtrdate);						
 						
