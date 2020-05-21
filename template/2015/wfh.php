@@ -280,9 +280,14 @@
 				while($scope.current_date <= new Date(angular.copy($scope.wfh_to))){
 
 					var dtrdate = $scope.current_date.toISOString().split("T")[0];
-					var index = $scope.wfh_days.findIndex(item => item.DTR == dtrdate);						
+					var index = -1;
+					for(var j = 0; j < $scope.wfh_days.length; j++)				{
+						if($scope.wfh_days[j].DTR == dtrdate){
+							index = j;
+						}
+					}
 
-					if(!index >= 0){
+					if(index == -1){
 						var dtr = {
 							"DTR" : dtrdate,
 							"ACTIVITIES" : [
@@ -297,8 +302,8 @@
 					$scope.current_date.setDate($scope.current_date.getDate()+1);
 				}
 
-				// var sort = (angular.copy($scope.wfh_days)).sort(compare);
-				// $scope.wfh_days = sort;
+				var sort = (angular.copy($scope.wfh_days)).sort(compare);
+				$scope.wfh_days = sort;
 				
 			});
 
