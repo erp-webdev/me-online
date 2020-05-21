@@ -183,6 +183,20 @@
 
 			$scope.wfh_days = [];
 
+			function compare(a, b) {
+				// Use toUpperCase() to ignore character casing
+				const DTRa = a.DTR.toUpperCase();
+				const DTRb = b.DTR.toUpperCase();
+
+				let comparison = 0;
+				if (DTRa > DTRb) {
+					comparison = 1;
+				} else if (DTRa < DTRb) {
+					comparison = -1;
+				}
+				return comparison;
+			}
+
 			// function to validate from and to dates
 			$scope.$watchGroup(['wfh_from', 'wfh_to'], function(newVal, oldVal){
 
@@ -283,6 +297,7 @@
 					$scope.current_date.setDate($scope.current_date.getDate()+1);
 				}
 
+				$scope.wfh_days.sort(compare);
 				
 			});
 
