@@ -37,21 +37,19 @@
 
 														<table width="100%" class="tdata vsmalltext" border="0" cellspacing="0">
 															<tr>
-																<th width="15px">#</th>
-																<th width="15px">Exclude</th>
+																<th width="15px"><span class="fa fa-trash-o"></span></th>
 																<th width="100px">Date</th>
 																<!-- <th width="60px">Total Worked Hours</th> -->
 																<th width="">Activities</th>
 															</tr>
 
 															<tr ng-repeat="wfh_day in wfh_days" id="tr{{ $index+1 }}">
-																<td class="centertalign"><span ng-bind="$index+1"></span></td>
 																<td class="centertalign">
 																	<input type="hidden" name="wfh_disable[{{ $index+1 }}]" id="wfh_disable{{ $index+1 }}" value=0><input id="mdtr_absent{{ $index+1 }}" type="checkbox" name="mdtr_absent[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="mdtr_absent" ng-click="excludeFunction($index+1)">
 																</td>
 																<td class="centertalign">
 																	<span ng-bind="wfh_day | date: 'EEE MM/dd/yy'"></span> <br>
-																	Credit Hours <br> <strong><span ng-bind=""></span> 10</strong>	
+																	Credit Hours <br> <strong><span ng-bind=""></span> 10</strong>
 																	<input style="width: 100%" id="wfh_totalworkedhours{{ $index+1 }}" type="number" name="wfh_totalworkedhours[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="wfh_totalworkedhours txtbox">
 																	<input id="wfh_dayin{{ $index+1 }}" type="hidden" name="wfh_dayin[{{ $index+1 }}]" value="{{ wfh_day | date: 'y-MM-dd'}}" class="wfh_dayin{{ $index+1 }}" />
 																</td>
@@ -180,7 +178,7 @@
 					{start_time : '', end_time : '', act: ''},
 				]
 
-			]; 
+			];
 			*/
 			$scope.item = {start_time : '', end_time : '', act: ''};
 			// Dates
@@ -197,7 +195,7 @@
 			$scope.date_original = $scope.wfh_to;
 
 			$scope.wfh_days = [];
-			
+
 
 			// function to validate from and to dates
 			$scope.$watchGroup(['wfh_from', 'wfh_to'], function(newVal, oldVal){
@@ -295,7 +293,7 @@
 
 			// Add new activity item
 			$scope.addItem = function(act){
-				
+
 				$scope.wfh_activity[act].push( angular.copy($scope.item));
 			}
 
