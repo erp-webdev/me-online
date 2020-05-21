@@ -2485,7 +2485,7 @@
 
         break;
 
-		case 'getshiftdtr'
+		case 'getshiftdtr':
 						$day = $_POST['date'];
 
 						$shift = $mainsql->get_shiftdtr($profile_idnum, $day, $profile_dbname);
