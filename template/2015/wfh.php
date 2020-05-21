@@ -297,7 +297,7 @@
 					$scope.current_date.setDate($scope.current_date.getDate()+1);
 				}
 
-				var sort = (angular.copy($scope.wfh_days))).sort(compare);
+				var sort = (angular.copy($scope.wfh_days)).sort(compare);
 				$scope.wfh_days = sort;
 				
 			});
