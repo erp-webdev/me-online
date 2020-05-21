@@ -270,7 +270,6 @@
 
 				$scope.current_date = new Date(angular.copy($scope.wfh_from));
 				while($scope.current_date <= new Date(angular.copy($scope.wfh_to))){
-					// $scope.wfh_days.push($scope.current_date.toISOString().split("T")[0]);
 					$scope.current_date.setDate($scope.current_date.getDate()+1);
 
 					var dtrdate = $scope.current_date.toISOString().split("T")[0];
@@ -283,7 +282,6 @@
 					}
 
 					$scope.wfh_days.push( dtr );
-					// $scope.wfh_activity.push( [angular.copy($scope.item)] );
 				}
 
 
@@ -311,7 +309,7 @@
 
 			// Remove item
 			$scope.delItem = function(index, act){
-				$scope.wf_days[index].ACTIVITIES[index].splice(act, 1);
+				$scope.wfh_days[index].ACTIVITIES[index].splice(act, 1);
 			}
 
 		});
