@@ -274,7 +274,7 @@
 				while($scope.current_date <= new Date(angular.copy($scope.wfh_to))){
 					$scope.wfh_days.push($scope.current_date.toISOString().split("T")[0]);
 					$scope.current_date.setDate($scope.current_date.getDate()+1);
-					$scope.wfh_activity.push({ $scope.current_date : [angular.copy($scope.item)] });
+					$scope.wfh_activity.push({ $scope.current_date.toISOString().split("T")[0] : [angular.copy($scope.item)] });
 				}
 
 
