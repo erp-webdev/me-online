@@ -203,6 +203,9 @@
 
 			// function to validate from and to dates
 			$scope.$watchGroup(['wfh_from', 'wfh_to'], function(newVal, oldVal){
+				$('.timepick').timepicker({
+						timeFormat: "hh:mmtt"
+				});
 
 				if(newVal[0] == oldVal[0] && newVal[1] != oldVal[1]){
 					// if wfh_to has been changed
@@ -347,8 +350,6 @@
 
 		});
 	});
-	$('.timepick').timepicker({
-			timeFormat: "hh:mmtt"
-	});
+
 </script>
 <?php include(TEMP."/footer.php"); ?>
