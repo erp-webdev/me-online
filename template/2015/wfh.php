@@ -135,7 +135,8 @@
 				link: function(scope, element, attrs){
 					$('.timepick').timepicker({
 							timeFormat: "hh:mmtt",
-							interval: 30
+							maxMinutes: 30,
+							minMinutes: 30
 					});
 				}
 			}
@@ -243,7 +244,9 @@
 				$("#wfh_from_").change(function() {
 
 					$('.timepick').timepicker({
-							timeFormat: "hh:mmtt"
+							timeFormat: "hh:mmtt",
+							maxMinutes: 30,
+							minMinutes: 30
 					});
 
 					mfrom = $("#wfh_from_").val();
