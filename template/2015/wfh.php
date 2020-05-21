@@ -135,8 +135,10 @@
 				link: function(scope, element, attrs){
 					$('.timepick').timepicker({
 							timeFormat: "hh:mmtt",
-							maxMinutes: 30,
-							minMinutes: 30
+			        stepHour: 1,
+			        stepMinute: 30,
+			        hourMin: 6,
+				    hourMax: 22
 					});
 				}
 			}
@@ -245,8 +247,10 @@
 
 					$('.timepick').timepicker({
 							timeFormat: "hh:mmtt",
-							maxMinutes: 30,
-							minMinutes: 30
+			        stepHour: 1,
+			        stepMinute: 30,
+			        hourMin: 6,
+				    hourMax: 22
 					});
 
 					mfrom = $("#wfh_from_").val();
