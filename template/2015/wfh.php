@@ -280,9 +280,9 @@
 				while($scope.current_date <= new Date(angular.copy($scope.wfh_to))){
 
 					var dtrdate = $scope.current_date.toISOString().split("T")[0];
-					var index = $scope.wfh_days.map(function(e) { return e.DTR; }).indexOf(dtrdate);						
+					var index = $scope.wfh_days.findIndex(item => item.DTR == dtrdate);						
 
-					if(!index >= -1){
+					if(!index >= 0){
 						var dtr = {
 							"DTR" : dtrdate,
 							"ACTIVITIES" : [
