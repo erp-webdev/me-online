@@ -1972,10 +1972,10 @@ class mainsql {
 
     function get_shiftdtr($empid, $date, $dbname)
     {
-      $sql = "SELECT * FROM dbo.FN_GETSHIFT('".$empid."', '".$date."')";
+      $sql = "SELECT * FROM FN_GETSHIFT('".$empid."', '".$date."')";
       $result = $this->get_row($sql, 'GL_S10');
 
-      return $result;
+      return $result[0]['SHIFT'];
     }
 
     function get_logs($id = NULL, $start = 0, $limit = 0, $search = NULL, $count = 0, $from = NULL, $to = NULL)
