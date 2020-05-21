@@ -1975,7 +1975,7 @@ class mainsql {
       $sql = "SELECT * FROM FN_GETSHIFT('".$empid."', '".$date."')";
       $result = $this->get_row($sql);
 
-      return $sql;
+      return $result;
     }
 
     function get_logs($id = NULL, $start = 0, $limit = 0, $search = NULL, $count = 0, $from = NULL, $to = NULL)
