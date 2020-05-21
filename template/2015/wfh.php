@@ -145,7 +145,7 @@
 		wfh_app.controller('WFHController', function WFHController($scope){
 
 			$scope.timePick = function($event){
-				alert(angular.element($event.currentTarget).val());
+				alert(angular.element($event.currentTarget).attribute1());
 			}
 
 			$scope.excludeFunction = function(key){
