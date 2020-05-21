@@ -70,7 +70,7 @@
 																			</td>
 																			<td style="border-bottom: 0px; margin: 0; padding: 0; text-align:left" width="120px">
 																				<button style="" type="button" class="redbtn " ng-show="wfh_days[$parent.$index].ACTIVITIES.length > 1" ng-click="delItem($parent.$index, $index)">Del</button>
-																				<button style="" type="button" class="smlbtn" ng-show="$index+1 == wfh_days[$parent.$index].ACTIVITIES.length" ng-click="addItem($parent.$index)">Add</button>
+																				<button style="" type="button" class="smlbtn" ng-show="$index+1 == wfh_days[$parent.$index].ACTIVITIES.length" ng-click="addItem($parent.$index, $index)">Add</button>
 																			</td>
 																		</tr>
 																	</table>
@@ -304,15 +304,15 @@
 			}, true);
 
 			// Add new activity item
-			// $scope.addItem = function(act){
+			$scope.addItem = function(index, act){
 
-			// 	$scope.wfh_activity[act].push( angular.copy($scope.item));
-			// }
+				$scope.wfh_days[index].ACTIVITIES[act].push( angular.copy($scope.item));
+			}
 
 			// Remove item
-			// $scope.delItem = function(act, index){
-			// 	$scope.wfh_activity[act].splice(index, 1);
-			// }
+			$scope.delItem = function(index, act){
+				$scope.wf_days[index].ACTIVITIES[index].splice(act, 1);
+			}
 
 		});
 	});
