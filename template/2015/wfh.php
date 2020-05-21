@@ -309,7 +309,7 @@
 
 			// Remove item
 			$scope.delItem = function(index, act){
-				$scope.wfh_days[index].ACTIVITIES[index].splice(act, 1);
+				$scope.wfh_days[index].ACTIVITIES.splice(act, 1);
 			}
 
 		});
