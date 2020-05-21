@@ -158,6 +158,7 @@
 						$("#loading").hide();
 					},
 					success: function(data) {
+						data = json.parse(data);
 						console.log(data.SHIFT);
 					}
 				});
