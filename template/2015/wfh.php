@@ -278,7 +278,8 @@
 						"DTR" : dtrdate,
 						"ACTIVITIES" : [
 							angular.copy($scope.item)
-						]
+						],
+						"CREDIT":0
 					}
 
 					$scope.wfh_days.push( dtr );
