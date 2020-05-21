@@ -282,7 +282,7 @@
 					var dtrdate = $scope.current_date.toISOString().split("T")[0];
 					var index = $scope.wfh_days.map(function(e) { return e.DTR; }).indexOf(dtrdate);						
 
-					if(!index >= 0){
+					if(index < -1){
 						var dtr = {
 							"DTR" : dtrdate,
 							"ACTIVITIES" : [
