@@ -168,20 +168,7 @@
 			}
 
 			$scope.wfh_activity = [];
-			/* sample dta
-			$scope.wfh_activity = [
-				'05/01/2020': [
-					{start_time : '', end_time : '', act: ''},
-					{start_time : '', end_time : '', act: ''}
-				],
-				'05/02/2020': [
-					{start_time : '', end_time : '', act: ''},
-				]
-
-			];
-			*/
 			$scope.item = {start_time : '', end_time : '', act: ''};
-			// Dates
 			$scope.wfh_from = new Date().toISOString().split("T")[0];
 			$scope.wfh_from = new Date(angular.copy($scope.wfh_from));
 			$scope.wfh_from.setDate($scope.wfh_from.getDate()-1);
@@ -196,7 +183,6 @@
 
 			$scope.wfh_days = [];
 
-
 			// function to validate from and to dates
 			$scope.$watchGroup(['wfh_from', 'wfh_to'], function(newVal, oldVal){
 
@@ -209,8 +195,6 @@
 
 				}else if(newVal[0] != oldVal[0] && newVal[1] == oldVal[1]){
 					// if wfh_from has been changed
-
-
 					$scope.wfh_to = new Date(angular.copy($scope.wfh_from));
 					$scope.wfh_to.setDate($scope.wfh_to.getDate()+6);
 					$scope.wfh_to = new Date(angular.copy($scope.wfh_to)).toISOString().split("T")[0];
@@ -261,14 +245,19 @@
 					}
 				});
 
-				// Apply new value to input element
-				// $('#wfh_from_').val(angular.copy($scope.wfh_from));
-				// $('#wfh_to_').val(angular.copy($scope.wfh_to));
 				//reset values
-				// $scope.wfh_activity = [];
 				$scope.wfh_days = [];
-
 				$scope.current_date = new Date(angular.copy($scope.wfh_from));
+
+				// delete Dates not included
+				if($scope.wfh_days.length > 0){
+					if(new Date($scope.wfh_from ) > new Date($scope.wfh_days[0].DTRDate) ){
+						var dtrdate = $scope.current_date.toISOString().split("T")[0];
+						var index = $scope.wfh_days.map(function(e) { return e.DTR; }).indexOf(dtrdate);						
+						$scope.wfh_days[index].ACTIVITIES.splice(0, index+1);
+					}
+				}
+
 				while($scope.current_date <= new Date(angular.copy($scope.wfh_to))){
 
 					var dtrdate = $scope.current_date.toISOString().split("T")[0];
@@ -284,21 +273,20 @@
 					$scope.current_date.setDate($scope.current_date.getDate()+1);
 				}
 
-
+				
 			});
 
 			// $scope.$watch('wfh_activity', function(newVal, oldVal, $scope){
 
-			// 	for(var i = 0; i < $scope.wfh_activity.length; i++){
-			// 		$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_activity[i]));
-			// 	}
-
-
-			// }, true);
 
 			$scope.$watch('wfh_days', function(newVal, oldVal, $scope){
 				// to compute total credit hours
 				console.log(JSON.stringify($scope.wfh_days));
+
+				for(var i = 0; i < $scope.wfh_days.length; i++){
+					$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].activity));
+				}
+
 			}, true);
 
 			// Add new activity item
