@@ -228,9 +228,7 @@
 							success: function(data) {
 
 								if($scope.date_original < data){
-									alert('date exceeds!');
-								}else{
-									alert('normal');
+									data = $scope.date_original;
 								}
 
 								$('#wfh_to_').datetimepicker('destroy');
