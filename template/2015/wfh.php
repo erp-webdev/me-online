@@ -124,7 +124,9 @@
 
 <script>
 
-
+$('.timepick_angular').on('click', function(){
+	alert('alert!');
+});
 
 	$(document).ready(function () {
 
@@ -132,9 +134,7 @@
 				timeFormat: "hh:mmtt"
 		});
 
-$('.timepick_angular').on('click', function(){
-	alert('alert!');
-});
+
 
 		var wfh_app = angular.module('WFHApp', []);
 		wfh_app.directive('timepicker', function(){
