@@ -2481,7 +2481,7 @@
 
 						$date = date('Y-m-d', strtotime($mdin. ' + 6 days'));
 
-            print_r( $date);
+            echo $date;
 
         break;
 
@@ -2490,7 +2490,7 @@
 
 						$shift = $mainsql->get_shiftdtr($profile_idnum, $day, $profile_dbname);
 
-						echo $shift;
+						print_r($shift);
 		break;
 
         case 'getmandtr':
