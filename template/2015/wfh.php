@@ -40,29 +40,32 @@
 																<th width="15px">#</th>
 																<th width="15px">Exclude</th>
 																<th width="100px">Date</th>
-																<th width="60px">Total Worked Hours</th>
+																<!-- <th width="60px">Total Worked Hours</th> -->
 																<th width="">Activities</th>
 															</tr>
 
 															<tr ng-repeat="wfh_day in wfh_days" id="tr{{ $index+1 }}">
-																<td class="centertalign">{{ $index+1 }}</td>
+																<td class="centertalign"><span ng-bind="$index+1"></span></td>
 																<td class="centertalign">
 																	<input type="hidden" name="wfh_disable[{{ $index+1 }}]" id="wfh_disable{{ $index+1 }}" value=0><input id="mdtr_absent{{ $index+1 }}" type="checkbox" name="mdtr_absent[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="mdtr_absent" ng-click="excludeFunction($index+1)">
 																</td>
 																<td class="centertalign">
-																	{{ wfh_day | date: 'EEE MM/dd/yy'}}
+																	<span ng-bind="wfh_day | date: 'EEE MM/dd/yy'"></span> <br>
+																	Credit Hours <br> <strong><span ng-bind=""></span> 10</strong>	
+																	<input style="width: 100%" id="wfh_totalworkedhours{{ $index+1 }}" type="number" name="wfh_totalworkedhours[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="wfh_totalworkedhours txtbox">
 																	<input id="wfh_dayin{{ $index+1 }}" type="hidden" name="wfh_dayin[{{ $index+1 }}]" value="{{ wfh_day | date: 'y-MM-dd'}}" class="wfh_dayin{{ $index+1 }}" />
 																</td>
-																<td class="centertalign">
+																<!-- <td class="centertalign">
 																	<input style="width: 100%" id="wfh_totalworkedhours{{ $index+1 }}" type="number" name="wfh_totalworkedhours[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="wfh_totalworkedhours txtbox">
-																</td>
+																</td> -->
 																<td class="centertalign" >
 																	<textarea rows="1" style="display: none;" name="wfh_activity[{{ $index+1 }}]" id="wfh_activity{{ $index+1 }}" class="txtbox"></textarea>
 																	<table>
 																		<tr ng-repeat="activity in wfh_activity[$index]">
 																			<td style="border-bottom: 0px; margin: 0; padding: 0" >
 																				<!-- PATTERN ([0-1]{1}[0-9]{1}|20|21|22|23):[0-5]{1}[0-9]{1}-([0-1]{1}[0-9]{1}|20|21|22|23):[0-5]{1}[0-9]{1} -->
-																				<input type="text" placeholder="08:00-18:00" title="Time Coverage: eg. 8:00 - 9:00" class="txtbox width80 wfh_time{{ $parent.$index+1 }}" ng-model="wfh_activity[$parent.$index][$index].time" required>
+																				<input type="text" placeholder="08:00-18:00" title="Start Time: eg. 8:00 - 9:00" class="txtbox width80 wfh_time{{ $parent.$index+1 }}" ng-model="wfh_activity[$parent.$index][$index].start_time" required>
+																				<input type="text" placeholder="08:00-18:00" title="End Time: eg. 8:00 - 9:00" class="txtbox width80 wfh_time{{ $parent.$index+1 }}" ng-model="wfh_activity[$parent.$index][$index].end_time" required>
 																			</td>
 																			<td style="border-bottom: 0px; margin: 0; padding: 0" width="150px">
 																				<textarea class="txtarea wfh_act{{ $parent.$index+1 }}" name="" id="" cols="30" rows="1" ng-model="wfh_activity[$parent.$index][$index].act" required></textarea>
@@ -167,7 +170,19 @@
 			}
 
 			$scope.wfh_activity = [];
-			$scope.item = {time : '', act: ''};
+			/* sample dta
+			$scope.wfh_activity = [
+				'05/01/2020': {
+					{start_time : '', end_time : '', act: ''},
+					{start_time : '', end_time : '', act: ''}
+				},
+				'05/02/2020': {
+					{start_time : '', end_time : '', act: ''},
+				}
+
+			]; 
+			*/
+			$scope.item = {start_time : '', end_time : '', act: ''};
 			// Dates
 			$scope.wfh_from = new Date().toISOString().split("T")[0];
 			$scope.wfh_from = new Date(angular.copy($scope.wfh_from));
@@ -182,6 +197,9 @@
 			$scope.date_original = $scope.wfh_to;
 
 			$scope.wfh_days = [];
+			
+
+			// function to validate from and to dates
 			$scope.$watchGroup(['wfh_from', 'wfh_to'], function(newVal, oldVal){
 
 				if(newVal[0] == oldVal[0] && newVal[1] != oldVal[1]){
@@ -249,7 +267,7 @@
 				// $('#wfh_from_').val(angular.copy($scope.wfh_from));
 				// $('#wfh_to_').val(angular.copy($scope.wfh_to));
 				//reset values
-				$scope.wfh_activity = [];
+				// $scope.wfh_activity = [];
 				$scope.wfh_days = [];
 
 				$scope.current_date = new Date(angular.copy($scope.wfh_from));
@@ -269,6 +287,10 @@
 				}
 
 
+			}, true);
+
+			$scope.$watch('wfh_days', function(newVal, oldVal, $scope){
+				// to compute total credit hours
 			}, true);
 
 			// Add new activity item
