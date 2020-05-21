@@ -2490,7 +2490,7 @@
 
 						$shift = $mainsql->get_shiftdtr($profile_idnum, $day, $profile_dbname);
 
-						print_r($shift);
+						echo $shift;
 		break;
 
         case 'getmandtr':
