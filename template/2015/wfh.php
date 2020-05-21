@@ -48,10 +48,10 @@
 																	<input type="hidden" name="wfh_disable[{{ $index+1 }}]" id="wfh_disable{{ $index+1 }}" value=0><input id="mdtr_absent{{ $index+1 }}" type="checkbox" name="mdtr_absent[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="mdtr_absent" ng-click="excludeFunction($index+1)">
 																</td>
 																<td class="centertalign">
-																	<span ng-bind="wfh_day | date: 'EEE MM/dd/yy'"></span> <br>
-																	Credit Hours <br> <strong><span ng-bind=""></span> 10</strong>
+																	<span ng-bind="wfh_day.DTR | date: 'EEE MM/dd/yy'"></span> <br>
+																	Credit Hours <br> <strong><span ng-bind="wfh_day.CREDIT"></span> 10</strong>
 																	<input style="width: 100%" id="wfh_totalworkedhours{{ $index+1 }}" type="hidden" name="wfh_totalworkedhours[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="wfh_totalworkedhours txtbox">
-																	<input id="wfh_dayin{{ $index+1 }}" type="hidden" name="wfh_dayin[{{ $index+1 }}]" value="{{ wfh_day | date: 'y-MM-dd'}}" class="wfh_dayin{{ $index+1 }}" />
+																	<input id="wfh_dayin{{ $index+1 }}" type="hidden" name="wfh_dayin[{{ $index+1 }}]" value="{{ wfh_day.DTR | date: 'y-MM-dd'}}" class="wfh_dayin{{ $index+1 }}" />
 																</td>
 																<!-- <td class="centertalign">
 																	<input style="width: 100%" id="wfh_totalworkedhours{{ $index+1 }}" type="number" name="wfh_totalworkedhours[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="wfh_totalworkedhours txtbox">
@@ -59,18 +59,18 @@
 																<td class="centertalign" >
 																	<textarea rows="1" style="display: none;" name="wfh_activity[{{ $index+1 }}]" id="wfh_activity{{ $index+1 }}" class="txtbox"></textarea>
 																	<table>
-																		<tr ng-repeat="activity in wfh_activity[$index]">
+																		<tr ng-repeat="activity in $wfh_day.ACTIVITIES[$index]">
 																			<td style="border-bottom: 0px; margin: 0; padding: 0" >
 																				<!-- PATTERN ([0-1]{1}[0-9]{1}|20|21|22|23):[0-5]{1}[0-9]{1}-([0-1]{1}[0-9]{1}|20|21|22|23):[0-5]{1}[0-9]{1} -->
-																				<input type="text" placeholder="08:00-18:00" title="Start Time: eg. 8:00" class="txtbox width55 wfh_time{{ $parent.$index+1 }}" ng-model="wfh_activity[$parent.$index][$index].start_time" required>
-																				<input type="text" placeholder="08:00-18:00" title="End Time: eg. 9:00" class="txtbox width55 wfh_time{{ $parent.$index+1 }}" ng-model="wfh_activity[$parent.$index][$index].end_time" required>
+																				<input type="text" placeholder="08:00-18:00" title="Start Time: eg. 8:00" class="txtbox width55 wfh_time{{ $parent.$index+1 }}" ng-model="$wfh_days[$parent.$index].ACTIVITIES[$index].start_time" required>
+																				<input type="text" placeholder="08:00-18:00" title="End Time: eg. 9:00" class="txtbox width55 wfh_time{{ $parent.$index+1 }}" ng-model="wfh_days[$parent.$index].ACTIVITIES[$index].end_time" required>
 																			</td>
 																			<td style="border-bottom: 0px; margin: 0; padding: 0" width="150px">
-																				<textarea class="txtarea wfh_act{{ $parent.$index+1 }}" name="" id="" cols="30" rows="1" ng-model="wfh_activity[$parent.$index][$index].act" required></textarea>
+																				<textarea class="txtarea wfh_act{{ $parent.$index+1 }}" name="" id="" cols="30" rows="1" ng-model="wfh_days[$parent.$index].ACTIVITIES[$index].act" required></textarea>
 																			</td>
 																			<td style="border-bottom: 0px; margin: 0; padding: 0; text-align:left" width="120px">
-																				<button style="" type="button" class="redbtn " ng-show="wfh_activity[$parent.$index].length > 1" ng-click="delItem($parent.$index, $index)">Del</button>
-																				<button style="" type="button" class="smlbtn" ng-show="$index+1 == wfh_activity[$parent.$index].length" ng-click="addItem($parent.$index)">Add</button>
+																				<button style="" type="button" class="redbtn " ng-show="wfh_days[$parent.$index].ACTIVITIES.length > 1" ng-click="delItem($parent.$index, $index)">Del</button>
+																				<button style="" type="button" class="smlbtn" ng-show="$index+1 == wfh_days[$parent.$index].ACTIVITIES.length" ng-click="addItem($parent.$index)">Add</button>
 																			</td>
 																		</tr>
 																	</table>
