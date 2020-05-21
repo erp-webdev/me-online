@@ -289,14 +289,14 @@
 
 			});
 
-			$scope.$watch('wfh_activity', function(newVal, oldVal, $scope){
+			// $scope.$watch('wfh_activity', function(newVal, oldVal, $scope){
 
-				for(var i = 0; i < $scope.wfh_activity.length; i++){
-					$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_activity[i]));
-				}
+			// 	for(var i = 0; i < $scope.wfh_activity.length; i++){
+			// 		$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_activity[i]));
+			// 	}
 
 
-			}, true);
+			// }, true);
 
 			$scope.$watch('wfh_days', function(newVal, oldVal, $scope){
 				// to compute total credit hours
@@ -304,15 +304,15 @@
 			}, true);
 
 			// Add new activity item
-			$scope.addItem = function(act){
+			// $scope.addItem = function(act){
 
-				$scope.wfh_activity[act].push( angular.copy($scope.item));
-			}
+			// 	$scope.wfh_activity[act].push( angular.copy($scope.item));
+			// }
 
 			// Remove item
-			$scope.delItem = function(act, index){
-				$scope.wfh_activity[act].splice(index, 1);
-			}
+			// $scope.delItem = function(act, index){
+			// 	$scope.wfh_activity[act].splice(index, 1);
+			// }
 
 		});
 	});
