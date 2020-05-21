@@ -144,7 +144,7 @@
 		});
 		wfh_app.controller('WFHController', function WFHController($scope){
 
-			$scope.timePick = function(val){
+			$scope.timePick = function($event){
 				alert(angular.element($event.currentTarget).val());
 			}
 
