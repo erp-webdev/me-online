@@ -227,6 +227,12 @@
 							},
 							success: function(data) {
 
+								if($scope.date_original < data){
+									alert('date exceeds!');
+								}else{
+									alert('normal');
+								}
+
 								$('#wfh_to_').datetimepicker('destroy');
 								$('#wfh_to_').datepicker({
 									dateFormat: 'yy-mm-dd',
