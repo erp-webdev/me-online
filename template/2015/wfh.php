@@ -127,21 +127,21 @@
 	$(document).ready(function () {
 
 		var wfh_app = angular.module('WFHApp', []);
-		wfh_app.directive('timepicker', function(){
-			return {
-				restrict: 'A',
-				link: function(scope, element, attrs){
-
-					$('.timepick_angular').timepicker({
-							timeFormat: "hh:mmtt",
-			        stepHour: 1,
-			        stepMinute: 30,
-			        hourMin: 6,
-					    hourMax: 22
-					});
-				}
-			}
-		});
+		// wfh_app.directive('timepicker', function(){
+		// 	return {
+		// 		restrict: 'A',
+		// 		link: function(scope, element, attrs){
+		//
+		// 			$('.timepick_angular').timepicker({
+		// 					timeFormat: "hh:mmtt",
+		// 	        stepHour: 1,
+		// 	        stepMinute: 30,
+		// 	        hourMin: 6,
+		// 			    hourMax: 22
+		// 			});
+		// 		}
+		// 	}
+		// });
 		wfh_app.controller('WFHController', function WFHController($scope){
 
 			$scope.timePick = function($event){
