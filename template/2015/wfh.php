@@ -276,7 +276,7 @@
 					var dtrdate = $scope.current_date.toISOString().split("T")[0];
 					var dtr = {
 						dtrdate : [
-							angular.copy($scope.item);
+							angular.copy($scope.item)
 						]
 					}
 
