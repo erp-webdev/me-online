@@ -81,6 +81,7 @@
             case 'gettrueto':
             case 'gettruefrom2':
 			case 'gettrueto2':
+						case 'getshiftdtr':
             case 'gettrueto3':
             case 'setscin':
             case 'setscout':
