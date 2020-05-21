@@ -296,9 +296,9 @@
 				// to compute total credit hours
 				console.log(JSON.stringify($scope.wfh_days));
 
-				for(var i = 0; i < $scope.wfh_days.length; i++){
-					$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].activity));
-				}
+				// for(var i = 0; i < $scope.wfh_days.length; i++){
+				// 	$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].activity));
+				// }
 
 			}, true);
 
