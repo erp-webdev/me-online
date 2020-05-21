@@ -291,9 +291,6 @@
 				}
 
 				while($scope.current_date <= new Date(angular.copy($scope.wfh_to))){
-					$('.timepick').timepicker({
-							timeFormat: "hh:mmtt"
-					});
 
 					var dtrdate = $scope.current_date.toISOString().split("T")[0];
 					var index = -1;
@@ -350,6 +347,8 @@
 
 		});
 	});
-
+	$('.timepick').timepicker({
+			timeFormat: "hh:mmtt"
+	});
 </script>
 <?php include(TEMP."/footer.php"); ?>
