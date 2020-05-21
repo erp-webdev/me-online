@@ -264,15 +264,24 @@
 				if($scope.wfh_days.length > 0){
 					if(new Date($scope.wfh_from ) > new Date($scope.wfh_days[0].DTRDate) ){
 						var dtrdate = $scope.current_date.toISOString().split("T")[0];
-						var index = $scope.wfh_days.findIndex(item => item.DTR == dtrdate);						
-						$scope.wfh_days[index+1].ACTIVITIES.splice(0, index+2);
+						var index = -1;
+						for(var j = 0; j < $scope.wfh_days.length; j++)				{
+							if($scope.wfh_days[j].DTR == dtrdate){
+								index = j;
+							}
+						}			
+						$scope.wfh_days[index].ACTIVITIES.splice(0, index+1);
 					}
 
 					if(new Date($scope.wfh_to ) < new Date($scope.wfh_days[$scope.wfh_days.length-1].DTR) ){
 						var dtrdate = new Date(angular.copy($scope.wfh_to)).toISOString().split("T")[0];
-						var index = $scope.wfh_days.findIndex(item => item.DTR == dtrdate);						
-						
-						$scope.wfh_days[index+1].ACTIVITIES.splice(index, $index + 2 - $scope.wfh_days.length);
+						var index = -1;
+						for(var j = 0; j < $scope.wfh_days.length; j++)				{
+							if($scope.wfh_days[j].DTR == dtrdate){
+								index = j;
+							}
+						}	
+						$scope.wfh_days[index].ACTIVITIES.splice(index, $index + 1 - $scope.wfh_days.length);
 					}
 
 				}
