@@ -262,7 +262,7 @@
 				$scope.current_date = new Date(angular.copy($scope.wfh_from));
 				// delete Dates not included
 				if($scope.wfh_days.length > 0){
-					if(new Date($scope.wfh_from ) > new Date($scope.wfh_days[0].DTRDate) ){
+					if($scope.wfh_from  > new Date($scope.wfh_days[0].DTRDate) ){
 						var dtrdate = $scope.current_date.toISOString().split("T")[0];
 						var index = -1;
 						for(var j = 0; j < $scope.wfh_days.length; j++)				{
