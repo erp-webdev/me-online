@@ -324,6 +324,10 @@
 
 
 			$scope.$watch('wfh_days', function(newVal, oldVal, $scope){
+
+				$('.timepick').timepicker({
+		        timeFormat: "hh:mmtt"
+		    });
 				// to compute total credit hours
 				console.log(JSON.stringify($scope.wfh_days));
 
@@ -337,7 +341,6 @@
 			$scope.addItem = function(index, act){
 
 				$scope.wfh_days[index].ACTIVITIES.push( angular.copy($scope.item));
-
 
 			}
 
