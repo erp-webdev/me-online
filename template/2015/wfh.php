@@ -172,13 +172,13 @@
 			$scope.wfh_activity = [];
 			/* sample dta
 			$scope.wfh_activity = [
-				'05/01/2020': {
+				'05/01/2020': [
 					{start_time : '', end_time : '', act: ''},
 					{start_time : '', end_time : '', act: ''}
-				},
-				'05/02/2020': {
+				],
+				'05/02/2020': [
 					{start_time : '', end_time : '', act: ''},
-				}
+				]
 
 			]; 
 			*/
@@ -274,7 +274,7 @@
 				while($scope.current_date <= new Date(angular.copy($scope.wfh_to))){
 					$scope.wfh_days.push($scope.current_date.toISOString().split("T")[0]);
 					$scope.current_date.setDate($scope.current_date.getDate()+1);
-					$scope.wfh_activity.push([angular.copy($scope.item)]);
+					$scope.wfh_activity.push({ $scope.current_date : [angular.copy($scope.item)] });
 				}
 
 
@@ -295,7 +295,8 @@
 
 			// Add new activity item
 			$scope.addItem = function(act){
-				$scope.wfh_activity[act].push(angular.copy($scope.item));
+				
+				$scope.wfh_activity[act].push( angular.copy($scope.item));
 			}
 
 			// Remove item
