@@ -146,7 +146,8 @@
 
 			$scope.timePick = function($event){
 				var date = angular.element($event.currentTarget).attr("attribute1");
-				alert(date);
+
+				angular.element($event.currentTarget).datepicker('destroy');
 			}
 
 			$scope.excludeFunction = function(key){
