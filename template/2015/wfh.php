@@ -145,6 +145,8 @@
 		wfh_app.controller('WFHController', function WFHController($scope){
 
 			$scope.timePick = function($event){
+
+				alert('clicked!');
 				var date = angular.element($event.currentTarget).attr("attribute1");
 
 				angular.element($event.currentTarget).timepicker({
@@ -194,13 +196,13 @@
 
 			}
 
-			$('.timepick_angular').timepicker({
-					timeFormat: "hh:mmtt",
-					stepHour: 1,
-					stepMinute: 30,
-					hourMin: 6,
-					hourMax: 22
-			});
+			// $('.timepick_angular').timepicker({
+			// 		timeFormat: "hh:mmtt",
+			// 		stepHour: 1,
+			// 		stepMinute: 30,
+			// 		hourMin: 6,
+			// 		hourMax: 22
+			// });
 
 			$scope.wfh_activity = [];
 			$scope.item = {start_time : '', end_time : '', act: ''};
