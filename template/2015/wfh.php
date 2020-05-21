@@ -270,7 +270,7 @@
 								index = j;
 							}
 						}			
-						$scope.wfh_days[index].splice(0, index+1);
+						$scope.wfh_days.splice(0, index+1);
 					}
 
 					if(new Date($scope.wfh_to ) < new Date($scope.wfh_days[$scope.wfh_days.length-1].DTR) ){
@@ -281,7 +281,7 @@
 								index = j;
 							}
 						}	
-						$scope.wfh_days[index].splice(index, $index + 1 - $scope.wfh_days.length);
+						$scope.wfh_days.splice(index, $index + 1 - $scope.wfh_days.length);
 					}
 
 				}
