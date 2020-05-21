@@ -29,7 +29,7 @@
 										<table class="tdataform" border="0" cellspacing="0">
 											<tr>
 												<td width="15%"><b>DTR Date: </b></td>
-												<td width="85%"><input id="wfh_from_" type="text" name="wfh_from" value="<?php echo $wfh_fdate; ?>" class="txtbox datepickwh" readonly ng-model="wfh_from"/> - <input id="wfh_to_" type="text" name="wfh_to" value="<?php echo $wfh_todate; ?>" class="txtbox datepickwh" readonly ng-model="wfh_to"/></td>
+												<td width="85%"><input id="wfh_from_" type="text" name="wfh_from" class="txtbox datepickwh" readonly ng-model="wfh_from"/> - <input id="wfh_to_" type="text" name="wfh_to" class="txtbox datepickwh" readonly ng-model="wfh_to"/></td>
 											</tr>
 											<tr>
 												<td width="100%" colspan="3">
