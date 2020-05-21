@@ -149,6 +149,19 @@
 				alert('clicked!');
 				var date = angular.element($event.currentTarget).attr("attribute1");
 
+				$.ajax(
+				{
+					url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
+					data: "date=" + date,
+					type: "POST",
+					complete: function(){
+						$("#loading").hide();
+					},
+					success: function(data) {
+						console.log(data);
+					}
+				});
+
 				angular.element($event.currentTarget).timepicker({
 						timeFormat: "hh:mmtt",
 						stepHour: 1,

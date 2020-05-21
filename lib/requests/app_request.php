@@ -2478,11 +2478,19 @@
             $mdin = $_POST['from'];
             $mdout = $_POST['to'];
 
-			$date = date('Y-m-d', strtotime($mdin. ' + 6 days'));
+						$date = date('Y-m-d', strtotime($mdin. ' + 6 days'));
 
             echo $date;
 
         break;
+
+		case 'getshiftdtr'
+						$day = $_POST['date'];
+
+						$shift = $mainsql->get_shiftdtr($profile_idnum, $day, $profile_dbname);
+
+						echo $shift;
+		break;
 
         case 'getmandtr':
 
@@ -2926,12 +2934,12 @@
 							}
 
                         });
-                        
-                        
+
+
 
 					});
 					</script>
-                    
+
 
                     <tr id="tr<?php echo $key; ?>">
                         <td class="centertalign"><?php echo $key; ?></td>
@@ -2960,18 +2968,18 @@
 
                     $wfh_from = strtotime("+1 day", $wfh_from);
                 }
-                
+
             endif;
             ?>
-            
+
             </table>
             <script>
             $(document).ready(function () {
                 var wfh_app = angular.module('WFHApp', []);
                 wfh_app.controller('WFHController', function WFHController($scope){
-                    
+
                     $scope.item = {time : '', act: ''};
-                    
+
                     <?php $key = 1; $wfh_from = $wfh_from_original; while($wfh_from <= $wfh_today) { ?>
 
                     $scope.wfh_activity<?php echo $key; ?> = [];
@@ -2996,7 +3004,7 @@
 
                 });
             });
-            </script>										
+            </script>
             <?php
 
         break;

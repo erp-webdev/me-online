@@ -1970,6 +1970,14 @@ class mainsql {
 		return $result;
     }
 
+    function get_shiftdtr($empid, $date, $dbname)
+    {
+      $sql = "SELECT * FROM dbo.GET_SHIFT('".$empid."', '".$date."')";
+      $result = $this->get_row($sql, $dbname);
+
+      return $result
+    }
+
     function get_logs($id = NULL, $start = 0, $limit = 0, $search = NULL, $count = 0, $from = NULL, $to = NULL)
 	{
 		$sql = "SELECT [outer].* FROM ( ";
