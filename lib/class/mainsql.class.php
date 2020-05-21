@@ -1972,10 +1972,10 @@ class mainsql {
 
     function get_shiftdtr($empid, $date, $dbname)
     {
-      $sql = "SELECT * FROM dbo.GET_SHIFT('".$empid."', '".$date."')";
+      $sql = "select '060' as SHIFT, '08:00:00.0000000' as STARTTIME, '18:00:00.0000000' as STARTTIME, '10' as NUMHRS";
       $result = $this->get_row($sql, $dbname);
 
-      return $sql;
+      return $result;
     }
 
     function get_logs($id = NULL, $start = 0, $limit = 0, $search = NULL, $count = 0, $from = NULL, $to = NULL)
