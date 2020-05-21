@@ -171,11 +171,11 @@
 			// Dates
 			$scope.wfh_from = new Date().toISOString().split("T")[0];
 			$scope.wfh_from = new Date(angular.copy($scope.wfh_from));
-			$scope.wfh_from.setDate($scope.wfh_from.getDate()-1);
+			$scope.wfh_from.setDate($scope.wfh_from.getDate()+5);
 
 			$scope.wfh_to = new Date().toISOString().split("T")[0];
 			$scope.wfh_to = new Date(angular.copy($scope.wfh_to));
-			$scope.wfh_to.setDate($scope.wfh_to.getDate()-1);
+			$scope.wfh_to.setDate($scope.wfh_to.getDate()+5);
 
 			$scope.wfh_days = [];
 			$scope.$watchGroup(['wfh_from', 'wfh_to'], function(newVal, oldVal){
