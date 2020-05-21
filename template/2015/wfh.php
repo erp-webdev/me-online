@@ -256,20 +256,33 @@
 						var index = $scope.wfh_days.map(function(e) { return e.DTR; }).indexOf(dtrdate);						
 						$scope.wfh_days[index].ACTIVITIES.splice(0, index+1);
 					}
+
+					if(new Date($scope.wfh_to ) < new Date($scope.wfh_days[$scope.wfh_days.length].DTRDate) ){
+						var dtrdate = new Date(angular.copy($scope.wfh_to)).toISOString().split("T")[0];
+						var index = $scope.wfh_days.map(function(e) { return e.DTR; }).indexOf(dtrdate);						
+						
+						$scope.wfh_days[index].ACTIVITIES.splice(index, $index + 1 - $scope.wfh_days.length);
+					}
+
 				}
 
 				while($scope.current_date <= new Date(angular.copy($scope.wfh_to))){
 
 					var dtrdate = $scope.current_date.toISOString().split("T")[0];
-					var dtr = {
-						"DTR" : dtrdate,
-						"ACTIVITIES" : [
-							angular.copy($scope.item)
-						],
-						"CREDIT":0
+					var index = $scope.wfh_days.map(function(e) { return e.DTR; }).indexOf(dtrdate);						
+
+					if(!$index >= 0){
+						var dtr = {
+							"DTR" : dtrdate,
+							"ACTIVITIES" : [
+								angular.copy($scope.item)
+							],
+							"CREDIT":0
+						}
+
+						$scope.wfh_days.push( dtr );
 					}
 
-					$scope.wfh_days.push( dtr );
 					$scope.current_date.setDate($scope.current_date.getDate()+1);
 				}
 
