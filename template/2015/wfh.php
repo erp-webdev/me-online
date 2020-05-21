@@ -124,14 +124,14 @@
 
 <script>
 
-$('.timepick_angular').timepicker({
-		timeFormat: "hh:mmtt"
-});
+
 
 	$(document).ready(function () {
 
 
-
+		$('.timepick_angular').timepicker({
+				timeFormat: "hh:mmtt"
+		});
 		var wfh_app = angular.module('WFHApp', []);
 		wfh_app.controller('WFHController', function WFHController($scope){
 
