@@ -158,7 +158,7 @@
 						$("#loading").hide();
 					},
 					success: function(data) {
-						console.log(data);
+						console.log(data[0]);
 					}
 				});
 
