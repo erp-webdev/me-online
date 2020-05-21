@@ -189,7 +189,7 @@
 					hourMin: 6,
 					hourMax: 22
 			});
-			
+
 			$scope.wfh_activity = [];
 			$scope.item = {start_time : '', end_time : '', act: ''};
 			$scope.wfh_from = new Date().toISOString().split("T")[0];
@@ -250,13 +250,7 @@
 
 				$("#wfh_from_").change(function() {
 
-					$('.timepick_angular').timepicker({
-							timeFormat: "hh:mmtt",
-			        stepHour: 1,
-			        stepMinute: 30,
-			        hourMin: 6,
-					    hourMax: 22
-					});
+
 
 					mfrom = $("#wfh_from_").val();
 					mto = $("#wfh_to_").val();
