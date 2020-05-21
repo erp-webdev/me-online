@@ -2481,7 +2481,7 @@
 
 						$date = date('Y-m-d', strtotime($mdin. ' + 6 days'));
 
-            echo $date;
+            print_r( $date);
 
         break;
 
