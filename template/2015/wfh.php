@@ -281,7 +281,7 @@
 								index = j;
 							}
 						}	
-						$scope.wfh_days.splice(index, index + 1 - $scope.wfh_days.length);
+						$scope.wfh_days.splice(index, $scope.wfh_days.length - index + 1 );
 					}
 
 				}
