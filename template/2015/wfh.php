@@ -306,7 +306,7 @@
 			// Add new activity item
 			$scope.addItem = function(index, act){
 
-				$scope.wfh_days[index].ACTIVITIES[act].push( angular.copy($scope.item));
+				$scope.wfh_days[index].ACTIVITIES.push( angular.copy($scope.item));
 			}
 
 			// Remove item
