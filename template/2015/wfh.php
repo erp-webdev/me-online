@@ -59,7 +59,7 @@
 																<td class="centertalign" >
 																	<textarea rows="1" style="display: none;" name="wfh_activity[{{ $index+1 }}]" id="wfh_activity{{ $index+1 }}" class="txtbox"></textarea>
 																	<table>
-																		<tr ng-repeat="activity in wfh_day.ACTIVITIES[$index]">
+																		<tr ng-repeat="activity in wfh_day.ACTIVITIES">
 																			<td style="border-bottom: 0px; margin: 0; padding: 0" >
 																				<!-- PATTERN ([0-1]{1}[0-9]{1}|20|21|22|23):[0-5]{1}[0-9]{1}-([0-1]{1}[0-9]{1}|20|21|22|23):[0-5]{1}[0-9]{1} -->
 																				<input type="text" placeholder="08:00-18:00" title="Start Time: eg. 8:00" class="txtbox width55 wfh_time{{ $parent.$index+1 }}" ng-model="$wfh_days[$parent.$index].ACTIVITIES[$index].start_time" required>
