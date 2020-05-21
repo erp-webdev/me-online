@@ -62,8 +62,8 @@
 																		<tr ng-repeat="activity in wfh_day.ACTIVITIES">
 																			<td style="border-bottom: 0px; margin: 0; padding: 0" >
 																				<!-- PATTERN ([0-1]{1}[0-9]{1}|20|21|22|23):[0-5]{1}[0-9]{1}-([0-1]{1}[0-9]{1}|20|21|22|23):[0-5]{1}[0-9]{1} -->
-																				<input type="text" readonly title="Start Time: eg. 8:00" class="txtbox width55 wfh_time{{ $parent.$index+1 }} timepick" ng-model="wfh_days[$parent.$index].ACTIVITIES[$index].start_time" required>
-																				<input type="text" readonly title="End Time: eg. 9:00" class="txtbox width55 wfh_time{{ $parent.$index+1 }} timepick" ng-model="wfh_days[$parent.$index].ACTIVITIES[$index].end_time" required>
+																				<input type="text" readonly title="Start Time: eg. 8:00" timepicker class="txtbox width55 wfh_time{{ $parent.$index+1 }} timepick" ng-model="wfh_days[$parent.$index].ACTIVITIES[$index].start_time" required>
+																				<input type="text" readonly title="End Time: eg. 9:00" timepicker class="txtbox width55 wfh_time{{ $parent.$index+1 }} timepick" ng-model="wfh_days[$parent.$index].ACTIVITIES[$index].end_time" required>
 																			</td>
 																			<td style="border-bottom: 0px; margin: 0; padding: 0" width="150px">
 																				<textarea class="txtarea wfh_act{{ $parent.$index+1 }}" name="" id="" cols="30" rows="1" ng-model="wfh_days[$parent.$index].ACTIVITIES[$index].act" required></textarea>
@@ -129,6 +129,16 @@
 	$(document).ready(function () {
 
 		var wfh_app = angular.module('WFHApp', []);
+		wfh_app.directive('timepicker', function(){
+			return {
+				restrict: 'A',
+				link: function(scope, element, attrs){
+					$('.timepick').timepicker({
+							timeFormat: "hh:mmtt"
+					});
+				}
+			}
+		});
 		wfh_app.controller('WFHController', function WFHController($scope){
 
 
@@ -340,13 +350,8 @@
 
 			// Add new activity item
 			$scope.addItem = function(index, act){
-				$('.timepick').timepicker({
-						timeFormat: "hh:mmtt"
-				});
 				$scope.wfh_days[index].ACTIVITIES.push( angular.copy($scope.item));
-				$('.timepick').timepicker({
-						timeFormat: "hh:mmtt"
-				});
+
 			}
 
 			// Remove item
