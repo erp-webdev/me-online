@@ -300,6 +300,7 @@
 
 			$scope.$watch('wfh_days', function(newVal, oldVal, $scope){
 				// to compute total credit hours
+				console.log(JSON.stringify($scope.wfh_days));
 			}, true);
 
 			// Add new activity item
