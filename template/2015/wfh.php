@@ -404,8 +404,14 @@
 					angular.forEach(value.ACTIVITIES, function (value, key){
 						var start = value.start_time.substr(0,5);
 						var start_type = value.start_time.substr(5,2);
-						var xtime = new Date("01/01/2007 " + start + " " + start_type);
-						console.log(xtime);
+						var time1 = new Date("01/01/2007 " + start + " " + start_type);
+
+						var end = value.end_time.substr(0,5);
+						var end_type = value.start_time.substr(5,2);
+						var time2 = new Date("01/01/2007 " + end + " " + end_type);
+
+						var time_diff = time1 - time2;
+						console.log(time_diff);
 					});
 				});
 				// console.log(JSON.stringify($scope.wfh_days));
