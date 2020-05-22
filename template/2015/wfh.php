@@ -159,10 +159,8 @@
 					},
 					success: function(data) {
 						data = JSON.parse(data);
-						alert(data);
-						alert(data == null);
 
-						if(false){
+						if(!(data == null)){
 
 
 							var start = parseInt(data.STARTTIME);
