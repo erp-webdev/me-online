@@ -146,7 +146,6 @@
 
 			$scope.timePick = function($event){
 
-				alert('clicked!');
 				var date = angular.element($event.currentTarget).attr("attribute1");
 
 				$.ajax(
@@ -165,8 +164,8 @@
 								timeFormat: "hh:mmtt",
 								stepHour: 1,
 								stepMinute: 30,
-								hourMin: 08:00,
-								hourMax: 22
+								hourMin: data.STARTTIME,
+								hourMax: data.ENDTIME
 						});
 
 						angular.element($event.currentTarget).timepicker("show");
