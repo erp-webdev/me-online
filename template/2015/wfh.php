@@ -159,9 +159,10 @@
 					},
 					success: function(data) {
 						data = JSON.parse(data);
+						alert(data);
+						alert(data == null);
 
-						alert(data == 'null');
-						if(data.STARTTIME !== undefined && data.STARTTIME !== '' && data.STARTTIME !== null ){
+						if(false){
 
 
 							var start = parseInt(data.STARTTIME);
