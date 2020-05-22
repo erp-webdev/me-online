@@ -40,7 +40,7 @@
 																<th width="15px"><span class="fa fa-trash-o"></span></th>
 																<th width="100px">Date</th>
 																<th width="60px">Include Break Hours</th>
-																<th width="">Activities</th>
+																<th width="100%">Activities</th>
 															</tr>
 
 															<tr ng-repeat="wfh_day in wfh_days" id="tr{{ $index+1 }}">
