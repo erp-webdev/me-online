@@ -391,8 +391,9 @@
 				console.log(days_data);
 
 				angular.forEach(days_data, function(value, key){
-					console.log(value.ACTIVITIES[0].start_time + " : " + key);
-
+					angular.foreach(value.ACTIVITIES, function (value, key){
+						console.log(value.start_time);
+					});
 				});
 				// console.log(JSON.stringify($scope.wfh_days));
 
