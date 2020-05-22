@@ -363,7 +363,9 @@
 
 					if(index == -1){
 						//do computation here
-						alert('here');
+						angular.forEach($scope.item, function(value, key){
+							console.log(key + " : " + value);
+						});
 						var dtr = {
 							"DTR" : dtrdate,
 							"ACTIVITIES" : [
