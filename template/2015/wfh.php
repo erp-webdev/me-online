@@ -39,7 +39,7 @@
 															<tr>
 																<th width="15px"><span class="fa fa-trash-o"></span></th>
 																<th width="100px">Date</th>
-																<!-- <th width="60px">Total Worked Hours</th> -->
+																<th width="60px">Include Break Hours</th>
 																<th width="">Activities</th>
 															</tr>
 
@@ -53,8 +53,9 @@
 																	<input style="width: 100%" value="{{ wfh_day.CREDIT }}" id="wfh_totalworkedhours{{ $index+1 }}" type="hidden" name="wfh_totalworkedhours[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="wfh_totalworkedhours txtbox">
 																	<input id="wfh_dayin{{ $index+1 }}" type="hidden" name="wfh_dayin[{{ $index+1 }}]" value="{{ wfh_day.DTR | date: 'y-MM-dd'}}" class="wfh_dayin{{ $index+1 }}" />
 																</td>
-																<!-- <td class="centertalign">
-																</td> -->
+																<td class="centertalign">
+																	<input id="include_break{{ $index+1 }}" type="checkbox" name="include_break[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="mdtr_absent"  title="Included">
+																</td>
 																<td class="centertalign" >
 																	<textarea rows="1" style="display: none;" name="wfh_activity[{{ $index+1 }}]" id="wfh_activity{{ $index+1 }}" class="txtbox"></textarea>
 																	<table>
