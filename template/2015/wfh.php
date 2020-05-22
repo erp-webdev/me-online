@@ -387,7 +387,7 @@
 			$scope.$watch('wfh_days', function(newVal, oldVal, $scope){
 				// to compute total credit hours
 				var days_data = JSON.stringify($scope.wfh_days);
-
+				days_data = JSON.parse(days_data);
 				console.log(days_data);
 				// console.log(JSON.stringify($scope.wfh_days));
 
