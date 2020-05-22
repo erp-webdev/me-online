@@ -157,7 +157,7 @@
 						$("#loading").hide();
 					},
 					success: function(data) {
-						if(data.STARTTIME != 'undefined' || data.STARTTIME != '' || data.STARTTIME != null ){
+						if(data.STARTTIME != 'undefined' && data.STARTTIME != '' && data.STARTTIME && null ){
 							data = JSON.parse(data);
 							console.log(data.STARTTIME);
 							var start = parseInt(data.STARTTIME);
