@@ -165,7 +165,7 @@
 								timeFormat: "hh:mmtt",
 								stepHour: 1,
 								stepMinute: 30,
-								hourMin: 08,
+								hourMin: 08:00,
 								hourMax: 22
 						});
 
