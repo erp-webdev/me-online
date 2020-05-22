@@ -162,20 +162,21 @@
 						data = JSON.parse(data);
 
 						if(!(data == null)){
+							if(!(data.STARTTIME == null)){
 
-							var start = parseInt(data.STARTTIME);
-							var end = parseInt(data.ENDTIME);
+								var start = parseInt(data.STARTTIME);
+								var end = parseInt(data.ENDTIME);
 
-							angular.element($event.currentTarget).timepicker({
-									timeFormat: "hh:mmtt",
-									stepHour: 1,
-									stepMinute: 30,
-									hourMin: start,
-									hourMax: end
-							});
+								angular.element($event.currentTarget).timepicker({
+										timeFormat: "hh:mmtt",
+										stepHour: 1,
+										stepMinute: 30,
+										hourMin: start,
+										hourMax: end
+								});
 
-							angular.element($event.currentTarget).timepicker("show");
-
+								angular.element($event.currentTarget).timepicker("show");
+							}
 						}
 
 					}
