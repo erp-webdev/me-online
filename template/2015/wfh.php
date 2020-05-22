@@ -158,14 +158,14 @@
 					},
 					success: function(data) {
 						data = JSON.parse(data);
-						console.log(data.SHIFT);
+						console.log(data.ENDTIME);
 
 						angular.element($event.currentTarget).timepicker({
 								timeFormat: "hh:mmtt",
 								stepHour: 1,
 								stepMinute: 30,
 								hourMin: 08,
-								hourMax: 18
+								hourMax: data.ENDTIME
 						});
 
 						angular.element($event.currentTarget).timepicker("show");
