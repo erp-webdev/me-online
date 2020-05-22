@@ -160,7 +160,7 @@
 					success: function(data) {
 						data = JSON.parse(data);
 
-						alert(data  !== undefined);
+						alert(data == 'null');
 						if(data.STARTTIME !== undefined && data.STARTTIME !== '' && data.STARTTIME !== null ){
 
 
