@@ -1972,7 +1972,7 @@ class mainsql {
 
     function get_shiftdtr($empid, $date, $dbname)
     {
-    $sql = "select '060' as SHIFT, '08:00:00.0000000' as STARTTIME, '18:00:00.0000000' as STARTTIME, '10' as NUMHRS";
+      $sql = "select '060' as SHIFT, '08:00:00.0000000' as STARTTIME, '18:00:00.0000000' as STARTTIME, '10' as NUMHRS";
       $result = $this->get_row($sql);
 
       return $result[0];
