@@ -162,7 +162,6 @@
 
 						if(!(data == null)){
 
-
 							var start = parseInt(data.STARTTIME);
 							var end = parseInt(data.ENDTIME);
 
