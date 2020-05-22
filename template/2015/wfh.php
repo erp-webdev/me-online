@@ -54,7 +54,7 @@
 																	<input id="wfh_dayin{{ $index+1 }}" type="hidden" name="wfh_dayin[{{ $index+1 }}]" value="{{ wfh_day.DTR | date: 'y-MM-dd'}}" class="wfh_dayin{{ $index+1 }}" />
 																</td>
 																<td class="centertalign">
-																	<input id="include_break{{ $index+1 }}" value="0" ng-click="includeFunction($event)" type="checkbox" name="include_break[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="mdtr_absent"  title="Included">
+																	<input id="include_break{{ $index+1 }}" value="0" attribute1="{{ wfh_day.DTR }}" ng-click="includeFunction($event)" type="checkbox" name="include_break[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="mdtr_absent"  title="Included">
 																</td>
 																<td class="centertalign" >
 																	<textarea rows="1" style="display: none;" name="wfh_activity[{{ $index+1 }}]" id="wfh_activity{{ $index+1 }}" class="txtbox"></textarea>
@@ -397,6 +397,7 @@
 			$scope.includeFunction = function($event){
 
 				var breaktime = angular.element($event.currentTarget).val();
+				var date = angular.element($event.currentTarget).attr("attribute1");
 
 				if(breaktime == 0){
 					breaktime = 1;
@@ -406,6 +407,17 @@
 
 				angular.element($event.currentTarget).val(breaktime);
 
+				var days_data = JSON.stringify($scope.wfh_days);
+				days_data = JSON.parse(days_data);
+
+				angular.forEach(days_data, function(value, key){
+					if(value.DTR == date){
+						value.BREAKTIME = breaktime;
+					}
+				});
+				$scope.wfh_days = days_data;
+
+				console.log($scope.wfh_days);
 			}
 
 
@@ -438,7 +450,6 @@
 				});
 				$scope.wfh_days = days_data;
 
-				console.log(JSON.stringify($scope.wfh_days));
 
 				// for(var i = 0; i < $scope.wfh_days.length; i++){
 				// 	$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].activity));
