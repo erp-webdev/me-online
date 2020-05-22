@@ -54,7 +54,7 @@
 																	<input id="wfh_dayin{{ $index+1 }}" type="hidden" name="wfh_dayin[{{ $index+1 }}]" value="{{ wfh_day.DTR | date: 'y-MM-dd'}}" class="wfh_dayin{{ $index+1 }}" />
 																</td>
 																<td class="centertalign">
-																	<input id="include_break{{ $index+1 }}" type="checkbox" name="include_break[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="mdtr_absent"  title="Included">
+																	<input id="include_break{{ $index+1 }}" ng-click="includeFunction($index+1)" type="checkbox" name="include_break[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="mdtr_absent"  title="Included">
 																</td>
 																<td class="centertalign" >
 																	<textarea rows="1" style="display: none;" name="wfh_activity[{{ $index+1 }}]" id="wfh_activity{{ $index+1 }}" class="txtbox"></textarea>
@@ -256,6 +256,12 @@
 			$scope.date_original = $scope.wfh_to;
 
 			$scope.wfh_days = [];
+
+			$scope.includeFunction(key){
+
+				alert(angular.element($event.currentTarget).val());
+
+			}
 
 			function compare(a, b) {
 				// Use toUpperCase() to ignore character casing
