@@ -157,6 +157,7 @@
 						$("#loading").hide();
 					},
 					success: function(data) {
+
 						console.log(data);
 						data = JSON.parse(data);
 
