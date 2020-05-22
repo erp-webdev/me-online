@@ -263,8 +263,10 @@
 
 				if(breaktime == 0){
 					breaktime = 1;
+				}else{
+					breaktime = 0;
 				}
-				
+
 				angular.element($event.currentTarget).val(breaktime);
 				alert(breaktime);
 
