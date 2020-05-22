@@ -268,7 +268,7 @@
 				}
 
 				angular.element($event.currentTarget).val(breaktime);
-				alert(breaktime);
+				alert($scope.include_break);
 
 			}
 
