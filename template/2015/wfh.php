@@ -438,14 +438,14 @@
 						var end_type = value.end_time.substr(5,2);
 						var time2 = new Date("01/01/2007 " + end + " " + end_type).getHours();
 
-						var time_diff = time2 - time1 - value.BREAKTIME;
+						var time_diff = time2 - time1;
 						if(time_diff < 0){
 							time_diff = 0;
 						}
 						daytime_total = daytime_total + time_diff;
 
 					});
-					value.CREDIT = daytime_total ;
+					value.CREDIT = daytime_total - value.BREAKTIME;
 
 				});
 				$scope.wfh_days = days_data;
