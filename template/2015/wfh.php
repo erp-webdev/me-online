@@ -416,7 +416,7 @@
 
 					});
 					value.CREDIT = daytime_total;
-					console.log(($scope.wfh_days));
+					console.log((days_data));
 
 				});
 				// console.log(JSON.stringify($scope.wfh_days));
