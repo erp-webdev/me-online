@@ -164,8 +164,8 @@
 								timeFormat: "hh:mmtt",
 								stepHour: 1,
 								stepMinute: 30,
-								hourMin: data.STARTTIME,
-								hourMax: data.ENDTIME
+								hourMin: 08,
+								hourMax: 18
 						});
 
 						angular.element($event.currentTarget).timepicker("show");
