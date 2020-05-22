@@ -270,7 +270,6 @@
 
 				angular.element($event.currentTarget).val(breaktime);
 				$scope.break_time = breaktime;
-				alert($scope.break_time);
 
 			}
 
@@ -434,7 +433,7 @@
 						daytime_total = daytime_total + time_diff;
 
 					});
-					value.CREDIT = daytime_total;
+					value.CREDIT = daytime_total - $scope.break_time;
 
 				});
 				$scope.wfh_days = days_data;
