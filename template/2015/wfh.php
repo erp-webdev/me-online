@@ -438,7 +438,7 @@
 						var end_type = value.end_time.substr(5,2);
 						var time2 = new Date("01/01/2007 " + end + " " + end_type).getHours();
 
-						var time_diff = time2 - time1;
+						var time_diff = time2 - time1 - value.BREAKTIME;
 						if(time_diff < 0){
 							time_diff = 0;
 						}
