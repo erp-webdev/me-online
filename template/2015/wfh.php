@@ -407,7 +407,7 @@
 						var time1 = new Date("01/01/2007 " + start + " " + start_type).getHours();
 
 						var end = value.end_time.substr(0,5);
-						var end_type = value.start_time.substr(5,2);
+						var end_type = value.end_time.substr(5,2);
 						var time2 = new Date("01/01/2007 " + end + " " + end_type).getHours();
 
 						var time_diff = time2 - time1;
