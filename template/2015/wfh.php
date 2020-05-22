@@ -256,6 +256,7 @@
 			$scope.date_original = $scope.wfh_to;
 
 			$scope.wfh_days = [];
+			$scope.break_time = 0;
 
 			$scope.includeFunction = function($event){
 
@@ -268,7 +269,8 @@
 				}
 
 				angular.element($event.currentTarget).val(breaktime);
-				alert($scope.include_break);
+				$scope.break_time = breaktime;
+				alert($scope.break_time);
 
 			}
 
