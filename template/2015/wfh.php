@@ -402,7 +402,7 @@
 
 				angular.forEach(days_data, function(value, key){
 					angular.forEach(value.ACTIVITIES, function (value, key){
-						var xtime = new Date("01/01/2007" + value.start_time);
+						var xtime = new Date("01/01/2007 " + value.start_time);
 						console.log(xtime);
 					});
 				});
