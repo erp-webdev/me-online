@@ -148,38 +148,46 @@
 
 				var date = angular.element($event.currentTarget).attr("attribute1");
 
-				$.ajax(
-				{
-					url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
-					data: "date=" + date,
-					type: "POST",
-					complete: function(){
-						$("#loading").hide();
-					},
-					success: function(data) {
+				// $.ajax(
+				// {
+				// 	url: "<?php //echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
+				// 	data: "date=" + date,
+				// 	type: "POST",
+				// 	complete: function(){
+				// 		$("#loading").hide();
+				// 	},
+				// 	success: function(data) {
+				//
+				// 		console.log(data);
+				// 		data = JSON.parse(data);
+				//
+				// 		if(!(data == null)){
+				// 			if(!(data.STARTTIME == null)){
+				//
+				// 				var start = parseInt(data.STARTTIME);
+				// 				var end = parseInt(data.ENDTIME);
+				//
+				// 				angular.element($event.currentTarget).timepicker({
+				// 						timeFormat: "hh:mmtt",
+				// 						stepHour: 1,
+				// 						stepMinute: 30,
+				// 						hourMin: start,
+				// 						hourMax: end
+				// 				});
+				//
+				// 				angular.element($event.currentTarget).timepicker("show");
+				// 			}
+				// 		}
+				//
+				// 	}
+				// });
 
-						console.log(data);
-						data = JSON.parse(data);
-
-						if(!(data == null)){
-							if(!(data.STARTTIME == null)){
-
-								var start = parseInt(data.STARTTIME);
-								var end = parseInt(data.ENDTIME);
-
-								angular.element($event.currentTarget).timepicker({
-										timeFormat: "hh:mmtt",
-										stepHour: 1,
-										stepMinute: 30,
-										hourMin: start,
-										hourMax: end
-								});
-
-								angular.element($event.currentTarget).timepicker("show");
-							}
-						}
-
-					}
+				angular.element($event.currentTarget).timepicker({
+						timeFormat: "hh:mmtt",
+						stepHour: 1,
+						stepMinute: 30,
+						hourMin: 0,
+						hourMax: 24
 				});
 
 
@@ -392,7 +400,8 @@
 
 				angular.forEach(days_data, function(value, key){
 					angular.forEach(value.ACTIVITIES, function (value, key){
-						console.log(value.start_time);
+						var timex = new Date(angular.copy(value.start_time))
+						console.log(timex);
 					});
 				});
 				// console.log(JSON.stringify($scope.wfh_days));
