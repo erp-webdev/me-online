@@ -159,8 +159,8 @@
 					success: function(data) {
 						data = JSON.parse(data);
 						console.log(data.STARTTIME);
-						var start = 08;
-						var end = 18;
+						var start = parseInt(data.STARTTIME);
+						var end = parseInt(data.ENDTIME);
 
 						angular.element($event.currentTarget).timepicker({
 								timeFormat: "hh:mmtt",
