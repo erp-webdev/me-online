@@ -158,11 +158,11 @@
 						$("#loading").hide();
 					},
 					success: function(data) {
-						console.log(data !== undefined);
-						if((data !== undefined) && (data !== null)){
+						data = JSON.parse(data);
 
-							data = JSON.parse(data);
-							console.log(data.STARTTIME);
+						if(data.STARTTIME != 'undefined' && data.STARTTIME != '' && data.STARTTIME != null ){
+
+
 							var start = parseInt(data.STARTTIME);
 							var end = parseInt(data.ENDTIME);
 
@@ -175,6 +175,7 @@
 							});
 
 							angular.element($event.currentTarget).timepicker("show");
+
 						}
 
 					}
