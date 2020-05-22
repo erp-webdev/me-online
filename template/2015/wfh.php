@@ -190,6 +190,8 @@
 						hourMax: 24
 				});
 
+				angular.element($event.currentTarget).timepicker("show");
+
 
 			}
 
