@@ -146,7 +146,6 @@
 
 			$scope.timePick = function($event){
 
-				alert('clicked!');
 				var date = angular.element($event.currentTarget).attr("attribute1");
 
 				$.ajax(
