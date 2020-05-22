@@ -362,10 +362,6 @@
 					}
 
 					if(index == -1){
-						//do computation here
-						angular.forEach($scope.item, function(value, key){
-							console.log(key + " : " + value);
-						});
 						var dtr = {
 							"DTR" : dtrdate,
 							"ACTIVITIES" : [
@@ -390,7 +386,10 @@
 
 			$scope.$watch('wfh_days', function(newVal, oldVal, $scope){
 				// to compute total credit hours
-				console.log(JSON.stringify($scope.wfh_days));
+				var days_data = JSON.parse($scope.wfh_days);
+
+				console.log(days_data);
+				// console.log(JSON.stringify($scope.wfh_days));
 
 				// for(var i = 0; i < $scope.wfh_days.length; i++){
 				// 	$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].activity));
