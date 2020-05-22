@@ -402,7 +402,8 @@
 
 				angular.forEach(days_data, function(value, key){
 					angular.forEach(value.ACTIVITIES, function (value, key){
-						console.log(value.start_time.getHours());
+						var xtime = new Date("01/01/2007" + value.start_time);
+						console.log(xtime);
 					});
 				});
 				// console.log(JSON.stringify($scope.wfh_days));
