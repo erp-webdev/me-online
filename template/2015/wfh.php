@@ -159,7 +159,7 @@
 					},
 					success: function(data) {
 						console.log(data);
-						if(data != '' && data != null){
+						if(data != null){
 							data = JSON.parse(data);
 							console.log(data.STARTTIME);
 							var start = parseInt(data.STARTTIME);
