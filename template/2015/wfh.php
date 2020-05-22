@@ -416,9 +416,10 @@
 
 					});
 					value.CREDIT = daytime_total;
-					console.log((days_data));
 
 				});
+				$scope.wfh_days = days_data;
+				
 				// console.log(JSON.stringify($scope.wfh_days));
 
 				// for(var i = 0; i < $scope.wfh_days.length; i++){
