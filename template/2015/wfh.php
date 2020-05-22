@@ -362,6 +362,8 @@
 					}
 
 					if(index == -1){
+						//do computation here
+						alert('here');
 						var dtr = {
 							"DTR" : dtrdate,
 							"ACTIVITIES" : [
