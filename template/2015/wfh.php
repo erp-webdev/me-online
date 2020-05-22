@@ -256,22 +256,8 @@
 			$scope.date_original = $scope.wfh_to;
 
 			$scope.wfh_days = [];
-			$scope.break_time = 0;
 
-			$scope.includeFunction = function($event){
 
-				var breaktime = angular.element($event.currentTarget).val();
-
-				if(breaktime == 0){
-					breaktime = 1;
-				}else{
-					breaktime = 0;
-				}
-
-				angular.element($event.currentTarget).val(breaktime);
-				$scope.break_time = breaktime;
-
-			}
 
 			function compare(a, b) {
 				// Use toUpperCase() to ignore character casing
@@ -393,7 +379,8 @@
 							"ACTIVITIES" : [
 								angular.copy($scope.item)
 							],
-							"CREDIT":0
+							"CREDIT":0,
+							"BREAKTIME":0
 						}
 
 						$scope.wfh_days.push( dtr );
@@ -407,6 +394,19 @@
 
 			});
 
+			$scope.includeFunction = function($event){
+
+				var breaktime = angular.element($event.currentTarget).val();
+
+				if(breaktime == 0){
+					breaktime = 1;
+				}else{
+					breaktime = 0;
+				}
+
+				angular.element($event.currentTarget).val(breaktime);
+
+			}
 
 
 			$scope.$watch('wfh_days', function(newVal, oldVal, $scope){
@@ -438,7 +438,7 @@
 				});
 				$scope.wfh_days = days_data;
 
-				// console.log(JSON.stringify($scope.wfh_days));
+				console.log(JSON.stringify($scope.wfh_days));
 
 				// for(var i = 0; i < $scope.wfh_days.length; i++){
 				// 	$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].activity));
