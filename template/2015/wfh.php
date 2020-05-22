@@ -187,7 +187,7 @@
 						stepHour: 1,
 						stepMinute: 30,
 						hourMin: 0,
-						hourMax: 24
+						hourMax: 23
 				});
 
 				angular.element($event.currentTarget).timepicker("show");
@@ -412,6 +412,9 @@
 						var time2 = new Date("01/01/2007 " + end + " " + end_type).getHours();
 
 						var time_diff = time2 - time1;
+						if(time_diff < 0){
+							time_diff = 0;
+						}
 						daytime_total = daytime_total + time_diff;
 
 					});
@@ -419,7 +422,7 @@
 
 				});
 				$scope.wfh_days = days_data;
-				
+
 				// console.log(JSON.stringify($scope.wfh_days));
 
 				// for(var i = 0; i < $scope.wfh_days.length; i++){
