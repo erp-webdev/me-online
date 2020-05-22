@@ -159,7 +159,7 @@
 					},
 					success: function(data) {
 
-
+						if(data != '' && data != null){
 							data = JSON.parse(data);
 							console.log(data.STARTTIME);
 							var start = parseInt(data.STARTTIME);
@@ -174,7 +174,7 @@
 							});
 
 							angular.element($event.currentTarget).timepicker("show");
-
+						}
 
 					}
 				});
