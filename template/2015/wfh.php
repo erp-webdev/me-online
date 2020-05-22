@@ -391,7 +391,7 @@
 				console.log(days_data);
 
 				angular.forEach(days_data, function(value, key){
-					console.log(value + " : " + key);
+					console.log(value.DTR + " : " + key);
 
 				});
 				// console.log(JSON.stringify($scope.wfh_days));
