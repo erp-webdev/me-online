@@ -158,7 +158,7 @@
 						$("#loading").hide();
 					},
 					success: function(data) {
-
+						console.log(data);
 						if(data != '' && data != null){
 							data = JSON.parse(data);
 							console.log(data.STARTTIME);
