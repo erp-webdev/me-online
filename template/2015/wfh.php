@@ -391,8 +391,9 @@
 
 			});
 
-			// $scope.$watch('wfh_activity', function(newVal, oldVal, $scope){
-
+			$scope.$watch('include_break', function(newVal, oldVal, $scope){
+				alert('clicked!');
+			}
 
 			$scope.$watch('wfh_days', function(newVal, oldVal, $scope){
 				// to compute total credit hours
