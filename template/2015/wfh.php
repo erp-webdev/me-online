@@ -445,7 +445,11 @@
 						daytime_total = daytime_total + time_diff;
 
 					});
-					value.CREDIT = daytime_total - value.BREAKTIME;
+					var credit_total = daytime_total - value.BREAKTIME;
+					if(credit_total < 0){
+						credit_total = 0;
+					}
+					value.CREDIT = credit_total;
 
 				});
 				$scope.wfh_days = days_data;
