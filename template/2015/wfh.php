@@ -410,7 +410,7 @@
 						var end_type = value.start_time.substr(5,2);
 						var time2 = new Date("01/01/2007 " + end + " " + end_type);
 
-						var time_diff = time1 - time2;
+						var time_diff = time2 - time1;
 						console.log(time_diff);
 					});
 				});
