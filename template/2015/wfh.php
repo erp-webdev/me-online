@@ -398,7 +398,6 @@
 				// to compute total credit hours
 				var days_data = JSON.stringify($scope.wfh_days);
 				days_data = JSON.parse(days_data);
-				console.log(days_data);
 
 				angular.forEach(days_data, function(value, key){
 
@@ -417,7 +416,7 @@
 
 					});
 					value.CREDIT = daytime_total;
-					console.log(JSON.stringify($scope.wfh_days));
+					console.log(($scope.wfh_days));
 
 				});
 				// console.log(JSON.stringify($scope.wfh_days));
