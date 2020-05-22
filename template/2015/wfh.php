@@ -164,7 +164,7 @@
 								timeFormat: "hh:mmtt",
 								stepHour: 1,
 								stepMinute: 30,
-								hourMin: 8,
+								hourMin: data.STARTTIME,
 								hourMax: data.ENDTIME
 						});
 
