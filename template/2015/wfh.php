@@ -259,7 +259,12 @@
 
 			$scope.includeFunction = function($event){
 
-				alert(angular.element($event.currentTarget).val());
+				var breaktime = angular.element($event.currentTarget).val();
+
+				if(breaktime == 0){
+					breaktime = 1;
+				}
+				alert(breaktime);
 
 			}
 
