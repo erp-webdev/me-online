@@ -393,7 +393,7 @@
 
 			$scope.$watch('include_break', function(newVal, oldVal, $scope){
 				alert('clicked!');
-			}
+			}, true);
 
 			$scope.$watch('wfh_days', function(newVal, oldVal, $scope){
 				// to compute total credit hours
