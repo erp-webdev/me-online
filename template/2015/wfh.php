@@ -391,7 +391,7 @@
 				console.log(days_data);
 
 				angular.forEach(days_data, function(value, key){
-					angular.foreach(value.ACTIVITIES, function (value, key){
+					angular.forEach(value.ACTIVITIES, function (value, key){
 						console.log(value.start_time);
 					});
 				});
