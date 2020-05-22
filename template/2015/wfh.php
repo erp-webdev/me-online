@@ -161,7 +161,7 @@
 
 
 							data = JSON.parse(data);
-
+							console.log(data.STARTTIME);
 							var start = parseInt(data.STARTTIME);
 							var end = parseInt(data.ENDTIME);
 
