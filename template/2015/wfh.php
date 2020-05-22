@@ -401,6 +401,7 @@
 				console.log(days_data);
 
 				angular.forEach(days_data, function(value, key){
+					var daytime_total = 0;
 					angular.forEach(value.ACTIVITIES, function (value, key){
 						var start = value.start_time.substr(0,5);
 						var start_type = value.start_time.substr(5,2);
@@ -411,7 +412,8 @@
 						var time2 = new Date("01/01/2007 " + end + " " + end_type).getHours();
 
 						var time_diff = time2 - time1;
-						console.log(time_diff);
+						daytime_total = daytime_total + time_diff;
+						console.log(daytime_total);
 					});
 				});
 				// console.log(JSON.stringify($scope.wfh_days));
