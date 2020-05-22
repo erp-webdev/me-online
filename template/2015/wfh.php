@@ -160,8 +160,8 @@
 					success: function(data) {
 						data = JSON.parse(data);
 
-						alert(data.STARTTIME);
-						if(data.STARTTIME != 'undefined' && data.STARTTIME != '' && data.STARTTIME != null ){
+						alert(data.STARTTIME  !== undefined);
+						if(data.STARTTIME !== undefined && data.STARTTIME !== '' && data.STARTTIME !== null ){
 
 
 							var start = parseInt(data.STARTTIME);
