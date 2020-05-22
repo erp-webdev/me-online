@@ -159,8 +159,8 @@
 					},
 					success: function(data) {
 						console.log(data);
-						if(data === null){
-						}else{
+						if((data !== undefined) && (data !== null)){
+
 							data = JSON.parse(data);
 							console.log(data.STARTTIME);
 							var start = parseInt(data.STARTTIME);
