@@ -160,6 +160,7 @@
 					success: function(data) {
 						data = JSON.parse(data);
 						console.log(data.SHIFT);
+
 						angular.element($event.currentTarget).timepicker({
 								timeFormat: "hh:mmtt",
 								stepHour: 1,
@@ -167,6 +168,10 @@
 								hourMin: 6,
 								hourMax: 22
 						});
+
+						angular.element($event.currentTarget).timepicker("show");
+
+
 					}
 				});
 
