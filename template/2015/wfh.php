@@ -257,7 +257,7 @@
 
 			$scope.wfh_days = [];
 
-			$scope.includeFunction(key){
+			$scope.includeFunction = function(key){
 
 				alert(angular.element($event.currentTarget).val());
 
