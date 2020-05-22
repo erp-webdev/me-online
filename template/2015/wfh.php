@@ -158,7 +158,7 @@
 						$("#loading").hide();
 					},
 					success: function(data) {
-						console.log(data);
+						console.log(data !== null);
 						if((data !== undefined) && (data !== null)){
 
 							data = JSON.parse(data);
