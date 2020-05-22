@@ -157,21 +157,22 @@
 						$("#loading").hide();
 					},
 					success: function(data) {
-						data = JSON.parse(data);
-						console.log(data.STARTTIME);
-						var start = parseInt(data.STARTTIME);
-						var end = parseInt(data.ENDTIME);
+						if(data){
+							data = JSON.parse(data);
+							console.log(data.STARTTIME);
+							var start = parseInt(data.STARTTIME);
+							var end = parseInt(data.ENDTIME);
 
-						angular.element($event.currentTarget).timepicker({
-								timeFormat: "hh:mmtt",
-								stepHour: 1,
-								stepMinute: 30,
-								hourMin: start,
-								hourMax: end
-						});
+							angular.element($event.currentTarget).timepicker({
+									timeFormat: "hh:mmtt",
+									stepHour: 1,
+									stepMinute: 30,
+									hourMin: start,
+									hourMax: end
+							});
 
-						angular.element($event.currentTarget).timepicker("show");
-
+							angular.element($event.currentTarget).timepicker("show");
+						}
 
 					}
 				});
