@@ -38,8 +38,8 @@
 														<table width="100%" class="tdata vsmalltext" border="0" cellspacing="0">
 															<tr>
 																<th width="15px"><span class="fa fa-trash-o"></span></th>
-																<th width="100px">Date</th>
-																<th width="60px">Include Break Hours</th>
+																<th width="150px">Date</th>
+																<th width="60px">With Break Hours</th>
 																<th width="100%">Activities</th>
 															</tr>
 
@@ -65,7 +65,7 @@
 																				<input type="text" ng-click="timePick($event)" attribute1="{{wfh_day.DTR}}" readonly title="Start Time: eg. 8:00" timepicker class="txtbox width55 wfh_time{{ $parent.$index+1 }} timepick_angular" ng-model="wfh_days[$parent.$index].ACTIVITIES[$index].start_time" required>
 																				<input type="text" ng-click="timePick($event)" attribute1="{{wfh_day.DTR}}" readonly title="End Time: eg. 9:00" timepicker class="txtbox width55 wfh_time{{ $parent.$index+1 }} timepick_angular" ng-model="wfh_days[$parent.$index].ACTIVITIES[$index].end_time" required>
 																			</td>
-																			<td style="border-bottom: 0px; margin: 0; padding: 0" width="150px">
+																			<td style="border-bottom: 0px; margin: 0; padding: 0" width="100%">
 																				<textarea class="txtarea wfh_act{{ $parent.$index+1 }}" name="" id="" cols="30" rows="1" ng-model="wfh_days[$parent.$index].ACTIVITIES[$index].act" required></textarea>
 																			</td>
 																			<td style="border-bottom: 0px; margin: 0; padding: 0; text-align:left" width="120px">
