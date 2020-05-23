@@ -472,11 +472,11 @@
 					angular.forEach(value.ACTIVITIES, function (value, key){
 						var start = value.start_time.substr(0,5);
 						var start_type = value.start_time.substr(6,2);
-						var time1 = new Date("01/01/2007 " + start + " " + start_type).getMinutes();
+						var time1 =  new Date("01/01/2007 " + start + " " + start_type).getHours() * 60 + new Date("01/01/2007 " + start + " " + start_type).getMinutes();
 
 						var end = value.end_time.substr(0,5);
 						var end_type = value.end_time.substr(6,2);
-						var time2 = new Date("01/01/2007 " + end + " " + end_type).getMinutes();
+						var time2 =new Date("01/01/2007 " + end + " " + end_type).getHours() * 60 + new Date("01/01/2007 " + end + " " + end_type).getMinutes();
 
 						var time_diff = time2 - time1;
 						if(time_diff < 0){
