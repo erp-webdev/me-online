@@ -60,8 +60,8 @@
 																		<tr ng-repeat="activity in wfh_day.ACTIVITIES">
 																			<td style="border-bottom: 0px; margin: 0; padding: 0" >
 																				<!-- PATTERN ([0-1]{1}[0-9]{1}|20|21|22|23):[0-5]{1}[0-9]{1}-([0-1]{1}[0-9]{1}|20|21|22|23):[0-5]{1}[0-9]{1} -->
-																				<input type="text" ng-click="timePick($event)" attribute1="{{wfh_day.DTR}}" readonly title="Start Time: eg. 8:00" timepicker class="txtbox width55 wfh_time{{ $parent.$index+1 }} timepick_angular" ng-model="wfh_days[$parent.$index].ACTIVITIES[$index].start_time" required>
-																				<input type="text" ng-click="timePick($event)" attribute1="{{wfh_day.DTR}}" readonly title="End Time: eg. 9:00" timepicker class="txtbox width55 wfh_time{{ $parent.$index+1 }} timepick_angular" ng-model="wfh_days[$parent.$index].ACTIVITIES[$index].end_time" required>
+																				<input type="text" ng-click="timePick($event)" attribute1="{{wfh_day.DTR}}" readonly title="Start Time: eg. 8:00" timepicker class="txtbox width55 wfh_time{{ $parent.$index+1 }} timepick_angular" ng-model="wfh_days[$parent.$index].ACTIVITIES[$index].start_time" data-dtr_index="{{ $parent.$index }}" required>
+																				<input type="text" ng-click="timePick($event)" attribute1="{{wfh_day.DTR}}" readonly title="End Time: eg. 9:00" timepicker class="txtbox width55 wfh_time{{ $parent.$index+1 }} timepick_angular" data-dtr_index="{{ $parent.$index }}" ng-model="wfh_days[$parent.$index].ACTIVITIES[$index].end_time" required>
 																				<br>
 																				<label ng-show="$index == wfh_days[$parent.$index].ACTIVITIES.length - 1">
 																					<input id="include_break{{ $index+1 }}" value="0" attribute1="{{ wfh_day.DTR }}" ng-click="includeFunction($event)" type="checkbox" name="include_break[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="mdtr_absent"  title="Included" > With 1 HR Break
@@ -191,13 +191,18 @@
 				//
 				// 	}
 				// });
+				
+				function getMinVal = function(range){
+					console.log(range);
+				}
 
 				angular.element($event.currentTarget).timepicker({
 						timeFormat: "hh:mmtt",
 						stepHour: 1,
 						stepMinute: 15,
 						hourMin: 0,
-						hourMax: 23
+						hourMax: 23,
+						defaultValue: getMinVal(this.data('dtr_index'))
 				});
 
 				angular.element($event.currentTarget).timepicker("show");
@@ -432,6 +437,12 @@
 
 
 			$scope.$watch('wfh_days', function(newVal, oldVal, $scope){
+				/
+				// has an duplicate computation of hours
+				// ex: 8am - 12am = 4hrs
+				//     9am - 10am = 1hr 
+				//     4hrs + 1hr = 5 hrs where it should be 4hrs bec 9am - 10 am is included within 8am - 12am
+
 				// to compute total credit hours
 				var days_data = JSON.stringify($scope.wfh_days);
 				days_data = JSON.parse(days_data);
@@ -464,11 +475,14 @@
 				});
 
 				$scope.wfh_days = days_data;
-
+				
 				// for(var i = 0; i < $scope.wfh_days.length; i++){
 				// 	$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].activity));
 				// }
 
+
+				/* computation of credited hours */
+				
 			}, true);
 
 			// Add new activity item
