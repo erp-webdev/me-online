@@ -192,7 +192,8 @@
 				// 	}
 				// });
 				
-				var getMinVal = function(activities){
+				var getDefaultTime = function(event){
+					activities = event.$parent.wfh_day.ACTIVITIES;
 					if(activities[0].start_time == '' && activities.length <= 1)
 						return '08:00am';
 
@@ -205,7 +206,7 @@
 						stepMinute: 15,
 						hourMin: 0,
 						hourMax: 23,
-						defaultValue: getMinVal(this.$parent.wfh_day.ACTIVITIES)
+						defaultValue: getDefaultTime(this)
 				});
 
 				angular.element($event.currentTarget).timepicker("show");
