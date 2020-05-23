@@ -192,22 +192,26 @@
 				// 	}
 				// });
 				
-				var getDefaultTime = function(event){
-					activities = event.$parent.wfh_day.ACTIVITIES;
-					if(activities[0].start_time == '' && activities.length <= 1)
-						return '08:00am';
-
-					return activities[activities.length - 2].end_time;
-				}
-
-				angular.element($event.currentTarget).timepicker({
+				var getTimeOption = function(event){
+					var opt = {
 						timeFormat: "hh:mmtt",
 						stepHour: 1,
 						stepMinute: 15,
 						hourMin: 0,
-						hourMax: 23,
-						defaultValue: getDefaultTime(this)
-				});
+						hourMax: 23
+					}
+
+					activities = event.$parent.wfh_day.ACTIVITIES;
+
+					if(event.$index == 0){
+						opt.push({defaultValue: '08:00'})
+					}
+
+					return opt;
+
+				}
+
+				angular.element($event.currentTarget).timepicker(getTimeOption(this));
 
 				angular.element($event.currentTarget).timepicker("show");
 
