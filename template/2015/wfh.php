@@ -218,7 +218,7 @@
 						if($($event.currentTarget).attr('id') == 'start_time'){
 							opt.maxTime = event.$parent.wfh_day.ACTIVITIES[event.$index - 1].end_time;
 						}else{
-							opt.maxTime = event.activity.start_time;
+							opt.minTime = event.activity.start_time;
 						}
 					}
 
