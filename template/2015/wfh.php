@@ -156,6 +156,9 @@
 
 			$scope.timePick = function($event){
 				angular.element($event.currentTarget).timepicker('destroy');//.timepicker(getTimeOption(this));
+				angular.element($event.currentTarget).timepicker('destroy').timepicker(getTimeOption(this));
+				angular.element($event.currentTarget).timepicker("show");
+				
 				var date = angular.element($event.currentTarget).attr("attribute1");
 
 				// $.ajax(
@@ -227,7 +230,6 @@
 				}
 
 				angular.element($event.currentTarget).timepicker('destroy').timepicker(getTimeOption(this));
-
 				angular.element($event.currentTarget).timepicker("show");
 			}
 
