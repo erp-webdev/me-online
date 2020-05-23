@@ -503,7 +503,10 @@
 
 
 				/* computation of credited hours */
-				
+
+				/* Create copy of entries to localstorage for backup */
+				localStorage.setItem('wfh-entries');
+				$local_data = localStorage.getItem('wfh-entries');
 			}, true);
 
 			// Add new activity item
