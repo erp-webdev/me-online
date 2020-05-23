@@ -194,7 +194,7 @@
 				
 				var getMinVal = function(activities){
 					if(activities[0].start_time == '' && activities.length <= 1)
-						return '8:00am';
+						return '08:00am';
 
 					return activities[activities.length - 2].end_time;
 				}
