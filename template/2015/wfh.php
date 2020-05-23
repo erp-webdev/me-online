@@ -303,7 +303,7 @@
 
 			$local_data = JSON.parse(localStorage.getItem('wfh-entries'));
 			if($local_data != undefined && $local_data.length > 0){
-				if(prompt("You have unsaved WFH entries. Do you want to restore it?")){
+				if(confirm("You have unsaved WFH entries. Do you want to restore it?")){
 					$scope.wfh_from = $local_data[0].DTR;
 					$scope.wfh_to = $local_data[$local_data.length - 1].DTR;
 
