@@ -192,7 +192,7 @@
 				// 	}
 				// });
 				
-				function getMinVal = function(range){
+				var getMinVal = function(range){
 					console.log(range);
 				}
 
