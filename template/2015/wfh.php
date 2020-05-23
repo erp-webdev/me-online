@@ -192,8 +192,9 @@
 				// 	}
 				// });
 				
-				var getMinVal = function(range){
-					console.log(range);
+				var getMinVal = function(actitivities){
+					if(activities[0].start_time == '')
+						return '8:00am';
 				}
 
 				angular.element($event.currentTarget).timepicker({
