@@ -37,11 +37,11 @@
 
 														<table width="100%" class="tdata vsmalltext" border="0" cellspacing="0">
 															<tr>
-																<th width="15px"><span class="fa fa-trash-o"></span></th>
-																<th width="150px">Date</th>
-																<th width="60px">With 1Hr Break</th>
-																<th width="200px">Time</th>
-																<th width="100%">Activities</th>
+																<th width=""><span class="fa fa-trash-o"></span></th>
+																<th width="">Date</th>
+																<!-- <th width="">With 1HR Break</th> -->
+																<th width="">Time</th>
+																<th width="">Activities</th>
 															</tr>
 
 															<tr ng-repeat="wfh_day in wfh_days" id="tr{{ $index+1 }}">
@@ -54,9 +54,9 @@
 																	<input style="width: 100%" value="{{ wfh_day.CREDIT }}" id="wfh_totalworkedhours{{ $index+1 }}" type="hidden" name="wfh_totalworkedhours[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="wfh_totalworkedhours txtbox">
 																	<input id="wfh_dayin{{ $index+1 }}" type="hidden" name="wfh_dayin[{{ $index+1 }}]" value="{{ wfh_day.DTR | date: 'y-MM-dd'}}" class="wfh_dayin{{ $index+1 }}" />
 																</td>
-																<td class="centertalign">
+																<!-- <td class="centertalign">
 																	<input id="include_break{{ $index+1 }}" value="0" attribute1="{{ wfh_day.DTR }}" ng-click="includeFunction($event)" type="checkbox" name="include_break[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="mdtr_absent"  title="Included">
-																</td>
+																</td> -->
 																<td class="centertalign" >
 																	<table>
 																		<tr ng-repeat="activity in wfh_day.ACTIVITIES">
@@ -64,6 +64,8 @@
 																				<!-- PATTERN ([0-1]{1}[0-9]{1}|20|21|22|23):[0-5]{1}[0-9]{1}-([0-1]{1}[0-9]{1}|20|21|22|23):[0-5]{1}[0-9]{1} -->
 																				<input type="text" ng-click="timePick($event)" attribute1="{{wfh_day.DTR}}" readonly title="Start Time: eg. 8:00" timepicker class="txtbox width55 wfh_time{{ $parent.$index+1 }} timepick_angular" ng-model="wfh_days[$parent.$index].ACTIVITIES[$index].start_time" required>
 																				<input type="text" ng-click="timePick($event)" attribute1="{{wfh_day.DTR}}" readonly title="End Time: eg. 9:00" timepicker class="txtbox width55 wfh_time{{ $parent.$index+1 }} timepick_angular" ng-model="wfh_days[$parent.$index].ACTIVITIES[$index].end_time" required>
+																				<br>
+																				<input id="include_break{{ $index+1 }}" value="0" attribute1="{{ wfh_day.DTR }}" ng-click="includeFunction($event)" type="checkbox" name="include_break[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="mdtr_absent"  title="Included"> With 1 HR Break
 																			</td>
 																		</tr>
 																	</table>
