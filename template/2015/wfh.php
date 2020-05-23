@@ -39,18 +39,19 @@
 															<tr>
 																<th width=""><span class="fa fa-trash-o"></span></th>
 																<th width="">Date</th>
-																<!-- <th width="">With 1HR Break</th> -->
+																<th width="">Credit</th>
 																<th width="">Time</th>
 																<th width="">Activities</th>
 															</tr>
-
 															<tr ng-repeat="wfh_day in wfh_days" id="tr{{ $index+1 }}">
 																<td class="centertalign">
 																	<input type="hidden" name="wfh_disable[{{ $index+1 }}]" id="wfh_disable{{ $index+1 	}}" value=0><input id="mdtr_absent{{ $index+1 }}" type="checkbox" name="mdtr_absent[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="mdtr_absent" ng-click="excludeFunction($index+1)" title="Excluded">
 																</td>
 																<td class="centertalign">
 																	<span ng-bind="wfh_day.DTR | date: 'EEE MM/dd/yy'"></span> <br>
-																	Credit Hours <br> <strong><span ng-bind="wfh_day.CREDIT"></span></strong>
+																</td>
+																<td>
+																	<strong><span ng-bind="wfh_day.CREDIT"></span></strong>
 																	<input style="width: 100%" value="{{ wfh_day.CREDIT }}" id="wfh_totalworkedhours{{ $index+1 }}" type="hidden" name="wfh_totalworkedhours[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="wfh_totalworkedhours txtbox">
 																	<input id="wfh_dayin{{ $index+1 }}" type="hidden" name="wfh_dayin[{{ $index+1 }}]" value="{{ wfh_day.DTR | date: 'y-MM-dd'}}" class="wfh_dayin{{ $index+1 }}" />
 																</td>
