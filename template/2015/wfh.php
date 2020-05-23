@@ -287,8 +287,6 @@
 
 			$scope.wfh_days = [];
 
-
-
 			function compare(a, b) {
 				// Use toUpperCase() to ignore character casing
 				const DTRa = a.DTR.toUpperCase();
@@ -301,6 +299,16 @@
 					comparison = -1;
 				}
 				return comparison;
+			}
+
+			$local_data = JSON.parse(localStorage.getItem('wfh-entries'));
+			if($local_data != undefined && $local_data.length > 0){
+				if(prompt("You have unsaved WFH entries. Do you want to restore it?")){
+					$scope.wfh_from = $local_data[0].DTR;
+					$scope.wfh_to = $local_data[$local_data.length - 1].DTR;
+
+					$scope.wfh_days = $local_data;
+				}
 			}
 
 			// function to validate from and to dates
@@ -506,7 +514,6 @@
 
 				/* Create copy of entries to localstorage for backup */
 				localStorage.setItem('wfh-entries', JSON.stringify($scope.wfh_days));
-				$local_data = JSON.parse(localStorage.getItem('wfh-entries'));
 			}, true);
 
 			// Add new activity item
