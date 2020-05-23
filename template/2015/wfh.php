@@ -41,7 +41,7 @@
 																<th width="">Date</th>
 																<th width="">Credit</th>
 																<th width="">Time</th>
-																<th >Activities</th>
+																<th width="100%">Activities</th>
 															</tr>
 															<tr ng-repeat="wfh_day in wfh_days" id="tr{{ $index+1 }}">
 																<td class="centertalign">
