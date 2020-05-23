@@ -26,7 +26,7 @@
 									</ul>
 
 									<div id="ldetails"  ng-app="WFHApp" ng-controller="WFHController">
-										<table class="tdataform" border="0" cellspacing="0">
+										<table class="tdataform" border="0" cellspacing="0" width="100%">
 											<tr>
 												<td width="15%"><b>DTR Date: </b></td>
 												<td width="85%"><input id="wfh_from_" type="text" name="wfh_from" value="<?php echo date('Y-m-d', strtotime("-1 days")); ?>" class="txtbox datepickwh" readonly ng-model="wfh_from"/> - <input id="wfh_to_" type="text" name="wfh_to" value="<?php echo date('Y-m-d', strtotime("-1 days")); ?>" class="txtbox datepickwh" readonly ng-model="wfh_to"/></td>
