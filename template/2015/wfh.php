@@ -205,9 +205,13 @@
 					}
 
 					activities = event.$parent.wfh_day.ACTIVITIES;
-
+					var el = $(event);
 					if(event.$index == 0){
-						opt.push({defaultValue: '08:00'})
+						if(activity.start_time == '')
+							opt.defaultValue = '08:00';
+
+							opt.minTime = '';
+							opt.maxTime = '';
 					}
 
 					return opt;
