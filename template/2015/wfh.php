@@ -211,14 +211,17 @@
 								opt.defaultValue = '08:00 am';
 							// opt.minTime = '';
 						}else{
-							opt.minTime = event.activity.start_time;
+							if(event.activity.end_time == '')
+								opt.minTime = event.activity.start_time;
 						}
 
 					}else{
 						if($($event.currentTarget).attr('id') == 'start_time'){
-							opt.maxTime = event.$parent.wfh_day.ACTIVITIES[event.$index - 1].end_time;
+							if(event.activity.start_time == '')
+								opt.maxTime = event.$parent.wfh_day.ACTIVITIES[event.$index - 1].end_time;
 						}else{
-							opt.minTime = event.activity.start_time;
+							if(event.activity.end_time == '')
+								opt.minTime = event.activity.start_time;
 						}
 					}
 
