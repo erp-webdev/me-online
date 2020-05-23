@@ -202,7 +202,7 @@
 						stepMinute: 15,
 						hourMin: 0,
 						hourMax: 23,
-						defaultValue: getMinVal(this.$parent.wfh_activity.ACTIVITIES)
+						defaultValue: getMinVal(this.$parent.wfh_day.ACTIVITIES)
 				});
 
 				angular.element($event.currentTarget).timepicker("show");
