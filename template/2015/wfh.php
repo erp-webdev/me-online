@@ -226,8 +226,8 @@
 
 				}
 
+				angular.element($event.currentTarget).timepicker('destroy');//.timepicker(getTimeOption(this));
 				angular.element($event.currentTarget).timepicker('destroy').timepicker(getTimeOption(this));
-
 				angular.element($event.currentTarget).timepicker("show");
 
 
