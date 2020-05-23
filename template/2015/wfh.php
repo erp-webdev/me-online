@@ -437,7 +437,6 @@
 
 
 			$scope.$watch('wfh_days', function(newVal, oldVal, $scope){
-				/
 				// has an duplicate computation of hours
 				// ex: 8am - 12am = 4hrs
 				//     9am - 10am = 1hr 
