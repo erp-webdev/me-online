@@ -155,12 +155,7 @@
 		wfh_app.controller('WFHController', function WFHController($scope){
 
 			$scope.timePick = function($event){
-				angular.element($event.currentTarget).timepicker('destroy');//.timepicker(getTimeOption(this));
-				angular.element($event.currentTarget).timepicker('destroy').timepicker(getTimeOption(this));
-				angular.element($event.currentTarget).timepicker("show");
-				
 				var date = angular.element($event.currentTarget).attr("attribute1");
-
 				// $.ajax(
 				// {
 				// 	url: "<?php //echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
@@ -194,7 +189,6 @@
 				//
 				// 	}
 				// });
-				$scope.selectedTimePicker = ''; // start or end
 				var getTimeOption = function(event){
 					var opt = {
 						timeFormat: "hh:mm tt",
@@ -207,12 +201,10 @@
 						maxTime: null,
 					}
 
-					activities = event.$parent.wfh_day.ACTIVITIES;
 					if(event.$index == 0){
 						if($($event.currentTarget).attr('id') == 'start_time'){
 							if(event.activity.start_time == '')
 								opt.defaultValue = '08:00 am';
-							// opt.minTime = '';
 						}else{
 							opt.minTime = event.activity.start_time;
 						}
@@ -478,20 +470,20 @@
 
 						var start = value.start_time.substr(0,5);
 						var start_type = value.start_time.substr(6,2);
-						var time1 =  new Date("01/01/2007 " + start + " " + start_type).getHours() ;
+						var time1 =  new Date("01/01/2007 " + start + " " + start_type).getHours() * 60 + new Date("01/01/2007 " + start + " " + start_type).getMinutes();
 
 						if(value.end_time == null)
 							value.end_time = '';
 
 						var end = value.end_time.substr(0,5);
 						var end_type = value.end_time.substr(6,2);
-						var time2 =new Date("01/01/2007 " + end + " " + end_type).getHours();
+						var time2 =new Date("01/01/2007 " + end + " " + end_type).getHours() * 60 + new Date("01/01/2007 " + end + " " + end_type).getMinutes();
 
 						var time_diff = time2 - time1;
 						if(time_diff < 0){
 							time_diff = 0;
 						}
-						daytime_total = (daytime_total + time_diff);
+						daytime_total = daytime_total + time_diff/60;
 
 					});
 					
