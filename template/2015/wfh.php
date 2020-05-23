@@ -40,7 +40,7 @@
 																<th width="35px"><span class="fa fa-trash-o"></span></th>
 																<th width="95px">Date</th>
 																<th width="55px">Credit</th>
-																<th width="150px">Time</th>
+																<th width="140px">Time</th>
 																<th >Activities</th>
 															</tr>
 															<tr ng-repeat="wfh_day in wfh_days" id="tr{{ $index+1 }}">
@@ -71,7 +71,7 @@
 																	</table>
 																</td>
 																<td >
-																	<textarea rows="1" style="display: none;" name="wfh_activity[{{ $index+1 }}]" id="wfh_activity{{ $index+1 }}" col="50" class="txtbox"></textarea>
+																	<textarea rows="1" style="display: none;" name="wfh_activity[{{ $index+1 }}]" id="wfh_activity{{ $index+1 }}" col="40" class="txtbox"></textarea>
 																	<table >
 																		<tr ng-repeat="activity in wfh_day.ACTIVITIES">
 																			<td style="border-bottom: 0px; margin: 0; padding: 0" width="100%">
