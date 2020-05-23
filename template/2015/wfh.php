@@ -199,9 +199,6 @@
 						stepMinute: 15,
 						hourMin: 0,
 						hourMax: 23,
-						defaultValue: '',
-						minTime: '',
-						maxTime: ''
 					}
 
 					activities = event.$parent.wfh_day.ACTIVITIES;
