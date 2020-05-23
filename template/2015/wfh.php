@@ -37,10 +37,10 @@
 
 														<table width="100%" class="tdata vsmalltext" border="0" cellspacing="0">
 															<tr>
-																<th width=""><span class="fa fa-trash-o"></span></th>
-																<th width="">Date</th>
-																<th width="">Credit</th>
-																<th width="">Time</th>
+																<th width="35px"><span class="fa fa-trash-o"></span></th>
+																<th width="95px">Date</th>
+																<th width="55px">Credit</th>
+																<th width="150px">Time</th>
 																<th >Activities</th>
 															</tr>
 															<tr ng-repeat="wfh_day in wfh_days" id="tr{{ $index+1 }}">
