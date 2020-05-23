@@ -215,7 +215,7 @@
 						}
 
 					}else{
-						opt.minTime = event.wft_day.ACTIVITIES[$index - 1].end_time;
+						opt.minTime = event.wfh_day.ACTIVITIES[$index - 1].end_time;
 					}
 
 					return opt;
