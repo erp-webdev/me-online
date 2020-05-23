@@ -194,7 +194,7 @@
 				$scope.selectedTimePicker = ''; // start or end
 				var getTimeOption = function(event){
 					var opt = {
-						timeFormat: "hh:mmtt",
+						timeFormat: "hh:mm tt",
 						stepHour: 1,
 						stepMinute: 15,
 						hourMin: 0,
