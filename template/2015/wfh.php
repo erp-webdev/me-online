@@ -211,7 +211,7 @@
 								opt.defaultValue = '08:00 am';
 							// opt.minTime = '';
 						}else{
-							opt.minTime = event.activity.start_time;
+							opt.minTime = event.activity.start_time + 1;
 						}
 
 						// opt.maxTime = '';
