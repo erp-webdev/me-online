@@ -202,7 +202,7 @@
 						stepMinute: 15,
 						hourMin: 0,
 						hourMax: 23,
-						defaultValue: getMinVal(this.data('dtr_index'))
+						defaultValue: getMinVal($(this).data('dtr_index'))
 				});
 
 				angular.element($event.currentTarget).timepicker("show");
