@@ -210,8 +210,8 @@
 						if(activity.start_time == '')
 							opt.defaultValue = '08:00';
 
-							opt.minTime = '';
-							opt.maxTime = '';
+						opt.minTime = '';
+						opt.maxTime = '';
 					}
 
 					return opt;
