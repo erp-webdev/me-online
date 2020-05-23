@@ -470,7 +470,7 @@
 					var daytime_total = 0;
 					angular.forEach(value.ACTIVITIES, function (value, key){
 						if(value.start_time == null)
-							value.start_tme = '';
+							value.start_time = '';
 
 						var start = value.start_time.substr(0,5);
 						var start_type = value.start_time.substr(6,2);
@@ -478,7 +478,7 @@
 
 						if(value.end_time == null)
 							value.end_time = '';
-							
+
 						var end = value.end_time.substr(0,5);
 						var end_type = value.end_time.substr(6,2);
 						var time2 =new Date("01/01/2007 " + end + " " + end_type).getHours() * 60 + new Date("01/01/2007 " + end + " " + end_type).getMinutes();
