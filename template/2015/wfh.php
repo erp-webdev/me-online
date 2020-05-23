@@ -211,7 +211,7 @@
 								opt.defaultValue = '08:00 am';
 							// opt.minTime = '';
 						}else{
-							opt.minTime = event.activity.start_time + 1;
+							opt.minTime = event.activity.start_time;
 						}
 
 						// opt.maxTime = '';
@@ -472,17 +472,17 @@
 					angular.forEach(value.ACTIVITIES, function (value, key){
 						var start = value.start_time.substr(0,5);
 						var start_type = value.start_time.substr(6,2);
-						var time1 = new Date("01/01/2007 " + start + " " + start_type).getHours();
+						var time1 = new Date("01/01/2007 " + start + " " + start_type).getMinutes();
 
 						var end = value.end_time.substr(0,5);
 						var end_type = value.end_time.substr(6,2);
-						var time2 = new Date("01/01/2007 " + end + " " + end_type).getHours();
+						var time2 = new Date("01/01/2007 " + end + " " + end_type).getMinutes();
 
 						var time_diff = time2 - time1;
 						if(time_diff < 0){
 							time_diff = 0;
 						}
-						daytime_total = daytime_total + time_diff;
+						daytime_total = (daytime_total + time_diff)/60;
 
 					});
 					var credit_total = daytime_total - value.BREAKTIME;
