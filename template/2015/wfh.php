@@ -83,7 +83,8 @@
 																			</td>
 																		</tr>
 																	</table>
-																	<span >&nbsp;</span>
+																	<span>&nbsp;</span>
+																	<span style="color: red">*You're credit hours exceeds the allowed maximum daily worked hours. This will be subject for further approval.</span>
 																</td>
 															</tr>
 														</table>
@@ -459,7 +460,6 @@
 
 				console.log($scope.wfh_days);
 			}
-
 
 			$scope.$watch('wfh_days', function(newVal, oldVal, $scope){
 				// has an duplicate computation of hours
