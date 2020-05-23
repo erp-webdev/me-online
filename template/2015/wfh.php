@@ -193,7 +193,7 @@
 				// });
 				
 				var getMinVal = function(activities){
-					if(activities[0].start_time == '' && activities.length <= 0)
+					if(activities[0].start_time == '' && activities.length <= 1)
 						return '8:00am';
 
 					return activities[activities.length - 1].end_time;
