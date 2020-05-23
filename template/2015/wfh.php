@@ -37,9 +37,9 @@
 
 														<table width="100%" class="tdata vsmalltext" border="0" cellspacing="0">
 															<tr>
-																<th width="35px"><span class="fa fa-trash-o"></span></th>
-																<th width="95px">Date</th>
-																<th width="55px">Credit</th>
+																<th width="15px"><span class="fa fa-trash-o"></span></th>
+																<th width="80px">Date</th>
+																<th width="40px">Credit</th>
 																<th width="140px">Time</th>
 																<th >Activities</th>
 															</tr>
