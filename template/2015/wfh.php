@@ -71,13 +71,13 @@
 																	</table>
 																</td>
 																<td >
-																	<textarea rows="1" style="display: none;" name="wfh_activity[{{ $index+1 }}]" id="wfh_activity{{ $index+1 }}" col="40" class="txtbox"></textarea>
+																	<textarea rows="1" style="display: none;" name="wfh_activity[{{ $index+1 }}]" id="wfh_activity{{ $index+1 }}" cols="35" class="txtbox"></textarea>
 																	<table >
 																		<tr ng-repeat="activity in wfh_day.ACTIVITIES">
-																			<td style="border-bottom: 0px; margin: 0; padding: 0" width="100%">
+																			<td style="border-bottom: 0px; margin: 0; padding: 0">
 																				<textarea class="txtarea wfh_act{{ $parent.$index+1 }}" name="" id="" width="100%" rows="1" ng-model="wfh_days[$parent.$index].ACTIVITIES[$index].act" required></textarea>
 																			</td>
-																			<td style="border-bottom: 0px; margin: 0; padding: 0; text-align:left" width="120px">
+																			<td style="border-bottom: 0px; margin: 0; padding: 0; text-align:left">
 																				<button style="" type="button" class="redbtn " ng-show="wfh_days[$parent.$index].ACTIVITIES.length > 1" ng-click="delItem($parent.$index, $index)">Del</button>
 																				<button style="" type="button" class="smlbtn" ng-show="$index+1 == wfh_days[$parent.$index].ACTIVITIES.length" ng-click="addItem($parent.$index, $index)">Add</button>
 																			</td>
