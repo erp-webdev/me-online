@@ -84,7 +84,7 @@
 																		</tr>
 																	</table>
 																	<span>&nbsp;</span>
-																	<span ng-show="wfh_day.CREDIT > 8" style="color: yellow">*You're credit hours exceeds the allowed maximum daily worked hours. This will be subject for further approval.</span>
+																	<span ng-show="wfh_day.CREDIT > 8" style="color: yellow">*Your credit hours exceeds the allowed maximum daily worked hours. This will be subject for further approval.</span>
 																</td>
 															</tr>
 														</table>
