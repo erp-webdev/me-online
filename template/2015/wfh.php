@@ -70,7 +70,7 @@
 																</td>
 																<td class="centertalign" >
 																	<textarea rows="1" style="display: none;" name="wfh_activity[{{ $index+1 }}]" id="wfh_activity{{ $index+1 }}" class="txtbox"></textarea>
-																	<table style="width:100%">
+																	<table >
 																		<tr ng-repeat="activity in wfh_day.ACTIVITIES">
 																			<td style="border-bottom: 0px; margin: 0; padding: 0" width="100%">
 																				<textarea class="txtarea wfh_act{{ $parent.$index+1 }}" name="" id="" width="100%" rows="1" ng-model="wfh_days[$parent.$index].ACTIVITIES[$index].act" required></textarea>
