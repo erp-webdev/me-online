@@ -214,9 +214,8 @@
 							opt.minTime = event.activity.start_time;
 						}
 
-						// opt.maxTime = '';
 					}else{
-
+						opt.minTime = event.wft_day.ACTIVITIES[$index - 1].end_time;
 					}
 
 					return opt;
@@ -277,7 +276,7 @@
 			// });
 
 			$scope.wfh_activity = [];
-			$scope.item = {start_time : '', end_time : '', act: ''};
+			$scope.item = {start_time : null, end_time : null, act: ''};
 			$scope.wfh_from = new Date().toISOString().split("T")[0];
 			$scope.wfh_from = new Date(angular.copy($scope.wfh_from));
 			$scope.wfh_from.setDate($scope.wfh_from.getDate()-1);
@@ -485,6 +484,7 @@
 						daytime_total = (daytime_total + time_diff)/60;
 
 					});
+					
 					var credit_total = daytime_total - value.BREAKTIME;
 					if(credit_total < 0){
 						credit_total = 0;
@@ -507,7 +507,7 @@
 			// Add new activity item
 			$scope.addItem = function(index, act){
 				$scope.wfh_days[index].ACTIVITIES.push( 
-					{start_time : $scope.wfh_days[index].ACTIVITIES[act].end_time, end_time : '', act: ''}
+					{start_time : $scope.wfh_days[index].ACTIVITIES[act].end_time, end_time : null, act: ''}
 				);
 
 			}
