@@ -192,7 +192,7 @@
 				// 	}
 				// });
 				
-				var getMinVal = function(actitivities){
+				var getMinVal = function(activities){
 					if(activities[0].start_time == '')
 						return '8:00am';
 				}
