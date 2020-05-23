@@ -206,7 +206,7 @@
 
 					activities = event.$parent.wfh_day.ACTIVITIES;
 					if(event.$index == 0){
-						if(event.activity.start_time == '' && $($event).attr('id') == 'start_time'){
+						if(event.activity.start_time == '' && $($event.currentTarget).attr('id') == 'start_time'){
 							opt.defaultValue = '08:00';
 							opt.minTime = '';
 						}else{
@@ -215,7 +215,7 @@
 
 						opt.maxTime = '';
 					}else{
-						
+
 					}
 
 					return opt;
