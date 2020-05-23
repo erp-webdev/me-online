@@ -311,6 +311,8 @@
 				}
 			}
 
+			console.log(localStorage.getItem('CompanyID'));
+
 			// function to validate from and to dates
 			$scope.$watchGroup(['wfh_from', 'wfh_to'], function(newVal, oldVal){
 
