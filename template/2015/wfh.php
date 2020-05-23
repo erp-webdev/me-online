@@ -63,7 +63,9 @@
 																				<input type="text" ng-click="timePick($event)" attribute1="{{wfh_day.DTR}}" readonly title="Start Time: eg. 8:00" timepicker class="txtbox width55 wfh_time{{ $parent.$index+1 }} timepick_angular" ng-model="wfh_days[$parent.$index].ACTIVITIES[$index].start_time" required>
 																				<input type="text" ng-click="timePick($event)" attribute1="{{wfh_day.DTR}}" readonly title="End Time: eg. 9:00" timepicker class="txtbox width55 wfh_time{{ $parent.$index+1 }} timepick_angular" ng-model="wfh_days[$parent.$index].ACTIVITIES[$index].end_time" required>
 																				<br>
-																				<input id="include_break{{ $index+1 }}" value="0" attribute1="{{ wfh_day.DTR }}" ng-click="includeFunction($event)" type="checkbox" name="include_break[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="mdtr_absent"  title="Included" ng-show="$index == 0"> With 1 HR Break
+																				<label ng-show="$index == 0">
+																					<input id="include_break{{ $index+1 }}" value="0" attribute1="{{ wfh_day.DTR }}" ng-click="includeFunction($event)" type="checkbox" name="include_break[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="mdtr_absent"  title="Included" > With 1 HR Break
+																				</label>
 																			</td>
 																		</tr>
 																	</table>
