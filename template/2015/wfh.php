@@ -507,9 +507,9 @@
 
 				$scope.wfh_days = days_data;
 				
-				// for(var i = 0; i < $scope.wfh_days.length; i++){
-				// 	$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].activity));
-				// }
+				for(var i = 0; i < $scope.wfh_days.length; i++){
+					$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].activity));
+				}
 
 
 				/* computation of credited hours */
