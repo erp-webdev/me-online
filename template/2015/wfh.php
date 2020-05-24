@@ -71,7 +71,7 @@
 																	</table>
 																</td>
 																<td >
-																	<textarea rows="1" style="" name="wfh_activity[{{ $index+1 }}]" id="wfh_activity{{ $index+1 }}"  class="txtbox"></textarea>
+																	<textarea rows="1" style="display:none" name="wfh_activity[{{ $index+1 }}]" id="wfh_activity{{ $index+1 }}"  class="txtbox"></textarea>
 																	<table >
 																		<tr ng-repeat="activity in wfh_day.ACTIVITIES">
 																			<td style="border-bottom: 0px; margin: 0; padding: 0">
@@ -317,7 +317,7 @@
 				for(var i = 0; i < ranges.length; i++){
 					var start = ranges[i].start;
 					var end = ranges[i].end;
-					var duration = ((end.getHours()  - start.getHours()) * 60 + end.getMinutes() + start.getMinutes()) / 60;
+					var duration = ((end.getHours()  - start.getHours()) * 60 - end.getMinutes() + start.getMinutes()) / 60;
 
 					ranges[i].duration = duration.toFixed(2);
 				}
