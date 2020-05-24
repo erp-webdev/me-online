@@ -358,11 +358,6 @@
 				}
 
 				time_ranges_2 = $scope.computeDuration(time_ranges_2);
-				// time_ranges_2 = sortTimeRanges(time_ranges_2);
-				time_ranges_2.forEach(time => {
-					console.log(time.start.toLocaleString() + " -- " + time.end.toLocaleString() + " -- " + time.duration);
-				});
-
 				return time_ranges_2;
 			}
 
@@ -372,6 +367,7 @@
 				
 				for(var i = 0; i < time_ranges.length; i++){
 					total_duration += time_ranges[i].duration;
+					console.log(time_ranges[i].duration);
 				}
 
 				return total_duration;
@@ -530,7 +526,7 @@
 			}
 
 			$scope.$watch('wfh_days', function(newVal, oldVal, $scope){
-				// has an duplicate computation of hours
+				// has an duplicate computation of hours; computation of overlapping range
 				// ex: 8am - 12am = 4hrs
 				//     9am - 10am = 1hr 
 				//     4hrs + 1hr = 5 hrs where it should be 4hrs bec 9am - 10 am is included within 8am - 12am
