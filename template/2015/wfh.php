@@ -315,11 +315,15 @@
 
 			$scope.computeDuration = function(ranges){
 				for(var i = 0; i < ranges.length; i++){
-					var start = ranges[i].start;
-					var end = ranges[i].end;
-					var duration = ((end.getHours()  - start.getHours()) * 60 + end.getMinutes() - start.getMinutes()) / 60;
 
-					ranges[i].duration = duration;
+					if(ranges[i].start != undefined || ranges[i].end != undefined || ranges[i].start != NaN || ranges[i].end != NaN){
+						var start = ranges[i].start;
+						var end = ranges[i].end;
+						var duration = ((end.getHours()  - start.getHours()) * 60 + end.getMinutes() - start.getMinutes()) / 60;
+
+						ranges[i].duration = duration;
+					}
+
 				}
 
 				return ranges;
