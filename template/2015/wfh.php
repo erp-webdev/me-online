@@ -363,6 +363,7 @@
 					console.log(time.start.toLocaleString() + " -- " + time.end.toLocaleString() + " -- " + time.duration);
 				});
 
+				return time_ranges_2;
 			}
 
 			$scope.computeTotalDuration = function(ranges){
