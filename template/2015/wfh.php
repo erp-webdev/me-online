@@ -51,7 +51,7 @@
 																	<span ng-bind="wfh_day.DTR | date: 'EEE MM/dd/yy'"></span> <br>
 																</td>
 																<td class="centertalign">
-																	<strong><span ng-bind="wfh_day.CREDIT | number:2"></span></strong> hr
+																	<strong><span ng-bind="wfh_day.CREDIT"></span></strong> hr
 																	<input value="{{ wfh_day.CREDIT }}" id="wfh_totalworkedhours{{ $index+1 }}" type="hidden" name="wfh_totalworkedhours[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="wfh_totalworkedhours txtbox">
 																	<input id="wfh_dayin{{ $index+1 }}" type="hidden" name="wfh_dayin[{{ $index+1 }}]" value="{{ wfh_day.DTR | date: 'y-MM-dd'}}" class="wfh_dayin{{ $index+1 }}" />
 																</td>
