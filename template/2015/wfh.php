@@ -367,7 +367,6 @@
 				
 				for(var i = 0; i < time_ranges.length; i++){
 					total_duration += time_ranges[i].duration;
-					console.log(time_ranges[i].duration);
 				}
 
 				return total_duration;
@@ -573,6 +572,7 @@
 
 				for(var i = 0; i < $scope.wfh_days.length; i++){
 					$scope.wfh_days[i].CREDIT = $scope.computeTotalDuration($scope.wfh_days[i].ACTIVITIES);
+					console.log($scope.wfh_days[i].CREDIT );
 					$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].ACTIVITIES));
 				}
 
