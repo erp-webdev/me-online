@@ -309,6 +309,9 @@
 					$scope.wfh_to = $local_data[$local_data.length - 1].DTR;
 
 					$scope.wfh_days = $local_data;
+					for(var i = 0; i < $scope.wfh_days.length; i++){
+						$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].ACTIVITIES));
+					}
 				}
 			}
 
