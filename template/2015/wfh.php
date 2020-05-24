@@ -368,9 +368,10 @@
 			function computeTotalDuration(ranges){
 				var time_ranges = computeCredits(ranges);
 				var total_duration = 0;
-				time_ranges.forEach(range => {
-					total_duration += range.duration ;
-				});
+				
+				for(var i = 0; i < time_ranges.length; i++){
+					total_duration += time_ranges[i].duration;
+				}
 
 				return total_duration;
 			}
