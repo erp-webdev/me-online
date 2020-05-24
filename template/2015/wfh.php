@@ -294,6 +294,87 @@
 				return comparison;
 			}
 
+			function sortTimeRanges(ranges){
+				var time_ranges = [
+					//{start: null, end: null, duration: 0}
+				];
+
+				for(var i = 0; i < ranges.length; i++){
+					var duration = 0;
+					var start = new Date('01/01/1900 ' + ranges[i].start_time);
+					var end = new Date('01/01/1900 ' + ranges[i].end_time);
+
+					time_ranges.push({start: start, end: end, duration: duration});
+				}
+
+				time_ranges.sort((a, b) => a.end.getHours() + (a.end.getMinutes() / 60 ) - b.end.getHours() + (b.end.getMinutes() / 60 ));
+				time_ranges.sort((a, b) => a.start.getHours() + (a.start.getMinutes() / 60 ) - b.start.getHours() + (b.start.getMinutes() / 60 ));
+
+				return time_ranges;
+			}
+
+			function computeDuration(ranges){
+				for(var i = 0; i < ranges.length; i++){
+					var start = ranges[i].start;
+					var end = ranges[i].end;
+					var duration = ((end.getHours()  - start.getHours()) * 60 + end.getMinutes() + start.getMinutes()) / 60;
+
+					ranges[i].duration = duration.toFixed(2);
+				}
+
+				return ranges;
+			}
+
+			function computeCredits (time_ranges){
+				time_ranges = sortTimeRanges(time_ranges);
+
+				var time_ranges_2 = [];
+				for(var i = 0; i < time_ranges.length; i++){
+					if(time_ranges_2.length == 0){
+						time_ranges_2.push(time_ranges[i]);
+					}
+
+					for(var j = 0; j < time_ranges_2.length; j++){
+
+						if(time_ranges[i].start >= time_ranges_2[j].start && time_ranges[i].start <= time_ranges_2[j].end){
+							if(time_ranges[i].end <= time_ranges_2[j].end){
+								continue;
+							}else if(time_ranges[i].end > time_ranges_2[j].end){
+								time_ranges_2[j].end = time_ranges[i].end;
+								break;
+							}
+						}else{
+							if(time_ranges_2[j].start >= time_ranges[i].start && time_ranges_2[j].start <= time_ranges[i].end){
+								time_ranges_2[j].start = time_ranges[i].start;
+								break;
+							}else{
+								if(j == time_ranges_2.length - 1){
+									time_ranges_2.push(time_ranges[i]);
+									break;
+								}
+							}
+						}
+					}
+				}
+
+				time_ranges_2 = computeDuration(time_ranges_2);
+				// time_ranges_2 = sortTimeRanges(time_ranges_2);
+				time_ranges_2.forEach(time => {
+					console.log(time.start.toLocaleString() + " -- " + time.end.toLocaleString() + " -- " + time.duration);
+				});
+
+			}
+
+			function computeTotalDuration(ranges){
+				var time_ranges = computeCredits(ranges);
+				var total_duration = 0;
+				time_ranges.forEach(range => {
+					total_duration += range.duration ;
+				});
+
+				return total_duration;
+			}
+
 			$local_data = JSON.parse(localStorage.getItem('wfh-entries'));
 			if($local_data != undefined && $local_data.length > 0){
 				if(confirm("You have unsaved WFH entries. Do you want to restore it?")){
@@ -453,44 +534,48 @@
 				//     4hrs + 1hr = 5 hrs where it should be 4hrs bec 9am - 10 am is included within 8am - 12am
 
 				// to compute total credit hours
-				var days_data = JSON.stringify($scope.wfh_days);
-				days_data = JSON.parse(days_data);
+				// var days_data = JSON.stringify($scope.wfh_days);
+				// days_data = JSON.parse(days_data);
 
-				angular.forEach(days_data, function(value, key){
+				// angular.forEach(days_data, function(value, key){
 
-					var daytime_total = 0;
-					angular.forEach(value.ACTIVITIES, function (value, key){
-						if(value.start_time == null)
-							value.start_time = '';
+				// 	var daytime_total = 0;
+				// 	angular.forEach(value.ACTIVITIES, function (value, key){
+				// 		if(value.start_time == null)
+				// 			value.start_time = '';
 
-						var start = value.start_time.substr(0,5);
-						var start_type = value.start_time.substr(6,2);
-						var time1 =  new Date("01/01/2007 " + start + " " + start_type).getHours() * 60 + new Date("01/01/2007 " + start + " " + start_type).getMinutes();
+				// 		var start = value.start_time.substr(0,5);
+				// 		var start_type = value.start_time.substr(6,2);
+				// 		var time1 =  new Date("01/01/2007 " + start + " " + start_type).getHours() * 60 + new Date("01/01/2007 " + start + " " + start_type).getMinutes();
 
-						if(value.end_time == null)
-							value.end_time = '';
+				// 		if(value.end_time == null)
+				// 			value.end_time = '';
 
-						var end = value.end_time.substr(0,5);
-						var end_type = value.end_time.substr(6,2);
-						var time2 =new Date("01/01/2007 " + end + " " + end_type).getHours() * 60 + new Date("01/01/2007 " + end + " " + end_type).getMinutes();
+				// 		var end = value.end_time.substr(0,5);
+				// 		var end_type = value.end_time.substr(6,2);
+				// 		var time2 =new Date("01/01/2007 " + end + " " + end_type).getHours() * 60 + new Date("01/01/2007 " + end + " " + end_type).getMinutes();
 
-						var time_diff = time2 - time1;
-						if(time_diff < 0){
-							time_diff = 0;
-						}
-						daytime_total = daytime_total + time_diff/60;
+				// 		var time_diff = time2 - time1;
+				// 		if(time_diff < 0){
+				// 			time_diff = 0;
+				// 		}
+				// 		daytime_total = daytime_total + time_diff/60;
 
-					});
+				// 	});
 					
-					var credit_total = daytime_total - value.BREAKTIME;
-					if(credit_total < 0){
-						credit_total = 0;
-					}
-					value.CREDIT = credit_total;
+				// 	var credit_total = daytime_total - value.BREAKTIME;
+				// 	if(credit_total < 0){
+				// 		credit_total = 0;
+				// 	}
+				// 	value.CREDIT = credit_total;
 
+				// });
+
+				// $scope.wfh_days = days_data;
+
+				$scope.wfh_days.forEach(day => {
+					day.CREDIT = computeCredits(day.ACTIVITIES);
 				});
-
-				$scope.wfh_days = days_data;
 				
 				for(var i = 0; i < $scope.wfh_days.length; i++){
 					$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].ACTIVITIES));
@@ -512,8 +597,6 @@
 			$scope.delItem = function(index, act){
 				$scope.wfh_days[index].ACTIVITIES.splice(act, 1);
 			}
-
-			
 
 			angular.element(document).ready(function () {
 

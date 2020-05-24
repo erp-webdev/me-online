@@ -191,7 +191,7 @@
                     $log = $mainsql->log_action($post, 'add');
 
                     if ($err_item) :
-                        echo '{"success": false, "error": "One or more of Work from Home item hasn\'t been process due network problem. Please forward email notification with its request ID."}';
+                        echo '{"success": false, "error": "One or more of Work from Home item hasn\'t been process due to a network problem. Please forward email notification with its request ID."}';
                         exit();
                     else :
                         echo '{"success": true}';
