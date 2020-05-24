@@ -7,7 +7,7 @@
 					<div class="leftsplashtext lefttalign"><?php include(TEMP."/menu.php"); ?></div>
 					<div class="rightsplashtext lefttalign">
 						<div id="mainwfh" class="mainbody lefttalign whitetext">
-							<b class="mediumtext lorangetext">Work From Home</b><br><br>
+							<b class="mediumtext lorangetext">Work From Home</b> <small><i>Beta</i></small><br><br>
 							<b>MAIN INFORMATION</b><br><br>
 							<div class="column2">
 								<b><?php echo ucfirst($profile_nadd); ?> ID: </b><?php echo $profile_idnum; ?><br>
