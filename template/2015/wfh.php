@@ -264,14 +264,6 @@
 
 			}
 
-			// $('.timepick_angular').timepicker({
-			// 		timeFormat: "hh:mmtt",
-			// 		stepHour: 1,
-			// 		stepMinute: 30,
-			// 		hourMin: 6,
-			// 		hourMax: 22
-			// });
-
 			$scope.wfh_activity = [];
 			$scope.item = {start_time : null, end_time : null, act: ''};
 			$scope.wfh_from = new Date().toISOString().split("T")[0];
@@ -309,26 +301,19 @@
 					$scope.wfh_to = $local_data[$local_data.length - 1].DTR;
 
 					$scope.wfh_days = $local_data;
-					for(var i = 0; i < $scope.wfh_days.length; i++){
-						$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].ACTIVITIES));
-					}
 				}
 			}
 
 			console.log(localStorage.getItem('CompanyID'));
 
-			// function to validate from and to dates
 			$scope.$watchGroup(['wfh_from', 'wfh_to'], function(newVal, oldVal){
 
 				if(newVal[0] == oldVal[0] && newVal[1] != oldVal[1]){
-					// if wfh_to has been changed
 					if(new Date(newVal[1]) < new Date($scope.wfh_from)){
-						// if wfh_to is less than wfh_from
 						$scope.wfh_from = newVal[1];
 					}
 
 				}else if(newVal[0] != oldVal[0] && newVal[1] == oldVal[1]){
-					// if wfh_from has been changed
 					$scope.wfh_to = new Date(angular.copy($scope.wfh_from));
 					$scope.wfh_to.setDate($scope.wfh_to.getDate()+6);
 					$scope.wfh_to = new Date(angular.copy($scope.wfh_to)).toISOString().split("T")[0];
@@ -381,7 +366,6 @@
 				});
 
 				$scope.current_date = new Date(angular.copy($scope.wfh_from));
-				// delete Dates not included
 				if($scope.wfh_days.length > 0){
 					if(new Date($scope.wfh_from ) > new Date($scope.wfh_days[0].DTR) ){
 						var dtrdate = $scope.current_date.toISOString().split("T")[0];
@@ -517,11 +501,9 @@
 
 				/* computation of credited hours */
 
-				/* Create copy of entries to localstorage for backup */
 				localStorage.setItem('wfh-entries', JSON.stringify($scope.wfh_days));
 			}, true);
 
-			// Add new activity item
 			$scope.addItem = function(index, act){
 				$scope.wfh_days[index].ACTIVITIES.push( 
 					{start_time : $scope.wfh_days[index].ACTIVITIES[act].end_time, end_time : null, act: ''}
@@ -529,9 +511,12 @@
 
 			}
 
-			// Remove item
 			$scope.delItem = function(index, act){
 				$scope.wfh_days[index].ACTIVITIES.splice(act, 1);
+			}
+
+			for(var i = 0; i < $scope.wfh_days.length; i++){
+				$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].ACTIVITIES));
 			}
 
 		});
