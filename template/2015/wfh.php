@@ -573,7 +573,6 @@
 
 				for(var i = 0; i < $scope.wfh_days.length; i++){
 					$scope.wfh_days[i].CREDIT = $scope.computeTotalDuration($scope.wfh_days[i].ACTIVITIES);
-
 					$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].ACTIVITIES));
 				}
 
@@ -597,6 +596,7 @@
 			angular.element(document).ready(function () {
 
 				for(var i = 0; i < $scope.wfh_days.length; i++){
+					$scope.wfh_days[i].CREDIT = $scope.computeTotalDuration($scope.wfh_days[i].ACTIVITIES);
 					$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].ACTIVITIES));
 				}
 
