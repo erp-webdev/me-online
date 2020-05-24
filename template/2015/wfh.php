@@ -573,11 +573,9 @@
 
 				// $scope.wfh_days = days_data;
 
-				$scope.wfh_days.forEach(day => {
-					day.CREDIT = computeTotalDuration(day.ACTIVITIES);
-				});
-				
 				for(var i = 0; i < $scope.wfh_days.length; i++){
+					$scope.wfh_days[i].CREDIT = computeTotalDuration($scope.wfh_days[i].ACTIVITIES);
+
 					$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].ACTIVITIES));
 				}
 
