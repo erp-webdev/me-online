@@ -572,7 +572,7 @@
 				// $scope.wfh_days = days_data;
 
 				for(var i = 0; i < $scope.wfh_days.length; i++){
-					$scope.wfh_days[i].CREDIT = $scope.computeTotalDuration(angular.copy($scope.wfh_days[i].ACTIVITIES));
+					$scope.wfh_days[i].CREDIT = $scope.computeTotalDuration($scope.wfh_days[i].ACTIVITIES);
 
 					$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].ACTIVITIES));
 				}
