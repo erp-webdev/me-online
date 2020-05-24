@@ -498,31 +498,31 @@
 
 			});
 
-			$scope.includeFunction = function($event){
+			// $scope.includeFunction = function($event){
 
-				var breaktime = angular.element($event.currentTarget).val();
-				var date = angular.element($event.currentTarget).attr("attribute1");
+			// 	var breaktime = angular.element($event.currentTarget).val();
+			// 	var date = angular.element($event.currentTarget).attr("attribute1");
 
-				if(breaktime == 0){
-					breaktime = 1;
-				}else{
-					breaktime = 0;
-				}
+			// 	if(breaktime == 0){
+			// 		breaktime = 1;
+			// 	}else{
+			// 		breaktime = 0;
+			// 	}
 
-				angular.element($event.currentTarget).val(breaktime);
+			// 	angular.element($event.currentTarget).val(breaktime);
 
-				var days_data = JSON.stringify($scope.wfh_days);
-				days_data = JSON.parse(days_data);
+			// 	var days_data = JSON.stringify($scope.wfh_days);
+			// 	days_data = JSON.parse(days_data);
 
-				angular.forEach(days_data, function(value, key){
-					if(value.DTR == date){
-						value.BREAKTIME = breaktime;
-					}
-				});
-				$scope.wfh_days = days_data;
+			// 	angular.forEach(days_data, function(value, key){
+			// 		if(value.DTR == date){
+			// 			value.BREAKTIME = breaktime;
+			// 		}
+			// 	});
+			// 	$scope.wfh_days = days_data;
 
-				console.log($scope.wfh_days);
-			}
+			// 	console.log($scope.wfh_days);
+			// }
 
 			$scope.$watch('wfh_days', function(newVal, oldVal, $scope){
 				// has an duplicate computation of hours; computation of overlapping range
