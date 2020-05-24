@@ -294,7 +294,7 @@
 				return comparison;
 			}
 
-			function sortTimeRanges(ranges){
+			$scope.sortTimeRanges = function(ranges){
 				var time_ranges = [
 					//{start: null, end: null, duration: 0}
 				];
@@ -313,7 +313,7 @@
 				return time_ranges;
 			}
 
-			function computeDuration(ranges){
+			$scope.computeDuration = function(ranges){
 				for(var i = 0; i < ranges.length; i++){
 					var start = ranges[i].start;
 					var end = ranges[i].end;
@@ -325,8 +325,8 @@
 				return ranges;
 			}
 
-			function computeCredits (time_ranges){
-				time_ranges = sortTimeRanges(time_ranges);
+			$scope.computeCredits = function (time_ranges){
+				time_ranges = $scope.sortTimeRanges(time_ranges);
 
 				var time_ranges_2 = [];
 				for(var i = 0; i < time_ranges.length; i++){
@@ -357,7 +357,7 @@
 					}
 				}
 
-				time_ranges_2 = computeDuration(time_ranges_2);
+				time_ranges_2 = $scope.computeDuration(time_ranges_2);
 				// time_ranges_2 = sortTimeRanges(time_ranges_2);
 				time_ranges_2.forEach(time => {
 					console.log(time.start.toLocaleString() + " -- " + time.end.toLocaleString() + " -- " + time.duration);
@@ -365,8 +365,8 @@
 
 			}
 
-			function computeTotalDuration(ranges){
-				var time_ranges = computeCredits(ranges);
+			$scope.computeTotalDuration = function(ranges){
+				var time_ranges = $scope.computeCredits(ranges);
 				var total_duration = 0;
 				
 				for(var i = 0; i < time_ranges.length; i++){
@@ -575,7 +575,7 @@
 				// $scope.wfh_days = days_data;
 
 				for(var i = 0; i < $scope.wfh_days.length; i++){
-					$scope.wfh_days[i].CREDIT = computeTotalDuration($scope.wfh_days[i].ACTIVITIES);
+					$scope.wfh_days[i].CREDIT = computeTotalDuration(angular.copy($scope.wfh_days[i].ACTIVITIES));
 
 					$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].ACTIVITIES));
 				}
