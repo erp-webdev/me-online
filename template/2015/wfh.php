@@ -574,7 +574,7 @@
 				// $scope.wfh_days = days_data;
 
 				$scope.wfh_days.forEach(day => {
-					day.CREDIT = computeCredits(day.ACTIVITIES);
+					day.CREDIT = computeTotalDuration(day.ACTIVITIES);
 				});
 				
 				for(var i = 0; i < $scope.wfh_days.length; i++){
