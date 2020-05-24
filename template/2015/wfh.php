@@ -317,7 +317,7 @@
 				for(var i = 0; i < ranges.length; i++){
 					var start = ranges[i].start;
 					var end = ranges[i].end;
-					var duration = ((end.getHours()  - start.getHours()) * 60 - end.getMinutes() + start.getMinutes()) / 60;
+					var duration = ((end.getHours()  - start.getHours()) * 60 + end.getMinutes() - start.getMinutes()) / 60;
 
 					ranges[i].duration = duration.toFixed(2);
 				}
