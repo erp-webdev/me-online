@@ -304,8 +304,6 @@
 				}
 			}
 
-			console.log(localStorage.getItem('CompanyID'));
-
 			$scope.$watchGroup(['wfh_from', 'wfh_to'], function(newVal, oldVal){
 
 				if(newVal[0] == oldVal[0] && newVal[1] != oldVal[1]){
@@ -515,9 +513,15 @@
 				$scope.wfh_days[index].ACTIVITIES.splice(act, 1);
 			}
 
-			for(var i = 0; i < $scope.wfh_days.length; i++){
-				$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].ACTIVITIES));
-			}
+			
+
+			angular.element(document).ready(function () {
+
+				for(var i = 0; i < $scope.wfh_days.length; i++){
+					$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].ACTIVITIES));
+				}
+
+			});
 
 		});
 	});
