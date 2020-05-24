@@ -64,7 +64,7 @@
 																				<input type="text" id="end_time" ng-click="timePick($event)" attribute1="{{wfh_day.DTR}}" readonly title="End Time: eg. 9:00" timepicker class="txtbox width55 wfh_time{{ $parent.$index+1 }} timepick_angular" data-dtr_index="{{ $parent.$index }}" ng-model="wfh_days[$parent.$index].ACTIVITIES[$index].end_time" required>
 																				<br>
 																				<label ng-show="$index == wfh_days[$parent.$index].ACTIVITIES.length - 1" title="When checked, credit hours will be deducted with 1 hour break time" > 
-																					<input id="include_break{{ $index+1 }}" value="0" attribute1="{{ wfh_day.DTR }}"  type="checkbox" name="include_break[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="mdtr_absent" ng-checked="wfh_days[$parent.$index].BREAKTIME == 1" ng-click="includeFunction($event)"> less 1 HR Break
+																					<input id="include_break{{ $index+1 }}" value="0" attribute1="{{ wfh_day.DTR }}"  type="checkbox" name="include_break[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="mdtr_absent" ng-checked="wfh_days[$parent.$index].BREAKTIME == 1" ng-click="wfh_days[$parent.$index].BREAKTIME = (int)(!wfh_days[$parent.$index].BREAKTIME) "> less 1 HR Break
 																				</label>
 																			</td>
 																		</tr>
@@ -498,31 +498,31 @@
 
 			});
 
-			$scope.includeFunction = function($event){
+			// $scope.includeFunction = function($event){
 
-				var breaktime = angular.element($event.currentTarget).val();
-				var date = angular.element($event.currentTarget).attr("attribute1");
+			// 	var breaktime = angular.element($event.currentTarget).val();
+			// 	var date = angular.element($event.currentTarget).attr("attribute1");
 
-				if(breaktime == 0){
-					breaktime = 1;
-				}else{
-					breaktime = 0;
-				}
+			// 	if(breaktime == 0){
+			// 		breaktime = 1;
+			// 	}else{
+			// 		breaktime = 0;
+			// 	}
 
-				angular.element($event.currentTarget).val(breaktime);
+			// 	angular.element($event.currentTarget).val(breaktime);
 
-				var days_data = JSON.stringify($scope.wfh_days);
-				days_data = JSON.parse(days_data);
+			// 	var days_data = JSON.stringify($scope.wfh_days);
+			// 	days_data = JSON.parse(days_data);
 
-				angular.forEach(days_data, function(value, key){
-					if(value.DTR == date){
-						value.BREAKTIME = breaktime;
-					}
-				});
-				$scope.wfh_days = days_data;
+			// 	angular.forEach(days_data, function(value, key){
+			// 		if(value.DTR == date){
+			// 			value.BREAKTIME = breaktime;
+			// 		}
+			// 	});
+			// 	$scope.wfh_days = days_data;
 
-				console.log($scope.wfh_days);
-			}
+			// 	console.log($scope.wfh_days);
+			// }
 
 			$scope.$watch('wfh_days', function(newVal, oldVal, $scope){
 				// has an duplicate computation of hours; computation of overlapping range
