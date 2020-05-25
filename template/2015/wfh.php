@@ -51,7 +51,8 @@
 																	<span ng-bind="wfh_day.DTR | date: 'EEE MM/dd/yy'"></span> <br>
 																</td>
 																<td class="centertalign">
-																	<strong><span ng-bind="wfh_day.CREDIT | number:2"></span></strong> hr<span ng-show="wfh_day.CREDIT > 1">s</span>
+																	<strong><span ng-bind="wfh_day.CREDIT | number:2"></span></strong> hr<span ng-show="wfh_day.CREDIT > 1">s</span> 
+																	<span ng-show="wfh_day.CREDIT > 8 || isHoliday(wfh_day.DTR) || isWeekends(wfh_day.DTR)"></span>
 																	<input value="{{ wfh_day.CREDIT }}" id="wfh_totalworkedhours{{ $index+1 }}" type="hidden" name="wfh_totalworkedhours[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="wfh_totalworkedhours txtbox">
 																	<input id="wfh_dayin{{ $index+1 }}" type="hidden" name="wfh_dayin[{{ $index+1 }}]" value="{{ wfh_day.DTR | date: 'y-MM-dd'}}" class="wfh_dayin{{ $index+1 }}" />
 																</td>
@@ -604,6 +605,29 @@
 				}
 
 			});
+
+			$scope.isHoliday = function($dtr){
+				$.ajax(
+				{
+					url: "<?php //echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
+					data: "date=" + date,
+					type: "POST",
+					complete: function(){
+						$("#loading").hide();
+					},
+					success: function(data) {
+						
+						console.log(data);
+				
+					}
+				});
+			}
+
+			$scope.isWeekends = function($dtr){
+				$dtr = new Date('1/1/1900 ' + $dtr);
+				// Saturday or Sunday
+				return $dtr.getDay() == 6 || $dtr.getDay() == 0;
+			}
 
 		});
 	});
