@@ -84,7 +84,6 @@
 																		</tr>
 																	</table>
 																	<span>&nbsp;</span>
-																	<span ng-show="wfh_day.CREDIT > 8" style="color: yellow">**Your credit hours exceeds the daily maximum worked hours. This will be subject for further approval.</span>
 																</td>
 															</tr>
 														</table>
@@ -94,7 +93,12 @@
 											</tr>
 											<tr>
 												<td colspan="2">
-													<i>* Maximum 7 days per application is allowed.</i>
+													<i>Maximum 7 days per application is allowed.</i><br>
+													<i><strong>Credit Hours for Approval</strong></i><br>
+													<ul>
+														<li><i><span ng-show="wfh_day.CREDIT > 8" style="color: yellow">* Worked hours more than the maximum 8 hours</span></i></li>
+														<li><i><span ng-show="wfh_day.CREDIT > 8" style="color: yellow">* Worked rendered on a Holiday, Saturday or Sunday</span></i></li>
+													</ul>
 												</td>
 											</tr>
 										</table>
