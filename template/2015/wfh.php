@@ -589,6 +589,11 @@
 						br = 0;
 
 					$scope.wfh_days[i].CREDIT -= br;
+
+					if($scope.wfh_days[i].CREDIT <= 0)
+						$scope.wfh_days[i].CREDIT = 0;
+
+					$scope.wfh_days[i].CREDIT -= br;
 					$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].ACTIVITIES));
 				}
 
@@ -615,6 +620,11 @@
 					if($scope.wfh_days[i].CREDIT == 0)
 						br = 0;
 
+					$scope.wfh_days[i].CREDIT -= br;
+
+					if($scope.wfh_days[i].CREDIT <= 0)
+						$scope.wfh_days[i].CREDIT = 0;
+						
 					$scope.wfh_days[i].CREDIT -= br;
 					$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].ACTIVITIES));
 				}
