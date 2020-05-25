@@ -589,7 +589,7 @@
 					else
 						$scope.wfh_days[i].CREDIT = 0;
 						
-					console.log($scope.isWeekends($scope.wfh_days[i].DTR));
+					console.log($scope.isHoliday($scope.wfh_days[i].DTR));
 					$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].ACTIVITIES));
 				}
 
