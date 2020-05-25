@@ -641,7 +641,7 @@
 			}
 
 			$scope.isWeekends = function($dtr){
-				$dtr = new Date('1/1/1900 ' + $dtr);
+				$dtr = new Date($dtr);
 				// Saturday or Sunday
 				return $dtr.getDay() == 6 || $dtr.getDay() == 0;
 			}
