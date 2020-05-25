@@ -589,6 +589,7 @@
 					else
 						$scope.wfh_days[i].CREDIT = 0;
 						
+					console.log($scope.wfh_days[i].DTR);
 					$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].ACTIVITIES));
 				}
 
