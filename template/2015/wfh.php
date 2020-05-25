@@ -584,16 +584,9 @@
 				for(var i = 0; i < $scope.wfh_days.length; i++){
 					$scope.wfh_days[i].CREDIT = $scope.computeTotalDuration($scope.wfh_days[i].ACTIVITIES) ;
 
-					var br = $scope.wfh_days[i].BREAKTIME;
-					if($scope.wfh_days[i].CREDIT == 0)
-						br = 0;
-
-					$scope.wfh_days[i].CREDIT -= br;
-
-					if($scope.wfh_days[i].CREDIT <= 0)
-						$scope.wfh_days[i].CREDIT = 0;
-
-					$scope.wfh_days[i].CREDIT -= br;
+					if($scope.wfh_days[i].CREDIT > $scope.wfh_days[i].BREAKTIME)
+						$scope.wfh_days[i].CREDIT -= $scope.wfh_days[i].BREAKTIME;
+						
 					$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].ACTIVITIES));
 				}
 
@@ -616,16 +609,9 @@
 				for(var i = 0; i < $scope.wfh_days.length; i++){
 					$scope.wfh_days[i].CREDIT = $scope.computeTotalDuration($scope.wfh_days[i].ACTIVITIES) ;
 
-					var br = $scope.wfh_days[i].BREAKTIME;
-					if($scope.wfh_days[i].CREDIT == 0)
-						br = 0;
-
-					$scope.wfh_days[i].CREDIT -= br;
-
-					if($scope.wfh_days[i].CREDIT <= 0)
-						$scope.wfh_days[i].CREDIT = 0;
+					if($scope.wfh_days[i].CREDIT > $scope.wfh_days[i].BREAKTIME)
+						$scope.wfh_days[i].CREDIT -= $scope.wfh_days[i].BREAKTIME;
 						
-					$scope.wfh_days[i].CREDIT -= br;
 					$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].ACTIVITIES));
 				}
 
