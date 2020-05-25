@@ -96,8 +96,8 @@
 													<i>Maximum 7 days per application is allowed.</i><br>
 													<i><strong>Credit Hours for Approval</strong></i><br>
 													<ul>
-														<li><i><span ng-show="wfh_day.CREDIT > 8" style="color: yellow">* Worked hours more than the maximum 8 hours</span></i></li>
-														<li><i><span ng-show="wfh_day.CREDIT > 8" style="color: yellow">* Worked rendered on a Holiday, Saturday or Sunday</span></i></li>
+														<li><i><span >* Worked hours more than the maximum 8 hours</span></i></li>
+														<li><i><span >* Worked rendered on a Holiday, Saturday or Sunday</span></i></li>
 													</ul>
 												</td>
 											</tr>
