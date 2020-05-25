@@ -51,7 +51,7 @@
 																	<span ng-bind="wfh_day.DTR | date: 'EEE MM/dd/yy'"></span> <br>
 																</td>
 																<td class="centertalign">
-																	<strong><span ng-bind="wfh_day.CREDIT | number:2"></span></strong> hr
+																	<strong><span ng-bind="wfh_day.CREDIT | number:2"></span></strong> hr<span ng-show="wfh_day.CREDIT > 1">s</span>
 																	<input value="{{ wfh_day.CREDIT }}" id="wfh_totalworkedhours{{ $index+1 }}" type="hidden" name="wfh_totalworkedhours[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="wfh_totalworkedhours txtbox">
 																	<input id="wfh_dayin{{ $index+1 }}" type="hidden" name="wfh_dayin[{{ $index+1 }}]" value="{{ wfh_day.DTR | date: 'y-MM-dd'}}" class="wfh_dayin{{ $index+1 }}" />
 																</td>
@@ -528,7 +528,7 @@
 			}
 
 			$scope.$watch('wfh_days', function(newVal, oldVal, $scope){
-				// has an duplicate computation of hours; computation of overlapping range
+				// has duplicate computation of hours; computation of overlapping range
 				// ex: 8am - 12am = 4hrs
 				//     9am - 10am = 1hr 
 				//     4hrs + 1hr = 5 hrs where it should be 4hrs bec 9am - 10 am is included within 8am - 12am
@@ -577,9 +577,6 @@
 					$scope.wfh_days[i].CREDIT = $scope.computeTotalDuration($scope.wfh_days[i].ACTIVITIES) - $scope.wfh_days[i].BREAKTIME;
 					$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].ACTIVITIES));
 				}
-
-
-				/* computation of credited hours */
 
 				localStorage.setItem('wfh-entries', JSON.stringify($scope.wfh_days));
 			}, true);
