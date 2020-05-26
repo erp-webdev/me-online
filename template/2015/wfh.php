@@ -236,9 +236,10 @@
 
 			$scope.excludeFunction = function(key){
 
-					$scope.isSample("2020-05-26");
+					$scope.isSample("2020-05-26").then(function(data){
+						alert($scope.holiShift);
+					});
 
-					console.log($scope.holiShift);
 
 				if($("#wfh_disable" + key).val() == 0){
 					$("#wfh_disable" + key).val(1);
