@@ -622,7 +622,6 @@
 			});
 
 			$scope.isHoliday = function($dtr, $event){
-				console.log($event);
 
 				var holiday = $.ajax(
 				{
