@@ -622,6 +622,7 @@
 			});
 
 			$scope.isHoliday = function($dtr, $event){
+				angular.element($event.currentTarget).attr("style", "color:red");
 
 				// var holiday = $.ajax(
 				// {
@@ -648,7 +649,6 @@
 					url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
 					data: "date=" + $dtr,
 					type: "POST",
-					async: false,
 					complete: function(){
 						$("#loading").hide();
 					}
@@ -656,7 +656,6 @@
 					data = JSON.parse(data);
 					if(data.SHIFT == 'HOLIDAY'){
 						$scope.holiShift = true;
-						angular.element($event.currentTarget).attr("style", "color:red");
 					}else{
 						$scope.holiShift = false;
 					}
