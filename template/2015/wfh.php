@@ -236,11 +236,20 @@
 
 			$scope.excludeFunction = function(key){
 
-				console.log(
-					$scope.isSample("2020-05-25").then(function(data) {
-						console.log(data);
-					})
-				);
+					var x = $scope.isSample("2020-05-25").then(function(data) {
+						if(data == 'HOLIDAY'){
+							return true;
+						}else{
+							return false;
+						}
+					});
+
+					if(x){
+						alert('true');
+					}else{
+						alert('false');
+					}
+
 				if($("#wfh_disable" + key).val() == 0){
 					$("#wfh_disable" + key).val(1);
 				}else{
