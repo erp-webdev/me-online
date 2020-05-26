@@ -463,7 +463,7 @@
 				$scope.wfh_days = sort;
 
 				$scope.holidays = [];
-				for(var j = 0; j < $scope.wfh_days.length; j++)				{
+				for(var k = 0; k < $scope.wfh_days.length; k++)				{
 					$http({
 						method : "POST",
 						url : "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
@@ -471,7 +471,6 @@
 					}).then(function checkHoliday(response) {
 						if(response.data.SHIFT)
 							$scope.holidays.push($scope.wfh_days[j].DTR);
-						
 					}, function myError(response) {
 						console.log('error retrieving holiday');
 					});
