@@ -661,9 +661,9 @@
 
 				data.then(function(response) {
 					var holiday = response;
+					console.log(holiday);
 				});
 
-				console.log(holiday);
 				// if(holiday == 'HOLIDAY'){
 				// 	return true;
 				// }else{
