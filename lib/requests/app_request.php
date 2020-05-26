@@ -2486,11 +2486,12 @@
         break;
 
 		case 'getshiftdtr':
-						$day = $_POST['date'];
+                        $day = $_POST['date'];
+                        var_dump($_POST);
 
 						$shift = $mainsql->get_shiftdtr($profile_idnum, $day, $profile_dbname);
 
-                        echo json_encode($shift);
+                        // echo json_encode($shift);
 		break;
 
         case 'getmandtr':
