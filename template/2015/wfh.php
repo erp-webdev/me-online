@@ -238,7 +238,7 @@
 
 					var x = $scope.isSample("2020-05-14");
 
-
+					console.log(x);
 
 				if($("#wfh_disable" + key).val() == 0){
 					$("#wfh_disable" + key).val(1);
@@ -654,13 +654,28 @@
 			}
 
 			$scope.isSample = function($dtr){
-			 return $http({
+				return $.ajax(
+				{
 					url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
-					method: "POST",
-					data: {date: $dtr}
-				}).then(function(response) {
-					console.log(response.data.SHIFT);
+					data: "date=" + date,
+					type: "POST",
+					complete: function(){
+						$("#loading").hide();
+					},
+					success: function(data) {
+
+						return data;
+
+					}
 				});
+
+			 // return $http({
+				// 	url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
+				// 	method: "POST",
+				// 	data: {date: $dtr}
+				// }).then(function(response) {
+				// 	console.log(response.data.SHIFT);
+				// });
 
 			// return $http.post("<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr", {date: $dtr}).then(function(data){
 			// 	console.log(data);
