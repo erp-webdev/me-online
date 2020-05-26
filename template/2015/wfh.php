@@ -236,7 +236,7 @@
 
 			$scope.excludeFunction = function(key){
 
-				alert($scope.isSample("2020-05-25"));
+				console.log($scope.isSample("2020-05-25"));
 				if($("#wfh_disable" + key).val() == 0){
 					$("#wfh_disable" + key).val(1);
 				}else{
@@ -651,15 +651,12 @@
 			}
 
 			$scope.isSample = function($dtr){
-				var holiday = $http({
+			 return $http({
 					url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
 					method: "POST",
 					data: {date: $dtr}
 				});
 
-				holiday = JSON.parse(holiday);
-
-				return holiday.SHIFT;
 			}
 			$scope.isWeekends = function($dtr){
 				$dtr = new Date($dtr);
