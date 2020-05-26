@@ -466,7 +466,7 @@
 				$scope.holidays = [];
 				for(var k = 0; k < $scope.wfh_days.length; k++)				{
 					$http({
-						method : "POST",
+						method : "GET",
 						url : "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
 						data: {TEST: $scope.wfh_days[k].DTR, 'KEVS' : 'TEST'},
 					}).then(function checkHoliday(response) {
