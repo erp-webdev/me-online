@@ -467,10 +467,10 @@
 					$http({
 						method : "POST",
 						url : "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
-						data: {date: $scope.wfh_days[j].DTR},
+						data: {date: $scope.wfh_days[k].DTR},
 					}).then(function checkHoliday(response) {
-						if(response.data.SHIFT)
-							$scope.holidays.push($scope.wfh_days[j].DTR);
+						if(response.data.SHIFT == 'HOLIDAY')
+							$scope.holidays.push($scope.wfh_days[k].DTR);
 					}, function myError(response) {
 						console.log('error retrieving holiday');
 					});
