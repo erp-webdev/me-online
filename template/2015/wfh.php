@@ -238,7 +238,7 @@
 
 				console.log(
 					$scope.isSample("2020-05-25").then(function(data) {
-						return data;
+						console.log(data);
 					})
 				);
 				if($("#wfh_disable" + key).val() == 0){
