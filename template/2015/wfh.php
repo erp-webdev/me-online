@@ -236,7 +236,7 @@
 
 			$scope.excludeFunction = function(key){
 
-					var x = $scope.isSample("2020-05-26");
+					var x = $scope.isSample("2020-05-22");
 
 					if(x && $scope.holiShift){
 						console.log($scope.holiShift);
