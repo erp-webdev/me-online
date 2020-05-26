@@ -238,8 +238,10 @@
 
 					var x = $scope.isSample("2020-05-14");
 					x.then(function(val) {
-						alert(val);
+						$scope.holiShift = val;
 					});
+
+					alert($scope.holiShift);
 
 				if($("#wfh_disable" + key).val() == 0){
 					$("#wfh_disable" + key).val(1);
