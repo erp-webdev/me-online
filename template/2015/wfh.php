@@ -471,7 +471,6 @@
 					}).then(function checkHoliday(response) {
 						if(response.data.SHIFT == 'HOLIDAY')
 							$scope.holidays.push(response.config.data.date);
-						console.log( JSON.stringify( $scope.holidays))
 					}, function error(response) {
 						console.log('error retrieving holiday');
 					});
@@ -547,76 +546,10 @@
 			});
 
 			$scope.isHoliday = function($dtr){
-				// angular.element($event.currentTarget).attr?("style", "color:red");
-
-				// $.ajax({
-				// 	url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
-				// 	type: "POST",
-				// 	data: "date=" + $dtr,
-				// 	success: function (data) {
-				// 		if(data.SHIFT == 'HOLIDAY'){
-				// 			return true;
-				// 		}else{
-				// 			return false;
-				// 		}
-				// 	}
-				// });
-
 				$scope.holidays.forEach(holiday => {
 					if(holiday.DTR == $dtr)
 						return true;
 				});
-
-				// $.ajax(
-				// {
-				// 	url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
-				// 	type: "POST",
-				// 	complete: function(){
-				// 		$("#loading").hide();
-				// 	}
-				// }).then(function(data){
-				// 	if(data.SHIFT == 'HOLIDAY'){
-				// 		return true;
-				// 	}else{
-				// 		return false;
-				// 	}
-
-				// });
-
-				// holiday = JSON.parse(holiday);
-				//
-				//
-				// if(holiday.SHIFT == 'HOLIDAY'){
-				// 	return true;
-				// }else{
-				// 	return false;
-				// }
-
-
-				// return $.ajax(
-				// {
-				// 	url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
-				// 	data: "date=" + $dtr,
-				// 	type: "POST",
-				// 	complete: function(){
-				// 		$("#loading").hide();
-				// 	},
-				// 	success: function(data) {
-				//
-				// 		data = JSON.parse(data);
-				//
-				// 				if(!(data == null)){
-				// 					if(data.SHIFT == 'HOLIDAY'){
-				// 						return true;
-				// 					}else{
-				// 						return false;
-				// 					}
-				// 				}else{
-				// 					return false;
-				// 				}
-				// 	}
-				// });
-
 			}
 
 			$scope.isWeekends = function($dtr){
