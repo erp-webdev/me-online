@@ -643,7 +643,7 @@
 				// 	return false;
 				// }
 
-				var holiday = $.ajax(
+				$.ajax(
 				{
 					url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
 					data: "date=" + $dtr,
@@ -653,7 +653,14 @@
 						$("#loading").hide();
 					}
 				}).then(function(data){
-					console.log(data);
+					data = JSON.parse(data);
+					if(data.SHIFT == 'HOLIDAY'){
+						$scope.holiShift = true;
+						angular.element($event.currentTarget).attr("style", "color:red");
+					}else{
+						$scope.holiShift = false;
+					}
+
 				});
 
 
