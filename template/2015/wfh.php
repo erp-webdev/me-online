@@ -236,11 +236,7 @@
 
 			$scope.excludeFunction = function(key){
 
-			  $http({
-					url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
-					method: "POST",
-					data: {date: "2020-05-25"}
-				});
+
 
 				if($("#wfh_disable" + key).val() == 0){
 					$("#wfh_disable" + key).val(1);
@@ -630,7 +626,17 @@
 			$scope.isHoliday = function($dtr){
 
 
+				var holiday = $http({
+					url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
+					method: "POST",
+					data: {date: "2020-05-25"}
+				});
 
+				if(holiday){
+					return true;
+				}else{
+					return false;
+				}
 				// return $.ajax(
 				// {
 				// 	url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
