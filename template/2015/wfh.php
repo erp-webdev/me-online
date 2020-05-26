@@ -623,6 +623,26 @@
 
 			$scope.isHoliday = function($dtr){
 
+				// var holiday = $.ajax(
+				// {
+				// 	url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
+				// 	data: "date=" + $dtr,
+				// 	type: "POST",
+				// 	async: false,
+				// 	complete: function(){
+				// 		$("#loading").hide();
+				// 	}
+				// }).responseText;
+				//
+				// holiday = JSON.parse(holiday);
+				//
+				//
+				// if(holiday.SHIFT == 'HOLIDAY'){
+				// 	return true;
+				// }else{
+				// 	return false;
+				// }
+
 				var holiday = $.ajax(
 				{
 					url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
@@ -632,16 +652,9 @@
 					complete: function(){
 						$("#loading").hide();
 					}
-				}).responseText;
-
-				holiday = JSON.parse(holiday);
-
-
-				if(holiday.SHIFT == 'HOLIDAY'){
-					return true;
-				}else{
-					return false;
-				}
+				}).then(function(data){
+					console.log(data);
+				});
 
 
 				// return $.ajax(
