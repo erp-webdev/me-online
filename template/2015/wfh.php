@@ -236,7 +236,9 @@
 
 			$scope.excludeFunction = function(key){
 
-				console.log($scope.isSample("2020-05-25"));
+				console.log($scope.isSample("2020-05-25").then(function(data){
+					return data;
+				}););
 				if($("#wfh_disable" + key).val() == 0){
 					$("#wfh_disable" + key).val(1);
 				}else{
