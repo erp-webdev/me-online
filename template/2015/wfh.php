@@ -645,10 +645,13 @@
 					method : "POST",
 					url : "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
 					data: {date: $dtr},
-				}).then(function mySuccess(response) {
-					console.log(response.data);
+				}).then(function checkHoliday(response) {
+					if(response.data.SHIFT)
+						return true;
+					else 
+						return false;
 				}, function myError(response) {
-					$scope.myWelcome = response.statusText;
+					console.log('error retrieving holiday');
 				});
 
 				// $.ajax(
