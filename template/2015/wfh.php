@@ -236,9 +236,9 @@
 
 			$scope.excludeFunction = function(key){
 
-					var x = $scope.isSample("2020-05-26");
+					$scope.isSample("2020-05-26");
 
-					console.log(x);
+					console.log($scope.holiShift);
 
 				if($("#wfh_disable" + key).val() == 0){
 					$("#wfh_disable" + key).val(1);
@@ -663,7 +663,7 @@
 				// });
 
 			return $http.post("<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr", {date: $dtr}).then(function(data){
-				return data.data.SHIFT;
+				$scope.holiShift =  data.data.SHIFT;
 			});
 
 				// var holiday = data.then(function(response) {
