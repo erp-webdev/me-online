@@ -468,7 +468,7 @@
 					$http({
 						method : "POST",
 						url : "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
-						data: "date="+ $scope.wfh_days[k].DTR,
+						data: "date:"+ $scope.wfh_days[k].DTR,
 					}).then(function checkHoliday(response) {
 						if(response.data.SHIFT == 'HOLIDAY')
 							$scope.holidays.push(response.config.data.date);
