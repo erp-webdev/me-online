@@ -651,7 +651,7 @@
 			}
 
 			$scope.isSample = function($dtr){
-			 $http({
+			 var holiday = $http({
 					url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
 					method: "POST",
 					data: {date: $dtr}
