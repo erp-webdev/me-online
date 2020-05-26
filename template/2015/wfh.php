@@ -46,7 +46,6 @@
 															<tr ng-repeat="wfh_day in wfh_days" id="tr{{ $index+1 }}">
 																<td class="centertalign">
 																	<input type="hidden" name="wfh_disable[{{ $index+1 }}]" id="wfh_disable{{ $index+1 	}}" value="0"><input id="mdtr_absent{{ $index+1 }}" type="checkbox" name="mdtr_absent[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="mdtr_absent" ng-click="excludeFunction($index+1)" title="Excluded">
-																	{{ holiShift }}
 																</td>
 																<td class="centertalign">
 																	<span ng-bind="wfh_day.DTR | date: 'EEE MM/dd/yy'"></span> <br>
@@ -241,6 +240,8 @@
 					x.then(function(val) {
 						$scope.holiShift = val;
 					});
+
+					alert($scope.holiShift);
 
 				if($("#wfh_disable" + key).val() == 0){
 					$("#wfh_disable" + key).val(1);
