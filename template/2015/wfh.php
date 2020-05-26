@@ -239,9 +239,9 @@
 					var x = $scope.isSample("2020-05-26");
 
 					if(x && $scope.holiShift){
-						console.log('true');
+						console.log($scope.holiShift);
 					}else{
-						console.log('false');
+						console.log($scope.holiShift);
 					}
 
 				if($("#wfh_disable" + key).val() == 0){
