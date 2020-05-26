@@ -52,10 +52,10 @@
 																</td>
 																<td class="centertalign">
 																	<span style="{{ (wfh_day.CREDIT > 8 ||  isWeekends(wfh_day.DTR) || isHoliday(wfh_day.DTR)) ? 'color:yellow' : '' }}">
-																		<strong><span ng-bind="wfh_day.CREDIT | number:2"></span></strong> hr<span ng-show="wfh_day.CREDIT > 1">s</span> 
+																		<strong><span ng-bind="wfh_day.CREDIT | number:2"></span></strong> hr<span ng-show="wfh_day.CREDIT > 1">s</span>
 																		<span ng-show="wfh_day.CREDIT > 8 ||  isWeekends(wfh_day.DTR)">*</span>
 																	</span>
-																	
+
 																	<input value="{{ wfh_day.CREDIT }}" id="wfh_totalworkedhours{{ $index+1 }}" type="hidden" name="wfh_totalworkedhours[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="wfh_totalworkedhours txtbox">
 																	<input id="wfh_dayin{{ $index+1 }}" type="hidden" name="wfh_dayin[{{ $index+1 }}]" value="{{ wfh_day.DTR | date: 'y-MM-dd'}}" class="wfh_dayin{{ $index+1 }}" />
 																</td>
@@ -67,7 +67,7 @@
 																				<input type="text" id="start_time" ng-click="timePick($event)" attribute1="{{wfh_day.DTR}}" readonly title="Start Time: eg. 8:00" timepicker class="txtbox width55 wfh_time{{ $parent.$index+1 }} timepick_angular" ng-model="wfh_days[$parent.$index].ACTIVITIES[$index].start_time" data-dtr_index="{{ $parent.$index }}" required >
 																				<input type="text" id="end_time" ng-click="timePick($event)" attribute1="{{wfh_day.DTR}}" readonly title="End Time: eg. 9:00" timepicker class="txtbox width55 wfh_time{{ $parent.$index+1 }} timepick_angular" data-dtr_index="{{ $parent.$index }}" ng-model="wfh_days[$parent.$index].ACTIVITIES[$index].end_time" required>
 																				<br>
-																				<label ng-show="$index == wfh_days[$parent.$index].ACTIVITIES.length - 1" title="When checked, credit hours will be deducted with 1 hour break time" > 
+																				<label ng-show="$index == wfh_days[$parent.$index].ACTIVITIES.length - 1" title="When checked, credit hours will be deducted with 1 hour break time" >
 																					<input id="include_break{{ $index+1 }}" value="0" attribute1="{{ wfh_day.DTR }}"  type="checkbox" name="include_break[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="mdtr_absent" ng-checked="wfh_days[$parent.$index].BREAKTIME == 1" ng-click="includeFunction($event)"> less 1 HR Break
 																				</label>
 																			</td>
@@ -376,7 +376,7 @@
 			$scope.computeTotalDuration = function(ranges){
 				var time_ranges = $scope.computeCredits(ranges);
 				var total_duration = 0;
-				
+
 				for(var i = 0; i < time_ranges.length; i++){
 					total_duration += time_ranges[i].duration;
 				}
@@ -538,7 +538,7 @@
 			$scope.$watch('wfh_days', function(newVal, oldVal, $scope){
 				// has duplicate computation of hours; computation of overlapping range
 				// ex: 8am - 12am = 4hrs
-				//     9am - 10am = 1hr 
+				//     9am - 10am = 1hr
 				//     4hrs + 1hr = 5 hrs where it should be 4hrs bec 9am - 10 am is included within 8am - 12am
 
 				// to compute total credit hours
@@ -570,7 +570,7 @@
 				// 		daytime_total = daytime_total + time_diff/60;
 
 				// 	});
-					
+
 				// 	var credit_total = daytime_total - value.BREAKTIME;
 				// 	if(credit_total < 0){
 				// 		credit_total = 0;
@@ -588,7 +588,7 @@
 						$scope.wfh_days[i].CREDIT -= $scope.wfh_days[i].BREAKTIME;
 					else
 						$scope.wfh_days[i].CREDIT = 0;
-						
+
 					$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].ACTIVITIES));
 				}
 
@@ -596,7 +596,7 @@
 			}, true);
 
 			$scope.addItem = function(index, act){
-				$scope.wfh_days[index].ACTIVITIES.push( 
+				$scope.wfh_days[index].ACTIVITIES.push(
 					{start_time : $scope.wfh_days[index].ACTIVITIES[act].end_time, end_time : null, act: ''}
 				);
 
@@ -615,7 +615,7 @@
 						$scope.wfh_days[i].CREDIT -= $scope.wfh_days[i].BREAKTIME;
 					else
 						$scope.wfh_days[i].CREDIT = 0;
-						
+
 					$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].ACTIVITIES));
 				}
 
@@ -624,19 +624,19 @@
 			$scope.isHoliday = function($dtr){
 				$.ajax(
 				{
-					url: "<?php //echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
+					url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
 					data: "date=" + $dtr,
 					type: "POST",
 					complete: function(){
 						$("#loading").hide();
 					},
 					success: function(data) {
-						
+
 
 						console.log(data);
 
 						return false;
-				
+
 					}
 				});
 
