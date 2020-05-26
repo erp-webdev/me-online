@@ -654,13 +654,13 @@
 			}
 
 			$scope.isSample = function($dtr){
-			 return $http({
-					url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
-					method: "POST",
-					data: {date: $dtr}
-				}).then(function(response) {
-					return response.data.SHIFT;
-				});
+			 // return $http({
+				// 	url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
+				// 	method: "POST",
+				// 	data: {date: $dtr}
+				// }).then(function(response) {
+				// 	return response.data.SHIFT;
+				// });
 
 			return $http.post("<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr", {date: $dtr}).success(function(data){
 				return data;
