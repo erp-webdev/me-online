@@ -161,7 +161,7 @@
 		// 		}
 		// 	}
 		// });
-		wfh_app.controller('WFHController', function WFHController($scope){
+		wfh_app.controller('WFHController', ['$scope','$http', function WFHController($scope, $http){
 
 			$scope.timePick = function($event){
 				var date = angular.element($event.currentTarget).attr("attribute1");
@@ -641,7 +641,7 @@
 				return $dtr.getDay() == 6 || $dtr.getDay() == 0;
 			}
 
-		});
+		}]);
 	});
 
 </script>
