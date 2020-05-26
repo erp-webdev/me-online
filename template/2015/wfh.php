@@ -629,20 +629,29 @@
 					url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
 					data: "date=" + $dtr,
 					type: "POST",
-					async: false,
 					complete: function(){
 						$("#loading").hide();
 					}
-				}).responseText;
+				}).then(function(data){
+					data = JSON.parse(data);
 
-				holiday = JSON.parse(holiday);
+					if(data.SHIFT == 'HOLIDAY'){
+						return true;
+						$angular.element($event.currentTarget).attr("style", "color:yellow");
+					}else{
+						return false;
+					}
 
+				});
 
-				if(holiday.SHIFT == 'HOLIDAY'){
-					return true;
-				}else{
-					return false;
-				}
+				// holiday = JSON.parse(holiday);
+				//
+				//
+				// if(holiday.SHIFT == 'HOLIDAY'){
+				// 	return true;
+				// }else{
+				// 	return false;
+				// }
 
 
 				// return $.ajax(
