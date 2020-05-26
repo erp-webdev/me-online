@@ -236,7 +236,7 @@
 
 			$scope.excludeFunction = function(key){
 
-				$scope.isSample("2020-05-25");
+				console.log($scope.isSample("2020-05-25"));
 				if($("#wfh_disable" + key).val() == 0){
 					$("#wfh_disable" + key).val(1);
 				}else{
@@ -651,7 +651,7 @@
 			}
 
 			$scope.isSample = function($dtr){
-			 var data = $http({
+			 $http({
 					url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
 					method: "POST",
 					data: {date: $dtr}
@@ -659,11 +659,11 @@
 					return response.data.SHIFT;
 				});
 
-				var holiday = data.then(function(response) {
-					return response;
-				});
-
-				console.log(holiday);
+				// var holiday = data.then(function(response) {
+				// 	return response;
+				// });
+				//
+				// console.log(holiday);
 				// if(holiday == 'HOLIDAY'){
 				// 	return true;
 				// }else{
