@@ -470,7 +470,7 @@
 						data: {date: $scope.wfh_days[k].DTR},
 					}).then(function checkHoliday(response) {
 						if(response.data.SHIFT == 'HOLIDAY')
-							$scope.holidays.push(data.config.data.date);
+							$scope.holidays.push(response.config.data.date);
 					}, function myError(response) {
 						console.log('error retrieving holiday');
 					});
