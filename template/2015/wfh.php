@@ -659,7 +659,9 @@
 					return response.data.SHIFT;
 				});
 
-				console.log(holiday);
+				holiday.then(function(data) {
+					console.log(data);
+				});
 				// if(holiday == 'HOLIDAY'){
 				// 	return true;
 				// }else{
