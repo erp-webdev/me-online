@@ -471,8 +471,10 @@
 					}).then(function checkHoliday(response) {
 						if(response.data.SHIFT == 'HOLIDAY')
 							$scope.holidays.push(response.config.data.date);
-					}, function myError(response) {
+					}, function error(response) {
 						console.log('error retrieving holiday');
+					}, function complete(response){
+						console.log( JSON.stringify( $scope.holidays))
 					});
 				}
 
