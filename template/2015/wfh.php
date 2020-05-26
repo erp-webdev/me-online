@@ -161,7 +161,7 @@
 		// 		}
 		// 	}
 		// });
-		wfh_app.controller('WFHController', function WFHController($scope){
+		wfh_app.controller('WFHController', ['$scope','$http', function($scope, $http){
 
 			$scope.timePick = function($event){
 				var date = angular.element($event.currentTarget).attr("attribute1");
@@ -623,29 +623,35 @@
 
 			$scope.isHoliday = function($dtr){
 
-				return $.ajax(
-				{
+				return $http({
 					url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
-					data: "date=" + $dtr,
-					type: "POST",
-					complete: function(){
-						$("#loading").hide();
-					},
-					success: function(data) {
-
-						data = JSON.parse(data);
-
-								if(!(data == null)){
-									if(data.SHIFT == 'HOLIDAY'){
-										return true;
-									}else{
-										return false;
-									}
-								}else{
-									return false;
-								}
-					}
+					method: "POST",
+					data: {date: $dtr}
 				});
+
+				// return $.ajax(
+				// {
+				// 	url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
+				// 	data: "date=" + $dtr,
+				// 	type: "POST",
+				// 	complete: function(){
+				// 		$("#loading").hide();
+				// 	},
+				// 	success: function(data) {
+				//
+				// 		data = JSON.parse(data);
+				//
+				// 				if(!(data == null)){
+				// 					if(data.SHIFT == 'HOLIDAY'){
+				// 						return true;
+				// 					}else{
+				// 						return false;
+				// 					}
+				// 				}else{
+				// 					return false;
+				// 				}
+				// 	}
+				// });
 
 			}
 
@@ -655,7 +661,7 @@
 				return $dtr.getDay() == 6 || $dtr.getDay() == 0;
 			}
 
-		});
+		}]);
 	});
 
 </script>
