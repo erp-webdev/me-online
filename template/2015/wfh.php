@@ -628,14 +628,15 @@
 					url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
 					data: "date=" + $dtr,
 					type: "POST",
+					async: false,
 					complete: function(){
 						$("#loading").hide();
 					}
 				}).responseText;
 
-				// holiday = JSON.parse(holiday);
+				holiday = JSON.parse(holiday);
 
-				console.log(holiday);
+				console.log(holiday.SHIFT);
 
 				if(holiday.SHIFT == 'HOLIDAY'){
 					return true;
