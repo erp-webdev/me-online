@@ -632,10 +632,17 @@
 					},
 					success: function(data) {
 
+						data = JSON.parse(data);
 
-						console.log(data);
-
-						return false;
+								if(!(data == null)){
+									if(data.SHIFT == 'HOLIDAY'){
+										return true;
+									}else{
+										return false;
+									}
+								}else{
+									return false;
+								}
 
 					}
 				});
