@@ -548,8 +548,10 @@
 
 			$scope.isHoliday = function($dtr){
 				$scope.holidays.forEach(holiday => {
-					if(holiday == $dtr)
+					if(holiday == $dtr){
+						console.log($dtr + " is holiday");
 						return true;
+					}
 				});
 
 				return false;
