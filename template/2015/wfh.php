@@ -236,7 +236,7 @@
 
 			$scope.excludeFunction = function(key){
 
-					var x = $scope.isSample("2020-05-25").then(function(data) {
+					var x = $scope.isSample("2020-05-26").then(function(data) {
 						if(data == 'HOLIDAY'){
 							return true;
 						}else{
