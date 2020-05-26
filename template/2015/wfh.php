@@ -238,11 +238,7 @@
 
 					var x = $scope.isSample("2020-05-22");
 
-					if(x && $scope.holiShift){
-						console.log($scope.holiShift);
-					}else{
-						console.log($scope.holiShift);
-					}
+
 
 				if($("#wfh_disable" + key).val() == 0){
 					$("#wfh_disable" + key).val(1);
@@ -667,7 +663,7 @@
 				// });
 
 			return $http.post("<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr", {date: $dtr}).then(function(data){
-				$scope.holiShift = data.data.SHIFT;
+				console.log(data);
 			});
 
 				// var holiday = data.then(function(response) {
