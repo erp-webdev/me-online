@@ -657,34 +657,21 @@
 			}
 
 			$scope.isSample = async function($dtr){
-				// var data = $.ajax(
-				// {
+
+
+
+			  // $http({
 				// 	url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
-				// 	data: "date=" + "2020-05-22",
-				// 	type: "POST",
-				// 	async: false,
-				// 	complete: function(){
-				// 		$("#loading").hide();
-				// 	}
-				// }).responseText;
-				//
-				// data = JSON.parse(data);
-				//
-				// return data.SHIFT;
+				// 	method: "POST",
+				// 	data: {date: $dtr}
+				// }).then(function(response) {
+				// 	return response.data.SHIFT;
+				// });
 
-			  var data = await $http({
-					url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
-					method: "POST",
-					data: {date: $dtr}
-				}).then(function(response) {
-					return response.data.SHIFT;
-				});
 
-				return data;
-
-			// return $http.post("<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr", {date: $dtr}).then(function(data){
-			// 	console.log(data);
-			// });
+			$http.post("<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr", {date: $dtr}).then(function(data){
+				console.log(JSON.parse(data));
+			});
 
 				// var holiday = data.then(function(response) {
 				// 	return response;
