@@ -667,11 +667,7 @@
 				// });
 
 			return $http.post("<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr", {date: $dtr}).then(function(data){
-				if(data.data.SHIFT == 'HOLIDAY'){
-					$scope.holiShift = true;
-				}else{
-					$scope.holiShift = false;
-				}
+				$scope.holiShift = data.data.SHIFT;
 			});
 
 				// var holiday = data.then(function(response) {
