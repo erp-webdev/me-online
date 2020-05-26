@@ -625,7 +625,7 @@
 
 			$scope.isHoliday = function($dtr){
 
-
+				isSample($dtr);
 
 				// return $.ajax(
 				// {
@@ -657,7 +657,7 @@
 				var holiday = $http({
 					url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
 					method: "POST",
-					data: {date: "2020-05-25"}
+					data: {date: $dtr}
 				});
 
 				if(holiday){
