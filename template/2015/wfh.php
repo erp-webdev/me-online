@@ -659,11 +659,11 @@
 					return response.data.SHIFT;
 				});
 
-				data.then(function(response) {
-					var holiday = response;
-					console.log(holiday);
+				var holiday = data.then(function(response) {
+					return response;
 				});
 
+				console.log(holiday);
 				// if(holiday == 'HOLIDAY'){
 				// 	return true;
 				// }else{
