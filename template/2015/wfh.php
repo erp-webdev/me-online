@@ -547,14 +547,14 @@
 			});
 
 			$scope.isHoliday = function($dtr){
+				var isHol = false;
 				$scope.holidays.forEach(holiday => {
 					if(holiday == $dtr){
-						return true;
+						isHol = true;
 					}
 				});
 
-				console.log( JSON.stringify($scope.holidays) )
-				return false;
+				return isHol;
 			}
 
 			$scope.isWeekends = function($dtr){
