@@ -146,62 +146,11 @@
 	$(document).ready(function () {
 
 		var wfh_app = angular.module('WFHApp', []);
-		// wfh_app.directive('timepicker', function(){
-		// 	return {
-		// 		restrict: 'A',
-		// 		link: function(scope, element, attrs){
-		//
-		// 			$('.timepick_angular').timepicker({
-		// 					timeFormat: "hh:mmtt",
-		// 	        stepHour: 1,
-		// 	        stepMinute: 30,
-		// 	        hourMin: 6,
-		// 			    hourMax: 22
-		// 			});
-		// 		}
-		// 	}
-		// });
 		wfh_app.controller('WFHController', ['$scope','$http', function($scope, $http){
 
 			$scope.timePick = function($event){
 				var date = angular.element($event.currentTarget).attr("attribute1");
-				/*
-
-				// $.ajax(
-				// {
-				// 	url: "<?php //echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
-				// 	data: "date=" + date,
-				// 	type: "POST",
-				// 	complete: function(){
-				// 		$("#loading").hide();
-				// 	},
-				// 	success: function(data) {
-				//
-				// 		console.log(data);
-				// 		data = JSON.parse(data);
-				//
-				// 		if(!(data == null)){
-				// 			if(!(data.STARTTIME == null)){
-				//
-				// 				var start = parseInt(data.STARTTIME);
-				// 				var end = parseInt(data.ENDTIME);
-				//
-				// 				angular.element($event.currentTarget).timepicker({
-				// 						timeFormat: "hh:mmtt",
-				// 						stepHour: 1,
-				// 						stepMinute: 30,
-				// 						hourMin: start,
-				// 						hourMax: end
-				// 				});
-				//
-				// 				angular.element($event.currentTarget).timepicker("show");
-				// 			}
-				// 		}
-				//
-				// 	}
-				// });
-
-				*/
+				
 				var getTimeOption = function(event){
 					var opt = {
 						timeFormat: "hh:mm tt",
@@ -289,6 +238,7 @@
 			$scope.wfh_to = new Date(angular.copy($scope.wfh_to)).toISOString().split("T")[0];
 
 			$scope.date_original = $scope.wfh_to;
+			$scope.holidays = [];
 
 			$scope.wfh_days = [];
 
@@ -512,6 +462,21 @@
 				var sort = (angular.copy($scope.wfh_days)).sort(compare);
 				$scope.wfh_days = sort;
 
+				$scope.holidays = [];
+				for(var j = 0; j < $scope.wfh_days.length; j++)				{
+					$http({
+						method : "POST",
+						url : "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
+						data: {date: $scope.wfh_days[j].DTR},
+					}).then(function checkHoliday(response) {
+						if(response.data.SHIFT)
+							$scope.holidays.push($scope.wfh_days[j].DTR);
+						
+					}, function myError(response) {
+						console.log('error retrieving holiday');
+					});
+				}
+
 			});
 
 			$scope.includeFunction = function($event){
@@ -540,50 +505,6 @@
 			}
 
 			$scope.$watch('wfh_days', function(newVal, oldVal, $scope){
-				// has duplicate computation of hours; computation of overlapping range
-				// ex: 8am - 12am = 4hrs
-				//     9am - 10am = 1hr
-				//     4hrs + 1hr = 5 hrs where it should be 4hrs bec 9am - 10 am is included within 8am - 12am
-
-				// to compute total credit hours
-				// var days_data = JSON.stringify($scope.wfh_days);
-				// days_data = JSON.parse(days_data);
-
-				// angular.forEach(days_data, function(value, key){
-
-				// 	var daytime_total = 0;
-				// 	angular.forEach(value.ACTIVITIES, function (value, key){
-				// 		if(value.start_time == null)
-				// 			value.start_time = '';
-
-				// 		var start = value.start_time.substr(0,5);
-				// 		var start_type = value.start_time.substr(6,2);
-				// 		var time1 =  new Date("01/01/2007 " + start + " " + start_type).getHours() * 60 + new Date("01/01/2007 " + start + " " + start_type).getMinutes();
-
-				// 		if(value.end_time == null)
-				// 			value.end_time = '';
-
-				// 		var end = value.end_time.substr(0,5);
-				// 		var end_type = value.end_time.substr(6,2);
-				// 		var time2 =new Date("01/01/2007 " + end + " " + end_type).getHours() * 60 + new Date("01/01/2007 " + end + " " + end_type).getMinutes();
-
-				// 		var time_diff = time2 - time1;
-				// 		if(time_diff < 0){
-				// 			time_diff = 0;
-				// 		}
-				// 		daytime_total = daytime_total + time_diff/60;
-
-				// 	});
-
-				// 	var credit_total = daytime_total - value.BREAKTIME;
-				// 	if(credit_total < 0){
-				// 		credit_total = 0;
-				// 	}
-				// 	value.CREDIT = credit_total;
-
-				// });
-
-				// $scope.wfh_days = days_data;
 
 				for(var i = 0; i < $scope.wfh_days.length; i++){
 					$scope.wfh_days[i].CREDIT = $scope.computeTotalDuration($scope.wfh_days[i].ACTIVITIES) ;
@@ -641,17 +562,9 @@
 				// 	}
 				// });
 
-				$http({
-					method : "POST",
-					url : "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
-					data: {date: $dtr},
-				}).then(function checkHoliday(response) {
-					if(response.data.SHIFT)
+				$scope.holidays.forEach(holiday => {
+					if(holiday.DTR == $dtr)
 						return true;
-					else 
-						return false;
-				}, function myError(response) {
-					console.log('error retrieving holiday');
 				});
 
 				// $.ajax(
