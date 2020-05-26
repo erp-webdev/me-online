@@ -636,7 +636,12 @@
 
 				holiday = JSON.parse(holiday);
 
-				console.log(holiday.SHIFT);
+				if(holiday.SHIFT == 'HOLIDAY'){
+					return true;
+				}else{
+					return false;
+				}
+
 
 				// return $.ajax(
 				// {
