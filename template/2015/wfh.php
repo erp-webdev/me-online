@@ -238,7 +238,7 @@
 
 					var x = $scope.isSample("2020-05-26");
 
-					console.log(x.value);
+					console.log(x);
 
 				if($("#wfh_disable" + key).val() == 0){
 					$("#wfh_disable" + key).val(1);
