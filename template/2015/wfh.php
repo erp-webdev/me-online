@@ -659,16 +659,11 @@
 					url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
 					data: "date=" + "2020-05-22",
 					type: "POST",
+					async: false,
 					complete: function(){
 						$("#loading").hide();
-					},
-					success: function(data) {
-
-						data = JSON.parse(data);
-
-						return data.SHIFT;
 					}
-				});
+				}).responseText;
 
 			 // return $http({
 				// 	url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
