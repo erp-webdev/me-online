@@ -2490,7 +2490,7 @@
 						$shift = $mainsql->get_shiftdtr($profile_idnum, $day, $profile_dbname);
 
                         // echo json_encode($shift);
-                        echo $day;
+                        echo $_POST['date'];
 		break;
 
         case 'getmandtr':
