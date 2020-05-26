@@ -651,13 +651,20 @@
 			}
 
 			$scope.isSample = function($dtr){
-			 return $http({
+			 var holiday =  $http({
 					url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
 					method: "POST",
 					data: {date: $dtr}
 				}).then(function(response) {
-					console.log(response.data.SHIFT);
+					return response.data.SHIFT;
 				});
+
+				console.log(holiday);
+				// if(holiday == 'HOLIDAY'){
+				// 	return true;
+				// }else{
+				// 	return false;
+				// }
 
 			}
 			$scope.isWeekends = function($dtr){
