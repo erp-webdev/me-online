@@ -664,7 +664,9 @@
 					},
 					success: function(data) {
 
-						console.log(data.responseText);
+						data = JSON.parse(data);
+
+						console.log(data);
 
 					}
 				});
