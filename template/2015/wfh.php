@@ -656,7 +656,7 @@
 					method: "POST",
 					data: {date: $dtr}
 				}).then(function(response) {
-					holiday = response.data.SHIFT;
+					return response.data.SHIFT;
 				});
 
 				console.log(holiday);
