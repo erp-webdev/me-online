@@ -662,7 +662,7 @@
 				// 	return response.data.SHIFT;
 				// });
 
-			return $http.post("<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr", {date: $dtr}).success(function(data){
+			return $http.post("<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr", {date: $dtr}).then(function(data){
 				return data;
 			});
 
