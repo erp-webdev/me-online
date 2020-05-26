@@ -51,7 +51,7 @@
 																	<span ng-bind="wfh_day.DTR | date: 'EEE MM/dd/yy'"></span> <br>
 																</td>
 																<td class="centertalign">
-																	<span #element (click)="isSample(element)" style="{{ (wfh_day.CREDIT > 8 ||  isWeekends(wfh_day.DTR) || isHoliday(wfh_day.DTR, element)) ? 'color:yellow' : '' }}">
+																	<span style="{{ (wfh_day.CREDIT > 8 ||  isWeekends(wfh_day.DTR) || isHoliday(wfh_day.DTR)) ? 'color:yellow' : '' }}">
 																		<strong><span ng-bind="wfh_day.CREDIT | number:2"></span></strong> hr<span ng-show="wfh_day.CREDIT > 1">s</span>
 																		<span ng-show="wfh_day.CREDIT > 8 ||  isWeekends(wfh_day.DTR)">*</span>
 																	</span>
@@ -620,30 +620,8 @@
 				}
 
 			});
-			$scope.isSample = function(el){
-				console.log(el);
-			}
-			$scope.isHoliday = function($dtr, el){
-				console.log(el);
-				// var holiday = $.ajax(
-				// {
-				// 	url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
-				// 	data: "date=" + $dtr,
-				// 	type: "POST",
-				// 	async: false,
-				// 	complete: function(){
-				// 		$("#loading").hide();
-				// 	}
-				// }).responseText;
-				//
-				// holiday = JSON.parse(holiday);
-				//
-				//
-				// if(holiday.SHIFT == 'HOLIDAY'){
-				// 	return true;
-				// }else{
-				// 	return false;
-				// }
+
+			$scope.isHoliday = function($dtr){
 
 				var holiday = $.ajax(
 				{
@@ -654,15 +632,16 @@
 					complete: function(){
 						$("#loading").hide();
 					}
-				}).then(function(data){
-					data = JSON.parse(data);
-					if(data.SHIFT == 'HOLIDAY'){
-						$scope.holiShift = true;
-					}else{
-						$scope.holiShift = false;
-					}
+				}).responseText;
 
-				});
+				holiday = JSON.parse(holiday);
+
+
+				if(holiday.SHIFT == 'HOLIDAY'){
+					return true;
+				}else{
+					return false;
+				}
 
 
 				// return $.ajax(
