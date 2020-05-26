@@ -633,9 +633,9 @@
 					}
 				}).responseText;
 
-				holiday = JSON.parse(holiday);
+				// holiday = JSON.parse(holiday);
 
-				console.log(holiday.SHIFT);
+				console.log(holiday);
 
 				if(holiday.SHIFT == 'HOLIDAY'){
 					return true;
