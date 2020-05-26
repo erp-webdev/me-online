@@ -236,10 +236,6 @@
 
 			$scope.excludeFunction = function(key){
 
-				$dtr = "2020-05-25";
-				alert($scope.isSample($dtr));
-
-
 				if($("#wfh_disable" + key).val() == 0){
 					$("#wfh_disable" + key).val(1);
 				}else{
@@ -627,7 +623,7 @@
 
 			$scope.isHoliday = function($dtr){
 
-
+				return $scope.isSample($dtr);
 				// return $.ajax(
 				// {
 				// 	url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
