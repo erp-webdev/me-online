@@ -666,7 +666,7 @@
 
 
 			$http.post("<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr", {date: $dtr}).then(function(data){
-				console.log(data.SHIFT);
+				console.log(data);
 			});
 
 				// var holiday = data.then(function(response) {
