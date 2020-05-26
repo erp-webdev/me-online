@@ -237,7 +237,7 @@
 			$scope.excludeFunction = function(key){
 
 				$dtr = "2020-05-25";
-				alert(isSample($dtr));
+				alert($scope.isSample($dtr));
 
 
 				if($("#wfh_disable" + key).val() == 0){
