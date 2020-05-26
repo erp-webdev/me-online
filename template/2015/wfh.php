@@ -622,29 +622,15 @@
 			});
 
 			$scope.isHoliday = function($dtr){
-				return $.ajax(
-				{
-					url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
-					data: "date=" + $dtr,
-					type: "POST",
-					complete: function(){
-						$("#loading").hide();
-					},
-					success: function(data) {
 
-						data = JSON.parse(data);
-
-								if(!(data == null)){
-									if(data.SHIFT == 'HOLIDAY'){
-										return true;
-									}else{
-										return false;
-									}
-								}else{
-									return false;
-								}
-								return false;
-					}
+				$http({
+						url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
+						method: "POST",
+						data: {date: $dtr}
+				}).success(function(data) {
+					console.log("data success:"+data);
+				}).error(function(data) {
+					console.log("data error:");
 				});
 
 			}
