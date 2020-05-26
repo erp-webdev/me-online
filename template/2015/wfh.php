@@ -657,7 +657,7 @@
 				return $.ajax(
 				{
 					url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
-					data: "date=" + date,
+					data: "date=" + "2020-05-22",
 					type: "POST",
 					complete: function(){
 						$("#loading").hide();
