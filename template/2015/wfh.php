@@ -651,7 +651,7 @@
 			}
 
 			$scope.isSample = function($dtr){
-			 var holiday = $http({
+			 var data = $http({
 					url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
 					method: "POST",
 					data: {date: $dtr}
@@ -659,9 +659,11 @@
 					return response.data.SHIFT;
 				});
 
-				holiday.then(function(data) {
-					console.log(data);
+				data.then(function(response) {
+					var holiday = response;
 				});
+
+				console.log(holiday):
 				// if(holiday == 'HOLIDAY'){
 				// 	return true;
 				// }else{
