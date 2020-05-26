@@ -631,22 +631,12 @@
 					async: false,
 					complete: function(){
 						$("#loading").hide();
-					},
-					success: function(data) {
-
-						data = JSON.parse(data);
-
-						if(data.SHIFT == 'HOLIDAY'){
-							return true;
-						}else{
-							return false;
-						}
-
 					}
-				});
+				}).responseText;
 
-				console.log(holiday);
-				return holiday;
+				holiday = JSON.parse(holiday);
+
+				console.log(holiday.SHIFT);
 
 				// return $.ajax(
 				// {
