@@ -624,7 +624,7 @@
 			$scope.isHoliday = function($dtr, $event){
 				angular.element($event.currentTarget).attr("style", "color:red");
 
-				var holiday = $.ajax(
+				$.ajax(
 				{
 					url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
 					data: "date=" + $dtr,
