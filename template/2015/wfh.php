@@ -236,13 +236,7 @@
 
 			$scope.excludeFunction = function(key){
 
-					var x = $scope.isSample("2020-05-26").then(function(data) {
-						if(data == 'HOLIDAY'){
-							return true;
-						}else{
-							return false;
-						}
-					});
+					var x = $scope.isSample("2020-05-26");
 
 					console.log(x);
 
@@ -667,6 +661,10 @@
 				}).then(function(response) {
 					return response.data.SHIFT;
 				});
+
+			return $http.post("<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr", {date: $dtr}).success(function(data){
+				return data;
+			});
 
 				// var holiday = data.then(function(response) {
 				// 	return response;
