@@ -2487,9 +2487,8 @@
 
 		case 'getshiftdtr':
                         $day = $_GET['date'];
-                        echo $day;
 						$shift = $mainsql->get_shiftdtr($profile_idnum, $day, $profile_dbname);
-                        // echo json_encode($shift);
+                        echo json_encode($shift);
 		break;
 
         case 'getmandtr':
