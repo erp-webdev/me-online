@@ -659,6 +659,7 @@
 					url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
 					data: "date=" + $dtr,
 					type: "POST",
+					async: false,
 					complete: function(){
 						$("#loading").hide();
 					},
