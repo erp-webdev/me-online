@@ -623,7 +623,7 @@
 
 			$scope.isHoliday = function($dtr){
 
-				$.ajax(
+				var holiday = $.ajax(
 				{
 					url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
 					data: "date=" + $dtr,
@@ -634,7 +634,6 @@
 					},
 					success: function(data) {
 
-						console.log(data);
 						data = JSON.parse(data);
 
 						if(data.SHIFT == 'HOLIDAY'){
@@ -645,6 +644,9 @@
 
 					}
 				});
+
+				console.log(holiday);
+				return holiday;
 
 				// return $.ajax(
 				// {
