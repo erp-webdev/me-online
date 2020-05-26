@@ -51,7 +51,7 @@
 																	<span ng-bind="wfh_day.DTR | date: 'EEE MM/dd/yy'"></span> <br>
 																</td>
 																<td class="centertalign">
-																	<span #warnDay value="test" style="{{ (wfh_day.CREDIT > 8 ||  isWeekends(wfh_day.DTR) || isHoliday(wfh_day.DTR, warnDay.value)) ? 'color:yellow' : '' }}">
+																	<span #element style="{{ (wfh_day.CREDIT > 8 ||  isWeekends(wfh_day.DTR) || isHoliday(wfh_day.DTR, element)) ? 'color:yellow' : '' }}">
 																		<strong><span ng-bind="wfh_day.CREDIT | number:2"></span></strong> hr<span ng-show="wfh_day.CREDIT > 1">s</span>
 																		<span ng-show="wfh_day.CREDIT > 8 ||  isWeekends(wfh_day.DTR)">*</span>
 																	</span>
@@ -621,9 +621,8 @@
 
 			});
 
-			$scope.isHoliday = function($dtr, ele){
-				angular.element(ele).attr("style", "color:red");
-				console.log(ele);
+			$scope.isHoliday = function($dtr, el){
+				console.log(el);
 				// var holiday = $.ajax(
 				// {
 				// 	url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
@@ -644,11 +643,12 @@
 				// 	return false;
 				// }
 
-				$.ajax(
+				var holiday = $.ajax(
 				{
 					url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
 					data: "date=" + $dtr,
 					type: "POST",
+					async: false,
 					complete: function(){
 						$("#loading").hide();
 					}
