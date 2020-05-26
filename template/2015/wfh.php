@@ -666,8 +666,7 @@
 
 						data = JSON.parse(data);
 
-						console.log(data);
-
+						return data.SHIFT;
 					}
 				});
 
