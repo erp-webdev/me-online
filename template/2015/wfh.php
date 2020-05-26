@@ -625,7 +625,6 @@
 
 			$scope.isHoliday = function($dtr){
 
-				isSample($dtr);
 
 				// return $.ajax(
 				// {
