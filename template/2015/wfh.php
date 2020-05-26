@@ -623,15 +623,7 @@
 
 			$scope.isHoliday = function($dtr){
 
-				return $http({
-						url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
-						method: "POST",
-						data: {date: $dtr}
-				}).success(function(data) {
-					console.log("data success:"+data);
-				}).error(function(data) {
-					console.log("data error:");
-				});
+				
 
 			}
 
