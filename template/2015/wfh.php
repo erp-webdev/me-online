@@ -668,13 +668,15 @@
 				//
 				// return data.SHIFT;
 
-			 return var data = await $http({
+			  var data = await $http({
 					url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
 					method: "POST",
 					data: {date: $dtr}
 				}).then(function(response) {
 					return response.data.SHIFT;
 				});
+
+				return data;
 
 			// return $http.post("<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr", {date: $dtr}).then(function(data){
 			// 	console.log(data);
