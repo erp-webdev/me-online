@@ -244,11 +244,7 @@
 						}
 					});
 
-					if(x){
-						alert('true');
-					}else{
-						alert('false');
-					}
+					console.log(x);
 
 				if($("#wfh_disable" + key).val() == 0){
 					$("#wfh_disable" + key).val(1);
