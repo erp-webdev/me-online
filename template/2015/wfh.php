@@ -622,7 +622,7 @@
 			});
 
 			$scope.isHoliday = function($dtr, $event){
-				$angular.element($event.currentTarget).attr("style", "color:red");
+				angular.element($event.currentTarget).attr("style", "color:red");
 
 				var holiday = $.ajax(
 				{
@@ -637,7 +637,7 @@
 
 					if(data.SHIFT == 'HOLIDAY'){
 						return true;
-						$angular.element($event.currentTarget).attr("style", "color:yellow");
+						angular.element($event.currentTarget).attr("style", "color:yellow");
 					}else{
 						return false;
 					}
