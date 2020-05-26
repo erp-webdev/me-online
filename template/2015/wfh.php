@@ -161,7 +161,7 @@
 		// 		}
 		// 	}
 		// });
-		wfh_app.controller('WFHController', function WFHController($scope, $http){
+		wfh_app.controller('WFHController', function WFHController($scope){
 
 			$scope.timePick = function($event){
 				var date = angular.element($event.currentTarget).attr("attribute1");
