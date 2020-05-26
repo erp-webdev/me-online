@@ -656,10 +656,10 @@
 					method: "POST",
 					data: {date: $dtr}
 				}).then(function(response) {
-					return response.data.SHIFT;
+					holiday = response.data.SHIFT;
 				});
 
-				console.log(holiday.SHIFT);
+				console.log(holiday);
 				// if(holiday == 'HOLIDAY'){
 				// 	return true;
 				// }else{
