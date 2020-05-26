@@ -664,7 +664,7 @@
 					},
 					success: function(data) {
 
-						return data;
+						console.log(data.responseText);
 
 					}
 				});
