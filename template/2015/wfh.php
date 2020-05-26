@@ -623,7 +623,7 @@
 
 			$scope.isHoliday = function($dtr, ele){
 				angular.element(ele).attr("style", "color:red");
-
+				console.log(ele);
 				// var holiday = $.ajax(
 				// {
 				// 	url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
