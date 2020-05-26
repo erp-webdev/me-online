@@ -656,7 +656,7 @@
 					method: "POST",
 					data: {date: $dtr}
 				}).then(function(response) {
-					console.log(response.data);
+					console.log(response.data.SHIFT);
 				});
 
 			}
