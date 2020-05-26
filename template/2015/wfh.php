@@ -165,6 +165,8 @@
 
 			$scope.timePick = function($event){
 				var date = angular.element($event.currentTarget).attr("attribute1");
+				/*
+
 				// $.ajax(
 				// {
 				// 	url: "<?php //echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
@@ -198,6 +200,8 @@
 				//
 				// 	}
 				// });
+
+				*/
 				var getTimeOption = function(event){
 					var opt = {
 						timeFormat: "hh:mm tt",
@@ -624,17 +628,27 @@
 			$scope.isHoliday = function($dtr, $event){
 				// angular.element($event.currentTarget).attr?("style", "color:red");
 
-				$.ajax({
-					url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
-					type: "POST",
-					data: "date=" + $dtr,
-					success: function (data) {
-						if(data.SHIFT == 'HOLIDAY'){
-							return true;
-						}else{
-							return false;
-						}
-					}
+				// $.ajax({
+				// 	url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
+				// 	type: "POST",
+				// 	data: "date=" + $dtr,
+				// 	success: function (data) {
+				// 		if(data.SHIFT == 'HOLIDAY'){
+				// 			return true;
+				// 		}else{
+				// 			return false;
+				// 		}
+				// 	}
+				// });
+
+				$http({
+					method : "POST",
+					url : "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
+					data: {date: $dtr},
+				}).then(function mySuccess(response) {
+					console.log(response.data);
+				}, function myError(response) {
+					$scope.myWelcome = response.statusText;
 				});
 
 				// $.ajax(
