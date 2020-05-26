@@ -51,7 +51,7 @@
 																	<span ng-bind="wfh_day.DTR | date: 'EEE MM/dd/yy'"></span> <br>
 																</td>
 																<td class="centertalign">
-																	<span style="{{ (wfh_day.CREDIT > 8 ||  isWeekends(wfh_day.DTR) || isHoliday(wfh_day.DTR)) ? 'color:yellow' : '' }}">
+																	<span style="{{ (wfh_day.CREDIT > 8 ||  isWeekends(wfh_day.DTR) || isHoliday(wfh_day.DTR, $event)) ? 'color:yellow' : '' }}">
 																		<strong><span ng-bind="wfh_day.CREDIT | number:2"></span></strong> hr<span ng-show="wfh_day.CREDIT > 1">s</span>
 																		<span ng-show="wfh_day.CREDIT > 8 ||  isWeekends(wfh_day.DTR)">*</span>
 																	</span>
@@ -621,7 +621,7 @@
 
 			});
 
-			$scope.isHoliday = function($dtr){
+			$scope.isHoliday = function($dtr, $event){
 
 				// var holiday = $.ajax(
 				// {
