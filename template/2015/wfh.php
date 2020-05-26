@@ -46,6 +46,7 @@
 															<tr ng-repeat="wfh_day in wfh_days" id="tr{{ $index+1 }}">
 																<td class="centertalign">
 																	<input type="hidden" name="wfh_disable[{{ $index+1 }}]" id="wfh_disable{{ $index+1 	}}" value="0"><input id="mdtr_absent{{ $index+1 }}" type="checkbox" name="mdtr_absent[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="mdtr_absent" ng-click="excludeFunction($index+1)" title="Excluded">
+																	{{ holiShift }}
 																</td>
 																<td class="centertalign">
 																	<span ng-bind="wfh_day.DTR | date: 'EEE MM/dd/yy'"></span> <br>
@@ -653,7 +654,27 @@
 			}
 
 			$scope.isSample = async function($dtr){
+				$.ajax(
+				{
+					url: "<?php //echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
+					data: "date=" + $dtr,
+					type: "POST",
+					complete: function(){
+						$("#loading").hide();
+					},
+					success: function(data) {
 
+						console.log(data);
+						data = JSON.parse(data);
+
+						if(data.SHIFT == 'HOLIDAY'){
+							$scope.holiShift = true;
+						}else{
+							$scope.holiShift = false;
+						}
+
+					}
+				});
 
 
 			  // $http({
@@ -665,20 +686,9 @@
 				// });
 
 
-			$http.post("<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr", {date: $dtr}).then(function(data){
-				console.log(data);
-			});
-
-				// var holiday = data.then(function(response) {
-				// 	return response;
-				// });
-				//
-				// console.log(holiday);
-				// if(holiday == 'HOLIDAY'){
-				// 	return true;
-				// }else{
-				// 	return false;
-				// }
+			// $http.post("<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr", {date: $dtr}).then(function(data){
+			// 	console.log(data.data.SHIFT);
+			// });
 
 			}
 			$scope.isWeekends = function($dtr){
