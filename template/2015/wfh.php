@@ -553,7 +553,7 @@
 					}
 				});
 
-				console.log( JSON.stringify($scope.holidays.parse) )
+				console.log( JSON.stringify($scope.holidays) )
 				return false;
 			}
 
