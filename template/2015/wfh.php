@@ -624,7 +624,6 @@
 
 			$scope.isHoliday = function($dtr){
 
-				return $scope.isSample($dtr);
 				// return $.ajax(
 				// {
 				// 	url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
