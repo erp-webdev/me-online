@@ -237,8 +237,7 @@
 			$scope.excludeFunction = function(key){
 
 					var x = $scope.isSample("2020-05-14");
-					x = JSON.parse(x);
-					console.log(x.SHIFT);
+					console.log(x);
 
 				if($("#wfh_disable" + key).val() == 0){
 					$("#wfh_disable" + key).val(1);
@@ -654,7 +653,7 @@
 			}
 
 			$scope.isSample = function($dtr){
-				return $.ajax(
+				var data = $.ajax(
 				{
 					url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
 					data: "date=" + "2020-05-22",
@@ -664,6 +663,10 @@
 						$("#loading").hide();
 					}
 				}).responseText;
+
+				data = JSON.parse(data);
+
+				return data.SHIFT;
 
 			 // return $http({
 				// 	url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
