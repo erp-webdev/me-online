@@ -663,7 +663,7 @@
 				// });
 
 			return $http.post("<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr", {date: $dtr}).then(function(data){
-				return data;
+				return data.data.SHIFT;
 			});
 
 				// var holiday = data.then(function(response) {
