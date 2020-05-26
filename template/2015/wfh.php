@@ -622,7 +622,7 @@
 			});
 
 			$scope.isHoliday = function($dtr, $event){
-				angular.element($event.currentTarget).attr("style", "color:red");
+				// angular.element($event.currentTarget).attr?("style", "color:red");
 
 				$.ajax(
 				{
