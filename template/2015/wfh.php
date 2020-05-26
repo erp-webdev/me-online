@@ -663,7 +663,7 @@
 					return response;
 				});
 
-				console.log(holiday.$$state);
+				console.log(holiday.$$state.value);
 				// if(holiday == 'HOLIDAY'){
 				// 	return true;
 				// }else{
