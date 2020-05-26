@@ -656,7 +656,7 @@
 			$scope.isSample = async function($dtr){
 				$.ajax(
 				{
-					url: "<?php //echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
+					url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
 					data: "date=" + $dtr,
 					type: "POST",
 					complete: function(){
