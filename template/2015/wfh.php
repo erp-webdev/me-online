@@ -236,7 +236,7 @@
 
 			$scope.excludeFunction = function(key){
 
-				console.log($scope.isSample("2020-05-25"));
+				$scope.isSample("2020-05-25");
 				if($("#wfh_disable" + key).val() == 0){
 					$("#wfh_disable" + key).val(1);
 				}else{
@@ -655,6 +655,8 @@
 					url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr",
 					method: "POST",
 					data: {date: $dtr}
+				}).then(function(response) {
+					console.log(response);
 				});
 
 			}
