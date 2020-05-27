@@ -6679,7 +6679,7 @@
 										<td <?php if($key != 0){ ?>style="border-top: 1px solid #888"<?php } ?> class="centertalign">
 											<?php if(in_array($profile_idnum, $approvers)){ ?>
 												<input type="hidden" class="wfhseq" attribute="<?php echo $key; ?>" name="wfhSeq[<?php echo $key; ?>]" value="<?php echo $value['SeqID']; ?>">
-												<input style="width: 50px;" value="<?php echo $value['ApprovedHrs'] ?>" id="wfhApprovedHrs<?php echo $key; ?>" type="number" name="wfhApprovedHrs[<?php echo $key; ?>]" attribute="<?php echo $key; ?>" attribute2="<?php echo $value['AppliedHrs']; ?>" class="txtbox ApprovedHrs">
+												<input style="width: 50px;" value="<?php echo $value['ApprovedHrs']; ?>" id="wfhApprovedHrs<?php echo $key; ?>" type="number" name="wfhApprovedHrs[<?php echo $key; ?>]" attribute="<?php echo $key; ?>" attribute2="<?php echo $value['AppliedHrs']; ?>" attribute3="<?php echo $value['ApprovedHrs']; ?>" class="txtbox ApprovedHrs">
 											<?php }else{
 													echo $value['ApprovedHrs'];
 											 	  }
@@ -7013,13 +7013,17 @@
 
 																					if(approve == 0){
 																						$(this).attr("value", 1);
+																						$(".ApprovedHrs").each(function(){
+																							$(this).val($(this).attr("attribute2"));
+																						});
 																					}else{
 																						$(this).attr("value", 0);
+																						$(".ApprovedHrs").each(function(){
+																							$(this).val($(this).attr("attribute3"));
+																						});
 																					}
 
-																				$(".ApprovedHrs").each(function(){
-																					$(this).val($(this).attr("attribute2"));
-																				});
+
 
 																			});
 																		</script>
