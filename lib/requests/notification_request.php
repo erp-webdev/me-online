@@ -6664,7 +6664,7 @@
 											if(type == 1){
 												$("#wfhApprovedHrs" + arrayid).val(approvehours);
 											}
-											
+
 											$(".wfhwarning" + arrayid).attr("style", "display: none");
 
 										});
@@ -6975,7 +6975,7 @@
                     <?php if ($notification_data[0]['Approved'] != 3) : ?>
                     <?php if (trim($notification_data[0]['Signatory01'])) : ?>
                     <tr>
-                        <td><b>Signatory 1</b></td>
+                        <td><b>Signatory1</b></td>
                         <td><?php echo $approver_data1[0]['FName'].' '.$approver_data1[0]['LName']; ?></td>
                     </tr>
                     <tr>
