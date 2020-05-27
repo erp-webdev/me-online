@@ -6657,6 +6657,7 @@
 										});
 
 										$(".wfhyes<?php echo $key; ?>").click(function(){
+											alert('clicked');
 											arrayid = $(this).attr('attribute');
 											approvehours = $(this).attr('attribute2');
 											$("wfhApprovedHrs" + arrayid).val(approvehours);
