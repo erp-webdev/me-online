@@ -6693,17 +6693,17 @@
 												if($holiday['SHIFT'] == 'HOLIDAY'){
 													if($value['AppliedHrs'] > 8){
 											?>
-														<p class="wfhwarning<?php echo $key; ?> whwarning" style="color: red;">The applied hours falls on a holiday / Saturday / Sunday and exceeds 8 hours per day.<a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute2="<?php echo $value['AppliedHrs']; ?>" attribute3="1"> <u>Approve Applied Hours</a></u> or <u><a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute3="0">Cancel Application?</a></u></p>
+														<p class="wfhwarning<?php echo $key; ?> whwarning" style="color: red;">The applied hours falls on a holiday / Saturday / Sunday and exceeds 8 hours per day.</br><a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute2="<?php echo $value['AppliedHrs']; ?>" attribute3="1"> <u>Approve Applied Hours</a></u> or <u><a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute3="0">Cancel Application?</a></u></p>
 											<?php
 													}else{
 											?>
-														<p class="wfhwarning<?php echo $key; ?> whwarning" style="color: red;">The applied hours falls on a holiday / Saturday / Sunday. Do you want to approve the applied hours?<u><a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute2="<?php echo $value['AppliedHrs']; ?>" attribute3="1">Yes</a></u> or <u><a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute3="0">No?</a></u></p>
+														<p class="wfhwarning<?php echo $key; ?> whwarning" style="color: red;">The applied hours falls on a holiday / Saturday / Sunday. Do you want to approve the applied hours?</br><u><a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute2="<?php echo $value['AppliedHrs']; ?>" attribute3="1">Yes</a></u> or <u><a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute3="0">No?</a></u></p>
 											<?php
 													}
 												}else{
 													if($value['AppliedHrs'] > 8){
 											?>
-														<p class="wfhwarning<?php echo $key; ?> whwarning" style="color: red;">The applied hours exceeds 8 hours per day, do you want to approve the applied hours? <u><a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute2="<?php echo $value['AppliedHrs']; ?>" attribute3="1">Yes</a></u> or <u><a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute3="0">No?</a></u></p>
+														<p class="wfhwarning<?php echo $key; ?> whwarning" style="color: red;">The applied hours exceeds 8 hours per day, do you want to approve the applied hours?</br><u><a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute2="<?php echo $value['AppliedHrs']; ?>" attribute3="1">Yes</a></u> or <u><a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute3="0">No?</a></u></p>
 											<?php
 													}
 												}
