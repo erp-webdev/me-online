@@ -6695,7 +6695,7 @@
 												}
 												if($value['AppliedHrs'] > 8){
 											?>
-												<p class="wfhwarning<?php echo $key; ?>" style="color: red;">The applied hours exceed 8 hours per day, do you want to approve the applied hours? <a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute2="<?php echo $value['AppliedHrs']; ?>" attribute3="1">Yes</a> or <a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute3="0">No?</a></p>
+												<p class="wfhwarning<?php echo $key; ?>" style="color: red;">The applied hours exceeds 8 hours per day, do you want to approve the applied hours? <a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute2="<?php echo $value['AppliedHrs']; ?>" attribute3="1">Yes</a> or <a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute3="0">No?</a></p>
 											<?php
 												}
 											?>
@@ -7010,7 +7010,7 @@
                                 <?php if (!$chkexpire) : ?>
 																	<?php if ($doctype == 'WH') : ?>
 
-																		<input type="checkbox" class="wfhapproveall" value="0"><b>Approve all aplied hours</b></br></br>
+																		<input type="checkbox" class="wfhapproveall" value="0"><b>Approve all applied hours</b></br></br>
 
 																	<?php endif; ?>
                                 <input id="btnapp" type="button" name="btnapp" value="Approve" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory01']; ?>" attribute20="<?php echo $notification_data[0]['DB_NAME01'] ? $notification_data[0]['DB_NAME01'] : 0; ?>"<?php if ($notification_data[0]['Signatory02']) : ?> attribute21="<?php echo $notification_data[0]['Signatory02'] ? $notification_data[0]['Signatory02'] : 0; ?>" attribute22="<?php echo $notification_data[0]['DB_NAME02'] ? $notification_data[0]['DB_NAME02'] : 0; ?>"<?php endif; ?> attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnapp smlbtn" />&nbsp;
