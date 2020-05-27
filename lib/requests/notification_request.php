@@ -6693,7 +6693,7 @@
 												}
 												if($value['AppliedHrs'] > 8){
 											?>
-												<p class="wfhwarning<?php echo $key; ?>" style="color: red;">The applied hours exceeds 8 hours per day, do you want to approve the applied hours? <a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute2="<?php echo $value['AppliedHrs']; ?>" attribute3="1">Yes</a> or <a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute3="0">No?</a></p>
+												<p class="wfhwarning<?php echo $key; ?> whwarning" style="color: red;">The applied hours exceeds 8 hours per day, do you want to approve the applied hours? <a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute2="<?php echo $value['AppliedHrs']; ?>" attribute3="1">Yes</a> or <a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute3="0">No?</a></p>
 											<?php
 												}
 											?>
@@ -7016,14 +7016,15 @@
 																						$(".ApprovedHrs").each(function(){
 																							$(this).val($(this).attr("attribute2"));
 																						});
+																						$(".whwarning").attr("style", "display: none");
+
 																					}else{
 																						$(this).attr("value", 0);
 																						$(".ApprovedHrs").each(function(){
 																							$(this).val($(this).attr("attribute3"));
 																						});
+																						$(".whwarning").attr("style", "color: red");
 																					}
-
-
 
 																			});
 																		</script>
