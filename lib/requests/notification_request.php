@@ -6657,13 +6657,20 @@
 
 										$(".wfhapproveall").click(function(){
 											var approve = $(this).attr("value");
-											alert(approve);
+											var count = 0;
 
+												if(approve == '0'){
+													alert('0');
+													$(this).val(1);
+												}else{
+													alert('1');
+													$(this).val(0);
+												}
 
+											// $(".ApprovedHrs").each(function(){
+											// 	$(this).val($(this).attr("attribute2"));
+											// });
 
-											$(".ApprovedHrs").each(function(){
-												$(this).val($(this).attr("attribute2"));
-											});
 										});
 
 										$(".wfhwarn<?php echo $key; ?>").click(function(){
