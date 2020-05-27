@@ -6647,6 +6647,7 @@
 								foreach ($appwh_data as $key => $value) :
 
 									$holiday = $mainsql->get_shiftdtr($profile_idnum, $value['DTRDate'], $profile_dbname);
+									$wfday = date('w', strtotime($value['DTRDate']));
 									?>
 									<script>
 									$(function() {
@@ -6675,7 +6676,7 @@
 									});
 									</script>
 									<tr>
-										<td <?php if($key != 0){ ?>style="border-top: 1px solid #888"<?php } ?> class="centertalign"><p style="<?php if($holiday['SHIFT'] == 'HOLIDAY'){ echo 'color: red;'; } ?>"><?php echo date('F j, Y', strtotime($value['DTRDate'])); echo "-".date('w', strtotime($value['DTRDate'])); ?></p></td>
+										<td <?php if($key != 0){ ?>style="border-top: 1px solid #888"<?php } ?> class="centertalign"><p style="<?php if($holiday['SHIFT'] == 'HOLIDAY' || $wfday == 6 || $wfday == 0){ echo 'color: red;'; } ?>"><?php echo date('F j, Y', strtotime($value['DTRDate']));?></p></td>
 										<td <?php if($key != 0){ ?>style="border-top: 1px solid #888"<?php } ?> class="centertalign"><?php echo $value['AppliedHrs']; ?></td>
 										<td <?php if($key != 0){ ?>style="border-top: 1px solid #888"<?php } ?> class="centertalign">
 											<?php if(in_array($profile_idnum, $approvers)){ ?>
