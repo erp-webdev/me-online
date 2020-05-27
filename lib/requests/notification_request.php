@@ -6647,7 +6647,7 @@
 								foreach ($appwh_data as $key => $value) :
 
 									$holiday = $mainsql->get_shiftdtr($profile_idnum, $value['DTRDate'], $profile_dbname);
-									var_dump($holiday);
+									var_dump($holiday["SHIFT"]);
 									?>
 									<script>
 									$(function() {
