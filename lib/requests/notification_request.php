@@ -6647,7 +6647,6 @@
 								foreach ($appwh_data as $key => $value) :
 
 									$holiday = $mainsql->get_shiftdtr($profile_idnum, $value['DTRDate'], $profile_dbname);
-									var_dump($holiday["SHIFT"]);
 									?>
 									<script>
 									$(function() {
@@ -6674,7 +6673,7 @@
 									});
 									</script>
 									<tr>
-										<td <?php if($key != 0){ ?>style="border-top: 1px solid #888"<?php } ?> class="centertalign"><?php echo date('F j, Y', strtotime($value['DTRDate'])); ?></td>
+										<td <?php if($key != 0){ ?>style="border-top: 1px solid #888; <?php if($holiday['SHIFT'] == 'HOLIDAY'){ echo 'color: red;'; } ?>"<?php } ?> class="centertalign"><?php echo date('F j, Y', strtotime($value['DTRDate'])); ?></td>
 										<td <?php if($key != 0){ ?>style="border-top: 1px solid #888"<?php } ?> class="centertalign"><?php echo $value['AppliedHrs']; ?></td>
 										<td <?php if($key != 0){ ?>style="border-top: 1px solid #888"<?php } ?> class="centertalign">
 											<?php if(in_array($profile_idnum, $approvers)){ ?>
