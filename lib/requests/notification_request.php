@@ -6655,6 +6655,10 @@
 
 										});
 
+										$(".wfhapproveall").click(function(){
+											alert('clicked!');
+										});
+
 										$(".wfhwarn<?php echo $key; ?>").click(function(){
 											arrayid = $(this).attr('attribute');
 											approvehours = $(this).attr('attribute2');
@@ -7004,9 +7008,11 @@
                                 <?php endif; ?>
                                 <input id="remarks" type="text" name="remarks" placeholder="Remarks..." class="txtbox width95per<?php echo $doctype == 'OT' ? ' margintop10' : ''; ?> marginbottom10" />
                                 <?php if (!$chkexpire) : ?>
+																	<?php if ($doctype == 'WH') : ?>
 
-																<input type="checkbox" name="wfhapproveall"><b>Approve all aplied hours</b></br></br>
+																		<input type="checkbox" class="wfhapproveall"><b>Approve all aplied hours</b></br></br>
 
+																	<?php endif; ?>
                                 <input id="btnapp" type="button" name="btnapp" value="Approve" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory01']; ?>" attribute20="<?php echo $notification_data[0]['DB_NAME01'] ? $notification_data[0]['DB_NAME01'] : 0; ?>"<?php if ($notification_data[0]['Signatory02']) : ?> attribute21="<?php echo $notification_data[0]['Signatory02'] ? $notification_data[0]['Signatory02'] : 0; ?>" attribute22="<?php echo $notification_data[0]['DB_NAME02'] ? $notification_data[0]['DB_NAME02'] : 0; ?>"<?php endif; ?> attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnapp smlbtn" />&nbsp;
                                 <?php endif; ?>
                                 <input id="btnrej" type="button" name="btnrej" value="Reject" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory01']; ?>" attribute20="<?php echo $notification_data[0]['DB_NAME01'] ? $notification_data[0]['DB_NAME01'] : 0; ?>" attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnrej smlbtn btnred" />
