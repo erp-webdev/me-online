@@ -6675,6 +6675,11 @@
 												foreach($wh_act as $act_details){
 													echo "(".$act_details['start_time'] ." - " . $act_details['end_time'] .") ".$act_details['act']."</br></br>";
 												}
+												if($value['AppliedHrs'] > 8){
+											?>
+												<p style="color: red;">The applied hours exceed 8 hours per day, do you want to approve the applied hours? <a href="#">Yes</a> or <a href="#">No?</a></p>
+											<?php
+												}
 											?>
 										</td>
 										<td <?php if($key != 0){ ?>style="border-top: 1px solid #888"<?php } ?> class="centertalign">
