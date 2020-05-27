@@ -6653,16 +6653,15 @@
 											arrayid = $(this).attr('attribute');
 											$("#wfhApprovedHrs" + arrayid).val(0);
 
-											$("wfhwarning" + arrayid).attr("style", "display: none");
+											$(".wfhwarning" + arrayid).attr("style", "display: none");
 										});
 
 										$(".wfhyes<?php echo $key; ?>").click(function(){
-											alert('clicked');
 											arrayid = $(this).attr('attribute');
 											approvehours = $(this).attr('attribute2');
-											$("wfhApprovedHrs" + arrayid).val(approvehours);
+											$("#wfhApprovedHrs" + arrayid).val(approvehours);
 
-											$("wfhwarning" + arrayid).attr("style", "display: none");
+											$(".wfhwarning" + arrayid).attr("style", "display: none");
 										});
 
 									});
