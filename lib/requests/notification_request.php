@@ -6653,15 +6653,20 @@
 											arrayid = $(this).attr('attribute');
 											$("#wfhApprovedHrs" + arrayid).val(0);
 
-											$(".wfhwarning" + arrayid).attr("style", "display: none");
 										});
 
-										$(".wfhyes<?php echo $key; ?>").click(function(){
+										$(".wfhwarn<?php echo $key; ?>").click(function(){
 											arrayid = $(this).attr('attribute');
 											approvehours = $(this).attr('attribute2');
-											$("#wfhApprovedHrs" + arrayid).val(approvehours);
+											type = $(this).attr('attribute3');
 
+
+											if(type == 1){
+												$("#wfhApprovedHrs" + arrayid).val(approvehours);
+											}
+											
 											$(".wfhwarning" + arrayid).attr("style", "display: none");
+
 										});
 
 									});
@@ -6686,7 +6691,7 @@
 												}
 												if($value['AppliedHrs'] > 8){
 											?>
-												<p class="wfhwarning<?php echo $key; ?>" style="color: red;">The applied hours exceed 8 hours per day, do you want to approve the applied hours? <a href="#" class="wfhyes<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute2="<?php echo $value['AppliedHrs']; ?>">Yes</a> or <a href="#" class="wfhcancel<?php echo $key; ?>" attribute="<?php echo $key; ?>">No?</a></p>
+												<p class="wfhwarning<?php echo $key; ?>" style="color: red;">The applied hours exceed 8 hours per day, do you want to approve the applied hours? <a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute2="<?php echo $value['AppliedHrs']; ?>" attribute3="1">Yes</a> or <a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute3="0">No?</a></p>
 											<?php
 												}
 											?>
