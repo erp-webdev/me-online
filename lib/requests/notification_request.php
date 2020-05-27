@@ -6658,10 +6658,12 @@
 										$(".wfhapproveall").click(function(){
 											var approve = $(this).attr("value");
 
-											if(approve == 0){
-												$(this).val(1)
+											if(approve == '0'){
+												alert('0');
+												$(this).val(1);
 											}else{
-												$(this).val(0)
+												alert('1');
+												$(this).val(0);
 											}
 
 
