@@ -6693,7 +6693,7 @@
 												foreach($wh_act as $act_details){
 													echo "(".$act_details['start_time'] ." - " . $act_details['end_time'] .") ".$act_details['act']."</br></br>";
 												}
-												if($holiday['SHIFT'] == 'HOLIDAY'){
+												if($holiday['SHIFT'] == 'HOLIDAY' || || $wfday == 6 || $wfday == 0){
 													if($value['AppliedHrs'] > 8){
 											?>
 														<p class="wfhwarning<?php echo $key; ?> whwarning" style="color: red;">The applied hours falls on a Holiday / Saturday / Sunday and exceeds 8 hours per day.</br><a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute2="<?php echo $value['AppliedHrs']; ?>" attribute3="1"> <u>Approve Applied Hours</a></u> or <u><a href="#" onClick="$('.wfhcancel<?php echo $key; ?>').click();" class="<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute3="0">Cancel Application?</a></u></p>
