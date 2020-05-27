@@ -6661,8 +6661,9 @@
 											if(approve == 0){
 												$(this).val(1)
 											}else{
-												$(this).attr(0)
+												$(this).val(0)
 											}
+
 
 											$(".ApprovedHrs").each(function(){
 												$(this).val($(this).attr("attribute2"));
