@@ -6645,6 +6645,9 @@
 								$approvers = array($notification_data[0]['Signatory01'], $notification_data[0]['Signatory02'], $notification_data[0]['Signatory03'],
 													$notification_data[0]['Signatory04'], $notification_data[0]['Signatory05'], $notification_data[0]['Signatory06']);
 								foreach ($appwh_data as $key => $value) :
+
+									$holiday = $mainsql->get_shiftdtr($profile_idnum, $value['DTRDate'], $profile_dbname);
+									var_dump($holiday);
 									?>
 									<script>
 									$(function() {
@@ -6655,13 +6658,10 @@
 
 										});
 
-
-
 										$(".wfhwarn<?php echo $key; ?>").click(function(){
 											arrayid = $(this).attr('attribute');
 											approvehours = $(this).attr('attribute2');
 											type = $(this).attr('attribute3');
-
 
 											if(type == 1){
 												$("#wfhApprovedHrs" + arrayid).val(approvehours);
@@ -7126,6 +7126,53 @@
                                 <?php endif; ?>
                                 <input id="remarks" type="text" name="remarks" placeholder="Remarks..." class="txtbox width95per<?php echo $doctype == 'OT' ? ' margintop10' : ''; ?> marginbottom10" />
                                 <?php if (!$chkexpire) : ?>
+																	<?php if (!$notification_data[0]['ApprovedDate01'] && $notification_data[0]['Approved'] != 2) : ?>
+																	<?php if ($doctype == 'WH') : ?>
+																		<script>
+																			$(".wfhapproveall").click(function(){
+																				var approve = $(this).attr("value");
+																				var overwrite = false;
+
+																					if(approve == 0){
+																						$(this).attr("value", 1);
+
+																						$(".ApprovedHrs").each(function(){
+																							if($(this).val() != $(this).attr("attribute3")){
+																								overwrite = true;
+																							}
+																						});
+
+																						if(overwrite){
+																							if(confirm("This will overwrite all the changes on the Approve Hours. Are you sure you want to continue?")){
+																								$(".ApprovedHrs").each(function(){
+																									$(this).val($(this).attr("attribute2"));
+																								});
+																								$(".whwarning").attr("style", "display: none");
+																							}else{
+																								$(".wfhapproveall").click();
+																							}
+																						}else{
+																							$(".ApprovedHrs").each(function(){
+																								$(this).val($(this).attr("attribute2"));
+																							});
+																							$(".whwarning").attr("style", "display: none");
+																						}
+
+
+																					}else{
+																						$(this).attr("value", 0);
+																						$(".ApprovedHrs").each(function(){
+																							$(this).val($(this).attr("attribute3"));
+																						});
+																						$(".whwarning").attr("style", "color: red");
+																					}
+
+																			});
+																		</script>
+																		<input type="checkbox" class="wfhapproveall" value="0"><b>Approve all applied hours</b></br></br>
+
+																	<?php endif; ?>
+																	<?php endif; ?>
                                 <input id="btnapp" type="button" name="btnapp" value="Approve" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory02']; ?>" attribute20="<?php echo $notification_data[0]['DB_NAME02'] ? $notification_data[0]['DB_NAME02'] : 0; ?>"<?php if ($notification_data[0]['Signatory03']) : ?> attribute21="<?php echo $notification_data[0]['Signatory03'] ? $notification_data[0]['Signatory03'] : 0; ?>" attribute22="<?php echo $notification_data[0]['DB_NAME03'] ? $notification_data[0]['DB_NAME03'] : 0; ?>"<?php endif; ?> attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnapp smlbtn" />&nbsp;
                                 <?php endif; ?>
                                 <input id="btnrej" type="button" name="btnrej" value="Reject" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory02']; ?>" attribute20="<?php echo $notification_data[0]['DB_NAME02'] ? $notification_data[0]['DB_NAME02'] : 0; ?>" attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnrej smlbtn btnred" />
@@ -7198,6 +7245,53 @@
                                 <?php endif; ?>
                                 <input id="remarks" type="text" name="remarks" placeholder="Remarks..." class="txtbox width95per<?php echo $doctype == 'OT' ? ' margintop10' : ''; ?> marginbottom10" />
                                 <?php if (!$chkexpire) : ?>
+																	<?php if (!$notification_data[0]['ApprovedDate01'] && $notification_data[0]['Approved'] != 2) : ?>
+																	<?php if ($doctype == 'WH') : ?>
+																		<script>
+																			$(".wfhapproveall").click(function(){
+																				var approve = $(this).attr("value");
+																				var overwrite = false;
+
+																					if(approve == 0){
+																						$(this).attr("value", 1);
+
+																						$(".ApprovedHrs").each(function(){
+																							if($(this).val() != $(this).attr("attribute3")){
+																								overwrite = true;
+																							}
+																						});
+
+																						if(overwrite){
+																							if(confirm("This will overwrite all the changes on the Approve Hours. Are you sure you want to continue?")){
+																								$(".ApprovedHrs").each(function(){
+																									$(this).val($(this).attr("attribute2"));
+																								});
+																								$(".whwarning").attr("style", "display: none");
+																							}else{
+																								$(".wfhapproveall").click();
+																							}
+																						}else{
+																							$(".ApprovedHrs").each(function(){
+																								$(this).val($(this).attr("attribute2"));
+																							});
+																							$(".whwarning").attr("style", "display: none");
+																						}
+
+
+																					}else{
+																						$(this).attr("value", 0);
+																						$(".ApprovedHrs").each(function(){
+																							$(this).val($(this).attr("attribute3"));
+																						});
+																						$(".whwarning").attr("style", "color: red");
+																					}
+
+																			});
+																		</script>
+																		<input type="checkbox" class="wfhapproveall" value="0"><b>Approve all applied hours</b></br></br>
+
+																	<?php endif; ?>
+																	<?php endif; ?>
                                 <input id="btnapp" type="button" name="btnapp" value="Approve" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory03']; ?>" attribute20="<?php echo $notification_data[0]['DB_NAME03'] ? $notification_data[0]['DB_NAME03'] : 0; ?>"<?php if ($notification_data[0]['Signatory04']) : ?> attribute21="<?php echo $notification_data[0]['Signatory04'] ? $notification_data[0]['Signatory04'] : 0; ?>" attribute22="<?php echo $notification_data[0]['DB_NAME04'] ? $notification_data[0]['DB_NAME04'] : 0; ?>"<?php endif; ?> attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnapp smlbtn" />&nbsp;
                                 <?php endif; ?>
                                 <input id="btnrej" type="button" name="btnrej" value="Reject" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory03']; ?>" attribute20="<?php echo $notification_data[0]['DB_NAME03'] ? $notification_data[0]['DB_NAME03'] : 0; ?>" attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnrej smlbtn btnred" />
@@ -7270,6 +7364,53 @@
                                 <?php endif; ?>
                                 <input id="remarks" type="text" name="remarks" placeholder="Remarks..." class="txtbox width95per<?php echo $doctype == 'OT' ? ' margintop10' : ''; ?> marginbottom10" />
                                 <?php if (!$chkexpire) : ?>
+																	<?php if (!$notification_data[0]['ApprovedDate01'] && $notification_data[0]['Approved'] != 2) : ?>
+																	<?php if ($doctype == 'WH') : ?>
+																		<script>
+																			$(".wfhapproveall").click(function(){
+																				var approve = $(this).attr("value");
+																				var overwrite = false;
+
+																					if(approve == 0){
+																						$(this).attr("value", 1);
+
+																						$(".ApprovedHrs").each(function(){
+																							if($(this).val() != $(this).attr("attribute3")){
+																								overwrite = true;
+																							}
+																						});
+
+																						if(overwrite){
+																							if(confirm("This will overwrite all the changes on the Approve Hours. Are you sure you want to continue?")){
+																								$(".ApprovedHrs").each(function(){
+																									$(this).val($(this).attr("attribute2"));
+																								});
+																								$(".whwarning").attr("style", "display: none");
+																							}else{
+																								$(".wfhapproveall").click();
+																							}
+																						}else{
+																							$(".ApprovedHrs").each(function(){
+																								$(this).val($(this).attr("attribute2"));
+																							});
+																							$(".whwarning").attr("style", "display: none");
+																						}
+
+
+																					}else{
+																						$(this).attr("value", 0);
+																						$(".ApprovedHrs").each(function(){
+																							$(this).val($(this).attr("attribute3"));
+																						});
+																						$(".whwarning").attr("style", "color: red");
+																					}
+
+																			});
+																		</script>
+																		<input type="checkbox" class="wfhapproveall" value="0"><b>Approve all applied hours</b></br></br>
+
+																	<?php endif; ?>
+																	<?php endif; ?>
                                 <input id="btnapp" type="button" name="btnapp" value="Approve" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory04']; ?>" attribute20="<?php echo $notification_data[0]['DB_NAME04'] ? $notification_data[0]['DB_NAME04'] : 0; ?>"<?php if ($notification_data[0]['Signatory05']) : ?> attribute21="<?php echo $notification_data[0]['Signatory05'] ? $notification_data[0]['Signatory05'] : 0; ?>" attribute22="<?php echo $notification_data[0]['DB_NAME05'] ? $notification_data[0]['DB_NAME05'] : 0; ?>"<?php endif; ?> attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnapp smlbtn" />&nbsp;
                                 <?php endif; ?>
                                 <input id="btnrej" type="button" name="btnrej" value="Reject" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory04']; ?>" attribute20="<?php echo $notification_data[0]['DB_NAME04'] ? $notification_data[0]['DB_NAME04'] : 0; ?>" attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnrej smlbtn btnred" />
@@ -7342,6 +7483,53 @@
                                 <?php endif; ?>
                                 <input id="remarks" type="text" name="remarks" placeholder="Remarks..." class="txtbox width95per<?php echo $doctype == 'OT' ? ' margintop10' : ''; ?> marginbottom10" />
                                 <?php if (!$chkexpire) : ?>
+																	<?php if (!$notification_data[0]['ApprovedDate01'] && $notification_data[0]['Approved'] != 2) : ?>
+																	<?php if ($doctype == 'WH') : ?>
+																		<script>
+																			$(".wfhapproveall").click(function(){
+																				var approve = $(this).attr("value");
+																				var overwrite = false;
+
+																					if(approve == 0){
+																						$(this).attr("value", 1);
+
+																						$(".ApprovedHrs").each(function(){
+																							if($(this).val() != $(this).attr("attribute3")){
+																								overwrite = true;
+																							}
+																						});
+
+																						if(overwrite){
+																							if(confirm("This will overwrite all the changes on the Approve Hours. Are you sure you want to continue?")){
+																								$(".ApprovedHrs").each(function(){
+																									$(this).val($(this).attr("attribute2"));
+																								});
+																								$(".whwarning").attr("style", "display: none");
+																							}else{
+																								$(".wfhapproveall").click();
+																							}
+																						}else{
+																							$(".ApprovedHrs").each(function(){
+																								$(this).val($(this).attr("attribute2"));
+																							});
+																							$(".whwarning").attr("style", "display: none");
+																						}
+
+
+																					}else{
+																						$(this).attr("value", 0);
+																						$(".ApprovedHrs").each(function(){
+																							$(this).val($(this).attr("attribute3"));
+																						});
+																						$(".whwarning").attr("style", "color: red");
+																					}
+
+																			});
+																		</script>
+																		<input type="checkbox" class="wfhapproveall" value="0"><b>Approve all applied hours</b></br></br>
+
+																	<?php endif; ?>
+																	<?php endif; ?>
                                 <input id="btnapp" type="button" name="btnapp" value="Approve" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory05']; ?>" attribute20="<?php echo $notification_data[0]['DB_NAME05'] ? $notification_data[0]['DB_NAME05'] : 0; ?>"<?php if ($notification_data[0]['Signatory06']) : ?> attribute21="<?php echo $notification_data[0]['Signatory06'] ? $notification_data[0]['Signatory06'] : 0; ?>" attribute22="<?php echo $notification_data[0]['DB_NAME06'] ? $notification_data[0]['DB_NAME06'] : 0; ?>"<?php endif; ?> attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnapp smlbtn" />&nbsp;
                                 <?php endif; ?>
                                 <input id="btnrej" type="button" name="btnrej" value="Reject" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory05']; ?>" attribute20="<?php echo $notification_data[0]['DB_NAME05'] ? $notification_data[0]['DB_NAME05'] : 0; ?>" attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnrej smlbtn btnred" />
@@ -7414,6 +7602,53 @@
                                 <?php endif; ?>
                                 <input id="remarks" type="text" name="remarks" placeholder="Remarks..." class="txtbox width95per<?php echo $doctype == 'OT' ? ' margintop10' : ''; ?> marginbottom10" />
                                 <?php if (!$chkexpire) : ?>
+																	<?php if (!$notification_data[0]['ApprovedDate01'] && $notification_data[0]['Approved'] != 2) : ?>
+																	<?php if ($doctype == 'WH') : ?>
+																		<script>
+																			$(".wfhapproveall").click(function(){
+																				var approve = $(this).attr("value");
+																				var overwrite = false;
+
+																					if(approve == 0){
+																						$(this).attr("value", 1);
+
+																						$(".ApprovedHrs").each(function(){
+																							if($(this).val() != $(this).attr("attribute3")){
+																								overwrite = true;
+																							}
+																						});
+
+																						if(overwrite){
+																							if(confirm("This will overwrite all the changes on the Approve Hours. Are you sure you want to continue?")){
+																								$(".ApprovedHrs").each(function(){
+																									$(this).val($(this).attr("attribute2"));
+																								});
+																								$(".whwarning").attr("style", "display: none");
+																							}else{
+																								$(".wfhapproveall").click();
+																							}
+																						}else{
+																							$(".ApprovedHrs").each(function(){
+																								$(this).val($(this).attr("attribute2"));
+																							});
+																							$(".whwarning").attr("style", "display: none");
+																						}
+
+
+																					}else{
+																						$(this).attr("value", 0);
+																						$(".ApprovedHrs").each(function(){
+																							$(this).val($(this).attr("attribute3"));
+																						});
+																						$(".whwarning").attr("style", "color: red");
+																					}
+
+																			});
+																		</script>
+																		<input type="checkbox" class="wfhapproveall" value="0"><b>Approve all applied hours</b></br></br>
+
+																	<?php endif; ?>
+																	<?php endif; ?>
                                 <input id="btnapp" type="button" name="btnapp" value="Approve" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory06']; ?>" attribute20="<?php echo $notification_data[0]['DB_NAME06'] ? $notification_data[0]['DB_NAME06'] : 0; ?>" attribute21="0" attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnapp smlbtn" />&nbsp;
                                 <?php endif; ?>
                                 <input id="btnrej" type="button" name="btnrej" value="Reject" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory06']; ?>" attribute20="<?php echo $notification_data[0]['DB_NAME06'] ? $notification_data[0]['DB_NAME06'] : 0; ?>" attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="smlbtn btnred" />
