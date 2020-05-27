@@ -7007,7 +7007,7 @@
                                 <input id="remarks" type="text" name="remarks" placeholder="Remarks..." class="txtbox width95per<?php echo $doctype == 'OT' ? ' margintop10' : ''; ?> marginbottom10" />
                                 <?php if (!$chkexpire) : ?>
 																	<?php if ($doctype == 'WH') : ?>
-																		<script type="text/javascript">
+																		<script>
 																			$(".wfhapproveall").click(function(){
 																				var approve = $(this).attr("value");
 
