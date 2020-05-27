@@ -7012,9 +7012,9 @@
 																				var approve = $(this).attr("value");
 
 																					if(approve == 0){
-																						$(this).$(this).attr("value", 1);
+																						$(this).attr("value", 1);
 																					}else{
-																						$(this).$(this).attr("value", 0);
+																						$(this).attr("value", 0);
 																					}
 
 																				$(".ApprovedHrs").each(function(){
