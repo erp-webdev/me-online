@@ -7031,6 +7031,11 @@
 																							}else{
 																								$(".wfhapproveall").click();
 																							}
+																						}else{
+																							$(".ApprovedHrs").each(function(){
+																								$(this).val($(this).attr("attribute2"));
+																							});
+																							$(".whwarning").attr("style", "display: none");
 																						}
 
 
