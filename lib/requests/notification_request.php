@@ -7011,11 +7011,18 @@
 																		<script>
 																			$(".wfhapproveall").click(function(){
 																				var approve = $(this).attr("value");
+																				var overwrite = false;
 
 																					if(approve == 0){
 																						$(this).attr("value", 1);
 
-																						if(true){
+																						$(".ApprovedHrs").each(function(){
+																							if($(this).val() != $(this).attr("attribute3")){
+																								overwrite = true;
+																							}
+																						});
+
+																						if(overwrite){
 																							if(confirm("This will overwrite all the changes on the Approve Hours. Are you sure you want to continue?")){
 																								$(".ApprovedHrs").each(function(){
 																									$(this).val($(this).attr("attribute2"));
