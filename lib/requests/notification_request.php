@@ -6657,7 +6657,7 @@
 
 										$(".wfhapproveall").click(function(){
 											$(".ApprovedHrs").each(function(){
-												alert($(this).attr(attribute2));
+												alert($(this).attr("attribute2"));
 											});
 										});
 
