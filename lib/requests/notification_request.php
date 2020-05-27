@@ -6655,20 +6655,7 @@
 
 										});
 
-										$(".wfhapproveall").click(function(){
-											var approve = $(this).attr("value");
-											alert('approve');
-												if(approve == '0'){
-													$(this).val(1);
-												}else{
-													$(this).val(0);
-												}
 
-											// $(".ApprovedHrs").each(function(){
-											// 	$(this).val($(this).attr("attribute2"));
-											// });
-
-										});
 
 										$(".wfhwarn<?php echo $key; ?>").click(function(){
 											arrayid = $(this).attr('attribute');
@@ -7020,7 +7007,22 @@
                                 <input id="remarks" type="text" name="remarks" placeholder="Remarks..." class="txtbox width95per<?php echo $doctype == 'OT' ? ' margintop10' : ''; ?> marginbottom10" />
                                 <?php if (!$chkexpire) : ?>
 																	<?php if ($doctype == 'WH') : ?>
+																		<script type="text/javascript">
+																			$(".wfhapproveall").click(function(){
+																				var approve = $(this).attr("value");
 
+																					if(approve == 0){
+																						$(this).$(this).attr("value", 1);
+																					}else{
+																						$(this).$(this).attr("value", 0);
+																					}
+
+																				$(".ApprovedHrs").each(function(){
+																					$(this).val($(this).attr("attribute2"));
+																				});
+
+																			});
+																		</script>
 																		<input type="checkbox" class="wfhapproveall" value="0"><b>Approve all applied hours</b></br></br>
 
 																	<?php endif; ?>
