@@ -6657,11 +6657,11 @@
 
 										$(".wfhapproveall").click(function(){
 											var approve = $(this).attr("value");
-
+											alert(approve);
 											if(approve == 0){
-												$(this).attr("value", 1)
+												$(this).attr("value", "1")
 											}else{
-												$(this).attr("value", 0)
+												$(this).attr("value", "0")
 											}
 
 											$(".ApprovedHrs").each(function(){
