@@ -6690,9 +6690,12 @@
 												foreach($wh_act as $act_details){
 													echo "(".$act_details['start_time'] ." - " . $act_details['end_time'] .") ".$act_details['act']."</br></br>";
 												}
+												if($holiday['SHIFT'] == 'HOLIDAY'){
+
+												}
 												if($value['AppliedHrs'] > 8){
 											?>
-												<p class="wfhwarning<?php echo $key; ?> whwarning" style="color: red;">The applied hours exceeds 8 hours per day, do you want to approve the applied hours? <a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute2="<?php echo $value['AppliedHrs']; ?>" attribute3="1">Yes</a> or <a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute3="0">No?</a></p>
+												<p class="wfhwarning<?php echo $key; ?> whwarning" style="color: red;">The applied hours exceeds 8 hours per day, do you want to approve the applied hours? <u><a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute2="<?php echo $value['AppliedHrs']; ?>" attribute3="1">Yes</a></u> or <u><a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute3="0">No?</a></u></p>
 											<?php
 												}
 											?>
