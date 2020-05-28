@@ -7111,7 +7111,7 @@
                     <?php endif; ?>
                     <?php if (trim($notification_data[0]['Signatory02'])) : ?>
                     <tr>
-                        <td><b>Signatory 2</b></td>
+                        <td><b>Signatory2</b></td>
                         <td><?php echo $approver_data2[0]['FName'].' '.$approver_data2[0]['LName']; ?></td>
                     </tr>
                     <tr>
@@ -7140,7 +7140,7 @@
                                 <?php endif; ?>
                                 <input id="remarks" type="text" name="remarks" placeholder="Remarks..." class="txtbox width95per<?php echo $doctype == 'OT' ? ' margintop10' : ''; ?> marginbottom10" />
                                 <?php if (!$chkexpire) : ?>
-																	<?php if (!$notification_data[0]['ApprovedDate01'] && $notification_data[0]['Approved'] != 2) : ?>
+																	<?php if (!$notification_data[0]['ApprovedDate02'] && $notification_data[0]['ApprovedDate01'] && $notification_data[0]['Approved'] != 2) : ?>
 																	<?php if ($doctype == 'WH') : ?>
 																		<script>
 																			$(".wfhapproveall").click(function(){
@@ -7259,7 +7259,7 @@
                                 <?php endif; ?>
                                 <input id="remarks" type="text" name="remarks" placeholder="Remarks..." class="txtbox width95per<?php echo $doctype == 'OT' ? ' margintop10' : ''; ?> marginbottom10" />
                                 <?php if (!$chkexpire) : ?>
-																	<?php if (!$notification_data[0]['ApprovedDate01'] && $notification_data[0]['Approved'] != 2) : ?>
+																	<?php if (!$notification_data[0]['ApprovedDate03'] && $notification_data[0]['ApprovedDate02'] && $notification_data[0]['Approved'] != 2) : ?>
 																	<?php if ($doctype == 'WH') : ?>
 																		<script>
 																			$(".wfhapproveall").click(function(){
@@ -7378,7 +7378,7 @@
                                 <?php endif; ?>
                                 <input id="remarks" type="text" name="remarks" placeholder="Remarks..." class="txtbox width95per<?php echo $doctype == 'OT' ? ' margintop10' : ''; ?> marginbottom10" />
                                 <?php if (!$chkexpire) : ?>
-																	<?php if (!$notification_data[0]['ApprovedDate01'] && $notification_data[0]['Approved'] != 2) : ?>
+																	<?php if (!$notification_data[0]['ApprovedDate04'] && $notification_data[0]['ApprovedDate03'] && $notification_data[0]['Approved'] != 2) : ?>
 																	<?php if ($doctype == 'WH') : ?>
 																		<script>
 																			$(".wfhapproveall").click(function(){
@@ -7497,7 +7497,7 @@
                                 <?php endif; ?>
                                 <input id="remarks" type="text" name="remarks" placeholder="Remarks..." class="txtbox width95per<?php echo $doctype == 'OT' ? ' margintop10' : ''; ?> marginbottom10" />
                                 <?php if (!$chkexpire) : ?>
-																	<?php if (!$notification_data[0]['ApprovedDate01'] && $notification_data[0]['Approved'] != 2) : ?>
+																	<?php if (!$notification_data[0]['ApprovedDate05'] && $notification_data[0]['ApprovedDate04'] && $notification_data[0]['Approved'] != 2) : ?>
 																	<?php if ($doctype == 'WH') : ?>
 																		<script>
 																			$(".wfhapproveall").click(function(){
@@ -7616,7 +7616,7 @@
                                 <?php endif; ?>
                                 <input id="remarks" type="text" name="remarks" placeholder="Remarks..." class="txtbox width95per<?php echo $doctype == 'OT' ? ' margintop10' : ''; ?> marginbottom10" />
                                 <?php if (!$chkexpire) : ?>
-																	<?php if (!$notification_data[0]['ApprovedDate01'] && $notification_data[0]['Approved'] != 2) : ?>
+																	<?php if (!$notification_data[0]['ApprovedDate06'] && $notification_data[0]['ApprovedDate05'] && $notification_data[0]['Approved'] != 2) : ?>
 																	<?php if ($doctype == 'WH') : ?>
 																		<script>
 																			$(".wfhapproveall").click(function(){
