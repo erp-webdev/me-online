@@ -6202,8 +6202,6 @@
                         <td width="25%"><?php echo $requestor_data[0]['FName'].' '.$requestor_data[0]['LName'].' ('.$notification_data[0]['EmpID'].')'; ?>
                             <input type="hidden" id="dbname" name="dbname" value="<?php echo $dbname ?>" />
                         </td>
-												<td width="25%"><b></b></td>
-												<td width="25%"><b></b></td>
                     </tr>
 
                 <?php
