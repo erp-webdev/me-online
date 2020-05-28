@@ -2024,7 +2024,7 @@ $(function ()
 			else
 			{
 				//html += '<p>WFH has been successfully applied.</p>';
-
+        localStorage.removeItem('wfh-entries');
 				$('.wfh_msg').slideUp();
                 alert('Work from Home has been successfully applied.');
                 window.location.href='<?php echo WEB; ?>/myrequest?type=10';
