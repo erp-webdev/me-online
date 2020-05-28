@@ -133,7 +133,7 @@
 									<input type="hidden" name="reqnbr" value="<?php echo "MD-".$finsec; ?>" />
 									<input type="hidden" name="user" value="<?php echo $profile_idnum; ?>" />
 									<input id="btnwfhapply" type="submit" name="btnwfhapply" value="Submit" class="btn margintop10" />
-									<a href="<?php echo WEB; ?>/pending"><input type="button" name="btncancel" value="Cancel" class="redbtn margintop10" /></a>
+									<a href="<?php echo WEB; ?>/pending"><input type="button" onClick="localStorage.removeItem('wfh-entries');" name="btncancel" value="Cancel" class="redbtn margintop10" /></a>
 								</div>
 
 							</form>
@@ -151,7 +151,7 @@
 
 			$scope.timePick = function($event){
 				var date = angular.element($event.currentTarget).attr("attribute1");
-				
+
 				var getTimeOption = function(event){
 					var opt = {
 						timeFormat: "hh:mm tt",
