@@ -83,8 +83,8 @@
 																				<textarea class="txtarea wfh_act{{ $parent.$index+1 }}" name="" id="" width="100%" rows="1" cols="43" ng-model="wfh_days[$parent.$index].ACTIVITIES[$index].act" required></textarea>
 																			</td>
 																			<td style="border-bottom: 0px; margin: 0; padding: 0; text-align:left">
-																				<button id="wfh_delete{{ $parent.$index+1 }}" style="" type="button" class="redbtn " ng-show="wfh_days[$parent.$index].ACTIVITIES.length > 1" ng-click="delItem($parent.$index, $index)"><i class="fa fa-trash-o"></i></button>
-																				<button id="wfh_add{{ $parent.$index+1 }}" style="" type="button" class="smlbtn" ng-show="$index+1 == wfh_days[$parent.$index].ACTIVITIES.length" ng-click="addItem($parent.$index, $index)"><i class="fa fa-plus"></i></button>
+																				<button  style="" type="button" class="redbtn wfh_delete{{ $parent.$index+1 }}" ng-show="wfh_days[$parent.$index].ACTIVITIES.length > 1" ng-click="delItem($parent.$index, $index)"><i class="fa fa-trash-o"></i></button>
+																				<button  style="" type="button" class="smlbtn wfh_add{{ $parent.$index+1 }}" ng-show="$index+1 == wfh_days[$parent.$index].ACTIVITIES.length" ng-click="addItem($parent.$index, $index)"><i class="fa fa-plus"></i></button>
 																			</td>
 																		</tr>
 																	</table>
@@ -199,11 +199,11 @@
 
 
 				if(disable == 1){
-					$("#wfh_add" + key).hide();
-					$("#wfh_delete" + key).hide();
+					$(".wfh_add" + key).hide();
+					$(".wfh_delete" + key).hide();
 				}else{
-					$("#wfh_add" + key).show();
-					$("#wfh_delete" + key).show();
+					$(".wfh_add" + key).show();
+					$(".wfh_delete" + key).show();
 				}
 
 				if($("#wfh_totalworkedhours" + key).prop("disabled")){
