@@ -7174,7 +7174,7 @@
 																						});
 
 																						if(overwrite){
-																							if(confirm("This will overwrite all the changes on the Approve Hours. Are you sure you want to continue?")){
+																							if(confirm("All of your changes on the Approved hours will be overwritten with the applied hours. Are you sure you want to continue?")){
 																								$(".ApprovedHrs").each(function(){
 																									$(this).val($(this).attr("attribute2"));
 																								});
@@ -7293,7 +7293,7 @@
 																						});
 
 																						if(overwrite){
-																							if(confirm("This will overwrite all the changes on the Approve Hours. Are you sure you want to continue?")){
+																							if(confirm("All of your changes on the Approved hours will be overwritten with the applied hours. Are you sure you want to continue?")){
 																								$(".ApprovedHrs").each(function(){
 																									$(this).val($(this).attr("attribute2"));
 																								});
@@ -7412,7 +7412,7 @@
 																						});
 
 																						if(overwrite){
-																							if(confirm("This will overwrite all the changes on the Approve Hours. Are you sure you want to continue?")){
+																							if(confirm("All of your changes on the Approved hours will be overwritten with the applied hours. Are you sure you want to continue?")){
 																								$(".ApprovedHrs").each(function(){
 																									$(this).val($(this).attr("attribute2"));
 																								});
@@ -7531,7 +7531,7 @@
 																						});
 
 																						if(overwrite){
-																							if(confirm("This will overwrite all the changes on the Approve Hours. Are you sure you want to continue?")){
+																							if(confirm("All of your changes on the Approved hours will be overwritten with the applied hours. Are you sure you want to continue?")){
 																								$(".ApprovedHrs").each(function(){
 																									$(this).val($(this).attr("attribute2"));
 																								});
@@ -7650,7 +7650,7 @@
 																						});
 
 																						if(overwrite){
-																							if(confirm("This will overwrite all the changes on the Approve Hours. Are you sure you want to continue?")){
+																							if(confirm("All of your changes on the Approved hours will be overwritten with the applied hours. Are you sure you want to continue?")){
 																								$(".ApprovedHrs").each(function(){
 																									$(this).val($(this).attr("attribute2"));
 																								});
