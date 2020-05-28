@@ -6992,7 +6992,7 @@
                     <?php if (trim($notification_data[0]['Signatory01'])) : ?>
                     <tr>
                       <td width="50%">
-												<table>
+												<table width="100%">
 													<tr>
 														<td><b>Signatory 1</b></td>
 														<td width="50%"><?php echo $approver_data1[0]['FName'].' '.$approver_data1[0]['LName']; ?></td>
@@ -7002,7 +7002,7 @@
 
 											<td width="50%">
 												<!-- signatory 4 -->
-												<table>
+												<table width="100%">
 													<tr>
 														<td><b>Signatory 4</b></td>
 														<td width="50%"><?php echo $approver_data4[0]['FName'].' '.$approver_data4[0]['LName']; ?></td>
