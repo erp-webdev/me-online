@@ -197,14 +197,13 @@
 				}
 				var disable = $("#wfh_disable" + key).val();
 
-				alert(disable);
 
 				if(disable == 1){
 					$("#wfh_add" + key).hide();
-					alert('hide');
+					$("#wfh_delete" + key).hide();
 				}else{
-					alert('show');
 					$("#wfh_add" + key).show();
+					$("#wfh_delete" + key).show();
 				}
 
 				if($("#wfh_totalworkedhours" + key).prop("disabled")){
