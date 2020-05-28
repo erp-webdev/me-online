@@ -197,10 +197,11 @@
 				}
 				var disable = $("#wfh_disable" + key).val();
 
-				alert(disable);
 				if(disable){
 					$("#wfh_add" + key).hide();
+					alert('hide');
 				}else{
+					alert('show');
 					$("#wfh_add" + key).show();
 				}
 
