@@ -6202,6 +6202,8 @@
                         <td width="75%"><?php echo $requestor_data[0]['FName'].' '.$requestor_data[0]['LName'].' ('.$notification_data[0]['EmpID'].')'; ?>
                             <input type="hidden" id="dbname" name="dbname" value="<?php echo $dbname ?>" />
                         </td>
+												<td></td>
+												<td></td>
                     </tr>
 
                 <?php
@@ -6222,6 +6224,8 @@
                             endforeach;
                         ?>
                         </td>
+												<td></td>
+												<td></td>
                     </tr>
                     <?php endif; ?>
 
@@ -6239,43 +6243,61 @@
                             endif;
                             ?>
                         </td>
+												<td></td>
+												<td></td>
                     </tr>
                     <tr>
                         <td><b>Date Applied</b></td>
                         <td><?php echo date('F j, Y | g:ia', strtotime($application_data[0]['ReqDate'])); ?></td>
-                    </tr>
+												<td></td>
+												<td></td>
+										</tr>
                     <tr>
                         <td><b>DTR Date</b></td>
                         <td><?php echo date('F j, Y', strtotime($application_data[0]['DtrDate'])); ?></td>
-                    </tr>
+												<td></td>
+												<td></td>
+										</tr>
                     <tr>
                         <td><b>From</b></td>
                         <td><?php echo date('F j, Y | g:ia', strtotime($application_data[0]['FromDate'])); ?></td>
-                    </tr>
+												<td></td>
+												<td></td>
+										</tr>
                     <tr>
                         <td><b>To</b></td>
                         <td><?php echo date('F j, Y | g:ia', strtotime($application_data[0]['ToDate'])); ?></td>
-                    </tr>
+												<td></td>
+												<td></td>
+										</tr>
                     <tr>
                         <td><b>OT Type</b></td>
                         <td><?php echo $application_data[0]['OTType']; ?></td>
-                    </tr>
+												<td></td>
+												<td></td>
+										</tr>
                     <tr>
                         <td><b>Applied Hours</b></td>
                         <td><?php echo $application_data[0]['Hrs']; ?></td>
-                    </tr>
+												<td></td>
+												<td></td>
+										</tr>
                     <?php if ($notification_data[0]['Approved'] == 1) : ?>
                     <tr>
                         <td><b>Approved Hours</b></td>
                         <td>
                             <?php echo $application_data[0]['ApprovedHrs'] ? $application_data[0]['ApprovedHrs'] : 0; ?>
                         </td>
-                    </tr>
+												<td></td>
+												<td></td>
+										</tr>
                     <?php endif; ?>
                     <tr>
                         <td><b>Reason</b></td>
                         <td><?php echo stripslashes($application_data[0]['Reason']); ?></td>
-                    </tr>
+												<td></td>
+												<td></td>
+										</tr>
 
                 <?php
                 $pdtrfrom = strtotime($application_data[0]['DtrDate']);
@@ -6298,7 +6320,9 @@
                             endforeach;
                         ?>
                         </td>
-                    </tr>
+												<td></td>
+												<td></td>
+										</tr>
                     <?php endif; ?>
 
                     <tr>
@@ -6315,19 +6339,27 @@
                             endif;
                             ?>
                         </td>
-                    </tr>
+												<td></td>
+												<td></td>
+										</tr>
                     <tr>
                         <td><b>Date Applied</b></td>
                         <td><?php echo date('F j, Y | g:ia', strtotime($notification_data[0]['DateFiled'])); ?></td>
-                    </tr>
+												<td></td>
+												<td></td>
+										</tr>
                     <tr>
                         <td><b>Coverage</b></td>
                         <td><?php echo date('F j, Y', strtotime($application_data[0]['AbsenceFromDate'])); ?> - <?php echo date('F j, Y', strtotime($application_data[0]['AbsenceToDate'])); ?></td>
-                    </tr>
+												<td></td>
+												<td></td>
+										</tr>
                     <tr>
                         <td><b>Type</b></td>
                         <td><?php echo $application_data[0]['LeaveDesc']; ?></td>
-                    </tr>
+												<td></td>
+												<td></td>
+										</tr>
                     <tr>
                         <td colspan="2">
                             <div class="divlvdata width100per notidatadiv">
@@ -6370,11 +6402,15 @@
                             </table>
                             </div>
                         </td>
-                    </tr>
+												<td></td>
+												<td></td>
+										</tr>
                     <tr>
                         <td><b>Reason</b></td>
                         <td><?php echo stripslashes($application_data[0]['Reason']); ?></td>
-                    </tr>
+												<td></td>
+												<td></td>
+										</tr>
 
                 <?php
                 $pdtrfrom = strtotime($application_data[0]['AbsenceFromDate']);
@@ -6395,7 +6431,9 @@
                             endforeach;
                         ?>
                         </td>
-                    </tr>
+												<td></td>
+												<td></td>
+										</tr>
                     <?php endif; ?>
 
                     <tr>
@@ -6412,23 +6450,33 @@
                             endif;
                             ?>
                         </td>
-                    </tr>
+												<td></td>
+												<td></td>
+										</tr>
                     <tr>
                         <td><b>Date Applied</b></td>
                         <td><?php echo date('F j, Y | g:ia', strtotime($application_data[0]['ReqDate'])); ?></td>
-                    </tr>
+												<td></td>
+												<td></td>
+										</tr>
                     <tr>
                         <td><b>From</b></td>
                         <td><?php echo date('F j, Y | g:ia', strtotime($application_data[0]['DateFrom'])); ?></td>
-                    </tr>
+												<td></td>
+												<td></td>
+										</tr>
                     <tr>
                         <td><b>To</b></td>
                         <td><?php echo date('F j, Y | g:ia', strtotime($application_data[0]['DateTo'])); ?></td>
-                    </tr>
+												<td></td>
+												<td></td>
+										</tr>
                     <tr>
                         <td><b>Type</b></td>
                         <td><?php echo $application_data[0]['TypeAvail']; ?></td>
-                    </tr>
+												<td></td>
+												<td></td>
+										</tr>
 
                 <?php
                 $pdtrfrom = strtotime($application_data[0]['DateFrom']);
@@ -6450,14 +6498,18 @@
                             endforeach;
                         ?>
                         </td>
-                    </tr>
+												<td></td>
+												<td></td>
+										</tr>
                     <?php endif; ?>
 
                     <?php if ($notification_data[0]['EmpID'] == $profile_idnum && $notification_data[0]['Approved'] != 3 && $notification_data[0]['Approved'] != 2) : ?>
                     <tr>
                         <td width="25%">&nbsp;</td>
                         <td width="75%"><a href="<?php echo WEB; ?>/obtpdf?id=<?php echo $refnum; ?>&db=<?php echo $dbname; ?>" target="_blank"><button class="btn">Print OBT Form</button></a></td>
-                    </tr>
+												<td></td>
+												<td></td>
+										</tr>
                     <?php endif; ?>
 
                     <tr>
@@ -6474,27 +6526,39 @@
                             endif;
                             ?>
                         </td>
-                    </tr>
+												<td></td>
+												<td></td>
+										</tr>
                     <tr>
                         <td><b>Date Applied</b></td>
                         <td><?php echo date('F j, Y | g:ia', strtotime($application_data[0]['DateFiled'])); ?></td>
-                    </tr>
+												<td></td>
+												<td></td>
+										</tr>
                     <tr>
                         <td><b>From</b></td>
                         <td><?php echo date('F j, Y', strtotime($application_data[0]['OBTimeINDate'])); ?></td>
-                    </tr>
+												<td></td>
+												<td></td>
+										</tr>
                     <tr>
                         <td><b>To</b></td>
                         <td><?php echo date('F j, Y', strtotime($application_data[0]['OBTimeOutDate'])); ?></td>
-                    </tr>
+												<td></td>
+												<td></td>
+										</tr>
                     <tr>
                         <td><b>Destination</b></td>
                         <td><?php echo $application_data[0]['Destination']; ?></td>
-                    </tr>
+												<td></td>
+												<td></td>
+										</tr>
                     <tr>
                         <td><b>Purpose</b></td>
                         <td><?php echo stripslashes($application_data[0]['Reason']); ?></td>
-                    </tr>
+												<td></td>
+												<td></td>
+										</tr>
                     <tr>
                         <td><b>OBT Time Entry</b></td>
                         <td>
@@ -6516,7 +6580,9 @@
                             </table>
                             </div>
                         </td>
-                    </tr>
+												<td></td>
+												<td></td>
+										</tr>
                      <tr>
                         <td><b>Biometric Time Entry</b></td>
                         <td>
@@ -6535,11 +6601,15 @@
                             </table>
                             </div>
                         </td>
-                    </tr>
+												<td></td>
+												<td></td>
+										</tr>
                     <tr>
                         <td><b>Days</b></td>
                         <td><?php echo $application_data[0]['Days']; ?></td>
-                    </tr>
+												<td></td>
+												<td></td>
+										</tr>
 
                 <?php
                 $pdtrfrom = strtotime($application_data[0]['OBTimeINDate']);
@@ -6560,7 +6630,9 @@
                             endforeach;
                         ?>
                         </td>
-                    </tr>
+												<td></td>
+												<td></td>
+										</tr>
                     <?php endif; ?>
 
                     <tr>
@@ -6577,23 +6649,33 @@
                             endif;
                             ?>
                         </td>
-                    </tr>
+												<td></td>
+												<td></td>
+										</tr>
                     <tr>
                         <td><b>Date Applied</b></td>
                         <td><?php echo date('F j, Y | g:ia', strtotime($notification_data[0]['DateFiled'])); ?></td>
-                    </tr>
+												<td></td>
+												<td></td>
+										</tr>
                     <tr>
                         <td><b>Date Coverage</b></td>
                         <td><?php echo date('F j, Y', strtotime($application_data[0]['DateCovered'])); ?></td>
-                    </tr>
+												<td></td>
+												<td></td>
+										</tr>
                     <tr>
                         <td><b>Time IN</b></td>
                         <td><?php echo date('F j, Y', strtotime($application_data[0]['DateTimeIN'])); ?><br><?php echo date('g:ia', strtotime($application_data[0]['TimeIn'])); ?></td>
-                    </tr>
+												<td></td>
+												<td></td>
+										</tr>
                     <tr>
                         <td><b>Time OUT</b></td>
                         <td><?php echo date('F j, Y', strtotime($application_data[0]['DateTimeOUT'])); ?><br><?php echo date('g:ia', strtotime($application_data[0]['TimeOut'])); ?></td>
-                    </tr>
+												<td></td>
+												<td></td>
+										</tr>
                     <tr>
                         <td><b>Reason</b></td>
                         <td><?php echo stripslashes($application_data[0]['Reason']); ?></td>
@@ -6997,7 +7079,7 @@
 											<td width="25%"><?php echo $approver_data1[0]['FName'].' '.$approver_data1[0]['LName']; ?></td>
                     </tr>
                     <tr>
-                        <?php //var_dump($notification_data[0]['Signatory01']); ?>
+                        <?php //var_dump($notification_data[0]['Signatory01']);goherespence ?>
                         <?php if ($notification_data[0]['Signatory01'] == $profile_idnum) : // && $defdbname01 == $profile_dbname ?>
 
                         <td><b><?php echo $notification_data[0]['ApprovedDate01'] ? 'Status' : '&nbsp;'; ?></b></td>
