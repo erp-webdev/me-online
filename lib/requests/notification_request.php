@@ -6993,7 +6993,7 @@
                     <tr>
 											<td width="50%">
 												<tr>
-	                        <td><b>Signatory 1</b></td>
+	                        <td><b>Signatory1</b></td>
 	                        <td><?php echo $approver_data1[0]['FName'].' '.$approver_data1[0]['LName']; ?></td>
 												</tr>
 											</td>
