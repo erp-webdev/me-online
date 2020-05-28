@@ -6991,8 +6991,10 @@
                     <?php if ($notification_data[0]['Approved'] != 3) : ?>
                     <?php if (trim($notification_data[0]['Signatory01'])) : ?>
                     <tr>
-                      <td width="50%"><b>Signatory 1</b></td>
-                      <td width="50%"><?php echo $approver_data1[0]['FName'].' '.$approver_data1[0]['LName']; ?></td>
+                      <td width="25%"><b>Signatory 1</b></td>
+                      <td width="25%"><?php echo $approver_data1[0]['FName'].' '.$approver_data1[0]['LName']; ?></td>
+											<td width="25%"><b>Signatory 4</b></td>
+											<td width="25%"><?php echo $approver_data1[0]['FName'].' '.$approver_data1[0]['LName']; ?></td>
                     </tr>
                     <tr>
                         <?php //var_dump($notification_data[0]['Signatory01']); ?>
