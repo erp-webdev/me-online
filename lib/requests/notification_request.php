@@ -6696,17 +6696,17 @@
 												if($holiday['SHIFT'] == 'HOLIDAY' || $wfday == 6  || $wfday == 0){
 													if($value['AppliedHrs'] > 8){
 											?>
-														<p class="wfhwarning<?php echo $key; ?> whwarning" style="color: red;">The applied hours falls on a Holiday / Saturday / Sunday and exceeds 8 hours per day.</br><a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute2="<?php echo $value['AppliedHrs']; ?>" attribute3="1"> <u>Approve Applied Hours</a></u> or <u><a href="#" onClick="$('.wfhcancel<?php echo $key; ?>').click();" class="<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute3="0">Cancel Application?</a></u></p>
+														<p class="wfhwarning<?php echo $key; ?> whwarning" style="color: red;">The applied hours falls on a Holiday / Saturday / Sunday and exceeds 8 hours per day.</br><a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute2="<?php echo $value['AppliedHrs']; ?>" attribute3="1"> <u>Approve applied hours</a></u> or <u><a href="#" onClick="$('.wfhcancel<?php echo $key; ?>').click();" class="<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute3="0">cancel applied hours?</a></u></p>
 											<?php
 													}else{
 											?>
-														<p class="wfhwarning<?php echo $key; ?> whwarning" style="color: red;">The applied hours falls on a Holiday / Saturday / Sunday. Do you want to approve the applied hours?</br><u><a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute2="<?php echo $value['AppliedHrs']; ?>" attribute3="1">Yes</a></u> or <u><a href="#" class="wfhwarn<?php echo $key; ?>" onClick="$('.wfhcancel<?php echo $key; ?>').click();" attribute="<?php echo $key; ?>" attribute3="0">No?</a></u></p>
+														<p class="wfhwarning<?php echo $key; ?> whwarning" style="color: red;">The applied hours falls on a Holiday / Saturday / Sunday. Do you want to approve the applied hours?</br><u><a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute2="<?php echo $value['AppliedHrs']; ?>" attribute3="1">Approve applied hours</a></u> or <u><a href="#" class="wfhwarn<?php echo $key; ?>" onClick="$('.wfhcancel<?php echo $key; ?>').click();" attribute="<?php echo $key; ?>" attribute3="0">cancel applied hours?</a></u></p>
 											<?php
 													}
 												}else{
 													if($value['AppliedHrs'] > 8){
 											?>
-														<p class="wfhwarning<?php echo $key; ?> whwarning" style="color: red;">The applied hours exceeds 8 hours per day, do you want to approve the applied hours?</br><u><a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute2="<?php echo $value['AppliedHrs']; ?>" attribute3="1">Yes</a></u> or <u><a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute3="0">No?</a></u></p>
+														<p class="wfhwarning<?php echo $key; ?> whwarning" style="color: red;">The applied hours exceeds 8 hours per day, do you want to approve the applied hours?</br><u><a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute2="<?php echo $value['AppliedHrs']; ?>" attribute3="1">Approve applied hours</a></u> or <u><a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute3="0">approve 8 hours only?</a></u></p>
 											<?php
 													}
 												}
@@ -7001,12 +7001,14 @@
 											</td>
 
 											<td width="50%">
+												<!-- signatory 4 -->
 												<table>
 													<tr>
 														<td><b>Signatory 4</b></td>
 														<td width="50%"><?php echo $approver_data4[0]['FName'].' '.$approver_data4[0]['LName']; ?></td>
 													</tr>
 												</table>
+												<!-- signatory 4 -->
 											</td>
                     </tr>
                     <tr>
@@ -7052,7 +7054,7 @@
 																						});
 
 																						if(overwrite){
-																							if(confirm("This will overwrite all the changes on the Approve Hours. Are you sure you want to continue?")){
+																							if(confirm("All of your changes on the Approved hours will be overwritten with the applied hours. Are you sure you want to continue?")){
 																								$(".ApprovedHrs").each(function(){
 																									$(this).val($(this).attr("attribute2"));
 																								});
