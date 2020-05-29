@@ -7188,6 +7188,7 @@
 																								});
 																								$(".whwarning").attr("style", "display: none");
 																							}else{
+																								$(this).attr("value", 0);
 																								$(this).attr("checked", false);
 																								// $(".wfhapproveall").click();
 																							}
