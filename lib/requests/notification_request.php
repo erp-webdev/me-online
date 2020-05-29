@@ -7057,6 +7057,7 @@
 
 																					if(approve == 0){
 																						$(this).attr("value", 1);
+																						$(this).attr("checked", true);
 
 																						$(".ApprovedHrs").each(function(){
 																							if($(this).val() != $(this).attr("attribute3")){
@@ -7071,6 +7072,8 @@
 																								});
 																								$(".whwarning").attr("style", "display: none");
 																							}else{
+																								$(this).attr("value", 0);
+																								$(this).attr("checked", false);
 																								// $(".wfhapproveall").click();
 																							}
 																						}else{
@@ -7083,6 +7086,7 @@
 
 																					}else{
 																						$(this).attr("value", 0);
+																						$(this).attr("checked", false);
 																						$(".ApprovedHrs").each(function(){
 																							$(this).val($(this).attr("attribute3"));
 																						});
@@ -7356,6 +7360,7 @@
 
 																					if(approve == 0){
 																						$(this).attr("value", 1);
+																						$(this).attr("checked", true);
 
 																						$(".ApprovedHrs").each(function(){
 																							if($(this).val() != $(this).attr("attribute3")){
@@ -7370,6 +7375,8 @@
 																								});
 																								$(".whwarning").attr("style", "display: none");
 																							}else{
+																								$(this).attr("value", 0);
+																								$(this).attr("checked", false);
 																								// $(".wfhapproveall").click();
 																							}
 																						}else{
@@ -7382,6 +7389,7 @@
 
 																					}else{
 																						$(this).attr("value", 0);
+																						$(this).attr("checked", false);
 																						$(".ApprovedHrs").each(function(){
 																							$(this).val($(this).attr("attribute3"));
 																						});
@@ -7469,6 +7477,7 @@
 
 																	if(approve == 0){
 																		$(this).attr("value", 1);
+																		$(this).attr("checked", true);
 
 																		$(".ApprovedHrs").each(function(){
 																			if($(this).val() != $(this).attr("attribute3")){
@@ -7483,6 +7492,8 @@
 																				});
 																				$(".whwarning").attr("style", "display: none");
 																			}else{
+																				$(this).attr("value", 0);
+																				$(this).attr("checked", false);
 																				// $(".wfhapproveall").click();
 																			}
 																		}else{
@@ -7495,6 +7506,7 @@
 
 																	}else{
 																		$(this).attr("value", 0);
+																		$(this).attr("checked", false);
 																		$(".ApprovedHrs").each(function(){
 																			$(this).val($(this).attr("attribute3"));
 																		});
@@ -7639,6 +7651,7 @@
 
 																					if(approve == 0){
 																						$(this).attr("value", 1);
+																						$(this).attr("checked", true);
 
 																						$(".ApprovedHrs").each(function(){
 																							if($(this).val() != $(this).attr("attribute3")){
@@ -7653,6 +7666,8 @@
 																								});
 																								$(".whwarning").attr("style", "display: none");
 																							}else{
+																								$(this).attr("value", 0);
+																								$(this).attr("checked", false);
 																								// $(".wfhapproveall").click();
 																							}
 																						}else{
@@ -7665,6 +7680,7 @@
 
 																					}else{
 																						$(this).attr("value", 0);
+																						$(this).attr("checked", false);
 																						$(".ApprovedHrs").each(function(){
 																							$(this).val($(this).attr("attribute3"));
 																						});
@@ -7753,6 +7769,7 @@
 
 																			if(approve == 0){
 																				$(this).attr("value", 1);
+																				$(this).attr("checked", true);
 
 																				$(".ApprovedHrs").each(function(){
 																					if($(this).val() != $(this).attr("attribute3")){
@@ -7767,6 +7784,8 @@
 																						});
 																						$(".whwarning").attr("style", "display: none");
 																					}else{
+																						$(this).attr("value", 0);
+																						$(this).attr("checked", false);
 																						// $(".wfhapproveall").click();
 																					}
 																				}else{
@@ -7779,6 +7798,7 @@
 
 																			}else{
 																				$(this).attr("value", 0);
+																				$(this).attr("checked", false);
 																				$(".ApprovedHrs").each(function(){
 																					$(this).val($(this).attr("attribute3"));
 																				});
