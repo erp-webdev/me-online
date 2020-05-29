@@ -7014,8 +7014,16 @@
                     <tr>
                         <?php //var_dump($notification_data[0]['Signatory01']);goherespence ?>
                         <?php if ($notification_data[0]['Signatory01'] == $profile_idnum) : // && $defdbname01 == $profile_dbname ?>
-
+									<td width="50%">
+										<table width="100%">
+											<tr>
                         <td><b><?php echo $notification_data[0]['ApprovedDate01'] ? 'Status' : '&nbsp;'; ?></b></td>
+											</tr>
+										</table>
+									</td>
+									<td width="50%">
+										<table width="100%">
+											<tr>
                         <td>
                             <?php if (!$notification_data[0]['ApprovedDate01'] && $notification_data[0]['Approved'] != 2) : ?>
                                 <?php if ($doctype == 'OT') : ?>
@@ -7099,6 +7107,9 @@
                                 <?php endif; ?>
                             <?php endif; ?>
                         </td>
+											</tr>
+										</table>
+									</td>
                         <?php else : ?>
                         <td><b>Status</b></td>
                         <td><?php
