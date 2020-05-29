@@ -6994,8 +6994,8 @@
                       <td width="50%">
 												<table width="100%">
 													<tr>
-														<td><b>Signatory 1</b></td>
-														<td width="50%"><?php echo $approver_data1[0]['FName'].' '.$approver_data1[0]['LName']; ?></td>
+														<td width="25%"><b>Signatory 1</b></td>
+														<td width="75%"><?php echo $approver_data1[0]['FName'].' '.$approver_data1[0]['LName']; ?></td>
 													</tr>
 												</table>
 											</td>
@@ -7008,8 +7008,8 @@
 												<table width="100%">
 
 													<tr>
-														<td><b>Signatory 4</b></td>
-														<td width="50%"><?php echo $approver_data4[0]['FName'].' '.$approver_data4[0]['LName']; ?></td>
+														<td width="25%"><b>Signatory 4</b></td>
+														<td width="75%"><?php echo $approver_data4[0]['FName'].' '.$approver_data4[0]['LName']; ?></td>
 													</tr>
 
 												</table>
@@ -7028,8 +7028,8 @@
 									<td width="50%">
 										<table width="100%">
 											<tr>
-                        <td width="50%"><b><?php echo $notification_data[0]['ApprovedDate01'] ? 'Status' : '&nbsp;'; ?></b></td>
-                        <td width="50%">
+                        <td width="25%"><b><?php echo $notification_data[0]['ApprovedDate01'] ? 'Status' : '&nbsp;'; ?></b></td>
+                        <td width="75%">
                             <?php if (!$notification_data[0]['ApprovedDate01'] && $notification_data[0]['Approved'] != 2) : ?>
                                 <?php if ($doctype == 'OT') : ?>
                                     <script type="text/javascript">// slider
@@ -7122,8 +7122,8 @@
 									<td width="50%">
 										<table width="100%">
 											<tr>
-												<td width="50%"><b><?php echo $notification_data[0]['ApprovedDate04'] ? 'Status' : '&nbsp;'; ?></b></td>
-												<td width="50%">
+												<td width="25%"><b><?php echo $notification_data[0]['ApprovedDate04'] ? 'Status' : '&nbsp;'; ?></b></td>
+												<td width="75%">
 														<?php if (!$notification_data[0]['ApprovedDate04'] && $notification_data[0]['ApprovedDate03'] && $notification_data[0]['Approved'] != 2) : ?>
 																<?php if ($doctype == 'OT') : ?>
 																		<script type="text/javascript">// slider
