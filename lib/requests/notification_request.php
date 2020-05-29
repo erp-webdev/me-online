@@ -7210,7 +7210,7 @@
 											</tr>
 										</table>
 									</td>
-									<!-- signatory 4 -->
+									<!-- signatory 4 pt3-->
 								<?php endif; ?>
 
 
@@ -7236,14 +7236,40 @@
 												</table>
 											</td>
                         <?php endif; ?>
+												<?php if ($notification_data[0]['Signatory04'] == $profile_idnum) : // && $defdbname01 == $profile_dbname ?>
+				                <?php else : ?>
+													<td width="50%">
+														<table width="100%">
+															<tr>
+																<td><b>Status</b></td>
+																<td><?php
+																		if ($notification_data[0]['ApprovedDate04']) :
+																				echo 'APPROVED';
+																		else :
+																				if ($notification_data[0]['Approved'] == 2) :
+																						echo 'REJECTED';
+																				else :
+																						echo 'TO BE APPROVED';
+																				endif;
+																		endif; ?><span id="remarks" name="remarks">&nbsp;</span></td>
+																</tr>
+															</table>
+														</td>
+												<?php endif; ?>
 
                     </tr>
 
                     <?php if ($notification_data[0]['ApprovedDate01']) : ?>
                         <?php if (trim($notification_data[0]['Remarks01'])) : ?>
                         <tr>
-                            <td><b>Remarks</b></td>
-                            <td><?php echo $mainsql->truncate($notification_data[0]['Remarks01'], 50); ?></td>
+													<td width="50%">
+														<table width="100%">
+															<tr>
+		                            <td width="25%"><b>Remarks</b></td>
+		                            <td width="75%"><?php echo $mainsql->truncate($notification_data[0]['Remarks01'], 50); ?></td>
+															</tr>
+														</table>
+													</td>
                         </tr>
                         <?php endif; ?>
                     <?php endif; ?>
