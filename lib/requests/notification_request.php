@@ -7575,8 +7575,30 @@
                     <?php endif; ?>
                     <?php if (trim($notification_data[0]['Signatory03'])) : ?>
                     <tr>
-                        <td><b>Signatory 3</b></td>
-                        <td><?php echo $approver_data3[0]['FName'].' '.$approver_data3[0]['LName']; ?></td>
+											<td width="50%">
+												<table width="100%">
+													<tr>
+		                        <td width="25%"><b>Signatory 3</b></td>
+		                        <td width="75%"><?php echo $approver_data3[0]['FName'].' '.$approver_data3[0]['LName']; ?></td>
+													</tr>
+												</table>
+											</td>
+											<!-- signatory 6 pt1 -->
+											<?php if (trim($notification_data[0]['Signatory06'])) : ?> <!-- new -->
+
+												<td width="50%">
+													<table width="100%">
+
+														<tr>
+															<td width="25%"><b>Signatory 6</b></td>
+															<td width="75%"><?php echo $approver_data6[0]['FName'].' '.$approver_data6[0]['LName']; ?></td>
+														</tr>
+
+													</table>
+												</td>
+											<?php endif; ?>
+
+
                     </tr>
                     <tr>
                         <?php if ($notification_data[0]['Signatory03'] == $profile_idnum) : ?>
