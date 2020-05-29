@@ -6691,7 +6691,7 @@
 										$(".reset<?php echo $key; ?>").click(function(){
 											arrayid = $(this).attr('attribute');
 
-											$("#wfhApprovedHrs" + arrayid).val($(this).attr("attribute3"));
+											$("#wfhApprovedHrs" + arrayid).val($("#wfhApprovedHrs" + arrayid).attr("attribute3"));
 											$(".whwarning").attr("style", "color: red;");
 											$(".reset"+arrayid).hide();
 										});
