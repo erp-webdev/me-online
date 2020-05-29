@@ -6734,7 +6734,11 @@
 														<p class="wfhwarning<?php echo $key; ?> whwarning" style="color: red;">The applied hours exceeds 8 hours per day, do you want to approve the applied hours?</br><u><a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute2="<?php echo $value['AppliedHrs']; ?>" attribute3="1">Approve applied hours</a></u> or <u><a href="#" class="wfh8<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute3="0">approve 8 hours only?</a></u></p>
 														<p><a href="#" class="reset<?php echo $key;?> resetwfh" attribute="<?php echo $key; ?>" style="color: red;"><u>undo</u></a></p>
 											<?php
-													}
+												}else{
+													?>
+													<p><a href="#" class="reset<?php echo $key;?> resetwfh" attribute="<?php echo $key; ?>" style="color: red;"><u>undo</u></a></p>
+													<?php
+												}
 												}
 											?>
 										</td>
