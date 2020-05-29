@@ -7411,7 +7411,20 @@
 											</tr>
 										</table>
 									</td>
+								<?php else : ?>
+												<td><b>Status</b></td>
+												<td><?php
+														if ($notification_data[0]['ApprovedDate02']) :
+																echo 'APPROVED';
+														else :
+																if ($notification_data[0]['Approved'] == 2) :
+																		echo 'REJECTED';
+																else :
+																		echo 'TO BE APPROVED';
+																endif;
+														endif; ?><span id="remarks" name="remarks">&nbsp;</span></td>
 								<?php endif; ?>
+
 								<!-- signatory5 pt2 -->
 								<?php if ($notification_data[0]['Signatory05'] == $profile_idnum && $defdbname05 == $profile_dbname) : ?>
 					<td width="50%">
@@ -7509,21 +7522,8 @@
 								<!-- signatory5 pt2 -->
 
 
-								<?php if ($notification_data[0]['Signatory02'] == $profile_idnum) : ?>
 
-                <?php else : ?>
-                        <td><b>Status</b></td>
-                        <td><?php
-                            if ($notification_data[0]['ApprovedDate02']) :
-                                echo 'APPROVED';
-                            else :
-                                if ($notification_data[0]['Approved'] == 2) :
-                                    echo 'REJECTED';
-                                else :
-                                    echo 'TO BE APPROVED';
-                                endif;
-                            endif; ?><span id="remarks" name="remarks">&nbsp;</span></td>
-                        <?php endif; ?>
+
                     </tr>
 
 
