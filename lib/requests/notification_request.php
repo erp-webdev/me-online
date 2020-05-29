@@ -7588,7 +7588,6 @@
 
 												<td width="50%">
 													<table width="100%">
-
 														<tr>
 															<td width="25%"><b>Signatory 6</b></td>
 															<td width="75%"><?php echo $approver_data6[0]['FName'].' '.$approver_data6[0]['LName']; ?></td>
@@ -7597,13 +7596,14 @@
 													</table>
 												</td>
 											<?php endif; ?>
-
-
                     </tr>
                     <tr>
+											<td width="50%">
+												<table width="100%">
+													<tr>
                         <?php if ($notification_data[0]['Signatory03'] == $profile_idnum) : ?>
-                        <td><b><?php echo $notification_data[0]['ApprovedDate03'] ? 'Status' : '&nbsp;'; ?></b></td>
-                        <td>
+                        <td width="25%"><b><?php echo $notification_data[0]['ApprovedDate03'] ? 'Status' : '&nbsp;'; ?></b></td>
+                        <td width="75%">
                             <?php if (!$notification_data[0]['ApprovedDate03'] && $notification_data[0]['ApprovedDate02'] && $notification_data[0]['Approved'] != 2) : ?>
                                 <?php if ($doctype == 'OT') : ?>
                                     <script type="text/javascript">// slider
@@ -7687,9 +7687,15 @@
                                 <?php endif; ?>
                             <?php endif; ?>
                         </td>
+											</tr>
+										</table>
+									</td>
                         <?php else : ?>
-                        <td><b>Status</b></td>
-                        <td><?php
+										<td width="50%">
+											<table width="100%">
+												<tr>
+                        <td width="25%"><b>Status</b></td>
+                        <td width="75%"><?php
                             if ($notification_data[0]['ApprovedDate03']) :
                                 echo 'APPROVED';
                             else :
@@ -7699,8 +7705,12 @@
                                     echo 'TO BE APPROVED';
                                 endif;
                             endif; ?><span id="remarks" name="remarks">&nbsp;</span></td>
+													</tr>
+												</table>
+											</td>
                         <?php endif; ?>
                     </tr>
+
                     <?php if ($notification_data[0]['ApprovedDate03']) : ?>
                     <tr>
                         <td><b>Date</b></td>
