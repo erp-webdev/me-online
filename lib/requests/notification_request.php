@@ -7679,7 +7679,9 @@
                             <?php else : ?>
                                 <?php if ($notification_data[0]['ApprovedDate03'] != NULL) : ?>
                                     <?php if ($notification_data[0]['Approved'] != 2) : ?>
-                                        APPROVED BY YOU
+                                    <?php
+																		echo 'APPROVED BY YOU ('.date("F j, Y | g:ia", strtotime($notification_data[0]['ApprovedDate03'])).')';
+																		?>
                                     <?php else : ?>
                                         REJECTED BY YOU
                                     <?php endif; ?>
