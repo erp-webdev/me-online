@@ -7236,6 +7236,8 @@
 												</table>
 											</td>
                         <?php endif; ?>
+
+												<?php if (trim($notification_data[0]['Signatory04'])) : ?>
 												<?php if ($notification_data[0]['Signatory04'] == $profile_idnum) : // && $defdbname01 == $profile_dbname ?>
 				                <?php else : ?>
 													<td width="50%">
@@ -7255,6 +7257,7 @@
 																</tr>
 															</table>
 														</td>
+													<?php endif; ?>
 												<?php endif; ?>
 
                     </tr>
