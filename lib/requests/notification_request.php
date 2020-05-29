@@ -7415,7 +7415,7 @@
 												<td width="25%"><b>Status</b></td>
 												<td width="75%"><?php
 														if ($notification_data[0]['ApprovedDate02']) :
-																echo 'APPROVED';
+																echo 'APPROVED ('.date("F j, Y | g:ia", strtotime($notification_data[0]['ApprovedDate05'])).')';
 														else :
 																if ($notification_data[0]['Approved'] == 2) :
 																		echo 'REJECTED';
@@ -7523,7 +7523,7 @@
 					</td>
 				<?php endif; ?>
 					<!-- signatory5 pt2 -->
-								<?php if (trim($notification_data[0]['Signatory04'])) : ?>
+								<?php if (trim($notification_data[0]['Signatory05'])) : ?>
 								<?php if ($notification_data[0]['Signatory05'] == $profile_idnum && $defdbname05 == $profile_dbname) : ?>
 								<?php else : ?>
 									<td width="50%">
@@ -7531,8 +7531,8 @@
 											<tr>
 												<td width="25%"><b>Status</b></td>
 												<td width="75%"><?php
-														if ($notification_data[0]['ApprovedDate03']) :
-																echo 'APPROVED';
+														if ($notification_data[0]['ApprovedDate05']) :
+																echo 'APPROVED ('.date("F j, Y | g:ia", strtotime($notification_data[0]['ApprovedDate05'])).')';
 														else :
 																if ($notification_data[0]['Approved'] == 2) :
 																		echo 'REJECTED';
@@ -7549,10 +7549,6 @@
 
 
                     <?php if ($notification_data[0]['ApprovedDate02']) : ?>
-                    <tr>
-                        <td><b>Date</b></td>
-                        <td><?php echo date("F j, Y | g:ia", strtotime($notification_data[0]['ApprovedDate02'])); ?></td>
-                    </tr>
                         <?php if (trim($notification_data[0]['Remarks02'])) : ?>
                         <tr>
                             <td><b>Remarks</b></td>
