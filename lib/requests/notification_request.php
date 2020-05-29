@@ -7232,10 +7232,11 @@
                                     echo 'TO BE APPROVED';
                                 endif;
                             endif; ?><span id="remarks" name="remarks">&nbsp;</span></td>
+													</tr>
+												</table>
+											</td>
                         <?php endif; ?>
-											</tr>
-										</table>
-									</td>
+
                     </tr>
 
                     <?php if ($notification_data[0]['ApprovedDate01']) : ?>
