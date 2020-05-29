@@ -7598,10 +7598,11 @@
 											<?php endif; ?>
                     </tr>
                     <tr>
-											<td width="50%">
-												<table width="100%">
-													<tr>
+											
                         <?php if ($notification_data[0]['Signatory03'] == $profile_idnum) : ?>
+									<td width="50%">
+										<table width="100%">
+											<tr>
                         <td width="25%"><b><?php echo $notification_data[0]['ApprovedDate03'] ? 'Status' : '&nbsp;'; ?></b></td>
                         <td width="75%">
                             <?php if (!$notification_data[0]['ApprovedDate03'] && $notification_data[0]['ApprovedDate02'] && $notification_data[0]['Approved'] != 2) : ?>
@@ -7708,8 +7709,6 @@
 													</tr>
 												</table>
 											</td>
-										</tr>
-									</tr>
                         <?php endif; ?>
 										<!-- signatory 6 pt2 -->
 										<?php if ($notification_data[0]['Signatory06'] == $profile_idnum && $defdbname06 == $profile_dbname) : ?>
