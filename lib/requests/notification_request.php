@@ -7103,7 +7103,9 @@
                             <?php else : ?>
                                 <?php if ($notification_data[0]['ApprovedDate01'] != NULL) : ?>
                                     <?php if ($notification_data[0]['Approved'] != 2) : ?>
-                                        APPROVED BY YOU
+																		<?php
+																				echo 'APPROVED BY YOU ('.date("F j, Y | g:ia", strtotime($notification_data[0]['ApprovedDate01'])).')';
+																		?>
                                     <?php else : ?>
                                         REJECTED BY YOU
                                     <?php endif; ?>
@@ -7198,7 +7200,9 @@
 														<?php else : ?>
 																<?php if ($notification_data[0]['ApprovedDate04'] != NULL) : ?>
 																		<?php if ($notification_data[0]['Approved'] != 2) : ?>
-																				APPROVED BY YOU
+																				<?php
+																						echo 'APPROVED BY YOU ('.date("F j, Y | g:ia", strtotime($notification_data[0]['ApprovedDate04'])).')';
+																				?>
 																		<?php else : ?>
 																				REJECTED BY YOU
 																		<?php endif; ?>
