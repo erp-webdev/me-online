@@ -7241,10 +7241,10 @@
 													<td width="50%">
 														<table width="100%">
 															<tr>
-																<td><b>Status</b></td>
-																<td><?php
+																<td width="25%"><b>Status</b></td>
+																<td width="75%"><?php
 																		if ($notification_data[0]['ApprovedDate04']) :
-																				echo 'APPROVED';
+																			echo 'APPROVED ('.date("F j, Y | g:ia", strtotime($notification_data[0]['ApprovedDate04'])).')';
 																		else :
 																				if ($notification_data[0]['Approved'] == 2) :
 																						echo 'REJECTED';
