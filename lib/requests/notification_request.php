@@ -6691,8 +6691,9 @@
 										$(".resetwfh").click(function(){
 											arrayid = $(this).attr('attribute');
 
-											$("#wfhApprovedHrs" + arrayid).val($(this).attr("attribute2"));
+											$("#wfhApprovedHrs" + arrayid).val($(this).attr("attribute3"));
 											$(".whwarning").attr("style", "color: red;");
+											$(".reset"+arrayid).hide();
 										});
 
 									});
