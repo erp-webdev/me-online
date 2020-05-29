@@ -6999,7 +6999,6 @@
 													</tr>
 												</table>
 											</td>
-										<?php endif; ?> <!-- new -->
 
 										<?php if (trim($notification_data[0]['Signatory04'])) : ?> <!-- new -->
 
@@ -7018,7 +7017,6 @@
 										<?php endif; ?><!-- new -->
 
 
-										<?php if (trim($notification_data[0]['Signatory01'])) : ?> <!-- new -->
 
 
                     </tr>
@@ -7295,8 +7293,29 @@
                     <?php endif; ?>
                     <?php if (trim($notification_data[0]['Signatory02'])) : ?>
                     <tr>
-                        <td><b>Signatory2</b></td>
-                        <td><?php echo $approver_data2[0]['FName'].' '.$approver_data2[0]['LName']; ?></td>
+											<td width="50%">
+												<table width="100%">
+													<tr>
+		                        <td><b>Signatory2</b></td>
+		                        <td><?php echo $approver_data2[0]['FName'].' '.$approver_data2[0]['LName']; ?></td>
+													</tr>
+												</table>
+											</td>
+											<!-- signatory5 pt1 -->
+											<?php if (trim($notification_data[0]['Signatory05'])) : ?> <!-- new -->
+
+												<td width="50%">
+													<table width="100%">
+
+														<tr>
+															<td width="25%"><b>Signatory 5</b></td>
+															<td width="75%"><?php echo $approver_data5[0]['FName'].' '.$approver_data5[0]['LName']; ?></td>
+														</tr>
+
+													</table>
+												</td>
+											<?php endif; ?>
+											<!-- signatory5 pt1 -->
                     </tr>
                     <tr>
                         <?php if ($notification_data[0]['Signatory02'] == $profile_idnum) : ?>
