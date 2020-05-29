@@ -7017,8 +7017,8 @@
 									<td width="50%">
 										<table width="100%">
 											<tr>
-                        <td><b><?php echo $notification_data[0]['ApprovedDate01'] ? 'Status' : '&nbsp;'; ?></b></td>
-                        <td>
+                        <td width="50%"><b><?php echo $notification_data[0]['ApprovedDate01'] ? 'Status' : '&nbsp;'; ?></b></td>
+                        <td width="50%">
                             <?php if (!$notification_data[0]['ApprovedDate01'] && $notification_data[0]['Approved'] != 2) : ?>
                                 <?php if ($doctype == 'OT') : ?>
                                     <script type="text/javascript">// slider
