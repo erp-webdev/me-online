@@ -7546,16 +7546,32 @@
 										<?php endif; ?>
 										<?php endif; ?>
                     </tr>
-
-
-                    <?php if ($notification_data[0]['ApprovedDate02']) : ?>
+										<tr>
+										<?php if ($notification_data[0]['ApprovedDate02']) : ?>
                         <?php if (trim($notification_data[0]['Remarks02'])) : ?>
-                        <tr>
-                            <td><b>Remarks</b></td>
-                            <td><?php echo $mainsql->truncate($notification_data[0]['Remarks02'], 50); ?></td>
-                        </tr>
+													<td width="50%">
+														<table width="100%">
+															<tr>
+		                            <td width="25%"><b>Remarks</b></td>
+		                            <td width="75%"><?php echo $mainsql->truncate($notification_data[0]['Remarks02'], 50); ?></td>
+															</tr>
+														</table>
+													</td>
                         <?php endif; ?>
                     <?php endif; ?>
+										<?php if ($notification_data[0]['ApprovedDate05']) : ?>
+                        <?php if (trim($notification_data[0]['Remarks05'])) : ?>
+													<td width="50%">
+														<table width="100%">
+															<tr>
+		                            <td width="25%"><b>Remarks</b></td>
+		                            <td width="75%"><?php echo $mainsql->truncate($notification_data[0]['Remarks05'], 50); ?></td>
+															</tr>
+														</table>
+													</td>
+                        <?php endif; ?>
+                    <?php endif; ?>
+										</tr>
                     <?php endif; ?>
                     <?php if (trim($notification_data[0]['Signatory03'])) : ?>
                     <tr>
