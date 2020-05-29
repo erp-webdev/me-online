@@ -6999,17 +6999,28 @@
 													</tr>
 												</table>
 											</td>
+										<?php endif; ?>
+
+										<?php if (trim($notification_data[0]['Signatory01'])) : ?>
 
 											<td width="50%">
-												<!-- signatory 4 -->
+												<!-- signatory 4 p1-->
 												<table width="100%">
+
 													<tr>
 														<td><b>Signatory 4</b></td>
 														<td width="50%"><?php echo $approver_data4[0]['FName'].' '.$approver_data4[0]['LName']; ?></td>
 													</tr>
+
 												</table>
 												<!-- signatory 4 -->
 											</td>
+										<?php endif; ?>
+
+
+										<?php if (trim($notification_data[0]['Signatory01'])) : ?>
+
+
                     </tr>
                     <tr>
                         <?php //var_dump($notification_data[0]['Signatory01']);goherespence ?>
