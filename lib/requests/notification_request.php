@@ -7827,20 +7827,37 @@
 										<!-- signatory 6 pt2 -->
 									</tr>
 
-                    <?php if ($notification_data[0]['ApprovedDate03']) : ?>
-                        <?php if (trim($notification_data[0]['Remarks03'])) : ?>
-                        <tr>
-													<td width="50%">
-														<table width="100%">
-															<tr>
-		                            <td width="25%"><b>Remarks</b></td>
-		                            <td width="75%"><?php echo $mainsql->truncate($notification_data[0]['Remarks03'], 50); ?></td>
-															</tr>
-														</table>
-													</td>
-                        </tr>
-                        <?php endif; ?>
-                    <?php endif; ?>
+
+                    <tr>
+											<?php if ($notification_data[0]['ApprovedDate03']) : ?>
+	                        <?php if (trim($notification_data[0]['Remarks03'])) : ?>
+														<td width="50%">
+															<table width="100%">
+																<tr>
+			                            <td width="25%"><b>Remarks</b></td>
+			                            <td width="75%"><?php echo $mainsql->truncate($notification_data[0]['Remarks03'], 50); ?></td>
+																</tr>
+															</table>
+														</td>
+													<?php endif; ?>
+												<?php endif; ?>
+
+												<?php if ($notification_data[0]['ApprovedDate06']) : ?>
+														<?php if (trim($notification_data[0]['Remarks06'])) : ?>
+															<td width="50%">
+																<table width="100%">
+																	<tr>
+				                            <td width="25%"><b>Remarks</b></td>
+				                            <td width="75%"><?php echo $mainsql->truncate($notification_data[0]['Remarks06'], 50); ?></td>
+																	</tr>
+																</table>
+															</td>
+														<?php endif; ?>
+													<?php endif; ?>
+
+                      </tr>
+
+
                     <?php endif; ?>
 
 
