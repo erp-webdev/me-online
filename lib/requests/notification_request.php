@@ -7296,8 +7296,8 @@
 											<td width="50%">
 												<table width="100%">
 													<tr>
-		                        <td><b>Signatory2</b></td>
-		                        <td><?php echo $approver_data2[0]['FName'].' '.$approver_data2[0]['LName']; ?></td>
+		                        <td width="25%"><b>Signatory2</b></td>
+		                        <td width="75%"><?php echo $approver_data2[0]['FName'].' '.$approver_data2[0]['LName']; ?></td>
 													</tr>
 												</table>
 											</td>
