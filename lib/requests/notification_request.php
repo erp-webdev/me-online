@@ -7001,7 +7001,7 @@
 											</td>
 										<?php endif; ?>
 
-										<?php if (trim($notification_data[0]['Signatory01'])) : ?>
+										<?php if (trim($notification_data[0]['Signatory04'])) : ?>
 
 											<td width="50%">
 												<!-- signatory 4 p1-->
