@@ -6991,25 +6991,23 @@
                     <?php if ($notification_data[0]['Approved'] != 3) : ?>
                     <?php if (trim($notification_data[0]['Signatory01'])) : ?>
                     <tr>
-											<td><b>Signatory 1</b></td>
-											<td><?php echo $approver_data1[0]['FName'].' '.$approver_data1[0]['LName']; ?></td>
-                      <!-- <td width="50%">
+                      <td width="50%">
 												<table width="100%">
 													<tr>
 														<td><b>Signatory 1</b></td>
 														<td width="50%"><?php //echo $approver_data1[0]['FName'].' '.$approver_data1[0]['LName']; ?></td>
 													</tr>
 												</table>
-											</td> -->
+											</td>
 
-											<!-- <td width="50%"> -->
+											<td width="50%">
 												<!-- signatory 4 -->
-												<!-- <table width="100%"> -->
-													<!-- <tr> -->
-														<!-- <td><b>Signatory 4</b></td> -->
-														<!-- <td width="50%"><?php //echo $approver_data4[0]['FName'].' '.$approver_data4[0]['LName']; ?></td> -->
-													<!-- </tr> -->
-												<!-- </table> -->
+												<table width="100%">
+													<tr>
+														<td><b>Signatory 4</b></td>
+														<td width="50%"><?php //echo $approver_data4[0]['FName'].' '.$approver_data4[0]['LName']; ?></td>
+													</tr>
+												</table>
 												<!-- signatory 4 -->
 											</td>
                     </tr>
