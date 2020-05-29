@@ -7521,11 +7521,29 @@
 							</tr>
 						</table>
 					</td>
-								<?php endif; ?>
-								<!-- signatory5 pt2 -->
-
-
-
+					<!-- signatory5 pt2 -->
+								<?php if (trim($notification_data[0]['Signatory05'])) : ?>
+								<?php if ($notification_data[0]['Signatory05'] == $profile_idnum) : ?>
+								<?php else : ?>
+									<td width="50%">
+										<table width="100%">
+											<tr>
+												<td width="25%"><b>Status</b></td>
+												<td width="75%"><?php
+														if ($notification_data[0]['ApprovedDate03']) :
+																echo 'APPROVED';
+														else :
+																if ($notification_data[0]['Approved'] == 2) :
+																		echo 'REJECTED';
+																else :
+																		echo 'TO BE APPROVED';
+																endif;
+														endif; ?><span id="remarks" name="remarks">&nbsp;</span></td>
+													</tr>
+												</table>
+											</td>
+										<?php endif; ?>
+										<?php endif; ?>
 
                     </tr>
 
