@@ -6999,9 +6999,9 @@
 													</tr>
 												</table>
 											</td>
-										<?php endif; ?>
+										<?php endif; ?> <!-- new -->
 
-										<?php if (trim($notification_data[0]['Signatory04'])) : ?>
+										<?php if (trim($notification_data[0]['Signatory04'])) : ?> <!-- new -->
 
 											<td width="50%">
 												<!-- signatory 4 p1-->
@@ -7015,10 +7015,10 @@
 												</table>
 												<!-- signatory 4 -->
 											</td>
-										<?php endif; ?>
+										<?php endif; ?><!-- new -->
 
 
-										<?php if (trim($notification_data[0]['Signatory01'])) : ?>
+										<?php if (trim($notification_data[0]['Signatory01'])) : ?> <!-- new -->
 
 
                     </tr>
@@ -7115,8 +7115,10 @@
 											</tr>
 										</table>
 									</td>
+								<?php endif; ?>
 
 									<!-- signatory 4 -->
+									<?php if ($notification_data[0]['Signatory04'] == $profile_idnum) : // && $defdbname01 == $profile_dbname ?>
 									<td width="50%">
 										<table width="100%">
 											<tr>
@@ -7209,6 +7211,10 @@
 										</table>
 									</td>
 									<!-- signatory 4 -->
+								<?php endif; ?>
+
+
+								<?php if ($notification_data[0]['Signatory01'] == $profile_idnum) : // && $defdbname01 == $profile_dbname ?>
 
 
                         <?php else : ?>
