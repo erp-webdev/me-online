@@ -6634,9 +6634,9 @@
 						<table class="tdatablk">
 							<?php $appwh_data = $tblsql->get_whdata($refnum); ?>
 							<tr>
-								<th width="70px">DTR Date</th>
-								<th width="50px">Applied Hrs</th>
-								<th width="50px">Approved Hrs</th>
+								<th width="70px" style="text-align:left">DTR Date</th>
+								<th width="50px" style="text-align:left">Applied Hrs</th>
+								<th width="50px" style="text-align:left">Approved Hrs</th>
 								<th width="100%" style="text-align:left">Task/s</th>
 								<th width="10px">x</th>
 							</tr>
