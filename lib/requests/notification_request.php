@@ -7804,6 +7804,7 @@
 								</table>
 							</td>
 										<?php else : ?>
+											<?php if (trim($notification_data[0]['Signatory06'])) : ?>
 											<td width="50%">
 												<table width="100%">
 													<tr>
@@ -7821,6 +7822,7 @@
 															</tr>
 														</table>
 													</td>
+												<?php endif; ?>
 										<?php endif; ?>
 										<!-- signatory 6 pt2 -->
 									</tr>
