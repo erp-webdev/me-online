@@ -7071,7 +7071,7 @@
 																								});
 																								$(".whwarning").attr("style", "display: none");
 																							}else{
-																								$(".wfhapproveall").click();
+																								// $(".wfhapproveall").click();
 																							}
 																						}else{
 																							$(".ApprovedHrs").each(function(){
@@ -7187,7 +7187,7 @@
 																								});
 																								$(".whwarning").attr("style", "display: none");
 																							}else{
-																								$(".wfhapproveall").click();
+																								// $(".wfhapproveall").click();
 																							}
 																						}else{
 																							$(".ApprovedHrs").each(function(){
@@ -7366,7 +7366,7 @@
 																								});
 																								$(".whwarning").attr("style", "display: none");
 																							}else{
-																								$(".wfhapproveall").click();
+																								// $(".wfhapproveall").click();
 																							}
 																						}else{
 																							$(".ApprovedHrs").each(function(){
@@ -7479,7 +7479,7 @@
 																				});
 																				$(".whwarning").attr("style", "display: none");
 																			}else{
-																				$(".wfhapproveall").click();
+																				// $(".wfhapproveall").click();
 																			}
 																		}else{
 																			$(".ApprovedHrs").each(function(){
@@ -7649,7 +7649,7 @@
 																								});
 																								$(".whwarning").attr("style", "display: none");
 																							}else{
-																								$(".wfhapproveall").click();
+																								// $(".wfhapproveall").click();
 																							}
 																						}else{
 																							$(".ApprovedHrs").each(function(){
@@ -7763,7 +7763,7 @@
 																						});
 																						$(".whwarning").attr("style", "display: none");
 																					}else{
-																						$(".wfhapproveall").click();
+																						// $(".wfhapproveall").click();
 																					}
 																				}else{
 																					$(".ApprovedHrs").each(function(){
