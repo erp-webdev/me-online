@@ -7232,10 +7232,6 @@
                         <?php endif; ?>
                     </tr>
                     <?php if ($notification_data[0]['ApprovedDate01']) : ?>
-                    <tr>
-                        <td><b>Date</b></td>
-                        <td><?php echo date("F j, Y | g:ia", strtotime($notification_data[0]['ApprovedDate01'])); ?></td>
-                    </tr>
                         <?php if (trim($notification_data[0]['Remarks01'])) : ?>
                         <tr>
                             <td><b>Remarks</b></td>
