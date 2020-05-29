@@ -98,7 +98,7 @@
 											</tr>
 											<tr>
 												<td colspan="2">
-													<i>Maximum 7 days per application is allowed.</i><br>
+													<i>Maximum 7 days per application.</i><br>
 													<i>Sample task: Prepared monthly attendance of employees for Perfect Attendance Report</i><br>
 													<i><strong>Credit Hours for Approval</strong></i><br>
 													<ul>
