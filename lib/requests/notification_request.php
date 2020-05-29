@@ -7018,12 +7018,6 @@
 										<table width="100%">
 											<tr>
                         <td><b><?php echo $notification_data[0]['ApprovedDate01'] ? 'Status' : '&nbsp;'; ?></b></td>
-											</tr>
-										</table>
-									</td>
-									<td width="50%">
-										<table width="100%">
-											<tr>
                         <td>
                             <?php if (!$notification_data[0]['ApprovedDate01'] && $notification_data[0]['Approved'] != 2) : ?>
                                 <?php if ($doctype == 'OT') : ?>
@@ -7110,6 +7104,18 @@
 											</tr>
 										</table>
 									</td>
+
+									<!-- signatory 4 -->
+									<td width="50%">
+										<table width="100%">
+											<tr>
+
+											</tr>
+										</table>
+									</td>
+									<!-- signatory 4 -->
+
+
                         <?php else : ?>
                         <td><b>Status</b></td>
                         <td><?php
