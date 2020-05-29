@@ -6652,11 +6652,15 @@
 									<script>
 									$(function() {
 
+										$(".resetwfh").hide();
+
 										$(".wfhcancel<?php echo $key; ?>").click(function() {
 											arrayid = $(this).attr('attribute');
 											$("#wfhApprovedHrs" + arrayid).val(0);
 
 											$(".wfhwarning" + arrayid).attr("style", "display: none");
+
+											$(".reset"+ arrayid).show();
 
 										});
 
@@ -6670,6 +6674,8 @@
 											}
 
 											$(".wfhwarning" + arrayid).attr("style", "display: none");
+											$(".reset"+ arrayid).show();
+
 
 										});
 
@@ -6679,7 +6685,7 @@
 											$("#wfhApprovedHrs" + arrayid).val(8);
 
 											$(".wfhwarning" + arrayid).attr("style", "display: none");
-
+											$(".reset"+ arrayid).show();
 										});
 
 									});
@@ -6706,16 +6712,19 @@
 													if($value['AppliedHrs'] > 8){
 											?>
 														<p class="wfhwarning<?php echo $key; ?> whwarning" style="color: red;">The applied hours falls on a Holiday / Saturday / Sunday and exceeds 8 hours per day.</br><a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute2="<?php echo $value['AppliedHrs']; ?>" attribute3="1"> <u>Approve applied hours</a></u> or <u><a href="#" onClick="$('.wfhcancel<?php echo $key; ?>').click();" class="<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute3="0">cancel applied hours </a></u>or <u><a href="#" class="wfh8<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute3="0">approve 8 hours only?</a></u></p>
+														<p class="reset<?php echo $key;?> resetwfh" style="color: red;"><u>reset</u></p>
 											<?php
 													}else{
 											?>
 														<p class="wfhwarning<?php echo $key; ?> whwarning" style="color: red;">The applied hours falls on a Holiday / Saturday / Sunday. Do you want to approve the applied hours?</br><u><a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute2="<?php echo $value['AppliedHrs']; ?>" attribute3="1">Approve applied hours</a></u> or <u><a href="#" class="wfhwarn<?php echo $key; ?>" onClick="$('.wfhcancel<?php echo $key; ?>').click();" attribute="<?php echo $key; ?>" attribute3="0">cancel applied hours?</a></u></p>
+														<p class="reset<?php echo $key;?> resetwfh" style="color: red;"><u>reset</u></p>
 											<?php
 													}
 												}else{
 													if($value['AppliedHrs'] > 8){
 											?>
 														<p class="wfhwarning<?php echo $key; ?> whwarning" style="color: red;">The applied hours exceeds 8 hours per day, do you want to approve the applied hours?</br><u><a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute2="<?php echo $value['AppliedHrs']; ?>" attribute3="1">Approve applied hours</a></u> or <u><a href="#" class="wfh8<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute3="0">approve 8 hours only?</a></u></p>
+														<p class="reset<?php echo $key;?> resetwfh" style="color: red;"><u>reset</u></p>
 											<?php
 													}
 												}
