@@ -41,7 +41,7 @@
 																<th width="80px">Date</th>
 																<th width="40px">Credit</th>
 																<th width="135px">Time</th>
-																<th >Activities</th>
+																<th >Task/s</th>
 															</tr>
 															<tr ng-repeat="wfh_day in wfh_days" id="tr{{ $index+1 }}">
 																<td class="centertalign">
@@ -99,6 +99,7 @@
 											<tr>
 												<td colspan="2">
 													<i>Maximum 7 days per application is allowed.</i><br>
+													<i>Sample task: Prepare monthly attendance of employees for Perfect Attendance Report</i><br>
 													<i><strong>Credit Hours for Approval</strong></i><br>
 													<ul>
 														<li><i><span >* Maximum of 8 working hours per day</span></i></li>
