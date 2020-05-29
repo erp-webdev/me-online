@@ -7259,9 +7259,9 @@
 
                     </tr>
 
+										<tr>
                     <?php if ($notification_data[0]['ApprovedDate01']) : ?>
                         <?php if (trim($notification_data[0]['Remarks01'])) : ?>
-                        <tr>
 													<td width="50%">
 														<table width="100%">
 															<tr>
@@ -7270,9 +7270,21 @@
 															</tr>
 														</table>
 													</td>
-                        </tr>
                         <?php endif; ?>
                     <?php endif; ?>
+										<?php if ($notification_data[0]['ApprovedDate04']) : ?>
+                        <?php if (trim($notification_data[0]['Remarks04'])) : ?>
+													<td width="50%">
+														<table width="100%">
+															<tr>
+		                            <td width="25%"><b>Remarks</b></td>
+		                            <td width="75%"><?php echo $mainsql->truncate($notification_data[0]['Remarks04'], 50); ?></td>
+															</tr>
+														</table>
+													</td>
+                        <?php endif; ?>
+                    <?php endif; ?>
+										</tr>
                     <?php endif; ?>
                     <?php if (trim($notification_data[0]['Signatory02'])) : ?>
                     <tr>
