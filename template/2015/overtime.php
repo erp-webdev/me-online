@@ -6,11 +6,11 @@
                         if ($holirest == 1) :
                             //echo '<script type="text/javascript">alert("This is not a regular day");</script>';
                         endif;
-                
-                        $shiftsched2 = $mainsql->get_schedshiftdtr($profile_idnum, date("Y-m-d", strtotime($odate)));        
+
+                        $shiftsched2 = $mainsql->get_schedshiftdtr($profile_idnum, date("Y-m-d", strtotime($odate)));
                         $sft2 = $shiftsched2[0]['ShiftID'];
 
-                        $dtr_data = $mainsql->get_dtr_bydate($profile_idnum, date("m/d/Y", strtotime($odate)));                  
+                        $dtr_data = $mainsql->get_dtr_bydate($profile_idnum, date("m/d/Y", strtotime($odate)));
 
                         $numdays = intval(date("N", $odate));
 
@@ -18,9 +18,9 @@
                         $otimeout = $shiftsched2[0]['CreditTimeOut'];
                         $dtimein = $dtr_data[0]['TimeIN'];
                         $dtimeout = $dtr_data[0]['TimeOut'];
-                
+
                         $chkdtrin = $dtimein ? date('g:ia', strtotime($dtimein)) : 0;
-                        $chkdtrout = $dtimeout ? date('g:ia', strtotime($dtimeout)) : 0;   
+                        $chkdtrout = $dtimeout ? date('g:ia', strtotime($dtimeout)) : 0;
 
                         $limitin1 = strtotime($otimeout);
                         $limitin2 = strtotime($otimeout);
@@ -29,7 +29,7 @@
                     ?>
 
                     <script type="text/javascript">
-                        $(function() {	
+                        $(function() {
                             $('.datetimepickot1').datetimepicker('destroy');
                             $('.datetimepickot2').datetimepicker('destroy');
                             $('.datetimepickot1').datetimepicker({
@@ -38,7 +38,7 @@
                                 minDate: '<?php echo date("Y-m-d", strtotime($odate)); ?>',
                                 maxDate: '<?php echo date("Y-m-d", strtotime($odate)); ?>'
                                 //minTime: '<?php echo date("H:i:s", $limitin1); ?>',
-                                //maxTime: '<?php echo date("H:i:s", $limitin2); ?>'    
+                                //maxTime: '<?php echo date("H:i:s", $limitin2); ?>'
                             });
 
                             $('.datetimepickot2').datetimepicker({
@@ -48,17 +48,17 @@
                                 maxDate: '<?php echo date("Y-m-d", strtotime($odate) + 86400); ?>'
                                 <?php if ($chkdtrout) : ?>,
                                 minTime: '<?php echo date("H:i:s", $limitout1); ?>',
-                                maxTime: '<?php echo date("H:i:s", $limitout2); ?>'   
-                                <?php endif; ?>   
+                                maxTime: '<?php echo date("H:i:s", $limitout2); ?>'
+                                <?php endif; ?>
                             });
                         });
                     </script>
-                    
-                    <div id="mainsplashtext" class="mainsplashtext lefttalign">  
+
+                    <div id="mainsplashtext" class="mainsplashtext lefttalign">
                         <div class="topsplashtext lefttalign robotobold cattext whitetext"><?php echo WELCOME; ?></div>
                         <div class="leftsplashtext lefttalign"><?php include(TEMP."/menu.php"); ?></div>
                         <div class="rightsplashtext lefttalign">
-                            <div id="mainot" class="mainbody lefttalign whitetext">  
+                            <div id="mainot" class="mainbody lefttalign whitetext">
                                 <b class="mediumtext lorangetext">OVERTIME REQUEST</b><br><br>
                                 <b>MAIN INFORMATION</b><br><br>
                                 <div class="column2">
@@ -67,8 +67,8 @@
                                     <b>Position: </b><?php echo $profile_pos; ?><br>
                                     <b>Status: </b>Open<br>
                                     <b>Department: </b><?php echo $profile_dept; ?><br>
-                                </div><br>                                
-                                
+                                </div><br>
+
                                 <div id="alert"></div>
                                 <form id="frmapplyot" action="?ignore-page-cache=true" method="post" enctype="multipart/form-data">
                                     <div id="tabs">
@@ -117,7 +117,7 @@
                                                 <tr>
                                                     <td width="15%"><b>Hours: </b></td>
                                                     <td width="85%" colspan="3">
-                                                        
+
                                                         <span id="othours"><?php echo $othours; ?></span><input id="txtothours" type="hidden" name="txtothours" value="<?php echo $othours; ?>" />
                                                         <script type="text/javascript">// slider
                                                             $("#txtothours").spinner({
@@ -129,7 +129,7 @@
                                                                 } else if ( ui.value < 0 ) {
                                                                   $(this).spinner( "value", 0 );
                                                                   return false;
-                                                                }   
+                                                                }
                                                               }
                                                             });
                                                         </script>
@@ -146,15 +146,15 @@
                                                         <i>* If there's something wrong with date or time represent within this application, please check your DTR first</i>
                                                     </td>
                                                 </tr>
-                                            </table>  
+                                            </table>
                                         <?php
                                             /*if ($chkdtrin == '0' || $chkdtrout == '0') :
                                                 echo "<script type='text/javascript'>alert('Either or both DTR in or out is NOT SET so you can\'t apply an overtime, pls apply for a manual DTR instead, thank you.');
-                                                $(function() { $('#btnotapply').addClass('invisible'); });</script>";            
+                                                $(function() { $('#btnotapply').addClass('invisible'); });</script>";
                                             else :
                                                 echo "<script type='text/javascript'>$(function() { $('#btnotapply').removeClass('invisible'); });</script>";
                                             endif;*/
-                                        ?>  
+                                        ?>
                                         </div>
                                         <div id="lattach">
                                             <input type="file" name="attachment1" class="whitetext" /><br>
@@ -168,19 +168,19 @@
                                         <div id="lapprover">
                                             <?php if ($ot_app) : ?>
                                             <?php foreach($ot_app as $key => $value) : ?>
-                                                <?php if ($key < 6) : ?>
-                                                <b>Level <?php echo $key; ?>:</b> <?php echo trim($value[0]) ? $value[0] : '-- NOT SET --'; ?> <input type="hidden" name="approver<?php echo $key; ?>" value="<?php echo $value[1]; ?>" /><input type="hidden" name="dbapprover<?php echo $key; ?>" value="<?php echo $value[2]; ?>" /><br>   
+                                                <?php if ($key < 7) : ?>
+                                                <b>Level <?php echo $key; ?>:</b> <?php echo trim($value[0]) ? $value[0] : '-- NOT SET --'; ?> <input type="hidden" name="approver<?php echo $key; ?>" value="<?php echo $value[1]; ?>" /><input type="hidden" name="dbapprover<?php echo $key; ?>" value="<?php echo $value[2]; ?>" /><br>
                                                 <?php endif; ?>
-                                            <?php endforeach; ?>                     
+                                            <?php endforeach; ?>
                                             <?php else : ?>
                                                 No approvers has been set
-                                            <?php endif; ?>                              
+                                            <?php endif; ?>
                                         </div>
 
                                     </div>
                                     <div class="righttalign">
-                                        <?php 
-                                            $microsec = microtime(); 
+                                        <?php
+                                            $microsec = microtime();
                                             $micsec = explode(' ', $microsec);
                                             $finsec = str_replace('.', '', $micsec[1].$micsec[0]);
                                         ?>
@@ -192,7 +192,7 @@
                                         <a href="<?php echo WEB; ?>/pending"><input type="button" name="btncancel" value="Cancel" class="redbtn margintop10" /></a>
                                     </div>
                                 </form>
-                                
+
                             </div>
                         </div>
                     </div>
