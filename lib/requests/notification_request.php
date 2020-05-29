@@ -7414,8 +7414,11 @@
 								<?php endif; ?>
 								<!-- signatory5 pt2 -->
 								<?php if ($notification_data[0]['Signatory05'] == $profile_idnum && $defdbname05 == $profile_dbname) : ?>
-								<td><b><?php echo $notification_data[0]['ApprovedDate05'] ? 'Status' : '&nbsp;'; ?></b></td>
-								<td>
+					<td width="50%">
+						<table width="100%">
+							<tr>
+								<td width="25%"><b><?php echo $notification_data[0]['ApprovedDate05'] ? 'Status' : '&nbsp;'; ?></b></td>
+								<td width="75%">
 										<?php if (!$notification_data[0]['ApprovedDate05'] && $notification_data[0]['ApprovedDate04'] && $notification_data[0]['Approved'] != 2) : ?>
 												<?php if ($doctype == 'OT') : ?>
 														<script type="text/javascript">// slider
@@ -7499,6 +7502,9 @@
 												<?php endif; ?>
 										<?php endif; ?>
 								</td>
+							</tr>
+						</table>
+					</td>
 								<?php endif; ?>
 								<!-- signatory5 pt2 -->
 
