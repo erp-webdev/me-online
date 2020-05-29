@@ -7218,8 +7218,11 @@
 
 
                 <?php else : ?>
-                        <td><b>Status</b></td>
-                        <td><?php
+									<td width="50%">
+										<table width="100%">
+											<tr>
+                        <td width="50%"><b>Status</b></td>
+                        <td width="50%"><?php
                             if ($notification_data[0]['ApprovedDate01']) :
                                 echo 'APPROVED ('.date("F j, Y | g:ia", strtotime($notification_data[0]['ApprovedDate01'])).')';
                             else :
@@ -7230,7 +7233,11 @@
                                 endif;
                             endif; ?><span id="remarks" name="remarks">&nbsp;</span></td>
                         <?php endif; ?>
+											</tr>
+										</table>
+									</td>
                     </tr>
+
                     <?php if ($notification_data[0]['ApprovedDate01']) : ?>
                         <?php if (trim($notification_data[0]['Remarks01'])) : ?>
                         <tr>
