@@ -112,7 +112,7 @@
 									<div id="lapprover">
 										<?php if ($wh_app) : ?>
 										<?php foreach($wh_app as $key => $value) : ?>
-											<?php if ($key < 6) : ?>
+											<?php if ($key < 7) : ?>
 											<b>Level <?php echo $key; ?>:</b> <?php echo trim($value[0]) ? $value[0] : '-- NOT SET --'; ?> <input type="hidden" name="approver<?php echo $key; ?>" value="<?php echo $value[1]; ?>" /><input type="hidden" name="dbapprover<?php echo $key; ?>" value="<?php echo $value[2]; ?>" /><br>
 											<?php endif; ?>
 										<?php endforeach; ?>
