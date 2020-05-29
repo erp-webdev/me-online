@@ -6689,6 +6689,7 @@
 										});
 
 										$(".resetwfh").click(function(){
+											alert('clicked!');
 											arrayid = $(this).attr('attribute');
 
 											$("#wfhApprovedHrs" + arrayid).val($(this).attr("attribute3"));
