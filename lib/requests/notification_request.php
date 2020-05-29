@@ -7115,7 +7115,26 @@
 											</tr>
 										</table>
 									</td>
-								<?php endif; ?>
+
+								<?php else : ?>
+									<td width="50%">
+										<table width="100%">
+											<tr>
+												<td width="25%"><b>Status</b></td>
+												<td width="75%"><?php
+														if ($notification_data[0]['ApprovedDate01']) :
+																echo 'APPROVED ('.date("F j, Y | g:ia", strtotime($notification_data[0]['ApprovedDate01'])).')';
+														else :
+																if ($notification_data[0]['Approved'] == 2) :
+																		echo 'REJECTED';
+																else :
+																		echo 'TO BE APPROVED';
+																endif;
+														endif; ?><span id="remarks" name="remarks">&nbsp;</span></td>
+													</tr>
+												</table>
+											</td>
+									<?php endif; ?>
 
 									<!-- signatory 4 pt2 -->
 									<?php if ($notification_data[0]['Signatory04'] == $profile_idnum) : // && $defdbname01 == $profile_dbname ?>
@@ -7216,28 +7235,6 @@
 								<?php endif; ?>
 
 
-								<?php if ($notification_data[0]['Signatory01'] == $profile_idnum) : // && $defdbname01 == $profile_dbname ?>
-
-
-                <?php else : ?>
-									<td width="50%">
-										<table width="100%">
-											<tr>
-                        <td width="25%"><b>Status</b></td>
-                        <td width="75%"><?php
-                            if ($notification_data[0]['ApprovedDate01']) :
-                                echo 'APPROVED ('.date("F j, Y | g:ia", strtotime($notification_data[0]['ApprovedDate01'])).')';
-                            else :
-                                if ($notification_data[0]['Approved'] == 2) :
-                                    echo 'REJECTED';
-                                else :
-                                    echo 'TO BE APPROVED';
-                                endif;
-                            endif; ?><span id="remarks" name="remarks">&nbsp;</span></td>
-													</tr>
-												</table>
-											</td>
-                        <?php endif; ?>
 
 												<?php if (trim($notification_data[0]['Signatory04'])) : ?>
 												<?php if ($notification_data[0]['Signatory04'] == $profile_idnum) : // && $defdbname01 == $profile_dbname ?>
