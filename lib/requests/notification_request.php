@@ -7415,7 +7415,7 @@
 												<td width="25%"><b>Status</b></td>
 												<td width="75%"><?php
 														if ($notification_data[0]['ApprovedDate02']) :
-																echo 'APPROVED ('.date("F j, Y | g:ia", strtotime($notification_data[0]['ApprovedDate05'])).')';
+																echo 'APPROVED ('.date("F j, Y | g:ia", strtotime($notification_data[0]['ApprovedDate02'])).')';
 														else :
 																if ($notification_data[0]['Approved'] == 2) :
 																		echo 'REJECTED';
@@ -7697,7 +7697,7 @@
                         <td width="25%"><b>Status</b></td>
                         <td width="75%"><?php
                             if ($notification_data[0]['ApprovedDate03']) :
-                                echo 'APPROVED';
+                                echo 'APPROVED ('.date("F j, Y | g:ia", strtotime($notification_data[0]['ApprovedDate06'])).')';
                             else :
                                 if ($notification_data[0]['Approved'] == 2) :
                                     echo 'REJECTED';
@@ -7709,13 +7709,122 @@
 												</table>
 											</td>
                         <?php endif; ?>
-                    </tr>
+										<!-- signatory 6 pt2 -->
+										<?php if ($notification_data[0]['Signatory06'] == $profile_idnum && $defdbname06 == $profile_dbname) : ?>
+								<td width="50%">
+									<table width="100%">
+										<tr>
+										<td width="25%"><b><?php echo $notification_data[0]['ApprovedDate06'] ? 'Status' : '&nbsp;'; ?></b></td>
+										<td width="75%">
+												<?php if (!$notification_data[0]['ApprovedDate06'] && $notification_data[0]['ApprovedDate05'] && $notification_data[0]['Approved'] != 2) : ?>
+														<?php if ($doctype == 'OT') : ?>
+																<script type="text/javascript">// slider
+																		$(".approvehours").spinner({
+																			step: 0.5,
+																			spin: function( event, ui ) {
+																				if ( ui.value > <?php echo $application_data[0]['Hrs']; ?> ) {
+																					$(this).spinner( "value", <?php echo $application_data[0]['Hrs']; ?> );
+																					return false;
+																				} else if ( ui.value < 0 ) {
+																					$(this).spinner( "value", 0 );
+																					return false;
+																				}
+																			}
+																		});
+																</script>
+																<b>Approve Hour/s</b> <input type="text" name="approvehours" id="approvehours" value="<?php echo $application_data[0]['ApprovedHrs'] < $application_data[0]['Hrs'] ? $application_data[0]['ApprovedHrs'] :  $application_data[0]['Hrs']; ?>" class="approvehours txtbox width50 righttalign" readonly />
+																<!--input type="hidden" name="approvehours" id="approvehours" value="<?php echo $application_data[0]['ApprovedHrs']; ?>" /-->
+														<?php endif; ?>
+														<input id="remarks" type="text" name="remarks" placeholder="Remarks..." class="txtbox width95per<?php echo $doctype == 'OT' ? ' margintop10' : ''; ?> marginbottom10" />
+														<?php if (!$chkexpire) : ?>
+															<?php if (!$notification_data[0]['ApprovedDate06'] && $notification_data[0]['ApprovedDate05'] && $notification_data[0]['Approved'] != 2) : ?>
+															<?php if ($doctype == 'WH') : ?>
+																<script>
+																	$(".wfhapproveall").click(function(){
+																		var approve = $(this).attr("value");
+																		var overwrite = false;
+
+																			if(approve == 0){
+																				$(this).attr("value", 1);
+
+																				$(".ApprovedHrs").each(function(){
+																					if($(this).val() != $(this).attr("attribute3")){
+																						overwrite = true;
+																					}
+																				});
+
+																				if(overwrite){
+																					if(confirm("All of your changes on the Approved hours will be overwritten with the applied hours. Are you sure you want to continue?")){
+																						$(".ApprovedHrs").each(function(){
+																							$(this).val($(this).attr("attribute2"));
+																						});
+																						$(".whwarning").attr("style", "display: none");
+																					}else{
+																						$(".wfhapproveall").click();
+																					}
+																				}else{
+																					$(".ApprovedHrs").each(function(){
+																						$(this).val($(this).attr("attribute2"));
+																					});
+																					$(".whwarning").attr("style", "display: none");
+																				}
+
+
+																			}else{
+																				$(this).attr("value", 0);
+																				$(".ApprovedHrs").each(function(){
+																					$(this).val($(this).attr("attribute3"));
+																				});
+																				$(".whwarning").attr("style", "color: red");
+																			}
+
+																	});
+																</script>
+																<input type="checkbox" class="wfhapproveall" value="0"><b>Approve all applied hours</b></br></br>
+
+															<?php endif; ?>
+															<?php endif; ?>
+														<input id="btnapp" type="button" name="btnapp" value="Approve" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory06']; ?>" attribute20="<?php echo $notification_data[0]['DB_NAME06'] ? $notification_data[0]['DB_NAME06'] : 0; ?>" attribute21="0" attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnapp smlbtn" />&nbsp;
+														<?php endif; ?>
+														<input id="btnrej" type="button" name="btnrej" value="Reject" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory06']; ?>" attribute20="<?php echo $notification_data[0]['DB_NAME06'] ? $notification_data[0]['DB_NAME06'] : 0; ?>" attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="smlbtn btnred" />
+												<?php else : ?>
+														<?php if ($notification_data[0]['ApprovedDate06'] != NULL) : ?>
+																<?php if ($notification_data[0]['Approved'] != 2) : ?>
+																		APPROVED BY YOU
+																<?php else : ?>
+																		REJECTED BY YOU
+																<?php endif; ?>
+														<?php else : ?>
+																TO BE APPROVED BY YOU
+														<?php endif; ?>
+												<?php endif; ?>
+										</td>
+									</tr>
+								</table>
+							</td>
+										<?php else : ?>
+							<td width="50%">
+								<table width="100%">
+									<tr>
+										<td width="25%"><b>Status</b></td>
+										<td width="75%"><?php
+												if ($notification_data[0]['ApprovedDate06']) :
+														echo 'APPROVED ('.date("F j, Y | g:ia", strtotime($notification_data[0]['ApprovedDate06'])).')';
+												else :
+														if ($notification_data[0]['Approved'] == 2) :
+																echo 'REJECTED';
+														else :
+																echo 'TO BE APPROVED';
+														endif;
+												endif; ?><span id="remarks" name="remarks">&nbsp;</span></td>
+											</tr>
+										</table>
+									</td>
+										<?php endif; ?>
+										<!-- signatory 6 pt2 -->
+									</tr>
 
                     <?php if ($notification_data[0]['ApprovedDate03']) : ?>
-                    <tr>
-                        <td><b>Date</b></td>
-                        <td><?php echo date("F j, Y | g:ia", strtotime($notification_data[0]['ApprovedDate03'])); ?></td>
-                    </tr>
                         <?php if (trim($notification_data[0]['Remarks03'])) : ?>
                         <tr>
                             <td><b>Remarks</b></td>
