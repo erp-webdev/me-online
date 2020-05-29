@@ -6688,8 +6688,7 @@
 											$(".reset"+ arrayid).show();
 										});
 
-										$(".resetwfh").click(function(){
-											alert('clicked!');
+										$(".reset<?php echo $key; ?>").click(function(){
 											arrayid = $(this).attr('attribute');
 
 											$("#wfhApprovedHrs" + arrayid).val($(this).attr("attribute3"));
