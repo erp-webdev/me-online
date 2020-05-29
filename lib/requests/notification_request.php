@@ -7117,7 +7117,7 @@
 									</td>
 								<?php endif; ?>
 
-									<!-- signatory 4 -->
+									<!-- signatory 4 pt2 -->
 									<?php if ($notification_data[0]['Signatory04'] == $profile_idnum) : // && $defdbname01 == $profile_dbname ?>
 									<td width="50%">
 										<table width="100%">
@@ -7217,11 +7217,11 @@
 								<?php if ($notification_data[0]['Signatory01'] == $profile_idnum) : // && $defdbname01 == $profile_dbname ?>
 
 
-                        <?php else : ?>
+                <?php else : ?>
                         <td><b>Status</b></td>
                         <td><?php
                             if ($notification_data[0]['ApprovedDate01']) :
-                                echo 'APPROVED';
+                                echo 'APPROVED ('.date("F j, Y | g:ia", strtotime($notification_data[0]['ApprovedDate01'])).')';
                             else :
                                 if ($notification_data[0]['Approved'] == 2) :
                                     echo 'REJECTED';
