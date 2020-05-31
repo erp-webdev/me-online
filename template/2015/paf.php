@@ -58,7 +58,17 @@
                         <tr>
                             <td><?php /*echo date('mdy', strtotime($row['appdt'])).'|'.date('mdy').' -';*/ if($row['cid'] == 'MEGA01'){ echo 'Megaworld'; } elseif($row['cid'] == 'GLOBAL01'){ echo 'Global/LGM'; } ?></td>
                             <td><?php echo $row['title']; ?></td>
-                            <td style="text-align:center;"><?php echo date('F d, Y', strtotime($row['appdt'])); ?></td>
+                            <td style="text-align:center;"><?php
+                            
+                                if( strtolower(strpos($row['title']), 'regularization') ){
+                                    echo "*";
+                                }else{
+                                    echo date('F d, Y', strtotime($row['appdt'])); 
+                                }
+                            
+                            ?></td>
+                            
+                            
                             <td><?php echo $row['author']; ?></td>
                             <td style="text-align:center;">
                                 <i class="fa fa-cog fa-spin"></i> On Going
