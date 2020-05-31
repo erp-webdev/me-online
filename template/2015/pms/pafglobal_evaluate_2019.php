@@ -52,7 +52,29 @@
                 <td><b class="smallesttext lwhitetext">Date Hired:</b> <span style="font-weight:normal;"><?php echo date('Y-m-d', strtotime($row['hdate'])); ?></span></td>
             </tr>
             <tr>
-            <td><b class="smallesttext lwhitetext">Period:</b> <span style="font-weight:normal;">From | <u><?php  echo date('Y-m-d', strtotime($row['perfrom'])); ?></u> To | <u><?php echo date('Y-m-d', strtotime($row['perto'])); ?></u></span></td>
+            <td>
+                
+            <b class="smallesttext lwhitetext">Period:</b> 
+            
+            <?php if( strtolower(strpos($row['Title']), 'regularization') ) : ?>
+
+            <span style="font-weight:normal;">
+                From | <u><?php echo date('m-d-Y', strtotime($row['hdate'])); // echo date('Y-m-d', strtotime($row['dtfrom'])); ?></u> 
+                To | <u><?php echo date('m-d-Y', strtotime($row['PermanencyDate']));// echo date ('Y-m-d', strtotime($row['dtto'])); ?></u>
+            </span>
+
+            <?php else: ?>
+
+            <span style="font-weight:normal;">
+                From | <u><?php echo date('m-d-Y', strtotime($row['perfrom'])); // echo date('Y-m-d', strtotime($row['dtfrom'])); ?></u> 
+                To | <u><?php echo date('m-d-Y', strtotime($row['perto']));// echo date ('Y-m-d', strtotime($row['dtto'])); ?></u>
+            </span>
+
+            <?php endif; ?>
+
+            </td>
+
+
                 <td><b class="smallesttext lwhitetext">Date Appraisal:</b> <span style="font-weight:normal;"><?php echo date('Y-m-d', strtotime($row['appdt'])); ?></span></td>
             </tr>
         </tbody>
