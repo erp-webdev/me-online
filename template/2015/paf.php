@@ -60,7 +60,7 @@
                             <td><?php echo $row['title']; ?></td>
                             <td style="text-align:center;"><?php
                             
-                                if( strtolower(strpos($row['title']), 'regularization') !== false ){
+                                if( strtolower(strpos($row['title'], 'regularization')) !== false ){
                                     echo "*";
                                 }else{
                                     echo date('F d, Y', strtotime($row['appdt'])); 
