@@ -43,7 +43,7 @@
                     <tr>
                     <td><b class="smallesttext lwhitetext">Period:</b> 
 
-                        <?php if( strtolower(strpos($row['Title']), 'regularization') ) : ?>
+                        <?php if( strtolower(strpos($row['Title']), 'regularization') !== false ) : ?>
 
                         <span style="font-weight:normal;">
                             From | <u><?php echo date('m-d-Y', strtotime($row['hdate'])); // echo date('Y-m-d', strtotime($row['dtfrom'])); ?></u> 
