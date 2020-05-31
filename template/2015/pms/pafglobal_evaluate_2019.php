@@ -60,7 +60,7 @@
 
             <span style="font-weight:normal;">
                 From | <u><?php echo date('m-d-Y', strtotime($row['hdate'])); // echo date('Y-m-d', strtotime($row['dtfrom'])); ?></u> 
-                To | <u><?php echo date('m-d-Y', strtotime($row['PermanencyDate']));// echo date ('Y-m-d', strtotime($row['dtto'])); ?></u>
+                To | <u><?php empty($row['PermanencyDate']) ? echo 'not set' : echo date('m-d-Y', strtotime($row['PermanencyDate'])); ?></u>
             </span>
 
             <?php else: ?>
