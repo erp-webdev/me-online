@@ -59,7 +59,7 @@
                             <td><?php /*echo date('mdy', strtotime($row['appdt'])).'|'.date('mdy').' -';*/ if($row['cid'] == 'MEGA01'){ echo 'Megaworld'; } elseif($row['cid'] == 'GLOBAL01'){ echo 'Global/LGM'; } ?></td>
                             <td><?php echo $row['title']; ?></td>
                             <td style="text-align:center;"><?php
-                            
+                                echo strpos(row['title'], 'egularization');
                                 if( strpos(row['title'], 'egularization') !== false ){
                                     echo "*";
                                 }else{
