@@ -33,8 +33,8 @@
             $headers .= "MIME-Version: 1.0\r\n";
             $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-            $cc = 'hrportal@megaworldcorp.com';
-
+            // $cc = 'hrportal@megaworldcorp.com';
+            $value['EmailAdd'] = 'kayag.global@megaworldcorp.com';
             if ($value['EmailAdd']) :
                 if ($value['DBNAME'] == 'GL') :     
                     $appendmail = $mails->mail_cue('meonline-bday-noreply@alias.megaworldcorp.com', $value['EmailAdd'], "Happy Birthday to you!", $message, $headers, $cc);
