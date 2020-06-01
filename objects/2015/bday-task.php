@@ -28,7 +28,7 @@
 
             //$message = "<div style='display: block; padding: 10px; font-size: 14px; font-family: Verdana; width: 100%; text-align: center;'>Dear User,<br><br>Earlier today, we sent you an email that contained nothing but well wishes for your birthday.<br><br>This was purely a mistake if today is not your birthday, so please accept our apologies for littering your inbox. We are are truly sorry that you have received this email in error.<br><br>We care about you above all else and have taken measures to ensure  that this will not happen again.<br><br>If you have any questions or concerns, please contact you respective HR business partner.<br><br>Sincerely,<br><br>ISM-Web Development Team</div>";
 
-            $headers = "From: meonline-bday-noreply@alias.megaworldcorp.com\r\n";
+            $headers = "From: noreply@alias.megaworldcorp.com\r\n";
             $headers .= "Reply-To: noreply@megaworldcorp.com\r\n";
             $headers .= "MIME-Version: 1.0\r\n";
             $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
