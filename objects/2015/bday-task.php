@@ -48,7 +48,6 @@
                 $post['DATA'] = $value['FName'];
                 $post['DATE'] = date("m/d/Y H:i:s.000");
 
-                echo var_dump($appendmail);
 
         		// define("DBNAME", $value['DBNAME']);
                 // $log = $tblsql->log_action($post, 'add');
