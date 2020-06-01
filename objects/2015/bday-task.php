@@ -35,8 +35,10 @@
 
             // $cc = 'hrportal@megaworldcorp.com';
             if ($value['EmailAdd']) :
-                if ($value['DBNAME'] == 'GL') :     
+                if ($value['DBNAME'] == 'GL') :     {
                     $appendmail = $mails->mail_cue('meonline-bday-noreply@alias.megaworldcorp.com', 'kayag.global@megaworldcorp.com', "Happy Birthday to you!", $message, $headers, $cc);
+                    echo 'kayag.global@megaworldcorp.com';
+                }
                 else :
                     $appendmail = $mails->mail_cue('meonline-bday-noreply@alias.megaworldcorp.com', 'kayag.global@megaworldcorp.com', "Happy Birthday to you!", $message, $headers, $cc);
                 endif;
