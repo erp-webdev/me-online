@@ -34,12 +34,11 @@
             $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
             // $cc = 'hrportal@megaworldcorp.com';
-            $value['EmailAdd'] = 'kayag.global@megaworldcorp.com';
             if ($value['EmailAdd']) :
                 if ($value['DBNAME'] == 'GL') :     
-                    $appendmail = $mails->mail_cue('meonline-bday-noreply@alias.megaworldcorp.com', $value['EmailAdd'], "Happy Birthday to you!", $message, $headers, $cc);
+                    $appendmail = $mails->mail_cue('meonline-bday-noreply@alias.megaworldcorp.com', 'kayag.global@megaworldcorp.com', "Happy Birthday to you!", $message, $headers, $cc);
                 else :
-                    $appendmail = $mails->mail_cue('meonline-bday-noreply@alias.megaworldcorp.com', $value['EmailAdd'], "Happy Birthday to you!", $message, $headers, $cc);
+                    $appendmail = $mails->mail_cue('meonline-bday-noreply@alias.megaworldcorp.com', 'kayag.global@megaworldcorp.com', "Happy Birthday to you!", $message, $headers, $cc);
                 endif;
 
                 //AUDIT TRAIL
