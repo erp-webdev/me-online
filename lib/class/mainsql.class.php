@@ -89,9 +89,9 @@ class mainsql {
 
         $status = NULL;
         mssql_bind($stmt, '@STATUS', $status, SQLVARCHAR, true);
-        var_dump($stmt);exit;
+        
         $query = mssql_execute($stmt);
-
+        var_dump($query); exit;
         $result = $status;
 
 		return $result;
