@@ -92,7 +92,7 @@ class mainsql {
         
         $query = mssql_execute($stmt);
         $result = $status;
-
+        echo $result;
 		return $result;
 	}
 
