@@ -91,7 +91,6 @@ class mainsql {
         mssql_bind($stmt, '@STATUS', $status, SQLVARCHAR, true);
         
         $query = mssql_execute($stmt);
-        var_dump($query); exit;
         $result = $status;
 
 		return $result;
