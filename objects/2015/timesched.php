@@ -118,7 +118,7 @@
                 $scpost['REMARKS'] = $_POST['tsched_remarks'];
 
                 $add_sc = $mainsql->sc_action($scpost, 'add');			
-                var_dump($scpost);
+                var_dump($add_sc);
 
                 if($add_sc) : 
 
