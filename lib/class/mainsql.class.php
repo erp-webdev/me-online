@@ -78,7 +78,7 @@ class mainsql {
         $con = $this->db_connect();
 
         $maindb = $dbname ? $dbname : MAINDB;
-
+        echo $maindb; exit;
         $stmt = mssql_init($maindb.'.dbo.'.$sp_name, $con);
 
         if ($parameters) :
