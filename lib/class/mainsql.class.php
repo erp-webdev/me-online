@@ -78,7 +78,6 @@ class mainsql {
         $con = $this->db_connect();
 
         $maindb = $dbname ? $dbname : MAINDB;
-        echo $maindb; exit;
         $stmt = mssql_init($maindb.'.dbo.'.$sp_name, $con);
 
         if ($parameters) :
@@ -90,7 +89,7 @@ class mainsql {
 
         $status = NULL;
         mssql_bind($stmt, '@STATUS', $status, SQLVARCHAR, true);
-
+        var_dump($stmt);exit;
         $query = mssql_execute($stmt);
 
         $result = $status;
