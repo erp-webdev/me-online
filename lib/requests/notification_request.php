@@ -7021,6 +7021,7 @@
 
 										<tr>
 											<td colspan="2">
+												<div style="display: block;max-height: 200px; overflow: scroll;">
 												<table width="100%">
 
                     <?php if ($notification_data[0]['Approved'] != 3) : ?>
@@ -7942,6 +7943,7 @@
                     <?php endif; ?>
 
 									</table>
+								</div>
 								</td>
 							</tr>
 
