@@ -7021,7 +7021,7 @@
 
 										<tr>
 											<td>
-												<table>
+												<table width="100%">
 
                     <?php if ($notification_data[0]['Approved'] != 3) : ?>
                     <?php if (trim($notification_data[0]['Signatory01'])) : ?>
