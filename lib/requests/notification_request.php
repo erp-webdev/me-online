@@ -7019,6 +7019,10 @@
                         </td>
                     </tr>
 
+										<tr>
+											<td>
+												<table>
+
                     <?php if ($notification_data[0]['Approved'] != 3) : ?>
                     <?php if (trim($notification_data[0]['Signatory01'])) : ?>
                     <tr>
@@ -7936,6 +7940,10 @@
                         <td colspan="2" class="centertalign redbg"><span class="whitetext bold">POSTED</span></td>
                     </tr>
                     <?php endif; ?>
+
+									</table>
+								</td>
+							</tr>
 
                 </table>
 
