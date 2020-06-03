@@ -82,6 +82,7 @@
             case 'gettruefrom2':
 			case 'gettrueto2':
 						case 'getshiftdtr':
+						case 'getappliedwfh':
             case 'gettrueto3':
             case 'setscin':
             case 'setscout':
@@ -2488,6 +2489,12 @@
 		case 'getshiftdtr':
                         $day = $_GET['date'];
 						$shift = $mainsql->get_shiftdtr($profile_idnum, $day, $profile_dbname);
+                        echo json_encode($shift);
+		break;
+
+		case 'getappliedwfh':
+                        $day = $_GET['date'];
+						$shift = $mainsql->get_appliedwfh($profile_idnum, $day, $profile_dbname);
                         echo json_encode($shift);
 		break;
 

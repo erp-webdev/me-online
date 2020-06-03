@@ -488,6 +488,20 @@
 					});
 				}
 
+				$scope.applied =[];
+				for(var k = 0; k < $scope.wfh_days.length; k++)				{
+					$http({
+						method : "GET",
+						url : "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getappliedwfh&date="+ $scope.wfh_days[k].DTR +"",
+						data: {date: $scope.wfh_days[k].DTR}
+					}).then(function checkHoliday(response) {
+						console.log(response);
+					}, function error(response) {
+						console.log('error retrieving applied dates');
+					});
+				}
+
+
 			});
 
 			$scope.includeFunction = function($event){

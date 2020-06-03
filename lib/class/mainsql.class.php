@@ -89,7 +89,7 @@ class mainsql {
 
         $status = NULL;
         mssql_bind($stmt, '@STATUS', $status, SQLVARCHAR, true);
-        
+
         $query = mssql_execute($stmt);
         $result = $status;
 
@@ -1971,7 +1971,17 @@ class mainsql {
     function get_shiftdtr($empid, $date, $dbname)
     {
       $sql = "SELECT SHIFT, SUBSTRING(CAST(STARTTIME as varchar), 1, 2) as STARTTIME, SUBSTRING(CAST(ENDTIME as varchar), 1, 2) as ENDTIME, NUMHRS FROM dbo.FN_GETSHIFT('".$empid."', '".$date."')";
-      $result = $this->get_row($sql);
+      $result = $this->get_row($sql, $dbname);
+
+      return $result[0];
+    }
+    function get_appliedwfh($empid, $date, $dbname)
+    {
+      $sql = "SELECT DISTINCT DTRDate FROM HRFRMAPPLYWFHITEM A
+              LEFT JOIN HRFRMAPPLYWFH B ON A.Reference = B.Reference
+              WHERE B.EmpID = '".$date."'
+              ORDER BY DTRDate";
+      $result = $this->get_row($sql, $dbname);
 
       return $result[0];
     }
