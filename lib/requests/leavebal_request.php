@@ -208,10 +208,11 @@
                                         <?php if ($profile_compressed) : ?>
                                         <td class="centertalign"><?php echo $value['EarnedHrs'] ? number_format($value['EarnedHrs'], 2) : ''; ?></td>
                                         <td class="centertalign"><?php echo $value['UsedHrs'] ? number_format($value['UsedHrs'], 2) : ''; ?></td>
+                                        <td class="centertalign"><?php echo $value['Remark']; ?></td>
                                         <?php else : ?>
                                         <td class="centertalign"><?php echo $value['EarnedDays'] ? number_format($value['EarnedDays'], 2) : ''; ?></td>
                                         <td class="centertalign"><?php echo $value['UsedDays'] ? number_format($value['UsedDays'], 2) : ''; ?></td>
-                                        <td class="centertalign"><?php echo json_encode($value); ?></td>
+                                        <td class="centertalign"><?php echo $value['Remark']; ?></td>
                                         <?php endif; ?>
                                     </tr> 
                                     <?php
