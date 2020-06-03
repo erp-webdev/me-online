@@ -6716,7 +6716,7 @@
 												foreach($wh_act as $act_details){
 													echo "(".$act_details['start_time'] ." - " . $act_details['end_time'] .") ".$act_details['act']."</br></br>";
 												}
-												var_dump(!$notification_data[0]['ApprovedDate04'] && $notification_data[0]['ApprovedDate03']);
+												var_dump(!$notification_data[0]['ApprovedDate04'] && $notification_data[0]['ApprovedDate03'] && $notification_data[0]['Approved'] != 2);
 												//!$notification_data[0]['ApprovedDate04'] && $notification_data[0]['ApprovedDate03'] && $notification_data[0]['Approved'] != 2
 												$show_warning = false;
 
