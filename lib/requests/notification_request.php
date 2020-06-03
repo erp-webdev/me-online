@@ -7020,7 +7020,7 @@
                     </tr>
 
 										<tr>
-											<td colspan="2" style="display: block;max-height: 200px; overflow: scroll;">
+											<td colspan="2">
 												<table width="100%">
 
                     <?php if ($notification_data[0]['Approved'] != 3) : ?>
