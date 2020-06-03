@@ -586,10 +586,12 @@
 
 			$scope.isApplied = function($dtr){
 				var isApl = false;
+				if($scope.applied){
 				$scope.applied.forEach(date => {
 					if(date == $dtr){
 						isApl = true;
 					}
+				}
 				});
 
 				return isApl;
