@@ -211,7 +211,7 @@
                                         <?php else : ?>
                                         <td class="centertalign"><?php echo $value['EarnedDays'] ? number_format($value['EarnedDays'], 2) : ''; ?></td>
                                         <td class="centertalign"><?php echo $value['UsedDays'] ? number_format($value['UsedDays'], 2) : ''; ?></td>
-                                        <td class="centertalign"><?php echo var_dump($value); ?></td>
+                                        <td class="centertalign"><?php echo json_encode($value); ?></td>
                                         <?php endif; ?>
                                     </tr> 
                                     <?php
