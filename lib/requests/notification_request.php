@@ -7011,9 +7011,7 @@
                         $ifposted = $mainsql->get_posted($pdtrfrom, $pdtrto, $profile_comp);
                         $thisisposted = $ifposted[0]['Post'] ? 1 : 0;
                     ?>
-										<tr>
-										<td colspan="2">
-											<table>
+
 
                     <tr>
                         <td colspan="2">
@@ -7938,9 +7936,7 @@
                         <td colspan="2" class="centertalign redbg"><span class="whitetext bold">POSTED</span></td>
                     </tr>
                     <?php endif; ?>
-									</table>
-									</td>
-									</tr>
+
                 </table>
 
             <?php //signatoryend
