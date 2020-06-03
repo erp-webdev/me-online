@@ -6750,7 +6750,7 @@
 														}
 													}
 												}
-												var_dump($show_warning);
+												var_dump($notifcation_data[0]['Signatory04'] == $profile_idnum);
 
 											if($show_warning){
 												if($holiday['SHIFT'] == 'HOLIDAY' || $wfday == 6  || $wfday == 0){
