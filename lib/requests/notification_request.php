@@ -7013,7 +7013,7 @@
                     ?>
 										<tr>
 										<td colspan="2">
-											<table width="100%" style="overflow: auto; height: 200px;">
+											<table style="overflow: auto; height: 50px;">
 
                     <tr>
                         <td colspan="2">
