@@ -1983,7 +1983,7 @@ class mainsql {
               ORDER BY DTRDate";
       $result = $this->get_row($sql, $dbname);
 
-      return $result[0];
+      return $sql;
     }
 
     function get_logs($id = NULL, $start = 0, $limit = 0, $search = NULL, $count = 0, $from = NULL, $to = NULL)
