@@ -7024,7 +7024,7 @@
 												<div style="max-height: 200px; overflow-y: auto;">
 												<table width="100%">
 
-                    <?php if ($notification_data[0]['Approved'] != 3) : ?>
+                    <?php if ($notification_data[0]['Approved'] != 3) : ?> 
                     <?php if (trim($notification_data[0]['Signatory01'])) : ?>
                     <tr>
                       <td width="50%">
