@@ -6750,7 +6750,6 @@
 														}
 													}
 												}
-												var_dump($show_warning);
 
 											if($show_warning){
 												if($holiday['SHIFT'] == 'HOLIDAY' || $wfday == 6  || $wfday == 0){
