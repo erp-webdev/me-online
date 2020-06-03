@@ -7020,7 +7020,7 @@
                     </tr>
 
 										<tr>
-											<td colspan="2">
+											<td colspan="2" height="20px">
 												<table width="100%">
 
                     <?php if ($notification_data[0]['Approved'] != 3) : ?>
