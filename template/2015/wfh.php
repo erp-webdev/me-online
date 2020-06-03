@@ -495,7 +495,7 @@
 						url : "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getappliedwfh&date="+ $scope.wfh_days[k].DTR +"",
 						data: {date: $scope.wfh_days[k].DTR}
 					}).then(function checkHoliday(response) {
-						console.log(response);
+						console.log(response.data.DTRDate);
 					}, function error(response) {
 						console.log('error retrieving applied dates');
 					});
