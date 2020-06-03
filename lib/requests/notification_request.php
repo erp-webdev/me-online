@@ -7017,6 +7017,10 @@
 						                            <div class="hrborder">&nbsp;</div>
 						                        </td>
 						                    </tr>
+																<tr>
+																	<td colspan="2">
+																		<div style="max-height: 200px; overflow-y: auto;">
+																			<table width="100%">
 
 						                    <?php if ($notification_data[0]['Approved'] != 3) : ?>
 						                    <?php if (trim($notification_data[0]['Signatory01'])) : ?>
@@ -7773,6 +7777,11 @@
 						                        <td colspan="2" class="centertalign redbg"><span class="whitetext bold">POSTED</span></td>
 						                    </tr>
 						                    <?php endif; ?>
+															</table>
+														</div>
+													</td>
+												</tr>
+
 						                </table>
 
 						            <?php
