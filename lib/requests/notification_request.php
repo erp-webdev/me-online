@@ -7012,7 +7012,7 @@
                         $thisisposted = $ifposted[0]['Post'] ? 1 : 0;
                     ?>
 										<tr>
-										<td colspan="2" style="overflow: auto;">
+										<td colspan="2">
 											<table>
 
                     <tr>
