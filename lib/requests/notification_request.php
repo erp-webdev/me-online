@@ -6750,7 +6750,7 @@
 														}
 													}
 												}
-												var_dump(trim($notifcation_data[0]['Signatory04']));
+												var_dump(trim($notifcation_data[0]['Signatory01']));
 
 											if($show_warning){
 												if($holiday['SHIFT'] == 'HOLIDAY' || $wfday == 6  || $wfday == 0){
