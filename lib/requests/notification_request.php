@@ -7013,7 +7013,7 @@
                     ?>
 										<tr>
 										<td colspan="2">
-											<table style="overflow: auto; height: 50px;">
+											<div style="overflow: auto; height: 50px;">
 
                     <tr>
                         <td colspan="2">
@@ -7938,7 +7938,7 @@
                         <td colspan="2" class="centertalign redbg"><span class="whitetext bold">POSTED</span></td>
                     </tr>
                     <?php endif; ?>
-									</table>
+									</div>
 									</td>
 									</tr>
                 </table>
