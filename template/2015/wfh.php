@@ -585,7 +585,7 @@
 			}
 
 			$scope.isApplied = function($dtr){
-				alert($dtr);
+				console.log($dtr);
 				var isApl = false;
 				if($scope.applied){
 					$scope.applied.forEach(date => {
