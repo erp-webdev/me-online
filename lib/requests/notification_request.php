@@ -7045,7 +7045,7 @@
 																			<!-- </tr> -->
 																		<!-- </table> -->
 																		<!-- signatory 4 -->
-																	</td>
+																	<!-- </td> -->
 						                    </tr>
 						                    <tr>
 						                        <?php //var_dump($notification_data[0]['Signatory01']);goherespence ?>
@@ -7784,7 +7784,7 @@
 
 						                </table>
 
-						            <?php
+						            <?php //signatoryend
 
 						            //var_dump($approver_data1);
 
