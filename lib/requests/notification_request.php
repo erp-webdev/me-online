@@ -6718,38 +6718,7 @@
 												}
 												$show_warning = false;
 
-												if (!$chkexpire){
-													if(trim($notification_data[0]['Signatory01']) == $profile_idnum){
-														if (!$notification_data[0]['ApprovedDate01'] && $notification_data[0]['Approved'] != 2){
-															$show_warning = true;
-														}
-													}
-													if (trim($notification_data[0]['Signatory02']) == $profile_idnum) {
-														if(!$notification_data[0]['ApprovedDate02'] && $notification_data[0]['ApprovedDate01'] && $notification_data[0]['Approved'] != 2){
-															$show_warning = true;
-														}
-													}
-													if (trim($notification_data[0]['Signatory03']) == $profile_idnum) {
-														if(!$notification_data[0]['ApprovedDate03'] && $notification_data[0]['ApprovedDate02'] && $notification_data[0]['Approved'] != 2){
-															$show_warning = true;
-														}
-													}
-													if (trim($notification_data[0]['Signatory04']) == $profile_idnum) {
-														if(!$notification_data[0]['ApprovedDate04'] && $notification_data[0]['ApprovedDate03'] && $notification_data[0]['Approved'] != 2){
-															$show_warning = true;
-														}
-													}
-													if (trim($notification_data[0]['Signatory05']) == $profile_idnum) {
-														if(!$notification_data[0]['ApprovedDate05'] && $notification_data[0]['ApprovedDate04'] && $notification_data[0]['Approved'] != 2){
-															$show_warning = true;
-														}
-													}
-													if (trim($notification_data[0]['Signatory06']) == $profile_idnum) {
-														if(!$notification_data[0]['ApprovedDate06'] && $notification_data[0]['ApprovedDate05'] && $notification_data[0]['Approved'] != 2){
-															$show_warning = true;
-														}
-													}
-												}
+												
 
 											if($show_warning){
 												if($holiday['SHIFT'] == 'HOLIDAY' || $wfday == 6  || $wfday == 0){
