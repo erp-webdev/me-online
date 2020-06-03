@@ -7012,8 +7012,8 @@
                         $thisisposted = $ifposted[0]['Post'] ? 1 : 0;
                     ?>
 										<tr>
-										<td colspan="2">
-											<div style="overflow: auto; height: 50px;">
+										<td colspan="2" style="overflow: auto; height: 50px;">
+											<table>
 
                     <tr>
                         <td colspan="2">
@@ -7938,7 +7938,7 @@
                         <td colspan="2" class="centertalign redbg"><span class="whitetext bold">POSTED</span></td>
                     </tr>
                     <?php endif; ?>
-									</div>
+									</table>
 									</td>
 									</tr>
                 </table>
