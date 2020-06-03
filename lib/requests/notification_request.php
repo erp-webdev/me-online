@@ -6716,7 +6716,6 @@
 												foreach($wh_act as $act_details){
 													echo "(".$act_details['start_time'] ." - " . $act_details['end_time'] .") ".$act_details['act']."</br></br>";
 												}
-												var_dump(!$chkexpire);
 												$show_warning = false;
 
 												if (!$chkexpire){
@@ -6746,6 +6745,7 @@
 														}
 													}
 												}
+												var_dump($show_warning);
 
 											if($show_warning){
 												if($holiday['SHIFT'] == 'HOLIDAY' || $wfday == 6  || $wfday == 0){
