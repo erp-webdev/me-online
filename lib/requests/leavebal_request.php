@@ -195,10 +195,10 @@
                             
                             <table class="tdatablk width100per margintopbot20">
                                 <tr>
-                                    <th width="20%">Date</th>
-                                    <th width="25%">Earned</th>
-                                    <th width="25%">Used</th>
-                                    <th width="30%">Remarks</th>
+                                    <th width="25%">Date</th>
+                                    <th width="20%">Earned</th>
+                                    <th width="20%">Used</th>
+                                    <th width="45%">Remarks</th>
                                 </tr> 
                                 <?php
                                     foreach ($leave_data as $key => $value)  :
@@ -211,7 +211,7 @@
                                         <?php else : ?>
                                         <td class="centertalign"><?php echo $value['EarnedDays'] ? number_format($value['EarnedDays'], 2) : ''; ?></td>
                                         <td class="centertalign"><?php echo $value['UsedDays'] ? number_format($value['UsedDays'], 2) : ''; ?></td>
-                                        <td class="centertalign"><?php echo $value['Remark']; ?></td>
+                                        <td class="centertalign"><?php echo var_dump($value); ?></td>
                                         <?php endif; ?>
                                     </tr> 
                                     <?php
