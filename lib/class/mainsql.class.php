@@ -1977,13 +1977,10 @@ class mainsql {
     }
     function get_appliedwfh($empid, $date, $dbname)
     {
-      $sql = "SELECT DISTINCT DTRDate FROM HRFRMAPPLYWFHITEM A
-              LEFT JOIN HRFRMAPPLYWFH B ON A.Reference = B.Reference
-              WHERE B.EmpID = '".$date."'
-              ORDER BY DTRDate";
+      $sql = "SELECT DISTINCT DTRDate FROM HRFRMAPPLYWFHITEM A LEFT JOIN HRFRMAPPLYWFH B ON A.Reference = B.Reference WHERE B.EmpID = '".$date."' ORDER BY DTRDate";
       $result = $this->get_row($sql, $dbname);
 
-      return $dbname;
+      return $sql;
     }
 
     function get_logs($id = NULL, $start = 0, $limit = 0, $search = NULL, $count = 0, $from = NULL, $to = NULL)
