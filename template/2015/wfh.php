@@ -522,7 +522,7 @@
 						url : "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr&date="+ $scope.wfh_days[k].DTR +"",
 						data: {date: $scope.wfh_days[k].DTR}
 					}).then(function checkHoliday(response) {
-						console.log($scope.wfh_days[k]);
+						console.log(k);
 						if(response.data.SHIFT == 'HOLIDAY')
 							$scope.holidays.push(response.config.data.date);
 					}, function error(response) {
