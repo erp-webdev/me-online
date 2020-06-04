@@ -51,7 +51,7 @@
 																</td>
 																<td class="centertalign">
 																	<span ng-bind="wfh_day.DTR | date: 'EEE MM/dd/yy'"></span> <br>
-																	<span ng-show="isApplied(wfh_day.DTR)">Applied</span>
+																	<span ng-show="isApplied(wfh_day.DTR)">Applied</span><br>
 																	<span ng-show="isHoliday(wfh_day.DTR)">Holiday</span>
 																</td>
 																<td class="centertalign">
@@ -192,9 +192,16 @@
 				angular.element($event.currentTarget).timepicker("show");
 			}
 
+			$scope.applied_warn = false;
+
 			$scope.excludeApplied = function(key){
 
-				// alert('Applied WFH Entries have been detected and will be disabled.');
+				if($scope.applied_warn == false){
+
+					$scope.applied_warn = true;
+					alert('Applied WFH Entries have been detected and will be disabled.');
+				}
+
 
 				$("#wfh_disable" + key).attr('checked', true);
 				$("#wfh_disable" + key).val(1);
