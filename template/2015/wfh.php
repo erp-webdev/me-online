@@ -191,6 +191,12 @@
 				angular.element($event.currentTarget).timepicker("show");
 			}
 
+			$scope.exludeApplied = function(key){
+				$("#wfh_disable" + key).attr('checked', true);
+				$("#wfh_disable" + key).val(1);
+
+			}
+
 			$scope.excludeFunction = function(key){
 
 				if($("#wfh_disable" + key).val() == 0){
