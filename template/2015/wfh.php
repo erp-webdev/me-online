@@ -194,7 +194,7 @@
 
 			$scope.excludeApplied = function(key){
 
-				alert('Applied WFH Entries have been detected and will be disabled.');
+				// alert('Applied WFH Entries have been detected and will be disabled.');
 
 				$("#wfh_disable" + key).attr('checked', true);
 				$("#wfh_disable" + key).val(1);
