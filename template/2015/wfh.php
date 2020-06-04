@@ -203,7 +203,9 @@
 				$("#wfh_totalworkedhours" + key).prop("disabled", true);
 				$("#wfh_activity" + key).prop("disabled", true);
 
-
+				$(".wfh_act" + key).each(function() {
+						$(this).prop("disabled", true);
+				});
 
 			}
 
