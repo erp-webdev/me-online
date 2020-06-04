@@ -516,7 +516,6 @@
 				$scope.wfh_days = sort;
 
 				$scope.holidays = [];
-				console.log($scope.wfh_days);
 				for(var k = 0; k < $scope.wfh_days.length; k++)				{
 					$http({
 						method : "GET",
@@ -529,6 +528,8 @@
 						console.log('error retrieving holiday');
 					});
 				}
+				console.log($scope.holidays);
+				
 
 				$scope.applied =[];
 				for(var k = 0; k < $scope.wfh_days.length; k++)				{
