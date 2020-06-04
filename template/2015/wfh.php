@@ -530,6 +530,7 @@
 						console.log('error retrieving holiday');
 					});
 				}
+				console.log($scope.holidays);
 
 
 				$scope.applied =[];
@@ -626,7 +627,6 @@
 				});
 
 				return isHol;
-				console.log($scope.holidays);
 			}
 
 			$scope.isApplied = function($dtr){
