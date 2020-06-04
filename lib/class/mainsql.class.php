@@ -1973,7 +1973,7 @@ class mainsql {
       $sql = "SELECT SHIFT, SUBSTRING(CAST(STARTTIME as varchar), 1, 2) as STARTTIME, SUBSTRING(CAST(ENDTIME as varchar), 1, 2) as ENDTIME, NUMHRS FROM dbo.FN_GETSHIFT('".$empid."', '".$date."')";
       $result = $this->get_row($sql, $dbname);
 
-      return $result[0];
+      return $sql;
     }
     function get_appliedwfh($empid, $date, $dbname)
     {
