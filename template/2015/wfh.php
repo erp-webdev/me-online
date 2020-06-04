@@ -553,10 +553,11 @@
 
 			$scope.includeFunction = function($event){
 
-				alert('clicked!');
 				var breaktime = angular.element($event.currentTarget).val();
 				var date = angular.element($event.currentTarget).attr("attribute1");
 
+				alert(breaktime);
+				
 				if(breaktime == 0){
 					breaktime = 1;
 				}else{
