@@ -527,6 +527,7 @@
 					}, function error(response) {
 						console.log('error retrieving holiday');
 					});
+					console.log($scope.holidays);
 				}
 
 				$scope.applied =[];
