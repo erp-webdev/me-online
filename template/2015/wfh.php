@@ -553,6 +553,7 @@
 
 			$scope.includeFunction = function($event){
 
+				alert('clicked!');
 				var breaktime = angular.element($event.currentTarget).val();
 				var date = angular.element($event.currentTarget).attr("attribute1");
 
@@ -572,6 +573,7 @@
 						value.BREAKTIME = breaktime;
 					}
 				});
+
 				$scope.wfh_days = days_data;
 				console.log($scope.wfh_days);
 
