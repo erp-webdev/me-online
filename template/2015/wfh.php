@@ -516,13 +516,13 @@
 				$scope.wfh_days = sort;
 
 				$scope.holidays = [];
+				console.log($scope.wfh_days);
 				for(var k = 0; k < $scope.wfh_days.length; k++)				{
 					$http({
 						method : "GET",
 						url : "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getshiftdtr&date="+ $scope.wfh_days[k].DTR +"",
 						data: {date: $scope.wfh_days[k].DTR}
 					}).then(function checkHoliday(response) {
-						console.log(response);
 						if(response.data.SHIFT == 'HOLIDAY')
 							$scope.holidays.push(response.config.data.date);
 					}, function error(response) {
