@@ -626,6 +626,7 @@
 				});
 
 				return isHol;
+				console.log($scope.holidays);
 			}
 
 			$scope.isApplied = function($dtr){
