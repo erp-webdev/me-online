@@ -195,6 +195,8 @@
 			$scope.excludeApplied = function(key){
 				$("#wfh_disable" + key).attr('checked', true);
 				$("#wfh_disable" + key).val(1);
+				$("#mdtr_absent" + key).attr('checked', true);
+				$("#mdtr_absent" + key).val(1);
 
 			}
 
