@@ -577,8 +577,8 @@
 			}
 
 			$scope.$watch('wfh_days', function(newVal, oldVal, $scope){
-
 				for(var i = 0; i < $scope.wfh_days.length; i++){
+					console.log("Credit: " + $scope.wfh_days[i].CREDIT + " BreakTime: " + $scope.wfh_days[i].BREAKTIME);
 					$scope.wfh_days[i].CREDIT = $scope.computeTotalDuration($scope.wfh_days[i].ACTIVITIES) ;
 
 					if($scope.wfh_days[i].CREDIT > $scope.wfh_days[i].BREAKTIME)
