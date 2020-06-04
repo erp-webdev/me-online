@@ -403,6 +403,8 @@
 
 			$scope.$watchGroup(['wfh_from', 'wfh_to'], function(newVal, oldVal){
 
+				$scope.applied_warn = false;
+
 				if(newVal[0] == oldVal[0] && newVal[1] != oldVal[1]){
 					if(new Date(newVal[1]) < new Date($scope.wfh_from)){
 						$scope.wfh_from = newVal[1];
