@@ -557,14 +557,15 @@
 				var date = angular.element($event.currentTarget).attr("attribute1");
 
 				alert(breaktime);
-				
+
 				if(breaktime == 0){
 					breaktime = 1;
+					angular.element($event.currentTarget).val(1);
 				}else{
 					breaktime = 0;
+					angular.element($event.currentTarget).val(0);
 				}
 
-				angular.element($event.currentTarget).val(breaktime);
 
 				var days_data = JSON.stringify($scope.wfh_days);
 				days_data = JSON.parse(days_data);
