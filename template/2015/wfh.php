@@ -207,6 +207,10 @@
 						$(this).prop("disabled", true);
 				});
 
+				$(".wfh_time" + key).each(function() {
+						$(this).prop("disabled", true);
+				});
+
 			}
 
 			$scope.excludeFunction = function(key){
