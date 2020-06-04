@@ -556,12 +556,13 @@
 				var breaktime = angular.element($event.currentTarget).val();
 				var date = angular.element($event.currentTarget).attr("attribute1");
 
-				alert(breaktime);
 
 				if(breaktime == 0){
+					alert('its zero');
 					breaktime = 1;
 					angular.element($event.currentTarget).val(1);
 				}else{
+					alert('its one');
 					breaktime = 0;
 					angular.element($event.currentTarget).val(0);
 				}
