@@ -560,12 +560,14 @@
 				if(breaktime == 0){
 					alert('its zero');
 					breaktime = 1;
+
 					angular.element($event.currentTarget).attr("value", 1);
 				}else{
 					alert('its one');
 					breaktime = 0;
 					angular.element($event.currentTarget).attr("value", 0);
 				}
+				alert(breaktime);
 
 
 				var days_data = JSON.stringify($scope.wfh_days);
