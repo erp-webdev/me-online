@@ -52,7 +52,6 @@
 																<td class="centertalign">
 																	<span ng-bind="wfh_day.DTR | date: 'EEE MM/dd/yy'"></span> <br>
 																	<span ng-show="isHoliday(wfh_day.DTR)">Holiday</span><br>
-																	<span ng-show="isApplied(wfh_day.DTR)" ng-bind="applied_refs[applied.indexOf(wfh_day.DTR)]">Applied</span>
 																</td>
 																<td class="centertalign">
 																	<span style="{{ (wfh_day.CREDIT > 8 ||  isWeekends(wfh_day.DTR) || isHoliday(wfh_day.DTR)) ? 'color:yellow' : '' }}">
@@ -91,6 +90,7 @@
 																			</td>
 																		</tr>
 																	</table>
+																	<span ng-show="isApplied(wfh_day.DTR)" ng-bind="applied_refs[applied.indexOf(wfh_day.DTR)]">Applied</span>
 																	<span>&nbsp;</span>
 																</td>
 															</tr>
