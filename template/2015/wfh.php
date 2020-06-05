@@ -90,7 +90,7 @@
 																			</td>
 																		</tr>
 																	</table>
-																	<span ng-show="isApplied(wfh_day.DTR)" ng-bind="applied_refs[applied.indexOf(wfh_day.DTR)]">Applied</span>
+																	<span ng-show="isApplied(wfh_day.DTR)" ng-bind="'Reference # ' + applied_refs[applied.indexOf(wfh_day.DTR)]"></span>
 																	<span>&nbsp;</span>
 																</td>
 															</tr>
