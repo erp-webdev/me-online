@@ -52,7 +52,7 @@
 																<td class="centertalign">
 																	<span ng-bind="wfh_day.DTR | date: 'EEE MM/dd/yy'"></span> <br>
 																	<span ng-show="isHoliday(wfh_day.DTR)">Holiday</span><br>
-																	<span ng-show="isApplied(wfh_day.DTR)">Applied</span>
+																	<span ng-show="isApplied(wfh_day.DTR)" ng-bind="applied_refs[applied.indexOf(wfh_day.DTR)]">Applied</span>
 																</td>
 																<td class="centertalign">
 																	<span style="{{ (wfh_day.CREDIT > 8 ||  isWeekends(wfh_day.DTR) || isHoliday(wfh_day.DTR)) ? 'color:yellow' : '' }}">
@@ -543,8 +543,7 @@
 					}).then(function checkHoliday(response) {
 						if(response.data.DTRDate){
 							$scope.applied.push(response.data.DTRDate);
-							// $scope.applied_refs.push({response.data.DTRDate : response.data.Reference});
-							console.log(JSON.stringify($scope.applied_refs));
+							$scope.applied_refs.push(response.data.Reference);
 						}
 					}, function error(response) {
 						console.log('error retrieving applied dates');
