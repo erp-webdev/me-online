@@ -200,7 +200,7 @@
 				if($scope.applied_warn == false){
 
 					$scope.applied_warn = true;
-					alert('One or more dates have already been applied and will be excluded from application. Cancel existing applications to enable them.');
+					// alert('One or more dates have already been applied and will be excluded from application. Cancel existing applications to enable them.');
 				}
 
 
