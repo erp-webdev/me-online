@@ -543,7 +543,7 @@
 					}).then(function checkHoliday(response) {
 						if(response.data.DTRDate){
 							$scope.applied.push(response.data.DTRDate);
-							$scope.applied_refs.push(response.data.DTRDate => response.data.Reference);
+							$scope.applied_refs.push([response.data.DTRDate => response.data.Reference]);
 							console.log(JSON.stringify($scope.applied_refs));
 						}
 					}, function error(response) {
