@@ -1978,8 +1978,8 @@ class mainsql {
     function get_appliedwfh($empid, $date, $dbname)
     {
       $sql = "SELECT DISTINCT convert(varchar, DTRDate, 23) as DTRDate, A.Reference
-      FROM HRFRMAPPLYWFHITEM A LEFT JOIN HRFRMAPPLYWFH B ON A.Reference = B.Reference 
-      WHERE B.EmpID = '".$empid."' and A.DTRDate = '".$date."' ORDER BY DTRDate";
+      FROM HRFRMAPPLYWFHITEM A LEFT JOIN HRFRMAPPLYWFH B ON A.Reference = B.Reference
+      WHERE B.EmpID = '".$empid."' and A.DTRDate = '".$date."' and A.Status <> 'CANCELLED' ORDER BY DTRDate";
       $result = $this->get_row($sql, $dbname);
 
       return $result[0];
