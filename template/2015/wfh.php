@@ -200,7 +200,7 @@
 				if($scope.applied_warn == false){
 
 					$scope.applied_warn = true;
-					alert('Applied WFH Entries have been detected and will be disabled.');
+					alert('One or more dates have already been applied and will be excluded from application. Cancel existing applications to enable them.');
 				}
 
 
@@ -534,6 +534,7 @@
 
 
 				$scope.applied =[];
+				$scope.applied_refs = [];
 				for(var k = 0; k < $scope.wfh_days.length; k++)				{
 					$http({
 						method : "GET",
@@ -542,6 +543,8 @@
 					}).then(function checkHoliday(response) {
 						if(response.data.DTRDate){
 							$scope.applied.push(response.data.DTRDate);
+							$scope.applied_refs.push(response.data.DTRDate => response.data.Reference);
+							console.log(JSON.stringify($scope.applied_refs));
 						}
 					}, function error(response) {
 						console.log('error retrieving applied dates');
