@@ -170,7 +170,7 @@
 
 					if(event.$index == 0){
 						if($($event.currentTarget).attr('id') == 'start_time'){
-							if(event.activity.start_time == '')
+							if(event.activity.start_time == '' || event.activity.start_time == null )
 								opt.defaultValue = '08:00 am';
 						}else{
 							opt.minTime = event.activity.start_time;
