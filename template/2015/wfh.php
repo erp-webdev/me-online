@@ -59,6 +59,8 @@
 																		<span ng-show="wfh_day.CREDIT > 8 ||  isWeekends(wfh_day.DTR) || isHoliday(wfh_day.DTR) || isOVerSix(wfh_day.ACTIVITIES)">*</span>
 																	</span>
 
+																	<input value="{{ wfh_day.EXCESSHOURS }}" id="wfh_excesshours{{ $index+1 }}" type="hidden" name="wfh_excesshours[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="wfh_excesshours txtbox">
+
 																	<input value="{{ wfh_day.CREDIT }}" id="wfh_totalworkedhours{{ $index+1 }}" type="hidden" name="wfh_totalworkedhours[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="wfh_totalworkedhours txtbox">
 																	<input id="wfh_dayin{{ $index+1 }}" type="hidden" name="wfh_dayin[{{ $index+1 }}]" value="{{ wfh_day.DTR | date: 'y-MM-dd'}}" class="wfh_dayin{{ $index+1 }}" />
 																</td>
@@ -329,6 +331,17 @@
 				return time_ranges;
 			}
 
+			$scope.computeTotalExcessHours = function(ranges){
+				var time_ranges = $scope.computeCredits(ranges);
+				var total_duration = 0;
+
+				for(var i = 0; i < time_ranges.length; i++){
+					total_duration += time_ranges[i].defaultApprovedDuration;
+				}
+
+				return total_duration;
+			}
+
 			$scope.computeDuration = function(ranges){
 				for(var i = 0; i < ranges.length; i++){
 
@@ -550,7 +563,8 @@
 								angular.copy($scope.item)
 							],
 							"CREDIT":0,
-							"BREAKTIME":0
+							"BREAKTIME":0,
+							"EXCESSHOURS":0,
 						}
 
 						$scope.wfh_days.push( dtr );
@@ -626,6 +640,7 @@
 			$scope.$watch('wfh_days', function(newVal, oldVal, $scope){
 				for(var i = 0; i < $scope.wfh_days.length; i++){
 					$scope.wfh_days[i].CREDIT = $scope.computeTotalDuration($scope.wfh_days[i].ACTIVITIES) ;
+					$scope.wfh_days[i].EXCESSHOURS = $scope.computeTotalExcessHours($scope.wfh_days[i].ACTIVITIES) ;
 
 					if($scope.wfh_days[i].CREDIT > $scope.wfh_days[i].BREAKTIME)
 						$scope.wfh_days[i].CREDIT -= $scope.wfh_days[i].BREAKTIME;
@@ -653,6 +668,7 @@
 
 				for(var i = 0; i < $scope.wfh_days.length; i++){
 					$scope.wfh_days[i].CREDIT = $scope.computeTotalDuration($scope.wfh_days[i].ACTIVITIES) ;
+					$scope.wfh_days[i].EXCESSHOURS = $scope.computeTotalExcessHours($scope.wfh_days[i].ACTIVITIES) ;
 
 					if($scope.wfh_days[i].CREDIT > $scope.wfh_days[i].BREAKTIME)
 						$scope.wfh_days[i].CREDIT -= $scope.wfh_days[i].BREAKTIME;
