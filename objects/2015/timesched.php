@@ -117,7 +117,7 @@
                 $scpost['USER'] = $_POST['user'];
                 $scpost['REMARKS'] = $_POST['tsched_remarks'];
 
-                $add_sc = $mainsql->sc_action($scpost, 'add');
+                $add_sc = "asfasfsf";
 								echo "<script>console.log('.$add_sc.');</script>";
 								exit(0);
                 if($add_sc) :
