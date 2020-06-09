@@ -677,9 +677,20 @@
 			}
 
 			$scope.isOVerSix = function($activities){
+				over_six = false;
+				six = new Date('01/01/1900 ' + '6:00 pm');
+
 				$activities.forEach(act => {
-					console.log(act.end_time);
+
+					endTime = new Date('01/01/1900 ' + act.end_time);
+
+					if(endTime > six){
+						over_six = true;
+					}
+
 				});
+
+				return over_six;
 			}
 
 		}]);
