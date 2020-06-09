@@ -677,7 +677,9 @@
 			}
 
 			$scope.isOVerSix = function($activities){
-				console.log($activities);
+				$activities.forEach(act => {
+					console.log(act);
+				});
 			}
 
 		}]);
