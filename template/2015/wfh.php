@@ -282,7 +282,7 @@
 			}
 
 			$scope.wfh_activity = [];
-			$scope.item = {start_time : null, end_time : null, act: ''};
+			$scope.item = {start_time : null, end_time : null, act: '', excess: 0};
 			$scope.wfh_from = new Date().toISOString().split("T")[0];
 			$scope.wfh_from = new Date(angular.copy($scope.wfh_from));
 			$scope.wfh_from.setDate($scope.wfh_from.getDate()-1);
@@ -655,7 +655,7 @@
 
 			$scope.addItem = function(index, act){
 				$scope.wfh_days[index].ACTIVITIES.push(
-					{start_time : $scope.wfh_days[index].ACTIVITIES[act].end_time, end_time : null, act: ''}
+					{start_time : $scope.wfh_days[index].ACTIVITIES[act].end_time, end_time : null, act: '', excess: 0}
 				);
 
 			}
@@ -670,6 +670,9 @@
 					$scope.wfh_days[i].CREDIT = $scope.computeTotalDuration($scope.wfh_days[i].ACTIVITIES) ;
 					$scope.wfh_days[i].EXCESSHOURS = $scope.computeTotalExcessHours($scope.wfh_days[i].ACTIVITIES) ;
 
+					for(var j = 0; j < $scope.wfh_days[i].ACTIVITIES.length ; j++){
+						$scope.wfh_days[i].ACTIVITIES[j].excess = EXCESSHOURS;
+					}
 					if($scope.wfh_days[i].CREDIT > $scope.wfh_days[i].BREAKTIME)
 						$scope.wfh_days[i].CREDIT -= $scope.wfh_days[i].BREAKTIME;
 					else
