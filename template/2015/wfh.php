@@ -54,7 +54,7 @@
 																	<span ng-show="isHoliday(wfh_day.DTR)">Holiday</span><br>
 																</td>
 																<td class="centertalign">
-																	<span style="{{ (wfh_day.CREDIT > 8 ||  isWeekends(wfh_day.DTR) || isHoliday(wfh_day.DTR) || isOVerSix(wfh_day)) ? 'color:yellow' : '' }}">
+																	<span style="{{ (wfh_day.CREDIT > 8 ||  isWeekends(wfh_day.DTR) || isHoliday(wfh_day.DTR) || isOVerSix(wfh_day.ACTIVITIES)) ? 'color:yellow' : '' }}">
 																		<strong><span ng-bind="wfh_day.CREDIT | number:2"></span></strong> hr<span ng-show="wfh_day.CREDIT > 1">s</span>
 																		<span ng-show="wfh_day.CREDIT > 8 ||  isWeekends(wfh_day.DTR) || isHoliday(wfh_day.DTR)">*</span>
 																	</span>
