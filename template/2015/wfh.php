@@ -678,7 +678,7 @@
 
 			$scope.isOVerSix = function($activities){
 				$activities.forEach(act => {
-					console.log(act);
+					console.log(act.end_time);
 				});
 			}
 
