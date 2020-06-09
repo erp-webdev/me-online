@@ -90,7 +90,17 @@
                     endif;
                     $wfhitempost['DTRDATE'] = $_POST['wfh_dayin'][$cnti];
 										$wfhitempost['AppliedHrs'] = $_POST['wfh_totalworkedhours'][$cnti];
-										$wfhitempost['ApprovedHrs'] = $_POST['wfh_excesshours'][$cnti];
+
+										if($_POST['wfh_totalworkedhours'][$cnti] - $_POST['wfh_excesshours'][$cnti] > 8 && $_POST['wfh_excesshours'][$cnti] > 0){
+
+											$wfhitempost['ApprovedHrs'] = 8;
+
+										}else if($_POST['wfh_excesshours'][$cnti] > 0){
+
+											$wfhitempost['ApprovedHrs'] = $_POST['wfh_totalworkedhours'][$cnti] - $_POST['wfh_excesshours'][$cnti];
+
+										}
+
                     $wfhitempost['Activities'] = $_POST['wfh_activity'][$cnti];
                     $temp_activities = json_decode( $wfhitempost['Activities']);
                     for($j = 0; $j < count($temp_activities); $j++){
