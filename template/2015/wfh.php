@@ -336,32 +336,9 @@
 			         var twelve = new Date('01/01/1900 ' + '12:00 pm');
 			         var one = new Date('01/01/1900 ' + '01:00 pm');
 
-			       if(start <= twelve && end >= one){
-			         console.log('entry contains 12:00-1:00');
-			         //time start and end contains 12:00 - 1:00
-			         var duration = (((end.getHours()  - start.getHours()) * 60 + end.getMinutes() - start.getMinutes()) / 60) -1;
-			       }else if(start >= twelve && end <= one){
-							 console.log('entry start and end within 12:00-1:00');
-							  var duration = ranges[i].duration;
-			         //time start and end within 12:00 - 1:00
-
-			       }else if( start < twelve && end > twelve  && end < one){
-			         console.log('entry end within 12:00-1:00');
-			         //time end within 12:00 - 1:00 dont add end minutes
-			         var duration = ((end.getHours()  - start.getHours()) * 60  - start.getMinutes()) / 60;
-
-			       }else if(start > twelve && start < one && end > one){
-			         console.log('entry start within 12:00-1:00');
-			         //time start within 12:00 - 1:00 dont add start minutes
-			         var duration = ((end.getHours()  - one.getHours()) * 60 + end.getMinutes()) / 60;
-							 // var duration = ((end.getHours()  - start.getHours()) * 60 + end.getMinutes() - start.getMinutes()) / 60;
-
-			       }else{
-			         console.log('entry doesnt contain 12:00-1:00');
-			         //time doesnt contain 12:00 - 1:00
+			       
 			         var duration = ((end.getHours()  - start.getHours()) * 60 + end.getMinutes() - start.getMinutes()) / 60;
-							 console.log(duration);
-			       }
+
 
 			         ranges[i].duration = duration.toFixed(2);
 			   }
