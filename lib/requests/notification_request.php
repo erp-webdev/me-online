@@ -6774,7 +6774,7 @@
 											<?php
 													}
 												}else{
-													if($excess > 0 && $excess <=8 ){
+													if($excess > 0 && $value['AppliedHrs'] <= 8){
 											?>
 
 											<p class="wfhwarning<?php echo $key; ?> whwarning" style="color: red;">The applied hours is beyond 6:00 pm.</br>
@@ -6784,7 +6784,7 @@
 											<p><a href="#" class="reset<?php echo $key;?> resetwfh" attribute="<?php echo $key; ?>" style="color: red;"><u>undo</u></a></p>
 
 											<?php
-													}elseif ($excess > 8){
+													}elseif ($excess > 0 && $value['AppliedHrs'] > 8){
 											?>
 
 											<p class="wfhwarning<?php echo $key; ?> whwarning" style="color: red;">The applied hours is beyond 6:00 pm and exceeds 8 hours per day.</br>
