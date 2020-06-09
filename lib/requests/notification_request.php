@@ -6688,6 +6688,13 @@
 											$(".reset"+ arrayid).show();
 										});
 
+										$(".wfh6<?php echo $key; ?>").click(function(){
+											arrayid = $(this).attr('attribute');
+
+											$(".wfhwarning" + arrayid).attr("style", "display: none");
+											$(".reset"+ arrayid).show();
+										});
+
 										$(".reset<?php echo $key; ?>").click(function(){
 											arrayid = $(this).attr('attribute');
 
@@ -6715,6 +6722,7 @@
 												$wh_act = json_decode($value['Activities'], true);
 												foreach($wh_act as $act_details){
 													echo "(".$act_details['start_time'] ." - " . $act_details['end_time'] .") ".$act_details['act']."</br></br>";
+													$excess = $act_details['excess'];
 												}
 												$show_warning = false;
 
@@ -6752,6 +6760,7 @@
 												}
 
 											if($show_warning){
+
 												if($holiday['SHIFT'] == 'HOLIDAY' || $wfday == 6  || $wfday == 0){
 													if($value['AppliedHrs'] > 8){
 											?>
@@ -6765,6 +6774,28 @@
 											<?php
 													}
 												}else{
+													if($excess > 0 && $excess <=8 ){
+											?>
+
+											<p class="wfhwarning<?php echo $key; ?> whwarning" style="color: red;">The applied hours is beyond 6:00 pm.</br>
+												<u><a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute2="<?php echo $value['AppliedHrs']; ?>" attribute3="1">Approve applied hours</a></u> or
+												<u><a href="#" class="wfh6<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute3="0">approve up to 6:00 pm only?</a></u></p>
+
+											<p><a href="#" class="reset<?php echo $key;?> resetwfh" attribute="<?php echo $key; ?>" style="color: red;"><u>undo</u></a></p>
+
+											<?php
+													}elseif ($excess > 8){
+											?>
+
+											<p class="wfhwarning<?php echo $key; ?> whwarning" style="color: red;">The applied hours is beyond 6:00 pm and exceeds 8 hours per day.</br>
+												<u><a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute2="<?php echo $value['AppliedHrs']; ?>" attribute3="1">Approve applied hours</a></u> or
+												<u><a href="#" class="wfh6<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute3="0">approve up to 6:00 pm only?</a></u> or
+											  <u><a href="#" class="wfh8<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute3="0">approve 8 hours only?</a></u></p>
+
+												<p><a href="#" class="reset<?php echo $key;?> resetwfh" attribute="<?php echo $key; ?>" style="color: red;"><u>undo</u></a></p>
+
+											<?php
+													}else{
 													if($value['AppliedHrs'] > 8){
 											?>
 														<p class="wfhwarning<?php echo $key; ?> whwarning" style="color: red;">The applied hours exceeds 8 hours per day, do you want to approve the applied hours?</br><u><a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute2="<?php echo $value['AppliedHrs']; ?>" attribute3="1">Approve applied hours</a></u> or <u><a href="#" class="wfh8<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute3="0">approve 8 hours only?</a></u></p>
@@ -6775,6 +6806,7 @@
 														<p><a href="#" class="reset<?php echo $key;?> resetwfh" attribute="<?php echo $key; ?>" style="color: red;"><u>undo</u></a></p>
 														<?php
 													}
+												}
 												}
 											}
 											?>
