@@ -353,8 +353,8 @@
 			       }else if(start > twelve && start < one && end > one){
 			         console.log('entry start within 12:00-1:00');
 			         //time start within 12:00 - 1:00 dont add start minutes
-			         // var duration = ((end.getHours()  - one.getHours()) * 60 + end.getMinutes()) / 60;
-							 var duration = ((end.getHours()  - start.getHours()) * 60 + end.getMinutes() - start.getMinutes()) / 60;
+			         var duration = ((end.getHours()  - one.getHours()) * 60 + end.getMinutes()) / 60;
+							 // var duration = ((end.getHours()  - start.getHours()) * 60 + end.getMinutes() - start.getMinutes()) / 60;
 
 			       }else{
 			         console.log('entry doesnt contain 12:00-1:00');
