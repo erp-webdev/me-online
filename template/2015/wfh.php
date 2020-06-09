@@ -107,6 +107,7 @@
 													<ul>
 														<li><i><span >* Maximum of 8 working hours per day</span></i></li>
 														<li><i><span >* Worked rendered on a Holiday, Saturday or Sunday</span></i></li>
+														<li><i><span >* Worked rendered past 6:00 pm</span></i></li>
 													</ul>
 												</td>
 											</tr>
