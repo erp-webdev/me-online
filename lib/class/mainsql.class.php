@@ -3032,10 +3032,7 @@ class mainsql {
 
 		switch ($action) {
 			case 'add':
-                ini_set('display_errors', 1);
-                ini_set('display_startup_errors', 1);
-                error_reporting(E_All);
-                fasf
+                
                 $accepted_field = array('EMPID', 'REQNBR', 'TRANS', 'DATESTART', 'APPROVER01', 'APPROVER02', 'APPROVER03', 'APPROVER04', 'APPROVER05', 'APPROVER06', 'DBAPPROVER01', 'DBAPPROVER02', 'DBAPPROVER03', 'DBAPPROVER04', 'DBAPPROVER05', 'DBAPPROVER06', 'USER', 'REMARKS');
 
                 $knum = 0;
