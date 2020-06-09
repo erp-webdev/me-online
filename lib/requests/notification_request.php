@@ -6784,7 +6784,7 @@
 
 											<p class="wfhwarning<?php echo $key; ?> whwarning" style="color: red;">The applied hours is beyond 6:00 pm.</br>
 												<u><a href="#" class="wfhwarn<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute2="<?php echo $value['AppliedHrs']; ?>" attribute3="1">Approve applied hours</a></u> or
-												<u><a href="#" class="wfh6<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute3="<?php echo $value['AppliedHrs']; ?>" excess="<?php echo $excess; ?>">approve up to 6:00 pm only</a></u></p>
+												<u><a href="#" class="wfh6<?php echo $key; ?>" attribute="<?php echo $key; ?>" attribute3="<?php echo $value['AppliedHrs']; ?>" excess="<?php echo $excess; ?>">approve up to 6:00 pm only?</a></u></p>
 
 											<p><a href="#" class="reset<?php echo $key;?> resetwfh" attribute="<?php echo $key; ?>" style="color: red;"><u>undo</u></a></p>
 
