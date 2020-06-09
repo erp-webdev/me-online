@@ -74,6 +74,7 @@
 																				<br>
 																				<label ng-show="$index == wfh_days[$parent.$index].ACTIVITIES.length - 1" title="When checked, credit hours will be deducted with 1 hour break time" >
 																					<input id="include_break{{ $parent.$index+1 }}" value="{{ wfh_days[$parent.$index].BREAKTIME }}" attribute1="{{ wfh_day.DTR }}"  type="checkbox" name="include_break[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="mdtr_absent" ng-checked="wfh_days[$parent.$index].BREAKTIME == 1" ng-click="includeFunction($event)" ng-show="false"><span ng-show="false">less 1 HR Break</span>
+																					&nbsp;
 																				</label>
 																			</td>
 																		</tr>
