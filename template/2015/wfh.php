@@ -370,13 +370,13 @@
 
 					if(start <= sixpm && end > sixpm){
 						// 5pm - 7.30pm
-						// 6pm - 7:30pm 
+						// 6pm - 7:30pm
 						// 6pm - 6:45pm
 						excessHoursFrom6pm = (((end.getHours() - sixpm.getHours()) * 60 ) + end.getMinutes()) / 60;
 					} else if(start > sixpm && end > sixpm ){
-						// 6.15pm - 7:00pm 
-						// 6.15pm - 7:30pm 
-						excessHoursFrom6pm = ((end.getHours() - start.getHours()) * 60) - start.getMinutes() + end.getMinutes()) / 60;
+						// 6.15pm - 7:00pm
+						// 6.15pm - 7:30pm
+						excessHoursFrom6pm = (((end.getHours() - start.getHours()) * 60) - start.getMinutes() + end.getMinutes()) / 60;
 
 					}
 
