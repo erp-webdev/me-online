@@ -380,7 +380,9 @@
 
 					}
 
-				    ranges[i].duration = duration - excessHoursFrom6pm;
+				    ranges[i].duration = duration;
+						ranges[i].defaultApprovedDuration = excessHoursFrom6pm;
+
 				  }
 
 				}
