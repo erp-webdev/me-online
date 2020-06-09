@@ -360,8 +360,8 @@
 			       }else{
 			         console.log('entry doesnt contain 12:00-1:00');
 			         //time doesnt contain 12:00 - 1:00
-			         var duration = ((end.getHours()  - start.getHours()) * 60 + end.getMinutes() - start.getMinutes()) / 60;
-
+			         var duration = ((end.getHours()  - start.getHours())  + end.getMinutes() - start.getMinutes());
+							 console.log(duration);
 			       }
 
 			         ranges[i].duration = duration.toFixed(2);
