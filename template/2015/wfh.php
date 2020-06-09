@@ -212,7 +212,7 @@
 				$(".wfh_delete" + key).hide();
 				$("#wfh_totalworkedhours" + key).prop("disabled", true);
 				$("#wfh_activity" + key).prop("disabled", true);
-				$("#include_break" + key).prop("disabled", true);
+				// $("#include_break" + key).prop("disabled", true);
 
 				$(".wfh_act" + key).each(function() {
 						$(this).prop("disabled", true);
@@ -254,11 +254,11 @@
 					$("#wfh_activity" + key).prop("disabled", true);
 				}
 
-				if($("#include_break" + key).prop("disabled")){
-					$("#include_break" + key).prop("disabled", false);
-				}else{
-					$("#include_break" + key).prop("disabled", true);
-				}
+				// if($("#include_break" + key).prop("disabled")){
+				// 	$("#include_break" + key).prop("disabled", false);
+				// }else{
+				// 	$("#include_break" + key).prop("disabled", true);
+				// }
 
 				$(".wfh_act" + key).each(function() {
 					if($(this).prop("disabled")){
