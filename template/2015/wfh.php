@@ -339,7 +339,7 @@
 			       if(start <= twelve && end >= one){
 			         console.log('entry contains 12:00-1:00');
 			         //time start and end contains 12:00 - 1:00
-			         var duration = (((end.getHours()  - start.getHours()) * 60 + end.getMinutes() - start.getMinutes()) / 60) -1;
+			         var duration = (((end.getHours()  - start.getHours()) * 60 + end.getMinutes() - start.getMinutes()) / 60);
 
 			       }else if(start >= twelve && end <= one){
 							 console.log('entry start and end within 12:00-1:00');
