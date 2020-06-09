@@ -344,7 +344,7 @@
 			       }else if(start >= twelve && end <= one){
 							 console.log('entry start and end within 12:00-1:00');
 			         //time start and end within 12:00 - 1:00
-			         var duration = 0;
+			         var duration = ranges[i].duration;
 
 			       }else if( start < twelve && end > twelve  && end < one){
 			         console.log('entry end within 12:00-1:00');
