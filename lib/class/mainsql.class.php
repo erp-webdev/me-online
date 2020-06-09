@@ -2769,7 +2769,7 @@ class mainsql {
 
             case 'add_item':
 
-                $accepted_field = array('REQNBR', 'DTRDATE', 'AppliedHrs', 'Activities');
+                $accepted_field = array('REQNBR', 'DTRDATE', 'AppliedHrs', 'ApprovedHrs', 'Activities');
 
                 $knum = 0;
                 foreach ($value as $key => $value) :

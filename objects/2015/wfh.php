@@ -89,13 +89,14 @@
                         $wfhitempost['REQNBR'] = $add_wfhitem;
                     endif;
                     $wfhitempost['DTRDATE'] = $_POST['wfh_dayin'][$cnti];
-					$wfhitempost['AppliedHrs'] = $_POST['wfh_totalworkedhours'][$cnti];
+										$wfhitempost['AppliedHrs'] = $_POST['wfh_totalworkedhours'][$cnti];
+										$wfhitempost['ApprovedHrs'] = $_POST['wfh_excesshours'][$cnti];
                     $wfhitempost['Activities'] = $_POST['wfh_activity'][$cnti];
                     $temp_activities = json_decode( $wfhitempost['Activities']);
                     for($j = 0; $j < count($temp_activities); $j++){
                         if(trim($temp_activities[$j]->act) == ''){
                             unset($temp_activities[$j]);
-                        } 
+                        }
                     }
                             $wfhitempost['Activities'] = json_encode($temp_activities);
 
