@@ -642,6 +642,9 @@
 					$scope.wfh_days[i].CREDIT = $scope.computeTotalDuration($scope.wfh_days[i].ACTIVITIES) ;
 					$scope.wfh_days[i].EXCESSHOURS = $scope.computeTotalExcessHours($scope.wfh_days[i].ACTIVITIES) ;
 
+					for(var j = 0; j < $scope.wfh_days[i].ACTIVITIES.length ; j++){
+						$scope.wfh_days[i].ACTIVITIES[j].excess = EXCESSHOURS;
+					}
 					if($scope.wfh_days[i].CREDIT > $scope.wfh_days[i].BREAKTIME)
 						$scope.wfh_days[i].CREDIT -= $scope.wfh_days[i].BREAKTIME;
 					else
