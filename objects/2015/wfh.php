@@ -36,6 +36,12 @@
 
 								$yesterday = date("d", strtotime('-1 day'));
 
+								if($yesterday < 15){
+									echo "<script>alert('less than');</script>";
+								}else{
+									echo "<script>alert('greater than');</script>";
+
+								}
 
 									$wfhday = date("Y-m-01");
 
