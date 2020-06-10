@@ -63,10 +63,7 @@
 										}
 									}
 
-									$wfhpost = $_POST['wfh_from'];
-								echo "<script>alert('$wfhpost');</script>";
 
-								exit(0);
 
 
 
@@ -117,6 +114,13 @@
 						$cnti++;
 						continue;
 					}
+
+										$wfhpost = $_POST['wfh_dayin'][$cnti];
+
+										echo "<script>alert('first day $wfhpost');</script>";
+
+										exit(0);
+
                     $shiftdesc = $mainsql->get_shift($_POST['tsched_newsched'][$cnti]);
 
                     if ($cnti == 1) :
