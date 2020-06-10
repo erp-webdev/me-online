@@ -3050,10 +3050,12 @@ class mainsql {
                     endif;
                 endforeach;
 
-                return 'test';
+                return var_dump($val);
                 exit(0);
 
                 $add_sc = $this->get_sp_data_status('SP_INSERT_APPLY_SC', $val);
+
+
 
                 if($add_sc) {
                     return $add_sc;
