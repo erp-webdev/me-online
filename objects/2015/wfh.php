@@ -42,7 +42,7 @@
 									$wfhday = date("Y-m-16");
 								}
 
-								$limit_from = strtotime($wfhday);
+								$limit_from = strtotime($wfhday, '+5 day');
 
 
 								echo "<script>alert('sdasd $limit_from');</script>";
