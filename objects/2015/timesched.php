@@ -86,10 +86,12 @@
                     $scitempost['NEWSHITID'] = $_POST['tsched_newsched'][$cnti];
                     $scitempost['RESTDAY'] = $_POST['tsched_newsched'][$cnti] ? 0 : 1;
 
+										echo "<script>console.log('".json_encode($scitempost)."');</script>";
+										exit(0);
+
                     if ($_POST['shift_id'][$cnti] != $_POST['tsched_newsched'][$cnti]) :
                         $add_scitem = $mainsql->sc_action($scitempost, 'add_item');
-												echo "<script>console.log('$add_scitem');</script>";
-												exit(0);
+
 
                         if ($add_scitem) :
                             $mail_details .= "<tr><td>".date('M j', strtotime($_POST['dtr_date'][$cnti]))."</td><td>".($_POST['shift_id'][$cnti] ? $oldshiftdesc[0]['ShiftDesc'] : NULL)."</td><td>".($_POST['tsched_newsched'][$cnti] ? $shiftdesc[0]['ShiftDesc'] : NULL)."</td></tr>";
