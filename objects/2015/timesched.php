@@ -86,7 +86,7 @@
                     $scitempost['NEWSHITID'] = $_POST['tsched_newsched'][$cnti];
                     $scitempost['RESTDAY'] = $_POST['tsched_newsched'][$cnti] ? 0 : 1;
 
-										echo "<script>console.log('".json_encode($_POST)."');</script>";
+										echo "<script>console.log('".$_POST['shift_id'][$cnti]." ".$_POST['tsched_newsched'][$cnti]."');</script>";
 										exit(0);
 
                     if ($_POST['shift_id'][$cnti] != $_POST['tsched_newsched'][$cnti]) :
