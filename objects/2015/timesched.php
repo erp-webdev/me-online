@@ -88,15 +88,8 @@
 
 										$oldshft = (string)$_POST['shift_id'][$cnti];
 										$newshft = (string)$_POST['tsched_newsched'][$cnti];
-										if(!(strcmp($oldshft, $newshft) == 0)){
-											echo "<script>console.log('not same');</script>";
-										}else{
-											echo "<script>console.log('same');</script>";
-										}
-										echo "<script>console.log('".$oldshft." ".$newshft."');</script>";
-										exit(0);
 
-                    if ($_POST['shift_id'][$cnti] != $_POST['tsched_newsched'][$cnti]) :
+                    if (!(strcmp($oldshft, $newshft) == 0)) :
                         $add_scitem = $mainsql->sc_action($scitempost, 'add_item');
                         if ($add_scitem) :
                             $mail_details .= "<tr><td>".date('M j', strtotime($_POST['dtr_date'][$cnti]))."</td><td>".($_POST['shift_id'][$cnti] ? $oldshiftdesc[0]['ShiftDesc'] : NULL)."</td><td>".($_POST['tsched_newsched'][$cnti] ? $shiftdesc[0]['ShiftDesc'] : NULL)."</td></tr>";
@@ -177,23 +170,23 @@
 
                         //SEND EMAIL (REQUESTOR)
 
-      //                   $message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 100%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>New Change Schedule Request</span><br><br>Hi ".$requestor[0]['NickName'].",<br><br>";
-      //                   $message .= "You opened a new request for change schedule with Reference No: ".$add_sc." on ".date('F j, Y')." and it's subject for approval. ";
-      //                   $message .= "<br><br><table border='1' cellpadding='3' cellspacing='0' style='border: 1px solid #666; font-size: 12px; font-family: Verdana;'>";
-      //                   $message .= "<tr><td style='background-color: #024485; color: #FFF; text-align: center'><b>Date</b></td><td style='background-color: #024485; color: #FFF; text-align: center'><b>Current Shift</b></td><td style='background-color: #024485; color: #FFF; text-align: center'><b>New Shift</b></td></tr>";
-      //                   $message .= $mail_details;
-      //                   $message .= "</table>";
-      //                   $message .= "<br><br>Thanks,<br>";
-      //                   $message .= SITENAME." Admin";
-			// $message .= "<br>Click<a href='https://portal.megaworldcorp.com/me/login'> here</a> to login";
-      //                   $message .= "<hr />".MAILFOOT."</div>";
-			//
-      //                   $headers = "From: ".NOTIFICATION_EMAIL."\r\n";
-      //                   $headers .= "Reply-To: ".NOTIFICATION_EMAIL."\r\n";
-      //                   $headers .= "MIME-Version: 1.0\r\n";
-      //                   $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-			//
-      //                   $sendmail = mail($requestor[0]['EmailAdd'], "New Change Schedule Request", $message, $headers);
+                        $message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 100%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>New Change Schedule Request</span><br><br>Hi ".$requestor[0]['NickName'].",<br><br>";
+                        $message .= "You opened a new request for change schedule with Reference No: ".$add_sc." on ".date('F j, Y')." and it's subject for approval. ";
+                        $message .= "<br><br><table border='1' cellpadding='3' cellspacing='0' style='border: 1px solid #666; font-size: 12px; font-family: Verdana;'>";
+                        $message .= "<tr><td style='background-color: #024485; color: #FFF; text-align: center'><b>Date</b></td><td style='background-color: #024485; color: #FFF; text-align: center'><b>Current Shift</b></td><td style='background-color: #024485; color: #FFF; text-align: center'><b>New Shift</b></td></tr>";
+                        $message .= $mail_details;
+                        $message .= "</table>";
+                        $message .= "<br><br>Thanks,<br>";
+                        $message .= SITENAME." Admin";
+			$message .= "<br>Click<a href='https://portal.megaworldcorp.com/me/login'> here</a> to login";
+                        $message .= "<hr />".MAILFOOT."</div>";
+
+                        $headers = "From: ".NOTIFICATION_EMAIL."\r\n";
+                        $headers .= "Reply-To: ".NOTIFICATION_EMAIL."\r\n";
+                        $headers .= "MIME-Version: 1.0\r\n";
+                        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+                        $sendmail = mail($requestor[0]['EmailAdd'], "New Change Schedule Request", $message, $headers);
 
                     endif;
 
@@ -201,20 +194,20 @@
 
                         //SEND EMAIL (APPROVER)
 
-      //                   $message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 100%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>New Change Schedule Request from ".$requestor[0]['FName']." ".$requestor[0]['LName']."</span><br><br>Hi ".$approver[0]['NickName'].",<br><br>";
-      //                   $message .= "New request ".$requestor[0]['FName']." ".$requestor[0]['LName']." for change schedule with Reference No: ".$add_sc." on ".date('F j, Y')." for your approval. ";
-      //                   $message .= "<br><br>Thanks,<br>";
-      //                   $message .= SITENAME." Admin";
-			// $message .= "<br>Click<a href='https://portal.megaworldcorp.com/me/login'> here</a> to login";
-			//
-      //                   $message .= "<hr />".MAILFOOT."</div>";
-			//
-      //                   $headers = "From: ".NOTIFICATION_EMAIL."\r\n";
-      //                   $headers .= "Reply-To: ".NOTIFICATION_EMAIL."\r\n";
-      //                   $headers .= "MIME-Version: 1.0\r\n";
-      //                   $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-			//
-      //                   $sendmail = mail($approver[0]['EmailAdd'], "New Change Schedule Request for your Approval", $message, $headers);
+                        $message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 100%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>New Change Schedule Request from ".$requestor[0]['FName']." ".$requestor[0]['LName']."</span><br><br>Hi ".$approver[0]['NickName'].",<br><br>";
+                        $message .= "New request ".$requestor[0]['FName']." ".$requestor[0]['LName']." for change schedule with Reference No: ".$add_sc." on ".date('F j, Y')." for your approval. ";
+                        $message .= "<br><br>Thanks,<br>";
+                        $message .= SITENAME." Admin";
+			$message .= "<br>Click<a href='https://portal.megaworldcorp.com/me/login'> here</a> to login";
+
+                        $message .= "<hr />".MAILFOOT."</div>";
+
+                        $headers = "From: ".NOTIFICATION_EMAIL."\r\n";
+                        $headers .= "Reply-To: ".NOTIFICATION_EMAIL."\r\n";
+                        $headers .= "MIME-Version: 1.0\r\n";
+                        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+                        $sendmail = mail($approver[0]['EmailAdd'], "New Change Schedule Request for your Approval", $message, $headers);
 
                     endif;
 

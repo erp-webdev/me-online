@@ -34,6 +34,12 @@
                     endif;
                 endif;
 
+								$yesterday = date("Y-m-d", '+1 day');
+								echo "<script>alert('$yesterday');</script>";
+								exit(0);
+
+
+
 				$wfhitemcount = count($_POST['wfh_dayin']);
 
 				$wfhcnt = 1;
