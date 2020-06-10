@@ -43,6 +43,25 @@
 								}
 
 								$limit_from = date("Y-m-d", strtotime('-45 day', strtotime($wfhday)));
+								$limit_day = false;
+
+									if(date("d", strtotime($limit_from)) < 15 ){
+										while($limit_day){
+											if(date("d", strtotime($limit_from)) == 01){
+												$limit_day = true;
+											}else{
+												$limit_from = date("Y-m-d", strtotime('-1 day', strtotime($limit_from)));
+											}
+										}
+									}else{
+										while($limit_day){
+											if(date("d", strtotime($limit_from)) == 16){
+												$limit_day = true;
+											}else{
+												$limit_from = date("Y-m-d", strtotime('-1 day', strtotime($limit_from)));
+											}
+										}
+									}
 
 
 								echo "<script>alert(' $limit_from');</script>";
