@@ -36,9 +36,10 @@
 
 								$yesterday = date("d", strtotime('-1 day'));
 
+
 									$wfhday = date("Y-m-01");
 
-								echo "<script>alert('$wfhday');</script>";
+								echo "<script>alert('$yesterday');</script>";
 
 								exit(0);
 
