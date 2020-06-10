@@ -118,7 +118,7 @@
 										$wfhpost = $_POST['wfh_dayin'][$cnti];
 
 										if($wfhpost < $limit_from){
-											echo '{"success": false, "error": "WFH entries must be greater than '.$limit_from.'"}';
+											echo '{"success": false, "error": "WFH dates must be from '.$limit_from.' to yesterday."}';
 										}
 
 										exit(0);
