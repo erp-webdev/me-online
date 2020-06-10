@@ -42,7 +42,7 @@
 									$wfhday = date("Y-m-16");
 								}
 
-								$limit_from = date("Y-m-d", strtotime($wfhday, '-45 day'))
+								$limit_from = date("Y-m-d", strtotime($wfhday, '-45 days'))
 
 
 								echo "<script>alert('$limit_from');</script>";
