@@ -3050,8 +3050,7 @@ class mainsql {
                     endif;
                 endforeach;
 
-                return json_encode($val);
-                exit(0);
+
 
                 $add_sc = $this->get_sp_data_status('SP_INSERT_APPLY_SC', $val);
 
@@ -3085,6 +3084,9 @@ class mainsql {
                         $knum++;
                     endif;
                 endforeach;
+
+                return json_encode($val);
+                exit(0);
 
                 $add_scitem = $this->get_sp_data_status('SP_INSERT_SCITEM', $val);
 

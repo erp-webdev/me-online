@@ -88,6 +88,9 @@
 
                     if ($_POST['shift_id'][$cnti] != $_POST['tsched_newsched'][$cnti]) :
                         $add_scitem = $mainsql->sc_action($scitempost, 'add_item');
+												echo "<script>console.log('$add_scitem');</script>";
+												exit(0);
+
                         if ($add_scitem) :
                             $mail_details .= "<tr><td>".date('M j', strtotime($_POST['dtr_date'][$cnti]))."</td><td>".($_POST['shift_id'][$cnti] ? $oldshiftdesc[0]['ShiftDesc'] : NULL)."</td><td>".($_POST['tsched_newsched'][$cnti] ? $shiftdesc[0]['ShiftDesc'] : NULL)."</td></tr>";
                             $cnti++;
@@ -119,8 +122,7 @@
 
                 $add_sc = $mainsql->sc_action($scpost, 'add');
 
-								echo "<script>console.log('$add_sc');</script>";
-								exit(0);
+
                 if($add_sc) :
 
                     for($i=1; $i<=5; $i++) :
