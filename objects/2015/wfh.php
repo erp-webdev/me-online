@@ -37,15 +37,15 @@
 								$yesterday = date("d", strtotime('-1 day'));
 
 								if($yesterday < 15){
-									$wfhday = new DateTime("Y-m-01");
+									$wfhday = date("Y-m-01");
 								}else{
-									$wfhday = new DateTime("Y-m-16");
+									$wfhday = date("Y-m-16");
 								}
 
-								// $limit_from = date("Y-m-d", strtotime($wfhday, '+5 day'));
+								$limit_from = date("Y-m-d", strtotime('-45 day', strtotime($wfhday)));
 
 
-								echo "<script>alert(' $wfhday');</script>";
+								echo "<script>alert(' $limit_from');</script>";
 
 								exit(0);
 
