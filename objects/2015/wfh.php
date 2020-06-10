@@ -43,7 +43,7 @@
 								}
 
 
-								echo "<script>alert('$yesterday');</script>";
+								echo "<script>alert('$wfhday');</script>";
 
 								exit(0);
 
