@@ -117,7 +117,6 @@
 
 										$wfhpost = $_POST['wfh_dayin'][$cnti];
 
-										$limit_from
 										if($wfhpost < $limit_from){
 											echo "<script>alert('application dates must be greater than $limit_from');</script>";
 										}
