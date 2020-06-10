@@ -42,10 +42,10 @@
 									$wfhday = new DateTime("Y-m-16");
 								}
 
-								$limit_from = date("Y-m-d", strtotime($wfhday, '+5 day'));
+								// $limit_from = date("Y-m-d", strtotime($wfhday, '+5 day'));
 
 
-								echo "<script>alert('sdasd $limit_from');</script>";
+								echo "<script>alert(' $wfhday');</script>";
 
 								exit(0);
 
