@@ -45,7 +45,7 @@
 								$limit_from = date("Y-m-d", strtotime($wfhday, '+5 day'));
 
 
-								echo "<script>alert('$limit_from');</script>";
+								echo "<script>alert('sdasd $limit_from');</script>";
 
 								exit(0);
 
