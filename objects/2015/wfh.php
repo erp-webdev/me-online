@@ -37,13 +37,11 @@
 								$yesterday = date("d", strtotime('-1 day'));
 
 								if($yesterday < 15){
-									echo "<script>alert('less than');</script>";
+									$wfhday = date("Y-m-01");
 								}else{
-									echo "<script>alert('greater than');</script>";
-
+									$wfhday = date("Y-m-16");
 								}
 
-									$wfhday = date("Y-m-01");
 
 								echo "<script>alert('$yesterday');</script>";
 
