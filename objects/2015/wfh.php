@@ -110,18 +110,18 @@
 
                 while($cnti <= $wfhitemcount) :
 
-					if($_POST['wfh_disable'][$cnti]){
-						$cnti++;
-						continue;
-					}
+										if($_POST['wfh_disable'][$cnti]){
+											$cnti++;
+											continue;
+										}
 
 										$wfhpost = $_POST['wfh_dayin'][$cnti];
 
 										if($wfhpost < $limit_from){
-											echo '{"success": false, "error": "WFH dates must be from '.$limit_from.' to yesterday."}';
+											echo '{"success": false, "error": "WFH dates must be within '.$limit_from.' to yesterday."}';
+											exit(0);
 										}
 
-										exit(0);
 
                     $shiftdesc = $mainsql->get_shift($_POST['tsched_newsched'][$cnti]);
 
