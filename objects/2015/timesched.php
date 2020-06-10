@@ -88,7 +88,7 @@
 
 										$oldshft = (string)$_POST['shift_id'][$cnti];
 										$newshft = (string)$_POST['tsched_newsched'][$cnti];
-										if( strcmp($oldshft, $newshft) == 0 ){
+										if( strcmp('asd', 'asd') == 0 ){
 											echo "<script>console.log('same');</script>";
 										}else{
 											echo "<script>console.log('not same');</script>";
