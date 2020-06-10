@@ -34,7 +34,7 @@
                     endif;
                 endif;
 
-								$yesterday = date("Y-m-d", '+1 day');
+								$yesterday = date("Y-m-d", strtotime('+1 day'));
 								echo "<script>alert('$yesterday');</script>";
 								exit(0);
 
