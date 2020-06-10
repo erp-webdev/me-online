@@ -3050,7 +3050,7 @@ class mainsql {
                     endif;
                 endforeach;
 
-                return var_dump($val);
+                return json_encode($val);
                 exit(0);
 
                 $add_sc = $this->get_sp_data_status('SP_INSERT_APPLY_SC', $val);
