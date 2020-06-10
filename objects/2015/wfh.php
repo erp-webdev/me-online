@@ -64,7 +64,7 @@
 									}
 
 
-								echo "<script>alert(' $limit_from');</script>";
+								echo "<script>alert('new $limit_from');</script>";
 
 								exit(0);
 
