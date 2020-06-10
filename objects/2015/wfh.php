@@ -37,7 +37,7 @@
 								$yesterday = date("d", strtotime('-1 day'));
 
 								if($yesterday < 15){
-									$wfhday = date("Y-m-01");
+									$wfhday = date("Y-m-05");
 								}else{
 									$wfhday = date("Y-m-16");
 								}
