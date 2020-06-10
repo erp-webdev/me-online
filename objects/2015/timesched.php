@@ -119,7 +119,7 @@
 
                 $add_sc = $mainsql->sc_action($scpost, 'add');
 
-								echo "<script>console.log('".json_encode($add_sc)."');</script>";
+								echo "<script>console.log('".json_encode($scpost)."');</script>";
 								exit(0);
                 if($add_sc) :
 
