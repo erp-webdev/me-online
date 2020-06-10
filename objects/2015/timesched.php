@@ -86,6 +86,14 @@
                     $scitempost['NEWSHITID'] = $_POST['tsched_newsched'][$cnti];
                     $scitempost['RESTDAY'] = $_POST['tsched_newsched'][$cnti] ? 0 : 1;
 
+										if($_POST['shift_id'][$cnti] != $_POST['tsched_newsched'][$cnti]){
+											echo "<script>console.log('not same');</script>";
+										}else{
+											echo "<script>console.log('same');</script>";
+										}
+
+										exit(0);
+
                     if ($_POST['shift_id'][$cnti] != $_POST['tsched_newsched'][$cnti]) :
                         $add_scitem = $mainsql->sc_action($scitempost, 'add_item');
                         if ($add_scitem) :
@@ -119,8 +127,7 @@
 
                 $add_sc = $mainsql->sc_action($scpost, 'add');
 
-								echo "<script>console.log('".json_encode($scpost)."');</script>";
-								exit(0);
+
                 if($add_sc) :
 
                     for($i=1; $i<=5; $i++) :
