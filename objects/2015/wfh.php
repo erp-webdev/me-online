@@ -63,7 +63,7 @@
 										}
 									}
 
-									$wfhpost = $_POST['wfh_from']
+									$wfhpost = $_POST['wfh_from'];
 								echo "<script>alert('$wfhpost');</script>";
 
 								exit(0);
