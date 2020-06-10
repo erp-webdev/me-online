@@ -55,6 +55,7 @@
 										}
 									}else{
 										while($limit_day){
+											echo "<script>alert('here');</script>";
 											if(date("d", strtotime($limit_from)) == 16){
 												$limit_day = true;
 											}else{
