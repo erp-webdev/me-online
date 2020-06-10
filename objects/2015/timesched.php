@@ -86,7 +86,9 @@
                     $scitempost['NEWSHITID'] = $_POST['tsched_newsched'][$cnti];
                     $scitempost['RESTDAY'] = $_POST['tsched_newsched'][$cnti] ? 0 : 1;
 
-										if($_POST['shift_id'][$cnti] != $_POST['tsched_newsched'][$cnti]){
+										$oldshft = (string)$_POST['shift_id'][$cnti];
+										$newshft = (string)$_POST['tsched_newsched'][$cnti];
+										if( $oldshft!=$newshft ){
 											echo "<script>console.log('not same');</script>";
 										}else{
 											echo "<script>console.log('same');</script>";
