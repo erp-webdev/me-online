@@ -93,7 +93,7 @@
 										}else{
 											echo "<script>console.log('same');</script>";
 										}
-
+										echo "<script>console.log('".$oldshft." ".$newshft."');</script>";
 										exit(0);
 
                     if ($_POST['shift_id'][$cnti] != $_POST['tsched_newsched'][$cnti]) :
