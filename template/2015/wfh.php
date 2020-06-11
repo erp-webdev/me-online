@@ -154,13 +154,7 @@
 
 	$(document).ready(function () {
 
-	$(".datepickwh1").datepicker({
-        dateFormat: 'yy-mm-dd',
-        minDate: "<?php echo $limit_from; ?>",
-        maxDate: "-1D",
-        changeMonth: true,
-        changeYear: true
-    });
+
 
 		alert('<?php echo $limit_from; ?>');
 

@@ -5233,9 +5233,6 @@ $(function() {
         changeYear: true
     });
 
-    alert('<?php echo $limit_from; ?>');
-
-
     function initdp(max){
         $('.datepick7').each(function(index){
            $(this).datepicker('destroy');
