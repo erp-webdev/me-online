@@ -162,6 +162,8 @@
         changeYear: true
     });
 
+		alert('<?php echo $limit_from; ?>');
+
 		var wfh_app = angular.module('WFHApp', []);
 		wfh_app.controller('WFHController', ['$scope','$http', function($scope, $http){
 
