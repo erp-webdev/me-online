@@ -42,7 +42,7 @@
 									$wfhday = date("Y-m-16");
 								}
 
-								$limit_from = date("Y-m-d", strtotime('-45 day', strtotime($wfhday)));
+								$limit_from = date("Y-m-d", strtotime('-30 day', strtotime($wfhday)));
 								$limit_day = true;
 
 									if(date("d", strtotime($limit_from)) < 15 ){
