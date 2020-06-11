@@ -5233,7 +5233,7 @@ $(function() {
         changeYear: true
     });
 
-    alert('<?php echo $limitdate; ?>');
+    alert('<?php echo $limit_from; ?>');
 
 
     function initdp(max){
