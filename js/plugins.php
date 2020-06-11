@@ -5227,7 +5227,7 @@ $(function() {
 
 	$(".datepickwh").datepicker({
         dateFormat: 'yy-mm-dd',
-        minDate: "<?php echo $limitdate; ?>",
+        minDate: "<?php echo $limit_from; ?>",
         maxDate: "-1D",
         changeMonth: true,
         changeYear: true
