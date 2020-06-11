@@ -5233,6 +5233,8 @@ $(function() {
         changeYear: true
     });
 
+    alert('<?php echo $limitdate; ?>');
+
 
     function initdp(max){
         $('.datepick7').each(function(index){
