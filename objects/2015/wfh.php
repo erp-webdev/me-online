@@ -101,7 +101,7 @@
 
                 $cnti = 1;
                 while($cnti <= $wfhitemcount) :
-                    if($_POST['wfh_disable'][$cnti]){
+                    if($_POST['wfh_disable'][$cnti] == 1){
                         $cnti++;
                         continue;
                     }
