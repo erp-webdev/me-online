@@ -1414,7 +1414,6 @@ class mainsql {
         foreach($excluded_dtr as $ex){
             $sql .= " AND CAST(DTRDate AS DATE) <> '" . $ex . "' ";
         }
-    var_dump($sql);
 
 		$result = $this->get_numrow($sql);
 		return $result;
