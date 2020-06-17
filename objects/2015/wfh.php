@@ -151,6 +151,7 @@
                     for($j = 0; $j < count($temp_activities); $j++){
                         if(trim($temp_activities[$j]->act) == ''){
                             unset($temp_activities[$j]);
+                            echo 'skipped due to no activity specified';
                         }
                     }
 
@@ -160,7 +161,7 @@
                 echo $add_wfhitem;
                     
 										$cnti++;
-
+                    echo 'next iteration';
                 endwhile;
                 echo 10;
 
@@ -185,7 +186,7 @@
                 $wfhpost['USER'] = $_POST['user'];
                 $wfhpost['REMARKS'] = "";
 
-                //var_dump($mdpost);
+                var_dump($wfhpost);
 
                 $add_wfh = $mainsql->wh_action($wfhpost, 'add');
                 echo $add_wfhitem;
