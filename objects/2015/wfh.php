@@ -156,12 +156,13 @@
 	                  $wfhitempost['Activities'] = json_encode($temp_activities);
 
 	                  $add_wfhitem = $mainsql->wh_action($wfhitempost, 'add_item');
+										echo "<script>alert('HERE');</script>";
+										exit(0);
 										$cnti++;
 
                 endwhile;
 
-								echo "<script>alert('".$add_wfhitem."');</script>";
-								exit(0);
+
 
                 $wfhpost['EMPID'] = $_POST['empid'];
                 $wfhpost['REQNBR'] = $add_wfhitem;
