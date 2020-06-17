@@ -117,10 +117,10 @@
 											continue;
 										}
 
-										$wfhpost2 = $_POST['wfh_dayin'][$cnti];
+										$wfhpost = $_POST['wfh_dayin'][$cnti];
 										$yesterday = date("Y-m-d", strtotime('-1 day'));
 
-										if($wfhpost2 < $limit_from){
+										if($wfhpost < $limit_from){
 											echo '{"success": false, "error": "WFH dates must be within '.date("M d", strtotime($limit_from)).' to '.date("M d", strtotime($yesterday)).'."}';
 											exit(0);
 										}
