@@ -124,7 +124,7 @@
 
                     $wfhitempost['DTRDATE'] = $_POST['wfh_dayin'][$cnti];
                     $wfhitempost['AppliedHrs'] = $_POST['wfh_totalworkedhours'][$cnti];
-                    // fucking bullshit
+                    // f***** bulls***
                     $wfhitempost['ApprovedHrs'] = null;
                     if($_POST['wfh_totalworkedhours'][$cnti] - $_POST['wfh_excesshours'][$cnti] > 8 && $_POST['wfh_excesshours'][$cnti] > 0){
                         $wfhitempost['ApprovedHrs'] = 8;
