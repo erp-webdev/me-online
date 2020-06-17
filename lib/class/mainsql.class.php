@@ -1422,7 +1422,7 @@ class mainsql {
 		$sql .= " (SELECT Reference FROM TED_VIEW_NOTIFICATION WHERE EmpID ='".$idnum."' ";
 		$sql .= " AND Approved IN (0,1)) ";
 		$sql .= " AND DTRDate BETWEEN '".$from." 00:00:00.000' AND '".$to." 23:59:59.000' ";
-		$sql .= " AND Status != 'CANCELLED' ";
+		$sql .= " AND Status <> 'CANCELLED' ";
 		$result = $this->get_row($sql);
 		return $result;
 	}
@@ -1434,7 +1434,7 @@ class mainsql {
         $sql .= " (SELECT Reference FROM TED_VIEW_NOTIFICATION WHERE EmpID ='".$idnum."' ";
         $sql .= " AND Approved IN (0,1)) ";
         $sql .= " AND DTRDate BETWEEN '".$from." 00:00:00.000' AND '".$to." 23:59:59.000' ";
-        $sql .= " AND Status != 'CANCELLED' ";
+        $sql .= " AND Status <> 'CANCELLED' ";
 		$result = $this->get_numrow($sql);
 		return $result;
     }
