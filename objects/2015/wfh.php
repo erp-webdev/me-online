@@ -182,11 +182,12 @@
                 $wfhpost['REMARKS'] = "";
 
                 //var_dump($mdpost);
+								echo "<script>console.log('".json_encode($wfhpost)."');</script>";
+								exit(0);
 
                 $add_wfh = $mainsql->wh_action($wfhpost, 'add');
 
-								echo "<script>alert('$add_wfh');</script>";
-								exit(0);
+
 
                 if($add_wfh) :
 
