@@ -2759,9 +2759,9 @@ class mainsql {
 
                 $add_md = $this->get_sp_data_status('SP_INSERT_APPLY_WH', $val);
 
-                return "test";
+                return var_dump($val);
                 exit(0);
-                
+
                 if($add_md) {
                     return $add_md;
                 } else {
