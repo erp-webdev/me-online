@@ -110,9 +110,9 @@
                 $wfhitemcount = count($_POST['wfh_dayin']);
 
                 $cnti = 1;
-
+                $
                 while($cnti <= $wfhitemcount) :
-                    echo $$_POST['wfh_activity'][$cnti];
+                    echo $_POST['wfh_activity'][$cnti];
 
 										if($_POST['wfh_disable'][$cnti]){
 											$cnti++;
