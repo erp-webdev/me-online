@@ -17,34 +17,34 @@
 
             global $sroot, $profile_id, $unix3month;
 
-						// $yesterday = date("d", strtotime('-1 day'));
-						//
-						// if($yesterday < 15){
-						// 	$wfhday = date("Y-m-01");
-						// }else{
-						// 	$wfhday = date("Y-m-16");
-						// }
-						//
-						// $limit_from = date("Y-m-d", strtotime('-30 day', strtotime($wfhday)));
-						// $limit_day = true;
-						//
-						// 	if(date("d", strtotime($limit_from)) < 15 ){
-						// 		while($limit_day){
-						// 			if(date("d", strtotime($limit_from)) == 01){
-						// 				$limit_day = false;
-						// 			}else{
-						// 				$limit_from = date("Y-m-d", strtotime('-1 day', strtotime($limit_from)));
-						// 			}
-						// 		}
-						// 	}else{
-						// 		while($limit_day){
-						// 			if(date("d", strtotime($limit_from)) == 16){
-						// 				$limit_day = false;
-						// 			}else{
-						// 				$limit_from = date("Y-m-d", strtotime('-1 day', strtotime($limit_from)));
-						// 			}
-						// 		}
-						// 	}
+						$yesterday = date("d", strtotime('-1 day'));
+
+						if($yesterday < 15){
+							$wfhday = date("Y-m-01");
+						}else{
+							$wfhday = date("Y-m-16");
+						}
+
+						$limit_from = date("Y-m-d", strtotime('-30 day', strtotime($wfhday)));
+						$limit_day = true;
+
+							if(date("d", strtotime($limit_from)) < 15 ){
+								while($limit_day){
+									if(date("d", strtotime($limit_from)) == 01){
+										$limit_day = false;
+									}else{
+										$limit_from = date("Y-m-d", strtotime('-1 day', strtotime($limit_from)));
+									}
+								}
+							}else{
+								while($limit_day){
+									if(date("d", strtotime($limit_from)) == 16){
+										$limit_day = false;
+									}else{
+										$limit_from = date("Y-m-d", strtotime('-1 day', strtotime($limit_from)));
+									}
+								}
+							}
 
             // REGISTER wfh
             if ($_POST['btnwfhapply'] || $_POST['btnwfhapply_x']) :
@@ -117,13 +117,13 @@
 											continue;
 										}
 
-										// $wfhpost2 = $_POST['wfh_dayin'][$cnti];
-										// $yesterday = date("Y-m-d", strtotime('-1 day'));
-										//
-										// if($wfhpost2 < $limit_from){
-										// 	echo '{"success": false, "error": "WFH dates must be within '.date("M d", strtotime($limit_from)).' to '.date("M d", strtotime($yesterday)).'."}';
-										// 	exit(0);
-										// }
+										$wfhpost2 = $_POST['wfh_dayin'][$cnti];
+										$yesterday = date("Y-m-d", strtotime('-1 day'));
+
+										if($wfhpost2 < $limit_from){
+											echo '{"success": false, "error": "WFH dates must be within '.date("M d", strtotime($limit_from)).' to '.date("M d", strtotime($yesterday)).'."}';
+											exit(0);
+										}
 
                     $shiftdesc = $mainsql->get_shift($_POST['tsched_newsched'][$cnti]);
 
