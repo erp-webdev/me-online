@@ -159,8 +159,7 @@
 										$cnti++;
 
                 endwhile;
-								echo "<script>alert('$add_wfhitem');</script>";
-								exit(0);
+
 
                 $wfhpost['EMPID'] = $_POST['empid'];
                 $wfhpost['REQNBR'] = $add_wfhitem;
@@ -185,6 +184,9 @@
                 //var_dump($mdpost);
 
                 $add_wfh = $mainsql->wh_action($wfhpost, 'add');
+
+								echo "<script>alert('$add_wfh');</script>";
+								exit(0);
 
                 if($add_wfh) :
 
