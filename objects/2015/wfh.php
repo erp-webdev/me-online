@@ -186,7 +186,7 @@
                 $wfhpost['REMARKS'] = "";
 
                 //var_dump($mdpost);
-								echo "<script>console.log('".$wfhpost['EMPID']."');</script>";
+								echo "<script>console.log('$add_wfhitem');</script>";
 								exit(0);
 
                 $add_wfh = $mainsql->wh_action($wfhpost, 'add');
