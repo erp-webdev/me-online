@@ -97,8 +97,8 @@
                 $cnti = 1;
                 while($cnti <= $wfhitemcount) :
                     if($_POST['wfh_disable'][$cnti] == 1){
-                        $cnti++;
                         array_push($excluded_dtr, $_POST['wfh_dayin'][$cnti]);
+												$cnti++;
                         continue;
                     }
 
@@ -142,7 +142,7 @@
 	                $add_wfhitem = $mainsql->wh_action($wfhitempost, 'add_item');
 					$cnti++;
                 endwhile;
-								
+
 								$wfhapplied = $mainsql->get_whdata_applied($profile_idnum, $wfhstart, $wfhend, $excluded_dtr);
                 if ($wfhapplied) :
                     $wfhapplieddata = $mainsql->get_whdata_applieddata($profile_idnum, $wfhstart, $wfhend, $excluded_dtr);
