@@ -108,7 +108,7 @@
                 $err_item = 0;
                 $wfhitemcount = count($_POST['wfh_dayin']);
 
-                $cnti = 1;
+                $cnti = 0;
 
                 while($cnti <= $wfhitemcount) :
 
@@ -185,7 +185,7 @@
 
                 $add_wfh = $mainsql->wh_action($wfhpost, 'add');
 
-						
+
 
                 if($add_wfh) :
 
