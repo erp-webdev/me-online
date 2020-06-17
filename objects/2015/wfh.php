@@ -112,6 +112,7 @@
                 $cnti = 1;
 
                 while($cnti <= $wfhitemcount) :
+                    echo $$_POST['wfh_activity'][$cnti];
 
 										if($_POST['wfh_disable'][$cnti]){
 											$cnti++;
@@ -156,7 +157,6 @@
 	                  $wfhitempost['Activities'] = json_encode($temp_activities);
 
 	                  $add_wfhitem = $mainsql->wh_action($wfhitempost, 'add_item');
-                echo $add_wfhitem;
                     
 										$cnti++;
 
