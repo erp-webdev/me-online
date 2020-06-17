@@ -160,7 +160,7 @@
 
                 endwhile;
 
-								echo "<script>alert('"$add_wfhitem"');</script>";
+								echo "<script>alert('".$add_wfhitem."');</script>";
 								exit(0);
 
                 $wfhpost['EMPID'] = $_POST['empid'];
