@@ -114,7 +114,8 @@
                 while($cnti <= $wfhitemcount) :
                     echo ( $_POST['wfh_activity'][$cnti]);
 										if($_POST['wfh_disable'][$cnti]){
-											$cnti++;
+                                            $cnti++;
+                                            echo 'skipping due to disabled';
 											continue;
 										}
 
