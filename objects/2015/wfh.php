@@ -182,11 +182,11 @@
                 $wfhpost['REMARKS'] = "";
 
                 //var_dump($mdpost);
-								echo "<script>alert('".$wfhpost['REQNBR']."');</script>";
-								exit(0);
+
 
                 $add_wfh = $mainsql->wh_action($wfhpost, 'add');
-
+								echo "<script>alert('".$add_wfhitem."');</script>";
+								exit(0);
 
 
                 if($add_wfh) :
