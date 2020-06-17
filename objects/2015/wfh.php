@@ -93,7 +93,6 @@
 
                 //CHECK DATE IF ITS APPLIED - END
 
-
                 //WFH ITEMS
                 $mail_details = '';
 
@@ -101,20 +100,19 @@
                 $wfhitemcount = count($_POST['wfh_dayin']);
 
                 $cnti = 1;
-
                 while($cnti <= $wfhitemcount) :
-										if($_POST['wfh_disable'][$cnti]){
-                                            $cnti++;
-											continue;
-										}
+                    if($_POST['wfh_disable'][$cnti]){
+                        $cnti++;
+                        continue;
+                    }
 
-										$wfhpost2 = $_POST['wfh_dayin'][$cnti];
-										$yesterday = date("Y-m-d", strtotime('-1 day'));
+                    $wfhpost2 = $_POST['wfh_dayin'][$cnti];
+                    $yesterday = date("Y-m-d", strtotime('-1 day'));
 
-										if($wfhpost2 < $limit_from){
-											echo '{"success": false, "error": "WFH dates must be within '.date("M d", strtotime($limit_from)).' to '.date("M d", strtotime($yesterday)).'."}';
-											exit(0);
-										}
+                    if($wfhpost2 < $limit_from){
+                        echo '{"success": false, "error": "WFH dates must be within '.date("M d", strtotime($limit_from)).' to '.date("M d", strtotime($yesterday)).'."}';
+                        exit();
+                    }
 
                     $shiftdesc = $mainsql->get_shift($_POST['tsched_newsched'][$cnti]);
 
@@ -125,14 +123,14 @@
                     endif;
 
                     $wfhitempost['DTRDATE'] = $_POST['wfh_dayin'][$cnti];
-										$wfhitempost['AppliedHrs'] = $_POST['wfh_totalworkedhours'][$cnti];
+                    $wfhitempost['AppliedHrs'] = $_POST['wfh_totalworkedhours'][$cnti];
 
-										if($_POST['wfh_totalworkedhours'][$cnti] - $_POST['wfh_excesshours'][$cnti] > 8 && $_POST['wfh_excesshours'][$cnti] > 0){
-											$wfhitempost['ApprovedHrs'] = 8;
+                    if($_POST['wfh_totalworkedhours'][$cnti] - $_POST['wfh_excesshours'][$cnti] > 8 && $_POST['wfh_excesshours'][$cnti] > 0){
+                        $wfhitempost['ApprovedHrs'] = 8;
 
-										}else if($_POST['wfh_excesshours'][$cnti] > 0){
-											$wfhitempost['ApprovedHrs'] = $_POST['wfh_totalworkedhours'][$cnti] - $_POST['wfh_excesshours'][$cnti];
-										}
+                    }else if($_POST['wfh_excesshours'][$cnti] > 0){
+                        $wfhitempost['ApprovedHrs'] = $_POST['wfh_totalworkedhours'][$cnti] - $_POST['wfh_excesshours'][$cnti];
+                    }
 
                     $wfhitempost['Activities'] = $_POST['wfh_activity'][$cnti];
                     $temp_activities = json_decode( $wfhitempost['Activities']);
@@ -143,11 +141,11 @@
                         }
                     }
 
-	                  $wfhitempost['Activities'] = json_encode($temp_activities);
+	                $wfhitempost['Activities'] = json_encode($temp_activities);
 
-	                  $add_wfhitem = $mainsql->wh_action($wfhitempost, 'add_item');
+	                $add_wfhitem = $mainsql->wh_action($wfhitempost, 'add_item');
                     
-										$cnti++;
+					$cnti++;
                 endwhile;
 
 
