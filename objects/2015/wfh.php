@@ -185,7 +185,7 @@
 
 
                 $add_wfh = $mainsql->wh_action($wfhpost, 'add');
-								echo "<script>alert('$add_wfh');</script>";
+								echo "<script>alert('".$_POST['empid']."');</script>";
 								exit(0);
 
 
