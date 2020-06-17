@@ -156,7 +156,8 @@
 	                  $wfhitempost['Activities'] = json_encode($temp_activities);
 
 	                  $add_wfhitem = $mainsql->wh_action($wfhitempost, 'add_item');
-
+                echo $add_wfhitem;
+                    
 										$cnti++;
 
                 endwhile;
@@ -186,6 +187,7 @@
                 //var_dump($mdpost);
 
                 $add_wfh = $mainsql->wh_action($wfhpost, 'add');
+                echo $add_wfhitem;
 
                 echo 11;
 
