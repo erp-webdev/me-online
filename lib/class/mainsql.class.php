@@ -2778,6 +2778,8 @@ class mainsql {
                         $val[$knum]['field_value'] = $value;
                         if ($key == 'RESTDAY') :
                             $val[$knum]['field_type'] = SQLINT1;
+                        elseif($key == 'Activities'):
+                            $val[$knum]['field_type'] = SQLTEXT;
                         else :
                             $val[$knum]['field_type'] = SQLVARCHAR;
                         endif;
