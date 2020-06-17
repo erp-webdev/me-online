@@ -108,7 +108,7 @@
                 $err_item = 0;
                 $wfhitemcount = count($_POST['wfh_dayin']);
 
-                $cnti = 0;
+                $cnti = 1;
 
                 while($cnti <= $wfhitemcount) :
 
