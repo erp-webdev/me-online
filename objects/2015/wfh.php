@@ -142,7 +142,7 @@
                     }
 
 	                $wfhitempost['Activities'] = json_encode($temp_activities);
-
+                    var_dump($wfhitempost);
 	                $add_wfhitem = $mainsql->wh_action($wfhitempost, 'add_item');
                     echo $add_wfhitem;
 					$cnti++;
@@ -152,7 +152,7 @@
                 $wfhpost['EMPID'] = $_POST['empid'];
                 $wfhpost['REQNBR'] = $add_wfhitem;
                 $wfhpost['TRANS'] = "APPLY";
-								$wfhpost['DATESTART'] = $_POST['wfh_from'];
+				$wfhpost['DATESTART'] = $_POST['wfh_from'];
                 $wfhpost['DATEEND'] = $_POST['wfh_to'];
                 $wfhpost['APPROVER01'] = $_POST['approver1'];
                 $wfhpost['APPROVER02'] = $_POST['approver2'];
