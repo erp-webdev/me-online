@@ -117,14 +117,13 @@
 											continue;
 										}
 
-										$wfhpost = $_POST['wfh_dayin'][$cnti];
+										$wfhpost2 = $_POST['wfh_dayin'][$cnti];
 										$yesterday = date("Y-m-d", strtotime('-1 day'));
 
-										if($wfhpost < $limit_from){
+										if($wfhpost2 < $limit_from){
 											echo '{"success": false, "error": "WFH dates must be within '.date("M d", strtotime($limit_from)).' to '.date("M d", strtotime($yesterday)).'."}';
 											exit(0);
 										}
-
 
                     $shiftdesc = $mainsql->get_shift($_POST['tsched_newsched'][$cnti]);
 
@@ -133,26 +132,26 @@
                     else :
                         $wfhitempost['REQNBR'] = $add_wfhitem;
                     endif;
+
                     $wfhitempost['DTRDATE'] = $_POST['wfh_dayin'][$cnti];
 										$wfhitempost['AppliedHrs'] = $_POST['wfh_totalworkedhours'][$cnti];
 
 										if($_POST['wfh_totalworkedhours'][$cnti] - $_POST['wfh_excesshours'][$cnti] > 8 && $_POST['wfh_excesshours'][$cnti] > 0){
-
 											$wfhitempost['ApprovedHrs'] = 8;
 
 										}else if($_POST['wfh_excesshours'][$cnti] > 0){
-
 											$wfhitempost['ApprovedHrs'] = $_POST['wfh_totalworkedhours'][$cnti] - $_POST['wfh_excesshours'][$cnti];
-
 										}
 
                     $wfhitempost['Activities'] = $_POST['wfh_activity'][$cnti];
                     $temp_activities = json_decode( $wfhitempost['Activities']);
+
                     for($j = 0; $j < count($temp_activities); $j++){
                         if(trim($temp_activities[$j]->act) == ''){
                             unset($temp_activities[$j]);
                         }
                     }
+
 	                  $wfhitempost['Activities'] = json_encode($temp_activities);
 
 	                  $add_wfhitem = $mainsql->wh_action($wfhitempost, 'add_item');
@@ -161,9 +160,6 @@
 
                 endwhile;
 
-
-								echo "<script>alert('$add_wfhitem');</script>";
-								exit(0);
 
                 $wfhpost['EMPID'] = $_POST['empid'];
                 $wfhpost['REQNBR'] = $add_wfhitem;
@@ -189,7 +185,8 @@
 
                 $add_wfh = $mainsql->wh_action($wfhpost, 'add');
 
-
+								echo "<script>alert('$add_wfhitem');</script>";
+								exit(0);
 
                 if($add_wfh) :
 
