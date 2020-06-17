@@ -2790,9 +2790,6 @@ class mainsql {
 
                 $add_mditem = $this->get_sp_data_status('SP_INSERT_WHITEM', $val);
 
-               return print_r($val);
-               exit(0);
-
                 if($add_mditem) {
                     return $add_mditem;
                 } else {
