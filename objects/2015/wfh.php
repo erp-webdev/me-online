@@ -1,6 +1,5 @@
 <?php
 	if ($logged == 1) {
-        echo 1; 
         if ($wh_app) :
 
             # PAGINATION
@@ -23,7 +22,6 @@
 						}else{
 							$wfhday = date("Y-m-16");
 						}
-                        echo 2;
 
 						$limit_from = date("Y-m-d", strtotime('-30 day', strtotime($wfhday)));
 						$limit_day = true;
@@ -45,11 +43,9 @@
 									}
 								}
 							}
-                            echo 3;
 
             // REGISTER wfh
             if ($_POST['btnwfhapply'] || $_POST['btnwfhapply_x']) :
-                echo 4;
 
                 //CHECK FOR INVALID DATE/TIME IN AND OUT
 
@@ -64,7 +60,6 @@
                         exit();
                     endif;
                 endif;
-                echo 5;
 
 				$wfhitemcount = count($_POST['wfh_dayin']);
 
@@ -81,16 +76,13 @@
 					}
 					$wfhcnt++;
                 }
-                echo 6;
 				if($wfherror){
 					echo '{"success": false, "error": "All inputs on Work from Home must be completed (Total Worked Hours & Acitivities). Unless the date is excluded."}';
 					exit();
 				}
-                echo 7;
 
                 $wfhstart = date("Y-m-d", strtotime($_POST['wfh_from']));
                 $wfhend = date("Y-m-d", strtotime($_POST['wfh_to']));
-                echo 8;
 
                 $wfhapplied = $mainsql->get_whdata_applied($profile_idnum, $wfhstart, $wfhend);
                 if ($wfhapplied) :
@@ -98,7 +90,6 @@
                     echo '{"success": false, "error": "One of the date on Work from Home has been applied or approved with Request ID No. '.$wfhapplieddata[0]['ReqNbr'].'"}';
                     exit();
                 endif;
-                echo 9;
 
                 //CHECK DATE IF ITS APPLIED - END
 
@@ -115,7 +106,6 @@
                     echo ( $_POST['wfh_activity'][$cnti]);
 										if($_POST['wfh_disable'][$cnti]){
                                             $cnti++;
-                                            echo 'skipping due to disabled';
 											continue;
 										}
 
@@ -151,19 +141,15 @@
                     for($j = 0; $j < count($temp_activities); $j++){
                         if(trim($temp_activities[$j]->act) == ''){
                             unset($temp_activities[$j]);
-                            echo 'skipped due to no activity specified';
                         }
                     }
 
 	                  $wfhitempost['Activities'] = json_encode($temp_activities);
 
 	                  $add_wfhitem = $mainsql->wh_action($wfhitempost, 'add_item');
-                echo $add_wfhitem;
                     
 										$cnti++;
-                    echo 'next iteration';
                 endwhile;
-                echo 10;
 
 
                 $wfhpost['EMPID'] = $_POST['empid'];
@@ -186,12 +172,8 @@
                 $wfhpost['USER'] = $_POST['user'];
                 $wfhpost['REMARKS'] = "";
 
-                var_dump($wfhpost);
 
                 $add_wfh = $mainsql->wh_action($wfhpost, 'add');
-                echo $add_wfhitem;
-
-                echo 11;
 
 
                 if($add_wfh) :
