@@ -156,7 +156,8 @@
 	                  $wfhitempost['Activities'] = json_encode($temp_activities);
 
 	                  $add_wfhitem = $mainsql->wh_action($wfhitempost, 'add_item');
-										echo "<script>alert('HERE');</script>";
+
+										echo "<script>alert('".$add_wfhitem."');</script>";
 										exit(0);
 										$cnti++;
 
