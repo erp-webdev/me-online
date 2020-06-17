@@ -84,12 +84,7 @@
                 $wfhstart = date("Y-m-d", strtotime($_POST['wfh_from']));
                 $wfhend = date("Y-m-d", strtotime($_POST['wfh_to']));
 
-                $wfhapplied = $mainsql->get_whdata_applied($profile_idnum, $wfhstart, $wfhend, $excluded_dtr);
-                if ($wfhapplied) :
-                    $wfhapplieddata = $mainsql->get_whdata_applieddata($profile_idnum, $wfhstart, $wfhend, $excluded_dtr);
-                    echo '{"success": false, "error": "One of the date on Work from Home has been applied or approved with Request ID No. '.$wfhapplieddata[0]['Reference'].'"}';
-                    exit();
-                endif;
+
 
                 //CHECK DATE IF ITS APPLIED - END
 
@@ -147,6 +142,13 @@
 	                $add_wfhitem = $mainsql->wh_action($wfhitempost, 'add_item');
 					$cnti++;
                 endwhile;
+
+								$wfhapplied = $mainsql->get_whdata_applied($profile_idnum, $wfhstart, $wfhend, $excluded_dtr);
+                if ($wfhapplied) :
+                    $wfhapplieddata = $mainsql->get_whdata_applieddata($profile_idnum, $wfhstart, $wfhend, $excluded_dtr);
+                    echo '{"success": false, "error": "One of the date on Work from Home has been applied or approved with Request ID No. '.$wfhapplieddata[0]['Reference'].'"}';
+                    exit();
+                endif;
 
 
                 $wfhpost['EMPID'] = $_POST['empid'];
