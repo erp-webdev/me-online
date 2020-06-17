@@ -157,7 +157,7 @@
 
 	                  $add_wfhitem = $mainsql->wh_action($wfhitempost, 'add_item');
 
-										echo "<script>console.log('".$wfhitempost['Activities']."');</script>";
+										echo "<script>console.log('".$add_wfhitem."');</script>";
 										exit(0);
 										$cnti++;
 
