@@ -142,7 +142,7 @@
 	                $add_wfhitem = $mainsql->wh_action($wfhitempost, 'add_item');
 					$cnti++;
                 endwhile;
-								var_dump($excluded_dtr);
+								
 								$wfhapplied = $mainsql->get_whdata_applied($profile_idnum, $wfhstart, $wfhend, $excluded_dtr);
                 if ($wfhapplied) :
                     $wfhapplieddata = $mainsql->get_whdata_applieddata($profile_idnum, $wfhstart, $wfhend, $excluded_dtr);
