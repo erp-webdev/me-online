@@ -1405,8 +1405,8 @@ class mainsql {
 
 	function get_whdata_applied($idnum, $from, $to)
 	{
-		$sql = "SELECT * FROM HRFrmApplyWH";
-		$sql .= " WHERE ReqNbr IN ";
+		$sql = "SELECT * FROM HRFrmApplyWFHItem";
+		$sql .= " WHERE REFERENCE IN ";
 		$sql .= " (SELECT Reference FROM TED_VIEW_NOTIFICATION WHERE EmpID ='".$idnum."' ";
 		$sql .= " AND Approved IN (0,1)) ";
 		$sql .= " AND DTRDate BETWEEN '".$from." 00:00:00.000' AND '".$to." 23:59:59.000' ";
@@ -1417,8 +1417,8 @@ class mainsql {
 
 	function get_whdata_applieddata($idnum, $from, $to)
 	{
-		$sql = "SELECT * FROM HRFrmApplyWHItem ";
-		$sql .= " WHERE ReqNbr IN ";
+		$sql = "SELECT * FROM HRFrmApplyWFHItem ";
+		$sql .= " WHERE Reference IN ";
 		$sql .= " (SELECT Reference FROM TED_VIEW_NOTIFICATION WHERE EmpID ='".$idnum."' ";
 		$sql .= " AND Approved IN (0,1)) ";
 		$sql .= " AND DTRDate BETWEEN '".$from." 00:00:00.000' AND '".$to." 23:59:59.000' ";

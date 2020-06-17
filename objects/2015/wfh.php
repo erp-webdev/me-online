@@ -63,12 +63,6 @@
                     endif;
                 endif;
 
-
-
-
-
-
-
 				$wfhitemcount = count($_POST['wfh_dayin']);
 
 				$wfhcnt = 1;
