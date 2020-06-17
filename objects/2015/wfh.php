@@ -117,10 +117,10 @@
 											continue;
 										}
 
-										$wfhapp = $_POST['wfh_dayin'][$cnti];
+										$wfhpost = $_POST['wfh_dayin'][$cnti];
 										$yesterday = date("Y-m-d", strtotime('-1 day'));
 
-										if($wfhapp < $limit_from){
+										if($wfhpost < $limit_from){
 											echo '{"success": false, "error": "WFH dates must be within '.date("M d", strtotime($limit_from)).' to '.date("M d", strtotime($yesterday)).'."}';
 											exit(0);
 										}
@@ -157,13 +157,14 @@
 
 	                  $add_wfhitem = $mainsql->wh_action($wfhitempost, 'add_item');
 
-										echo "<script>console.log('".$add_wfhitem."');</script>";
-										exit(0);
+
 										$cnti++;
 
                 endwhile;
 
 
+								echo "<script>console.log('".$add_wfhitem."');</script>";
+								exit(0);
 
                 $wfhpost['EMPID'] = $_POST['empid'];
                 $wfhpost['REQNBR'] = $add_wfhitem;
