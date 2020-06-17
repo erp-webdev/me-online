@@ -1,7 +1,7 @@
 <?php
-
+    $j = 0;
 	if ($logged == 1) {
-
+        echo $j++;
         if ($wh_app) :
 
             # PAGINATION
@@ -24,6 +24,7 @@
 						}else{
 							$wfhday = date("Y-m-16");
 						}
+                        echo $j++;
 
 						$limit_from = date("Y-m-d", strtotime('-30 day', strtotime($wfhday)));
 						$limit_day = true;
@@ -45,9 +46,11 @@
 									}
 								}
 							}
+                            echo $j++;
 
             // REGISTER wfh
             if ($_POST['btnwfhapply'] || $_POST['btnwfhapply_x']) :
+                echo $j++;
 
                 //CHECK FOR INVALID DATE/TIME IN AND OUT
 
@@ -62,6 +65,7 @@
                         exit();
                     endif;
                 endif;
+                echo $j++;
 
 				$wfhitemcount = count($_POST['wfh_dayin']);
 
@@ -78,13 +82,16 @@
 					}
 					$wfhcnt++;
                 }
+                echo $j++;
 				if($wfherror){
 					echo '{"success": false, "error": "All inputs on Work from Home must be completed (Total Worked Hours & Acitivities). Unless the date is excluded."}';
 					exit();
 				}
+                echo $j++;
 
                 $wfhstart = date("Y-m-d", strtotime($_POST['wfh_from']));
                 $wfhend = date("Y-m-d", strtotime($_POST['wfh_to']));
+                echo $j++;
 
                 $wfhapplied = $mainsql->get_whdata_applied($profile_idnum, $wfhstart, $wfhend);
                 if ($wfhapplied) :
@@ -92,6 +99,7 @@
                     echo '{"success": false, "error": "One of the date on Work from Home has been applied or approved with Request ID No. '.$wfhapplieddata[0]['ReqNbr'].'"}';
                     exit();
                 endif;
+                echo $j++;
 
                 //CHECK DATE IF ITS APPLIED - END
 
@@ -153,6 +161,7 @@
 										$cnti++;
 
                 endwhile;
+                echo $j++;
 
 
                 $wfhpost['EMPID'] = $_POST['empid'];
@@ -179,6 +188,7 @@
 
                 $add_wfh = $mainsql->wh_action($wfhpost, 'add');
 
+                echo $j++;
 
 
                 if($add_wfh) :
