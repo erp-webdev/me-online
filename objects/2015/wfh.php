@@ -185,6 +185,8 @@
 
 
                 $add_wfh = $mainsql->wh_action($wfhpost, 'add');
+								echo "<script>alert('$add_wfh');</script>";
+								exit(0);
 
 
                 if($add_wfh) :
