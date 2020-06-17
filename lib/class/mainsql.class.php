@@ -1403,14 +1403,17 @@ class mainsql {
 		return $result;
     }
 
-	function get_whdata_applied($idnum, $from, $to)
+	function get_whdata_applied($idnum, $from, $to, $excluded_dtr)
 	{
 		$sql = "SELECT * FROM HRFrmApplyWFHItem";
 		$sql .= " WHERE REFERENCE IN ";
 		$sql .= " (SELECT Reference FROM TED_VIEW_NOTIFICATION WHERE  DOCTYPE = 'WH' AND EmpID ='".$idnum."' ";
 		$sql .= " AND Approved IN (0,1)) ";
 		$sql .= " AND DTRDate BETWEEN '".$from." 00:00:00.000' AND '".$to." 23:59:59.000' ";
-		$sql .= " AND Status <> 'CANCELLED' ";
+        $sql .= " AND Status <> 'CANCELLED' ";
+        foreach($excluded_dtr as $ex){
+            $sql .= " AND CAST(DTRDate AS DATE) <> '" . $ex . "' ";
+        }
 		$result = $this->get_numrow($sql);
 		return $result;
 	}
@@ -1422,7 +1425,10 @@ class mainsql {
 		$sql .= " (SELECT Reference FROM TED_VIEW_NOTIFICATION WHERE DOCTYPE = 'WH' AND EmpID ='".$idnum."' ";
 		$sql .= " AND Approved IN (0,1)) ";
 		$sql .= " AND DTRDate BETWEEN '".$from." 00:00:00.000' AND '".$to." 23:59:59.000' ";
-		$sql .= " AND Status <> 'CANCELLED' ";
+        $sql .= " AND Status <> 'CANCELLED' ";
+        foreach($excluded_dtr as $ex){
+            $sql .= " AND CAST(DTRDate AS DATE) <> '" . $ex . "' ";
+        }
 		$result = $this->get_row($sql);
 		return $result;
 	}

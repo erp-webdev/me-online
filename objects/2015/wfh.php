@@ -84,7 +84,7 @@
                 $wfhstart = date("Y-m-d", strtotime($_POST['wfh_from']));
                 $wfhend = date("Y-m-d", strtotime($_POST['wfh_to']));
 
-                $wfhapplied = $mainsql->get_whdata_applied($profile_idnum, $wfhstart, $wfhend);
+                $wfhapplied = $mainsql->get_whdata_applied($profile_idnum, $wfhstart, $wfhend, $excluded_dtr);
                 if ($wfhapplied) :
                     $wfhapplieddata = $mainsql->get_whdata_applieddata($profile_idnum, $wfhstart, $wfhend);
                     echo '{"success": false, "error": "One of the date on Work from Home has been applied or approved with Request ID No. '.$wfhapplieddata[0]['Reference'].'"}';
@@ -98,11 +98,12 @@
 
                 $err_item = 0;
                 $wfhitemcount = count($_POST['wfh_dayin']);
-
+                $excluded_dtr = [];
                 $cnti = 1;
                 while($cnti <= $wfhitemcount) :
                     if($_POST['wfh_disable'][$cnti] == 1){
                         $cnti++;
+                        array_push($excluded_dtr, $_POST['wfh_dayin'][$cnti]);
                         continue;
                     }
 
