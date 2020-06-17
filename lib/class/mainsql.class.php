@@ -1418,7 +1418,7 @@ class mainsql {
 		return $result;
 	}
 
-	function get_whdata_applieddata($idnum, $from, $to)
+	function get_whdata_applieddata($idnum, $from, $to, $excluded_dtr)
 	{
 		$sql = "SELECT * FROM HRFrmApplyWFHItem ";
 		$sql .= " WHERE Reference IN ";

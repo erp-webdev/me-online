@@ -86,7 +86,7 @@
 
                 $wfhapplied = $mainsql->get_whdata_applied($profile_idnum, $wfhstart, $wfhend, $excluded_dtr);
                 if ($wfhapplied) :
-                    $wfhapplieddata = $mainsql->get_whdata_applieddata($profile_idnum, $wfhstart, $wfhend);
+                    $wfhapplieddata = $mainsql->get_whdata_applieddata($profile_idnum, $wfhstart, $wfhend, $excluded_dtr);
                     echo '{"success": false, "error": "One of the date on Work from Home has been applied or approved with Request ID No. '.$wfhapplieddata[0]['Reference'].'"}';
                     exit();
                 endif;
