@@ -5227,7 +5227,7 @@ $(function() {
 
 	$(".datepickwh").datepicker({
         dateFormat: 'yy-mm-dd',
-        minDate: $(this).attr('attribute1'),
+        minDate: $(this).attr('attribute5'),
         maxDate: "-1D",
         changeMonth: true,
         changeYear: true
