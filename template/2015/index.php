@@ -139,7 +139,7 @@
                                         </div>
 
                                     <?php endif; ?>
-                                <?php endif; ?><br><br>
+                                <?php endif; ?><br>
 																<div id="mainnotification" class="lefttalign whitetext marginbottom25">
 																	There will be server maintenance from June 20 (sat) to 21 (sun). ME Online System will be unavailable.
                                 </div>
