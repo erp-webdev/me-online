@@ -661,7 +661,6 @@
 			}, true);
 
 			$scope.addItem = function(index, act){
-				alert('3');
 
 				$scope.wfh_days[index].ACTIVITIES.push(
 					{start_time : $scope.wfh_days[index].ACTIVITIES[act].end_time, end_time : null, act: '', excess: 0}
