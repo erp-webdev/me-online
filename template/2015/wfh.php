@@ -577,6 +577,7 @@
 				var sort = (angular.copy($scope.wfh_days)).sort(compare);
 				$scope.wfh_days = sort;
 
+				$scope.applyActivities();
 
 				$scope.holidays = [];
 				for(var k = 0; k < $scope.wfh_days.length; k++)				{
@@ -609,7 +610,6 @@
 						console.log('error retrieving applied dates');
 					});
 				}
-				$scope.applyActivities();
 
 
 			});
@@ -693,8 +693,8 @@
 					}
 
 				}
-
 				$scope.applyActivities();
+
 
 			});
 
