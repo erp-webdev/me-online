@@ -577,6 +577,8 @@
 				var sort = (angular.copy($scope.wfh_days)).sort(compare);
 				$scope.wfh_days = sort;
 
+				console.log($scope.wfh_days);
+
 				$scope.holidays = [];
 				for(var k = 0; k < $scope.wfh_days.length; k++)				{
 					$http({
