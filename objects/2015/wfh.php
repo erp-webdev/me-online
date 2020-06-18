@@ -96,6 +96,11 @@
                 $excluded_dtr = [];
                 $cnti = 1;
                 while($cnti <= $wfhitemcount) :
+										//test
+										var_dump($_POST['wfh_activity'][$cnti]);
+										exit(0);
+
+
                     if($_POST['wfh_disable'][$cnti] == 1){
                         array_push($excluded_dtr, $_POST['wfh_dayin'][$cnti]);
 												$cnti++;
