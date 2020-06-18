@@ -655,9 +655,9 @@
 						$scope.wfh_days[i].CREDIT = 0;
 
 					$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].ACTIVITIES));
-					alert( ('#wfh_activity1').val() );
+					alert( $('#wfh_activity1').val() );
 				}
-				alert( ('#wfh_activity1').val() );
+				alert( $('#wfh_activity1').val() );
 
 				localStorage.setItem('wfh-entries', JSON.stringify($scope.wfh_days));
 			}, true);
