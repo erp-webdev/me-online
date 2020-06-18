@@ -113,6 +113,9 @@
                                     </div>
                                     <?php endif; ?>
                                 <?php endif; ?>
+																<div id="mainnotification" class="lefttalign whitetext marginbottom25">
+																	There will be server maintenance from June 20 (Sat) to 21 (Sun). ME Online System will be unavailable on the said dates.
+                                </div>
                                 <!--div id="mainnotification" class="lefttalign whitetext margintop25">
                                     <b class="smalltext dorangetext">Megaworld EATscapades Survey </b><br>Please answer the survey on the link provided. Click <a href="https://goo.gl/forms/f46lEAm9rDlc8wLo2" class="yellowtext" target="_blank">here</a></b>
                                 </div-->
@@ -140,9 +143,7 @@
 
                                     <?php endif; ?>
                                 <?php endif; ?><br>
-																<div id="mainnotification" class="lefttalign whitetext marginbottom25">
-																	There will be server maintenance from June 20 (sat) to 21 (sun). ME Online System will be unavailable.
-                                </div>
+
                             </div>
 
                             <?php if (in_array($profile_dbname , ['GL', 'MCTI']) ) : ?>
