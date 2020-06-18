@@ -655,8 +655,8 @@
 						$scope.wfh_days[i].CREDIT = 0;
 
 					console.log(eval(i+1)+"  "+JSON.stringify($scope.wfh_days[i].ACTIVITIES));
+					$('#wfh_activity'+eval(i+1)).attr('value', JSON.stringify($scope.wfh_days[i].ACTIVITIES));
 					$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].ACTIVITIES));
-					// $('#wfh_activity'+eval(i+1)).attr('value', 'tezt');
 				}
 
 				localStorage.setItem('wfh-entries', JSON.stringify($scope.wfh_days));
