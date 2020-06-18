@@ -486,40 +486,7 @@
 
 				}
 
-				$("#wfh_from_").change(function() {
-
-					mfrom = $("#wfh_from_").val();
-					mto = $("#wfh_to_").val();
-
-					if (mfrom && mto) {
-
-						$.ajax(
-						{
-							url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=gettrueto3",
-							data: "from=" + mfrom,
-							type: "POST",
-							complete: function(){
-								$("#loading").hide();
-							},
-							success: function(data) {
-
-								if($scope.date_original < data){
-									data = $scope.date_original;
-								}
-
-								$('#wfh_to_').datetimepicker('destroy');
-								$('#wfh_to_').datepicker({
-									dateFormat: 'yy-mm-dd',
-									minDate: mfrom,
-									maxDate: data
-								});
-			          $('#wfh_to_').val(data);
-								$('#wfh_to_').attr("value", data);
-							}
-						})
-
-					}
-				});
+				
 
 				$scope.current_date = new Date(angular.copy($scope.wfh_from));
 				if($scope.wfh_days.length > 0){
