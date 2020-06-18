@@ -637,6 +637,7 @@
 
 				$scope.wfh_days = days_data;
 
+				alert('1');
 			}
 
 			$scope.$watch('wfh_days', function(newVal, oldVal, $scope){
@@ -655,13 +656,15 @@
 						$scope.wfh_days[i].CREDIT = 0;
 
 					$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].ACTIVITIES));
-					$('#wfh_activity'+eval(i+1)).attr('value', 'onchange');
 				}
+				alert('2');
 
 				localStorage.setItem('wfh-entries', JSON.stringify($scope.wfh_days));
 			}, true);
 
 			$scope.addItem = function(index, act){
+				alert('3');
+
 				$scope.wfh_days[index].ACTIVITIES.push(
 					{start_time : $scope.wfh_days[index].ACTIVITIES[act].end_time, end_time : null, act: '', excess: 0}
 				);
@@ -687,7 +690,6 @@
 						$scope.wfh_days[i].CREDIT = 0;
 
 					$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].ACTIVITIES));
-					$('#wfh_activity'+eval(i+1)).attr('value', 'onload');
 				}
 
 			});
