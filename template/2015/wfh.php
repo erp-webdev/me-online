@@ -81,7 +81,7 @@
 																	</table>
 																</td>
 																<td >
-																	<textarea rows="1" style="" name="wfh_activity[{{ $index+1 }}]" id="wfh_activity{{ $index+1 }}" class="txtbox">{{ JSON.stringify(wfh_days[$index].ACTIVITIES) }}</textarea>
+																	<textarea rows="1" style="" name="wfh_activity[{{ $index+1 }}]" id="wfh_activity{{ $index+1 }}" class="txtbox">{{ wfh_days[$index].ACTIVITIES }}</textarea>
 																	<table >
 																		<tr ng-repeat="activity in wfh_day.ACTIVITIES">
 																			<td style="border-bottom: 0px; margin: 0; padding: 0">
