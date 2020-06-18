@@ -656,7 +656,7 @@
 
 					console.log($scope.wfh_days);
 					$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].ACTIVITIES));
-					$('#wfh_activity'+eval(i+1)).val(JSON.stringify($scope.wfh_days[i].ACTIVITIES));
+					$('#wfh_activity'+eval(i+1)).attr('value', JSON.stringify($scope.wfh_days[i].ACTIVITIES));
 				}
 
 				localStorage.setItem('wfh-entries', JSON.stringify($scope.wfh_days));
