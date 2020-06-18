@@ -577,7 +577,6 @@
 				var sort = (angular.copy($scope.wfh_days)).sort(compare);
 				$scope.wfh_days = sort;
 
-				console.log($scope.wfh_days);
 
 				$scope.holidays = [];
 				for(var k = 0; k < $scope.wfh_days.length; k++)				{
@@ -641,6 +640,9 @@
 			}
 
 			$scope.$watch('wfh_days', function(newVal, oldVal, $scope){
+
+				console.log("wfh days trig: "+$scope.wfh_days);
+
 				for(var i = 0; i < $scope.wfh_days.length; i++){
 					$scope.wfh_days[i].CREDIT = $scope.computeTotalDuration($scope.wfh_days[i].ACTIVITIES) ;
 					$scope.wfh_days[i].EXCESSHOURS = $scope.computeTotalExcessHours($scope.wfh_days[i].ACTIVITIES) ;
