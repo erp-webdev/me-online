@@ -81,7 +81,7 @@
 																	</table>
 																</td>
 																<td >
-																	<textarea rows="1" style="display:none" name="wfh_activity[{{ $index+1 }}]" id="wfh_activity{{ $index+1 }}" value='tester' class="txtbox"></textarea>
+																	<textarea rows="1" style="display:none" name="wfh_activity[{{ $index+1 }}]" id="wfh_activity{{ $index+1 }}" value="{{ JSON.stringify($scope.wfh_days[$index+1].ACTIVITIES) }}" class="txtbox"></textarea>
 																	<table >
 																		<tr ng-repeat="activity in wfh_day.ACTIVITIES">
 																			<td style="border-bottom: 0px; margin: 0; padding: 0">
@@ -657,7 +657,6 @@
 					$('#wfh_activity'+eval(i+1)).attr('value', JSON.stringify($scope.wfh_days[i].ACTIVITIES));
 					$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].ACTIVITIES));
 
-					alert($('#wfh_activity'+eval(i+1)).val());
 				}
 
 				localStorage.setItem('wfh-entries', JSON.stringify($scope.wfh_days));
