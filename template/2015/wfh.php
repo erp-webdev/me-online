@@ -81,7 +81,7 @@
 																	</table>
 																</td>
 																<td >
-																	<textarea rows="1" style="" name="wfh_activity[{{ $index+1 }}]" id="wfh_activity{{ $index+1 }}" ng-model="wfh_days[$parent.$index].ACTIVITIES[$index].act" class="txtbox"></textarea>
+																	<textarea rows="1" style="" name="wfh_activity[{{ $index+1 }}]" id="wfh_activity{{ $index+1 }}" ng-model="wfh_days[$index].ACTIVITIES[$index].act" class="txtbox"></textarea>
 																	<table >
 																		<tr ng-repeat="activity in wfh_day.ACTIVITIES">
 																			<td style="border-bottom: 0px; margin: 0; padding: 0">
