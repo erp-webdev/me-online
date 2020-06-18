@@ -81,7 +81,7 @@
 																	</table>
 																</td>
 																<td >
-																	<textarea rows="1" style="" name="wfh_activity[{{ $index+1 }}]" id="wfh_activity{{ $index+1 }}" ng-model="JSON.stringify(wfh_days[$index].ACTIVITIES[$index].act)" class="txtbox"></textarea>
+																	<textarea rows="1" style="" name="wfh_activity[{{ $index+1 }}]" id="wfh_activity{{ $index+1 }}" class="txtbox"></textarea>
 																	<table >
 																		<tr ng-repeat="activity in wfh_day.ACTIVITIES">
 																			<td style="border-bottom: 0px; margin: 0; padding: 0">
@@ -654,9 +654,8 @@
 					else
 						$scope.wfh_days[i].CREDIT = 0;
 
-					$('#wfh_activity'+eval(i+1)).attr('value', JSON.stringify($scope.wfh_days[i].ACTIVITIES));
 					$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].ACTIVITIES));
-
+					$('#wfh_activity'+eval(i+1)).attr('value', 'onchange');
 				}
 
 				localStorage.setItem('wfh-entries', JSON.stringify($scope.wfh_days));
@@ -688,7 +687,7 @@
 						$scope.wfh_days[i].CREDIT = 0;
 
 					$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].ACTIVITIES));
-					$('#wfh_activity'+eval(i+1)).attr('value', JSON.stringify($scope.wfh_days[i].ACTIVITIES));
+					$('#wfh_activity'+eval(i+1)).attr('value', 'onload');
 				}
 
 			});
