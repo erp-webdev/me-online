@@ -641,7 +641,7 @@
 
 			$scope.$watch('wfh_days', function(newVal, oldVal, $scope){
 
-				console.log("wfh days trig: "+$scope.wfh_days);
+				console.log($scope.wfh_days);
 
 				for(var i = 0; i < $scope.wfh_days.length; i++){
 					$scope.wfh_days[i].CREDIT = $scope.computeTotalDuration($scope.wfh_days[i].ACTIVITIES) ;
