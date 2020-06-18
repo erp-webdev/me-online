@@ -635,9 +635,9 @@
 					}
 				});
 
+				alert('1');
 				$scope.wfh_days = days_data;
 
-				alert('1');
 			}
 
 			$scope.$watch('wfh_days', function(newVal, oldVal, $scope){
