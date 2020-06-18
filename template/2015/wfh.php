@@ -609,6 +609,7 @@
 						console.log('error retrieving applied dates');
 					});
 				}
+				alert('1');
 
 
 			});
@@ -635,7 +636,6 @@
 					}
 				});
 
-				alert('1');
 				$scope.wfh_days = days_data;
 
 			}
