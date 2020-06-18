@@ -641,7 +641,6 @@
 
 			$scope.$watch('wfh_days', function(newVal, oldVal, $scope){
 
-				console.log($scope.wfh_days);
 
 				for(var i = 0; i < $scope.wfh_days.length; i++){
 					$scope.wfh_days[i].CREDIT = $scope.computeTotalDuration($scope.wfh_days[i].ACTIVITIES) ;
@@ -655,8 +654,9 @@
 					else
 						$scope.wfh_days[i].CREDIT = 0;
 
+					console.log($scope.wfh_days);
 					$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].ACTIVITIES));
-					$('#wfh_activity'+eval(i+1)).val('tester');
+					$('#wfh_activity'+eval(i+1)).val(JSON.stringify($scope.wfh_days[i].ACTIVITIES));
 				}
 
 				localStorage.setItem('wfh-entries', JSON.stringify($scope.wfh_days));
