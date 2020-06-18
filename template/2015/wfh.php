@@ -572,12 +572,13 @@
 					}
 
 					$scope.current_date.setDate($scope.current_date.getDate()+1);
+					$scope.applyActivities();
+					
 				}
 
 				var sort = (angular.copy($scope.wfh_days)).sort(compare);
 				$scope.wfh_days = sort;
 
-				$scope.applyActivities();
 
 				$scope.holidays = [];
 				for(var k = 0; k < $scope.wfh_days.length; k++)				{
