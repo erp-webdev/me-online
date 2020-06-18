@@ -609,6 +609,7 @@
 						console.log('error retrieving applied dates');
 					});
 				}
+				$scope.applyActivities();
 
 
 			});
@@ -674,20 +675,26 @@
 
 			angular.element(document).ready(function () {
 
-				for(var i = 0; i < $scope.wfh_days.length; i++){
-					$scope.wfh_days[i].CREDIT = $scope.computeTotalDuration($scope.wfh_days[i].ACTIVITIES) ;
-					$scope.wfh_days[i].EXCESSHOURS = $scope.computeTotalExcessHours($scope.wfh_days[i].ACTIVITIES) ;
+				$scope.applyActivities = function(){
 
-					for(var j = 0; j < $scope.wfh_days[i].ACTIVITIES.length ; j++){
-						$scope.wfh_days[i].ACTIVITIES[j].excess = $scope.wfh_days[i].EXCESSHOURS;
+					for(var i = 0; i < $scope.wfh_days.length; i++){
+						$scope.wfh_days[i].CREDIT = $scope.computeTotalDuration($scope.wfh_days[i].ACTIVITIES) ;
+						$scope.wfh_days[i].EXCESSHOURS = $scope.computeTotalExcessHours($scope.wfh_days[i].ACTIVITIES) ;
+
+						for(var j = 0; j < $scope.wfh_days[i].ACTIVITIES.length ; j++){
+							$scope.wfh_days[i].ACTIVITIES[j].excess = $scope.wfh_days[i].EXCESSHOURS;
+						}
+						if($scope.wfh_days[i].CREDIT > $scope.wfh_days[i].BREAKTIME)
+							$scope.wfh_days[i].CREDIT -= $scope.wfh_days[i].BREAKTIME;
+						else
+							$scope.wfh_days[i].CREDIT = 0;
+
+						$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].ACTIVITIES));
 					}
-					if($scope.wfh_days[i].CREDIT > $scope.wfh_days[i].BREAKTIME)
-						$scope.wfh_days[i].CREDIT -= $scope.wfh_days[i].BREAKTIME;
-					else
-						$scope.wfh_days[i].CREDIT = 0;
 
-					$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].ACTIVITIES));
 				}
+
+				$scope.applyActivities();
 
 			});
 
