@@ -5225,10 +5225,9 @@ $(function() {
         changeYear: true
     });
 
-  alert(<?php echo $limitdate; ?>);
 	$(".datepickwh").datepicker({
         dateFormat: 'yy-mm-dd',
-        minDate: $(this).attr('attribute1'),
+        minDate: "2020-06-01",
         maxDate: "-1D",
         changeMonth: true,
         changeYear: true
