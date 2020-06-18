@@ -1251,7 +1251,7 @@ class mainsql {
 
                 $sql = "SELECT [outer].* FROM ( ";
                 $sql .= " SELECT ROW_NUMBER() OVER(ORDER BY ReqDate DESC) as ROW_NUMBER, ";
-                $sql .= " ReqNbr, EmpID, ReqDate, DateStart, Posted, PostedDate, StatusForms FROM HRFrmApplyWFH ";
+                $sql .= " ReqNbr, EmpID, ReqDate, DateStart, Posted, PostedDate, StatusForms FROM HRFrmManualDTR ";
                 $sql .= " WHERE SeqID != 0 ";
                 if ($id != NULL) : $sql .= " AND ReqNbr = '".$id."' "; endif;
                 if ($search != NULL) : $sql .= " AND ReqNbr LIKE '%".$search."%' "; endif;
@@ -1271,7 +1271,7 @@ class mainsql {
                     $sql .= " OFFSET ".$start." ROWS ";
                     $sql .= " FETCH NEXT ".$limit." ROWS ONLY ";
                 endif;*/
-                return $sql;
+
                 if ($count) : $result = $this->get_numrow($sql);
                 else : $result = $this->get_row($sql);
                 endif;
