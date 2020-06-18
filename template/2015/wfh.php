@@ -81,7 +81,7 @@
 																	</table>
 																</td>
 																<td >
-																	<textarea rows="1" style="" name="wfh_activity[{{ $index+1 }}]" id="wfh_activity{{ $index+1 }}" class="txtbox"></textarea>
+																	<textarea rows="1" style="" name="wfh_activity[{{ $index+1 }}]" id="wfh_activity{{ $index+1 }}" class="txtbox">{{ JSON.stringify(wfh_day.ACTIVITIES) }}</textarea>
 																	<table >
 																		<tr ng-repeat="activity in wfh_day.ACTIVITIES">
 																			<td style="border-bottom: 0px; margin: 0; padding: 0">
@@ -573,7 +573,7 @@
 
 					$scope.current_date.setDate($scope.current_date.getDate()+1);
 					$scope.applyActivities();
-					
+
 				}
 
 				var sort = (angular.copy($scope.wfh_days)).sort(compare);
