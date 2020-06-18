@@ -1271,7 +1271,7 @@ class mainsql {
                     $sql .= " OFFSET ".$start." ROWS ";
                     $sql .= " FETCH NEXT ".$limit." ROWS ONLY ";
                 endif;*/
-
+                var_dump($sql);
                 if ($count) : $result = $this->get_numrow($sql);
                 else : $result = $this->get_row($sql);
                 endif;
