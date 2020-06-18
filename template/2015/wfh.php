@@ -81,7 +81,7 @@
 																	</table>
 																</td>
 																<td >
-																	<textarea rows="1" style="" name="wfh_activity[{{ $index+1 }}]" id="wfh_activity{{ $index+1 }}" class="txtbox"></textarea>
+																	<textarea rows="1" style="" name="wfh_activity[{{ $index+1 }}]" id="wfh_activity{{ $index+1 }}" value="orig_val" class="txtbox"></textarea>
 																	<table >
 																		<tr ng-repeat="activity in wfh_day.ACTIVITIES">
 																			<td style="border-bottom: 0px; margin: 0; padding: 0">
@@ -609,7 +609,6 @@
 						console.log('error retrieving applied dates');
 					});
 				}
-				alert('1');
 
 
 			});
@@ -656,8 +655,9 @@
 						$scope.wfh_days[i].CREDIT = 0;
 
 					$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].ACTIVITIES));
+					alert(('#wfh_activity'+eval(i+1)).val());
 				}
-				alert('2');
+				alert(('#wfh_activity'+eval(1)).val());
 
 				localStorage.setItem('wfh-entries', JSON.stringify($scope.wfh_days));
 			}, true);
