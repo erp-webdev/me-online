@@ -81,7 +81,7 @@
 																	</table>
 																</td>
 																<td >
-																	<textarea rows="1" style="" name="wfh_activity[{{ $index+1 }}]" id="wfh_activity{{ $index+1 }}" class="txtbox">{{ JSON.stringify(wfh_day.ACTIVITIES) }}</textarea>
+																	<textarea rows="1" style="" name="wfh_activity[{{ $index+1 }}]" id="wfh_activity{{ $index+1 }}" class="txtbox"></textarea>
 																	<table >
 																		<tr ng-repeat="activity in wfh_day.ACTIVITIES">
 																			<td style="border-bottom: 0px; margin: 0; padding: 0">
@@ -460,6 +460,25 @@
 				}
 			}
 
+			$scope.applyActivities = function(){
+
+				for(var i = 0; i < $scope.wfh_days.length; i++){
+					$scope.wfh_days[i].CREDIT = $scope.computeTotalDuration($scope.wfh_days[i].ACTIVITIES) ;
+					$scope.wfh_days[i].EXCESSHOURS = $scope.computeTotalExcessHours($scope.wfh_days[i].ACTIVITIES) ;
+
+					for(var j = 0; j < $scope.wfh_days[i].ACTIVITIES.length ; j++){
+						$scope.wfh_days[i].ACTIVITIES[j].excess = $scope.wfh_days[i].EXCESSHOURS;
+					}
+					if($scope.wfh_days[i].CREDIT > $scope.wfh_days[i].BREAKTIME)
+						$scope.wfh_days[i].CREDIT -= $scope.wfh_days[i].BREAKTIME;
+					else
+						$scope.wfh_days[i].CREDIT = 0;
+
+					$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].ACTIVITIES));
+				}
+
+			}
+
 			$scope.$watchGroup(['wfh_from', 'wfh_to'], function(newVal, oldVal){
 
 				$scope.applied_warn = false;
@@ -676,24 +695,7 @@
 
 			angular.element(document).ready(function () {
 
-				$scope.applyActivities = function(){
 
-					for(var i = 0; i < $scope.wfh_days.length; i++){
-						$scope.wfh_days[i].CREDIT = $scope.computeTotalDuration($scope.wfh_days[i].ACTIVITIES) ;
-						$scope.wfh_days[i].EXCESSHOURS = $scope.computeTotalExcessHours($scope.wfh_days[i].ACTIVITIES) ;
-
-						for(var j = 0; j < $scope.wfh_days[i].ACTIVITIES.length ; j++){
-							$scope.wfh_days[i].ACTIVITIES[j].excess = $scope.wfh_days[i].EXCESSHOURS;
-						}
-						if($scope.wfh_days[i].CREDIT > $scope.wfh_days[i].BREAKTIME)
-							$scope.wfh_days[i].CREDIT -= $scope.wfh_days[i].BREAKTIME;
-						else
-							$scope.wfh_days[i].CREDIT = 0;
-
-						$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].ACTIVITIES));
-					}
-
-				}
 				$scope.applyActivities();
 
 
