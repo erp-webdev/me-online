@@ -100,7 +100,7 @@
 
 																	$(document).ready(function() {
 																		$('.leave2').hide();
-
+																		alert('test');
 																		if($('#leave_type').val() == 'L04'){
 																			var from_default = new Date("<?php echo date('Y-m-d', strtotime($leave_bal[0][DateEffect])); ?>");
 																			$('#leave_from').datepicker("setDate", from_default);
@@ -212,8 +212,6 @@
                                                                                 $("#leavetotal").removeClass("invisible");
                                                                                 $(".total_pay").html(data);
                                                                                 $("#tdays").val(data);
-																																								//testhere
-																																								alert('b  '+data);
                                                                             }
                                                                         })
                                                                     });
@@ -286,8 +284,6 @@
                                                                                 $("#leavetotal").removeClass("invisible");
                                                                                 $(".total_pay").html(data);
                                                                                 $("#tdays").val(data);
-																																								//testhere
-																																								alert("a  " + data);
                                                                             }
                                                                         })
                                                                     });
