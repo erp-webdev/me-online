@@ -73,9 +73,11 @@
                 $allowedExts = array("JPG", "JPEG", "GIF", "PNG", "PDF", "jpg", "jpeg", "gif", "png", "pdf");
 
                 if ($_POST['balance'] >= $_POST['days'] && $balanceval >= $_POST['days']) :
-
+									$a=$_POST['balance'];
+									$b=$_POST['days'];
+									$c=$balanceval;
 									//testhere
-									echo '{"success": false, "error": "Test Dev "}';
+									echo '{"success": false, "error": "balance: '.$a.'  days: '.$b.' balanceval: '.$c.'  "}';
 									exit();
 
 
