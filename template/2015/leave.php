@@ -271,6 +271,8 @@
                                                                                 $("#leavetotal").removeClass("invisible");
                                                                                 $(".total_day").html(data);
                                                                                 $("#tdayswop").val(data);
+																																								//testhere
+																																								alert(data);
                                                                             }
                                                                         })
 
