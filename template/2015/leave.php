@@ -197,8 +197,6 @@
                                                                                 $("#leavetotal").removeClass("invisible");
                                                                                 $(".total_day").html(data);
                                                                                 $("#tdayswop").val(data);
-																																								//testhere
-																																								alert(data);
                                                                             }
                                                                         })
 
@@ -214,6 +212,8 @@
                                                                                 $("#leavetotal").removeClass("invisible");
                                                                                 $(".total_pay").html(data);
                                                                                 $("#tdays").val(data);
+																																								//testhere
+																																								alert('b  '+data);
                                                                             }
                                                                         })
                                                                     });
@@ -271,8 +271,6 @@
                                                                                 $("#leavetotal").removeClass("invisible");
                                                                                 $(".total_day").html(data);
                                                                                 $("#tdayswop").val(data);
-																																								//testhere
-																																								alert(data);
                                                                             }
                                                                         })
 
@@ -288,6 +286,8 @@
                                                                                 $("#leavetotal").removeClass("invisible");
                                                                                 $(".total_pay").html(data);
                                                                                 $("#tdays").val(data);
+																																								//testhere
+																																								alert("a  " + data);
                                                                             }
                                                                         })
                                                                     });
