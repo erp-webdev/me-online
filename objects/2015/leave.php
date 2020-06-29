@@ -1,9 +1,9 @@
 <?php
-	
+
 	if ($logged == 1) {
-        
+
         //$lv_app = 0;
-        
+
         if ($lv_app) :
 
             # PAGINATION
@@ -13,7 +13,7 @@
             //*********************** MAIN CODE START **********************\\
 
             # ASSIGNED VALUE
-            $page_title = "Leave Application";	
+            $page_title = "Leave Application";
 
             //***********************  MAIN CODE END  **********************\\
 
@@ -23,10 +23,10 @@
 
             // REGISTER LEAVE
             if ($_POST['btnleaveapply'] || $_POST['btnleaveapply_x']) :
-        
-        
+
+
                 //GET LEAVE BALANCE
-        
+
                 $ltype = $_POST['leave_type'];
                 if ($ltype) :
                     if ($ltype == 'L01' || $ltype == 'L03') :
@@ -46,49 +46,55 @@
                             $balance = 0;
                         endif;
                     endif;
-                else :            
-                    $balance = 0;            
-                endif;                 
+                else :
+                    $balance = 0;
+                endif;
                 $balanceval = $balance <= 0 ? 0 : $balance;
-        
-                
+
+
                 //CHECK DATE IF ITS APPLIED - START
-        
-                $leavestart = date("Y-m-d", strtotime($_POST['leave_from']));        
-                $leaveend = date("Y-m-d", strtotime($_POST['leave_to']));   
-        
-                if ($_POST['totaldays'] == 0) :                        
+
+                $leavestart = date("Y-m-d", strtotime($_POST['leave_from']));
+                $leaveend = date("Y-m-d", strtotime($_POST['leave_to']));
+
+                if ($_POST['totaldays'] == 0) :
                     echo '{"success": false, "error": "You\'ve no date series on leave details. Please check DTR first"}';
                     exit();
-                endif;       
-                
+                endif;
+
                 $getleaveapplied = $mainsql->get_leavedata_applied($profile_idnum, $leavestart, $leaveend);
-                if ($getleaveapplied) :                        
+                if ($getleaveapplied) :
                     echo '{"success": false, "error": "One of the date on leave has been applied or approved "}';
                     exit();
                 endif;
-        
-                //CHECK DATE IF ITS APPLIED - END       
+
+                //CHECK DATE IF ITS APPLIED - END
 
                 $allowedExts = array("JPG", "JPEG", "GIF", "PNG", "PDF", "jpg", "jpeg", "gif", "png", "pdf");
-        
+
                 if ($_POST['balance'] >= $_POST['days'] && $balanceval >= $_POST['days']) :
-        
+
+									//testhere
+									echo '{"success": false, "error": "Test Dev "}';
+									exit();
+
+
+
                     if ($_POST['leave_type'] == "L01" && count($_POST['leave_duration']) >= 3) :
                         if (!$_FILES['attachment1']['name']) :
                             echo '{"success": false, "error": "Attachment is required on 3 or more day sick leave"}';
                             exit();
                         endif;
                     endif;
-        
+
                     if ($_POST['leave_type'] == "L12") :
-                        $bdaymonth = date('n', strtotime($profile_bday));                        
+                        $bdaymonth = date('n', strtotime($profile_bday));
                         if ($bdaymonth != date('n', strtotime($_POST['leave_from']))) :
                             echo '{"success": false, "error": "This is not your birthday month"}';
                             exit();
                         endif;
                     endif;
-        
+
                     $errorfile = 0;
                     for($i=1; $i<=5; $i++) :
 
@@ -109,43 +115,43 @@
                         echo '{"success": false, "error": "One of the attachment isn\'t PDF, JPG nor GIF and/or not less then 200Kb"}';
                         exit();
                     endif;
-        
-        
+
+
                     //LEAVE ITEMS
                     $mail_details = '';
 
                     $err_item = 0;
                     $leaveitemcount = count($_POST['leave_duration']);
-                    
+
                     $cnti = 0;
-        
+
                     while($cnti < $leaveitemcount) :
-        
+
                         if ($cnti == 0) :
                             $litempost['REQNBR'] = 0;
-                        else : 
+                        else :
                             $litempost['REQNBR'] = $add_leaveitem;
                         endif;
                         $litempost['DURATION'] = $_POST['leave_duration'][$cnti];
                         $litempost['LEAVEDATE'] = $_POST['leave_date'][$cnti];
-                        $litempost['WITHPAY'] = $_POST['leave_pay'][$cnti];       
-                        $litempost['ABSENTID'] = $_POST['leave_type'];        
-                        $litempost['EMPID'] = $_POST['empid'];        
-                        
-                        $add_leaveitem = $mainsql->leave_action($litempost, 'add_item');	
-                        
+                        $litempost['WITHPAY'] = $_POST['leave_pay'][$cnti];
+                        $litempost['ABSENTID'] = $_POST['leave_type'];
+                        $litempost['EMPID'] = $_POST['empid'];
+
+                        $add_leaveitem = $mainsql->leave_action($litempost, 'add_item');
+
                         if ($add_leaveitem) :
                             $mail_details .= "<tr><td>".date('M j', strtotime($_POST['leave_date'][$cnti]))."</td><td>".$_POST['leave_duration'][$cnti]."</td><td>".($_POST['leave_pay'][$cnti] ? 'Yes' : 'No')."</td></tr>";
                             $cnti++;
                         endif;
-        
+
                     endwhile;
-                    
+
                     if (!$cnti) :
                         echo '{"success": false, "error": "No leave details has been set. Please check your DTR first."}';
                         exit();
                     endif;
-        
+
                     /*foreach ($_POST['leave_duration'] as $key => $value) :
 
                         $litempost['REQNBR'] = $add_leave;
@@ -154,7 +160,7 @@
                         $litempost['WITHPAY'] = $_POST['leave_pay'][$key];
 
                         $mail_details .= "<tr><td>".date('M j', strtotime($_POST['leave_date'][$key]))."</td><td>".$value."</td><td>".($_POST['leave_pay'][$key] ? 'Yes' : 'No')."</td></tr>";
-                        $add_leaveitem = $mainsql->leave_action($litempost, 'add_item');			        
+                        $add_leaveitem = $mainsql->leave_action($litempost, 'add_item');
 
                         if ($add_leaveitem != 1) : $err_item++; endif;
 
@@ -184,12 +190,12 @@
                     $leavepost['USER'] = $_POST['user'];
                     $leavepost['REMARKS'] = "";
 
-                    $add_leave = $mainsql->leave_action($leavepost, 'add');			
+                    $add_leave = $mainsql->leave_action($leavepost, 'add');
                     //var_dump($add_leave);
-                    if($add_leave) : 
-        
+                    if($add_leave) :
+
                         for($i=1; $i<=5; $i++) :
-        
+
                             //var_dump($_FILES['attachment'.$i]);
 
                             if ($_FILES['attachment'.$i]['name']) :
@@ -206,25 +212,25 @@
 
                                     $path = "uploads/leave/";
                                     $fixname = 'attach_'.$add_leave.'_'.$i.'.'.$extension;
-                                    $target_path = $path.$fixname; 
+                                    $target_path = $path.$fixname;
 
                                     $filemove = move_uploaded_file($image, $target_path);
 
                                     $attach['attachfile'] = $fixname;
                                     $attach['attachtype'] = $filetype;
-                                    $attach['reqnbr'] = $add_leave;		
+                                    $attach['reqnbr'] = $add_leave;
                                     //var_dump($filemove);
 
                                     if($filemove) :
-                                        $add_attach = $mainsql->attach_action($attach, 'add');	
+                                        $add_attach = $mainsql->attach_action($attach, 'add');
                                     endif;
 
                                 endif;
 
                             endif;
 
-                        endfor;   
-        
+                        endfor;
+
                         $requestor = $register->get_member($_POST['empid']);
                         $request_info = $tblsql->get_mrequest(2, 0, 0, 0, $add_leave, 0, NULL, NULL, NULL, NULL);
                         $approver = $logsql->get_allmember($_POST['approver1'], $_POST['dbapprover1']);
@@ -250,10 +256,10 @@
                             $headers .= "MIME-Version: 1.0\r\n";
                             $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-                            $sendmail = mail($requestor[0]['EmailAdd'], "New Leave Request", $message, $headers);   
-                        endif; 
+                            $sendmail = mail($requestor[0]['EmailAdd'], "New Leave Request", $message, $headers);
+                        endif;
 
-                        if ($appemailblock) :        
+                        if ($appemailblock) :
                             //SEND EMAIL (APPROVER)
 
                             $message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 100%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>New Leave Request from ".$requestor[0]['FName']." ".$requestor[0]['LName']."</span><br><br>Hi ".$approver[0]['NickName'].",<br><br>";
@@ -272,7 +278,7 @@
                             $headers .= "MIME-Version: 1.0\r\n";
                             $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-                            $sendmail = mail($approver[0]['EmailAdd'], "New Leave Request for your Approval", $message, $headers);  
+                            $sendmail = mail($approver[0]['EmailAdd'], "New Leave Request for your Approval", $message, $headers);
                         endif;
 
                         //READ STATUS
@@ -290,33 +296,33 @@
 
                         if ($err_item) :
                             echo '{"success": false, "error": "One or more of leave item hasn\'t been process due network problem. Please forward email notification with its request ID."}';
-                            exit();        
+                            exit();
                         else :
                             echo '{"success": true}';
                             exit();
                         endif;
-        
+
                     else :
                         echo '{"success": false, "error": "There was a problem on leave application"}';
                         exit();
-                    endif; 
+                    endif;
                 else :
                     echo '{"success": false, "error": "Your leave with pay is greater than your leave balance."}';
                     exit();
-                endif; 
-                    
+                endif;
+
 
             endif;
-        
+
         else :
-        
+
             echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."'</script>";
-        
+
         endif;
 	}
 	else
 	{
 		echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/login'</script>";
 	}
-	
+
 ?>
