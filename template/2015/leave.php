@@ -197,6 +197,8 @@
                                                                                 $("#leavetotal").removeClass("invisible");
                                                                                 $(".total_day").html(data);
                                                                                 $("#tdayswop").val(data);
+																																								//testhere
+																																								alert(data);
                                                                             }
                                                                         })
 
@@ -484,7 +486,7 @@
                     </div>
 
                     <script type="text/javascript">
-                        <?php 
+                        <?php
                         // Temporary solution for application of leave from 2019
 
                          ?>
@@ -512,7 +514,7 @@
                             var lto = $('#leave_to').val();
 
                             if(lfrom >= '2020-01-01' || lto >= '2020-01-01'){
-                                
+
                                 if('<?php echo $profile_dbname; ?>' == 'GL'){
 
                                     $('#btnleaveapply').prop({
@@ -549,7 +551,7 @@
 alert('Vacation Leave/Sick Leave/Emergency Leave will be suspended until further notice.'); $('#btnleaveapply').hide();
 
     */
-	    
+
 
                     </script>
 
