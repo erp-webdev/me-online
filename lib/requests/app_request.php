@@ -1964,7 +1964,7 @@
 										$empty_date = date('w', strtotime($vdates));
 
 										$empty_shift = $mainsql->get_emptyshift($idnum, $profile_dbname);
-										var_dump($empty_shift[0]);
+										var_dump($empty_shift);
 										exit();
 
                     $dayshift = $mainsql->get_shift($shiftsched2[0]['ShiftID']);
