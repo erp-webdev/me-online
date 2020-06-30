@@ -694,8 +694,6 @@
                             $("#leavetotal").removeClass("invisible");
                             $(".total_day").html(data);
                             $("#tdayswop").val(data);
-														// testhere
-														alert('app request leave duration ');
                         }
                     })
 
@@ -784,9 +782,6 @@
                             $("#leavetotal").removeClass("invisible");
                             $(".total_pay").html(data);
                             $("#tdays").val(data);
-														
-														// testhere
-														alert('app request leave pay ');
                         }
                     })
                 });
