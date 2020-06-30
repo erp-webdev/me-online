@@ -1944,8 +1944,12 @@ class mainsql {
 		$result = $this->get_row($sql);
 		return $result;
     }
-    function get_weekday($empid = NULL, $date){
-      $sql = '';
+
+    function get_emptyshift($empid){
+      $sql = "SELECT TOP 1 * FROM HREmpShiftSchedule WHER EmpID = '$empid'
+			       ORDER BY EffectivityDate DESC";
+      $result = $this->get_row($sql);
+ 		  return $result;
     }
 
     function get_otout($empid, $date)
