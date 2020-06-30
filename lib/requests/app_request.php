@@ -1966,23 +1966,28 @@
 											$empty_shift = $mainsql->get_emptyshift($idnum, $profile_dbname);
 
 											if($empty_date == 0){
+												var_dump('sunday');
 												$sft2 = $empty_shift[0]['SunShiftID'];
 											}elseif ($empty_date == 1) {
+												var_dump('monday');
 												$sft2 = $empty_shift[0]['MonShiftID'];
 											}elseif ($empty_date == 2) {
-												$sft2 = $empty_shift[0]['MonShiftID'];
-											}elseif ($empty_date == 3) {
+												var_dump('tuesday');
 												$sft2 = $empty_shift[0]['TueShiftID'];
-											}elseif ($empty_date == 4) {
+											}elseif ($empty_date == 3) {
+												var_dump('wednesday');
 												$sft2 = $empty_shift[0]['WedShiftID'];
-											}elseif ($empty_date == 5) {
+											}elseif ($empty_date == 4) {
+												var_dump('thursday');
 												$sft2 = $empty_shift[0]['ThuShiftID'];
-											}elseif ($empty_date == 6) {
+											}elseif ($empty_date == 5) {
+												var_dump('friday');
 												$sft2 = $empty_shift[0]['FriShiftID'];
-											}elseif ($empty_date == 7) {
+											}elseif ($empty_date == 6) {
+												var_dump('saturday');
 												$sft2 = $empty_shift[0]['SatShiftID'];
 											}
-											var_dump($empty_shift[0]['FriShiftID']);
+											var_dump($sft2);
 											exit();
 										}
 
