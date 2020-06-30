@@ -1961,7 +1961,7 @@
                     $sft2 = $shiftsched2[0]['ShiftID'];
 
 										// insert query here if sft2 is null
-										var_dump(date('w', strtotime($vdates)));
+										var_dump(date('w', strtotime('2020-06-28')));
 										exit();
 
 										$empty_shift = $mainsql->get_emptyshift($idnum, $vdates);
