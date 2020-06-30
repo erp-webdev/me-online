@@ -1982,7 +1982,7 @@
 											}elseif ($empty_date == 7) {
 												$sft2 = $empty_shift[0]['SatShiftID'];
 											}
-											var_dump($sft2);
+											var_dump($empty_shift[0]['FriShiftID']);
 											exit();
 										}
 
