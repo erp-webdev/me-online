@@ -1962,12 +1962,31 @@
 
 										// insert query here if sft2 is null
 										$empty_date = date('w', strtotime($vdates));
+										if(!$sft2){
+											$empty_shift = $mainsql->get_emptyshift($idnum, $profile_dbname);
 
-										$empty_shift = $mainsql->get_emptyshift($idnum, $profile_dbname);
-										var_dump($empty_shift);
-										exit();
+											if($empty_date == 0){
+												$sft2 = $empty_shift[0]['SunShiftID'];
+											}elseif ($empty_date == 1) {
+												$sft2 = $empty_shift[0]['MonShiftID'];
+											}elseif ($empty_date == 2) {
+												$sft2 = $empty_shift[0]['MonShiftID'];
+											}elseif ($empty_date == 3) {
+												$sft2 = $empty_shift[0]['TueShiftID'];
+											}elseif ($empty_date == 4) {
+												$sft2 = $empty_shift[0]['WedShiftID'];
+											}elseif ($empty_date == 5) {
+												$sft2 = $empty_shift[0]['ThuShiftID'];
+											}elseif ($empty_date == 6) {
+												$sft2 = $empty_shift[0]['FriShiftID'];
+											}elseif ($empty_date == 7) {
+												$sft2 = $empty_shift[0]['SatShiftID'];
+											}
+											var_dump($sft2);
+											exit();
+										}
 
-                    $dayshift = $mainsql->get_shift($shiftsched2[0]['ShiftID']);
+                    $dayshift = $mainsql->get_shift($sft2);
 
                     $hours = $dayshift[0]['NUMHrs'] - $dayshift[0]['BreakHours'];
 
