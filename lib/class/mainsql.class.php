@@ -1945,10 +1945,10 @@ class mainsql {
 		return $result;
     }
 
-    function get_emptyshift($empid){
+    function get_emptyshift($empid,$dbname){
       $sql = "SELECT TOP 1 * FROM HREmpShiftSchedule WHER EmpID = '$empid'
 			       ORDER BY EffectivityDate DESC";
-      $result = $this->get_row($sql);
+      $result = $this->get_row($sql,$dbname);
  		  return $result;
     }
 

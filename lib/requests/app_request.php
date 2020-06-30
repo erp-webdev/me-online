@@ -1963,7 +1963,7 @@
 										// insert query here if sft2 is null
 										$empty_date = date('w', strtotime($vdates));
 
-										$empty_shift = $mainsql->get_emptyshift($idnum);
+										$empty_shift = $mainsql->get_emptyshift($idnum, $profile_dbname);
 										var_dump($empty_shift[0]);
 										exit();
 
