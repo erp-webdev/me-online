@@ -1949,7 +1949,7 @@ class mainsql {
       $sql = "SELECT TOP 1 * FROM HREmpShiftSchedule WHER EmpID = '$empid'
 			       ORDER BY EffectivityDate DESC";
       $result = $this->get_row($sql,$dbname);
- 		  return $result;
+ 		  return $sql;
     }
 
     function get_otout($empid, $date)
