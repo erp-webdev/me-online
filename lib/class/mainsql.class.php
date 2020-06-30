@@ -1944,6 +1944,9 @@ class mainsql {
 		$result = $this->get_row($sql);
 		return $result;
     }
+    function get_weekday($empid = NULL, $date){
+      $sql = '';
+    }
 
     function get_otout($empid, $date)
     {

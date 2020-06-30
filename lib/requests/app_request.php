@@ -1960,6 +1960,12 @@
                     $shiftsched2 = $mainsql->get_schedshiftdtr($idnum, $vdates);
                     $sft2 = $shiftsched2[0]['ShiftID'];
 
+										// insert query here if sft2 is null
+										var_dump(date('w', $vdates));
+										exit();
+
+										$empty_shift = $mainsql->get_emptyshift($idnum, $vdates);
+
                     $dayshift = $mainsql->get_shift($shiftsched2[0]['ShiftID']);
 
                     $hours = $dayshift[0]['NUMHrs'] - $dayshift[0]['BreakHours'];
@@ -1975,6 +1981,7 @@
                             $wdhours = 1;
                         endif;
                     else :
+											//new query here
                         $wdhours = 1;
                     endif;
                     if ($getnumhours[0]['NUMHrs'] <= 4) :
