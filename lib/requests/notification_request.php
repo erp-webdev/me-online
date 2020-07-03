@@ -7854,21 +7854,11 @@
 						                    <?php endif; ?>
 
 															</table>
-
-															<a id = 'test'>sample</a>
-
 														</div>
 													</td>
 												</tr>
 
 						                </table>
-
-														<script>
-																	$('#test')[0].scrollIntoView({
-																			behavior: "smooth", // or "auto" or "instant"
-																			block: "start" // or "end"
-																	});
-														</script>
 
 						            <?php //signatoryend
 
