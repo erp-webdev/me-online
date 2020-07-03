@@ -76,9 +76,6 @@
 									$a=$_POST['balance'];
 									$b=$_POST['days'];
 									$c=$balanceval;
-									//testhere
-									echo '{"success": false, "error": "balance: '.$a.'  days: '.$b.' balanceval: '.$c.'  "}';
-									exit();
 
 
 
