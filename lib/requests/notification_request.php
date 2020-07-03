@@ -7096,7 +7096,8 @@
 																		<div style="max-height: 120px; overflow-y: auto;" class='signatoryapp'>
 																			<script>
 																			$(document).ready(function(){
-																				$('signatoryapp').scrollTo('#btnapp');
+																				// $('signatoryapp').scrollTo('#btnapp');
+																				$("#btnapp").get(0).scrollIntoView()
 																			});
 																			</script>
 																			<table width="100%">
