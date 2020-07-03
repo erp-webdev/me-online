@@ -7100,6 +7100,7 @@
  																			// 		$(window).scrollTop(scrollPos);
 																			// });
 																			$(document).ready(function(){
+																				alert('here');
 																				$(window).scrollTop($('.btnapp1').position().top);
 																			});
 																			</script>
