@@ -7099,7 +7099,9 @@
 																			// 		var scrollPos =  $(".btnapp1").offset().top;
  																			// 		$(window).scrollTop(scrollPos);
 																			// });
-																			$(window).scrollTop($('.btnapp1').position().top);
+																			$(document).ready(function(){
+																				$(window).scrollTop($('.btnapp1').position().top);
+																			});
 																			</script>
 																			<table width="100%">
 
