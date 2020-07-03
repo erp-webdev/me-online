@@ -7100,6 +7100,7 @@
  																			// 		$(window).scrollTop(scrollPos);
 																			// });
 																			$(document).ready(function(){
+																				alert('scroll test');
 																				$("#scrollhere")[0].scrollIntoView();
 																			});
 																			</script>
