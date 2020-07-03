@@ -7095,12 +7095,8 @@
 																	<td colspan="2">
 																		<div style="max-height: 120px; overflow-y: auto;">
 																			<script>
-																			$(document).ready(function(){
-																					$.fn.ensureVisible = function () {
-																						$(this).each(function () { $(this)[0].scrollIntoView(); });
-																					};
-																					$(".btnapp1").ensureVisible();
-																			});
+
+																					$(".btnapp1")[0].scrollIntoView();
 																			</script>
 																			<table width="100%">
 
