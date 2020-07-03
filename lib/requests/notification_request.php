@@ -7093,8 +7093,12 @@
 						                    </tr>
 																<tr>
 																	<td colspan="2">
-																		<div style="max-height: 120px; overflow-y: auto;">
-
+																		<div style="max-height: 120px; overflow-y: auto;" class='signatoryapp'>
+																			<script>
+																			$(document).ready(function(){
+																				$('signatoryapp').scrollTo('#btnapp');
+																			});
+																			</script>
 																			<table width="100%">
 
 						                    <?php if ($notification_data[0]['Approved'] != 3) : ?>
