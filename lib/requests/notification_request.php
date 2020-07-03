@@ -7102,7 +7102,7 @@
 																			$(document).ready(function(){
 																				var countapp = 0;
 																				$( ".btnapp" ).each(function() {
-																					alert(countapp);
+																					alert( $( this ).val());
 																				  $( this )[countapp].scrollIntoView();
 																					countapp++;
 																				});
