@@ -7095,8 +7095,8 @@
 																	<td colspan="2">
 																		<div style="max-height: 120px; overflow-y: auto;">
 																			<script>
-
-																					$(".btnapp1")[0].scrollIntoView();
+																					var scrollPos =  $(".btnapp1").offset().top;
+ 																					$(window).scrollTop(scrollPos);
 																			</script>
 																			<table width="100%">
 
