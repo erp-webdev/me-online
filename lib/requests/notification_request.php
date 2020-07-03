@@ -7094,16 +7094,7 @@
 																<tr>
 																	<td colspan="2">
 																		<div style="max-height: 120px; overflow-y: auto;">
-																			<script>
-																			// $(document).ready(function(){
-																			// 		var scrollPos =  $(".btnapp1").offset().top;
- 																			// 		$(window).scrollTop(scrollPos);
-																			// });
-																			$(document).ready(function(){
-																				alert('scroll test');
-																				$("#scrollhere")[0].scrollIntoView();
-																			});
-																			</script>
+																		
 																			<table width="100%">
 
 						                    <?php if ($notification_data[0]['Approved'] != 3) : ?>
