@@ -7102,12 +7102,12 @@
 																			$(document).ready(function(){
 																				// $( ".btnapp" ).each(function() {
 																					// alert( $( this ).val());
-																					$('#btnapp1')[0].scrollIntoView();
-																				  $('#btnapp2')[0].scrollIntoView();
-																					$('#btnapp3')[0].scrollIntoView();
+																					// $('#btnapp1')[0].scrollIntoView();
+																				  // $('#btnapp2')[0].scrollIntoView();
+																					// $('#btnapp3')[0].scrollIntoView();
 																					$('#btnapp4')[0].scrollIntoView();
-																					$('#btnapp5')[0].scrollIntoView();
-																					$('#btnapp6')[0].scrollIntoView();
+																					// $('#btnapp5')[0].scrollIntoView();
+																					// $('#btnapp6')[0].scrollIntoView();
 
 
 																					// countapp++;
