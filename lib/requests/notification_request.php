@@ -7097,7 +7097,8 @@
 																			<script>
 																			$(document).ready(function(){
 																				var elemRect = $("#approvehere").offset();
-																				alert(elemRect);
+																				var elemRect2 = $(".signatoryapp").offset();
+																				alert(elemRect2 - elemRect);
 																				// $('signatoryapp').scrollTo('#btnapp');
 																				$('.signatoryapp').animate({
 																		        scrollTop: 100
