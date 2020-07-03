@@ -4,7 +4,7 @@
 
                     <div id="floatdiv" class="floatdiv invisible">
                         <!-- VIEW PENDING - BEGIN -->
-                        <div id="nview" class="rview" style="display: none;">
+                        <div id="nview" class="rview" onShow="focusApproveBtn(this)" style="display: none;">
                             <div class="rclose cursorpoint"><i class="fa fa-times-circle fa-3x redtext"></i></div>
                             <div id="pend_title" class="pend_title robotobold cattext dbluetext"></div>
                             <div id="pend_data">

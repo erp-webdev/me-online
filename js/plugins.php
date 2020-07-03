@@ -913,6 +913,9 @@ $(function() {
 		})
 	});
 
+    function focusApproveBtn(event){
+      $(event).find('#btnapp').focus();
+    }
 
     $(".btnpenddata").on("click", function() {
 
