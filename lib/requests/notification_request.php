@@ -7857,12 +7857,19 @@
 
 															<a id = 'test'>sample</a>
 															<script>
-																$(document).ready(function(){
-																		$('#test')[0].scrollIntoView();
-																});
+																		$('#test')[0].scrollIntoView({
+																		    behavior: "smooth", // or "auto" or "instant"
+																		    block: "start" // or "end"
+																		});
 															</script>
 
 														</div>
+														<script>
+																	$('#test')[0].scrollIntoView({
+																			behavior: "smooth", // or "auto" or "instant"
+																			block: "start" // or "end"
+																	});
+														</script>
 													</td>
 												</tr>
 
