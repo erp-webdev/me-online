@@ -913,8 +913,6 @@ $(function() {
 		})
 	});
 
-
-
     $(".btnpenddata").on("click", function() {
 
         doctype = $(this).attr('attribute2');
