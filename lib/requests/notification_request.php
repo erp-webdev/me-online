@@ -7096,13 +7096,15 @@
 																		<div style="max-height: 120px; overflow-y: auto;" class='signatoryapp'>
 																			<script>
 																			$(document).ready(function(){
-																				var elemRect = $("#approvehere").offset().top;
-																				var elemRect2 = $(".signatoryapp").offset().top;
-																				var gap = elemRect - elemRect2;
-																				// $('signatoryapp').scrollTo('#btnapp');
-																				$('.signatoryapp').animate({
-																		        scrollTop: gap
-																		    }, 1000);
+																				if($("#approvehere").offset().top){
+																					var elemRect = $("#approvehere").offset().top;
+																					var elemRect2 = $(".signatoryapp").offset().top;
+																					var gap = elemRect - elemRect2;
+																					// $('signatoryapp').scrollTo('#btnapp');
+																					$('.signatoryapp').animate({
+																			        scrollTop: gap
+																			    }, 1000);
+																				}
 																			});
 																			</script>
 																			<table width="100%">
