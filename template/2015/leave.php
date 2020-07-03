@@ -464,13 +464,12 @@
                                         ?>
                                         <?php $leave_bal2 = $mainsql->get_leavebal_byid($profile_idnum, "L01"); ?>
                                         <?php $leave_balance = $leave_bal2[0]['BalanceHrs'] ? $leave_bal2[0]['BalanceHrs'] : 0; ?>
-																				<!-- test here -->
-                                        <!--input id="days" type="hidden" name="days" value="" /-->
                                         <input type="hidden" id="lempid" name="empid" value="<?php echo $profile_idnum; ?>" />
                                         <input type="hidden" name="reqnbr" value="<?php echo "LV-".$finsec; ?>" />
                                         <input type="hidden" name="user" value="<?php echo $profile_idnum; ?>" />
                                         <input id="tdayswop" type="hidden" name="dayswop" value="" />
-                                        <input id="tdays" name="days" value="8" />
+																				<!--input id="days" type="hidden" name="days" value="" /-->
+                                        <input id="tdays" type="hidden" name="days" value="8" />
                                         <input id="totaldays" type="hidden" name="totaldays" value="8" />
                                         <input id="tbalance" type="hidden" name="balance" value="<?php echo $leave_balance <= 0 ? 0 : round($leave_balance * 2, 0) / 2; ?>" />
                                         <input id="btnleaveapply" type="submit" name="btnleaveapply" value="Submit" class="btn margintop10" />
