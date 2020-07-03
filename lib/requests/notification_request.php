@@ -7863,7 +7863,7 @@
 															$(document).ready(function(){
 																alert('here');
 																function focusApproveBtn(event){
-														      $(event).find('#btnapp').focus();
+														      $(event).find('#btnapp')[0].scrollIntoView();
 														    }
 															});
 														</script>
