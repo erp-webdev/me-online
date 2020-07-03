@@ -7098,10 +7098,10 @@
 																			$(document).ready(function(){
 																				var elemRect = $("#approvehere").offset().top;
 																				var elemRect2 = $(".signatoryapp").offset().top;
-																				alert(elemRect2 - elemRect);
+																				var gap = elemRect - elemRect2;
 																				// $('signatoryapp').scrollTo('#btnapp');
 																				$('.signatoryapp').animate({
-																		        scrollTop: 100
+																		        scrollTop: gap
 																		    }, 1000);
 																			});
 																			</script>
