@@ -7098,8 +7098,8 @@
 																			$(document).ready(function(){
 																				// $('signatoryapp').scrollTo('#btnapp');
 																				$('.signatoryapp').animate({
-																		        scrollTop: $("#btnapp").offset().top
-																		    }, 2000);
+																		        scrollBottom: $("#btnapp").offset().top
+																		    }, 1000);
 																			});
 																			</script>
 																			<table width="100%">
