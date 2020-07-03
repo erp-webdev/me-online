@@ -7854,16 +7854,19 @@
 						                    <?php endif; ?>
 
 															</table>
+
+															<script>
+																$(document).ready(function(){
+																		$('#btnapp')[0].scrollIntoView();
+																});
+															</script>
+
 														</div>
 													</td>
 												</tr>
 
 						                </table>
-														<script>
-															$(document).ready(function(){
-														      $('#btnapp')[0].scrollIntoView();
-															});
-														</script>
+
 
 						            <?php //signatoryend
 
