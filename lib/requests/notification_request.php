@@ -7096,8 +7096,8 @@
 																		<div style="max-height: 120px; overflow-y: auto;" class='signatoryapp'>
 																			<script>
 																			$(document).ready(function(){
-																				var elemRect = $("#approvehere").offset();
-																				var elemRect2 = $(".signatoryapp").offset();
+																				var elemRect = $("#approvehere").offset().top;
+																				var elemRect2 = $(".signatoryapp").offset().top;
 																				alert(elemRect2 - elemRect);
 																				// $('signatoryapp').scrollTo('#btnapp');
 																				$('.signatoryapp').animate({
