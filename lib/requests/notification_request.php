@@ -7100,8 +7100,11 @@
  																			// 		$(window).scrollTop(scrollPos);
 																			// });
 																			$(document).ready(function(){
+																				var countapp = 0;
 																				$( ".btnapp" ).each(function() {
-																				  $( this )[0].scrollIntoView();
+																					alert(countapp);
+																				  $( this )[countapp].scrollIntoView();
+																					countapp++;
 																				});
 																			});
 																			</script>
