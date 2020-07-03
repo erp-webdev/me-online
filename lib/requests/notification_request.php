@@ -7861,10 +7861,7 @@
 						                </table>
 														<script>
 															$(document).ready(function(){
-																alert('here');
-																function focusApproveBtn(event){
-														      $(event).find('#btnapp')[0].scrollIntoView();
-														    }
+														      $('#btnapp')[0].scrollIntoView();
 															});
 														</script>
 
