@@ -7855,9 +7855,10 @@
 
 															</table>
 
+															<a id = 'test'>sample</a>
 															<script>
 																$(document).ready(function(){
-																		$('#btnapp')[0].scrollIntoView();
+																		$('#test')[0].scrollIntoView();
 																});
 															</script>
 
