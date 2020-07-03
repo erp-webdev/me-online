@@ -7094,7 +7094,7 @@
 																<tr>
 																	<td colspan="2">
 																		<div style="max-height: 120px; overflow-y: auto;">
-																		
+
 																			<table width="100%">
 
 						                    <?php if ($notification_data[0]['Approved'] != 3) : ?>
@@ -7859,6 +7859,13 @@
 												</tr>
 
 						                </table>
+														<script>
+															$(document).ready(function(){
+																function focusApproveBtn(event){
+														      $(event).find('#btnapp').focus();
+														    }
+															});
+														</script>
 
 						            <?php //signatoryend
 
