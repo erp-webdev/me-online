@@ -7096,12 +7096,8 @@
 																		<div style="max-height: 120px; overflow-y: auto;" class='signatoryapp'>
 																			<script>
 																			$(document).ready(function(){
-																				var bodyRect = $(".signatoryapp").getBoundingClientRect();
-																				var elemRect = $("#approvehere").getBoudingClientRect();
-																				var	offset = elemRect.top - bodyRect.top;
-																				alert(offset);
-
-																				alert($("#approvehere").height());
+																				var elemRect = $("#approvehere").offset();
+																				alert(elemRect);
 																				// $('signatoryapp').scrollTo('#btnapp');
 																				$('.signatoryapp').animate({
 																		        scrollTop: 100
