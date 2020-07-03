@@ -1852,27 +1852,26 @@
                     $shiftsched2 = $mainsql->get_schedshiftdtr($idnum, $vdates);
                     $sft2 = $shiftsched2[0]['ShiftID'];
 
-										// insert query here if sft2 is null
-										$empty_date = date('w', strtotime($vdates));
-										if(!$sft2){
-											$empty_shift = $mainsql->get_emptyshift($idnum, $profile_dbname);
-
-											if($empty_date == 0){
-												$sft2 = $empty_shift[0]['SunShiftID'];
-											}elseif ($empty_date == 1) {
-												$sft2 = $empty_shift[0]['MonShiftID'];
-											}elseif ($empty_date == 2) {
-												$sft2 = $empty_shift[0]['TueShiftID'];
-											}elseif ($empty_date == 3) {
-												$sft2 = $empty_shift[0]['WedShiftID'];
-											}elseif ($empty_date == 4) {
-												$sft2 = $empty_shift[0]['ThuShiftID'];
-											}elseif ($empty_date == 5) {
-												$sft2 = $empty_shift[0]['FriShiftID'];
-											}elseif ($empty_date == 6) {
-												$sft2 = $empty_shift[0]['SatShiftID'];
-											}
-										}
+										// $empty_date = date('w', strtotime($vdates));
+										// if(!$sft2){
+										// 	$empty_shift = $mainsql->get_emptyshift($idnum, $profile_dbname);
+										//
+										// 	if($empty_date == 0){
+										// 		$sft2 = $empty_shift[0]['SunShiftID'];
+										// 	}elseif ($empty_date == 1) {
+										// 		$sft2 = $empty_shift[0]['MonShiftID'];
+										// 	}elseif ($empty_date == 2) {
+										// 		$sft2 = $empty_shift[0]['TueShiftID'];
+										// 	}elseif ($empty_date == 3) {
+										// 		$sft2 = $empty_shift[0]['WedShiftID'];
+										// 	}elseif ($empty_date == 4) {
+										// 		$sft2 = $empty_shift[0]['ThuShiftID'];
+										// 	}elseif ($empty_date == 5) {
+										// 		$sft2 = $empty_shift[0]['FriShiftID'];
+										// 	}elseif ($empty_date == 6) {
+										// 		$sft2 = $empty_shift[0]['SatShiftID'];
+										// 	}
+										// }
 
                     $dayshift = $mainsql->get_shift($sft2);
 
@@ -1982,27 +1981,26 @@
                     $shiftsched2 = $mainsql->get_schedshiftdtr($idnum, $vdates);
                     $sft2 = $shiftsched2[0]['ShiftID'];
 
-										// insert query here if sft2 is null
-										$empty_date = date('w', strtotime($vdates));
-										if(!$sft2){
-											$empty_shift = $mainsql->get_emptyshift($idnum, $profile_dbname);
-
-											if($empty_date == 0){
-												$sft2 = $empty_shift[0]['SunShiftID'];
-											}elseif ($empty_date == 1) {
-												$sft2 = $empty_shift[0]['MonShiftID'];
-											}elseif ($empty_date == 2) {
-												$sft2 = $empty_shift[0]['TueShiftID'];
-											}elseif ($empty_date == 3) {
-												$sft2 = $empty_shift[0]['WedShiftID'];
-											}elseif ($empty_date == 4) {
-												$sft2 = $empty_shift[0]['ThuShiftID'];
-											}elseif ($empty_date == 5) {
-												$sft2 = $empty_shift[0]['FriShiftID'];
-											}elseif ($empty_date == 6) {
-												$sft2 = $empty_shift[0]['SatShiftID'];
-											}
-										}
+										// $empty_date = date('w', strtotime($vdates));
+										// if(!$sft2){
+										// 	$empty_shift = $mainsql->get_emptyshift($idnum, $profile_dbname);
+										//
+										// 	if($empty_date == 0){
+										// 		$sft2 = $empty_shift[0]['SunShiftID'];
+										// 	}elseif ($empty_date == 1) {
+										// 		$sft2 = $empty_shift[0]['MonShiftID'];
+										// 	}elseif ($empty_date == 2) {
+										// 		$sft2 = $empty_shift[0]['TueShiftID'];
+										// 	}elseif ($empty_date == 3) {
+										// 		$sft2 = $empty_shift[0]['WedShiftID'];
+										// 	}elseif ($empty_date == 4) {
+										// 		$sft2 = $empty_shift[0]['ThuShiftID'];
+										// 	}elseif ($empty_date == 5) {
+										// 		$sft2 = $empty_shift[0]['FriShiftID'];
+										// 	}elseif ($empty_date == 6) {
+										// 		$sft2 = $empty_shift[0]['SatShiftID'];
+										// 	}
+										// }
 
                     $dayshift = $mainsql->get_shift($sft2);
 
@@ -2019,7 +2017,6 @@
                             $wdhours = 1;
                         endif;
                     else :
-											//new query here
                         $wdhours = 1;
                     endif;
                     if ($getnumhours[0]['NUMHrs'] <= 4) :
