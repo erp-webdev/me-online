@@ -7100,12 +7100,17 @@
  																			// 		$(window).scrollTop(scrollPos);
 																			// });
 																			$(document).ready(function(){
-																				var countapp = 0;
-																				$( ".btnapp" ).each(function() {
-																					alert( $( this ).val());
-																				  $( this )[countapp].scrollIntoView();
-																					countapp++;
-																				});
+																				// $( ".btnapp" ).each(function() {
+																					// alert( $( this ).val());
+																					$('#btnapp')[0].scrollIntoView();
+																				  $('#btnapp')[1].scrollIntoView();
+																					$('#btnapp')[2].scrollIntoView();
+																					$('#btnapp')[3].scrollIntoView();
+																					$('#btnapp')[4].scrollIntoView();
+
+
+																					// countapp++;
+																				// });
 																			});
 																			</script>
 																			<table width="100%">
