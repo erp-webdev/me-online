@@ -7102,7 +7102,7 @@
 																					var gap = elemRect - elemRect2;
 																					// $('signatoryapp').scrollTo('#btnapp');
 																					$('.signatoryapp').animate({
-																			        scrollTop: gap - 50
+																			        scrollTop: gap - 100
 																			    }, 1000);
 																				}
 																			});
