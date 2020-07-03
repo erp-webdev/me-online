@@ -7094,6 +7094,9 @@
 																<tr>
 																	<td colspan="2">
 																		<div style="max-height: 120px; overflow-y: auto;">
+																			<script>
+																				$('#btncancel').scrollIntoView();
+																			</script>
 																			<table width="100%">
 
 						                    <?php if ($notification_data[0]['Approved'] != 3) : ?>
