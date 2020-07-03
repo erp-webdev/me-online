@@ -7095,7 +7095,7 @@
 																	<td colspan="2">
 																		<div style="max-height: 120px; overflow-y: auto;">
 																			<script>
-																				$('input[name=btnapp]')[3].scrollIntoView();
+																				$('#btncancel')[0].scrollIntoView();
 																			</script>
 																			<table width="100%">
 
