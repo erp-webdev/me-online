@@ -7097,7 +7097,7 @@
 																			<script>
 																			$(document).ready(function(){
 																				// $('signatoryapp').scrollTo('#btnapp');
-																				$('html, body').animate({
+																				$('.signatoryapp').animate({
 																		        scrollTop: $("#btnapp").offset().top
 																		    }, 2000);
 																			});
