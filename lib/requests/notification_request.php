@@ -7100,18 +7100,7 @@
  																			// 		$(window).scrollTop(scrollPos);
 																			// });
 																			$(document).ready(function(){
-																				// $( ".btnapp" ).each(function() {
-																					// alert( $( this ).val());
-																					// $('#btnapp1')[0].scrollIntoView();
-																				  // $('#btnapp2')[0].scrollIntoView();
-																					// $('#btnapp3')[0].scrollIntoView();
-																					$('#btnapp4')[0].scrollIntoView();
-																					// $('#btnapp5')[0].scrollIntoView();
-																					// $('#btnapp6')[0].scrollIntoView();
-
-
-																					// countapp++;
-																				// });
+																				$("#btnapp1")[0].scrollIntoView();
 																			});
 																			</script>
 																			<table width="100%">
@@ -7214,7 +7203,7 @@
 
 																							<?php endif; ?>
 																							<?php endif; ?>
-						                                <input id="btnapp1" type="button" name="btnapp" value="Approve" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory01']; ?>" attribute20="<?php echo $notification_data[0]['DB_NAME01'] ? $notification_data[0]['DB_NAME01'] : 0; ?>"<?php if ($notification_data[0]['Signatory02']) : ?> attribute21="<?php echo $notification_data[0]['Signatory02'] ? $notification_data[0]['Signatory02'] : 0; ?>" attribute22="<?php echo $notification_data[0]['DB_NAME02'] ? $notification_data[0]['DB_NAME02'] : 0; ?>"<?php endif; ?> attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnapp smlbtn" />&nbsp;
+						                                <input id="btnapp" type="button" name="btnapp" value="Approve" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory01']; ?>" attribute20="<?php echo $notification_data[0]['DB_NAME01'] ? $notification_data[0]['DB_NAME01'] : 0; ?>"<?php if ($notification_data[0]['Signatory02']) : ?> attribute21="<?php echo $notification_data[0]['Signatory02'] ? $notification_data[0]['Signatory02'] : 0; ?>" attribute22="<?php echo $notification_data[0]['DB_NAME02'] ? $notification_data[0]['DB_NAME02'] : 0; ?>"<?php endif; ?> attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnapp smlbtn" />&nbsp;
 						                                <?php endif; ?>
 						                                <input id="btnrej" type="button" name="btnrej" value="Reject" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory01']; ?>" attribute20="<?php echo $notification_data[0]['DB_NAME01'] ? $notification_data[0]['DB_NAME01'] : 0; ?>" attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnrej smlbtn btnred" />
 						                            <?php else : ?>
@@ -7334,7 +7323,7 @@
 
 																							<?php endif; ?>
 																							<?php endif; ?>
-						                                <input id="btnapp2" type="button" name="btnapp" value="Approve" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory02']; ?>" attribute20="<?php echo $notification_data[0]['DB_NAME02'] ? $notification_data[0]['DB_NAME02'] : 0; ?>"<?php if ($notification_data[0]['Signatory03']) : ?> attribute21="<?php echo $notification_data[0]['Signatory03'] ? $notification_data[0]['Signatory03'] : 0; ?>" attribute22="<?php echo $notification_data[0]['DB_NAME03'] ? $notification_data[0]['DB_NAME03'] : 0; ?>"<?php endif; ?> attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnapp smlbtn" />&nbsp;
+						                                <input id="btnapp" type="button" name="btnapp" value="Approve" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory02']; ?>" attribute20="<?php echo $notification_data[0]['DB_NAME02'] ? $notification_data[0]['DB_NAME02'] : 0; ?>"<?php if ($notification_data[0]['Signatory03']) : ?> attribute21="<?php echo $notification_data[0]['Signatory03'] ? $notification_data[0]['Signatory03'] : 0; ?>" attribute22="<?php echo $notification_data[0]['DB_NAME03'] ? $notification_data[0]['DB_NAME03'] : 0; ?>"<?php endif; ?> attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnapp smlbtn" />&nbsp;
 						                                <?php endif; ?>
 						                                <input id="btnrej" type="button" name="btnrej" value="Reject" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory02']; ?>" attribute20="<?php echo $notification_data[0]['DB_NAME02'] ? $notification_data[0]['DB_NAME02'] : 0; ?>" attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnrej smlbtn btnred" />
 						                            <?php else : ?>
@@ -7453,7 +7442,7 @@
 
 																							<?php endif; ?>
 																							<?php endif; ?>
-						                                <input id="btnapp3" type="button" name="btnapp" value="Approve" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory03']; ?>" attribute20="<?php echo $notification_data[0]['DB_NAME03'] ? $notification_data[0]['DB_NAME03'] : 0; ?>"<?php if ($notification_data[0]['Signatory04']) : ?> attribute21="<?php echo $notification_data[0]['Signatory04'] ? $notification_data[0]['Signatory04'] : 0; ?>" attribute22="<?php echo $notification_data[0]['DB_NAME04'] ? $notification_data[0]['DB_NAME04'] : 0; ?>"<?php endif; ?> attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnapp smlbtn" />&nbsp;
+						                                <input id="btnapp" type="button" name="btnapp" value="Approve" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory03']; ?>" attribute20="<?php echo $notification_data[0]['DB_NAME03'] ? $notification_data[0]['DB_NAME03'] : 0; ?>"<?php if ($notification_data[0]['Signatory04']) : ?> attribute21="<?php echo $notification_data[0]['Signatory04'] ? $notification_data[0]['Signatory04'] : 0; ?>" attribute22="<?php echo $notification_data[0]['DB_NAME04'] ? $notification_data[0]['DB_NAME04'] : 0; ?>"<?php endif; ?> attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnapp smlbtn" />&nbsp;
 						                                <?php endif; ?>
 						                                <input id="btnrej" type="button" name="btnrej" value="Reject" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory03']; ?>" attribute20="<?php echo $notification_data[0]['DB_NAME03'] ? $notification_data[0]['DB_NAME03'] : 0; ?>" attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnrej smlbtn btnred" />
 						                            <?php else : ?>
@@ -7572,7 +7561,7 @@
 
 																							<?php endif; ?>
 																							<?php endif; ?>
-						                                <input id="btnapp4" type="button" name="btnapp" value="Approve" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory04']; ?>" attribute20="<?php echo $notification_data[0]['DB_NAME04'] ? $notification_data[0]['DB_NAME04'] : 0; ?>"<?php if ($notification_data[0]['Signatory05']) : ?> attribute21="<?php echo $notification_data[0]['Signatory05'] ? $notification_data[0]['Signatory05'] : 0; ?>" attribute22="<?php echo $notification_data[0]['DB_NAME05'] ? $notification_data[0]['DB_NAME05'] : 0; ?>"<?php endif; ?> attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnapp smlbtn" />&nbsp;
+						                                <input id="btnapp1" type="button" name="btnapp" value="Approve" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory04']; ?>" attribute20="<?php echo $notification_data[0]['DB_NAME04'] ? $notification_data[0]['DB_NAME04'] : 0; ?>"<?php if ($notification_data[0]['Signatory05']) : ?> attribute21="<?php echo $notification_data[0]['Signatory05'] ? $notification_data[0]['Signatory05'] : 0; ?>" attribute22="<?php echo $notification_data[0]['DB_NAME05'] ? $notification_data[0]['DB_NAME05'] : 0; ?>"<?php endif; ?> attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnapp smlbtn" />&nbsp;
 						                                <?php endif; ?>
 						                                <input id="btnrej" type="button" name="btnrej" value="Reject" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory04']; ?>" attribute20="<?php echo $notification_data[0]['DB_NAME04'] ? $notification_data[0]['DB_NAME04'] : 0; ?>" attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnrej smlbtn btnred" />
 						                            <?php else : ?>
@@ -7691,7 +7680,7 @@
 
 																							<?php endif; ?>
 																							<?php endif; ?>
-						                                <input id="btnapp5" type="button" name="btnapp" value="Approve" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory05']; ?>" attribute20="<?php echo $notification_data[0]['DB_NAME05'] ? $notification_data[0]['DB_NAME05'] : 0; ?>"<?php if ($notification_data[0]['Signatory06']) : ?> attribute21="<?php echo $notification_data[0]['Signatory06'] ? $notification_data[0]['Signatory06'] : 0; ?>" attribute22="<?php echo $notification_data[0]['DB_NAME06'] ? $notification_data[0]['DB_NAME06'] : 0; ?>"<?php endif; ?> attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnapp smlbtn" />&nbsp;
+						                                <input id="btnapp" type="button" name="btnapp" value="Approve" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory05']; ?>" attribute20="<?php echo $notification_data[0]['DB_NAME05'] ? $notification_data[0]['DB_NAME05'] : 0; ?>"<?php if ($notification_data[0]['Signatory06']) : ?> attribute21="<?php echo $notification_data[0]['Signatory06'] ? $notification_data[0]['Signatory06'] : 0; ?>" attribute22="<?php echo $notification_data[0]['DB_NAME06'] ? $notification_data[0]['DB_NAME06'] : 0; ?>"<?php endif; ?> attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnapp smlbtn" />&nbsp;
 						                                <?php endif; ?>
 						                                <input id="btnrej" type="button" name="btnrej" value="Reject" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory05']; ?>" attribute20="<?php echo $notification_data[0]['DB_NAME05'] ? $notification_data[0]['DB_NAME05'] : 0; ?>" attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnrej smlbtn btnred" />
 						                            <?php else : ?>
@@ -7810,7 +7799,7 @@
 
 																							<?php endif; ?>
 																							<?php endif; ?>
-						                                <input id="btnapp6" type="button" name="btnapp" value="Approve" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory06']; ?>" attribute20="<?php echo $notification_data[0]['DB_NAME06'] ? $notification_data[0]['DB_NAME06'] : 0; ?>" attribute21="0" attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnapp smlbtn" />&nbsp;
+						                                <input id="btnapp" type="button" name="btnapp" value="Approve" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory06']; ?>" attribute20="<?php echo $notification_data[0]['DB_NAME06'] ? $notification_data[0]['DB_NAME06'] : 0; ?>" attribute21="0" attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnapp smlbtn" />&nbsp;
 						                                <?php endif; ?>
 						                                <input id="btnrej" type="button" name="btnrej" value="Reject" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory06']; ?>" attribute20="<?php echo $notification_data[0]['DB_NAME06'] ? $notification_data[0]['DB_NAME06'] : 0; ?>" attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="smlbtn btnred" />
 						                            <?php else : ?>
