@@ -7856,12 +7856,6 @@
 															</table>
 
 															<a id = 'test'>sample</a>
-															<script>
-																		$('#test')[0].scrollIntoView({
-																		    behavior: "smooth", // or "auto" or "instant"
-																		    block: "start" // or "end"
-																		});
-															</script>
 
 														</div>
 														<script>
