@@ -7098,7 +7098,7 @@
 																			$(document).ready(function(){
 																				// $('signatoryapp').scrollTo('#btnapp');
 																				$('.signatoryapp').animate({
-																		        scrollTop: $("#approvehere").offset().top - 100
+																		        scrollTop: 100
 																		    }, 1000);
 																			});
 																			</script>
