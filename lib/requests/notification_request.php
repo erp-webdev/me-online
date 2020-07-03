@@ -7861,6 +7861,7 @@
 						                </table>
 														<script>
 															$(document).ready(function(){
+																alert('here');
 																function focusApproveBtn(event){
 														      $(event).find('#btnapp').focus();
 														    }
