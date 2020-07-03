@@ -7096,7 +7096,9 @@
 																		<div style="max-height: 120px; overflow-y: auto;" class='signatoryapp'>
 																			<script>
 																			$(document).ready(function(){
-																				if($("#approvehere").offset().top){
+																				alert($("#approvehere"));
+																				if($("#approvehere")){
+
 																					var elemRect = $("#approvehere").offset().top;
 																					var elemRect2 = $(".signatoryapp").offset().top;
 																					var gap = elemRect - elemRect2;
