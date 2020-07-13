@@ -53,12 +53,12 @@
             // REGISTER wfh
             if ($_POST['btnwfhapply'] || $_POST['btnwfhapply_x']) :
 
-							//test here
+							//test here running on diff browser @ 9:25 am
 								if(!($_SESSION['megasubs_user'])){
 									echo '{"success": false, "error": "Your portal session has expired! Kindly login again to continue."}';
 									exit();
 								}else{
-									echo '{"success": false, "error": "Session still running."}';
+									echo '{"success": false, "error": "Session still running 2."}';
 									exit();
 								}
 							//
