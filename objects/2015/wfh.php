@@ -1,9 +1,7 @@
 <?php
-if(true){
-	echo '{"success": false, "error": "WFH Test response"}';
-	exit();
-}
 	if ($logged == 1) {
+		echo '{"success": false, "error": "WFH Test response1"}';
+		exit();
         if ($wh_app) :
 
             # PAGINATION
