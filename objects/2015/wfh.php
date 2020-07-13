@@ -17,6 +17,8 @@
 
 						//test here
 						ini_set('session.gc_maxlifetime', 30);
+						echo $_SESSION['megasubs_user'];
+						exit();
 						//
 
             $yesterday = date("d", strtotime('-1 day'));
