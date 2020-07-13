@@ -15,12 +15,6 @@
 
             global $sroot, $profile_id, $unix3month;
 
-						//test here
-						// ini_set('session.gc_maxlifetime', 30);
-						// echo $_SESSION['megasubs_user'];
-						// exit();
-						//
-
             $yesterday = date("d", strtotime('-1 day'));
 
             if($yesterday < 15){
@@ -52,16 +46,6 @@
 
             // REGISTER wfh
             if ($_POST['btnwfhapply'] || $_POST['btnwfhapply_x']) :
-
-							//test here running on diff browser @ 9:25 am
-								if(!($_SESSION['megasubs_user'])){
-									echo '{"success": false, "error": "Your portal session has expired! Kindly login again to continue."}';
-									exit();
-								}else{
-									echo '{"success": false, "error": "Session still running 2."}';
-									exit();
-								}
-							//
 
                 //CHECK FOR INVALID DATE/TIME IN AND OUT
 
@@ -309,10 +293,10 @@
 	}
 	else
 	{
-		echo '{"success": false, "error": "WFH Test response2"}';
+		echo '{"success": false, "error": "Your portal session has expired! Kindly login again to continue."}';
+		echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/login'</script>";
 		exit();
 
-		echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/login'</script>";
 	}
 
 ?>
