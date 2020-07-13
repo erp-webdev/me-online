@@ -57,6 +57,9 @@
 								if(!($_SESSION['megasubs_user'])){
 									echo '{"success": false, "error": "Your portal session has expired! Kindly login again to continue."}';
 									exit();
+								}else{
+									echo '{"success": false, "error": "Session still running."}';
+									exit();
 								}
 							//
 
