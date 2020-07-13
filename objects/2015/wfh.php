@@ -16,7 +16,7 @@
             global $sroot, $profile_id, $unix3month;
 
 						//test here
-						ini_set('session.gc_maxlifetime', 30);
+						// ini_set('session.gc_maxlifetime', 30);
 						// echo $_SESSION['megasubs_user'];
 						// exit();
 						//
@@ -52,6 +52,13 @@
 
             // REGISTER wfh
             if ($_POST['btnwfhapply'] || $_POST['btnwfhapply_x']) :
+
+							//test here
+								if(!($_SESSION['megasubs_user'])){
+									echo '{"success": false, "error": "Your portal session has expired! Kindly login again to continue."}';
+									exit();
+								}
+							//
 
                 //CHECK FOR INVALID DATE/TIME IN AND OUT
 
