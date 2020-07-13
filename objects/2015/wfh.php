@@ -1,7 +1,5 @@
 <?php
 	if ($logged == 1) {
-		echo '{"success": false, "error": "WFH Test response1"}';
-		exit();
         if ($wh_app) :
 
             # PAGINATION
@@ -311,6 +309,9 @@
 	}
 	else
 	{
+		echo '{"success": false, "error": "WFH Test response2"}';
+		exit();
+
 		echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/login'</script>";
 	}
 
