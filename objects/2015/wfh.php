@@ -293,8 +293,10 @@
 	}
 	else
 	{
-		echo '{"success": false, "error": "Your portal session has expired! Kindly logout and login again to continue."}';
-		exit();
+		if ($_POST['btnwfhapply'] || $_POST['btnwfhapply_x']){
+			echo '{"success": false, "error": "Your portal session has expired! Kindly logout and login again to continue."}';
+			exit();
+		}
 		echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/login'</script>";
 
 	}
