@@ -1,4 +1,8 @@
 <?php
+if(true){
+	echo '{"success": false, "error": "WFH Test response"}';
+	exit();
+}
 	if ($logged == 1) {
         if ($wh_app) :
 
