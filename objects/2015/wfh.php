@@ -294,8 +294,8 @@
 	else
 	{
 		echo '{"success": false, "error": "Your portal session has expired! Kindly login again to continue."}';
-		echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/login'</script>";
 		exit();
+		echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/login'</script>";
 
 	}
 
