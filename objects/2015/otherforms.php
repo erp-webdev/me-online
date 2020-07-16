@@ -39,8 +39,6 @@
 								"dateApplied" => "2020-07-01"
 								]
 						);
-
-						var_dump($forms);
 	}
 	else
 	{
