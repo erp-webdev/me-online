@@ -25,19 +25,53 @@
 										"title" => "DTR Date",
 										"hclass" => "form-control input-sm",
 										"defaultValue" => "date('Y-m-d')"
-										],
+									],
 								"approvers" => "frmApplicationWHWeb",
 								"customApprovers" =>
 									[
 										"EmpID" => "2019-02-0033",
 										"DBNAME" => "GL",
 										"NAME" => "Spencer"
-										],
+									],
 								"isApproved" => 1,
 								"dateApproved" => "2020-07-15",
 								"formStatus" => "APPROVED",
 								"dateApplied" => "2020-07-01"
-								]
+							],
+							[
+								"name" => "travel_form",
+								"title" => "Travel Form",
+								"items" =>
+									[
+										[
+											"name" => "dtrdate",
+											"title" => "DTR Date",
+											"hclass" => "form-control input-sm"
+										],
+										[
+											"name" => "gender",
+											"title" => "Gender",
+											"type" => "radio",
+											"hclass" => "form-control input-sm",
+											"options" =>
+												[
+													['value' => 'male', 'text' => 'Male'],
+													['value' => 'female', 'text' => 'Female']
+												]
+										]
+									],
+								"approvers" => "frmApplicationWHWeb",
+								"customApprovers" =>
+									[
+										"EmpID" => "2019-02-0033",
+										"DBNAME" => "GL",
+										"NAME" => "Spencer"
+									],
+								"isApproved" => 1,
+								"dateApproved" => "2020-07-15",
+								"formStatus" => "APPROVED",
+								"dateApplied" => "2020-07-01"
+							]
 						);
 	}
 	else
