@@ -76,7 +76,7 @@
 								$bal1 = $_POST['balance'];
 								$day1 = $_POST['days'];
 
-								echo "{'success': false, 'error': '$bal1 >= $day1 && $balanceval >= $day1'}";
+								echo '{"success": false, "error": " '.$bal1.' >= '.$day1.'  && '.$balanceval.' => '$day1' "}';
 								exit();
 								//
 
