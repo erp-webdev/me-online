@@ -1665,7 +1665,7 @@
                     $numdays = intval(date("N", $leave_from));
                     $days = date("D", $leave_from);
 
-                    $shiftsched2 = $mainsql->get_schedshiftdtr($profile_idnum, $vdates);
+                    $shiftsched2 = $mainsql->get_shiftid_fromhrdtr($profile_idnum, $vdates);
                     $sft2 = trim($shiftsched2[0]['ShiftID']);
 
                     //var_dump($sft2);
