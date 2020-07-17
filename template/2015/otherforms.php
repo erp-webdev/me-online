@@ -32,7 +32,7 @@
                                                 <tr>
                                                     <td width="15%"><b>Type: </b></td>
                                                     <td width="85%" colspan="3">
-                                                        <select id="form_type" name="form_type" class="txtbox width300">
+                                                        <select id="form_type" name="form_type" class="txtbox width300" ng-model="form_type">
 																													<?php foreach($forms as $form){ ?>
                                                             <option value="<?php echo $form["name"]; ?>"><?php echo $form["title"]; ?></option>
 																													<?php } ?>
@@ -80,9 +80,9 @@
                                         ?>
                                         <input id="invalid" type="hidden" name="invalid" value="0" />
                                         <input type="hidden" name="empid" value="<?php echo $profile_idnum; ?>" />
-                                        <input type="hidden" name="reqnbr" value="<?php echo "OT-".$finsec; ?>" />
+                                        <input type="hidden" name="reqnbr" value="<?php echo "Other-".$finsec; ?>" />
                                         <input type="hidden" name="user" value="<?php echo $profile_idnum; ?>" />
-                                        <input id="btnotapply" type="submit" name="btnotapply" value="Submit" class="btn margintop10" />
+                                        <input id="btnotherapply" type="submit" name="btnotherapply" value="Submit" class="btn margintop10" />
                                         <a href="<?php echo WEB; ?>/pending"><input type="button" name="btncancel" value="Cancel" class="redbtn margintop10" /></a>
                                     </div>
                                 </form>
@@ -94,10 +94,20 @@
 		<script>
 
 			$(document).ready(function(){
+
 				var wfh_app = angular.module('OtherApp', []);
 				wfh_app.controller('OtherController', ['$scope','$http', function($scope, $http){
 
+					$scope.form_type = $('#form_type').val();
+
+					$scope.$watch('form_type', function(newVal, oldVal, $scope){
+
+						alert($scope.form_type);
+
+					});
+
 				}]);
+
 			});
 
 		</script>
