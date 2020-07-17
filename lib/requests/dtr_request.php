@@ -1,6 +1,6 @@
-<?php 
+<?php
 
-	include("../../config.php"); 
+	include("../../config.php");
 	//**************** USER MANAGEMENT - START ****************\\
 
 	include(LIB."/login/chklog.php");
@@ -26,9 +26,9 @@
     if ($profile_dbname == "ECINEMA" || $profile_dbname == "EPARKVIEW" || $profile_dbname == "LAFUERZA" || $profile_dbname == "GLOBAL_HOTEL") :
         $adminarray = array("2011-03-V835");
     elseif ($profile_dbname == "CITYLINK" || $profile_dbname == "ECOC" || $profile_dbname == "EREX" || $profile_dbname == "FIRSTCENTRO" || $profile_dbname == "LCTM" || $profile_dbname == "MLI" || $profile_dbname == "NCCAI" || $profile_dbname == "SUNTRUST" || $profile_dbname == "TOWNSQUARE") :
-        $adminarray = array("2009-10-V255");        
+        $adminarray = array("2009-10-V255");
     elseif ($profile_dbname == "GL") :
-        $adminarray = array("2014-10-0004", "2014-10-0568", "2016-03-0261", "2017-01-0792"); 
+        $adminarray = array("2014-10-0004", "2014-10-0568", "2016-03-0261", "2017-01-0792");
     else :
         $adminarray = array("2014-05-N791", "2009-09-V206", "2012-04-U384", "MASTER", "2012-03-U273", "2014-01-N506");
     endif;
@@ -47,14 +47,14 @@
     /* MAIN DB CONNECTOR - END */
 
     $logdata = $logsql->get_member($_SESSION['megasubs_user']);
-            
+
     $deptdata = $mainsql->get_dept_data($userdata[0]['DeptID']);
-    $posdata = $mainsql->get_posi_data($userdata[0]['PositionID']);     
+    $posdata = $mainsql->get_posi_data($userdata[0]['PositionID']);
     $usertax = $register->get_memtax($userdata[0]['TaxID']);
 
-    $profile_dept = $deptdata[0]['DeptDesc'];		
+    $profile_dept = $deptdata[0]['DeptDesc'];
 	$profile_pos = $posdata[0]['PositionDesc'];
-    $profile_taxdesc = $usertax[0]['Description'];	
+    $profile_taxdesc = $usertax[0]['Description'];
 
     include(LIB."/init/approverinit.php");
 
@@ -71,11 +71,11 @@
     $profile_hash = md5('2014'.$profile_idnum);
 
 	$GLOBALS['level'] = $profile_level;
-	
+
 	//***************** USER MANAGEMENT - END *****************\\
 ?>
 
-<?php	
+<?php
 
     $sec = $profile_id ? $_GET['sec'] : NULL;
 
@@ -108,11 +108,11 @@
 
 	break;
 
-        case 'periodsel':                
+        case 'periodsel':
             $dtr_year = $_POST['year'];
-            
+
             $year_select = '';
-            $dtr_period = $mainsql->get_dtr_period($dtr_year, $profile_comp, 1);    
+            $dtr_period = $mainsql->get_dtr_period($dtr_year, $profile_comp, 1);
             if ($dtr_period) :
                 foreach ($dtr_period as $key => $value) :
                     $year_select .= '<option value="'.date("Y-m-d", strtotime($value['PeriodFrom'])).' '.date("Y-m-d", strtotime($value['PeriodTo'])).'" dfrom="'.strtotime($value['PeriodFrom']).'" dto="'.strtotime($value['PeriodTo']).'" posted="'.$value['AttPost'].'">'.$value['PeriodID']." ".$value['PRYear'].' '.date("m/d/Y", strtotime($value['PeriodFrom'])).' to '.date("m/d/Y", strtotime($value['PeriodTo'])).'</option>';
@@ -120,33 +120,33 @@
             endif;
             echo $year_select;
         break;
-            
-        case 'periodvar':                
+
+        case 'periodvar':
             $dtr_year = $_POST['year'];
-            
+
             $year_select = '';
-            $dtr_period = $mainsql->get_dtr_period($dtr_year, $profile_comp, 1);    
-            if ($dtr_period) :            
-                echo '{"dcover":"'.date("Y-m-d", strtotime($dtr_period[0]['PeriodFrom'])).' '.date("Y-m-d", strtotime($dtr_period[0]['PeriodTo'])).'", "dfrom":"'.strtotime($dtr_period[0]['PeriodFrom']).'", "dto":"'.strtotime($dtr_period[0]['PeriodTo']).'", "posted":"'.$dtr_period[0]['AttPost'].'"}';            
+            $dtr_period = $mainsql->get_dtr_period($dtr_year, $profile_comp, 1);
+            if ($dtr_period) :
+                echo '{"dcover":"'.date("Y-m-d", strtotime($dtr_period[0]['PeriodFrom'])).' '.date("Y-m-d", strtotime($dtr_period[0]['PeriodTo'])).'", "dfrom":"'.strtotime($dtr_period[0]['PeriodFrom']).'", "dto":"'.strtotime($dtr_period[0]['PeriodTo']).'", "posted":"'.$dtr_period[0]['AttPost'].'"}';
             endif;
         break;
-            
-        case 'calculate':  
-            
-            $_POST['strEMPID'] = $profile_idnum;            
+
+        case 'calculate':
+
+            $_POST['strEMPID'] = $profile_idnum;
             $_POST['dteDTRDate'] = date("m/d/Y", $_POST['dateunix']);
             $_POST['OVERWRITE'] = 0;
             $_POST['STATUS'] = 'INITIAL';
             $_POST['intFINALPAY'] = 0;
-        
+
             $dfrom = $_POST['dateunix'];
-            
-            $daynow = date('j');    
-            $month15 = date('U', strtotime(date('Y-m-15')));                        
+
+            $daynow = date('j');
+            $month15 = date('U', strtotime(date('Y-m-15')));
             $lastyear = date('Y', strtotime("-1 month"));
             $lastmonth = date('m', strtotime("-1 month"));
             $lastday = date('t', strtotime("-1 month"));
-            $month15l = date('U', strtotime(date($lastyear.'-'.$lastmonth.'-15')));   
+            $month15l = date('U', strtotime(date($lastyear.'-'.$lastmonth.'-15')));
             $monthlast = date('U', strtotime(date($lastyear.'-'.$lastmonth.'-'.$lastday)));
 
             if ($daynow >= 3 && $daynow < 18) :
@@ -157,54 +157,54 @@
                 else :
                     $lastpoint = $month15;
                 endif;
-            endif;  
+            endif;
 
             if ($dfrom > $lastpoint) :
                 $dtr_calculate = $mainsql->dtr_action($_POST, 'calculate');
             else :
                 $dtr_calculate = 0;
-            endif;            
-            
+            endif;
+
             //$dtr_calculate = $mainsql->dtr_action($_POST, 'calculate');
-            
+
             echo $dtr_calculate;
         break;
-            
-        case 'cover_calculate':  
-            
+
+        case 'cover_calculate':
+
             $datefrom = date('U', strtotime($_POST['from']));
             $dateto = date('U', strtotime($_POST['to']));
             $dtrcal_count = 0;
-            
+
             while ($datefrom <= $dateto ) :
-            
-                $_POST['strEMPID'] = $profile_idnum;            
+
+                $_POST['strEMPID'] = $profile_idnum;
                 $_POST['dteDTRDate'] = date("m/d/Y", $_POST['dateunix']);
-                $_POST['OVERWRITE'] = 0;
+                $_POST['OVERWRITE'] = 1;
                 $_POST['STATUS'] = 'INITIAL';
                 $_POST['intFINALPAY'] = 0;
 
                 $dtr_calculate = $mainsql->dtr_action($_POST, 'calculate');
-                
+
                 $dtrcal_count++;
                 $datefrom = $datefrom + 86400;
-            
+
             endwhile;
 
             echo $dtrcal_count;
-            
-        break;
-        
-        case 'table':                
-            $dtr_cover = $_POST['cover'];        
-            $dtr_period = explode(" ", $dtr_cover);
-        
-            $dtr_data = $mainsql->get_dtr_data($profile_idnum, date("m/d/Y", strtotime($dtr_period[0].' 00:00:00')), date("m/d/Y", strtotime($dtr_period[1].' 23:59:59')), $profile_comp);  
-            
-            //var_dump($dtr_data);
-            ?>   
 
-            <table border="0" cellspacing="0" class="tdata" style="width:<?php echo $dtr_data ? ' 2400px' : ' 100%'; ?>">                                    
+        break;
+
+        case 'table':
+            $dtr_cover = $_POST['cover'];
+            $dtr_period = explode(" ", $dtr_cover);
+
+            $dtr_data = $mainsql->get_dtr_data($profile_idnum, date("m/d/Y", strtotime($dtr_period[0].' 00:00:00')), date("m/d/Y", strtotime($dtr_period[1].' 23:59:59')), $profile_comp);
+
+            //var_dump($dtr_data);
+            ?>
+
+            <table border="0" cellspacing="0" class="tdata" style="width:<?php echo $dtr_data ? ' 2400px' : ' 100%'; ?>">
                 <?php if($dtr_data) : ?>
                     <tr>
                         <th width="5%" rowspan="2">DTR Date</th>
@@ -221,35 +221,35 @@
                         <th width="10%" rowspan="2">Leave Type</th>
                         <th width="5%" rowspan="2">ML</th>
                         <th width="5%" rowspan="2">ROT</th>
-                        <th width="5%" rowspan="2">NPROT</th>       
-                        <th width="5%" rowspan="2">DO</th>       
-                        <th width="5%" rowspan="2">SH</th>       
-                        <th width="5%" rowspan="2">LH</th>       
-                        <th width="5%" rowspan="2">SHDO</th>       
-                        <th width="5%" rowspan="2">LHDO</th>       
-                        <th width="5%" rowspan="2">OTDO</th>       
-                        <th width="5%" rowspan="2">OTSH</th>       
-                        <th width="5%" rowspan="2">OTLH</th>       
-                        <th width="5%" rowspan="2">OTSHDO</th>       
-                        <th width="5%" rowspan="2">OTLHDO</th>       
-                        <th width="5%" rowspan="2">NDDO</th>       
-                        <th width="5%" rowspan="2">NDSH</th>       
-                        <th width="5%" rowspan="2">NDLH</th>       
-                        <th width="5%" rowspan="2">NDSHDO</th>       
-                        <th width="5%" rowspan="2">NDLHDO</th>       
-                        <th width="5%" rowspan="2">NPDO</th>       
-                        <th width="5%" rowspan="2">NPSH</th>       
-                        <th width="5%" rowspan="2">NPLH</th>       
-                        <th width="5%" rowspan="2">NPSHDO</th>       
+                        <th width="5%" rowspan="2">NPROT</th>
+                        <th width="5%" rowspan="2">DO</th>
+                        <th width="5%" rowspan="2">SH</th>
+                        <th width="5%" rowspan="2">LH</th>
+                        <th width="5%" rowspan="2">SHDO</th>
+                        <th width="5%" rowspan="2">LHDO</th>
+                        <th width="5%" rowspan="2">OTDO</th>
+                        <th width="5%" rowspan="2">OTSH</th>
+                        <th width="5%" rowspan="2">OTLH</th>
+                        <th width="5%" rowspan="2">OTSHDO</th>
+                        <th width="5%" rowspan="2">OTLHDO</th>
+                        <th width="5%" rowspan="2">NDDO</th>
+                        <th width="5%" rowspan="2">NDSH</th>
+                        <th width="5%" rowspan="2">NDLH</th>
+                        <th width="5%" rowspan="2">NDSHDO</th>
+                        <th width="5%" rowspan="2">NDLHDO</th>
+                        <th width="5%" rowspan="2">NPDO</th>
+                        <th width="5%" rowspan="2">NPSH</th>
+                        <th width="5%" rowspan="2">NPLH</th>
+                        <th width="5%" rowspan="2">NPSHDO</th>
                         <th width="5%" rowspan="2">NPLHDO</th>
                         <!--th width="5%" rowspan="2"><span class="cursorpoint" title="Regular Overtime">ROT hr(s)</span></th>
                         <th width="5%" rowspan="2"><span class="cursorpoint" title="Special Holiday/Legal Holiday/Restday">SH/LH/RD hr(s)</span></th-->
                     </tr>
-                    <tr>                                        
+                    <tr>
                         <th width="5%">In</th>
-                        <th width="5%">Out</th> 
+                        <th width="5%">Out</th>
                     </tr>
-                    <?php 
+                    <?php
                         $total_workhrs = 0;
                         $total_latehrs = 0;
                         $total_uthrs = 0;
@@ -258,7 +258,7 @@
                         $total_leave = 0;
                         $total_sh = 0;
                         $total_ml = 0;
-                                    
+
                         $total_ot01 = 0;
                         $total_ot02 = 0;
                         $total_ot03 = 0;
@@ -281,11 +281,11 @@
                         $total_ot20 = 0;
                         $total_ot21 = 0;
                         $total_ot22 = 0;
-                        
-                        $shiftsched = $mainsql->get_schedshift($profile_idnum);            
+
+                        $shiftsched = $mainsql->get_schedshift($profile_idnum);
                     ?>
                     <?php foreach ($dtr_data as $key => $value) : ?>
-                    <?php 
+                    <?php
 
                         $numdays = intval(date("N", strtotime($value['DTRDATE'])));
 
@@ -304,28 +304,28 @@
                         else :
                             if (($value['OTHrs01'] + $value['OTHrs02']) < $profile_minothours) :
                                 $ndhours = ($value['OTHrs13'] + $value['OTHrs14'] + $value['OTHrs15'] + $value['OTHrs16'] + $value['OTHrs17'] + $value['OTHrs18'] + $value['OTHrs19'] + $value['OTHrs20'] + $value['OTHrs21'] + $value['OTHrs22']);
-                            else : 
+                            else :
                                 $ndhours = ($value['NDHrs'] + $value['OTHrs02'] + $value['OTHrs13'] + $value['OTHrs14'] + $value['OTHrs15'] + $value['OTHrs16'] + $value['OTHrs17'] + $value['OTHrs18'] + $value['OTHrs19'] + $value['OTHrs20'] + $value['OTHrs21'] + $value['OTHrs22']);
                             endif;
                         endif;*/
                         $ndhours = $value['NDHrs'];
 
                         // ROT
-                        if (!$profile_minothours) : 
+                        if (!$profile_minothours) :
                             $rot = 0;
-                        elseif ($profile_minothours == 1) : 
+                        elseif ($profile_minothours == 1) :
                             $rot = ($value['OTHrs01'] + $value['OTHrs02']);
                         else :
                             if (($value['ApprovedOTHrs'] < $value['ActualOTHrs'] && $value['ApprovedOTHrs'] < $profile_minothours) || ($value['ApprovedOTHrs'] >= $value['ActualOTHrs'] && $value['ActualOTHrs'] < $profile_minothours)) :
                                 $rot = 0;
-                            else : 
+                            else :
                                 $rot = ($value['OTHrs01'] + $value['OTHrs02']);
                             endif;
                         endif;
 
                         //SH/LH/RD
                         if ($value['ApprovedOTHrs'] < $value['ActualOTHrs']) :
-                            if ($value['ApprovedOTHrs'] < ($value['OTHrs03'] + $value['OTHrs04'] + $value['OTHrs05'] + $value['OTHrs06'] + $value['OTHrs07'] + $value['OTHrs08'] + $value['OTHrs09'] + $value['OTHrs10'] + $value['OTHrs11'] + $value['OTHrs12'] + $value['OTHrs13'])) : 
+                            if ($value['ApprovedOTHrs'] < ($value['OTHrs03'] + $value['OTHrs04'] + $value['OTHrs05'] + $value['OTHrs06'] + $value['OTHrs07'] + $value['OTHrs08'] + $value['OTHrs09'] + $value['OTHrs10'] + $value['OTHrs11'] + $value['OTHrs12'] + $value['OTHrs13'])) :
                                 $shlhrd = $value['ApprovedOTHrs'];
                             else :
                                 $shlhrd = $value['OTHrs03'] + $value['OTHrs04'] + $value['OTHrs05'] + $value['OTHrs06'] + $value['OTHrs07'] + $value['OTHrs08'] + $value['OTHrs09'] + $value['OTHrs10'] + $value['OTHrs11'] + $value['OTHrs12'] + $value['OTHrs13'];
@@ -347,7 +347,7 @@
                         $total_ot = $total_ot + $rot;
                         $total_sh = $total_sh + $shlhrd;
                         $total_ml = $total_ml + $value['ML'];
-                                    
+
                         $total_ot01 = $total_ot01 + $value['OTHrs01'];
                         $total_ot02 = $total_ot02 + $value['OTHrs02'];
                         $total_ot03 = $total_ot03 + $value['OTHrs03'] + $value['OTHrs23'];
@@ -378,15 +378,15 @@
                         $appliedscheddate = $mainsql->get_appliedsched($profile_idnum, date("m/d/Y", strtotime($value['DTRDATE'])), $profile_comp);
                         $mdtrrestdaydate = $mainsql->get_mdtrrestday($profile_idnum, date("m/d/Y", strtotime($value['DTRDATE'])), $profile_comp);
                         $mdtrscheddate = $mainsql->get_mdtrsched($profile_idnum, date("m/d/Y", strtotime($value['DTRDATE'])), $profile_comp);
-            
+
                         //var_dump($restdaydate[0]['DAYOFF'].' '.$appliedrestdaydate[0]['RESTDAY']);
-            
+
                         if ($appliedscheddate[0]['NEWSHIFTID']) :
                             if ($mdtrscheddate[0]['ShiftID']) :
                                 $thisisrestday = 0;
                             else :
                                 $thisisrestday = $mdtrrestdaydate[0]['RestDay'] ? 1 : 0;
-                            endif;    
+                            endif;
                         else :
                             if ($mdtrscheddate[0]['ShiftID']) :
                                 $thisisrestday = 0;
@@ -396,25 +396,25 @@
                                 else :
                                     $thisisrestday = $mdtrrestdaydate[0]['RestDay'] ? 1 : 0;
                                 endif;
-                            endif;                                                            
-                        endif;    
-            
+                            endif;
+                        endif;
+
                     ?>
 
                     <tr class="trdata centertalign">
                         <td><?php echo date("M j", strtotime($value['DTRDATE'])); ?></td>
                         <td><?php echo date("l", strtotime($value['DTRDATE'])); ?></td>
-                        <td><?php 
-                            if ($thisisholiday == 1) :                            
+                        <td><?php
+                            if ($thisisholiday == 1) :
                                 echo 'HOLIDAY';
-                            /*elseif ($thisisrestday == 1) :                            
+                            /*elseif ($thisisrestday == 1) :
                                 echo 'RESTDAY';*/
-                            else : 
-                                echo $value['ShiftDesc']; 
+                            else :
+                                echo $value['ShiftDesc'];
                             endif;
                         ?></td>
                         <?php $timearray = preg_split('/\s+/', trim($value['TimeIN'])); $timearray2 = preg_split('/\s+/', trim($value['TimeOut'])); ?>
-                        <td><?php 
+                        <td><?php
                             if ($value['TimeINDate'] == $value['TimeIN']) :
                                 $value['TimeIN'] = 0;
                             endif;
@@ -504,8 +504,8 @@
             <?php
         break;
         default:
-            echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/login'</script>";   
-        
-    }            
-	
-?>			
+            echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/login'</script>";
+
+    }
+
+?>
