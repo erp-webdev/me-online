@@ -91,4 +91,15 @@
                         </div>
                     </div>
 
+		<script>
+
+			$(document).ready(function(){
+				var wfh_app = angular.module('OtherApp', []);
+				wfh_app.controller('OtherController', ['$scope','$http', function($scope, $http){
+
+				}]);
+			});
+
+		</script>
+
     <?php include(TEMP."/footer.php"); ?>
