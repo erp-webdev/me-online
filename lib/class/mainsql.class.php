@@ -1984,7 +1984,7 @@ class mainsql {
 
     function get_shiftid_fromhrdtr($empid, $date){
       $sql = "SELECT TOP 1 ShiftID
-              FROM FN_GET_DTR_SHIFT($empid, $date)";
+              FROM FN_GET_DTR_SHIFT('$empid', '$date')";
       $result = $this->get_row($sql);
       return $result;
     }
