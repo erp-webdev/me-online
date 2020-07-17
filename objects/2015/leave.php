@@ -72,11 +72,15 @@
 
                 $allowedExts = array("JPG", "JPEG", "GIF", "PNG", "PDF", "jpg", "jpeg", "gif", "png", "pdf");
 
-                if ($_POST['balance'] >= $_POST['days'] && $balanceval >= $_POST['days']) :
-									$a=$_POST['balance'];
-									$b=$_POST['days'];
-									$c=$balanceval;
+								//test for leave balance
+								$bal1 = $_POST['balance'];
+								$day1 = $_POST['days'];
 
+								echo "{'success': false, 'error': '$bal1 >= $day1 && $balanceval >= $day1'}";
+								exit();
+								//
+
+                if ($_POST['balance'] >= $_POST['days'] && $balanceval >= $_POST['days']) :
 
 
                     if ($_POST['leave_type'] == "L01" && count($_POST['leave_duration']) >= 3) :
