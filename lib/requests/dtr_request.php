@@ -177,9 +177,8 @@
             $dtrcal_count = 0;
 
             while ($datefrom <= $dateto ) :
-
                 $_POST['strEMPID'] = $profile_idnum;
-                $_POST['dteDTRDate'] = date("m/d/Y", $_POST['dateunix']);
+                $_POST['dteDTRDate'] = date("m/d/Y", $datefrom);
                 $_POST['OVERWRITE'] = 1;
                 $_POST['STATUS'] = 'INITIAL';
                 $_POST['intFINALPAY'] = 0;
