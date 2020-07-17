@@ -179,7 +179,7 @@
             while ($datefrom <= $dateto ) :
                 $_POST['strEMPID'] = $profile_idnum;
                 $_POST['dteDTRDate'] = date("m/d/Y", $datefrom);
-                $_POST['OVERWRITE'] = 1;
+                $_POST['OVERWRITE'] = 0;
                 $_POST['STATUS'] = 'INITIAL';
                 $_POST['intFINALPAY'] = 0;
 
