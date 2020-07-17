@@ -1982,6 +1982,13 @@ class mainsql {
 		return $result;
     }
 
+    function get_shiftid_fromhrdtr($empid, $date){
+      $sql = "SELECT TOP 1 ShiftID
+              FROM FN_GET_DTR_SHIFT($empid, $date)";
+      $result = $this->get_row($sql);
+      return $result;
+    }
+
     function get_shiftdtr($empid, $date, $dbname)
     {
       $sql = "SELECT SHIFT, SUBSTRING(CAST(STARTTIME as varchar), 1, 2) as STARTTIME, SUBSTRING(CAST(ENDTIME as varchar), 1, 2) as ENDTIME, NUMHRS FROM dbo.FN_GETSHIFT('".$empid."', '".$date."')";
