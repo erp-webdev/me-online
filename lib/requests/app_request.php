@@ -1979,8 +1979,6 @@
                     $vdates = date('Y-m-d', $sdate_array[$key]);
 
                     $shiftsched2 = $mainsql->get_shiftid_fromhrdtr($idnum, $vdates);
-										var_dump($idnum);
-										exit();
                     $sft2 = $shiftsched2[0]['ShiftID'];
 
 										// $empty_date = date('w', strtotime($vdates));
