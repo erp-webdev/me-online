@@ -98,6 +98,7 @@
 				var wfh_app = angular.module('OtherApp', []);
 				wfh_app.controller('OtherController', ['$scope','$http', function($scope, $http){
 
+					$scope.form_type = $('#form_type').val();
 
 					$scope.$watch('form_type', function(newVal, oldVal, $scope){
 
