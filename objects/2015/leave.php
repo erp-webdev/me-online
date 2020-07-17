@@ -72,7 +72,7 @@
 
                 $allowedExts = array("JPG", "JPEG", "GIF", "PNG", "PDF", "jpg", "jpeg", "gif", "png", "pdf");
 
-								test for leave balance
+								//test for leave balance
 								$bal1 = $_POST['balance'];
 								$day1 = $_POST['days'];
 
