@@ -27,21 +27,19 @@
                                             <li><a href="#lapprover">Approvers</a></li>
                                         </ul>
 
-                                        <div id="ldetails">
+                                        <div id="ldetails" ng-app="OtherApp" ng-controller="OtherController">
                                             <table class="tdataform" border="0" cellspacing="0">
                                                 <tr>
                                                     <td width="15%"><b>Type: </b></td>
                                                     <td width="85%" colspan="3">
-                                                        <select id="ot_type" name="ot_type" class="txtbox width300">
-                                                            <option value="Reg OT PM">Reg OT PM (OT after Shift)</option>
-                                                            <!--option value="Reg OT AM">Reg OT AM (OT before Shift)</option>
-                                                            <option value="Regular Day">Regular Day (OT AM and OT PM)</option-->
-                                                            <option value="Rest Day">Rest Day</option>
-                                                            <option value="Holiday">Holiday</option>
+                                                        <select id="form_type" name="form_type" class="txtbox width300">
+																													<?php foreach($forms as $form){ ?>
+                                                            <option value="<?php echo $form["name"]; ?>"><?php echo $form["title"]; ?></option>
+																													<?php } ?>
                                                         </select>
                                                     </td>
                                                 </tr>
-                                                
+
                                             </table>
                                         <?php
                                             /*if ($chkdtrin == '0' || $chkdtrout == '0') :
