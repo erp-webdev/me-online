@@ -30,7 +30,7 @@
                                         <div id="ldetails" ng-app="OtherApp" ng-controller="OtherController">
                                             <table class="tdataform" border="0" cellspacing="0">
                                                 <tr>
-                                                    <td width="15%"><b>Type: </b></td>
+                                                    <td width="15%"><b>Form: </b></td>
                                                     <td width="85%" colspan="3">
                                                         <select id="form_type" name="form_type" class="txtbox width300" ng-model="form_type">
 																													<?php foreach($forms as $form){ ?>
@@ -102,7 +102,15 @@
 
 					$scope.$watch('form_type', function(newVal, oldVal, $scope){
 
-						alert($scope.form_type);
+
+						$http({
+							method : "GET",
+							url : "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getotherform&form="+ $scope.form_type +""
+						}).then(function checkHoliday(response) {
+							console.log(response);
+						}, function error(response) {
+							console.log('error retrieving forms');
+						});
 
 					});
 

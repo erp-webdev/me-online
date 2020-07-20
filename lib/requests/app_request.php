@@ -82,6 +82,7 @@
             case 'gettruefrom2':
 			case 'gettrueto2':
 						case 'getshiftdtr':
+						case 'getotherform':
 						case 'getappliedwfh':
             case 'gettrueto3':
             case 'setscin':
@@ -2532,6 +2533,78 @@
                         $day = $_GET['date'];
 						$shift = $mainsql->get_shiftdtr($profile_idnum, $day, $profile_dbname);
                         echo json_encode($shift);
+		break;
+
+		case 'getotherform':
+			
+					$form = $_GET['form'];
+
+					if($form = 'purhcase_request'){
+						$data = array(
+							[
+								"name" => "purchase_request",
+								"title" => "Purchase Request",
+								"items" =>
+									[
+										"name" => "dtrdate",
+										"title" => "DTR Date",
+										"hclass" => "form-control input-sm",
+										"defaultValue" => "date('Y-m-d')"
+									],
+								"approvers" => "frmApplicationWHWeb",
+								"customApprovers" =>
+									[
+										"EmpID" => "2019-02-0033",
+										"DBNAME" => "GL",
+										"NAME" => "Spencer"
+									],
+								"isApproved" => 1,
+								"dateApproved" => "2020-07-15",
+								"formStatus" => "APPROVED",
+								"dateApplied" => "2020-07-01"
+							]
+						);
+					}else{
+						$data = array(
+							[
+								"name" => "travel_form",
+								"title" => "Travel Form",
+								"items" =>
+									[
+										[
+											"name" => "dtrdate",
+											"title" => "DTR Date",
+											"hclass" => "form-control input-sm"
+										],
+										[
+											"name" => "gender",
+											"title" => "Gender",
+											"type" => "radio",
+											"hclass" => "form-control input-sm",
+											"options" =>
+												[
+													['value' => 'male', 'text' => 'Male'],
+													['value' => 'female', 'text' => 'Female']
+												]
+										]
+									],
+								"approvers" => "frmApplicationWHWeb",
+								"customApprovers" =>
+									[
+										"EmpID" => "2019-02-0033",
+										"DBNAME" => "GL",
+										"NAME" => "Spencer"
+									],
+								"isApproved" => 1,
+								"dateApproved" => "2020-07-15",
+								"formStatus" => "APPROVED",
+								"dateApplied" => "2020-07-01"
+							]
+						);
+					}
+
+					echo json_encode($data);
+
 		break;
 
 		case 'getappliedwfh':
