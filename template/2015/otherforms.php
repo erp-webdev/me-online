@@ -40,7 +40,9 @@
                                                     </td>
                                                 </tr>
 																								<tr ng-repeat="data in form_data" id="tr{{ $index+1 }}">
-																									<p>test</p>
+																									<td>
+																										<p>{{ data }}</p>
+																									</td>
 																								</tr>
 
                                             </table>
@@ -120,9 +122,11 @@
 					});
 
 					$scope.$watch('form_data', function(newVal, oldVal, $scope){
+
 						if($scope.form_data[0]){
 							console.log($scope.form_data[0].title);
 						}
+
 					});
 
 				}]);
