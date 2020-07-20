@@ -46,11 +46,11 @@
 																									<td>
 																										<div ng-if="propExist(item.type) == 1">
 																											with type
-																											<!-- <input type="{{ item.type }}" class="{{ item.hclass ? item.hclass : '' }}" value="{{ item.defaultValue ? item.defaultValue : '' }}"> -->
+																											<input type="{{ item.type }}" class="{{ item.hclass ? item.hclass : '' }}" value="{{ item.defaultValue ? item.defaultValue : '' }}">
 																										</div>
 																										<div ng-if="propExist(item.type) == 0">
 																											no type
-																											<!-- <input type="text" class="{{ item.hclass ? item.hclass : '' }}" value="{{ item.defaultValue ? item.defaultValue : '' }}"> -->
+																											<input type="text" class="{{ item.hclass ? item.hclass : '' }}" value="{{ item.defaultValue ? item.defaultValue : '' }}">
 																										</div>
 																									</td>
 																								</tr>
