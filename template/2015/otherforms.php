@@ -41,7 +41,7 @@
                                                 </tr>
 																								<tr ng-repeat="data in form_data" id="tr{{ $index+1 }}">
 																									<td>
-																										<p>{{ data }}</p>
+																										<p>test: {{ data.title }}</p>
 																									</td>
 																								</tr>
 
