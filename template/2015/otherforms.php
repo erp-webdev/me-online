@@ -19,7 +19,7 @@
                                 </div><br>
 
                                 <div id="alert"></div>
-                                <form id="frmapplyot" action="?ignore-page-cache=true" method="post" enctype="multipart/form-data">
+                                <form id="frmother" action="?ignore-page-cache=true" method="post" enctype="multipart/form-data">
                                     <div id="tabs">
                                         <ul>
                                             <li><a href="#ldetails">Details</a></li>
@@ -39,6 +39,9 @@
                                                         </select>
                                                     </td>
                                                 </tr>
+																								<tr>
+																									<p>{{ form_data.title }}</p>
+																								</tr>
 
                                             </table>
                                         <?php
@@ -117,7 +120,7 @@
 					});
 
 					$scope.$watch('form_data', function(newVal, oldVal, $scope){
-						alert('form data updated!');
+
 					});
 
 				}]);

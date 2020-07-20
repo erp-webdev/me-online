@@ -2548,7 +2548,7 @@
 									[
 										"name" => "dtrdate",
 										"title" => "DTR Date",
-										"hclass" => "form-control input-sm",
+										"hclass" => "form-control input-sm datepick3",
 										"defaultValue" => "date('Y-m-d')"
 									],
 								"approvers" => "frmApplicationWHWeb",
@@ -2574,7 +2574,7 @@
 										[
 											"name" => "dtrdate",
 											"title" => "DTR Date",
-											"hclass" => "form-control input-sm"
+											"hclass" => "form-control input-sm datepick3"
 										],
 										[
 											"name" => "gender",
