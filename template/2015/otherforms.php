@@ -120,7 +120,7 @@
 					});
 
 					$scope.$watch('form_data', function(newVal, oldVal, $scope){
-						console.log($scope.form_data[0]);
+						console.log($scope.form_data[0].title);
 					});
 
 				}]);
