@@ -44,10 +44,10 @@
 																										<label>{{ item.title }}</label>
 																									</td>
 																									<td>
-																										<div ng-if="{{ item.type != '' }}">
+																										<div ng-if="{{ propExist(item.type) == 1 }}">
 																											<input type="{{ item.type }}" class="{{ item.hclass ? item.hclass : '' }}" value="{{ item.defaultValue ? item.defaultValue : '' }}">
 																										</div>
-																										<div ng-if="{{ item.type == '' }}">
+																										<div ng-if="{{ propExist(item.type) == 0 }}">
 																											<input type="text" class="{{ item.hclass ? item.hclass : '' }}" value="{{ item.defaultValue ? item.defaultValue : '' }}">
 																										</div>
 																									</td>
@@ -110,6 +110,14 @@
 
 				var wfh_app = angular.module('OtherApp', []);
 				wfh_app.controller('OtherController', ['$scope','$http', function($scope, $http){
+
+					$scope.propExist = function(key){
+						if(key != ''){
+							return 1;
+						}else{
+							return 0;
+						}
+					}
 
 					$scope.form_type = $('#form_type').val();
 					$scope.form_data = [];
