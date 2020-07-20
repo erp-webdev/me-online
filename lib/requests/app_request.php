@@ -2536,10 +2536,10 @@
 		break;
 
 		case 'getotherform':
-			
+
 					$form = $_GET['form'];
 
-					if($form = 'purhcase_request'){
+					if($form == 'purhcase_request'){
 						$data = array(
 							[
 								"name" => "purchase_request",
