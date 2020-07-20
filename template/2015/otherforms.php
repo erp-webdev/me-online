@@ -46,7 +46,7 @@
 																									<td>
 																										<div ng-if="propExist(item.type) == 1">
 																											{{ item.type }}
-																											<input type="getType(item.type)" class="{{ item.hclass ? item.hclass : '' }}" value="{{ item.defaultValue ? item.defaultValue : '' }}">
+																											<input type="{{ getType(item.type) }}" class="{{ item.hclass ? item.hclass : '' }}" value="{{ item.defaultValue ? item.defaultValue : '' }}">
 																										</div>
 																										<div ng-if="propExist(item.type) == 0">
 																											no type
@@ -122,7 +122,7 @@
 					}
 
 					$scope.getType = function(key){
-						alert(key);
+						return "radio";
 					}
 
 					$scope.form_type = $('#form_type').val();
