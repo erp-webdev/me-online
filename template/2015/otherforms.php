@@ -44,7 +44,7 @@
 																										<label>{{ item.title }}</label>
 																									</td>
 																									<td>
-																										<input type="{{ item.type ? item.type : 'text' }}" class="{{ item.hclass ? item.hclass : '' }}" value="{{ item.defaultValue ? item.defaultValue : '' }}">
+																										<input type="{{ item.type != '' ? item.type : 'text' }}" class="{{ item.hclass ? item.hclass : '' }}" value="{{ item.defaultValue ? item.defaultValue : '' }}">
 																									</td>
 																								</tr>
 
