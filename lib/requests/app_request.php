@@ -2539,7 +2539,7 @@
 
 					$form = $_GET['form'];
 
-					if($form == 'purhcase_request'){
+					if($form == 'purchase_request'){
 						$data = array(
 							[
 								"name" => "purchase_request",
