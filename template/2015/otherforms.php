@@ -99,6 +99,7 @@
 				wfh_app.controller('OtherController', ['$scope','$http', function($scope, $http){
 
 					$scope.form_type = $('#form_type').val();
+					$scope.form_data = [];
 
 					$scope.$watch('form_type', function(newVal, oldVal, $scope){
 
@@ -108,10 +109,15 @@
 							url : "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getotherform&form="+ $scope.form_type +""
 						}).then(function checkHoliday(response) {
 							console.log(response.data);
+							$scope.form_data = response.data;
 						}, function error(response) {
 							console.log('error retrieving forms');
 						});
 
+					});
+
+					$scope.$watch('form_data', function(newVal, oldVal, $scope){
+						alert('form data updated!');
 					});
 
 				}]);
