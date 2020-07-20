@@ -44,10 +44,10 @@
 																										<label>{{ item.title }}</label>
 																									</td>
 																									<td>
-																										<div ng-if="{{ propExist(item.type) == 1 }}">
+																										<div ng-if="propExist(item.type) == 1">
 																											<input type="{{ item.type }}" class="{{ item.hclass ? item.hclass : '' }}" value="{{ item.defaultValue ? item.defaultValue : '' }}">
 																										</div>
-																										<div ng-if="{{ propExist(item.type) == 0 }}">
+																										<div ng-if="propExist(item.type) == 0">
 																											<input type="text" class="{{ item.hclass ? item.hclass : '' }}" value="{{ item.defaultValue ? item.defaultValue : '' }}">
 																										</div>
 																									</td>
