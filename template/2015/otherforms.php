@@ -45,7 +45,7 @@
 																									</td>
 																									<td>
 																										<div ng-if="propExist(item.type) == 1">
-																											with type
+																											{{ item.type }}
 																											<input type="{{ item.type }}" class="{{ item.hclass ? item.hclass : '' }}" value="{{ item.defaultValue ? item.defaultValue : '' }}">
 																										</div>
 																										<div ng-if="propExist(item.type) == 0">
