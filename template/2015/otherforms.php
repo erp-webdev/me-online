@@ -107,7 +107,7 @@
 							method : "GET",
 							url : "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getotherform&form="+ $scope.form_type +""
 						}).then(function checkHoliday(response) {
-							console.log(response);
+							console.log(response.data);
 						}, function error(response) {
 							console.log('error retrieving forms');
 						});
