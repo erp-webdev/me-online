@@ -45,11 +45,15 @@
 																									</td>
 																									<td>
 																										<div ng-if="propExist(item.type) == 1">
-																											{{ item.type }}
-																											<input type="{{ getType(item.type) }}" class="{{ item.hclass ? item.hclass : '' }}" value="{{ item.defaultValue ? item.defaultValue : '' }}">
+																											<div data-ng-switch on="item.type">
+																												<div data-ng-switch-when="radio">
+																													<div ng-repeat="option in item.options">
+																														<input type="radio" name="{{ item.name }}" value="{{ option.value }}" class="{{ item.hclass ? item.hclass : '' }}">{{ option.text }}
+																													</div>
+																												</div>
+																											</div>
 																										</div>
 																										<div ng-if="propExist(item.type) == 0">
-																											no type
 																											<input type="text" class="{{ item.hclass ? item.hclass : '' }}" value="{{ item.defaultValue ? item.defaultValue : '' }}">
 																										</div>
 																									</td>
@@ -119,10 +123,6 @@
 						}else{
 							return 1;
 						}
-					}
-
-					$scope.getType = function(key){
-						return "radio";
 					}
 
 					$scope.form_type = $('#form_type').val();
