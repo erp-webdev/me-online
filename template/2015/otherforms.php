@@ -114,11 +114,10 @@
 				wfh_app.controller('OtherController', ['$scope','$http', function($scope, $http){
 
 					$scope.propExist = function(key){
-						alert(key);
-						if(key != ''){
-							return 1;
-						}else{
+						if(key == '' || key == undefined || key == null){
 							return 0;
+						}else{
+							return 1;
 						}
 					}
 
