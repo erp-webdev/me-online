@@ -38,6 +38,9 @@
 																													<?php } ?>
                                                         </select>
                                                     </td>
+																										<td>
+																											<input type="text" readonly class="datepickwh">
+																										</td>
                                                 </tr>
 																								<tr ng-repeat="item in form_data[0].items" id="tr{{ $index+1 }}">
 																									<td>
