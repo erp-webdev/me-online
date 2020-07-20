@@ -40,7 +40,7 @@
                                                     </td>
                                                 </tr>
 																								<tr ng-repeat="data in form_data" id="tr{{ $index+1 }}">
-																									<p>{{ data.title }}</p>
+																									<p>test</p>
 																								</tr>
 
                                             </table>
