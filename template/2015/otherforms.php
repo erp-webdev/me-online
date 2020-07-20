@@ -46,7 +46,7 @@
 																									<td>
 																										<div ng-if="propExist(item.type) == 1">
 																											{{ item.type }}
-																											<input {{ "type=" }} class="{{ item.hclass ? item.hclass : '' }}" value="{{ item.defaultValue ? item.defaultValue : '' }}">
+																											<input type="{{ item.type ? 'radio' : text }}" class="{{ item.hclass ? item.hclass : '' }}" value="{{ item.defaultValue ? item.defaultValue : '' }}">
 																										</div>
 																										<div ng-if="propExist(item.type) == 0">
 																											no type
