@@ -39,9 +39,9 @@
                                                         </select>
                                                     </td>
                                                 </tr>
-																								<tr ng-repeat="data in form_data" id="tr{{ $index+1 }}">
+																								<tr ng-repeat="item in form_data[0].items" id="tr{{ $index+1 }}">
 																									<td>
-																										<p>test: {{ data.title }}</p>
+																										<p>test: {{ item.name }}</p>
 																									</td>
 																								</tr>
 
