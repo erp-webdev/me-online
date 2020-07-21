@@ -858,6 +858,33 @@ class mainsql {
     }
 
     /* LEAVE */
+    function calculate_lbalance($value, $dbname){
+
+      $accepted_field = array('EMPID', 'LEAVEID');
+
+      $knum = 0;
+      foreach ($value as $key => $value) :
+          if (in_array($key, $accepted_field)) :
+              $val[$knum]['field_name'] = $key;
+              $val[$knum]['field_value'] = $value;
+              $val[$knum]['field_type'] = SQLVARCHAR;
+              $val[$knum]['field_isoutput'] = false;
+              $val[$knum]['field_isnull'] = false;
+              $val[$knum]['field_maxlen'] = 512;
+
+              $knum++;
+          endif;
+      endforeach;
+
+      $update_lbalance = $this->get_sp_data('sp_update_Emp_leaveBalance', $val, $dbname);
+
+      if($update_lbalance) {
+          return 1;
+      } else {
+          return 0;
+      }
+
+    }
 
     function get_leave($desc = NULL)
 	{
