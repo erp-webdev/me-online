@@ -36,7 +36,7 @@
 								}
 
 								$calculate_balance = $mainsql->calculate_lbalance($lbalancepost, $dbname);
-								echo "<script>console.log('$calculate_balance');</script>" 
+								echo "<script>console.log('$calculate_balance');</script>";
 								$cnt++;
 
 						endwhile;
