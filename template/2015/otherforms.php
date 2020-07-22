@@ -55,7 +55,7 @@
 																										</div>
 																										<div ng-if="propExist(item.type) == 0">
 																											<div ng-if="textExists(item.hclass, 'datepicker') == 1">
-																												<input type="text" ng-click="showDatePicker($event)" class="datepickother" value="{{ item.defaultValue ? item.defaultValue : '' }}">
+																												<input type="text" ng-click="showDatePicker($event)" class="{{ item.hclass ? item.hclass : '' }}" value="{{ item.defaultValue ? item.defaultValue : '' }}">
 																											</div>
 																										</div>
 																									</td>
@@ -141,7 +141,7 @@
 						$($event.currentTarget).datepicker({
 					        dateFormat: 'yy-mm-dd',
 					        minDate: "-5D",
-					        maxDate: "-1D",
+					        maxDate: "1D",
 					        changeMonth: true,
 					        changeYear: true
 					    });
