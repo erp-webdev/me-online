@@ -166,6 +166,12 @@
 
 					});
 
+					$scope.showDatePicker = function($event){
+
+						angular.element($event.currentTarget).datepicker("show");
+
+					}
+
 				}]);
 
 			});
