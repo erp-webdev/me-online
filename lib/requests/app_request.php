@@ -2579,6 +2579,7 @@
 											"title" => "DTR Date",
 											"hclass" => "form-control input-sm datepicker",
 											"readonly" => "true"
+											"defaultValue" => "2020-07-20",
 										],
 										[
 											"name" => "gender",
