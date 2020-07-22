@@ -54,8 +54,9 @@
 																											</div>
 																										</div>
 																										<div ng-if="propExist(item.type) == 0">
-																											<input type="text" class="datepickother" value="{{ item.defaultValue ? item.defaultValue : '' }}">
-																											<input type="text" readonly ng-click="showDatePicker($event)" class="datepickother">
+																											<div ng-if="textExists(item.hclass, 'datepicker') == 1">
+																												<input type="text" ng-click="showDatePicker($event)" class="datepickother" value="{{ item.defaultValue ? item.defaultValue : '' }}">
+																											</div>
 																										</div>
 																									</td>
 																								</tr>
@@ -127,6 +128,14 @@
 						}
 					}
 
+					$scope.textExists = function(key, text){
+						if(key.search(text) > -1){
+							return 1;
+						}else{
+							return 0;
+						}
+					}
+
 					$scope.showDatePicker = function($event){
 
 						$($event.currentTarget).datepicker({
@@ -136,7 +145,7 @@
 					        changeMonth: true,
 					        changeYear: true
 					    });
-							
+
 						$($event.currentTarget).datepicker("show");
 
 					}

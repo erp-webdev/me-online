@@ -2549,8 +2549,9 @@
 										[
 											"name" => "dtrdate",
 											"title" => "DTR Date",
-											"hclass" => "form-control input-sm datepickother",
-											"defaultValue" => "date('Y-m-d')"
+											"hclass" => "form-control input-sm datepicker",
+											"defaultValue" => "date('Y-m-d')",
+											"readonly" => "true"
 										]
 									],
 								"approvers" => "frmApplicationWHWeb",
@@ -2576,7 +2577,8 @@
 										[
 											"name" => "dtrdate",
 											"title" => "DTR Date",
-											"hclass" => "form-control input-sm datepickother"
+											"hclass" => "form-control input-sm datepicker",
+											"readonly" => "true"
 										],
 										[
 											"name" => "gender",
@@ -2587,7 +2589,8 @@
 												[
 													['value' => 'male', 'text' => 'Male'],
 													['value' => 'female', 'text' => 'Female']
-												]
+												],
+											"readonly" => "false"
 										]
 									],
 								"approvers" => "frmApplicationWHWeb",
