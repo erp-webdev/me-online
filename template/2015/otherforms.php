@@ -37,7 +37,6 @@
                                                             <option value="<?php echo $form["name"]; ?>"><?php echo $form["title"]; ?></option>
 																													<?php } ?>
                                                         </select>
-																												<input type="text" readonly onClick="showDatePicker($event)" class="datepickother">
                                                     </td>
                                                 </tr>
 																								<tr ng-repeat="item in form_data[0].items" id="tr{{ $index+1 }}">
@@ -56,6 +55,7 @@
 																										</div>
 																										<div ng-if="propExist(item.type) == 0">
 																											<input type="text" class="datepickother" value="{{ item.defaultValue ? item.defaultValue : '' }}">
+																											<input type="text" readonly ng-click="showDatePicker($event)" class="datepickother">
 																										</div>
 																									</td>
 																								</tr>
