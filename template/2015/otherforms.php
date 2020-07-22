@@ -137,7 +137,7 @@
 					}
 
 					$scope.defaultVal = function(key){
-						if(key = "date('Y-m-d')"){
+						if(key == "date('Y-m-d')"){
 							var date = new Date();
 							var month = date.getMonth()+1;
 							var day = date.getDate();
