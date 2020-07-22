@@ -44,20 +44,23 @@
 																										<label>{{ item.title }}</label>
 																									</td>
 																									<td>
-																										<div ng-if="propExist(item.type) == 1">
+
+																										<div ng-if="propExist(item.type) == 1"><!-- if item has type  -->
 																											<div data-ng-switch on="item.type">
-																												<div data-ng-switch-when="radio">
+																												<div data-ng-switch-when="radio"><!-- if item is radio type  -->
 																													<div ng-repeat="option in item.options">
 																														<input type="radio" name="{{ item.name }}" value="{{ option.value }}" class="{{ item.hclass ? item.hclass : '' }}">{{ option.text }}
 																													</div>
 																												</div>
 																											</div>
 																										</div>
-																										<div ng-if="propExist(item.type) == 0">
-																											<div ng-if="textExists(item.hclass, 'datepicker') == 1">
+
+																										<div ng-if="propExist(item.type) == 0"><!-- if item has no type  -->
+																											<div ng-if="textExists(item.hclass, 'datepicker') == 1"><!-- if item has datepicker  -->
 																												<input type="text" ng-click="showDatePicker($event)" class="{{ item.hclass ? item.hclass : '' }}" ng-value="defaultVal(item.defaultValue)">
 																											</div>
 																										</div>
+
 																									</td>
 																								</tr>
 
