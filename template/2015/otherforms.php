@@ -55,7 +55,7 @@
 																										</div>
 																										<div ng-if="propExist(item.type) == 0">
 																											<div ng-if="textExists(item.hclass, 'datepicker') == 1">
-																												<input type="text" ng-click="showDatePicker($event)" class="{{ item.hclass ? item.hclass : '' }}" value="{{ item.defaultValue ? item.defaultValue : '' }}">
+																												<input type="text" ng-click="showDatePicker($event)" class="{{ item.hclass ? item.hclass : '' }}" value="2020-07-21">
 																											</div>
 																										</div>
 																									</td>
