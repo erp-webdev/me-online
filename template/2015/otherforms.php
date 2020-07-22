@@ -47,10 +47,14 @@
 
 																										<div ng-if="propExist(item.type) == 1"><!-- if item has type  -->
 																											<div data-ng-switch on="item.type">
+
 																												<div data-ng-switch-when="radio"><!-- if item is radio type  -->
 																													<div ng-repeat="option in item.options">
 																														<input type="radio" name="{{ item.name }}" value="{{ option.value }}" class="{{ item.hclass ? item.hclass : '' }}">{{ option.text }}
 																													</div>
+																												</div>
+																												<div data-ng-switch-when="short_text"><!-- if item is short text type  -->
+																													<input type="text" name="{{ item.name }}" {{ item.readonly ? 'readonly' : '' }}  class="{{ item.hclass ? item.hclass : '' }}" ng-value=" propExist(item.defaultValue) ? defaultVal(item.defaultValue) : ''">
 																												</div>
 																											</div>
 																										</div>
