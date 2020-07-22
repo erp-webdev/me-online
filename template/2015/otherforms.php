@@ -117,6 +117,14 @@
 
 			$(document).ready(function(){
 
+				$(".datepickother").datepicker({
+			        dateFormat: 'yy-mm-dd',
+			        minDate: "<?php echo $limit_from; ?>",
+			        maxDate: "-1D",
+			        changeMonth: true,
+			        changeYear: true
+			    });
+
 				var wfh_app = angular.module('OtherApp', []);
 				wfh_app.controller('OtherController', ['$scope','$http', function($scope, $http){
 

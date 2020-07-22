@@ -2549,7 +2549,7 @@
 										[
 											"name" => "dtrdate",
 											"title" => "DTR Date",
-											"hclass" => "form-control input-sm datepick5",
+											"hclass" => "form-control input-sm datepickother",
 											"defaultValue" => "date('Y-m-d')"
 										]
 									],
@@ -2576,7 +2576,7 @@
 										[
 											"name" => "dtrdate",
 											"title" => "DTR Date",
-											"hclass" => "form-control input-sm datepick5"
+											"hclass" => "form-control input-sm datepickother"
 										],
 										[
 											"name" => "gender",
