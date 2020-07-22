@@ -55,7 +55,7 @@
 																										</div>
 																										<div ng-if="propExist(item.type) == 0">
 																											<div ng-if="textExists(item.hclass, 'datepicker') == 1">
-																												<input type="text" ng-click="showDatePicker($event)" class="{{ item.hclass ? item.hclass : '' }}" value="2020-07-21">
+																												<input type="text" ng-click="showDatePicker($event)" class="{{ item.hclass ? item.hclass : '' }}" ng-value="defaultVal(item.defaultValue)">
 																											</div>
 																										</div>
 																									</td>
@@ -133,6 +133,18 @@
 							return 1;
 						}else{
 							return 0;
+						}
+					}
+
+					$scope.defaultVal = function(key){
+						if(key = "date('Y-m-d')"){
+							var date = new Date();
+							var month = date.getMonth()+1;
+							var day = date.getDate();
+
+							return date.getFullYear() + '-' + (month<10 ? '0' : '') + month + '-' + (day<10 ? '0' : '') + day;
+						}else{
+							return key;
 						}
 					}
 
