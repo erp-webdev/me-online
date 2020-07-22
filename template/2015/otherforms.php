@@ -55,7 +55,7 @@
 																										</div>
 																										<div ng-if="propExist(item.type) == 0">
 																											<input type="text" class="datepickother" value="{{ item.defaultValue ? item.defaultValue : '' }}">
-																											<input type="text" readonly ng-click="showDatePicker($event)" value="tester" class="datepickother">
+																											<input type="text" readonly ng-click="showDatePicker($event)" class="datepickother">
 																										</div>
 																									</td>
 																								</tr>
@@ -115,13 +115,6 @@
 
 			$(document).ready(function(){
 
-				$(".datepickother").datepicker({
-			        dateFormat: 'yy-mm-dd',
-			        minDate: "<?php echo $limit_from; ?>",
-			        maxDate: "-1D",
-			        changeMonth: true,
-			        changeYear: true
-			    });
 
 				var wfh_app = angular.module('OtherApp', []);
 				wfh_app.controller('OtherController', ['$scope','$http', function($scope, $http){
@@ -136,7 +129,13 @@
 
 					$scope.showDatePicker = function($event){
 
-						alert($($event.currentTarget).val());
+						$($event.currentTarget).datepicker({
+					        dateFormat: 'yy-mm-dd',
+					        minDate: "-5D",
+					        maxDate: "-1D",
+					        changeMonth: true,
+					        changeYear: true
+					    });
 
 					}
 
