@@ -55,7 +55,7 @@
 																										</div>
 																										<div ng-if="propExist(item.type) == 0">
 																											<input type="text" class="datepickother" value="{{ item.defaultValue ? item.defaultValue : '' }}">
-																											<input type="text" readonly ng-click="showDatePicker($event)" class="datepickother">
+																											<input type="text" readonly ng-click="showDatePicker($event)" value="tester" class="datepickother">
 																										</div>
 																									</td>
 																								</tr>
@@ -136,7 +136,7 @@
 
 					$scope.showDatePicker = function($event){
 
-						angular.element($event.currentTarget).datepicker("show");
+						alert($($event.currentTarget).val());
 
 					}
 
