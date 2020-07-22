@@ -2552,6 +2552,13 @@
 											"hclass" => "form-control input-sm datepicker",
 											"defaultValue" => "date('Y-m-d')",
 											"readonly" => "true"
+										],
+										[
+											"name" => "shorttext",
+											"title" => "Short Text",
+											"hclass" => "form-control input-sm",
+											"defaultValue" => "",
+											"readonly" => "false"
 										]
 									],
 								"approvers" => "frmApplicationWHWeb",
