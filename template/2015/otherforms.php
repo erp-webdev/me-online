@@ -38,9 +38,6 @@
 																													<?php } ?>
                                                         </select>
                                                     </td>
-																										<td>
-																											<input type="text" readonly class="datepick5">
-																										</td>
                                                 </tr>
 																								<tr ng-repeat="item in form_data[0].items" id="tr{{ $index+1 }}">
 																									<td>
@@ -57,8 +54,8 @@
 																											</div>
 																										</div>
 																										<div ng-if="propExist(item.type) == 0">
-																											<input type="text" readonly class="datepickother" value="{{ item.defaultValue ? item.defaultValue : '' }}">
-																											<input type="text" readonly class="datepick5">
+																											<input type="text" class="datepickother" value="{{ item.defaultValue ? item.defaultValue : '' }}">
+																											<input type="text" readonly onClick="showDatePicker($event)" class="datepickother">
 																										</div>
 																									</td>
 																								</tr>
@@ -135,6 +132,12 @@
 						}else{
 							return 1;
 						}
+					}
+
+					$scope.showDatePicker = function($event){
+
+						angular.element($event.currentTarget).datepicker("show");
+
 					}
 
 					$scope.form_type = $('#form_type').val();
