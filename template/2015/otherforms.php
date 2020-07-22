@@ -136,6 +136,8 @@
 					        changeMonth: true,
 					        changeYear: true
 					    });
+							
+						$($event.currentTarget).datepicker("show");
 
 					}
 
