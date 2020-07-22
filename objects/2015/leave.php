@@ -97,7 +97,7 @@
 								//
 								// echo '{"success": false, "error": " '.$bal1.' >= '.$day1.'  && '.$balanceval.' => '.$day1.' "}';
 								// exit();
-
+								
 
                 if ($_POST['balance'] >= $_POST['days'] && $balanceval >= $_POST['days']) :
 

@@ -695,6 +695,8 @@
                             $("#leavetotal").removeClass("invisible");
                             $(".total_day").html(data);
                             $("#tdayswop").val(data);
+														//encrypt here
+
                         }
                     })
 
@@ -710,6 +712,9 @@
                             $("#leavetotal").removeClass("invisible");
                             $(".total_pay").html(data);
                             $("#tdays").val(data);
+														//encrypt here
+														<?php echo 'encrypt1'; ?>
+
                         }
                     })
                 });

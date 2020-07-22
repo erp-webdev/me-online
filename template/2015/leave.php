@@ -464,6 +464,8 @@
                                         ?>
                                         <?php $leave_bal2 = $mainsql->get_leavebal_byid($profile_idnum, "L01"); ?>
                                         <?php $leave_balance = $leave_bal2[0]['BalanceHrs'] ? $leave_bal2[0]['BalanceHrs'] : 0; ?>
+
+																				<input type="hidden" name="datecheck" value="" />
                                         <input type="hidden" id="lempid" name="empid" value="<?php echo $profile_idnum; ?>" />
                                         <input type="hidden" name="reqnbr" value="<?php echo "LV-".$finsec; ?>" />
                                         <input type="hidden" name="user" value="<?php echo $profile_idnum; ?>" />
