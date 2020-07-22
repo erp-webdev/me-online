@@ -58,6 +58,7 @@
 																										</div>
 																										<div ng-if="propExist(item.type) == 0">
 																											<input type="text" readonly class="datepickother" value="{{ item.defaultValue ? item.defaultValue : '' }}">
+																											<input type="text" readonly class="datepick5">
 																										</div>
 																									</td>
 																								</tr>
