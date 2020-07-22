@@ -57,7 +57,7 @@
 																											</div>
 																										</div>
 																										<div ng-if="propExist(item.type) == 0">
-																											<input type="text" class="{{ item.hclass ? item.hclass : '' }}" value="{{ item.defaultValue ? item.defaultValue : '' }}">
+																											<input type="text" class="datepickother" value="{{ item.defaultValue ? item.defaultValue : '' }}">
 																										</div>
 																									</td>
 																								</tr>
