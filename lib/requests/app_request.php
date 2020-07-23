@@ -713,7 +713,6 @@
                             $(".total_pay").html(data);
                             $("#tdays").val(data);
 														//encrypt here
-														<?php echo 'encrypt1'; ?>
 
                         }
                     })

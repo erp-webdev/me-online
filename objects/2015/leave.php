@@ -97,7 +97,7 @@
 								//
 								// echo '{"success": false, "error": " '.$bal1.' >= '.$day1.'  && '.$balanceval.' => '.$day1.' "}';
 								// exit();
-								
+
 
                 if ($_POST['balance'] >= $_POST['days'] && $balanceval >= $_POST['days']) :
 
@@ -144,7 +144,8 @@
 
                     $err_item = 0;
                     $leaveitemcount = count($_POST['leave_duration']);
-
+										//re iteration here to calculate duration with pay
+										//after compare again to balance $balanceval
                     $cnti = 0;
 
                     while($cnti < $leaveitemcount) :
