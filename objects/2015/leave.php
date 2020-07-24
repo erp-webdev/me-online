@@ -162,18 +162,33 @@
 		                    $leavehours = $leaveshift[0]['NUMHrs'] - $leaveshift[0]['BreakHours'];
 
 												if($leaveduration == 'WD'){
-													$backend_hours = $leavehours;
+													if($profile_compressed){
+														$backend_hours =+ $leavehours;
+													}else{
+														$backend_hours =+ 1;
+													}
 												}else if($leaveduration == 'HD1' or $leaveduration == 'HD2'){
 													if($leavehours >= 8){
-														$backend_hours = $leavehours / 2;
+														if($profile_compressed){
+															$backend_hours =+ $leavehours / 2;
+														}else{
+															$backend_hours =+ 0.5
+														}
 													}else{
-														$backend_hours = $leavehours;
+														if($profile_compressed){
+															$backend_hours =+ $leavehours;
+														}else{
+															$backend_hours =+ 0.5
+														}
 													}
 												}
 
 											}
 
 										}
+										echo '{"success": false, "error": "total hours:'.$backend_hours.'"}';
+										exit();
+
 										//re iteration here to calculate duration with pay
 										//after compare again to balance $balanceval
 
