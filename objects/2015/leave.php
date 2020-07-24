@@ -160,9 +160,6 @@
 												$leavsched = $mainsql->get_schedshiftdtr($profile_idnum, $leavedate);
 		                    $leaveshift = $mainsql->get_shift($leavsched[0]['ShiftID']);
 		                    $leavehours = $leaveshift[0]['NUMHrs'] - $leaveshift[0]['BreakHours'];
-												$a = $leavsched[0]['ShiftID'];
-												echo '{"success": false, "error": "total hours:'.$a.'"}';
-												exit();
 
 												if($leaveduration == 'WD'){
 													if($profile_compressed){
