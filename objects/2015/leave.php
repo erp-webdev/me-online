@@ -157,7 +157,7 @@
 
 											if($leavepay){
 
-												$leavsched = $mainsql->get_schedshiftdtr($idnum, $vdates);
+												$leavsched = $mainsql->get_schedshiftdtr($profile_idnum, $leavedate);
 		                    $leaveshift = $mainsql->get_shift($leavsched[0]['ShiftID']);
 		                    $leavehours = $leaveshift[0]['NUMHrs'] - $leaveshift[0]['BreakHours'];
 												$a = $leavsched[0]['ShiftID'];
