@@ -160,8 +160,8 @@
 												$leavsched = $mainsql->get_schedshiftdtr($idnum, $vdates);
 		                    $leaveshift = $mainsql->get_shift($leavsched[0]['ShiftID']);
 		                    $leavehours = $leaveshift[0]['NUMHrs'] - $leaveshift[0]['BreakHours'];
-
-												echo '{"success": false, "error": "total hours:'.$leavsched[0]['ShiftID'].'"}';
+												$a = $leavsched[0]['ShiftID'];
+												echo '{"success": false, "error": "total hours:'.$a.'"}';
 												exit();
 
 												if($leaveduration == 'WD'){
