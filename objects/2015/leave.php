@@ -184,7 +184,7 @@
 												}
 
 											}
-
+											$backend_count++;
 										}
 										echo '{"success": false, "error": "total hours:'.$backend_hours.'"}';
 										exit();
