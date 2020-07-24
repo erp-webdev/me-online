@@ -186,12 +186,16 @@
 											}
 											$backend_count++;
 										}
-										echo '{"success": false, "error": "total hours:'.$backend_hours.'"}';
-										exit();
 
 										//re iteration here to calculate duration with pay
 										//after compare again to balance $balanceval
-
+										if($balanceval >= $backend_hours){
+											echo '{"success": false, "error": "applied hours is less than or equal to balance"}';
+											exit();
+										}else{
+											echo '{"success": false, "error": "applied hours is more than balance. cant apply"}';
+											exit();
+										}
 
                     $cnti = 0;
 
