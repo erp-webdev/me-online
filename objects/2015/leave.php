@@ -186,7 +186,7 @@
 											}
 											$backend_count++;
 										}
-										echo '{"success": false, "error": "total hours:'.$backend_hours.'"}';
+										echo '{"success": false, "error": "total hours:'.$leaveitemcount.'"}';
 										exit();
 
 										//re iteration here to calculate duration with pay
