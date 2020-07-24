@@ -156,7 +156,8 @@
 											$leaveempid = $_POST['empid'];
 
 											if($leavepay){
-
+												echo '{"success": false, "error": "leave pay"}';
+												exit();
 												$leavsched = $mainsql->get_schedshiftdtr($idnum, $vdates);
 		                    $leaveshift = $mainsql->get_shift($leavsched[0]['ShiftID']);
 		                    $leavehours = $leaveshift[0]['NUMHrs'] - $leaveshift[0]['BreakHours'];
@@ -186,7 +187,7 @@
 											}
 											$backend_count++;
 										}
-										echo '{"success": false, "error": "total hours:'.$leaveitemcount.'"}';
+										echo '{"success": false, "error": "total hours:'.$backend_hours.'"}';
 										exit();
 
 										//re iteration here to calculate duration with pay
