@@ -172,13 +172,13 @@
 														if($profile_compressed){
 															$backend_hours =+ $leavehours / 2;
 														}else{
-															$backend_hours =+ 0.5
+															$backend_hours =+ 0.5;
 														}
 													}else{
 														if($profile_compressed){
 															$backend_hours =+ $leavehours;
 														}else{
-															$backend_hours =+ 0.5
+															$backend_hours =+ 0.5;
 														}
 													}
 												}
