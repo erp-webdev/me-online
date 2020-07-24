@@ -144,12 +144,44 @@
 
                     $err_item = 0;
                     $leaveitemcount = count($_POST['leave_duration']);
+										$backend_count = 0;
+										$backend_hours = 0;
+
+										while($backend_count < $leaveitemcount){
+
+											$leaveduration = $_POST['leave_duration'][$backend_count];
+											$leavedate = $_POST['leave_date'][$backend_count];
+											$leavepay = $_POST['leave_pay'][$backend_count];
+											$leavetype = $_POST['leave_type'];
+											$leaveempid = $_POST['empid'];
+
+											if($leavepay){
+
+												$leavsched = $mainsql->get_schedshiftdtr($idnum, $vdates);
+		                    $leaveshift = $mainsql->get_shift($leavsched[0]['ShiftID']);
+		                    $leavehours = $leaveshift[0]['NUMHrs'] - $leaveshift[0]['BreakHours'];
+
+												if($leaveduration == 'WD'){
+													$backend_hours = $leavehours;
+												}else if($leaveduration == 'HD1' or $leaveduration == 'HD2'){
+													if($leavehours >= 8){
+														$backend_hours = $leavehours / 2;
+													}else{
+														$backend_hours = $leavehours;
+													}
+												}
+
+											}
+
+										}
 										//re iteration here to calculate duration with pay
 										//after compare again to balance $balanceval
+
+
                     $cnti = 0;
 
 										echo '{"success": false, "error": "dev on going, breakpoint to avoid input of data"}';
-										exit(); 
+										exit();
 
                     while($cnti < $leaveitemcount) :
 
