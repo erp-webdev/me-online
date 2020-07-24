@@ -199,9 +199,6 @@
 
                     $cnti = 0;
 
-										echo '{"success": false, "error": "dev on going, breakpoint to avoid input of data"}';
-										exit();
-
                     while($cnti < $leaveitemcount) :
 
                         if ($cnti == 0) :
