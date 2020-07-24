@@ -156,30 +156,29 @@
 											$leaveempid = $_POST['empid'];
 
 											if($leavepay){
-												echo '{"success": false, "error": "leave pay"}';
-												exit();
+
 												$leavsched = $mainsql->get_schedshiftdtr($idnum, $vdates);
 		                    $leaveshift = $mainsql->get_shift($leavsched[0]['ShiftID']);
 		                    $leavehours = $leaveshift[0]['NUMHrs'] - $leaveshift[0]['BreakHours'];
 
 												if($leaveduration == 'WD'){
 													if($profile_compressed){
-														$backend_hours =+ $leavehours;
+														$backend_hours += $leavehours;
 													}else{
-														$backend_hours =+ 1;
+														$backend_hours += 1;
 													}
 												}else if($leaveduration == 'HD1' or $leaveduration == 'HD2'){
 													if($leavehours >= 8){
 														if($profile_compressed){
-															$backend_hours =+ $leavehours / 2;
+															$backend_hours += $leavehours / 2;
 														}else{
-															$backend_hours =+ 0.5;
+															$backend_hours += 0.5;
 														}
 													}else{
 														if($profile_compressed){
-															$backend_hours =+ $leavehours;
+															$backend_hours += $leavehours;
 														}else{
-															$backend_hours =+ 0.5;
+															$backend_hours += 0.5;
 														}
 													}
 												}
