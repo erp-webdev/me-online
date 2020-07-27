@@ -241,7 +241,7 @@
 										<tr>
 											<td><b>Usable Balance</b></td>
 											<?php if ($profile_compressed) : ?>
-											<td class="righttalign"><?php echo $usable_balance[0]['BalanceHrs'] ? number_format($usable_balance[0]['BalanceHrs'], 2) : 0; ?> hours (<?php echo $usable_balance[0]['BalanceHrs'] ? number_format($usable_balance[0]['BalanceHrs'], 2) /8 : 0; ?> days)</td>
+											<td class="righttalign"><?php echo $usable_balance[0]['BalanceHrs'] ? number_format($usable_balance[0]['BalanceHrs'], 2) : 0; ?> hours (<?php echo $usable_balance[0]['BalanceHrs'] ? number_format($usable_balance[0]['BalanceHrs']/8, 2)  : 0; ?> days)</td>
 											<?php else : ?>
 											<td class="righttalign"><?php echo $usable_balance[0]['BalanceHrs'] ? number_format($usable_balance[0]['BalanceHrs'], 2)/8 : 0; ?> days</td>
 											<?php endif; ?>
