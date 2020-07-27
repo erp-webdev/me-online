@@ -190,7 +190,7 @@
 										//re iteration here to calculate duration with pay
 										//after compare again to balance $balanceval
 										if($balanceval < $backend_hours){
-											echo '{"success": false, "error": "Your balance is insufficient for the applied with pay leaves."}';
+											echo '{"success": false, "error": "Your leave with pay is greater than your leave balance."}';
 											exit();
 										}
 
