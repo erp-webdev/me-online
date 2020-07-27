@@ -2563,7 +2563,7 @@
 											"type" => 'short_text',
 											"hclass" => "form-control input-sm",
 											"defaultValue" => "",
-											"ronly" => "true"
+											"ronly" => "false"
 										]
 									],
 								"approvers" => "frmApplicationWHWeb",
