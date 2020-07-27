@@ -907,7 +907,7 @@ class mainsql {
     $sql = "select ROUND(sum(a.EarnedHrs - a.UsedHrs),2) as BalanceHrs
             from viewSLVLLEAVELEDGERCURRENT a
             left join HREmpLBalance b on a.EmpID = b.EmpID and b.LeaveID = a.LeaveID
-            where   a.LeaveID IN ('$leaveid') AND a.LeaveID IN ('L01', 'L03') AND a.EMPID = '$empid' and b.DateEffect <= GETDATE() and a.PRYear = YEAR(GETDATE())";
+            where   a.LeaveID IN ('$leaveid') AND a.EMPID = '$empid' and b.DateEffect <= GETDATE() and a.PRYear = YEAR(GETDATE())";
     $result = $this->get_row($sql);
     return $result;
   }
