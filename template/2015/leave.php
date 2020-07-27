@@ -409,12 +409,15 @@
                                                         foreach ($leave_data as $key => $value) :
                                                         ?>
                                                             <tr class="trdata">
-                                                                <?php $leave_bal = $mainsql->get_leavebal_byid($profile_idnum, $value['LeaveID']); ?>
+                                                                <?php
+																																	$leave_bal = $mainsql->get_leavebal_byid($profile_idnum, $value['LeaveID']);
+																																	$usable_balance = $mainsql->get_usablebal($profile_idnum, $value['LeaveID']);
+																																?>
                                                                 <td><?php echo $value['LeaveDesc']; ?></td>
                                                                 <?php if ($profile_compressed) : ?>
-                                                                <td class="lefttalign"><?php echo $leave_bal[0]['BalanceHrs'] ? number_format($leave_bal[0]['BalanceHrs'], 2) : '0.00' ; ?></td>
+                                                                <td class="lefttalign"><?php echo $leave_bal[0]['BalanceHrs'] ? number_format($leave_bal[0]['BalanceHrs'], 2) : '0.00' ; if($usable_balance[0]['BalanceHrs'] != $leave_bal[0]['BalanceHrs']) echo " (Usable - ".number_format($usable_balance[0]['BalanceHrs'], 2).")"; ?></td>
                                                                 <?php else : ?>
-                                                                <td class="lefttalign"><?php echo $leave_bal[0]['BalanceDays'] ? number_format($leave_bal[0]['BalanceDays'], 2) : '0.00' ; ?></td>
+                                                                <td class="lefttalign"><?php echo $leave_bal[0]['BalanceDays'] ? number_format($leave_bal[0]['BalanceDays'], 2) : '0.00' ; if($usable_balance[0]['BalanceHrs'] != $leave_bal[0]['BalanceHrs']) echo " (Usable - ".number_format($usable_balance[0]['BalanceHrs']/8, 2).")"; ?></td>
                                                                 <?php endif; ?>
                                                                 <!--td class="centertalign">0.00</td>
                                                                 <td class="centertalign">0.00</td-->
