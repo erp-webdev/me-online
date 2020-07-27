@@ -50,7 +50,7 @@
 
 																												<div data-ng-switch-when="radio"><!-- if item is radio type  -->
 																													<div ng-repeat="option in item.options">
-																														<input type="radio" name="{{ item.name }}" ng-readonly="item.readonly" value="{{ option.value }}" class="{{ item.hclass ? item.hclass : '' }}">{{ option.text }}
+																														<input type="radio" name="{{ item.name }}" ng-readonly="propReadOnly(item.readonly)" value="{{ option.value }}" class="{{ item.hclass ? item.hclass : '' }}">{{ option.text }}
 																													</div>
 																												</div>
 																												<div data-ng-switch-when="short_text"><!-- if item is short text type  -->
@@ -61,7 +61,7 @@
 
 																										<div ng-if="propExist(item.type) == 0"><!-- if item has no type  -->
 																											<div ng-if="textExists(item.hclass, 'datepicker') == 1"><!-- if item has datepicker  -->
-																												<input type="text" name="{{ item.name }}" ng-readonly="item.readonly" ng-click="showDatePicker($event)" class="{{ item.hclass ? item.hclass : '' }}" ng-value="defaultVal(item.defaultValue)">
+																												<input type="text" name="{{ item.name }}" ng-readonly="propReadOnly(item.readonly)" ng-click="showDatePicker($event)" class="{{ item.hclass ? item.hclass : '' }}" ng-value="defaultVal(item.defaultValue)">
 																											</div>
 																										</div>
 
