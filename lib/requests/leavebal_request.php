@@ -233,13 +233,21 @@
                     <tr>
                         <td><b>Remaining Balance</b></td>
                         <?php if ($profile_compressed) : ?>
-                        <td class="righttalign"><?php echo $leave_balance[0]['BalanceHrs'] ? number_format($leave_balance[0]['BalanceHrs'], 2) : 0; ?> hours (<?php echo $leave_balance[0]['BalanceDays'] ? number_format($leave_balance[0]['BalanceDays'], 2) : 0; ?> days)</td>
+                        <td class="righttalign"><b><?php echo $leave_balance[0]['BalanceHrs'] ? number_format($leave_balance[0]['BalanceHrs'], 2) : 0; ?> hours (<?php echo $leave_balance[0]['BalanceDays'] ? number_format($leave_balance[0]['BalanceDays'], 2) : 0; ?> days)</b></td>
                         <?php else : ?>
-                        <td class="righttalign"><?php echo $leave_balance[0]['BalanceDays'] ? number_format($leave_balance[0]['BalanceDays'], 2) : 0; ?> days</td>
+                        <td class="righttalign"><b><?php echo $leave_balance[0]['BalanceDays'] ? number_format($leave_balance[0]['BalanceDays'], 2) : 0; ?> days</b></td>
                         <?php endif; ?>
                     </tr>
 										<tr>
-											<td><b>Usable Balance</b></td>
+											<td>Pending For Approval</td>
+											<?php if ($profile_compressed) : ?>
+											<td class="righttalign"><?php echo $usable_balance[0]['BalanceHrs'] ? number_format($leave_balance[0]['BalanceHrs'], 2) - number_format($usable_balance[0]['BalanceHrs'], 2) : 0; ?> hours (<?php echo $usable_balance[0]['BalanceHrs'] ? number_format($leave_balance[0]['BalanceDays'], 2) - number_format($usable_balance[0]['BalanceHrs']/8, 2)  : 0; ?> days)</td>
+											<?php else : ?>
+											<td class="righttalign"><?php echo $usable_balance[0]['BalanceHrs'] ? number_format($leave_balance[0]['BalanceDays'], 2) - number_format($usable_balance[0]['BalanceHrs'], 2)/8 : 0; ?> days</td>
+											<?php endif; ?>
+										</tr>
+										<tr>
+											<td>Usable Balance</td>
 											<?php if ($profile_compressed) : ?>
 											<td class="righttalign"><?php echo $usable_balance[0]['BalanceHrs'] ? number_format($usable_balance[0]['BalanceHrs'], 2) : 0; ?> hours (<?php echo $usable_balance[0]['BalanceHrs'] ? number_format($usable_balance[0]['BalanceHrs']/8, 2)  : 0; ?> days)</td>
 											<?php else : ?>
