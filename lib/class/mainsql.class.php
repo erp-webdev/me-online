@@ -896,10 +896,21 @@ class mainsql {
 
     function get_leavebal($empid, $leaveid)
 	{
-		$sql = "SELECT LeaveID, EarnedDays, EarnedHrs, UsedDays, UsedHrs, BalanceDays, BalanceHrs, DateEffect FROM HREmpLBalance WHERE EmpID = '".$empid."' AND LeaveID = '".$leaveid."' AND DateEffect <= GETDATE() ";
+		$sql = "SELECT LeaveID, EarnedDays, EarnedHrs, UsedDays, UsedHrs, BalanceDays, BalanceHrs,
+    DateEffect FROM HREmpLBalance WHERE EmpID = '".$empid."' AND LeaveID = '".$leaveid."' AND DateEffect <= GETDATE() ";
 		$result = $this->get_row($sql);
 		return $result;
 	}
+
+    function get_usablebal($empid, $leaveid)
+  {
+    $sql = "select ROUND(sum(a.EarnedHrs - a.UsedHrs),2) as BalanceHrs
+            from viewSLVLLEAVELEDGERCURRENT a
+            left join HREmpLBalance b on a.EmpID = b.EmpID and b.LeaveID = a.LeaveID
+            where   a.LeaveID IN ('$leaveid')  AND a.EMPID = '$empid' and b.DateEffect <= GETDATE() and a.PRYear = YEAR(GETDATE())";
+    $result = $this->get_row($sql);
+    return $result;
+  }
 
     function get_leavebal_byid($empid, $leaveid)
 	{

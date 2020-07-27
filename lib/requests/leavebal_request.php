@@ -1,6 +1,6 @@
-<?php 
+<?php
 
-	include("../../config.php"); 
+	include("../../config.php");
 	//**************** USER MANAGEMENT - START ****************\\
 
 	include(LIB."/login/chklog.php");
@@ -26,9 +26,9 @@
     if ($profile_dbname == "ECINEMA" || $profile_dbname == "EPARKVIEW" || $profile_dbname == "LAFUERZA" || $profile_dbname == "GLOBAL_HOTEL") :
         $adminarray = array("2011-03-V835");
     elseif ($profile_dbname == "CITYLINK" || $profile_dbname == "ECOC" || $profile_dbname == "EREX" || $profile_dbname == "FIRSTCENTRO" || $profile_dbname == "LCTM" || $profile_dbname == "MLI" || $profile_dbname == "NCCAI" || $profile_dbname == "SUNTRUST" || $profile_dbname == "TOWNSQUARE") :
-        $adminarray = array("2009-10-V255");        
+        $adminarray = array("2009-10-V255");
     elseif ($profile_dbname == "GL") :
-        $adminarray = array("2014-10-0004", "2014-10-0568", "2016-03-0261", "2017-01-0792"); 
+        $adminarray = array("2014-10-0004", "2014-10-0568", "2016-03-0261", "2017-01-0792");
     else :
         $adminarray = array("2014-05-N791", "2009-09-V206", "2012-04-U384", "MASTER", "2012-03-U273", "2014-01-N506");
     endif;
@@ -47,14 +47,14 @@
     /* MAIN DB CONNECTOR - END */
 
     $logdata = $logsql->get_member($_SESSION['megasubs_user']);
-            
+
     $deptdata = $mainsql->get_dept_data($userdata[0]['DeptID']);
-    $posdata = $mainsql->get_posi_data($userdata[0]['PositionID']);     
+    $posdata = $mainsql->get_posi_data($userdata[0]['PositionID']);
     $usertax = $register->get_memtax($userdata[0]['TaxID']);
 
-    $profile_dept = $deptdata[0]['DeptDesc'];		
+    $profile_dept = $deptdata[0]['DeptDesc'];
 	$profile_pos = $posdata[0]['PositionDesc'];
-    $profile_taxdesc = $usertax[0]['Description'];	
+    $profile_taxdesc = $usertax[0]['Description'];
 
     include(LIB."/init/approverinit.php");
 
@@ -71,11 +71,11 @@
     $profile_hash = md5('2014'.$profile_idnum);
 
 	$GLOBALS['level'] = $profile_level;
-	
+
 	//***************** USER MANAGEMENT - END *****************\\
 ?>
 
-<?php	
+<?php
 
     $sec = $profile_id ? $_GET['sec'] : NULL;
 
@@ -87,16 +87,16 @@
     <?php
 
     switch ($sec) {
-        case 'data':        
-        
+        case 'data':
+
             $type = $_POST['type'];
             $leavetype = $mainsql->get_leave($type);
-            
-            $leave_data = $mainsql->get_leavebytype($profile_idnum, $type, date('Y'));      
-            $leave_balance = $mainsql->get_leavebal($profile_idnum, $leavetype[0]['LeaveID']);      
-            
+
+            $leave_data = $mainsql->get_leavebytype($profile_idnum, $type, date('Y'));
+            $leave_balance = $mainsql->get_leavebal($profile_idnum, $leavetype[0]['LeaveID']);
+
             //var_dump($leave_data);
-            
+
                 ?>
 
                 <table class="tdataform2 rightmargin margintop10 vsmalltext" width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -108,19 +108,19 @@
                         <td class="righttalign"><?php echo $leave_balance[0]['EarnedDays']; ?> days</td>
                         <?php endif; ?>
                     </tr>
-                    
+
                     <tr>
                         <td colspan="2" class="centertalign">
-                        <?php if ($leave_data) : ?>                            
+                        <?php if ($leave_data) : ?>
                         <div class="divdtrdata topbotborder width100per">
-                            
+
                             <table class="tdatablk margintopbot20">
                                 <tr>
                                     <th width="25%">Reference #</th>
                                     <th width="25%">Date Applied</th>
                                     <th width="35%">Coverage</th>
                                     <th width="15%">Credits</th>
-                                </tr> 
+                                </tr>
                                 <?php
                                     foreach ($leave_data as $key => $value)  :
                                     ?>
@@ -133,13 +133,13 @@
                                         <?php else : ?>
                                         <td class="centertalign"><?php echo number_format($value['Days'], 2); ?></td>
                                         <?php endif; ?>
-                                    </tr> 
+                                    </tr>
                                     <?php
                                     endforeach;
                                 ?>
 
                             </table>
-                            
+
                         </div>
                         <?php else : ?>
                         <div class="topbotborder width100per">
@@ -157,23 +157,24 @@
                         <?php endif; ?>
                     </tr>
             </table>
-                    
+
             <?php
-            
+
             //var_dump($approver_data1);
-            
+
         break;
-            
-        case 'ledger':        
-        
+
+        case 'ledger':
+
             $type = $_POST['type'];
             $type2 = $_POST['type2'];
-            
-            $leave_data = $mainsql->get_leaveledgerbytype($profile_idnum, $type2, date('Y'));      
-            $leave_balance = $mainsql->get_leavebal($profile_idnum, $type2);      
-            
+
+            $leave_data = $mainsql->get_leaveledgerbytype($profile_idnum, $type2, date('Y'));
+            $leave_balance = $mainsql->get_leavebal($profile_idnum, $type2);
+						$usable_balance = $mainsql->get_usablebal($profile_idnum, $type2);
+
             //var_dump($leave_data);
-            
+
                 ?>
 
                 <table class="tdataform2 rightmargin margintop10 vsmalltext" width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -187,19 +188,19 @@
                             <?php endif; ?>
                         </td>
                     </tr>
-                    
+
                     <tr>
                         <td colspan="2" class="centertalign">
-                        <?php if ($leave_data) : ?>                            
+                        <?php if ($leave_data) : ?>
                         <div class="divdtrdata topbotborder width100per">
-                            
+
                             <table class="tdatablk width100per margintopbot20">
                                 <tr>
                                     <th width="25%">Date</th>
                                     <th width="20%">Earned</th>
                                     <th width="20%">Used</th>
                                     <th width="45%">Remarks</th>
-                                </tr> 
+                                </tr>
                                 <?php
                                     foreach ($leave_data as $key => $value)  :
                                     ?>
@@ -214,13 +215,13 @@
                                         <td class="centertalign"><?php echo $value['UsedDays'] ? number_format($value['UsedDays'], 2) : ''; ?></td>
                                         <td class="centertalign"><?php echo $value['Remark']; ?></td>
                                         <?php endif; ?>
-                                    </tr> 
+                                    </tr>
                                     <?php
                                     endforeach;
                                 ?>
 
                             </table>
-                            
+
                         </div>
                         <?php else : ?>
                         <div class="topbotborder width100per">
@@ -230,23 +231,31 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><b>Remaining Balance</b></td>                        
+                        <td><b>Remaining Balance</b></td>
                         <?php if ($profile_compressed) : ?>
                         <td class="righttalign"><?php echo $leave_balance[0]['BalanceHrs'] ? number_format($leave_balance[0]['BalanceHrs'], 2) : 0; ?> hours (<?php echo $leave_balance[0]['BalanceDays'] ? number_format($leave_balance[0]['BalanceDays'], 3) : 0; ?> days)</td>
                         <?php else : ?>
                         <td class="righttalign"><?php echo $leave_balance[0]['BalanceDays'] ? number_format($leave_balance[0]['BalanceDays'], 3) : 0; ?> days</td>
                         <?php endif; ?>
                     </tr>
+										<tr>
+											<td><b>Usable Balance</b></td>
+											<?php if ($profile_compressed) : ?>
+											<td class="righttalign"><?php echo $usable_balance[0]['BalanceHrs'] ? number_format($usable_balance[0]['BalanceHrs'], 2) : 0; ?> hours (<?php echo $usable_balance[0]['BalanceHrs'] ? number_format($usable_balance[0]['BalanceHrs'], 3) : 0; ?> days)</td>
+											<?php else : ?>
+											<td class="righttalign"><?php echo $usable_balance[0]['BalanceHrs'] ? number_format($usable_balance[0]['BalanceHrs'], 3) : 0; ?> days</td>
+											<?php endif; ?>
+										</tr>
             </table>
-                    
+
             <?php
-            
+
             //var_dump($approver_data1);
-            
+
         break;
         default:
-            echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/login'</script>";   
-        
-    }            
-	
-?>			
+            echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/login'</script>";
+
+    }
+
+?>
