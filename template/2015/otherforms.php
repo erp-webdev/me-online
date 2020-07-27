@@ -54,7 +54,7 @@
 																													</div>
 																												</div>
 																												<div data-ng-switch-when="short_text"><!-- if item is short text type  -->
-																													<input type="text" name="{{ item.name }}" ng-readonly="false"  class="{{ item.hclass ? item.hclass : '' }}" ng-value=" propExist(item.defaultValue) ? defaultVal(item.defaultValue) : ''">
+																													<input type="text" name="{{ item.name }}" {{ item.readonly ? 'readonly' : '' }}  class="{{ item.hclass ? item.hclass : '' }}" ng-value=" propExist(item.defaultValue) ? defaultVal(item.defaultValue) : ''">
 																												</div>
 																											</div>
 																										</div>
