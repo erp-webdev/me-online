@@ -57,7 +57,7 @@
                                                 "1993-07-8463","2008-04-M764","2011-07-V980","2006-06-M168","2001-12-8773","1998-08-8602","2001-07-M219","2013-06-N202","2012-05-U417","2008-02-M719","2005-09-M103","2006-06-M163","1997-06-8727","2012-04-U354","1991-10-8274","2007-05-M477","1991-08-8310","1987-07-8128","1996-01-8509","1997-03-8638","2008-06-M829","2013-02-U861","2002-09-8855","1997-05-8715","2012-01-U197",
                                                 "2001-10-8752","2009-07-V176","2013-03-U940","2016-04-0140","2016-06-0145","2017-11-0016","2019-01-0000","2019-02-0002","2019-09-0133","1990-03-8284");
                             if ($wh_app && in_array($profile_idnum, $empids_wfh)) : ?><a href="<?php echo WEB; ?>/wfh" onclick="clickAndDisable(this);"><div<?php if ($section == "wfh") { ?> class="dselected"<?php } ?>>Work From Home</div></a><?php endif; ?>
-                            <?php if (false) : ?><a href="<?php echo WEB; ?>/otherforms" onclick="clickAndDisable(this);"><div<?php if ($section == "otherforms") { ?> class="dselected"<?php } ?>>Other Forms</div></a><?php endif; ?>
+                            <?php if (true) : ?><a href="<?php echo WEB; ?>/otherforms" onclick="clickAndDisable(this);"><div<?php if ($section == "otherforms") { ?> class="dselected"<?php } ?>>Other Forms</div></a><?php endif; ?>
                         </div>
                         <a id="applink" class="cursorpoint"><div<?php if ($section == "wfh" || $section == "leave" || $section == "overtime" || $section == "obt" || $section == "meal" || $section == "mandtr" || $section == "cts" || $section == "npa" || $section == "timesched") { ?> class="dselected"<?php } ?>>Application</div></a>
                         </div>
