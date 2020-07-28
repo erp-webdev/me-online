@@ -189,10 +189,8 @@
 											$backend_count++;
 										}
 										$coverage_max = max($coverage_dates);
-										$coverage_min = min($coverage_min);
+										$coverage_min = min($coverage_dates);
 
-										echo '{"success": false, "error": "From:'.$coverage_min.' To: '.$coverage_max.'"}';
-										exit();
 										//re iteration here to calculate duration with pay
 										//after compare again to balance $balanceval
 										if($balanceval < $backend_hours){
@@ -247,8 +245,8 @@
                     $leavepost['REQNBR'] = $add_leaveitem;
                     $leavepost['TRANS'] = "APPLY";
                     $leavepost['ABSENTID'] = $_POST['leave_type'];
-                    $leavepost['ABSENTFROMDATE'] = $_POST['leave_from'];
-                    $leavepost['ABSENTTODATE'] = $_POST['leave_to'];
+                    $leavepost['ABSENTFROMDATE'] = $coverage_min;
+                    $leavepost['ABSENTTODATE'] = $coverage_max;
                     $leavepost['DAYS'] = $_POST['days'];
                     $leavepost['HOURS'] = $_POST['days'] * 8;
                     $leavepost['REASON'] = addslashes($_POST['leave_reason']);
