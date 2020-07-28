@@ -146,6 +146,7 @@
                     $leaveitemcount = count($_POST['leave_duration']);
 										$backend_count = 0;
 										$backend_hours = 0;
+										$coverage_dates = array();
 
 										while($backend_count < $leaveitemcount){
 
@@ -154,6 +155,7 @@
 											$leavepay = $_POST['leave_pay'][$backend_count];
 											$leavetype = $_POST['leave_type'];
 											$leaveempid = $_POST['empid'];
+											array_push($coverage_dates, $_POST['leave_date'][$backend_count]);
 
 											if($leavepay){
 
@@ -186,7 +188,10 @@
 											}
 											$backend_count++;
 										}
+										$coverage_max = max($coverage_dates);
+										$coverage_min = min($coverage_min);
 
+										echo '{"success": false, "error": "Max:'.$coverage_max.'"}';
 										//re iteration here to calculate duration with pay
 										//after compare again to balance $balanceval
 										if($balanceval < $backend_hours){
