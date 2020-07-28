@@ -192,6 +192,7 @@
 										$coverage_min = min($coverage_min);
 
 										echo '{"success": false, "error": "Max:'.$coverage_max.'"}';
+										exit();
 										//re iteration here to calculate duration with pay
 										//after compare again to balance $balanceval
 										if($balanceval < $backend_hours){
