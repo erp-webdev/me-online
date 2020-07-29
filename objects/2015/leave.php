@@ -193,7 +193,7 @@
 
 										//re iteration here to calculate duration with pay
 										//after compare again to balance $balanceval
-										echo '{"success": false, "error": "Dev Ongoing. Balance: '.$balanceval.'"}';
+										echo '{"success": false, "error": "Dev Ongoing. Balance: '.$_POST['balance'].'"}';
 										exit();
 										if($balanceval < $backend_hours){
 											echo '{"success": false, "error": "Your leave with pay is greater than your leave balance."}';
