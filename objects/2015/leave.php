@@ -199,7 +199,7 @@
 											exit();
 										}
 
-										echo '{"success": false, "error": "Dev Ongoing. Balance: '.$balanceval.'"}';
+										echo '{"success": false, "error": "Dev Ongoing. Balance: '.$backend_hours.'"}';
 										exit();
 
                     $cnti = 0;
