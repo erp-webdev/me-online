@@ -163,26 +163,39 @@
 		                    $leaveshift = $mainsql->get_shift($leavsched[0]['ShiftID']);
 		                    $leavehours = $leaveshift[0]['NUMHrs'] - $leaveshift[0]['BreakHours'];
 
-												if($leaveduration == 'WD'){
-													if($profile_compressed){
-														$backend_hours += $leavehours;
-													}else{
-														$backend_hours += 1;
-													}
-												}else if($leaveduration == 'HD1' or $leaveduration == 'HD2'){
-													if($leavehours >= 8){
-														if($profile_compressed){
-															$backend_hours += $leavehours / 2;
-														}else{
-															$backend_hours += 0.5;
-														}
-													}else{
+												if ($leavetype == "L01" || $leavetype == "L03"){
+
+													if($leaveduration == 'WD'){
 														if($profile_compressed){
 															$backend_hours += $leavehours;
 														}else{
-															$backend_hours += 0.5;
+															$backend_hours += 1;
+														}
+													}else if($leaveduration == 'HD1' or $leaveduration == 'HD2'){
+														if($leavehours >= 8){
+															if($profile_compressed){
+																$backend_hours += $leavehours / 2;
+															}else{
+																$backend_hours += 0.5;
+															}
+														}else{
+															if($profile_compressed){
+																$backend_hours += $leavehours;
+															}else{
+																$backend_hours += 0.5;
+															}
 														}
 													}
+												}else{
+													if ($leaveduration == "WD") :
+	                                $backend_hours += 8;
+	                        elseif ($leaveduration == "HD1") :
+	                                $backend_hours += 4;
+	                        elseif ($leaveduration == "HD2") :
+	                                $backend_hours += 4;
+	                        else :
+	                            $hours = 0;
+	                        endif;
 												}
 
 											}
