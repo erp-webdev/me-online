@@ -6,11 +6,11 @@
     //var_dump(DBNAME);
 
     $section = $_REQUEST['section'];
-	
+
 	//**************** USER MANAGEMENT - START ****************\\
 
 	include(LIB."/login/chklog.php");
-    
+
     include(LIB."/init/settinginit.php");
 
     if ($_SESSION['megassep_admin']) :
@@ -71,14 +71,14 @@
         //var_dump($logdata[0]['PositionID']);
 
         $deptdata = $mainsql->get_dept_data($logdata[0]['DeptID'], $dbname);
-        $posdata = $mainsql->get_posi_data($logdata[0]['PositionID'], $dbname);     
+        $posdata = $mainsql->get_posi_data($logdata[0]['PositionID'], $dbname);
         $usertax = $register->get_memtax($logdata[0]['TaxID']);
 
         //var_dump($deptdata);
 
-        $profile_dept = $deptdata[0]['DeptDesc'];		
+        $profile_dept = $deptdata[0]['DeptDesc'];
         $profile_pos = $posdata[0]['PositionDesc'];
-        $profile_taxdesc = $usertax[0]['Description'];	
+        $profile_taxdesc = $usertax[0]['Description'];
 
         include(LIB."/init/approverinit.php");
 
@@ -93,13 +93,13 @@
         elseif ($profile_dbname == "GLOBAL_HOTEL") :
             $adminarray = array("2018-01-0000", "2011-03-V835", "2014-10-0004", "2016-06-0457","2017-06-1073","2017-10-0011","2019-01-0008","2019-01-0004","2015-03-0155","2018-07-0406","2015-11-0550","2018-08-0483");
         elseif ($profile_dbname == "GL" || $profile_dbname == "SIRUS" || $profile_dbname == "ASIAAPMI") :
-            $adminarray = array("2014-10-0004", "2014-10-0568", "2016-03-0261", "2017-01-0792", "2011-04-V859", "2015-11-0550", "2016-06-0457", "2018-07-0406","2007-06-M314","2019-02-0034","2019-03-0123","2019-02-0033"); 
+            $adminarray = array("2014-10-0004", "2014-10-0568", "2016-03-0261", "2017-01-0792", "2011-04-V859", "2015-11-0550", "2016-06-0457", "2018-07-0406","2007-06-M314","2019-02-0034","2019-03-0123","2019-02-0033");
         elseif ($profile_dbname == "NEWTOWN") :
-            $adminarray = array("2014-10-0004","2018-05-0001","2017-06-1073","2015-03-0155","2018-08-0483","2019-02-0034"); 
+            $adminarray = array("2014-10-0004","2018-05-0001","2017-06-1073","2015-03-0155","2018-08-0483","2019-02-0034");
         elseif ($profile_dbname == "MEGAWORLD") :
-            $adminarray = array("2018-05-0235","2009-09-V206", "2017-06-1124", "2016-06-0457","2018-07-0406","2007-06-M314","2019-03-0123","2015-11-0550","2011-03-V835","2014-10-0004"); 
+            $adminarray = array("2018-05-0235","2009-09-V206", "2017-06-1124", "2016-06-0457","2018-07-0406","2007-06-M314","2019-03-0123","2015-11-0550","2011-03-V835","2014-10-0004");
         else :
-            $adminarray = array("2014-05-N791", "2009-09-V206", "MASTER", "2012-03-U273", "2014-01-N506", "2016-06-0457", "2018-07-0406","2017-06-1073","2007-06-M314","2019-02-0034","2019-03-0123","2018-09-0494","2017-06-1124","2019-05-0278","2011-03-V835","2016-05-0259");
+            $adminarray = array("2014-05-N791", "2009-09-V206", "MASTER", "2012-03-U273", "2014-01-N506", "2016-06-0457", "2018-07-0406","2017-06-1073","2007-06-M314","2019-02-0034","2019-03-0123","2018-09-0494","2017-06-1124","2019-05-0278","2011-03-V835","2016-05-0259","2020-04-0107");
         endif;
 
         //PAYSLIP MANAGEMENT ADMINS
@@ -135,11 +135,11 @@
         // elseif ($profile_dbname == "GLOBAL_HOTEL" || $profile_dbname == "LAFUERZA") :
         //     $psadminarray = array("1994-03-8275", "2014-10-0004", "2011-03-V835","2018-08-0483");
         // elseif ($profile_dbname == "GL") :
-        //     $psadminarray = array("1994-03-8275", "2014-10-0004", "2011-04-V859", "2015-11-0550", "2016-06-0457","2019-03-0123"); 
+        //     $psadminarray = array("1994-03-8275", "2014-10-0004", "2011-04-V859", "2015-11-0550", "2016-06-0457","2019-03-0123");
         // elseif ($profile_dbname == "ECINEMA" || $profile_dbname == "EPARKVIEW" || $profile_dbname == "MCTI") :
-        //     $psadminarray = array("1994-03-8275", "2014-10-0004", "2015-11-0550","2018-08-0483","2019-05-0278"); 
+        //     $psadminarray = array("1994-03-8275", "2014-10-0004", "2015-11-0550","2018-08-0483","2019-05-0278");
         // elseif ($profile_dbname == "NEWTOWN") :
-        //     $psadminarray = array("1994-03-8275", "2014-10-0004", "2017-06-1073","2018-08-0483"); 
+        //     $psadminarray = array("1994-03-8275", "2014-10-0004", "2017-06-1073","2018-08-0483");
         // else :
         //     $psadminarray = array("1994-03-8275", "2009-09-V206", "MASTER", "2012-03-U273", "2016-06-0457","2015-11-0550","2014-10-0004");
         // endif;
@@ -168,10 +168,10 @@
         else :
             $profile_ps = 0;
         endif;
-        
+
         $llblock = $mainsql->get_emploan($profile_idnum);
         $psblock = $mainsql->get_psblock($profile_idnum, $dbname);
-        //$unread_notification = $mainsql->get_read($profile_idnum, NULL, 1);        
+        //$unread_notification = $mainsql->get_read($profile_idnum, NULL, 1);
         //$pend_notification = $tblsql->get_pendingnoti(NULL, 0, 0, NULL, 1, $profile_idnum, NULL, NULL, NULL, $profile_dbname);
 
         //var_dump($profile_level);
@@ -181,9 +181,9 @@
         $GLOBALS['level'] = $profile_level;
 
     endif;
-	
+
 	//***************** USER MANAGEMENT - END *****************\\
-		
+
 	if ($section) :
 		if (!file_exists(OBJ."/".$section.".php")) :
             echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/404'</script>";
@@ -191,12 +191,12 @@
             include(OBJ."/".$section.".php");
 		    include(TEMP."/".$section.".php");
         endif;
-	else :	
+	else :
 		$ishome = 1;
 		include(OBJ."/index.php");
 		include(TEMP."/index.php");
     endif;
 
-    
-	
+
+
 ?>
