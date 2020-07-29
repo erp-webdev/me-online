@@ -206,9 +206,14 @@
 
 										//re iteration here to calculate duration with pay
 										//after compare again to balance $balanceval
+
+
+										if($_POST['leave_type'] == 'L01' || $_POST['leave_type'] == 'L03'){
+											$usable_lbalance = $mainsql->get_usablebal($profile_idnum, $value['LeaveID']);
+											$balanceval = $usable_balance[0]['BalanceHrs'];
+										}
 										// echo '{"success": false, "error": "Dev Ongoing. Balance:'.$balanceval.'"}';
 										// exit();
-
 										if($balanceval < $backend_hours){
 											echo '{"success": false, "error": "Your leave with pay is greater than your leave balance."}';
 											exit();
