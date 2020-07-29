@@ -194,7 +194,7 @@
 	                        elseif ($leaveduration == "HD2") :
 	                                $backend_hours += 4;
 	                        else :
-	                            $hours = 0;
+	                            $backend_hours += 0;
 	                        endif;
 												}
 
@@ -206,8 +206,6 @@
 
 										//re iteration here to calculate duration with pay
 										//after compare again to balance $balanceval
-										echo '{"success": false, "error": "Dev Ongoing. Balance: '.$backend_hours.'"}';
-										exit();
 
 										if($balanceval < $backend_hours){
 											echo '{"success": false, "error": "Your leave with pay is greater than your leave balance."}';
