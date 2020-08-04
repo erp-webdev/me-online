@@ -209,11 +209,11 @@
 
 
 										if($_POST['leave_type'] == 'L01' || $_POST['leave_type'] == 'L03'){
-											$usable_lbalance = $mainsql->get_usablebal($profile_idnum, $value['LeaveID']);
+											$usable_lbalance = $mainsql->get_usablebal($profile_idnum, $_POST['leave_type']);
 											$balanceval = $usable_balance[0]['BalanceHrs'];
 										}
 
-										echo '{"success": false, "error": "Dev Ongoing. Balance:'.$value['LeaveID'].'"}';
+										echo '{"success": false, "error": "Dev Ongoing. Balance :'.$_POST['leave_type'].'"}';
 										exit();
 
 										if($balanceval < $backend_hours){
