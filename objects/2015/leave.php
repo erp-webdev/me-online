@@ -213,7 +213,7 @@
 											$balanceval = $usable_balance[0]['BalanceHrs'];
 										}
 
-										echo '{"success": false, "error": "Dev Ongoing. Balance :'.$_POST['leave_type'].'"}';
+										echo '{"success": false, "error": "Dev Ongoing. Balance :'.$balanceval.'"}';
 										exit();
 
 										if($balanceval < $backend_hours){
