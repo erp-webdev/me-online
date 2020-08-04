@@ -213,8 +213,7 @@
 											$balanceval = $usable_lbalance[0]['BalanceHrs'];
 										}
 
-										echo '{"success": false, "error": "Dev Ongoing. Balance :'.$balanceval.'"}';
-										exit();
+
 
 										if($balanceval < $backend_hours){
 											echo '{"success": false, "error": "Your leave with pay is greater than your leave balance"}';
@@ -222,7 +221,8 @@
 										}
 
 
-
+										echo '{"success": false, "error": "Dev Ongoing. Balance :'.$balanceval.'"}';
+										exit();
 
 
                     $cnti = 0;
