@@ -218,9 +218,6 @@
 											exit();
 										}
 
-										echo '{"success": false, "error": "Success"}';
-										exit();
-
                     $cnti = 0;
 
                     while($cnti < $leaveitemcount) :
