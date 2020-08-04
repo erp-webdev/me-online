@@ -172,6 +172,7 @@
             $leave_data = $mainsql->get_leaveledgerbytype($profile_idnum, $type2, date('Y'));
             $leave_balance = $mainsql->get_leavebal($profile_idnum, $type2);
 						$usable_balance = $mainsql->get_usablebal($profile_idnum, $type2);
+						$leave_approval = $mainsql->get_forapproval($profile_idnum, $type2);
 
             //var_dump($leave_data);
 
@@ -241,10 +242,10 @@
 										<tr>
 											<td>Pending For Approval</td>
 											<?php if ($profile_compressed) : ?>
-											<td class="righttalign"><?php echo $usable_balance[0]['BalanceHrs'] ? number_format($leave_balance[0]['BalanceHrs'], 2) - number_format($usable_balance[0]['BalanceHrs'], 2) : 0; ?> hours (<?php echo $usable_balance[0]['BalanceHrs'] ? number_format($leave_balance[0]['BalanceDays'], 2) - number_format($usable_balance[0]['BalanceHrs']/8, 2)  : 0; ?> days)</td>
-											<?php else : ?>
-											<td class="righttalign"><?php echo $usable_balance[0]['BalanceHrs'] ? number_format($leave_balance[0]['BalanceDays'], 2) - number_format($usable_balance[0]['BalanceHrs'], 2)/8 : 0; ?> days</td>
-											<?php endif; ?>
+												<td class="righttalign"><?php echo $leave_approval[0]['BalanceHrs'] ? number_format($leave_approval[0]['BalanceHrs'], 2) : 0; ?> hours (<?php echo $leave_approval[0]['BalanceHrs'] ? number_format($leave_approval[0]['BalanceHrs']/8, 2)  : 0; ?> days)</td>
+												<?php else : ?>
+												<td class="righttalign"><?php echo $leave_approval[0]['BalanceHrs'] ? number_format($leave_approval[0]['BalanceHrs'], 2)/8 : 0; ?> days</td>
+												<?php endif; ?>
 										</tr>
 										<tr>
 											<td>Usable Balance</td>
