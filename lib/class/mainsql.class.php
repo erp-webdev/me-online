@@ -909,7 +909,7 @@ class mainsql {
             left join HREmpLBalance b on a.EmpID = b.EmpID and b.LeaveID = a.LeaveID
             where   a.LeaveID IN ('$leaveid') AND a.EMPID = '$empid' and b.DateEffect <= GETDATE() and a.PRYear = YEAR(GETDATE())";
     $result = $this->get_row($sql);
-    return $sql;
+    return $result;
   }
 
   function get_forapproval($empid, $leaveid)
