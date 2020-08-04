@@ -210,10 +210,10 @@
 
 										if($_POST['leave_type'] == 'L01' || $_POST['leave_type'] == 'L03'){
 											$usable_lbalance = $mainsql->get_usablebal($profile_idnum, $_POST['leave_type']);
-											$balanceval = $usable_balance[0]['BalanceHrs'];
+											$balanceval = $usable_lbalance[0]['BalanceHrs'];
 										}
 
-										echo '{"success": false, "error": "Dev Ongoing. Balance :'.$usable_lbalance.'"}';
+										echo '{"success": false, "error": "Dev Ongoing. Balance :'.$balanceval.'"}';
 										exit();
 
 										if($balanceval < $backend_hours){
