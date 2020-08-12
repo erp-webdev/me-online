@@ -30,7 +30,7 @@
                                 </div></td>
                             </tr-->
                             <tr>
-                                <td><div class="curvebox centermargin"><input type="text" name="username" id="username" placeholder="Employee_ID" class="txtbox width95" /></div></td>
+                                <td><div class="curvebox centermargin"><input type="text" name="username" id="username" placeholder="Employee id" class="txtbox width95" /></div></td>
                             </tr>
                             <tr>
                                 <td><div class="curvebox centermargin"><input type="password" name="password" id="password" placeholder="Password" class="txtbox width95" /></div></td>
