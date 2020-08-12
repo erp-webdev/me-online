@@ -19,7 +19,7 @@
 
                     <div id="mainsplashlog" class="mainsplashlog lefttalign">
                         <div id="ltitle" class="lowerlist robotobold cattext whitetext centertalign"><?php echo WELCOME; ?></div>
-                        <div class="whitetext">'The online <?php echo $profile_nadd; ?> self-service employees' portal for <?php echo COMPNAME; ?> employees. It is your electronic ingress for timekeeping application such as leave, OBT, etc. Manage your DTR and payslips.</div>
+                        <div class="whitetext">The online <?php echo $profile_nadd; ?> self-service employees' portal for <?php echo COMPNAME; ?> employees. It is your electronic ingress for timekeeping application such as leave, OBT, etc. Manage your DTR and payslips.</div>
                         <table class="margintop15 centertalign vsmalltext" width="100%" border="0" cellpadding="0" cellspacing="0">
                             <!--tr>
                                 <td><div class="curvebox centermargin">
