@@ -102,8 +102,6 @@
 									}
 								}
 
-								echo '{"success": false, "error": "DEV ONGOING"}';
-								exit();
                 //CHECK DATE IF ITS APPLIED - END
 
                 //WFH ITEMS
