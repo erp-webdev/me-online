@@ -84,8 +84,23 @@
                 $wfhstart = date("Y-m-d", strtotime($_POST['wfh_from']));
                 $wfhend = date("Y-m-d", strtotime($_POST['wfh_to']));
 
+								//CHECK IF WITH DTR
+								$from = $wfhstart;
+								$to = $wfhend;
+								$count = 0;
 
-
+								$dtr = $mainsql->get_dtr_dates($profile_id, $from, $to, $profile_comp, $profile_dbname);
+								if($dtr){
+									foreach ($dtr as $key => $date) {
+										if($date['TimeIN'] != NULL){
+											$count++;
+										}
+									}
+									if($count > 0){
+										echo '{"success": false, "error": "You have one or more biometric entry on the applied date/s."}';
+										exit();
+									}
+								}
                 //CHECK DATE IF ITS APPLIED - END
 
                 //WFH ITEMS
