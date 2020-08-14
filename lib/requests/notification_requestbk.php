@@ -1,6 +1,6 @@
-<?php 
+<?php
 
-	include("../../config.php"); 
+	include("../../config.php");
 	//**************** USER MANAGEMENT - START ****************\\
 
 	include(LIB."/login/chklog.php");
@@ -36,14 +36,14 @@
     /* MAIN DB CONNECTOR - END */
 
     $logdata = $logsql->get_member($_SESSION['megasubs_user']);
-            
+
     $deptdata = $mainsql->get_dept_data($userdata[0]['DeptID']);
-    $posdata = $mainsql->get_posi_data($userdata[0]['PositionID']);     
+    $posdata = $mainsql->get_posi_data($userdata[0]['PositionID']);
     $usertax = $register->get_memtax($userdata[0]['TaxID']);
 
-    $profile_dept = $deptdata[0]['DeptDesc'];		
+    $profile_dept = $deptdata[0]['DeptDesc'];
 	$profile_pos = $posdata[0]['PositionDesc'];
-    $profile_taxdesc = $usertax[0]['Description'];	
+    $profile_taxdesc = $usertax[0]['Description'];
 
     include(LIB."/init/approverinit.php");
 
@@ -60,31 +60,31 @@
     $profile_hash = md5('2014'.$profile_idnum);
 
 	$GLOBALS['level'] = $profile_level;
-	
+
 	//***************** USER MANAGEMENT - END *****************\\
 ?>
 
-<?php	
+<?php
 
     $sec = $_GET['sec'];
 
     switch ($sec) {
-        case 'approve':                 
-        case 'lvcancel':               
-        case 'mdcancel':                    
-        case 'sccancel':                 
+        case 'approve':
+        case 'lvcancel':
+        case 'mdcancel':
+        case 'sccancel':
         break;
         default:
         ?>
         <script type="text/javascript">
-    
-        $(".chkapp").on("click", function() {	
-        
+
+        $(".chkapp").on("click", function() {
+
             if($(".chkapp:checked").length) {
                 $("#btnapprchk").removeClass('invisible');
             }
             else {
-                $("#btnapprchk").addClass('invisible');            
+                $("#btnapprchk").addClass('invisible');
             }
 
         });
@@ -95,10 +95,10 @@
                 $("#btnapprchk").removeClass('invisible');
             }
             else {
-                $("#btnapprchk").addClass('invisible');            
+                $("#btnapprchk").addClass('invisible');
             }
         });
-    
+
         $("#btnapp").on("click", function() {
 
             remarks = $("#remarks").val();
@@ -114,11 +114,11 @@
 
                 approvehours = $("#approvehours").val();
 
-                var r = confirm("This action is cannot be UNDONE. Are you sure you want to approve this request?");
+                var r = confirm("This action cannot be UNDONE. Are you sure you want to approve this request?");
 
                 if (r == true)
-                {        
-                    var approve_msg;  
+                {
+                    var approve_msg;
 
                     if (!$('.approve_msg').length)
                     {
@@ -133,7 +133,7 @@
                         border : '2px solid #006100',
                         height : 'auto'
                     })
-                    .slideDown();            
+                    .slideDown();
 
                     $.ajax(
                     {
@@ -163,7 +163,7 @@
                                 $('#remarks').addClass("invisible");
                                 $('#btnapp').addClass("invisible");
                                 $('#btnrej').addClass("invisible");
-                                
+
                                 searchnoti = $("#searchnoti").val();
                                 notifrom = $("#notifrom").val();
                                 notito = $("#notito").val();
@@ -180,8 +180,8 @@
                                     },
                                     success: function(data) {
                                         $("#btnnotiall").removeClass("invisible");
-                                        $("#notidata").html(data);      
-                                        changeUrl('', '<?php echo WEB; ?>/notification');            
+                                        $("#notidata").html(data);
+                                        changeUrl('', '<?php echo WEB; ?>/notification');
                                     }
                                 })
 
@@ -206,16 +206,16 @@
                         }
                     })
 
-                }            
+                }
 
             }
             else {
 
-                var r = confirm("This action is cannot be UNDONE. Are you sure you want to approve this request?");
+                var r = confirm("This action cannot be UNDONE. Are you sure you want to approve this request?");
 
                 if (r == true)
-                {        
-                    var approve_msg;  
+                {
+                    var approve_msg;
 
                     if (!$('.approve_msg').length)
                     {
@@ -230,7 +230,7 @@
                         border : '2px solid #006100',
                         height : 'auto'
                     })
-                    .slideDown();            
+                    .slideDown();
 
                     $.ajax(
                     {
@@ -260,7 +260,7 @@
                                 $('#remarks').addClass("invisible");
                                 $('#btnapp').addClass("invisible");
                                 $('#btnrej').addClass("invisible");
-                                
+
                                 searchnoti = $("#searchnoti").val();
                                 notifrom = $("#notifrom").val();
                                 notito = $("#notito").val();
@@ -277,8 +277,8 @@
                                     },
                                     success: function(data) {
                                         $("#btnnotiall").removeClass("invisible");
-                                        $("#notidata").html(data);      
-                                        changeUrl('', '<?php echo WEB; ?>/notification');            
+                                        $("#notidata").html(data);
+                                        changeUrl('', '<?php echo WEB; ?>/notification');
                                     }
                                 })
 
@@ -305,8 +305,8 @@
 
                 }
             }
-        });    
-            
+        });
+
         $("#btnrej").on("click", function() {
 
             remarks = $("#remarks").val();
@@ -320,8 +320,8 @@
             var r = confirm("This action is cannot be UNDONE. Are you sure you want to reject this request?");
 
             if (r == true)
-            {        
-                var approve_msg;  
+            {
+                var approve_msg;
 
                 if (!$('.approve_msg').length)
                 {
@@ -336,7 +336,7 @@
                     border : '2px solid #006100',
                     height : 'auto'
                 })
-                .slideDown();            
+                .slideDown();
 
                 $.ajax(
                 {
@@ -383,8 +383,8 @@
                                 },
                                 success: function(data) {
                                     $("#btnnotiall").removeClass("invisible");
-                                    $("#notidata").html(data);      
-                                    changeUrl('', '<?php echo WEB; ?>/notification');            
+                                    $("#notidata").html(data);
+                                    changeUrl('', '<?php echo WEB; ?>/notification');
                                 }
                             })
 
@@ -410,10 +410,10 @@
                 })
 
             }
-        });     
-    
+        });
+
         $("#btncancel").on("click", function() {
-            
+
             remarks = 0;
             dbname = $("#dbname").val();
             doctype = $(this).attr("attribute");
@@ -425,9 +425,9 @@
             var r = confirm("This action is cannot be UNDONE. Are you sure you want to cancel this request?");
 
             if (r == true)
-            {        
+            {
 
-                var approve_msg;  
+                var approve_msg;
 
                 if (!$('.approve_msg').length)
                 {
@@ -442,7 +442,7 @@
                     border : '2px solid #006100',
                     height : 'auto'
                 })
-                .slideDown();            
+                .slideDown();
 
                 $.ajax(
                 {
@@ -487,8 +487,8 @@
                                 },
                                 success: function(data) {
                                     $("#btnnotiall").removeClass("invisible");
-                                    $("#notidata").html(data);      
-                                    changeUrl('', '<?php echo WEB; ?>/notification');            
+                                    $("#notidata").html(data);
+                                    changeUrl('', '<?php echo WEB; ?>/notification');
                                 }
                             })
 
@@ -514,10 +514,10 @@
                 })
 
             }
-        });   
-            
+        });
+
         $(".btnlvcancel").on("click", function() {
-                        
+
             reqnbr = $(this).attr("attribute");
             dtrdate = $(this).attr("attribute2");
             status = 0;
@@ -534,7 +534,7 @@
                         $("#loading").hide();
                     },
                     success: function(data) {
-                        
+
                         $.ajax(
                         {
                             url: "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=lvtable",
@@ -544,17 +544,17 @@
                                 $("#loading").hide();
                             },
                             success: function(data) {
-                                $(".divlvdata").html(data);      
+                                $(".divlvdata").html(data);
                             }
                         })
-                        
+
                     }
                 })
             }
         });
-            
+
         $(".btnmdcancel").on("click", function() {
-                        
+
             reqnbr = $(this).attr("attribute");
             dtrdate = $(this).attr("attribute2");
             status = 0;
@@ -571,7 +571,7 @@
                         $("#loading").hide();
                     },
                     success: function(data) {
-                        
+
                         $.ajax(
                         {
                             url: "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=mdtable",
@@ -581,17 +581,17 @@
                                 $("#loading").hide();
                             },
                             success: function(data) {
-                                $(".divmddata").html(data);      
+                                $(".divmddata").html(data);
                             }
                         })
-                        
+
                     }
                 })
             }
         });
-    
+
         $(".btnsccancel").on("click", function() {
-                        
+
             reqnbr = $(this).attr("attribute");
             dtrdate = $(this).attr("attribute2");
             status = 0;
@@ -608,7 +608,7 @@
                         $("#loading").hide();
                     },
                     success: function(data) {
-                        
+
                         $.ajax(
                         {
                             url: "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=sctable",
@@ -618,47 +618,47 @@
                                 $("#loading").hide();
                             },
                             success: function(data) {
-                                $(".divtsdata").html(data);      
+                                $(".divtsdata").html(data);
                             }
                         })
-                        
+
                     }
                 })
             }
         });
-            
-            
-            
-        $(".btnnotidata").on("click", function() {	
-        
-            doctype = $(this).attr('attribute2');        
+
+
+
+        $(".btnnotidata").on("click", function() {
+
+            doctype = $(this).attr('attribute2');
             refnum = $(this).attr('attribute');
 
             if (doctype == 'LV') {
-                title = "Leave Application #";   
+                title = "Leave Application #";
             }
             else if (doctype == 'NP') {
-                title = "No Punch Authorization #";   
+                title = "No Punch Authorization #";
             }
             else if (doctype == 'MA') {
-                title = "Meal Allowance Application #";   
+                title = "Meal Allowance Application #";
             }
             else if (doctype == 'OB') {
-                title = "OBT Application #";   
+                title = "OBT Application #";
             }
             else if (doctype == 'OT') {
-                title = "Overtime Application #";   
+                title = "Overtime Application #";
             }
             else if (doctype == 'MD') {
-                title = "Manual DTR Application #";   
+                title = "Manual DTR Application #";
             }
             else if (doctype == 'SC') {
-                title = "Change of Time Schedule Application #";   
+                title = "Change of Time Schedule Application #";
             }
             else if (doctype == 'TS') {
-                title = "Change Schedule Application #";   
+                title = "Change Schedule Application #";
             }
-            
+
             $("#noti_data").html('<i class="fa fa-refresh fa-spin fa-lg"></i> Loading...');
 
             $("#noti_title").html(title + ' ' + refnum);
@@ -678,41 +678,41 @@
                 }
             })
         });
-            
-        $(".btnpenddata").on("click", function() {	
-        
-            doctype = $(this).attr('attribute2');        
+
+        $(".btnpenddata").on("click", function() {
+
+            doctype = $(this).attr('attribute2');
             refnum = $(this).attr('attribute');
 
             if (doctype == 'LV') {
-                title = "Leave Application #";   
+                title = "Leave Application #";
             }
             else if (doctype == 'NP') {
-                title = "No Punch Authorization #";   
+                title = "No Punch Authorization #";
             }
             else if (doctype == 'MA') {
-                title = "Meal Allowance Application #";   
+                title = "Meal Allowance Application #";
             }
             else if (doctype == 'OB') {
-                title = "OBT Application #";   
+                title = "OBT Application #";
             }
             else if (doctype == 'OT') {
-                title = "Overtime Application #";   
+                title = "Overtime Application #";
             }
             else if (doctype == 'MD') {
-                title = "Manual DTR Application #";   
+                title = "Manual DTR Application #";
             }
             else if (doctype == 'SC') {
-                title = "Change of Time Schedule Application #";   
+                title = "Change of Time Schedule Application #";
             }
             else if (doctype == 'TS') {
-                title = "Change Schedule Application #";   
+                title = "Change Schedule Application #";
             }
 
             $("#pend_title").html(title + ' ' + refnum);
             $(".floatdiv").removeClass("invisible");
             $("#nview").removeClass("invisible");
-            
+
             $("#pend_data").html('<i class="fa fa-refresh fa-spin fa-lg"></i> Loading...');
 
             $.ajax(
@@ -728,11 +728,11 @@
                 }
             })
         });
-        
+
         $("#chknotiall").change(function() {
             $('#checknoti input[type="checkbox"]').prop('checked', this.checked);
         });
-        
+
         </script>
         <?php
         break;
@@ -742,11 +742,11 @@
     <?php
 
     switch ($sec) {
-        case 'periodsel':                
+        case 'periodsel':
             $dtr_year = $_POST['year'];
-            
+
             $year_select = '';
-            $dtr_period = $mainsql->get_dtr_period($dtr_year, $profile_comp);    
+            $dtr_period = $mainsql->get_dtr_period($dtr_year, $profile_comp);
             if ($dtr_period) :
                 foreach ($dtr_period as $key => $value) :
                     $year_select .= '<option value="'.date("Y-m-d", strtotime($value['PRFrom']))." ".date("Y-m-d", strtotime($value['PRTo'])).'">'.$value['PeriodID']." ".$value['PRYear']." ".date("m/d/Y", strtotime($value['PRFrom']))." to ".date("m/d/Y", strtotime($value['PRTo'])).'</option>';
@@ -754,45 +754,45 @@
             endif;
             echo $year_select;
         break;
-        case 'lvcancel':            
-            
+        case 'lvcancel':
+
             $lvcpost['REQ'] = $_POST['reqnbr'];
-            $lvcpost['DTRDATE'] = $_POST['dtrdate'];                                    
-            $lvcpost['STATUS'] = 0;                                    
-            
+            $lvcpost['DTRDATE'] = $_POST['dtrdate'];
+            $lvcpost['STATUS'] = 0;
+
             $lvcancel_request = $mainsql->leave_action($lvcpost, 'lvitemcancel');
-            
+
             echo $lvcancel_request;
-            
+
         break;
-        case 'mdcancel':            
-            
+        case 'mdcancel':
+
             $mdcpost['REQ'] = $_POST['reqnbr'];
-            $mdcpost['DTRDATE'] = $_POST['dtrdate'];                                    
-            $mdcpost['STATUS'] = 0;                                    
-            
+            $mdcpost['DTRDATE'] = $_POST['dtrdate'];
+            $mdcpost['STATUS'] = 0;
+
             $mdcancel_request = $mainsql->md_action($mdcpost, 'mditemcancel');
-            
+
             echo $mdcancel_request;
-            
+
         break;
-        case 'sccancel':            
-            
+        case 'sccancel':
+
             $sccpost['REQ'] = $_POST['reqnbr'];
-            $sccpost['DTRDATE'] = $_POST['dtrdate'];                                    
-            $sccpost['STATUS'] = 0;                                    
-            
+            $sccpost['DTRDATE'] = $_POST['dtrdate'];
+            $sccpost['STATUS'] = 0;
+
             $sccancel_request = $mainsql->sc_action($sccpost, 'scitemcancel');
-            
+
             echo $sccancel_request;
-            
+
         break;
         case 'lvtable':
-            
+
             $refnum = $_POST['reqnbr'];
             $applv_data = $tblsql->get_leavedata($refnum);
             $applv_count = count($applv_data);
-            
+
             ?>
             <table class="tdatablk">
                 <tr>
@@ -800,20 +800,20 @@
                     <th>Duration</th>
                     <th>w/ Pay</th>
                     <th>Cancel</th>
-                </tr>            
-                <?php 
-                    foreach($applv_data as $key => $value) : 
+                </tr>
+                <?php
+                    foreach($applv_data as $key => $value) :
                 ?>
                 <tr>
                     <td><?php echo date("M j", strtotime($value['LeaveDate'])); ?></td>
-                    <td><?php 
-                        if ($value['Duration'] == "WD") : 
+                    <td><?php
+                        if ($value['Duration'] == "WD") :
                             echo "Whole Day";
-                        elseif ($value['Duration'] == "HD") : 
+                        elseif ($value['Duration'] == "HD") :
                             echo "Half Day";
-                        elseif ($value['Duration'] == "HD1") : 
+                        elseif ($value['Duration'] == "HD1") :
                             echo "Half Day AM";
-                        elseif ($value['Duration'] == "HD2") : 
+                        elseif ($value['Duration'] == "HD2") :
                             echo "Half Day PM";
                         endif;
                     ?></td>
@@ -821,17 +821,17 @@
                         <?php echo $value['WithPay'] ? "<i class='fa fa-check'></i>" : "<i class='fa fa-times'></i>"; ?>
                     </td>
                     <td class="centertalign"><?php if ($applv_count > 1) : ?><i class="btnlvcancel fa fa-times redtext cursorpoint" attribute="<?php echo $refnum; ?>" attribute2="<?php echo date('Y-m-d 00:00:00.000', strtotime($value['LeaveDate'])); ?>"></i><?php endif; ?></td>
-                </tr>            
+                </tr>
                 <?php endforeach; ?>
             </table>
             <?php
-        break; 
+        break;
         case 'mdtable':
-            
+
             $refnum = $_POST['reqnbr'];
             $appmd_data = $mainsql->get_mdtrdata($refnum);
             $appmd_count = count($appmd_data);
-            
+
             ?>
             <table class="tdatablk">
                 <tr>
@@ -855,7 +855,7 @@
                             <td><?php echo $timearray[3] ? date('g:ia', strtotime($timearray2[3])) : ''; ?></td>
                             <td><?php echo $value['ShiftDesc']; ?></td>
                             <td><?php echo $value['NewShiftDesc'] ? $shifts2[0]['ShiftDesc'] : 'REST DAY'; ?></td>
-                            
+
                             <td class="centertalign"><?php if ($appmd_count > 1) : ?><i class="btnmdcancel fa fa-times redtext cursorpoint" attribute="<?php echo $refnum; ?>" attribute2="<?php echo date('Y-m-d 00:00:00.000', strtotime($value['DTRDate'])); ?>"></i><?php endif; ?></td>
                         </tr>
                         <?php
@@ -863,13 +863,13 @@
                 ?>
             </table>
             <?php
-        break;   
+        break;
         case 'sctable':
-            
+
             $refnum = $_POST['reqnbr'];
             $appts_data = $tblsql->get_tsdata($refnum);
             $appts_count = count($appts_data);
-            
+
             ?>
             <table class="tdatablk">
                 <tr>
@@ -893,39 +893,39 @@
                             <td class="centertalign"><?php if ($appts_count > 1) : ?><i class="btnsccancel fa fa-times redtext cursorpoint" attribute="<?php echo $refnum; ?>" attribute2="<?php echo date('Y-m-d 00:00:00.000', strtotime($value['DTRDate'])); ?>"></i><?php endif; ?></td>
                         </tr>
                         <?php
-                        $pdtrto = strtotime($value['DTRDate']);  
+                        $pdtrto = strtotime($value['DTRDate']);
                     endforeach;
                 ?>
             </table>
             <?php
-        break;            
-        case 'table':  
+        break;
+        case 'table':
 
             # PAGINATION
             $page = isset($_GET["page"]) ? (int)$_GET["page"] : 1 ;
-            $start = NOTI_NUM_ROWS * ($page - 1);   
-        
+            $start = NOTI_NUM_ROWS * ($page - 1);
+
             if ($_POST['clear_search']) :
-        
+
                 unset($_SESSION['searchnoti']);
                 unset($_SESSION['notitype']);
                 unset($_SESSION['notifrom']);
                 unset($_SESSION['notito']);
-        
+
             else :
-            
+
                 $searchnoti_sess = $_SESSION['searchnoti'];
                 $notitype_sess = $_SESSION['notitype'];
                 $notifrom_sess = $_SESSION['notifrom'];
                 $notito_sess = $_SESSION['notito'];
-                if ($_POST) {        
-                    $searchnoti = $_POST['searchnoti'] ? $_POST['searchnoti'] : NULL;            
+                if ($_POST) {
+                    $searchnoti = $_POST['searchnoti'] ? $_POST['searchnoti'] : NULL;
                     $_SESSION['searchnoti'] = $searchnoti;
-                    $notitype = $_POST['notitype'] ? $_POST['notitype'] : NULL;            
+                    $notitype = $_POST['notitype'] ? $_POST['notitype'] : NULL;
                     $_SESSION['notitype'] = $notitype;
-                    $notifrom = $_POST['notifrom'] ? $_POST['notifrom'] : NULL;            
+                    $notifrom = $_POST['notifrom'] ? $_POST['notifrom'] : NULL;
                     $_SESSION['notifrom'] = $notifrom;
-                    $notito = $_POST['notito'] ? $_POST['notito'] : NULL;            
+                    $notito = $_POST['notito'] ? $_POST['notito'] : NULL;
                     $_SESSION['notito'] = $notito;
                 }
                 elseif ($searchnoti_sess || $notitype_sess) {
@@ -947,20 +947,20 @@
                     $_POST['notifrom'] = NULL;
                     $notito = NULL;
                     $_POST['notito'] = NULL;
-                }  
-        
+                }
+
             endif;
-            
+
             //var_dump($searchnoti);
-            
+
 
             $notification_data = $tblsql->get_notification(NULL, $start, NOTI_NUM_ROWS, $searchnoti, 0, $profile_idnum, $notifrom, $notito, $notitype);
             $notification_count = $tblsql->get_notification(NULL, 0, 0, $searchnoti, 1, $profile_idnum, $notifrom, $notito, $notitype);
 
             $pages = $mainsql->pagination("notification", $notification_count, NOTI_NUM_ROWS, 9);
-            
+
             //var_dump($notification_data);
-            ?>   
+            ?>
 
             <table border="0" cellspacing="0" class="tdata width100per">
                 <?php if ($notification_data) : ?>
@@ -973,25 +973,25 @@
                     <th width="26%">Status</th>
                     <th width="20%">Last Updated</th>
                 </tr>
-                <?php foreach ($notification_data as $key => $value) : 
-            
-                    //READ STATUS
-                    $get_read = $mainsql->get_read($profile_idnum, $value['Reference'], 1);                    
+                <?php foreach ($notification_data as $key => $value) :
 
-                    if ($value['DocType'] == 'LV') : 
+                    //READ STATUS
+                    $get_read = $mainsql->get_read($profile_idnum, $value['Reference'], 1);
+
+                    if ($value['DocType'] == 'LV') :
                         $typestat = "LEAVE APPLICATION from ";
-                    elseif ($value['DocType'] == 'OT') : 
+                    elseif ($value['DocType'] == 'OT') :
                         $typestat = "OVERTIME APPLICATION from ";
                         $ot_data = $tblsql->get_nrequest(1, $value['Reference']);
-                    elseif ($value['DocType'] == 'OB') : 
+                    elseif ($value['DocType'] == 'OB') :
                         $typestat = "OBT APPLICATION from ";
-                    elseif ($value['DocType'] == 'NP') : 
+                    elseif ($value['DocType'] == 'NP') :
                         $typestat = "NO PUNCH APPLICATION from ";
-                    elseif ($value['DocType'] == 'MD') : 
+                    elseif ($value['DocType'] == 'MD') :
                         $typestat = "MANUAL DTR APPLICATION from ";
-                    elseif ($value['DocType'] == 'SC') : 
+                    elseif ($value['DocType'] == 'SC') :
                         $typestat = "CHANGE SCHEDULE APPLICATION from ";
-                    elseif ($value['DocType'] == 'TS') : 
+                    elseif ($value['DocType'] == 'TS') :
                         $typestat = "SCHEDULE CHANGE APPLICATION from ";
                     endif;
 
@@ -999,29 +999,29 @@
 
                     $displaychk = 0;
 
-                    if (trim($value['Signatory01'])) : 
+                    if (trim($value['Signatory01'])) :
 
                         if ($value['Signatory01'] == $profile_idnum) :
 
                             $requestor_data = $register->get_allmember($value['EmpID']);
                             if ($value['Approved'] == 1) :
-                                if ($value['ApprovedDate01']) :                                  
-                                    $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate01']));                                
-                                    if (!trim($value['Signatory02']) || trim($value['Signatory02']) == '') : 
+                                if ($value['ApprovedDate01']) :
+                                    $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate01']));
+                                    if (!trim($value['Signatory02']) || trim($value['Signatory02']) == '') :
                                         $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." APPROVED by YOU and that's final.";
                                         $nlevel = 1;
                                     else:
                                         $nlevel = 2;
                                     endif;
                                 else :
-                                    $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
+                                    $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
                                     $nlevel = 1;
                                 endif;
                             elseif ($value['Approved'] == 2) :
-                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
+                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
                                 $nlevel = 1;
                             elseif ($value['Approved'] == 3) :
-                                $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];                                                    
+                                $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];
                                 $nlevel = 1;
                             else :
                                 $nlevel = 1;
@@ -1032,50 +1032,50 @@
                         else :
                             $approver_data = $register->get_allmember($value['Signatory01']);
                             if ($value['Approved'] == 1) :
-                                if ($value['ApprovedDate01']) : 
+                                if ($value['ApprovedDate01']) :
                                     $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate01']));
-                                    if (!trim($value['Signatory02']) || trim($value['Signatory02']) == '') : 
+                                    if (!trim($value['Signatory02']) || trim($value['Signatory02']) == '') :
                                         $astatus = "APPROVED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName']." and that's final.";
                                         $nlevel = 1;
                                     else:
                                         $nlevel = 2;
                                     endif;
                                 else :
-                                    $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];                                                    
+                                    $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];
                                     $nlevel = 1;
                                 endif;
                             elseif ($value['Approved'] == 2) :
-                                $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];                                                    
+                                $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];
                                 $nlevel = 1;
                             elseif ($value['Approved'] == 3) :
-                                $astatus = "CANCELLED by YOU";                                                    
+                                $astatus = "CANCELLED by YOU";
                                 $nlevel = 1;
                             else :
                                 $nlevel = 1;
                                 $astatus = "TO BE APPROVED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];
-                            endif;                                                
+                            endif;
                         endif;
                     endif;
 
-                    if (trim($value['Signatory06']) && $value['ApprovedDate05']) : 
+                    if (trim($value['Signatory06']) && $value['ApprovedDate05']) :
 
                         if ($value['Signatory06'] == $profile_idnum) :
 
                             $requestor_data = $register->get_allmember($value['EmpID']);
                             if ($value['Approved'] == 1) :
-                                if ($value['ApprovedDate06']) :                                  
+                                if ($value['ApprovedDate06']) :
                                     $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate06']));
                                     $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." APPROVED by YOU and that's final.";
                                     $nlevel = 6;
                                 else :
-                                    $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
+                                    $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
                                     $nlevel = 6;
                                 endif;
                             elseif ($value['Approved'] == 2) :
-                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
+                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
                                 $nlevel = 6;
                             elseif ($value['Approved'] == 3) :
-                                $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];                                                    
+                                $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];
                                 $nlevel = 6;
                             else :
                                 $nlevel = 6;
@@ -1088,19 +1088,19 @@
 
                             $approver_data = $register->get_allmember($value['Signatory06']);
                             if ($value['Approved'] == 1) :
-                                if ($value['ApprovedDate06']) :                                  
+                                if ($value['ApprovedDate06']) :
                                     $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate06']));
                                     $astatus = "APPROVED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName']." and that's final.";
                                     $nlevel = 6;
                                 else :
-                                    $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];                                                    
+                                    $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];
                                     $nlevel = 6;
                                 endif;
                             elseif ($value['Approved'] == 2) :
-                                $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];                                                    
+                                $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];
                                 $nlevel = 6;
                             elseif ($value['Approved'] == 3) :
-                                $astatus = "CANCELLED by YOU";                                                    
+                                $astatus = "CANCELLED by YOU";
                                 $nlevel = 6;
                             else :
                                 $nlevel = 6;
@@ -1109,29 +1109,29 @@
 
                         endif;
 
-                    elseif (trim($value['Signatory05']) && $value['ApprovedDate04']) : 
+                    elseif (trim($value['Signatory05']) && $value['ApprovedDate04']) :
 
                         if ($value['Signatory05'] == $profile_idnum) :
 
                             $requestor_data = $register->get_allmember($value['EmpID']);
                             if ($value['Approved'] == 1) :
-                                if ($value['ApprovedDate05']) :                                  
-                                    $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate05']));                            
-                                    if (!trim($value['Signatory06']) || trim($value['Signatory06']) == '') : 
+                                if ($value['ApprovedDate05']) :
+                                    $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate05']));
+                                    if (!trim($value['Signatory06']) || trim($value['Signatory06']) == '') :
                                         $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." APPROVED by YOU and that's final.";
                                         $nlevel = 5;
                                     else:
                                         $nlevel = 6;
                                     endif;
                                 else :
-                                    $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
+                                    $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
                                     $nlevel = 5;
                                 endif;
                             elseif ($value['Approved'] == 2) :
-                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
+                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
                                 $nlevel = 5;
                             elseif ($value['Approved'] == 3) :
-                                $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];                                                    
+                                $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];
                                 $nlevel = 5;
                             else :
                                 $nlevel = 5;
@@ -1144,9 +1144,9 @@
 
                             $approver_data = $register->get_allmember($value['Signatory05']);
                             if ($value['Approved'] == 1) :
-                                if ($value['ApprovedDate05']) : 
+                                if ($value['ApprovedDate05']) :
                                     $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate05']));
-                                    if (!trim($value['Signatory06']) || trim($value['Signatory06']) == '') : 
+                                    if (!trim($value['Signatory06']) || trim($value['Signatory06']) == '') :
                                         $astatus = "APPROVED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName']." and that's final.";
                                         $nlevel = 5;
                                     else :
@@ -1160,7 +1160,7 @@
                                 $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];
                                 $nlevel = 5;
                             elseif ($value['Approved'] == 3) :
-                                $astatus = "CANCELLED by YOU";                                                    
+                                $astatus = "CANCELLED by YOU";
                                 $nlevel = 5;
                             else :
                                 $nlevel = 5;
@@ -1168,31 +1168,31 @@
                             endif;
                         endif;
 
-                    elseif (trim($value['Signatory04']) && $value['ApprovedDate03']) : 
+                    elseif (trim($value['Signatory04']) && $value['ApprovedDate03']) :
 
                         if ($value['Signatory04'] == $profile_idnum) :
 
                             $requestor_data = $register->get_allmember($value['EmpID']);
                             if ($value['Approved'] == 1) :
-                                if ($value['ApprovedDate04']) :                                  
+                                if ($value['ApprovedDate04']) :
                                     $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate04']));
-                                    if (!trim($value['Signatory05']) || trim($value['Signatory05']) == '') : 
+                                    if (!trim($value['Signatory05']) || trim($value['Signatory05']) == '') :
                                         $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." APPROVED by YOU and that's final.";
                                         $nlevel = 4;
                                     else:
                                         $nlevel = 5;
                                     endif;
                                 else :
-                                    $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
+                                    $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
                                     $nlevel = 4;
                                 endif;
                             elseif ($value['Approved'] == 2) :
-                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
+                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
                                 $nlevel = 4;
                             elseif ($value['Approved'] == 3) :
-                                $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];                                                    
+                                $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];
                                 $nlevel = 4;
-                            else :                            
+                            else :
                                 $nlevel = 4;
                                 $astatus = "<span class='lorangetext'>".$typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." for your APPROVAL</span>";
                                 $displaychk = 1;
@@ -1202,9 +1202,9 @@
                         else :
                             $approver_data = $register->get_allmember($value['Signatory04']);
                             if ($value['Approved'] == 1) :
-                                if ($value['ApprovedDate04']) : 
+                                if ($value['ApprovedDate04']) :
                                     $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate04']));
-                                    if (!trim($value['Signatory05']) || trim($value['Signatory05']) == '') : 
+                                    if (!trim($value['Signatory05']) || trim($value['Signatory05']) == '') :
                                         $astatus = "APPROVED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName']." and that's final.";
                                         $nlevel = 4;
                                     else :
@@ -1218,7 +1218,7 @@
                                 $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];
                                 $nlevel = 4;
                             elseif ($value['Approved'] == 3) :
-                                $astatus = "CANCELLED by YOU";                                                    
+                                $astatus = "CANCELLED by YOU";
                                 $nlevel = 4;
                             else :
                                 $nlevel = 4;
@@ -1226,31 +1226,31 @@
                             endif;
                         endif;
 
-                    elseif (trim($value['Signatory03']) && $value['ApprovedDate02']) : 
+                    elseif (trim($value['Signatory03']) && $value['ApprovedDate02']) :
 
                         if ($value['Signatory03'] == $profile_idnum) :
 
                             $requestor_data = $register->get_allmember($value['EmpID']);
                             if ($value['Approved'] == 1) :
-                                if ($value['ApprovedDate03']) :                                  
+                                if ($value['ApprovedDate03']) :
                                     $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate03']));
-                                    if (!trim($value['Signatory04']) || trim($value['Signatory04']) == '') : 
+                                    if (!trim($value['Signatory04']) || trim($value['Signatory04']) == '') :
                                         $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." APPROVED by YOU and that's final.";
                                         $nlevel = 3;
                                     else:
                                         $nlevel = 4;
                                     endif;
                                 else :
-                                    $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
+                                    $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
                                     $nlevel = 3;
                                 endif;
                             elseif ($value['Approved'] == 2) :
-                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
+                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
                                 $nlevel = 3;
                             elseif ($value['Approved'] == 3) :
-                                $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];                                                    
+                                $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];
                                 $nlevel = 3;
-                            else :                            
+                            else :
                                 $nlevel = 3;
                                 $astatus = "<span class='lorangetext'>".$typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." for your APPROVAL</span>";
                                 $displaychk = 1;
@@ -1261,9 +1261,9 @@
                         else :
                             $approver_data = $register->get_allmember($value['Signatory03']);
                             if ($value['Approved'] == 1) :
-                                if ($value['ApprovedDate03']) : 
+                                if ($value['ApprovedDate03']) :
                                     $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate03']));
-                                    if (!trim($value['Signatory04']) || trim($value['Signatory04']) == '') : 
+                                    if (!trim($value['Signatory04']) || trim($value['Signatory04']) == '') :
                                         $astatus = "APPROVED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName']." and that's final.";
                                         $nlevel = 3;
                                     else :
@@ -1277,7 +1277,7 @@
                                 $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];
                                 $nlevel = 3;
                             elseif ($value['Approved'] == 3) :
-                                $astatus = "CANCELLED by YOU";                                                    
+                                $astatus = "CANCELLED by YOU";
                                 $nlevel = 3;
                             else :
                                 $nlevel = 3;
@@ -1285,28 +1285,28 @@
                             endif;
                         endif;
 
-                    elseif (trim($value['Signatory02']) && $value['ApprovedDate01']) : 
+                    elseif (trim($value['Signatory02']) && $value['ApprovedDate01']) :
 
                         if ($value['Signatory02'] == $profile_idnum) :
-                            $requestor_data = $register->get_allmember($value['EmpID']);                                
+                            $requestor_data = $register->get_allmember($value['EmpID']);
                             if ($value['Approved'] == 1) :
-                                if ($value['ApprovedDate02']) :                                  
-                                    $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate02']));                            
-                                    if (!trim($value['Signatory03']) || trim($value['Signatory03']) == '') : 
+                                if ($value['ApprovedDate02']) :
+                                    $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate02']));
+                                    if (!trim($value['Signatory03']) || trim($value['Signatory03']) == '') :
                                         $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." APPROVED by YOU and that's final.";
                                         $nlevel = 2;
                                     else:
                                         $nlevel = 3;
                                     endif;
                                 else :
-                                    $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
-                                    $nlevel = 2;                                                    
+                                    $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
+                                    $nlevel = 2;
                                 endif;
                             elseif ($value['Approved'] == 2) :
-                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
-                                $nlevel = 2; 
+                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
+                                $nlevel = 2;
                             elseif ($value['Approved'] == 3) :
-                                $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];                                                    
+                                $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];
                                 $nlevel = 2;
                             else :
                                 $nlevel = 2;
@@ -1317,9 +1317,9 @@
                         else :
                             $approver_data = $register->get_allmember($value['Signatory02']);
                             if ($value['Approved'] == 1) :
-                                if ($value['ApprovedDate02']) : 
+                                if ($value['ApprovedDate02']) :
                                     $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate02']));
-                                    if (!trim($value['Signatory03']) || trim($value['Signatory03']) == '') : 
+                                    if (!trim($value['Signatory03']) || trim($value['Signatory03']) == '') :
                                         $astatus = "APPROVED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName']." and that's final.";
                                         $nlevel = 2;
                                     else :
@@ -1333,7 +1333,7 @@
                                 $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];
                                 $nlevel = 2;
                             elseif ($value['Approved'] == 3) :
-                                $astatus = "CANCELLED by YOU";                                                    
+                                $astatus = "CANCELLED by YOU";
                                 $nlevel = 2;
                             else :
                                 $nlevel = 2;
@@ -1344,7 +1344,7 @@
 
                     endif;
 
-                ?>                                    
+                ?>
                 <tr class="trdata centertalign whitetext" attribute="<?php echo $value['Reference']; ?>" attribute2="<?php echo $value['DocType']; ?>">
                     <td class="centertalign"><?php if ($displaychk) : ?><input id="chkapp<?php echo $key; ?>" type="checkbox" name="chkapp[<?php echo $key; ?>]" value="<?php echo $value['Reference']; ?>" attribute="<?php echo $value['DocType']; ?>" attribute2="<?php echo $profile_idnum; ?>" attribute3="<?php echo $value['EmpID']; ?>" attribute4="<?php echo $value['DocType'] == 'OT' ? $ot_data[0]['ApprovedHrs'] : 0; ?>" class="chkapp" /><?php endif; ?></td>
                     <td class="btnnotidata cursorpoint" attribute="<?php echo $value['Reference']; ?>" attribute2="<?php echo $value['DocType']; ?>"><?php echo $value['DocType']; ?></td>
@@ -1366,22 +1366,22 @@
                 </tr>
                 <?php endif; ?>
             </table>
-            <input type="hidden" id="notipage" name="notipage" value="<?php echo $page; ?>" />   
+            <input type="hidden" id="notipage" name="notipage" value="<?php echo $page; ?>" />
 
             <?php
         break;
-            
-        /*case 'tableunread':  
-            
-            
+
+        /*case 'tableunread':
+
+
 
             $notification_data = $tblsql->get_notification(NULL, $start, NOTI_NUM_ROWS, $searchnoti, 0, $profile_idnum, $notifrom, $notito, $notitype);
             $notification_count = $tblsql->get_notification(NULL, 0, 0, $searchnoti, 1, $profile_idnum, $notifrom, $notito, $notitype);
 
             $pages = $mainsql->pagination("notification", $notification_count, NOTI_NUM_ROWS, 9);
-            
+
             //var_dump($notification_data);
-            ?>   
+            ?>
 
             <table border="0" cellspacing="0" class="tdata width100per">
                 <?php if ($notification_data) : ?>
@@ -1394,25 +1394,25 @@
                     <th width="26%">Status</th>
                     <th width="20%">Last Updated</th>
                 </tr>
-                <?php foreach ($notification_data as $key => $value) : 
-            
-                    //READ STATUS
-                    $get_read = $mainsql->get_read($profile_idnum, $value['Reference'], 1);                    
+                <?php foreach ($notification_data as $key => $value) :
 
-                    if ($value['DocType'] == 'LV') : 
+                    //READ STATUS
+                    $get_read = $mainsql->get_read($profile_idnum, $value['Reference'], 1);
+
+                    if ($value['DocType'] == 'LV') :
                         $typestat = "LEAVE APPLICATION from ";
-                    elseif ($value['DocType'] == 'OT') : 
+                    elseif ($value['DocType'] == 'OT') :
                         $typestat = "OVERTIME APPLICATION from ";
                         $ot_data = $tblsql->get_nrequest(1, $value['Reference']);
-                    elseif ($value['DocType'] == 'OB') : 
+                    elseif ($value['DocType'] == 'OB') :
                         $typestat = "OBT APPLICATION from ";
-                    elseif ($value['DocType'] == 'NP') : 
+                    elseif ($value['DocType'] == 'NP') :
                         $typestat = "NO PUNCH APPLICATION from ";
-                    elseif ($value['DocType'] == 'MD') : 
+                    elseif ($value['DocType'] == 'MD') :
                         $typestat = "MANUAL DTR APPLICATION from ";
-                    elseif ($value['DocType'] == 'SC') : 
+                    elseif ($value['DocType'] == 'SC') :
                         $typestat = "CHANGE SCHEDULE APPLICATION from ";
-                    elseif ($value['DocType'] == 'TS') : 
+                    elseif ($value['DocType'] == 'TS') :
                         $typestat = "SCHEDULE CHANGE APPLICATION from ";
                     endif;
 
@@ -1420,29 +1420,29 @@
 
                     $displaychk = 0;
 
-                    if (trim($value['Signatory01'])) : 
+                    if (trim($value['Signatory01'])) :
 
                         if ($value['Signatory01'] == $profile_idnum) :
 
                             $requestor_data = $register->get_allmember($value['EmpID']);
                             if ($value['Approved'] == 1) :
-                                if ($value['ApprovedDate01']) :                                  
-                                    $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate01']));                                
-                                    if (!trim($value['Signatory02']) || trim($value['Signatory02']) == '') : 
+                                if ($value['ApprovedDate01']) :
+                                    $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate01']));
+                                    if (!trim($value['Signatory02']) || trim($value['Signatory02']) == '') :
                                         $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." APPROVED by YOU and that's final.";
                                         $nlevel = 1;
                                     else:
                                         $nlevel = 2;
                                     endif;
                                 else :
-                                    $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
+                                    $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
                                     $nlevel = 1;
                                 endif;
                             elseif ($value['Approved'] == 2) :
-                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
+                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
                                 $nlevel = 1;
                             elseif ($value['Approved'] == 3) :
-                                $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];                                                    
+                                $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];
                                 $nlevel = 1;
                             else :
                                 $nlevel = 1;
@@ -1453,50 +1453,50 @@
                         else :
                             $approver_data = $register->get_allmember($value['Signatory01']);
                             if ($value['Approved'] == 1) :
-                                if ($value['ApprovedDate01']) : 
+                                if ($value['ApprovedDate01']) :
                                     $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate01']));
-                                    if (!trim($value['Signatory02']) || trim($value['Signatory02']) == '') : 
+                                    if (!trim($value['Signatory02']) || trim($value['Signatory02']) == '') :
                                         $astatus = "APPROVED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName']." and that's final.";
                                         $nlevel = 1;
                                     else:
                                         $nlevel = 2;
                                     endif;
                                 else :
-                                    $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];                                                    
+                                    $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];
                                     $nlevel = 1;
                                 endif;
                             elseif ($value['Approved'] == 2) :
-                                $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];                                                    
+                                $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];
                                 $nlevel = 1;
                             elseif ($value['Approved'] == 3) :
-                                $astatus = "CANCELLED by YOU";                                                    
+                                $astatus = "CANCELLED by YOU";
                                 $nlevel = 1;
                             else :
                                 $nlevel = 1;
                                 $astatus = "TO BE APPROVED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];
-                            endif;                                                
+                            endif;
                         endif;
                     endif;
 
-                    if (trim($value['Signatory06']) && $value['ApprovedDate05']) : 
+                    if (trim($value['Signatory06']) && $value['ApprovedDate05']) :
 
                         if ($value['Signatory06'] == $profile_idnum) :
 
                             $requestor_data = $register->get_allmember($value['EmpID']);
                             if ($value['Approved'] == 1) :
-                                if ($value['ApprovedDate06']) :                                  
+                                if ($value['ApprovedDate06']) :
                                     $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate06']));
                                     $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." APPROVED by YOU and that's final.";
                                     $nlevel = 6;
                                 else :
-                                    $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
+                                    $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
                                     $nlevel = 6;
                                 endif;
                             elseif ($value['Approved'] == 2) :
-                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
+                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
                                 $nlevel = 6;
                             elseif ($value['Approved'] == 3) :
-                                $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];                                                    
+                                $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];
                                 $nlevel = 6;
                             else :
                                 $nlevel = 6;
@@ -1509,19 +1509,19 @@
 
                             $approver_data = $register->get_allmember($value['Signatory06']);
                             if ($value['Approved'] == 1) :
-                                if ($value['ApprovedDate06']) :                                  
+                                if ($value['ApprovedDate06']) :
                                     $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate06']));
                                     $astatus = "APPROVED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName']." and that's final.";
                                     $nlevel = 6;
                                 else :
-                                    $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];                                                    
+                                    $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];
                                     $nlevel = 6;
                                 endif;
                             elseif ($value['Approved'] == 2) :
-                                $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];                                                    
+                                $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];
                                 $nlevel = 6;
                             elseif ($value['Approved'] == 3) :
-                                $astatus = "CANCELLED by YOU";                                                    
+                                $astatus = "CANCELLED by YOU";
                                 $nlevel = 6;
                             else :
                                 $nlevel = 6;
@@ -1530,29 +1530,29 @@
 
                         endif;
 
-                    elseif (trim($value['Signatory05']) && $value['ApprovedDate04']) : 
+                    elseif (trim($value['Signatory05']) && $value['ApprovedDate04']) :
 
                         if ($value['Signatory05'] == $profile_idnum) :
 
                             $requestor_data = $register->get_allmember($value['EmpID']);
                             if ($value['Approved'] == 1) :
-                                if ($value['ApprovedDate05']) :                                  
-                                    $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate05']));                            
-                                    if (!trim($value['Signatory06']) || trim($value['Signatory06']) == '') : 
+                                if ($value['ApprovedDate05']) :
+                                    $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate05']));
+                                    if (!trim($value['Signatory06']) || trim($value['Signatory06']) == '') :
                                         $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." APPROVED by YOU and that's final.";
                                         $nlevel = 5;
                                     else:
                                         $nlevel = 6;
                                     endif;
                                 else :
-                                    $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
+                                    $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
                                     $nlevel = 5;
                                 endif;
                             elseif ($value['Approved'] == 2) :
-                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
+                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
                                 $nlevel = 5;
                             elseif ($value['Approved'] == 3) :
-                                $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];                                                    
+                                $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];
                                 $nlevel = 5;
                             else :
                                 $nlevel = 5;
@@ -1565,9 +1565,9 @@
 
                             $approver_data = $register->get_allmember($value['Signatory05']);
                             if ($value['Approved'] == 1) :
-                                if ($value['ApprovedDate05']) : 
+                                if ($value['ApprovedDate05']) :
                                     $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate05']));
-                                    if (!trim($value['Signatory06']) || trim($value['Signatory06']) == '') : 
+                                    if (!trim($value['Signatory06']) || trim($value['Signatory06']) == '') :
                                         $astatus = "APPROVED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName']." and that's final.";
                                         $nlevel = 5;
                                     else :
@@ -1581,7 +1581,7 @@
                                 $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];
                                 $nlevel = 5;
                             elseif ($value['Approved'] == 3) :
-                                $astatus = "CANCELLED by YOU";                                                    
+                                $astatus = "CANCELLED by YOU";
                                 $nlevel = 5;
                             else :
                                 $nlevel = 5;
@@ -1589,31 +1589,31 @@
                             endif;
                         endif;
 
-                    elseif (trim($value['Signatory04']) && $value['ApprovedDate03']) : 
+                    elseif (trim($value['Signatory04']) && $value['ApprovedDate03']) :
 
                         if ($value['Signatory04'] == $profile_idnum) :
 
                             $requestor_data = $register->get_allmember($value['EmpID']);
                             if ($value['Approved'] == 1) :
-                                if ($value['ApprovedDate04']) :                                  
+                                if ($value['ApprovedDate04']) :
                                     $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate04']));
-                                    if (!trim($value['Signatory05']) || trim($value['Signatory05']) == '') : 
+                                    if (!trim($value['Signatory05']) || trim($value['Signatory05']) == '') :
                                         $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." APPROVED by YOU and that's final.";
                                         $nlevel = 4;
                                     else:
                                         $nlevel = 5;
                                     endif;
                                 else :
-                                    $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
+                                    $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
                                     $nlevel = 4;
                                 endif;
                             elseif ($value['Approved'] == 2) :
-                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
+                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
                                 $nlevel = 4;
                             elseif ($value['Approved'] == 3) :
-                                $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];                                                    
+                                $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];
                                 $nlevel = 4;
-                            else :                            
+                            else :
                                 $nlevel = 4;
                                 $astatus = "<span class='lorangetext'>".$typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." for your APPROVAL</span>";
                                 $displaychk = 1;
@@ -1623,9 +1623,9 @@
                         else :
                             $approver_data = $register->get_allmember($value['Signatory04']);
                             if ($value['Approved'] == 1) :
-                                if ($value['ApprovedDate04']) : 
+                                if ($value['ApprovedDate04']) :
                                     $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate04']));
-                                    if (!trim($value['Signatory05']) || trim($value['Signatory05']) == '') : 
+                                    if (!trim($value['Signatory05']) || trim($value['Signatory05']) == '') :
                                         $astatus = "APPROVED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName']." and that's final.";
                                         $nlevel = 4;
                                     else :
@@ -1639,7 +1639,7 @@
                                 $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];
                                 $nlevel = 4;
                             elseif ($value['Approved'] == 3) :
-                                $astatus = "CANCELLED by YOU";                                                    
+                                $astatus = "CANCELLED by YOU";
                                 $nlevel = 4;
                             else :
                                 $nlevel = 4;
@@ -1647,31 +1647,31 @@
                             endif;
                         endif;
 
-                    elseif (trim($value['Signatory03']) && $value['ApprovedDate02']) : 
+                    elseif (trim($value['Signatory03']) && $value['ApprovedDate02']) :
 
                         if ($value['Signatory03'] == $profile_idnum) :
 
                             $requestor_data = $register->get_allmember($value['EmpID']);
                             if ($value['Approved'] == 1) :
-                                if ($value['ApprovedDate03']) :                                  
+                                if ($value['ApprovedDate03']) :
                                     $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate03']));
-                                    if (!trim($value['Signatory04']) || trim($value['Signatory04']) == '') : 
+                                    if (!trim($value['Signatory04']) || trim($value['Signatory04']) == '') :
                                         $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." APPROVED by YOU and that's final.";
                                         $nlevel = 3;
                                     else:
                                         $nlevel = 4;
                                     endif;
                                 else :
-                                    $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
+                                    $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
                                     $nlevel = 3;
                                 endif;
                             elseif ($value['Approved'] == 2) :
-                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
+                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
                                 $nlevel = 3;
                             elseif ($value['Approved'] == 3) :
-                                $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];                                                    
+                                $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];
                                 $nlevel = 3;
-                            else :                            
+                            else :
                                 $nlevel = 3;
                                 $astatus = "<span class='lorangetext'>".$typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." for your APPROVAL</span>";
                                 $displaychk = 1;
@@ -1682,9 +1682,9 @@
                         else :
                             $approver_data = $register->get_allmember($value['Signatory03']);
                             if ($value['Approved'] == 1) :
-                                if ($value['ApprovedDate03']) : 
+                                if ($value['ApprovedDate03']) :
                                     $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate03']));
-                                    if (!trim($value['Signatory04']) || trim($value['Signatory04']) == '') : 
+                                    if (!trim($value['Signatory04']) || trim($value['Signatory04']) == '') :
                                         $astatus = "APPROVED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName']." and that's final.";
                                         $nlevel = 3;
                                     else :
@@ -1698,7 +1698,7 @@
                                 $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];
                                 $nlevel = 3;
                             elseif ($value['Approved'] == 3) :
-                                $astatus = "CANCELLED by YOU";                                                    
+                                $astatus = "CANCELLED by YOU";
                                 $nlevel = 3;
                             else :
                                 $nlevel = 3;
@@ -1706,28 +1706,28 @@
                             endif;
                         endif;
 
-                    elseif (trim($value['Signatory02']) && $value['ApprovedDate01']) : 
+                    elseif (trim($value['Signatory02']) && $value['ApprovedDate01']) :
 
                         if ($value['Signatory02'] == $profile_idnum) :
-                            $requestor_data = $register->get_allmember($value['EmpID']);                                
+                            $requestor_data = $register->get_allmember($value['EmpID']);
                             if ($value['Approved'] == 1) :
-                                if ($value['ApprovedDate02']) :                                  
-                                    $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate02']));                            
-                                    if (!trim($value['Signatory03']) || trim($value['Signatory03']) == '') : 
+                                if ($value['ApprovedDate02']) :
+                                    $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate02']));
+                                    if (!trim($value['Signatory03']) || trim($value['Signatory03']) == '') :
                                         $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." APPROVED by YOU and that's final.";
                                         $nlevel = 2;
                                     else:
                                         $nlevel = 3;
                                     endif;
                                 else :
-                                    $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
-                                    $nlevel = 2;                                                    
+                                    $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
+                                    $nlevel = 2;
                                 endif;
                             elseif ($value['Approved'] == 2) :
-                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
-                                $nlevel = 2; 
+                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
+                                $nlevel = 2;
                             elseif ($value['Approved'] == 3) :
-                                $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];                                                    
+                                $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];
                                 $nlevel = 2;
                             else :
                                 $nlevel = 2;
@@ -1738,9 +1738,9 @@
                         else :
                             $approver_data = $register->get_allmember($value['Signatory02']);
                             if ($value['Approved'] == 1) :
-                                if ($value['ApprovedDate02']) : 
+                                if ($value['ApprovedDate02']) :
                                     $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate02']));
-                                    if (!trim($value['Signatory03']) || trim($value['Signatory03']) == '') : 
+                                    if (!trim($value['Signatory03']) || trim($value['Signatory03']) == '') :
                                         $astatus = "APPROVED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName']." and that's final.";
                                         $nlevel = 2;
                                     else :
@@ -1754,7 +1754,7 @@
                                 $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];
                                 $nlevel = 2;
                             elseif ($value['Approved'] == 3) :
-                                $astatus = "CANCELLED by YOU";                                                    
+                                $astatus = "CANCELLED by YOU";
                                 $nlevel = 2;
                             else :
                                 $nlevel = 2;
@@ -1765,7 +1765,7 @@
 
                     endif;
 
-                ?>                                    
+                ?>
                 <tr class="trdata centertalign whitetext" attribute="<?php echo $value['Reference']; ?>" attribute2="<?php echo $value['DocType']; ?>">
                     <td class="centertalign"><?php if ($displaychk) : ?><input id="chkapp<?php echo $key; ?>" type="checkbox" name="chkapp[<?php echo $key; ?>]" value="<?php echo $value['Reference']; ?>" attribute="<?php echo $value['DocType']; ?>" attribute2="<?php echo $profile_idnum; ?>" attribute3="<?php echo $value['EmpID']; ?>" attribute4="<?php echo $value['DocType'] == 'OT' ? $ot_data[0]['ApprovedHrs'] : 0; ?>" class="chkapp" /><?php endif; ?></td>
                     <td class="btnnotidata cursorpoint" attribute="<?php echo $value['Reference']; ?>" attribute2="<?php echo $value['DocType']; ?>"><?php echo $value['DocType']; ?></td>
@@ -1787,38 +1787,38 @@
                 </tr>
                 <?php endif; ?>
             </table>
-            <input type="hidden" id="notipage" name="notipage" value="<?php echo $page; ?>" />   
+            <input type="hidden" id="notipage" name="notipage" value="<?php echo $page; ?>" />
 
             <?php
         break;*/
-                  
-        case 'tablepend':  
+
+        case 'tablepend':
 
             # PAGINATION
             $page = isset($_GET["page"]) ? (int)$_GET["page"] : 1 ;
-            $start = NOTI_NUM_ROWS * ($page - 1);   
-        
+            $start = NOTI_NUM_ROWS * ($page - 1);
+
             if ($_POST['clear_search']) :
-        
+
                 unset($_SESSION['searchpend']);
                 unset($_SESSION['pendtype']);
                 unset($_SESSION['pendfrom']);
                 unset($_SESSION['pendto']);
-        
+
             else :
-            
+
                 $searchpend_sess = $_SESSION['searchpend'];
                 $pendtype_sess = $_SESSION['pendtype'];
                 $pendfrom_sess = $_SESSION['pendfrom'];
                 $pendto_sess = $_SESSION['pendto'];
-                if ($_POST) {        
-                    $searchpend = $_POST['searchpend'] ? $_POST['searchpend'] : NULL;            
+                if ($_POST) {
+                    $searchpend = $_POST['searchpend'] ? $_POST['searchpend'] : NULL;
                     $_SESSION['searchpend'] = $searchpend;
-                    $pendtype = $_POST['pendtype'] ? $_POST['pendtype'] : NULL;            
+                    $pendtype = $_POST['pendtype'] ? $_POST['pendtype'] : NULL;
                     $_SESSION['pendtype'] = $pendtype;
-                    $pendfrom = $_POST['pendfrom'] ? $_POST['pendfrom'] : NULL;            
+                    $pendfrom = $_POST['pendfrom'] ? $_POST['pendfrom'] : NULL;
                     $_SESSION['pendfrom'] = $pendfrom;
-                    $pendto = $_POST['pendto'] ? $_POST['pendto'] : NULL;            
+                    $pendto = $_POST['pendto'] ? $_POST['pendto'] : NULL;
                     $_SESSION['pendto'] = $pendto;
                 }
                 elseif ($searchpend_sess) {
@@ -1840,22 +1840,22 @@
                     $_POST['pendfrom'] = NULL;
                     $pendto = NULL;
                     $_POST['pendto'] = NULL;
-                }               
-        
+                }
+
             endif;
-            
+
             //var_dump($searchnoti);
-            
+
 
             $pending_data = $tblsql->get_pendingnoti(NULL, $start, NOTI_NUM_ROWS, $searchpend, 0, $profile_idnum, $pendfrom, $pendto, $pendtype);
             $pending_count = $tblsql->get_pendingnoti(NULL, 0, 0, $searchpend, 1, $profile_idnum, $pendfrom, $pendto, $pendtype);
-        
+
             //var_dump($pending_count);
 
 		    $pages = $mainsql->pagination("pending", $pending_count, NOTI_NUM_ROWS, 9);
-            
+
             //var_dump($notification_data);
-            ?>   
+            ?>
 
             <table border="0" cellspacing="0" class="tdata width100per">
                 <?php if ($pending_data) : ?>
@@ -1868,53 +1868,53 @@
                     <th width="26%">Status</th>
                     <th width="20%">Last Updated</th>
                 </tr>
-                <?php foreach ($pending_data as $key => $value) : 
+                <?php foreach ($pending_data as $key => $value) :
 
                     //READ STATUS
-                    $get_read = $mainsql->get_read($profile_idnum, $value['Reference'], 1);                    
+                    $get_read = $mainsql->get_read($profile_idnum, $value['Reference'], 1);
 
-                    if ($value['DocType'] == 'LV') : 
+                    if ($value['DocType'] == 'LV') :
                         $typestat = "LEAVE APPLICATION from ";
-                    elseif ($value['DocType'] == 'OT') : 
+                    elseif ($value['DocType'] == 'OT') :
                         $typestat = "OVERTIME APPLICATION from ";
                         $ot_data = $tblsql->get_nrequest(1, $value['Reference']);
-                    elseif ($value['DocType'] == 'OB') : 
+                    elseif ($value['DocType'] == 'OB') :
                         $typestat = "OBT APPLICATION from ";
-                    elseif ($value['DocType'] == 'NP') : 
+                    elseif ($value['DocType'] == 'NP') :
                         $typestat = "NO PUNCH APPLICATION from ";
-                    elseif ($value['DocType'] == 'MD') : 
+                    elseif ($value['DocType'] == 'MD') :
                         $typestat = "MANUAL DTR APPLICATION from ";
-                    elseif ($value['DocType'] == 'SC') : 
+                    elseif ($value['DocType'] == 'SC') :
                         $typestat = "CHANGE SCHEDULE APPLICATION from ";
-                    elseif ($value['DocType'] == 'TS') : 
+                    elseif ($value['DocType'] == 'TS') :
                         $typestat = "SCHEDULE CHANGE APPLICATION from ";
                     endif;
 
                     //var_dump($value['Signatory06']);
 
-                    if (trim($value['Signatory01'])) : 
+                    if (trim($value['Signatory01'])) :
 
                         if ($value['Signatory01'] == $profile_idnum) :
 
                             $requestor_data = $register->get_allmember($value['EmpID']);
                             if ($value['Approved'] == 1) :
-                                if ($value['ApprovedDate01']) :                                  
-                                    $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate01']));                                
-                                    if (trim($value['Signatory02']) == '') : 
+                                if ($value['ApprovedDate01']) :
+                                    $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate01']));
+                                    if (trim($value['Signatory02']) == '') :
                                         $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." APPROVED by YOU and that's final.";
                                         $nlevel = 1;
                                     else:
                                         $nlevel = 2;
                                     endif;
                                 else :
-                                    $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
+                                    $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
                                     $nlevel = 1;
                                 endif;
                             elseif ($value['Approved'] == 2) :
-                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
+                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
                                 $nlevel = 1;
                             elseif ($value['Approved'] == 3) :
-                                $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];                                                    
+                                $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];
                                 $nlevel = 1;
                             else :
                                 $nlevel = 1;
@@ -1925,50 +1925,50 @@
                         else :
                             $approver_data = $register->get_allmember($value['Signatory01']);
                             if ($value['Approved'] == 1) :
-                                if ($value['ApprovedDate01']) : 
+                                if ($value['ApprovedDate01']) :
                                     $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate01']));
-                                    if (trim($value['Signatory02']) == '') : 
+                                    if (trim($value['Signatory02']) == '') :
                                         $astatus = "APPROVED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName']." and that's final.";
                                         $nlevel = 1;
                                     else:
                                         $nlevel = 2;
                                     endif;
                                 else :
-                                    $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];                                                    
+                                    $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];
                                     $nlevel = 1;
                                 endif;
                             elseif ($value['Approved'] == 2) :
-                                $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];                                                    
+                                $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];
                                 $nlevel = 1;
                             elseif ($value['Approved'] == 3) :
-                                $astatus = "CANCELLED by YOU";                                                    
+                                $astatus = "CANCELLED by YOU";
                                 $nlevel = 1;
                             else :
                                 $nlevel = 1;
                                 $astatus = "TO BE APPROVED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];
-                            endif;                                                
+                            endif;
                         endif;
                     endif;
 
-                    if (trim($value['Signatory06']) && $value['ApprovedDate05']) : 
+                    if (trim($value['Signatory06']) && $value['ApprovedDate05']) :
 
                         if ($value['Signatory06'] == $profile_idnum) :
 
                             $requestor_data = $register->get_allmember($value['EmpID']);
                             if ($value['Approved'] == 1) :
-                                if ($value['ApprovedDate06']) :                                  
+                                if ($value['ApprovedDate06']) :
                                     $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate06']));
                                     $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." APPROVED by YOU and that's final.";
                                     $nlevel = 6;
                                 else :
-                                    $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
+                                    $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
                                     $nlevel = 6;
                                 endif;
                             elseif ($value['Approved'] == 2) :
-                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
+                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
                                 $nlevel = 6;
                             elseif ($value['Approved'] == 3) :
-                                $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];                                                    
+                                $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];
                                 $nlevel = 6;
                             else :
                                 $nlevel = 6;
@@ -1981,19 +1981,19 @@
 
                             $approver_data = $register->get_allmember($value['Signatory06']);
                             if ($value['Approved'] == 1) :
-                                if ($value['ApprovedDate06']) :                                  
+                                if ($value['ApprovedDate06']) :
                                     $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate06']));
                                     $astatus = "APPROVED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName']." and that's final.";
                                     $nlevel = 6;
                                 else :
-                                    $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];                                                    
+                                    $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];
                                     $nlevel = 6;
                                 endif;
                             elseif ($value['Approved'] == 2) :
-                                $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];                                                    
+                                $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];
                                 $nlevel = 6;
                             elseif ($value['Approved'] == 3) :
-                                $astatus = "CANCELLED by YOU";                                                    
+                                $astatus = "CANCELLED by YOU";
                                 $nlevel = 6;
                             else :
                                 $nlevel = 6;
@@ -2002,29 +2002,29 @@
 
                         endif;
 
-                    elseif (trim($value['Signatory05']) && $value['ApprovedDate04']) : 
+                    elseif (trim($value['Signatory05']) && $value['ApprovedDate04']) :
 
                         if ($value['Signatory05'] == $profile_idnum) :
 
                             $requestor_data = $register->get_allmember($value['EmpID']);
                             if ($value['Approved'] == 1) :
-                                if ($value['ApprovedDate05']) :                                  
-                                    $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate05']));                            
-                                    if (trim($value['Signatory06']) == '') : 
+                                if ($value['ApprovedDate05']) :
+                                    $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate05']));
+                                    if (trim($value['Signatory06']) == '') :
                                         $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." APPROVED by YOU and that's final.";
                                         $nlevel = 5;
                                     else:
                                         $nlevel = 6;
                                     endif;
                                 else :
-                                    $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
+                                    $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
                                     $nlevel = 5;
                                 endif;
                             elseif ($value['Approved'] == 2) :
-                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
+                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
                                 $nlevel = 5;
                             elseif ($value['Approved'] == 3) :
-                                $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];                                                    
+                                $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];
                                 $nlevel = 5;
                             else :
                                 $nlevel = 5;
@@ -2037,9 +2037,9 @@
 
                             $approver_data = $register->get_allmember($value['Signatory05']);
                             if ($value['Approved'] == 1) :
-                                if ($value['ApprovedDate05']) : 
+                                if ($value['ApprovedDate05']) :
                                     $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate05']));
-                                    if (trim($value['Signatory06']) == '') : 
+                                    if (trim($value['Signatory06']) == '') :
                                         $astatus = "APPROVED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName']." and that's final.";
                                         $nlevel = 5;
                                     else :
@@ -2053,7 +2053,7 @@
                                 $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];
                                 $nlevel = 5;
                             elseif ($value['Approved'] == 3) :
-                                $astatus = "CANCELLED by YOU";                                                    
+                                $astatus = "CANCELLED by YOU";
                                 $nlevel = 5;
                             else :
                                 $nlevel = 5;
@@ -2061,31 +2061,31 @@
                             endif;
                         endif;
 
-                    elseif (trim($value['Signatory04']) && $value['ApprovedDate03']) : 
+                    elseif (trim($value['Signatory04']) && $value['ApprovedDate03']) :
 
                         if ($value['Signatory04'] == $profile_idnum) :
 
                             $requestor_data = $register->get_allmember($value['EmpID']);
                             if ($value['Approved'] == 1) :
-                                if ($value['ApprovedDate04']) :                                  
+                                if ($value['ApprovedDate04']) :
                                     $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate04']));
-                                    if (trim($value['Signatory05']) == '') : 
+                                    if (trim($value['Signatory05']) == '') :
                                         $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." APPROVED by YOU and that's final.";
                                         $nlevel = 4;
                                     else:
                                         $nlevel = 5;
                                     endif;
                                 else :
-                                    $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
+                                    $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
                                     $nlevel = 4;
                                 endif;
                             elseif ($value['Approved'] == 2) :
-                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
+                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
                                 $nlevel = 4;
                             elseif ($value['Approved'] == 3) :
-                                $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];                                                    
+                                $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];
                                 $nlevel = 4;
-                            else :                            
+                            else :
                                 $nlevel = 4;
                                 $astatus = "<span class='lorangetext'>".$typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." for your APPROVAL</span>";
                                 $displaychk = 1;
@@ -2095,9 +2095,9 @@
                         else :
                             $approver_data = $register->get_allmember($value['Signatory04']);
                             if ($value['Approved'] == 1) :
-                                if ($value['ApprovedDate04']) : 
+                                if ($value['ApprovedDate04']) :
                                     $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate04']));
-                                    if (trim($value['Signatory05']) == '') : 
+                                    if (trim($value['Signatory05']) == '') :
                                         $astatus = "APPROVED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName']." and that's final.";
                                         $nlevel = 4;
                                     else :
@@ -2111,7 +2111,7 @@
                                 $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];
                                 $nlevel = 4;
                             elseif ($value['Approved'] == 3) :
-                                $astatus = "CANCELLED by YOU";                                                    
+                                $astatus = "CANCELLED by YOU";
                                 $nlevel = 4;
                             else :
                                 $nlevel = 4;
@@ -2119,31 +2119,31 @@
                             endif;
                         endif;
 
-                    elseif (trim($value['Signatory03']) && $value['ApprovedDate02']) : 
+                    elseif (trim($value['Signatory03']) && $value['ApprovedDate02']) :
 
                         if ($value['Signatory03'] == $profile_idnum) :
 
                             $requestor_data = $register->get_allmember($value['EmpID']);
                             if ($value['Approved'] == 1) :
-                                if ($value['ApprovedDate03']) :                                  
+                                if ($value['ApprovedDate03']) :
                                     $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate03']));
-                                    if (trim($value['Signatory04']) == '') : 
+                                    if (trim($value['Signatory04']) == '') :
                                         $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." APPROVED by YOU and that's final.";
                                         $nlevel = 3;
                                     else:
                                         $nlevel = 4;
                                     endif;
                                 else :
-                                    $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
+                                    $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
                                     $nlevel = 3;
                                 endif;
                             elseif ($value['Approved'] == 2) :
-                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
+                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
                                 $nlevel = 3;
                             elseif ($value['Approved'] == 3) :
-                                $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];                                                    
+                                $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];
                                 $nlevel = 3;
-                            else :                            
+                            else :
                                 $nlevel = 3;
                                 $astatus = "<span class='lorangetext'>".$typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." for your APPROVAL</span>";
                                 $displaychk = 1;
@@ -2154,9 +2154,9 @@
                         else :
                             $approver_data = $register->get_allmember($value['Signatory03']);
                             if ($value['Approved'] == 1) :
-                                if ($value['ApprovedDate03']) : 
+                                if ($value['ApprovedDate03']) :
                                     $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate03']));
-                                    if (trim($value['Signatory04']) == '') : 
+                                    if (trim($value['Signatory04']) == '') :
                                         $astatus = "APPROVED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName']." and that's final.";
                                         $nlevel = 3;
                                     else :
@@ -2170,7 +2170,7 @@
                                 $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];
                                 $nlevel = 3;
                             elseif ($value['Approved'] == 3) :
-                                $astatus = "CANCELLED by YOU";                                                    
+                                $astatus = "CANCELLED by YOU";
                                 $nlevel = 3;
                             else :
                                 $nlevel = 3;
@@ -2178,28 +2178,28 @@
                             endif;
                         endif;
 
-                    elseif (trim($value['Signatory02']) && $value['ApprovedDate01']) : 
+                    elseif (trim($value['Signatory02']) && $value['ApprovedDate01']) :
 
                         if ($value['Signatory02'] == $profile_idnum) :
-                            $requestor_data = $register->get_allmember($value['EmpID']);                                
+                            $requestor_data = $register->get_allmember($value['EmpID']);
                             if ($value['Approved'] == 1) :
-                                if ($value['ApprovedDate02']) :                                  
-                                    $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate02']));                            
-                                    if (trim($value['Signatory03']) == '') : 
+                                if ($value['ApprovedDate02']) :
+                                    $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate02']));
+                                    if (trim($value['Signatory03']) == '') :
                                         $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." APPROVED by YOU and that's final.";
                                         $nlevel = 2;
                                     else:
                                         $nlevel = 3;
                                     endif;
                                 else :
-                                    $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
-                                    $nlevel = 2;                                                    
+                                    $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
+                                    $nlevel = 2;
                                 endif;
                             elseif ($value['Approved'] == 2) :
-                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
-                                $nlevel = 2; 
+                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
+                                $nlevel = 2;
                             elseif ($value['Approved'] == 3) :
-                                $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];                                                    
+                                $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];
                                 $nlevel = 2;
                             else :
                                 $nlevel = 2;
@@ -2210,9 +2210,9 @@
                         else :
                             $approver_data = $register->get_allmember($value['Signatory02']);
                             if ($value['Approved'] == 1) :
-                                if ($value['ApprovedDate02']) : 
+                                if ($value['ApprovedDate02']) :
                                     $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate02']));
-                                    if (trim($value['Signatory03']) == '') : 
+                                    if (trim($value['Signatory03']) == '') :
                                         $astatus = "APPROVED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName']." and that's final.";
                                         $nlevel = 2;
                                     else :
@@ -2226,7 +2226,7 @@
                                 $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];
                                 $nlevel = 2;
                             elseif ($value['Approved'] == 3) :
-                                $astatus = "CANCELLED by YOU";                                                    
+                                $astatus = "CANCELLED by YOU";
                                 $nlevel = 2;
                             else :
                                 $nlevel = 2;
@@ -2237,7 +2237,7 @@
 
                     endif;
 
-                ?>                                    
+                ?>
                 <tr class="trdata centertalign whitetext" attribute="<?php echo $value['Reference']; ?>" attribute2="<?php echo $value['DocType']; ?>">
                     <td class="centertalign"><?php if ($displaychk) : ?><input id="chkapp<?php echo $key; ?>" type="checkbox" name="chkapp[<?php echo $key; ?>]" value="<?php echo $value['Reference']; ?>" attribute="<?php echo $value['DocType']; ?>" attribute2="<?php echo $profile_idnum; ?>" attribute3="<?php echo $value['EmpID']; ?>" attribute4="<?php echo $value['DocType'] == 'OT' ? $ot_data[0]['ApprovedHrs'] : 0; ?>" class="chkapp" /><?php endif; ?></td>
                     <td class="btnpenddata cursorpoint" attribute="<?php echo $value['Reference']; ?>" attribute2="<?php echo $value['DocType']; ?>"><?php echo $value['DocType']; ?></td>
@@ -2259,37 +2259,37 @@
                 </tr>
                 <?php endif; ?>
             </table>
-            <input type="hidden" id="pendpage" name="pendpage" value="<?php echo $page; ?>" />   
+            <input type="hidden" id="pendpage" name="pendpage" value="<?php echo $page; ?>" />
 
             <?php
         break;
-        case 'tablerman':  
+        case 'tablerman':
 
             # PAGINATION
             $page = isset($_GET["page"]) ? (int)$_GET["page"] : 1 ;
-            $start = NOTI_NUM_ROWS * ($page - 1);   
-        
+            $start = NOTI_NUM_ROWS * ($page - 1);
+
             if ($_POST['clear_search']) :
-        
+
                 unset($_SESSION['rmantype']);
                 unset($_SESSION['searchrman']);
                 unset($_SESSION['rmanfrom']);
                 unset($_SESSION['rmanto']);
-        
+
             else :
-            
+
                 $rmantype_sess = $_SESSION['rmantype'];
                 $searchrman_sess = $_SESSION['searchrman'];
                 $rmanfrom_sess = $_SESSION['rmanfrom'];
                 $rmanto_sess = $_SESSION['rmanto'];
-                if ($_POST) {        
-                    $rmantype = $_POST['rmantype'] ? $_POST['rmantype'] : NULL;            
+                if ($_POST) {
+                    $rmantype = $_POST['rmantype'] ? $_POST['rmantype'] : NULL;
                     $_SESSION['rmantype'] = $rmantype;
-                    $searchrman = $_POST['searchrman'] ? $_POST['searchrman'] : NULL;            
+                    $searchrman = $_POST['searchrman'] ? $_POST['searchrman'] : NULL;
                     $_SESSION['searchrman'] = $searchrman;
-                    $rmanfrom = $_POST['rmanfrom'] ? $_POST['rmanfrom'] : date('Y-m-d', strtotime("-6 months"));            
+                    $rmanfrom = $_POST['rmanfrom'] ? $_POST['rmanfrom'] : date('Y-m-d', strtotime("-6 months"));
                     $_SESSION['rmanfrom'] = $rmanfrom;
-                    $rmanto = $_POST['rmanto'] ? $_POST['rmanto'] : date('Y-m-d');            
+                    $rmanto = $_POST['rmanto'] ? $_POST['rmanto'] : date('Y-m-d');
                     $_SESSION['rmanto'] = $rmanto;
                 }
                 elseif ($searchrman_sess) {
@@ -2311,19 +2311,19 @@
                     $_POST['rmanfrom'] = date('Y-m-d', strtotime("-6 months"));
                     $rmanto = date('Y-m-d');
                     $_POST['rmanto'] = date('Y-m-d');
-                }                     
-        
+                }
+
             endif;
-            
-            //var_dump($searchrman);            
+
+            //var_dump($searchrman);
 
             $notification_data = $tblsql->get_notification(NULL, $start, NOTI_NUM_ROWS, $searchrman, 0, NULL, $rmanfrom, $rmanto, $rmantype);
             $notification_count = $tblsql->get_notification(NULL, 0, 0, $searchrman, 1, NULL, $rmanfrom, $rmanto, $rmantype);
 
             $pages = $mainsql->pagination("reqman", $notification_count, NOTI_NUM_ROWS, 9);
-            
+
             //var_dump($notification_data);
-            ?>   
+            ?>
 
             <table border="0" cellspacing="0" class="tdata width100per">
             <?php if ($notification_data) : ?>
@@ -2339,7 +2339,7 @@
                 <th width="12%">Filed</th>
                 <th width="12%">Approved</th>
             </tr>
-            <?php foreach ($notification_data as $key => $value) : 
+            <?php foreach ($notification_data as $key => $value) :
 
                 if ($value['DocType'] == 'LV') : $typestat = "LEAVE APPLICATION from ";
                 elseif ($value['DocType'] == 'OT') : $typestat = "OVERTIME APPLICATION from ";
@@ -2349,29 +2349,29 @@
                 elseif ($value['DocType'] == 'SC') : $typestat = "CHANGE SCHEDULE APPLICATION from ";
                 endif;
 
-                if (trim($value['Signatory01'])) : 
+                if (trim($value['Signatory01'])) :
 
                     if ($value['Signatory01'] == $profile_idnum) :
 
                         $requestor_data = $register->get_allmember($value['EmpID']);
                         if ($value['Approved'] == 1) :
-                            if ($value['ApprovedDate01']) :                                  
-                                $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate01']));                                
-                                if (trim($value['Signatory02']) == '') : 
+                            if ($value['ApprovedDate01']) :
+                                $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate01']));
+                                if (trim($value['Signatory02']) == '') :
                                     $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." APPROVED by YOU and that's final.";
                                     $nlevel = 1;
                                 else:
                                     $nlevel = 2;
                                 endif;
                             else :
-                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
+                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
                                 $nlevel = 1;
                             endif;
                         elseif ($value['Approved'] == 2) :
-                            $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
+                            $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
                             $nlevel = 1;
                         elseif ($value['Approved'] == 3) :
-                            $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];                                                    
+                            $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];
                             $nlevel = 1;
                         else :
                             $nlevel = 1;
@@ -2382,50 +2382,50 @@
                     else :
                         $approver_data = $register->get_allmember($value['Signatory01']);
                         if ($value['Approved'] == 1) :
-                            if ($value['ApprovedDate01']) : 
+                            if ($value['ApprovedDate01']) :
                                 $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate01']));
-                                if (trim($value['Signatory02']) == '') : 
+                                if (trim($value['Signatory02']) == '') :
                                     $astatus = "APPROVED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName']." and that's final.";
                                     $nlevel = 1;
                                 else:
                                     $nlevel = 2;
                                 endif;
                             else :
-                                $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];                                                    
+                                $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];
                                 $nlevel = 1;
                             endif;
                         elseif ($value['Approved'] == 2) :
-                            $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];                                                    
+                            $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];
                             $nlevel = 1;
                         elseif ($value['Approved'] == 3) :
-                            $astatus = "CANCELLED by YOU";                                                    
+                            $astatus = "CANCELLED by YOU";
                             $nlevel = 1;
                         else :
                             $nlevel = 1;
                             $astatus = "TO BE APPROVED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];
-                        endif;                                                
+                        endif;
                     endif;
                 endif;
 
-                if (trim($value['Signatory06']) && $value['ApprovedDate05']) : 
+                if (trim($value['Signatory06']) && $value['ApprovedDate05']) :
 
                     if ($value['Signatory06'] == $profile_idnum) :
 
                         $requestor_data = $register->get_allmember($value['EmpID']);
                         if ($value['Approved'] == 1) :
-                            if ($value['ApprovedDate06']) :                                  
+                            if ($value['ApprovedDate06']) :
                                 $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate06']));
                                 $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." APPROVED by YOU and that's final.";
                                 $nlevel = 6;
                             else :
-                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
+                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
                                 $nlevel = 6;
                             endif;
                         elseif ($value['Approved'] == 2) :
-                            $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
+                            $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
                             $nlevel = 6;
                         elseif ($value['Approved'] == 3) :
-                            $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];                                                    
+                            $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];
                             $nlevel = 6;
                         else :
                             $nlevel = 6;
@@ -2438,19 +2438,19 @@
 
                         $approver_data = $register->get_allmember($value['Signatory06']);
                         if ($value['Approved'] == 1) :
-                            if ($value['ApprovedDate06']) :                                  
+                            if ($value['ApprovedDate06']) :
                                 $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate06']));
                                 $astatus = "APPROVED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName']." and that's final.";
                                 $nlevel = 6;
                             else :
-                                $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];                                                    
+                                $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];
                                 $nlevel = 6;
                             endif;
                         elseif ($value['Approved'] == 2) :
-                            $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];                                                    
+                            $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];
                             $nlevel = 6;
                         elseif ($value['Approved'] == 3) :
-                            $astatus = "CANCELLED by YOU";                                                    
+                            $astatus = "CANCELLED by YOU";
                             $nlevel = 6;
                         else :
                             $nlevel = 6;
@@ -2459,29 +2459,29 @@
 
                     endif;
 
-                elseif (trim($value['Signatory05']) && $value['ApprovedDate04']) : 
+                elseif (trim($value['Signatory05']) && $value['ApprovedDate04']) :
 
                     if ($value['Signatory05'] == $profile_idnum) :
 
                         $requestor_data = $register->get_allmember($value['EmpID']);
                         if ($value['Approved'] == 1) :
-                            if ($value['ApprovedDate05']) :                                  
-                                $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate05']));                            
-                                if (trim($value['Signatory06']) == '') : 
+                            if ($value['ApprovedDate05']) :
+                                $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate05']));
+                                if (trim($value['Signatory06']) == '') :
                                     $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." APPROVED by YOU and that's final.";
                                     $nlevel = 5;
                                 else:
                                     $nlevel = 6;
                                 endif;
                             else :
-                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
+                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
                                 $nlevel = 5;
                             endif;
                         elseif ($value['Approved'] == 2) :
-                            $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
+                            $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
                             $nlevel = 5;
                         elseif ($value['Approved'] == 3) :
-                            $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];                                                    
+                            $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];
                             $nlevel = 5;
                         else :
                             $nlevel = 5;
@@ -2494,9 +2494,9 @@
 
                         $approver_data = $register->get_allmember($value['Signatory05']);
                         if ($value['Approved'] == 1) :
-                            if ($value['ApprovedDate05']) : 
+                            if ($value['ApprovedDate05']) :
                                 $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate05']));
-                                if (trim($value['Signatory06']) == '') : 
+                                if (trim($value['Signatory06']) == '') :
                                     $astatus = "APPROVED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName']." and that's final.";
                                     $nlevel = 5;
                                 else :
@@ -2510,7 +2510,7 @@
                             $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];
                             $nlevel = 5;
                         elseif ($value['Approved'] == 3) :
-                            $astatus = "CANCELLED by YOU";                                                    
+                            $astatus = "CANCELLED by YOU";
                             $nlevel = 5;
                         else :
                             $nlevel = 5;
@@ -2518,31 +2518,31 @@
                         endif;
                     endif;
 
-                elseif (trim($value['Signatory04']) && $value['ApprovedDate03']) : 
+                elseif (trim($value['Signatory04']) && $value['ApprovedDate03']) :
 
                     if ($value['Signatory04'] == $profile_idnum) :
 
                         $requestor_data = $register->get_allmember($value['EmpID']);
                         if ($value['Approved'] == 1) :
-                            if ($value['ApprovedDate04']) :                                  
+                            if ($value['ApprovedDate04']) :
                                 $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate04']));
-                                if (trim($value['Signatory05']) == '') : 
+                                if (trim($value['Signatory05']) == '') :
                                     $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." APPROVED by YOU and that's final.";
                                     $nlevel = 4;
                                 else:
                                     $nlevel = 5;
                                 endif;
                             else :
-                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
+                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
                                 $nlevel = 4;
                             endif;
                         elseif ($value['Approved'] == 2) :
-                            $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
+                            $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
                             $nlevel = 4;
                         elseif ($value['Approved'] == 3) :
-                            $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];                                                    
+                            $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];
                             $nlevel = 4;
-                        else :                            
+                        else :
                             $nlevel = 4;
                             $astatus = "<span class='lorangetext'>".$typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." for your APPROVAL</span>";
                             $displaychk = 1;
@@ -2552,9 +2552,9 @@
                     else :
                         $approver_data = $register->get_allmember($value['Signatory04']);
                         if ($value['Approved'] == 1) :
-                            if ($value['ApprovedDate04']) : 
+                            if ($value['ApprovedDate04']) :
                                 $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate04']));
-                                if (trim($value['Signatory05']) == '') : 
+                                if (trim($value['Signatory05']) == '') :
                                     $astatus = "APPROVED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName']." and that's final.";
                                     $nlevel = 4;
                                 else :
@@ -2568,7 +2568,7 @@
                             $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];
                             $nlevel = 4;
                         elseif ($value['Approved'] == 3) :
-                            $astatus = "CANCELLED by YOU";                                                    
+                            $astatus = "CANCELLED by YOU";
                             $nlevel = 4;
                         else :
                             $nlevel = 4;
@@ -2576,31 +2576,31 @@
                         endif;
                     endif;
 
-                elseif (trim($value['Signatory03']) && $value['ApprovedDate02']) : 
+                elseif (trim($value['Signatory03']) && $value['ApprovedDate02']) :
 
                     if ($value['Signatory03'] == $profile_idnum) :
 
                         $requestor_data = $register->get_allmember($value['EmpID']);
                         if ($value['Approved'] == 1) :
-                            if ($value['ApprovedDate03']) :                                  
+                            if ($value['ApprovedDate03']) :
                                 $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate03']));
-                                if (trim($value['Signatory04']) == '') : 
+                                if (trim($value['Signatory04']) == '') :
                                     $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." APPROVED by YOU and that's final.";
                                     $nlevel = 3;
                                 else:
                                     $nlevel = 4;
                                 endif;
                             else :
-                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
+                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
                                 $nlevel = 3;
                             endif;
                         elseif ($value['Approved'] == 2) :
-                            $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
+                            $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
                             $nlevel = 3;
                         elseif ($value['Approved'] == 3) :
-                            $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];                                                    
+                            $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];
                             $nlevel = 3;
-                        else :                            
+                        else :
                             $nlevel = 3;
                             $astatus = "<span class='lorangetext'>".$typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." for your APPROVAL</span>";
                             $displaychk = 1;
@@ -2611,9 +2611,9 @@
                     else :
                         $approver_data = $register->get_allmember($value['Signatory03']);
                         if ($value['Approved'] == 1) :
-                            if ($value['ApprovedDate03']) : 
+                            if ($value['ApprovedDate03']) :
                                 $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate03']));
-                                if (trim($value['Signatory04']) == '') : 
+                                if (trim($value['Signatory04']) == '') :
                                     $astatus = "APPROVED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName']." and that's final.";
                                     $nlevel = 3;
                                 else :
@@ -2627,7 +2627,7 @@
                             $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];
                             $nlevel = 3;
                         elseif ($value['Approved'] == 3) :
-                            $astatus = "CANCELLED by YOU";                                                    
+                            $astatus = "CANCELLED by YOU";
                             $nlevel = 3;
                         else :
                             $nlevel = 3;
@@ -2635,28 +2635,28 @@
                         endif;
                     endif;
 
-                elseif (trim($value['Signatory02']) && $value['ApprovedDate01']) : 
+                elseif (trim($value['Signatory02']) && $value['ApprovedDate01']) :
 
                     if ($value['Signatory02'] == $profile_idnum) :
-                        $requestor_data = $register->get_allmember($value['EmpID']);                                
+                        $requestor_data = $register->get_allmember($value['EmpID']);
                         if ($value['Approved'] == 1) :
-                            if ($value['ApprovedDate02']) :                                  
-                                $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate02']));                            
-                                if (trim($value['Signatory03']) == '') : 
+                            if ($value['ApprovedDate02']) :
+                                $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate02']));
+                                if (trim($value['Signatory03']) == '') :
                                     $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." APPROVED by YOU and that's final.";
                                     $nlevel = 2;
                                 else:
                                     $nlevel = 3;
                                 endif;
                             else :
-                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
-                                $nlevel = 2;                                                    
+                                $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
+                                $nlevel = 2;
                             endif;
                         elseif ($value['Approved'] == 2) :
-                            $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";                                                    
-                            $nlevel = 2; 
+                            $astatus = $typestat.$requestor_data[0]['FName']." ".$requestor_data[0]['LName']." REJECTED by YOU";
+                            $nlevel = 2;
                         elseif ($value['Approved'] == 3) :
-                            $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];                                                    
+                            $astatus = "CANCELLED by ".$requestor_data[0]['FName']." ".$requestor_data[0]['LName'];
                             $nlevel = 2;
                         else :
                             $nlevel = 2;
@@ -2667,9 +2667,9 @@
                     else :
                         $approver_data = $register->get_allmember($value['Signatory02']);
                         if ($value['Approved'] == 1) :
-                            if ($value['ApprovedDate02']) : 
+                            if ($value['ApprovedDate02']) :
                                 $date_approved = date("M j, Y g:ia", strtotime($value['ApprovedDate02']));
-                                if (trim($value['Signatory03']) == '') : 
+                                if (trim($value['Signatory03']) == '') :
                                     $astatus = "APPROVED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName']." and that's final.";
                                     $nlevel = 2;
                                 else :
@@ -2683,7 +2683,7 @@
                             $astatus = "REJECTED by ".$approver_data[0]['FName']." ".$approver_data[0]['LName'];
                             $nlevel = 2;
                         elseif ($value['Approved'] == 3) :
-                            $astatus = "CANCELLED by YOU";                                                    
+                            $astatus = "CANCELLED by YOU";
                             $nlevel = 2;
                         else :
                             $nlevel = 2;
@@ -2694,7 +2694,7 @@
 
                 endif;
 
-            ?>                                    
+            ?>
             <tr class="btnnotidata cursorpoint trdata centertalign whitetext" attribute="<?php echo $value['Reference']; ?>" attribute2="<?php echo $value['DocType']; ?>">
                 <td><?php echo $value['DocType']; ?></td>
                 <td><?php echo $value['Reference']; ?></td>
@@ -2722,60 +2722,60 @@
             <?php
         break;
         case 'approve':
-            
+
             $doctype = $_POST['doctype'];
             $apppost['REQNBR'] = $_POST['reqnbr'];
             $apppost['TRANS'] = $_POST['trans'];
             $apppost['USER'] = $_POST['user'];
             $apppost['EMPID'] = $_POST['empid'];
-            $apppost['REMARKS'] = $_POST['remarks'];                        
-            $apppost['DBNAME'] = $_POST['dbname'];                        
-            
+            $apppost['REMARKS'] = $_POST['remarks'];
+            $apppost['DBNAME'] = $_POST['dbname'];
+
             if ($doctype == 'OT') :
                 $reqtype = 1;
                 $reqdesc = "Overtime";
                 $apppost['OTTYPE'] = NULL;
-                $apppost['APPROVEDHRS'] = $_POST['approvehours'];            
+                $apppost['APPROVEDHRS'] = $_POST['approvehours'];
                 $app_request = $mainsql->ot_action($apppost, 'approve');
             elseif ($doctype == 'LV') :
                 $reqtype = 2;
                 $reqdesc = "Leave";
-                $app_request = $mainsql->leave_action($apppost, 'approve');			                            
+                $app_request = $mainsql->leave_action($apppost, 'approve');
             elseif ($doctype == 'OB') :
                 $reqtype = 4;
                 $reqdesc = "Official Business Trip";
-                $app_request = $mainsql->ob_action($apppost, 'approve');			                            
+                $app_request = $mainsql->ob_action($apppost, 'approve');
             elseif ($doctype == 'NP') :
                 $reqtype = 6;
                 $reqdesc = "Non-Punching Authorization";
-                $app_request = $mainsql->np_action($apppost, 'approve');			                            
+                $app_request = $mainsql->np_action($apppost, 'approve');
             elseif ($doctype == 'MD') :
                 $reqtype = 7;
                 $reqdesc = "Manual DTR";
-                $app_request = $mainsql->md_action($apppost, 'approve');			                            
+                $app_request = $mainsql->md_action($apppost, 'approve');
             elseif ($doctype == 'SC') :
                 $reqtype = 8;
                 $reqdesc = "Change Schedule";
-                $app_request = $mainsql->sc_action($apppost, 'approve');			                            
+                $app_request = $mainsql->sc_action($apppost, 'approve');
             elseif ($doctype == 'TS') :
                 $reqtype = 8;
                 $reqdesc = "Schedule Change";
-                $app_request = $mainsql->ts_action($apppost, 'approve');			                            
+                $app_request = $mainsql->ts_action($apppost, 'approve');
             endif;
-            
+
             if ($_POST['trans'] == 'CANCEL') :
                 $delete_read = $mainsql->delete_read(NULL, $refnum);
-            endif;            
-            
+            endif;
+
             $requestor = $logsql->get_allmember($_POST['empid']);
             $request_info = $tblsql->get_mrequest($reqtype, 0, 0, 0, $_POST['reqnbr'], 0, NULL, NULL, NULL, NULL);
             $approver = $logsql->get_allmember($_POST['user']);
             if ($_POST['nxtapp']) : $nxtapprover = $register->get_allmember($_POST['nxtapp']); endif;
-        
+
             $reqemailblock = $mainsql->get_appemailblock($_POST['empid']);
             $appemailblock = $mainsql->get_appemailblock($_POST['user']);
             if ($_POST['nxtapp']) : $nappemailblock = $mainsql->get_newemailblock($_POST['nxtapp']); endif;
-            
+
             if ($_POST['user']) :
                 $bywhom = $approver[0]['FName']." ".$approver[0]['LName'];
             else :
@@ -2797,12 +2797,12 @@
                 $headers .= "MIME-Version: 1.0\r\n";
                 $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-                //$sendmail = mail($requestor[0]['EmailAdd'], "Response to your ".$reqdesc." Request", $message, $headers);   
-            
+                //$sendmail = mail($requestor[0]['EmailAdd'], "Response to your ".$reqdesc." Request", $message, $headers);
+
             endif;
 
             if ($appemailblock) :
-            
+
                 //SEND EMAIL (APPROVER)
 
                 $message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 100%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>".$reqdesc." Request ".ucfirst($_POST['trans'])."</span><br><br>Hi ".$approver[0]['NickName'].",<br><br>";
@@ -2816,11 +2816,11 @@
                 $headers .= "MIME-Version: 1.0\r\n";
                 $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-                //$sendmail = mail($approver[0]['EmailAdd'], "Your Response to ".$reqdesc." Request", $message, $headers);  
-            
+                //$sendmail = mail($approver[0]['EmailAdd'], "Your Response to ".$reqdesc." Request", $message, $headers);
+
             endif;
-            
-            if ($nappemailblock) :        
+
+            if ($nappemailblock) :
                 //SEND EMAIL (NEXT APPROVER)
 
                 $message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 100%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>New Leave Request from ".$requestor[0]['FName']." ".$requestor[0]['LName']."</span><br><br>Hi ".$nxtapprover[0]['NickName'].",<br><br>";
@@ -2834,9 +2834,9 @@
                 $headers .= "MIME-Version: 1.0\r\n";
                 $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-                //$sendmail = mail($nxtapprover[0]['EmailAdd'], "New Leave Request for your Approval", $message, $headers);  
+                //$sendmail = mail($nxtapprover[0]['EmailAdd'], "New Leave Request for your Approval", $message, $headers);
             endif;
-        
+
             //READ STATUS
             if ($_POST['empid'] && $_POST['reqnbr']) :
                 $insert_reqread = $mainsql->insert_read($_POST['empid'], $_POST['reqnbr']); //requestor
@@ -2844,78 +2844,78 @@
             if ($_POST['nxtapp'] && $_POST['reqnbr']) :
                 $insert_appread = $mainsql->insert_read($_POST['nxtapp'], $_POST['reqnbr']); //next approver
             endif;
-            
+
             //var_dump($app_request);
             echo $app_request ? 1 : 0;
-            
+
         break;
-        case 'data':        
-        
+        case 'data':
+
             $doctype = $_POST['doctype'];
             $refnum = $_POST['refnum'];
-            
-            $notification_data = $tblsql->get_notification($refnum);            
-            $attachment_data = $mainsql->get_attachments($refnum); 
-            
+
+            $notification_data = $tblsql->get_notification($refnum);
+            $attachment_data = $mainsql->get_attachments($refnum);
+
             $approver_data1 = $logsql->get_allmember($notification_data[0]['Signatory01']);
             $approver_data2 = $logsql->get_allmember($notification_data[0]['Signatory02']);
             $approver_data3 = $logsql->get_allmember($notification_data[0]['Signatory03']);
             $approver_data4 = $logsql->get_allmember($notification_data[0]['Signatory04']);
             $approver_data5 = $logsql->get_allmember($notification_data[0]['Signatory05']);
             $approver_data6 = $logsql->get_allmember($notification_data[0]['Signatory06']);
-            
+
             $requestor_data = $logsql->get_allmember($notification_data[0]['EmpID']);
-            
+
             //READ STATUS
             $get_read = $mainsql->get_read($profile_idnum, $refnum, 1);
             if ($get_read) :
                 $delete_read = $mainsql->delete_read($profile_idnum, $refnum);
-            endif; 
+            endif;
             ?>
 
             <table class="tdataform2 rightmargin margintop10 vsmalltext" width="100%" border="0" cellpadding="0" cellspacing="0">
-                
+
             <?php
             //var_dump($notification_data);
             //if ($notification_data[0]['EmpID'] != $profile_idnum) :
                 ?>
-                
+
                     <tr>
                         <td width="25%"><b>Requested by</b></td>
                         <td width="75%"><?php echo $requestor_data[0]['FName'].' '.$requestor_data[0]['LName'].' ('.$notification_data[0]['EmpID'].')'; ?>
                             <input type="hidden" id="dbname" name="dbname" value="<?php echo $notification_data[0]['DBNAME'] ?>" />
                         </td>
                     </tr>
-                
+
                 <?php
             //endif;
-            
-            if ($doctype == 'OT') :            
+
+            if ($doctype == 'OT') :
                 $application_data = $tblsql->get_nrequest(1, $refnum);
-            
-                ?>  
+
+                ?>
                     <?php if ($attachment_data) : ?>
                     <tr>
                         <td width="25%"><b>Attachment/s</b></td>
-                        <td width="75%"><?php 
-                            foreach ($attachment_data as $key => $value) : 
+                        <td width="75%"><?php
+                            foreach ($attachment_data as $key => $value) :
                                 echo '<a href="'.WEB.'/uploads/ot/'.$value['AttachFile'].'" target="_blank">'.$value['AttachFile'].'</a><br>';
                             endforeach;
                         ?>
                         </td>
                     </tr>
                     <?php endif; ?>
-                
+
                     <?php if ($notification_data[0]['EmpID'] == $profile_idnum && $notification_data[0]['Approved'] != 3 && $notification_data[0]['Approved'] != 2) : ?>
                     <!--tr>
                         <td width="25%">&nbsp;</td>
                         <td width="75%"><a href="<?php echo WEB; ?>/otpdf?id=<?php echo $refnum; ?>" target="_blank"><button class="btn">Print OT Form</button></a></td>
                     </tr-->
                     <?php endif; ?>
-                
+
                     <tr>
                         <td width="25%"><b>Status</b></td>
-                        <td width="75%"><?php 
+                        <td width="75%"><?php
                             if ($notification_data[0]['Approved'] == 2) :
                                 echo "<span class='redtext'>REJECTED</span>";
                             elseif ($notification_data[0]['Approved'] == 1) :
@@ -2956,39 +2956,39 @@
                     <tr>
                         <td><b>Approved Hours</b></td>
                         <td>
-                            <?php echo $application_data[0]['ApprovedHrs'] ? $application_data[0]['ApprovedHrs'] : 0; ?>                            
+                            <?php echo $application_data[0]['ApprovedHrs'] ? $application_data[0]['ApprovedHrs'] : 0; ?>
                         </td>
                     </tr>
                     <?php endif; ?>
                     <tr>
                         <td><b>Reason</b></td>
                         <td><?php echo $application_data[0]['Reason']; ?></td>
-                    </tr> 
+                    </tr>
 
                 <?php
                 $pdtrfrom = strtotime($application_data[0]['DtrDate']);
                 $pdtrto = strtotime($application_data[0]['DtrDate']);
-            
-            elseif ($doctype == 'LV') :            
+
+            elseif ($doctype == 'LV') :
                 $application_data = $tblsql->get_nrequest(2, $refnum);
                 //$appleave_data = $tblsql->get_leavedata($refnum);
-            
-                ?>   
+
+                ?>
                     <?php if ($attachment_data) : ?>
                     <tr>
                         <td width="25%"><b>Attachment/s</b></td>
-                        <td width="75%"><?php 
-                            foreach ($attachment_data as $key => $value) : 
+                        <td width="75%"><?php
+                            foreach ($attachment_data as $key => $value) :
                                 echo '<a href="'.WEB.'/uploads/leave/'.$value['AttachFile'].'" target="_blank">'.$value['AttachFile'].'</a><br>';
                             endforeach;
                         ?>
                         </td>
                     </tr>
                     <?php endif; ?>
-                
+
                     <tr>
                         <td width="25%"><b>Status</b></td>
-                        <td width="75%"><?php 
+                        <td width="75%"><?php
                             if ($notification_data[0]['Approved'] == 2) :
                                 echo "<span class='redtext'>REJECTED</span>";
                             elseif ($notification_data[0]['Approved'] == 1) :
@@ -3014,7 +3014,7 @@
                         <td><?php echo $application_data[0]['LeaveDesc']; ?></td>
                     </tr>
                     <tr>
-                        <td colspan="2">                            
+                        <td colspan="2">
                             <div class="divlvdata width100per notidatadiv">
                             <table class="tdatablk width100per">
                                 <tr>
@@ -3022,22 +3022,22 @@
                                     <th>Duration</th>
                                     <th>w/ Pay</th>
                                     <th>Cancel</th>
-                                </tr>            
-                                <?php 
+                                </tr>
+                                <?php
                                     $applv_data = $tblsql->get_leavedata($refnum);
                                     $applv_count = count($applv_data);
-                                    foreach($applv_data as $key => $value) : 
+                                    foreach($applv_data as $key => $value) :
                                 ?>
                                 <tr>
                                     <td><?php echo date("M j", strtotime($value['LeaveDate'])); ?></td>
-                                    <td><?php 
-                                        if ($value['Duration'] == "WD") : 
+                                    <td><?php
+                                        if ($value['Duration'] == "WD") :
                                             echo "Whole Day";
-                                        elseif ($value['Duration'] == "HD") : 
+                                        elseif ($value['Duration'] == "HD") :
                                             echo "Half Day";
-                                        elseif ($value['Duration'] == "HD1") : 
+                                        elseif ($value['Duration'] == "HD1") :
                                             echo "Half Day AM";
-                                        elseif ($value['Duration'] == "HD2") : 
+                                        elseif ($value['Duration'] == "HD2") :
                                             echo "Half Day PM";
                                         endif;
                                     ?></td>
@@ -3045,7 +3045,7 @@
                                         <?php echo $value['WithPay'] ? "<i class='fa fa-check'></i>" : "<i class='fa fa-times'></i>"; ?>
                                     </td>
                                     <td class="centertalign"><?php if ($applv_count > 1) : ?><i class="btnlvcancel fa fa-times redtext cursorpoint" attribute="<?php echo $refnum; ?>" attribute2="<?php echo date('Y-m-d 00:00:00.000', strtotime($value['LeaveDate'])); ?>"></i><?php endif; ?></td>
-                                </tr>            
+                                </tr>
                                 <?php endforeach; ?>
                             </table>
                             </div>
@@ -3058,27 +3058,27 @@
 
                 <?php
                 $pdtrfrom = strtotime($application_data[0]['AbsenceFromDate']);
-                $pdtrto = strtotime($application_data[0]['AbsenceToDate']);            
-            
-            elseif ($doctype == 'MA') :            
+                $pdtrto = strtotime($application_data[0]['AbsenceToDate']);
+
+            elseif ($doctype == 'MA') :
                 $application_data = $tblsql->get_nrequest(3, $refnum);
-            
-                ?>  
+
+                ?>
                     <?php if ($attachment_data) : ?>
                     <tr>
                         <td width="25%"><b>Attachment/s</b></td>
-                        <td width="75%"><?php 
-                            foreach ($attachment_data as $key => $value) : 
+                        <td width="75%"><?php
+                            foreach ($attachment_data as $key => $value) :
                                 echo '<a href="'.WEB.'/uploads/ma/'.$value['AttachFile'].'" target="_blank">'.$value['AttachFile'].'</a><br>';
                             endforeach;
                         ?>
                         </td>
                     </tr>
                     <?php endif; ?>
-                
+
                     <tr>
                         <td width="25%"><b>Status</b></td>
-                        <td width="75%"><?php 
+                        <td width="75%"><?php
                             if ($notification_data[0]['Approved'] == 2) :
                                 echo "<span class='redtext'>REJECTED</span>";
                             elseif ($notification_data[0]['Approved'] == 1) :
@@ -3106,39 +3106,39 @@
                     <tr>
                         <td><b>Type</b></td>
                         <td><?php echo $application_data[0]['TypeAvail']; ?></td>
-                    </tr>            
+                    </tr>
 
                 <?php
                 $pdtrfrom = strtotime($application_data[0]['DateFrom']);
-                $pdtrto = strtotime($application_data[0]['DateTo']);   
-            
-            elseif ($doctype == 'OB') :            
+                $pdtrto = strtotime($application_data[0]['DateTo']);
+
+            elseif ($doctype == 'OB') :
                 $application_data = $tblsql->get_nrequest(4, $refnum);
                 $appobt_data = $tblsql->get_obtdata($refnum);
-            
-                ?>   
+
+                ?>
                     <?php if ($attachment_data) : ?>
                     <tr>
                         <td width="25%"><b>Attachment/s</b></td>
-                        <td width="75%"><?php 
-                            foreach ($attachment_data as $key => $value) : 
+                        <td width="75%"><?php
+                            foreach ($attachment_data as $key => $value) :
                                 echo '<a href="'.WEB.'/uploads/ob/'.$value['AttachFile'].'" target="_blank">'.$value['AttachFile'].'</a><br>';
                             endforeach;
                         ?>
                         </td>
                     </tr>
                     <?php endif; ?>
-                
+
                     <?php if ($notification_data[0]['EmpID'] == $profile_idnum && $notification_data[0]['Approved'] != 3 && $notification_data[0]['Approved'] != 2) : ?>
                     <tr>
                         <td width="25%">&nbsp;</td>
                         <td width="75%"><a href="<?php echo WEB; ?>/obtpdf?id=<?php echo $refnum; ?>" target="_blank"><button class="btn">Print OBT Form</button></a></td>
                     </tr>
                     <?php endif; ?>
-                
+
                     <tr>
                         <td width="25%"><b>Status</b></td>
-                        <td width="75%"><?php 
+                        <td width="75%"><?php
                             if ($notification_data[0]['Approved'] == 2) :
                                 echo "<span class='redtext'>REJECTED</span>";
                             elseif ($notification_data[0]['Approved'] == 1) :
@@ -3162,7 +3162,7 @@
                     <tr>
                         <td><b>To</b></td>
                         <td><?php echo date('F j, Y', strtotime($application_data[0]['OBTimeOutDate'])); ?></td>
-                    </tr>                    
+                    </tr>
                     <tr>
                         <td><b>Destination</b></td>
                         <td><?php echo $application_data[0]['Destination']; ?></td>
@@ -3173,18 +3173,18 @@
                     </tr>
                     <tr>
                         <td><b>Detail</b></td>
-                        <td>                                              
+                        <td>
                             <div class="width100per notidatadiv">
                             <table class="tdatablk">
                                 <tr>
                                     <th>In</th>
                                     <th>Out</th>
-                                </tr>            
+                                </tr>
                                 <?php foreach($appobt_data as $key => $value) : ?>
                                 <tr>
                                     <td><?php echo date("M j, Y g:ia", strtotime($value['ObTimeInDate'])); ?></td>
                                     <td><?php echo date("M j, Y g:ia", strtotime($value['ObTimeOutDate'])); ?></td>
-                                </tr>            
+                                </tr>
                                 <?php endforeach; ?>
                             </table>
                             </div>
@@ -3197,27 +3197,27 @@
 
                 <?php
                 $pdtrfrom = strtotime($application_data[0]['OBTimeINDate']);
-                $pdtrto = strtotime($application_data[0]['OBTimeINDate']);  
-            
-            elseif ($doctype == 'NP') :            
+                $pdtrto = strtotime($application_data[0]['OBTimeINDate']);
+
+            elseif ($doctype == 'NP') :
                 $application_data = $tblsql->get_nrequest(6, $refnum);
-            
-                ?>   
+
+                ?>
                     <?php if ($attachment_data) : ?>
                     <tr>
                         <td width="25%"><b>Attachment/s</b></td>
-                        <td width="75%"><?php 
-                            foreach ($attachment_data as $key => $value) : 
+                        <td width="75%"><?php
+                            foreach ($attachment_data as $key => $value) :
                                 echo '<a href="'.WEB.'/uploads/np/'.$value['AttachFile'].'" target="_blank">'.$value['AttachFile'].'</a><br>';
                             endforeach;
                         ?>
                         </td>
                     </tr>
                     <?php endif; ?>
-                
+
                     <tr>
                         <td width="25%"><b>Status</b></td>
-                        <td width="75%"><?php 
+                        <td width="75%"><?php
                             if ($notification_data[0]['Approved'] == 2) :
                                 echo "<span class='redtext'>REJECTED</span>";
                             elseif ($notification_data[0]['Approved'] == 1) :
@@ -3253,27 +3253,27 @@
 
                 <?php
                 $pdtrfrom = strtotime($application_data[0]['DateCovered']);
-                $pdtrto = strtotime($application_data[0]['DateCovered']);  
-            
-            elseif ($doctype == 'MD') :            
+                $pdtrto = strtotime($application_data[0]['DateCovered']);
+
+            elseif ($doctype == 'MD') :
                 $application_data = $tblsql->get_mrequest(7, $refnum);
-            
-                ?>  
+
+                ?>
                     <?php if ($attachment_data) : ?>
                     <tr>
                         <td width="25%"><b>Attachment/s</b></td>
-                        <td width="75%"><?php 
-                            foreach ($attachment_data as $key => $value) : 
+                        <td width="75%"><?php
+                            foreach ($attachment_data as $key => $value) :
                                 echo '<a href="'.WEB.'/uploads/md/'.$value['AttachFile'].'" target="_blank">'.$value['AttachFile'].'</a><br>';
                             endforeach;
                         ?>
                         </td>
                     </tr>
-                    <?php endif; ?> 
-                
+                    <?php endif; ?>
+
                     <tr>
                         <td width="25%"><b>Status</b></td>
-                        <td width="75%"><?php 
+                        <td width="75%"><?php
                             if ($notification_data[0]['Approved'] == 2) :
                                 echo "<span class='redtext'>REJECTED</span>";
                             elseif ($notification_data[0]['Approved'] == 1) :
@@ -3290,7 +3290,7 @@
                         <td><b>Date Applied</b></td>
                         <td><?php echo date('F j, Y g:ia', strtotime($application_data[0]['ReqDate'])); ?></td>
                     </tr>
-                    
+
                     <tr>
                         <td colspan="2">
                         <div class="divmddata width100per notidatadiv">
@@ -3307,7 +3307,7 @@
                                 <?php
                                     $appmd_data = $tblsql->get_mdtrdata($refnum);
                                     $appmd_count = count($appmd_data);
-            
+
                                     foreach ($appmd_data as $key => $value) :
                                         $shifts2 = $mainsql->get_shift($value['NewShiftDesc']);
                                         ?>
@@ -3322,7 +3322,7 @@
                                             <td class="centertalign"><?php if ($appmd_count > 1) : ?><i class="btnmdcancel fa fa-times redtext cursorpoint" attribute="<?php echo $refnum; ?>" attribute2="<?php echo date('Y-m-d 00:00:00.000', strtotime($value['DTRDate'])); ?>"></i><?php endif; ?></td>
                                         </tr>
                                         <?php
-                                        $pdtrto = strtotime($value['DTRDate']);  
+                                        $pdtrto = strtotime($value['DTRDate']);
                                     endforeach;
                                 ?>
                             </table>
@@ -3332,27 +3332,27 @@
 
                 <?php
                 $pdtrfrom = strtotime($application_data[0]['DateStart']);
-            
-            elseif ($doctype == 'SC') :            
+
+            elseif ($doctype == 'SC') :
                 $application_data = $tblsql->get_mrequest(8, $refnum);
                 //var_dump($application_data);
-            
-                ?>   
+
+                ?>
                     <?php if ($attachment_data) : ?>
                     <tr>
                         <td width="25%"><b>Attachment/s</b></td>
-                        <td width="75%"><?php 
-                            foreach ($attachment_data as $key => $value) : 
+                        <td width="75%"><?php
+                            foreach ($attachment_data as $key => $value) :
                                 echo '<a href="'.WEB.'/uploads/sc/'.$value['AttachFile'].'" target="_blank">'.$value['AttachFile'].'</a><br>';
                             endforeach;
                         ?>
                         </td>
                     </tr>
                     <?php endif; ?>
-                
+
                     <tr>
                         <td width="25%"><b>Status</b></td>
-                        <td width="75%"><?php 
+                        <td width="75%"><?php
                             if ($notification_data[0]['Approved'] == 2) :
                                 echo "<span class='redtext'>REJECTED</span>";
                             elseif ($notification_data[0]['Approved'] == 1) :
@@ -3373,7 +3373,7 @@
                         <td><b>Remarks</b></td>
                         <td><?php echo $application_data[0]['REMARKS']; ?></td>
                     </tr>
-                    
+
                     <tr>
                         <td colspan="2">
                         <div class="divtsdata width100per notidatadiv">
@@ -3387,7 +3387,7 @@
                                     <th width="80px">Cancel</th>
                                 </tr>
                                 <?php
-                                    //$ts_data = $tblsql->get_nrequest(8, $refnum);                                    
+                                    //$ts_data = $tblsql->get_nrequest(8, $refnum);
                                     $appts_data = $tblsql->get_tsdata($refnum);
                                     $appts_count = count($appts_data);
                                     foreach ($appts_data as $key => $value) :
@@ -3403,7 +3403,7 @@
                                             <td class="centertalign"><?php if ($appts_count > 1) : ?><i class="btnsccancel fa fa-times redtext cursorpoint" attribute="<?php echo $refnum; ?>" attribute2="<?php echo date('Y-m-d 00:00:00.000', strtotime($value['DTRDate'])); ?>"></i><?php endif; ?></td>
                                         </tr>
                                         <?php
-                                        $pdtrto = strtotime($value['DTRDate']);  
+                                        $pdtrto = strtotime($value['DTRDate']);
                                     endforeach;
                                 ?>
                             </table>
@@ -3413,26 +3413,26 @@
 
                 <?php
                 $pdtrfrom = strtotime($application_data[0]['DateStart']);
-            elseif ($doctype == 'TS') :            
+            elseif ($doctype == 'TS') :
                 $application_data = $tblsql->get_mrequest(5, $refnum);
                 //var_dump($application_data);
-            
-                ?>   
+
+                ?>
                     <?php if ($attachment_data) : ?>
                     <tr>
                         <td width="25%"><b>Attachment/s</b></td>
-                        <td width="75%"><?php 
-                            foreach ($attachment_data as $key => $value) : 
+                        <td width="75%"><?php
+                            foreach ($attachment_data as $key => $value) :
                                 echo '<a href="'.WEB.'/uploads/sc/'.$value['AttachFile'].'" target="_blank">'.$value['AttachFile'].'</a><br>';
                             endforeach;
                         ?>
                         </td>
                     </tr>
                     <?php endif; ?>
-                
+
                     <tr>
                         <td width="25%"><b>Status</b></td>
-                        <td width="75%"><?php 
+                        <td width="75%"><?php
                             if ($notification_data[0]['Approved'] == 2) :
                                 echo "<span class='redtext'>REJECTED</span>";
                             elseif ($notification_data[0]['Approved'] == 1) :
@@ -3469,21 +3469,21 @@
                 <?php
                 $pdtrfrom = strtotime($application_data[0]['DateStart']);
             endif;
-            
+
             ?>
-                
-                    <?php                         
+
+                    <?php
                         $ifposted = $mainsql->get_posted($pdtrfrom, $pdtrto, $profile_comp);
                         $thisisposted = $ifposted[0]['AttPost'] ? 1 : 0;
                     ?>
-                
+
                     <tr>
                         <td colspan="2">
                             <div class="hrborder">&nbsp;</div>
                         </td>
                     </tr>
-                
-                    <?php 
+
+                    <?php
                     if ($notification_data[0]['Approved'] == 3) :
                         ?>
                         <tr>
@@ -3532,7 +3532,7 @@
                                     <input id="btnrej" type="button" name="btnrej" value="Reject" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory01']; ?>" attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnrej smlbtn btnred" /></td>
                                 <?php else : ?>
                                     <?php if ($notification_data[0]['ApprovedDate01'] != NULL) : ?>
-                                        <?php if ($notification_data[0]['Approved'] != 2) : ?>        
+                                        <?php if ($notification_data[0]['Approved'] != 2) : ?>
                                             APPROVED BY YOU
                                         <?php else : ?>
                                             REJECTED BY YOU
@@ -3544,17 +3544,17 @@
                             <?php else : ?>
                             <td><b>Status</b></td>
                             <td><?php
-                                if ($notification_data[0]['ApprovedDate01']) :                                
+                                if ($notification_data[0]['ApprovedDate01']) :
                                     echo 'APPROVED';
                                 else :
-                                    if ($notification_data[0]['Approved'] == 2) :                                
+                                    if ($notification_data[0]['Approved'] == 2) :
                                         echo 'REJECTED';
                                     else :
                                         echo 'TO BE APPROVED';
                                     endif;
                                 endif; ?><span id="remarks" name="remarks">&nbsp;</span></td>
                             <?php endif; ?>
-                        </tr>  
+                        </tr>
                         <?php if ($notification_data[0]['ApprovedDate01']) : ?>
                         <tr>
                             <td><b>Date</b></td>
@@ -3565,7 +3565,7 @@
                                 <td><b>Remarks</b></td>
                                 <td><?php echo $mainsql->truncate($notification_data[0]['Remarks01'], 50); ?></td>
                             </tr>
-                            <?php endif; ?>                    
+                            <?php endif; ?>
                         <?php endif; ?>
                         <?php endif; ?>
                         <?php if (trim($notification_data[0]['Signatory02'])) : ?>
@@ -3586,7 +3586,7 @@
                                     <input id="btnrej" type="button" name="btnrej" value="Reject" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory02']; ?>" attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnrej smlbtn btnred" /></td>
                                 <?php else : ?>
                                     <?php if ($notification_data[0]['ApprovedDate02'] != NULL) : ?>
-                                        <?php if ($notification_data[0]['Approved'] != 2) : ?>        
+                                        <?php if ($notification_data[0]['Approved'] != 2) : ?>
                                             APPROVED BY YOU
                                         <?php else : ?>
                                             REJECTED BY YOU
@@ -3601,7 +3601,7 @@
                                 if ($notification_data[0]['ApprovedDate02']) :
                                     echo 'APPROVED';
                                 else :
-                                    if ($notification_data[0]['Approved'] == 2) :                                
+                                    if ($notification_data[0]['Approved'] == 2) :
                                         echo 'REJECTED';
                                     else :
                                         echo 'TO BE APPROVED';
@@ -3619,7 +3619,7 @@
                                 <td><b>Remarks</b></td>
                                 <td><?php echo $mainsql->truncate($notification_data[0]['Remarks02'], 50); ?></td>
                             </tr>
-                            <?php endif; ?>      
+                            <?php endif; ?>
                         <?php endif; ?>
                         <?php endif; ?>
                         <?php if (trim($notification_data[0]['Signatory03'])) : ?>
@@ -3640,7 +3640,7 @@
                                     <input id="btnrej" type="button" name="btnrej" value="Reject" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory03']; ?>" attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnrej smlbtn btnred" /></td>
                                 <?php else : ?>
                                     <?php if ($notification_data[0]['ApprovedDate03'] != NULL) : ?>
-                                        <?php if ($notification_data[0]['Approved'] != 2) : ?>        
+                                        <?php if ($notification_data[0]['Approved'] != 2) : ?>
                                             APPROVED BY YOU
                                         <?php else : ?>
                                             REJECTED BY YOU
@@ -3655,7 +3655,7 @@
                                 if ($notification_data[0]['ApprovedDate03']) :
                                     echo 'APPROVED';
                                 else :
-                                    if ($notification_data[0]['Approved'] == 2) :                                
+                                    if ($notification_data[0]['Approved'] == 2) :
                                         echo 'REJECTED';
                                     else :
                                         echo 'TO BE APPROVED';
@@ -3673,7 +3673,7 @@
                                 <td><b>Remarks</b></td>
                                 <td><?php echo $mainsql->truncate($notification_data[0]['Remarks03'], 50); ?></td>
                             </tr>
-                            <?php endif; ?>      
+                            <?php endif; ?>
                         <?php endif; ?>
                         <?php endif; ?>
                         <?php if (trim($notification_data[0]['Signatory04'])) : ?>
@@ -3684,7 +3684,7 @@
                         <tr>
                             <?php if ($notification_data[0]['Signatory04'] == $profile_idnum) : ?>
                             <td><b><?php echo $notification_data[0]['ApprovedDate04'] ? 'Status' : '&nbsp;'; ?></b></td>
-                            <td>                            
+                            <td>
                                 <?php if (!$notification_data[0]['ApprovedDate04'] && $notification_data[0]['ApprovedDate03'] && $notification_data[0]['Approved'] != 2) : ?>
                                     <?php if ($doctype == 'OT') : ?>
                                         <input type="hidden" name="approvehours" id="approvehours" value="<?php echo $application_data[0]['ApprovedHrs']; ?>" />
@@ -3694,7 +3694,7 @@
                                     <input id="btnrej" type="button" name="btnrej" value="Reject" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory04']; ?>" attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnrej smlbtn btnred" /></td>
                                 <?php else : ?>
                                     <?php if ($notification_data[0]['ApprovedDate04'] != NULL) : ?>
-                                        <?php if ($notification_data[0]['Approved'] != 2) : ?>        
+                                        <?php if ($notification_data[0]['Approved'] != 2) : ?>
                                             APPROVED BY YOU
                                         <?php else : ?>
                                             REJECTED BY YOU
@@ -3709,7 +3709,7 @@
                                 if ($notification_data[0]['ApprovedDate04']) :
                                     echo 'APPROVED';
                                 else :
-                                    if ($notification_data[0]['Approved'] == 2) :                                
+                                    if ($notification_data[0]['Approved'] == 2) :
                                         echo 'REJECTED';
                                     else :
                                         echo 'TO BE APPROVED';
@@ -3727,7 +3727,7 @@
                                 <td><b>Remarks</b></td>
                                 <td><?php echo $mainsql->truncate($notification_data[0]['Remarks04'], 50); ?></td>
                             </tr>
-                            <?php endif; ?>      
+                            <?php endif; ?>
                         <?php endif; ?>
                         <?php endif; ?>
                         <?php if (trim($notification_data[0]['Signatory05'])) : ?>
@@ -3748,7 +3748,7 @@
                                     <input id="btnrej" type="button" name="btnrej" value="Reject" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory05']; ?>" attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnrej smlbtn btnred" /></td>
                                 <?php else : ?>
                                     <?php if ($notification_data[0]['ApprovedDate05'] != NULL) : ?>
-                                        <?php if ($notification_data[0]['Approved'] != 2) : ?>        
+                                        <?php if ($notification_data[0]['Approved'] != 2) : ?>
                                             APPROVED BY YOU
                                         <?php else : ?>
                                             REJECTED BY YOU
@@ -3763,7 +3763,7 @@
                                 if ($notification_data[0]['ApprovedDate05']) :
                                     echo 'APPROVED';
                                 else :
-                                    if ($notification_data[0]['Approved'] == 2) :                                
+                                    if ($notification_data[0]['Approved'] == 2) :
                                         echo 'REJECTED';
                                     else :
                                         echo 'TO BE APPROVED';
@@ -3781,7 +3781,7 @@
                                 <td><b>Remarks</b></td>
                                 <td><?php echo $mainsql->truncate($notification_data[0]['Remarks05'], 50); ?></td>
                             </tr>
-                            <?php endif; ?>      
+                            <?php endif; ?>
                         <?php endif; ?>
                         <?php endif; ?>
                         <?php if (trim($notification_data[0]['Signatory06'])) : ?>
@@ -3802,7 +3802,7 @@
                                     <input id="btnrej" type="button" name="btnrej" value="Reject" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory06']; ?>" attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="smlbtn btnred" /></td>
                                 <?php else : ?>
                                     <?php if ($notification_data[0]['ApprovedDate06'] != NULL) : ?>
-                                        <?php if ($notification_data[0]['Approved'] != 2) : ?>        
+                                        <?php if ($notification_data[0]['Approved'] != 2) : ?>
                                             APPROVED BY YOU
                                         <?php else : ?>
                                             REJECTED BY YOU
@@ -3817,7 +3817,7 @@
                                 if ($notification_data[0]['ApprovedDate06']) :
                                     echo 'APPROVED';
                                 else :
-                                    if ($notification_data[0]['Approved'] == 2) :                                
+                                    if ($notification_data[0]['Approved'] == 2) :
                                         echo 'REJECTED';
                                     else :
                                         echo 'TO BE APPROVED';
@@ -3835,9 +3835,9 @@
                                 <td><b>Remarks</b></td>
                                 <td><?php echo $mainsql->truncate($notification_data[0]['Remarks06'], 50); ?></td>
                             </tr>
-                            <?php endif; ?>      
+                            <?php endif; ?>
                         <?php endif; ?>
-                        <?php endif; ?>                    
+                        <?php endif; ?>
                         <?php if ($notification_data[0]['EmpID'] == $profile_idnum && $notification_data[0]['Approved'] != 2) : ?>
                         <tr>
                             <td>&nbsp;</td>
@@ -3853,73 +3853,73 @@
                         <td colspan="2" class="centertalign redbg"><span class="whitetext bold">POSTED</span></td>
                     </tr>
                     <?php endif; ?>
-                </table>  
-                    
+                </table>
+
             <?php
-            
+
             //var_dump($approver_data1);
-            
+
         break;
-        case 'datapend':        
-        
+        case 'datapend':
+
             $doctype = $_POST['doctype'];
             $refnum = $_POST['refnum'];
-            
-            $notification_data = $tblsql->get_pendingnoti($refnum);            
-            $attachment_data = $mainsql->get_attachments($refnum); 
-            
+
+            $notification_data = $tblsql->get_pendingnoti($refnum);
+            $attachment_data = $mainsql->get_attachments($refnum);
+
             $approver_data1 = $logsql->get_allmember($notification_data[0]['Signatory01']);
             $approver_data2 = $logsql->get_allmember($notification_data[0]['Signatory02']);
             $approver_data3 = $logsql->get_allmember($notification_data[0]['Signatory03']);
             $approver_data4 = $logsql->get_allmember($notification_data[0]['Signatory04']);
             $approver_data5 = $logsql->get_allmember($notification_data[0]['Signatory05']);
             $approver_data6 = $logsql->get_allmember($notification_data[0]['Signatory06']);
-            
+
             $requestor_data = $logsql->get_allmember($notification_data[0]['EmpID']);
-            
+
             //READ STATUS
             $get_read = $mainsql->get_read($profile_idnum, $refnum, 1);
             if ($get_read) :
                 $delete_read = $mainsql->delete_read($profile_idnum, $refnum);
-            endif; 
+            endif;
             ?>
 
             <table class="tdataform2 rightmargin margintop10 vsmalltext" width="100%" border="0" cellpadding="0" cellspacing="0">
-                
+
             <?php
             //var_dump($notification_data);
             if ($notification_data[0]['EmpID'] != $profile_idnum) :
                 ?>
-                
+
                     <tr>
                         <td width="25%"><b>Requested by</b></td>
                         <td width="75%"><?php echo $requestor_data[0]['FName'].' '.$requestor_data[0]['LName'].' ('.$notification_data[0]['EmpID'].')'; ?>
                             <input type="hidden" id="dbname" name="dbname" value="<?php echo $notification_data[0]['DBNAME'] ?>" />
                         </td>
                     </tr>
-                
+
                 <?php
             endif;
-            
-            if ($doctype == 'OT') :            
+
+            if ($doctype == 'OT') :
                 $application_data = $tblsql->get_nrequest(1, $refnum);
-            
-                ?>  
+
+                ?>
                     <?php if ($attachment_data) : ?>
                     <tr>
                         <td width="25%"><b>Attachment/s</b></td>
-                        <td width="75%"><?php 
-                            foreach ($attachment_data as $key => $value) : 
+                        <td width="75%"><?php
+                            foreach ($attachment_data as $key => $value) :
                                 echo '<a href="'.WEB.'/uploads/ot/'.$value['AttachFile'].'" target="_blank">'.$value['AttachFile'].'</a><br>';
                             endforeach;
                         ?>
                         </td>
                     </tr>
                     <?php endif; ?>
-                
+
                     <tr>
                         <td width="25%"><b>Status</b></td>
-                        <td width="75%"><?php 
+                        <td width="75%"><?php
                             if ($notification_data[0]['Approved'] == 2) :
                                 echo "<span class='redtext'>REJECTED</span>";
                             elseif ($notification_data[0]['Approved'] == 1) :
@@ -3967,32 +3967,32 @@
                     <tr>
                         <td><b>Reason</b></td>
                         <td><?php echo $application_data[0]['Reason']; ?></td>
-                    </tr> 
+                    </tr>
 
                 <?php
                 $pdtrfrom = strtotime($application_data[0]['DtrDate']);
                 $pdtrto = strtotime($application_data[0]['DtrDate']);
-            
-            elseif ($doctype == 'LV') :            
+
+            elseif ($doctype == 'LV') :
                 $application_data = $tblsql->get_nrequest(2, $refnum);
                 //$appleave_data = $tblsql->get_leavedata($refnum);
-            
-                ?>   
+
+                ?>
                     <?php if ($attachment_data) : ?>
                     <tr>
                         <td width="25%"><b>Attachment/s</b></td>
-                        <td width="75%"><?php 
-                            foreach ($attachment_data as $key => $value) : 
+                        <td width="75%"><?php
+                            foreach ($attachment_data as $key => $value) :
                                 echo '<a href="'.WEB.'/uploads/leave/'.$value['AttachFile'].'" target="_blank">'.$value['AttachFile'].'</a><br>';
                             endforeach;
                         ?>
                         </td>
                     </tr>
                     <?php endif; ?>
-                
+
                     <tr>
                         <td width="25%"><b>Status</b></td>
-                        <td width="75%"><?php 
+                        <td width="75%"><?php
                             if ($notification_data[0]['Approved'] == 2) :
                                 echo "<span class='redtext'>REJECTED</span>";
                             elseif ($notification_data[0]['Approved'] == 1) :
@@ -4018,7 +4018,7 @@
                         <td><?php echo $application_data[0]['LeaveDesc']; ?></td>
                     </tr>
                     <tr>
-                        <td colspan="2">                            
+                        <td colspan="2">
                             <div class="divlvdata width100per notidatadiv">
                             <table class="tdatablk width100per">
                                 <tr>
@@ -4026,22 +4026,22 @@
                                     <th>Duration</th>
                                     <th>w/ Pay</th>
                                     <th>Cancel</th>
-                                </tr>            
-                                <?php 
+                                </tr>
+                                <?php
                                     $applv_data = $tblsql->get_leavedata($refnum);
                                     $applv_count = count($applv_data);
-                                    foreach($applv_data as $key => $value) : 
+                                    foreach($applv_data as $key => $value) :
                                 ?>
                                 <tr>
                                     <td><?php echo date("M j", strtotime($value['LeaveDate'])); ?></td>
-                                    <td><?php 
-                                        if ($value['Duration'] == "WD") : 
+                                    <td><?php
+                                        if ($value['Duration'] == "WD") :
                                             echo "Whole Day";
-                                        elseif ($value['Duration'] == "HD") : 
+                                        elseif ($value['Duration'] == "HD") :
                                             echo "Half Day";
-                                        elseif ($value['Duration'] == "HD1") : 
+                                        elseif ($value['Duration'] == "HD1") :
                                             echo "Half Day AM";
-                                        elseif ($value['Duration'] == "HD2") : 
+                                        elseif ($value['Duration'] == "HD2") :
                                             echo "Half Day PM";
                                         endif;
                                     ?></td>
@@ -4049,7 +4049,7 @@
                                         <?php echo $value['WithPay'] ? "<i class='fa fa-check'></i>" : "<i class='fa fa-times'></i>"; ?>
                                     </td>
                                     <td class="centertalign"><?php if ($applv_count > 1) : ?><i class="btnlvcancel fa fa-times redtext cursorpoint" attribute="<?php echo $refnum; ?>" attribute2="<?php echo date('Y-m-d 00:00:00.000', strtotime($value['LeaveDate'])); ?>"></i><?php endif; ?></td>
-                                </tr>            
+                                </tr>
                                 <?php endforeach; ?>
                             </table>
                             </div>
@@ -4062,27 +4062,27 @@
 
                 <?php
                 $pdtrfrom = strtotime($application_data[0]['AbsenceFromDate']);
-                $pdtrto = strtotime($application_data[0]['AbsenceToDate']);            
-            
-            elseif ($doctype == 'MA') :            
+                $pdtrto = strtotime($application_data[0]['AbsenceToDate']);
+
+            elseif ($doctype == 'MA') :
                 $application_data = $tblsql->get_nrequest(3, $refnum);
-            
-                ?>  
+
+                ?>
                     <?php if ($attachment_data) : ?>
                     <tr>
                         <td width="25%"><b>Attachment/s</b></td>
-                        <td width="75%"><?php 
-                            foreach ($attachment_data as $key => $value) : 
+                        <td width="75%"><?php
+                            foreach ($attachment_data as $key => $value) :
                                 echo '<a href="'.WEB.'/uploads/ma/'.$value['AttachFile'].'" target="_blank">'.$value['AttachFile'].'</a><br>';
                             endforeach;
                         ?>
                         </td>
                     </tr>
                     <?php endif; ?>
-                
+
                     <tr>
                         <td width="25%"><b>Status</b></td>
-                        <td width="75%"><?php 
+                        <td width="75%"><?php
                             if ($notification_data[0]['Approved'] == 2) :
                                 echo "<span class='redtext'>REJECTED</span>";
                             elseif ($notification_data[0]['Approved'] == 1) :
@@ -4110,39 +4110,39 @@
                     <tr>
                         <td><b>Type</b></td>
                         <td><?php echo $application_data[0]['TypeAvail']; ?></td>
-                    </tr>            
+                    </tr>
 
                 <?php
                 $pdtrfrom = strtotime($application_data[0]['DateFrom']);
-                $pdtrto = strtotime($application_data[0]['DateTo']);   
-            
-            elseif ($doctype == 'OB') :            
+                $pdtrto = strtotime($application_data[0]['DateTo']);
+
+            elseif ($doctype == 'OB') :
                 $application_data = $tblsql->get_nrequest(4, $refnum);
                 $appobt_data = $tblsql->get_obtdata($refnum);
-            
-                ?>   
+
+                ?>
                     <?php if ($attachment_data) : ?>
                     <tr>
                         <td width="25%"><b>Attachment/s</b></td>
-                        <td width="75%"><?php 
-                            foreach ($attachment_data as $key => $value) : 
+                        <td width="75%"><?php
+                            foreach ($attachment_data as $key => $value) :
                                 echo '<a href="'.WEB.'/uploads/ob/'.$value['AttachFile'].'" target="_blank">'.$value['AttachFile'].'</a><br>';
                             endforeach;
                         ?>
                         </td>
                     </tr>
                     <?php endif; ?>
-                
+
                     <?php if ($notification_data[0]['EmpID'] == $profile_idnum && $notification_data[0]['Approved'] != 3 && $notification_data[0]['Approved'] != 2) : ?>
                     <tr>
                         <td width="25%">&nbsp;</td>
                         <td width="75%"><a href="<?php echo WEB; ?>/obtpdf?id=<?php echo $refnum; ?>" target="_blank"><button class="btn">Print OBT Form</button></a></td>
                     </tr>
                     <?php endif; ?>
-                
+
                     <tr>
                         <td width="25%"><b>Status</b></td>
-                        <td width="75%"><?php 
+                        <td width="75%"><?php
                             if ($notification_data[0]['Approved'] == 2) :
                                 echo "<span class='redtext'>REJECTED</span>";
                             elseif ($notification_data[0]['Approved'] == 1) :
@@ -4166,7 +4166,7 @@
                     <tr>
                         <td><b>To</b></td>
                         <td><?php echo date('F j, Y', strtotime($application_data[0]['OBTimeOutDate'])); ?></td>
-                    </tr>                    
+                    </tr>
                     <tr>
                         <td><b>Destination</b></td>
                         <td><?php echo $application_data[0]['Destination']; ?></td>
@@ -4177,18 +4177,18 @@
                     </tr>
                     <tr>
                         <td><b>Detail</b></td>
-                        <td>                                              
+                        <td>
                             <div class="width100per notidatadiv">
                             <table class="tdatablk">
                                 <tr>
                                     <th>In</th>
                                     <th>Out</th>
-                                </tr>            
+                                </tr>
                                 <?php foreach($appobt_data as $key => $value) : ?>
                                 <tr>
                                     <td><?php echo date("M j, Y g:ia", strtotime($value['ObTimeInDate'])); ?></td>
                                     <td><?php echo date("M j, Y g:ia", strtotime($value['ObTimeOutDate'])); ?></td>
-                                </tr>            
+                                </tr>
                                 <?php endforeach; ?>
                             </table>
                             </div>
@@ -4201,27 +4201,27 @@
 
                 <?php
                 $pdtrfrom = strtotime($application_data[0]['OBTimeINDate']);
-                $pdtrto = strtotime($application_data[0]['OBTimeINDate']);  
-            
-            elseif ($doctype == 'NP') :            
+                $pdtrto = strtotime($application_data[0]['OBTimeINDate']);
+
+            elseif ($doctype == 'NP') :
                 $application_data = $tblsql->get_nrequest(6, $refnum);
-            
-                ?>   
+
+                ?>
                     <?php if ($attachment_data) : ?>
                     <tr>
                         <td width="25%"><b>Attachment/s</b></td>
-                        <td width="75%"><?php 
-                            foreach ($attachment_data as $key => $value) : 
+                        <td width="75%"><?php
+                            foreach ($attachment_data as $key => $value) :
                                 echo '<a href="'.WEB.'/uploads/np/'.$value['AttachFile'].'" target="_blank">'.$value['AttachFile'].'</a><br>';
                             endforeach;
                         ?>
                         </td>
                     </tr>
                     <?php endif; ?>
-                
+
                     <tr>
                         <td width="25%"><b>Status</b></td>
-                        <td width="75%"><?php 
+                        <td width="75%"><?php
                             if ($notification_data[0]['Approved'] == 2) :
                                 echo "<span class='redtext'>REJECTED</span>";
                             elseif ($notification_data[0]['Approved'] == 1) :
@@ -4257,27 +4257,27 @@
 
                 <?php
                 $pdtrfrom = strtotime($application_data[0]['DateCovered']);
-                $pdtrto = strtotime($application_data[0]['DateCovered']);  
-            
-            elseif ($doctype == 'MD') :            
+                $pdtrto = strtotime($application_data[0]['DateCovered']);
+
+            elseif ($doctype == 'MD') :
                 $application_data = $tblsql->get_mrequest(7, $refnum);
-            
-                ?>  
+
+                ?>
                     <?php if ($attachment_data) : ?>
                     <tr>
                         <td width="25%"><b>Attachment/s</b></td>
-                        <td width="75%"><?php 
-                            foreach ($attachment_data as $key => $value) : 
+                        <td width="75%"><?php
+                            foreach ($attachment_data as $key => $value) :
                                 echo '<a href="'.WEB.'/uploads/md/'.$value['AttachFile'].'" target="_blank">'.$value['AttachFile'].'</a><br>';
                             endforeach;
                         ?>
                         </td>
                     </tr>
-                    <?php endif; ?> 
-                
+                    <?php endif; ?>
+
                     <tr>
                         <td width="25%"><b>Status</b></td>
-                        <td width="75%"><?php 
+                        <td width="75%"><?php
                             if ($notification_data[0]['Approved'] == 2) :
                                 echo "<span class='redtext'>REJECTED</span>";
                             elseif ($notification_data[0]['Approved'] == 1) :
@@ -4294,7 +4294,7 @@
                         <td><b>Date Applied</b></td>
                         <td><?php echo date('F j, Y g:ia', strtotime($application_data[0]['ReqDate'])); ?></td>
                     </tr>
-                    
+
                     <tr>
                         <td colspan="2">
                         <div class="divdtrdata width100per notidatadiv">
@@ -4309,7 +4309,7 @@
                                 </tr>
                                 <?php
                                     $dtr_data = $tblsql->get_nrequest(7, $refnum);
-            
+
                                     foreach ($dtr_data as $key => $value) :
                                         $shifts2 = $mainsql->get_shift($value['NewShiftDesc']);
                                         ?>
@@ -4323,7 +4323,7 @@
                                             <td><?php echo $value['NewShiftDesc'] ? $shifts2[0]['ShiftDesc'] : 'REST DAY'; ?></td>
                                         </tr>
                                         <?php
-                                        $pdtrto = strtotime($value['DTRDate']);  
+                                        $pdtrto = strtotime($value['DTRDate']);
                                     endforeach;
                                 ?>
                             </table>
@@ -4333,27 +4333,27 @@
 
                 <?php
                 $pdtrfrom = strtotime($application_data[0]['DateStart']);
-            
-            elseif ($doctype == 'SC') :            
+
+            elseif ($doctype == 'SC') :
                 $application_data = $tblsql->get_mrequest(8, $refnum);
                 //var_dump($application_data);
-            
-                ?>   
+
+                ?>
                     <?php if ($attachment_data) : ?>
                     <tr>
                         <td width="25%"><b>Attachment/s</b></td>
-                        <td width="75%"><?php 
-                            foreach ($attachment_data as $key => $value) : 
+                        <td width="75%"><?php
+                            foreach ($attachment_data as $key => $value) :
                                 echo '<a href="'.WEB.'/uploads/sc/'.$value['AttachFile'].'" target="_blank">'.$value['AttachFile'].'</a><br>';
                             endforeach;
                         ?>
                         </td>
                     </tr>
                     <?php endif; ?>
-                
+
                     <tr>
                         <td width="25%"><b>Status</b></td>
-                        <td width="75%"><?php 
+                        <td width="75%"><?php
                             if ($notification_data[0]['Approved'] == 2) :
                                 echo "<span class='redtext'>REJECTED</span>";
                             elseif ($notification_data[0]['Approved'] == 1) :
@@ -4374,7 +4374,7 @@
                         <td><b>Remarks</b></td>
                         <td><?php echo $application_data[0]['REMARKS']; ?></td>
                     </tr>
-                    
+
                     <tr>
                         <td colspan="2">
                         <div class="divtsdata width100per notidatadiv">
@@ -4388,7 +4388,7 @@
                                     <th width="80px">Cancel</th>
                                 </tr>
                                 <?php
-                                    //$ts_data = $tblsql->get_nrequest(8, $refnum);                                    
+                                    //$ts_data = $tblsql->get_nrequest(8, $refnum);
                                     $appts_data = $tblsql->get_tsdata($refnum);
                                     $appts_count = count($appts_data);
                                     foreach ($appts_data as $key => $value) :
@@ -4403,7 +4403,7 @@
                                             <td class="centertalign"><?php if ($appts_count > 1 && $notification_data[0]['Approved'] != 3) : ?><i class="btnsccancel fa fa-times redtext cursorpoint" attribute="<?php echo $refnum; ?>" attribute2="<?php echo date('Y-m-d 00:00:00.000', strtotime($value['DTRDate'])); ?>"></i><?php endif; ?></td>
                                         </tr>
                                         <?php
-                                        $pdtrto = strtotime($value['DTRDate']);  
+                                        $pdtrto = strtotime($value['DTRDate']);
                                     endforeach;
                                 ?>
                             </table>
@@ -4414,20 +4414,20 @@
                 <?php
                 $pdtrfrom = strtotime($application_data[0]['DateStart']);
             endif;
-            
+
             ?>
-                
-                    <?php                         
+
+                    <?php
                         $ifposted = $mainsql->get_posted($pdtrfrom, $pdtrto, $profile_comp);
                         $thisisposted = $ifposted[0]['Post'] ? 1 : 0;
                     ?>
-                
+
                     <tr>
                         <td colspan="2">
                             <div class="hrborder">&nbsp;</div>
                         </td>
                     </tr>
-                
+
                     <?php if ($notification_data[0]['Approved'] != 3) : ?>
                     <?php if (trim($notification_data[0]['Signatory01'])) : ?>
                     <tr>
@@ -4462,7 +4462,7 @@
                                 <input id="btnrej" type="button" name="btnrej" value="Reject" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory01']; ?>" attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnrej smlbtn btnred" /></td>
                             <?php else : ?>
                                 <?php if ($notification_data[0]['ApprovedDate01'] != NULL) : ?>
-                                    <?php if ($notification_data[0]['Approved'] != 2) : ?>        
+                                    <?php if ($notification_data[0]['Approved'] != 2) : ?>
                                         APPROVED BY YOU
                                     <?php else : ?>
                                         REJECTED BY YOU
@@ -4474,17 +4474,17 @@
                         <?php else : ?>
                         <td><b>Status</b></td>
                         <td><?php
-                            if ($notification_data[0]['ApprovedDate01']) :                                
+                            if ($notification_data[0]['ApprovedDate01']) :
                                 echo 'APPROVED';
                             else :
-                                if ($notification_data[0]['Approved'] == 2) :                                
+                                if ($notification_data[0]['Approved'] == 2) :
                                     echo 'REJECTED';
                                 else :
                                     echo 'TO BE APPROVED';
                                 endif;
                             endif; ?><span id="remarks" name="remarks">&nbsp;</span></td>
                         <?php endif; ?>
-                    </tr>  
+                    </tr>
                     <?php if ($notification_data[0]['ApprovedDate01']) : ?>
                     <tr>
                         <td><b>Date</b></td>
@@ -4495,7 +4495,7 @@
                             <td><b>Remarks</b></td>
                             <td><?php echo $mainsql->truncate($notification_data[0]['Remarks01'], 50); ?></td>
                         </tr>
-                        <?php endif; ?>                    
+                        <?php endif; ?>
                     <?php endif; ?>
                     <?php endif; ?>
                     <?php if (trim($notification_data[0]['Signatory02'])) : ?>
@@ -4516,7 +4516,7 @@
                                 <input id="btnrej" type="button" name="btnrej" value="Reject" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory02']; ?>" attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnrej smlbtn btnred" /></td>
                             <?php else : ?>
                                 <?php if ($notification_data[0]['ApprovedDate02'] != NULL) : ?>
-                                    <?php if ($notification_data[0]['Approved'] != 2) : ?>        
+                                    <?php if ($notification_data[0]['Approved'] != 2) : ?>
                                         APPROVED BY YOU
                                     <?php else : ?>
                                         REJECTED BY YOU
@@ -4531,7 +4531,7 @@
                             if ($notification_data[0]['ApprovedDate02']) :
                                 echo 'APPROVED';
                             else :
-                                if ($notification_data[0]['Approved'] == 2) :                                
+                                if ($notification_data[0]['Approved'] == 2) :
                                     echo 'REJECTED';
                                 else :
                                     echo 'TO BE APPROVED';
@@ -4549,7 +4549,7 @@
                             <td><b>Remarks</b></td>
                             <td><?php echo $mainsql->truncate($notification_data[0]['Remarks02'], 50); ?></td>
                         </tr>
-                        <?php endif; ?>      
+                        <?php endif; ?>
                     <?php endif; ?>
                     <?php endif; ?>
                     <?php if (trim($notification_data[0]['Signatory03'])) : ?>
@@ -4570,7 +4570,7 @@
                                 <input id="btnrej" type="button" name="btnrej" value="Reject" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory03']; ?>" attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnrej smlbtn btnred" /></td>
                             <?php else : ?>
                                 <?php if ($notification_data[0]['ApprovedDate03'] != NULL) : ?>
-                                    <?php if ($notification_data[0]['Approved'] != 2) : ?>        
+                                    <?php if ($notification_data[0]['Approved'] != 2) : ?>
                                         APPROVED BY YOU
                                     <?php else : ?>
                                         REJECTED BY YOU
@@ -4585,7 +4585,7 @@
                             if ($notification_data[0]['ApprovedDate03']) :
                                 echo 'APPROVED';
                             else :
-                                if ($notification_data[0]['Approved'] == 2) :                                
+                                if ($notification_data[0]['Approved'] == 2) :
                                     echo 'REJECTED';
                                 else :
                                     echo 'TO BE APPROVED';
@@ -4603,7 +4603,7 @@
                             <td><b>Remarks</b></td>
                             <td><?php echo $mainsql->truncate($notification_data[0]['Remarks03'], 50); ?></td>
                         </tr>
-                        <?php endif; ?>      
+                        <?php endif; ?>
                     <?php endif; ?>
                     <?php endif; ?>
                     <?php if (trim($notification_data[0]['Signatory04'])) : ?>
@@ -4614,7 +4614,7 @@
                     <tr>
                         <?php if ($notification_data[0]['Signatory04'] == $profile_idnum) : ?>
                         <td><b><?php echo $notification_data[0]['ApprovedDate04'] ? 'Status' : '&nbsp;'; ?></b></td>
-                        <td>                            
+                        <td>
                             <?php if (!$notification_data[0]['ApprovedDate04'] && $notification_data[0]['ApprovedDate03'] && $notification_data[0]['Approved'] != 2) : ?>
                                 <?php if ($doctype == 'OT') : ?>
                                     <input type="hidden" name="approvehours" id="approvehours" value="<?php echo $application_data[0]['ApprovedHrs']; ?>" />
@@ -4624,7 +4624,7 @@
                                 <input id="btnrej" type="button" name="btnrej" value="Reject" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory04']; ?>" attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnrej smlbtn btnred" /></td>
                             <?php else : ?>
                                 <?php if ($notification_data[0]['ApprovedDate04'] != NULL) : ?>
-                                    <?php if ($notification_data[0]['Approved'] != 2) : ?>        
+                                    <?php if ($notification_data[0]['Approved'] != 2) : ?>
                                         APPROVED BY YOU
                                     <?php else : ?>
                                         REJECTED BY YOU
@@ -4639,7 +4639,7 @@
                             if ($notification_data[0]['ApprovedDate04']) :
                                 echo 'APPROVED';
                             else :
-                                if ($notification_data[0]['Approved'] == 2) :                                
+                                if ($notification_data[0]['Approved'] == 2) :
                                     echo 'REJECTED';
                                 else :
                                     echo 'TO BE APPROVED';
@@ -4657,7 +4657,7 @@
                             <td><b>Remarks</b></td>
                             <td><?php echo $mainsql->truncate($notification_data[0]['Remarks04'], 50); ?></td>
                         </tr>
-                        <?php endif; ?>      
+                        <?php endif; ?>
                     <?php endif; ?>
                     <?php endif; ?>
                     <?php if (trim($notification_data[0]['Signatory05'])) : ?>
@@ -4678,7 +4678,7 @@
                                 <input id="btnrej" type="button" name="btnrej" value="Reject" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory05']; ?>" attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnrej smlbtn btnred" /></td>
                             <?php else : ?>
                                 <?php if ($notification_data[0]['ApprovedDate05'] != NULL) : ?>
-                                    <?php if ($notification_data[0]['Approved'] != 2) : ?>        
+                                    <?php if ($notification_data[0]['Approved'] != 2) : ?>
                                         APPROVED BY YOU
                                     <?php else : ?>
                                         REJECTED BY YOU
@@ -4693,7 +4693,7 @@
                             if ($notification_data[0]['ApprovedDate05']) :
                                 echo 'APPROVED';
                             else :
-                                if ($notification_data[0]['Approved'] == 2) :                                
+                                if ($notification_data[0]['Approved'] == 2) :
                                     echo 'REJECTED';
                                 else :
                                     echo 'TO BE APPROVED';
@@ -4711,7 +4711,7 @@
                             <td><b>Remarks</b></td>
                             <td><?php echo $mainsql->truncate($notification_data[0]['Remarks05'], 50); ?></td>
                         </tr>
-                        <?php endif; ?>      
+                        <?php endif; ?>
                     <?php endif; ?>
                     <?php endif; ?>
                     <?php if (trim($notification_data[0]['Signatory06'])) : ?>
@@ -4732,7 +4732,7 @@
                                 <input id="btnrej" type="button" name="btnrej" value="Reject" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory06']; ?>" attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="smlbtn btnred" /></td>
                             <?php else : ?>
                                 <?php if ($notification_data[0]['ApprovedDate06'] != NULL) : ?>
-                                    <?php if ($notification_data[0]['Approved'] != 2) : ?>        
+                                    <?php if ($notification_data[0]['Approved'] != 2) : ?>
                                         APPROVED BY YOU
                                     <?php else : ?>
                                         REJECTED BY YOU
@@ -4747,7 +4747,7 @@
                             if ($notification_data[0]['ApprovedDate06']) :
                                 echo 'APPROVED';
                             else :
-                                if ($notification_data[0]['Approved'] == 2) :                                
+                                if ($notification_data[0]['Approved'] == 2) :
                                     echo 'REJECTED';
                                 else :
                                     echo 'TO BE APPROVED';
@@ -4765,9 +4765,9 @@
                             <td><b>Remarks</b></td>
                             <td><?php echo $mainsql->truncate($notification_data[0]['Remarks06'], 50); ?></td>
                         </tr>
-                        <?php endif; ?>      
+                        <?php endif; ?>
                     <?php endif; ?>
-                    <?php endif; ?>                    
+                    <?php endif; ?>
                     <?php if ($notification_data[0]['EmpID'] == $profile_idnum && $notification_data[0]['Approved'] != 2) : ?>
                     <tr>
                         <td>&nbsp;</td>
@@ -4780,14 +4780,14 @@
                         <td colspan="2" class="centertalign redbg"><span class="whitetext bold">POSTED</span></td>
                     </tr>
                     <?php endif; ?>
-                </table>  
-                    
+                </table>
+
             <?php
-            
+
             //var_dump($approver_data1);
-            
+
         break;
-        
-    }            
-	
-?>			
+
+    }
+
+?>

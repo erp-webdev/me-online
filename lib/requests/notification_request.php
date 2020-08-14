@@ -145,7 +145,7 @@
 				}
 				var whJSON = JSON.stringify(tempData);
 
-				var r = confirm("This action is cannot be UNDONE. Are you sure you want to approve this request?");
+				var r = confirm("This action cannot be UNDONE. Are you sure you want to approve this request?");
 
                 if (r == true)
                 {
@@ -247,7 +247,7 @@
 
                 approvehours = $("#approvehours").val();
 
-                var r = confirm("This action is cannot be UNDONE. Are you sure you want to approve this request?");
+                var r = confirm("This action cannot be UNDONE. Are you sure you want to approve this request?");
 
                 if (r == true)
                 {
@@ -345,7 +345,7 @@
             }
             else {
 
-                var r = confirm("This action is cannot be UNDONE. Are you sure you want to approve this request?");
+                var r = confirm("This action cannot be UNDONE. Are you sure you want to approve this request?");
 
                 if (r == true)
                 {
