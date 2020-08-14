@@ -156,7 +156,7 @@
 
 		$(".datepickwh_").datepicker({
 	        dateFormat: 'yy-mm-dd',
-	        minDate: "<?php //echo $limit_from; ?>08-12-2020",
+	        minDate: "<?php echo $limit_from; ?>",
 	        maxDate: "-1D",
 	        changeMonth: true,
 	        changeYear: true
