@@ -44,6 +44,10 @@
                 }
             }
 
+						if($limit_from < "2020-08-10"){
+							$limit_from = "2020-08-10";
+						}
+
             // REGISTER wfh
             if ($_POST['btnwfhapply'] || $_POST['btnwfhapply_x']) :
 
