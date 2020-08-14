@@ -44,8 +44,8 @@
                 }
             }
 
-						if($limit_from < "2020-08-10"){
-							$limit_from = "2020-08-10";
+						if($limit_from < "2020-08-16"){
+							$limit_from = "2020-08-16";
 						}
 
             // REGISTER wfh
