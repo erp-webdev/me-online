@@ -107,7 +107,7 @@
 								}
 
 								//DTR START AUG 16
-								if($wfhstart < "2020-08-16"){
+								if(date('Y-m-d') < '2020-08-17'){
 									echo '{"success": false, "error": "WFH Application will start on August 17, 2020"}';
 									exit();
 								}
