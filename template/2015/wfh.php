@@ -296,13 +296,17 @@
 			$scope.wfh_from = new Date(angular.copy($scope.wfh_from));
 			$scope.wfh_from.setDate($scope.wfh_from.getDate()-1);
 			$scope.wfh_from = new Date(angular.copy($scope.wfh_from)).toISOString().split("T")[0];
+			<?php if(date('Y-m-d') < '2020-08-14'){ ?>
 			$scope.wfh_from = '';
+			<?php } ?>
 
 			$scope.wfh_to = new Date().toISOString().split("T")[0];
 			$scope.wfh_to = new Date(angular.copy($scope.wfh_to));
 			$scope.wfh_to.setDate($scope.wfh_to.getDate()-1);
 			$scope.wfh_to = new Date(angular.copy($scope.wfh_to)).toISOString().split("T")[0];
+			<?php if(date('Y-m-d') < '2020-08-14'){ ?>
 			$scope.wfh_to = '';
+			<?php } ?>
 
 			$scope.date_original = $scope.wfh_to;
 			$scope.holidays = [];
