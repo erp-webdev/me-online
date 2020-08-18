@@ -143,6 +143,10 @@
                                     <?php endif; ?>
                                 <?php endif; ?>
 
+                                <div id="mainnotification" class="lefttalign whitetext marginbottom25">
+                                    <b class="smalltext dorangetext">Join Megaworld Club Access now!</b><br> Click <a href="<?php echo WEB; ?>/uploads/download/GLDPA.pdf" class="yellowtext" target="_blank">here</a>
+                                </div>
+
                             </div>
 
                             <?php if (in_array($profile_dbname , ['GL', 'MCTI']) ) : ?>
