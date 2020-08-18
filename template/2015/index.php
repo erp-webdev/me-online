@@ -147,13 +147,13 @@
 
                             <?php if (in_array($profile_dbname , ['GL', 'MCTI']) ) : ?>
                             <a href="<?php echo WEB; ?>/uploads/download/GLEmployeeHandbook.pdf" target="_blank">
-                                <img src="<?php echo WEB; ?>/images/glhandbook.png" style="float: right; top: 300px; position: absolute; right: 29px;" />
+                                <img src="<?php echo WEB; ?>/images/glhandbook.png" style="float: right; top: 350px; position: absolute; right: 29px;" />
                             </a>
 
                             <?php else : ?>
                             <?php if ($profile_dbname != 'ECINEMA' && $profile_dbname != 'EPARKVIEW' && $profile_dbname != 'NEWTOWN' && $profile_dbname != 'LAFUERZA') : ?>
                             <a href="<?php echo WEB; ?>/uploads/download/EmployeeHandbook.pdf" target="_blank">
-                                <img src="<?php echo WEB; ?>/images/mwhandbook.png" style="float: right; top: 300px; position: absolute; right: 29px;" />
+                                <img src="<?php echo WEB; ?>/images/mwhandbook.png" style="float: right; top: 350px; position: absolute; right: 29px;" />
                             </a>
 
                             <?php endif; ?>
