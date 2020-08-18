@@ -159,8 +159,8 @@
                             <?php endif; ?>
                             <?php endif; ?>
 
-                            <a href="<?php echo WEB; ?>/uploads/download/EmployeeHandbook.pdf" target="_blank">
-                                <img src="<?php echo WEB; ?>/images/mwhandbook.png" style="float: right; top: 470px; position: absolute; right: 29px;" />
+                            <a href="https://tinyurl.com/yyp6m44z" target="_blank">
+                                <img src="<?php echo WEB; ?>/images/CLUBACC.png" style="float: right; top: 470px; position: absolute; right: 29px;" />
                             </a>
 
 
