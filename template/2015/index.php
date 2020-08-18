@@ -160,7 +160,7 @@
                             <?php endif; ?>
 
                             <a href="<?php echo WEB; ?>/uploads/download/EmployeeHandbook.pdf" target="_blank">
-                                <img src="<?php echo WEB; ?>/images/mwhandbook.png" style="float: right; top: 450px; position: absolute; right: 29px;" />
+                                <img src="<?php echo WEB; ?>/images/mwhandbook.png" style="float: right; top: 470px; position: absolute; right: 29px;" />
                             </a>
 
 
