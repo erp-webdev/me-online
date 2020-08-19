@@ -160,7 +160,7 @@
                             <?php endif; ?>
 
                             <a href="https://tinyurl.com/yyp6m44z" target="_blank">
-                                <img src="<?php echo WEB; ?>/images/CLUBACC.png" style="float: right; top: 590px; position: absolute; right: 29px;" />
+                                <img src="<?php echo WEB; ?>/images/CLUBACC.png" style="float: right; top: 550px; position: absolute; right: 29px;" />
                             </a>
 
 
