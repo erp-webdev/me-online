@@ -147,7 +147,7 @@
 
                             <?php if (in_array($profile_dbname , ['GL', 'MCTI']) ) : ?>
                             <a href="<?php echo WEB; ?>/uploads/download/GLEmployeeHandbook.pdf" target="_blank">
-                                <img src="<?php echo WEB; ?>/images/glhandbook.png" style="float: right; top: 450px; position: absolute; right: 29px;" />
+                                <img src="<?php echo WEB; ?>/images/glhandbook.png" style="float: right; top: 400px; position: absolute; right: 29px;" />
                             </a>
 
                             <?php else : ?>
