@@ -20,7 +20,7 @@
 
 		$coe_data = $mainsql->get_coe($start, NUM_ROWS, null, 0, 2,$profile_idnum, $company_sort);
 		$sql_users = "SELECT * FROM COEUsers";
-		$coe_users = $mainsql->get_row($sql_users);
+		$coe_users = $mainsql->get_row($sql_users, "SUBSIDIARY");
 
 		$sql_companies = "SELECT * FROM HRCompany";
 		$admin_companies = $mainsql->get_row($sql_companies);
