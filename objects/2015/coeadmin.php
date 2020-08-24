@@ -39,7 +39,7 @@
 
 		$pages = $mainsql->pagination("coeadmin", $coe_count, NUM_ROWS, 9);
 
-        var_dump($coe_users);
+        // var_dump($coe_users);
         // var_dump($coe_data);
 
 	}
