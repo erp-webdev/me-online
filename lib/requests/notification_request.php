@@ -5220,7 +5220,7 @@
 
 
 			}else{
-				?><h3 align="center">COE Request Failed! Please make sure you have no pending COE request of this type.</h3><?php
+				?><h3 align="center">COE Request Failed! Please make sure you have no pending COE request of this type/category.</h3><?php
 			}
 
 		break;
