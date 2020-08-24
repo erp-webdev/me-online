@@ -27,7 +27,7 @@
 
 		$count = 0;
 		foreach ($coe_users as $key => $coe_user) {
-			if(($profile_id == $coe_user["emp_id"] && $profile_dbname == $coe_user["DB_NAME"]) || $profile_id == '2019-02-0033' || $profile_idnum == '2016-06-0457'){
+			if(($profile_id == $coe_user["emp_id"] && $profile_dbname == $coe_user["DB_NAME"])){
 				$count++;
 			}
 		}
