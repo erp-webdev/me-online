@@ -12,7 +12,7 @@
                         <span class="spanred">NEW!</span><?php if ($section != "memo") { ?><a href="<?php echo WEB; ?>/memo" onclick="clickAndDisable(this);"><?php } ?><div<?php if ($section == "memo") { ?> class="dselected"<?php } ?>>Memorandum</div><?php if ($section != "memo") { ?></a><?php } ?>
 
 
-			<?php if(false || $profile_idnum == '2019-02-0033' || $profile_idnum == '2016-06-0457'){ ?>
+			<?php if(false || $profile_idnum == '2018-07-0406' || $profile_idnum == '2016-06-0457'|| $profile_idnum == '2019-02-0033'){ ?>
 			<span class="spanred">NEW!</span>
 			<?php
 				if ($section != "coe") {?>
