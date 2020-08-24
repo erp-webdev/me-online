@@ -18,7 +18,7 @@
 
 		$coe_data = $mainsql->get_coe($start, NUM_ROWS, $profile_idnum, 0);
 		$sql_users = "SELECT * FROM COEUsers";
-		$coe_users = $mainsql->get_row($sql_users);
+		$coe_users = $mainsql->get_row($sql_users, "SUBSIDIARY");
 		$coe_count = $mainsql->get_coe(0, 0, $profile_idnum, 1);
 		$pages = $mainsql->pagination("coe", $coe_count, NUM_ROWS, 9);
 
