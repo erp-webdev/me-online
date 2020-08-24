@@ -22,7 +22,7 @@
 		$coe_count = $mainsql->get_coe(0, 0, $profile_idnum, 1);
 		$pages = $mainsql->pagination("coe", $coe_count, NUM_ROWS, 9);
 
-        // var_dump($profile_dbname);
+        var_dump($coe_users);
         //var_dump($mreq_data);
 
 	}
