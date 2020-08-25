@@ -5990,7 +5990,7 @@
 				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('M, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
 
 
-				<p style="padding-left: 50px; padding-right: 50px;">Certified by:</p>
+				<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">Certified by:</p>
 
 				<?php
 				if(true){ // for avp and up
