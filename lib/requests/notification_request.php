@@ -5404,9 +5404,18 @@
 								<?php }else{ ?>
 										<select id="coestatus2" name="coestatus2" class="txtbox" style="width:193px;" >
 											<!-- <option id="statusopt" value="Pending"<?php //if($result[0]['status'] == 'Pending'){ echo "selected"; }  ?>>Pending</option> -->
-											<option id="statusopt" value="On Process"<?php if($result[0]['status'] == 'On Process'){ echo "selected"; }  ?>>On Process</option>
-											<option id="statusopt" value="For Release"<?php if($result[0]['status'] == 'For Release'){ echo "selected"; }  ?>>For Release</option>
-											<option id="statusopt" value="Done"<?php if($result[0]['status'] == 'Done'){ echo "selected"; }  ?>>Done/Claimed</option>
+											<?php if($result[0]['status'] == 'On Process'){ ?>
+												<option id="statusopt" value="On Process"<?php if($result[0]['status'] == 'On Process'){ echo "selected"; }  ?>>On Process</option>
+											<?php } ?>
+
+											<?php if($result[0]['status'] == 'On Process' || $result[0]['status'] == 'For Release'){ ?>
+												<option id="statusopt" value="For Release"<?php if($result[0]['status'] == 'For Release'){ echo "selected"; }  ?>>For Release</option>
+											<?php } ?>
+
+											<?php if($result[0]['status'] == 'On Done' || $result[0]['status'] == 'For Release'){ ?>
+												<option id="statusopt" value="Done"<?php if($result[0]['status'] == 'Done'){ echo "selected"; }  ?>>Done/Claimed</option>
+											<?php } ?>
+
 											<option id="statusopt" value="Cancelled"<?php if($result[0]['status'] == 'Cancelled'){ echo "selected"; }  ?>>Cancelled</option>
 										</select>
 								<?php } ?>
@@ -6097,7 +6106,7 @@
 					if($status == 'For Release'){// gohere
 						$message .= "Your Certificate of Employment ($coetype) with a Reference No: ".$refno." is now For Release (".date('F j, Y', strtotime($coe_result[0]['updated_at'])).").";
 						if($emp_hr[0]['level'] != 2){
-							$message .= "Schedule of COE release is every Monday to Friday from 2:00 to 4:00 PM. Please coordinate with your HR Business Partner.";
+							$message .= " Schedule of COE release is every Monday to Friday from 2:00 to 4:00 PM. Please coordinate with your HR Business Partner.";
 						}
 					}else if ($status == 'Cancelled'){
 						$message .= "Your Certificate of Employment ($coetype) with a Reference No: ".$refno." have been Cancelled at ".date('F j, Y', strtotime($coe_result[0]['created_at'])).".";
