@@ -36,7 +36,7 @@
 									<button id="coenewreq" value="New Request" class="smlbtn" attribute5="2">New Request</button>
 
 									<input style="float: right;" type="button" id="coesearch" name="coesearch" value="Search" class="smlbtn" />
-									<input style="float: right;" type="text" id="coeref" name="coeref" class="smltxtbox" placeholder="Reference #" />&nbsp;
+									<input style="float: right;" type="text" id="coeref" name="coeref" class="smltxtbox" placeholder="Reference # or Name" />&nbsp;
 								</div>
 								</br>
 
