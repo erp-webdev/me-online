@@ -5987,7 +5987,7 @@
 				</b>for whatever legal purpose it may serve.</p>
 				<?php } ?>
 
-				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('M, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
+				<p style="padding-left: 50px; padding-right: 50px;">Given this <b><?php echo date('jS')." day of ".date('M, Y'); ?></b> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
 
 
 				<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">Certified by:</p>
