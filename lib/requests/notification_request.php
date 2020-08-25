@@ -5406,16 +5406,15 @@
 											<!-- <option id="statusopt" value="Pending"<?php //if($result[0]['status'] == 'Pending'){ echo "selected"; }  ?>>Pending</option> -->
 											<option id="statusopt" value="On Process"<?php if($result[0]['status'] == 'On Process'){ echo "selected"; }  ?>>On Process</option>
 											<option id="statusopt" value="For Release"<?php if($result[0]['status'] == 'For Release'){ echo "selected"; }  ?>>For Release</option>
-											<option id="statusopt" value="Done"<?php if($result[0]['status'] == 'Done'){ echo "selected"; }  ?>>Done</option>
-											<option id="statusopt" value="Claimed"<?php if($result[0]['status'] == 'Claimed'){ echo "selected"; }  ?>>Claimed</option>
+											<option id="statusopt" value="Done"<?php if($result[0]['status'] == 'Done'){ echo "selected"; }  ?>>Done/Claimed</option>
 											<option id="statusopt" value="Cancelled"<?php if($result[0]['status'] == 'Cancelled'){ echo "selected"; }  ?>>Cancelled</option>
 										</select>
 								<?php } ?>
 							<?php }else{ ?>
-									<?php if($result[0]['status'] == 'Pending'){ echo "Pending"; }  ?>
+									<?php //if($result[0]['status'] == 'Pending'){ echo "Pending"; }  ?>
 									<?php if($result[0]['status'] == 'On Process'){ echo "On Process"; }  ?>
 									<?php if($result[0]['status'] == 'For Release'){ echo "For Release"; }  ?>
-									<?php if($result[0]['status'] == 'Done'){ echo "Done"; }  ?>
+									<?php if($result[0]['status'] == 'Done'){ echo "Done/Claimed"; }  ?>
 									<?php if($result[0]['status'] == 'Cancelled'){ echo "Cancelled"; }  ?>
 							<?php } ?>
 						</td>
