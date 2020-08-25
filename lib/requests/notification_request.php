@@ -4878,6 +4878,7 @@
 
 			if($ref_no == '' || $ref_no == "" || $ref_no == null){
 				echo "<script>location.reload();</script>";
+				break;
 			}
 
 			$sql = "SELECT B.FullName, A.* FROM COERequests A LEFT JOIN viewHREmpMaster B on A.emp_id = B.EmpID WHERE A.ref_no = '".$ref_no."' OR B.FullName LIKE '%$ref_no%'";
