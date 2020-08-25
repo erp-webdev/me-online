@@ -62,7 +62,7 @@
 										<tr class="btncoe cursorpoint trdata centertalign" attribute="<?php echo $value['id']; ?>" attribute5="2">
 											<td><?php echo $start + $key + 1; ?></td>
 											<!-- <td><?php //echo date('m/d/Y', strtotime($value['created_at'])); ?></td> -->
-											<td><?php echo $value['Fullname']; ?></td>
+											<td><?php echo $value['FullName']; ?></td>
 											<td><?php echo $value['type']; ?></td>
 											<td><?php echo $value['emp_id']; ?></td>
 											<td><?php echo $value['company']; ?></td>
