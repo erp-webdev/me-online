@@ -4876,7 +4876,11 @@
 
 			$ref_no = $_POST["ref_no"];
 
-			$sql = "SELECT B.FullName, A.* FROM COERequests A LEFT JOIN viewHREmpMaster B on A.emp_id = B.EmpID WHERE A.ref_no = '".$ref_no."' ";
+			if($ref_no == ''){
+				header("Refresh:0");
+			}
+
+			$sql = "SELECT B.FullName, A.* FROM COERequests A LEFT JOIN viewHREmpMaster B on A.emp_id = B.EmpID WHERE A.ref_no = '".$ref_no."' OR B.FullName LIKE '%$ref_no%'";
 
 			$result = $mainsql->get_row($sql);
 
