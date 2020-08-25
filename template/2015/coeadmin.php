@@ -34,7 +34,7 @@
 										</td>
 									</tr>
 									<button id="coenewreq" value="New Request" class="smlbtn" attribute5="2">New Request</button>
-									
+
 									<input style="float: right;" type="button" id="coesearch" name="coesearch" value="Search" class="smlbtn" />
 									<input style="float: right;" type="text" id="coeref" name="coeref" class="smltxtbox" placeholder="Reference #" />&nbsp;
 								</div>
@@ -50,7 +50,7 @@
 										<tr>
 											<th width="5%">#</th>
 											<!-- <th width="10%">Date Requested</th> -->
-											<th width="10%">Reference #</th>
+											<th width="10%">Full Name</th>
 											<th width="10%">Type</th>
 											<th width="20%">Employee</th>
 											<th width="10%">Company</th>
@@ -62,7 +62,7 @@
 										<tr class="btncoe cursorpoint trdata centertalign" attribute="<?php echo $value['id']; ?>" attribute5="2">
 											<td><?php echo $start + $key + 1; ?></td>
 											<!-- <td><?php //echo date('m/d/Y', strtotime($value['created_at'])); ?></td> -->
-											<td><?php echo $value['ref_no']; ?></td>
+											<td><?php echo $value['Fullname']; ?></td>
 											<td><?php echo $value['type']; ?></td>
 											<td><?php echo $value['emp_id']; ?></td>
 											<td><?php echo $value['company']; ?></td>

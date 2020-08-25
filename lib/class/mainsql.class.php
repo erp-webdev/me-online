@@ -1074,7 +1074,7 @@ class mainsql {
 		$emp_type = "SELECT * FROM COEUsers WHERE emp_id='".$profile_idnum."' ORDER BY level asc";
 		$emp_type = $this->get_row($emp_type);
 
-		$sql = "SELECT [outer].* FROM(";
+		$sql = "SELECT b.FullName, [outer].* FROM(";
 		$sql .= "SELECT ROW_NUMBER() OVER(ORDER BY created_at) as ROW_NUMBER, * FROM COERequests ";
 		if($level == 1){
 			$sql .= "WHERE emp_id ='".$empid."')";
@@ -1088,7 +1088,7 @@ class mainsql {
 			}
 			$sql .= ")";
 		}
-		$sql .= " as [outer]";
+		$sql .= " as [outer]  left join viewhrempmaster b on [outer].emp_id = b.EmpID";
 		if($limit){
 			$sql .= " WHERE [outer].[ROW_NUMBER] BETWEEN ".(intval($start) +1)." AND ".intval($start + $limit);
 		}
