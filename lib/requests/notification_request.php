@@ -5824,7 +5824,7 @@
 
 					<p style="padding-left: 50px; padding-right: 50px;">This further certifies that she has no derogatory record on file.</p>
 
-					<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo $emp_info[0]["Salutation"]." ".$emp_info[0]["FullName"]; ?>
+					<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower($emp_info[0]["FullName"])); ?>
 					<?php if($coe[0]["other_reason"]){ ?>
 						as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["other_reason"];?>.</p>
 					<?php }else{ ?>
