@@ -5975,7 +5975,7 @@
 				and presently holding a regular appointment for the position of <b><?php echo $emp_info[0]["PositionDesc"]; ?>.</b></p>
 				<?php } ?>
 
-				<p style="padding-left: 50px; padding-right: 50px;"><?php echo echo ucwords(strtolower($emp_info[0]["Gender2"])); ?> current monthly compensation are as follows:</p>
+				<p style="padding-left: 50px; padding-right: 50px;"><?php echo ucwords(strtolower($emp_info[0]["Gender2"])); ?> current monthly compensation are as follows:</p>
 
 				<p style="padding-left: 50px; padding-right: 50px;">In addition to the above compensation package, <?php echo $emp_info[0]["Gender2"]; ?> receives the mandatory
 				13th month pay during the twelve (12) month period.</p>
