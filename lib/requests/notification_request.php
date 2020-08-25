@@ -5438,7 +5438,7 @@
 							<?php 	}
 							 	if($result[0]['status'] == 'Done' || $result[0]['status'] == 'Cancelled'){ ?>
 							<?php }else{ ?>
-								<button id="savecoe" value="Save" attribute5="<?php echo $result[0]['ref_no']; ?>" attribute4="<?php echo $result[0]["type"]; ?>" attribute3="<?php echo $result[0]['emp_id']; ?>" attribute="<?php echo $result[0]['id'] ?>" attribute2="<?php echo $result[0]['cancelled_at'].$result[0]['released_at']; ?>" class="smlbtn" style="width:45px;" <?php if($result[0]['cancelled_at'] != null || $result[0]['released_at'] != null){ echo "disabled";} ?>>Save</button>
+								<button id="savecoe" value="Save" attribute8="<?php echo $result[0]['status']; ?>" attribute5="<?php echo $result[0]['ref_no']; ?>" attribute4="<?php echo $result[0]["type"]; ?>" attribute3="<?php echo $result[0]['emp_id']; ?>" attribute="<?php echo $result[0]['id'] ?>" attribute2="<?php echo $result[0]['cancelled_at'].$result[0]['released_at']; ?>" class="smlbtn" style="width:45px;" <?php if($result[0]['cancelled_at'] != null || $result[0]['released_at'] != null){ echo "disabled";} ?>>Save</button>
 							<?php } ?>
 							<?php } ?>
 							<?php if($result[0]['status'] == 'Done' || $result[0]['status'] == 'Cancelled'){ ?>
@@ -5543,6 +5543,7 @@
 						$("#coecancel").hide();
 						$("#savecoe").hide();
 						var id = $(this).attr('attribute');
+						var old_status = $(this).attr('attribute8');
 						var emp_id = $(this).attr('attribute3');
 						var type = $(this).attr('attribute4');
 						var ref_no = $(this).attr('attribute5');
@@ -5560,7 +5561,7 @@
 						$.ajax(
 						{
 							url: "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=coesave",
-							data: "id=" + id + "&emp_id=" + emp_id + "&status=" + status + "&others=" + others + "&" + tasks + "&ref_no=" + ref_no + "&type=" + type + '&hpa_percent=' + hpa_percent + '&avail_no=' + avail_no,
+							data: "id=" + id + "&emp_id=" + emp_id + "&status=" + status + "&others=" + others + "&" + tasks + "&ref_no=" + ref_no + "&type=" + type + '&hpa_percent=' + hpa_percent + '&avail_no=' + avail_no + '&old_status=' +old_status,
 							type: "POST",
 							complete: function(){
 								$("#loading").hide();
@@ -5979,6 +5980,7 @@
 			$refno = $_POST["ref_no"];
 			$coetype = $_POST["type"];
 			$status = $_POST["status"];
+			$old_status = $_POST["old_status"];
 			$others = $_POST["others"];
 			$datetoday = date('Y-m-d');
 			$tasks = $_POST["coetasks"];
@@ -6059,7 +6061,9 @@
 					return;
 				}
 
+				if($old_status != $status){
 				if($status == 'On Process' || $status == 'For Release' || $status == 'Cancelled' || $status == 'Done'){
+
 
 					$emp_info = "SELECT * FROM viewHREmpMaster A
 								left join HRCompany B on A.CompanyID = B.CompanyID
@@ -6145,6 +6149,8 @@
 
 					}
 				}
+				}
+
 
 			}else{
 				?><h5 align="center">Error in Saving Certificate of Employment!</h5><?php
