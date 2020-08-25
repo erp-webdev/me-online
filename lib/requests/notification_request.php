@@ -5098,7 +5098,7 @@
 				$result = false;
 			}else{
 				$sql = "INSERT INTO COERequests (ref_no, emp_id, type, category, reason, other_reason, status, company, requested_by, created_at, updated_by, updated_at, leave_from, leave_to, leave_return, correction_name, job_desc, hpa_percent, avail_no)
-						VALUES ('".$refno."','".$coeemp."', '".$coetype."', '".$coecategory."', '".$coereason."', '".$coeother."', 'Pending', '".$coe_company."', '".$profile_idnum."', '".$datetoday."', '".$profile_idnum."', '".$datetoday."',
+						VALUES ('".$refno."','".$coeemp."', '".$coetype."', '".$coecategory."', '".$coereason."', '".$coeother."', 'On Process', '".$coe_company."', '".$profile_idnum."', '".$datetoday."', '".$profile_idnum."', '".$datetoday."',
 								'".$leave_from."', '".$leave_to."', '".$leave_return."', '".$correction_name."', '".$tasks."', '".$hpa_percentage."', '".$avail_no."')";
 
 				$result = $mainsql->get_execute($sql);
@@ -5403,7 +5403,7 @@
 										</select>
 								<?php }else{ ?>
 										<select id="coestatus2" name="coestatus2" class="txtbox" style="width:193px;" >
-											<option id="statusopt" value="Pending"<?php if($result[0]['status'] == 'Pending'){ echo "selected"; }  ?>>Pending</option>
+											<!-- <option id="statusopt" value="Pending"<?php //if($result[0]['status'] == 'Pending'){ echo "selected"; }  ?>>Pending</option> -->
 											<option id="statusopt" value="On Process"<?php if($result[0]['status'] == 'On Process'){ echo "selected"; }  ?>>On Process</option>
 											<option id="statusopt" value="For Release"<?php if($result[0]['status'] == 'For Release'){ echo "selected"; }  ?>>For Release</option>
 											<option id="statusopt" value="Done"<?php if($result[0]['status'] == 'Done'){ echo "selected"; }  ?>>Done</option>
