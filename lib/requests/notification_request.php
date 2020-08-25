@@ -5407,6 +5407,7 @@
 											<option id="statusopt" value="On Process"<?php if($result[0]['status'] == 'On Process'){ echo "selected"; }  ?>>On Process</option>
 											<option id="statusopt" value="For Release"<?php if($result[0]['status'] == 'For Release'){ echo "selected"; }  ?>>For Release</option>
 											<option id="statusopt" value="Done"<?php if($result[0]['status'] == 'Done'){ echo "selected"; }  ?>>Done</option>
+											<option id="statusopt" value="Claimed"<?php if($result[0]['status'] == 'Claimed'){ echo "selected"; }  ?>>Claimed</option>
 											<option id="statusopt" value="Cancelled"<?php if($result[0]['status'] == 'Cancelled'){ echo "selected"; }  ?>>Cancelled</option>
 										</select>
 								<?php } ?>
