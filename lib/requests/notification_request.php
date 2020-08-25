@@ -5980,11 +5980,11 @@
 				<p style="padding-left: 50px; padding-right: 50px;">In addition to the above compensation package, <?php echo $emp_info[0]["Gender"]; ?> receives the mandatory
 				13th month pay during the twelve (12) month period.</p>
 
-				<p style="padding-left: 50px; padding-right: 50px;">This document is issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower($emp_info[0]["FullName"])); ?>
+				<p style="padding-left: 50px; padding-right: 50px;">This document is issued upon the request of <b><?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower($emp_info[0]["FullName"])); ?>
 				<?php if($coe[0]["other_reason"]){ ?>
-					as a requirement for <?php echo $emp_info[0]["Gender2"]. " <i>".$coe[0]["other_reason"]; ?></i>.</p>
+					for <?php echo $emp_info[0]["Gender2"]. " <i>".$coe[0]["other_reason"]; ?></i></b>.</p>
 				<?php }else{ ?>
-					for whatever legal purpose it may serve.</p>
+				</b>for whatever legal purpose it may serve.</p>
 				<?php } ?>
 
 				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('M, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
