@@ -4877,7 +4877,7 @@
 			$ref_no = $_POST["ref_no"];
 
 			if($ref_no == '' || $ref_no == "" || $ref_no == null){
-				echo ("<meta http-equiv='refresh' content='1'>");
+				echo "<script>location.reload();</script>";
 			}
 
 			$sql = "SELECT B.FullName, A.* FROM COERequests A LEFT JOIN viewHREmpMaster B on A.emp_id = B.EmpID WHERE A.ref_no = '".$ref_no."' OR B.FullName LIKE '%$ref_no%'";
