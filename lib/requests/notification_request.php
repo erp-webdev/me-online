@@ -5977,7 +5977,7 @@
 
 				<p style="padding-left: 50px; padding-right: 50px;"><?php echo ucwords(strtolower($emp_info[0]["Gender2"])); ?> current monthly compensation are as follows:</p>
 
-				<p style="padding-left: 50px; padding-right: 50px;">In addition to the above compensation package, <?php echo $emp_info[0]["Gender2"]; ?> receives the mandatory
+				<p style="padding-left: 50px; padding-right: 50px;">In addition to the above compensation package, <?php echo $emp_info[0]["Gender"]; ?> receives the mandatory
 				13th month pay during the twelve (12) month period.</p>
 
 				<p style="padding-left: 50px; padding-right: 50px;">This document is issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower($emp_info[0]["FullName"])); ?>
