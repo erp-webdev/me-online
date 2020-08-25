@@ -6003,6 +6003,7 @@
 					<p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">MARILOU C. GUARIÑA</br>
 					<i>ASSISTANT VICE PRESIDENT - Payroll</i></p>
 				<?php } ?>
+			}
 
 					<p style="font-size: 10px;padding-top: 100px; padding-left: 50px; padding-right: 50px;">Ref No.:<?php echo $coe[0]["ref_no"]; ?></p>
 				</div>
