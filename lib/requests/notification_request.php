@@ -5744,7 +5744,7 @@
 					<?php } ?>
 
 					<p style="padding-left: 50px; padding-right: 50px;">This also certifies that <?php echo ucwords(strtolower($emp_info[0]["FullName"]))." and ".ucwords(strtolower($coe[0]["correction_name"])); ?>
-					is the same person as <?php echo $emp_info[0]["FullName"]; ?>.</p>
+					is the same person as <?php echo ucwords(strtolower($emp_info[0]["FullName"])); ?>.</p>
 
 					<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower($emp_info[0]["FullName"])); ?>
 					<?php if($coe[0]["other_reason"]){ ?>
