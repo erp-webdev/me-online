@@ -5970,20 +5970,19 @@
 				<h3 align="center" style="padding-top: 150px">CERTIFICATION OF EMPLOYMENT AND COMPENSATION</h3>
 
 				<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This is to certify that <b><?php echo ucwords(strtolower($emp_info[0]["FullName"])); ?></b> is an
-					employee of <b>Megaworld Corporation</b> since <b>".$emp_info[0]["HireDate"]; ?>
+					employee of <b>Megaworld Corporation</b> since <b><?php echo $emp_info[0]["HireDate"]; ?>
 				<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
 				and presently holding a regular appointment for the position of <b><?php echo $emp_info[0]["PositionDesc"]; ?>.</b></p>
 				<?php } ?>
 
 				<p style="padding-left: 50px; padding-right: 50px;"><?php echo $emp_info[0]["Gender2"]; ?> current monthly compensation are as follows:</p>
 
-
 				<p style="padding-left: 50px; padding-right: 50px;">In addition to the above compensation package, <?php echo $emp_info[0]["Gender2"]; ?> receives the mandatory
 				13th month pay during the twelve (12) month period.</p>
 
 				<p style="padding-left: 50px; padding-right: 50px;">This document is issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower($emp_info[0]["FullName"])); ?>
 				<?php if($coe[0]["other_reason"]){ ?>
-					as a requirement for <?php echo $emp_info[0]["Gender2"]. " <i>".$coe[0]["other_reason"];?></i>.</p>
+					as a requirement for <?php echo $emp_info[0]["Gender2"]. " <i>".$coe[0]["other_reason"]; ?></i>.</p>
 				<?php }else{ ?>
 					for whatever legal purpose it may serve.</p>
 				<?php } ?>
@@ -6003,8 +6002,8 @@
 				?>
 					<p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">MARILOU C. GUARIÑA</br>
 					<i>ASSISTANT VICE PRESIDENT - Payroll</i></p>
-				}
-					?>
+				<?php } ?>
+
 					<p style="font-size: 10px;padding-top: 100px; padding-left: 50px; padding-right: 50px;">Ref No.:<?php echo $coe[0]["ref_no"]; ?></p>
 				</div>
 
