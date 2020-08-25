@@ -4876,7 +4876,7 @@
 
 			$ref_no = $_POST["ref_no"];
 
-			if($ref_no == ''){
+			if($ref_no == '' || $ref_no == "" || $ref_no == null){
 				header("Refresh:0");
 			}
 
