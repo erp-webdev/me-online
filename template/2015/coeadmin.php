@@ -50,9 +50,9 @@
 										<tr>
 											<th width="5%">#</th>
 											<!-- <th width="10%">Date Requested</th> -->
-											<th width="10%">Full Name</th>
+											<th width="20%">Full Name</th>
 											<th width="10%">Type</th>
-											<th width="20%">Employee</th>
+											<th width="10%">Employee</th>
 											<th width="10%">Company</th>
 											<th width="10%">Status</th>
 											<th width="10%">Date Completed</th>
