@@ -5982,15 +5982,15 @@
 						<table style="padding-left: 200px; padding-right: 50px">
 							<tr>
 								<td><b>Basic Salary</b></td>
-								<td><b><?php echo $emp_info[0]["MonthlyRate"]; ?></b></td>
+								<td style="padding-left: 50px;"><b><?php echo $emp_info[0]["MonthlyRate"]; ?></b></td>
 							</tr>
 							<tr>
 								<td><b>Allowance</b></td>
-								<td><b><?php echo $emp_info[0]["Allowance"]; ?></b></td>
+								<td style="padding-left: 50px;"><b><?php echo $emp_info[0]["Allowance"]; ?></b></td>
 							</tr>
 							<tr>
 								<td><b>Total</b></td>
-								<td><b><?php echo $emp_info[0]["Allowance"] + $emp_info[0]["MonthlyRate"]; ?></b></td>
+								<td style="padding-left: 50px;"><b><?php echo $emp_info[0]["Allowance"] + $emp_info[0]["MonthlyRate"]; ?></b></td>
 							</tr>
 						</table>
 
