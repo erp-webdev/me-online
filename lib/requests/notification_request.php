@@ -6077,12 +6077,12 @@
 				<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">Certified by:</p>
 
 				<?php
-				if(in_array($vpup, $emp_info[0]["RankID"])){ // for vp and up
+				if(in_array($emp_info[0]["RankID"], $vpup)){ // for vp and up
 				?>
 					<p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">LOURDES O. RAMILLO</br>
 					<i>Vice President - Financial Reporting Group<i></p>
 				<?php
-			}elseif (in_array($rfavp, $emp_info[0]["RankID"])) { // for r&f to avp
+			}elseif (in_array($emp_info[0]["RankID"], $rfavp)) { // for r&f to avp
 				?>
 					<p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">MARILOU C. GUARIÑA</br>
 					<i>ASSISTANT VICE PRESIDENT - Payroll</i></p>
