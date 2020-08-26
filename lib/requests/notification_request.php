@@ -5652,6 +5652,7 @@
 						A.FName+' '+SUBSTRING(A.MNAME, 1, 1)+'. '+A.LName AS FullName,
 						A.Allowance,
 						A.MonthlyRate,
+						A.RankID,
 						B.RankDesc,
 						C.DeptDesc,
 						D.DivisionName,
@@ -5968,6 +5969,70 @@
 					<?php
 					}
 			}elseif ($coe[0]["type"] == "COECOMPENSATION") {
+
+				//R&F to AVP -- Ms Malou
+				$rfavp = ['RF',
+									'RF II',
+									'SRF',
+									'SRF II',
+									'AS',
+									'AS II',
+									'AS III',
+									'S',
+									'S II',
+									'S III',
+									'SS',
+									'SS II',
+									'SS III',
+									'AM',
+									'AM II',
+									'AM III',
+									'MGR-A',
+									'M',
+									'M II',
+									'M III',
+									'SM',
+									'SM II',
+									'SM III',
+									'AVP', //end of megaworld ranks
+									'RF',
+									'R001',
+									'R002',
+									'R003',
+									'R004',
+									'S005',
+									'S006',
+									'S007',
+									'S008',
+									'S',
+									'SS',
+									'M009',
+									'M010',
+									'M011',
+									'M012',
+									'M',
+									'M-TTTI',
+									'SM',
+									'SM - TTTI',
+									'D013',
+									'D014',
+									'AVP-TTTI',
+									'AVP' // end of GL RANKS
+								];
+
+						//vp & up - Ms. Lourdes
+						$vpup = ['SAVP',
+										 'FVP', //end of GL RANKS
+										 'SAVP',
+										 'VP',
+										 'EVP',
+										 'SEVP',
+										 'SVP',
+									 	 'FVP',
+										 'COO',
+	 									 'D015',
+	 									 'D016', // end of MEGA RANKS
+									 ];
 				?>
 				<h3 align="center" style="padding-top: 150px">CERTIFICATION OF EMPLOYMENT AND COMPENSATION</h3>
 
@@ -5984,14 +6049,16 @@
 								<td><b>Basic Salary</b></td>
 								<td style="padding-left: 50px;"><b><?php echo $emp_info[0]["MonthlyRate"]; ?></b></td>
 							</tr>
-							<tr>
-								<td><b>Allowance</b></td>
-								<td style="padding-left: 50px;"><b><?php echo $emp_info[0]["Allowance"]; ?></b></td>
-							</tr>
-							<tr>
-								<td><b>Total</b></td>
-								<td style="padding-left: 50px;"><b><?php echo $emp_info[0]["Allowance"] + $emp_info[0]["MonthlyRate"]; ?></b></td>
-							</tr>
+							<?php if($emp_info[0]["Allowance"] != 0;){ ?>
+								<tr>
+									<td><b>Allowance</b></td>
+									<td style="padding-left: 50px;"><b><?php echo $emp_info[0]["Allowance"]; ?></b></td>
+								</tr>
+								<tr>
+									<td><b>Total</b></td>
+									<td style="padding-left: 50px;"><b><?php echo $emp_info[0]["Allowance"] + $emp_info[0]["MonthlyRate"]; ?></b></td>
+								</tr>
+							<?php } ?>
 						</table>
 
 				<p style="padding-left: 50px; padding-right: 50px;">In addition to the above compensation package, <?php echo $emp_info[0]["Gender"]; ?> receives the mandatory
@@ -6010,12 +6077,12 @@
 				<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">Certified by:</p>
 
 				<?php
-				if(true){ // for avp and up
+				if(in_array($vpup, $emp_info[0]["RankID"])){ // for vp and up
 				?>
 					<p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">LOURDES O. RAMILLO</br>
 					<i>Vice President - Financial Reporting Group<i></p>
 				<?php
-				}elseif (false) { // for r&f to
+			}elseif (in_array($rfavp, $emp_info[0]["RankID"])) { // for r&f to avp
 				?>
 					<p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">MARILOU C. GUARIÑA</br>
 					<i>ASSISTANT VICE PRESIDENT - Payroll</i></p>

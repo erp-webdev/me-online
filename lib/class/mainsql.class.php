@@ -1074,7 +1074,7 @@ class mainsql {
 		$emp_type = "SELECT * FROM COEUsers WHERE emp_id='".$profile_idnum."' ORDER BY level asc";
 		$emp_type = $this->get_row($emp_type);
 
-		$sql = "SELECT b.FullName, [outer].* FROM(";
+		$sql = "SELECT A.FullName, [outer].* FROM(";
 		$sql .= "SELECT ROW_NUMBER() OVER(ORDER BY created_at) as ROW_NUMBER, * FROM COERequests ";
 		if($level == 1){
 			$sql .= "WHERE emp_id ='".$empid."')";
@@ -1088,11 +1088,15 @@ class mainsql {
 			}
 			$sql .= ")";
 		}
-		$sql .= " as [outer]  left join viewhrempmaster b on [outer].emp_id = b.EmpID";
+		$sql .= " as [outer]  left join viewhrempmaster A on [outer].emp_id = A.EmpID";
 		if($limit){
 			$sql .= " WHERE [outer].[ROW_NUMBER] BETWEEN ".(intval($start) +1)." AND ".intval($start + $limit);
 		}
-		$sql .= " ORDER BY [outer].id desc";
+		$sql .= " ORDER BY CASE WHEN [outer].STATUS = 'CANCELLED' THEN 0
+              WHEN [outer].STATUS = 'DONE' THEN 1
+              WHEN [outer].STATUS = 'FOR RELEASE' THEN 2
+              ELSE 3
+              END DESC, created_at ASC";
 		if ($count) : $result = $this->get_numrow($sql);
 		else : $result = $this->get_row($sql);
 		endif;
