@@ -1075,7 +1075,11 @@ class mainsql {
 		$emp_type = $this->get_row($emp_type);
 
 		$sql = "SELECT A.FullName, [outer].* FROM(";
-		$sql .= "SELECT ROW_NUMBER() OVER(ORDER BY created_at) as ROW_NUMBER, * FROM COERequests ";
+		$sql .= "SELECT ROW_NUMBER() OVER(ORDER BY CASE WHEN STATUS = 'CANCELLED' THEN 0
+            WHEN STATUS = 'DONE' THEN 1
+            WHEN STATUS = 'FOR RELEASE' THEN 2
+            ELSE 3
+            END DESC, created_at ASC) as ROW_NUMBER, * FROM COERequests ";
 		if($level == 1){
 			$sql .= "WHERE emp_id ='".$empid."')";
 		}else{
