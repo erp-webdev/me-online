@@ -5979,7 +5979,7 @@
 
 				<p style="padding-left: 50px; padding-right: 50px;"><?php echo ucwords(strtolower($emp_info[0]["Gender2"])); ?> current monthly compensation are as follows:</p>
 
-						<table style="padding-left: 100px; padding-right: 50px">
+						<table style="padding-left: 200px; padding-right: 50px">
 							<tr>
 								<td><b>Basic Salary</b></td>
 								<td><b><?php echo $emp_info[0]["MonthlyRate"]; ?></b></td>
