@@ -4965,14 +4965,14 @@
 
 			$_SESSION["company_sort"] = $company_sort;
 
-			$sql = "SELECT [outer].* FROM";
+			$sql = "SELECT B.FullName,[outer].* FROM";
 			$sql .= "(SELECT ROW_NUMBER() OVER(ORDER BY created_at) as ROW_NUMBER, * FROM COERequests";
 
 			if($company_sort != ''){
 				$sql .= " WHERE company = '".$company_sort."'";
 			}
 
-			$sql .= ") as [outer] WHERE [outer].[ROW_NUMBER] BETWEEN 1 AND 10 ORDER BY [outer].id desc";
+			$sql .= ") as [outer] LEFT JOIN viewHREmpMaster B on B.empid = [outer].emp_id WHERE [outer].[ROW_NUMBER] BETWEEN 1 AND 10 ORDER BY [outer].id desc";
 
 			$result = $mainsql->get_row($sql);
 
