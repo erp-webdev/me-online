@@ -5650,10 +5650,12 @@
 							WHEN A.GENDER = 'M' or A.GENDER = 'MALE' THEN 'his'
 						END AS Gender2,
 						A.FName+' '+SUBSTRING(A.MNAME, 1, 1)+'. '+A.LName AS FullName,
+						A.Allowance,
+						A.MonthlyRate,
 						B.RankDesc,
 						C.DeptDesc,
 						D.DivisionName,
-				        E.PositionDesc,
+		        E.PositionDesc,
 						convert(varchar, A.HireDate, 107) as HireDate,
 				        convert(varchar, getdate(), 107) as CurrentDate,
 						convert(varchar, A.DateResigned, 107) as DateResigned,
