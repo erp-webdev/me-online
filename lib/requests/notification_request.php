@@ -5971,7 +5971,7 @@
 			}elseif ($coe[0]["type"] == "COECOMPENSATION") {
 
 				//R&F to AVP -- Ms Malou
-				$rfavp = ['RF',
+				$rfavp = array('RF',
 									'RF II',
 									'SRF',
 									'SRF II',
@@ -6018,10 +6018,10 @@
 									'D014',
 									'AVP-TTTI',
 									'AVP' // end of GL RANKS
-								];
+								);
 
 						//vp & up - Ms. Lourdes
-						$vpup = ['SAVP',
+						$vpup = array('SAVP',
 										 'FVP', //end of GL RANKS
 										 'SAVP',
 										 'VP',
@@ -6032,7 +6032,7 @@
 										 'COO',
 	 									 'D015',
 	 									 'D016' // end of MEGA RANKS
-									 ];
+									 );
 				?>
 				<h3 align="center" style="padding-top: 150px">CERTIFICATION OF EMPLOYMENT AND COMPENSATION</h3>
 
