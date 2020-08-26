@@ -54,12 +54,11 @@
 
 												foreach ($admin_companies as $key => $admin_company) {
 													if(in_array($admin_company['CompanyID'], $dbase_array[$profile_dbname])){?>
-
-													<option value="<?php echo $admin_company['CompanyID']; ?>" <?php if($company_sort == $admin_company['CompanyID']){ echo "selected";} ?>><?php echo $admin_company['CompanyName']; ?></option>
-
+														<option value="<?php echo $admin_company['CompanyID']; ?>" <?php if($company_sort == $admin_company['CompanyID']){ echo "selected";} ?>><?php echo $admin_company['CompanyName']; ?></option>
 												<?php
 													}
-												}?>
+												}
+												?>
 											</select>
 										</td>
 									</tr>
