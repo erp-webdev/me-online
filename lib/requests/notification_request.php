@@ -5421,7 +5421,9 @@
 												<option id="statusopt" value="Done"<?php if($result[0]['status'] == 'Done'){ echo "selected"; }  ?>>Done/Claimed</option>
 											<?php } ?>
 
-											<option id="statusopt" value="Cancelled"<?php if($result[0]['status'] == 'Cancelled'){ echo "selected"; }  ?>>Cancelled</option>
+											<?php if($result[0]['status'] == 'Cancelled'){ ?>
+												<option id="statusopt" value="Cancelled"<?php if($result[0]['status'] == 'Cancelled'){ echo "selected"; }  ?>>Cancelled</option>
+											<?php } ?>
 										</select>
 								<?php } ?>
 							<?php }else{ ?>
