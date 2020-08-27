@@ -1108,7 +1108,7 @@ class mainsql {
 		else : $result = $this->get_row($sql);
 		endif;
 
-		return $company_sort;
+		return $sql;
 	}
 
     /* MY REQUEST */
