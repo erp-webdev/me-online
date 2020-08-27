@@ -17,7 +17,7 @@
 		global $sroot, $profile_id, $unix3month;
 
 		$company_sort = $_SESSION["company_sort"] ? $_SESSION["company_sort"] : null ;
-
+		var_dump($company_sort);
 		$coe_data = $mainsql->get_coe($start, NUM_ROWS, null, 0, 2,$profile_idnum, $company_sort);
 		$sql_users = "SELECT * FROM COEUsers";
 		$coe_users = $mainsql->get_row($sql_users);
