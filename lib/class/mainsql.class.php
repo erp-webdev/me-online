@@ -1081,7 +1081,7 @@ class mainsql {
             ELSE 3
             END DESC, created_at ASC) as ROW_NUMBER, * FROM COERequests ";
 		if($level == 1){
-			$sql .= "WHERE emp_id ='".$empid."')";
+			$sql .= "WHERE emp_id ='".$empid."'";
 		}else{
 			if($emp_type[0]['level'] != '1'){
 				if($emp_type[0]['level'] == '2'){
@@ -1113,7 +1113,7 @@ class mainsql {
 		else : $result = $this->get_row($sql);
 		endif;
 
-		return $sql;
+		return $result;
 	}
 
     /* MY REQUEST */
