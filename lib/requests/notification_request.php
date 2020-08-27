@@ -6057,7 +6057,7 @@
 						<table style="padding-left: 200px; padding-right: 50px">
 							<tr>
 								<td><b>Basic Salary</b></td>
-								<td style="padding-left: 50px;"><b><?php echo $emp_info[0]["MonthlyRate"]; ?></b></td>
+								<td style="padding-left: 50px;"><b><?php if(false){echo $emp_info[0]["MonthlyRate"];}else{ echo "SAMPLE"; }; ?></b></td>
 							</tr>
 							<?php if($emp_info[0]["Allowance"] != 0){ ?>
 								<tr>
