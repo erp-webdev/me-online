@@ -1089,11 +1089,16 @@ class mainsql {
 				}else{
 					$sql .= "WHERE type != 'COECOMPENSATION'";
 				}
-			}
+        if($company_sort != null || $company_sort != ''){
+          $sql .= " and company = '".$company_sort."'";
+        }
+			}else{
+          if($company_sort != null || $company_sort != ''){
+            $sql .= " WHERE company = '".$company_sort."'";
+          }
+      }
 		}
-    if($company_sort != null || $company_sort != ''){
-      $sql .= " company = '".$company_sort."'";
-    }
+
 
 		$sql .= ") as [outer]  left join viewhrempmaster A on [outer].emp_id = A.EmpID";
 		if($limit){
