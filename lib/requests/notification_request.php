@@ -5412,7 +5412,7 @@
 							<?php if($level == 2){ ?>
 								<?php if($result[0]['status'] == 'Done' || $result[0]['status'] == 'Cancelled'){ ?>
 										<select id="coestatus2" name="coestatus2" class="txtbox" style="width:193px;" >
-											<option id="statusopt" value="<?php echo $result[0]['status']; ?>"><?php echo $result[0]['status']; ?></option>
+											<option id="statusopt" value="<?php echo $result[0]['status']; ?>"><?php if($result[0]['status'] == 'Done'){echo 'Done/Claimed';}else{echo $result[0]['status'];} ?></option>
 										</select>
 								<?php }else{ ?>
 										<select id="coestatus2" name="coestatus2" class="txtbox" style="width:193px;" >
