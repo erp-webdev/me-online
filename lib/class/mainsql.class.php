@@ -1069,7 +1069,7 @@ class mainsql {
 	}
 
 	/* COE Requisition */
-	function get_coe($start = 0, $limit = 0, $empid = NULL, $count = 0, $level = 1,$profile_idnum)
+	function get_coe($start = 0, $limit = 0, $empid = NULL, $count = 0, $level = 1,$profile_idnum, $company_sort = NULL)
 	{
 		$emp_type = "SELECT * FROM COEUsers WHERE emp_id='".$profile_idnum."' ORDER BY level asc";
 		$emp_type = $this->get_row($emp_type);
@@ -1090,9 +1090,12 @@ class mainsql {
 					$sql .= "WHERE type != 'COECOMPENSATION'";
 				}
 			}
-			$sql .= ")";
 		}
-		$sql .= " as [outer]  left join viewhrempmaster A on [outer].emp_id = A.EmpID";
+    if($company_sort != null || $company_sort != ''){
+      $sql .= " company = '".$company_sort."'";
+    }
+
+		$sql .= ") as [outer]  left join viewhrempmaster A on [outer].emp_id = A.EmpID";
 		if($limit){
 			$sql .= " WHERE [outer].[ROW_NUMBER] BETWEEN ".(intval($start) +1)." AND ".intval($start + $limit);
 		}
