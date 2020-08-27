@@ -1113,7 +1113,7 @@ class mainsql {
 		else : $result = $this->get_row($sql);
 		endif;
 
-		return $sql;
+		return $result;
 	}
 
     /* MY REQUEST */
