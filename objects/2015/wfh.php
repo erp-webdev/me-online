@@ -50,8 +50,8 @@
                 }
             }
 
-						if($limit_from < $wfh_user[0]["start_date"]){
-							$limit_from = $wfh_user[0]["start_date"];
+						if($limit_from < $wfh_user[0]["start_convert"]){
+							$limit_from = $wfh_user[0]["start_convert"];
 						}
 
             // REGISTER wfh
