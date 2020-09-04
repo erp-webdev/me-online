@@ -49,7 +49,7 @@
                     }
                 }
             }
-
+						var_dump($limit_from);
 						if($limit_from < $wfh_user[0]["start_convert"]){
 							$limit_from = $wfh_user[0]["start_convert"];
 						}
