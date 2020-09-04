@@ -301,16 +301,16 @@
 			$scope.wfh_from = new Date(angular.copy($scope.wfh_from));
 			$scope.wfh_from.setDate($scope.wfh_from.getDate()-1);
 			$scope.wfh_from = new Date(angular.copy($scope.wfh_from)).toISOString().split("T")[0];
-			<?php if(date('Y-m-d') < '2020-09-04'){ ?>
-			$scope.wfh_from = '';
+			<?php if(date('Y-m-d') >  $wfh_user[0]["end_convert"]){ ?>
+			$scope.wfh_from = '<?php echo $wfh_user[0]["end_convert"]; ?>';
 			<?php } ?>
 
 			$scope.wfh_to = new Date().toISOString().split("T")[0];
 			$scope.wfh_to = new Date(angular.copy($scope.wfh_to));
 			$scope.wfh_to.setDate($scope.wfh_to.getDate()-1);
 			$scope.wfh_to = new Date(angular.copy($scope.wfh_to)).toISOString().split("T")[0];
-			<?php if(date('Y-m-d') < '2020-09-04'){ ?>
-			$scope.wfh_to = '';
+			<?php if(date('Y-m-d') >  $wfh_user[0]["end_convert"]){ ?>
+			$scope.wfh_to = '<?php echo $wfh_user[0]["end_convert"]; ?>';
 			<?php } ?>
 
 			$scope.date_original = $scope.wfh_to;
