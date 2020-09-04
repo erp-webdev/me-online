@@ -20,7 +20,7 @@
 							<div id="alert"></div>
 							<?php if($wfh_user[0]["end_date"]){ ?>
 							<div class="mleave_msg" style="padding: 10px; text-align: center; color: rgb(156, 0, 6); background: rgb(255, 199, 206);
-							border: 2px solid rgb(156, 0, 6); height: auto; display: block;">Your have until <?php var_dump(date('Y-m-d', strtotime($wfh_user[0]["end_date"]))); ?> to file your Work from Home Application.
+							border: 2px solid rgb(156, 0, 6); height: auto; display: block;">Your have until <?php var_dump($wfh_user[0]["end_date"]); ?> to file your Work from Home Application.
 							</div>
 							<?php } ?>
 							<form id="frmapplywd" name="frmapplywd" action="?ignore-page-cache=true" method="post" enctype="multipart/form-data">
