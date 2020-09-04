@@ -251,7 +251,7 @@ class mainsql {
   {
     $sql = "SELECT * FROM WFHUsers WHERE EmpID = '".$empid."' and DBNAME = '".$dbname."'";
     if ($count) : $result = $this->get_numrow($sql);
-        else : $result = $this->get_row($sql, $dbname);
+        else : $result = $this->get_row($sql);
         endif;
     return $result;
   }
