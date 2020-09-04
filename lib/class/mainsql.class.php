@@ -249,7 +249,7 @@ class mainsql {
 	}
     function get_wfh_user($empid, $dbname, $count = 0)
   {
-    $sql = "SELECT * FROM WFHUsers WHERE EmpID = '".$empid."' and DBNAME = '".$dbname."' and
+    $sql = "SELECT * FROM WFHUsers WHERE EmpID = '".$empid."' and DBNAME = '".$dbname."'
             and (end_date is null or DATEADD(day, 3,end_date) > convert(date,GETDATE()))";
     $result = $this->get_row($sql, 'SUBSIDIARY');
     return $result;
