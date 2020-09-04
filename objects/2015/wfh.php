@@ -17,7 +17,6 @@
 
 
 						if($wfh_user[0]["EmpID"] == $profile_idnum && $wfh_user[0]["DBNAME"] == $profile_dbname){
-							var_dump("valid");
 						}else{
 							echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/login'</script>";
 						}
