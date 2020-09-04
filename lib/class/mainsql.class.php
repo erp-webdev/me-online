@@ -247,6 +247,14 @@ class mainsql {
         endif;
 		return $result;
 	}
+    function get_wfh_user($empid, $dbname, $count = 0)
+  {
+    $sql = "SELECT * FROM WFHUsers WHERE EmpID = '".$empid."' and DBNAME = '".$dbname."'";
+    if ($count) : $result = $this->get_numrow($sql);
+        else : $result = $this->get_row($sql, $dbname);
+        endif;
+    return $result;
+  }
 
     function get_altapprovers($empid, $count = 0, $dbname = NULL)
 	{
