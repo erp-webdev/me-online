@@ -250,7 +250,7 @@ class mainsql {
     function get_wfh_user($empid, $dbname, $count = 0)
   {
     $sql = "SELECT * FROM WFHUsers WHERE EmpID = '".$empid."' and DBNAME = '".$dbname."'";
-    $result = $this->get_row($sql, 'SUBSIDIARY');
+    $result = $this->get_row($sql);
     return $result;
   }
 
