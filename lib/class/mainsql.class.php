@@ -249,7 +249,7 @@ class mainsql {
 	}
     function get_wfh_user($empid, $dbname, $count = 0)
   {
-    $sql = "SELECT EmpID, Name, DBNAME, start_date, end_date, CONVERT(varchar, end_date, 23) as end_warning, CONVERT(varchar, start_date, 23) as start_convert FROM WFHUsers WHERE EmpID = '".$empid."' and DBNAME = '".$dbname."'
+    $sql = "SELECT EmpID, Name, DBNAME, start_date, end_date, CONVERT(varchar, end_date, 23) as end_convert, CONVERT(varchar, start_date, 23) as start_convert FROM WFHUsers WHERE EmpID = '".$empid."' and DBNAME = '".$dbname."'
             and (end_date is null or DATEADD(day, 3,end_date) >= convert(date,GETDATE()))";
     $result = $this->get_row($sql, 'SUBSIDIARY');
     return $result;

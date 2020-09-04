@@ -53,6 +53,12 @@
 							$limit_from = $wfh_user[0]["start_convert"];
 						}
 
+						if(date('Y-m-d') >  $wfh_user[0]["end_convert"]){
+							$limit_to = $wfh_user[0]["end_convert"];
+						}else{
+							$limit_to = "-1D";
+						}
+
             // REGISTER wfh
             if ($_POST['btnwfhapply'] || $_POST['btnwfhapply_x']) :
 
