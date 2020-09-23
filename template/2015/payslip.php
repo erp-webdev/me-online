@@ -31,7 +31,7 @@
                                                 <option value="<?php echo $value['PeriodID']; ?>"<?php echo $key == 1 ? ' selected' : ''; ?>>
                                                     <?php 
                                                         // new payslip period beginning april2020
-                                                        if(value['PRYear'] > 2020 || (value['PRYear'] == 2020 && !in_array( value['PeriodID'], ['S01', 'S02', 'S03', 'S04', 'S05', 'S06', 'S07', 'S08', 'S09'])))
+                                                        if($value['PRYear'] > 2020 || ($value['PRYear'] == 2020 && !in_array( $value['PeriodID'], ['S01', 'S02', 'S03', 'S04', 'S05', 'S06', 'S07', 'S08', 'S09'])))
                                                             echo $value['PaymentType']." ".$value['PRYear']." ".date("m/d/Y", strtotime($value['PRFrom']))." to ".date("m/d/Y", strtotime($value['PRTo']));
                                                         else
                                                             echo $value['PaymentType']." ".$value['PRYear']." ".date("m/d/Y", strtotime($value['PeriodFrom']))." to ".date("m/d/Y", strtotime($value['PeriodTo']));
