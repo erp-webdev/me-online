@@ -28,7 +28,13 @@
                                                     <?php foreach ($payslip_period as $key => $value) : ?>
                                                         <?php //if ($value['PeriodID'] != 'S24') : ?>
                                                         <option value="<?php echo $value['PeriodID']; ?>"<?php echo $key == 1 ? ' selected' : ''; ?>>
-                                                            <?php echo $value['PaymentType']." ".$value['PRYear']." ".date("m/d/Y", strtotime($value['PeriodFrom']))." to ".date("m/d/Y", strtotime($value['PeriodTo'])); ?>
+                                                            <?php 
+                                                            if($value['PRYear'] > 2020 || ($value['PRYear'] == 2020 && !in_array( $value['PeriodID'], ['S01', 'S02', 'S03', 'S04', 'S05', 'S06', 'S07', 'S08', 'S09'])))
+                                                                echo $value['PaymentType']." ".$value['PRYear']." ".date("m/d/Y", strtotime($value['PRFrom']))." to ".date("m/d/Y", strtotime($value['PRTo'])); 
+                                                            else
+                                                                echo $value['PaymentType']." ".$value['PRYear']." ".date("m/d/Y", strtotime($value['PeriodFrom']))." to ".date("m/d/Y", strtotime($value['PeriodTo'])); 
+                                                                
+                                                                ?>
                                                         </option>  
                                                         <?php //endif; ?>
                                                     <?php endforeach; ?>
@@ -67,8 +73,18 @@
                                     <b>Tax Exemption: </b><?php echo $ups_taxdesc; ?><br>
                                     <b>SSS #: </b><?php echo $ups_sss; ?><br>
                                     <b>TIN #: </b><?php echo $ups_tin; ?><br>
-                                    <b>Cut-off Date: </b><span id='payperiod'><?php echo date("m/d/Y", strtotime($value['PeriodFrom'])); ?> to <?php echo date("m/d/Y", strtotime($value['PeriodTo'])); ?></span><br>
-                                    <b>Pay Period: </b><span id='payto'><?php echo date("m/d/Y", strtotime($value['PRTo'])); ?></span><br>
+                                    <b>Cut-off Date: </b><span id='payperiod'>
+                                    <?php 
+                                    if($value['PRYear'] > 2020 || ($value['PRYear'] == 2020 && !in_array( $value['PeriodID'], ['S01', 'S02', 'S03', 'S04', 'S05', 'S06', 'S07', 'S08', 'S09'])))
+                                        echo date("m/d/Y", strtotime($value['PRFrom'])) . " to " . date("m/d/Y", strtotime($value['PRTo'])); 
+                                    else
+                                        echo date("m/d/Y", strtotime($value['PeriodFrom'])); ?> to <?php echo date("m/d/Y", strtotime($value['PeriodTo'])); ?></span><br>
+                                    <b>Pay Period: </b><span id='payto'>
+                                    <?php 
+                                    if($value['PRYear'] > 2020 || ($value['PRYear'] == 2020 && !in_array( $value['PeriodID'], ['S01', 'S02', 'S03', 'S04', 'S05', 'S06', 'S07', 'S08', 'S09'])))
+                                        echo date("m/d/Y", strtotime($value['PRTo']));
+                                    else
+                                        echo date("m/d/Y", strtotime($value['PRTo'])); ?></span><br>
                                     <b>Account #: </b><?php echo $ups_acctnum; ?><br>
                                 </div>
                                 
