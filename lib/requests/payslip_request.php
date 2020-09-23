@@ -92,8 +92,10 @@
             else :
                 $payslip_period = $mainsql->get_payslip_period($payslip_year, $profile_comp);
             endif;
-            
-            echo '{"periodcover":"'.($payslip_period[0]['PeriodFrom'] ? date("m/d/Y", strtotime($payslip_period[0]['PeriodFrom'])).' to '.date("m/d/Y", strtotime($payslip_period[0]['PeriodTo'])) : '').'", "prto":"'.($payslip_period[0]['PeriodTo'] ? date("m/d/Y", strtotime($payslip_period[0]['PRTo'])) : '').'"}';
+            if($payslip_period[0]['PRYear'] > 2020 || ($payslip_period[0]['PRYear'] == 2020 && !in_array( $payslip_period[0]['PeriodID'], ['S01', 'S02', 'S03', 'S04', 'S05', 'S06', 'S07', 'S08', 'S09'])))
+                echo '{"periodcover":"'.($payslip_period[0]['PRFrom'] ? date("m/d/Y", strtotime($payslip_period[0]['PRFrom'])).' to '.date("m/d/Y", strtotime($payslip_period[0]['PRTo'])) : '').'", "prto":"'.($payslip_period[0]['PRTo'] ? date("m/d/Y", strtotime($payslip_period[0]['PeriodTo'])) : '').'"}';
+            else
+                echo '{"periodcover":"'.($payslip_period[0]['PeriodFrom'] ? date("m/d/Y", strtotime($payslip_period[0]['PeriodFrom'])).' to '.date("m/d/Y", strtotime($payslip_period[0]['PeriodTo'])) : '').'", "prto":"'.($payslip_period[0]['PeriodTo'] ? date("m/d/Y", strtotime($payslip_period[0]['PRTo'])) : '').'"}';
             
         break;
         case 'periodsel':                
