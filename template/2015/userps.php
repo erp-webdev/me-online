@@ -75,17 +75,17 @@
                                     <b>TIN #: </b><?php echo $ups_tin; ?><br>
                                     <b>Cut-off Date: </b><span id='payperiod'>
                                     <?php 
-                                    if($value['PRYear'] > 2020 || ($value['PRYear'] == 2020 && !in_array( $value['PeriodID'], ['S01', 'S02', 'S03', 'S04', 'S05', 'S06', 'S07', 'S08', 'S09'])))
-                                        echo date("m/d/Y", strtotime($value['PRFrom'])) . " to " . date("m/d/Y", strtotime($value['PRTo'])); 
+                                    if($payslip_period[0]['PRYear'] > 2020 || ($payslip_period[0]['PRYear'] == 2020 && !in_array( $payslip_period[0]['PeriodID'], ['S01', 'S02', 'S03', 'S04', 'S05', 'S06', 'S07', 'S08', 'S09'])))
+                                        echo date("m/d/Y", strtotime($payslip_period[0]['PRFrom'])) . " to " . date("m/d/Y", strtotime($payslip_period[0]['PRTo'])); 
                                     else
-                                        echo date("m/d/Y", strtotime($value['PeriodFrom'])); ?> to <?php echo date("m/d/Y", strtotime($value['PeriodTo'])); ?></span><br>
+                                        echo date("m/d/Y", strtotime($payslip_period[0]['PeriodFrom'])); ?> to <?php echo date("m/d/Y", strtotime($payslip_period[0]['PeriodTo'])); ?></span><br>
                                     <b>Pay Period: </b><span id='payto'>
                                     <?php 
-                                    if($value['PRYear'] > 2020 || ($value['PRYear'] == 2020 && !in_array( $value['PeriodID'], ['S01', 'S02', 'S03', 'S04', 'S05', 'S06', 'S07', 'S08', 'S09'])))
-                                        echo date("m/d/Y", strtotime($value['PRTo']));
+                                    if($payslip_period[0]['PRYear'] > 2020 || ($payslip_period[0]['PRYear'] == 2020 && !in_array( $payslip_period[0]['PeriodID'], ['S01', 'S02', 'S03', 'S04', 'S05', 'S06', 'S07', 'S08', 'S09'])))
+                                        echo date("m/d/Y", strtotime($payslip_period[0]['PRTo']));
                                     else
-                                        echo date("m/d/Y", strtotime($value['PRTo'])); ?></span><br>
-                                        
+                                        echo date("m/d/Y", strtotime($payslip_period[0]['PRTo'])); ?></span><br>
+
                                     <b>Account #: </b><?php echo $ups_acctnum; ?><br>
                                 </div>
                                 
