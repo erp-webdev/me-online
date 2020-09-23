@@ -85,6 +85,7 @@
                                         echo date("m/d/Y", strtotime($value['PRTo']));
                                     else
                                         echo date("m/d/Y", strtotime($value['PRTo'])); ?></span><br>
+                                        
                                     <b>Account #: </b><?php echo $ups_acctnum; ?><br>
                                 </div>
                                 
