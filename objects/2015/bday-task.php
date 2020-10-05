@@ -2,14 +2,14 @@
 
     $last_notify = LAST_NOTIFY;
 
-    if ($last_notify != date("Y-m-d") || !$last_notify) :
+    if ($last_notify != date("Y-m-d") || !$last_notify || true) :
 
         //SEND EMAIL
         $mailcount = 0;
 
         $bimgdata = $tblsql->get_bdayimg();
         $receivers = $tblsql->get_users_birthday(0, 0, NULL, 0, 0);
-
+        var_dump($receivers); exit;
         foreach ($receivers as $key => $value) :
 
             $bdaymsg = $bimgdata[0]['bimg_message'] ? "<br><br><span style='font-size: 18px; color: #F00; font-weight: bold;'>".$bimgdata[0]['bimg_message']."</span>" : '';
