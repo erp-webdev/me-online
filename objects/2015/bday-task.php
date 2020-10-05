@@ -50,7 +50,7 @@
 
         		 define("DBNAME", $value['DBNAME']);
                  $log = $tblsql->log_action($post, 'add');
-        		// define("DBNAME", 'SUBSIDIARY');
+        		 define("DBNAME", 'SUBSIDIARY');
 
                 //$appendmail2 = $mails->mail_cue('meonline_bday@megaworldcorp.com', 'hrportal@megaworldcorp.com', "Happy Birthday to you!", $message, $headers);
             endif;
