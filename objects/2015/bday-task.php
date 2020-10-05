@@ -32,7 +32,7 @@
             $headers .= "MIME-Version: 1.0\r\n";
             $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-            $cc = 'hrportal@megaworldcorp.com';
+            $cc = 'hrportal@megaworldcorp.com,kayag.global@megaworldcorp.com';
 
             if ($value['EmailAdd']) :
                 if ($value['DBNAME'] == 'GL') :     
@@ -48,8 +48,8 @@
                 $post['DATE'] = date("m/d/Y H:i:s.000");
 
 
-        		// define("DBNAME", $value['DBNAME']);
-                // $log = $tblsql->log_action($post, 'add');
+        		 define("DBNAME", $value['DBNAME']);
+                 $log = $tblsql->log_action($post, 'add');
         		// define("DBNAME", 'SUBSIDIARY');
 
                 //$appendmail2 = $mails->mail_cue('meonline_bday@megaworldcorp.com', 'hrportal@megaworldcorp.com', "Happy Birthday to you!", $message, $headers);
