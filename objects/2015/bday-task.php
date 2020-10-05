@@ -9,7 +9,6 @@
 
         $bimgdata = $tblsql->get_bdayimg();
         $receivers = $tblsql->get_users_birthday(0, 0, NULL, 0, 0);
-        var_dump($receivers); exit;
         foreach ($receivers as $key => $value) :
 
             $bdaymsg = $bimgdata[0]['bimg_message'] ? "<br><br><span style='font-size: 18px; color: #F00; font-weight: bold;'>".$bimgdata[0]['bimg_message']."</span>" : '';
@@ -33,7 +32,7 @@
             $headers .= "MIME-Version: 1.0\r\n";
             $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-            $cc = 'hrportal@megaworldcorp.com';
+            $cc = 'hrportal@megaworldcorp.com,kayag.global@megaworldcorp.com';
 
             if ($value['EmailAdd']) :
                 if ($value['DBNAME'] == 'GL') :     
