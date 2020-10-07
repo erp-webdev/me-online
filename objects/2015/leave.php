@@ -211,7 +211,10 @@
 										if($_POST['leave_type'] == 'L01' || $_POST['leave_type'] == 'L03'){
 											$usable_lbalance = $mainsql->get_usablebal($profile_idnum, $_POST['leave_type']);
 											$balanceval = $usable_lbalance[0]['BalanceHrs'];
-										}   
+										}
+
+										echo '{"success": false, "error": "Dev Test: BalanceVal: '.$balanceval.' BackendHours: '.$backend_hours.'"}';
+										exit();
 
 										if($balanceval < $backend_hours){
 											echo '{"success": false, "error": "Your leave with pay is greater than your leave balance"}';
