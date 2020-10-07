@@ -213,8 +213,8 @@
 											$balanceval = $usable_lbalance[0]['BalanceHrs'];
 										}
 
-										echo '{"success": false, "error": "Dev Test: BalanceVal: '.$balanceval.' BackendHours: '.$backend_hours.' Compressed: '.$profile_compressed.'"}';
-										exit();
+										// echo '{"success": false, "error": "Dev Test: BalanceVal: '.$balanceval.' BackendHours: '.$backend_hours.' Compressed: '.$profile_compressed.'"}';
+										// exit();
 
 										if($balanceval < $backend_hours){
 											echo '{"success": false, "error": "Your leave with pay is greater than your leave balance"}';
