@@ -5201,7 +5201,8 @@
 
 				//backhere
 				//SEND EMAIL TO HR
-				foreach($hr_emails as $email){
+				// foreach($hr_emails as $email){
+				// }
 
 					$hr_name = "SELECT NickName from viewHREmpMaster where EmailAdd='$email'";
 					$hr_name = $mainsql->get_row($hr_name);
@@ -5226,9 +5227,8 @@
 					$headers .= "MIME-Version: 1.0\r\n";
 					$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-					$sendmail = mail($email, "New COE Request ($title_notif Notification)", $message, $headers);
+					$sendmail = mail(implode(',', $hr_emails), "New COE Request ($title_notif Notification)", $message, $headers);
 
-				}
 				//$sendmail = mail("hrportal@megaworldcorp.com", "New COE Request ($title_notif Notification)", $message, $headers); //#HRPortal
 
 
@@ -6267,7 +6267,8 @@
 
 					if($status == 'Cancelled' || $status == 'Done'){
 
-						foreach($hr_emails as $email){
+						// foreach($hr_emails as $email){
+						// }
 
 							$hr_name = "SELECT NickName from viewHREmpMaster where EmailAdd='$email'";
 							$hr_name = $mainsql->get_row($hr_name);
@@ -6289,9 +6290,8 @@
 							$headers .= "MIME-Version: 1.0\r\n";
 							$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-							$sendmail = mail($email, "COE Request Update ($title_notif Notification)", $message, $headers);
+							$sendmail = mail(implode(',', $hr_emails), "COE Request Update ($title_notif Notification)", $message, $headers);
 
-						}
 						//$sendmail = mail("hrportal@megaworldcorp.com", "COE Request Update ($title_notif Notification)", $message, $headers); //#HRPortal
 
 					}
