@@ -5137,7 +5137,7 @@
 				if(in_array($coetype, $coetypes["2"])){
 					$emp_hr .="A.[level] = '2'";
 				}else{
-					$emp_hr .="A.[level] = '2'";//change to 3 to mail the individual assigned hr in coeusers and delete #hrportal
+					$emp_hr .="A.[level] = '3'";//change to 3 to mail the individual assigned hr in coeusers and delete #hrportal
 				}
 				$emp_hr .=" or A.[level] ='1'";
 
@@ -6057,7 +6057,7 @@
 						<table style="padding-left: 200px; padding-right: 50px">
 							<tr>
 								<td><b>Basic Salary</b></td>
-								<td style="padding-left: 50px;"><b><?php if(false){echo $emp_info[0]["MonthlyRate"];}else{ echo "SAMPLE"; }; ?></b></td>
+								<td style="padding-left: 50px;"><b><?php if(true){echo $emp_info[0]["MonthlyRate"];}else{ echo "SAMPLE"; }; ?></b></td>
 							</tr>
 							<?php if($emp_info[0]["Allowance"] != 0){ ?>
 								<tr>
@@ -6220,7 +6220,7 @@
 					if(in_array($coetype, $coetypes["2"])){
 						$emp_hr .="A.[level] = '2'";
 					}else{
-						$emp_hr .="A.[level] = '2'";//change to 3 to change the email receipt to individual assigned HR and delete #hrportal
+						$emp_hr .="A.[level] = '3'";//change to 3 to change the email receipt to individual assigned HR and delete #hrportal
 					}
 					$emp_hr .=" or A.[level] ='1'";
 
