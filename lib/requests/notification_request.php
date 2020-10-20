@@ -6239,7 +6239,7 @@
 						array_push($hr_emails, $hr_id['EmailAdd']);
 					}
 
-					$message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 95%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>New Certificate of Employment Request</span><br><br>Hi ".$emp_info[0]['NickName'].",<br><br>";
+					$message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 95%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>Certificate of Employment Request</span><br><br>Hi ".$emp_info[0]['NickName'].",<br><br>";
 
 					if($status == 'For Release'){// gohere
 						$message .= "Your Certificate of Employment ($coetype) with a Reference No: ".$refno." is now For Release (".date('F j, Y', strtotime($coe_result[0]['updated_at'])).").";
@@ -6272,7 +6272,7 @@
 							$hr_name = "SELECT NickName from viewHREmpMaster where EmailAdd='$email'";
 							$hr_name = $mainsql->get_row($hr_name);
 
-							$message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 95%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>New Certificate of Employment Request</span><br><br>Hi ".$hr_name[0]['NickName'].",<br><br>";
+							$message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 95%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>Certificate of Employment Request</span><br><br>Hi ".$hr_name[0]['NickName'].",<br><br>";
 
 							if($status == 'Cancelled'){// gohere
 								$message .= "The Requested Certificate of Employment ($coetype) for ".$emp_info[0]['FullName']."(".$emp_info[0]['CompanyName'].") - (".$emp_info[0]['DivisionName'].") with a Reference No: ".$refno." have been Cancelled at ".date('F j, Y', strtotime($coe_result[0]['created_at'])).".";
