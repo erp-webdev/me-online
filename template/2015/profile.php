@@ -28,9 +28,9 @@
                                             <?php if ($profile_pic) : ?>
                                                 <img src="<?php echo PAYWEB; ?>/imageuploader/<?php echo $profile_pic; ?>" width="200" height="200" />
                                             <?php else : ?>
-                                                <?php if ($emp_data['Gender'] == 'F') : ?>
+                                                <?php if ($emp_data['Gender'] == 'FEMALE') : ?>
                                                 <img src="<?php echo IMG_WEB; ?>/davatar_female.png" width="200" height="200" />
-                                                <?php else : ?>
+                                                <?php elseif ($emp_data['Gender'] == 'MALE'): ?>
                                                 <img src="<?php echo IMG_WEB; ?>/davatar_male.png" width="200" height="200" />
                                                 <?php endif; ?>
                                             <?php endif; ?>
@@ -72,10 +72,11 @@
                                         <br /><b>Personal Data</b>
                                         <table cellpadding="5" cellspacing="0" class="tdataform2" style="width: 100%;">
                                             <tr>
-                                                <td width="25%"><span class="lorangetext">*</span>  Last Name<br><input attribute="Last Name" type="text" name="LName" size="25" width="255" id="LName" onChange="upperCase(this)" class="txtbox" value="<?php echo $emp_data['LName']; ?>"></td>
-                                                <td width="25%"><span class="lorangetext">*</span>  First Name<br><input attribute="First Name" type="text" name="FName" size="25" width="255" id="FName" onChange="upperCase(this)" class="txtbox" value="<?php echo $emp_data['FName']; ?>"></td>
-                                                <td width="25%"><span class="lorangetext">*</span>  Middle Name<br><input attribute="Middle Name" type="text" name="MName" size="25" width="255" id="MName" onChange="upperCase(this)" class="txtbox" value="<?php echo $emp_data['MName']; ?>"></td>
-                                                <td width="25%"><span class="lorangetext">*</span>  Nickname<br><input attribute="Nickname" type="text" name="NickName" size="20" width="255" id="NickName" onChange="upperCase(this)" class="txtbox" value="<?php echo $emp_data['NickName']; ?>"></td>
+                                                <td width="20%"><span class="lorangetext">*</span>  Last Name<br><input attribute="Last Name" type="text" name="LName" size="25" width="255" id="LName" onChange="upperCase(this)" class="txtbox" value="<?php echo $emp_data['LName']; ?>"></td>
+                                                <td width="20%"><span class="lorangetext">*</span>  Extension Name<br><input attribute="Extension Name" type="text" name="LName" size="25" width="255" id="ExtensionName" onChange="upperCase(this)" class="txtbox" value="<?php echo $emp_data['ExtensionName']; ?>"></td>
+                                                <td width="20%"><span class="lorangetext">*</span>  First Name<br><input attribute="First Name" type="text" name="FName" size="25" width="255" id="FName" onChange="upperCase(this)" class="txtbox" value="<?php echo $emp_data['FName']; ?>"></td>
+                                                <td width="20%"><span class="lorangetext">*</span>  Middle Name<br><input attribute="Middle Name" type="text" name="MName" size="25" width="255" id="MName" onChange="upperCase(this)" class="txtbox" value="<?php echo $emp_data['MName']; ?>"></td>
+                                                <td width="20%"><span class="lorangetext">*</span>  Nickname<br><input attribute="Nickname" type="text" name="NickName" size="20" width="255" id="NickName" onChange="upperCase(this)" class="txtbox" value="<?php echo $emp_data['NickName']; ?>"></td>
                                             </tr>
                                         </table><br>
                                         <table cellpadding="0" cellspacing="0" class="tdataform2" style="width: 100%;">
@@ -632,7 +633,7 @@
                                                 <td>&nbsp;</td>
                                             </tr>
                                             <tr>
-                                                <td>Full Name: <b><?php echo $emp_data['FName'].' '.$emp_data['MName'].' '.$emp_data['LName']; ?></b></td>
+                                                <td>Full Name: <b><?php echo $emp_data['FName'].' '.$emp_data['MName'].' '.$emp_data['LName'] . " " . $emp_data['ExtensionName']; ?></b></td>
                                             </tr>
                                         </table><br>
                                         <table cellpadding="5" cellspacing="0" class="tdataform2" style="width: 100%;">
@@ -644,8 +645,8 @@
                                             <tr>
                                                 <td><span class="lorangetext">*</span> Gender<br>
                                                 <select name="EGender" id="EGender" class="txtbox" style="width: 165px;">
-                                                    <option value="F"<?php echo ($emp_data['Gender'] == 'F' || $emp_data['Gender'] == 'FEMALE') ? ' selected' : ''; ?>>FEMALE</option>
-                                                    <option value="M"<?php echo ($emp_data['Gender'] == 'M' || $emp_data['Gender'] == 'MALE') ? ' selected' : ''; ?>>MALE</option>
+                                                    <option value="FEMALE"<?php echo ($emp_data['Gender'] == 'F' || $emp_data['Gender'] == 'FEMALE') ? ' selected' : ''; ?>>FEMALE</option>
+                                                    <option value="MALE"<?php echo ($emp_data['Gender'] == 'M' || $emp_data['Gender'] == 'MALE') ? ' selected' : ''; ?>>MALE</option>
                                                 </select>
                                                 </td>
                                                 <td><span class="lorangetext">*</span> Nationality<br/>
@@ -660,7 +661,7 @@
                                         <table cellpadding="5" cellspacing="0" class="tdataform2" style="width: 100%;">
                                             <tr>
                                                 <td>Telephone<br><input attribute="Telephone" type="text" name="HomeNumber" size="20" id="HomeNumber" class="txtbox" value="<?php echo $emp_data['HomeNumber']; ?>"></td>
-                                                <td><span class="lorangetext">*</span> Mobile No.<br/><input attribute="Mobile No." type="text" name="MobileNumber" size="20" id="MobileNumber" class="txtbox" value="<?php echo $emp_data['MobileNumber']; ?>"></td>
+                                                <td><span class="lorangetext">*</span> Mobile No.<br/><input attribute="Mobile No." type="text" name="MobileNumber" size="20" id="MobileNumber" class="txtbox" value="<?php echo $emp_data['MobileNumber']; ?>" data-inputmask="mask: '+63  999 9999 999"></td>
                                             </tr>
                                         </table><br>
                                         <table cellpadding="5" cellspacing="0" class="tdataform2" style="width: 100%;">
