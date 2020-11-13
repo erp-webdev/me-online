@@ -1126,7 +1126,7 @@
 
 			$('#MobileNumber').inputmask({"mask": "9999 999 9999"});
 
-			$("#EmailAdd2").inputmask({ alias: "email"});
+			$("#EmailAdd2").inputmask('email');
 
 		});
 
