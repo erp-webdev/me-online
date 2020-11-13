@@ -1133,10 +1133,12 @@
 
 			$("#samplebutton").on('click', function(){
 
+				alert($('#EmailAdd2').val());
+
 				if(!($('#EmailAdd2').inputmask("isComplete"))){
 					alert("Your personal e-mail address is either incomplete or incorrect.");
 				}else{
-					alert("Email Complete");
+					alert($('#EmailAdd2').inputmask("isComplete"));
 				}
 
 			});
