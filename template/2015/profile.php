@@ -1121,7 +1121,11 @@
 <script>
 
 $('#samplebutton').on('click', function(){
-	alert('clicked!');
+	if ($('#MobileNumber').inputmask("isComplete")){
+		alert('complete');
+	}else{
+		alert('not complete');
+	}
 });
 
 </script>
