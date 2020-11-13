@@ -1139,9 +1139,7 @@
 				if(!pattern.test(userinput))
 				{
 				  alert('not a valid e-mail address');
-				}​else{
-					alert('valid e-mail address');
-				}
+				}​
 
 				// if(!($('#EmailAdd2').inputmask("isComplete"))){
 				// 	alert("Your personal e-mail address is either incomplete or incorrect.");
