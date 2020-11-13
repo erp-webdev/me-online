@@ -1124,7 +1124,7 @@
 
 		$(document).ready(function (){
 
-			// $('#MobileNumber').inputmask({"mask": "9999 999 9999"});
+			$('#MobileNumber').inputmask({"mask": "9999 999 9999"});
 
 			$("#EmailAdd2").inputmask("{1,20}@{1,20}.*{3}");
 
