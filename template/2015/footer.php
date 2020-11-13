@@ -52,7 +52,7 @@
     <script type="text/javascript" src="<?php echo JS; ?>/angular.js"></script>
     <script type="text/javascript" src="<?php echo JS; ?>/inputmask/inputmask.min.js"></script>
     <script type="text/javascript" src="<?php echo JS; ?>/inputmask/bindings/inputmask.binding.js"></script>
-    <script type="text/javascript" src="<?php echo JS; ?>/inputmask/inputmaskfix.js"></script>
+    <!-- <script type="text/javascript" src="<?php echo JS; ?>/inputmask/inputmaskfix.js"></script> -->
 
     <!-- FOR IFRAME UPLOAD -->
     <script type="text/javascript" src="<?php echo JS; ?>/jquery.iframe-post-form.js"></script>
