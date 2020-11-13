@@ -2538,7 +2538,7 @@ $(function ()
                   validate_message = "Your personal e-mail address is either incomplete or incorrect.";
                 }
 
-                if($validate_error){
+                if(validate_error){
             			$('.uprofile_msg')
             			.html(validate_message)
             			.css({
