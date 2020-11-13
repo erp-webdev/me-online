@@ -1122,12 +1122,10 @@
 
 
 		<script>
-		$(document).ready(function() {
 
-			$('#test').inputmask('9999 999 9999');
-
-
-
+		$(document).ready(function (){
+			alert('ready');
+			$('#MobileNumber').inputmask({"mask": "9999 999 9999"});
 
 			$('#samplebutton').on('click', function(){
 
@@ -1138,7 +1136,7 @@
 					alert('not complete');
 				}
 			});
-			
+
 		});
 
 		// if ($('#MobileNumber').inputmask("isComplete")){
