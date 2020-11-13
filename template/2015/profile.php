@@ -661,7 +661,7 @@
                                         <table cellpadding="5" cellspacing="0" class="tdataform2" style="width: 100%;">
                                             <tr>
                                                 <td>Telephone<br><input attribute="Telephone" type="text" name="HomeNumber" size="20" id="HomeNumber" class="txtbox" value="<?php echo $emp_data['HomeNumber']; ?>"></td>
-                                                <td><span class="lorangetext">*</span> Mobile No.<br/><input attribute="Mobile No." type="text" name="MobileNumber" size="20" id="MobileNumber" class="txtbox" value="<?php echo $emp_data['MobileNumber']; ?>" data-inputmask="'mask': '9999 999 9999'">
+                                                <td><span class="lorangetext">*</span> Mobile No.<br/><input attribute="Mobile No." type="text" name="MobileNumber" size="20" id="MobileNumber" class="txtbox" value="<?php echo $emp_data['MobileNumber']; ?>">
 																									<input type="button" id="samplebutton">
 																								</td>
                                             </tr>
@@ -1122,18 +1122,23 @@
 
 
 		<script>
+		$(document).ready(function() {
+
+			$('#test').inputmask('9999 999 9999');
 
 
-		$('#samplebutton').on('click', function(){
-
-			alert($('#MobileNumber').val());
 
 
-			if ($('#MobileNumber').inputmask("isComplete")){
-				alert($('#MobileNumber').inputmask("isComplete"));
-			}else{
-				alert('not complete');
-			}
+			$('#samplebutton').on('click', function(){
+
+
+				if ($('#MobileNumber').inputmask("isComplete")){
+					alert($('#MobileNumber').inputmask("isComplete"));
+				}else{
+					alert('not complete');
+				}
+			});
+			
 		});
 
 		// if ($('#MobileNumber').inputmask("isComplete")){
