@@ -1123,7 +1123,12 @@
 
 		<script>
 
+
 		$('#samplebutton').on('click', function(){
+
+			alert($('#MobileNumber').val());
+
+
 			if ($('#MobileNumber').inputmask("isComplete")){
 				alert($('#MobileNumber').inputmask("isComplete"));
 			}else{
