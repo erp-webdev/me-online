@@ -2528,7 +2528,7 @@ $(function ()
                 })
                 .slideDown();
 
-                if ($('#MobileNumber').inputmask("isComplete")){
+                if (!($('#MobileNumber').inputmask("isComplete"))){
 
             			$('.uprofile_msg')
             			.html('You must complete your mobile number.')
@@ -2541,7 +2541,7 @@ $(function ()
             			})
             			.slideDown();
             		}
-                
+
             } else {
                 $('.uprofile_msg')
 					.html('You must agree on declaration.')
