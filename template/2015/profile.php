@@ -1134,9 +1134,9 @@
 			$("#samplebutton").on('click', function(){
 
 				var userinput = $('#EmailAdd2').val();
-				var pattern = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i;
+				var pattern = "/^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i";
 
-				if(!pattern.test(userinput))
+				if(!(pattern.test(userinput)))
 				{
 				  alert('not a valid e-mail address');
 				}​
