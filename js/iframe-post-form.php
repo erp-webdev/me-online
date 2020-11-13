@@ -2540,6 +2540,7 @@ $(function ()
             										'height' : 'auto'
             			})
             			.slideDown();
+                  return false;
             		}
 
             } else {
