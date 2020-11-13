@@ -1118,29 +1118,31 @@
                             <?php endforeach; ?>
                         </div>
                     </div>
-<script>
-
-$('#samplebutton').on('click', function(){
-	if ($('#MobileNumber').inputmask("isComplete")){
-		alert('complete');
-	}else{
-		alert('not complete');
-	}
-});
-
-// if ($('#MobileNumber').inputmask("isComplete")){
-
-// 	$('.uprofile_msg')
-// 	.html('You must complete your mobile number.')
-// 	.css({
-// 		'color' : '#9c0006',
-// 		'background' : '#ffc7ce',
-// 		'border' : '2px solid #9c0006',
-// 								'margin-top' : '10px',
-// 								'height' : 'auto'
-// 	})
-// 	.slideDown();
-// }
-
-</script>
     <?php include(TEMP."/footer.php"); ?>
+
+
+		<script>
+
+		$('#samplebutton').on('click', function(){
+			if ($('#MobileNumber').inputmask("isComplete")){
+				alert('complete');
+			}else{
+				alert('not complete');
+			}
+		});
+
+		// if ($('#MobileNumber').inputmask("isComplete")){
+
+		// 	$('.uprofile_msg')
+		// 	.html('You must complete your mobile number.')
+		// 	.css({
+		// 		'color' : '#9c0006',
+		// 		'background' : '#ffc7ce',
+		// 		'border' : '2px solid #9c0006',
+		// 								'margin-top' : '10px',
+		// 								'height' : 'auto'
+		// 	})
+		// 	.slideDown();
+		// }
+
+		</script>
