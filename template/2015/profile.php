@@ -673,7 +673,7 @@
                                         </table><br>
                                         <table cellpadding="5" cellspacing="0" class="tdataform2" style="width: 100%;">
                                             <tr>
-                                                <td><span class="lorangetext">*</span>  Personal E-mail<br><input attribute="Personal E-mail" type="text" name="EmailAdd2" size="20" id="EmailAdd2" class="txtbox" value="<?php echo $emp_data['EmailAdd2']; ?>"></td>
+                                                <td><span class="lorangetext">*</span>  Personal E-mail<br><input attribute="Personal E-mail" type="text" name="EmailAdd2" size="20" id="EmailAdd2" class="txtbox" value="<?php echo $emp_data['EmailAdd2']; ?>"><input type="button" id="samplebutton"></td>
                                                 <td><span class="lorangetext">*</span> Corporate E-mail<br/><input attribute="Corporate E-mail" type="text" name="EmailAdd" size="20" id="EmailAdd" class="txtbox" value="<?php echo $emp_data['EmailAdd']; ?>"></td>
                                             </tr>
                                         </table><br>
@@ -1129,6 +1129,19 @@
 			// $("#EmailAdd2").inputmask("{1,20}@{1,20}.*{3}");
 
 			Inputmask("email").mask("#EmailAdd2");
+
+
+			$("#samplebutton").on('click', function(){
+
+				if(!($('#EmailAdd2').inputmask("isComplete"))){
+					alert("Your personal e-mail address is either incomplete or incorrect.");
+				}else{
+					alert("Email Complete");
+				}
+
+			});
+
+
 
 		});
 
