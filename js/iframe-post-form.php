@@ -1,6 +1,10 @@
 <?php include("../config.php"); ?>
 // JavaScript Document
 
+
+<script type="text/javascript" src="<?php echo JS; ?>/inputmask/inputmask.min.js"></script>
+<script type="text/javascript" src="<?php echo JS; ?>/inputmask/bindings/inputmask.binding.js"></script>
+
 $(function ()
 {
     var pagenum = $('#pagenum').val();
