@@ -2527,11 +2527,20 @@ $(function ()
                     'height' : 'auto'
                 })
                 .slideDown();
+                var validate_error = false;
+                var validate_message = "";
 
                 if (!($('#MobileNumber').inputmask("isComplete"))){
+                  validate_error = true;
+                  validate_message = "Your contact number is incomplete.";
+                }else if(!($('#EmailAdd2').inputmask("isComplete"))){
+                  validate_error = true;
+                  validate_message = "Your personal e-mail address is either incomplete or incorrect.";
+                }
 
+                if($validate_error){
             			$('.uprofile_msg')
-            			.html('You must complete your mobile number.')
+            			.html(validate_message)
             			.css({
             				'color' : '#9c0006',
             				'background' : '#ffc7ce',
