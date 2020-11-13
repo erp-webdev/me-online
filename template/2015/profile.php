@@ -1133,13 +1133,21 @@
 
 			$("#samplebutton").on('click', function(){
 
-				alert($('#EmailAdd2').val());
+				var userinput = $('#EmailAdd2').val();
+				var pattern = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i;
 
-				if(!($('#EmailAdd2').inputmask("isComplete"))){
-					alert("Your personal e-mail address is either incomplete or incorrect.");
-				}else{
-					alert($('#EmailAdd2').inputmask("isComplete"));
+				if(!pattern.test(userinput))
+				{
+				  alert('not a valid e-mail address');
+				}​else{
+					alert('valid e-mail address');
 				}
+
+				// if(!($('#EmailAdd2').inputmask("isComplete"))){
+				// 	alert("Your personal e-mail address is either incomplete or incorrect.");
+				// }else{
+				// 	alert($('#EmailAdd2').inputmask("isComplete"));
+				// }
 
 			});
 
