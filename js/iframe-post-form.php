@@ -2531,7 +2531,7 @@ $(function ()
                 var validate_message = "";
 
                 var userinput = $('#EmailAdd2').val();
-                var userinput2 = $('#EmailAdd2').val();
+                var userinput2 = $('#EmailAdd').val();
         				var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
                 if (!($('#MobileNumber').inputmask("isComplete"))){
