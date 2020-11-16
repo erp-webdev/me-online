@@ -2531,6 +2531,7 @@ $(function ()
                 var validate_message = "";
 
                 var userinput = $('#EmailAdd2').val();
+                var userinput2 = $('#EmailAdd2').val();
         				var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
                 if (!($('#MobileNumber').inputmask("isComplete"))){
@@ -2539,6 +2540,9 @@ $(function ()
                 }else if(!(userinput.match(mailformat))){
                   validate_error = true;
                   validate_message = "Your personal e-mail address is either incomplete or incorrect.";
+                }else if(!(userinput2.match(mailformat))){
+                  validate_error = true;
+                  validate_message = "Your corporate e-mail address is either incomplete or incorrect.";
                 }
 
                 if(validate_error){
