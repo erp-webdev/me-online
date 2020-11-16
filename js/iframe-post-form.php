@@ -2543,6 +2543,9 @@ $(function ()
                 }else if(!(userinput2.match(mailformat))){
                   validate_error = true;
                   validate_message = "Your corporate e-mail address is either incomplete or has incorrect format.";
+                }else if (!($('#ContactMobileNbr').inputmask("isComplete"))){
+                  validate_error = true;
+                  validate_message = "Your emergency contact number is incomplete.";
                 }
 
                 if(validate_error){
