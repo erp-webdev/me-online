@@ -2539,10 +2539,10 @@ $(function ()
                   validate_message = "Your contact number is incomplete.";
                 }else if(!(userinput.match(mailformat))){
                   validate_error = true;
-                  validate_message = "Your personal e-mail address is either incomplete or incorrect.";
+                  validate_message = "Your personal e-mail address is either incomplete or has incorrect format.";
                 }else if(!(userinput2.match(mailformat))){
                   validate_error = true;
-                  validate_message = "Your corporate e-mail address is either incomplete or incorrect.";
+                  validate_message = "Your corporate e-mail address is either incomplete or has incorrect format.";
                 }
 
                 if(validate_error){
