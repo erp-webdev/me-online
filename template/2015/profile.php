@@ -1126,52 +1126,11 @@
 
 			$('#MobileNumber').inputmask({"mask": "9999 999 9999"});
 
-			// $("#EmailAdd2").inputmask("{1,20}@{1,20}.*{3}");
-
 			Inputmask("email").mask("#EmailAdd2");
 
-			//email mask
-		  // $("#EmailAdd2").inputmask({
-		  //   mask: "*{1,20}[.*{1,20}][.*{1,20}][.*{1,20}]@*{1,20}[.*{2,6}][.*{1,2}]",
-		  //   greedy: false,
-		  //   onBeforePaste: function (pastedValue, opts) {
-		  //     pastedValue = pastedValue.toLowerCase();
-		  //     return pastedValue.replace("mailto:", "");
-		  //   },
-		  //   definitions: {
-		  //     '*': {
-		  //       validator: "[0-9A-Za-z!#$%&'*+/=?^_`{|}~\-]",
-		  //       casing: "lower"
-		  //     }
-		  //   }
-		  // });
-
-
+			//tester
 			$("#samplebutton").on('click', function(){
 
-				var userinput = $('#EmailAdd2').val();
-				// var pattern = "/^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i";
-				//
-				// if(!(pattern.test(userinput)))
-				// {
-				//   alert('not a valid e-mail address');
-				// }​
-
-				var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-				if(userinput.match(mailformat))
-				{
-				alert("Valid email address!");
-				}
-				else
-				{
-				alert("You have entered an invalid email address!");
-				}
-
-				// if(!($('#EmailAdd2').inputmask("isComplete"))){
-				// 	alert("Your personal e-mail address is either incomplete or incorrect.");
-				// }else{
-				// 	alert($('#EmailAdd2').inputmask("isComplete"));
-				// }
 
 			});
 

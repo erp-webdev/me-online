@@ -2530,10 +2530,13 @@ $(function ()
                 var validate_error = false;
                 var validate_message = "";
 
+                var userinput = $('#EmailAdd2').val();
+        				var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
                 if (!($('#MobileNumber').inputmask("isComplete"))){
                   validate_error = true;
                   validate_message = "Your contact number is incomplete.";
-                }else if(!($('#EmailAdd2').inputmask("isComplete"))){
+                }else if(!(userinput.match(mailformat))){
                   validate_error = true;
                   validate_message = "Your personal e-mail address is either incomplete or incorrect.";
                 }
