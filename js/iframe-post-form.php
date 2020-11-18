@@ -2551,9 +2551,6 @@ $(function ()
                   validate_message = "Please select your gender.";
                 }
 
-                alert($('#EGender').val());
-                return false;
-
                 if(validate_error){
             			$('.uprofile_msg')
             			.html(validate_message)
