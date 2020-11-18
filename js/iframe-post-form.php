@@ -2546,6 +2546,9 @@ $(function ()
                 }else if (!($('#ContactMobileNbr').inputmask("isComplete"))){
                   validate_error = true;
                   validate_message = "Your emergency contact number is incomplete.";
+                }else if (!($('#EGender').val())){
+                  validate_error = true;
+                  validate_message = "Please select your gender.";
                 }
 
                 if(validate_error){
