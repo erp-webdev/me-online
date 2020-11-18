@@ -645,6 +645,7 @@
                                             <tr>
                                                 <td><span class="lorangetext">*</span> Gender<br>
                                                 <select name="EGender" id="EGender" class="txtbox" style="width: 165px;">
+																										<option selected>Please Select</option>
                                                     <option value="FEMALE"<?php echo ($emp_data['Gender'] == 'F' || $emp_data['Gender'] == 'FEMALE') ? ' selected' : ''; ?>>FEMALE</option>
                                                     <option value="MALE"<?php echo ($emp_data['Gender'] == 'M' || $emp_data['Gender'] == 'MALE') ? ' selected' : ''; ?>>MALE</option>
                                                 </select>
@@ -673,7 +674,7 @@
                                         </table><br>
                                         <table cellpadding="5" cellspacing="0" class="tdataform2" style="width: 100%;">
                                             <tr>
-                                                <td><span class="lorangetext">*</span>  Personal E-mail<br><input attribute="Personal E-mail" type="text" name="EmailAdd2" size="20" id="EmailAdd2" class="txtbox" value="<?php echo $emp_data['EmailAdd2']; ?>"><input type="button" id="samplebutton"></td>
+                                                <td><span class="lorangetext">*</span>  Personal E-mail<br><input attribute="Personal E-mail" type="text" name="EmailAdd2" size="20" id="EmailAdd2" class="txtbox" value="<?php echo $emp_data['EmailAdd2']; ?>"></td>
                                                 <td><span class="lorangetext">*</span> Corporate E-mail<br/><input attribute="Corporate E-mail" type="text" name="EmailAdd" size="20" id="EmailAdd" class="txtbox" value="<?php echo $emp_data['EmailAdd']; ?>"></td>
                                             </tr>
                                         </table><br>
@@ -1126,16 +1127,8 @@
 
 			$('#MobileNumber').inputmask({"mask": "9999 999 9999"});
 			$('#ContactMobileNbr').inputmask({"mask": "9999 999 9999"});
-
-			
 			Inputmask("email").mask("#EmailAdd2");
 			Inputmask("email").mask("#EmailAdd");
-
-			//tester
-			$("#samplebutton").on('click', function(){
-
-
-			});
 
 		});
 
