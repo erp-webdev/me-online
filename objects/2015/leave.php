@@ -98,14 +98,23 @@
 								// echo '{"success": false, "error": " '.$bal1.' >= '.$day1.'  && '.$balanceval.' => '.$day1.' "}';
 								// exit();
 
-				// #DevTest
-				echo '{"success": false, "error": "WebDev Test -- Post Days: '.$_POST['days'].' Post Balance: '.$_POST['balance'].' Balance Val: '.$balanceval.'"}';
-				exit();
 
-				// #DevTest
+				// For Negative Balances
+				$post_balance = $_POST['balance'];
+
+				if($_POST['balance'] < 0 || $balanceval < 0){
+					$post_balance = 0;
+					$balanceval = 0;
+				}
 
 
-                if ($_POST['balance'] >= $_POST['days'] && $balanceval >= $_POST['days']) :
+				// if ($_POST['balance'] >= $_POST['days'] && $balanceval >= $_POST['days']) :
+                if ($post_balance >= $_POST['days'] && $balanceval >= $_POST['days']) :
+
+// #DevTest
+echo '{"success": false, "error": "WebDev Test -- Post Days: '.$_POST['days'].' Post Balance: '.$_POST['balance'].' Balance Val: '.$balanceval.'"}';
+exit();
+// #DevTest
 
 
                     if ($_POST['leave_type'] == "L01" && count($_POST['leave_duration']) >= 3) :
