@@ -111,12 +111,6 @@
 				// if ($_POST['balance'] >= $_POST['days'] && $balanceval >= $_POST['days']) :
                 if ($post_balance >= $_POST['days'] && $balanceval >= $_POST['days']) :
 
-// #DevTest
-echo '{"success": false, "error": "WebDev Test -- Post Days: '.$_POST['days'].' Post Balance: '.$_POST['balance'].' Balance Val: '.$balanceval.'"}';
-exit();
-// #DevTest
-
-
                     if ($_POST['leave_type'] == "L01" && count($_POST['leave_duration']) >= 3) :
                         if (!$_FILES['attachment1']['name']) :
                             echo '{"success": false, "error": "Attachment is required on 3 or more day sick leave"}';
@@ -235,6 +229,11 @@ exit();
 											echo '{"success": false, "error": "Your leave with pay is greater than your leave balance"}';
 											exit();
 										}
+
+										// #DevTest
+										echo '{"success": false, "error": "WebDev Test -- Post Days: '.$_POST['days'].' Post Balance: '.$post_balance.' Balance Val: '.$balanceval.' Backend Hours: '.$backend_hours.'"}';
+										exit();
+										// #DevTest
 
                     $cnti = 0;
 
