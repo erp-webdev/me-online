@@ -225,15 +225,15 @@
 										// echo '{"success": false, "error": "Dev Test: BalanceVal: '.$balanceval.' BackendHours: '.$backend_hours.' Compressed: '.$profile_compressed.'"}';
 										// exit();
 
+										// For Negative Balances
+										if($balanceval < 0){
+											$balanceval = 0;
+										}
+
 										if($balanceval < $backend_hours){
 											echo '{"success": false, "error": "Your leave with pay is greater than your leave balance"}';
 											exit();
 										}
-
-										// #DevTest
-										echo '{"success": false, "error": "WebDev Test -- Post Days: '.$_POST['days'].' Post Balance: '.$post_balance.' Balance Val: '.$balanceval.' Backend Hours: '.$backend_hours.'"}';
-										exit();
-										// #DevTest
 
                     $cnti = 0;
 
