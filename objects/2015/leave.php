@@ -99,7 +99,7 @@
 								// exit();
 
 				// #DevTest
-				echo '{"success": false, "error": "WebDev Test -- Post Days: '.$_POST['days'].'"}';
+				echo '{"success": false, "error": "WebDev Test -- Post Days: '.$_POST['days'].' Post Balance: '.$_POST['balance'].' Balance Val: '.$balanceval.'"}';
 				exit();
 
 				// #DevTest
