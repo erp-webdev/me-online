@@ -235,6 +235,9 @@
 											exit();
 										}
 
+										echo '{"success": false, "error": "ISM Breakpoint: Leave application successfull but has been stopped."}';
+										exit();
+
                     $cnti = 0;
 
                     while($cnti < $leaveitemcount) :
