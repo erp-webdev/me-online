@@ -98,6 +98,12 @@
 								// echo '{"success": false, "error": " '.$bal1.' >= '.$day1.'  && '.$balanceval.' => '.$day1.' "}';
 								// exit();
 
+				// #DevTest
+				echo '{"success": false, "error": "WebDev Test -- Post Days: '.$_POST['days'].'"}';
+				exit();
+
+				// #DevTest
+
 
                 if ($_POST['balance'] >= $_POST['days'] && $balanceval >= $_POST['days']) :
 
