@@ -20,7 +20,7 @@
         $yearval = date('U') > $yearend ? date("Y") + 1 : date("Y");
         $dtr_period = $mainsql->get_dtr_period($yearval, $profile_comp, 1);
 
-        var_dump($dtr_period);
+        // var_dump($dtr_year);
 
         $cleanfrom = str_replace("  ", " ", $dtr_period[0]['PeriodFrom']);
         $cleanto = str_replace("  ", " ", $dtr_period[0]['PeriodTo']);
@@ -81,7 +81,7 @@
         $dtr_data = $mainsql->get_dtr_data($profile_idnum, date("m/d/Y", strtotime($expfrom[0].' '.$expfrom[1].' '.$expfrom[2].' 00:00:00')), date("m/d/Y", strtotime($expto[0].' '.$expto[1].' '.$expto[2].' 23:59:59')), $profile_comp);
 
         //var_dump($dtr_data);
-
+		var_dump($profile_idnum, date("m/d/Y", strtotime($expfrom[0].' '.$expfrom[1].' '.$expfrom[2].' 00:00:00')), date("m/d/Y", strtotime($expto[0].' '.$expto[1].' '.$expto[2].' 23:59:59')), $profile_comp);
 	}
 	else
 	{
