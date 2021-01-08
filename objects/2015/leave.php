@@ -153,92 +153,96 @@
 
                     $err_item = 0;
                     $leaveitemcount = count($_POST['leave_duration']);
-										$backend_count = 0;
-										$backend_hours = 0;
-										$coverage_dates = array();
+					$backend_count = 0;
+					$backend_hours = 0;
+					$coverage_dates = array();
 
-										while($backend_count < $leaveitemcount){
+					while($backend_count < $leaveitemcount){
 
-											$leaveduration = $_POST['leave_duration'][$backend_count];
-											$leavedate = $_POST['leave_date'][$backend_count];
-											$leavepay = $_POST['leave_pay'][$backend_count];
-											$leavetype = $_POST['leave_type'];
-											$leaveempid = $_POST['empid'];
-											array_push($coverage_dates, $_POST['leave_date'][$backend_count]);
+						$leaveduration = $_POST['leave_duration'][$backend_count];
+						$leavedate = $_POST['leave_date'][$backend_count];
+						$leavepay = $_POST['leave_pay'][$backend_count];
+						$leavetype = $_POST['leave_type'];
+						$leaveempid = $_POST['empid'];
+						array_push($coverage_dates, $_POST['leave_date'][$backend_count]);
 
-											if($leavepay){
+						if($leavepay){
 
-												$leavsched = $mainsql->get_schedshiftdtr($profile_idnum, $leavedate);
+							$leavsched = $mainsql->get_schedshiftdtr($profile_idnum, $leavedate);
 		                    $leaveshift = $mainsql->get_shift($leavsched[0]['ShiftID']);
 		                    $leavehours = $leaveshift[0]['NUMHrs'] - $leaveshift[0]['BreakHours'];
 
-												if ($leavetype == "L01" || $leavetype == "L03"){
+							if ($leavetype == "L01" || $leavetype == "L03"){
 
-													if($leaveduration == 'WD'){
-														if($profile_compressed){
-															$backend_hours += $leavehours;
-														}else{
-															$backend_hours += 1;
-														}
-													}else if($leaveduration == 'HD1' or $leaveduration == 'HD2'){
-														if($leavehours >= 8){
-															if($profile_compressed){
-																$backend_hours += $leavehours / 2;
-															}else{
-																$backend_hours += 0.5;
-															}
-														}else{
-															if($profile_compressed){
-																$backend_hours += $leavehours;
-															}else{
-																$backend_hours += 0.5;
-															}
-														}
-													}
-												}else{
-													if ($leaveduration == "WD") :
-	                                $backend_hours += 8;
-	                        elseif ($leaveduration == "HD1") :
-	                                $backend_hours += 4;
-	                        elseif ($leaveduration == "HD2") :
-	                                $backend_hours += 4;
-	                        else :
-	                            $backend_hours += 0;
-	                        endif;
-												}
-
-											}
-											$backend_count++;
+								if($leaveduration == 'WD'){
+									if($profile_compressed){
+										$backend_hours += $leavehours;
+									}else{
+										$backend_hours += 1;
+									}
+								}else if($leaveduration == 'HD1' or $leaveduration == 'HD2'){
+									if($leavehours >= 8){
+										if($profile_compressed){
+											$backend_hours += $leavehours / 2;
+										}else{
+											$backend_hours += 0.5;
 										}
-										$coverage_max = max($coverage_dates);
-										$coverage_min = min($coverage_dates);
-
-										//re iteration here to calculate duration with pay
-										//after compare again to balance $balanceval
-
-
-										if($_POST['leave_type'] == 'L01' || $_POST['leave_type'] == 'L03'){
-											$usable_lbalance = $mainsql->get_usablebal($profile_idnum, $_POST['leave_type']);
-											$balanceval = $usable_lbalance[0]['BalanceHrs'];
+									}else{
+										if($profile_compressed){
+											$backend_hours += $leavehours;
+										}else{
+											$backend_hours += 0.5;
 										}
+									}
+								}
+							}else{
+								if ($leaveduration == "WD") :
+		                                $backend_hours += 8;
+		                        elseif ($leaveduration == "HD1") :
+		                                $backend_hours += 4;
+		                        elseif ($leaveduration == "HD2") :
+		                                $backend_hours += 4;
+		                        else :
+		                            $backend_hours += 0;
+		                        endif;
+							}
 
-										// echo '{"success": false, "error": "Dev Test: BalanceVal: '.$balanceval.' BackendHours: '.$backend_hours.' Compressed: '.$profile_compressed.'"}';
-										// exit();
+						}
+						$backend_count++;
+					}
+					$coverage_max = max($coverage_dates);
+					$coverage_min = min($coverage_dates);
 
-										// For Negative Balances
-										if($balanceval < 0){
-											$balanceval = 0;
-										}
+					//re iteration here to calculate duration with pay
+					//after compare again to balance $balanceval
 
-										if($balanceval < $backend_hours){
-											echo '{"success": false, "error": "Your leave with pay is greater than your leave balance"}';
-											exit();
-										}
 
-										//devtest
-										echo '{"success": false, "error": "Leave Application will proceed"}';
-										exit();
-										//devtest
+					if($_POST['leave_type'] == 'L01' || $_POST['leave_type'] == 'L03'){
+						$usable_lbalance = $mainsql->get_usablebal($profile_idnum, $_POST['leave_type']);
+						$balanceval = $usable_lbalance[0]['BalanceHrs'];
+
+						if(!$profile_compressed){
+							$balanceval = $balanceval / 8;
+						}
+					}
+
+					// echo '{"success": false, "error": "Dev Test: BalanceVal: '.$balanceval.' BackendHours: '.$backend_hours.' Compressed: '.$profile_compressed.'"}';
+					// exit();
+
+					// For Negative Balances
+					if($balanceval < 0){
+						$balanceval = 0;
+					}
+
+					if($balanceval < $backend_hours){
+						echo '{"success": false, "error": "Your leave with pay is greater than your leave balance"}';
+						exit();
+					}
+
+					//devtest
+					echo '{"success": false, "error": "Leave Application will proceed"}';
+					exit();
+					//devtest
 
                     $cnti = 0;
 
