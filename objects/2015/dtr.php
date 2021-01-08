@@ -78,7 +78,7 @@
 
         //$dtr_data = $mainsql->get_dtr_data($profile_idnum, date("m/d/Y", strtotime($dtr_period[0])), date("m/d/Y", strtotime($dtr_period[1])));
 
-        $dtr_data = $mainsql->get_dtr_data($profile_idnum, date("m/d/Y", strtotime($expfrom[0].' '.$expfrom[1].' '.$expfrom[2].' 00:00:00')), date("m/d/Y", strtotime($expto[0].' '.$expto[1].' '.$expto[2].' 23:59:59')), $profile_comp);
+        $dtr_data = $mainsql->get_dtr_data($profile_idnum, date("m/d/Y", strtotime($expfrom[0].' '.$expfrom[1].' '.$expfrom[2].' 00:00:00')), date("m/d/Y", strtotime($expto[0].' '.$expto[1].' '.$expto[2].' 23:59:59')), $profile_comp);  
 
         //var_dump($dtr_data);
 
