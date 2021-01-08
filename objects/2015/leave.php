@@ -239,11 +239,6 @@
 						exit();
 					}
 
-					//devtest
-					echo '{"success": false, "error": "Leave Application will proceed"}';
-					exit();
-					//devtest
-
                     $cnti = 0;
 
                     while($cnti < $leaveitemcount) :
