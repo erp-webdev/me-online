@@ -235,7 +235,7 @@
 					}
 
 					if($balanceval < $backend_hours){
-						echo '{"success": false, "error": "Your leave with pay is greater than your leave balance."}';
+						echo '{"success": false, "error": "Your leave with pay is greater than your leave balance"}';
 						exit();
 					}
 
