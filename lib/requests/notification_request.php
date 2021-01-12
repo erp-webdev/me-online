@@ -6252,11 +6252,11 @@
 							$message .= " Schedule of COE release is every Monday to Friday from 2:00 to 4:00 PM. Please coordinate with your HR Business Partner.";
 						}
 					}else if ($status == 'Cancelled'){
-						$message .= "Your Certificate of Employment ($coetype) with a Reference No: ".$refno." have been Cancelled at ".date('F j, Y', strtotime($coe_result[0]['created_at'])).".";
+						$message .= "Your Certificate of Employment ($coetype) with a Reference No. ".$refno." has been Cancelled at ".date('F j, Y', strtotime($coe_result[0]['created_at'])).".";
 					}else if ($status == 'On Process'){
-						$message .= "Your Certificate of Employment ($coetype) with a Reference No: ".$refno." is now On Process (".date('F j, Y', strtotime($coe_result[0]['updated_at'])).").";
+						$message .= "Your Certificate of Employment ($coetype) with a Reference No. ".$refno." is now On Process (".date('F j, Y', strtotime($coe_result[0]['updated_at'])).").";
 					}else if ($status == 'Done'){
-						$message .= "Your Certificate of Employment ($coetype) with a Reference No: ".$refno." have been Completed at ".date('F j, Y', strtotime($coe_result[0]['updated_at'])).".";
+						$message .= "Your Certificate of Employment ($coetype) with a Reference No. ".$refno." has been Completed at ".date('F j, Y', strtotime($coe_result[0]['updated_at'])).".";
 					}
 					$message .= "<br><br>Thanks,<br>";
 					$message .= SITENAME." Admin";
@@ -6281,9 +6281,9 @@
 							$message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 95%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>Certificate of Employment Request</span><br><br>Hi ".$hr_name[0]['NickName'].",<br><br>";
 
 							if($status == 'Cancelled'){// gohere
-								$message .= "The Requested Certificate of Employment ($coetype) for ".$emp_info[0]['FullName']."(".$emp_info[0]['CompanyName'].") - (".$emp_info[0]['DivisionName'].") with a Reference No: ".$refno." have been Cancelled at ".date('F j, Y', strtotime($coe_result[0]['created_at'])).".";
+								$message .= "The Requested Certificate of Employment ($coetype) for ".$emp_info[0]['FullName']."(".$emp_info[0]['CompanyName'].") - (".$emp_info[0]['DivisionName'].") with a Reference No. ".$refno." has been Cancelled at ".date('F j, Y', strtotime($coe_result[0]['created_at'])).".";
 							}else if ($status == 'Done'){
-								$message .= "The Requested Certificate of Employment ($coetype) for ".$emp_info[0]['FullName']."(".$emp_info[0]['CompanyName'].") - (".$emp_info[0]['DivisionName'].") with a Reference No: ".$refno." have been Completed at ".date('F j, Y', strtotime($coe_result[0]['updated_at'])).".";
+								$message .= "The Requested Certificate of Employment ($coetype) for ".$emp_info[0]['FullName']."(".$emp_info[0]['CompanyName'].") - (".$emp_info[0]['DivisionName'].") with a Reference No. ".$refno." has been Completed at ".date('F j, Y', strtotime($coe_result[0]['updated_at'])).".";
 							}
 							$message .= "<br><br>Thanks,<br>";
 							$message .= SITENAME." Admin";
