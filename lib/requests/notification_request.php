@@ -6220,7 +6220,9 @@
 					$emp_info = "SELECT * FROM viewHREmpMaster A
 								left join HRCompany B on A.CompanyID = B.CompanyID
 								left join HRDivision C on A.DivisionID = C.DivisionID WHERE A.EmpID='$coeemp'";
-					$emp_hr  = "SELECT B.EmailAdd, A.level FROM COEUsers A LEFT JOIN viewHREmpMaster B on A.emp_id = B.EmpID WHERE ";
+					$emp_hr  = "SELECT B.EmailAdd, A.level FROM COEUsers A
+								LEFT JOIN SUBSIDIARY.DBO.viewHREmpMaster B on A.emp_id = B.EmpID AND A.[DB_NAME] = B.DBNAME
+								WHERE ";
 
 					if(in_array($coetype, $coetypes["2"])){
 						$emp_hr .="A.[level] = '2'";
