@@ -6084,11 +6084,11 @@
 							<?php if($emp_info[0]["Allowance"] != 0){ ?>
 								<tr>
 									<td><b>Allowance</b></td>
-									<td style="padding-left: 50px;"><b><?php echo $emp_info[0]["Allowance"]; ?></b></td>
+									<td style="padding-left: 50px;"><b><?php echo number_format($emp_info[0]["Allowance"], 2); ?></b></td>
 								</tr>
 								<tr>
 									<td><b>Total</b></td>
-									<td style="padding-left: 50px;"><b><?php echo $emp_info[0]["Allowance"] + $emp_info[0]["MonthlyRate"]; ?></b></td>
+									<td style="padding-left: 50px;"><b><?php echo number_format($emp_info[0]["Allowance"] + $emp_info[0]["MonthlyRate"], 2); ?></b></td>
 								</tr>
 							<?php } ?>
 						</table>
