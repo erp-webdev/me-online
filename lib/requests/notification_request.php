@@ -5097,7 +5097,7 @@
 			$correction_name = $_POST["correctionname"];
 
 			$coeref = "SELECT * FROM COERequests";
-			$coeref_count = $mainsql->get_numrow($coeref_count);
+			$coeref_count = $mainsql->get_numrow($coeref);
 
 			// $refno = strtoupper("RN".str_replace('-','',$coeemp).uniqid());
 			var_dump($coeref_count);exit(0);
