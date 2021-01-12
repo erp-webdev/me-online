@@ -5095,7 +5095,12 @@
 				]
 			];
 			$correction_name = $_POST["correctionname"];
-			$refno = strtoupper("RN".str_replace('-','',$coeemp).uniqid());
+
+			$coeref = "SELECT * FROM COERequests";
+			$coeref_count = $mainsql->get_numrow($coeref_count);
+
+			// $refno = strtoupper("RN".str_replace('-','',$coeemp).uniqid());
+			$refno = strtoupper("RN".str_replace('-','',$coeemp).$profile_comp.'-'.str_pad($coeref_count, 4, "", STR_PAD_LEFT));
 
 			$coe_check = "SELECT * from COERequests WHERE emp_id = '$coeemp' and company = '$coe_company' and type = '$coetype' and category = '$coecategory'
 			and status not in ('Done','Cancelled')";
