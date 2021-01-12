@@ -5202,7 +5202,15 @@
 				$headers .= "MIME-Version: 1.0\r\n";
 				$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-				$emp_sendmail = mail($emp_info[0]['EmailAdd'], "New COE Request", $message, $headers);
+				$coe_emp_email = $emp_info[0]['EmailAdd'];
+
+				if(!$emp_info[0]['Active']){
+					$coe_emp_email = $emp_info[0]['EmailAdd2'];
+				}
+
+				if(!empty($coe_emp_email)){
+					$emp_sendmail = mail($coe_emp_email, "New COE Request", $message, $headers);
+				}
 
 				//backhere
 				//SEND EMAIL TO HR
