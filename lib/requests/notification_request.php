@@ -5679,11 +5679,12 @@
 						B.RankDesc,
 						C.DeptDesc,
 						D.DivisionName,
-		        E.PositionDesc,
+		        		E.PositionDesc,
 						convert(varchar, A.HireDate, 107) as HireDate,
 				        convert(varchar, getdate(), 107) as CurrentDate,
 						convert(varchar, A.DateResigned, 107) as DateResigned,
-						A.CompanyID
+						A.CompanyID,
+						F.CompanyName
 						FROM
 							viewhrempmaster A
 						LEFT JOIN
@@ -5694,6 +5695,8 @@
 							HRDivision D on A.DivisionID = D.DivisionID
 						LEFT JOIN
 							HRPosition E on A.PositionID = E.PositionID
+						LEFT JOIN
+							HRCompany F on A.CompanyID = F.CompanyID
 						WHERE
 							A.EmpID = '$emp_id'";
 
@@ -6059,8 +6062,8 @@
 				?>
 				<h3 align="center" style="padding-top: 150px">CERTIFICATION OF EMPLOYMENT AND COMPENSATION</h3>
 
-				<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This is to certify that <b><?php echo ucwords(strtolower($emp_info[0]["FullName"])); ?></b> is an
-					employee of <b>Megaworld Corporation</b> since <b><?php echo $emp_info[0]["HireDate"]; ?>
+				<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This is to certify that <b><?php echo strtoupper($emp_info[0]["FullName"]); ?></b> is an
+					employee of <b><?php echo $emp_info[0]["CompanyName"]; ?></b> since <b><?php echo $emp_info[0]["HireDate"]; ?>
 				<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
 				</b>and presently holding a regular appointment for the position of <b><?php echo $emp_info[0]["PositionDesc"]; ?>.</b></p>
 				<?php } ?>
