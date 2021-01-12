@@ -5750,7 +5750,7 @@
 					<?php }else{ ?>
 						for whatever legal purpose it may serve.</p>
 					<?php } ?>
-					<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('M, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
+					<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
 
 					<?php
 					if($emp_info[0]["CompanyID"] == 'MCTI'){
@@ -5792,7 +5792,7 @@
 						for whatever legal purpose it may serve.</p>
 					<?php } ?>
 
-					<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('M, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
+					<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
 
 					<?php
 					if($emp_info[0]["CompanyID"] == 'MCTI'){
@@ -5831,7 +5831,7 @@
 					<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower($emp_info[0]["FullName"]))."
 					as a requirement for the Deed of Absolute Sale of ".$emp_info[0]["Gender2"]." ".date('jS', mktime(0, 0, 0, 0, $coe[0]["other_reason"], 0)); ?> property availment under the company's housing program.</p>
 
-					<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('M, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
+					<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
 					<?php
 					if($emp_info[0]["CompanyID"] == 'MCTI'){
 					?>
@@ -5870,7 +5870,7 @@
 						for whatever legal purpose it may serve.</p>
 					<?php } ?>
 
-					<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('M, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
+					<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
 
 					<?php
 					if($emp_info[0]["CompanyID"] == 'MCTI'){
@@ -5930,7 +5930,7 @@
 							}
 						?>
 
-						<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('M, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
+						<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
 
 						<?php
 						if($emp_info[0]["CompanyID"] == 'MCTI'){
@@ -5977,7 +5977,7 @@
 						for whatever legal purpose it may serve.</p>
 					<?php } ?>
 
-					<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('M, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
+					<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
 
 
 					<?php
