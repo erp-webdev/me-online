@@ -5187,9 +5187,9 @@
 					}
 				}else{
 					if($coetype == 'COE'){
-						$message .= "A new Certificate of Employment (".$coes2["$coecategory"].") have been requested for you with a Reference No: ".$refno.".";
+						$message .= "A new Certificate of Employment (".$coes2["$coecategory"].") has been requested for you with a Reference No: ".$refno.".";
 					}else{
-						$message .= "A new Certificate of Employment (".$coes["$coetype"].") have been requested for you with a Reference No: ".$refno.".";
+						$message .= "A new Certificate of Employment (".$coes["$coetype"].") has been requested for you with a Reference No: ".$refno.".";
 					}
 				}
 				$message .= "<br><br>Thanks,<br>";
@@ -5228,7 +5228,7 @@
 					}else{
 						$message .= "(".$coes["$coetype"].")";
 					}
-					$message .= ", created at ".date('F j, Y', strtotime($coe_result[0]['created_at'])).", have been requested for ".$emp_info[0]['FullName']."(".$emp_info[0]['CompanyName'].") - (".$emp_info[0]['DeptDesc'].") with a Reference No: ".$refno.".";
+					$message .= ", created at ".date('F j, Y', strtotime($coe_result[0]['created_at'])).", has been requested for ".$emp_info[0]['FullName']."(".$emp_info[0]['CompanyName'].") - (".$emp_info[0]['DeptDesc'].") with a Reference No: ".$refno.".";
 
 					$message .= "<br><br>Thanks,<br>";
 					$message .= SITENAME." Admin";
