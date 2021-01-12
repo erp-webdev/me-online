@@ -5680,9 +5680,12 @@
 						C.DeptDesc,
 						D.DivisionName,
 		        		E.PositionDesc,
-						convert(varchar, A.HireDate, 107) as HireDate,
-				        convert(varchar, getdate(), 107) as CurrentDate,
-						convert(varchar, A.DateResigned, 107) as DateResigned,
+						--convert(varchar, A.HireDate, 107) as HireDate,
+						DATENAME(MONTH, A.HireDate) + ' ' + CAST(DAY(A.HireDate) AS VARCHAR(2)) + ', ' + CAST(YEAR(A.HireDate) as HireDate,
+				        --convert(varchar, getdate(), 107) as CurrentDate,
+						DATENAME(MONTH, getdate()) + ' ' + CAST(DAY(getdate()) AS VARCHAR(2)) + ', ' + CAST(YEAR(getdate()) as HireDate,
+						--convert(varchar, A.DateResigned, 107) as DateResigned,
+						DATENAME(MONTH, A.DateResigned) + ' ' + CAST(DAY(A.DateResigned) AS VARCHAR(2)) + ', ' + CAST(YEAR(A.DateResigned) as HireDate,
 						A.CompanyID,
 						F.CompanyName
 						FROM
@@ -6073,7 +6076,7 @@
 						<table style="padding-left: 200px; padding-right: 50px">
 							<tr>
 								<td><b>Basic Salary</b></td>
-								<td style="padding-left: 50px;"><b><?php if(true){echo $emp_info[0]["MonthlyRate"];}else{ echo "SAMPLE"; }; ?></b></td>
+								<td style="padding-left: 50px;"><b><?php if(true){echo number_format($emp_info[0]["MonthlyRate"], ".", ",", 2);}else{ echo "SAMPLE"; }; ?></b></td>
 							</tr>
 							<?php if($emp_info[0]["Allowance"] != 0){ ?>
 								<tr>
@@ -6097,7 +6100,7 @@
 				</b>for whatever legal purpose it may serve.</p>
 				<?php } ?>
 
-				<p style="padding-left: 50px; padding-right: 50px;">Given this <b><?php echo date('jS')." day of ".date('M, Y'); ?></b> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
+				<p style="padding-left: 50px; padding-right: 50px;">Given this <b><?php echo date('jS')." day of ".date('F, Y'); ?></b> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
 
 
 				<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">Certified by:</p>
