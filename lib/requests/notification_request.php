@@ -5100,8 +5100,7 @@
 			$coeref_count = $mainsql->get_numrow($coeref);
 
 			// $refno = strtoupper("RN".str_replace('-','',$coeemp).uniqid());
-			$refno = strtoupper("RN".str_replace('-','',$coeemp).$profile_comp.'-'.str_pad($coeref_count, 4, "", STR_PAD_LEFT));
-			var_dump($refno);exit(0);
+			$refno = strtoupper("RN".str_replace('-','',$coeemp).$profile_comp.'-'.str_pad($coeref_count, 4, "0", STR_PAD_LEFT));
 
 			$coe_check = "SELECT * from COERequests WHERE emp_id = '$coeemp' and company = '$coe_company' and type = '$coetype' and category = '$coecategory'
 			and status not in ('Done','Cancelled')";
