@@ -5680,12 +5680,9 @@
 						C.DeptDesc,
 						D.DivisionName,
 		        		E.PositionDesc,
-						--convert(varchar, A.HireDate, 107) as HireDate,
-						DATENAME(MONTH, A.HireDate) + ' ' + CAST(DAY(A.HireDate) AS VARCHAR(2)) + ', ' + CAST(YEAR(A.HireDate) as HireDate,
-				        --convert(varchar, getdate(), 107) as CurrentDate,
-						DATENAME(MONTH, getdate()) + ' ' + CAST(DAY(getdate()) AS VARCHAR(2)) + ', ' + CAST(YEAR(getdate()) as HireDate,
-						--convert(varchar, A.DateResigned, 107) as DateResigned,
-						DATENAME(MONTH, A.DateResigned) + ' ' + CAST(DAY(A.DateResigned) AS VARCHAR(2)) + ', ' + CAST(YEAR(A.DateResigned) as HireDate,
+						A.HireDate as HireDate,
+				        getdate() as CurrentDate,
+						A.DateResigned as DateResigned,
 						A.CompanyID,
 						F.CompanyName
 						FROM
@@ -5705,6 +5702,11 @@
 
 
 			$emp_info = $mainsql->get_row($query);
+
+			$emp_info[0]['HireDate'] = date('F j, Y', strtotime($emp_info[0]['HireDate']));
+			$emp_info[0]['CurrentDate'] = date('F j, Y', strtotime($emp_info[0]['CurrentDate']));
+			$emp_info[0]['DateResigned'] = date('F j, Y', strtotime($emp_info[0]['DateResigned']));
+
 			?>
 			<div id="myDivToPrint" style="display: none;">
 			<?php
