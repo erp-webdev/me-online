@@ -6266,7 +6266,7 @@
 					}else if ($status == 'On Process'){
 						$message .= "Your Certificate of Employment ($coetype) with a Reference No. ".$refno." is now On Process (".date('F j, Y', strtotime($coe_result[0]['updated_at'])).").";
 					}else if ($status == 'Done'){
-						$message .= "Your Certificate of Employment ($coetype) with a Reference No. ".$refno." has been Released at ".date('F j, Y', strtotime($coe_result[0]['updated_at'])).".";
+						$message .= "Your Certificate of Employment ($coetype) with a Reference No. ".$refno." has been Done/Claimed at ".date('F j, Y', strtotime($coe_result[0]['updated_at'])).".";
 					}
 					$message .= "<br><br>Thanks,<br>";
 					$message .= SITENAME." Admin";
@@ -6293,7 +6293,7 @@
 							if($status == 'Cancelled'){// gohere
 								$message .= "The Requested Certificate of Employment ($coetype) for ".$emp_info[0]['FullName']."(".$emp_info[0]['CompanyName'].") - (".$emp_info[0]['DivisionName'].") with a Reference No. ".$refno." has been Cancelled at ".date('F j, Y', strtotime($coe_result[0]['created_at'])).".";
 							}else if ($status == 'Done'){
-								$message .= "The Requested Certificate of Employment ($coetype) for ".$emp_info[0]['FullName']."(".$emp_info[0]['CompanyName'].") - (".$emp_info[0]['DivisionName'].") with a Reference No. ".$refno." has been Released at ".date('F j, Y', strtotime($coe_result[0]['updated_at'])).".";
+								$message .= "The Requested Certificate of Employment ($coetype) for ".$emp_info[0]['FullName']."(".$emp_info[0]['CompanyName'].") - (".$emp_info[0]['DivisionName'].") with a Reference No. ".$refno." has been Done/Claimed at ".date('F j, Y', strtotime($coe_result[0]['updated_at'])).".";
 							}
 							$message .= "<br><br>Thanks,<br>";
 							$message .= SITENAME." Admin";
