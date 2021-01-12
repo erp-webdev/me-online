@@ -5207,7 +5207,7 @@
 					$hr_name = "SELECT NickName from viewHREmpMaster where EmailAdd='$email'";
 					$hr_name = $mainsql->get_row($hr_name);
 
-					$message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 95%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>New Certificate of Employment Request</span><br><br>Hi ".$hr_name[0]['NickName'].",<br><br>";
+					$message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 95%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>New Certificate of Employment Request</span><br><br>";
 
 					$message .= "A new Certificate of Employment ";
 					if($coetype == 'COE'){
