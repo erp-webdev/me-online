@@ -5752,23 +5752,24 @@
 					<?php } ?>
 					<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
 
+
 					<?php
 					if($emp_info[0]["CompanyID"] == 'MCTI'){
 					?>
-						<p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOEY I. VILLAFUERTE</br>
-						FIRST VICE PRESIDENT, CONTROLLERSHIP GROUP</p>
+						<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOEY I. VILLAFUERTE</br>
+						FIRST VICE PRESIDENT, CONTROLLERSHIP GROUP</p></b>
 					<?php
 					}elseif ($emp_info[0]["CompanyID"] == 'GLOBAL01' || $emp_info[0]["CompanyID"] == 'LGMI01' || $emp_info[0]["CompanyID"] == 'MIB01') {
 					?>
-						<p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOSEPHINE F. ALIM</br>
+						<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOSEPHINE F. ALIM</br>
 						ASSISTANT VICE PRESIDENT, </br>
-						CORPORATE HUMAN RESOURCES/OPERATIONS</p>
+						CORPORATE HUMAN RESOURCES/OPERATIONS</p></b>
 					<?php
 					}else{
 					?>
-						<p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">RAFAEL ANTONIO S. PEREZ</br>
+						<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">RAFAEL ANTONIO S. PEREZ</br>
 						Head, Human Resources and</br>
-						Corporate Administration Division</p>
+						Corporate Administration Division</p></b>
 					<?php
 					}
 			}elseif ($coe[0]["type"] == "COECORRECTIONNAME") { // COE with Correction Name
@@ -5797,20 +5798,20 @@
 					<?php
 					if($emp_info[0]["CompanyID"] == 'MCTI'){
 					?>
-						<p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOEY I. VILLAFUERTE</br>
-						FIRST VICE PRESIDENT, CONTROLLERSHIP GROUP</p>
+						<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOEY I. VILLAFUERTE</br>
+						FIRST VICE PRESIDENT, CONTROLLERSHIP GROUP</p></b>
 					<?php
 					}elseif ($emp_info[0]["CompanyID"] == 'GLOBAL01' || $emp_info[0]["CompanyID"] == 'LGMI01' || $emp_info[0]["CompanyID"] == 'MIB01') {
 					?>
-						<p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOSEPHINE F. ALIM</br>
+						<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOSEPHINE F. ALIM</br>
 						ASSISTANT VICE PRESIDENT, </br>
-						CORPORATE HUMAN RESOURCES/OPERATIONS</p>
+						CORPORATE HUMAN RESOURCES/OPERATIONS</p></b>
 					<?php
 					}else{
 					?>
-						<p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">RAFAEL ANTONIO S. PEREZ</br>
+						<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">RAFAEL ANTONIO S. PEREZ</br>
 						Head, Human Resources and</br>
-						Corporate Administration Division</p>
+						Corporate Administration Division</p></b>
 					<?php
 					}
 
@@ -5835,20 +5836,20 @@
 					<?php
 					if($emp_info[0]["CompanyID"] == 'MCTI'){
 					?>
-						<p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOEY I. VILLAFUERTE</br>
-						FIRST VICE PRESIDENT, CONTROLLERSHIP GROUP</p>
+						<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOEY I. VILLAFUERTE</br>
+						FIRST VICE PRESIDENT, CONTROLLERSHIP GROUP</p></b>
 					<?php
 					}elseif ($emp_info[0]["CompanyID"] == 'GLOBAL01' || $emp_info[0]["CompanyID"] == 'LGMI01' || $emp_info[0]["CompanyID"] == 'MIB01') {
 					?>
-						<p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOSEPHINE F. ALIM</br>
+						<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOSEPHINE F. ALIM</br>
 						ASSISTANT VICE PRESIDENT, </br>
-						CORPORATE HUMAN RESOURCES/OPERATIONS</p>
+						CORPORATE HUMAN RESOURCES/OPERATIONS</p></b>
 					<?php
 					}else{
 					?>
-						<p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">RAFAEL ANTONIO S. PEREZ</br>
+						<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">RAFAEL ANTONIO S. PEREZ</br>
 						Head, Human Resources and</br>
-						Corporate Administration Division</p>
+						Corporate Administration Division</p></b>
 					<?php
 					}
 			}elseif ($coe[0]["type"] == "COEGOODMORAL") { // COE with Good Moral
@@ -5875,20 +5876,20 @@
 					<?php
 					if($emp_info[0]["CompanyID"] == 'MCTI'){
 					?>
-						<p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOEY I. VILLAFUERTE</br>
-						FIRST VICE PRESIDENT, CONTROLLERSHIP GROUP</p>
+						<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOEY I. VILLAFUERTE</br>
+						FIRST VICE PRESIDENT, CONTROLLERSHIP GROUP</p></b>
 					<?php
 					}elseif ($emp_info[0]["CompanyID"] == 'GLOBAL01' || $emp_info[0]["CompanyID"] == 'LGMI01' || $emp_info[0]["CompanyID"] == 'MIB01') {
 					?>
-						<p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOSEPHINE F. ALIM</br>
+						<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOSEPHINE F. ALIM</br>
 						ASSISTANT VICE PRESIDENT, </br>
-						CORPORATE HUMAN RESOURCES/OPERATIONS</p>
+						CORPORATE HUMAN RESOURCES/OPERATIONS</p></b>
 					<?php
 					}else{
 					?>
-						<p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">RAFAEL ANTONIO S. PEREZ</br>
+						<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">RAFAEL ANTONIO S. PEREZ</br>
 						Head, Human Resources and</br>
-						Corporate Administration Division</p>
+						Corporate Administration Division</p></b>
 					<?php
 					}
 			}elseif ($coe[0]["type"] == "COE" || $coe[0]["type"] == 'COESEPARATED') {
@@ -5935,20 +5936,20 @@
 						<?php
 						if($emp_info[0]["CompanyID"] == 'MCTI'){
 						?>
-							<p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOEY I. VILLAFUERTE</br>
-							FIRST VICE PRESIDENT, CONTROLLERSHIP GROUP</p>
+							<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOEY I. VILLAFUERTE</br>
+							FIRST VICE PRESIDENT, CONTROLLERSHIP GROUP</p></b>
 						<?php
 						}elseif ($emp_info[0]["CompanyID"] == 'GLOBAL01' || $emp_info[0]["CompanyID"] == 'LGMI01' || $emp_info[0]["CompanyID"] == 'MIB01') {
 						?>
-							<p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOSEPHINE F. ALIM</br>
+							<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOSEPHINE F. ALIM</br>
 							ASSISTANT VICE PRESIDENT, </br>
-							CORPORATE HUMAN RESOURCES/OPERATIONS</p>
+							CORPORATE HUMAN RESOURCES/OPERATIONS</p></b>
 						<?php
 						}else{
 						?>
-							<p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">RAFAEL ANTONIO S. PEREZ</br>
+							<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">RAFAEL ANTONIO S. PEREZ</br>
 							Head, Human Resources and</br>
-							Corporate Administration Division</p>
+							Corporate Administration Division</p></b>
 						<?php
 						}
 			}elseif ($coe[0]["type"] == "COEJOBDESC") {
@@ -5983,20 +5984,20 @@
 					<?php
 					if($emp_info[0]["CompanyID"] == 'MCTI'){
 					?>
-						<p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOEY I. VILLAFUERTE</br>
-						FIRST VICE PRESIDENT, CONTROLLERSHIP GROUP</p>
+						<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOEY I. VILLAFUERTE</br>
+						FIRST VICE PRESIDENT, CONTROLLERSHIP GROUP</p></b>
 					<?php
 					}elseif ($emp_info[0]["CompanyID"] == 'GLOBAL01' || $emp_info[0]["CompanyID"] == 'LGMI01' || $emp_info[0]["CompanyID"] == 'MIB01') {
 					?>
-						<p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOSEPHINE F. ALIM</br>
+						<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOSEPHINE F. ALIM</br>
 						ASSISTANT VICE PRESIDENT, </br>
-						CORPORATE HUMAN RESOURCES/OPERATIONS</p>
+						CORPORATE HUMAN RESOURCES/OPERATIONS</p></b>
 					<?php
 					}else{
 					?>
-						<p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">RAFAEL ANTONIO S. PEREZ</br>
+						<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">RAFAEL ANTONIO S. PEREZ</br>
 						Head, Human Resources and</br>
-						Corporate Administration Division</p>
+						Corporate Administration Division</p></b>
 					<?php
 					}
 			}elseif ($coe[0]["type"] == "COECOMPENSATION") {
@@ -6110,13 +6111,13 @@
 				<?php
 				if(in_array($emp_info[0]["RankID"], $vpup)){ // for vp and up
 				?>
-					<p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">LOURDES O. RAMILLO</br>
-					<i>Vice President - Financial Reporting Group<i></p>
+					<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">LOURDES O. RAMILLO</br>
+					<i>Vice President - Financial Reporting Group<i></p></b>
 				<?php
 			}elseif (in_array($emp_info[0]["RankID"], $rfavp)) { // for r&f to avp
 				?>
-					<p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">MARILOU C. GUARIÑA</br>
-					<i>ASSISTANT VICE PRESIDENT - Payroll</i></p>
+					<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">MARILOU C. GUARIÑA</br>
+					<i>ASSISTANT VICE PRESIDENT - Payroll</i></p></b>
 				<?php }
 			}
 				?>
