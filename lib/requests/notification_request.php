@@ -4812,7 +4812,7 @@
 						$(".tasks").each(function(){
 							$(this).remove();
 						});
-						$(".add_field_button").each(function(){
+						$(".remove_field").each(function(){
 							$(this).remove();
 						});
 
