@@ -5652,6 +5652,25 @@
 
 					});
 
+					$("#sendcoe").on('click', function*(){
+						var id = $(this).attr('attribute');
+						var status = $(this).attr('attribute2');
+						var type = $(this).attr('attribute3');
+
+						if(type == 'COEAPPROVEDLEAVE'){
+							var start_date = "<?php echo date('m/d/Y', strtotime($result[0]['leave_from'])); ?>";
+							var end_date = "<?php echo date('m/d/Y', strtotime($result[0]['leave_to'])); ?>";
+							var return_date = "<?php echo date('m/d/Y', strtotime($result[0]['leave_return'])); ?>";
+							var url_print = "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=coesend&type=COEAPPROVEDLEAVE";
+							var data_print = "id=" + id + "&status=" + status + "&start_date=" + start_date + "&end_date=" + end_date + "&return_date=" + return_date;
+						}else{
+							var url_print = "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=coesend&type=COEAPPROVEDLEAVE";
+							var data_print = "id=" + id + "&status=" + status + "&start_date=" + start_date + "&end_date=" + end_date + "&return_date=" + return_date;
+						}
+
+
+					});
+
 					$("#printcoe").on('click', function(){
 						var id = $(this).attr('attribute');
 						var status = $(this).attr('attribute2');
@@ -6173,10 +6192,11 @@
 					   $('#myDivToPrint').removeAttr("style");
 			 		   $('#myDivToPrint').css({"display":"inline-block"});
 			 		   var divToPrint=document.getElementById("myDivToPrint");
-			 		   newWin= window.open("");
-			 		   newWin.document.write(divToPrint.outerHTML);
-					   newWin.print();
-		   			   newWin.close();
+					   // newWin= window.open("");
+			 		   // newWin.document.write(divToPrint.outerHTML);
+					   // newWin.print();
+					   divToPrint.outerHTML.print();
+		   			   divToPrint.outerHTML.close();
 					});
 				</script>
 			<?
