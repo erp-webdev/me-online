@@ -5797,7 +5797,7 @@
 			?>
 					<h3 align="center" style="padding-top: 150px">CERTIFICATION OF APPROVED LEAVE</h3>
 
-					<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This is to certify that <b><?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower($emp_info[0]["FullName"])); ?></b> is currently employed with Megaworld Corporation
+					<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This is to certify that <b><?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower($emp_info[0]["FullName"])); ?></b> is currently employed with <b><?php echo $emp_info[0]["CompanyName"]; ?></b>
 					as <b><?php echo $emp_info[0]["PositionDesc"]." - ".$emp_info[0]["DeptDesc"]."</b> for ".$emp_info[0]["DivisionName"]." Division Since <b>".$emp_info[0]["HireDate"]; ?>
 					<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
 					up to the present.</b></p>
@@ -5840,7 +5840,7 @@
 					<h3 align="center" style="padding-top: 150px">CERTIFICATION</h3>
 
 					<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo ucwords(strtolower($emp_info[0]["FullName"])); ?></b> is a
-					<b><?php echo $emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." Division</b> of <b>Megaworld Corporation</b> since <b>".$emp_info[0]["HireDate"]; ?>
+					<b><?php echo $emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." Division</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"]; ?>
 					<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
 					up to the present.</b></p>
 					<?php } ?>
@@ -5883,7 +5883,7 @@
 					<h3 align="center" style="padding-top: 150px">CERTIFICATION</h3>
 
 					<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo ucwords(strtolower($emp_info[0]["FullName"])); ?></b> is a
-					<b><?php echo $emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." Division</b> of <b>Megaworld Corporation</b> since <b>".$emp_info[0]["HireDate"]; ?>
+					<b><?php echo $emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." Division</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"]; ?>
 					<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
 					up to the present.</b></p>
 					<?php } ?>
@@ -5919,7 +5919,7 @@
 					<h3 align="center" style="padding-top: 150px">CERTIFICATION</h3>
 
 					<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo ucwords(strtolower($emp_info[0]["FullName"])); ?></b> is a
-					<b><?php echo $emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." Division</b> of <b>Megaworld Corporation</b> since <b>".$emp_info[0]["HireDate"]; ?>
+					<b><?php echo $emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." Division</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"]; ?>
 					<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
 					up to the present.</b></p>
 					<?php } ?>
@@ -5959,7 +5959,7 @@
 						<h3 align="center" style="padding-top: 150px">CERTIFICATION</h3>
 
 						<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo ucwords(strtolower($emp_info[0]["FullName"])); ?></b> was employed as
-						<b><?php echo $emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." Division</b> of <b>Megaworld Corporation</b> since <b>".$emp_info[0]["HireDate"]; ?>
+						<b><?php echo $emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." Division</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"]; ?>
 						<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
 						up to the present.</b></p>
 						<?php } ?>
@@ -6021,7 +6021,7 @@
 					<h3 align="center" style="padding-top: 150px">CERTIFICATION</h3>
 
 					<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo ucwords(strtolower($emp_info[0]["FullName"])); ?></b> was employed as
-					<b><?php echo $emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." Division</b> of <b>Megaworld Corporation</b> since <b>".$emp_info[0]["HireDate"]; ?>
+					<b><?php echo $emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." Division</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"]; ?>
 					<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
 					up to the present.</b></p>
 					<?php } ?>
