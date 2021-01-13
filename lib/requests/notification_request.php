@@ -5769,6 +5769,7 @@
 			$emp_info[0]['DateResigned'] = $emp_info[0]['DateResigned'] ?  date('F j, Y', strtotime($emp_info[0]['DateResigned'])) : null;
 
 			?>
+			<div style="padding-bottom: 250px;"><center><h3>Please close print preview..</h3></center></div>
 			<div id="myDivToPrint" style="display: none;">
 			<?php
 			$companies = [
@@ -6192,10 +6193,9 @@
 					   $('#myDivToPrint').removeAttr("style");
 			 		   $('#myDivToPrint').css({"display":"inline-block"});
 			 		   var divToPrint=document.getElementById("myDivToPrint");
-					   // newWin= window.open("");
-			 		   // newWin.document.write(divToPrint.outerHTML);
-					   // newWin.print();
-					   divToPrint.outerHTML.print();
+					   newWin= window.open("");
+			 		   newWin.document.write(divToPrint.outerHTML);
+					   newWin.print();
 		   			   divToPrint.outerHTML.close();
 					});
 				</script>
