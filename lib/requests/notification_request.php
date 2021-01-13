@@ -4814,6 +4814,9 @@
 						}else if($("select[name=coetype]").val() == "COECOMPENSATION"){
 							$("#other_reason").html("Requirement For:");
 							$("#coeothersdiv").show();
+						}else if($("select[name=coetype]").val() == "COESEPARATED"){
+							$("#other_reason").html("Requirement For:");
+							$("#coeothersdiv").show();
 						}
 
 					}else{
