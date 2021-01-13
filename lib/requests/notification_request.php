@@ -4745,6 +4745,26 @@
 					e.preventDefault(); $(this).parent('div').remove(); x--;
 				});
 
+				function removeCOEValues(){
+
+					$("#coeleavefrom").val('');
+					$("#coeleaveto").val('');
+					$("#coeleavereturn").val('');
+					$("#coecategory").val('');
+					$("#hpa_percentage").val('');
+					$("input[name=avail_no]").val('');
+					$("input[name=coeothers]").val('');
+					$("input[name=coecorrection]").val('');
+
+					$(".tasks").each(function(){
+						$(this).remove();
+					});
+					$(".remove_field").each(function(){
+						$(this).remove();
+					});
+
+				}
+
 				$("#coecatdiv").hide();
 				$("#coereasondiv").hide();
 				$("#coeleavediv1").hide();
@@ -4758,6 +4778,8 @@
 
 				$("select[name=coetype]").change(function(){
 					if($("select[name=coetype]").val() != "COE"){
+						removeCOEValues();
+
 						$("#coecatdiv").hide();
 						$("#coereasondiv").hide();
 						$("#coejobdiv1").hide();
@@ -4768,73 +4790,45 @@
 						$("#coeavail").hide();
 						$("#coehpa").hide();
 
-
 						if($("select[name=coetype]").val() == "COEAPPROVEDLEAVE"){
 							$("#coeleavediv1").show();
 							$("#coeleavediv2").show();
 							$("#coeleavediv3").show();
-							$("input[name=coeothers]").val('');
 							$("#coeothersdiv").show();
 							$("#other_reason").html("Requirement For:");
 						}else if($("select[name=coetype]").val() == "COECORRECTIONNAME"){
 							$("#other_reason").html("Requirement For:");
-							$("input[name=coeothers]").val('');
 							$("#coeothersdiv").show();
 							$("#coenamediv1").show();
 						}else if ($("select[name=coetype]").val() == "COEJOBDESC") {
 							$("#other_reason").html("Requirement For:");
-							$("input[name=coeothers]").val('');
 							$("#coeothersdiv").show();
 							$("#coejobdiv1").show();
 						}else if($("select[name=coetype]").val() == "COEGOODMORAL"){
-							$("input[name=coeothers]").val('');
 							$("#coeothersdiv").show();
 							$("#other_reason").html("Requirement For:");
 						}else if($("select[name=coetype]").val() == "COEHOUSINGPLAN"){
 							$("#coehpa").show();
 							$("#coeavail").show();
-							$("input[name=coeothers]").val('');
 							$("#coeothersdiv").hide();
 						}else if($("select[name=coetype]").val() == "COECOMPENSATION"){
 							$("#other_reason").html("Requirement For:");
-							$("input[name=coeothers]").val('');
 							$("#coeothersdiv").show();
 						}
 
 					}else{
+						removeCOEValues();
+
 						$("#coeleavediv1").hide();
-						$("#coeleavefrom").val('');
-
 						$("#coenamediv1").hide();
-						$("input[name=coecorrection]").val('');
-
 						$("#coejobdiv1").hide();
-						$(".tasks").each(function(){
-							$(this).remove();
-						});
-						$(".remove_field").each(function(){
-							$(this).remove();
-						});
-
 						$("#coeleavediv2").hide();
-						$("#coeleaveto").val('');
-
 						$("#coeleavediv3").hide();
-						$("#coeleavereturn").val('');
-
 						$("#coecatdiv").show();
-						$("#coecategory").val('');
-
 						$("#other_reason").html("Other Reason:");
-
 						$("#coehpa").hide();
-						$("#hpa_percentage").val('');
-
 						$("#coeavail").hide();
-						$("input[name=avail_no]").val('');
-
 						$("#coeothersdiv").show();
-						$("input[name=coeothers]").val('');
 						// $("input[name=coeothers]").css({"visibility":"visible"});
 					}
 				});
