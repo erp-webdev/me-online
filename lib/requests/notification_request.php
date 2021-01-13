@@ -4809,8 +4809,8 @@
 						$("input[name=coecorrection]").val('');
 
 						$("#coejobdiv1").hide();
-						$(".tasks")foreach(function(i, obj){
-							i.remove();
+						$(".tasks").each(function(){
+							$(this).remove();
 						});
 
 						$("#coeleavediv2").hide();
