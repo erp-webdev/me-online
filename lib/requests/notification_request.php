@@ -4773,36 +4773,65 @@
 							$("#coeleavediv1").show();
 							$("#coeleavediv2").show();
 							$("#coeleavediv3").show();
+							$("input[name=coeothers]").val('');
 							$("#coeothersdiv").show();
 							$("#other_reason").html("Requirement For:");
 						}else if($("select[name=coetype]").val() == "COECORRECTIONNAME"){
 							$("#other_reason").html("Requirement For:");
+							$("input[name=coeothers]").val('');
 							$("#coeothersdiv").show();
 							$("#coenamediv1").show();
 						}else if ($("select[name=coetype]").val() == "COEJOBDESC") {
 							$("#other_reason").html("Requirement For:");
+							$("input[name=coeothers]").val('');
 							$("#coeothersdiv").show();
 							$("#coejobdiv1").show();
 						}else if($("select[name=coetype]").val() == "COEGOODMORAL"){
+							$("input[name=coeothers]").val('');
 							$("#coeothersdiv").show();
 							$("#other_reason").html("Requirement For:");
 						}else if($("select[name=coetype]").val() == "COEHOUSINGPLAN"){
 							$("#coehpa").show();
 							$("#coeavail").show();
+							$("input[name=coeothers]").val('');
 							$("#coeothersdiv").hide();
+						}else if($("select[name=coetype]").val() == "COECOMPENSATION"){
+							$("#other_reason").html("Requirement For:");
+							$("input[name=coeothers]").val('');
+							$("#coeothersdiv").show();
 						}
 
 					}else{
 						$("#coeleavediv1").hide();
+						$("#coeleavefrom").val('');
+
 						$("#coenamediv1").hide();
+						$("input[name=coecorrection]").val('');
+
 						$("#coejobdiv1").hide();
+						$(".tasks")foreach(function(i, obj){
+							i.remove();
+						});
+
 						$("#coeleavediv2").hide();
+						$("#coeleaveto").val('');
+
 						$("#coeleavediv3").hide();
+						$("#coeleavereturn").val('');
+
 						$("#coecatdiv").show();
+						$("#coecategory").val('');
+
 						$("#other_reason").html("Other Reason:");
+
 						$("#coehpa").hide();
+						$("#hpa_percentage").val('');
+
 						$("#coeavail").hide();
+						$("input[name=avail_no]").val('');
+
 						$("#coeothersdiv").show();
+						$("input[name=coeothers]").val('');
 						// $("input[name=coeothers]").css({"visibility":"visible"});
 					}
 				});
