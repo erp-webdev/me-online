@@ -5503,9 +5503,7 @@
 										<button id="printcoe" value="Print" attribute="<?php echo $result[0]['id']; ?>" attribute2="<?php echo $result[0]['status']; ?>" attribute3="<?php echo $result[0]['type']; ?>" class="smlbtn" style="background-color:#3EC2FB; width:45px;">Print</button>
 							<?php 	} ?>
 
-							<?php	if(($result[0]['status'] == 'For Release' || $result[0]['status'] == 'Done') && $result[0]['status'] != 'Cancelled'){?>
-										<button id="sendcoe" value="Send" attribute="<?php echo $result[0]['id']; ?>" attribute2="<?php echo $result[0]['status']; ?>" attribute3="<?php echo $result[0]['type']; ?>" class="smlbtn" style="background-color:#3EC2FB; width:45px;">Send</button>
-							<?php 	} ?>
+
 
 							<?php	if($result[0]['status'] == 'Done' || $result[0]['status'] == 'Cancelled'){ ?>
 							<?php 	}else{ ?>
@@ -6006,7 +6004,7 @@
 					up to the present.</b></p>
 					<?php } ?>
 
-					<p style="padding-left: 50px; padding-right: 50px;">As a <?php echo $emp_info[0]["PositionDesc"].", ". $emp_info[0]["Gender2"]; ?> <?php if($emp_info[0]["DateResigned"]){ echo "has"; }else{ ?>
+					<p style="padding-left: 50px; padding-right: 50px;">As a <?php echo $emp_info[0]["PositionDesc"].", ". strtolower($emp_info[0]["Gender"]); ?> <?php if($emp_info[0]["DateResigned"]){ echo "had"; }else{ ?>
 					has<?php } ?> the following main responsibilities:</p>
 
 					<?php foreach($tasks as $task){ ?>
