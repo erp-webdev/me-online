@@ -6196,7 +6196,7 @@
 					   newWin= window.open("");
 			 		   newWin.document.write(divToPrint.outerHTML);
 					   newWin.print();
-		   			   divToPrint.outerHTML.close();
+		   			   newWin.close();
 					});
 				</script>
 			<?
