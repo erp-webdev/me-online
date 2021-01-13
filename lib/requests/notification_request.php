@@ -4812,6 +4812,9 @@
 						$(".tasks").each(function(){
 							$(this).remove();
 						});
+						$(".add_field_button").each(function(){
+							$(this).remove();
+						});
 
 						$("#coeleavediv2").hide();
 						$("#coeleaveto").val('');
