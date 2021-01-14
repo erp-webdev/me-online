@@ -5810,9 +5810,11 @@
 
 			?>
 			<div style="padding-bottom: 250px;">
+				<div id="myDivToPrint" style="display: none;">
 				<img src="https://www.w3schools.com/cssref/img_tree.gif" / width="50px" height="50px">
+				</div>
 				<center><h3>Please close print preview.</h3></center></div>
-			<div id="myDivToPrint" style="display: none;">
+			<div id="myDivToPrint1" style="display: none;">
 
 			<?php
 			$companies = [
