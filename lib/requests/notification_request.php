@@ -5734,7 +5734,7 @@
 									$("#loading").hide();
 								},
 								success: function(data) {
-									// $("#coedata").html(data);
+									$("#coedata").html(data);
 								}
 							});
 
@@ -5809,7 +5809,9 @@
 			$emp_info[0]['DateResigned'] = $emp_info[0]['DateResigned'] ?  date('F j, Y', strtotime($emp_info[0]['DateResigned'])) : null;
 
 			?>
-			<div style="padding-bottom: 250px;"><center><h3>Please close print preview..</h3></center></div>
+			<div style="padding-bottom: 250px;">
+				<p style="text-align: center;"><img src="../../images/gl_coe.png" /></p>
+				<center><h3>Please close print preview..</h3></center></div>
 			<div id="myDivToPrint" style="display: none;">
 			<?php
 			$companies = [
@@ -5996,7 +5998,6 @@
 					}
 			}elseif ($coe[0]["type"] == 'COESEPARATED') {
 						?>
-						<p style="text-align: center;"><img src="../../images/gl_coe.png" /></p>
 
 						<h3 align="center" style="padding-top: 150px">CERTIFICATION</h3>
 
