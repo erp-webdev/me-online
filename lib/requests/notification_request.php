@@ -5719,7 +5719,7 @@
 							var url_print = "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=coeprint&type=COEAPPROVEDLEAVE";
 							var data_print = "id=" + id + "&status=" + status + "&start_date=" + start_date + "&end_date=" + end_date + "&return_date=" + return_date + "&send=" + false;
 						}else{
-							var url_print = "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=coeprint&type=COEAPPROVEDLEAVE";
+							var url_print = "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=coeprint&type="+type;
 							var data_print = "id=" + id + "&status=" + status + "&start_date=" + start_date + "&end_date=" + end_date + "&return_date=" + return_date + "&send=" + false;
 						}
 
@@ -5812,7 +5812,7 @@
 			<div style="padding-bottom: 250px;">
 				<center><h3>Please close print preview.</h3></center></div>
 			<div id="myDivToPrint" style="display: none;">
-				<img src="../../images/gl_coe.png" / width="50px" height="50px">
+				<img src="https://www.w3schools.com/cssref/img_tree.gif" / width="50px" height="50px">
 
 			<?php
 			$companies = [
