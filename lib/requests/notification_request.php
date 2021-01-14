@@ -5996,7 +5996,7 @@
 					}
 			}elseif ($coe[0]["type"] == 'COESEPARATED') {
 						?>
-						<img src="<?php echo IMG_WEB; ?>/gl_coe.png" width="100" height="50" />
+						<p style="text-align: center;"><img src="../../images/gl_coe.png" width="100" height="50" /></p>
 
 						<h3 align="center" style="padding-top: 150px">CERTIFICATION</h3>
 
