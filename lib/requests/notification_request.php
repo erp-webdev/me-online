@@ -5809,8 +5809,7 @@
 			$emp_info[0]['DateResigned'] = $emp_info[0]['DateResigned'] ?  date('F j, Y', strtotime($emp_info[0]['DateResigned'])) : null;
 
 			?>
-			<div style="padding-bottom: 250px;">
-				<img src="../../images/gl_coe.png" />
+			<div style="padding-bottom: 250px; background-image: url('../../images/gl_coe.png'); ">
 				<center><h3>Please close print preview..</h3></center></div>
 			<div id="myDivToPrint" style="display: none;">
 			<?php
