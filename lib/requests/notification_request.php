@@ -6142,7 +6142,7 @@
 					<p style="padding-left: 50px; padding-right: 50px;">As a <?php echo $emp_info[0]["PositionDesc"].", ". strtolower($emp_info[0]["Gender"]); ?> <?php if($emp_info[0]["DateResigned"]){ echo "had"; }else{ ?>
 					has<?php } ?> the following main responsibilities:</p>
 
-					<ul>
+					<ul style="padding: 100px;">
 					<?php foreach($tasks as $task){ ?>
 					<li style="padding-left: 50px; padding-right: 50px;"><?php echo $task;?></li>
 					<?php } ?>
