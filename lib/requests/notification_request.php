@@ -4881,11 +4881,11 @@
 					if(!emp){
 						alert("Employee ID is required!");
 						return false;
-					}else if (!type){
-						alert("CoE Type is required!");
-						return false;
 					}else if (!coe_company){
 						alert("Company ID is required!");
+						return false;
+					}else if (!type){
+						alert("CoE Type is required!");
 						return false;
 					}
 
