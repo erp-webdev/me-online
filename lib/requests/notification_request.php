@@ -4510,12 +4510,11 @@
 			$admin_companies = $mainsql->get_row($sql_companies);
 
 		?>
-			<div id="myDivToPrint" style="padding-top:20px;font-size:12px;">
+			<div style="padding-top:20px;font-size:12px;">
 				<table align="center">
 					<tr>
 						<td width="5%"></td>
 						<td width="40%" align="left">
-							<img src="https://www.w3schools.com/cssref/img_tree.gif" / width="50px" height="50px">
 							<label>Employee ID: </label>
 						</td>
 						<td width="55%" align="left">
@@ -4701,12 +4700,6 @@
 
 			<script>
 			$(document).ready(function(){
-			 		   var divToPrint=document.getElementById("myDivToPrint");
-					   newWin= window.open("");
-			 		   newWin.document.write(divToPrint.outerHTML);
-					   newWin.print();
-		   			   newWin.close();
-
 
 				<?php
 
