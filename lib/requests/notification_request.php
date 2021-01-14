@@ -6142,9 +6142,11 @@
 					<p style="padding-left: 50px; padding-right: 50px;">As a <?php echo $emp_info[0]["PositionDesc"].", ". strtolower($emp_info[0]["Gender"]); ?> <?php if($emp_info[0]["DateResigned"]){ echo "had"; }else{ ?>
 					has<?php } ?> the following main responsibilities:</p>
 
+					<ul>
 					<?php foreach($tasks as $task){ ?>
 					<li style="padding-left: 50px; padding-right: 50px;"><?php echo $task;?></li>
 					<?php } ?>
+					</ul>
 
 					<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower($emp_info[0]["FullName"])); ?>
 					<?php if($coe[0]["other_reason"]){ ?>
