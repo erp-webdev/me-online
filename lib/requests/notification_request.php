@@ -5698,7 +5698,7 @@
 									$("#loading").hide();
 								},
 								success: function(data) {
-									$("#coedata").html(data);
+									// $("#coedata").html(data);
 								}
 							});
 
@@ -5734,7 +5734,7 @@
 									$("#loading").hide();
 								},
 								success: function(data) {
-									$("#coedata").html(data);
+									// $("#coedata").html(data);
 								}
 							});
 
