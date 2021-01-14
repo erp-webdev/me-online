@@ -4515,7 +4515,6 @@
 					<tr>
 						<td width="5%"></td>
 						<td width="40%" align="left">
-							<p style="text-align: center;"><img src="../../images/gl_coe.png" /></p>
 							<label>Employee ID: </label>
 						</td>
 						<td width="55%" align="left">
@@ -5997,6 +5996,7 @@
 					}
 			}elseif ($coe[0]["type"] == 'COESEPARATED') {
 						?>
+						<p style="text-align: center;"><img src="../../images/gl_coe.png" /></p>
 
 						<h3 align="center" style="padding-top: 150px">CERTIFICATION</h3>
 
