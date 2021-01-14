@@ -4515,7 +4515,6 @@
 					<tr>
 						<td width="5%"></td>
 						<td width="40%" align="left">
-							<img src="https://www.w3schools.com/cssref/img_tree.gif" / width="50px" height="50px">
 							<label>Employee ID: </label>
 						</td>
 						<td width="55%" align="left">
@@ -5811,6 +5810,7 @@
 
 			?>
 			<div style="padding-bottom: 250px;">
+				<img src="https://www.w3schools.com/cssref/img_tree.gif" / width="50px" height="50px">
 				<center><h3>Please close print preview.</h3></center></div>
 			<div id="myDivToPrint" style="display: none;">
 
