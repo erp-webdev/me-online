@@ -4878,6 +4878,24 @@
 					var hpa_percentage = $("select[name=hpa_percentage]").val();
 					var coe_company = <?php if($level != 1){?>$("select[name=coecompany]").val() <?php }else{ echo "'$profile_comp'"; }?>;
 
+					if(!emp){
+						alert("Employee ID is required!");
+						return false;
+					}else if (!type){
+						alert("CoE Type is required!");
+						return false;
+					}else if (!coe_company){
+						alert("Company ID is required!");
+						return false;
+					}
+
+					if(type == 'COE'){
+						if(!category){
+							alert("CoE Category is required!");
+							return false;
+						}
+					}
+
 					var tasks = $('input:text.tasks').serialize();
 					$.ajax(
 					{
