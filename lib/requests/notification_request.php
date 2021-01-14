@@ -6062,7 +6062,7 @@
 						<?php
 						}
 						?>
-						<b><p style="padding-top: 50px; text-align: right; font-size: 8px;">THIS DOCUMENT IS PRIVATE AND CONFIDENTIAL.</br>
+						<b><p style="padding-top: 50px; text-align: right; font-size: 12px;">THIS DOCUMENT IS PRIVATE AND CONFIDENTIAL.</br>
 						FOR EMPLOYMENT DETAILS PURPOSES ONLY.</br>
 						NOT AS EMPLOYEE CLEARANCE.</p></b>
 						<?php
