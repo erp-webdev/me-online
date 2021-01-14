@@ -16,8 +16,8 @@
 					<div class="rightsplashtext lefttalign">
 						<div id="mainnotification" class="mainbody lefttalign whitetext">
 							<b class="mediumtext lorangetext">COE Requisitions (Administration)</b>
-							<p style="text-align: center;"><img src="../../images/gl_coe.png" width="100" height="50" /></p>
-							
+							<p style="text-align: center;"><img src="../../images/gl_coe.png" width="250px" height="50px" /></p>
+
 							<br><br>
 							<div>
 								<div>
