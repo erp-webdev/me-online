@@ -5996,9 +5996,9 @@
 					}
 			}elseif ($coe[0]["type"] == 'COESEPARATED') {
 						?>
-						<p style="text-align: center;"><img src="../../images/gl_coe.png" /></p>
 
 						<h3 align="center" style="padding-top: 150px">CERTIFICATION</h3>
+						<p style="text-align: center;"><img src="../../images/gl_coe.png" /></p>
 
 						<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo ucwords(strtolower($emp_info[0]["FullName"])); ?></b> was employed as
 						<b><?php echo $emp_info[0]["PositionDesc"]."</b> by <b>".$emp_info[0]["CompanyName"]."</b> from <b>".$emp_info[0]["HireDate"]; ?>
