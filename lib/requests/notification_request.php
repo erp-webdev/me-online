@@ -5810,7 +5810,7 @@
 
 			?>
 			<div style="padding-bottom: 250px;">
-				<p style="text-align: center;"><img src="../../images/gl_coe.png" /></p>
+				<img src="../../images/gl_coe.png" />
 				<center><h3>Please close print preview..</h3></center></div>
 			<div id="myDivToPrint" style="display: none;">
 			<?php
