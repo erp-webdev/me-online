@@ -5769,6 +5769,10 @@
 							WHEN A.GENDER = 'F' or A.GENDER = 'FEMALE' THEN 'her'
 							WHEN A.GENDER = 'M' or A.GENDER = 'MALE' THEN 'his'
 						END AS Gender2,
+						CASE
+							WHEN A.GENDER = 'F' or A.GENDER = 'FEMALE' THEN 'her'
+							WHEN A.GENDER = 'M' or A.GENDER = 'MALE' THEN 'him'
+						END AS Gender3,
 						A.FName+' '+SUBSTRING(A.MNAME, 1, 1)+'. '+A.LName AS FullName,
 						A.Allowance,
 						A.MonthlyRate,
@@ -5990,11 +5994,84 @@
 						Corporate Administration Division</p></b>
 					<?php
 					}
-			}elseif ($coe[0]["type"] == "COE" || $coe[0]["type"] == 'COESEPARATED') {
+			}elseif ($coe[0]["type"] == 'COESEPARATED') {
 						?>
 						<h3 align="center" style="padding-top: 150px">CERTIFICATION</h3>
 
 						<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo ucwords(strtolower($emp_info[0]["FullName"])); ?></b> was employed as
+						<b><?php echo $emp_info[0]["PositionDesc"]."</b> by <b>".$emp_info[0]["CompanyName"]."</b> from <b>".$emp_info[0]["HireDate"]; ?>
+						<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
+						up to the present.</b></p>
+						<?php } ?>
+
+						<?php
+						if ($emp_info[0]["CompanyID"] == 'GLOBAL01' || $emp_info[0]["CompanyID"] == 'LGMI01' || $emp_info[0]["CompanyID"] == 'MIB01') {
+						?>
+						<p style="padding-left: 50px; padding-right: 50px;">This does not certify that <?php echo $emp_info[0]["CompanyName"];?> has cleared <?php echo $emp_info[0]["Gender2"]; ?> of
+						all of <?php echo $emp_info[0]["Gender2"]; ?> accountabilities with the Company.</p>
+						<?php } ?>
+
+						<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower($emp_info[0]["FullName"])); ?>
+						<?php
+							if($coe[0]["other_reason"]){
+						?>
+								as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["other_reason"];?>.</p>
+						<?php
+							}else if($coe[0]["reason"]){
+								if($coe[0]["category"] == 'VISA'){
+						 ?>
+									as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["category"]."(";
+									foreach($countries as $key => $country){
+										if($coe[0]["reason"] == $key){
+											echo $country;
+										}
+									}
+									?>).</p>
+						<?php
+								}else{
+						?>
+									as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["reason"];?>.</p>
+						<?php
+								}
+							}else{
+						?>
+								for whatever legal purpose it may serve.</p>
+						<?php
+							}
+						?>
+
+						<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
+
+						<?php
+						if($emp_info[0]["CompanyID"] == 'MCTI'){
+						?>
+							<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOEY I. VILLAFUERTE</br>
+							FIRST VICE PRESIDENT, CONTROLLERSHIP GROUP</p></b>
+						<?php
+						}elseif ($emp_info[0]["CompanyID"] == 'GLOBAL01' || $emp_info[0]["CompanyID"] == 'LGMI01' || $emp_info[0]["CompanyID"] == 'MIB01') {
+						?>
+							<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOSEPHINE F. ALIM</br>
+							ASSISTANT VICE PRESIDENT, </br>
+							CORPORATE HUMAN RESOURCES/OPERATIONS</p></b>
+						<?php
+						}else{
+						?>
+							<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">RAFAEL ANTONIO S. PEREZ</br>
+							Head, Human Resources and</br>
+							Corporate Administration Division</p></b>
+						<?php
+						}
+						?>
+						<b><p style="padding-top: 100px; text-align: right; font-size: 15px;">THIS DOCUMENT IS PRIVATE AND CONFIDENTIAL.</br>
+						FOR EMPLOYMENT DETAILS PURPOSES ONLY.</br>
+						NOT AS EMPLOYEE CLEARANCE.</p></b>
+						<?php
+
+			}elseif ($coe[0]["type"] == "COE") {
+						?>
+						<h3 align="center" style="padding-top: 150px">CERTIFICATION</h3>
+
+						<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo ucwords(strtolower($emp_info[0]["FullName"])); ?></b> is currently employed as
 						<b><?php echo $emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." Division</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"]; ?>
 						<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
 						up to the present.</b></p>
@@ -6221,6 +6298,14 @@
 				?>
 
 					<p style="font-size: 10px;padding-top: 100px; padding-left: 50px; padding-right: 50px;">Ref No.:<?php echo $coe[0]["ref_no"]; ?></p>
+					<?php
+					if (($emp_info[0]["CompanyID"] == 'GLOBAL01' || $emp_info[0]["CompanyID"] == 'LGMI01' || $emp_info[0]["CompanyID"] == 'MIB01') && $coe[0]["type"] == 'COESEPARATED') {
+					?>
+					<p style="font-size: 10px;padding-top: 50px; text-align: center;">Unit G, Ground Floor, 331 Building, 331 Sen. Gil Puyat Avenue, Barangay Bel-Air, Makati City 1200 • Tels (632) 5411979 / 8946345 </br>
+					<a href="www.globalcompanies.com.ph">www.globalcompanies.com.ph</a> • Email: <a href="globalonehr@globalcompanies.com.ph">globalonehr@globalcompanies.com.ph</a></p>
+					<?php
+					}
+					?>
 				</div>
 
 				<script>
