@@ -4864,7 +4864,7 @@
 
 				$("#submitcoe").on("click", function(){
 
-					$("#submitcoe").hide();
+
 					var emp = $("#coeemp").val();
 					var type = $("select[name=coetype]").val();
 					var category = $("select[name=coecategory]").val();
@@ -4896,6 +4896,7 @@
 						}
 					}
 
+					$("#submitcoe").hide();
 					var tasks = $('input:text.tasks').serialize();
 					$.ajax(
 					{
