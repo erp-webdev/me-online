@@ -5810,7 +5810,7 @@
 
 			?>
 			<div style="padding-bottom: 250px;"><center><h3>Please close print preview..</h3></center></div>
-			<div id="myDivToPrint" style="display: none;">
+			<div id="myDivToPrint" style="">
 			<?php
 			$companies = [
 
