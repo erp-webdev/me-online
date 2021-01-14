@@ -74,3 +74,4 @@
 				</div>
 
 <?php include(TEMP."/footer.php"); ?>
+<!-- require_once(DOCUMENT.'/lib/html2pdf/html2pdf.class.php'); -->

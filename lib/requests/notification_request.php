@@ -5661,11 +5661,28 @@
 							var start_date = "<?php echo date('m/d/Y', strtotime($result[0]['leave_from'])); ?>";
 							var end_date = "<?php echo date('m/d/Y', strtotime($result[0]['leave_to'])); ?>";
 							var return_date = "<?php echo date('m/d/Y', strtotime($result[0]['leave_return'])); ?>";
-							var url_print = "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=coesend&type=COEAPPROVEDLEAVE";
-							var data_print = "id=" + id + "&status=" + status + "&start_date=" + start_date + "&end_date=" + end_date + "&return_date=" + return_date;
+							var url_print = "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=coeprint&type=COEAPPROVEDLEAVE";
+							var data_print = "id=" + id + "&status=" + status + "&start_date=" + start_date + "&end_date=" + end_date + "&return_date=" + return_date + "&send=" + true;
 						}else{
-							var url_print = "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=coesend&type=COEAPPROVEDLEAVE";
-							var data_print = "id=" + id + "&status=" + status + "&start_date=" + start_date + "&end_date=" + end_date + "&return_date=" + return_date;
+							var url_print = "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=coeprint&type=COEAPPROVEDLEAVE";
+							var data_print = "id=" + id + "&status=" + status + "&start_date=" + start_date + "&end_date=" + end_date + "&return_date=" + return_date + "&send=" + true;
+						}
+
+						if(status == 'For Release' || status == 'Done'){
+
+							$.ajax(
+							{
+								url: url_print,
+								data: data_print,
+								type: "POST",
+								complete: function(){
+									$("#loading").hide();
+								},
+								success: function(data) {
+									$("#coedata").html(data);
+								}
+							});
+
 						}
 
 
@@ -5681,10 +5698,10 @@
 							var end_date = "<?php echo date('m/d/Y', strtotime($result[0]['leave_to'])); ?>";
 							var return_date = "<?php echo date('m/d/Y', strtotime($result[0]['leave_return'])); ?>";
 							var url_print = "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=coeprint&type=COEAPPROVEDLEAVE";
-							var data_print = "id=" + id + "&status=" + status + "&start_date=" + start_date + "&end_date=" + end_date + "&return_date=" + return_date;
+							var data_print = "id=" + id + "&status=" + status + "&start_date=" + start_date + "&end_date=" + end_date + "&return_date=" + return_date + "&send=" + false;
 						}else{
 							var url_print = "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=coeprint&type=COEAPPROVEDLEAVE";
-							var data_print = "id=" + id + "&status=" + status + "&start_date=" + start_date + "&end_date=" + end_date + "&return_date=" + return_date;
+							var data_print = "id=" + id + "&status=" + status + "&start_date=" + start_date + "&end_date=" + end_date + "&return_date=" + return_date + "&send=" + false;
 						}
 
 						if(status == 'For Release' || status == 'Done' || status == 'On Process'){
