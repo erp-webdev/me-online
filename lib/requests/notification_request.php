@@ -5671,7 +5671,7 @@
 
 					});
 
-					$("#sendcoe").on('click', function*(){
+					$("#sendcoe").on('click', function(){
 						var id = $(this).attr('attribute');
 						var status = $(this).attr('attribute2');
 						var type = $(this).attr('attribute3');
