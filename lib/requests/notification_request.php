@@ -5813,8 +5813,8 @@
 			<div style="padding-bottom: 250px;">
 				<center><h3>Please close print preview.</h3></center></div>
 			<?php
-			if($send_email){
-				echo "send email ".$send_email;
+			if($send_email === TRUE){
+				echo "send email ".var_dump($send_email);
 				$html2pdf = new HTML2PDF('P', 'A4', 'en', true, 'UTF-8', array(0, 0, 0, 0));
 				$html2pdf->pdf->SetDisplayMode('fullpage');
 
