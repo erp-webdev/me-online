@@ -5816,17 +5816,17 @@
 			if($send_email){
 				echo "here";
 
-				$html2pdf = new HTML2PDF('P', 'A4', 'en', true, 'UTF-8', array(0, 0, 0, 0));
-				$html2pdf->pdf->SetDisplayMode('fullpage');
-
-				ob_start();
+				// $html2pdf = new HTML2PDF('P', 'A4', 'en', true, 'UTF-8', array(0, 0, 0, 0));
+				// $html2pdf->pdf->SetDisplayMode('fullpage');
+				//
+				// ob_start();
 				include1231421('coe_template_request.php');
-				$content = ob_get_clean();
+				// $content = ob_get_clean();
 
-			    $html2pdf->writeHTML($content);
-				$html2pdf->Output('sample.pdf');
+			    // $html2pdf->writeHTML($content);
+				// $html2pdf->Output('sample.pdf');
 
-				echo var_dump($html2pdf);
+				// echo var_dump($html2pdf);
 
 			}else{
 				?>
