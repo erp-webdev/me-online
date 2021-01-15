@@ -6325,7 +6325,7 @@
 						$(".closebutton").click();
 						$('#myDivToPrint').removeAttr("style");
 						$('#myDivToPrint').css({"display":"inline-block"});
-						// var divToPrint=document.getElementById("myDivToPrint");
+						var divToPrint=document.getElementById("myDivToPrint");
 						newWin= window.open("");
 						newWin.document.write(divToPrint.outerHTML);
 						var is_chrome = Boolean(newWin.chrome);
