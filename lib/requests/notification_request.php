@@ -5829,6 +5829,8 @@
 			    $html2pdf->writeHTML($content);
 				$html2pdf->Output('sample.pdf');
 
+				echo var_dump($html2pdf);
+
 			}else{
 				include('coe_template_request.php');
 				?>
