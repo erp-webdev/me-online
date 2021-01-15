@@ -6325,9 +6325,9 @@
 					   $('#myDivToPrint').removeAttr("style");
 			 		   $('#myDivToPrint').css({"display":"inline-block"});
 			 		   var divToPrint=document.getElementById("myDivToPrint");
-					   newWin= window.open("");
-			 		   newWin.document.write(divToPrint.outerHTML);
-					   divToPrint.outerHTML.print();
+					   // newWin= window.open("");
+			 		   // newWin.document.write(divToPrint.outerHTML);
+					   document.write(divToPrint.outerHTML).print();
 					   // newWin.print();
 		   			   // newWin.close();
 					});
