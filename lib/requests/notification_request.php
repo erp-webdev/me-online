@@ -5815,7 +5815,7 @@
 			<?php
 			if($send_email){
 				?>
-					<script>alert("send!");</script>
+					<script>alert("send! <?php echo $send_email; ?>");</script>
 				<?php
 				$html2pdf = new HTML2PDF('P', 'A4', 'en', true, 'UTF-8', array(0, 0, 0, 0));
 				$html2pdf->pdf->SetDisplayMode('fullpage');
