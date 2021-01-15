@@ -6327,8 +6327,10 @@
 			 		   var divToPrint=document.getElementById("myDivToPrint");
 					   newWin= window.open("");
 			 		   newWin.document.write(divToPrint.outerHTML);
-					   newWin.print();
-		   			   // newWin.close();
+					   if(newWin){
+						   newWin.print();
+			   			   newWin.close();
+					   }
 					});
 				</script>
 			<?
