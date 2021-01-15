@@ -6321,16 +6321,25 @@
 
 				<script>
 					$(document).ready(function(){
-					   $(".closebutton").click();
-					   $('#myDivToPrint').removeAttr("style");
-			 		   $('#myDivToPrint').css({"display":"inline-block"});
-			 		   var divToPrint=document.getElementById("myDivToPrint");
-					   newWin= window.open("");
-			 		   newWin.document.write(divToPrint.outerHTML);
-					   if(newWin){
-						   newWin.print();
-			   			   newWin.close();
-					   }
+
+						var is_chrome = Boolean(mywindow.chrome);
+						$(".closebutton").click();
+						$('#myDivToPrint').removeAttr("style");
+						$('#myDivToPrint').css({"display":"inline-block"});
+						var divToPrint=document.getElementById("myDivToPrint");
+						newWin= window.open("");
+						newWin.document.write(divToPrint.outerHTML);
+
+
+						if (is_chrome) {
+							setTimeout(function() { // wait until all resources loaded
+								newWin.print();
+								newWin.close();
+							}, 250);
+						} else {
+							newWin.print();
+							newWin.close();
+						}
 					});
 				</script>
 			<?
