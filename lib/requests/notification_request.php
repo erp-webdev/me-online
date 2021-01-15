@@ -6331,7 +6331,7 @@
 
 				<script>
 					$(document).ready(function(){
-
+						alert("alert");
 						$(".closebutton").click();
 						$('#myDivToPrint').removeAttr("style");
 						$('#myDivToPrint').css({"display":"inline-block"});
