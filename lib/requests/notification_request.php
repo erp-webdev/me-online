@@ -6002,50 +6002,51 @@
 
 						<h3 align="center" style="padding-top: 100px; letter-spacing: 10px;">CERTIFICATION</h3>
 
-						<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo ucwords(strtolower($emp_info[0]["FullName"])); ?></b> was employed as
-						<b><?php echo $emp_info[0]["PositionDesc"]."</b> by <b>".$emp_info[0]["CompanyName"]."</b> from <b>".$emp_info[0]["HireDate"]; ?>
-						<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
-						up to the present.</b></p>
-						<?php } ?>
+						<div style="text-align: justify;  text-justify: inter-word;">
+							<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo ucwords(strtolower($emp_info[0]["FullName"])); ?></b> was employed as
+							<b><?php echo $emp_info[0]["PositionDesc"]."</b> by <b>".$emp_info[0]["CompanyName"]."</b> from <b>".$emp_info[0]["HireDate"]; ?>
+							<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
+							up to the present.</b></p>
+							<?php } ?>
 
-						<?php
-						if ($emp_info[0]["CompanyID"] == 'GLOBAL01' || $emp_info[0]["CompanyID"] == 'LGMI01' || $emp_info[0]["CompanyID"] == 'MIB01') {
-						?>
-						<p style="padding-left: 50px; padding-right: 50px;">This does not certify that <?php echo $emp_info[0]["CompanyName"];?> has cleared <?php echo $emp_info[0]["Gender2"]; ?> of
-						all of <?php echo $emp_info[0]["Gender2"]; ?> accountabilities with the Company.</p>
-						<?php } ?>
+							<?php
+							if ($emp_info[0]["CompanyID"] == 'GLOBAL01' || $emp_info[0]["CompanyID"] == 'LGMI01' || $emp_info[0]["CompanyID"] == 'MIB01') {
+							?>
+							<p style="padding-left: 50px; padding-right: 50px;">This does not certify that <?php echo $emp_info[0]["CompanyName"];?> has cleared <?php echo $emp_info[0]["Gender2"]; ?> of
+							all of <?php echo $emp_info[0]["Gender2"]; ?> accountabilities with the Company.</p>
+							<?php } ?>
 
-						<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower($emp_info[0]["FullName"])); ?>
-						<?php
-							if($coe[0]["other_reason"]){
-						?>
-								as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["other_reason"];?>.</p>
-						<?php
-							}else if($coe[0]["reason"]){
-								if($coe[0]["category"] == 'VISA'){
-						 ?>
-									as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["category"]."(";
-									foreach($countries as $key => $country){
-										if($coe[0]["reason"] == $key){
-											echo $country;
+							<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower($emp_info[0]["FullName"])); ?>
+							<?php
+								if($coe[0]["other_reason"]){
+							?>
+									as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["other_reason"];?>.</p>
+							<?php
+								}else if($coe[0]["reason"]){
+									if($coe[0]["category"] == 'VISA'){
+							 ?>
+										as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["category"]."(";
+										foreach($countries as $key => $country){
+											if($coe[0]["reason"] == $key){
+												echo $country;
+											}
 										}
+										?>).</p>
+							<?php
+									}else{
+							?>
+										as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["reason"];?>.</p>
+							<?php
 									}
-									?>).</p>
-						<?php
 								}else{
-						?>
-									as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["reason"];?>.</p>
-						<?php
+							?>
+									for whatever legal purpose it may serve.</p>
+							<?php
 								}
-							}else{
-						?>
-								for whatever legal purpose it may serve.</p>
-						<?php
-							}
-						?>
+							?>
 
-						<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
-
+							<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
+						</div>
 						<?php
 						if($emp_info[0]["CompanyID"] == 'MCTI'){
 						?>
