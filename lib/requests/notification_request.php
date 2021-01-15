@@ -5813,7 +5813,7 @@
 			<div style="padding-bottom: 250px;">
 				<center><h3>Please close print preview.</h3></center></div>
 			<?php
-			if($send_email){
+			if($send_email == true){
 				?>
 					<script>alert("send! <?php echo $send_email; ?>");</script>
 				<?php
