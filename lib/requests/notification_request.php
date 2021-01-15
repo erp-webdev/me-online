@@ -5837,25 +5837,26 @@
 				$end_date = $_POST["end_date"];
 				$return_date = $_POST["return_date"];
 			?>
-					<h3 align="center" style="padding-top: 150px">CERTIFICATION OF APPROVED LEAVE</h3>
+					<h3 align="center" style="padding-top: 150px; letter-spacing: 10px;">CERTIFICATION</h3>
 
-					<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This is to certify that <b><?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower($emp_info[0]["FullName"])); ?></b> is currently employed with <b><?php echo $emp_info[0]["CompanyName"]; ?></b>
-					as <b><?php echo $emp_info[0]["PositionDesc"]." - ".$emp_info[0]["DeptDesc"]."</b> for ".$emp_info[0]["DivisionName"]." Division Since <b>".$emp_info[0]["HireDate"]; ?>
-					<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
-					up to the present.</b></p>
-					<?php } ?>
+					<div style="text-align: justify;  text-justify: inter-word;">
+						<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This is to certify that <b><?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower($emp_info[0]["FullName"])); ?></b> is currently employed with <b><?php echo $emp_info[0]["CompanyName"]; ?></b>
+						as <b><?php echo $emp_info[0]["PositionDesc"]." - ".$emp_info[0]["DeptDesc"]."</b> for ".$emp_info[0]["DivisionName"]." Division Since <b>".$emp_info[0]["HireDate"]; ?>
+						<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
+						up to the present.</b></p>
+						<?php } ?>
 
-					<p style="padding-left: 50px; padding-right: 50px;">This is to further certify that <?php echo ucwords(strtolower($emp_info[0]["salutation"]))." ".ucwords(strtolower($emp_info[0]["FullName"])); ?> shall be on leave from <b><?php echo $start_date." to ".$end_date; ?>
-					</b>as approved by the Management. He is expected to report back for work on <b><?php echo $return_date; ?></b>.</p>
+						<p style="padding-left: 50px; padding-right: 50px;">This is to further certify that <?php echo ucwords(strtolower($emp_info[0]["salutation"]))." ".ucwords(strtolower($emp_info[0]["FullName"])); ?> shall be on leave from <b><?php echo $start_date." to ".$end_date; ?>
+						</b>as approved by the Management. He is expected to report back for work on <b><?php echo $return_date; ?></b>.</p>
 
-					<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["salutation"]))." ".ucwords(strtolower($emp_info[0]["FullName"])); ?>
-					<?php if($coe[0]["other_reason"]){ ?>
-						as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["other_reason"]; ?>.</p>
-					<?php }else{ ?>
-						for whatever legal purpose it may serve.</p>
-					<?php } ?>
-					<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
-
+						<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["salutation"]))." ".ucwords(strtolower($emp_info[0]["FullName"])); ?>
+						<?php if($coe[0]["other_reason"]){ ?>
+							as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["other_reason"]; ?>.</p>
+						<?php }else{ ?>
+							for whatever legal purpose it may serve.</p>
+						<?php } ?>
+						<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
+					</div>
 
 					<?php
 					if($emp_info[0]["CompanyID"] == 'MCTI'){
@@ -5879,26 +5880,27 @@
 			}elseif ($coe[0]["type"] == "COECORRECTIONNAME") { // COE with Correction Name
 					?>
 
-					<h3 align="center" style="padding-top: 150px">CERTIFICATION</h3>
+					<h3 align="center" style="padding-top: 150px; letter-spacing: 10px;">CERTIFICATION</h3>
 
-					<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo ucwords(strtolower($emp_info[0]["FullName"])); ?></b> is a
-					<b><?php echo $emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." Division</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"]; ?>
-					<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
-					up to the present.</b></p>
-					<?php } ?>
+					<div style="text-align: justify;  text-justify: inter-word;">
+						<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo ucwords(strtolower($emp_info[0]["FullName"])); ?></b> is a
+						<b><?php echo $emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." Division</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"]; ?>
+						<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
+						up to the present.</b></p>
+						<?php } ?>
 
-					<p style="padding-left: 50px; padding-right: 50px;">This also certifies that <?php echo ucwords(strtolower($emp_info[0]["FullName"]))." and ".ucwords(strtolower($coe[0]["correction_name"])); ?>
-					is the same person as <?php echo ucwords(strtolower($emp_info[0]["FullName"])); ?>.</p>
+						<p style="padding-left: 50px; padding-right: 50px;">This also certifies that <?php echo ucwords(strtolower($emp_info[0]["FullName"]))." and ".ucwords(strtolower($coe[0]["correction_name"])); ?>
+						is the same person as <?php echo ucwords(strtolower($emp_info[0]["FullName"])); ?>.</p>
 
-					<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower($emp_info[0]["FullName"])); ?>
-					<?php if($coe[0]["other_reason"]){ ?>
-						as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["other_reason"]; ?>.</p>
-					<?php }else{ ?>
-						for whatever legal purpose it may serve.</p>
-					<?php } ?>
+						<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower($emp_info[0]["FullName"])); ?>
+						<?php if($coe[0]["other_reason"]){ ?>
+							as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["other_reason"]; ?>.</p>
+						<?php }else{ ?>
+							for whatever legal purpose it may serve.</p>
+						<?php } ?>
 
-					<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
-
+						<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
+					</div>
 					<?php
 					if($emp_info[0]["CompanyID"] == 'MCTI'){
 					?>
@@ -5922,21 +5924,23 @@
 			}elseif ($coe[0]["type"] == "COEHOUSINGPLAN") { //COE with HPA
 					?>
 
-					<h3 align="center" style="padding-top: 150px">CERTIFICATION</h3>
+					<h3 align="center" style="padding-top: 150px; letter-spacing: 10px;">CERTIFICATION</h3>
 
-					<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo ucwords(strtolower($emp_info[0]["FullName"])); ?></b> is a
-					<b><?php echo $emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." Division</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"]; ?>
-					<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
-					up to the present.</b></p>
-					<?php } ?>
+					<div style="text-align: justify;  text-justify: inter-word;">
+						<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo ucwords(strtolower($emp_info[0]["FullName"])); ?></b> is a
+						<b><?php echo $emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." Division</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"]; ?>
+						<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
+						up to the present.</b></p>
+						<?php } ?>
 
-					<p style="padding-left: 50px; padding-right: 50px;">Furthermore, this is to certify that hei s qualified for a twenty five percent (25%)
-					discount in the company's housing program as stated in our employee handbook.</p>
+						<p style="padding-left: 50px; padding-right: 50px;">Furthermore, this is to certify that hei s qualified for a twenty five percent (25%)
+						discount in the company's housing program as stated in our employee handbook.</p>
 
-					<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower($emp_info[0]["FullName"]))."
-					as a requirement for the Deed of Absolute Sale of ".$emp_info[0]["Gender2"]." ".date('jS', mktime(0, 0, 0, 0, $coe[0]["other_reason"], 0)); ?> property availment under the company's housing program.</p>
+						<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower($emp_info[0]["FullName"]))."
+						as a requirement for the Deed of Absolute Sale of ".$emp_info[0]["Gender2"]." ".date('jS', mktime(0, 0, 0, 0, $coe[0]["other_reason"], 0)); ?> property availment under the company's housing program.</p>
 
-					<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
+						<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
+					</div>
 					<?php
 					if($emp_info[0]["CompanyID"] == 'MCTI'){
 					?>
@@ -5958,25 +5962,26 @@
 					}
 			}elseif ($coe[0]["type"] == "COEGOODMORAL") { // COE with Good Moral
 					?>
-					<h3 align="center" style="padding-top: 150px">CERTIFICATION</h3>
+					<h3 align="center" style="padding-top: 150px; letter-spacing: 10px;">CERTIFICATION</h3>
 
-					<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo ucwords(strtolower($emp_info[0]["FullName"])); ?></b> is a
-					<b><?php echo $emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." Division</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"]; ?>
-					<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
-					up to the present.</b></p>
-					<?php } ?>
+					<div style="text-align: justify;  text-justify: inter-word;">
+						<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo ucwords(strtolower($emp_info[0]["FullName"])); ?></b> is a
+						<b><?php echo $emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." Division</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"]; ?>
+						<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
+						up to the present.</b></p>
+						<?php } ?>
 
-					<p style="padding-left: 50px; padding-right: 50px;">This further certifies that <?php echo $emp_info[0]["Gender"] ?> has no derogatory record on file.</p>
+						<p style="padding-left: 50px; padding-right: 50px;">This further certifies that <?php echo $emp_info[0]["Gender"] ?> has no derogatory record on file.</p>
 
-					<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower($emp_info[0]["FullName"])); ?>
-					<?php if($coe[0]["other_reason"]){ ?>
-						as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["other_reason"];?>.</p>
-					<?php }else{ ?>
-						for whatever legal purpose it may serve.</p>
-					<?php } ?>
+						<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower($emp_info[0]["FullName"])); ?>
+						<?php if($coe[0]["other_reason"]){ ?>
+							as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["other_reason"];?>.</p>
+						<?php }else{ ?>
+							for whatever legal purpose it may serve.</p>
+						<?php } ?>
 
-					<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
-
+						<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
+					</div>
 					<?php
 					if($emp_info[0]["CompanyID"] == 'MCTI'){
 					?>
@@ -5998,7 +6003,7 @@
 					}
 			}elseif ($coe[0]["type"] == 'COESEPARATED') {
 						?>
-						<p style="text-align: center;"><img src="../../images/gl_coe.png"/></p>
+						<p style="text-align: center;"><img src="../images/gl_coe.png"/></p>
 
 						<h3 align="center" style="padding-top: 100px; letter-spacing: 10px;">CERTIFICATION</h3>
 
@@ -6074,45 +6079,47 @@
 
 			}elseif ($coe[0]["type"] == "COE") {
 						?>
-						<h3 align="center" style="padding-top: 150px">CERTIFICATION</h3>
+						<h3 align="center" style="padding-top: 150px; letter-spacing: 10px;">CERTIFICATION</h3>
 
-						<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo ucwords(strtolower($emp_info[0]["FullName"])); ?></b> is currently employed as
-						<b><?php echo $emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." Division</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"]; ?>
-						<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
-						up to the present.</b></p>
-						<?php } ?>
+						<div style="text-align: justify;  text-justify: inter-word;">
 
-						<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower($emp_info[0]["FullName"])); ?>
-						<?php
-							if($coe[0]["other_reason"]){
-						?>
-								as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["other_reason"];?>.</p>
-						<?php
-							}else if($coe[0]["reason"]){
-								if($coe[0]["category"] == 'VISA'){
-						 ?>
-									as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["category"]."(";
-									foreach($countries as $key => $country){
-										if($coe[0]["reason"] == $key){
-											echo $country;
+							<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo ucwords(strtolower($emp_info[0]["FullName"])); ?></b> is currently employed as
+							<b><?php echo $emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." Division</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"]; ?>
+							<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
+							up to the present.</b></p>
+							<?php } ?>
+
+							<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower($emp_info[0]["FullName"])); ?>
+							<?php
+								if($coe[0]["other_reason"]){
+							?>
+									as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["other_reason"];?>.</p>
+							<?php
+								}else if($coe[0]["reason"]){
+									if($coe[0]["category"] == 'VISA'){
+							 ?>
+										as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["category"]."(";
+										foreach($countries as $key => $country){
+											if($coe[0]["reason"] == $key){
+												echo $country;
+											}
 										}
+										?>).</p>
+							<?php
+									}else{
+							?>
+										as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["reason"];?>.</p>
+							<?php
 									}
-									?>).</p>
-						<?php
 								}else{
-						?>
-									as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["reason"];?>.</p>
-						<?php
+							?>
+									for whatever legal purpose it may serve.</p>
+							<?php
 								}
-							}else{
-						?>
-								for whatever legal purpose it may serve.</p>
-						<?php
-							}
-						?>
+							?>
 
-						<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
-
+							<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
+						</div>
 						<?php
 						if($emp_info[0]["CompanyID"] == 'MCTI'){
 						?>
@@ -6136,32 +6143,33 @@
 
 					$tasks = json_decode($coe[0]["job_desc"], true);
 					?>
-					<h3 align="center" style="padding-top: 150px">CERTIFICATION</h3>
+					<h3 align="center" style="padding-top: 150px; letter-spacing: 10px;">CERTIFICATION</h3>
 
-					<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo ucwords(strtolower($emp_info[0]["FullName"])); ?></b> was employed as
-					<b><?php echo $emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." Division</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"]; ?>
-					<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
-					up to the present.</b></p>
-					<?php } ?>
+					<div style="text-align: justify;  text-justify: inter-word;">
+						<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo ucwords(strtolower($emp_info[0]["FullName"])); ?></b> was employed as
+						<b><?php echo $emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." Division</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"]; ?>
+						<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
+						up to the present.</b></p>
+						<?php } ?>
 
-					<p style="padding-left: 50px; padding-right: 50px;">As a <?php echo $emp_info[0]["PositionDesc"].", ". strtolower($emp_info[0]["Gender"]); ?> <?php if($emp_info[0]["DateResigned"]){ echo "had"; }else{ ?>
-					has<?php } ?> the following main responsibilities:</p>
+						<p style="padding-left: 50px; padding-right: 50px;">As a <?php echo $emp_info[0]["PositionDesc"].", ". strtolower($emp_info[0]["Gender"]); ?> <?php if($emp_info[0]["DateResigned"]){ echo "had"; }else{ ?>
+						has<?php } ?> the following main responsibilities:</p>
 
-					<ul style="padding-left: 100px;">
-					<?php foreach($tasks as $task){ ?>
-					<li><?php echo $task;?></li>
-					<?php } ?>
-					</ul>
+						<ul style="padding-left: 100px;">
+						<?php foreach($tasks as $task){ ?>
+						<li><?php echo $task;?></li>
+						<?php } ?>
+						</ul>
 
-					<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower($emp_info[0]["FullName"])); ?>
-					<?php if($coe[0]["other_reason"]){ ?>
-						as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["other_reason"]; ?>.</p>
-					<?php }else{ ?>
-						for whatever legal purpose it may serve.</p>
-					<?php } ?>
+						<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower($emp_info[0]["FullName"])); ?>
+						<?php if($coe[0]["other_reason"]){ ?>
+							as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["other_reason"]; ?>.</p>
+						<?php }else{ ?>
+							for whatever legal purpose it may serve.</p>
+						<?php } ?>
 
-					<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
-
+						<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
+					</div>
 
 					<?php
 					if($emp_info[0]["CompanyID"] == 'MCTI'){
@@ -6250,43 +6258,44 @@
 				?>
 				<h3 align="center" style="padding-top: 150px">CERTIFICATION OF EMPLOYMENT AND COMPENSATION</h3>
 
-				<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This is to certify that <b><?php echo strtoupper($emp_info[0]["FullName"]); ?></b> is an
-					employee of <b><?php echo $emp_info[0]["CompanyName"]; ?></b> since <b><?php echo $emp_info[0]["HireDate"]; ?>
-				<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
-				</b>and presently holding a regular appointment for the position of <b><?php echo $emp_info[0]["PositionDesc"]; ?></b></p>
-				<?php } ?>.
+			    <div style="text-align: justify;  text-justify: inter-word;">
+					<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This is to certify that <b><?php echo strtoupper($emp_info[0]["FullName"]); ?></b> is an
+						employee of <b><?php echo $emp_info[0]["CompanyName"]; ?></b> since <b><?php echo $emp_info[0]["HireDate"]; ?>
+					<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
+					</b>and presently holding a regular appointment for the position of <b><?php echo $emp_info[0]["PositionDesc"]; ?></b></p>
+					<?php } ?>.
 
-				<p style="padding-left: 50px; padding-right: 50px;"><?php echo ucwords(strtolower($emp_info[0]["Gender2"])); ?> current monthly compensation are as follows:</p>
+					<p style="padding-left: 50px; padding-right: 50px;"><?php echo ucwords(strtolower($emp_info[0]["Gender2"])); ?> current monthly compensation are as follows:</p>
 
-						<table style="padding-left: 200px; padding-right: 50px">
-							<tr>
-								<td><b>Basic Salary</b></td>
-								<td style="padding-left: 50px;"><b><?php if(true){echo number_format($emp_info[0]["MonthlyRate"], 2);}else{ echo "SAMPLE"; }; ?></b></td>
-							</tr>
-							<?php if($emp_info[0]["Allowance"] != 0){ ?>
+							<table style="padding-left: 200px; padding-right: 50px">
 								<tr>
-									<td><b>Allowance</b></td>
-									<td style="padding-left: 50px;"><b><?php echo number_format($emp_info[0]["Allowance"], 2); ?></b></td>
+									<td><b>Basic Salary</b></td>
+									<td style="padding-left: 50px;"><b><?php if(true){echo number_format($emp_info[0]["MonthlyRate"], 2);}else{ echo "SAMPLE"; }; ?></b></td>
 								</tr>
-								<tr>
-									<td><b>Total</b></td>
-									<td style="padding-left: 50px;"><b><?php echo number_format($emp_info[0]["Allowance"] + $emp_info[0]["MonthlyRate"], 2); ?></b></td>
-								</tr>
-							<?php } ?>
-						</table>
+								<?php if($emp_info[0]["Allowance"] != 0){ ?>
+									<tr>
+										<td><b>Allowance</b></td>
+										<td style="padding-left: 50px;"><b><?php echo number_format($emp_info[0]["Allowance"], 2); ?></b></td>
+									</tr>
+									<tr>
+										<td><b>Total</b></td>
+										<td style="padding-left: 50px;"><b><?php echo number_format($emp_info[0]["Allowance"] + $emp_info[0]["MonthlyRate"], 2); ?></b></td>
+									</tr>
+								<?php } ?>
+							</table>
 
-				<p style="padding-left: 50px; padding-right: 50px;">In addition to the above compensation package, <?php echo $emp_info[0]["Gender"]; ?> receives the mandatory
-				13th month pay during the twelve (12) month period.</p>
+					<p style="padding-left: 50px; padding-right: 50px;">In addition to the above compensation package, <?php echo $emp_info[0]["Gender"]; ?> receives the mandatory
+					13th month pay during the twelve (12) month period.</p>
 
-				<p style="padding-left: 50px; padding-right: 50px;">This document is issued upon the request of <b><?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".strtoupper($emp_info[0]["FullName"]); ?>
-				<?php if($coe[0]["other_reason"]){ ?>
-					for <?php echo $emp_info[0]["Gender2"]. " <i>".$coe[0]["other_reason"]; ?></i></b>.</p>
-				<?php }else{ ?>
-				</b>for whatever legal purpose it may serve.</p>
-				<?php } ?>
+					<p style="padding-left: 50px; padding-right: 50px;">This document is issued upon the request of <b><?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".strtoupper($emp_info[0]["FullName"]); ?>
+					<?php if($coe[0]["other_reason"]){ ?>
+						for <?php echo $emp_info[0]["Gender2"]. " <i>".$coe[0]["other_reason"]; ?></i></b>.</p>
+					<?php }else{ ?>
+					</b>for whatever legal purpose it may serve.</p>
+					<?php } ?>
 
-				<p style="padding-left: 50px; padding-right: 50px;">Given this <b><?php echo date('jS')." day of ".date('F, Y'); ?></b> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
-
+					<p style="padding-left: 50px; padding-right: 50px;">Given this <b><?php echo date('jS')." day of ".date('F, Y'); ?></b> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
+				</div>
 
 				<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">Certified by:</p>
 
