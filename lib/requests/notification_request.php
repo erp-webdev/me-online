@@ -6342,12 +6342,12 @@
 						if (is_chrome) {
 							setTimeout(function() { // wait until all resources loaded
 								newWin.print();
-								alert("Please close print preview.");
-								newWin.close();
+								// alert("Please close print preview.");
+								// newWin.close();
 							}, 250);
 						} else {
 							newWin.print();
-							newWin.close();
+							// newWin.close();
 						}
 					});
 				</script>
