@@ -44,10 +44,13 @@
 											$deadline = '2020-03-30';
                                             if(date('Y-m-d') > $deadline)
                                                 $display = false;
+											break;
                                         case 'ASIAAPMI':
 											$deadline = '2021-02-28';
                                             if(date('Y-m-d') > $deadline)
                                                 $display = false;
+
+											break;
 										default:
 											$display = false;
                                     }
