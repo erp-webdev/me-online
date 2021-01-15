@@ -34,7 +34,7 @@
                                 </div>
                                 <?php endif; ?>
 
-                                <?php if(in_array($profile_dbname, ['GL', 'LAFUERZA', 'MCTI', 'MLI', 'NCCAI', 'TOWNSQUARE', 'MEGAWORLD','GLOBAL_HOTEL'])): ?>
+                                <?php if(in_array($profile_dbname, ['GL', 'LAFUERZA', 'MCTI', 'MLI', 'NCCAI', 'TOWNSQUARE', 'MEGAWORLD','GLOBAL_HOTEL','ASIAAPMI'])): ?>
                                 <?php
                                     $display = true;
 									$deadline = '2020-03-15';
