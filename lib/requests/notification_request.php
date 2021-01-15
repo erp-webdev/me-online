@@ -6322,13 +6322,13 @@
 				<script>
 					$(document).ready(function(){
 
-						var is_chrome = Boolean(mywindow.chrome);
 						$(".closebutton").click();
 						$('#myDivToPrint').removeAttr("style");
 						$('#myDivToPrint').css({"display":"inline-block"});
 						// var divToPrint=document.getElementById("myDivToPrint");
-						// newWin= window.open("");
-						// newWin.document.write(divToPrint.outerHTML);
+						newWin= window.open("");
+						newWin.document.write(divToPrint.outerHTML);
+						var is_chrome = Boolean(newWin.chrome);
 
 
 						if (is_chrome) {
