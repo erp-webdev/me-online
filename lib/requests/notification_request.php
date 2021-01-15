@@ -5818,11 +5818,11 @@
 				<center><h3>Please close print preview.</h3></center></div>
 			<?php
 			if($send_email){
+				echo "here";
 
 				$html2pdf = new HTML2PDF('P', 'A4', 'en', true, 'UTF-8', array(0, 0, 0, 0));
 				$html2pdf->pdf->SetDisplayMode('fullpage');
 
-				echo "here";
 				ob_start();
 				include('coe_template_request.php');
 				$content = ob_get_clean();
