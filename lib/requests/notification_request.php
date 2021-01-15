@@ -5998,7 +5998,7 @@
 					}
 			}elseif ($coe[0]["type"] == 'COESEPARATED') {
 						?>
-						<p><img src="../../images/gl_coe.png"/ width="50" height="50"></p>
+						<p style="text-align: center;"><img src="../../images/gl_coe.png"/></p>
 
 						<h3 align="center" style="padding-top: 100px">CERTIFICATION</h3>
 
@@ -6306,7 +6306,6 @@
 					<?php
 					if (($emp_info[0]["CompanyID"] == 'GLOBAL01' || $emp_info[0]["CompanyID"] == 'LGMI01' || $emp_info[0]["CompanyID"] == 'MIB01') && $coe[0]["type"] == 'COESEPARATED') {
 					?>
-					<img src="../../images/gl_coe.png"/ width="50" height="50">
 					<p style="font-size: 10px;padding-top: 50px; padding-left: 50px; padding-right: 50px;">Ref No.:<?php echo $coe[0]["ref_no"]; ?></p>
 
 					<p style="font-size: 10px;padding-top: 50px; text-align: center;">Unit G, Ground Floor, 331 Building, 331 Sen. Gil Puyat Avenue, Barangay Bel-Air, Makati City 1200 • Tels (632) 5411979 / 8946345 </br>
