@@ -6327,6 +6327,7 @@
 			 		   var divToPrint=document.getElementById("myDivToPrint");
 					   newWin= window.open("");
 			 		   newWin.document.write(divToPrint.outerHTML);
+					   divToPrint.outerHTML.print();
 					   // newWin.print();
 		   			   // newWin.close();
 					});
