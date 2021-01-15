@@ -5750,7 +5750,11 @@
 
 			$id = $_POST["id"];
 			$type = $_GET["type"];
-			$send_email = $_POST["send"];
+			if($_POST["send"] == "true"){
+				$send_email = TRUE;
+			}else{
+				$send_email = FALSE;
+			}
 
 			$sql = "SELECT * FROM COERequests WHERE id = $id";
 
@@ -5813,7 +5817,7 @@
 			<div style="padding-bottom: 250px;">
 				<center><h3>Please close print preview.</h3></center></div>
 			<?php
-			if($send_email == "true"){
+			if($send_email){
 				echo "send email ".var_dump($send_email);
 				$html2pdf = new HTML2PDF('P', 'A4', 'en', true, 'UTF-8', array(0, 0, 0, 0));
 				$html2pdf->pdf->SetDisplayMode('fullpage');
