@@ -6332,11 +6332,13 @@
 
 
 						if (is_chrome) {
+							alert('chrome');
 							setTimeout(function() { // wait until all resources loaded
 								newWin.print();
 								newWin.close();
-							}, 250);
+							}, 1000);
 						} else {
+							alert('not chrome');
 							newWin.print();
 							newWin.close();
 						}
