@@ -6338,11 +6338,11 @@
 						newWin= window.open("");
 						newWin.document.write(divToPrint.outerHTML);
 						var is_chrome = Boolean(newWin.chrome);
-						alert("Please close print preview.");
 
 						if (is_chrome) {
 							setTimeout(function() { // wait until all resources loaded
 								newWin.print();
+								alert("Please close print preview.");
 								newWin.close();
 							}, 250);
 						} else {
