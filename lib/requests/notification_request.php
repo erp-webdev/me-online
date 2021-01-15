@@ -5747,7 +5747,10 @@
 		break;
 
 		case 'coeprint':
+			error_reporting(E_ALL);
 
+			// Report all PHP errors
+			error_reporting(-1);
 			include1231421('coe_template_request.php');
 
 			$id = $_POST["id"];
