@@ -6326,21 +6326,21 @@
 						$(".closebutton").click();
 						$('#myDivToPrint').removeAttr("style");
 						$('#myDivToPrint').css({"display":"inline-block"});
-						var divToPrint=document.getElementById("myDivToPrint");
-						newWin= window.open("");
-						newWin.document.write(divToPrint.outerHTML);
+						// var divToPrint=document.getElementById("myDivToPrint");
+						// newWin= window.open("");
+						// newWin.document.write(divToPrint.outerHTML);
 
 
 						if (is_chrome) {
 							alert('chrome');
-							setTimeout(function() { // wait until all resources loaded
-								newWin.print();
-								newWin.close();
-							}, 1000);
+							// setTimeout(function() { // wait until all resources loaded
+							// 	newWin.print();
+							// 	newWin.close();
+							// }, 1000);
 						} else {
 							alert('not chrome');
-							newWin.print();
-							newWin.close();
+							// newWin.print();
+							// newWin.close();
 						}
 					});
 				</script>
