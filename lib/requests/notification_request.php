@@ -6330,17 +6330,14 @@
 						newWin.document.write(divToPrint.outerHTML);
 						var is_chrome = Boolean(newWin.chrome);
 
-
 						if (is_chrome) {
-							alert('chrome');
-							// setTimeout(function() { // wait until all resources loaded
-							// 	newWin.print();
-							// 	newWin.close();
-							// }, 1000);
+							setTimeout(function() { // wait until all resources loaded
+								newWin.print();
+								newWin.close();
+							}, 250);
 						} else {
-							alert('not chrome');
-							// newWin.print();
-							// newWin.close();
+							newWin.print();
+							newWin.close();
 						}
 					});
 				</script>
