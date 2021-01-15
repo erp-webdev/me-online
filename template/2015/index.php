@@ -27,7 +27,7 @@
                                     <?php if (date('Y-m-d H:i:s') >= '2017-11-03 00:00:00') : ?>
                                     Deadline for this cutoff will be <?php echo date("F j, Y", strtotime($cutoff_date)); ?><br><br>
                                     <?php endif; ?>
-										
+
                                     <?php if (date('Y-m-d H:i:s') <= '2017-11-10 18:00:00') : ?>
                                     <span class="yellowtext">Timekeeping forms for November 10, 2017 Payday should be SUBMITTED and APPROVED before November 2, 2017.<br>This is due to the early cutoff and the series of long Holidays.<br><br>Raw and Processed DTR from Offsite Locations should also be submitted on the same date.</span>
                                     <?php endif; ?>
@@ -41,6 +41,8 @@
                                         case 'GL':
                                             if(date('Y-m-d') > '2020-03-30')
                                                 $display = false;
+										default:
+											$display = false;
                                     }
                                  ?>
 
