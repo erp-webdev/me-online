@@ -1,5 +1,5 @@
 ?>
-<div id="myDivToPrint" style="display: none;">
+<div id="myDivToPrint" style="display: inline-block">
 
 <?php
 $companies = [
@@ -516,27 +516,4 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 		}
 		?>
 	</div>
-
-	<script>
-		$(document).ready(function(){
-			$(".closebutton").click();
-			$('#myDivToPrint').removeAttr("style");
-			$('#myDivToPrint').css({"display":"inline-block"});
-			var divToPrint=document.getElementById("myDivToPrint");
-			newWin= window.open("");
-			newWin.document.write(divToPrint.outerHTML);
-			var is_chrome = Boolean(newWin.chrome);
-
-			if (is_chrome) {
-				setTimeout(function() { // wait until all resources loaded
-					newWin.print();
-					// alert("Please close print preview.");
-					newWin.close();
-				}, 250);
-			} else {
-				newWin.print();
-				newWin.close();
-			}
-		});
-	</script>
 	<?php
