@@ -5813,7 +5813,19 @@
 			<div style="padding-bottom: 250px;">
 				<center><h3>Please close print preview.</h3></center></div>
 			<?php
-			include('coe_template_request.php');
+			if($send_email){
+				$html2pdf = new HTML2PDF('P', 'A4', 'en', true, 'UTF-8', array(0, 0, 0, 0));
+				$html2pdf->pdf->SetDisplayMode('fullpage');
+
+				ob_start();
+				include('coe_template_request.php');
+				$content = ob_get_clean();
+
+			    $html2pdf->writeHTML($content);
+				$html2pdf->Output('sample.pdf');
+			}else{
+				include('coe_template_request.php');
+			}
 
 		break;
 
