@@ -5816,11 +5816,11 @@
 			if($send_email){
 				echo "here";
 
-				$html2pdf = new HTML2214124124PDF('P', 'A4', 'en', true, 'UTF-8', array(0, 0, 0, 0));
+				$html2pdf = new HTML2PDF('P', 'A4', 'en', true, 'UTF-8', array(0, 0, 0, 0));
 				$html2pdf->pdf->SetDisplayMode('fullpage');
 
 				ob_start();
-				include('coe_template_request.php');
+				include1231421('coe_template_request.php');
 				$content = ob_get_clean();
 
 			    $html2pdf->writeHTML($content);
