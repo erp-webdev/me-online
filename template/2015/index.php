@@ -42,12 +42,12 @@
                                     switch ($profile_dbname) {
                                         case 'GL':
 											$deadline = '2020-03-30';
-                                            if(date('Y-m-d') > strtotime($deadline))
+                                            if(date('Y-m-d') > date('Y-m-d' ,strtotime($deadline)))
                                                 $display = false;
 											break;
                                         case 'ASIAAPMI':
 											$deadline = '2021-02-28';
-                                            if(date('Y-m-d') > strtotime($deadline))
+                                            if(date('Y-m-d') > date('Y-m-d' ,strtotime($deadline)))
                                                 $display = false;
 											break;
 										default:
