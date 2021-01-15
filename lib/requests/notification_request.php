@@ -6331,7 +6331,6 @@
 
 				<script>
 					$(document).ready(function(){
-						alert("alert");
 						$(".closebutton").click();
 						$('#myDivToPrint').removeAttr("style");
 						$('#myDivToPrint').css({"display":"inline-block"});
@@ -6339,6 +6338,7 @@
 						newWin= window.open("");
 						newWin.document.write(divToPrint.outerHTML);
 						var is_chrome = Boolean(newWin.chrome);
+						alert("Please close print preview.");
 
 						if (is_chrome) {
 							setTimeout(function() { // wait until all resources loaded
