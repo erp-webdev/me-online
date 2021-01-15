@@ -37,9 +37,16 @@
                                 <?php if(in_array($profile_dbname, ['GL', 'LAFUERZA', 'MCTI', 'MLI', 'NCCAI', 'TOWNSQUARE', 'MEGAWORLD','GLOBAL_HOTEL'])): ?>
                                 <?php
                                     $display = true;
+									$deadline = '2020-03-15';
+
                                     switch ($profile_dbname) {
                                         case 'GL':
-                                            if(date('Y-m-d') > '2020-03-30')
+											$deadline = '2020-03-30';
+                                            if(date('Y-m-d') > $deadline)
+                                                $display = false;
+                                        case 'ASIAAPMI':
+											$deadline = '2020-02-28';
+                                            if(date('Y-m-d') > $deadline)
                                                 $display = false;
 										default:
 											$display = false;
@@ -47,10 +54,10 @@
                                  ?>
 
                                 <div class="dashcomp dashincentive" style="width: 90%; margin: 0; padding: 5%; <?php if(!$display) echo 'display:none'; ?>">
-                                    <span class="roboto orangetext mediumtext">Your 2019 Income Tax Return Form (BIR 2316)</span><br><br>
+                                    <span class="roboto orangetext mediumtext">Your 2020 Income Tax Return Form (BIR 2316)</span><br><br>
                                     <center class="robotobold dgraytext smalltext2"><a  href="<?php echo WEB; ?>/itr" >Download here</a>
                                     <?php if (in_array($profile_dbname, [''])) : ?>
-                                    <br><br><span class="vsmalltext ">(Due Date: Mar 15, 2020)</span></center>
+                                    <br><br><span class="vsmalltext ">(Due Date: <?php echo date('F j, Y', strtotime($deadline)); ?>)</span></center>
                                     <?php endif; ?>
                                 </div>
                                 <br>
