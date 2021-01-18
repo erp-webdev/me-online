@@ -5820,7 +5820,7 @@
 				$html2pdf->pdf->SetDisplayMode('fullpage');
 
 				ob_start();
-				include1231421('coe_template_request.php');
+				include('coe_template_request.php');
 				$content = ob_get_clean();
 
 			    $html2pdf->writeHTML($content);
