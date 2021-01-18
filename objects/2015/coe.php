@@ -18,7 +18,7 @@
 
 		$coe_data = $mainsql->get_coe($start, NUM_ROWS, $profile_idnum, 0);
 		$sql_users = "SELECT A.*, B.* FROM COEUsers A
-					LEFT JOIN viewHREmpMaster B on A.emp_id = B.EmpID";
+					LEFT JOIN SUBSIDIARY.DBO.viewHREmpMaster B on A.emp_id = B.EmpID";
 		$coe_users = $mainsql->get_row($sql_users);
 		$coe_count = $mainsql->get_coe(0, 0, $profile_idnum, 1);
 		$pages = $mainsql->pagination("coe", $coe_count, NUM_ROWS, 9);

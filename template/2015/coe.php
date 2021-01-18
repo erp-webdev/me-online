@@ -23,13 +23,16 @@
 
 									foreach ($coe_users as $coe_user) {
 										if (($coe_user['emp_id'] == $profile_idnum)) {
-											if(empty($coe_user['EmailAdd']) && empty($profile_email)){
+											if(empty($profile_email)){
 								?>
 												<a href="<?php echo WEB; ?>/coeadmin" id="coeadmin" class="smlbtn" style="background-color:#3EC2FB;">Administration</a>
 								<?php
 												break;
-											}else{
-
+											}else if($coe_user['EmailAdd'] == $profile_email){
+								?>
+												<a href="<?php echo WEB; ?>/coeadmin" id="coeadmin" class="smlbtn" style="background-color:#3EC2FB;">Administration</a>
+								<?php
+												break;
 											}
 										}
 									}
