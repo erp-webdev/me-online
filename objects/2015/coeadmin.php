@@ -18,7 +18,8 @@
 
 		$company_sort = $_SESSION["company_sort"] ? $_SESSION["company_sort"] : null ;
 		$coe_data = $mainsql->get_coe($start, NUM_ROWS, null, 0, 2,$profile_idnum, $company_sort);
-		$sql_users = "SELECT * FROM COEUsers";
+		$sql_users = "SELECT A.*, B.* FROM COEUsers A
+					LEFT JOIN SUBSIDIARY.DBO.viewHREmpMaster B on A.emp_id = B.EmpID";
 		$coe_users = $mainsql->get_row($sql_users);
 
 		$sql_companies = "SELECT * FROM HRCompany";
@@ -30,6 +31,17 @@
 				$count++;
 			}
 		}
+
+		foreach ($coe_users as $coe_user) {
+			if (($coe_user['emp_id'] == $profile_idnum)) {
+				if(empty($profile_email)){
+					$count++;
+				}else if($coe_user['EmailAdd'] == $profile_email){
+					$count++;
+				}
+			}
+		}
+
 		if($count == 0){
 			echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/login'</script>";
 		}
