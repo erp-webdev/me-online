@@ -5748,8 +5748,6 @@
 
 		case 'coeprint':
 
-			include123('coe_template_request.php');
-
 			$id = $_POST["id"];
 			$type = $_GET["type"];
 			if($_POST["send"] == "true"){
@@ -5816,7 +5814,6 @@
 			$emp_info[0]['DateResigned'] = $emp_info[0]['DateResigned'] ?  date('F j, Y', strtotime($emp_info[0]['DateResigned'])) : null;
 
 			if($send_email){
-				echo "here";
 
 				$html2pdf = new HTML2PDF('P', 'A4', 'en', true, 'UTF-8', array(0, 0, 0, 0));
 				$html2pdf->pdf->SetDisplayMode('fullpage');
