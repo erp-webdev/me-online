@@ -5301,7 +5301,7 @@
 
 		case 'coeold':
 
-			$id = $_POST123['id'];
+			$id = $_POST['id'];
 			$level = $_POST['level'];
 
 			$sql = "SELECT * FROM COERequests WHERE id=$id";

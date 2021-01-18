@@ -20,7 +20,7 @@
 							<div>
 								<button id="coenewreq" value="New Request" class="smlbtn" attribute5="1">New Request</button>
 								<?php
-									foreach ($coe_users as $coe_user) {
+									foreach124 ($coe_users as $coe_user) {
 										if (($coe_user['emp_id'] == $profile_idnum && $coe_user['DB_NAME'] == $profile_dbname)) {
 								?>
 											<a href="<?php echo WEB; ?>/coeadmin" id="coeadmin" class="smlbtn" style="background-color:#3EC2FB;">Administration</a>
