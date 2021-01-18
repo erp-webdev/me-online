@@ -5814,17 +5814,36 @@
 			$emp_info[0]['DateResigned'] = $emp_info[0]['DateResigned'] ?  date('F j, Y', strtotime($emp_info[0]['DateResigned'])) : null;
 
 			if($send_email){
-				require_once(DOCUMENT.'/lib/html2pdf/html2pdf.class.php');
 
-				$html2pdf = new HTML2PDF('P', 'A4', 'en', true, 'UTF-8', array(0, 0, 0, 0));
-				$html2pdf->pdf->SetDisplayMode('fullpage');
+				// $html2pdf = new HTML2PDF('P', 'A4', 'en', true, 'UTF-8', array(0, 0, 0, 0));
+				// $html2pdf->pdf->SetDisplayMode('fullpage');
+				//
+				// ob_start();
+				// $content = ob_get_clean();
+				//
+			    // $html2pdf->writeHTML($content);
+				// $html2pdf->Output('sample.pdf');
 
+
+				// get the HTML
 				ob_start();
+
 				include('coe_template_request.php');
 				$content = ob_get_clean();
 
-			    $html2pdf->writeHTML($content);
-				$html2pdf->Output('sample.pdf');
+				// convert in PDF
+				require_once(DOCUMENT.'/lib/html2pdf/html2pdf.class.php');
+				try
+				{
+					$html2pdf = new HTML2PDF('P', 'Letter', 'en');
+					$html2pdf->setDefaultFont('Arial');
+					$html2pdf->writeHTML($content));
+					$html2pdf->Output('obtpdf.pdf');
+				}
+				catch(HTML2PDF_exception $e) {
+					echo $e;
+					exit;
+				}
 
 			}else{
 				?>
