@@ -2,8 +2,8 @@
 
     $refnum = $_GET['id'];
     $dbname = $_GET['dbname'];
-              
-    $application_data = $mainsql->get_notification($refnum, 0, 0, NULL, 0, NULL, NULL, NULL, NULL, $dbname);   
+
+    $application_data = $mainsql->get_notification($refnum, 0, 0, NULL, 0, NULL, NULL, NULL, NULL, $dbname);
     $application_data2 = $tblsql->get_nrequest(4, $refnum);
     $appobt_data = $tblsql->get_obtdata($refnum);
 

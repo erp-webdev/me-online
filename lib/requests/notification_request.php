@@ -5838,6 +5838,7 @@
 					$html2pdf = new HTML2PDF('P', 'Letter', 'en');
 					$html2pdf->setDefaultFont('Arial');
 					$html2pdf->writeHTML($content);
+					ob_get_clean();
 					$html2pdf->Output('obtpdf.pdf');
 				}
 				catch(HTML2PDF_exception $e) {
