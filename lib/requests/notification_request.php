@@ -5823,6 +5823,7 @@
 				include('coe_template_request.php');
 				$content = ob_get_clean();
 			    $html2pdf->writeHTML($content);
+				ob_get_clean();
 				$html2pdf->Output('sample.pdf');
 
 			}else{
