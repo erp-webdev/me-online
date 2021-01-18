@@ -22,11 +22,15 @@
 								<?php
 
 									foreach ($coe_users as $coe_user) {
-										if (($coe_user['emp_id'] == $profile_idnum && $coe_user['DB_NAME'] == $profile_dbname)) {
+										if (($coe_user['emp_id'] == $profile_idnum)) {
+											if(empty($coe_user['EmailAdd']) && empty($profile_email)){
 								?>
-											<a href="<?php echo WEB; ?>/coeadmin" id="coeadmin" class="smlbtn" style="background-color:#3EC2FB;">Administration</a>
+												<a href="<?php echo WEB; ?>/coeadmin" id="coeadmin" class="smlbtn" style="background-color:#3EC2FB;">Administration</a>
 								<?php
-											break;
+												break;
+											}else{
+
+											}
 										}
 									}
 								?>
