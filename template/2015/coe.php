@@ -20,6 +20,11 @@
 							<div>
 								<button id="coenewreq" value="New Request" class="smlbtn" attribute5="1">New Request</button>
 								<?php
+								error_reporting(E_ALL);
+
+								// Report all PHP errors
+								error_reporting(-1);
+
 									foreach124 ($coe_users as $coe_user) {
 										if (($coe_user['emp_id'] == $profile_idnum && $coe_user['DB_NAME'] == $profile_dbname)) {
 								?>
