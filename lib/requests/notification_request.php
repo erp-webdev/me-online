@@ -5826,9 +5826,7 @@
 
 				// Important: this will prevent the generation of the PDF in the browser
 				// as we are filling the output buffer of PHP
-				var_dump(array(
-				    "test" => "demo"
-				));
+
 
 				// create some HTML content
 				$html = '<h1>HTML Example</h1>
