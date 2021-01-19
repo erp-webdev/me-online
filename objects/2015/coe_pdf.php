@@ -89,7 +89,7 @@ require_once(DOCUMENT.'/lib/tcpdf/tcpdf.php');
 $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 $pdf->SetPrintHeader(false);
 $pdf->SetPrintFooter(false);
-$pdf->SetLeftMargin(100);
+$pdf->SetLeftMargin(20);
 $pdf->AddPage();
 $pdf->writeHTML($content);
 
