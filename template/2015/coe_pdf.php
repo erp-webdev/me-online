@@ -353,7 +353,7 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 			up to the present.</b></p>
 			<?php } ?>
 
-			<p style="padding-left: 50px; padding-right: 50px;">As <?php echo $emp_info[0]["PositionDesc"].", ". strtolower($emp_info[0]["Gender"]); ?> <?php if($emp_info[0]["DateResigned"]){ echo "had"; }else{ ?>
+			<p style="padding-left: 50px; padding-right: 50px;">As <?php if( in_array(strtolower(substr($emp_info[0]["PositionDesc"],0,1)), ['a','e','i','o','u']) ){ echo ' an '; }else{ echo ' a '; }echo $emp_info[0]["PositionDesc"].", ". strtolower($emp_info[0]["Gender"]); ?> <?php if($emp_info[0]["DateResigned"]){ echo "had"; }else{ ?>
 			has<?php } ?> the following main responsibilities:</p>
 
 			<ul style="padding-left: 100px;">
