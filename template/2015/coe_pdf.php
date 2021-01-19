@@ -1,7 +1,7 @@
 <style type="text/css">
 
 </style>
-<div id="myDivToPrint" style="display: inline-block">
+<div id="myDivToPrint" style="display: inline-block; height: 750px;">
 
 <?php
 $companies = [
