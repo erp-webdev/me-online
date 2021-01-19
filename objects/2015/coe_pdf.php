@@ -90,7 +90,8 @@ $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8',
 $pdf->SetPrintHeader(false);
 $pdf->SetPrintFooter(false);
 $pdf->SetLeftMargin(30);
-$pdf->SetTopMargin(100);
+$pdf->SetRightMargin(30);
+$pdf->SetTopMargin(50);
 $pdf->AddPage();
 $pdf->writeHTML($content);
 
