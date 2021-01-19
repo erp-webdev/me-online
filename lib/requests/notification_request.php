@@ -5523,7 +5523,7 @@
 							<?php 	} ?>
 
 							<?php	if(($result[0]['status'] == 'For Release' || $result[0]['status'] == 'Done') && $result[0]['status'] != 'Cancelled'){?>
-										<button id="sendcoe" value="Send" attribute="<?php echo $result[0]['id']; ?>" attribute2="<?php echo $result[0]['status']; ?>" attribute3="<?php echo $result[0]['type']; ?>" class="smlbtn" style="background-color:#3EC2FB; width:45px;">Send</button>
+										<a href="<?php echo WEB; ?>/coe_pdf?id=<?php echo $result[0]['id']; ?>&type=<?php echo $result[0]['type']; ?>&send=TRUE" target="_blank"><button class="smlbtn" style="background-color:#3EC2FB; width:45px;">Print OBT Form</button></a>
 							<?php 	} ?>
 
 							<?php	if($result[0]['status'] == 'Done' || $result[0]['status'] == 'Cancelled'){ ?>
@@ -5859,6 +5859,7 @@
 				$pdf->writeHTML($html, true, false, true, false, '');
 
 				$pdf->lastPage();
+				ob_end_clean();
 				$pdf->Output('example_006.pdf', 'I');
 
 
