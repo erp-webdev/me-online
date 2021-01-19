@@ -5859,7 +5859,6 @@
 				$pdf->writeHTML($html, true, false, true, false, '');
 
 				$pdf->lastPage();
-				ob_end_clean();
 				$pdf->Output('example_006.pdf', 'I');
 
 
