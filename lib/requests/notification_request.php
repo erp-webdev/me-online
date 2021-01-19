@@ -5815,17 +5815,26 @@
 
 			if($send_email){
 
-				require_once(DOCUMENT.'/lib/html2pdf/html2pdf.class.php');
+				// require_once(DOCUMENT.'/lib/html2pdf/html2pdf.class.php');
 
-				$html2pdf = new HTML2PDF('P', 'A4', 'en', true, 'UTF-8', array(0, 0, 0, 0));
-				$html2pdf->pdf->SetDisplayMode('fullpage');
-				ob_start();
-				include('coe_template_request.php');
-				$content = ob_get_clean();
-				ob_end_clean();
-				var_dump($content);
-			    $html2pdf->writeHTML($content);
-				$html2pdf->Output('sample.pdf');
+				require_once(DOCUMENT.'/lib/fpdf/fpdf.php');
+
+				$pdf = new FPDF();
+				$pdf->AddPage();
+				$pdf->SetFont('Arial','B',16);
+				$pdf->Cell(40,10,'Hello World!');
+				$pdf->Output();
+
+				// $html2pdf = new HTML2PDF('P', 'A4', 'en', true, 'UTF-8', array(0, 0, 0, 0));
+				// $html2pdf->pdf->SetDisplayMode('fullpage');
+				// ob_start();
+				// include('coe_template_request.php');
+				// $content = ob_get_clean();
+				// ob_end_clean();
+			    // $html2pdf->writeHTML($content);
+				// $html2pdf->Output('sample.pdf');
+
+
 
 			}else{
 				?>
