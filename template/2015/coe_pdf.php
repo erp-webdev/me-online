@@ -526,7 +526,7 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 		<?php
 		}else{
 		?>
-		<p style="font-size: 10px; padding-left: 50px; padding-right: 50px;">Ref No.:<?php echo $coe[0]["ref_no"]; ?></p>
+		<p style="font-size: 10px; padding-left: 50px; padding-right: 50px;">Refe No.:<?php echo $coe[0]["ref_no"]; ?></p>
 		<?php
 		}
 		?>
