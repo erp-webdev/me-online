@@ -78,6 +78,7 @@ $pdf->SetLeftMargin(25);
 $pdf->SetRightMargin(25);
 $pdf->SetTopMargin(50);
 $pdf->SetFont('times');
+$pdf->setPageFormat('LETTER');
 $pdf->AddPage();
 $pdf->writeHTML($content);
 
