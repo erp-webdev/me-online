@@ -65,33 +65,19 @@ $emp_info[0]['HireDate'] = $emp_info[0]['HireDate'] ?  date('F j, Y', strtotime(
 $emp_info[0]['CurrentDate'] = $emp_info[0]['CurrentDate'] ?  date('F j, Y', strtotime($emp_info[0]['CurrentDate'])) : null;
 $emp_info[0]['DateResigned'] = $emp_info[0]['DateResigned'] ?  date('F j, Y', strtotime($emp_info[0]['DateResigned'])) : null;
 
-// get the HTML
 ob_start();
-
 include(TEMP.'/coe_pdf.php');
 $content = ob_get_clean();
 
-// convert in PDF
 require_once(DOCUMENT.'/lib/tcpdf/tcpdf.php');
-// try
-// {
-//     $html2pdf = new HTML2PDF('P', 'Letter', 'en');
-//     $html2pdf->setDefaultFont('Arial');
-//     $html2pdf->writeHTML($content);
-//     $html2pdf->Output('obtpdf.pdf');
-// }
-// catch(HTML2PDF_exception $e) {
-//     echo $e;
-//     exit;
-// }
 
-// Output the HTML content
 $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 $pdf->SetPrintHeader(false);
 $pdf->SetPrintFooter(false);
 $pdf->SetLeftMargin(25);
 $pdf->SetRightMargin(25);
 $pdf->SetTopMargin(50);
+$pdf->SetFont('times');
 $pdf->AddPage();
 $pdf->writeHTML($content);
 

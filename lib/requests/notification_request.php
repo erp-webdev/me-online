@@ -5831,9 +5831,9 @@
 
 						if (is_chrome) {
 							setTimeout(function() { // wait until all resources loaded
-								// newWin.print();
+								newWin.print();
 								// alert("Please close print preview.");
-								// newWin.close();
+								newWin.close();
 							}, 250);
 						} else {
 							newWin.print();
