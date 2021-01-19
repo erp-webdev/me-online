@@ -366,7 +366,7 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 		<?php
 		}elseif ($emp_info[0]["CompanyID"] == 'GLOBAL01' || $emp_info[0]["CompanyID"] == 'LGMI01' || $emp_info[0]["CompanyID"] == 'MIB01') {
 		?>
-			<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOSEPHINE F. ALIM<br />
+			<b><p style="padding-top: 100px; padding-left: 100px; padding-right: 50px;">JOSEPHINE F. ALIM<br />
 			ASSISTANT VICE PRESIDENT, <br />
 			CORPORATE HUMAN RESOURCES/OPERATIONS</p></b>
 		<?php
