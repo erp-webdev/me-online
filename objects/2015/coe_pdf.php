@@ -113,7 +113,7 @@ $message = "This is a multi-part message in MIME format.\n\n" .
     "Content-Transfer-Encoding: 7bit\n\n" .
     $message .= "\n\n";
 
-$data = chunk_split(base64_encode($file_attach));
+$data = chunk_split($file_attach);
 
 $message .= "–{$mime_boundary}\n" .
     "Content-Type: {$fileatttype};\n" .
@@ -125,5 +125,9 @@ $message .= "–{$mime_boundary}\n" .
     "-{$mime_boundary}-\n";
 
 $emp_sendmail = mail('shart.global@megaworldcorp.com', "COE Request Update", $message, $headers);
-
+if ($emp_sendmail) {
+    echo "The email was sent.";
+} else {
+    echo "There was an error sending the mail.";
+}
 ?>
