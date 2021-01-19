@@ -124,6 +124,8 @@ $message .= "–{$mime_boundary}\n" .
     $data . "\n\n" .
     "-{$mime_boundary}-\n";
 
+	var_dump($message);
+
 $emp_sendmail = mail('shart.global@megaworldcorp.com', "COE Request Update", $message, $headers);
 if ($emp_sendmail) {
     echo "The email was sent.";
