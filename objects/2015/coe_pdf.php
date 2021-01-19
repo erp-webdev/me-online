@@ -86,7 +86,10 @@ require_once(DOCUMENT.'/lib/tcpdf/tcpdf.php');
 // }
 
 // Output the HTML content
-var_dump($content);
+$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+
+$pdf->AddPage();
+
 $pdf->writeHTML($content, true, false, true, false, '');
 
 $pdf->lastPage();
