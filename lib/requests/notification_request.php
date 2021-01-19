@@ -5854,7 +5854,7 @@ List example:
 					$html2pdf->writeHTML($html, false);
 					$html2pdf->lastPage();
 
-					ob_end_clean();
+					// ob_end_clean();
 					$html2pdf->Output('coe.pdf', 'I');
 				}
 				catch(HTML2PDF_exception $e) {
