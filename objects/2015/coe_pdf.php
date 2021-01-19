@@ -109,15 +109,13 @@ $message .= "This is a multi-part message in MIME format.\n\n" .
     "Content-Transfer-Encoding: 7bit\n\n" .
     $message .= "\n\n";
 
-$data = chunk_split($file_attach);
-
 $message .= "–{$mime_boundary}\n" .
     "Content-Type: application/pdf\n" .
     " name=CertificateOfEmployment.pdf\n" .
     "Content-Disposition: attachment;\n" .
     " filename=CertificateOfEmployment.pdf\n" .
     "Content-Transfer-Encoding: base64\n\n" .
-    $data . "\n\n" .
+    $file_attach . "\n\n" .
     "-{$mime_boundary}-\n";
 
 
