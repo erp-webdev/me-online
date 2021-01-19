@@ -68,7 +68,7 @@ $emp_info[0]['DateResigned'] = $emp_info[0]['DateResigned'] ?  date('F j, Y', st
 // get the HTML
 ob_start();
 
-include(TEMP.'/obtpdf.php');
+include(TEMP.'/coe_pdf.php');
 $content = ob_get_clean();
 
 // convert in PDF
