@@ -340,7 +340,6 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 		<p>
 			<h3 class="coetitle" align="center" style="padding-top: 150px; letter-spacing: 10px;">CERTIFICATION</h3>
 			&nbsp;<br />
-			&nbsp;<br />
 		</p>
 
 		<div style="text-align: justify;  text-justify: inter-word;">
