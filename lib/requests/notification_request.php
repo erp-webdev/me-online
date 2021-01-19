@@ -5833,7 +5833,7 @@
 							setTimeout(function() { // wait until all resources loaded
 								// newWin.print();
 								// alert("Please close print preview.");
-								newWin.close();
+								// newWin.close();
 							}, 250);
 						} else {
 							newWin.print();
