@@ -93,7 +93,7 @@ $pdf->AddPage();
 $pdf->writeHTML($content, true, false, true, false, '');
 
 $pdf->lastPage();
-
+ob_end_clean();
 $pdf->Output('coe_template.pdf', 'I');
 
 ?>
