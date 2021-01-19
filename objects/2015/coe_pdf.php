@@ -93,8 +93,8 @@ $pdf->SetPrintHeader(false);
 $pdf->SetPrintFooter(false);
 
 $pdf->writeHTML($content);
-var_dump($pdf);
-$pdf->lastPage();
+
+
 ob_end_clean();
 $pdf->Output('coe_template.pdf', 'I');
 
