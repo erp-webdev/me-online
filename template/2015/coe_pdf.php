@@ -514,7 +514,9 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 	?>
 		&nbsp;<br />
 		&nbsp;<br />
-
+		&nbsp;<br />
+		&nbsp;<br />
+		
 		<?php
 		if (($emp_info[0]["CompanyID"] == 'GLOBAL01' || $emp_info[0]["CompanyID"] == 'LGMI01' || $emp_info[0]["CompanyID"] == 'MIB01') && $coe[0]["type"] == 'COESEPARATED') {
 		?>
@@ -526,7 +528,7 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 		<?php
 		}else{
 		?>
-		<p style="font-size: 10px; padding-left: 50px; padding-right: 50px; position: absolute; bottom: 0px; ">Ref No.:<?php echo $coe[0]["ref_no"]; ?></p>
+		<p style="font-size: 10px; padding-left: 50px; padding-right: 50px;">Ref No.:<?php echo $coe[0]["ref_no"]; ?></p>
 		<?php
 		}
 		?>
