@@ -5819,10 +5819,12 @@
 
 				require_once(DOCUMENT.'/lib/fpdf/fpdf.php');
 
+				ob_start();
 				$pdf = new FPDF();
 				$pdf->AddPage();
 				$pdf->SetFont('Arial','B',16);
 				$pdf->Cell(40,10,'Hello World!');
+				ob_end_clean();
 				$pdf->Output();
 
 				// $html2pdf = new HTML2PDF('P', 'A4', 'en', true, 'UTF-8', array(0, 0, 0, 0));
