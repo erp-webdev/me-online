@@ -5825,7 +5825,6 @@
 					$html2pdf = new HTML2PDF('P', 'Letter', 'en');
 					$html2pdf->setDefaultFont('Arial');
 					$html2pdf->writeHTML($content, FALSE);
-					ob_end_clean();
 					$html2pdf->Output('coe.pdf', 'I');
 				}
 				catch(HTML2PDF_exception $e) {
