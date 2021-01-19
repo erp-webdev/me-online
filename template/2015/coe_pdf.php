@@ -518,7 +518,7 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 		<?php
 		if (($emp_info[0]["CompanyID"] == 'GLOBAL01' || $emp_info[0]["CompanyID"] == 'LGMI01' || $emp_info[0]["CompanyID"] == 'MIB01') && $coe[0]["type"] == 'COESEPARATED') {
 		?>
-		<p style="font-size: 10px; padding-left: 50px; padding-right: 50px;">Ref No.:<?php echo $coe[0]["ref_no"]; ?></p>
+		<p style="font-size: 10px; padding-left: 50px; padding-right: 50px;">Refe No.:<?php echo $coe[0]["ref_no"]; ?></p>
 		&nbsp;<br />
 		&nbsp;<br />
 		<p style="font-size: 10px; text-align: center;">Unit G, Ground Floor, 331 Building, 331 Sen. Gil Puyat Avenue, Barangay Bel-Air, Makati City 1200 • Tels (632) 5411979 / 8946345 <br />
@@ -526,7 +526,7 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 		<?php
 		}else{
 		?>
-		<p style="font-size: 10px; padding-left: 50px; padding-right: 50px;">Refe No.:<?php echo $coe[0]["ref_no"]; ?></p>
+		<p style="font-size: 10px; padding-left: 50px; padding-right: 50px;">Ref No.:<?php echo $coe[0]["ref_no"]; ?></p>
 		<?php
 		}
 		?>
