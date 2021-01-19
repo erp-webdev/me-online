@@ -72,17 +72,24 @@ include(TEMP.'/coe_pdf.php');
 $content = ob_get_clean();
 
 // convert in PDF
-require_once(DOCUMENT.'/lib/html2pdf/html2pdf.class.php');
-try
-{
-    $html2pdf = new HTML2PDF('P', 'Letter', 'en');
-    $html2pdf->setDefaultFont('Arial');
-    $html2pdf->writeHTML($content);
-    $html2pdf->Output('obtpdf.pdf');
-}
-catch(HTML2PDF_exception $e) {
-    echo $e;
-    exit;
-}
+require_once(DOCUMENT.'/lib/tcpdf/tcpdf.php');
+// try
+// {
+//     $html2pdf = new HTML2PDF('P', 'Letter', 'en');
+//     $html2pdf->setDefaultFont('Arial');
+//     $html2pdf->writeHTML($content);
+//     $html2pdf->Output('obtpdf.pdf');
+// }
+// catch(HTML2PDF_exception $e) {
+//     echo $e;
+//     exit;
+// }
+
+// Output the HTML content
+$pdf->writeHTML($content, true, false, true, false, '');
+
+$pdf->lastPage();
+
+$pdf->Output('coe_template.pdf', 'I');
 
 ?>
