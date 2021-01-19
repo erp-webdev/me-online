@@ -365,6 +365,8 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 
 			<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
 		</div>
+		&nbsp;
+		
 
 		<?php
 		if($emp_info[0]["CompanyID"] == 'MCTI'){
