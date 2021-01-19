@@ -1,4 +1,3 @@
-<br />?>
 <div id="myDivToPrint" style="display: inline-block">
 
 <?php
