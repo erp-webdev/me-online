@@ -5851,12 +5851,12 @@ List example:
 				{
 					$html2pdf = new HTML2PDF('P', 'Letter', 'en');
 					$html2pdf->setDefaultFont('Arial');
-					$html2pdf->writeHTML($html, true);
+					$html2pdf->writeHTML($html);
 
 					// ob_end_clean();
 					// $html2pdf->Output('coe.pdf', 'I');
 
-					// var_dump($html2pdf);
+					var_dump($html2pdf);
 				}
 				catch(HTML2PDF_exception $e) {
 					echo $e;
