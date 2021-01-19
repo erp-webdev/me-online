@@ -5818,7 +5818,9 @@
 				// ob_start();
 				// include('coe_template_request.php');
 				// $content = ob_get_clean();
-				$html = '<h1>HTML Example</h1>
+				$html = '
+				<div>
+				<h1>HTML Example</h1>
 <h2>List</h2>
 List example:
 <ol>
