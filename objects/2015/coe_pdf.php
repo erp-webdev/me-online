@@ -103,10 +103,6 @@ $semi_rand = md5(time());
 
 $mime_boundary = "==Multipart_Boundary_x{$semi_rand}x";
 
-$headers .= "\nMIME-Version: 1.0\n" .
-    "Content-Type: multipart/mixed;\n" .
-    " boundary=\"{$mime_boundary}\"";
-
 $message = "This is a multi-part message in MIME format.\n\n" .
     "-{$mime_boundary}\n" .
     "Content-Type: text/plain; charset=\"iso-8859-1\n" .
@@ -124,7 +120,6 @@ $message .= "–{$mime_boundary}\n" .
     $data . "\n\n" .
     "-{$mime_boundary}-\n";
 
-	var_dump($message);
 
 $emp_sendmail = mail('shart.global@megaworldcorp.com', "COE Request Update", $message, $headers);
 if ($emp_sendmail) {
