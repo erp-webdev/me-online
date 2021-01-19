@@ -330,7 +330,7 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 
 		$tasks = json_decode($coe[0]["job_desc"], true);
 		?>
-		<h3 align="center" style="padding-top: 150px; letter-spacing: 10px;">CERTIFICATION</h3>
+		<h3 align="center" style="margin-top: 150px; letter-spacing: 10px;">CERTIFICATION</h3>
 
 		<div style="text-align: justify;  text-justify: inter-word;">
 			<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo ucwords(strtolower($emp_info[0]["FullName"])); ?></b> was employed as
@@ -366,7 +366,7 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 		<?php
 		}elseif ($emp_info[0]["CompanyID"] == 'GLOBAL01' || $emp_info[0]["CompanyID"] == 'LGMI01' || $emp_info[0]["CompanyID"] == 'MIB01') {
 		?>
-			<b><p style="padding-top: 25px; padding-left: 50px; padding-right: 50px;">jOSEPHINE F. ALIM<br />
+			<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOSEPHINE F. ALIM<br />
 			ASSISTANT VICE PRESIDENT, <br />
 			CORPORATE HUMAN RESOURCES/OPERATIONS</p></b>
 		<?php
