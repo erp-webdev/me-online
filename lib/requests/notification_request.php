@@ -5817,7 +5817,8 @@
 				<div style="padding-bottom: 250px;">
 					<center><h3>Please close print preview.</h3></center></div>
 				<?php
-				include('coe_template_request.php');
+				// include('coe_template_request.php');
+				include(TEMP.'/coe_pdf.php');
 				?>
 				<script>
 					$(document).ready(function(){
