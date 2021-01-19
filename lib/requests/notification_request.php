@@ -5853,7 +5853,7 @@ List example:
 					$html2pdf->setDefaultFont('Arial');
 					$html2pdf->writeHTML($html, false);
 
-					ob_end_clean();
+					// ob_end_clean();
 					$html2pdf->Output('coe.pdf', 'I');
 
 					var_dump($html2pdf);
