@@ -86,6 +86,7 @@ require_once(DOCUMENT.'/lib/tcpdf/tcpdf.php');
 // }
 
 // Output the HTML content
+var_dump($content);
 $pdf->writeHTML($content, true, false, true, false, '');
 
 $pdf->lastPage();
