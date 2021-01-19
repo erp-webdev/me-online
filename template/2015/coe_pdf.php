@@ -197,7 +197,7 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 		}
 }elseif ($coe[0]["type"] == 'COESEPARATED') {
 			?>
-			<!-- <p style="text-align: center;"><img src="<?php echo IMG_WEB; ?>/gl_coe.png"/></p> -->
+			<p style="text-align: center;"><img src="<?php echo IMG_WEB; ?>/gl_coe.png"/></p>
 
 			<h3 align="center" style="padding-top: 100px; letter-spacing: 10px;">CERTIFICATION</h3>
 			&nbsp;
