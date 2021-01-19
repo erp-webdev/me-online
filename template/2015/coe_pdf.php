@@ -337,10 +337,8 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 
 		$tasks = json_decode($coe[0]["job_desc"], true);
 		?>
-		<p>
 			<h3 class="coetitle" align="center" style="padding-top: 150px; letter-spacing: 10px;">CERTIFICATION</h3>
 			&nbsp;<br />
-		</p>
 
 		<div style="text-align: justify;  text-justify: inter-word;">
 			<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo ucwords(strtolower($emp_info[0]["FullName"])); ?></b> was employed as
