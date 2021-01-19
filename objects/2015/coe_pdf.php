@@ -83,7 +83,7 @@ $pdf->writeHTML($content);
 
 
 ob_end_clean();
-$file_attach = $pdf->Output('Certificate of Employment.pdf', 'E');
+$file_attach = $pdf->Output('CertificateOfEmployment.pdf', 'E');
 
 
 $message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 95%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>Certificate of Employment Request</span><br><br>Hi ,<br><br>";
@@ -103,7 +103,7 @@ $semi_rand = md5(time());
 
 $mime_boundary = "==Multipart_Boundary_x{$semi_rand}x";
 
-$message = "This is a multi-part message in MIME format.\n\n" .
+$message .= "This is a multi-part message in MIME format.\n\n" .
     "-{$mime_boundary}\n" .
     "Content-Type: text/plain; charset=\"iso-8859-1\n" .
     "Content-Transfer-Encoding: 7bit\n\n" .
@@ -112,10 +112,10 @@ $message = "This is a multi-part message in MIME format.\n\n" .
 $data = chunk_split($file_attach);
 
 $message .= "–{$mime_boundary}\n" .
-    "Content-Type: {$fileatttype};\n" .
-    " name=\"{$fileattname}\"\n" .
+    "Content-Type: application/pdf\n" .
+    " name=CertificateOfEmployment.pdf\n" .
     "Content-Disposition: attachment;\n" .
-    " filename=\"{$fileattname}\"\n" .
+    " filename=CertificateOfEmployment.pdf\n" .
     "Content-Transfer-Encoding: base64\n\n" .
     $data . "\n\n" .
     "-{$mime_boundary}-\n";
