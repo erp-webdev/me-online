@@ -5852,7 +5852,6 @@ List example:
 					$html2pdf = new HTML2PDF('P', 'Letter', 'en');
 					$html2pdf->setDefaultFont('Arial');
 					$html2pdf->writeHTML($html, false);
-					$html2pdf->lastPage();
 
 					// ob_end_clean();
 					$html2pdf->Output('coe.pdf', 'I');
