@@ -5819,8 +5819,8 @@
 
 				require_once(DOCUMENT.'/lib/fpdf/fpdf.php');
 
-				ob_start();
 				$pdf = new FPDF();
+				ob_start();
 				$pdf->AddPage();
 				$pdf->SetFont('Arial','B',16);
 				$pdf->Cell(40,10,'Hello World!');
