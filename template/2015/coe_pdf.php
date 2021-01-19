@@ -342,6 +342,8 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 			<br />
 			<br />
 			<br />
+			<br />
+			<br />
 		</p>
 
 		<div style="text-align: justify;  text-justify: inter-word;">
