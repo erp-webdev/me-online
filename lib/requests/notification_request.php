@@ -5824,6 +5824,7 @@
 				$content = ob_get_clean();
 			    $html2pdf->writeHTML($content);
 				ob_get_clean();
+				var_dump($content);
 				$html2pdf->Output('sample.pdf');
 
 			}else{
