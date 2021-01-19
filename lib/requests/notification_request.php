@@ -5855,6 +5855,8 @@ List example:
 
 					ob_end_clean();
 					$html2pdf->Output('coe.pdf', 'I');
+
+					var_dump($html2pdf);
 				}
 				catch(HTML2PDF_exception $e) {
 					echo $e;
