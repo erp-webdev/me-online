@@ -332,7 +332,7 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 		?>
 		<h3 align="center" style="margin-top: 150px; letter-spacing: 10px;">CERTIFICATION</h3>
 
-		<div style="margin-left: 100px;text-align: justify;  text-justify: inter-word;">
+		<div style="text-align: justify;  text-justify: inter-word;">
 			<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo ucwords(strtolower($emp_info[0]["FullName"])); ?></b> was employed as
 			<b><?php echo $emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." Division</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"]; ?>
 			<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
