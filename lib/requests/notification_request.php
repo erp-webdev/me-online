@@ -5695,6 +5695,9 @@
 						if(status == 'For Release' || status == 'Done'){
 
 							if (confirm('The CoE Request will be tagged as Done/Claimed and the template will be sent to the Employee. Please confirm to continue.')) {
+
+								$("#coedata").html('<i class="fa fa-refresh fa-spin fa-lg"></i> Loading...');
+
 								$.ajax(
 								{
 									url: url_print,
@@ -5704,7 +5707,6 @@
 										$("#loading").hide();
 									},
 									success: function(data) {
-										alert(data);
 										$("#coedata").html(data);
 									}
 								});

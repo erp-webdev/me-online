@@ -95,7 +95,7 @@
 		$email = new PHPMailer();
 		$email->SetFrom(NOTIFICATION_EMAIL); //Name is optional
 
-		$message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 95%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>Certificate of Employment Request</span><br><br>Hi ,<br><br>";
+		$message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 95%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>Certificate of Employment Request</span><br><br>Hi,<br><br>";
 
 		$message .= "Your Certificate of Employment has been processed, Kindly see the attached file.";
 		$message .= "<br><br>Thanks,<br>";
@@ -114,9 +114,9 @@
 
 		$email->AddStringAttachment($file_attachment , 'CertificateOfEmployment.pdf', 'base64', 'application/pdf');
 
-		if ($email->Send()) {
+		if($email->Send()) {
 		    echo "<div style='text-align: center;'><h3>The CoE has been successfully sent to the employee.</h3></div>";
-		} else {
+		}else {
 		    echo "<div style='text-align: center;'><h3>There was an error in sending the CoE. Please contact ISM for further assistance.</h3></div>";
 		}
 
