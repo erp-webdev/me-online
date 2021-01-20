@@ -4533,9 +4533,43 @@
 							<td>
 								<select id="coecompany" name="coecompany" class="txtbox" style="width:193px;">
 									<option value="" selected>Please Select</option>
-									<?php foreach ($admin_companies as $key => $admin_company) { ?>
+
+									<!-- <?php foreach ($admin_companies as $key => $admin_company) { ?>
 									<option value="<?php echo $admin_company['CompanyID']; ?>" <?php if($company_sort == $admin_company['CompanyID']){ echo "selected";} ?>><?php echo $admin_company['CompanyName']; ?></option>
-									<?php }?>
+									<?php }?> -->
+
+									<?php
+									$dbase_array = array(
+										'GL' => ['GLOBAL01', 'LGMI01'],
+										'MEGAWORLD' => ['MEGA01'],
+										'CITYLINK' => ['CITYLINK01'],
+										'ECINEMA' => ['ECC02'],
+										'ECOC' => ['ECOC01'],
+										'EPARKVIEW' => ['ECP02'],
+										'EREX' => ['ERA01'],
+										'FIRSTCENTRO' => ['FCI01'],
+										'GLOBAL_HOTEL' => ['GLOBALHOTEL'],
+										'LAFUERZA' => ['LFI01'],
+										'LCTM' => ['LUCK01'],
+										'MCTI' => ['MCTI'],
+										'MLI' => ['MLI01'],
+										'NCCAI' => ['NCCAI'],
+										'NEWTOWN' => ['NEWTOWN01'],
+										'SUNTRUST' => ['SUNT01'],
+										'TOWNSQUARE' => ['TOWN01'],
+										'SIRUS' => ['SIRUS'],
+										'ASIAAPMI' => ['ASIAAPMI'],
+										'MALL_ADMIN' => ['Boracay'],
+										'AGILE' => ['AGILE']
+									);
+
+								foreach ($admin_companies as $key => $admin_company) {
+									if(in_array($admin_company['CompanyID'], $dbase_array[$profile_dbname])){?>
+										<option value="<?php echo $admin_company['CompanyID']; ?>"><?php echo $admin_company['CompanyName']; ?></option>
+								<?php
+									}
+								}
+								?>
 								</select>
 							</td>
 						</tr>
