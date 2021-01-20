@@ -5315,9 +5315,9 @@
 			<div style="padding-top:20px;font-size:12px;">
 				<table align="center">
 					<tr>
-						<td width="15%"></td>
-						<td align="left" <?php if($level != 2) { ?>width="40%"<?php }else{ echo "width='40%'"; } ?>><label>Employee ID: </label></td>
-						<td align="left"<?php if($level != 2) { ?>width="40%"<?php }else{ echo "width='55%'"; } ?>><?php echo $result[0]['emp_id']; ?></td>
+						<td width="5%"></td>
+						<td width="40%" align="left" <?php if($level != 2) { ?>width="40%"<?php }else{ echo "width='40%'"; } ?>><label>Employee ID: </label></td>
+						<td width="55%" align="left"<?php if($level != 2) { ?>width="40%"<?php }else{ echo "width='55%'"; } ?>><?php echo $result[0]['emp_id']; ?></td>
 					</tr>
 
 					<?php if($level != 1){ ?>
