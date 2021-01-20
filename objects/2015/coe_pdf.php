@@ -1,6 +1,7 @@
 <?php
 	var_dump($_POST["send"]);
 	exit(0);
+
 	if ($logged == 1 && $_POST["send"] == "true" ) {
 
 		$id = $_POST["id"];
