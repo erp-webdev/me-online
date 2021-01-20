@@ -1,6 +1,11 @@
 <?php
-	var_dump($logged == 1 && $_POST["send"] == "true");
-	exit(0);
+	require_once(DOCUMENT.'/lib/phpmailer/src/Exception.php');
+	require_once(DOCUMENT.'/lib/phpmailer/src/PHPMailer.php');
+	require_once(DOCUMENT.'/lib/phpmailer/src/SMTP.php');
+
+	use PHPMailer\PHPMailer\PHPMailer;
+	use PHPMailer\PHPMailer\SMTP;
+	use PHPMailer\PHPMailer\Exception;
 
 	if ($logged == 1 && $_POST["send"] == "true" ) {
 
@@ -89,13 +94,7 @@
 			return $pdf->Output('CertificateOfEmployment.pdf', 'S');
 		}
 
-		require_once(DOCUMENT.'/lib/phpmailer/src/Exception.php');
-		require_once(DOCUMENT.'/lib/phpmailer/src/PHPMailer.php');
-		require_once(DOCUMENT.'/lib/phpmailer/src/SMTP.php');
 
-		// use PHPMailer\PHPMailer\PHPMailer;
-		// use PHPMailer\PHPMailer\SMTP;
-		// use PHPMailer\PHPMailer\Exception;
 
 		$email = new PHPMailer();
 		$email->SetFrom(NOTIFICATION_EMAIL); //Name is optional
