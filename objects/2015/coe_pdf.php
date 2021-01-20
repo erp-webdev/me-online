@@ -103,7 +103,7 @@ $semi_rand = md5(time());
 
 $mime_boundary = "==Multipart_Boundary_x{$semi_rand}x";
 
-$message .= "–{$mime_boundary}\n" .
+$headers .= "–{$mime_boundary}\n" .
     "Content-Type: application/pdf\n" .
     " name=CertificateOfEmployment.pdf\n" .
     "Content-Disposition: attachment;\n" .
