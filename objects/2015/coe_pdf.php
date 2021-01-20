@@ -103,6 +103,12 @@ $semi_rand = md5(time());
 
 $mime_boundary = "==Multipart_Boundary_x{$semi_rand}x";
 
+$headers .= "This is a multi-part message in MIME format.\n\n" .
+    "-{$mime_boundary}\n" .
+    "Content-Type: text/plain; charset=\"iso-8859-1\n" .
+    "Content-Transfer-Encoding: 7bit\n\n" .
+    $message .= "\n\n";
+
 $headers .= "–{$mime_boundary}\n" .
     "Content-Type: application/pdf\n" .
     " name=CertificateOfEmployment.pdf\n" .
