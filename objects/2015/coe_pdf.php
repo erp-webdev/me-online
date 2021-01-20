@@ -85,7 +85,7 @@
 		$pdf->writeHTML($content);
 
 		ob_end_clean();
-		return $pdf->Output('CertificateOfEmployment.pdf', 'E');
+		return $pdf->Output('CertificateOfEmployment.pdf', 'D');
 	}
 
 	require_once(DOCUMENT.'/lib/phpmailer/src/Exception.php');
