@@ -93,9 +93,9 @@
 		require_once(DOCUMENT.'/lib/phpmailer/src/PHPMailer.php');
 		require_once(DOCUMENT.'/lib/phpmailer/src/SMTP.php');
 
-		use PHPMailer\PHPMailer\PHPMailer;
-		use PHPMailer\PHPMailer\SMTP;
-		use PHPMailer\PHPMailer\Exception;
+		// use PHPMailer\PHPMailer\PHPMailer;
+		// use PHPMailer\PHPMailer\SMTP;
+		// use PHPMailer\PHPMailer\Exception;
 
 		$email = new PHPMailer();
 		$email->SetFrom(NOTIFICATION_EMAIL); //Name is optional
