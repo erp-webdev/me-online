@@ -85,9 +85,9 @@ $pdf->writeHTML($content);
 ob_end_clean();
 $file_attach = $pdf->Output('CertificateOfEmployment.pdf', 'E');
 
-require_once(DOCUMENT.'/lib/phpmailer/Exception.php');
-require_once(DOCUMENT.'/lib/phpmailer/PHPMailer.php');
-require_once(DOCUMENT.'/lib/phpmailer/SMTP.php');
+require_once(DOCUMENT.'/lib/phpmailer/src/Exception.php');
+require_once(DOCUMENT.'/lib/phpmailer/src/PHPMailer.php');
+require_once(DOCUMENT.'/lib/phpmailer/src/SMTP.php');
 
 $email = new PHPMailer();
 $email->SetFrom(NOTIFICATION_EMAIL); //Name is optional
