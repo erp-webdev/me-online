@@ -116,8 +116,8 @@
 	$email->AddStringAttachment($file_attachment , 'CertificateOfEmployment.pdf', 'base64', 'application/pdf');
 
 	if ($email->Send()) {
-	    return "<div style='text-align: center;'><h3>The CoE has been successfully sent to the employee.</h3></div>";
+	    echo "<div style='text-align: center;'><h3>The CoE has been successfully sent to the employee.</h3></div>";
 	} else {
-	    return "<div style='text-align: center;'><h3>There was an error in sending the CoE. Please contact ISM for further assistance.</h3></div>";
+	    echo "<div style='text-align: center;'><h3>There was an error in sending the CoE. Please contact ISM for further assistance.</h3></div>";
 	}
 ?>

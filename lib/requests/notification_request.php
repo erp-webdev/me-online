@@ -5759,8 +5759,6 @@
 
 		include(OBJ."/coe_pdf.php");
 
-		echo "test";
-
 		break;
 
 		case 'coeprint':
