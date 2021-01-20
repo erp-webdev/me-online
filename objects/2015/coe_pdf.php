@@ -46,7 +46,10 @@
 					getdate() as CurrentDate,
 					A.DateResigned as DateResigned,
 					A.CompanyID,
-					F.CompanyName
+					F.CompanyName,
+					A.Active,
+					A.EmailAdd,
+					A.EmailAdd2,
 					FROM
 						viewhrempmaster A
 					LEFT JOIN
@@ -108,7 +111,13 @@
 
 		$email->Subject   = 'COE Request Update';
 		$email->Body      = $message;
-		$email->AddAddress( 'shart.global@megaworldcorp.com' );
+		$email->IsHTML(true);
+
+		if($emp_info[0]['active']){
+			$email->AddAddress( $emp_info[0]['EmailAdd'] );
+		}else {
+			$email->AddAddress( $emp_info[0]['EmailAdd2'] );
+		}
 
 		$email->AddStringAttachment($file_attachment , 'CertificateOfEmployment.pdf', 'base64', 'application/pdf');
 
