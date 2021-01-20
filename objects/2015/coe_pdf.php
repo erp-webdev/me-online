@@ -1,5 +1,7 @@
 <?php
-
+	var_dump($_POST["send"]);
+	exit(0);
+	if ($logged == 1 && $_POST["send"] == "true" ) {
 
 		$id = $_POST["id"];
 		$type = $_POST["type"];
@@ -116,5 +118,9 @@
 		    echo "<div style='text-align: center;'><h3>There was an error in sending the CoE. Please contact ISM for further assistance.</h3></div>";
 		}
 
-
+	}
+	else
+	{
+		echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/login'</script>";
+	}
 ?>
