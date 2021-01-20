@@ -5701,6 +5701,7 @@
 									$("#loading").hide();
 								},
 								success: function(data) {
+									alert(data);
 									$("#coedata").html(data);
 								}
 							});
