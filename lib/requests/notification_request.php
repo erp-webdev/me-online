@@ -5523,7 +5523,8 @@
 							<?php 	} ?>
 
 							<?php	if(($result[0]['status'] == 'For Release' || $result[0]['status'] == 'Done') && $result[0]['status'] != 'Cancelled'){?>
-										<a href="<?php echo WEB; ?>/coe_pdf?id=<?php echo $result[0]['id']; ?>&type=<?php echo $result[0]['type']; ?>&send=TRUE" target="_blank"><button class="smlbtn" style="background-color:#3EC2FB; width:45px;">Send</button></a>
+										<button id="sendcoe" value="Send" attribute="<?php echo $result[0]['id']; ?>" attribute2="<?php echo $result[0]['status']; ?>" attribute3="<?php echo $result[0]['type']; ?>" class="smlbtn" style="background-color:#3EC2FB; width:45px;">Send</button>
+										<!-- <a href="<?php echo WEB; ?>/coe_pdf?id=<?php echo $result[0]['id']; ?>&type=<?php echo $result[0]['type']; ?>&send=TRUE" target="_blank"><button class="smlbtn" style="background-color:#3EC2FB; width:45px;">Send</button></a> -->
 							<?php 	} ?>
 
 							<?php	if($result[0]['status'] == 'Done' || $result[0]['status'] == 'Cancelled'){ ?>
@@ -5680,10 +5681,10 @@
 							var start_date = "<?php echo date('m/d/Y', strtotime($result[0]['leave_from'])); ?>";
 							var end_date = "<?php echo date('m/d/Y', strtotime($result[0]['leave_to'])); ?>";
 							var return_date = "<?php echo date('m/d/Y', strtotime($result[0]['leave_return'])); ?>";
-							var url_print = "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=coeprint&type=COEAPPROVEDLEAVE";
+							var url_print = "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=coesend&type=COEAPPROVEDLEAVE";
 							var data_print = "id=" + id + "&status=" + status + "&start_date=" + start_date + "&end_date=" + end_date + "&return_date=" + return_date + "&send=" + true;
 						}else{
-							var url_print = "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=coeprint&type=COEAPPROVEDLEAVE";
+							var url_print = "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=coesend&type="+type;
 							var data_print = "id=" + id + "&status=" + status + "&start_date=" + start_date + "&end_date=" + end_date + "&return_date=" + return_date + "&send=" + true;
 						}
 
@@ -5698,7 +5699,7 @@
 									$("#loading").hide();
 								},
 								success: function(data) {
-									$("#coedata").html(data);
+									$("#coedata").html('Email Sent!');
 								}
 							});
 
@@ -5744,6 +5745,12 @@
 				});
 			</script>
 			<?php
+		break;
+
+		case 'coesend':
+
+		include(OBJ."/coe_pdf.php");
+
 		break;
 
 		case 'coeprint':
@@ -5813,36 +5820,29 @@
 			$emp_info[0]['CurrentDate'] = $emp_info[0]['CurrentDate'] ?  date('F j, Y', strtotime($emp_info[0]['CurrentDate'])) : null;
 			$emp_info[0]['DateResigned'] = $emp_info[0]['DateResigned'] ?  date('F j, Y', strtotime($emp_info[0]['DateResigned'])) : null;
 
-				?>
-				<div style="padding-bottom: 250px;">
-					<center><h3>Please close print preview.</h3></center></div>
-				<?php
-				// include('coe_template_request.php');
-				include(TEMP.'/coe_pdf.php');
-				?>
-				<script>
-					$(document).ready(function(){
-						$(".closebutton").click();
-						// $('#myDivToPrint').removeAttr("style");
-						// $('#myDivToPrint').css({"display":"inline-block"});
-						var divToPrint=document.getElementById("myDivToPrint");
-						newWin= window.open("");
-						newWin.document.write(divToPrint.outerHTML);
-						var is_chrome = Boolean(newWin.chrome);
 
-						if (is_chrome) {
-							setTimeout(function() { // wait until all resources loaded
-								newWin.print();
-								// alert("Please close print preview.");
-								newWin.close();
-							}, 250);
-						} else {
+			include(TEMP.'/coe_pdf.php');
+			?>
+			<script>
+				$(document).ready(function(){
+					$(".closebutton").click();
+					var divToPrint=document.getElementById("myDivToPrint");
+					newWin= window.open("");
+					newWin.document.write(divToPrint.outerHTML);
+					var is_chrome = Boolean(newWin.chrome);
+
+					if (is_chrome) {
+						setTimeout(function() { // wait until all resources loaded
 							newWin.print();
 							newWin.close();
-						}
-					});
-				</script>
-				<?
+						}, 250);
+					} else {
+						newWin.print();
+						newWin.close();
+					}
+				});
+			</script>
+			<?
 
 		break;
 
