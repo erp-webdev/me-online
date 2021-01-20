@@ -65,37 +65,30 @@
 					WHERE
 						A.EmpID = '$emp_id'";
 
-
 		$emp_info = $mainsql->get_row($query);
 
+		$emp_info[0]['HireDate'] = $emp_info[0]['HireDate'] ?  date('F j, Y', strtotime($emp_info[0]['HireDate'])) : null;
+		$emp_info[0]['CurrentDate'] = $emp_info[0]['CurrentDate'] ?  date('F j, Y', strtotime($emp_info[0]['CurrentDate'])) : null;
+		$emp_info[0]['DateResigned'] = $emp_info[0]['DateResigned'] ?  date('F j, Y', strtotime($emp_info[0]['DateResigned'])) : null;
 
-		$file_attachment = getCoePdf($coe, $emp_info);
+		ob_start();
+		include(TEMP.'/coe_pdf.php');
+		$content = ob_get_clean();
 
-		function getCoePdf($coe, $emp_info){
+		require_once(DOCUMENT.'/lib/tcpdf/tcpdf.php');
 
-			$emp_info[0]['HireDate'] = $emp_info[0]['HireDate'] ?  date('F j, Y', strtotime($emp_info[0]['HireDate'])) : null;
-			$emp_info[0]['CurrentDate'] = $emp_info[0]['CurrentDate'] ?  date('F j, Y', strtotime($emp_info[0]['CurrentDate'])) : null;
-			$emp_info[0]['DateResigned'] = $emp_info[0]['DateResigned'] ?  date('F j, Y', strtotime($emp_info[0]['DateResigned'])) : null;
+		$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+		$pdf->SetPrintHeader(false);
+		$pdf->SetPrintFooter(false);
+		$pdf->SetLeftMargin(25);
+		$pdf->SetRightMargin(25);
+		$pdf->SetTopMargin(50);
+		$pdf->SetFont('times');
+		$pdf->AddPage();
+		$pdf->writeHTML($content);
 
-			ob_start();
-			include(TEMP.'/coe_pdf.php');
-			$content = ob_get_clean();
-
-			require_once(DOCUMENT.'/lib/tcpdf/tcpdf.php');
-
-			$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
-			$pdf->SetPrintHeader(false);
-			$pdf->SetPrintFooter(false);
-			$pdf->SetLeftMargin(25);
-			$pdf->SetRightMargin(25);
-			$pdf->SetTopMargin(50);
-			$pdf->SetFont('times');
-			$pdf->AddPage();
-			$pdf->writeHTML($content);
-
-			ob_end_clean();
-			return $pdf->Output('CertificateOfEmployment.pdf', 'S');
-		}
+		ob_end_clean();
+		$file_attachment = $pdf->Output('CertificateOfEmployment.pdf', 'S');
 
 
 
