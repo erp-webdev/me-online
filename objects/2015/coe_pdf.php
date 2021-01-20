@@ -64,6 +64,7 @@
 
 
 	$file_attachment = getCoePdf($coe, $emp_info);
+
 	function getCoePdf($coe, $emp_info){
 
 		$emp_info[0]['HireDate'] = $emp_info[0]['HireDate'] ?  date('F j, Y', strtotime($emp_info[0]['HireDate'])) : null;
@@ -87,8 +88,10 @@
 		$pdf->writeHTML($content);
 
 		ob_end_clean();
-		return $pdf->Output('CertificateOfEmployment.pdf', 'D');
+		return $pdf->Output('CertificateOfEmployment.pdf', 'E');
 	}
+	var_dump($getCoePdf);
+	exit(0);
 
 	require_once(DOCUMENT.'/lib/phpmailer/src/Exception.php');
 	require_once(DOCUMENT.'/lib/phpmailer/src/PHPMailer.php');
