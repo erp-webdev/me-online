@@ -5701,7 +5701,7 @@
 									$("#loading").hide();
 								},
 								success: function(data) {
-									$("#coedata").html('Email Sent!');
+									$("#coedata").html(data);
 								}
 							});
 
