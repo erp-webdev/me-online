@@ -1,5 +1,5 @@
 <?php
-	var_dump($_POST["send"]);
+	var_dump($logged == 1 && $_POST["send"] == "true");
 	exit(0);
 
 	if ($logged == 1 && $_POST["send"] == "true" ) {
