@@ -85,11 +85,11 @@ $pdf->writeHTML($content);
 ob_end_clean();
 $file_attach = $pdf->Output('CertificateOfEmployment.pdf', 'E');
 
-require_once(DOCUMENT.'/lib/phpmailer/src/Exception.php');
-require_once(DOCUMENT.'/lib/phpmailer/src/PHPMailer.php');
-require_once(DOCUMENT.'/lib/phpmailer/src/SMTP.php');
+require (DOCUMENT.'/lib/phpmailer/src/Exception.php');
+require (DOCUMENT.'/lib/phpmailer/src/PHPMailer.php');
+require (DOCUMENT.'/lib/phpmailer/src/SMTP.php');
 
-$email = new PHPMailer;
+$email = new PHPMailer();
 $email->SetFrom(NOTIFICATION_EMAIL); //Name is optional
 
 $message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 95%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>Certificate of Employment Request</span><br><br>Hi ,<br><br>";
