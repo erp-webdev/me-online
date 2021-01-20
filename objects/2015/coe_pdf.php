@@ -49,7 +49,7 @@
 					F.CompanyName,
 					A.Active,
 					A.EmailAdd,
-					A.EmailAdd2,
+					A.EmailAdd2
 					FROM
 						viewhrempmaster A
 					LEFT JOIN
@@ -113,7 +113,7 @@
 		$email->Body      = $message;
 		$email->IsHTML(true);
 
-		if($emp_info[0]['active']){
+		if($emp_info[0]['Active']){
 			$email->AddAddress( $emp_info[0]['EmailAdd'] );
 		}else {
 			$email->AddAddress( $emp_info[0]['EmailAdd2'] );
