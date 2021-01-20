@@ -97,7 +97,7 @@
 
 		$message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 95%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>Certificate of Employment Request</span><br><br>Hi,<br><br>";
 
-		$message .= "Your Certificate of Employment has been processed, Kindly see the attached file.";
+		$message .= "Your Certificate of Employment has been completed, kindly see the attached file.";
 		$message .= "<br><br>Thanks,<br>";
 		$message .= SITENAME." Admin";
 		$message .= "<hr />".MAILFOOT."</div>";
