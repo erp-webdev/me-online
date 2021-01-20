@@ -85,6 +85,12 @@ $pdf->writeHTML($content);
 ob_end_clean();
 $file_attach = $pdf->Output('CertificateOfEmployment.pdf', 'E');
 
+require_once(DOCUMENT.'/lib/phpmailer/Exception.php');
+require_once(DOCUMENT.'/lib/phpmailer/PHPMailer.php');
+require_once(DOCUMENT.'/lib/phpmailer/SMTP.php');
+
+$email = new PHPMailer();
+$email->SetFrom(NOTIFICATION_EMAIL); //Name is optional
 
 $message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 95%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>Certificate of Employment Request</span><br><br>Hi ,<br><br>";
 
@@ -93,34 +99,16 @@ $message .= "<br><br>Thanks,<br>";
 $message .= SITENAME." Admin";
 $message .= "<hr />".MAILFOOT."</div>";
 
-$headers = "From: ".NOTIFICATION_EMAIL."\r\n";
-$headers .= "Reply-To: ".NOTIFICATION_EMAIL."\r\n";
-$headers .= "MIME-Version: 1.0\r\n";
-$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+$email->Subject   = 'COE Request Update';
+$email->Body      = $message;
+$email->AddAddress( 'shart.global@megaworldcorp.com' );
+
+$email->AddStringAttachment($file_attach , 'CertificateOfEmployment.pdf' );
+
+$email->Send();
 
 
-$semi_rand = md5(time());
-
-$mime_boundary = "==Multipart_Boundary_x{$semi_rand}x";
-
-$headers .= "This is a multi-part message in MIME format.\n\n" .
-    "-{$mime_boundary}\n" .
-    "Content-Type: text/plain; charset=\"iso-8859-1\n" .
-    "Content-Transfer-Encoding: 7bit\n\n" .
-    $message .= "\n\n";
-
-$headers .= "–{$mime_boundary}\n" .
-    "Content-Type: application/pdf\n" .
-    " name=CertificateOfEmployment.pdf\n" .
-    "Content-Disposition: attachment;\n" .
-    " filename=CertificateOfEmployment.pdf\n" .
-    "Content-Transfer-Encoding: base64\n\n" .
-    $file_attach . "\n\n" .
-    "-{$mime_boundary}-\n";
-
-
-$emp_sendmail = mail('shart.global@megaworldcorp.com', "COE Request Update", $message, $headers);
-if ($emp_sendmail) {
+if ($email) {
     echo "The email was sent.";
 } else {
     echo "There was an error sending the mail.";
