@@ -117,10 +117,9 @@
 
 	$email->Send();
 
-
 	if ($email) {
-	    echo "The email was sent.";
+	    echo "<div style='padding-top: 50px; text-align: center;'><h3>The CoE has been successfully sent to the employee.</h3></div>";
 	} else {
-	    echo "There was an error sending the mail.";
+	    echo "<div style='padding-top: 50px; text-align: center;'><h3>There was an error in sending the CoE. Please contact ISM for further assistance.</h3></div>";
 	}
 ?>

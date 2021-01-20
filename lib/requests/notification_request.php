@@ -5345,7 +5345,9 @@
 							<label>Job Responsibilities: </label>
 						</td>
 						<td>
+							<?php if($level != 1){ ?>
 							<button align="center" class="add_field_button fa fa-plus">ADD TASK</button></br>
+							<?php } ?>
 							<div class="coejobinput">
 								<?php foreach($tasks as $task){ ?>
 								<div class="first"><a href="#" class="remove_field fa fa-close"></a><input type="text" name="coetasks[]" class="txtbox tasks" style="width:175px;" value="<?php echo $task; ?>"/></div>
@@ -5726,18 +5728,21 @@
 
 						if(status == 'For Release' || status == 'Done' || status == 'On Process'){
 
-							$.ajax(
-							{
-								url: url_print,
-								data: data_print,
-								type: "POST",
-								complete: function(){
-									$("#loading").hide();
-								},
-								success: function(data) {
-									$("#coedata").html(data);
-								}
-							});
+							if (confirm('The CoE Request will be tagged as Done/Claimed and the template will be sent to the Employee. Please confirm to continue.')) {
+								$.ajax(
+								{
+									url: url_print,
+									data: data_print,
+									type: "POST",
+									complete: function(){
+										$("#loading").hide();
+									},
+									success: function(data) {
+										$("#coedata").html(data);
+									}
+								});
+
+							}
 
 						}
 					});
