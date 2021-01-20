@@ -90,7 +90,7 @@
 		ob_end_clean();
 		return $pdf->Output('CertificateOfEmployment.pdf', 'E');
 	}
-	var_dump($getCoePdf);
+	var_dump($file_attachment);
 	exit(0);
 
 	require_once(DOCUMENT.'/lib/phpmailer/src/Exception.php');
