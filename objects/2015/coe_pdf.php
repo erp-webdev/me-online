@@ -10,7 +10,7 @@
 	if ($logged == 1 && $_POST["send"] == "true" ) {
 
 		$id = $_POST["id"];
-		$type = $_POST["type"];
+		$type = $_GET["type"];
 
 		$sql = "SELECT * FROM COERequests WHERE id = $id";
 
