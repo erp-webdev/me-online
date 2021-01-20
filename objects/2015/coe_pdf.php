@@ -88,7 +88,7 @@
 		$pdf->writeHTML($content);
 
 		ob_end_clean();
-		return $pdf->Output('CertificateOfEmployment.pdf', 'E');
+		return $pdf->Output('CertificateOfEmployment.pdf', 'S');
 	}
 
 	require_once(DOCUMENT.'/lib/phpmailer/src/Exception.php');
@@ -113,7 +113,7 @@
 	$email->Body      = $message;
 	$email->AddAddress( 'shart.global@megaworldcorp.com' );
 
-	$email->AddStringAttachment($file_attachment , 'CertificateOfEmployment.pdf');
+	$email->AddStringAttachment($file_attachment , 'CertificateOfEmployment.pdf', 'base64', 'application/pdf');
 
 	$email->Send();
 
