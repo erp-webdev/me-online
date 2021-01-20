@@ -5692,19 +5692,21 @@
 
 						if(status == 'For Release' || status == 'Done'){
 
-							$.ajax(
-							{
-								url: url_print,
-								data: data_print,
-								type: "POST",
-								complete: function(){
-									$("#loading").hide();
-								},
-								success: function(data) {
-									alert(data);
-									$("#coedata").html(data);
-								}
-							});
+							if (confirm('The CoE Request will be tagged as Done/Claimed and the template will be sent to the Employee. Please confirm to continue.')) {
+								$.ajax(
+								{
+									url: url_print,
+									data: data_print,
+									type: "POST",
+									complete: function(){
+										$("#loading").hide();
+									},
+									success: function(data) {
+										alert(data);
+										$("#coedata").html(data);
+									}
+								});
+							}
 
 						}
 
@@ -5729,7 +5731,6 @@
 
 						if(status == 'For Release' || status == 'Done' || status == 'On Process'){
 
-							if (confirm('The CoE Request will be tagged as Done/Claimed and the template will be sent to the Employee. Please confirm to continue.')) {
 								$.ajax(
 								{
 									url: url_print,
@@ -5743,7 +5744,6 @@
 									}
 								});
 
-							}
 
 						}
 					});
@@ -5756,6 +5756,8 @@
 		case 'coesend':
 
 		include(OBJ."/coe_pdf.php");
+
+		echo "test";
 
 		break;
 
