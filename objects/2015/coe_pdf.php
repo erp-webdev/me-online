@@ -1,7 +1,7 @@
 <?php
 
-	$id = $_GET["id"];
-	$type = $_GET["type"];
+	$id = $_POST["id"];
+	$type = $_POST["type"];
 
 	if($_GET["send"] == "true"){
 		$send_email = TRUE;
