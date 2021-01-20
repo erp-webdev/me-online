@@ -88,6 +88,8 @@
         case 'lvcancel':
         case 'mdcancel':
 		case 'sccancel':
+		case 'coeprint':
+		case 'coesend':
         break;
         default:
         ?>
