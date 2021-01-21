@@ -296,19 +296,15 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 						<div style="padding-left: 200px;">
 							<p style="width: 100px; text-align: left; display: inline-block;">Basic Salary</p>
 							<p style="width: 100px; text-align: right; display: inline-block;"><?php if(true){echo number_format($emp_info[0]["MonthlyRate"], 2);}else{ echo "SAMPLE"; }; ?></p>
-						</div>
 						<?php if($emp_info[0]["Allowance"] != 0 || true){ ?>
 
-							<div style="padding-left: 200px;">
-								<p style="width: 100px; text-align: left; display: inline-block; border: 3px solid #73AD21;">Allowance</p>
-								<p style="width: 100px; text-align: right; display: inline-block; border: 3px solid #73AD21;"><?php echo number_format($emp_info[0]["Allowance"], 2); ?></p>
-							</div>
-							<div style="padding-left: 200px;">
-								<p style="width: 100px; text-align: left; display: inline-block; border: 3px solid #73AD21;">Total</p>
-								<p style="width: 100px; text-align: right; display: inline-block; border: 3px solid #73AD21;"><?php echo number_format($emp_info[0]["Allowance"] + $emp_info[0]["MonthlyRate"], 2); ?></p>
-							</div>
+							<p style="width: 100px; text-align: left; display: inline-block; border: 3px solid #73AD21;">Allowance</p>
+							<p style="width: 100px; text-align: right; display: inline-block; border: 3px solid #73AD21;"><?php echo number_format($emp_info[0]["Allowance"], 2); ?></p>
+							<p style="width: 100px; text-align: left; display: inline-block; border: 3px solid #73AD21;">Total</p>
+							<p style="width: 100px; text-align: right; display: inline-block; border: 3px solid #73AD21;"><?php echo number_format($emp_info[0]["Allowance"] + $emp_info[0]["MonthlyRate"], 2); ?></p>
 
 						<?php } ?>
+						</div>
 
 			<p style="padding-left: 50px; padding-right: 50px;">In addition to the above compensation package, <?php echo strtolower($emp_info[0]["Gender"]); ?> receives the mandatory
 			13th month pay during the twelve (12) month period.</p>
