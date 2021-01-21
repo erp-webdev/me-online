@@ -318,6 +318,9 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 }
 	?>
 	<!-- FOOTER -->
+	&nbsp;<br />
+	&nbsp;<br />
+
 	<?php
 
 		// Signatory
