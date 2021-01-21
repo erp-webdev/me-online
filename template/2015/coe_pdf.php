@@ -294,7 +294,7 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 			<p style="padding-left: 50px; padding-right: 50px;"><?php echo ucwords(strtolower($emp_info[0]["Gender2"])); ?> current monthly compensation are as follows:</p>
 			<!-- nbsp for the pdf conversion, tcpdf doesn't support inline block, and padding. TCPDF has different implementation for tables -->
 			<p style="padding-left: 50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Basic Salary</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><?php if(true){echo number_format($emp_info[0]["MonthlyRate"], 2);}else{ echo "SAMPLE"; }; ?></b></p>
-			<?php if($emp_info[0]["Allowance"] != 0 || true){ ?>
+			<?php if($emp_info[0]["Allowance"] != 0){ ?>
 					<p style="padding-left: 50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Allowance</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><u><?php echo number_format($emp_info[0]["Allowance"], 2); ?></u></b></p>
 					<p style="padding-left: 50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Total</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><u><?php echo number_format($emp_info[0]["Allowance"] + $emp_info[0]["MonthlyRate"], 2); ?></u></b></p>
 			<?php } ?>
