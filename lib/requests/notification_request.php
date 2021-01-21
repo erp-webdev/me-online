@@ -6035,7 +6035,13 @@
 					$headers .= "MIME-Version: 1.0\r\n";
 					$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-					$emp_sendmail = mail($emp_info[0]['EmailAdd'], "COE Request Update", $message, $headers);
+					$coe_emp_email = $emp_info[0]['EmailAdd'];
+
+					if(!$emp_info[0]['Active']){
+						$coe_emp_email = $emp_info[0]['EmailAdd2'];
+					}
+
+					$emp_sendmail = mail($coe_emp_email, "COE Request Update", $message, $headers);
 
 					if($status == 'Cancelled' || $status == 'Done'){
 
