@@ -294,18 +294,18 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 			<p style="padding-left: 50px; padding-right: 50px;"><?php echo ucwords(strtolower($emp_info[0]["Gender2"])); ?> current monthly compensation are as follows:</p>
 
 						<div style="padding-left: 200px;">
-							<p style="width: 100px; text-align: left; display: inline-block; border: 3px solid #73AD21;">Basic Salary</p>
-							<p style="width: 100px; text-align: right; display: inline-block; border: 3px solid #73AD21;"><?php if(true){echo number_format($emp_info[0]["MonthlyRate"], 2);}else{ echo "SAMPLE"; }; ?></p>
+							<p style="width: 100px; text-align: left; display: inline-block;">Basic Salary</p>
+							<p style="width: 100px; text-align: right; display: inline-block;"><?php if(true){echo number_format($emp_info[0]["MonthlyRate"], 2);}else{ echo "SAMPLE"; }; ?></p>
 						</div>
-						<?php if($emp_info[0]["Allowance"] != 0){ ?>
+						<?php if($emp_info[0]["Allowance"] != 0 || true){ ?>
 
 							<div style="padding-left: 200px; width: 500px;">
-								<p style="width: 200px; text-align: left;">Allowance</p>
-								<p style="width: 300px; text-align: right;"><?php echo number_format($emp_info[0]["Allowance"], 2); ?></p><br />
+								<p style="width: 200px; text-align: left; display: inline-block;">Allowance</p>
+								<p style="width: 300px; text-align: right; display: inline-block;"><?php echo number_format($emp_info[0]["Allowance"], 2); ?></p><br />
 							</div>
 							<div style="padding-left: 200px; width: 500px;">
-								<p style="width: 200px; text-align: left;">Total</p>
-								<p style="width: 300px; text-align: right;"><?php echo number_format($emp_info[0]["Allowance"] + $emp_info[0]["MonthlyRate"], 2); ?></p>
+								<p style="width: 200px; text-align: left; display: inline-block;">Total</p>
+								<p style="width: 300px; text-align: right; display: inline-block;"><?php echo number_format($emp_info[0]["Allowance"] + $emp_info[0]["MonthlyRate"], 2); ?></p>
 							</div>
 
 						<?php } ?>
