@@ -5728,7 +5728,7 @@
 
 						if(status == 'For Release' || status == 'Done'){
 
-							if (confirm('The CoE Request will be tagged as Done/Claimed and the template will be sent to the Employee.\r\n Please confirm to continue.')) {
+							if (confirm('The Template will now be sent to the employee and the request will be marked as Done/Claimed.\r\n\r\nPlease confirm to continue.')) {
 
 								$("#coedata").html('<i class="fa fa-refresh fa-spin fa-lg"></i> Loading...');
 
