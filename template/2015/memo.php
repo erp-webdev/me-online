@@ -102,7 +102,7 @@
                                             <input type="button" id="btnsearchallmemo" name="btnsearchallmemo" value="View All" class="btnsearchallmemo smlbtn<?php if (!$_SESSION['searchmemo'] && !$_SESSION['memofrom'] && !$_SESSION['memoto']) : ?> invisible<?php endif; ?>" />
                                         </td>
                                         <td class="righttalign">
-                                            <?php if ($profile_level == 7 || $profile_level == 10) : ?>
+                                            <?php if ($profile_level == 7 || $profile_level == 10 || $profile_idnum == "2016-06-0457") : ?>
                                             <input type="button" id="btnaddmemo" name="btnaddmemo" value="Create Memo" class="btnaddmemo smlbtn" />
                                             <?php endif; ?>
                                         </td>
