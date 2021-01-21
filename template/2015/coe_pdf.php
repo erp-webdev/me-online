@@ -292,7 +292,7 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 			<?php } ?>
 
 			<p style="padding-left: 50px; padding-right: 50px;"><?php echo ucwords(strtolower($emp_info[0]["Gender2"])); ?> current monthly compensation are as follows:</p>
-
+			<!-- nbsp for the pdf conversion, tcpdf doesn't support inline block, and padding. TCPDF has different implementation for tables -->
 			<p style="padding-left: 50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Basic Salary</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><?php if(true){echo number_format($emp_info[0]["MonthlyRate"], 2);}else{ echo "SAMPLE"; }; ?></b></p>
 			<?php if($emp_info[0]["Allowance"] != 0 || true){ ?>
 					<p style="padding-left: 50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Allowance</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><u><?php echo number_format($emp_info[0]["Allowance"], 2); ?></u></b></p>
@@ -355,9 +355,15 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 		// End Signatory
 		?>
 
-		<b><p style="padding-top: 15px; text-align: right; font-size: 12px; padding-right: 50px">THIS DOCUMENT IS PRIVATE AND CONFIDENTIAL.<br />
-		FOR EMPLOYMENT DETAILS PURPOSES ONLY.<br />
-		NOT AS EMPLOYEE CLEARANCE.</p></b>
+		<?php
+		if($coe[0]["type"] == 'COECOMPENSATION'){
+		?>
+			<b><p style="padding-top: 15px; text-align: right; font-size: 12px; padding-right: 50px">THIS DOCUMENT IS PRIVATE AND CONFIDENTIAL.<br />
+			FOR EMPLOYMENT DETAILS PURPOSES ONLY.<br />
+			NOT AS EMPLOYEE CLEARANCE.</p></b>
+		<?php
+		}
+		?>
 
 		&nbsp;<br />
 		&nbsp;<br />
