@@ -299,13 +299,13 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 						</div>
 						<?php if($emp_info[0]["Allowance"] != 0 || true){ ?>
 
-							<div style="padding-left: 200px; width: 500px;">
-								<p style="width: 200px; text-align: left; display: inline-block;">Allowance</p>
-								<p style="width: 300px; text-align: right; display: inline-block;"><?php echo number_format($emp_info[0]["Allowance"], 2); ?></p><br />
+							<div style="padding-left: 200px; width: 200px;">
+								<p style="width: 100px; text-align: left; display: inline-block;">Allowance</p>
+								<p style="width: 100px; text-align: right; display: inline-block;"><?php echo number_format($emp_info[0]["Allowance"], 2); ?></p><br />
 							</div>
-							<div style="padding-left: 200px; width: 500px;">
-								<p style="width: 200px; text-align: left; display: inline-block;">Total</p>
-								<p style="width: 300px; text-align: right; display: inline-block;"><?php echo number_format($emp_info[0]["Allowance"] + $emp_info[0]["MonthlyRate"], 2); ?></p>
+							<div style="padding-left: 200px; width: 200px;">
+								<p style="width: 100px; text-align: left; display: inline-block;">Total</p>
+								<p style="width: 100px; text-align: right; display: inline-block;"><?php echo number_format($emp_info[0]["Allowance"] + $emp_info[0]["MonthlyRate"], 2); ?></p>
 							</div>
 
 						<?php } ?>
