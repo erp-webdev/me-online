@@ -296,14 +296,13 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 						<div style="padding-left: 200px; line-height: 0.1;">
 							<p style="width: 100px; text-align: left; display: inline-block;"><b>Basic Salary</b></p>
 							<p style="width: 100px; text-align: right; display: inline-block;"><b><?php if(true){echo number_format($emp_info[0]["MonthlyRate"], 2);}else{ echo "SAMPLE"; }; ?></b></p>
-						<?php if($emp_info[0]["Allowance"] != 0 || true){ ?>
+						<?php if($emp_info[0]["Allowance"] != 0){ ?>
 								<br />
 								<p style="width: 100px; text-align: left; display: inline-block;"><b>Allowance</b></p>
 								<p style="width: 100px; text-align: right; display: inline-block;"><b><u><?php echo number_format($emp_info[0]["Allowance"], 2); ?></u></b></p>
 								<br />
 								<p style="width: 100px; text-align: left; display: inline-block;"><b>Total</b></p>
 								<p style="width: 100px; text-align: right; display: inline-block;"><b><u><?php echo number_format($emp_info[0]["Allowance"] + $emp_info[0]["MonthlyRate"], 2); ?></u></b></p>
-
 						<?php } ?>
 						</div>
 
