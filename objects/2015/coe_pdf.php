@@ -20,7 +20,7 @@
 		$coe_status = $coe[0]['status'];
 
 		if(in_array($coe_status, ['On Process', 'For Release'])){
-			$coe_update = "UPDATE COERequests set status = 'Done' Where id = $id"
+			$coe_update = "UPDATE COERequests set status = 'Done' Where id = $id";
 
 			$coe_update->get_execute($coe_update);
 			if(!$coe_update){
