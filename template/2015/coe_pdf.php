@@ -199,11 +199,11 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 			?>
 			<p style="text-align: center;"><img src="<?php echo IMG_WEB; ?>/gl_coe.png"/></p>
 
-			<h3 align="center" style="padding-top: 100px; letter-spacing: 10px;">CERTIFICATION</h3>
+			<h3 align="center" style="padding-top: 150px; letter-spacing: 10px;">CERTIFICATION</h3>
 			&nbsp;
 
 			<div style="text-align: justify;  text-justify: inter-word;">
-				<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo ucwords(strtolower($emp_info[0]["FullName"])); ?></b> was employed as
+				<p style="padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo ucwords(strtolower($emp_info[0]["FullName"])); ?></b> was employed as
 				<b><?php echo $emp_info[0]["PositionDesc"]."</b> by <b>".$emp_info[0]["CompanyName"]."</b> from <b>".$emp_info[0]["HireDate"]; ?>
 				<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
 				up to the present.</b></p>
