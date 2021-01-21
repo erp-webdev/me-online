@@ -356,7 +356,7 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 		?>
 
 		<?php
-		if($coe[0]["type"] == 'COECOMPENSATION'){
+		if($coe[0]["type"] != 'COECOMPENSATION'){
 		?>
 			<b><p style="padding-top: 15px; text-align: right; font-size: 12px; padding-right: 50px">THIS DOCUMENT IS PRIVATE AND CONFIDENTIAL.<br />
 			FOR EMPLOYMENT DETAILS PURPOSES ONLY.<br />
