@@ -287,28 +287,28 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 		<div style="text-align: justify;  text-justify: inter-word;">
 			<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">This is to certify that <b><?php echo strtoupper($emp_info[0]["FullName"]); ?></b> is an
 				employee of <b><?php echo $emp_info[0]["CompanyName"]; ?></b> since <b><?php echo $emp_info[0]["HireDate"]; ?>
-			<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
-			</b>and presently holding a regular appointment for the position of <b><?php echo $emp_info[0]["PositionDesc"]; ?></b></p>
-			<?php } ?>.
+			<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"].".</b>"; }else{ ?>
+			</b>and presently holding a regular appointment for the position of <b><?php echo $emp_info[0]["PositionDesc"]; ?>.</b></p>
+			<?php } ?>
 
 			<p style="padding-left: 50px; padding-right: 50px;"><?php echo ucwords(strtolower($emp_info[0]["Gender2"])); ?> current monthly compensation are as follows:</p>
 
-					<table style="padding-left: 200px; padding-right: 50px">
-						<tr>
-							<td><b>Basic Salary</b></td>
-							<td style="padding-left: 50px;"><b><?php if(true){echo number_format($emp_info[0]["MonthlyRate"], 2);}else{ echo "SAMPLE"; }; ?></b></td>
-						</tr>
+						<p style="padding-right: 200px; min-width: 500px;">
+							<b style="min-width: 200px; text-align: left;">Basic Salary</b>
+							<b style="min-width: 300px; text-align: right;"><?php if(true){echo number_format($emp_info[0]["MonthlyRate"], 2);}else{ echo "SAMPLE"; }; ?></b>
+						</p>
 						<?php if($emp_info[0]["Allowance"] != 0){ ?>
-							<tr>
-								<td><b>Allowance</b></td>
-								<td style="padding-left: 50px;"><b><?php echo number_format($emp_info[0]["Allowance"], 2); ?></b></td>
-							</tr>
-							<tr>
-								<td><b>Total</b></td>
-								<td style="padding-left: 50px;"><b><?php echo number_format($emp_info[0]["Allowance"] + $emp_info[0]["MonthlyRate"], 2); ?></b></td>
-							</tr>
+
+							<p style="padding-right: 200px; min-width: 500px;">
+								<b style="min-width: 200px; text-align: left;">Allowance</b>
+								<b style="min-width: 300px; text-align: right;"><?php echo number_format($emp_info[0]["Allowance"], 2); ?></b>
+							</p>
+							<p style="padding-right: 200px; min-width: 500px;">
+								<b style="min-width: 200px; text-align: left;">Total</b>
+								<b style="min-width: 300px; text-align: right;"><?php echo number_format($emp_info[0]["Allowance"] + $emp_info[0]["MonthlyRate"], 2); ?></b>
+							</p>
+
 						<?php } ?>
-					</table>
 
 			<p style="padding-left: 50px; padding-right: 50px;">In addition to the above compensation package, <?php echo strtolower($emp_info[0]["Gender"]); ?> receives the mandatory
 			13th month pay during the twelve (12) month period.</p>
