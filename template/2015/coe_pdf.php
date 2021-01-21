@@ -293,7 +293,7 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 
 			<p style="padding-left: 50px; padding-right: 50px;"><?php echo ucwords(strtolower($emp_info[0]["Gender2"])); ?> current monthly compensation are as follows:</p>
 
-						<div style="padding-left: 200px; line-height: 1.6;">
+						<div style="padding-left: 200px; line-height: 0.1;">
 							<p style="width: 100px; text-align: left; display: inline-block;"><b>Basic Salary</b></p>
 							<p style="width: 100px; text-align: right; display: inline-block;"><b><?php if(true){echo number_format($emp_info[0]["MonthlyRate"], 2);}else{ echo "SAMPLE"; }; ?></b></p>
 						<?php if($emp_info[0]["Allowance"] != 0 || true){ ?>
