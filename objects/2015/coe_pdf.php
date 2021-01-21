@@ -20,9 +20,10 @@
 		$coe_status = $coe[0]['status'];
 
 		if(in_array($coe_status, ['On Process', 'For Release'])){
+
 			$coe_update = "UPDATE COERequests set status = 'Done' Where id = $id";
 
-			$coe_update->get_execute($coe_update);
+			$coe_update = $mainsql->get_execute($coe_update);
 			if(!$coe_update){
 				echo "<div style='text-align: center;'><h3>There was an error in updating & sending the CoE. Please contact ISM for further assistance.</h3></div>";
 				exit(0);
