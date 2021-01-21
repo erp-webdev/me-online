@@ -293,19 +293,19 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 
 			<p style="padding-left: 50px; padding-right: 50px;"><?php echo ucwords(strtolower($emp_info[0]["Gender2"])); ?> current monthly compensation are as follows:</p>
 
-						<p style="padding-left: 200px; min-width: 500px;">
-							<b style="min-width: 200px; text-align: left;">Basic Salary</b>
-							<b style="min-width: 300px; text-align: right;"><?php if(true){echo number_format($emp_info[0]["MonthlyRate"], 2);}else{ echo "SAMPLE"; }; ?></b>
+						<p style="padding-left: 200px; width: 500px;">
+							<b style="width: 200px; text-align: left;">Basic Salary</b>
+							<b style="width: 300px; text-align: right;"><?php if(true){echo number_format($emp_info[0]["MonthlyRate"], 2);}else{ echo "SAMPLE"; }; ?></b>
 						</p>
 						<?php if($emp_info[0]["Allowance"] != 0){ ?>
 
-							<p style="padding-left: 200px; min-width: 500px;">
-								<b style="min-width: 200px; text-align: left;">Allowance</b>
-								<b style="min-width: 300px; text-align: right;"><?php echo number_format($emp_info[0]["Allowance"], 2); ?></b>
+							<p style="padding-left: 200px; width: 500px;">
+								<b style="width: 200px; text-align: left;">Allowance</b>
+								<b style="width: 300px; text-align: right;"><?php echo number_format($emp_info[0]["Allowance"], 2); ?></b>
 							</p>
-							<p style="padding-left: 200px; min-width: 500px;">
-								<b style="min-width: 200px; text-align: left;">Total</b>
-								<b style="min-width: 300px; text-align: right;"><?php echo number_format($emp_info[0]["Allowance"] + $emp_info[0]["MonthlyRate"], 2); ?></b>
+							<p style="padding-left: 200px; width: 500px;">
+								<b style="width: 200px; text-align: left;">Total</b>
+								<b style="width: 300px; text-align: right;"><?php echo number_format($emp_info[0]["Allowance"] + $emp_info[0]["MonthlyRate"], 2); ?></b>
 							</p>
 
 						<?php } ?>
