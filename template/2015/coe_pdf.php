@@ -293,22 +293,19 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 
 			<p style="padding-left: 50px; padding-right: 50px;"><?php echo ucwords(strtolower($emp_info[0]["Gender2"])); ?> current monthly compensation are as follows:</p>
 
-						<div style="padding-left: 200px;">
-							<p style="width: 100px; text-align: left; display: inline-block;">Basic Salary</p>
-							<p style="width: 100px; text-align: right; display: inline-block;"><?php if(true){echo number_format($emp_info[0]["MonthlyRate"], 2);}else{ echo "SAMPLE"; }; ?></p>
-						</div>
+						<div style="padding-left: 200px; line-height: 1.6;">
+							<p style="width: 100px; text-align: left; display: inline-block;"><b>Basic Salary</b></p>
+							<p style="width: 100px; text-align: right; display: inline-block;"><b><?php if(true){echo number_format($emp_info[0]["MonthlyRate"], 2);}else{ echo "SAMPLE"; }; ?></b></p>
 						<?php if($emp_info[0]["Allowance"] != 0 || true){ ?>
-
-							<div style="padding-left: 200px;">
-								<p style="width: 100px; text-align: left; display: inline-block;">Allowance</p>
-								<p style="width: 100px; text-align: right; display: inline-block;"><?php echo number_format($emp_info[0]["Allowance"], 2); ?></p>
-							</div>
-							<div style="padding-left: 200px;">
-								<p style="width: 100px; text-align: left; display: inline-block;">Total</p>
-								<p style="width: 100px; text-align: right; display: inline-block;"><?php echo number_format($emp_info[0]["Allowance"] + $emp_info[0]["MonthlyRate"], 2); ?></p>
-							</div>
+								<br />
+								<p style="width: 100px; text-align: left; display: inline-block;"><b>Allowance</b></p>
+								<p style="width: 100px; text-align: right; display: inline-block;"><b><u><?php echo number_format($emp_info[0]["Allowance"], 2); ?></u></b></p>
+								<br />
+								<p style="width: 100px; text-align: left; display: inline-block;"><b>Total</b></p>
+								<p style="width: 100px; text-align: right; display: inline-block;"><b><u><?php echo number_format($emp_info[0]["Allowance"] + $emp_info[0]["MonthlyRate"], 2); ?></u></b></p>
 
 						<?php } ?>
+						</div>
 
 			<p style="padding-left: 50px; padding-right: 50px;">In addition to the above compensation package, <?php echo strtolower($emp_info[0]["Gender"]); ?> receives the mandatory
 			13th month pay during the twelve (12) month period.</p>
