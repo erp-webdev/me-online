@@ -5196,12 +5196,12 @@
 			$tasks = json_encode($tasks);
 
 			if(!empty($_FILES['leave_file'])){
-				$leave_file = $_FILES['leave_file'];
+				$leave_file = $_FILES['leave_file']['tmp_name'];
 			}else{
 				$leave_file = null;
 			}
 
-			print_r($leave_file);
+			echo ($leave_file);
 			exit(0);
 
 
