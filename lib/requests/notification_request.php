@@ -5212,7 +5212,8 @@
 			$leave_return = $_POST["leavereturn"];
 			$datetoday = date('Y-m-d');
 			$tasks = $_POST["coetasks"];
-
+			$tasks = str_replace("coetasks%5B%5D=", "", $tasks);
+			$tasks = explode("&", $tasks);
 
 			var_dump($tasks);exit(0);
 
