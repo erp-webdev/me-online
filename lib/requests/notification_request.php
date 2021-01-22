@@ -4969,7 +4969,7 @@
 					form_data.append('avail_no', avail_no);
 					form_data.append('hpa_percentage', hpa_percentage);
 					form_data.append('coe_company', coe_company);
-					form_data.append('tasks', tasks);
+					form_data.append('coetasks', tasks);
 					console.log(tasks);
 					return false;
 					$("#submitcoe").hide();
