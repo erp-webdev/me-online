@@ -5246,12 +5246,14 @@
 				$tempext = explode(".", $filename);
 				$extension = end($tempext);
 
-				$path = "var/webfiles/portal.megaworldcorp.com/me_dev0/uploads/coe/";
+				$path = "uploads/coe/";
 				$fixname = 'coe_'.$refno.".".$extension;
 				$target_path = $path.$fixname;
 
-				$filemove = move_uploaded_file($image,
-				 $target_path);
+				move_uploaded_file(
+				    $_FILES['file']['tmp_name'],
+				    'uploads/aaa.jpg'
+				);
 
 				var_dump($filemove);exit(0);
 			}
