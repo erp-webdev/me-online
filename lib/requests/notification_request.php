@@ -5246,13 +5246,13 @@
 				$tempext = explode(".", $filename);
 				$extension = end($tempext);
 
-				$path = "uploads/coe/";
+				$path = ROOT."uploads/coe/";
 				$fixname = 'coe_'.$refno.".".$extension;
 				$target_path = $path.$fixname;
 
-				move_uploaded_file(
+				$filemove = move_uploaded_file(
 				    $_FILES['file']['tmp_name'],
-				    'uploads/aaa.jpg'
+				    $target_path
 				);
 
 				var_dump($filemove);exit(0);
