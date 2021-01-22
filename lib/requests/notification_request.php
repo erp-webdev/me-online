@@ -5246,7 +5246,7 @@
 				$tempext = explode(".", $filename);
 				$extension = end($tempext);
 
-				$path = "uploads/coe/";
+				$path = "var/webfiles/portal.megaworldcorp.com/me_dev0/uploads/coe/";
 				$fixname = 'coe_'.$refno.".".$extension;
 				$target_path = $path.$fixname;
 
