@@ -4916,6 +4916,8 @@
 				$("#submitcoe").on("click", function(){
 
 
+					var form_data = new FormData();
+
 					var emp = $("#coeemp").val();
 					var type = $("select[name=coetype]").val();
 					var category = $("select[name=coecategory]").val();
@@ -4926,9 +4928,6 @@
 					var leavereturn = $("input[name=coeleavereturn]").val();
 					if(type == 'COEAPPROVEDLEAVE'){
 						var leavefile = $("#coeleavefile").prop('files')[0];
-						var form_data = new FormData();
-					    form_data.append('file', leavefile);
-						console.log(form_data);
 					}else{
 						var leavefile = null;
 					}
@@ -4937,6 +4936,7 @@
 					var avail_no = $("input[name=avail_no]").val();
 					var hpa_percentage = $("select[name=hpa_percentage]").val();
 					var coe_company = <?php if($level != 1){?>$("select[name=coecompany]").val() <?php }else{ echo "'$profile_comp'"; }?>;
+					var tasks = $('input:text.tasks').serialize();
 
 					if(!emp){
 						alert("Employee ID is required!");
@@ -4956,17 +4956,33 @@
 						}
 					}
 
+					form_data.append('file', leavefile);
+					form_data.append('emp', emp);
+					form_data.append('type', type);
+					form_data.append('category', category);
+					form_data.append('reason', reason);
+					form_data.append('other', other);
+					form_data.append('leavefrom', leavefrom);
+					form_data.append('leaveto', leaveto);
+					form_data.append('leavereturn', leavereturn);
+					form_data.append('correctionname', correction_name);
+					form_data.append('avail_no', avail_no);
+					form_data.append('hpa_percentage', hpa_percentage);
+					form_data.append('coe_company', coe_company);
+					form_data.append('tasks', tasks);
+					console.log(form_data);
+
 					$("#submitcoe").hide();
-					var tasks = $('input:text.tasks').serialize();
+
 					$.ajax(
 					{
 						url: "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=coesubmit",
 					 	processData: false,
 						contentType: false,
-						data: "emp=" + emp + "&type=" + type + "&category=" + category + "&reason=" + reason + "&other=" + other +
-							  "&leavefrom=" + leavefrom + "&leaveto=" + leaveto + "&leavereturn=" + leavereturn + "&correctionname=" +correction_name + "&" + tasks +
-							  "&hpa_percentage=" + hpa_percentage + "&avail_no=" + avail_no + "&coe_company=" +coe_company + "&form_data=" +form_data,
-						// data: form_data,
+						// data: "=" + emp + "&=" + type + "&=" + category + "&=" + reason + "&=" + other +
+						// 	  "&=" + leavefrom + "&=" + leaveto + "&=" + leavereturn + "&=" +correction_name + "&" + tasks +
+						// 	  "&=" + hpa_percentage + "&=" + avail_no + "&=" +coe_company + "&form_data=" +form_data,
+						data: form_data,
 						type: "POST",
 						complete: function(){
 							$("#loading").hide();
@@ -5188,7 +5204,7 @@
 
 
 
-			var_dump($_POST['form_data']);
+			var_dump($_POST);
 			exit(0);
 
 			$coeemp = $_POST["emp"];
