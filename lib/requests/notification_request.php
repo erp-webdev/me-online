@@ -5220,6 +5220,7 @@
 			$tasks = json_encode($tasks);
 
 			var_dump($_FILES['file']);exit(0);
+
 											if($_FILES['file']){
 												$image = $_FILES['file']['tmp_name'];
 				                                $filename = $_FILES['file']['name'];
@@ -5229,13 +5230,11 @@
 				                                $tempext = explode(".", $filename);
 				                                $extension = end($tempext);
 
-				                                if (($filesize < 10485760) && in_array($extension, $allowedExts)) :
+			                                    $path = "uploads/leave/";
+			                                    $fixname = 'attach_'.$add_leave.'_'.$i.'.'.$extension;
+			                                    $target_path = $path.$fixname;
 
-				                                    $path = "uploads/leave/";
-				                                    $fixname = 'attach_'.$add_leave.'_'.$i.'.'.$extension;
-				                                    $target_path = $path.$fixname;
-
-				                                    $filemove = move_uploaded_file($image, $target_path);
+			                                    $filemove = move_uploaded_file($image, $target_path);
 											}
 
 			if($coe_company == ''){
