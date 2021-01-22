@@ -5247,10 +5247,11 @@
 				$extension = end($tempext);
 
 				$path = "uploads/coe/";
-				$fixname = 'coe_'.$refno.$extension;
+				$fixname = 'coe_'.$refno.".".$extension;
 				$target_path = $path.$fixname;
 
-				$filemove = move_uploaded_file($image, $target_path);
+				$filemove = move_uploaded_file($image,
+				 $target_path);
 
 				var_dump($filemove);exit(0);
 			}
