@@ -5202,11 +5202,6 @@
 
 		case 'coesubmit':
 
-
-
-			var_dump($_POST);
-			exit(0);
-
 			$coeemp = $_POST["emp"];
 			$coetype = $_POST["type"];
 			$coecategory = $_POST["category"];
@@ -5222,13 +5217,13 @@
 			$avail_no = $_POST["avail_no"];
 			$tasks = json_encode($tasks);
 
+			var_dump($tasks);exit(0);
+
 			if(!empty($_POST['leave_file'])){
 				$leave_file = $_POST['leave_file'];
 			}else{
 				$leave_file = null;
 			}
-
-
 
 			if($coe_company == ''){
 				$coe_company = $profile_comp;
