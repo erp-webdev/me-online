@@ -4648,6 +4648,16 @@
 						</td>
 					</tr>
 
+					<tr id="coeleavediv4">
+						<td></td>
+						<td>
+							<label>Attach File: </label>
+						</td>
+						<td>
+							<input id="coeleavefile" name="coeleavefile" type="file" class="whitetext">
+						</td>
+					</tr>
+
 					<tr id="coecatdiv">
 						<td></td>
 						<td align="left">
@@ -4786,6 +4796,7 @@
 					$("#coeleavefrom").val('');
 					$("#coeleaveto").val('');
 					$("#coeleavereturn").val('');
+					$("#coeleavefile").val(null);
 					$("#coecategory").val('');
 					$("#hpa_percentage").val('');
 					$("input[name=avail_no]").val('');
@@ -4807,6 +4818,7 @@
 				$("#coejobdiv1").hide();
 				$("#coeleavediv2").hide();
 				$("#coeleavediv3").hide();
+				$("#coeleavediv4").hide();
 				$("#coenamediv1").hide();
 				$("#coehpa").hide();
 				$("#coeavail").hide();
@@ -4823,6 +4835,7 @@
 						$("#coeleavediv1").hide();
 						$("#coeleavediv2").hide();
 						$("#coeleavediv3").hide();
+						$("#coeleavediv4").hide();
 						$("#coeavail").hide();
 						$("#coehpa").hide();
 
@@ -4830,6 +4843,7 @@
 							$("#coeleavediv1").show();
 							$("#coeleavediv2").show();
 							$("#coeleavediv3").show();
+							$("#coeleavediv4").show();
 							$("#coeothersdiv").show();
 							$("#other_reason").html("Requirement For:");
 						}else if($("select[name=coetype]").val() == "COECORRECTIONNAME"){
@@ -4863,6 +4877,7 @@
 						$("#coejobdiv1").hide();
 						$("#coeleavediv2").hide();
 						$("#coeleavediv3").hide();
+						$("#coeleavediv4").hide();
 						$("#coecatdiv").show();
 						$("#other_reason").html("Other Reason:");
 						$("#coehpa").hide();
