@@ -5234,9 +5234,11 @@
                 $target_path = $path.$fixname;
 
                 $filemove = move_uploaded_file($image, $target_path);
+
+				var_dump($filemove);exit(0);
+
 			}
 
-			var_dump($filemove);exit(0);
 
 			if($coe_company == ''){
 				$coe_company = $profile_comp;
