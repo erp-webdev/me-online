@@ -4953,9 +4953,6 @@
 						}
 					}
 
-					alert(leavefile);
-					return false;
-
 					$("#submitcoe").hide();
 					var tasks = $('input:text.tasks').serialize();
 					$.ajax(
@@ -5197,6 +5194,17 @@
 			$coe_company = ($_POST["coe_company"] != '') ? $_POST["coe_company"] : $profile_comp;
 			$avail_no = $_POST["avail_no"];
 			$tasks = json_encode($tasks);
+
+			if(!empty($_FILES['leave_file'])){
+				$leave_file = $_FILES['leave_file'];
+			}else{
+				$leave_file = null;
+			}
+
+			print_r($leave_file);
+			exit(0);
+
+
 
 			if($coe_company == ''){
 				$coe_company = $profile_comp;
