@@ -5188,7 +5188,7 @@
 
 
 
-			var_dump($_FILES['file']['tmp_name']);
+			var_dump($_POST['form_data']);
 			exit(0);
 
 			$coeemp = $_POST["emp"];
