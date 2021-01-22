@@ -5219,23 +5219,24 @@
 			$avail_no = $_POST["avail_no"];
 			$tasks = json_encode($tasks);
 
-			var_dump($_FILES['file']);exit(0);
 
-											if($_FILES['file']){
-												$image = $_FILES['file']['tmp_name'];
-				                                $filename = $_FILES['file']['name'];
-				                                $filesize = $_FILES['file']['size'];
-				                                $filetype = $_FILES['file']['type'];
+			if($_FILES['file']){
+				$image = $_FILES['file']['tmp_name'];
+                $filename = $_FILES['file']['name'];
+                $filesize = $_FILES['file']['size'];
+                $filetype = $_FILES['file']['type'];
 
-				                                $tempext = explode(".", $filename);
-				                                $extension = end($tempext);
+                $tempext = explode(".", $filename);
+                $extension = end($tempext);
 
-			                                    $path = "uploads/leave/";
-			                                    $fixname = 'attach_'.$add_leave.'_'.$i.'.'.$extension;
-			                                    $target_path = $path.$fixname;
+                $path = "uploads/coe/";
+                $fixname = 'attach_'.$add_leave.'_'.$i.'.'.$extension;
+                $target_path = $path.$fixname;
 
-			                                    $filemove = move_uploaded_file($image, $target_path);
-											}
+                $filemove = move_uploaded_file($image, $target_path);
+			}
+
+			var_dump($filemove);exit(0);
 
 			if($coe_company == ''){
 				$coe_company = $profile_comp;
