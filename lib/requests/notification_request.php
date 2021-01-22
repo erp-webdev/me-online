@@ -4970,7 +4970,8 @@
 					form_data.append('hpa_percentage', hpa_percentage);
 					form_data.append('coe_company', coe_company);
 					form_data.append('coetasks', tasks);
-					console.log(form_data);
+					console.log(tasks);
+					return false;
 
 					// $("#submitcoe").hide();
 
