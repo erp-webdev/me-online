@@ -4928,7 +4928,7 @@
 						var leavefile = $("#coeleavefile").prop('files')[0];
 						var form_data = new FormData();
 					    form_data.append('file', leavefile);
-					    alert(form_data);
+						console.log(form_data);
 					}else{
 						var leavefile = null;
 					}
@@ -4961,11 +4961,12 @@
 					$.ajax(
 					{
 						url: "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=coesubmit",
-						data: "emp=" + emp + "&type=" + type + "&category=" + category + "&reason=" + reason + "&other=" + other +
-							  "&leavefrom=" + leavefrom + "&leaveto=" + leaveto + "&leavereturn=" + leavereturn + "&correctionname=" +correction_name + "&" + tasks +
-							  "&hpa_percentage=" + hpa_percentage + "&avail_no=" + avail_no + "&coe_company=" +coe_company + "&leave_file=" +leavefile,
 					 	processData: false,
 						contentType: false,
+						// data: "emp=" + emp + "&type=" + type + "&category=" + category + "&reason=" + reason + "&other=" + other +
+						// 	  "&leavefrom=" + leavefrom + "&leaveto=" + leaveto + "&leavereturn=" + leavereturn + "&correctionname=" +correction_name + "&" + tasks +
+						// 	  "&hpa_percentage=" + hpa_percentage + "&avail_no=" + avail_no + "&coe_company=" +coe_company + "&leave_file=" +leavefile,
+						data: form_data;
 						type: "POST",
 						complete: function(){
 							$("#loading").hide();
@@ -5185,6 +5186,11 @@
 
 		case 'coesubmit':
 
+
+
+			var_dump($_FILES['coeleavefile']['tmp_name']);
+			exit(0);
+
 			$coeemp = $_POST["emp"];
 			$coetype = $_POST["type"];
 			$coecategory = $_POST["category"];
@@ -5205,9 +5211,6 @@
 			}else{
 				$leave_file = null;
 			}
-
-			var_dump($leave_file);
-			exit(0);
 
 
 
