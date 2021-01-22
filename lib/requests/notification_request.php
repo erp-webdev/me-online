@@ -5212,7 +5212,7 @@
 			$leave_return = $_POST["leavereturn"];
 			$datetoday = date('Y-m-d');
 			$tasks = $_POST["coetasks"];
-			var_dump($tasks);exit(0):
+			var_dump($tasks);exit(0);
 
 			$hpa_percentage = $_POST["hpa_percentage"];
 			$coe_company = ($_POST["coe_company"] != '') ? $_POST["coe_company"] : $profile_comp;
