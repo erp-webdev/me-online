@@ -65,7 +65,7 @@
 									</tr>
 									<button id="coenewreq" value="New Request" class="smlbtn" attribute5="2">New Request</button>
 
-									<input style="float: right;" type="button" id="coesearch" name="coesearch" value="Search" class="smlbtn" />
+									<input style="float: right;" type="button" attribute="<?php echo $coe_user['emp_id']; ?>" id="coesearch" name="coesearch" value="Search" class="smlbtn" />
 									<input style="float: right;" type="text" id="coeref" name="coeref" class="smltxtbox" placeholder="Reference # or Name" />&nbsp;
 								</div>
 								</br>

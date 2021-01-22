@@ -878,6 +878,9 @@ $(function() {
 	$("#coesearch").on("click", function() {
 
 		ref_no = $("#coeref").val();
+		level = $(this).attr('attribute');
+
+		alert(level);
 
 		$.ajax(
 		{
