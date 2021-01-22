@@ -4926,6 +4926,9 @@
 					var leavereturn = $("input[name=coeleavereturn]").val();
 					if(type == 'COEAPPROVEDLEAVE'){
 						var leavefile = $("#coeleavefile").prop('files')[0];
+						var form_data = new FormData();
+					    form_data.append('file', leavefile);
+					    alert(form_data);
 					}else{
 						var leavefile = null;
 					}
