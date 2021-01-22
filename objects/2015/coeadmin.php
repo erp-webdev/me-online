@@ -36,8 +36,10 @@
 			if (($coe_user['emp_id'] == $profile_idnum)) {
 				if(empty($profile_email)){
 					$count++;
+					$admin_level = $coe_user['level'];
 				}else if($coe_user['EmailAdd'] == $profile_email){
 					$count++;
+					$admin_level = $coe_user['level'];
 				}
 			}
 		}
@@ -45,6 +47,7 @@
 		if($count == 0){
 			echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/login'</script>";
 		}
+
 
 		$coe_count = $mainsql->get_coe(0, 0, null, 1, 2,$profile_idnum, $company_sort);
 
