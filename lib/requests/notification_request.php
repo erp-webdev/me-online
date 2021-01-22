@@ -4936,7 +4936,7 @@
 					var avail_no = $("input[name=avail_no]").val();
 					var hpa_percentage = $("select[name=hpa_percentage]").val();
 					var coe_company = <?php if($level != 1){?>$("select[name=coecompany]").val() <?php }else{ echo "'$profile_comp'"; }?>;
-					var tasks = $('input:text.tasks').serializeArray();
+					var tasks = $('input:text.tasks').serialize();
 
 					if(!emp){
 						alert("Employee ID is required!");
@@ -4969,7 +4969,8 @@
 					form_data.append('avail_no', avail_no);
 					form_data.append('hpa_percentage', hpa_percentage);
 					form_data.append('coe_company', coe_company);
-					form_data.append('coetasks', JSON.stringify(tasks));
+					form_data.append('coetasks', tasks);
+					console.log(form_data);
 
 					// $("#submitcoe").hide();
 
@@ -5210,13 +5211,10 @@
 			$leave_to = $_POST["leaveto"];
 			$leave_return = $_POST["leavereturn"];
 			$datetoday = date('Y-m-d');
-			
-			$tasks = json_decode($_POST["coetasks"]);
-			foreach($tasks as $task){
-				var_dump($task["coetasks[]"]);
-			}
+			$tasks = $_POST["coetasks"];
 
-			exit(0);
+
+			var_dump($tasks);exit(0);
 
 			$hpa_percentage = $_POST["hpa_percentage"];
 			$coe_company = ($_POST["coe_company"] != '') ? $_POST["coe_company"] : $profile_comp;
