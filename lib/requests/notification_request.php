@@ -4654,7 +4654,7 @@
 							<label>Attach File: </label>
 						</td>
 						<td>
-							<input id="coeleavefile" name="coeleavefile" type="file" class="whitetext">
+							<input id="coeleavefile" name="coeleavefile" type="file">
 						</td>
 					</tr>
 
