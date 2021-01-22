@@ -5219,27 +5219,6 @@
 			$avail_no = $_POST["avail_no"];
 			$tasks = json_encode($tasks);
 
-
-			if($_FILES['file']){
-				$image = $_FILES['file']['tmp_name'];
-                $filename = $_FILES['file']['name'];
-                $filesize = $_FILES['file']['size'];
-                $filetype = $_FILES['file']['type'];
-
-                $tempext = explode(".", $filename);
-                $extension = end($tempext);
-
-                $path = "uploads/coe/";
-                $fixname = 'attach_'.$add_leave.'_'.$i.'.'.$extension;
-                $target_path = $path.$fixname;
-
-                $filemove = move_uploaded_file($image, $target_path);
-
-				var_dump($filemove);exit(0);
-
-			}
-
-
 			if($coe_company == ''){
 				$coe_company = $profile_comp;
 			}
@@ -5257,6 +5236,24 @@
 
 			// $refno = strtoupper("RN".str_replace('-','',$coeemp).uniqid());
 			$refno = strtoupper("RN".str_replace('-','',$coeemp).$profile_comp.'-'.date("Y").str_pad($coeref_count, 4, "0", STR_PAD_LEFT));
+
+			if($_FILES['file']){
+				$image = $_FILES['file']['tmp_name'];
+				$filename = $_FILES['file']['name'];
+				$filesize = $_FILES['file']['size'];
+				$filetype = $_FILES['file']['type'];
+
+				$tempext = explode(".", $filename);
+				$extension = end($tempext);
+
+				$path = "uploads/coe/";
+				$fixname = 'coe_'.$refno.$extension;
+				$target_path = $path.$fixname;
+
+				$filemove = move_uploaded_file($image, $target_path);
+
+				var_dump($filemove);exit(0);
+			}
 
 			$coe_check = "SELECT * from COERequests WHERE emp_id = '$coeemp' and company = '$coe_company' and type = '$coetype' and category = '$coecategory'
 			and status not in ('Done','Cancelled')";
