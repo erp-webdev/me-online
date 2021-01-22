@@ -4959,13 +4959,19 @@
 		case 'coesearch':
 
 			$ref_no = $_POST["ref_no"];
+			$level = $_POST["level"];
 
 			if($ref_no == '' || $ref_no == "" || $ref_no == null){
 				echo "<script>location.reload();</script>";
 				break;
 			}
 
-			$sql = "SELECT B.FullName, A.* FROM COERequests A LEFT JOIN viewHREmpMaster B on A.emp_id = B.EmpID WHERE A.ref_no = '".$ref_no."' OR B.FullName LIKE '%$ref_no%'";
+			$sql = "SELECT B.FullName, A.* FROM COERequests A LEFT JOIN viewHREmpMaster B on A.emp_id = B.EmpID WHERE (A.ref_no = '".$ref_no."' OR B.FullName LIKE '%$ref_no%')";
+			if($level == 3){
+				$sql .= " AND type <> 'COECOMPENSATION'";
+			}elseif ($level == 2) {
+				$sql .= " AND type = 'COECOMPENSATION'";
+			}
 
 			$result = $mainsql->get_row($sql);
 
