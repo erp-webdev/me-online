@@ -4651,7 +4651,7 @@
 					<tr id="coeleavediv4">
 						<td></td>
 						<td>
-							<label>Attach File: </label>
+							<label>Attach Image: </label>
 						</td>
 						<td>
 							<input id="coeleavefile" name="coeleavefile" type="file">
@@ -4924,6 +4924,12 @@
 					var leavefrom = $("input[name=coeleavefrom]").val();
 					var leaveto = $("input[name=coeleaveto]").val();
 					var leavereturn = $("input[name=coeleavereturn]").val();
+					if(type == 'COEAPPROVEDLEAVE'){
+						var leavefile = $("#coeleavefile").prop('files')[0];
+					}else{
+						var leavefile = null;
+					}
+
 					var correction_name = $("input[name=coecorrection]").val();
 					var avail_no = $("input[name=avail_no]").val();
 					var hpa_percentage = $("select[name=hpa_percentage]").val();
@@ -4947,6 +4953,9 @@
 						}
 					}
 
+					alert(leavefile);
+					return false;
+
 					$("#submitcoe").hide();
 					var tasks = $('input:text.tasks').serialize();
 					$.ajax(
@@ -4954,7 +4963,7 @@
 						url: "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=coesubmit",
 						data: "emp=" + emp + "&type=" + type + "&category=" + category + "&reason=" + reason + "&other=" + other +
 							  "&leavefrom=" + leavefrom + "&leaveto=" + leaveto + "&leavereturn=" + leavereturn + "&correctionname=" +correction_name + "&" + tasks +
-							  "&hpa_percentage=" + hpa_percentage + "&avail_no=" + avail_no + "&coe_company=" +coe_company,
+							  "&hpa_percentage=" + hpa_percentage + "&avail_no=" + avail_no + "&coe_company=" +coe_company + "&leave_file=" +leavefile,
 						type: "POST",
 						complete: function(){
 							$("#loading").hide();
