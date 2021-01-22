@@ -4971,7 +4971,7 @@
 					form_data.append('coe_company', coe_company);
 					form_data.append('tasks', tasks);
 					console.log(tasks);
-
+					return false;
 					$("#submitcoe").hide();
 
 					$.ajax(
