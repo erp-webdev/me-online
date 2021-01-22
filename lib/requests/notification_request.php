@@ -5210,9 +5210,10 @@
 			$leave_to = $_POST["leaveto"];
 			$leave_return = $_POST["leavereturn"];
 			$datetoday = date('Y-m-d');
+			
 			$tasks = json_decode($_POST["coetasks"]);
 			foreach($tasks as $task){
-				print_r($task["coetasks[]"]);
+				var_dump($task["coetasks[]"]);
 			}
 
 			exit(0);
