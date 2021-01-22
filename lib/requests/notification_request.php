@@ -4936,7 +4936,7 @@
 					var avail_no = $("input[name=avail_no]").val();
 					var hpa_percentage = $("select[name=hpa_percentage]").val();
 					var coe_company = <?php if($level != 1){?>$("select[name=coecompany]").val() <?php }else{ echo "'$profile_comp'"; }?>;
-					var tasks = $('input:text.tasks').serialize();
+					var tasks = $('input:text.tasks').val();
 
 					if(!emp){
 						alert("Employee ID is required!");
@@ -4970,7 +4970,8 @@
 					form_data.append('hpa_percentage', hpa_percentage);
 					form_data.append('coe_company', coe_company);
 					form_data.append('coetasks', tasks);
-					console.log(form_data);
+					console.log(tasks);
+					return false
 
 					$("#submitcoe").hide();
 
