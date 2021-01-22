@@ -5195,7 +5195,7 @@
 			$avail_no = $_POST["avail_no"];
 			$tasks = json_encode($tasks);
 
-			if(!empty($_FILES['leave_file'])){
+			if(!empty($_POST['leave_file'])){
 				$leave_file = $_POST['leave_file'];
 			}else{
 				$leave_file = null;
