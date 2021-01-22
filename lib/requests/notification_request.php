@@ -4966,7 +4966,7 @@
 						// data: "emp=" + emp + "&type=" + type + "&category=" + category + "&reason=" + reason + "&other=" + other +
 						// 	  "&leavefrom=" + leavefrom + "&leaveto=" + leaveto + "&leavereturn=" + leavereturn + "&correctionname=" +correction_name + "&" + tasks +
 						// 	  "&hpa_percentage=" + hpa_percentage + "&avail_no=" + avail_no + "&coe_company=" +coe_company + "&leave_file=" +leavefile,
-						data: form_data;
+						data: form_data,
 						type: "POST",
 						complete: function(){
 							$("#loading").hide();
