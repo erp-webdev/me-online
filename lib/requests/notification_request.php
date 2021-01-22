@@ -4936,7 +4936,7 @@
 					var avail_no = $("input[name=avail_no]").val();
 					var hpa_percentage = $("select[name=hpa_percentage]").val();
 					var coe_company = <?php if($level != 1){?>$("select[name=coecompany]").val() <?php }else{ echo "'$profile_comp'"; }?>;
-					var tasks = $('input:text.tasks').serialize();
+					var tasks = $('input:text.tasks').serializeArray();
 
 					if(!emp){
 						alert("Employee ID is required!");
