@@ -5246,7 +5246,7 @@
 				$tempext = explode(".", $filename);
 				$extension = end($tempext);
 
-				$path = ROOT."uploads/coe/";
+				$path = ROOT."/uploads/coe/";
 				$fixname = 'coe_'.$refno.".".$extension;
 				$target_path = $path.$fixname;
 
