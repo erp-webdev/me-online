@@ -5214,19 +5214,29 @@
 			$tasks = $_POST["coetasks"];
 			$tasks = str_replace("coetasks%5B%5D=", "", $tasks);
 			$tasks = explode("&", $tasks);
-
-
 			$hpa_percentage = $_POST["hpa_percentage"];
 			$coe_company = ($_POST["coe_company"] != '') ? $_POST["coe_company"] : $profile_comp;
 			$avail_no = $_POST["avail_no"];
 			$tasks = json_encode($tasks);
-			var_dump($tasks);exit(0);
 
-			if(!empty($_POST['leave_file'])){
-				$leave_file = $_POST['leave_file'];
-			}else{
-				$leave_file = null;
-			}
+			var_dump($_FILES['file']);exit(0);
+											if($_FILES['file']){
+												$image = $_FILES['file']['tmp_name'];
+				                                $filename = $_FILES['file']['name'];
+				                                $filesize = $_FILES['file']['size'];
+				                                $filetype = $_FILES['file']['type'];
+
+				                                $tempext = explode(".", $filename);
+				                                $extension = end($tempext);
+
+				                                if (($filesize < 10485760) && in_array($extension, $allowedExts)) :
+
+				                                    $path = "uploads/leave/";
+				                                    $fixname = 'attach_'.$add_leave.'_'.$i.'.'.$extension;
+				                                    $target_path = $path.$fixname;
+
+				                                    $filemove = move_uploaded_file($image, $target_path);
+											}
 
 			if($coe_company == ''){
 				$coe_company = $profile_comp;
