@@ -4969,9 +4969,8 @@
 					form_data.append('avail_no', avail_no);
 					form_data.append('hpa_percentage', hpa_percentage);
 					form_data.append('coe_company', coe_company);
-					form_data.append('coetasks', JSON.stringify(tasks));
-					console.log(JSON.stringify(tasks));
-					return false;
+					form_data.append('coetasks', JSON.encode(tasks));
+
 					// $("#submitcoe").hide();
 
 					$.ajax(
@@ -5211,7 +5210,7 @@
 			$leave_to = $_POST["leaveto"];
 			$leave_return = $_POST["leavereturn"];
 			$datetoday = date('Y-m-d');
-			$tasks = $_POST["coetasks"];
+			$tasks = json_decode($_POST["coetasks"]);
 			var_dump($tasks);exit(0);
 
 			$hpa_percentage = $_POST["hpa_percentage"];
