@@ -5196,7 +5196,7 @@
 			$tasks = json_encode($tasks);
 
 			if(!empty($_FILES['leave_file'])){
-				$leave_file = $_FILES['leave_file']['tmp_name'];
+				$leave_file = $_POST['leave_file'];
 			}else{
 				$leave_file = null;
 			}
