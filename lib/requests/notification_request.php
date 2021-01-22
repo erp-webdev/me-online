@@ -5215,12 +5215,12 @@
 			$tasks = str_replace("coetasks%5B%5D=", "", $tasks);
 			$tasks = explode("&", $tasks);
 
-			var_dump($tasks);exit(0);
 
 			$hpa_percentage = $_POST["hpa_percentage"];
 			$coe_company = ($_POST["coe_company"] != '') ? $_POST["coe_company"] : $profile_comp;
 			$avail_no = $_POST["avail_no"];
 			$tasks = json_encode($tasks);
+			var_dump($tasks);exit(0);
 
 			if(!empty($_POST['leave_file'])){
 				$leave_file = $_POST['leave_file'];
