@@ -4969,8 +4969,8 @@
 					form_data.append('avail_no', avail_no);
 					form_data.append('hpa_percentage', hpa_percentage);
 					form_data.append('coe_company', coe_company);
-					form_data.append('coetasks', JSON.stringify(tasks.coetasks[]));
-					console.log(JSON.stringify(tasks.coetasks[]));
+					form_data.append('coetasks', JSON.stringify(tasks));
+					console.log(JSON.stringify(tasks));
 					return false;
 					// $("#submitcoe").hide();
 
