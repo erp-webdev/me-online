@@ -5254,7 +5254,7 @@
 			}else{
 
 				if($_FILES['file']){
-					var_dump("with file");exit(0);
+
 					$image = $_FILES['file']['tmp_name'];
 					$filename = $_FILES['file']['name'];
 					$filesize = $_FILES['file']['size'];
@@ -5275,7 +5275,6 @@
 					$fixname = null;
 				}
 
-				var_dump("no file");exit(0);
 				$sql = "INSERT INTO COERequests (ref_no, emp_id, type, category, reason, other_reason, status, company, requested_by, created_at, updated_by, updated_at, leave_from, leave_to, leave_return, correction_name, job_desc, hpa_percent, avail_no, image_src)
 						VALUES ('".$refno."','".$coeemp."', '".$coetype."', '".$coecategory."', '".$coereason."', '".$coeother."', 'On Process', '".$coe_company."', '".$profile_idnum."', '".$datetoday."', '".$profile_idnum."', '".$datetoday."',
 								'".$leave_from."', '".$leave_to."', '".$leave_return."', '".$correction_name."', '".$tasks."', '".$hpa_percentage."', '".$avail_no."', '".$fixname."')";

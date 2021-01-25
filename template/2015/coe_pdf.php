@@ -357,6 +357,9 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 		}
 		// End Signatory
 		?>
+		
+		&nbsp;<br />
+		&nbsp;<br />
 
 		<?php
 		if($coe[0]["type"] != 'COECOMPENSATION'){
