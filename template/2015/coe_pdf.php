@@ -105,7 +105,7 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 			up to the present.</b></p>
 			<?php } ?>
 
-			<p style="padding-left: 50px; padding-right: 50px;">Furthermore, this is to certify that hei s qualified for a
+			<p style="padding-left: 50px; padding-right: 50px;">Furthermore, this is to certify that he is qualified for a
 			<?php if($coe[0]["hpa_percent"] == '25%'){ ?>
 				twenty five percent (25%)
 			<?php }else if($coe[0]["hpa_percent"] == '30%'){ ?>
@@ -326,7 +326,6 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 	?>
 	<!-- FOOTER -->
 	&nbsp;<br />
-	&nbsp;<br />
 
 	<?php
 
@@ -334,29 +333,29 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 		if($coe[0]["type"] == 'COECOMPENSATION'){
 			if(in_array($emp_info[0]["RankID"], $vpup)){ // for vp and up
 			?>
-				<b><p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">LOURDES O. RAMILLO<br />
+				<b><p style="padding-top: 40px; padding-left: 50px; padding-right: 50px;">LOURDES O. RAMILLO<br />
 				<i>Vice President - Financial Reporting Group<i></p></b>
 			<?php
 			}elseif (in_array($emp_info[0]["RankID"], $rfavp)) { // for r&f to avp
 			?>
-				<b><p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">MARILOU C. GUARIÑA<br />
+				<b><p style="padding-top: 40px; padding-left: 50px; padding-right: 50px;">MARILOU C. GUARIÑA<br />
 				<i>ASSISTANT VICE PRESIDENT - Payroll</i></p></b>
 			<?php
 			}
 		}else{
 			if($emp_info[0]["CompanyID"] == 'MCTI'){
 			?>
-				<b><p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">JOEY I. VILLAFUERTE<br />
+				<b><p style="padding-top: 40px; padding-left: 50px; padding-right: 50px;">JOEY I. VILLAFUERTE<br />
 				FIRST VICE PRESIDENT, CONTROLLERSHIP GROUP</p></b>
 			<?php
 			}elseif ($emp_info[0]["CompanyID"] == 'GLOBAL01' || $emp_info[0]["CompanyID"] == 'LGMI01' || $emp_info[0]["CompanyID"] == 'MIB01') {
 			?>
-				<b><p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">JOSEPHINE F. ALIM<br />
+				<b><p style="padding-top: 40px; padding-left: 50px; padding-right: 50px;">JOSEPHINE F. ALIM<br />
 				Associate Director</b>
 			<?php
 			}else{
 			?>
-				<b><p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">RAFAEL ANTONIO S. PEREZ<br />
+				<b><p style="padding-top: 40px; padding-left: 50px; padding-right: 50px;">RAFAEL ANTONIO S. PEREZ<br />
 				Head, Human Resources and<br />
 				Corporate Administration Division</p></b>
 			<?php
@@ -365,7 +364,6 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 		// End Signatory
 		?>
 
-		&nbsp;<br />
 		&nbsp;<br />
 
 		<?php
@@ -379,14 +377,12 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 		?>
 
 		&nbsp;<br />
-		&nbsp;<br />
 
 		<?php
 		if (($emp_info[0]["CompanyID"] == 'GLOBAL01' || $emp_info[0]["CompanyID"] == 'LGMI01' || $emp_info[0]["CompanyID"] == 'MIB01') && $coe[0]["type"] == 'COESEPARATED') {
 		// COE Separated Footer
 		?>
 			<p style="font-size: 10px; padding-left: 50px; padding-right: 50px;">Ref No.:<?php echo $coe[0]["ref_no"]; ?></p>
-			&nbsp;<br />
 			&nbsp;<br />
 			<p style="font-size: 10px; text-align: center;">Unit G, Ground Floor, 331 Building, 331 Sen. Gil Puyat Avenue, Barangay Bel-Air, Makati City 1200 • Tels (632) 5411979 / 8946345 <br />
 			<a href="www.globalcompanies.com.ph">www.globalcompanies.com.ph</a> • Email: <a href="globalonehr@globalcompanies.com.ph">globalonehr@globalcompanies.com.ph</a></p>
