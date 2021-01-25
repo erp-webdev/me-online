@@ -5208,9 +5208,9 @@
 
 		case 'coesubmit':
 
-			$coeemp = $_POST["emp"];
-			$coetype = $_POST["type"];
-			$coecategory = $_POST["category"];
+			$coeemp = trim($_POST["emp"]);
+			$coetype = trim($_POST["type"]);
+			$coecategory = trim($_POST["category"]);
 			$coereason = $_POST["reason"];
 			$coeother = $_POST["other"];
 			$leave_from = $_POST["leavefrom"];
