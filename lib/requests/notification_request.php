@@ -5806,7 +5806,7 @@
 
 						if(status == 'For Release' || status == 'Done'){
 
-							if (confirm('The Template will now be sent to the employee and the request will be marked as Done/Claimed.\r\n\r\nPlease confirm to continue.')) {
+							if (confirm('The signed certificate will now be sent to the employee and the request will be marked as Done/Claimed.\r\n\r\nPlease confirm to continue.')) {
 
 								$("#coedata").html('<i class="fa fa-refresh fa-spin fa-lg"></i> Loading...');
 

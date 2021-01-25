@@ -18,6 +18,9 @@
 		$emp_id = $coe[0]['emp_id'];
 
 		$coe_status = $coe[0]['status'];
+		$coetype = $coe[0]['type'];
+		$coerefno = $coe[0]['ref_no'];
+		$coe_updated_at = $coe[0]['updated_at'];
 
 		if(in_array($coe_status, ['On Process', 'For Release'])){
 
@@ -109,7 +112,7 @@
 		$email->SetFrom(NOTIFICATION_EMAIL); //Name is optional
 
 		$message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 95%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>Certificate of Employment Request</span><br><br>Hi,<br><br>";
-		$message .= "Your Certificate of Employment ($coetype) with a Reference No. ".$refno." has been Done/Claimed at ".date('F j, Y', strtotime($coe_result[0]['updated_at'])).".<br><br>";
+		$message .= "Your Certificate of Employment ($coetype) with a Reference No. ".$coerefno." has been Done/Claimed at ".date('F j, Y', strtotime($coe_updated_at)).".<br><br>";
 		$message .= "Kindly see the attached file.";
 		$message .= "<br><br>Thanks,<br>";
 		$message .= SITENAME." Admin";
