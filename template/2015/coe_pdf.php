@@ -52,8 +52,8 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 			up to the present.</b></p>
 			<?php } ?>
 
-			<p style="padding-left: 50px; padding-right: 50px;">This is to further certify that <?php echo ucwords(strtolower($emp_info[0]["salutation"]))." ".strtoupper($emp_info[0]["FullName"]); ?> shall be on leave from <b><?php echo $start_date." to ".$end_date; ?>
-			</b>as approved by the Management. He is expected to report back for work on <b><?php echo $return_date; ?></b>.</p>
+			<p style="padding-left: 50px; padding-right: 50px;">This is to further certify that <?php echo ucwords(strtolower($emp_info[0]["salutation"]))." ".strtoupper($emp_info[0]["FullName"]); ?> shall be on leave from <b><?php echo date('F d, Y', strtotime($start_date))." to ".date('F d, Y', strtotime($end_date)); ?>
+			</b>as approved by the Management. He is expected to report back for work on <b><?php echo date('F d, Y', strtotime($return_date)); ?></b>.</p>
 
 			<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["salutation"]))." ".strtoupper($emp_info[0]["FullName"]); ?>
 			<?php if($coe[0]["other_reason"]){ ?>
