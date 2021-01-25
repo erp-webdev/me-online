@@ -5282,7 +5282,7 @@
 							$target_path
 						);
 					}else{
-						?><h3 align="center">File size must be less than or equal to 2MB and must be an image type.</h3><?php
+						?><br /><h3 align="center">File size must be less than or equal to 2MB and must be an image type.</h3><?php
 						exit(0);
 					}
 				}else{
