@@ -1355,7 +1355,7 @@
                                         <td>SSS</td>
                                         <td class="righttalign"><?php echo number_format($payslip_data[0]['SSSEE'], 2); ?></td>
                                     </tr>
-									<?php if (date('Y-m-d') > '2021-01-21') : ?>
+									<?php if ($payslip_data[0]['PRYear'] >= 2021) : ?>
 									<tr class="trdata">
                                         <td>Provident Fund</td>
                                         <td class="righttalign"><?php echo number_format($payslip_data[0]['SSSEEP'], 2); ?></td>
