@@ -5695,6 +5695,7 @@
 					$("#coeleavediv1").hide();
 					$("#coeleavediv2").hide();
 					$("#coeleavediv3").hide();
+					$("#coeleavediv4").hide();
 					$("#coenamediv1").hide();
 					$("#coecatdiv2").hide();
 					$("#coereasondiv2").hide();
@@ -5711,6 +5712,7 @@
 						$("#coeleavediv2").show();
 						$("#other_reason").html("Other Reason:");
 						$("#coeleavediv3").show();
+						$("#coeleavediv4").show();
 
 						$("#coecatdiv2").hide();
 						$("#coereasondiv2").hide();
