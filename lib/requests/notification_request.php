@@ -5515,6 +5515,18 @@
 							<?php echo date('m/d/Y', strtotime($result[0]['leave_return'])); ?>
 						</td>
 					</tr>
+					<!--   -->
+					<tr id="coeleavediv4">
+						<td></td>
+						<td align="left">
+							<label>Attachment: </label>
+						</td>
+						<td align="left">
+							<?php
+								echo '<a href="'.WEB.'/uploads/coe/'.$result[0]['image_src'].'" target="_blank">Image File</a><br>';
+							?>
+						</td>
+					</tr>
 
 					<tr id="coecatdiv2">
 						<td></td>
