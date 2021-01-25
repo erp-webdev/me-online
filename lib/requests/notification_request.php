@@ -5016,6 +5016,12 @@
 				$sql .= " AND type = 'COECOMPENSATION'";
 			}
 
+			$sql .= " ORDER BY CASE WHEN STATUS = 'CANCELLED' THEN 0
+	              WHEN STATUS = 'DONE' THEN 1
+	              WHEN STATUS = 'FOR RELEASE' THEN 2
+	              ELSE 3
+	              END DESC, created_at ASC";
+
 			$result = $mainsql->get_row($sql);
 
 			?>
