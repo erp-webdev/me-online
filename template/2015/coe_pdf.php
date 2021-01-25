@@ -1,8 +1,8 @@
 <style type="text/css">
 
 </style>
-<div id="myDivToPrint" style="display: inline-block; height: 700px;">
-	<div>
+<div id="myDivToPrint" style="display: inline-block;">
+	<div style=" height: 700px;">
 	<?php
 	//R&F to AVP -- Ms Malou
 	$rfavp = array(
