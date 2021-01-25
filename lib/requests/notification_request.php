@@ -5262,6 +5262,7 @@
 
 				if($_FILES['file']){
 
+					$allowedExts = array("JPG", "JPEG", "GIF", "PNG", "jpg", "jpeg", "gif", "png");
 					$image = $_FILES['file']['tmp_name'];
 					$filename = $_FILES['file']['name'];
 					$filesize = $_FILES['file']['size'];
@@ -5269,15 +5270,21 @@
 
 					$tempext = explode(".", $filename);
 					$extension = end($tempext);
+					$extension = end($tempext);
 
-					$path = "../../uploads/coe/";
-					$fixname = 'coe_'.$refno.".".$extension;
-					$target_path = $path.$fixname;
+					if (($filesize < 2097152) && in_array($extension, $allowedExts)){
+						$path = "../../uploads/coe/";
+						$fixname = 'coe_'.$refno.".".$extension;
+						$target_path = $path.$fixname;
 
-					$filemove = move_uploaded_file(
-					    $_FILES['file']['tmp_name'],
-					    $target_path
-					);
+						$filemove = move_uploaded_file(
+							$_FILES['file']['tmp_name'],
+							$target_path
+						);
+					}else{
+						?><h3 align="center">File size must be less than or equal to 2MB and must be an image type.</h3><?php
+						exit(0);
+					}
 				}else{
 
 					$fixname = null;
