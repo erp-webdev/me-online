@@ -78,8 +78,8 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 			up to the present.</b></p>
 			<?php } ?>
 
-			<p style="padding-left: 50px; padding-right: 50px;">This also certifies that <?php echo strtoupper($emp_info[0]["FullName"])." and ".strtoupper($coe[0]["correction_name"]); ?>
-			is the same person as <?php echo strtoupper($emp_info[0]["FullName"]); ?>.</p>
+			<p style="padding-left: 50px; padding-right: 50px;">This also certifies that <b><?php echo strtoupper($emp_info[0]["FullName"])."</b> and <b>".strtoupper($coe[0]["correction_name"]); ?>
+			</b>is the same person as <?php echo strtoupper($emp_info[0]["FullName"]); ?>.</p>
 
 			<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".strtoupper($emp_info[0]["FullName"]); ?>
 			<?php if($coe[0]["other_reason"]){ ?>
