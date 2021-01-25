@@ -5016,9 +5016,9 @@
 				$sql .= " AND type = 'COECOMPENSATION'";
 			}
 
-			$sql .= " ORDER BY CASE WHEN STATUS = 'CANCELLED' THEN 0
-	              WHEN STATUS = 'DONE' THEN 1
-	              WHEN STATUS = 'FOR RELEASE' THEN 2
+			$sql .= " ORDER BY CASE WHEN A.STATUS = 'CANCELLED' THEN 0
+	              WHEN A.STATUS = 'DONE' THEN 1
+	              WHEN A.STATUS = 'FOR RELEASE' THEN 2
 	              ELSE 3
 	              END DESC, created_at ASC";
 
