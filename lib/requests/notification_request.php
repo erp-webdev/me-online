@@ -4972,7 +4972,7 @@
 					form_data.append('coetasks', tasks);
 					console.log(form_data);
 
-					// $("#submitcoe").hide();
+					$("#submitcoe").hide();
 
 					$.ajax(
 					{
@@ -5250,6 +5250,7 @@
 			}
 
 			if($coe_count > 0){
+
 				$result = false;
 			}else{
 
@@ -5272,6 +5273,7 @@
 					    $target_path
 					);
 				}else{
+
 					$fixname = null;
 				}
 
