@@ -1,35 +1,35 @@
 	<?php include(TEMP."/header.php"); ?>
 
     <!-- BODY -->
-                    
-                    <div id="mainsplashtext" class="mainsplashtext lefttalign">  
+
+                    <div id="mainsplashtext" class="mainsplashtext lefttalign">
                         <div class="topsplashtext lefttalign robotobold cattext whitetext"><?php echo WELCOME; ?></div>
                         <div class="leftsplashtext lefttalign"><?php include(TEMP."/menu.php"); ?></div>
                         <div class="rightsplashtext lefttalign">
-                            <div id="mainnotification" class="mainbody lefttalign whitetext">  
+                            <div id="mainnotification" class="mainbody lefttalign whitetext">
                                 <b class="mediumtext lorangetext">PAYSLIP</b><br><br>
-                                
+
                                 <table>
-                                    
+
                                     <tr>
                                         <td>
                                             <!--input type="button" value="PRINT" class="btn" /-->
                                         </td>
-                                        <td>Year Period: 
+                                        <td>Year Period:
                                             <select id="payslip_year" name="payslip_year" class="width95 smltxtbox">
                                                 <?php foreach ($dtr_year as $key => $value) : ?>
-                                                <option value="<?php echo $value['PRYear']; ?>"<?php echo $value['PRYear'] == date("Y") ? ' selected' : ''; ?>><?php echo $value['PRYear']; ?></option>    
+                                                <option value="<?php echo $value['PRYear']; ?>"<?php echo $value['PRYear'] == date("Y") ? ' selected' : ''; ?>><?php echo $value['PRYear']; ?></option>
                                                 <?php endforeach; ?>
                                             </select>
                                         </td>
-                                        <td>Pay Period: 
+                                        <td>Pay Period:
                                             <select id="payslip_cover" name="payslip_cover" class="width250 smltxtbox">
                                                 <?php if ($payslip_period) : ?>
                                                 <?php foreach ($payslip_period as $key => $value) : ?>
 
                                                 <?php if ($value['PeriodID'] != 'SP23' && ($profile_idnum != '2019-12-0708') ) : ?>
                                                 <option value="<?php echo $value['PeriodID']; ?>"<?php echo $key == 1 ? ' selected' : ''; ?>>
-                                                    <?php 
+                                                    <?php
                                                         // new payslip period beginning april2020
                                                         if($value['PRYear'] > 2020 || ($value['PRYear'] == 2020 && !in_array( $value['PeriodID'], ['S01', 'S02', 'S03', 'S04', 'S05', 'S06', 'S07', 'S08', 'S09'])))
                                                             echo $value['PaymentType']." ".$value['PRYear']." ".date("m/d/Y", strtotime($value['PRFrom']))." to ".date("m/d/Y", strtotime($value['PRTo']));
@@ -37,35 +37,35 @@
                                                             echo $value['PaymentType']." ".$value['PRYear']." ".date("m/d/Y", strtotime($value['PeriodFrom']))." to ".date("m/d/Y", strtotime($value['PeriodTo']));
                                                     ?>
                                                     <?php //echo $value['PaymentType']." ".$value['PRYear']." ".date("m/d/Y", strtotime($value['PeriodFrom']))." to ".date("m/d/Y", strtotime($value['PeriodTo'])); ?>
-                                                </option>  
+                                                </option>
                                                 <?php endif; ?>
                                                 <?php endforeach; ?>
 
                                                 <option value="SP04">
                                                     SL CONVERSION <?php echo date("Y"); ?>
-                                                </option>  
+                                                </option>
                                                 <!--13 MONTH - START -->
-                                                
+
                                                 <option value="SP08">
                                                     13TH MONTH 1/2 <?php echo date("Y"); ?>
-                                                </option>  
+                                                </option>
                                                 <option value="SP21">
                                                     13TH MONTH <?php echo date("Y"); ?>
-                                                </option>  
-                                                
+                                                </option>
+
                                                 <!--13 MONTH - END -->
                                                 <?php if ($profile_idnum == '2016-06-0457') : ?>
                                                 <option value="SP23">
                                                     YEAREND BONUS <?php echo date("Y"); ?>
-                                                </option>  
+                                                </option>
                                                 <?php endif; ?>
-                                                
+
                                                 <?php endif; ?>
                                             </select>
                                         </td>
                                     </tr>
                                 </table>
-                                
+
                                 <div class="column3 margintop25">
                                     <b><?php echo ucfirst($profile_nadd); ?> ID: </b><?php echo $profile_idnum; ?><br>
                                     <b>Name: </b><?php echo $profile_full; ?><br>
@@ -74,28 +74,28 @@
                                     <b>SSS #: </b><?php echo $profile_sss; ?><br>
                                     <b>TIN #: </b><?php echo $profile_tin; ?><br>
                                     <b>Cut-off Date: </b><span id='payperiod'>
-                                        <?php 
+                                        <?php
                                             // new pay period beginning apr2020
                                             if($payslip_period[1]['PRYear'] > 2020 || ($payslip_period[1]['PRYear'] == 2020 && !in_array( $payslip_period[1]['PeriodID'], ['S01', 'S02', 'S03', 'S04', 'S05', 'S06', 'S07', 'S08', 'S09'])))
-                                                echo date("m/d/Y", strtotime($payslip_period[1]['PRFrom'] ? $payslip_period[1]['PRFrom'] : $payslip_period[0]['PRFrom'])) . " to " . date("m/d/Y", strtotime($payslip_period[1]['PRTo'] ? $payslip_period[1]['PRTo'] : $payslip_period[0]['PRTo'])); 
+                                                echo date("m/d/Y", strtotime($payslip_period[1]['PRFrom'] ? $payslip_period[1]['PRFrom'] : $payslip_period[0]['PRFrom'])) . " to " . date("m/d/Y", strtotime($payslip_period[1]['PRTo'] ? $payslip_period[1]['PRTo'] : $payslip_period[0]['PRTo']));
                                             else
-                                                echo date("m/d/Y", strtotime($payslip_period[1]['PeriodFrom'] ? $payslip_period[1]['PeriodFrom'] : $payslip_period[0]['PeriodFrom'])). " to " . date("m/d/Y", strtotime($payslip_period[1]['PeriodTo'] ? $payslip_period[1]['PeriodTo'] : $payslip_period[0]['PeriodTo'])); 
+                                                echo date("m/d/Y", strtotime($payslip_period[1]['PeriodFrom'] ? $payslip_period[1]['PeriodFrom'] : $payslip_period[0]['PeriodFrom'])). " to " . date("m/d/Y", strtotime($payslip_period[1]['PeriodTo'] ? $payslip_period[1]['PeriodTo'] : $payslip_period[0]['PeriodTo']));
                                             ?></span><br>
                                     <b>Pay Period: </b><span id='payto'>
-                                        <?php 
+                                        <?php
                                             // new pay period beginning apr2020
                                             if($payslip_period[1]['PRYear'] > 2020 || ($payslip_period[1]['PRYear'] == 2020 && !in_array( $payslip_period[1]['PeriodID'], ['S01', 'S02', 'S03', 'S04', 'S05', 'S06', 'S07', 'S08', 'S09'])))
-                                                echo date("m/d/Y", strtotime($payslip_period[1]['PRTo'] ? $payslip_period[1]['PRTo'] : $payslip_period[0]['PRTo'])); 
+                                                echo date("m/d/Y", strtotime($payslip_period[1]['PRTo'] ? $payslip_period[1]['PRTo'] : $payslip_period[0]['PRTo']));
                                             else
-                                                echo date("m/d/Y", strtotime($payslip_period[1]['PRTo'] ? $payslip_period[1]['PRTo'] : $payslip_period[0]['PRTo'])); 
-                                                
+                                                echo date("m/d/Y", strtotime($payslip_period[1]['PRTo'] ? $payslip_period[1]['PRTo'] : $payslip_period[0]['PRTo']));
+
                                             ?></span><br>
                                     <b>Account #: </b><?php echo $profile_acctnum; ?><br>
                                 </div>
-                                
+
                                 <div id="payslipdata" class="innerdata">
                                 <table border="0" cellspacing="0" class="tdata margintop25 tinytext width100per">
-                                    
+
                                     <?php if($payslip_data) : ?>
 
                                     <tr>
@@ -120,9 +120,9 @@
                                                     <td class="righttalign"><?php echo number_format($payslip_data[0]['NDPay'], 2); ?></td>
                                                 </tr>
                                                 <?php endif; ?>
-                                                <?php 
-                                                    $absent_num = $payslip_data[0]['AbsentHrs'] - $payslip_data[0]['TotalLeaveHrs']; 
-                                                    $absent_pay = $payslip_data[0]['AbsentPay'] - $payslip_data[0]['TotalLeavePay']; 
+                                                <?php
+                                                    $absent_num = $payslip_data[0]['AbsentHrs'] - $payslip_data[0]['TotalLeaveHrs'];
+                                                    $absent_pay = $payslip_data[0]['AbsentPay'] - $payslip_data[0]['TotalLeavePay'];
                                                 ?>
                                                 <?php if ($absent_num > 0) : ?>
                                                 <tr class="trdata">
@@ -146,7 +146,7 @@
                                                 </tr>
                                                 <?php endif; ?>
 
-                                                <?php 
+                                                <?php
                                                     $ottype = array(
                                                         0 => array('OTID'=>'OTHrs01', 'OTDesc'=>'Regular OT'),
                                                         1 => array('OTID'=>'OTHrs02', 'OTDesc'=>'NP Regular OT'),
@@ -199,7 +199,7 @@
                                                                 elseif ($k == 'OTHrs21') : echo $ottype[20]["OTDesc"];
                                                                 elseif ($k == 'OTHrs22') : echo $ottype[21]["OTDesc"];
                                                                 elseif ($k == 'OTHrs23') : echo $ottype[22]["OTDesc"];
-                                                                endif; 
+                                                                endif;
                                                                 echo '</td><td class="centertalign">';
                                                                 if ($k == 'OTHrs01') : echo number_format($value['OTHrs01'], 1).' hours';
                                                                 elseif ($k == 'OTHrs02') : echo number_format($value['OTHrs02'], 1).' hours';
@@ -249,7 +249,7 @@
                                                                 elseif ($k == 'OTHrs21') : echo number_format($value['OTPay21'], 2);
                                                                 elseif ($k == 'OTHrs22') : echo number_format($value['OTPay22'], 2);
                                                                 elseif ($k == 'OTHrs23') : echo number_format($value['OTPay23'], 2);
-                                                                endif; 
+                                                                endif;
                                                                 echo '</td></tr>';
 
                                                             endif;
@@ -264,7 +264,7 @@
                                                     </tr-->
                                                     <?php //endforeach; ?>
                                                 <?php //endif; ?>
-                                                
+
                                                 <?php
                                                     $otherallowance = 0;
                                                     $minusallowance = 0;
@@ -272,35 +272,35 @@
                                                         foreach ($value as $k => $v) :
                                                             if ($v) :
                                                                 echo '<tr class="trdata">';
-                                                                if ($k == 'OE01') : 
+                                                                if ($k == 'OE01') :
                                                                     echo '<td colspan=2>';
                                                                     echo $payslip_oedesc[0]["OExtDesc"];
                                                                     echo '</td><td class="righttalign">';
                                                                     echo number_format($v, 2);
                                                                     echo '</td>';
                                                                     $otherallowance += $v;
-                                                                elseif ($k == 'OE02') : 
+                                                                elseif ($k == 'OE02') :
                                                                     echo '<td colspan=2>';
                                                                     echo $payslip_oedesc[1]["OExtDesc"];
                                                                     echo '</td><td class="righttalign">';
                                                                     echo number_format($v, 2);
                                                                     echo '</td>';
                                                                     $otherallowance += $v;
-                                                                elseif ($k == 'OE03') : 
+                                                                elseif ($k == 'OE03') :
                                                                     echo '<td colspan=2>';
                                                                     echo $payslip_oedesc[2]["OExtDesc"];
                                                                     echo '</td><td class="righttalign">';
                                                                     echo number_format($v, 2);
                                                                     echo '</td>';
                                                                     $otherallowance += $v;
-                                                                elseif ($k == 'OE04') : 
+                                                                elseif ($k == 'OE04') :
                                                                     echo '<td colspan=2>';
                                                                     echo $payslip_oedesc[3]["OExtDesc"];
                                                                     echo '</td><td class="righttalign">';
                                                                     echo number_format($v, 2);
                                                                     echo '</td>';
                                                                     $otherallowance += $v;
-                                                                elseif ($k == 'OE05') : 
+                                                                elseif ($k == 'OE05') :
                                                                     echo '<td colspan=2>';
                                                                     echo $payslip_oedesc[4]["OExtDesc"];
                                                                     echo '</td><td class="righttalign">';
@@ -314,7 +314,7 @@
                                                                     echo number_format($v, 2);
                                                                     echo '</td>';
                                                                     $otherallowance += $v;
-                                                                elseif ($k == 'OE07') : 
+                                                                elseif ($k == 'OE07') :
                                                                     echo '<td colspan=2>';
                                                                     echo $payslip_oedesc[6]["OExtDesc"];
                                                                     echo '</td><td class="righttalign">';
@@ -671,15 +671,15 @@
                                                                     echo number_format($v, 2);
                                                                     echo '</td>';
                                                                     $otherallowance += $v;
-                                                                endif; 
+                                                                endif;
                                                                 echo '</tr>';
                                                             endif;
                                                         endforeach;
                                                     endforeach;
                                                 ?>
-                                                
-                                                
-                                            </table>                                        
+
+
+                                            </table>
                                         </td>
                                         <td width="33%" class="noborder valigntop">
                                             <table border="0" cellspacing="0" class="tdata width100per">
@@ -695,7 +695,7 @@
                                                     </tr-->
                                                     <?php //endforeach; ?>
                                                 <?php //endif; ?>
-                                
+
                                                 <?php
                                                     $otherallowance = 0;
                                                     $minusallowance = 0;
@@ -704,11 +704,11 @@
                                                             if ($v) :
                                                                 if ($k == 'OE01') :
                                                                     $otherallowance += $v;
-                                                                elseif ($k == 'OE02') : 
+                                                                elseif ($k == 'OE02') :
                                                                     $otherallowance += $v;
-                                                                elseif ($k == 'OE03') : 
+                                                                elseif ($k == 'OE03') :
                                                                     $otherallowance += $v;
-                                                                elseif ($k == 'OE04') : 
+                                                                elseif ($k == 'OE04') :
                                                                     $otherallowance += $v;
                                                                 elseif ($k == 'OE06') :
                                                                     $otherallowance += $v;
@@ -762,11 +762,11 @@
                                                                     $otherallowance += $v;
                                                                 elseif ($k == 'OE32') :
                                                                     $otherallowance += $v;
-                                                                elseif ($k == 'OE33') : 
+                                                                elseif ($k == 'OE33') :
                                                                     $minusallowance += $v;
                                                                 elseif ($k == 'OE34') :
                                                                     $otherallowance += $v;
-                                                                elseif ($k == 'OE35') : 
+                                                                elseif ($k == 'OE35') :
                                                                     $minusallowance += $v;
                                                                 elseif ($k == 'OE36') :
                                                                     $otherallowance += $v;
@@ -813,13 +813,13 @@
                                                                 elseif ($k == 'OE57') :
                                                                     $otherallowance += $v;
 
-                                                                endif; 
+                                                                endif;
                                                             endif;
                                                         endforeach;
                                                     endforeach;
                                                 //var_dump($otherallowance);
                                                 ?>
-                                                
+
                                                 <?php if ($payslip_data[0]['Allowance'] - $minusallowance) : ?>
                                                 <tr class="trdata">
                                                     <td>ALLOWANCE</td>
@@ -833,35 +833,35 @@
                                                         foreach ($value as $k => $v) :
                                                             if ($v) :
                                                                 echo '<tr class="trdata">';
-                                                                if ($k == 'OE01') : 
+                                                                if ($k == 'OE01') :
                                                                     echo '<td>';
                                                                     echo $payslip_oedesc[0]["OExtDesc"];
                                                                     echo '</td><td class="righttalign">';
                                                                     echo number_format($v, 2);
                                                                     echo '</td>';
                                                                     $otherallowance += $v;
-                                                                elseif ($k == 'OE02') : 
+                                                                elseif ($k == 'OE02') :
                                                                     echo '<td>';
                                                                     echo $payslip_oedesc[1]["OExtDesc"];
                                                                     echo '</td><td class="righttalign">';
                                                                     echo number_format($v, 2);
                                                                     echo '</td>';
                                                                     $otherallowance += $v;
-                                                                elseif ($k == 'OE03') : 
+                                                                elseif ($k == 'OE03') :
                                                                     echo '<td>';
                                                                     echo $payslip_oedesc[2]["OExtDesc"];
                                                                     echo '</td><td class="righttalign">';
                                                                     echo number_format($v, 2);
                                                                     echo '</td>';
                                                                     $otherallowance += $v;
-                                                                elseif ($k == 'OE04') : 
+                                                                elseif ($k == 'OE04') :
                                                                     echo '<td>';
                                                                     echo $payslip_oedesc[3]["OExtDesc"];
                                                                     echo '</td><td class="righttalign">';
                                                                     echo number_format($v, 2);
                                                                     echo '</td>';
                                                                     $otherallowance += $v;
-                                                                elseif ($k == 'OE05') : 
+                                                                elseif ($k == 'OE05') :
                                                                     echo '<td>';
                                                                     echo $payslip_oedesc[4]["OExtDesc"];
                                                                     echo '</td><td class="righttalign">';
@@ -875,7 +875,7 @@
                                                                     echo number_format($v, 2);
                                                                     echo '</td>';
                                                                     $otherallowance += $v;
-                                                                elseif ($k == 'OE07') : 
+                                                                elseif ($k == 'OE07') :
                                                                     echo '<td>';
                                                                     echo $payslip_oedesc[6]["OExtDesc"];
                                                                     echo '</td><td class="righttalign">';
@@ -1057,7 +1057,7 @@
                                                                     echo number_format($v, 2);
                                                                     echo '</td>';
                                                                     $otherallowance += $v;
-                                                                elseif ($k == 'OE33') : 
+                                                                elseif ($k == 'OE33') :
                                                                     echo '<td>';
                                                                     echo $payslip_oedesc[32]["OExtDesc"];
                                                                     echo '</td><td class="righttalign">';
@@ -1071,7 +1071,7 @@
                                                                     echo number_format($v, 2);
                                                                     echo '</td>';
                                                                     $otherallowance += $v;
-                                                                elseif ($k == 'OE35') : 
+                                                                elseif ($k == 'OE35') :
                                                                     echo '<td>';
                                                                     echo $payslip_oedesc[34]["OExtDesc"];
                                                                     echo '</td><td class="righttalign">';
@@ -1232,13 +1232,13 @@
                                                                     echo number_format($v, 2);
                                                                     echo '</td>';
                                                                     $otherallowance += $v;
-                                                                endif; 
+                                                                endif;
                                                                 echo '</tr>';
                                                             endif;
                                                         endforeach;
                                                     endforeach;
                                                 ?>
-                                            </table>                                                             
+                                            </table>
                                         </td>
                                         <!-- kevs <?php var_dump($payslip_oedesc); ?> -->
                                         <td width="33%" class="valigntop noborder">
@@ -1252,6 +1252,12 @@
                                                     <td>SSS</td>
                                                     <td class="righttalign"><?php echo number_format($payslip_data[0]['SSSEE'], 2); ?></td>
                                                 </tr>
+												<?php if(date('Y-m-d') > '2021-01-21' ) : ?>
+												<tr class="trdata">
+                                                    <td>Provident Fund</td>
+                                                    <td class="righttalign"><?php echo number_format($payslip_data[0]['SSSEEP'], 2); ?></td>
+                                                </tr>
+												<?php endif; ?>
                                                 <?php endif; ?>
                                                 <?php if ($payslip_data[0]['PhilHEE']) : ?>
                                                 <tr class="trdata">
@@ -1339,7 +1345,7 @@
                                                                 elseif ($k == 'OD53') : echo $payslip_oddesc[52]["OExtDesc"];
                                                                 elseif ($k == 'OD54') : echo $payslip_oddesc[53]["OExtDesc"];
                                                                 elseif ($k == 'OD55') : echo $payslip_oddesc[54]["OExtDesc"];
-                                                                endif; 
+                                                                endif;
                                                                 echo '</td><td class="righttalign">';
                                                                 echo number_format($v, 2);
                                                                 echo '</td></tr>';
@@ -1347,11 +1353,11 @@
                                                         endforeach;
                                                     endforeach;
                                                 ?>
-                                            </table>                                                            
+                                            </table>
                                         </td>
                                     </tr>
 
-                                    <?php 
+                                    <?php
                                         $reg_pay = $payslip_data[0]['RegPay'] ? $payslip_data[0]['RegPay'] : 0;
                                         $late_pay = $payslip_data[0]['LatePay'] ? $payslip_data[0]['LatePay'] : 0;
                                         $ut_pay = $payslip_data[0]['UTPay'] ? $payslip_data[0]['UTPay'] : 0;
@@ -1360,10 +1366,11 @@
                                         $sss_pay = $payslip_data[0]['SSSEE'] ? $payslip_data[0]['SSSEE'] : 0;
                                         $phealth_pay = $payslip_data[0]['PhilHEE'] ? $payslip_data[0]['PhilHEE'] : 0;
                                         $pagibig_pay = $payslip_data[0]['PAGIBIGEE'] ? $payslip_data[0]['PAGIBIGEE'] : 0;
-                                        $wtax_pay = $payslip_data[0]['WTax'] ? $payslip_data[0]['WTax'] : 0; 
+                                        $wtax_pay = $payslip_data[0]['WTax'] ? $payslip_data[0]['WTax'] : 0;
                                         $total_main = $payslip_data[0]['TaxableIncome'];
 
-                                      
+										$provident_pay = $payslip_data[0]['SSSEEP'] ? $payslip_data[0]['SSSEEP'] : 0;
+
                                         $total_taxable = $payslip_data[0]['GrossPay'];
                                         //$non_tax = $payslip_data[0]['OtherEarn'] - $payslip_data[0]['TaxableOtherEarn'] + $payslip_data[0]['Allowance'];
                                         //$non_tax = $payslip_data[0]['OtherEarn'] + $payslip_data[0]['Allowance'];
@@ -1388,7 +1395,7 @@
                                                     <td class="noborder">TOTAL EARNINGS </td>
                                                     <td class="noborder righttalign"><?php echo number_format($total_earn, 2); ?></td>
                                                 </tr>
-                                            </table>                                        
+                                            </table>
                                         </td>
                                         <td width="33%" class="valigntop">
                                             <table border="0" cellspacing="0" class="tdata width100per">
@@ -1396,7 +1403,7 @@
                                                     <td class="noborder" width="65%">TOTAL</td>
                                                     <td width="35%" class="noborder righttalign"><?php echo number_format($non_tax, 2); ?></td>
                                                 </tr>
-                                            </table> 
+                                            </table>
                                         </td>
                                         <td width="33%" class="valigntop">
                                             <table border="0" cellspacing="0" class="tdata width100per">
@@ -1408,7 +1415,7 @@
                                                     <td class="noborder">NET PAY</td>
                                                     <td class="noborder righttalign"><?php echo number_format($net_pay, 2); ?></td>
                                                 </tr>
-                                            </table>                         
+                                            </table>
                                         </td>
                                     </tr>
                                     <tr>
@@ -1438,7 +1445,7 @@
                                                     <td class="noborder">PAG-IBIG</td>
                                                     <td class="noborder righttalign"><?php echo number_format($payslip_data[0]['WTax'], 2); ?></td>
                                                 </tr>
-                                            </table--> 
+                                            </table-->
                                         </td>
                                         <td width="33%" class="valigntop noborder">
                                             <?php if ($payslip_loans) : ?>
@@ -1453,7 +1460,7 @@
                                                         <td class="righttalign"><?php echo number_format($value['Balance'], 2); ?></td>
                                                     </tr>
                                                 <?php endforeach; ?>
-                                            </table>        
+                                            </table>
                                             <?php endif; ?>
                                         </td>
                                         <!--td width="33%" class="valigntop noborder">
@@ -1471,9 +1478,9 @@
                                                         <td><?php echo $ext_data[0]['OExtDesc']; ?></td>
                                                         <td class="righttalign"><?php echo number_format($payslip_data[0]['PTDLoanBal'.$lc], 2); ?></td>
                                                     </tr>
-                                                    <?php endif; ?>    
+                                                    <?php endif; ?>
                                                 <?php endforeach; ?>
-                                            </table>        
+                                            </table>
                                             <?php endif; ?>
                                         </td-->
                                         <td width="33%" class="valigntop noborder">
@@ -1494,8 +1501,8 @@
                                                         <?php endif; ?>
                                                     </tr>
                                                     <?php endif; ?>
-                                                <?php endforeach; ?>    
-                                            </table>        
+                                                <?php endforeach; ?>
+                                            </table>
                                             <?php endif; ?>
                                         </td>
                                     </tr>
@@ -1504,13 +1511,13 @@
 
                                     <tr>
                                         <td class="bold centertalign noborder"><br><br>No payslip record found on this period</td>
-                                    </tr>                                    
+                                    </tr>
 
                                     <?php endif; ?>
 
                                 </table>
                                 </div>
-                                
+
                             </div>
                         </div>
                     </div>
