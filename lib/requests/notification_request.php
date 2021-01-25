@@ -5523,7 +5523,7 @@
 						</td>
 						<td align="left">
 							<?php
-								echo '<p style="color: #0000ff !important;"><u><a href="'.WEB.'/uploads/coe/'.$result[0]['image_src'].'" target="_blank">Image File</a></u></p>';
+								echo '<u><a style="color: #0000ff !important;" href="'.WEB.'/uploads/coe/'.$result[0]['image_src'].'" target="_blank">Image File</a></u>';
 							?>
 						</td>
 					</tr>
