@@ -38,9 +38,9 @@ $companies = [
 
 if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 
-	$start_date = $_POST["start_date"];
-	$end_date = $_POST["end_date"];
-	$return_date = $_POST["return_date"];
+	$start_date = $coe[0]["leave_from"];
+	$end_date = $coe[0]["leave_to"];
+	$return_date = $coe[0]["leave_return"];
 ?>
 		<h3 align="center" style="padding-top: 150px; letter-spacing: 10px;">CERTIFICATION</h3>
 		&nbsp;
@@ -105,7 +105,14 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 			up to the present.</b></p>
 			<?php } ?>
 
-			<p style="padding-left: 50px; padding-right: 50px;">Furthermore, this is to certify that hei s qualified for a twenty five percent (25%)
+			<p style="padding-left: 50px; padding-right: 50px;">Furthermore, this is to certify that hei s qualified for a
+			<?php if($coe[0]["hpa_percent"] == '25%'){ ?>
+				twenty five percent (25%)
+			<?php }else if($coe[0]["hpa_percent"] == '30%'){ ?>
+			 	thirty percent (30%)
+			<?php }else if($coe[0]["hpa_percent"] == '35%'){ ?>
+				thirty five percent (35%)
+			<?php } ?>
 			discount in the company's housing program as stated in our employee handbook.</p>
 
 			<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".strtoupper($emp_info[0]["FullName"])."
