@@ -62,7 +62,7 @@
 					A.HireDate as HireDate,
 					getdate() as CurrentDate,
 					A.DateResigned as DateResigned,
-					'CITYLINK01' as A.CompanyID,
+					'CITYLINK01' as CompanyID,
 					F.CompanyName,
 					A.Active,
 					A.EmailAdd,
