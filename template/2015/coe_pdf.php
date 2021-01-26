@@ -374,7 +374,7 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 		&nbsp;<br />
 
 		<?php
-		if($coe[0]["type"] != 'COECOMPENSATION'){
+		if(($emp_info[0]["CompanyID"] == 'GLOBAL01' || $emp_info[0]["CompanyID"] == 'LGMI01' || $emp_info[0]["CompanyID"] == 'MIB01') && $coe[0]["type"] == 'COESEPARATED'){
 		?>
 			<p style="font-size: 10px; padding-top: 15px; text-align: right; padding-right: 50px"><b>THIS DOCUMENT IS PRIVATE AND CONFIDENTIAL.<br />
 			FOR EMPLOYMENT DETAILS PURPOSES ONLY.<br />
