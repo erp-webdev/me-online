@@ -5945,7 +5945,7 @@
 						A.HireDate as HireDate,
 						getdate() as CurrentDate,
 						A.DateResigned as DateResigned,
-						A.CompanyID,
+						'CITYLINK01' as CompanyID,
 						F.CompanyName
 						FROM
 							viewhrempmaster A
