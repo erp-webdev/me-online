@@ -8,8 +8,11 @@
 		<?php } elseif ($coe[0]["company"] == 'LGMI01') {?>
 			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/lgmi_coe.png"/></p>
 		<?php } elseif ($coe[0]["company"] == 'SIRUS') {?>
+			<!-- No Address Yet -->
 			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/sirus_coe.png"/></p>
 		<?php } elseif ($coe[0]["company"] == 'MEGA01') {?>
+			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/mega_coe.png"/></p>
+		<?php } elseif ($coe[0]["company"] == 'TOWN01') {?>
 			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/mega_coe.png"/></p>
 		<?php } ?>
 	</div>
