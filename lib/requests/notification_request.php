@@ -5434,6 +5434,11 @@
 			$sql = "SELECT * FROM COERequests WHERE id=$id";
 
 			$result = $mainsql->get_row($sql);
+
+			$coe_comp = $result[0]['company'];
+			$coe_comp = "SELECT * FROM HRCompany Where CompanyID = '$coe_comp'";
+			$coe_comp = $mainsql->get_row($sql);
+
 			$tasks = json_decode($result[0]['job_desc'], true);
 			?>
 
@@ -5448,7 +5453,7 @@
 					<?php if($level != 1){ ?>
 						<td width="5%"></td>
 						<td align="left" <?php if($level != 2) { ?>width="40%"<?php }else{ echo "width='40%'"; } ?>><label>Company ID: </label></td>
-						<td align="left"<?php if($level != 2) { ?>width="40%"<?php }else{ echo "width='55%'"; } ?>><?php echo $result[0]['company']; ?></td>
+						<td align="left"<?php if($level != 2) { ?>width="40%"<?php }else{ echo "width='55%'"; } ?>><?php echo $coe_comp[0]['CompanyName']; ?></td>
 					<?php } ?>
 
 					<tr>
