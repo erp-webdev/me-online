@@ -80,8 +80,7 @@
 					LEFT JOIN
 						HRCompany F on A.CompanyID = F.CompanyID
 					WHERE
-						A.EmpID = '$emp_id' AND
-						A.CompanyID = '$emp_comp'";
+						A.EmpID = '$emp_id'";
 
 		$emp_info = $mainsql->get_row($query);
 
