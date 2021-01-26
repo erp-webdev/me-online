@@ -2,7 +2,7 @@
 
 	<div style="text-align: center; padding-top: 15px;">
 
-		<p><img style="width: 50px;" src="<?php echo IMG_WEB; ?>/gl_coe.png"/></p>
+		<p><img style="width: 250px;" src="<?php echo IMG_WEB; ?>/gl_coe.png"/></p>
 
 	</div>
 	&nbsp;
