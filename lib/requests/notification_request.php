@@ -5452,7 +5452,7 @@
 
 					<?php if($level != 1){ ?>
 						<td width="5%"></td>
-						<td align="left" <?php if($level != 2) { ?>width="40%"<?php }else{ echo "width='40%'"; } ?>><label>Company ID: </label></td>
+						<td align="left" <?php if($level != 2) { ?>width="40%"<?php }else{ echo "width='40%'"; } ?>><label>Company: </label></td>
 						<td align="left"<?php if($level != 2) { ?>width="40%"<?php }else{ echo "width='55%'"; } ?>><?php echo $coe_comp[0]['CompanyName']; ?></td>
 					<?php } ?>
 

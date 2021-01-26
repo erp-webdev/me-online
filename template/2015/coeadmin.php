@@ -83,7 +83,7 @@
 											<th width="20%">FullName</th>
 											<th width="10%">Type</th>
 											<th width="10%">Employee</th>
-											<th width="10%">Company</th>
+											<th width="10%">Company ID</th>
 											<th width="10%">Status</th>
 											<th width="10%">Date Completed</th>
 										</tr>
