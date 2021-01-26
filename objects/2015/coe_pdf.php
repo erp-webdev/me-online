@@ -98,7 +98,7 @@
 		$pdf->SetPrintFooter(false);
 		$pdf->SetLeftMargin(25);
 		$pdf->SetRightMargin(25);
-		$pdf->SetTopMargin(50);
+		$pdf->SetTopMargin(25);
 		$pdf->SetFont('times');
 		$pdf->AddPage();
 		$pdf->writeHTML($content);

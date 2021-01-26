@@ -3,6 +3,8 @@
 </style>
 <div id="myDivToPrint" style="display: inline-block; height: 750px;">
 
+<p style="text-align: center;"><img src="<?php echo IMG_WEB; ?>/gl_coe.png"/></p>
+
 <?php
 //R&F to AVP -- Ms Malou
 $rfavp = array(
@@ -150,9 +152,8 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 		<?php
 }elseif ($coe[0]["type"] == 'COESEPARATED') {
 		?>
-		<p style="text-align: center;"><img src="<?php echo IMG_WEB; ?>/gl_coe.png"/></p>
 
-		<h3 align="center" style="padding-top: 150px; letter-spacing: 10px;">CERTIFICATION</h3>
+		<h3 align="center" style="padding-top: 75px; letter-spacing: 10px;">CERTIFICATION</h3>
 		&nbsp;
 
 		<div style="text-align: justify;  text-justify: inter-word;">
