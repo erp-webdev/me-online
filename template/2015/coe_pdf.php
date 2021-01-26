@@ -9,6 +9,8 @@
 			<p><img style="width: 200px;" src="<?php echo IMG_WEB; ?>/lgmi_coe.png"/></p>
 		<?php } elseif ($coe[0]["company"] == 'SIRUS') {?>
 			<p><img style="width: 200px;" src="<?php echo IMG_WEB; ?>/sirus_coe.png"/></p>
+		<?php } elseif ($coe[0]["company"] == 'MEGA01') {?>
+			<p><img style="width: 200px;" src="<?php echo IMG_WEB; ?>/mega_coe.png"/></p>
 		<?php } ?>
 	</div>
 	&nbsp;
@@ -43,7 +45,6 @@ $companies = [
 	'ERA01' => '30th Floor, Alliance Global Tower, 36th Street cor 11th Avenue, Uptown Bonifacio, Taguig City',
 	'ECOC01' => 'GF The World Center Building, 330 Senator Gil Puyat Avenue, Makati City',
 	'CITYLINK01' => 'Ground Floor, McKinley Parking Building, Service Road 2, Mckinley Town Center, Fort Bonifacio Taguig'
-
 ];
 
 if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
