@@ -5,7 +5,7 @@
 
 		<?php if ($emp_info[0]["CompanyID"] == 'GLOBAL01') { ?>
 			<p><img style="width: 200px;" src="<?php echo IMG_WEB; ?>/gl_coe.png"/></p>
-		<?php } elseif ($emp_info[0]["CompanyID"] == 'LGMI01') { ?>
+		<?php } ?>
 
 	</div>
 	&nbsp;
