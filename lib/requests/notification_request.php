@@ -5437,8 +5437,8 @@
 
 			$coe_comp = $result[0]['company'];
 			$coe_comp = "SELECT * FROM HRCompany Where CompanyID = '$coe_comp'";
-			$coe_comp = $mainsql->get_row($sql);
-			var_dump($coe_comp);
+			$coe_comp = $mainsql->get_row($coe_comp);
+
 			$tasks = json_decode($result[0]['job_desc'], true);
 			?>
 
