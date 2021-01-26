@@ -27,7 +27,7 @@
 		<?php } elseif ($coe[0]["company"] == 'ERA01') {?>
 			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '100px' : '150px'; ?>;" src="<?php echo IMG_WEB; ?>/erex_coe.png"/></p>
 		<?php } elseif ($coe[0]["company"] == 'LUCK01') {?>
-			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '100px' : '150px'; ?>;" src="<?php echo IMG_WEB; ?>/lctm_coe.png"/></p>
+			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '200px' : '250px'; ?>;" src="<?php echo IMG_WEB; ?>/lctm_coe.png"/></p>
 		<?php } ?>
 	</div>
 	&nbsp;
@@ -396,7 +396,7 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 		<?php
 		if(($emp_info[0]["CompanyID"] == 'GLOBAL01' || $emp_info[0]["CompanyID"] == 'LGMI01' || $emp_info[0]["CompanyID"] == 'MIB01') && $coe[0]["type"] == 'COESEPARATED'){
 		?>
-			<p style="font-size: 5px; padding-top: 15px; text-align: right; padding-right: 50px"><b>THIS DOCUMENT IS PRIVATE AND CONFIDENTIAL.<br />
+			<p style="font-size: 8px; padding-top: 15px; text-align: right; padding-right: 50px"><b>THIS DOCUMENT IS PRIVATE AND CONFIDENTIAL.<br />
 			FOR EMPLOYMENT DETAILS PURPOSES ONLY.<br />
 			NOT AS EMPLOYEE CLEARANCE.</b></p>
 		<?php
@@ -409,15 +409,15 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 		if (($emp_info[0]["CompanyID"] == 'GLOBAL01' || $emp_info[0]["CompanyID"] == 'LGMI01' || $emp_info[0]["CompanyID"] == 'MIB01') && $coe[0]["type"] == 'COESEPARATED') {
 		// COE Separated Footer
 		?>
-			<p style="font-size: 5px; padding-left: 50px; padding-right: 50px;">Ref No.:<?php echo $coe[0]["ref_no"]; ?></p>
+			<p style="font-size: 8px; padding-left: 50px; padding-right: 50px;">Ref No.:<?php echo $coe[0]["ref_no"]; ?></p>
 			&nbsp;<br />
-			<p style="font-size: 5px; text-align: center;">Unit G, Ground Floor, 331 Building, 331 Sen. Gil Puyat Avenue, Barangay Bel-Air, Makati City 1200 • Tels (632) 5411979 / 8946345 <br />
+			<p style="font-size: 8px; text-align: center;">Unit G, Ground Floor, 331 Building, 331 Sen. Gil Puyat Avenue, Barangay Bel-Air, Makati City 1200 • Tels (632) 5411979 / 8946345 <br />
 			<a href="www.globalcompanies.com.ph">www.globalcompanies.com.ph</a> • Email: <a href="globalonehr@globalcompanies.com.ph">globalonehr@globalcompanies.com.ph</a></p>
 		<?php
 		}else{
 		// COE Others Footer
 		?>
-			<p style="font-size: 5px; padding-left: 50px; padding-right: 50px;">Ref No.:<?php echo $coe[0]["ref_no"]; ?></p>
+			<p style="font-size: 8px; padding-left: 50px; padding-right: 50px;">Ref No.:<?php echo $coe[0]["ref_no"]; ?></p>
 		<?php
 		}
 		?>
