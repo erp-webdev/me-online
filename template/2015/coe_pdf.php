@@ -3,10 +3,11 @@
 
 	<div style="text-align: center; padding-top: 10px;">
 
-		<?php if ($emp_info[0]["CompanyID"] == 'GLOBAL01') { ?>
+		<?php if ($coe[0]["company"] == 'GLOBAL01') { ?>
 			<p><img style="width: 200px;" src="<?php echo IMG_WEB; ?>/gl_coe.png"/></p>
+		<?php } elseif ($coe[0]["company"] == 'LGMI01') {?>
+			<p><img style="width: 200px;" src="<?php echo IMG_WEB; ?>/lgmi_coe.png"/></p>
 		<?php } ?>
-
 	</div>
 	&nbsp;
 
