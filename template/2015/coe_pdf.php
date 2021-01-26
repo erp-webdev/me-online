@@ -3,7 +3,9 @@
 
 	<div style="text-align: center; padding-top: 10px;">
 
-		<p><img style="width: 200px;" src="<?php echo IMG_WEB; ?>/gl_coe.png"/></p>
+		<?php if ($emp_info[0]["CompanyID"] == 'GLOBAL01') { ?>
+			<p><img style="width: 200px;" src="<?php echo IMG_WEB; ?>/gl_coe.png"/></p>
+		<?php } elseif ($emp_info[0]["CompanyID"] == 'LGMI01') { ?>
 
 	</div>
 	&nbsp;
@@ -31,9 +33,9 @@ $companies = [
 	'MEGA01' => 'Makati City',
 	'TOWN01' => '3/F Forbestown Information Center, Rizal Drive corner 26th Street, Bonifacio Global City, Taguig',
 	'SUNT01' => '26th Floor, Alliance Global Tower, 36th Street cor 11th Avenue, Uptown Bonifacio',
-	'NCCAI' => 'Star Cruises Centre, 100 Andrews Avenue, Newport City, Vlllamor Air Base, Pasay City, Metro Man',
+	'NCCAI' => 'Star Cruises Centre, 100 Andrews Avenue, Newport City, Vlllamor Air Base, Pasay City, Metro Manila',
 	'MLI01' => '19/F Alliance Global Tower, 36th Street corner 11th Avenue, Uptown Bonifacio, Taguig City, 1634',
-	'MCTI' => 'CAPITOL BOULEVARD, BARANGAY STO. NI�O, CITY OF SAN FERNANDO, PAMPANGA',
+	'MCTI' => 'CAPITOL BOULEVARD, BARANGAY STO. NIÑO, CITY OF SAN FERNANDO, PAMPANGA',
 	'LUCK01' => '5F Lucky Chinatown Mall, Reina Regente St. corner Dela Reina St., Brgy. 293, Zone 28, Binondo, Manila',
 	'ERA01' => '30th Floor, Alliance Global Tower, 36th Street cor 11th Avenue, Uptown Bonifacio, Taguig City',
 	'ECOC01' => 'GF The World Center Building, 330 Senator Gil Puyat Avenue, Makati City',

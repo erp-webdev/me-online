@@ -16,6 +16,7 @@
 
 		$coe = $mainsql->get_row($sql);
 		$emp_id = $coe[0]['emp_id'];
+		$emp_comp = $coe[0]['company'];
 
 		$coe_status = $coe[0]['status'];
 		$coetype = $coe[0]['type'];
@@ -61,7 +62,7 @@
 					A.HireDate as HireDate,
 					getdate() as CurrentDate,
 					A.DateResigned as DateResigned,
-					A.CompanyID,
+					'CITYLINK01' as A.CompanyID,
 					F.CompanyName,
 					A.Active,
 					A.EmailAdd,
@@ -79,7 +80,8 @@
 					LEFT JOIN
 						HRCompany F on A.CompanyID = F.CompanyID
 					WHERE
-						A.EmpID = '$emp_id'";
+						A.EmpID = '$emp_id' AND
+						A.CompanyID = '$emp_comp'";
 
 		$emp_info = $mainsql->get_row($query);
 
