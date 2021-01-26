@@ -22,6 +22,8 @@
 			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/citylink_coe.png"/></p>
 		<?php } elseif ($coe[0]["company"] == 'ECC02') {?>
 			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/ecinema_coe.png"/></p>
+		<?php } elseif ($coe[0]["company"] == 'ECOC01') {?>
+			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/ecoc_coe.png"/></p>
 		<?php } ?>
 	</div>
 	&nbsp;
