@@ -68,7 +68,7 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 			<?php }else{ ?>
 				for whatever legal purpose it may serve.</p>
 			<?php } ?>
-			<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
+			<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]." ".$emp_info[0]['CompanyID']; ?>, Philippines.</p>
 		</div>
 
 		<?php
