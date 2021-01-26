@@ -16,6 +16,8 @@
 			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '200px' : '250px'; ?>;" src="<?php echo IMG_WEB; ?>/townsquare_coe.png"/></p>
 		<?php } elseif ($coe[0]["company"] == 'NCCAI') {?>
 			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '200px' : '250px'; ?>;" src="<?php echo IMG_WEB; ?>/nccai_coe.png"/></p>
+		<?php } elseif ($coe[0]["company"] == 'FCI01') {?>
+			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '200px' : '250px'; ?>;" src="<?php echo IMG_WEB; ?>/firstcentro_coe.png"/></p>
 		<?php } ?>
 	</div>
 	&nbsp;
