@@ -1,6 +1,7 @@
+
 <div id="myDivToPrint" style="height: 750px;">
 
-	<div style="text-align: center; padding-top: 15px;">
+	<div style="text-align: center; padding-top: 10px;">
 
 		<p><img style="width: 200px;" src="<?php echo IMG_WEB; ?>/gl_coe.png"/></p>
 
@@ -46,7 +47,7 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 	$end_date = $coe[0]["leave_to"];
 	$return_date = $coe[0]["leave_return"];
 ?>
-		<h3 align="center" style="padding-top: 50px; letter-spacing: 10px;">CERTIFICATION</h3>
+		<h2 align="center" style="padding-top: 50px; letter-spacing: 10px;">CERTIFICATION</h2>
 		&nbsp;
 
 		<div style="text-align: justify;  text-justify: inter-word;">
