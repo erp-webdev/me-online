@@ -10,7 +10,7 @@
 		<?php } elseif ($coe[0]["company"] == 'SIRUS') {?>
 			<p><img style="width: <?php echo $_POST['send'] ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/sirus_coe.png"/></p>
 		<?php } elseif ($coe[0]["company"] == 'MEGA01') {?>
-			<p><img style="width: <?php echo $_POST['send'] ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/mega_coe.png"/></p>
+			<p><img style="width: <?php echo $_POST['send'] ? '200px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/mega_coe.png"/></p>
 		<?php } ?>
 	</div>
 	&nbsp;
