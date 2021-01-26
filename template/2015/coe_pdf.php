@@ -2,7 +2,7 @@
 
 	<div style="text-align: center; padding-top: 15px;">
 
-		<p><img style="width: 200px;" src="<?php echo IMG_WEB; ?>/gl_coe.png"/></p>
+		<p><img style="width: 210px;" src="<?php echo IMG_WEB; ?>/gl_coe.png"/></p>
 
 	</div>
 	&nbsp;
@@ -46,7 +46,7 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 	$end_date = $coe[0]["leave_to"];
 	$return_date = $coe[0]["leave_return"];
 ?>
-		<h3 align="center" style="padding-top: 75px; letter-spacing: 10px;">CERTIFICATION</h3>
+		<h3 align="center" style="padding-top: 50px; letter-spacing: 10px;">CERTIFICATION</h3>
 		&nbsp;
 
 		<div style="text-align: justify;  text-justify: inter-word;">
@@ -72,7 +72,7 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 }elseif ($coe[0]["type"] == "COECORRECTIONNAME") { // COE with Correction Name
 		?>
 
-		<h3 align="center" style="padding-top: 75px; letter-spacing: 10px;">CERTIFICATION</h3>
+		<h3 align="center" style="padding-top: 50px; letter-spacing: 10px;">CERTIFICATION</h3>
 		&nbsp;
 
 		<div style="text-align: justify;  text-justify: inter-word;">
@@ -99,7 +99,7 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 }elseif ($coe[0]["type"] == "COEHOUSINGPLAN") { //COE with HPA
 		?>
 
-		<h3 align="center" style="padding-top: 75px; letter-spacing: 10px;">CERTIFICATION</h3>
+		<h3 align="center" style="padding-top: 50px; letter-spacing: 10px;">CERTIFICATION</h3>
 		&nbsp;
 
 		<div style="text-align: justify;  text-justify: inter-word;">
@@ -129,7 +129,7 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 }elseif ($coe[0]["type"] == "COEGOODMORAL") { // COE with Good Moral
 		?>
 
-		<h3 align="center" style="padding-top: 75px; letter-spacing: 10px;">CERTIFICATION</h3>
+		<h3 align="center" style="padding-top: 50px; letter-spacing: 10px;">CERTIFICATION</h3>
 		&nbsp;
 
 		<div style="text-align: justify;  text-justify: inter-word;">
@@ -155,7 +155,7 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 }elseif ($coe[0]["type"] == 'COESEPARATED') {
 		?>
 
-		<h3 align="center" style="padding-top: 75px; letter-spacing: 10px;">CERTIFICATION</h3>
+		<h3 align="center" style="padding-top: 50px; letter-spacing: 10px;">CERTIFICATION</h3>
 		&nbsp;
 
 		<div style="text-align: justify;  text-justify: inter-word;">
@@ -208,7 +208,7 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 }elseif ($coe[0]["type"] == "COE") {
 		?>
 
-		<h3 align="center" style="padding-top: 75px; letter-spacing: 10px;">CERTIFICATION</h3>
+		<h3 align="center" style="padding-top: 50px; letter-spacing: 10px;">CERTIFICATION</h3>
 		&nbsp;
 
 		<div style="text-align: justify;  text-justify: inter-word;">
@@ -256,7 +256,7 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 
 		$tasks = json_decode($coe[0]["job_desc"], true);
 		?>
-			<h3 align="center" style="padding-top: 75px; letter-spacing: 10px;">CERTIFICATION</h3>
+			<h3 align="center" style="padding-top: 50px; letter-spacing: 10px;">CERTIFICATION</h3>
 			&nbsp;
 
 		<div style="text-align: justify;  text-justify: inter-word;">
@@ -291,7 +291,7 @@ if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
 }elseif ($coe[0]["type"] == "COECOMPENSATION") { // CoE with Compensation
 		?>
 
-		<h3 align="center" style="padding-top: 75px">CERTIFICATION OF EMPLOYMENT AND COMPENSATION</h3>
+		<h3 align="center" style="padding-top: 50px">CERTIFICATION OF EMPLOYMENT AND COMPENSATION</h3>
 		&nbsp;
 
 		<div style="text-align: justify;  text-justify: inter-word;">
