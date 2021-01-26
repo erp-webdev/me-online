@@ -25,7 +25,7 @@
 		<?php } elseif ($coe[0]["company"] == 'ECOC01') {?>
 			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/ecoc_coe.png"/></p>
 		<?php } elseif ($coe[0]["company"] == 'ERA01') {?>
-			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/erex_coe.png"/></p>
+			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '100px' : '150px'; ?>;" src="<?php echo IMG_WEB; ?>/erex_coe.png"/></p>
 		<?php } ?>
 	</div>
 	&nbsp;
