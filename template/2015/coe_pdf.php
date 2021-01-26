@@ -28,6 +28,8 @@
 			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '100px' : '150px'; ?>;" src="<?php echo IMG_WEB; ?>/erex_coe.png"/></p>
 		<?php } elseif ($coe[0]["company"] == 'LUCK01') {?>
 			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/lctm_coe.png"/></p>
+		<?php } elseif ($coe[0]["company"] == 'LFI01') {?>
+			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/lafuerza_coe.png"/></p>
 		<?php } ?>
 	</div>
 	&nbsp;
