@@ -1,7 +1,7 @@
 <style type="text/css">
 
 </style>
-<div id="myDivToPrint" style="display: inline-block; height: 750px;">
+<div id="myDivToPrint" style="height: 500px; background-color: powderblue;">
 
 <p style="text-align: center;"><img src="<?php echo IMG_WEB; ?>/gl_coe.png"/></p>
 
