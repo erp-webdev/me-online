@@ -4,13 +4,13 @@
 	<div style="text-align: center; padding-top: 10px;">
 
 		<?php if ($coe[0]["company"] == 'GLOBAL01') { ?>
-			<p><img style="width: <?php echo $_POST['send'] ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/gl_coe.png"/></p>
+			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/gl_coe.png"/></p>
 		<?php } elseif ($coe[0]["company"] == 'LGMI01') {?>
-			<p><img style="width: <?php echo $_POST['send'] ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/lgmi_coe.png"/></p>
+			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/lgmi_coe.png"/></p>
 		<?php } elseif ($coe[0]["company"] == 'SIRUS') {?>
-			<p><img style="width: <?php echo $_POST['send'] ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/sirus_coe.png"/></p>
+			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/sirus_coe.png"/></p>
 		<?php } elseif ($coe[0]["company"] == 'MEGA01') {?>
-			<p><img style="width: <?php echo $_POST['send'] ? '200px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/mega_coe.png"/></p>
+			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/mega_coe.png"/></p>
 		<?php } ?>
 	</div>
 	&nbsp;
