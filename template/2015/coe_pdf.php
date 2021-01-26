@@ -20,6 +20,8 @@
 			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '100px' : '150px'; ?>;" src="<?php echo IMG_WEB; ?>/firstcentro_coe.png"/></p>
 		<?php } elseif ($coe[0]["company"] == 'CITYLINK01') {?>
 			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/citylink_coe.png"/></p>
+		<?php } elseif ($coe[0]["company"] == 'ECC02') {?>
+			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/ecinema_coe.png"/></p>
 		<?php } ?>
 	</div>
 	&nbsp;
