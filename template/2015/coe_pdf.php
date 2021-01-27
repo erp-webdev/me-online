@@ -204,7 +204,7 @@
 				<?php
 				if ($emp_info[0]["CompanyID"] == 'GLOBAL01' || $emp_info[0]["CompanyID"] == 'LGMI01' || $emp_info[0]["CompanyID"] == 'MIB01') {
 				?>
-				<p style="padding-left: 50px; padding-right: 50px;">This does not certify that <?php echo $emp_info[0]["CompanyName"];?> has cleared <?php echo $emp_info[0]["Gender2"]; ?> of
+				<p style="padding-left: 50px; padding-right: 50px;">This does not certify that <?php echo $emp_info[0]["CompanyName"];?> has cleared <?php echo $emp_info[0]["Gender3"]; ?> of
 				all of <?php echo $emp_info[0]["Gender2"]; ?> accountabilities with the Company.</p>
 				<?php } ?>
 
