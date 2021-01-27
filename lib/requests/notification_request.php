@@ -5243,6 +5243,7 @@
 
 			if (empty($coe_validation[0]['EmailAdd'])) {
 				?><h3 align="center">COE Request Failed! No Employee Email set on the database.</h3><?php
+				exit(0);
 			}
 			// end backend validation
 
