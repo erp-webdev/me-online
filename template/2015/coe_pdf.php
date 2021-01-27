@@ -85,7 +85,7 @@
 			<h2 align="center" style="padding-top: 40px; letter-spacing: 10px;">CERTIFICATION</h2>
 			&nbsp;
 
-			<div style="height: 750px; text-align: justify;  text-justify: inter-word;">
+			<div height="750px" style="height: 750px; text-align: justify;  text-justify: inter-word;">
 				<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">This is to certify that <b><?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".strtoupper($emp_info[0]["FullName"]); ?></b> is currently employed with <b><?php echo $emp_info[0]["CompanyName"]; ?></b>
 				as <b><?php echo $emp_info[0]["PositionDesc"]." - ".$emp_info[0]["DeptDesc"]."</b> for ".$emp_info[0]["DivisionName"]." Division Since <b>".$emp_info[0]["HireDate"]; ?>
 				<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
