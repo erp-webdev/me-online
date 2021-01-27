@@ -5241,7 +5241,10 @@
 			$coe_validation = "SELECT * FROM viewHREmpMaster WHERE EmpID = '$coeemp' AND CompanyID = '$coe_company'";
 			$coe_validation = $mainsql->get_row($coe_validation);
 
-			if (empty($coe_validation[0]['EmailAdd'])) {
+			if(empty($coe_validation)){
+				?><h3 align="center">COE Request Failed! No Employee found on the database.</h3><?php
+				exit(0);
+			} elseif (empty($coe_validation[0]['EmailAdd'])) {
 				?><h3 align="center">COE Request Failed! No Employee Email set on the database.</h3><?php
 				exit(0);
 			}
