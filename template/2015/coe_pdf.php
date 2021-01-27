@@ -355,7 +355,7 @@
 				</b>for whatever legal purpose it may serve.</p>
 				<?php } ?>
 
-				<p style="padding-left: 50px; padding-right: 50px;">Given this <b><?php echo date('jS')." day of ".date('F, Y'); ?></b> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</b></p>
+				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
 			</div>
 			&nbsp;
 			<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">Certified by:</p>
@@ -414,8 +414,6 @@
 		<?php
 		}
 		?>
-
-		&nbsp;<br />
 
 		<?php
 		if (($emp_info[0]["CompanyID"] == 'GLOBAL01' || $emp_info[0]["CompanyID"] == 'LGMI01' || $emp_info[0]["CompanyID"] == 'MIB01')) {
