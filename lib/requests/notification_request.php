@@ -4955,7 +4955,16 @@
 							return false;
 						}
 					}else if (type == 'COEAPPROVEDLEAVE') {
-						if($("#coeleavefile").get(0).files.length === 0){
+						if(!leavefrom){
+							alert("Leave from input is required!");
+							return false;
+						}else if(!leaveto){
+							alert("Leave to input is required!");
+							return false;
+						}else if(!leavereturn){
+							alert("Return to input is required!");
+							return false;
+						}else if($("#coeleavefile").get(0).files.length === 0){
 							alert("Image attachment is required!");
 							return false;
 						}
