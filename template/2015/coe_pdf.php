@@ -408,7 +408,6 @@
 		<?php if ($coe[0]["type"] == 'COE'){ ?>
 			&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />
 			&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />
-			&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />
 		<?php } ?>
 
 		<?php
