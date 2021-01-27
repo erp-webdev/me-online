@@ -25,7 +25,8 @@
 
 		if(in_array($coe_status, ['On Process', 'For Release'])){
 
-			$coe_update = "UPDATE COERequests set status = 'Done', updated_at = GETDATE() Where id = $id";
+			$datetoday = date('Y-m-d');
+			$coe_update = "UPDATE COERequests set status = 'Done', released_by = '$profile_idnum' released_at = '$datetoday' Where id = $id";
 
 			$coe_update = $mainsql->get_execute($coe_update);
 			if(!$coe_update){
