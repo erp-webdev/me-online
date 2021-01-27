@@ -4955,11 +4955,13 @@
 							return false;
 						}
 					}else if (type == 'COEAPPROVEDLEAVE') {
-						if(!coeleavefile){
+						if($("#coeleavefile")get(0).files.length === 0){
 							alert("Image attachment is required!");
 							return false;
 						}
 					}
+
+					return false;
 
 					form_data.append('file', leavefile);
 					form_data.append('emp', emp);
