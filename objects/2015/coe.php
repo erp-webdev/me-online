@@ -17,9 +17,16 @@
 		global $sroot, $profile_id, $unix3month;
 
 		$coe_data = $mainsql->get_coe($start, NUM_ROWS, $profile_idnum, 0);
+		// $sql_users = "SELECT A.*, B.* FROM COEUsers A
+		// 			LEFT JOIN SUBSIDIARY.DBO.viewHREmpMaster B on A.emp_id = B.EmpID";
+		// $coe_users = $mainsql->get_row($sql_users);
+
 		$sql_users = "SELECT A.*, B.* FROM COEUsers A
-					LEFT JOIN SUBSIDIARY.DBO.viewHREmpMaster B on A.emp_id = B.EmpID";
-		$coe_users = $mainsql->get_row($sql_users);
+					LEFT JOIN SUBSIDIARY.DBO.viewHREmpMaster B on A.emp_id = B.EmpID AND A.[DB_NAME] = B.DBNAME
+					WHERE A.emp_id = '$profile_id' and B.CompanyID = '$profile_comp'";
+		$coe_users = $mainsql->get_numrow($sql_users);
+
+
 		$coe_count = $mainsql->get_coe(0, 0, $profile_idnum, 1);
 		$pages = $mainsql->pagination("coe", $coe_count, NUM_ROWS, 9);
 
