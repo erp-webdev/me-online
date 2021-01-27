@@ -5312,7 +5312,9 @@
 							left join HRDepartment D on A.DeptID = D.DeptID
 							WHERE A.EmpID='$coeemp' AND A.CompanyID ='$coe_company'";
 
-				$emp_hr  = "SELECT B.EmailAdd, A.level FROM COEUsers A LEFT JOIN viewHREmpMaster B on A.emp_id = B.EmpID WHERE ";
+				$emp_hr  = "SELECT B.EmailAdd, A.level FROM COEUsers A
+							LEFT JOIN SUBSIDIARY.DBO.viewHREmpMaster B on A.emp_id = B.EmpID AND A.[DB_NAME] = B.DBNAME
+							WHERE ";
 
 				if(in_array($coetype, $coetypes["2"])){
 					$emp_hr .="A.[level] = '2'";
@@ -5675,14 +5677,14 @@
 
 							<?php	if($result[0]['status'] == 'Done' || $result[0]['status'] == 'Cancelled'){ ?>
 							<?php 	}else{ ?>
-										<button id="savecoe" value="Save" attribute8="<?php echo $result[0]['status']; ?>" attribute5="<?php echo $result[0]['ref_no']; ?>" attribute4="<?php echo $result[0]["type"]; ?>" attribute3="<?php echo $result[0]['emp_id']; ?>" attribute="<?php echo $result[0]['id'] ?>" attribute2="<?php echo $result[0]['cancelled_at'].$result[0]['released_at']; ?>" class="smlbtn" style="width:45px;" <?php if($result[0]['cancelled_at'] != null || $result[0]['released_at'] != null){ echo "disabled";} ?>>Save</button>
+										<button id="savecoe" value="Save" attribute9="<?php echo $result[0]['company']; ?>" attribute8="<?php echo $result[0]['status']; ?>" attribute5="<?php echo $result[0]['ref_no']; ?>" attribute4="<?php echo $result[0]["type"]; ?>" attribute3="<?php echo $result[0]['emp_id']; ?>" attribute="<?php echo $result[0]['id'] ?>" attribute2="<?php echo $result[0]['cancelled_at'].$result[0]['released_at']; ?>" class="smlbtn" style="width:45px;" <?php if($result[0]['cancelled_at'] != null || $result[0]['released_at'] != null){ echo "disabled";} ?>>Save</button>
 							<?php 	} ?>
 							<?php } ?>
 
 							<?php if($result[0]['status'] == 'Done' || $result[0]['status'] == 'Cancelled'){ ?>
 							<?php }else{ ?>
 
-								<button id="coecancel" value="Cancel" attribute5="<?php echo $result[0]['ref_no']; ?>" attribute4="<?php echo $result[0]["type"]; ?>" attribute3="<?php echo $result[0]['emp_id']; ?>" attribute="<?php echo $result[0]['id'] ?>" attribute2="<?php echo $result[0]['cancelled_at'].$result[0]['released_at']; ?>" class="btncancel btnred smlbtn" style="width:45px;" <?php if($result[0]['cancelled_at'] != null || $result[0]['released_at'] != null){ echo "disabled";} ?>>Cancel</button>
+								<button id="coecancel" value="Cancel" attribute9="<?php echo $result[0]['company']; ?>" attribute5="<?php echo $result[0]['ref_no']; ?>" attribute4="<?php echo $result[0]["type"]; ?>" attribute3="<?php echo $result[0]['emp_id']; ?>" attribute="<?php echo $result[0]['id'] ?>" attribute2="<?php echo $result[0]['cancelled_at'].$result[0]['released_at']; ?>" class="btncancel btnred smlbtn" style="width:45px;" <?php if($result[0]['cancelled_at'] != null || $result[0]['released_at'] != null){ echo "disabled";} ?>>Cancel</button>
 
 							<?php } ?>
 
@@ -5762,6 +5764,7 @@
 						$("#coecancel").hide();
 						var id = $(this).attr('attribute');
 						var emp_id = $(this).attr('attribute3');
+						var company_id = $(this).attr('attribute9');
 						var type = $(this).attr('attribute4');
 						var ref_no = $(this).attr('attribute5');
 						var status = 'Cancelled';
@@ -5775,7 +5778,7 @@
 						$.ajax(
 						{
 							url: "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=coesave",
-							data: "id=" + id + "&emp_id=" + emp_id + "&status=" + status + "&others=" + others + "&" + tasks + "&ref_no=" + ref_no + "&type=" + type,
+							data: "id=" + id + "&emp_id=" + emp_id + "&status=" + status + "&others=" + others + "&" + tasks + "&ref_no=" + ref_no + "&type=" + type + '&company_id=' +company_id,
 							type: "POST",
 							complete: function(){
 								$("#loading").hide();
@@ -5790,6 +5793,7 @@
 						$("#coecancel").hide();
 						$("#savecoe").hide();
 						var id = $(this).attr('attribute');
+						var company_id = $(this).attr('attribute9');
 						var old_status = $(this).attr('attribute8');
 						var emp_id = $(this).attr('attribute3');
 						var type = $(this).attr('attribute4');
@@ -5808,7 +5812,7 @@
 						$.ajax(
 						{
 							url: "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=coesave",
-							data: "id=" + id + "&emp_id=" + emp_id + "&status=" + status + "&others=" + others + "&" + tasks + "&ref_no=" + ref_no + "&type=" + type + '&hpa_percent=' + hpa_percent + '&avail_no=' + avail_no + '&old_status=' +old_status,
+							data: "id=" + id + "&emp_id=" + emp_id + "&status=" + status + "&others=" + others + "&" + tasks + "&ref_no=" + ref_no + "&type=" + type + '&hpa_percent=' + hpa_percent + '&avail_no=' + avail_no + '&old_status=' +old_status + '&company_id=' +company_id,
 							type: "POST",
 							complete: function(){
 								$("#loading").hide();
@@ -6004,6 +6008,7 @@
 
 			$id = $_POST["id"];
 			$coeemp = $_POST["emp_id"];
+			$coe_company = $_POST["company_id"];
 			$refno = $_POST["ref_no"];
 			$coetype = $_POST["type"];
 			$status = $_POST["status"];
@@ -6094,7 +6099,7 @@
 
 					$emp_info = "SELECT * FROM viewHREmpMaster A
 								left join HRCompany B on A.CompanyID = B.CompanyID
-								left join HRDivision C on A.DivisionID = C.DivisionID WHERE A.EmpID='$coeemp'";
+								left join HRDivision C on A.DivisionID = C.DivisionID WHERE A.EmpID='$coeemp' AND A.CompanyID ='$coe_company'";
 					$emp_hr  = "SELECT B.EmailAdd, A.level FROM COEUsers A
 								LEFT JOIN SUBSIDIARY.DBO.viewHREmpMaster B on A.emp_id = B.EmpID AND A.[DB_NAME] = B.DBNAME
 								WHERE ";
