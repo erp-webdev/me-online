@@ -5237,26 +5237,30 @@
 			];
 			$correction_name = $_POST["correctionname"];
 
+			// backend validation
+			$coe_validation = "SELECT * FROM viewHREmpMaster WHERE EmpID = '$coeemp' AND CompanyID = '$coe_company'";
+			$coe_validation = $mainsql->get_row($coe_validation);
+
+			if (empty($coe_validation[0]['EmailAdd'])) {
+				?><h3 align="center">COE Request Failed! No Employee Email set on the database.</h3><?php
+			}
+			// end backend validation
+
 			$coeref = "SELECT * FROM COERequests WHERE YEAR(created_at) = YEAR(GETDATE())";
 			$coeref_count = $mainsql->get_numrow($coeref);
 
 			// $refno = strtoupper("RN".str_replace('-','',$coeemp).uniqid());
 			$refno = strtoupper("RN".str_replace('-','',$coeemp).$profile_comp.'-'.date("Y").str_pad($coeref_count, 4, "0", STR_PAD_LEFT));
 
-
-
 			$coe_check = "SELECT * from COERequests WHERE emp_id = '$coeemp' and company = '$coe_company' and type = '$coetype' and category = '$coecategory'
 			and status not in ('Done','Cancelled')";
 			$coe_check_result = $mainsql->get_numrow($coe_check);
 			$coe_count = 0;
 
-
 			if($coe_check_result > 0){
 				$coe_count = 1;
 			}
-
 			if($coe_count > 0){
-
 				$result = false;
 			}else{
 
