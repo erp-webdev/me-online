@@ -19,7 +19,7 @@
 		$company_sort = $_SESSION["company_sort"] ? $_SESSION["company_sort"] : null ;
 		$coe_data = $mainsql->get_coe($start, NUM_ROWS, null, 0, 2,$profile_idnum, $company_sort);
 		$sql_users = "SELECT A.*, B.* FROM COEUsers A
-					LEFT JOIN SUBSIDIARY.DBO.viewHREmpMaster B on A.emp_id = B.EmpID AND A.[DB_NAME] = B.DBNAME
+					LEFT JOIN SUBSIDIARY.DBO.viewHREmpMaster B on A.emp_id = B.EmpID and A.[DB_NAME] = B.DBNAME
 					WHERE A.emp_id = '$profile_id' and B.CompanyID = '$profile_comp' and A.[DB_NAME] = '$profile_dbname'";
 		$coe_users = $mainsql->get_numrow($sql_users);
 
