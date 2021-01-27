@@ -20,19 +20,21 @@
 		$coe_data = $mainsql->get_coe($start, NUM_ROWS, null, 0, 2,$profile_idnum, $company_sort);
 		$sql_users = "SELECT A.*, B.* FROM COEUsers A
 					LEFT JOIN SUBSIDIARY.DBO.viewHREmpMaster B on A.emp_id = B.EmpID AND A.[DB_NAME] = B.DBNAME
-					WHERE A.empid = '$profile_id' and B.CompanyID = '$profile_comp'";
+					WHERE A.emp_id = '$profile_id' and B.CompanyID = '$profile_comp'";
 		$coe_users = $mainsql->get_numrow($sql_users);
 
 		$sql_companies = "SELECT * FROM HRCompany";
 		$admin_companies = $mainsql->get_row($sql_companies);
 
 		$count = 0;
-		var_dump($sql_users);exit(0);
-		foreach ($coe_users as $key => $coe_user) {
-			if(($profile_id == $coe_user["emp_id"] && $profile_dbname == $coe_user["DB_NAME"])){
-				$count++;
-			}
+		if($coe_users > 0){
+			$count = 1;
 		}
+		// foreach ($coe_users as $key => $coe_user) {
+		// 	if(($profile_id == $coe_user["emp_id"] && $profile_dbname == $coe_user["DB_NAME"])){
+		// 		$count++;
+		// 	}
+		// }
 
 		// foreach ($coe_users as $coe_user) {
 		// 	if (($coe_user['emp_id'] == $profile_idnum)) {
