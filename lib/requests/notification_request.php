@@ -4954,6 +4954,11 @@
 							alert("CoE Category is required!");
 							return false;
 						}
+					}else if (type == 'COEAPPROVEDLEAVE') {
+						if(!coeleavefile){
+							alert("Image attachment is required!");
+							return false;
+						}
 					}
 
 					form_data.append('file', leavefile);
