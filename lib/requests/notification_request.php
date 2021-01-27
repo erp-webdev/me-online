@@ -5242,7 +5242,7 @@
 			$coe_validation = $mainsql->get_row($coe_validation);
 
 			if(empty($coe_validation)){
-				?><h3 align="center">COE Request Failed! No Employee found on the database.</h3><?php
+				?><h3 align="center">COE Request Failed! No Employee with the given Company ID found on the database.</h3><?php
 				exit(0);
 			} elseif (empty($coe_validation[0]['EmailAdd'])) {
 				?><h3 align="center">COE Request Failed! No Employee Email set on the database.</h3><?php
@@ -5254,7 +5254,7 @@
 			$coeref_count = $mainsql->get_numrow($coeref);
 
 			// $refno = strtoupper("RN".str_replace('-','',$coeemp).uniqid());
-			$refno = strtoupper("RN".str_replace('-','',$coeemp).$profile_comp.'-'.date("Y").str_pad($coeref_count, 4, "0", STR_PAD_LEFT));
+			$refno = strtoupper("RN".str_replace('-','',$coeemp).$coe_company.'-'.date("Y").str_pad($coeref_count, 4, "0", STR_PAD_LEFT));
 
 			$coe_check = "SELECT * from COERequests WHERE emp_id = '$coeemp' and company = '$coe_company' and type = '$coetype' and category = '$coecategory'
 			and status not in ('Done','Cancelled')";
