@@ -405,6 +405,11 @@
 
 		&nbsp;<br />
 
+		<?php if ($coe[0]["type"] == 'COE'){ ?>
+			&nbsp;<br />
+			&nbsp;<br />
+		<?php } ?>
+
 		<?php
 		if(($emp_info[0]["CompanyID"] == 'GLOBAL01' || $emp_info[0]["CompanyID"] == 'LGMI01' || $emp_info[0]["CompanyID"] == 'MIB01') && $coe[0]["type"] != 'COECOMPENSATION'){
 		?>
