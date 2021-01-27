@@ -175,7 +175,7 @@
 				up to the present.</b></p>
 				<?php } ?>
 
-				<p style="padding-left: 50px; padding-right: 50px;">This further certifies that <?php echo $emp_info[0]["Gender"] ?> has no derogatory record on file.</p>
+				<p style="padding-left: 50px; padding-right: 50px;">This further certifies that <?php echo strtolower($emp_info[0]["Gender"]); ?> has no derogatory record on file.</p>
 
 				<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".strtoupper($emp_info[0]["FullName"]); ?>
 				<?php if($coe[0]["other_reason"]){ ?>
