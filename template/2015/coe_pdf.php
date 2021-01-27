@@ -403,7 +403,7 @@
 		// End Signatory
 		?>
 
-		<?php if (in_array($coe[0]["type"], ['COE', 'COEHOUSINGPLAN'])){ ?>
+		<?php if (in_array($coe[0]["type"], ['COE', 'COEHOUSINGPLAN', 'COEGOODMORAL'])){ ?>
 			&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />
 			&nbsp;<br />&nbsp;<br />&nbsp;<br />
 		<?php } ?>
