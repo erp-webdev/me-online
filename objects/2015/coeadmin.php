@@ -26,6 +26,7 @@
 		$admin_companies = $mainsql->get_row($sql_companies);
 
 		$count = 0;
+		var_dump($coe_users);exit(0);
 		foreach ($coe_users as $key => $coe_user) {
 			if(($profile_id == $coe_user["emp_id"] && $profile_dbname == $coe_user["DB_NAME"])){
 				$count++;
