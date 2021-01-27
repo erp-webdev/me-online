@@ -82,7 +82,7 @@
 		$end_date = $coe[0]["leave_to"];
 		$return_date = $coe[0]["leave_return"];
 	?>
-			<h2 align="center" style="padding-top: 40px; letter-spacing: 10px;">CERTIFICATION</h2>
+			<h3 align="center" style="padding-top: 40px; letter-spacing: 10px;">CERTIFICATION</h3>
 			&nbsp;
 
 			<div style="text-align: justify;  text-justify: inter-word;">
@@ -108,7 +108,7 @@
 	}elseif ($coe[0]["type"] == "COECORRECTIONNAME") { // COE with Correction Name
 			?>
 
-			<h2 align="center" style="padding-top: 40px; letter-spacing: 10px;">CERTIFICATION</h2>
+			<h3 align="center" style="padding-top: 40px; letter-spacing: 10px;">CERTIFICATION</h3>
 			&nbsp;
 
 			<div style="text-align: justify;  text-justify: inter-word;">
@@ -135,7 +135,7 @@
 	}elseif ($coe[0]["type"] == "COEHOUSINGPLAN") { //COE with HPA
 			?>
 
-			<h2 align="center" style="padding-top: 40px; letter-spacing: 10px;">CERTIFICATION</h2>
+			<h3 align="center" style="padding-top: 40px; letter-spacing: 10px;">CERTIFICATION</h3>
 			&nbsp;
 
 			<div style="text-align: justify;  text-justify: inter-word;">
@@ -165,7 +165,7 @@
 	}elseif ($coe[0]["type"] == "COEGOODMORAL") { // COE with Good Moral
 			?>
 
-			<h2 align="center" style="padding-top: 40px; letter-spacing: 10px;">CERTIFICATION</h2>
+			<h3 align="center" style="padding-top: 40px; letter-spacing: 10px;">CERTIFICATION</h3>
 			&nbsp;
 
 			<div style="text-align: justify;  text-justify: inter-word;">
@@ -191,7 +191,7 @@
 	}elseif ($coe[0]["type"] == 'COESEPARATED') {
 			?>
 
-			<h2 align="center" style="padding-top: 40px; letter-spacing: 10px;">CERTIFICATION</h2>
+			<h3 align="center" style="padding-top: 40px; letter-spacing: 10px;">CERTIFICATION</h3>
 			&nbsp;
 
 			<div style="text-align: justify;  text-justify: inter-word;">
@@ -244,7 +244,7 @@
 	}elseif ($coe[0]["type"] == "COE") {
 			?>
 
-			<h2 align="center" style="padding-top: 40px; letter-spacing: 10px;">CERTIFICATION</h2>
+			<h3 align="center" style="padding-top: 40px; letter-spacing: 10px;">CERTIFICATION</h3>
 			&nbsp;
 
 			<div style="text-align: justify;  text-justify: inter-word;">
@@ -292,7 +292,7 @@
 
 			$tasks = json_decode($coe[0]["job_desc"], true);
 			?>
-				<h2 align="center" style="padding-top: 40px; letter-spacing: 10px;">CERTIFICATION</h2>
+				<h3 align="center" style="padding-top: 40px; letter-spacing: 10px;">CERTIFICATION</h3>
 				&nbsp;
 
 			<div style="text-align: justify;  text-justify: inter-word;">
@@ -327,7 +327,7 @@
 	}elseif ($coe[0]["type"] == "COECOMPENSATION") { // CoE with Compensation
 			?>
 
-			<h2 align="center" style="padding-top: 40px">CERTIFICATION OF EMPLOYMENT AND COMPENSATION</h2>
+			<h3 align="center" style="padding-top: 40px">CERTIFICATION OF EMPLOYMENT AND COMPENSATION</h3>
 			&nbsp;
 
 			<div style="text-align: justify;  text-justify: inter-word;">
