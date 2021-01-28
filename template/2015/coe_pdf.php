@@ -432,7 +432,7 @@
 		?>
 			&nbsp;<br />
 			<p style="font-size: 8px; color: #005f2f; text-align: center;">Capitol Boulevard, Barangay Sto. Niño, City of San Fernando, Pampanga 2000 | Tels 045-963-1990<br />
-			<a href="www.capitaltownpampanga.com">www.capitaltownpampanga.com</a> | Email info: <a href="info@capitaltownpampanga.com">info@capitaltownpampanga</a></p>
+			www.capitaltownpampanga.com | Email info: info@capitaltownpampanga</p>
 		<?php
 		}
 		?>
