@@ -389,7 +389,7 @@
 			<?php
 		}elseif ($coe[0]["company"] == 'GLOBAL01' || $coe[0]["company"] == 'LGMI01' || $coe[0]["company"] == 'MIB01') {
 			?>
-				<b><p style="padding-top: 40px; padding-bottom: 20px; padding-left: 50px; padding-right: 50px;">JOSEPHINE F. ALIM<br />
+				<b><p style="padding-top: 40px; padding-bottom: 80px; padding-left: 50px; padding-right: 50px;">JOSEPHINE F. ALIM<br />
 				Associate Director</b>
 			<?php
 			}else{
