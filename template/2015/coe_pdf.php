@@ -3,43 +3,45 @@
 
 	<div style="text-align: center; padding-top: 10px;">
 
+		<?php $send_pdf = $_POST['send'] == 'true' ? true : false; ?>
+
 		<?php if ($coe[0]["company"] == 'GLOBAL01') { ?>
-			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/gl_coe.png"/></p>
+			<p><img style="width: <?php echo $send_pdf ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/gl_coe.png"/></p>
 		<?php } elseif ($coe[0]["company"] == 'LGMI01') {?>
-			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/lgmi_coe.png"/></p>
+			<p><img style="width: <?php echo $send_pdf ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/lgmi_coe.png"/></p>
 		<?php } elseif ($coe[0]["company"] == 'SIRUS') {?>
 			<!--  -->
-			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/sirus_coe.png"/></p>
+			<p><img style="width: <?php echo $send_pdf ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/sirus_coe.png"/></p>
 		<?php } elseif ($coe[0]["company"] == 'MEGA01') {?>
-			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/mega_coe.png"/></p>
+			<p><img style="width: <?php echo $send_pdf ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/mega_coe.png"/></p>
 		<?php } elseif ($coe[0]["company"] == 'TOWN01') {?>
-			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '200px' : '250px'; ?>;" src="<?php echo IMG_WEB; ?>/townsquare_coe.png"/></p>
+			<p><img style="width: <?php echo $send_pdf ? '200px' : '250px'; ?>;" src="<?php echo IMG_WEB; ?>/townsquare_coe.png"/></p>
 		<?php } elseif ($coe[0]["company"] == 'NCCAI') {?>
 			<!--  -->
-			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '200px' : '250px'; ?>;" src="<?php echo IMG_WEB; ?>/nccai_coe.png"/></p>
+			<p><img style="width: <?php echo $send_pdf ? '200px' : '250px'; ?>;" src="<?php echo IMG_WEB; ?>/nccai_coe.png"/></p>
 		<?php } elseif ($coe[0]["company"] == 'FCI01') {?>
 			<!--  -->
-			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '100px' : '150px'; ?>;" src="<?php echo IMG_WEB; ?>/firstcentro_coe.png"/></p>
+			<p><img style="width: <?php echo $send_pdf ? '100px' : '150px'; ?>;" src="<?php echo IMG_WEB; ?>/firstcentro_coe.png"/></p>
 		<?php } elseif ($coe[0]["company"] == 'CITYLINK01') {?>
-			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/citylink_coe.png"/></p>
+			<p><img style="width: <?php echo $send_pdf ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/citylink_coe.png"/></p>
 		<?php } elseif ($coe[0]["company"] == 'ECC02') {?>
 			<!--  -->
-			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/ecinema_coe.png"/></p>
+			<p><img style="width: <?php echo $send_pdf ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/ecinema_coe.png"/></p>
 		<?php } elseif ($coe[0]["company"] == 'ECOC01') {?>
-			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/ecoc_coe.png"/></p>
+			<p><img style="width: <?php echo $send_pdf ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/ecoc_coe.png"/></p>
 		<?php } elseif ($coe[0]["company"] == 'ERA01') {?>
-			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/erex_coe.png"/></p>
+			<p><img style="width: <?php echo $send_pdf ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/erex_coe.png"/></p>
 		<?php } elseif ($coe[0]["company"] == 'LUCK01') {?>
-			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/lctm_coe.png"/></p>
+			<p><img style="width: <?php echo $send_pdf ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/lctm_coe.png"/></p>
 		<?php } elseif ($coe[0]["company"] == 'LFI01') {?>
 			<!--  -->
-			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/lafuerza_coe.png"/></p>
+			<p><img style="width: <?php echo $send_pdf ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/lafuerza_coe.png"/></p>
 		<?php } elseif ($coe[0]["company"] == 'MLI01') {?>
-			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/mli_coe.png"/></p>
+			<p><img style="width: <?php echo $send_pdf ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/mli_coe.png"/></p>
 		<?php } elseif ($coe[0]["company"] == 'MCTI') {?>
-			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/mcti_coe.png"/></p>
+			<p><img style="width: <?php echo $send_pdf ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/mcti_coe.png"/></p>
 		<?php } else {?>
-			<p><img style="width: <?php echo $_POST['send'] == 'true' ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/blank_coe.png"/></p>
+			<p><img style="width: <?php echo $send_pdf ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/blank_coe.png"/></p>
 		<?php } ?>
 	</div>
 	&nbsp;
@@ -365,9 +367,8 @@
 	?>
 	&nbsp;<br />
 
+	<!-- Signatory Start -->
 	<?php
-
-		// Signatory
 		if($coe[0]["type"] == 'COECOMPENSATION'){
 			if(in_array($emp_info[0]["RankID"], $vpup)){ // for vp and up
 			?>
@@ -399,39 +400,40 @@
 			<?php
 			}
 		}
-		// End Signatory
 		?>
+	 	<!-- Signatory End -->
 
-		<!-- Breaklines for Template - TCPDF cant render css height of div - FOOTER BREAKLINES -->
+		<!-- Breaklines Start -  for Template - TCPDF cant render css height of div - FOOTER BREAKLINES -->
 		<?php if (in_array($coe[0]["type"], ['COE', 'COEHOUSINGPLAN', 'COEGOODMORAL', 'COESEPARATED', 'COECORRECTIONNAME'])){ ?>
 			&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />
 			&nbsp;<br />&nbsp;<br />&nbsp;<br />
 		<?php } ?>
+		<!-- Breaklines -->
 
 		<!-- FOOTER -->
 		<?php
 		if(($coe[0]["company"] == 'GLOBAL01') && $coe[0]["type"] != 'COECOMPENSATION'){
 		?>
-			<p style="font-size: 8px; padding-top: 15px; text-align: right; padding-right: 50px"><b>THIS DOCUMENT IS PRIVATE AND CONFIDENTIAL.<br />
+			<p style="font-size: <?php echo $send_pdf ? '8px' : '10px'; ?>; padding-top: 15px; text-align: right; padding-right: 50px"><b>THIS DOCUMENT IS PRIVATE AND CONFIDENTIAL.<br />
 			FOR EMPLOYMENT DETAILS PURPOSES ONLY.<br />
 			NOT AS EMPLOYEE CLEARANCE.</b></p>
 		<?php
 		}
 		?>
 
-		</b><p style="font-size: 8px; padding-left: 50px; padding-right: 50px;">Ref No.:<?php echo $coe[0]["ref_no"]; ?></p>
+		</b><p style="font-size: <?php echo $send_pdf ? '8px' : '10px'; ?>; padding-left: 50px; padding-right: 50px;">Ref No.:<?php echo $coe[0]["ref_no"]; ?></p>
 
 		<?php
 		if (($coe[0]["company"] == 'GLOBAL01') && $coe[0]["type"] != 'COECOMPENSATION') {
 		?>
 			&nbsp;<br />
-			<p style="font-size: 8px; text-align: center;">Unit G, Ground Floor, 331 Building, 331 Sen. Gil Puyat Avenue, Barangay Bel-Air, Makati City 1200 • Tels (632) 5411979 / 8946345 <br />
+			<p style="font-size: <?php echo $send_pdf ? '8px' : '10px'; ?>; text-align: center;">Unit G, Ground Floor, 331 Building, 331 Sen. Gil Puyat Avenue, Barangay Bel-Air, Makati City 1200 • Tels (632) 5411979 / 8946345 <br />
 			<a href="www.globalcompanies.com.ph">www.globalcompanies.com.ph</a> • Email: <a href="globalonehr@globalcompanies.com.ph">globalonehr@globalcompanies.com.ph</a></p>
 		<?php
-	} elseif (($coe[0]["company"] == 'MCTI') && $coe[0]["type"] != 'COECOMPENSATION') {
+		} elseif (($coe[0]["company"] == 'MCTI') && $coe[0]["type"] != 'COECOMPENSATION') {
 		?>
 			&nbsp;<br />
-			<p style="font-size: 8px; color: #005f2f; text-align: center;">Capitol Boulevard, Barangay Sto. Niño, City of San Fernando, Pampanga 2000 | Tels 045-963-1990<br />
+			<p style="font-size: <?php echo $send_pdf ? '8px' : '10px'; ?>; color: #005f2f; text-align: center;">Capitol Boulevard, Barangay Sto. Niño, City of San Fernando, Pampanga 2000 | Tels 045-963-1990<br />
 			www.capitaltownpampanga.com | Email info: info@capitaltownpampanga</p>
 		<?php
 		}
