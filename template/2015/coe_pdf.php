@@ -412,7 +412,7 @@
 
 		<!-- FOOTER -->
 		<?php
-		if(($coe[0]["company"] == 'GLOBAL01') && $coe[0]["type"] != 'COECOMPENSATION'){
+		if((in_array($coe[0]["company"], ['GLOBAL01', 'LGMI01'])) && $coe[0]["type"] != 'COECOMPENSATION'){
 		?>
 			<p style="font-size: <?php echo $send_pdf ? '8px' : '10px'; ?>; text-align: right; padding-right: 50px"><b>THIS DOCUMENT IS PRIVATE AND CONFIDENTIAL.<br />
 			FOR EMPLOYMENT DETAILS PURPOSES ONLY.<br />
@@ -424,7 +424,7 @@
 		</b><p style="font-size: <?php echo $send_pdf ? '8px' : '10px'; ?>; padding-left: 50px; padding-right: 50px;">Ref No.:<?php echo $coe[0]["ref_no"]; ?></p>
 
 		<?php
-		if (($coe[0]["company"] == 'GLOBAL01') && $coe[0]["type"] != 'COECOMPENSATION') {
+		if ((in_array($coe[0]["company"], ['GLOBAL01', 'LGMI01'])) && $coe[0]["type"] != 'COECOMPENSATION') {
 		?>
 			&nbsp;<br />
 			<p style="font-size: <?php echo $send_pdf ? '8px' : '10px'; ?>; text-align: center;">Unit G, Ground Floor, 331 Building, 331 Sen. Gil Puyat Avenue, Barangay Bel-Air, Makati City 1200 • Tels (632) 5411979 / 8946345 <br />
