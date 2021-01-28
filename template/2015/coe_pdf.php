@@ -372,29 +372,29 @@
 		if($coe[0]["type"] == 'COECOMPENSATION'){
 			if(in_array($emp_info[0]["RankID"], $vpup)){ // for vp and up
 			?>
-				<b><p style="padding-top: 40px; padding-left: 50px; padding-right: 50px;">LOURDES O. RAMILLO<br />
+				<b><p style="padding-top: 40px; padding-bottom: 20px; padding-left: 50px; padding-right: 50px;">LOURDES O. RAMILLO<br />
 				<i>Vice President - Financial Reporting Group<i></p></b>
 			<?php
 			}elseif (in_array($emp_info[0]["RankID"], $rfavp)) { // for r&f to avp
 			?>
-				<b><p style="padding-top: 40px; padding-left: 50px; padding-right: 50px;">MARILOU C. GUARIÑA<br />
+				<b><p style="padding-top: 40px; padding-bottom: 20px; padding-left: 50px; padding-right: 50px;">MARILOU C. GUARIÑA<br />
 				<i>ASSISTANT VICE PRESIDENT - Payroll</i></p></b>
 			<?php
 			}
 		}else{
 			if($coe[0]["company"] == 'MCTI'){
 			?>
-				<b><p style="padding-top: 40px; padding-left: 50px; padding-right: 50px;">JOEY I. VILLAFUERTE<br />
+				<b><p style="padding-top: 40px; padding-bottom: 20px; padding-left: 50px; padding-right: 50px;">JOEY I. VILLAFUERTE<br />
 				FIRST VICE PRESIDENT, CONTROLLERSHIP GROUP</p></b>
 			<?php
 		}elseif ($coe[0]["company"] == 'GLOBAL01' || $coe[0]["company"] == 'LGMI01' || $coe[0]["company"] == 'MIB01') {
 			?>
-				<b><p style="padding-top: 40px; padding-left: 50px; padding-right: 50px;">JOSEPHINE F. ALIM<br />
+				<b><p style="padding-top: 40px; padding-bottom: 20px; padding-left: 50px; padding-right: 50px;">JOSEPHINE F. ALIM<br />
 				Associate Director</b>
 			<?php
 			}else{
 			?>
-				<b><p style="padding-top: 40px; padding-left: 50px; padding-right: 50px;">RAFAEL ANTONIO S. PEREZ<br />
+				<b><p style="padding-top: 40px; padding-bottom: 20px;padding-left: 50px; padding-right: 50px;">RAFAEL ANTONIO S. PEREZ<br />
 				Head, Human Resources and<br />
 				Corporate Administration Division</p></b>
 			<?php
@@ -414,14 +414,14 @@
 		<?php
 		if(($coe[0]["company"] == 'GLOBAL01') && $coe[0]["type"] != 'COECOMPENSATION'){
 		?>
-			<p style="font-size: <?php echo $send_pdf ? '8px' : '10px'; ?>; padding-top: 15px; text-align: right; padding-right: 50px"><b>THIS DOCUMENT IS PRIVATE AND CONFIDENTIAL.<br />
+			<p style="font-size: <?php echo $send_pdf ? '8px' : '10px'; ?>; text-align: right; padding-right: 50px"><b>THIS DOCUMENT IS PRIVATE AND CONFIDENTIAL.<br />
 			FOR EMPLOYMENT DETAILS PURPOSES ONLY.<br />
 			NOT AS EMPLOYEE CLEARANCE.</b></p>
 		<?php
 		}
 		?>
 
-		</b><p style="font-size: <?php echo $send_pdf ? '8px' : '10px'; ?>; padding-top: 15px; padding-left: 50px; padding-right: 50px;">Ref No.:<?php echo $coe[0]["ref_no"]; ?></p>
+		</b><p style="font-size: <?php echo $send_pdf ? '8px' : '10px'; ?>; padding-left: 50px; padding-right: 50px;">Ref No.:<?php echo $coe[0]["ref_no"]; ?></p>
 
 		<?php
 		if (($coe[0]["company"] == 'GLOBAL01') && $coe[0]["type"] != 'COECOMPENSATION') {
