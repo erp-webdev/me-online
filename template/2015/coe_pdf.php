@@ -367,7 +367,7 @@
 	?>
 	&nbsp;<br />
 
-	<!-- Signatory Start -->
+	<!-- Signatory START -->
 	<?php
 		if($coe[0]["type"] == 'COECOMPENSATION'){
 			if(in_array($emp_info[0]["RankID"], $vpup)){ // for vp and up
@@ -387,7 +387,7 @@
 				<b><p style="padding-top: 40px; <?php echo $send_pdf ? '' : 'padding-bottom: 40px;'; ?> padding-left: 50px; padding-right: 50px;">JOEY I. VILLAFUERTE<br />
 				FIRST VICE PRESIDENT, CONTROLLERSHIP GROUP</p></b>
 			<?php
-		}elseif ($coe[0]["company"] == 'GLOBAL01' || $coe[0]["company"] == 'LGMI01' || $coe[0]["company"] == 'MIB01') {
+			}elseif ($coe[0]["company"] == 'GLOBAL01' || $coe[0]["company"] == 'LGMI01' || $coe[0]["company"] == 'MIB01') {
 			?>
 				<b><p style="padding-top: 40px; <?php echo $send_pdf ? '' : 'padding-bottom: 40px;'; ?> padding-left: 50px; padding-right: 50px;">JOSEPHINE F. ALIM<br />
 				Associate Director</b>
@@ -401,16 +401,16 @@
 			}
 		}
 		?>
-	 	<!-- Signatory End -->
+	 	<!-- Signatory END -->
 
-		<!-- Breaklines Start -  for Template - TCPDF cant render css height of div - FOOTER BREAKLINES -->
-		<?php if (in_array($coe[0]["type"], ['COE', 'COEHOUSINGPLAN', 'COEGOODMORAL', 'COESEPARATED', 'COECORRECTIONNAME'])){ ?>
+		<!-- Breaklines START -  for Template - TCPDF cant render css height of div - FOOTER BREAKLINES -->
+		<?php if (in_array($coe[0]["type"], ['COE', 'COEHOUSINGPLAN', 'COEGOODMORAL', 'COESEPARATED', 'COECORRECTIONNAME', 'COEAPPROVEDLEAVE'])){ ?>
 			&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />
 			&nbsp;<br />&nbsp;<br />&nbsp;<br />
 		<?php } ?>
-		<!-- Breaklines -->
+		<!-- Breaklines END -->
 
-		<!-- FOOTER -->
+		<!-- FOOTER START -->
 		<?php
 		if((in_array($coe[0]["company"], ['GLOBAL01', 'LGMI01'])) && $coe[0]["type"] != 'COECOMPENSATION'){
 		?>
