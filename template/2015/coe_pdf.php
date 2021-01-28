@@ -363,7 +363,6 @@
 		<?php
 	}
 	?>
-	<!-- FOOTER -->
 	&nbsp;<br />
 
 	<?php
@@ -402,14 +401,16 @@
 		}
 		// End Signatory
 		?>
+
 		<!-- Breaklines for Template - TCPDF cant render css height of div - FOOTER BREAKLINES -->
 		<?php if (in_array($coe[0]["type"], ['COE', 'COEHOUSINGPLAN', 'COEGOODMORAL', 'COESEPARATED', 'COECORRECTIONNAME'])){ ?>
 			&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />
 			&nbsp;<br />&nbsp;<br />&nbsp;<br />
 		<?php } ?>
 
+		<!-- FOOTER -->
 		<?php
-		if(($emp_info[0]["CompanyID"] == 'GLOBAL01' || $emp_info[0]["CompanyID"] == 'LGMI01' || $emp_info[0]["CompanyID"] == 'MIB01') && $coe[0]["type"] != 'COECOMPENSATION'){
+		if(($emp_info[0]["CompanyID"] == 'GLOBAL01') && $coe[0]["type"] != 'COECOMPENSATION'){
 		?>
 			<p style="font-size: 8px; padding-top: 15px; text-align: right; padding-right: 50px"><b>THIS DOCUMENT IS PRIVATE AND CONFIDENTIAL.<br />
 			FOR EMPLOYMENT DETAILS PURPOSES ONLY.<br />
@@ -418,22 +419,23 @@
 		}
 		?>
 
-		<?php
-		if (($emp_info[0]["CompanyID"] == 'GLOBAL01' || $emp_info[0]["CompanyID"] == 'LGMI01' || $emp_info[0]["CompanyID"] == 'MIB01') && $coe[0]["type"] != 'COECOMPENSATION') {
-		// COE Separated Footer
-		?>
 		</b><p style="font-size: 8px; padding-left: 50px; padding-right: 50px;">Ref No.:<?php echo $coe[0]["ref_no"]; ?></p>
+
+		<?php
+		if (($emp_info[0]["CompanyID"] == 'GLOBAL01') && $coe[0]["type"] != 'COECOMPENSATION') {
+		?>
 			&nbsp;<br />
 			<p style="font-size: 8px; text-align: center;">Unit G, Ground Floor, 331 Building, 331 Sen. Gil Puyat Avenue, Barangay Bel-Air, Makati City 1200 • Tels (632) 5411979 / 8946345 <br />
 			<a href="www.globalcompanies.com.ph">www.globalcompanies.com.ph</a> • Email: <a href="globalonehr@globalcompanies.com.ph">globalonehr@globalcompanies.com.ph</a></p>
 		<?php
-		}else{
-		// COE Others Footer
+		} elseif (($emp_info[0]["CompanyID"] == 'MCTI') && $coe[0]["type"] != 'COECOMPENSATION') {
 		?>
-			<p style="font-size: 8px; padding-left: 50px; padding-right: 50px;">Ref No.:<?php echo $coe[0]["ref_no"]; ?></p>
+			&nbsp;<br />
+			<p style="font-size: 8px; color: #005f2f; text-align: center;">Capitol Boulevard, Barangay Sto. Niño, City of San Fernando, Pampanga 2000 | Tels 045-963-1990<br />
+			<a href="www.capitaltownpampanga.com">www.capitaltownpampanga.com</a> | Email info: <a href="info@capitaltownpampanga.com">info@capitaltownpampanga</a></p>
 		<?php
 		}
 		?>
-	<!-- FOOTER END -->
+		<!-- FOOTER END -->
 </div>
 <?php
