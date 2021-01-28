@@ -384,7 +384,7 @@
 		}else{
 			if($coe[0]["company"] == 'MCTI'){
 			?>
-				<b><p style="padding-top: 40px; padding-bottom: 20px; padding-left: 50px; padding-right: 50px;">JOEY I. VILLAFUERTE<br />
+				<b><p style="padding-top: 40px; padding-bottom: 40px; padding-left: 50px; padding-right: 50px;">JOEY I. VILLAFUERTE<br />
 				FIRST VICE PRESIDENT, CONTROLLERSHIP GROUP</p></b>
 			<?php
 		}elseif ($coe[0]["company"] == 'GLOBAL01' || $coe[0]["company"] == 'LGMI01' || $coe[0]["company"] == 'MIB01') {
