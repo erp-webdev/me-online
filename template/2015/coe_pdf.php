@@ -19,7 +19,7 @@
 			<!--  -->
 			<p><img style="width: <?php echo $send_pdf ? '200px' : '250px'; ?>;" src="<?php echo IMG_WEB; ?>/nccai_coe.png"/></p>
 		<?php } elseif ($coe[0]["company"] == 'FCI01') {?>
-			<!--  -->
+			<!-- NOT INCLUDED -->
 			<p><img style="width: <?php echo $send_pdf ? '100px' : '150px'; ?>;" src="<?php echo IMG_WEB; ?>/firstcentro_coe.png"/></p>
 		<?php } elseif ($coe[0]["company"] == 'CITYLINK01') {?>
 			<p><img style="width: <?php echo $send_pdf ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/citylink_coe.png"/></p>
@@ -70,12 +70,12 @@
 		'SUNT01' => '26th Floor, Alliance Global Tower, 36th Street cor 11th Avenue, Uptown Bonifacio',
 		'NCCAI' => 'Star Cruises Centre, 100 Andrews Avenue, Newport City, Vlllamor Air Base, Pasay City, Metro Manila',
 		'MLI01' => '19/F Alliance Global Tower, 36th Street corner 11th Avenue, Uptown Bonifacio, Taguig City, 1634',
-		'MCTI' => 'CAPITOL BOULEVARD, BARANGAY STO. NIÑO, CITY OF SAN FERNANDO, PAMPANGA',
+		'MCTI' => 'Capital Boulevard, Barangay Sto. Niño, City of San Fernando, Pampanga',
 		'LUCK01' => '5F Lucky Chinatown Mall, Reina Regente St. corner Dela Reina St., Brgy. 293, Zone 28, Binondo, Manila',
 		'ERA01' => '30th Floor, Alliance Global Tower, 36th Street cor 11th Avenue, Uptown Bonifacio, Taguig City',
 		'ECOC01' => 'GF The World Center Building, 330 Senator Gil Puyat Avenue, Makati City',
 		'CITYLINK01' => 'Ground Floor, McKinley Parking Building, Service Road 2, Mckinley Town Center, Fort Bonifacio Taguig',
-		'SIRUS' => 'LOT 28-7 ALONG M.A ROXAS HIGHWAY, CLARK FREEPORT ZONE, PHILIPPINES'
+		'SIRUS' => 'Lot 28-7 Along M.A Roxas Highway, Clark Freeport Zone'
 	];
 
 	if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
@@ -429,6 +429,13 @@
 			&nbsp;<br />
 			<p style="font-size: <?php echo $send_pdf ? '8px' : '10px'; ?>; text-align: center;">Unit G, Ground Floor, 331 Building, 331 Sen. Gil Puyat Avenue, Barangay Bel-Air, Makati City 1200 • Tels (632) 5411979 / 8946345 <br />
 			<a href="www.globalcompanies.com.ph">www.globalcompanies.com.ph</a> • Email: <a href="globalonehr@globalcompanies.com.ph">globalonehr@globalcompanies.com.ph</a></p>
+		<?php
+		} elseif (($coe[0]["company"] == 'MEGA01') && $coe[0]["type"] != 'COECOMPENSATION') {
+		?>
+			&nbsp;<br />
+			<p style="font-size: <?php echo $send_pdf ? '8px' : '10px'; ?>; text-align: center;">25/F Alliance Global Tower, 36th Street corner 11th Avenue Uptown Bonifacio, Taguig City 1634 <br />
+			Trunkline: (632) 905-2900 • (632) 905-2800 <br />
+			www.megaworldcorp.com • Email: infodesk@megaworldcorp.com</p>
 		<?php
 		} elseif (($coe[0]["company"] == 'MCTI') && $coe[0]["type"] != 'COECOMPENSATION') {
 		?>
