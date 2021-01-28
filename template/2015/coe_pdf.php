@@ -421,7 +421,7 @@
 		}
 		?>
 
-		</b><p style="font-size: <?php echo $send_pdf ? '8px' : '10px'; ?>; padding-left: 50px; padding-right: 50px;">Ref No.:<?php echo $coe[0]["ref_no"]; ?></p>
+		</b><p style="font-size: <?php echo $send_pdf ? '8px' : '10px'; ?>; padding-top: 15px; padding-left: 50px; padding-right: 50px;">Ref No.:<?php echo $coe[0]["ref_no"]; ?></p>
 
 		<?php
 		if (($coe[0]["company"] == 'GLOBAL01') && $coe[0]["type"] != 'COECOMPENSATION') {
