@@ -202,7 +202,7 @@
 				<?php } ?>
 
 				<?php
-				if ($emp_info[0]["CompanyID"] == 'GLOBAL01' || $emp_info[0]["CompanyID"] == 'LGMI01' || $emp_info[0]["CompanyID"] == 'MIB01') {
+				if ($emp_info[0]["CompanyID"] == 'GLOBAL01' || $emp_info[0]["CompanyID"] == 'LGMI01') {
 				?>
 				<p style="padding-left: 50px; padding-right: 50px;">This does not certify that <?php echo $emp_info[0]["CompanyName"];?> has cleared <?php echo $emp_info[0]["Gender3"]; ?> of
 				all of <?php echo $emp_info[0]["Gender2"]; ?> accountabilities with the Company.</p>
@@ -381,12 +381,12 @@
 			<?php
 			}
 		}else{
-			if($emp_info[0]["CompanyID"] == 'MCTI'){
+			if($coe[0]["company"] == 'MCTI'){
 			?>
 				<b><p style="padding-top: 40px; padding-left: 50px; padding-right: 50px;">JOEY I. VILLAFUERTE<br />
 				FIRST VICE PRESIDENT, CONTROLLERSHIP GROUP</p></b>
 			<?php
-			}elseif ($emp_info[0]["CompanyID"] == 'GLOBAL01' || $emp_info[0]["CompanyID"] == 'LGMI01' || $emp_info[0]["CompanyID"] == 'MIB01') {
+		}elseif ($coe[0]["company"] == 'GLOBAL01' || $coe[0]["company"] == 'LGMI01' || $coe[0]["company"] == 'MIB01') {
 			?>
 				<b><p style="padding-top: 40px; padding-left: 50px; padding-right: 50px;">JOSEPHINE F. ALIM<br />
 				Associate Director</b>
@@ -410,7 +410,7 @@
 
 		<!-- FOOTER -->
 		<?php
-		if(($emp_info[0]["CompanyID"] == 'GLOBAL01') && $coe[0]["type"] != 'COECOMPENSATION'){
+		if(($coe[0]["company"] == 'GLOBAL01') && $coe[0]["type"] != 'COECOMPENSATION'){
 		?>
 			<p style="font-size: 8px; padding-top: 15px; text-align: right; padding-right: 50px"><b>THIS DOCUMENT IS PRIVATE AND CONFIDENTIAL.<br />
 			FOR EMPLOYMENT DETAILS PURPOSES ONLY.<br />
@@ -422,13 +422,13 @@
 		</b><p style="font-size: 8px; padding-left: 50px; padding-right: 50px;">Ref No.:<?php echo $coe[0]["ref_no"]; ?></p>
 
 		<?php
-		if (($emp_info[0]["CompanyID"] == 'GLOBAL01') && $coe[0]["type"] != 'COECOMPENSATION') {
+		if (($coe[0]["company"] == 'GLOBAL01') && $coe[0]["type"] != 'COECOMPENSATION') {
 		?>
 			&nbsp;<br />
 			<p style="font-size: 8px; text-align: center;">Unit G, Ground Floor, 331 Building, 331 Sen. Gil Puyat Avenue, Barangay Bel-Air, Makati City 1200 • Tels (632) 5411979 / 8946345 <br />
 			<a href="www.globalcompanies.com.ph">www.globalcompanies.com.ph</a> • Email: <a href="globalonehr@globalcompanies.com.ph">globalonehr@globalcompanies.com.ph</a></p>
 		<?php
-		} elseif (($emp_info[0]["CompanyID"] == 'MCTI') && $coe[0]["type"] != 'COECOMPENSATION') {
+	} elseif (($coe[0]["company"] == 'MCTI') && $coe[0]["type"] != 'COECOMPENSATION') {
 		?>
 			&nbsp;<br />
 			<p style="font-size: 8px; color: #005f2f; text-align: center;">Capitol Boulevard, Barangay Sto. Niño, City of San Fernando, Pampanga 2000 | Tels 045-963-1990<br />
