@@ -432,7 +432,7 @@
 		<?php
 		} elseif (($coe[0]["company"] == 'MEGA01') && $coe[0]["type"] != 'COECOMPENSATION') {
 		?>
-			&nbsp;<br />
+			&nbsp;
 			<p style="font-size: <?php echo $send_pdf ? '8px' : '10px'; ?>; text-align: center;">25/F Alliance Global Tower, 36th Street corner 11th Avenue Uptown Bonifacio, Taguig City 1634 <br />
 			Trunkline: (632) 905-2900 • (632) 905-2800 <br />
 			www.megaworldcorp.com • Email: infodesk@megaworldcorp.com</p>
