@@ -5281,7 +5281,9 @@
 
 			$coe_check_result = $mainsql->get_numrow($coe_check);
 			$coe_count = 0;
+			var_dump($coe_check_result);
 
+			exit(0);
 			if($coe_check_result > 0){
 				$coe_count = 1;
 			}
