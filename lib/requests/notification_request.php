@@ -5272,7 +5272,7 @@
 
 
 			if($coecategory == 'LOAN'){ // loan excempted for two or more loan pending coe
-				$coe_check = "SELECT * from COERequests WHERE emp_id = '$coeemp' and company = '$coe_company' and type = '$coetype' and category = '$coecategory' and reason = '$coereason'
+				$coe_check = "SELECT * from COERequests WHERE emp_id = '$coeemp' and company = '$coe_company' and type = '$coetype' and category = '$coecategory' and reason like '$coereason'
 				and status not in ('Done','Cancelled')";
 			}else{
 				$coe_check = "SELECT * from COERequests WHERE emp_id = '$coeemp' and company = '$coe_company' and type = '$coetype' and category = '$coecategory'
@@ -5281,9 +5281,7 @@
 
 			$coe_check_result = $mainsql->get_numrow($coe_check);
 			$coe_count = 0;
-			var_dump($coe_check);
 
-			exit(0);
 			if($coe_check_result > 0){
 				$coe_count = 1;
 			}
