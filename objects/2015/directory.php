@@ -1,5 +1,5 @@
 <?php
-	
+
 	if ($logged == 1) {
 
         # PAGINATION
@@ -9,7 +9,7 @@
         //*********************** MAIN CODE START **********************\\
 
         # ASSIGNED VALUE
-        $page_title = "Uptown (Alliance Global Tower) Directory";	
+        $page_title = "Corporate Phone Directory (Alliance Global Tower)";	
 
         //***********************  MAIN CODE END  **********************\\
 
@@ -20,5 +20,5 @@
 	{
 		echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/login'</script>";
 	}
-	
+
 ?>
