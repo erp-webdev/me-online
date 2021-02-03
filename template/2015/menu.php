@@ -61,7 +61,7 @@
                               if($wfh_user[0]["EmpID"] == $profile_idnum && $wfh_user[0]["DBNAME"] == $profile_dbname){?>
                                 <a href="<?php echo WEB; ?>/wfh" onclick="clickAndDisable(this);"><div<?php if ($section == "wfh") { ?> class="dselected"<?php } ?>>Work From Home</div></a>
                             <?php
-                              } 
+                              }
                             endif; ?>
 
 

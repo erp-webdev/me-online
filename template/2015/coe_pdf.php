@@ -409,6 +409,7 @@
 			&nbsp;<br />&nbsp;<br />
 			<?php if($coe[0]["type"] == 'COE'){ ?>
 				&nbsp;<br />&nbsp;<br />
+				&nbsp;<br />&nbsp;<br />
 			<?php } ?>
 		<?php } ?>
 		<!-- Breaklines END -->
@@ -420,6 +421,10 @@
 			<p style="font-size: <?php echo $send_pdf ? '8px' : '10px'; ?>; text-align: right; padding-right: 50px"><b>THIS DOCUMENT IS PRIVATE AND CONFIDENTIAL.<br />
 			FOR EMPLOYMENT DETAILS PURPOSES ONLY.<br />
 			NOT AS EMPLOYEE CLEARANCE.</b></p>
+		<?php
+		} elseif (($coe[0]["company"] == 'MEGA01') && $coe[0]["type"] != 'COECOMPENSATION') {
+		?>
+			<p style="font-size: <?php echo $send_pdf ? '8px' : '10px'; ?>; text-align: right; padding-right: 50px">This is a system generated document. Any alteration on this document is not valid.</p>
 		<?php
 		}
 		?>
