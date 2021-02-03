@@ -41,7 +41,7 @@
 
                         <?php if (in_array($profile_dbname, ['MEGAWORLD', 'MLI'])) : ?><span class="spanred">NEW!</span><?php if ($section != "forms") { ?><a href="<?php echo WEB; ?>/forms" onclick="clickAndDisable(this);"><?php } ?><div<?php if ($section == "forms") { ?> class="dselected"<?php } ?>>Forms</div><?php if ($section != "forms") { ?></a><?php } ?><?php endif; ?>
 
-                        <?php if ($section != "directory") { ?><a href="<?php echo WEB; ?>/directory" onclick="clickAndDisable(this);"><?php } ?><div<?php if ($section == "directory") { ?> class="dselected"<?php } ?>>Uptown Directory</div><?php if ($section != "directory") { ?></a><?php } ?>
+                        <?php if ($section != "directory") { ?><a href="<?php echo WEB; ?>/directory" onclick="clickAndDisable(this);"><?php } ?><div<?php if ($section == "directory") { ?> class="dselected"<?php } ?>>Corporate Phone Directory</div><?php if ($section != "directory") { ?></a><?php } ?>
                         <!--a href="<?php echo WEB; ?>/message"><div<?php if ($section == "message") { ?> class="dselected"<?php } ?>>Messages</div></a-->
                         <?php if ($lv_app || $ot_app || $ob_app || $md_app || $np_app || $sc_app || $wh_app) : ?>
                         <div id="subapp">
