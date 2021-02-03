@@ -5270,8 +5270,15 @@
 			// $refno = strtoupper("RN".str_replace('-','',$coeemp).uniqid());
 			$refno = strtoupper("RN".str_replace('-','',$coeemp).$coe_company.'-'.date("Y").str_pad($coeref_count, 4, "0", STR_PAD_LEFT));
 
-			$coe_check = "SELECT * from COERequests WHERE emp_id = '$coeemp' and company = '$coe_company' and type = '$coetype' and category = '$coecategory'
-			and status not in ('Done','Cancelled')";
+
+			if($coecategory == 'LOAN'){ // loan excempted for two or more loan pending coe
+				$coe_check = "SELECT * from COERequests WHERE emp_id = '$coeemp' and company = '$coe_company' and type = '$coetype' and category = '$coecategory' and reason = '$coereason'
+				and status not in ('Done','Cancelled')";
+			}else{
+				$coe_check = "SELECT * from COERequests WHERE emp_id = '$coeemp' and company = '$coe_company' and type = '$coetype' and category = '$coecategory'
+				and status not in ('Done','Cancelled')";
+			}
+
 			$coe_check_result = $mainsql->get_numrow($coe_check);
 			$coe_count = 0;
 
