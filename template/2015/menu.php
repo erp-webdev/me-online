@@ -12,22 +12,26 @@
                         <span class="spanred">NEW!</span><?php if ($section != "memo") { ?><a href="<?php echo WEB; ?>/memo" onclick="clickAndDisable(this);"><?php } ?><div<?php if ($section == "memo") { ?> class="dselected"<?php } ?>>Memorandum</div><?php if ($section != "memo") { ?></a><?php } ?>
 
 
-			<?php if(false || $profile_idnum == '2019-02-0033' || $profile_idnum == '2016-06-0457'){ ?>
-			<span class="spanred">NEW!</span>
 			<?php
-				if ($section != "coe") {?>
-					<a href="<?php echo WEB; ?>/coe" onclick="clickAndDisable(this);"><?php
-				} ?>
-			<div
-			<?php
-				if ($section == "coe") {?>
-					class="dselected"<?php
-				} ?> >COE Requisition</div>
-			<?php
-				if ($section != "coe") {
-			?></a><?php
+			if(in_array($profile_dbname, ['CITYLINK', 'ECOC', 'ECINEMA', 'EREX', 'LAFUERZA', 'LCTM', 'GL', 'MEGAWORLD', 'MLI', 'MCTI', 'NCCAI', 'SIRUS', 'SUNTRUST', 'TOWNSQUARE'])){
+				if(false || $profile_idnum == '2019-02-0033' || $profile_idnum == '2016-06-0457' || $profile_idnum == '2013-08-N300'){ ?>
+					<span class="spanred">NEW!</span>
+				<?php
+					if ($section != "coe") {?>
+						<a href="<?php echo WEB; ?>/coe" onclick="clickAndDisable(this);"><?php
+					} ?>
+					<div
+				<?php
+					if ($section == "coe") {?>
+						class="dselected"<?php
+					} ?> >COE Requisition</div>
+				<?php
+					if ($section != "coe") {
+				?>	</a><?php
+					}
 				}
 			}
+
 			 ?>
 
                         <?php endif; ?>
@@ -61,7 +65,7 @@
                               if($wfh_user[0]["EmpID"] == $profile_idnum && $wfh_user[0]["DBNAME"] == $profile_dbname){?>
                                 <a href="<?php echo WEB; ?>/wfh" onclick="clickAndDisable(this);"><div<?php if ($section == "wfh") { ?> class="dselected"<?php } ?>>Work From Home</div></a>
                             <?php
-                              } 
+                              }
                             endif; ?>
 
 

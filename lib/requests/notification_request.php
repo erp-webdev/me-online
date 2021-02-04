@@ -88,6 +88,8 @@
         case 'lvcancel':
         case 'mdcancel':
 		case 'sccancel':
+		case 'coeprint':
+		case 'coesend':
         break;
         default:
         ?>
@@ -4531,9 +4533,43 @@
 							<td>
 								<select id="coecompany" name="coecompany" class="txtbox" style="width:193px;">
 									<option value="" selected>Please Select</option>
-									<?php foreach ($admin_companies as $key => $admin_company) { ?>
+
+									<!-- <?php foreach ($admin_companies as $key => $admin_company) { ?>
 									<option value="<?php echo $admin_company['CompanyID']; ?>" <?php if($company_sort == $admin_company['CompanyID']){ echo "selected";} ?>><?php echo $admin_company['CompanyName']; ?></option>
-									<?php }?>
+									<?php }?> -->
+
+									<?php
+									$dbase_array = array(
+										'GL' => ['GLOBAL01', 'LGMI01'],
+										'MEGAWORLD' => ['MEGA01'],
+										'CITYLINK' => ['CITYLINK01'],
+										'ECINEMA' => ['ECC02'],
+										'ECOC' => ['ECOC01'],
+										'EPARKVIEW' => ['ECP02'],
+										'EREX' => ['ERA01'],
+										'FIRSTCENTRO' => ['FCI01'],
+										'GLOBAL_HOTEL' => ['GLOBALHOTEL'],
+										'LAFUERZA' => ['LFI01'],
+										'LCTM' => ['LUCK01'],
+										'MCTI' => ['MCTI'],
+										'MLI' => ['MLI01'],
+										'NCCAI' => ['NCCAI'],
+										'NEWTOWN' => ['NEWTOWN01'],
+										'SUNTRUST' => ['SUNT01'],
+										'TOWNSQUARE' => ['TOWN01'],
+										'SIRUS' => ['SIRUS'],
+										'ASIAAPMI' => ['ASIAAPMI'],
+										'MALL_ADMIN' => ['Boracay'],
+										'AGILE' => ['AGILE']
+									);
+
+								foreach ($admin_companies as $key => $admin_company) {
+									if(in_array($admin_company['CompanyID'], $dbase_array[$profile_dbname])){?>
+										<option value="<?php echo $admin_company['CompanyID']; ?>"><?php echo $admin_company['CompanyName']; ?></option>
+								<?php
+									}
+								}
+								?>
 								</select>
 							</td>
 						</tr>
@@ -4609,6 +4645,16 @@
 						</td>
 						<td>
 							<input id="coeleavereturn" name="coeleavereturn" type="text" class="txtbox datepick" style="width:185px;">
+						</td>
+					</tr>
+
+					<tr id="coeleavediv4">
+						<td></td>
+						<td>
+							<label>Attach Image: </label>
+						</td>
+						<td>
+							<input id="coeleavefile" name="coeleavefile" type="file">
 						</td>
 					</tr>
 
@@ -4750,6 +4796,7 @@
 					$("#coeleavefrom").val('');
 					$("#coeleaveto").val('');
 					$("#coeleavereturn").val('');
+					$("#coeleavefile").val(null);
 					$("#coecategory").val('');
 					$("#hpa_percentage").val('');
 					$("input[name=avail_no]").val('');
@@ -4771,6 +4818,7 @@
 				$("#coejobdiv1").hide();
 				$("#coeleavediv2").hide();
 				$("#coeleavediv3").hide();
+				$("#coeleavediv4").hide();
 				$("#coenamediv1").hide();
 				$("#coehpa").hide();
 				$("#coeavail").hide();
@@ -4787,6 +4835,7 @@
 						$("#coeleavediv1").hide();
 						$("#coeleavediv2").hide();
 						$("#coeleavediv3").hide();
+						$("#coeleavediv4").hide();
 						$("#coeavail").hide();
 						$("#coehpa").hide();
 
@@ -4794,6 +4843,7 @@
 							$("#coeleavediv1").show();
 							$("#coeleavediv2").show();
 							$("#coeleavediv3").show();
+							$("#coeleavediv4").show();
 							$("#coeothersdiv").show();
 							$("#other_reason").html("Requirement For:");
 						}else if($("select[name=coetype]").val() == "COECORRECTIONNAME"){
@@ -4827,6 +4877,7 @@
 						$("#coejobdiv1").hide();
 						$("#coeleavediv2").hide();
 						$("#coeleavediv3").hide();
+						$("#coeleavediv4").hide();
 						$("#coecatdiv").show();
 						$("#other_reason").html("Other Reason:");
 						$("#coehpa").hide();
@@ -4865,6 +4916,8 @@
 				$("#submitcoe").on("click", function(){
 
 
+					var form_data = new FormData();
+
 					var emp = $("#coeemp").val();
 					var type = $("select[name=coetype]").val();
 					var category = $("select[name=coecategory]").val();
@@ -4873,10 +4926,17 @@
 					var leavefrom = $("input[name=coeleavefrom]").val();
 					var leaveto = $("input[name=coeleaveto]").val();
 					var leavereturn = $("input[name=coeleavereturn]").val();
+					if(type == 'COEAPPROVEDLEAVE'){
+						var leavefile = $("#coeleavefile").prop('files')[0];
+					}else{
+						var leavefile = null;
+					}
+
 					var correction_name = $("input[name=coecorrection]").val();
 					var avail_no = $("input[name=avail_no]").val();
 					var hpa_percentage = $("select[name=hpa_percentage]").val();
 					var coe_company = <?php if($level != 1){?>$("select[name=coecompany]").val() <?php }else{ echo "'$profile_comp'"; }?>;
+					var tasks = $('input:text.tasks').serialize();
 
 					if(!emp){
 						alert("Employee ID is required!");
@@ -4894,16 +4954,49 @@
 							alert("CoE Category is required!");
 							return false;
 						}
+					}else if (type == 'COEAPPROVEDLEAVE') {
+						if(!leavefrom){
+							alert("Leave from input is required!");
+							return false;
+						}else if(!leaveto){
+							alert("Leave to input is required!");
+							return false;
+						}else if(!leavereturn){
+							alert("Return to input is required!");
+							return false;
+						}else if($("#coeleavefile").get(0).files.length === 0){
+							alert("Image attachment is required!");
+							return false;
+						}
 					}
 
+					form_data.append('file', leavefile);
+					form_data.append('emp', emp);
+					form_data.append('type', type);
+					form_data.append('category', category);
+					form_data.append('reason', reason);
+					form_data.append('other', other);
+					form_data.append('leavefrom', leavefrom);
+					form_data.append('leaveto', leaveto);
+					form_data.append('leavereturn', leavereturn);
+					form_data.append('correctionname', correction_name);
+					form_data.append('avail_no', avail_no);
+					form_data.append('hpa_percentage', hpa_percentage);
+					form_data.append('coe_company', coe_company);
+					form_data.append('coetasks', tasks);
+					console.log(form_data);
+
 					$("#submitcoe").hide();
-					var tasks = $('input:text.tasks').serialize();
+
 					$.ajax(
 					{
 						url: "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=coesubmit",
-						data: "emp=" + emp + "&type=" + type + "&category=" + category + "&reason=" + reason + "&other=" + other +
-							  "&leavefrom=" + leavefrom + "&leaveto=" + leaveto + "&leavereturn=" + leavereturn + "&correctionname=" +correction_name + "&" + tasks +
-							  "&hpa_percentage=" + hpa_percentage + "&avail_no=" + avail_no + "&coe_company=" +coe_company,
+					 	processData: false,
+						contentType: false,
+						// data: "=" + emp + "&=" + type + "&=" + category + "&=" + reason + "&=" + other +
+						// 	  "&=" + leavefrom + "&=" + leaveto + "&=" + leavereturn + "&=" +correction_name + "&" + tasks +
+						// 	  "&=" + hpa_percentage + "&=" + avail_no + "&=" +coe_company + "&form_data=" +form_data,
+						data: form_data,
 						type: "POST",
 						complete: function(){
 							$("#loading").hide();
@@ -4923,13 +5016,25 @@
 		case 'coesearch':
 
 			$ref_no = $_POST["ref_no"];
+			$level = $_POST["level"];
 
 			if($ref_no == '' || $ref_no == "" || $ref_no == null){
 				echo "<script>location.reload();</script>";
 				break;
 			}
 
-			$sql = "SELECT B.FullName, A.* FROM COERequests A LEFT JOIN viewHREmpMaster B on A.emp_id = B.EmpID WHERE A.ref_no = '".$ref_no."' OR B.FullName LIKE '%$ref_no%'";
+			$sql = "SELECT B.FullName, A.* FROM COERequests A LEFT JOIN viewHREmpMaster B on A.emp_id = B.EmpID WHERE (A.ref_no = '".$ref_no."' OR B.FullName LIKE '%$ref_no%')";
+			if($level == 3){
+				$sql .= " AND type <> 'COECOMPENSATION'";
+			}elseif ($level == 2) {
+				$sql .= " AND type = 'COECOMPENSATION'";
+			}
+
+			$sql .= " ORDER BY CASE WHEN A.STATUS = 'CANCELLED' THEN 0
+	              WHEN A.STATUS = 'DONE' THEN 1
+	              WHEN A.STATUS = 'FOR RELEASE' THEN 2
+	              ELSE 3
+	              END DESC, created_at ASC";
 
 			$result = $mainsql->get_row($sql);
 
@@ -5117,9 +5222,9 @@
 
 		case 'coesubmit':
 
-			$coeemp = $_POST["emp"];
-			$coetype = $_POST["type"];
-			$coecategory = $_POST["category"];
+			$coeemp = trim($_POST["emp"]);
+			$coetype = trim($_POST["type"]);
+			$coecategory = trim($_POST["category"]);
 			$coereason = $_POST["reason"];
 			$coeother = $_POST["other"];
 			$leave_from = $_POST["leavefrom"];
@@ -5127,6 +5232,8 @@
 			$leave_return = $_POST["leavereturn"];
 			$datetoday = date('Y-m-d');
 			$tasks = $_POST["coetasks"];
+			$tasks = str_replace("coetasks%5B%5D=", "", $tasks);
+			$tasks = explode("&", $tasks);
 			$hpa_percentage = $_POST["hpa_percentage"];
 			$coe_company = ($_POST["coe_company"] != '') ? $_POST["coe_company"] : $profile_comp;
 			$avail_no = $_POST["avail_no"];
@@ -5144,28 +5251,77 @@
 			];
 			$correction_name = $_POST["correctionname"];
 
+			// backend validation
+			$coe_validation = "SELECT * FROM viewHREmpMaster WHERE EmpID = '$coeemp' AND CompanyID = '$coe_company'";
+			$coe_validation = $mainsql->get_row($coe_validation);
+
+			if(empty($coe_validation)){
+				?><h3 align="center">COE Request Failed! No Employee with the given Company ID found on the database.</h3><?php
+				exit(0);
+			} elseif (empty($coe_validation[0]['EmailAdd'])) {
+				?><h3 align="center">COE Request Failed! No Employee Email set on the database.</h3><?php
+				exit(0);
+			}
+			// end backend validation
+
 			$coeref = "SELECT * FROM COERequests WHERE YEAR(created_at) = YEAR(GETDATE())";
 			$coeref_count = $mainsql->get_numrow($coeref);
 
 			// $refno = strtoupper("RN".str_replace('-','',$coeemp).uniqid());
-			$refno = strtoupper("RN".str_replace('-','',$coeemp).$profile_comp.'-'.date("Y").str_pad($coeref_count, 4, "0", STR_PAD_LEFT));
+			$refno = strtoupper("RN".str_replace('-','',$coeemp).$coe_company.'-'.date("Y").str_pad($coeref_count, 4, "0", STR_PAD_LEFT));
 
-			$coe_check = "SELECT * from COERequests WHERE emp_id = '$coeemp' and company = '$coe_company' and type = '$coetype' and category = '$coecategory'
-			and status not in ('Done','Cancelled')";
+
+			if($coecategory == 'LOAN'){ // loan excempted for two or more loan pending coe
+				$coe_check = "SELECT * from COERequests WHERE emp_id = '$coeemp' and company = '$coe_company' and type = '$coetype' and category = '$coecategory' and reason like '$coereason'
+				and status not in ('Done','Cancelled')";
+			}else{
+				$coe_check = "SELECT * from COERequests WHERE emp_id = '$coeemp' and company = '$coe_company' and type = '$coetype' and category = '$coecategory'
+				and status not in ('Done','Cancelled')";
+			}
+
 			$coe_check_result = $mainsql->get_numrow($coe_check);
 			$coe_count = 0;
-
 
 			if($coe_check_result > 0){
 				$coe_count = 1;
 			}
-
 			if($coe_count > 0){
 				$result = false;
 			}else{
-				$sql = "INSERT INTO COERequests (ref_no, emp_id, type, category, reason, other_reason, status, company, requested_by, created_at, updated_by, updated_at, leave_from, leave_to, leave_return, correction_name, job_desc, hpa_percent, avail_no)
+
+				if($_FILES['file']){
+
+					$allowedExts = array("JPG", "JPEG", "GIF", "PNG", "jpg", "jpeg", "gif", "png");
+					$image = $_FILES['file']['tmp_name'];
+					$filename = $_FILES['file']['name'];
+					$filesize = $_FILES['file']['size'];
+					$filetype = $_FILES['file']['type'];
+
+					$tempext = explode(".", $filename);
+					$extension = end($tempext);
+					$extension = end($tempext);
+
+					if (($filesize < 2097152) && in_array($extension, $allowedExts)){
+						$path = "../../uploads/coe/";
+						$fixname = 'coe_'.$refno.".".$extension;
+						$target_path = $path.$fixname;
+
+						$filemove = move_uploaded_file(
+							$_FILES['file']['tmp_name'],
+							$target_path
+						);
+					}else{
+						?><br /><h3 align="center">File size must be less than or equal to 2MB and must be an image type.</h3><?php
+						exit(0);
+					}
+				}else{
+
+					$fixname = null;
+				}
+
+				$sql = "INSERT INTO COERequests (ref_no, emp_id, type, category, reason, other_reason, status, company, requested_by, created_at, updated_by, updated_at, leave_from, leave_to, leave_return, correction_name, job_desc, hpa_percent, avail_no, image_src)
 						VALUES ('".$refno."','".$coeemp."', '".$coetype."', '".$coecategory."', '".$coereason."', '".$coeother."', 'On Process', '".$coe_company."', '".$profile_idnum."', '".$datetoday."', '".$profile_idnum."', '".$datetoday."',
-								'".$leave_from."', '".$leave_to."', '".$leave_return."', '".$correction_name."', '".$tasks."', '".$hpa_percentage."', '".$avail_no."')";
+								'".$leave_from."', '".$leave_to."', '".$leave_return."', '".$correction_name."', '".$tasks."', '".$hpa_percentage."', '".$avail_no."', '".$fixname."')";
 
 				$result = $mainsql->get_execute($sql);
 
@@ -5185,7 +5341,9 @@
 							left join HRDepartment D on A.DeptID = D.DeptID
 							WHERE A.EmpID='$coeemp' AND A.CompanyID ='$coe_company'";
 
-				$emp_hr  = "SELECT B.EmailAdd, A.level FROM COEUsers A LEFT JOIN viewHREmpMaster B on A.emp_id = B.EmpID WHERE ";
+				$emp_hr  = "SELECT B.EmailAdd, A.level FROM COEUsers A
+							LEFT JOIN SUBSIDIARY.DBO.viewHREmpMaster B on A.emp_id = B.EmpID AND A.[DB_NAME] = B.DBNAME
+							WHERE ";
 
 				if(in_array($coetype, $coetypes["2"])){
 					$emp_hr .="A.[level] = '2'";
@@ -5307,6 +5465,11 @@
 			$sql = "SELECT * FROM COERequests WHERE id=$id";
 
 			$result = $mainsql->get_row($sql);
+
+			$coe_comp = $result[0]['company'];
+			$coe_comp = "SELECT * FROM HRCompany Where CompanyID = '$coe_comp'";
+			$coe_comp = $mainsql->get_row($coe_comp);
+
 			$tasks = json_decode($result[0]['job_desc'], true);
 			?>
 
@@ -5314,14 +5477,14 @@
 				<table align="center">
 					<tr>
 						<td width="5%"></td>
-						<td align="left" <?php if($level != 2) { ?>width="40%"<?php }else{ echo "width='40%'"; } ?>><label>Employee ID: </label></td>
-						<td align="left"<?php if($level != 2) { ?>width="40%"<?php }else{ echo "width='55%'"; } ?>><?php echo $result[0]['emp_id']; ?></td>
+						<td width="40%" align="left" <?php if($level != 2) { ?>width="40%"<?php }else{ echo "width='40%'"; } ?>><label>Employee ID: </label></td>
+						<td width="55%" align="left"<?php if($level != 2) { ?>width="40%"<?php }else{ echo "width='55%'"; } ?>><?php echo $result[0]['emp_id']; ?></td>
 					</tr>
 
 					<?php if($level != 1){ ?>
 						<td width="5%"></td>
-						<td align="left" <?php if($level != 2) { ?>width="40%"<?php }else{ echo "width='40%'"; } ?>><label>Company ID: </label></td>
-						<td align="left"<?php if($level != 2) { ?>width="40%"<?php }else{ echo "width='55%'"; } ?>><?php echo $result[0]['company']; ?></td>
+						<td align="left" <?php if($level != 2) { ?>width="40%"<?php }else{ echo "width='40%'"; } ?>><label>Company: </label></td>
+						<td align="left"<?php if($level != 2) { ?>width="40%"<?php }else{ echo "width='55%'"; } ?>><?php echo $coe_comp[0]['CompanyName']; ?></td>
 					<?php } ?>
 
 					<tr>
@@ -5345,7 +5508,9 @@
 							<label>Job Responsibilities: </label>
 						</td>
 						<td>
+							<?php if($level != 1){ ?>
 							<button align="center" class="add_field_button fa fa-plus">ADD TASK</button></br>
+							<?php } ?>
 							<div class="coejobinput">
 								<?php foreach($tasks as $task){ ?>
 								<div class="first"><a href="#" class="remove_field fa fa-close"></a><input type="text" name="coetasks[]" class="txtbox tasks" style="width:175px;" value="<?php echo $task; ?>"/></div>
@@ -5391,6 +5556,18 @@
 						</td>
 						<td align="left">
 							<?php echo date('m/d/Y', strtotime($result[0]['leave_return'])); ?>
+						</td>
+					</tr>
+					<!--   -->
+					<tr id="coeleavediv4">
+						<td></td>
+						<td align="left">
+							<label>Attachment: </label>
+						</td>
+						<td align="left">
+							<?php
+								echo '<u><a style="color: #0000ff !important;" href="'.WEB.'/uploads/coe/'.$result[0]['image_src'].'" target="_blank">Image File</a></u>';
+							?>
 						</td>
 					</tr>
 
@@ -5522,18 +5699,21 @@
 										<button id="printcoe" value="Print" attribute="<?php echo $result[0]['id']; ?>" attribute2="<?php echo $result[0]['status']; ?>" attribute3="<?php echo $result[0]['type']; ?>" class="smlbtn" style="background-color:#3EC2FB; width:45px;">Print</button>
 							<?php 	} ?>
 
-
+							<?php	if(($result[0]['status'] == 'For Release' || $result[0]['status'] == 'Done') && $result[0]['status'] != 'Cancelled'){?>
+										<button id="sendcoe" value="Send" attribute="<?php echo $result[0]['id']; ?>" attribute2="<?php echo $result[0]['status']; ?>" attribute3="<?php echo $result[0]['type']; ?>" class="smlbtn" style="background-color:#3EC2FB; width:45px;">Send</button>
+										<!-- <a href="<?php echo WEB; ?>/coe_pdf?id=<?php echo $result[0]['id']; ?>&type=<?php echo $result[0]['type']; ?>&send=TRUE" target="_blank"><button class="smlbtn" style="background-color:#3EC2FB; width:45px;">Send</button></a> -->
+							<?php 	} ?>
 
 							<?php	if($result[0]['status'] == 'Done' || $result[0]['status'] == 'Cancelled'){ ?>
 							<?php 	}else{ ?>
-										<button id="savecoe" value="Save" attribute8="<?php echo $result[0]['status']; ?>" attribute5="<?php echo $result[0]['ref_no']; ?>" attribute4="<?php echo $result[0]["type"]; ?>" attribute3="<?php echo $result[0]['emp_id']; ?>" attribute="<?php echo $result[0]['id'] ?>" attribute2="<?php echo $result[0]['cancelled_at'].$result[0]['released_at']; ?>" class="smlbtn" style="width:45px;" <?php if($result[0]['cancelled_at'] != null || $result[0]['released_at'] != null){ echo "disabled";} ?>>Save</button>
+										<button id="savecoe" value="Save" attribute9="<?php echo $result[0]['company']; ?>" attribute8="<?php echo $result[0]['status']; ?>" attribute5="<?php echo $result[0]['ref_no']; ?>" attribute4="<?php echo $result[0]["type"]; ?>" attribute3="<?php echo $result[0]['emp_id']; ?>" attribute="<?php echo $result[0]['id'] ?>" attribute2="<?php echo $result[0]['cancelled_at'].$result[0]['released_at']; ?>" class="smlbtn" style="width:45px;" <?php if($result[0]['cancelled_at'] != null || $result[0]['released_at'] != null){ echo "disabled";} ?>>Save</button>
 							<?php 	} ?>
 							<?php } ?>
 
 							<?php if($result[0]['status'] == 'Done' || $result[0]['status'] == 'Cancelled'){ ?>
 							<?php }else{ ?>
 
-								<button id="coecancel" value="Cancel" attribute5="<?php echo $result[0]['ref_no']; ?>" attribute4="<?php echo $result[0]["type"]; ?>" attribute3="<?php echo $result[0]['emp_id']; ?>" attribute="<?php echo $result[0]['id'] ?>" attribute2="<?php echo $result[0]['cancelled_at'].$result[0]['released_at']; ?>" class="btncancel btnred smlbtn" style="width:45px;" <?php if($result[0]['cancelled_at'] != null || $result[0]['released_at'] != null){ echo "disabled";} ?>>Cancel</button>
+								<button id="coecancel" value="Cancel" attribute9="<?php echo $result[0]['company']; ?>" attribute5="<?php echo $result[0]['ref_no']; ?>" attribute4="<?php echo $result[0]["type"]; ?>" attribute3="<?php echo $result[0]['emp_id']; ?>" attribute="<?php echo $result[0]['id'] ?>" attribute2="<?php echo $result[0]['cancelled_at'].$result[0]['released_at']; ?>" class="btncancel btnred smlbtn" style="width:45px;" <?php if($result[0]['cancelled_at'] != null || $result[0]['released_at'] != null){ echo "disabled";} ?>>Cancel</button>
 
 							<?php } ?>
 
@@ -5551,6 +5731,7 @@
 					$("#coeleavediv1").hide();
 					$("#coeleavediv2").hide();
 					$("#coeleavediv3").hide();
+					$("#coeleavediv4").hide();
 					$("#coenamediv1").hide();
 					$("#coecatdiv2").hide();
 					$("#coereasondiv2").hide();
@@ -5567,6 +5748,7 @@
 						$("#coeleavediv2").show();
 						$("#other_reason").html("Other Reason:");
 						$("#coeleavediv3").show();
+						$("#coeleavediv4").show();
 
 						$("#coecatdiv2").hide();
 						$("#coereasondiv2").hide();
@@ -5611,6 +5793,7 @@
 						$("#coecancel").hide();
 						var id = $(this).attr('attribute');
 						var emp_id = $(this).attr('attribute3');
+						var company_id = $(this).attr('attribute9');
 						var type = $(this).attr('attribute4');
 						var ref_no = $(this).attr('attribute5');
 						var status = 'Cancelled';
@@ -5624,7 +5807,7 @@
 						$.ajax(
 						{
 							url: "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=coesave",
-							data: "id=" + id + "&emp_id=" + emp_id + "&status=" + status + "&others=" + others + "&" + tasks + "&ref_no=" + ref_no + "&type=" + type,
+							data: "id=" + id + "&emp_id=" + emp_id + "&status=" + status + "&others=" + others + "&" + tasks + "&ref_no=" + ref_no + "&type=" + type + '&company_id=' +company_id,
 							type: "POST",
 							complete: function(){
 								$("#loading").hide();
@@ -5639,6 +5822,7 @@
 						$("#coecancel").hide();
 						$("#savecoe").hide();
 						var id = $(this).attr('attribute');
+						var company_id = $(this).attr('attribute9');
 						var old_status = $(this).attr('attribute8');
 						var emp_id = $(this).attr('attribute3');
 						var type = $(this).attr('attribute4');
@@ -5657,7 +5841,7 @@
 						$.ajax(
 						{
 							url: "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=coesave",
-							data: "id=" + id + "&emp_id=" + emp_id + "&status=" + status + "&others=" + others + "&" + tasks + "&ref_no=" + ref_no + "&type=" + type + '&hpa_percent=' + hpa_percent + '&avail_no=' + avail_no + '&old_status=' +old_status,
+							data: "id=" + id + "&emp_id=" + emp_id + "&status=" + status + "&others=" + others + "&" + tasks + "&ref_no=" + ref_no + "&type=" + type + '&hpa_percent=' + hpa_percent + '&avail_no=' + avail_no + '&old_status=' +old_status + '&company_id=' +company_id,
 							type: "POST",
 							complete: function(){
 								$("#loading").hide();
@@ -5669,7 +5853,7 @@
 
 					});
 
-					$("#sendcoe").on('click', function*(){
+					$("#sendcoe").on('click', function(){
 						var id = $(this).attr('attribute');
 						var status = $(this).attr('attribute2');
 						var type = $(this).attr('attribute3');
@@ -5678,27 +5862,32 @@
 							var start_date = "<?php echo date('m/d/Y', strtotime($result[0]['leave_from'])); ?>";
 							var end_date = "<?php echo date('m/d/Y', strtotime($result[0]['leave_to'])); ?>";
 							var return_date = "<?php echo date('m/d/Y', strtotime($result[0]['leave_return'])); ?>";
-							var url_print = "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=coeprint&type=COEAPPROVEDLEAVE";
+							var url_print = "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=coesend&type=COEAPPROVEDLEAVE";
 							var data_print = "id=" + id + "&status=" + status + "&start_date=" + start_date + "&end_date=" + end_date + "&return_date=" + return_date + "&send=" + true;
 						}else{
-							var url_print = "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=coeprint&type=COEAPPROVEDLEAVE";
+							var url_print = "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=coesend&type="+type;
 							var data_print = "id=" + id + "&status=" + status + "&start_date=" + start_date + "&end_date=" + end_date + "&return_date=" + return_date + "&send=" + true;
 						}
 
 						if(status == 'For Release' || status == 'Done'){
 
-							$.ajax(
-							{
-								url: url_print,
-								data: data_print,
-								type: "POST",
-								complete: function(){
-									$("#loading").hide();
-								},
-								success: function(data) {
-									// $("#coedata").html(data);
-								}
-							});
+							if (confirm('The signed certificate will now be sent to the employee and the request will be marked as Done/Claimed.\r\n\r\nPlease confirm to continue.')) {
+
+								$("#coedata").html('<i class="fa fa-refresh fa-spin fa-lg"></i> Loading...');
+
+								$.ajax(
+								{
+									url: url_print,
+									data: data_print,
+									type: "POST",
+									complete: function(){
+										$("#loading").hide();
+									},
+									success: function(data) {
+										$("#coedata").html(data);
+									}
+								});
+							}
 
 						}
 
@@ -5723,18 +5912,19 @@
 
 						if(status == 'For Release' || status == 'Done' || status == 'On Process'){
 
-							$.ajax(
-							{
-								url: url_print,
-								data: data_print,
-								type: "POST",
-								complete: function(){
-									$("#loading").hide();
-								},
-								success: function(data) {
-									$("#coedata").html(data);
-								}
-							});
+								$.ajax(
+								{
+									url: url_print,
+									data: data_print,
+									type: "POST",
+									complete: function(){
+										$("#loading").hide();
+									},
+									success: function(data) {
+										$("#coedata").html(data);
+									}
+								});
+
 
 						}
 					});
@@ -5744,10 +5934,21 @@
 			<?php
 		break;
 
+		case 'coesend':
+
+		include(OBJ."/coe_pdf.php");
+
+		break;
+
 		case 'coeprint':
 
 			$id = $_POST["id"];
 			$type = $_GET["type"];
+			if($_POST["send"] == "true"){
+				$send_email = TRUE;
+			}else{
+				$send_email = FALSE;
+			}
 
 			$sql = "SELECT * FROM COERequests WHERE id = $id";
 
@@ -5778,9 +5979,9 @@
 						B.RankDesc,
 						C.DeptDesc,
 						D.DivisionName,
-		        		E.PositionDesc,
+						E.PositionDesc,
 						A.HireDate as HireDate,
-				        getdate() as CurrentDate,
+						getdate() as CurrentDate,
 						A.DateResigned as DateResigned,
 						A.CompanyID,
 						F.CompanyName
@@ -5806,551 +6007,29 @@
 			$emp_info[0]['CurrentDate'] = $emp_info[0]['CurrentDate'] ?  date('F j, Y', strtotime($emp_info[0]['CurrentDate'])) : null;
 			$emp_info[0]['DateResigned'] = $emp_info[0]['DateResigned'] ?  date('F j, Y', strtotime($emp_info[0]['DateResigned'])) : null;
 
+
+			include(TEMP.'/coe_pdf.php');
 			?>
-			<div style="padding-bottom: 250px;">
-				<center><h3>Please close print preview.</h3></center></div>
-			<div id="myDivToPrint" style="display: none;">
+			<script>
+				$(document).ready(function(){
+					$(".closebutton").click();
+					var divToPrint=document.getElementById("myDivToPrint");
+					newWin= window.open("");
+					newWin.document.write(divToPrint.outerHTML);
+					var is_chrome = Boolean(newWin.chrome);
 
-			<?php
-			$companies = [
-
-				'GLOBAL01' => 'Makati City',
-				'LGMI01' => 'Makati City',
-				'MEGA01' => 'Makati City',
-				'TOWN01' => '3/F Forbestown Information Center, Rizal Drive corner 26th Street, Bonifacio Global City, Taguig',
-				'SUNT01' => '26th Floor, Alliance Global Tower, 36th Street cor 11th Avenue, Uptown Bonifacio',
-				'NCCAI' => 'Star Cruises Centre, 100 Andrews Avenue, Newport City, Vlllamor Air Base, Pasay City, Metro Man',
-				'MLI01' => '19/F Alliance Global Tower, 36th Street corner 11th Avenue, Uptown Bonifacio, Taguig City, 1634',
-				'MCTI' => 'CAPITOL BOULEVARD, BARANGAY STO. NI�O, CITY OF SAN FERNANDO, PAMPANGA',
-				'LUCK01' => '5F Lucky Chinatown Mall, Reina Regente St. corner Dela Reina St., Brgy. 293, Zone 28, Binondo, Manila',
-				'ERA01' => '30th Floor, Alliance Global Tower, 36th Street cor 11th Avenue, Uptown Bonifacio, Taguig City',
-				'ECOC01' => 'GF The World Center Building, 330 Senator Gil Puyat Avenue, Makati City',
-				'CITYLINK01' => 'Ground Floor, McKinley Parking Building, Service Road 2, Mckinley Town Center, Fort Bonifacio Taguig'
-
-			];
-
-			if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
-
-				$start_date = $_POST["start_date"];
-				$end_date = $_POST["end_date"];
-				$return_date = $_POST["return_date"];
-			?>
-					<h3 align="center" style="padding-top: 150px; letter-spacing: 10px;">CERTIFICATION</h3>
-
-					<div style="text-align: justify;  text-justify: inter-word;">
-						<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This is to certify that <b><?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower($emp_info[0]["FullName"])); ?></b> is currently employed with <b><?php echo $emp_info[0]["CompanyName"]; ?></b>
-						as <b><?php echo $emp_info[0]["PositionDesc"]." - ".$emp_info[0]["DeptDesc"]."</b> for ".$emp_info[0]["DivisionName"]." Division Since <b>".$emp_info[0]["HireDate"]; ?>
-						<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
-						up to the present.</b></p>
-						<?php } ?>
-
-						<p style="padding-left: 50px; padding-right: 50px;">This is to further certify that <?php echo ucwords(strtolower($emp_info[0]["salutation"]))." ".ucwords(strtolower($emp_info[0]["FullName"])); ?> shall be on leave from <b><?php echo $start_date." to ".$end_date; ?>
-						</b>as approved by the Management. He is expected to report back for work on <b><?php echo $return_date; ?></b>.</p>
-
-						<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["salutation"]))." ".ucwords(strtolower($emp_info[0]["FullName"])); ?>
-						<?php if($coe[0]["other_reason"]){ ?>
-							as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["other_reason"]; ?>.</p>
-						<?php }else{ ?>
-							for whatever legal purpose it may serve.</p>
-						<?php } ?>
-						<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
-					</div>
-
-					<?php
-					if($emp_info[0]["CompanyID"] == 'MCTI'){
-					?>
-						<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOEY I. VILLAFUERTE</br>
-						FIRST VICE PRESIDENT, CONTROLLERSHIP GROUP</p></b>
-					<?php
-					}elseif ($emp_info[0]["CompanyID"] == 'GLOBAL01' || $emp_info[0]["CompanyID"] == 'LGMI01' || $emp_info[0]["CompanyID"] == 'MIB01') {
-					?>
-						<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOSEPHINE F. ALIM</br>
-						ASSISTANT VICE PRESIDENT, </br>
-						CORPORATE HUMAN RESOURCES/OPERATIONS</p></b>
-					<?php
-					}else{
-					?>
-						<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">RAFAEL ANTONIO S. PEREZ</br>
-						Head, Human Resources and</br>
-						Corporate Administration Division</p></b>
-					<?php
-					}
-			}elseif ($coe[0]["type"] == "COECORRECTIONNAME") { // COE with Correction Name
-					?>
-
-					<h3 align="center" style="padding-top: 150px; letter-spacing: 10px;">CERTIFICATION</h3>
-
-					<div style="text-align: justify;  text-justify: inter-word;">
-						<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo ucwords(strtolower($emp_info[0]["FullName"])); ?></b> is a
-						<b><?php echo $emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." Division</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"]; ?>
-						<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
-						up to the present.</b></p>
-						<?php } ?>
-
-						<p style="padding-left: 50px; padding-right: 50px;">This also certifies that <?php echo ucwords(strtolower($emp_info[0]["FullName"]))." and ".ucwords(strtolower($coe[0]["correction_name"])); ?>
-						is the same person as <?php echo ucwords(strtolower($emp_info[0]["FullName"])); ?>.</p>
-
-						<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower($emp_info[0]["FullName"])); ?>
-						<?php if($coe[0]["other_reason"]){ ?>
-							as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["other_reason"]; ?>.</p>
-						<?php }else{ ?>
-							for whatever legal purpose it may serve.</p>
-						<?php } ?>
-
-						<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
-					</div>
-					<?php
-					if($emp_info[0]["CompanyID"] == 'MCTI'){
-					?>
-						<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOEY I. VILLAFUERTE</br>
-						FIRST VICE PRESIDENT, CONTROLLERSHIP GROUP</p></b>
-					<?php
-					}elseif ($emp_info[0]["CompanyID"] == 'GLOBAL01' || $emp_info[0]["CompanyID"] == 'LGMI01' || $emp_info[0]["CompanyID"] == 'MIB01') {
-					?>
-						<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOSEPHINE F. ALIM</br>
-						ASSISTANT VICE PRESIDENT, </br>
-						CORPORATE HUMAN RESOURCES/OPERATIONS</p></b>
-					<?php
-					}else{
-					?>
-						<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">RAFAEL ANTONIO S. PEREZ</br>
-						Head, Human Resources and</br>
-						Corporate Administration Division</p></b>
-					<?php
-					}
-
-			}elseif ($coe[0]["type"] == "COEHOUSINGPLAN") { //COE with HPA
-					?>
-
-					<h3 align="center" style="padding-top: 150px; letter-spacing: 10px;">CERTIFICATION</h3>
-
-					<div style="text-align: justify;  text-justify: inter-word;">
-						<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo ucwords(strtolower($emp_info[0]["FullName"])); ?></b> is a
-						<b><?php echo $emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." Division</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"]; ?>
-						<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
-						up to the present.</b></p>
-						<?php } ?>
-
-						<p style="padding-left: 50px; padding-right: 50px;">Furthermore, this is to certify that hei s qualified for a twenty five percent (25%)
-						discount in the company's housing program as stated in our employee handbook.</p>
-
-						<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower($emp_info[0]["FullName"]))."
-						as a requirement for the Deed of Absolute Sale of ".$emp_info[0]["Gender2"]." ".date('jS', mktime(0, 0, 0, 0, $coe[0]["other_reason"], 0)); ?> property availment under the company's housing program.</p>
-
-						<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
-					</div>
-					<?php
-					if($emp_info[0]["CompanyID"] == 'MCTI'){
-					?>
-						<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOEY I. VILLAFUERTE</br>
-						FIRST VICE PRESIDENT, CONTROLLERSHIP GROUP</p></b>
-					<?php
-					}elseif ($emp_info[0]["CompanyID"] == 'GLOBAL01' || $emp_info[0]["CompanyID"] == 'LGMI01' || $emp_info[0]["CompanyID"] == 'MIB01') {
-					?>
-						<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOSEPHINE F. ALIM</br>
-						ASSISTANT VICE PRESIDENT, </br>
-						CORPORATE HUMAN RESOURCES/OPERATIONS</p></b>
-					<?php
-					}else{
-					?>
-						<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">RAFAEL ANTONIO S. PEREZ</br>
-						Head, Human Resources and</br>
-						Corporate Administration Division</p></b>
-					<?php
-					}
-			}elseif ($coe[0]["type"] == "COEGOODMORAL") { // COE with Good Moral
-					?>
-					<h3 align="center" style="padding-top: 150px; letter-spacing: 10px;">CERTIFICATION</h3>
-
-					<div style="text-align: justify;  text-justify: inter-word;">
-						<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo ucwords(strtolower($emp_info[0]["FullName"])); ?></b> is a
-						<b><?php echo $emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." Division</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"]; ?>
-						<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
-						up to the present.</b></p>
-						<?php } ?>
-
-						<p style="padding-left: 50px; padding-right: 50px;">This further certifies that <?php echo $emp_info[0]["Gender"] ?> has no derogatory record on file.</p>
-
-						<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower($emp_info[0]["FullName"])); ?>
-						<?php if($coe[0]["other_reason"]){ ?>
-							as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["other_reason"];?>.</p>
-						<?php }else{ ?>
-							for whatever legal purpose it may serve.</p>
-						<?php } ?>
-
-						<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
-					</div>
-					<?php
-					if($emp_info[0]["CompanyID"] == 'MCTI'){
-					?>
-						<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOEY I. VILLAFUERTE</br>
-						FIRST VICE PRESIDENT, CONTROLLERSHIP GROUP</p></b>
-					<?php
-					}elseif ($emp_info[0]["CompanyID"] == 'GLOBAL01' || $emp_info[0]["CompanyID"] == 'LGMI01' || $emp_info[0]["CompanyID"] == 'MIB01') {
-					?>
-						<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOSEPHINE F. ALIM</br>
-						ASSISTANT VICE PRESIDENT, </br>
-						CORPORATE HUMAN RESOURCES/OPERATIONS</p></b>
-					<?php
-					}else{
-					?>
-						<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">RAFAEL ANTONIO S. PEREZ</br>
-						Head, Human Resources and</br>
-						Corporate Administration Division</p></b>
-					<?php
-					}
-			}elseif ($coe[0]["type"] == 'COESEPARATED') {
-						?>
-						<p style="text-align: center;"><img src="<?php echo IMG_WEB; ?>/gl_coe.png"/></p>
-
-						<h3 align="center" style="padding-top: 100px; letter-spacing: 10px;">CERTIFICATION</h3>
-
-						<div style="text-align: justify;  text-justify: inter-word;">
-							<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo ucwords(strtolower($emp_info[0]["FullName"])); ?></b> was employed as
-							<b><?php echo $emp_info[0]["PositionDesc"]."</b> by <b>".$emp_info[0]["CompanyName"]."</b> from <b>".$emp_info[0]["HireDate"]; ?>
-							<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
-							up to the present.</b></p>
-							<?php } ?>
-
-							<?php
-							if ($emp_info[0]["CompanyID"] == 'GLOBAL01' || $emp_info[0]["CompanyID"] == 'LGMI01' || $emp_info[0]["CompanyID"] == 'MIB01') {
-							?>
-							<p style="padding-left: 50px; padding-right: 50px;">This does not certify that <?php echo $emp_info[0]["CompanyName"];?> has cleared <?php echo $emp_info[0]["Gender2"]; ?> of
-							all of <?php echo $emp_info[0]["Gender2"]; ?> accountabilities with the Company.</p>
-							<?php } ?>
-
-							<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower($emp_info[0]["FullName"])); ?>
-							<?php
-								if($coe[0]["other_reason"]){
-							?>
-									as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["other_reason"];?>.</p>
-							<?php
-								}else if($coe[0]["reason"]){
-									if($coe[0]["category"] == 'VISA'){
-							 ?>
-										as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["category"]."(";
-										foreach($countries as $key => $country){
-											if($coe[0]["reason"] == $key){
-												echo $country;
-											}
-										}
-										?>).</p>
-							<?php
-									}else{
-							?>
-										as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["reason"];?>.</p>
-							<?php
-									}
-								}else{
-							?>
-									for whatever legal purpose it may serve.</p>
-							<?php
-								}
-							?>
-
-							<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
-						</div>
-						<?php
-						if($emp_info[0]["CompanyID"] == 'MCTI'){
-						?>
-							<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOEY I. VILLAFUERTE</br>
-							FIRST VICE PRESIDENT, CONTROLLERSHIP GROUP</p></b>
-						<?php
-						}elseif ($emp_info[0]["CompanyID"] == 'GLOBAL01' || $emp_info[0]["CompanyID"] == 'LGMI01' || $emp_info[0]["CompanyID"] == 'MIB01') {
-						?>
-							<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOSEPHINE F. ALIM</br>
-							ASSISTANT VICE PRESIDENT, </br>
-							CORPORATE HUMAN RESOURCES/OPERATIONS</p></b>
-						<?php
-						}else{
-						?>
-							<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">RAFAEL ANTONIO S. PEREZ</br>
-							Head, Human Resources and</br>
-							Corporate Administration Division</p></b>
-						<?php
-						}
-						?>
-						<b><p style="padding-top: 50px; text-align: right; font-size: 12px;">THIS DOCUMENT IS PRIVATE AND CONFIDENTIAL.</br>
-						FOR EMPLOYMENT DETAILS PURPOSES ONLY.</br>
-						NOT AS EMPLOYEE CLEARANCE.</p></b>
-						<?php
-
-			}elseif ($coe[0]["type"] == "COE") {
-						?>
-						<h3 align="center" style="padding-top: 150px; letter-spacing: 10px;">CERTIFICATION</h3>
-
-						<div style="text-align: justify;  text-justify: inter-word;">
-
-							<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo ucwords(strtolower($emp_info[0]["FullName"])); ?></b> is currently employed as
-							<b><?php echo $emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." Division</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"]; ?>
-							<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
-							up to the present.</b></p>
-							<?php } ?>
-
-							<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower($emp_info[0]["FullName"])); ?>
-							<?php
-								if($coe[0]["other_reason"]){
-							?>
-									as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["other_reason"];?>.</p>
-							<?php
-								}else if($coe[0]["reason"]){
-									if($coe[0]["category"] == 'VISA'){
-							 ?>
-										as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["category"]."(";
-										foreach($countries as $key => $country){
-											if($coe[0]["reason"] == $key){
-												echo $country;
-											}
-										}
-										?>).</p>
-							<?php
-									}else{
-							?>
-										as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["reason"];?>.</p>
-							<?php
-									}
-								}else{
-							?>
-									for whatever legal purpose it may serve.</p>
-							<?php
-								}
-							?>
-
-							<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
-						</div>
-						<?php
-						if($emp_info[0]["CompanyID"] == 'MCTI'){
-						?>
-							<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOEY I. VILLAFUERTE</br>
-							FIRST VICE PRESIDENT, CONTROLLERSHIP GROUP</p></b>
-						<?php
-						}elseif ($emp_info[0]["CompanyID"] == 'GLOBAL01' || $emp_info[0]["CompanyID"] == 'LGMI01' || $emp_info[0]["CompanyID"] == 'MIB01') {
-						?>
-							<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOSEPHINE F. ALIM</br>
-							ASSISTANT VICE PRESIDENT, </br>
-							CORPORATE HUMAN RESOURCES/OPERATIONS</p></b>
-						<?php
-						}else{
-						?>
-							<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">RAFAEL ANTONIO S. PEREZ</br>
-							Head, Human Resources and</br>
-							Corporate Administration Division</p></b>
-						<?php
-						}
-			}elseif ($coe[0]["type"] == "COEJOBDESC") {
-
-					$tasks = json_decode($coe[0]["job_desc"], true);
-					?>
-					<h3 align="center" style="padding-top: 150px; letter-spacing: 10px;">CERTIFICATION</h3>
-
-					<div style="text-align: justify;  text-justify: inter-word;">
-						<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo ucwords(strtolower($emp_info[0]["FullName"])); ?></b> was employed as
-						<b><?php echo $emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." Division</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"]; ?>
-						<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
-						up to the present.</b></p>
-						<?php } ?>
-
-						<p style="padding-left: 50px; padding-right: 50px;">As a <?php echo $emp_info[0]["PositionDesc"].", ". strtolower($emp_info[0]["Gender"]); ?> <?php if($emp_info[0]["DateResigned"]){ echo "had"; }else{ ?>
-						has<?php } ?> the following main responsibilities:</p>
-
-						<ul style="padding-left: 100px;">
-						<?php foreach($tasks as $task){ ?>
-						<li><?php echo $task;?></li>
-						<?php } ?>
-						</ul>
-
-						<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower($emp_info[0]["FullName"])); ?>
-						<?php if($coe[0]["other_reason"]){ ?>
-							as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["other_reason"]; ?>.</p>
-						<?php }else{ ?>
-							for whatever legal purpose it may serve.</p>
-						<?php } ?>
-
-						<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
-					</div>
-
-					<?php
-					if($emp_info[0]["CompanyID"] == 'MCTI'){
-					?>
-						<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOEY I. VILLAFUERTE</br>
-						FIRST VICE PRESIDENT, CONTROLLERSHIP GROUP</p></b>
-					<?php
-					}elseif ($emp_info[0]["CompanyID"] == 'GLOBAL01' || $emp_info[0]["CompanyID"] == 'LGMI01' || $emp_info[0]["CompanyID"] == 'MIB01') {
-					?>
-						<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">JOSEPHINE F. ALIM</br>
-						ASSISTANT VICE PRESIDENT, </br>
-						CORPORATE HUMAN RESOURCES/OPERATIONS</p></b>
-					<?php
-					}else{
-					?>
-						<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">RAFAEL ANTONIO S. PEREZ</br>
-						Head, Human Resources and</br>
-						Corporate Administration Division</p></b>
-					<?php
-					}
-			}elseif ($coe[0]["type"] == "COECOMPENSATION") {
-
-				//R&F to AVP -- Ms Malou
-				$rfavp = array('RF',
-									'RF II',
-									'SRF',
-									'SRF II',
-									'AS',
-									'AS II',
-									'AS III',
-									'S',
-									'S II',
-									'S III',
-									'SS',
-									'SS II',
-									'SS III',
-									'AM',
-									'AM II',
-									'AM III',
-									'MGR-A',
-									'M',
-									'M II',
-									'M III',
-									'SM',
-									'SM II',
-									'SM III',
-									'AVP', //end of megaworld ranks
-									'RF',
-									'R001',
-									'R002',
-									'R003',
-									'R004',
-									'S005',
-									'S006',
-									'S007',
-									'S008',
-									'S',
-									'SS',
-									'M009',
-									'M010',
-									'M011',
-									'M012',
-									'M',
-									'M-TTTI',
-									'SM',
-									'SM - TTTI',
-									'D013',
-									'D014',
-									'AVP-TTTI',
-									'AVP' // end of GL RANKS
-								);
-
-						//vp & up - Ms. Lourdes
-						$vpup = array('SAVP',
-										 'FVP', //end of GL RANKS
-										 'SAVP',
-										 'VP',
-										 'EVP',
-										 'SEVP',
-										 'SVP',
-									 	 'FVP',
-										 'COO',
-	 									 'D015',
-	 									 'D016' // end of MEGA RANKS
-									 );
-				?>
-				<h3 align="center" style="padding-top: 150px">CERTIFICATION OF EMPLOYMENT AND COMPENSATION</h3>
-
-			    <div style="text-align: justify;  text-justify: inter-word;">
-					<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">This is to certify that <b><?php echo strtoupper($emp_info[0]["FullName"]); ?></b> is an
-						employee of <b><?php echo $emp_info[0]["CompanyName"]; ?></b> since <b><?php echo $emp_info[0]["HireDate"]; ?>
-					<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
-					</b>and presently holding a regular appointment for the position of <b><?php echo $emp_info[0]["PositionDesc"]; ?></b></p>
-					<?php } ?>.
-
-					<p style="padding-left: 50px; padding-right: 50px;"><?php echo ucwords(strtolower($emp_info[0]["Gender2"])); ?> current monthly compensation are as follows:</p>
-
-							<table style="padding-left: 200px; padding-right: 50px">
-								<tr>
-									<td><b>Basic Salary</b></td>
-									<td style="padding-left: 50px;"><b><?php if(true){echo number_format($emp_info[0]["MonthlyRate"], 2);}else{ echo "SAMPLE"; }; ?></b></td>
-								</tr>
-								<?php if($emp_info[0]["Allowance"] != 0){ ?>
-									<tr>
-										<td><b>Allowance</b></td>
-										<td style="padding-left: 50px;"><b><?php echo number_format($emp_info[0]["Allowance"], 2); ?></b></td>
-									</tr>
-									<tr>
-										<td><b>Total</b></td>
-										<td style="padding-left: 50px;"><b><?php echo number_format($emp_info[0]["Allowance"] + $emp_info[0]["MonthlyRate"], 2); ?></b></td>
-									</tr>
-								<?php } ?>
-							</table>
-
-					<p style="padding-left: 50px; padding-right: 50px;">In addition to the above compensation package, <?php echo $emp_info[0]["Gender"]; ?> receives the mandatory
-					13th month pay during the twelve (12) month period.</p>
-
-					<p style="padding-left: 50px; padding-right: 50px;">This document is issued upon the request of <b><?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".strtoupper($emp_info[0]["FullName"]); ?>
-					<?php if($coe[0]["other_reason"]){ ?>
-						for <?php echo $emp_info[0]["Gender2"]. " <i>".$coe[0]["other_reason"]; ?></i></b>.</p>
-					<?php }else{ ?>
-					</b>for whatever legal purpose it may serve.</p>
-					<?php } ?>
-
-					<p style="padding-left: 50px; padding-right: 50px;">Given this <b><?php echo date('jS')." day of ".date('F, Y'); ?></b> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
-				</div>
-
-				<p style="padding-top: 50px; padding-left: 50px; padding-right: 50px;">Certified by:</p>
-
-				<?php
-				if(in_array($emp_info[0]["RankID"], $vpup)){ // for vp and up
-				?>
-					<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">LOURDES O. RAMILLO</br>
-					<i>Vice President - Financial Reporting Group<i></p></b>
-				<?php
-			}elseif (in_array($emp_info[0]["RankID"], $rfavp)) { // for r&f to avp
-				?>
-					<b><p style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">MARILOU C. GUARIÑA</br>
-					<i>ASSISTANT VICE PRESIDENT - Payroll</i></p></b>
-				<?php }
-			}
-				?>
-
-					<?php
-					if (($emp_info[0]["CompanyID"] == 'GLOBAL01' || $emp_info[0]["CompanyID"] == 'LGMI01' || $emp_info[0]["CompanyID"] == 'MIB01') && $coe[0]["type"] == 'COESEPARATED') {
-					?>
-					<p style="font-size: 10px;padding-top: 50px; padding-left: 50px; padding-right: 50px;">Ref No.:<?php echo $coe[0]["ref_no"]; ?></p>
-
-					<p style="font-size: 10px;padding-top: 50px; text-align: center;">Unit G, Ground Floor, 331 Building, 331 Sen. Gil Puyat Avenue, Barangay Bel-Air, Makati City 1200 • Tels (632) 5411979 / 8946345 </br>
-					<a href="www.globalcompanies.com.ph">www.globalcompanies.com.ph</a> • Email: <a href="globalonehr@globalcompanies.com.ph">globalonehr@globalcompanies.com.ph</a></p>
-					<?php
-					}else{
-					?>
-					<p style="font-size: 10px;padding-top: 100px; padding-left: 50px; padding-right: 50px;">Ref No.:<?php echo $coe[0]["ref_no"]; ?></p>
-					<?php
-					}
-					?>
-				</div>
-
-				<script>
-					$(document).ready(function(){
-						$(".closebutton").click();
-						$('#myDivToPrint').removeAttr("style");
-						$('#myDivToPrint').css({"display":"inline-block"});
-						var divToPrint=document.getElementById("myDivToPrint");
-						newWin= window.open("");
-						newWin.document.write(divToPrint.outerHTML);
-						var is_chrome = Boolean(newWin.chrome);
-
-						if (is_chrome) {
-							setTimeout(function() { // wait until all resources loaded
-								newWin.print();
-								// alert("Please close print preview.");
-								newWin.close();
-							}, 250);
-						} else {
+					if (is_chrome) {
+						setTimeout(function() { // wait until all resources loaded
 							newWin.print();
 							newWin.close();
-						}
-					});
-				</script>
+						}, 250);
+					} else {
+						newWin.print();
+						newWin.close();
+					}
+				});
+			</script>
 			<?
-
 
 		break;
 
@@ -6358,6 +6037,7 @@
 
 			$id = $_POST["id"];
 			$coeemp = $_POST["emp_id"];
+			$coe_company = $_POST["company_id"];
 			$refno = $_POST["ref_no"];
 			$coetype = $_POST["type"];
 			$status = $_POST["status"];
@@ -6448,7 +6128,7 @@
 
 					$emp_info = "SELECT * FROM viewHREmpMaster A
 								left join HRCompany B on A.CompanyID = B.CompanyID
-								left join HRDivision C on A.DivisionID = C.DivisionID WHERE A.EmpID='$coeemp'";
+								left join HRDivision C on A.DivisionID = C.DivisionID WHERE A.EmpID='$coeemp' AND A.CompanyID ='$coe_company'";
 					$emp_hr  = "SELECT B.EmailAdd, A.level FROM COEUsers A
 								LEFT JOIN SUBSIDIARY.DBO.viewHREmpMaster B on A.emp_id = B.EmpID AND A.[DB_NAME] = B.DBNAME
 								WHERE ";
@@ -6499,7 +6179,13 @@
 					$headers .= "MIME-Version: 1.0\r\n";
 					$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-					$emp_sendmail = mail($emp_info[0]['EmailAdd'], "COE Request Update", $message, $headers);
+					$coe_emp_email = $emp_info[0]['EmailAdd'];
+
+					if(!$emp_info[0]['Active']){
+						$coe_emp_email = $emp_info[0]['EmailAdd2'];
+					}
+
+					$emp_sendmail = mail($coe_emp_email, "COE Request Update", $message, $headers);
 
 					if($status == 'Cancelled' || $status == 'Done'){
 

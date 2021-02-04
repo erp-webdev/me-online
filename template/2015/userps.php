@@ -1362,6 +1362,7 @@
                                         $pagibig_pay = $payslip_data[0]['PAGIBIGEE'] ? $payslip_data[0]['PAGIBIGEE'] : 0;
                                         $wtax_pay = $payslip_data[0]['WTax'] ? $payslip_data[0]['WTax'] : 0;
                                         $total_main = $payslip_data[0]['TaxableIncome'];
+										$provident_pay = $payslip_data[0]['SSSEEP'] ? $payslip_data[0]['SSSEEP'] : 0;
 
 
                                         $total_taxable = $payslip_data[0]['GrossPay'];

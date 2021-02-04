@@ -119,7 +119,7 @@
                                                 <button class="smlbtn cursorpoint">View</button>
                                             </a>
                                         </td>
-                                        <td width="70%" class="lefttalign<?php if ($key == 0) : ?> topborder<?php endif; ?>"><span class="bold"><?php echo $value['announce_title']; ?></span><br>Published: <?php echo date('F j, Y', $value['announce_date']); ?><?php if ($profile_level == 7 || $profile_level == 10 || $profile_idnum == "2016-06-0457" ) : ?><br><span class="btneditmemo cursorpoint" attribute="<?php echo $value['announce_id']; ?>">Edit</span> | <span class="btndelmemo cursorpoint" attribute="<?php echo $value['announce_id']; ?>">Delete</span><?php endif; ?></td>
+                                        <td width="70%" class="lefttalign<?php if ($key == 0) : ?> topborder<?php endif; ?>"><span class="bold"><?php echo $value['announce_title']; ?></span><br>Published: <?php echo date('F j, Y', $value['announce_date']); ?><?php if ($profile_level == 7 || $profile_level == 10 || $profile_idnum == "2016-06-0457") : ?><br><span class="btneditmemo cursorpoint" attribute="<?php echo $value['announce_id']; ?>">Edit</span> | <span class="btndelmemo cursorpoint" attribute="<?php echo $value['announce_id']; ?>">Delete</span><?php endif; ?></td>
                                     </tr>
                                     <?php endforeach; ?>
                                     <?php if ($pages) : ?>

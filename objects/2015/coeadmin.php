@@ -18,21 +18,40 @@
 
 		$company_sort = $_SESSION["company_sort"] ? $_SESSION["company_sort"] : null ;
 		$coe_data = $mainsql->get_coe($start, NUM_ROWS, null, 0, 2,$profile_idnum, $company_sort);
-		$sql_users = "SELECT * FROM COEUsers";
-		$coe_users = $mainsql->get_row($sql_users);
+		$sql_users = "SELECT A.*, B.* FROM COEUsers A
+					LEFT JOIN SUBSIDIARY.DBO.viewHREmpMaster B on A.emp_id = B.EmpID and A.[DB_NAME] = B.DBNAME
+					WHERE A.emp_id = '$profile_id' and B.CompanyID = '$profile_comp' and B.CompanyActive = 1";
+		$coe_users = $mainsql->get_numrow($sql_users);
 
 		$sql_companies = "SELECT * FROM HRCompany";
 		$admin_companies = $mainsql->get_row($sql_companies);
 
 		$count = 0;
-		foreach ($coe_users as $key => $coe_user) {
-			if(($profile_id == $coe_user["emp_id"] && $profile_dbname == $coe_user["DB_NAME"]) || $profile_id == '2019-02-0033' || $profile_idnum == '2016-06-0457'){
-				$count++;
-			}
+		if($coe_users > 0){
+			$count = 1;
 		}
+		// foreach ($coe_users as $key => $coe_user) {
+		// 	if(($profile_id == $coe_user["emp_id"] && $profile_dbname == $coe_user["DB_NAME"])){
+		// 		$count++;
+		// 	}
+		// }
+
+		// foreach ($coe_users as $coe_user) {
+		// 	if (($coe_user['emp_id'] == $profile_idnum)) {
+		// 		if(empty($profile_email)){
+		// 			$count++;
+		// 			$admin_level = $coe_user['level'];
+		// 		}else if($coe_user['EmailAdd'] == $profile_email){
+		// 			$count++;
+		// 			$admin_level = $coe_user['level'];
+		// 		}
+		// 	}
+		// }
+
 		if($count == 0){
 			echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/login'</script>";
 		}
+
 
 		$coe_count = $mainsql->get_coe(0, 0, null, 1, 2,$profile_idnum, $company_sort);
 

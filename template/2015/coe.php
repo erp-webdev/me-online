@@ -19,16 +19,9 @@
 							<br><br>
 							<div>
 								<button id="coenewreq" value="New Request" class="smlbtn" attribute5="1">New Request</button>
-								<?php
-									foreach ($coe_users as $coe_user) {
-										if (($coe_user['emp_id'] == $profile_idnum && $coe_user['DB_NAME'] == $profile_dbname)) {
-								?>
+								<?php if($coe_users > 0){ ?>
 											<a href="<?php echo WEB; ?>/coeadmin" id="coeadmin" class="smlbtn" style="background-color:#3EC2FB;">Administration</a>
-								<?php
-											break;
-										}
-									}
-								?>
+								<?php } ?>
 								<table border="0" cellspacing="0" class="tdata width100per">
 									<?php
 									if ($coe_data) :

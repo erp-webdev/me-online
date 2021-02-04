@@ -65,7 +65,7 @@
 									</tr>
 									<button id="coenewreq" value="New Request" class="smlbtn" attribute5="2">New Request</button>
 
-									<input style="float: right;" type="button" id="coesearch" name="coesearch" value="Search" class="smlbtn" />
+									<input style="float: right;" type="button" attribute="<?php echo $admin_level; ?>" id="coesearch" name="coesearch" value="Search" class="smlbtn" />
 									<input style="float: right;" type="text" id="coeref" name="coeref" class="smltxtbox" placeholder="Reference # or Name" />&nbsp;
 								</div>
 								</br>
@@ -83,7 +83,7 @@
 											<th width="20%">FullName</th>
 											<th width="10%">Type</th>
 											<th width="10%">Employee</th>
-											<th width="10%">Company</th>
+											<th width="10%">Company ID</th>
 											<th width="10%">Status</th>
 											<th width="10%">Date Completed</th>
 										</tr>
