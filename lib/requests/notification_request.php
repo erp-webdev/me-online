@@ -3046,10 +3046,6 @@
         break;
         case 'approve':
 
-			//testdev
-			echo "<sript>alert();</script>"
-			exit(0);
-			//testdevend
             $doctype = $_POST['doctype'];
             $apppost['REQNBR'] = $_POST['reqnbr'];
             $apppost['TRANS'] = $_POST['trans'];
