@@ -3172,7 +3172,7 @@
                     $headers .= "MIME-Version: 1.0\r\n";
                     $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-                    $sendmail = mail($nxtapprover[0]['EmailAdd'], "New Leave $reqdesc for your Approval", $message, $headers);
+                    $sendmail = mail($nxtapprover[0]['EmailAdd'], "New $reqdesc for your Approval", $message, $headers);
                 endif;
             endif;
 
