@@ -3161,7 +3161,7 @@
                 if ($nappemailblock) :
                     //SEND EMAIL (NEXT APPROVER)
 
-                    $message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 100%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>New Leave Request from ".$requestor[0]['FName']." ".$requestor[0]['LName']."</span><br><br>Hi ".$nxtapprover[0]['FName'].",<br><br>";
+                    $message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 100%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>New $reqdesc Request from ".$requestor[0]['FName']." ".$requestor[0]['LName']."</span><br><br>Hi ".$nxtapprover[0]['FName'].",<br><br>";
                     $message .= "New request ".$requestor[0]['FName']." ".$requestor[0]['LName']." for ".strtolower($reqdesc)." with Reference No: ".$_POST['reqnbr']." for your approval. ";
                     $message .= "<br><br>Thanks,<br>";
                     $message .= SITENAME." Admin";
