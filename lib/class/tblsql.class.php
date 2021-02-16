@@ -2161,11 +2161,11 @@ class tblsql {
 
                 $add_form = $this->get_sp_data_status('SP_ADD_FORM', $val);
 
+				return $val;
                 if($add_form) {
                     return $add_form;
                 } else {
-					return $add_form;
-                    -- return FALSE;
+                    return FALSE;
                 }
 
 			break;
