@@ -57,8 +57,8 @@
                 $_POST['download_status'] = 1;
 
                 if($filemove) :
-					var_dump($_POST);exit(0);
-                    $add_form = $tblsql->form_action($_POST, 'add');			
+                    $add_form = $tblsql->form_action($_POST, 'add');
+					var_dump($add_form);exit(0);
                     if($add_form) :
 
                         //AUDIT TRAIL
