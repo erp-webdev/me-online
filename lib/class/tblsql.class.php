@@ -2161,7 +2161,6 @@ class tblsql {
 
                 $add_form = $this->get_sp_data_status('SP_ADD_FORM', $val);
 
-				return $add_form;
                 if($add_form) {
                     return $add_form;
                 } else {

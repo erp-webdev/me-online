@@ -58,9 +58,8 @@
 
                 if($filemove) :
                     $add_form = $tblsql->form_action($_POST, 'add');
-					var_dump($add_form);exit(0);
                     if($add_form) :
-
+        
                         //AUDIT TRAIL
                         $post['EMPID'] = $profile_idnum;
                         $post['TASKS'] = "CREATE_FORM";
