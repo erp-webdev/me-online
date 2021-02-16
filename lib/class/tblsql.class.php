@@ -2164,7 +2164,8 @@ class tblsql {
                 if($add_form) {
                     return $add_form;
                 } else {
-                    return FALSE;
+					return $add_form;
+                    -- return FALSE;
                 }
 
 			break;
