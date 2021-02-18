@@ -83,7 +83,7 @@
                                                 }
 
                                             ?>
-                                        <b style="font-size:9px;  color:red"><a href="maito: <?php echo $itr_mailto; ?> "><?php echo $itr_mailto; ?></a> </b>
+                                        <b ><a style="font-size:9px;  color:red" href="maito: <?php echo $itr_mailto; ?> "><?php echo $itr_mailto; ?></a> </b>
                                         <br>- Subject : <b>ITR 2020 - Company Name<b>
                                     </ul>
                                     
