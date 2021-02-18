@@ -168,7 +168,7 @@
                             </div>
 
                             <?php if (in_array($profile_dbname , ['GL', 'MCTI']) ) : ?>
-                            <a href="<?php echo WEB; ?>/uploads/download/GLEmployeeHandbook.pdf" target="_blank" style="float: right; bottom: 300px; position: absolute; right: 29px;">
+                            <a href="<?php echo WEB; ?>/uploads/download/GLEmployeeHandbook.pdf" target="_blank" style="float: right; bottom: 10px; position: absolute; right: 29px;">
                                 <img src="<?php echo WEB; ?>/images/glhandbook.png"  />
                             </a>
 
