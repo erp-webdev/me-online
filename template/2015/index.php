@@ -61,17 +61,14 @@
                                     <center class="robotobold dgraytext smalltext2"><a  href="<?php echo WEB; ?>/itr" >Download here</a>
                                     <?php if (in_array($profile_dbname, ['GL', 'LAFUERZA', 'MCTI', 'MLI', 'NCCAI', 'TOWNSQUARE', 'MEGAWORLD','GLOBAL_HOTEL', 'SUNTRUST', 'NEWTOWN', 
                                     'SIRUS', 'LCTM', 'EREX', 'ECOC', 'ECINEMA', 'CITYLINK'])) : ?>
-                                    <br><br><span class="vsmalltext ">(Due Date: <?php echo date('F j, Y', strtotime($deadline)); ?>)</span>
-                                    
                                     </center>
                                     <ul>
+                                        <li class="vsmalltext ">Due Date: <?php echo date('F j, Y', strtotime($deadline)); ?></li>
                                         <li class="vsmalltext ">Fill-up item No. 6, 6A, 7, 52 & 54</li>
-                                        <li class="vsmalltext ">Save in .pdf file with name format  (ALL CAPS) SURNAME_9 DIGIT TIN NO.-0000_12312020
-                                            <br>  SAMPLE: DELACRUZ_123-456-789-0000_12312020</li>
-                                        <li class="vsmalltext ">Send the ITR in .pdf format to the assigned email address below with subject : 
-                                            <br> ITR 2020 - Company Name (sample : ITR 2020 - MEGAWORLD)</li>
+                                        <li class="vsmalltext ">save in .pdf file with name format  (ALL CAPS) SURNAME_9 DIGIT TIN NO.-0000_12312020</li>
+                                        <li class="vsmalltext ">Send the ITR at manastacio.global@megaworldcorp.com </li>
+                                        <li class="vsmalltext ">subject : ITR 2020 - Company Name</li>
                                     </ul>
-                                    
                                     <?php endif; ?>
                                 </div>
                                 <br>
@@ -155,7 +152,7 @@
 
                                 <?php if (in_array($profile_dbname , ['GL', 'MCTI']) ) : ?>
                                 <div id="mainnotification" class="lefttalign whitetext marginbottom25">
-                                    <b class="smalltext dorangetext">Data Privacy Act Manual</b><br> Click <a href="<?php echo WEB; ?>/uploads/download/GLDPA.pdf" class="yellowtext" target="_blank">here</a>
+                                    <b class="smallte   xt dorangetext">Data Privacy Act Manual</b><br> Click <a href="<?php echo WEB; ?>/uploads/download/GLDPA.pdf" class="yellowtext" target="_blank">here</a>
                                 </div>
                                 <?php else : ?>
                                     <?php if ($profile_dbname != 'ECINEMA' && $profile_dbname != 'EPARKVIEW' && $profile_dbname != 'NEWTOWN' && $profile_dbname != 'LAFUERZA') : ?>
