@@ -34,14 +34,15 @@
                                 </div>
                                 <?php endif; ?>
 
-                                <?php if(in_array($profile_dbname, ['GL', 'LAFUERZA', 'MCTI', 'MLI', 'NCCAI', 'TOWNSQUARE', 'MEGAWORLD','GLOBAL_HOTEL','ASIAAPMI'])): ?>
+                                <?php if(in_array($profile_dbname, ['GL', 'LAFUERZA', 'MCTI', 'MLI', 'NCCAI', 'TOWNSQUARE', 'MEGAWORLD','GLOBAL_HOTEL','ASIAAPMI', 'SUNTRUST', 'NEWTOWN', 
+                                    'SIRUS', 'LCTM', 'EREX', 'ECOC', 'ECINEMA', 'CITYLINK'])): ?>
                                 <?php
                                     $display = true;
-									$deadline = '2020-03-15';
+									$deadline = '2020-02-24';
 
                                     switch ($profile_dbname) {
                                         case 'GL':
-											$deadline = '2020-03-30';
+											$deadline = '2020-02-24';
                                             if(date('Y-m-d') > date('Y-m-d' ,strtotime($deadline)))
                                                 $display = false;
 											break;
@@ -60,6 +61,8 @@
                                     <center class="robotobold dgraytext smalltext2"><a  href="<?php echo WEB; ?>/itr" >Download here</a>
                                     <?php if (in_array($profile_dbname, [''])) : ?>
                                     <br><br><span class="vsmalltext ">(Due Date: <?php echo date('F j, Y', strtotime($deadline)); ?>)</span></center>
+                                    
+
                                     <?php endif; ?>
                                 </div>
                                 <br>
