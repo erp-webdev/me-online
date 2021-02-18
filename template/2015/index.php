@@ -174,8 +174,8 @@
 
                             <?php else : ?>
                             <?php if ($profile_dbname != 'ECINEMA' && $profile_dbname != 'EPARKVIEW' && $profile_dbname != 'NEWTOWN' && $profile_dbname != 'LAFUERZA') : ?>
-                            <a href="<?php echo WEB; ?>/uploads/download/EmployeeHandbook.pdf" target="_blank">
-                                <img src="<?php echo WEB; ?>/images/mwhandbook.png" style="float: right; top: 400px; position: absolute; right: 29px;" />
+                            <a href="<?php echo WEB; ?>/uploads/download/EmployeeHandbook.pdf" target="_blank"  style="float: right; bottom: 150px; position: absolute; right: 29px;">
+                                <img src="<?php echo WEB; ?>/images/mwhandbook.png" />
                             </a>
 
                             <?php endif; ?>
