@@ -34,48 +34,7 @@
                                 </div>
                                 <?php endif; ?>
 
-                                <?php if(in_array($profile_dbname, ['GL', 'LAFUERZA', 'MCTI', 'MLI', 'NCCAI', 'TOWNSQUARE', 'MEGAWORLD','GLOBAL_HOTEL','ASIAAPMI', 'SUNTRUST', 'NEWTOWN', 
-                                    'SIRUS', 'LCTM', 'EREX', 'ECOC', 'ECINEMA', 'CITYLINK'])): ?>
-                                <?php
-                                    $display = true;
-									$deadline = '2021-02-24';
-
-                                    switch ($profile_dbname) {
-                                        case 'GL':
-											$deadline = '2021-02-24';
-                                            if(date('Y-m-d') > date('Y-m-d' ,strtotime($deadline)))
-                                                $display = true;
-											break;
-                                        case 'ASIAAPMI':
-											$deadline = '2021-02-28';
-                                            if(date('Y-m-d') > date('Y-m-d' ,strtotime($deadline)))
-                                                $display = false;
-											break;
-										default:
-											$display = false;
-                                    }
-                                 ?>
-
-                                <div class="dashcomp dashincentive" style="width: 90%; margin: 0; padding: 5%; <?php if(!$display) echo 'display:none'; ?>">
-                                    <span class="roboto orangetext mediumtext">Your 2020 Income Tax Return Form (BIR 2316)</span><br><br>
-                                    <center class="robotobold dgraytext smalltext2"><a  href="<?php echo WEB; ?>/itr" >Download here</a>
-                                    <?php if (in_array($profile_dbname, ['GL', 'LAFUERZA', 'MCTI', 'MLI', 'NCCAI', 'TOWNSQUARE', 'MEGAWORLD','GLOBAL_HOTEL', 'SUNTRUST', 'NEWTOWN', 
-                                    'SIRUS', 'LCTM', 'EREX', 'ECOC', 'ECINEMA', 'CITYLINK'])) : ?>
-                                    </center>
-                                    <ul>
-                                        <li class="vsmalltext ">Due Date: <?php echo date('F j, Y', strtotime($deadline)); ?></li>
-                                        <li class="vsmalltext ">Fill-up item No. 6, 6A, 7, 52 & 54</li>
-                                        <li class="vsmalltext ">save in .pdf file with name format  (ALL CAPS) SURNAME_9 DIGIT TIN NO.-0000_12312020</li>
-                                        <li class="vsmalltext ">Send the ITR at manastacio.global@megaworldcorp.com </li>
-                                        <li class="vsmalltext ">subject : ITR 2020 - Company Name</li>
-                                    </ul>
-                                    <?php endif; ?>
-                                </div>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <?php endif; ?>
+                             
                                 <?php if ($profile_dbname != 'ECINEMA' && $profile_dbname != 'EPARKVIEW' && $profile_dbname != 'NEWTOWN' && $profile_dbname != 'LAFUERZA') : ?>
 
                                 <!--div id="mainnotification" class="lefttalign whitetext marginbottom25">
@@ -166,6 +125,46 @@
                                 <?php endif; ?>
 
                             </div>
+
+                            <?php if(in_array($profile_dbname, ['GL', 'LAFUERZA', 'MCTI', 'MLI', 'NCCAI', 'TOWNSQUARE', 'MEGAWORLD','GLOBAL_HOTEL','ASIAAPMI', 'SUNTRUST', 'NEWTOWN', 
+                                    'SIRUS', 'LCTM', 'EREX', 'ECOC', 'ECINEMA', 'CITYLINK'])): ?>
+                                <?php
+                                    $display = true;
+									$deadline = '2021-02-24';
+
+                                    switch ($profile_dbname) {
+                                        case 'GL':
+											$deadline = '2021-02-24';
+                                            if(date('Y-m-d') > date('Y-m-d' ,strtotime($deadline)))
+                                                $display = true;
+											break;
+                                        case 'ASIAAPMI':
+											$deadline = '2021-02-28';
+                                            if(date('Y-m-d') > date('Y-m-d' ,strtotime($deadline)))
+                                                $display = false;
+											break;
+										default:
+											$display = false;
+                                    }
+                                 ?>
+
+                                <div class="dashcomp dashincentive" style="width: 90%; margin: 0; padding: 5%; <?php if(!$display) echo 'display:none'; ?>">
+                                    <span class="roboto orangetext mediumtext">Your 2020 Income Tax Return Form (BIR 2316)</span><br><br>
+                                    <center class="robotobold dgraytext smalltext2"><a  href="<?php echo WEB; ?>/itr" >Download here</a>
+                                    <?php if (in_array($profile_dbname, ['GL', 'LAFUERZA', 'MCTI', 'MLI', 'NCCAI', 'TOWNSQUARE', 'MEGAWORLD','GLOBAL_HOTEL', 'SUNTRUST', 'NEWTOWN', 
+                                    'SIRUS', 'LCTM', 'EREX', 'ECOC', 'ECINEMA', 'CITYLINK'])) : ?>
+                                    </center>
+                                    <ul>
+                                        <li class="vsmalltext ">Due Date: <?php echo date('F j, Y', strtotime($deadline)); ?></li>
+                                        <li class="vsmalltext ">Fill-up item No. 6, 6A, 7, 52 & 54</li>
+                                        <li class="vsmalltext ">save in .pdf file with name format  (ALL CAPS) SURNAME_9 DIGIT TIN NO.-0000_12312020</li>
+                                        <li class="vsmalltext ">Send the ITR at manastacio.global@megaworldcorp.com </li>
+                                        <li class="vsmalltext ">subject : ITR 2020 - Company Name</li>
+                                    </ul>
+                                    <?php endif; ?>
+                                </div>
+                                <br>
+                                <?php endif; ?>
 
                             <?php if (in_array($profile_dbname , ['GL', 'MCTI']) ) : ?>
                             <a href="<?php echo WEB; ?>/uploads/download/GLEmployeeHandbook.pdf" target="_blank">
