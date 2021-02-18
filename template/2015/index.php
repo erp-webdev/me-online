@@ -68,21 +68,22 @@
                                         <br>- Fill-up item No. <b>6, 6A, 7, 52 & 54</b>
                                         <br>- Save in .pdf file with name format (ALL CAPS) <br><b style="font-size: 9px"> SURNAME_9DIGITTINNO.-0000_12312020</b>
                                         <br> <b><i style="font-size:8px;"> ex: DELACRUZ_123-456-789-0000_1231202.pdf</i><b>
-                                        <br>- Send the ITR to <b style="font-size:9px;  color:red">
+                                        <br>- Send the ITR to  
                                             <?php 
+                                                $itr_mailto="";
                                                 if(in_array($profile_dbname, ['MEGAWORLD', 'GLOBAL_HOTEL', 'LAFUERZA', 'MLI', 'TOWNSQUARE', 'SIRUS', 'NEWTOWN']))
-                                                    echo 'manastacio.global@megaworldcorp.com';
+                                                    $itr_mailto= 'manastacio.global@megaworldcorp.com';
                                                 elseif(in_array($profile_dbname, ['GL'])){
                                                     if($profile_comp == 'GLOBAL01') 
-                                                        echo 'fgarcia.global@megaworldcorp.com';
+                                                        $itr_mailto= 'fgarcia.global@megaworldcorp.com';
                                                     else 
-                                                        echo 'cnsulat.glob  al@megaworldcorp.com';
+                                                        $itr_mailto= 'cnsulat.glob  al@megaworldcorp.com';
                                                 }elseif(in_array($profile_dbname, ['CITYLINK', 'ECINEMA', 'ECOC', 'EREX', 'LCTM', 'MCTI','NCCAI', 'SUNTRUST'])){
-                                                    echo 'mpcasabon.global@megaworldcorp.com';
+                                                    $itr_mailto= 'mpcasabon.global@megaworldcorp.com';
                                                 }
 
                                             ?>
-                                         </b>
+                                        <b style="font-size:9px;  color:red"><a href="maito: <?php echo $itr_mailto; ?> "></a> </b>
                                         <br>- Subject : <b>ITR 2020 - Company Name<b>
                                     </ul>
                                     
