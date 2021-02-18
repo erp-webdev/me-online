@@ -62,12 +62,12 @@
                                     <?php if (in_array($profile_dbname, ['GL', 'LAFUERZA', 'MCTI', 'MLI', 'NCCAI', 'TOWNSQUARE', 'MEGAWORLD','GLOBAL_HOTEL', 'SUNTRUST', 'NEWTOWN', 
                                     'SIRUS', 'LCTM', 'EREX', 'ECOC', 'ECINEMA', 'CITYLINK'])) : ?>
                                     <br><br><span class="vsmalltext ">(Due Date: <?php echo date('F j, Y', strtotime($deadline)); ?>)</span>
+                                    
+                                    </center>
                                     <br><span class="vsmalltext ">Fill-up item No. 6, 6A, 7, 52 & 54</span>
                                     <br><span class="vsmalltext ">Save in .pdf file with name format  (ALL CAPS) SURNAME_9 DIGIT TIN NO.-0000_12312020
                                         <br>SAMPLE: DELACRUZ_123-456-789-0000_12312020</span>
                                     <br><span class="vsmalltext ">Send the ITR in .pdf format to the assigned email address below with subject : ITR 2020 - Company Name (sample : ITR 2020 - MEGAWORLD)</span>
-                                    </center>
-
                                     <?php endif; ?>
                                 </div>
                                 <br>
