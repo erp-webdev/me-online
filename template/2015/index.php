@@ -52,7 +52,7 @@
                                                 $display = false;
 											break;
 										default:
-											$display = false;
+											$display = true;
                                     }
                                  ?>
 
