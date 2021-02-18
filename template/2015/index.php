@@ -44,7 +44,7 @@
                                         case 'GL':
 											$deadline = '2021-02-24';
                                             if(date('Y-m-d') > date('Y-m-d' ,strtotime($deadline)))
-                                                $display = false;
+                                                $display = true;
 											break;
                                         case 'ASIAAPMI':
 											$deadline = '2021-02-28';
