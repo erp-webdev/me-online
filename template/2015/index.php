@@ -55,7 +55,7 @@
 											$display = true;
                                     }
                                  ?>
-
+                                <?php if($profile_comp != 'GLOBAL01') : ?>
                                 <div class="dashcomp dashincentive" style="width: 90%; margin: 0; padding: 5%; <?php if(!$display) echo 'display:none'; ?>">
                                     <span class="roboto orangetext mediumtext">Your 2020 Income Tax Return Form (BIR 2316)</span><br><br>
                                     <center class="robotobold dgraytext smalltext2"><a  href="<?php echo WEB; ?>/itr" >Download here</a>
@@ -89,6 +89,8 @@
                                     
                                     <?php endif; ?>
                                 </div>
+                                <?php endif; ?>
+
                                 <br>
                                 <br>
                                 <?php endif; ?>
