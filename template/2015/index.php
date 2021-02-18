@@ -76,7 +76,7 @@
                                                     if($profile_comp == 'GLOBAL01') 
                                                         echo 'fgarcia.global@megaworldcorp.com';
                                                     else 
-                                                        echo 'cnsulat.global@megaworldcorp.com';
+                                                        echo 'cnsulat.glob  al@megaworldcorp.com';
                                                 }elseif(in_array($profile_dbname, ['CITYLINK', 'ECINEMA', 'ECOC', 'EREX', 'LCTM', 'MCTI','NCCAI', 'SUNTRUST'])){
                                                     echo 'mpcasabon.global@megaworldcorp.com';
                                                 }
@@ -199,7 +199,6 @@
                             <a href="https://tinyurl.com/yyp6m44z" target="_blank" style="float: right; bottom: 25px; position: absolute; right: 29px;">
                                 <img src="<?php echo WEB; ?>/images/CLUBACC.png" />
                             </a>
-
 
                             <?php if ($profile_comp == 'GLOBAL01') : ?>
                             <div id="mainannouncement" class="mainbody lefttalign whitetext width60per">
