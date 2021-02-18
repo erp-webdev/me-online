@@ -72,6 +72,8 @@
                                     
                                     <?php endif; ?>
                                 </div>
+                                <br>
+                                <br>
                                 <?php endif; ?>
                                 <?php if ($profile_dbname != 'ECINEMA' && $profile_dbname != 'EPARKVIEW' && $profile_dbname != 'NEWTOWN' && $profile_dbname != 'LAFUERZA') : ?>
 
@@ -150,7 +152,7 @@
                                 <?php endif; ?>
 
                                 <?php if (in_array($profile_dbname , ['GL', 'MCTI']) ) : ?>
-                                <div id="mainnotification" class="lefttalign whitetext marginbottom25">
+                                <div id="mainnotification" class="lefttalign whitetext marginbottom25" style="margin-top:100px">
                                     <b class="smallte   xt dorangetext">Data Privacy Act Manual</b><br> Click <a href="<?php echo WEB; ?>/uploads/download/GLDPA.pdf" class="yellowtext" target="_blank">here</a>
                                 </div>
                                 <?php else : ?>
