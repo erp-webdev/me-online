@@ -247,7 +247,12 @@
                                 <p><b><i>Integrity</i></b> &#8226; <b><i>Creativity</i></b> &#8226; <b><i>Innovation</i></b> &#8226; <b><i>Excellence</i></b> &#8226; <b><i>Love for the Company</i></b></p>
                             </div>
                             <?php endif; ?>
-
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
                         </div>
                     </div>
 
