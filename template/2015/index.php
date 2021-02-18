@@ -181,8 +181,8 @@
                             <?php endif; ?>
                             <?php endif; ?>
 
-                            <a href="https://tinyurl.com/yyp6m44z" target="_blank">
-                                <img src="<?php echo WEB; ?>/images/CLUBACC.png" style="float: right; top: 500px; position: absolute; right: 29px;" />
+                            <a href="https://tinyurl.com/yyp6m44z" target="_blank" style="float: right; bottom: 10px; position: absolute; right: 29px;">
+                                <img src="<?php echo WEB; ?>/images/CLUBACC.png" />
                             </a>
 
 
