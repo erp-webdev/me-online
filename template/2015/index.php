@@ -34,18 +34,18 @@
                                 </div>
                                 <?php endif; ?>
 
-                                <?php if(in_array($profile_dbname, ['GL', 'LAFUERZA', 'MCTI', 'MLI', 'NCCAI', 'TOWNSQUARE', 'MEGAWORLD','GLOBAL_HOTEL','ASIAAPMI', 'SUNTRUST', 'NEWTOWN', 
+                                <?php if(in_array($profile_dbname, ['LAFUERZA', 'MCTI', 'MLI', 'NCCAI', 'TOWNSQUARE','GLOBAL_HOTEL','ASIAAPMI', 'SUNTRUST', 'NEWTOWN', 
                                     'SIRUS', 'LCTM', 'EREX', 'ECOC', 'ECINEMA', 'CITYLINK'])): ?>
                                 <?php
                                     $display = true;
 									$deadline = '2021-02-24';
 
                                     switch ($profile_dbname) {
-                                        case 'GL':
-											$deadline = '2021-02-24';
-                                            if(date('Y-m-d') > date('Y-m-d' ,strtotime($deadline)))
-                                                $display = true;
-											break;
+                                        // case 'GL':
+										// 	$deadline = '2021-02-24';
+                                        //     if(date('Y-m-d') > date('Y-m-d' ,strtotime($deadline)))
+                                        //         $display = true;
+										// 	break;
                                         case 'ASIAAPMI':
 											$deadline = '2021-02-28';
                                             if(date('Y-m-d') > date('Y-m-d' ,strtotime($deadline)))
