@@ -60,7 +60,12 @@
                                     <span class="roboto orangetext mediumtext">Your 2020 Income Tax Return Form (BIR 2316)</span><br><br>
                                     <center class="robotobold dgraytext smalltext2"><a  href="<?php echo WEB; ?>/itr" >Download here</a>
                                     <?php if (in_array($profile_dbname, [''])) : ?>
-                                    <br><br><span class="vsmalltext ">(Due Date: <?php echo date('F j, Y', strtotime($deadline)); ?>)</span></center>
+                                    <br><br><span class="vsmalltext ">(Due Date: <?php echo date('F j, Y', strtotime($deadline)); ?>)</span>
+                                    <br><span class="vsmalltext ">Fill-up item No. 6, 6A, 7, 52 & 54</span>
+                                    <br><span class="vsmalltext ">Save in .pdf file with name format  (ALL CAPS) SURNAME_9 DIGIT TIN NO.-0000_12312020
+                                        <br>SAMPLE: DELACRUZ_123-456-789-0000_12312020</span>
+                                    <br><span class="vsmalltext ">Send the ITR in .pdf format to the assigned email address below with subject : ITR 2020 - Company Name (sample : ITR 2020 - MEGAWORLD)</span>
+                                    </center>
                                     
 
                                     <?php endif; ?>
