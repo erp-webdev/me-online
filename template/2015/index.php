@@ -38,11 +38,11 @@
                                     'SIRUS', 'LCTM', 'EREX', 'ECOC', 'ECINEMA', 'CITYLINK'])): ?>
                                 <?php
                                     $display = true;
-									$deadline = '2020-02-24';
+									$deadline = '2021-02-24';
 
                                     switch ($profile_dbname) {
                                         case 'GL':
-											$deadline = '2020-02-24';
+											$deadline = '2021-02-24';
                                             if(date('Y-m-d') > date('Y-m-d' ,strtotime($deadline)))
                                                 $display = false;
 											break;
