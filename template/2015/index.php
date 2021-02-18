@@ -66,7 +66,7 @@
                                    
                                         <br>- Due Date: <b><?php echo date('F j, Y', strtotime($deadline)); ?></b>
                                         <br>- Fill-up item No. <b>6, 6A, 7, 52 & 54</b>
-                                        <br>- Save in .pdf file with name format (ALL CAPS) <br><b> SURNAME_9DIGITTINNO.-0000_12312020</b>
+                                        <br>- Save in .pdf file with name format (ALL CAPS) <br><b style="font-size: 9px"> SURNAME_9DIGITTINNO.-0000_12312020</b>
                                         <br> <i style="font-size:9px"> ex: DELACRUZ_123-456-789-0000_1231202.pdf</i>
                                         <br>- Send the ITR to <b>
                                             <?php 
