@@ -65,7 +65,7 @@
                                     </center>
                                    
                                         <br>- Due Date: <b><?php echo date('F j, Y', strtotime($deadline)); ?></b>
-                                        <br>- Fill-up item No. 6, 6A, 7, 52 & 54
+                                        <br>- Fill-up item No. <b>6, 6A, 7, 52 & 54</b>
                                         <br>- Save in .pdf file with name format  (ALL CAPS) <br> <b> SURNAME_9 DIGIT TIN NO.-0000_12312020</b>
                                         <br>- Send the ITR to <b>
                                             <?php 
