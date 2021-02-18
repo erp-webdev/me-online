@@ -73,6 +73,8 @@
                                 </div>
                                 <br>
                                 <br>
+                                <br>
+                                <br>
                                 <?php endif; ?>
                                 <?php if ($profile_dbname != 'ECINEMA' && $profile_dbname != 'EPARKVIEW' && $profile_dbname != 'NEWTOWN' && $profile_dbname != 'LAFUERZA') : ?>
 
