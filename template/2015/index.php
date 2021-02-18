@@ -63,11 +63,11 @@
                                     'SIRUS', 'LCTM', 'EREX', 'ECOC', 'ECINEMA', 'CITYLINK'])) : ?>
                                     
                                     </center>
-                                    <ul >
-                                        <li style="decoration:none" class="vsmalltext ">Due Date: <?php echo date('F j, Y', strtotime($deadline)); ?></li>
-                                        <li class="vsmalltext ">Fill-up item No. 6, 6A, 7, 52 & 54</li>
-                                        <li class="vsmalltext ">Save in .pdf file with name format  (ALL CAPS) <br> <b> SURNAME_9 DIGIT TIN NO.-0000_12312020</b></li>
-                                        <li class="vsmalltext ">Send the ITR at manastacio.global@megaworldcorp.com
+                                   
+                                        <br>Due Date: <?php echo date('F j, Y', strtotime($deadline)); ?>
+                                        <br>Fill-up item No. 6, 6A, 7, 52 & 54
+                                        <br>Save in .pdf file with name format  (ALL CAPS) <br> <b> SURNAME_9 DIGIT TIN NO.-0000_12312020</b>
+                                        <br>Send the ITR at manastacio.global@megaworldcorp.com
                                             <?php 
                                                 if(in_array($profile_dbname, ['MEGAWORLD', 'GLOBAL_HOTEL', 'LAFUERZA', 'MLI', 'TOWNSQUARE', 'SIRUS', 'NEWTOWN']))
                                                     echo 'manastacio.global@megaworldcorp.com';
@@ -81,8 +81,8 @@
                                                 }
 
                                             ?>
-                                         </li>
-                                        <li class="vsmalltext ">Subject : <b>ITR 2020 - Company Name<b></li>
+                                         
+                                        <br>Subject : <b>ITR 2020 - Company Name<b>
                                     </ul>
                                     
                                     <?php endif; ?>
