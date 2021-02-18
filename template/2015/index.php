@@ -66,7 +66,6 @@
                                         <br>SAMPLE: DELACRUZ_123-456-789-0000_12312020</span>
                                     <br><span class="vsmalltext ">Send the ITR in .pdf format to the assigned email address below with subject : ITR 2020 - Company Name (sample : ITR 2020 - MEGAWORLD)</span>
                                     </center>
-                                    
 
                                     <?php endif; ?>
                                 </div>
