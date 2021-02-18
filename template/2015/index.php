@@ -153,7 +153,7 @@
                                 <?php endif; ?>
 
                                 <?php if (in_array($profile_dbname , ['GL', 'MCTI']) ) : ?>
-                                <div id="mainnotification" class="lefttalign whitetext marginbottom25" style="bottom: 50px">
+                                <div id="mainnotification" class="lefttalign whitetext marginbottom25" style="position: relative: bottom: 50px">
                                     <b class="smallte   xt dorangetext">Data Privacy Act Manual</b><br> Click <a href="<?php echo WEB; ?>/uploads/download/GLDPA.pdf" class="yellowtext" target="_blank">here</a>
                                 </div>
                                 <?php else : ?>
