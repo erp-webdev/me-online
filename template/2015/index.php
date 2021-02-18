@@ -63,8 +63,8 @@
                                     'SIRUS', 'LCTM', 'EREX', 'ECOC', 'ECINEMA', 'CITYLINK'])) : ?>
                                     
                                     </center>
-                                    <ul style="decoration:none">
-                                        <li class="vsmalltext ">Due Date: <?php echo date('F j, Y', strtotime($deadline)); ?></li>
+                                    <ul >
+                                        <li style="decoration:none" class="vsmalltext ">Due Date: <?php echo date('F j, Y', strtotime($deadline)); ?></li>
                                         <li class="vsmalltext ">Fill-up item No. 6, 6A, 7, 52 & 54</li>
                                         <li class="vsmalltext ">Save in .pdf file with name format  (ALL CAPS) <br> <b> SURNAME_9 DIGIT TIN NO.-0000_12312020</b></li>
                                         <li class="vsmalltext ">Send the ITR at manastacio.global@megaworldcorp.com
