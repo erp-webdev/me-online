@@ -67,7 +67,7 @@
                                         <br>- Due Date: <b><?php echo date('F j, Y', strtotime($deadline)); ?></b>
                                         <br>- Fill-up item No. <b>6, 6A, 7, 52 & 54</b>
                                         <br>- Save in .pdf file with name format (ALL CAPS) <br><b style="font-size: 9px"> SURNAME_9DIGITTINNO.-0000_12312020</b>
-                                        <br> <b><i style="font-size:9px;"> ex: DELACRUZ_123-456-789-0000_1231202.pdf</i><b>
+                                        <br> <b><i style="font-size:8px;"> ex: DELACRUZ_123-456-789-0000_1231202.pdf</i><b>
                                         <br>- Send the ITR to <b style="font-size:9px;  color:red">
                                             <?php 
                                                 if(in_array($profile_dbname, ['MEGAWORLD', 'GLOBAL_HOTEL', 'LAFUERZA', 'MLI', 'TOWNSQUARE', 'SIRUS', 'NEWTOWN']))
