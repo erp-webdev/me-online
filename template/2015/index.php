@@ -59,7 +59,8 @@
                                 <div class="dashcomp dashincentive" style="width: 90%; margin: 0; padding: 5%; <?php if(!$display) echo 'display:none'; ?>">
                                     <span class="roboto orangetext mediumtext">Your 2020 Income Tax Return Form (BIR 2316)</span><br><br>
                                     <center class="robotobold dgraytext smalltext2"><a  href="<?php echo WEB; ?>/itr" >Download here</a>
-                                    <?php if (in_array($profile_dbname, [''])) : ?>
+                                    <?php if (in_array($profile_dbname, ['GL', 'LAFUERZA', 'MCTI', 'MLI', 'NCCAI', 'TOWNSQUARE', 'MEGAWORLD','GLOBAL_HOTEL', 'SUNTRUST', 'NEWTOWN', 
+                                    'SIRUS', 'LCTM', 'EREX', 'ECOC', 'ECINEMA', 'CITYLINK'])) : ?>
                                     <br><br><span class="vsmalltext ">(Due Date: <?php echo date('F j, Y', strtotime($deadline)); ?>)</span>
                                     <br><span class="vsmalltext ">Fill-up item No. 6, 6A, 7, 52 & 54</span>
                                     <br><span class="vsmalltext ">Save in .pdf file with name format  (ALL CAPS) SURNAME_9 DIGIT TIN NO.-0000_12312020
