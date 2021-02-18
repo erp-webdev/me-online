@@ -61,6 +61,7 @@
                                     <center class="robotobold dgraytext smalltext2"><a  href="<?php echo WEB; ?>/itr" >Download here</a>
                                     <?php if (in_array($profile_dbname, ['GL', 'LAFUERZA', 'MCTI', 'MLI', 'NCCAI', 'TOWNSQUARE', 'MEGAWORLD','GLOBAL_HOTEL', 'SUNTRUST', 'NEWTOWN', 
                                     'SIRUS', 'LCTM', 'EREX', 'ECOC', 'ECINEMA', 'CITYLINK'])) : ?>
+                                    
                                     </center>
                                     <ul>
                                         <li class="vsmalltext ">Due Date: <?php echo date('F j, Y', strtotime($deadline)); ?></li>
@@ -152,7 +153,7 @@
                                 <?php endif; ?>
 
                                 <?php if (in_array($profile_dbname , ['GL', 'MCTI']) ) : ?>
-                                <div id="mainnotification" class="lefttalign whitetext marginbottom25" style="margin-bottom: 100px">
+                                <div id="mainnotification" class="lefttalign whitetext marginbottom25" style="bottom: 50px">
                                     <b class="smallte   xt dorangetext">Data Privacy Act Manual</b><br> Click <a href="<?php echo WEB; ?>/uploads/download/GLDPA.pdf" class="yellowtext" target="_blank">here</a>
                                 </div>
                                 <?php else : ?>
