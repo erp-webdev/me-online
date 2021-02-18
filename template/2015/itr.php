@@ -16,7 +16,7 @@
         <div id="mainnotification" class="mainbody lefttalign whitetext">  
             <b class="hugetext4 lorangetext">ITR not found</b><br><br>
             <br>
-            Your 2019 Income Tax Return Form (BIR 2316) was not found. Contact your payroll department.
+            Your 2020 Income Tax Return Form (BIR 2316) was not found. Contact your payroll department.
             <br><b>For Global One Employees, your ITR will be available on 22 February 2021.</b>
         </div>
         
