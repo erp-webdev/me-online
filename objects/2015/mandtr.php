@@ -175,7 +175,6 @@
                 //var_dump($mdpost);
 
                 $add_md = $mainsql->md_action($mdpost, 'add');		
-                exit;	
                 if($add_md) : 
 
                     for($i=1; $i<=5; $i++) :
