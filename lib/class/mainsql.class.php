@@ -2937,7 +2937,6 @@ class mainsql {
     function md_action($value, $action, $id = 0)
 	{
         $val = array();
-        echo 1;
 		switch ($action) {
 			case 'add':
 
