@@ -120,12 +120,8 @@
                     $mditempost['RESTDAY'] = $_POST['mdtr_newsched'][$cnti] ? 0 : 1;
                     $mditempost['SHIFTID'] = $_POST['mdtr_newsched'][$cnti];
                     if ($_POST['mdtr_timein'][$cnti] && $_POST['mdtr_timeout'][$cnti]) :
-                        echo $_POST['mdtr_newsched'][$cnti]; 
-                        echo '-';
-                        echo $_POST['mdtr_shiftdesc'][$cnti];
                         if (($_POST['mdtr_shiftdesc'][$cnti] != "NO SHIFT") && ($_POST['mdtr_newsched'][$cnti] != 0)) :
-                            var_dump($add_mditem); exit;
-
+                            echo '1';
                             $add_mditem = $mainsql->md_action($mditempost, 'add_item');	
                             if ($add_mditem) :
                                 $newhiftdesc = $mainsql->get_shift($_POST['mdtr_newsched'][$cnti]);
@@ -135,7 +131,7 @@
                         else :
                             $cnti++;
                         endif;
-        
+                        exit;
                     else :
         
                         if ((($_POST['mdtr_shiftdesc'][$cnti] != "RESTDAY") && ($_POST['mdtr_newsched'][$cnti] != "")) || (($_POST['mdtr_shiftdesc'][$cnti] != "NO SHIFT") && ($_POST['mdtr_newsched'][$cnti] != 0))) :
