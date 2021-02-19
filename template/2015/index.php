@@ -34,7 +34,7 @@
                                 </div>
                                 <?php endif; ?>
 
-                                <?php if(in_array($profile_dbname, ['GL', 'LAFUERZA', 'MCTI', 'MLI', 'NCCAI', 'TOWNSQUARE', 'MEGAWORLD','GLOBAL_HOTEL','ASIAAPMI', 'SUNTRUST', 'NEWTOWN', 
+                                <?php if(in_array($profile_dbname, ['GL', 'LAFUERZA', 'MCTI', 'MLI', 'NCCAI', 'TOWNSQUARE','GLOBAL_HOTEL','ASIAAPMI', 'SUNTRUST', 'NEWTOWN', 
                                     'SIRUS', 'LCTM', 'EREX', 'ECOC', 'ECINEMA', 'CITYLINK'])): ?>
                                 <?php
                                     $display = true;
@@ -251,7 +251,7 @@
                             </div>
                             <?php endif; ?>
                                 
-                        </div>
+                        </div> 
                         <br>
                                 <br>
                                 <br>
