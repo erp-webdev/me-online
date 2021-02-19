@@ -175,6 +175,7 @@
                 //var_dump($mdpost);
 
                 $add_md = $mainsql->md_action($mdpost, 'add');			
+                var_dump($add_md); exit;
                 if($add_md) : 
 
                     for($i=1; $i<=5; $i++) :
@@ -230,8 +231,8 @@
                         $message .= "</table>";
                         $message .= "<br><br>Thanks,<br>";
                         $message .= SITENAME." Admin";
-			$message .= "<br>Click<a href='https://portal.megaworldcorp.com/me/login'> here</a> to login";
-			$message .= "<hr />".MAILFOOT."</div>";
+                        $message .= "<br>Click<a href='https://portal.megaworldcorp.com/me/login'> here</a> to login";
+                        $message .= "<hr />".MAILFOOT."</div>";
 
                         $headers = "From: ".NOTIFICATION_EMAIL."\r\n";
                         $headers .= "Reply-To: ".NOTIFICATION_EMAIL."\r\n";
@@ -250,7 +251,7 @@
                         $message .= "New request ".$requestor[0]['FName']." ".$requestor[0]['LName']." for Manual DTR with Reference No: ".$add_md." on ".date('F j, Y')." for your approval. ";
                         $message .= "<br><br>Thanks,<br>";
                         $message .= SITENAME." Admin";
-			$message .= "<br>Click<a href='https://portal.megaworldcorp.com/me/login'> here</a> to login";
+			            $message .= "<br>Click<a href='https://portal.megaworldcorp.com/me/login'> here</a> to login";
                         $message .= "<hr />".MAILFOOT."</div>";
 
                         $headers = "From: ".NOTIFICATION_EMAIL."\r\n";
