@@ -130,7 +130,6 @@
                         else :
                             $cnti++;
                         endif;
-                        exit;
                     else :
         
                         if ((($_POST['mdtr_shiftdesc'][$cnti] != "RESTDAY") && ($_POST['mdtr_newsched'][$cnti] != "")) || (($_POST['mdtr_shiftdesc'][$cnti] != "NO SHIFT") && ($_POST['mdtr_newsched'][$cnti] != 0))) :
