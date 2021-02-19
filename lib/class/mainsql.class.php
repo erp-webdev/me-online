@@ -2937,7 +2937,7 @@ class mainsql {
     function md_action($value, $action, $id = 0)
 	{
         $val = array();
-
+        echo 1;
 		switch ($action) {
 			case 'add':
 
@@ -2958,6 +2958,7 @@ class mainsql {
                 endforeach;
 
                 $add_md = $this->get_sp_data_status('SP_INSERT_APPLY_MD', $val);
+                echo 2;
 
                 if($add_md) {
                     return $add_md;
