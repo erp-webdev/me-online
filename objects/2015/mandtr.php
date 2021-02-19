@@ -124,9 +124,9 @@
                         echo '-';
                         echo $_POST['mdtr_shiftdesc'][$cnti];
                         if (($_POST['mdtr_shiftdesc'][$cnti] != "NO SHIFT") && ($_POST['mdtr_newsched'][$cnti] != 0)) :
+                            var_dump($add_mditem); exit;
 
                             $add_mditem = $mainsql->md_action($mditempost, 'add_item');	
-                            var_dump($add_mditem); exit;
                             if ($add_mditem) :
                                 $newhiftdesc = $mainsql->get_shift($_POST['mdtr_newsched'][$cnti]);
                                 $mail_details .= "<tr><td>".date('M j', strtotime($value))."</td><td>".($_POST['mdtr_timein'][$cnti] ? date('M j g:ia', strtotime($_POST['mdtr_dayin'][$cnti].' '.$_POST['mdtr_timein'][$cnti])) : '')."</td><td>".($_POST['mdtr_timeout'][$cnti] ? date('M j g:ia', strtotime($_POST['mdtr_dayout'][$cnti].' '.$_POST['mdtr_timeout'][$cnti])) : '')."</td><td>".($_POST['mdtr_shiftdesc'][$cnti] ? $_POST['mdtr_shiftdesc'][$cnti] : 'RESTDAY')."</td><td>".($_POST['mdtr_newsched'][$cnti] ? $newhiftdesc[0]['ShiftDesc'] : 'RESTDAY')."</td></tr>";
