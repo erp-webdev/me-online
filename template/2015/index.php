@@ -34,7 +34,7 @@
                                 </div>
                                 <?php endif; ?>
 
-                                <?php if(in_array($profile_dbname, ['GL', 'LAFUERZA', 'MCTI', 'MLI', 'NCCAI', 'TOWNSQUARE','GLOBAL_HOTEL','ASIAAPMI', 'SUNTRUST', 'NEWTOWN', 
+                                <?php if(in_array($profile_dbname, ['GL', 'LAFUERZA', 'MCTI', 'MLI', 'NCCAI', 'TOWNSQUARE', 'MEGAWORLD','GLOBAL_HOTEL','ASIAAPMI', 'SUNTRUST', 'NEWTOWN', 
                                     'SIRUS', 'LCTM', 'EREX', 'ECOC', 'ECINEMA', 'CITYLINK'])): ?>
                                 <?php
                                     $display = true;
@@ -55,7 +55,7 @@
 											$display = true;
                                     }
                                  ?>
-                                <?php if($profile_comp != 'GLOBAL01') : ?>
+
                                 <div class="dashcomp dashincentive" style="width: 90%; margin: 0; padding: 5%; <?php if(!$display) echo 'display:none'; ?>">
                                     <span class="roboto orangetext mediumtext">Your 2020 Income Tax Return Form (BIR 2316)</span><br><br>
                                     <center class="robotobold dgraytext smalltext2"><a  href="<?php echo WEB; ?>/itr" >Download here</a>
@@ -89,8 +89,6 @@
                                     
                                     <?php endif; ?>
                                 </div>
-                                <?php endif; ?>
-
                                 <br>
                                 <br>
                                 <?php endif; ?>
@@ -250,9 +248,6 @@
                                 <p><b><i>Integrity</i></b> &#8226; <b><i>Creativity</i></b> &#8226; <b><i>Innovation</i></b> &#8226; <b><i>Excellence</i></b> &#8226; <b><i>Love for the Company</i></b></p>
                             </div>
                             <?php endif; ?>
-                                
-                        </div> 
-                        <br>
                                 <br>
                                 <br>
                                 <br>
@@ -261,7 +256,8 @@
                                 <br>
                                 <br>
                                 <br>
+                                <br>
+                        </div>
                     </div>
-
 
     <?php include(TEMP."/footer.php"); ?>
