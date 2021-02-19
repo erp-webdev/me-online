@@ -2958,7 +2958,7 @@ class mainsql {
                 endforeach;
 
                 $add_md = $this->get_sp_data_status('SP_INSERT_APPLY_MD', $val);
-                echo 2;
+                echo $add_md;
 
                 if($add_md) {
                     return $add_md;
