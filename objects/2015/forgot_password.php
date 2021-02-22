@@ -1,5 +1,5 @@
 <?php    
-
+	
 	if ($logged == 1) :
 
 		echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."'</script>";		
@@ -19,6 +19,7 @@
 
             $qnumber = trim($_POST['qnumber']);
             $qanswer = trim(str_replace('-', '', $_POST['empidnum2']));
+            
             $emp_info = $logsql->get_member($_POST['empidnum']);
 
             if ($emp_info) :
@@ -39,6 +40,7 @@
                         exit();
                     endif;
                 endif;
+
                 $message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 100%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>Megaworld SSEP Password Retrieve</span><br><br>Hi ".$emp_info[0]['FName'].",<br><br>";
                 $message .= "Your account password has been successfully retrieve.<br><br>";
                 $message .= "<b>".$emp_info[0]['EPassword']."</b><br><br>";
@@ -47,13 +49,11 @@
                 $message .= "Megaworld SSEP Admin";
                 $message .= "<hr />".MAILFOOT."</div>";
                 
-                $headers = "From: noreply@alias.megaworldcorp.com\r\n";
+                $headers = "From: ssap-noreply@alias.megaworldcorp.com\r\n";
                 $headers .= "Reply-To: noreply@megaworldcorp.com\r\n";
                 $headers .= "MIME-Version: 1.0\r\n";
                 $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
         
-
-                // $sendmail = mail($emp_info[0]['EmailAdd'], "Megaworld SSEP Password Change", $message, $headers);   
                 $sendmail = mail($emp_info[0]['EmailAdd'], "Megaworld SSEP Password Change", $message, $headers);   
 
                 if ($sendmail) :
@@ -69,7 +69,7 @@
                     echo '{"success": true}';
                     exit();
                 else :
-                    echo '{"success": false, "error": "Mail error (maybe your email address haven\'t set)"}';
+                    echo '{"success": false, "error": "Mail error"}';
                     exit();
                 endif;
             else :
