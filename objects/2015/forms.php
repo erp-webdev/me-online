@@ -1,6 +1,6 @@
 <?php
 
-	if ($logged == 1 && in_array($profile_dbname, ['MEGAWORLD','MLI'])) {
+	if ($logged == 1 && in_array($profile_dbname, ['MEGAWORLD','MLI','GL'])) {
 
 		# PAGINATION
 		$page = isset($_GET["page"]) ? (int)$_GET["page"] : 1 ;
@@ -59,7 +59,7 @@
                 if($filemove) :
                     $add_form = $tblsql->form_action($_POST, 'add');
                     if($add_form) :
-        
+
                         //AUDIT TRAIL
                         $post['EMPID'] = $profile_idnum;
                         $post['TASKS'] = "CREATE_FORM";
