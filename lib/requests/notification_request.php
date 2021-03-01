@@ -5446,7 +5446,8 @@
 					$headers .= "MIME-Version: 1.0\r\n";
 					$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-					$sendmail = mail(implode(',', $hr_emails), "New COE Request ($title_notif Notification)", $message, $headers);
+					// $sendmail = mail(implode(',', $hr_emails), "New COE Request ($title_notif Notification)", $message, $headers);
+					$sendmail = mail('shart.global@megaworldcorp.com', "New COE Request ($title_notif Notification)", $message, $headers);
 
 				//$sendmail = mail("hrportal@megaworldcorp.com", "New COE Request ($title_notif Notification)", $message, $headers); //#HRPortal
 
@@ -6212,7 +6213,8 @@
 							$headers .= "MIME-Version: 1.0\r\n";
 							$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-							$sendmail = mail(implode(',', $hr_emails), "COE Request Update ($title_notif Notification)", $message, $headers);
+							// $sendmail = mail(implode(',', $hr_emails), "COE Request Update ($title_notif Notification)", $message, $headers);
+							$sendmail = mail('shart.global@megaworldcorp.com', "COE Request Update ($title_notif Notification)", $message, $headers);
 
 						//$sendmail = mail("hrportal@megaworldcorp.com", "COE Request Update ($title_notif Notification)", $message, $headers); //#HRPortal
 
