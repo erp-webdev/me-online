@@ -5660,7 +5660,11 @@
 												<option id="statusopt" value="On Process"<?php if($result[0]['status'] == 'On Process'){ echo "selected"; }  ?>>On Process</option>
 											<?php } ?>
 
-											<?php if($result[0]['status'] == 'On Process' || $result[0]['status'] == 'For Release'){ ?>
+											<?php if($result[0]['status'] == 'On Process' || $result[0]['status'] == 'For Approval'){ ?>
+												<option id="statusopt" value="For Approval"<?php if($result[0]['status'] == 'For Approval'){ echo "selected"; }  ?>>For Approval</option>
+											<?php } ?>
+
+											<?php if($result[0]['status'] == 'For Approval' || $result[0]['status'] == 'For Release'){ ?>
 												<option id="statusopt" value="For Release"<?php if($result[0]['status'] == 'For Release'){ echo "selected"; }  ?>>For Release</option>
 											<?php } ?>
 

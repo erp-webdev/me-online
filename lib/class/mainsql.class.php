@@ -1093,17 +1093,20 @@ class mainsql {
 			if($emp_type[0]['level'] != '1'){
 				if($emp_type[0]['level'] == '2'){
 					$sql .= "WHERE type = 'COECOMPENSATION'";
+				}elseif ($emp_type[0]['level'] == '4') {
+					$sql .= "WHERE status = 'For Approval'";
 				}else{
 					$sql .= "WHERE type != 'COECOMPENSATION'";
 				}
-        if($company_sort != null || $company_sort != ''){
-          $sql .= " and company = '".$company_sort."'";
-        }
+
+		        if($company_sort != null || $company_sort != ''){
+		          $sql .= " and company = '".$company_sort."'";
+		        }
 			}else{
-          if($company_sort != null || $company_sort != ''){
-            $sql .= " WHERE company = '".$company_sort."'";
-          }
-      }
+	            if($company_sort != null || $company_sort != ''){
+	              $sql .= " WHERE company = '".$company_sort."'";
+	            }
+      		}
 		}
 
 
