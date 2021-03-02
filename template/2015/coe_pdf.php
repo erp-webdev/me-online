@@ -391,6 +391,8 @@
 			<?php
 			}elseif ($coe[0]["company"] == 'GLOBAL01' || $coe[0]["company"] == 'LGMI01' || $coe[0]["company"] == 'MIB01') {
 			?>
+				<p><img style="width: <?php echo $send_pdf ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/coe_sig_test.png"/></p>
+
 				<b><p style="padding-top: 40px; <?php echo $send_pdf ? '' : 'padding-bottom: 40px;'; ?> padding-left: 50px; padding-right: 50px;">JOSEPHINE F. ALIM<br />
 				Associate Director</b>
 			<?php
