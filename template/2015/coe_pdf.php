@@ -367,7 +367,9 @@
 		<?php
 	}
 	?>
-	&nbsp;<br />
+	<?php
+		echo !$send_pdf ? '&nbsp;<br />'  : '';
+	?>
 
 	<!-- Signatory START -->
 	<?php
@@ -391,7 +393,15 @@
 			<?php
 			}elseif ($coe[0]["company"] == 'GLOBAL01' || $coe[0]["company"] == 'LGMI01' || $coe[0]["company"] == 'MIB01') {
 			?>
-				<p><img style="width: <?php echo $send_pdf ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/coe_sig_test.png"/></p>
+				<?php
+				if($send_pdf){
+				?>
+					<p style="padding-top: 40px; <?php echo $send_pdf ? '' : 'padding-bottom: 40px;'; ?> padding-left: 50px; padding-right: 50px;">
+						<img style="width: <?php echo $send_pdf ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/coe_sig_test.png"/>
+					</p>
+				<?php
+				}
+				?>
 
 				<b><p style="padding-top: 40px; <?php echo $send_pdf ? '' : 'padding-bottom: 40px;'; ?> padding-left: 50px; padding-right: 50px;">JOSEPHINE F. ALIM<br />
 				Associate Director</b>
