@@ -5423,9 +5423,6 @@
 				// foreach($hr_emails as $email){
 				// }
 
-					$hr_name = "SELECT NickName from viewHREmpMaster where EmailAdd='$email'";
-					$hr_name = $mainsql->get_row($hr_name);
-
 					$message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 95%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>New Certificate of Employment Request</span><br><br>";
 
 					$message .= "A new Certificate of Employment ";
@@ -6128,7 +6125,7 @@
 				}
 
 				if($old_status != $status){
-				if($status == 'On Process' || $status == 'For Release' || $status == 'Cancelled' || $status == 'Done'){
+				if($status == 'On Process' || $status == 'For Approval' || $status == 'For Release' || $status == 'Cancelled' || $status == 'Done'){
 
 
 					$emp_info = "SELECT * FROM viewHREmpMaster A
@@ -6138,18 +6135,33 @@
 								LEFT JOIN SUBSIDIARY.DBO.viewHREmpMaster B on A.emp_id = B.EmpID AND A.[DB_NAME] = B.DBNAME
 								WHERE ";
 
-					if(in_array($coetype, $coetypes["2"])){
-						$emp_hr .="A.[level] = '2'";
+					if($status == 'For Approval'){
+						$emp_hr .="A.[level] = '4'";
+
+						if ($coe_old[0]["company"] == 'GLOBAL01' || $coe_old[0]["company"] == 'LGMI01' || $coe_old[0]["company"] == 'MIB01') {
+							// Ma'am Joy
+						}elseif ($coe_old[0]["company"] == 'MCTI') {
+							// Sir Joey
+						}else{
+							// Sir Raffy
+						}
+
 					}else{
-						$emp_hr .="A.[level] = '3'";//change to 3 to change the email receipt to individual assigned HR and delete #hrportal
+						if(in_array($coetype, $coetypes["2"])){
+							$emp_hr .="A.[level] = '2'";
+						}else{
+							$emp_hr .="A.[level] = '3'";//change to 3 to change the email receipt to individual assigned HR and delete #hrportal
+						}
+						$emp_hr .=" or A.[level] ='1'";
 					}
-					$emp_hr .=" or A.[level] ='1'";
 
 					$emp_info = $mainsql->get_row($emp_info);
 					$emp_hr = $mainsql->get_row($emp_hr);
 
 					if($emp_hr[0]['level'] == 2){
 						$title_notif = 'PR';
+					}elseif ($emp_hr[0]['level'] == 4) {
+						$title_notif = 'For Approval';
 					}else{
 						$title_notif = 'HR';
 					}
@@ -6193,36 +6205,52 @@
 					$emp_sendmail = mail($coe_emp_email, "COE Request Update", $message, $headers);
 
 					if($status == 'Cancelled' || $status == 'Done'){
-
 						// foreach($hr_emails as $email){
 						// }
 
-							$hr_name = "SELECT NickName from viewHREmpMaster where EmailAdd='$email'";
-							$hr_name = $mainsql->get_row($hr_name);
+						$message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 95%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>Certificate of Employment Request</span><br><br>";
 
-							$message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 95%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>Certificate of Employment Request</span><br><br>";
+						if($status == 'Cancelled'){// gohere
+							$message .= "The Requested Certificate of Employment ($coetype) for ".$emp_info[0]['FullName']."(".$emp_info[0]['CompanyName'].") - (".$emp_info[0]['DivisionName'].") with a Reference No. ".$refno." has been Cancelled at ".date('F j, Y', strtotime($coe_result[0]['created_at'])).".";
+						}else if ($status == 'Done'){
+							$message .= "The Requested Certificate of Employment ($coetype) for ".$emp_info[0]['FullName']."(".$emp_info[0]['CompanyName'].") - (".$emp_info[0]['DivisionName'].") with a Reference No. ".$refno." has been Done/Claimed at ".date('F j, Y', strtotime($coe_result[0]['updated_at'])).".";
+						}
 
-							if($status == 'Cancelled'){// gohere
-								$message .= "The Requested Certificate of Employment ($coetype) for ".$emp_info[0]['FullName']."(".$emp_info[0]['CompanyName'].") - (".$emp_info[0]['DivisionName'].") with a Reference No. ".$refno." has been Cancelled at ".date('F j, Y', strtotime($coe_result[0]['created_at'])).".";
-							}else if ($status == 'Done'){
-								$message .= "The Requested Certificate of Employment ($coetype) for ".$emp_info[0]['FullName']."(".$emp_info[0]['CompanyName'].") - (".$emp_info[0]['DivisionName'].") with a Reference No. ".$refno." has been Done/Claimed at ".date('F j, Y', strtotime($coe_result[0]['updated_at'])).".";
-							}
-							$message .= "<br><br>Thanks,<br>";
-							$message .= SITENAME." Admin";
-							$message .= "<br>Click<a href='https://portal.megaworldcorp.com/me/login'> here</a> to login";
-							$message .= "<hr />".MAILFOOT."</div>";
+						$message .= "<br><br>Thanks,<br>";
+						$message .= SITENAME." Admin";
+						$message .= "<br>Click<a href='https://portal.megaworldcorp.com/me/login'> here</a> to login";
+						$message .= "<hr />".MAILFOOT."</div>";
 
-							$headers = "From: ".NOTIFICATION_EMAIL."\r\n";
-							$headers .= "Reply-To: ".NOTIFICATION_EMAIL."\r\n";
-							$headers .= "MIME-Version: 1.0\r\n";
-							$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+						$headers = "From: ".NOTIFICATION_EMAIL."\r\n";
+						$headers .= "Reply-To: ".NOTIFICATION_EMAIL."\r\n";
+						$headers .= "MIME-Version: 1.0\r\n";
+						$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-							// $sendmail = mail(implode(',', $hr_emails), "COE Request Update ($title_notif Notification)", $message, $headers);
-							$sendmail = mail('shart.global@megaworldcorp.com', "COE Request Update ($title_notif Notification)", $message, $headers);
+						// $sendmail = mail(implode(',', $hr_emails), "COE Request Update ($title_notif Notification)", $message, $headers);
+						$sendmail = mail('shart.global@megaworldcorp.com', "COE Request Update ($title_notif Notification)", $message, $headers);
 
 						//$sendmail = mail("hrportal@megaworldcorp.com", "COE Request Update ($title_notif Notification)", $message, $headers); //#HRPortal
 
+					}elseif ($status == 'For Approval') {
+						$message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 95%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>Certificate of Employment Request for Approval</span><br><br>";
+						$message .= "The Requested Certificate of Employment ($coetype) for ".$emp_info[0]['FullName']."(".$emp_info[0]['CompanyName'].") - (".$emp_info[0]['DivisionName'].") with a Reference No. ".$refno." is now for your approval.";
+
+						$message .= "<br><br>Thanks,<br>";
+						$message .= SITENAME." Admin";
+						$message .= "<br>Click<a href='https://portal.megaworldcorp.com/me/login'> here</a> to login";
+						$message .= "<hr />".MAILFOOT."</div>";
+
+						$headers = "From: ".NOTIFICATION_EMAIL."\r\n";
+						$headers .= "Reply-To: ".NOTIFICATION_EMAIL."\r\n";
+						$headers .= "MIME-Version: 1.0\r\n";
+						$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+						// $sendmail = mail(implode(',', $hr_emails), "COE Request Update ($title_notif Notification)", $message, $headers);
+						$sendmail = mail('shart.global@megaworldcorp.com', "COE Request $title_notif Notification", $message, $headers);
+
+						//$sendmail = mail("hrportal@megaworldcorp.com", "COE Request Update ($title_notif Notification)", $message, $headers); //#HRPortal
 					}
+
 				}
 				}
 
