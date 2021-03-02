@@ -5677,6 +5677,7 @@
 							<?php }else{ ?>
 									<?php //if($result[0]['status'] == 'Pending'){ echo "Pending"; }  ?>
 									<?php if($result[0]['status'] == 'On Process'){ echo "On Process"; }  ?>
+									<?php if($result[0]['status'] == 'For Approval'){ echo "For Approval"; }  ?>
 									<?php if($result[0]['status'] == 'For Release'){ echo "For Release"; }  ?>
 									<?php if($result[0]['status'] == 'Done'){ echo "Done/Claimed"; }  ?>
 									<?php if($result[0]['status'] == 'Cancelled'){ echo "Cancelled"; }  ?>
@@ -5697,7 +5698,7 @@
 					<tr>
 						<td colspan="3" align="center">
 							<?php if($level == 2){
-									if($result[0]['status'] == 'On Process' || $result[0]['status'] == 'For Release' || $result[0]['status'] == 'Done'){?>
+									if($result[0]['status'] == 'On Process' || $result[0]['status'] == 'For Release' || $result[0]['status'] == 'Done' || $result[0]['status'] == 'For Approval'){?>
 										<button id="printcoe" value="Print" attribute="<?php echo $result[0]['id']; ?>" attribute2="<?php echo $result[0]['status']; ?>" attribute3="<?php echo $result[0]['type']; ?>" class="smlbtn" style="background-color:#3EC2FB; width:45px;">Print</button>
 							<?php 	} ?>
 
@@ -5708,7 +5709,7 @@
 
 							<?php	if($result[0]['status'] == 'Done' || $result[0]['status'] == 'Cancelled'){ ?>
 							<?php 	}else{ ?>
-										<button id="savecoe" value="Save" attribute9="<?php echo $result[0]['company']; ?>" attribute8="<?php echo $result[0]['status']; ?>" attribute5="<?php echo $result[0]['ref_no']; ?>" attribute4="<?php echo $result[0]["type"]; ?>" attribute3="<?php echo $result[0]['emp_id']; ?>" attribute="<?php echo $result[0]['id'] ?>" attribute2="<?php echo $result[0]['cancelled_at'].$result[0]['released_at']; ?>" class="smlbtn" style="width:45px;" <?php if($result[0]['cancelled_at'] != null || $result[0]['released_at'] != null){ echo "disabled";} ?>>Save</button>
+										<button id="savecoe" value="Save" attribute9="<?php echo $result[0]['company']; ?>" attribute8="<?php echo $result[0]['status']; ?>" attribute5="<?php echo $result[0]['ref_no']; ?>" attribute4="<?php echo $result[0]["type"]; ?>" attribute3="<?php echo $result[0]['emp_id']; ?>" attribute="<?php echo $result[0]['id'] ?>" attribute2="<?php echo $result[0]['cancelled_at'].$result[0]['released_at']; ?>" class="smlbtn" style="width:45px;" <?php if($result[0]['cancelled_at'] != null || $result[0]['released_at'] != null){ echo "disabled";} ?>> <?php echo $result[0]['status'] == 'For Approval' ? 'Approve' : 'Save'; ?></button>
 							<?php 	} ?>
 							<?php } ?>
 
