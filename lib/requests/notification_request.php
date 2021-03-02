@@ -6109,7 +6109,7 @@
 			if($coe_old[0]['status'] == 'For Approval'){
 
 				$coe_message = 'CoE has been approved!';
-				$status = 'For Release'
+				$status = 'For Release';
 
 				$sql = "UPDATE
 							COERequests
