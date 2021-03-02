@@ -6114,7 +6114,7 @@
 				$sql = "UPDATE
 							COERequests
 						SET
-							status = $status,
+							status = '".$status."',
 							updated_at = '".$datetoday."',
 							updated_by = '".$profile_idnum."'
 						WHERE
