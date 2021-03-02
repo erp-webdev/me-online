@@ -368,7 +368,7 @@
 	}
 	?>
 	<?php
-		echo !$send_pdf ? '&nbsp;<br />'  : '';
+		echo !$send_pdf ? '&nbsp;<br /> send'  : 'send';
 	?>
 
 	<!-- Signatory START -->
