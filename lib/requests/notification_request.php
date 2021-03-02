@@ -6065,8 +6065,7 @@
 				]
 			];
 
-			if($status == "Cancelled")
-			{
+			if($status == "Cancelled"){
 				$sql = "UPDATE
 							COERequests
 						SET
@@ -6077,8 +6076,7 @@
 							cancelled_by = '".$profile_idnum."'
 						WHERE
 							id=$id";
-			}else if($status == "Done")
-			{
+			}else if($status == "Done"){
 				$sql = "UPDATE
 							COERequests
 						SET
@@ -6093,8 +6091,7 @@
 							avail_no = '".$avail_no."'
 						WHERE
 							id=$id";
-			}else
-			{
+			}else{
 				$sql = "UPDATE
 							COERequests
 						SET
@@ -6108,14 +6105,30 @@
 						WHERE
 							id=$id";
 			}
+			$coe_message = '';
+			if($coe_old[0]['status'] == 'For Approval'){
+
+				$coe_message = 'CoE has been approved!';
+
+				$sql = "UPDATE
+							COERequests
+						SET
+							status = 'For Release',
+							updated_at = '".$datetoday."',
+							updated_by = '".$profile_idnum."'
+						WHERE
+							id=$id";
+			}
 
 			$result = $mainsql->get_execute($sql);
 
-
 			if($result){
+				if($coe_message){
+					$coe_message = 'CoE has been saved!';
+				}
 
 				echo "<meta http-equiv='refresh' content='0'>";
-				echo "<script>alert('CoE has been saved!');</script>";
+				echo "<script>alert('$coe_message');</script>";
 
 				$coe_query = "SELECT * FROM COERequests WHERE id=$id";
 
