@@ -6174,6 +6174,8 @@
 						$message .= "Your Certificate of Employment ($coetype) with a Reference No. ".$refno." has been Cancelled at ".date('F j, Y', strtotime($coe_result[0]['created_at'])).".";
 					}else if ($status == 'On Process'){
 						$message .= "Your Certificate of Employment ($coetype) with a Reference No. ".$refno." is now On Process (".date('F j, Y', strtotime($coe_result[0]['updated_at'])).").";
+					}else if ($status == 'For Approval'){
+						$message .= "Your Certificate of Employment ($coetype) with a Reference No. ".$refno." is now For Approval (".date('F j, Y', strtotime($coe_result[0]['updated_at'])).").";
 					}else if ($status == 'Done'){
 						$message .= "Your Certificate of Employment ($coetype) with a Reference No. ".$refno." has been Done/Claimed at ".date('F j, Y', strtotime($coe_result[0]['updated_at'])).".";
 					}
