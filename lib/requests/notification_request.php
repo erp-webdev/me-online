@@ -4584,7 +4584,7 @@
 							<select id="coetype" name="coetype" class="txtbox" style="width:193px;">
 								<option value="">Please Select</option>
 								<option value="COE">Certificate Of Employment</option>
-								<option value="COECOMPENSATION">CoE with Compensation</option>
+								<!-- <option value="COECOMPENSATION">CoE with Compensation</option> -->
 								<option value="COEHOUSINGPLAN">CoE with Housing Plan</option>
 								<option value="COEJOBDESC">CoE with Job Desc</option>
 								<option value="COEGOODMORAL">CoE with Good Moral</option>
