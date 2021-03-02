@@ -5661,7 +5661,7 @@
 												<option id="statusopt" value="For Approval"<?php if($result[0]['status'] == 'For Approval'){ echo "selected"; }  ?>>For Approval</option>
 											<?php } ?>
 
-											<?php if($result[0]['status'] == 'For Release'){ ?>
+											<?php if($result[0]['status'] == 'On Process' || $result[0]['status'] == 'For Release'){ ?>
 												<option id="statusopt" value="For Release"<?php if($result[0]['status'] == 'For Release'){ echo "selected"; }  ?>>For Release</option>
 											<?php } ?>
 
@@ -6116,7 +6116,8 @@
 						SET
 							status = '".$status."',
 							updated_at = '".$datetoday."',
-							updated_by = '".$profile_idnum."'
+							updated_by = '".$profile_idnum."',
+							approved = 1
 						WHERE
 							id=$id";
 			}
