@@ -6137,20 +6137,11 @@
 
 					if($status == 'For Approval'){
 						$emp_hr .="A.[level] = '4'";
-
-						if ($coe_old[0]["company"] == 'GLOBAL01' || $coe_old[0]["company"] == 'LGMI01' || $coe_old[0]["company"] == 'MIB01') {
-							// Ma'am Joy
-						}elseif ($coe_old[0]["company"] == 'MCTI') {
-							// Sir Joey
-						}else{
-							// Sir Raffy
-						}
-
 					}else{
 						if(in_array($coetype, $coetypes["2"])){
 							$emp_hr .="A.[level] = '2'";
 						}else{
-							$emp_hr .="A.[level] = '3'";//change to 3 to change the email receipt to individual assigned HR and delete #hrportal
+							$emp_hr .="A.[level] = '3'";
 						}
 						$emp_hr .=" or A.[level] ='1'";
 					}
@@ -6174,7 +6165,7 @@
 
 					$message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 95%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>Certificate of Employment Request</span><br><br>Hi ".$emp_info[0]['NickName'].",<br><br>";
 
-					if($status == 'For Release'){// gohere
+					if($status == 'For Release'){
 						$message .= "Your Certificate of Employment ($coetype) with a Reference No: ".$refno." is now For Release (".date('F j, Y', strtotime($coe_result[0]['updated_at'])).").";
 						if($emp_hr[0]['level'] != 2){
 							$message .= " Schedule of COE release is every Monday to Friday from 2:00 to 4:00 PM. Please coordinate with your HR Business Partner.";
@@ -6204,9 +6195,8 @@
 
 					$emp_sendmail = mail($coe_emp_email, "COE Request Update", $message, $headers);
 
+					// SEND NOTIF TO ADMINS IF THE COE IS DONE/CANCELLED AND TO THE APPROVERS IF FOR APPROVAL
 					if($status == 'Cancelled' || $status == 'Done'){
-						// foreach($hr_emails as $email){
-						// }
 
 						$message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 95%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>Certificate of Employment Request</span><br><br>";
 
@@ -6229,8 +6219,6 @@
 						// $sendmail = mail(implode(',', $hr_emails), "COE Request Update ($title_notif Notification)", $message, $headers);
 						$sendmail = mail('shart.global@megaworldcorp.com', "COE Request Update ($title_notif Notification)", $message, $headers);
 
-						//$sendmail = mail("hrportal@megaworldcorp.com", "COE Request Update ($title_notif Notification)", $message, $headers); //#HRPortal
-
 					}elseif ($status == 'For Approval') {
 						$message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 95%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>Certificate of Employment Request for Approval</span><br><br>";
 						$message .= "The Requested Certificate of Employment ($coetype) for ".$emp_info[0]['FullName']."(".$emp_info[0]['CompanyName'].") - (".$emp_info[0]['DivisionName'].") with a Reference No. ".$refno." is now for your approval.";
@@ -6245,10 +6233,22 @@
 						$headers .= "MIME-Version: 1.0\r\n";
 						$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-						// $sendmail = mail(implode(',', $hr_emails), "COE Request Update ($title_notif Notification)", $message, $headers);
-						$sendmail = mail('shart.global@megaworldcorp.com', "COE Request $title_notif Notification", $message, $headers);
+						if($coetype != 'COECOMPENSATION'){
+							if ($coe_old[0]["company"] == 'GLOBAL01' || $coe_old[0]["company"] == 'LGMI01' || $coe_old[0]["company"] == 'MIB01') {
+								// Ma'am Joy Notification
+								$approver_email = 'shart.global@megaworldcorp.com';
+							}elseif ($coe_old[0]["company"] == 'MCTI') {
+								// Sir Joey Notification
+								$approver_email = 'rcanto.global@megaworldcorp.com';
+							}else{
+								// Sir Raffy Notification
+								$approver_email = 'slimbo.global@megaworldcorp.com';
+							}
+							$sendmail = mail($approver_email, "COE Request $title_notif Notification", $message, $headers);
+						}else{
+							// INSERT COMPENSATION APPROVERS HERE
+						}
 
-						//$sendmail = mail("hrportal@megaworldcorp.com", "COE Request Update ($title_notif Notification)", $message, $headers); //#HRPortal
 					}
 
 				}
