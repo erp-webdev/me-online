@@ -419,7 +419,7 @@
 		<?php if (in_array($coe[0]["type"], ['COE', 'COEHOUSINGPLAN', 'COEGOODMORAL', 'COESEPARATED', 'COECORRECTIONNAME', 'COEAPPROVEDLEAVE'])){ ?>
 			&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />
 			&nbsp;<br />&nbsp;<br />
-			<?php if($coe[0]["type"] == 'COE'){ ?>
+			<?php if($coe[0]["type"] == 'COE' && !$send_pdf){ ?>
 				&nbsp;<br />&nbsp;<br />
 				&nbsp;<br />&nbsp;<br />
 			<?php } ?>
