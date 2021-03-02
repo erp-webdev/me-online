@@ -396,8 +396,8 @@
 				<?php
 				if($send_pdf){
 				?>
-					<p style="padding-top: 40px; <?php echo $send_pdf ? '' : 'padding-bottom: 40px;'; ?> padding-left: 50px; padding-right: 50px;">
-						<img style="width: <?php echo $send_pdf ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/coe_sig_test.png"/>
+					<p>
+						<img style="width: 150px" src="<?php echo IMG_WEB; ?>/coe_sig_test.png"/>
 					</p>
 				<?php
 				}
