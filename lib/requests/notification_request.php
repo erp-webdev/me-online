@@ -6105,7 +6105,7 @@
 						WHERE
 							id=$id";
 			}
-			$coe_message = '';
+			$coe_message = 'CoE has been saved!';
 			if($coe_old[0]['status'] == 'For Approval'){
 
 				$coe_message = 'CoE has been approved!';
@@ -6123,9 +6123,6 @@
 			$result = $mainsql->get_execute($sql);
 
 			if($result){
-				if($coe_message){
-					$coe_message = 'CoE has been saved!';
-				}
 
 				echo "<meta http-equiv='refresh' content='0'>";
 				echo "<script>alert('$coe_message');</script>";
