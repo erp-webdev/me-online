@@ -396,9 +396,7 @@
 				<?php
 				if($send_pdf){
 				?>
-					<p>
-						<img style="width: 150px" src="<?php echo IMG_WEB; ?>/coe_sig_test.png"/>
-					</p>
+					<img style="width: 150px" src="<?php echo IMG_WEB; ?>/coe_sig_test.png"/>
 				<?php
 				}
 				?>
