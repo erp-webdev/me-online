@@ -6109,11 +6109,12 @@
 			if($coe_old[0]['status'] == 'For Approval'){
 
 				$coe_message = 'CoE has been approved!';
+				$status = 'For Release'
 
 				$sql = "UPDATE
 							COERequests
 						SET
-							status = 'For Release',
+							status = $status,
 							updated_at = '".$datetoday."',
 							updated_by = '".$profile_idnum."'
 						WHERE
@@ -6162,8 +6163,6 @@
 
 					if($emp_hr[0]['level'] == 2){
 						$title_notif = 'PR';
-					}elseif ($emp_hr[0]['level'] == 4) {
-						$title_notif = 'For Approval';
 					}else{
 						$title_notif = 'HR';
 					}
@@ -6209,12 +6208,14 @@
 					$emp_sendmail = mail($coe_emp_email, "COE Request Update", $message, $headers);
 
 					// SEND NOTIF TO ADMINS IF THE COE IS DONE/CANCELLED AND TO THE APPROVERS IF FOR APPROVAL
-					if($status == 'Cancelled' || $status == 'Done'){
+					if($status == 'Cancelled' || $status == 'Done' || $status == 'For Release'){
 
 						$message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 95%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>Certificate of Employment Request</span><br><br>";
 
 						if($status == 'Cancelled'){// gohere
 							$message .= "The Requested Certificate of Employment ($coetype) for ".$emp_info[0]['FullName']."(".$emp_info[0]['CompanyName'].") - (".$emp_info[0]['DivisionName'].") with a Reference No. ".$refno." has been Cancelled at ".date('F j, Y', strtotime($coe_result[0]['created_at'])).".";
+						}else if ($status == 'For Release'){
+							$message .= "The Requested Certificate of Employment ($coetype) for ".$emp_info[0]['FullName']."(".$emp_info[0]['CompanyName'].") - (".$emp_info[0]['DivisionName'].") with a Reference No. ".$refno." has been Approved at ".date('F j, Y', strtotime($coe_result[0]['updated_at'])).".";
 						}else if ($status == 'Done'){
 							$message .= "The Requested Certificate of Employment ($coetype) for ".$emp_info[0]['FullName']."(".$emp_info[0]['CompanyName'].") - (".$emp_info[0]['DivisionName'].") with a Reference No. ".$refno." has been Done/Claimed at ".date('F j, Y', strtotime($coe_result[0]['updated_at'])).".";
 						}
@@ -6257,7 +6258,7 @@
 								// Sir Raffy Notification
 								$approver_email = 'slimbo.global@megaworldcorp.com';
 							}
-							$sendmail = mail($approver_email, "COE Request $title_notif Notification", $message, $headers);
+							$sendmail = mail($approver_email, "COE Request for Approval", $message, $headers);
 						}else{
 							// INSERT COMPENSATION APPROVERS HERE
 						}
