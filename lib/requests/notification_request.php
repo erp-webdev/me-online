@@ -5658,7 +5658,7 @@
 											<?php } ?>
 
 											<?php if($result[0]['status'] == 'On Process' || $result[0]['status'] == 'For Approval'){ ?>
-												<option id="statusopt" value="For Approval"<?php if($result[0]['status'] == 'For Approval'){ echo "selected"; }  ?>>For Approval - (for sending CoE)</option>
+												<option id="statusopt" value="For Approval"<?php if($result[0]['status'] == 'For Approval'){ echo "selected"; }  ?>>For Approval - (E-signature)</option>
 											<?php } ?>
 
 											<?php if($result[0]['status'] == 'On Process' || $result[0]['status'] == 'For Release'){ ?>
