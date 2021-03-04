@@ -5511,7 +5511,12 @@
 							<?php } ?>
 							<div class="coejobinput">
 								<?php foreach($tasks as $task){ ?>
-								<div class="first"><a href="#" class="remove_field fa fa-close"></a><input type="text" name="coetasks[]" class="txtbox tasks" style="width:175px;" value="<?php echo $task; ?>"/></div>
+								<div class="first">
+									<?php if($level != 1){ ?>
+										<a href="#" class="remove_field fa fa-close"></a>
+									<?php } ?>
+									<input type="text" name="coetasks[]" class="txtbox tasks" style="width:175px;" value="<?php echo $task; ?>"/>
+								</div>
 								<?php } ?>
 							</div>
 						</td>
