@@ -5695,6 +5695,18 @@
 						</td>
 					</tr>
 
+					<?php if($level == 2){ ?>
+						<tr id="coeapproval">
+							<td></td>
+							<td align="left">
+								<label>E-sig. Approval: </label>
+							</td>
+							<td align="left">
+								<?php echo $result[0]['approved'] ? 'Approved' : 'No Approval/Unapproved'; ?>
+							</td>
+						</tr>
+					<?php } ?>
+
 					<tr>
 						<td colspan="3" align="center">
 							<?php if($level == 2){
