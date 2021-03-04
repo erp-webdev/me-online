@@ -5702,7 +5702,7 @@
 								<label>E-sig. Approval: </label>
 							</td>
 							<td align="left">
-								<?php echo $result[0]['approved'] ? 'Approved' : 'No Approval/Unapproved'; ?>
+								<?php echo $result[0]['approved'] ? 'Approved' : 'No Approval'; ?>
 							</td>
 						</tr>
 					<?php } ?>
