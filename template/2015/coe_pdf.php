@@ -324,7 +324,9 @@
 
 				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
 			</div>
-			&nbsp;<br />
+			<?php
+				echo !$send_pdf ? '&nbsp;<br />'  : '';
+			?>
 
 
 			<?php
