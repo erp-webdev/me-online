@@ -4774,7 +4774,7 @@
 					changeYear: true
 				});
 
-				var max_fields      = 10; //maximum input boxes allowed
+				var max_fields      = 5; //maximum input boxes allowed
 				var wrapper   		= $(".coejobinput"); //Fields wrapper
 				var add_button      = $(".add_field_button"); //Add button ID
 

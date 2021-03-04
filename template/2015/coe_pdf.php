@@ -390,6 +390,14 @@
 		}else{
 			if($coe[0]["company"] == 'MCTI'){
 			?>
+				<?php
+				if($send_pdf){
+				?>
+					<img style="width: 150px" src="<?php echo IMG_WEB; ?>/coe_sig_test.png"/>
+				<?php
+				}
+				?>
+
 				<b><p style="padding-top: 40px; <?php echo $send_pdf ? '' : 'padding-bottom: 40px;'; ?> padding-left: 50px; padding-right: 50px;">JOEY I. VILLAFUERTE<br />
 				FIRST VICE PRESIDENT, CONTROLLERSHIP GROUP</p></b>
 			<?php
@@ -408,6 +416,14 @@
 			<?php
 			}else{
 			?>
+				<?php
+				if($send_pdf){
+				?>
+					<img style="width: 150px" src="<?php echo IMG_WEB; ?>/coe_sig_test.png"/>
+				<?php
+				}
+				?>
+
 				<b><p style="padding-top: 40px; <?php echo $send_pdf ? '' : 'padding-bottom: 40px;'; ?> padding-left: 50px; padding-right: 50px;">RAFAEL ANTONIO S. PEREZ<br />
 				Head, Human Resources and<br />
 				Corporate Administration Division</p></b>
