@@ -5695,7 +5695,7 @@
 						</td>
 					</tr>
 
-					<?php if($level == 2){ ?>
+					<?php if($level == 2 && (in_array($result[0]['status'], ['For Release', 'Done'] ))){ ?>
 						<tr id="coeapproval">
 							<td></td>
 							<td align="left">
