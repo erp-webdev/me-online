@@ -393,7 +393,7 @@
 				<?php
 				if($send_pdf){
 				?>
-					<img style="width: 150px" src="<?php echo IMG_WEB; ?>/coe_sig_test.png"/>
+					<img style="width: 150px" src="<?php echo IMG_WEB; ?>/coe_villafuerte_esig.png"/>
 				<?php
 				}
 				?>
@@ -406,7 +406,7 @@
 				<?php
 				if($send_pdf){
 				?>
-					<img style="width: 150px" src="<?php echo IMG_WEB; ?>/coe_sig_test.png"/>
+					<img style="width: 150px" src="<?php echo IMG_WEB; ?>/coe_alim_esig.png"/>
 				<?php
 				}
 				?>
@@ -419,7 +419,7 @@
 				<?php
 				if($send_pdf){
 				?>
-					<img style="width: 150px" src="<?php echo IMG_WEB; ?>/coe_sig_test.png"/>
+					<img style="width: 150px" src="<?php echo IMG_WEB; ?>/coe_perez_esig.png"/>
 				<?php
 				}
 				?>
@@ -454,7 +454,13 @@
 		<?php
 		} elseif (($coe[0]["company"] == 'MEGA01') && $coe[0]["type"] != 'COECOMPENSATION') {
 		?>
-			<p style="font-size: <?php echo $send_pdf ? '8px' : '10px'; ?>; text-align: right; padding-right: 50px">This is a system generated document. Any alteration on this document is not valid.</p>
+			<?php
+				if($send_pdf){
+				?>
+					<p style="font-size: <?php echo $send_pdf ? '8px' : '10px'; ?>; text-align: right; padding-right: 50px">This is a system generated document. Any alteration on this document is not valid.</p>
+				<?php
+				}
+			?>
 		<?php
 		}
 		?>

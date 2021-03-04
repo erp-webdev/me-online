@@ -1117,7 +1117,8 @@ class mainsql {
 		$sql .= " ORDER BY CASE WHEN [outer].STATUS = 'CANCELLED' THEN 0
               WHEN [outer].STATUS = 'DONE' THEN 1
               WHEN [outer].STATUS = 'FOR RELEASE' THEN 2
-              ELSE 3
+			  WHEN [outer].STATUS = 'FOR APPROVAL' THEN 3
+              ELSE 4
               END DESC, created_at ASC";
 		if ($count) : $result = $this->get_numrow($sql);
 		else : $result = $this->get_row($sql);
