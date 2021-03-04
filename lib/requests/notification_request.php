@@ -5699,7 +5699,7 @@
 						<tr id="coeapproval">
 							<td></td>
 							<td align="left">
-								<label>E-sig. Approval: </label>
+								<label>E-signature Approval: </label>
 							</td>
 							<td align="left">
 								<?php echo $result[0]['approved'] ? 'Approved' : 'No Approval Process'; ?>
