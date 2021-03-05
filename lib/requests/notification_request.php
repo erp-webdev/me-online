@@ -6226,7 +6226,7 @@
 					$emp_sendmail = mail($coe_emp_email, "COE Request Update", $message, $headers);
 
 					// SEND NOTIF TO ADMINS IF THE COE IS DONE/CANCELLED AND TO THE APPROVERS IF FOR APPROVAL
-					if($status == 'Cancelled' || $status == 'Done' || $status == 'For Release'){
+					if($status == 'Cancelled' || $status == 'Done' || ($status == 'For Release' && $coe_old[0]['status'] == 'For Approval')){
 
 						$message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 95%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>Certificate of Employment Request</span><br><br>";
 
