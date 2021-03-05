@@ -63,7 +63,7 @@
 											</select>
 										</td>
 									</tr>
-									<?php if($coe_users[0]['level'] == 3){ ?>
+									<?php if($coe_user_data[0]['level'] != 4){ ?>
 											<button id="coenewreq" value="New Request" class="smlbtn" attribute5="2">New Request</button>
 									<?php }?>
 									<input style="float: right;" type="button" attribute="<?php echo $admin_level; ?>" id="coesearch" name="coesearch" value="Search" class="smlbtn" />

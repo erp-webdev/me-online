@@ -23,7 +23,9 @@
 		$sql_users = "SELECT A.*, B.* FROM COEUsers A
 					LEFT JOIN SUBSIDIARY.DBO.viewHREmpMaster B on A.emp_id = B.EmpID and A.[DB_NAME] = B.DBNAME
 					WHERE A.emp_id = '$profile_id' and B.CompanyID = '$profile_comp' and B.CompanyActive = 1 order by [level] ASC";
+
 		$coe_users = $mainsql->get_numrow($sql_users);
+		$coe_user_data = $mainsql->get_row($sql_users);
 
 		$sql_companies = "SELECT * FROM HRCompany";
 		$admin_companies = $mainsql->get_row($sql_companies);
