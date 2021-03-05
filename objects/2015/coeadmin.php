@@ -17,12 +17,12 @@
 		global $sroot, $profile_id, $unix3month;
 
 		$company_sort = $_SESSION["company_sort"] ? $_SESSION["company_sort"] : null ;
-		
+
 		$coe_data = $mainsql->get_coe($start, NUM_ROWS, null, 0, 2,$profile_idnum, $company_sort);
 
 		$sql_users = "SELECT A.*, B.* FROM COEUsers A
 					LEFT JOIN SUBSIDIARY.DBO.viewHREmpMaster B on A.emp_id = B.EmpID and A.[DB_NAME] = B.DBNAME
-					WHERE A.emp_id = '$profile_id' and B.CompanyID = '$profile_comp' and B.CompanyActive = 1";
+					WHERE A.emp_id = '$profile_id' and B.CompanyID = '$profile_comp' and B.CompanyActive = 1 order by [level] ASC";
 		$coe_users = $mainsql->get_numrow($sql_users);
 
 		$sql_companies = "SELECT * FROM HRCompany";

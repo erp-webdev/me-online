@@ -63,8 +63,9 @@
 											</select>
 										</td>
 									</tr>
-									<button id="coenewreq" value="New Request" class="smlbtn" attribute5="2">New Request</button>
-
+									<?php if($coe_users[0]['level'] == 3){ ?>
+											<button id="coenewreq" value="New Request" class="smlbtn" attribute5="2">New Request</button>
+									<?php }?>
 									<input style="float: right;" type="button" attribute="<?php echo $admin_level; ?>" id="coesearch" name="coesearch" value="Search" class="smlbtn" />
 									<input style="float: right;" type="text" id="coeref" name="coeref" class="smltxtbox" placeholder="Reference # or Name" />&nbsp;
 								</div>
