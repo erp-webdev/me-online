@@ -121,7 +121,7 @@
 		$message .= SITENAME." Admin";
 		$message .= "<hr />".MAILFOOT."</div>";
 
-		$email->Subject   = 'COE Request Update';
+		$email->Subject   = 'CoE Request Completed';
 		$email->Body      = $message;
 		$email->IsHTML(true);
 

@@ -6277,6 +6277,7 @@
 								$approver_email = 'slimbo.global@megaworldcorp.com';
 							}
 							$sendmail = mail($approver_email, "COE Request for Approval", $message, $headers);
+							// $sendmail = mail(implode(',', $hr_emails), "COE Request Update ($title_notif Notification)", $message, $headers);
 						}else{
 							// INSERT COMPENSATION APPROVERS HERE
 						}
