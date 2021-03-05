@@ -5707,7 +5707,7 @@
 								<label>E-signature Approval: </label>
 							</td>
 							<td align="left">
-								<?php echo $result[0]['approved'] ? 'Approved' : 'No Approval Process'; ?>
+								<?php echo $result[0]['approved'] ? 'Approved' : 'N/A'; ?>
 							</td>
 						</tr>
 					<?php } ?>
@@ -5930,7 +5930,7 @@
 							var data_print = "id=" + id + "&status=" + status + "&start_date=" + start_date + "&end_date=" + end_date + "&return_date=" + return_date + "&send=" + false;
 						}
 
-						if(status == 'For Release' || status == 'Done' || status == 'On Process'){
+						if(status == 'For Release' || status == 'Done' || status == 'On Process' || status == 'For Approval'){
 
 								$.ajax(
 								{
