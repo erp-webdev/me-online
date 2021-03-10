@@ -393,7 +393,7 @@
 				<?php
 				if($send_pdf){
 				?>
-					<img style="width: 150px" src="<?php echo IMG_WEB; ?>/coe_villafuerte_esig.png"/>
+					<img style="width: 150px" src="<?php echo IMG_WEB; ?>/coe/coe_villafuerte_esig.png"/>
 				<?php
 				}
 				?>
@@ -406,7 +406,7 @@
 				<?php
 				if($send_pdf){
 				?>
-					<img style="width: 150px" src="<?php echo IMG_WEB; ?>/coe_alim_esig.png"/>
+					<img style="width: 150px" src="<?php echo IMG_WEB; ?>/coe/coe_alim_esig.png"/>
 				<?php
 				}
 				?>
@@ -419,7 +419,7 @@
 				<?php
 				if($send_pdf){
 				?>
-					<img style="width: 150px" src="<?php echo IMG_WEB; ?>/coe_perez_esig.png"/>
+					<img style="width: 150px" src="<?php echo IMG_WEB; ?>/coe/coe_perez_esig.png"/>
 				<?php
 				}
 				?>
