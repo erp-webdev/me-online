@@ -5730,7 +5730,7 @@
 							<?php	if($result[0]['status'] == 'Done' || $result[0]['status'] == 'Cancelled'){ ?>
 							<?php 	}else{
 										if($result[0]['status'] == 'For Approval'){
-											if($approver_level){?>
+											if($approver_level == "1"){?>
 												<button id="savecoe" value="Save" attribute9="<?php echo $result[0]['company']; ?>" attribute8="<?php echo $result[0]['status']; ?>" attribute5="<?php echo $result[0]['ref_no']; ?>" attribute4="<?php echo $result[0]["type"]; ?>" attribute3="<?php echo $result[0]['emp_id']; ?>" attribute="<?php echo $result[0]['id'] ?>" attribute2="<?php echo $result[0]['cancelled_at'].$result[0]['released_at']; ?>" class="smlbtn" style="width:<?php echo $result[0]['status'] == 'For Approval' ? '55px' : '40px'; ?>;" <?php if($result[0]['cancelled_at'] != null || $result[0]['released_at'] != null){ echo "disabled";} ?>> <?php echo $result[0]['status'] == 'For Approval' ? 'Approve' : 'Save'; ?></button>
 							<?php 			}
 										}else{ ?>
