@@ -90,7 +90,7 @@
 										</tr>
 										<?php foreach ($coe_data as $key => $value) : ?>
 										<?php //$appdata = $mainsql->get_notification($value['ReqNbr']); ?>
-										<tr class="btncoe cursorpoint trdata centertalign" attribute="<?php echo $value['id']; ?>" attribute5="2">
+										<tr class="btncoe cursorpoint trdata centertalign" attribute="<?php echo $value['id']; ?>" attribute5="2" attribute6="<?php echo $coe_user_data[0]['level'] == 4 ? 1 : 0; ?>">
 											<td><?php echo $start + $key + 1; ?></td>
 											<!-- <td><?php //echo date('m/d/Y', strtotime($value['created_at'])); ?></td> -->
 											<td><?php echo $value['FullName']; ?></td>

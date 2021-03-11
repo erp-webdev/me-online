@@ -5081,6 +5081,7 @@
 
 				var id = $(this).attr('attribute');
 				var level = $(this).attr('attribute5');
+				var approver_level = $(this).attr('attribute6');
 
 				$("#coe_data").html('<i class="fa fa-refresh fa-spin fa-lg"></i> Loading...');
 
@@ -5096,7 +5097,7 @@
 				$.ajax(
 				{
 					url: "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=coeold",
-					data: "id=" + id + "&level=" +level,
+					data: "id=" + id + "&level=" +level+ "&approver_level=" +approver_level,
 					type: "POST",
 					complete: function(){
 						$("#loading").hide();
@@ -5189,6 +5190,7 @@
 
 				var id = $(this).attr('attribute');
 				var level = $(this).attr('attribute5');
+				var approver_level = $(this).attr('attribute6');
 
 				$("#coe_data").html('<i class="fa fa-refresh fa-spin fa-lg"></i> Loading...');
 
@@ -5204,7 +5206,7 @@
 				$.ajax(
 				{
 					url: "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=coeold",
-					data: "id=" + id + "&level=" +level,
+					data: "id=" + id + "&level=" +level+ "&approver_level=" +approver_level,
 					type: "POST",
 					complete: function(){
 						$("#loading").hide();
@@ -5459,6 +5461,7 @@
 
 			$id = $_POST['id'];
 			$level = $_POST['level'];
+			$approver_level = $_POST['approver_level'];
 
 			$sql = "SELECT * FROM COERequests WHERE id=$id";
 
@@ -5725,9 +5728,15 @@
 							<?php 	} ?>
 
 							<?php	if($result[0]['status'] == 'Done' || $result[0]['status'] == 'Cancelled'){ ?>
-							<?php 	}else{ ?>
-										<button id="savecoe" value="Save" attribute9="<?php echo $result[0]['company']; ?>" attribute8="<?php echo $result[0]['status']; ?>" attribute5="<?php echo $result[0]['ref_no']; ?>" attribute4="<?php echo $result[0]["type"]; ?>" attribute3="<?php echo $result[0]['emp_id']; ?>" attribute="<?php echo $result[0]['id'] ?>" attribute2="<?php echo $result[0]['cancelled_at'].$result[0]['released_at']; ?>" class="smlbtn" style="width:<?php echo $result[0]['status'] == 'For Approval' ? '55px' : '40px'; ?>;" <?php if($result[0]['cancelled_at'] != null || $result[0]['released_at'] != null){ echo "disabled";} ?>> <?php echo $result[0]['status'] == 'For Approval' ? 'Approve' : 'Save'; ?></button>
-							<?php 	} ?>
+							<?php 	}else{
+										if($result[0]['status'] == 'For Approval'){
+											if($approver_level){?>
+												<button id="savecoe" value="Save" attribute9="<?php echo $result[0]['company']; ?>" attribute8="<?php echo $result[0]['status']; ?>" attribute5="<?php echo $result[0]['ref_no']; ?>" attribute4="<?php echo $result[0]["type"]; ?>" attribute3="<?php echo $result[0]['emp_id']; ?>" attribute="<?php echo $result[0]['id'] ?>" attribute2="<?php echo $result[0]['cancelled_at'].$result[0]['released_at']; ?>" class="smlbtn" style="width:<?php echo $result[0]['status'] == 'For Approval' ? '55px' : '40px'; ?>;" <?php if($result[0]['cancelled_at'] != null || $result[0]['released_at'] != null){ echo "disabled";} ?>> <?php echo $result[0]['status'] == 'For Approval' ? 'Approve' : 'Save'; ?></button>
+							<?php 			}
+										}else{ ?>
+											<button id="savecoe" value="Save" attribute9="<?php echo $result[0]['company']; ?>" attribute8="<?php echo $result[0]['status']; ?>" attribute5="<?php echo $result[0]['ref_no']; ?>" attribute4="<?php echo $result[0]["type"]; ?>" attribute3="<?php echo $result[0]['emp_id']; ?>" attribute="<?php echo $result[0]['id'] ?>" attribute2="<?php echo $result[0]['cancelled_at'].$result[0]['released_at']; ?>" class="smlbtn" style="width:<?php echo $result[0]['status'] == 'For Approval' ? '55px' : '40px'; ?>;" <?php if($result[0]['cancelled_at'] != null || $result[0]['released_at'] != null){ echo "disabled";} ?>> <?php echo $result[0]['status'] == 'For Approval' ? 'Approve' : 'Save'; ?></button>
+								  <?php }
+									} ?>
 							<?php } ?>
 
 							<?php if($result[0]['status'] == 'Done' || $result[0]['status'] == 'Cancelled'){ ?>
@@ -6271,10 +6280,10 @@
 								$approver_email = 'shart.global@megaworldcorp.com';
 							}elseif ($coe_old[0]["company"] == 'MCTI') {
 								// Sir Joey Notification
-								$approver_email = 'rcanto.global@megaworldcorp.com';
+								$approver_email = 'jvillafuerte@megaworldcorp.com';
 							}else{
 								// Sir Raffy Notification
-								$approver_email = 'slimbo.global@megaworldcorp.com';
+								$approver_email = 'rperez@megaworldcorp.com';
 							}
 							$sendmail = mail($approver_email, "COE Request for Approval", $message, $headers);
 							// $sendmail = mail(implode(',', $hr_emails), "COE Request Update ($title_notif Notification)", $message, $headers);
