@@ -817,7 +817,8 @@ $(function() {
 	$(".btncoe").on("click", function() {
 
         id = $(this).attr('attribute');
-        level = $(this).attr('attribute5');
+		level = $(this).attr('attribute5');
+        approver_level = $(this).attr('attribute6');
 
 
 		$("#coe_title").html('Certificate of Employment');
@@ -834,7 +835,7 @@ $(function() {
         $.ajax(
         {
             url: "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=coeold",
-            data: "id=" + id + "&level=" + level,
+            data: "id=" + id + "&level=" + level+ "&approver_level=" + approver_level,
             type: "POST",
             complete: function(){
                 $("#loading").hide();

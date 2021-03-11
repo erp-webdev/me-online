@@ -5191,7 +5191,6 @@
 				var id = $(this).attr('attribute');
 				var level = $(this).attr('attribute5');
 				var approver_level = $(this).attr('attribute6');
-				alert(approver_level);
 				$("#coe_data").html('<i class="fa fa-refresh fa-spin fa-lg"></i> Loading...');
 
 				$("#coe_title").html('Certificate Of Employment');
