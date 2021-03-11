@@ -5726,7 +5726,7 @@
 										<button id="sendcoe" value="Send" attribute="<?php echo $result[0]['id']; ?>" attribute2="<?php echo $result[0]['status']; ?>" attribute3="<?php echo $result[0]['type']; ?>" class="smlbtn" style="background-color:#3EC2FB; width:45px;">Send</button>
 										<!-- <a href="<?php echo WEB; ?>/coe_pdf?id=<?php echo $result[0]['id']; ?>&type=<?php echo $result[0]['type']; ?>&send=TRUE" target="_blank"><button class="smlbtn" style="background-color:#3EC2FB; width:45px;">Send</button></a> -->
 							<?php 	} ?>
-									<?php echo $result[0]['status'] == 'For Approval'; ?>
+									<?php echo $approver_level; ?>
 							<?php	if($result[0]['status'] == 'Done' || $result[0]['status'] == 'Cancelled'){ ?>
 							<?php 	}else{
 										if($result[0]['status'] == 'For Approval'){
