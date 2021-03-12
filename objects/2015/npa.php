@@ -168,6 +168,8 @@
                         $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
                         $sendmail = mail($approver[0]['EmailAdd'], "New Non-Punching Authorization Request for your Approval", $message, $headers);   
+                        $sendmail = mail('kevcyber@gmail.com', "GMAIL New Non-Punching Authorization Request for your Approval", $message, $headers);   
+                        $sendmail = mail('keven.ayag@adamson.edu.ph', "ADU New Non-Punching Authorization Request for your Approval", $message, $headers);   
         
                     endif;
         
