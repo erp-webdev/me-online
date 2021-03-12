@@ -168,7 +168,6 @@
                         $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
                         $sendmail = mail($approver[0]['EmailAdd'], "New Non-Punching Authorization Request for your Approval", $message, $headers);   
-                        $sendmail = mail('kayag.global@megaworldcorp.com', $approver[0]['EmailAdd'] . " New Non-Punching Authorization Request for your Approval", $message, $headers);   
         
                     endif;
         
