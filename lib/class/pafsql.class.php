@@ -1,7 +1,7 @@
-<?php 
-    
+<?php
+
 class pafsql
-{   
+{
     function __construct()
     {
         ini_set('session.gc_maxlifetime', 60*30);
@@ -12,23 +12,23 @@ class pafsql
         $result = mssql_connect(DBHOST1, DBUSER1, DBPASS1);
         if(!$result) return false;
         else return $result;
-    }  
+    }
 
     public function db_select($con) //connect to database
     {
         $result = mssql_select_db(DBNAME1, $con);
         if(!$result) return false;
         else return $result;
-    }    
-    
+    }
+
     private function db_result_to_array($query) //Transform query results into array
     {
         if(!$query) return false;
         $res_array = array();
         for($count = 0; $row = mssql_fetch_array($query, MSSQL_ASSOC); $count++) :
-            $res_array[$count] = $row;                              
+            $res_array[$count] = $row;
         endfor;
-        
+
         return $res_array;
     }
     private function db_result_to_num($query) //Transform query results into array
@@ -37,7 +37,7 @@ class pafsql
         $row_cnt = mssql_num_rows($query);
         return $row_cnt;
     }
-    
+
     public function get_row($sql)
     {
         if(!$sql) return;
@@ -48,7 +48,7 @@ class pafsql
         $result = $this->db_result_to_array($result);
         return $result;
     }
-    
+
     public function get_numrow($sql) //Get num rows of a table from $sql
     {
         if(!$sql) return;
@@ -59,7 +59,7 @@ class pafsql
         $result = $this->db_result_to_num($result);
         return $result;
     }
-    
+
     public function get_execute($sql) //Get num rows of a table from $sql
     {
         if(!$sql) return;
@@ -69,19 +69,19 @@ class pafsql
         if(!$result) return;
         return $result;
     }
-    
+
     # MAINSQL CLASS
-    
+
     function get_sp_data($sp_name, $parameters = NULL)
-    {        
+    {
         // TYPE:
         // 1 - array
         // 2 - num_row
-        
+
         $con = $this->db_connect();
-        
+
         $stmt = mssql_init(DBNAME1.'.dbo.'.$sp_name, $con);
-        
+
         if ($parameters) :
             foreach ($parameters as $key => $value) :
                 //var_dump($value);
@@ -90,9 +90,9 @@ class pafsql
         endif;
 
         $query = mssql_execute($stmt);
-        
-        $result = $query;        
-            
+
+        $result = $query;
+
         return $result;
     }
 
@@ -114,11 +114,11 @@ class pafsql
                     b.Status AS status
                     FROM PAFMainEmpData AS a
                 LEFT JOIN PAFMainAppGroup AS b ON b.id = a.RelAppID
-                WHERE  
+                WHERE
                     ".$command."
                 ORDER BY b.AppraisalDate DESC";
 
-        $result = $this->get_row($sql); 
+        $result = $this->get_row($sql);
         return $result;
     }
 
@@ -133,11 +133,11 @@ class pafsql
                     b.Status AS status
                     FROM PAFMainEmpData AS a
                 LEFT JOIN PAFMainAppGroup AS b ON b.id = a.RelAppID
-                WHERE  
+                WHERE
                     ".$command."
                 ORDER BY b.AppraisalDate DESC";
 
-        //$result = $this->get_row($sql); 
+        //$result = $this->get_row($sql);
         return $sql;
     }
 
@@ -146,10 +146,10 @@ class pafsql
         $sql = "SELECT
                     GenResponsibilities AS grep
                     FROM PAFGlobalResponsibilities
-                WHERE  
+                WHERE
                     PositionID = '".$posid."' ";
 
-        $result = $this->get_row($sql); 
+        $result = $this->get_row($sql);
         return $result;
     }
 
@@ -166,22 +166,22 @@ class pafsql
                     Comments AS wremarks,
                     MOA
                     FROM PAFGlobalWResults
-                WHERE  
+                WHERE
                     ".$commandresp." ";
 
-        $result = $this->get_row($sql); 
+        $result = $this->get_row($sql);
         return $result;
     }
 
     function appFunction($command)
     {
-        $sql = "SELECT 
+        $sql = "SELECT
                     a.id AS appid,
                     a.RateeEmpID AS rempid,
                     a.RateeComment AS rcomm,
                     a.RaterEmpID AS rempid1,
                     a.RaterStatus AS rstat1,
-                    a.RaterOption AS ropt1, 
+                    a.RaterOption AS ropt1,
                     a.RaterPromote AS rprom1,
                     a.RaterIncrease AS rincr1,
                     a.RaterCot AS rcot1,
@@ -211,8 +211,8 @@ class pafsql
                     a.APScore AS apscore,
                     a.TScore AS tscore,
                     a.S5Score AS S5Score,
-                    a.Status AS status, 
-                    a.Computed AS computed, 
+                    a.Status AS status,
+                    a.Computed AS computed,
                     a.Score AS score,
                     a.Promotion AS promote,
                     a.Designation AS desig,
@@ -225,7 +225,7 @@ class pafsql
                     a.DevPlanC AS dplanc,
                     a.DevPlanD AS dpland,
                     b.HireDate AS hdate,
-                    b.FName AS rfname, 
+                    b.FName AS rfname,
                     b.LName AS rlname,
                     b.EmailAdd AS readd,
                     b1.Fname AS r1fname,
@@ -263,13 +263,13 @@ class pafsql
                 LEFT JOIN HRDepartment AS d ON c.DeptID = d.DeptID AND d.DB_NAME=b.DB_NAME
                 LEFT JOIN HRRank AS e ON c.RankID = e.RankID AND e.DB_NAME=b.DB_NAME
                 LEFT JOIN HRPosition AS f ON c.PositionID = f.PositionID AND f.DB_NAME=b.DB_NAME
-                LEFT JOIN PAFMainAppGroup AS g ON a.RelAppID = g.id 
-                WHERE  
+                LEFT JOIN PAFMainAppGroup AS g ON a.RelAppID = g.id
+                WHERE
                 b.DB_NAME = c.DB_NAME AND
                     ".$command."
-                
+
                 ORDER BY d.DeptDesc, b.HireDate ASC";
-        $result = $this->get_row($sql); 
+        $result = $this->get_row($sql);
         return $result;
     }
 
@@ -278,7 +278,7 @@ class pafsql
         $sql = "SELECT * FROM viewPAFMainEmpData
                 WHERE ".$command." ORDER BY depdesc, hdate ASC";
         // echo $sql; exit;
-        $result = $this->get_row($sql); 
+        $result = $this->get_row($sql);
         return $result;
     }
 
@@ -308,10 +308,10 @@ class pafsql
     {
         $sql = "SELECT *
                     FROM PAFRelCAssessment
-                WHERE  
+                WHERE
                     PAFRelID = '".$eid."' ";
 
-        $result = $this->get_row($sql); 
+        $result = $this->get_row($sql);
         return $result;
     }
 
@@ -319,10 +319,10 @@ class pafsql
     {
         $sql = "SELECT *
                     FROM PAFRelGCUTEvalPeriod
-                WHERE  
+                WHERE
                     PAFRelID = '".$eid."' ";
 
-        $result = $this->get_row($sql); 
+        $result = $this->get_row($sql);
         return $result;
     }
 
@@ -330,10 +330,10 @@ class pafsql
     {
         $sql = "SELECT *
                     FROM PAFRelGFTCYEvalPeriod
-                WHERE  
+                WHERE
                     PAFRelID = '".$eid."' ";
 
-        $result = $this->get_row($sql); 
+        $result = $this->get_row($sql);
         return $result;
     }
 
@@ -341,10 +341,10 @@ class pafsql
     {
         $sql = "SELECT *
                     FROM PAFRelIDevelopmentPlan
-                WHERE  
+                WHERE
                     PAFRelID = '".$eid."' ";
 
-        $result = $this->get_row($sql); 
+        $result = $this->get_row($sql);
         return $result;
     }
 
@@ -354,10 +354,10 @@ class pafsql
     {
         $sql = "SELECT *
                     FROM PAFGlobalSETWR
-                WHERE  
+                WHERE
                     PAFRelID = '".$appid."' ";
 
-        $result = $this->get_row($sql); 
+        $result = $this->get_row($sql);
         return $result;
     }
 
@@ -366,10 +366,10 @@ class pafsql
     {
         $sql = "SELECT *
                     FROM PAFGMCCore
-                WHERE  
+                WHERE
                     Type = '".$rankid."' AND CompanyID = 'GLOBAL01' ";
 
-        $result = $this->get_row($sql); 
+        $result = $this->get_row($sql);
         return $result;
     }
     //pcc
@@ -377,17 +377,17 @@ class pafsql
     {
          $sql = "SELECT *
                     FROM PAFGlobalSETPCC
-                WHERE  
-                    PAFRelID = '".$appid."' 
+                WHERE
+                    PAFRelID = '".$appid."'
                 order by cast([order] as int) asc";
 
-        $result = $this->get_row($sql); 
+        $result = $this->get_row($sql);
         return $result;
     }
 
     //REmover
     function paf_deleteca($appid){
-        
+
         $sql = "DELETE FROM PAFRelCAssessment
                 WHERE PAFRelID = ".$appid." ";
 
@@ -397,7 +397,7 @@ class pafsql
     }
 
     function paf_deleteg2($appid){
-        
+
         $sql = "DELETE FROM PAFRelGCUTEvalPeriod
                 WHERE PAFRelID = ".$appid." ";
 
@@ -407,7 +407,7 @@ class pafsql
     }
 
     function paf_deleteg3($appid){
-        
+
         $sql = "DELETE FROM PAFRelGFTCYEvalPeriod
                 WHERE PAFRelID = ".$appid." ";
 
@@ -418,28 +418,28 @@ class pafsql
 
     function paf_evaluate($value, $action, $id = 0)
     {
-        $val = array();        
+        $val = array();
 
         switch ($action) {
             case 'addca':
-                
+
                 $accepted_field = array('appid', 'caCode', 'caTitle', 'caType', 'caOrder', 'caRp', 'caAp', 'caGaps', 'caRemarks');
                 //$accepted_field = array('g2Title1', 'g2Rad1', 'g2Rad2', 'g2Rad3', 'g2Rad4', 'g2Rad5', 'g2Comments1');
 
                 $knum = 0;
-                foreach ($value as $key => $value) :        
+                foreach ($value as $key => $value) :
                     if (in_array($key, $accepted_field)) :
-                        $val[$knum]['field_name'] = $key;        
-                        $val[$knum]['field_value'] = $value;            
+                        $val[$knum]['field_name'] = $key;
+                        $val[$knum]['field_value'] = $value;
                         if ($key == 'caRemarks'):
-                            $val[$knum]['field_type'] = SQLTEXT;
+                            $val[$knum]['field_type'] = SQLVARCHAR;
                         elseif ($key == 'appid' || $key == 'caOrder' || $key == 'caID' || $key == 'caRp' || $key == 'caAp' || $key == 'caType' || $key == 'caCode'  || $key == 'caTitle' || $key == 'caGaps'):
-                            $val[$knum]['field_type'] = SQLVARCHAR;              
-                        endif;  
+                            $val[$knum]['field_type'] = SQLVARCHAR;
+                        endif;
                         $val[$knum]['field_isoutput'] = false;
                         $val[$knum]['field_isnull'] = false;
-                        $val[$knum]['field_maxlen'] = 512;    
-                        
+                        $val[$knum]['field_maxlen'] = 512;
+
                         $knum++;
                     endif;
                 endforeach;
@@ -455,26 +455,26 @@ class pafsql
                 }
 
             break;
-                
+
             case 'addg2':
-                
+
                 //$accepted_field = array('caTitle', 'caType', 'caOrder', 'caRp', 'caAp', 'caGaps', 'caRemarks');
                 $accepted_field = array('appid', 'g2Title1', 'g2Rad', 'g2Comments1');
 
                 $knum = 0;
-                foreach ($value as $key => $value) :        
+                foreach ($value as $key => $value) :
                     if (in_array($key, $accepted_field)) :
-                        $val[$knum]['field_name'] = $key;        
-                        $val[$knum]['field_value'] = $value;        
-                        if ($key == 'g2Title1' || $key == 'appid' || $key == 'g2Rad'):     
-                            $val[$knum]['field_type'] = SQLVARCHAR;      
+                        $val[$knum]['field_name'] = $key;
+                        $val[$knum]['field_value'] = $value;
+                        if ($key == 'g2Title1' || $key == 'appid' || $key == 'g2Rad'):
+                            $val[$knum]['field_type'] = SQLVARCHAR;
                         elseif ($key == 'g2Comments1'):
-                            $val[$knum]['field_type'] = SQLTEXT;              
-                        endif;  
+                            $val[$knum]['field_type'] = SQLVARCHAR;
+                        endif;
                         $val[$knum]['field_isoutput'] = false;
                         $val[$knum]['field_isnull'] = false;
-                        $val[$knum]['field_maxlen'] = 512;    
-                        
+                        $val[$knum]['field_maxlen'] = 512;
+
                         $knum++;
                     endif;
                 endforeach;
@@ -493,24 +493,24 @@ class pafsql
             break;
 
             case 'addg3':
-                
+
                 //$accepted_field = array('caTitle', 'caType', 'caOrder', 'caRp', 'caAp', 'caGaps', 'caRemarks');
                 $accepted_field = array('appid', 'g3Title1', 'g3MS');
 
                 $knum = 0;
-                foreach ($value as $key => $value) :        
+                foreach ($value as $key => $value) :
                     if (in_array($key, $accepted_field)) :
-                        $val[$knum]['field_name'] = $key;        
-                        $val[$knum]['field_value'] = $value;        
-                        if ($key == 'g3Title1' || $key == 'g3MS'):     
-                            $val[$knum]['field_type'] = SQLTEXT;      
+                        $val[$knum]['field_name'] = $key;
+                        $val[$knum]['field_value'] = $value;
+                        if ($key == 'g3Title1' || $key == 'g3MS'):
+                            $val[$knum]['field_type'] = SQLVARCHAR;
                         elseif ($key == 'appid'):
-                            $val[$knum]['field_type'] = SQLVARCHAR;            
-                        endif;  
+                            $val[$knum]['field_type'] = SQLVARCHAR;
+                        endif;
                         $val[$knum]['field_isoutput'] = false;
                         $val[$knum]['field_isnull'] = false;
-                        $val[$knum]['field_maxlen'] = 512;    
-                        
+                        $val[$knum]['field_maxlen'] = 512;
+
                         $knum++;
                     endif;
                 endforeach;
@@ -528,24 +528,24 @@ class pafsql
             break;
 
             case 'addidp':
-                
+
                 //$accepted_field = array('caTitle', 'caType', 'caOrder', 'caRp', 'caAp', 'caGaps', 'caRemarks');
                 $accepted_field = array('appid', 'idpTitle', 'idpRp', 'idpAp', 'idpGaps', 'idpComments');
 
                 $knum = 0;
-                foreach ($value as $key => $value) :        
+                foreach ($value as $key => $value) :
                     if (in_array($key, $accepted_field)) :
-                        $val[$knum]['field_name'] = $key;        
-                        $val[$knum]['field_value'] = $value;        
-                        if ($key == 'idpTitle'):     
-                            $val[$knum]['field_type'] = SQLTEXT;      
+                        $val[$knum]['field_name'] = $key;
+                        $val[$knum]['field_value'] = $value;
+                        if ($key == 'idpTitle'):
+                            $val[$knum]['field_type'] = SQLVARCHAR;
                         elseif ($key == 'idpComments' || $key == 'appid' || $key == 'idpRp' || $key == 'idpAp' || $key == 'idpGaps'):
-                            $val[$knum]['field_type'] = SQLVARCHAR;            
-                        endif;  
+                            $val[$knum]['field_type'] = SQLVARCHAR;
+                        endif;
                         $val[$knum]['field_isoutput'] = false;
                         $val[$knum]['field_isnull'] = false;
-                        $val[$knum]['field_maxlen'] = 512;    
-                        
+                        $val[$knum]['field_maxlen'] = 512;
+
                         $knum++;
                     endif;
                 endforeach;
@@ -563,7 +563,7 @@ class pafsql
             break;
             /*
             case 'approve':
-                
+
 
             break;*/
         }
@@ -573,24 +573,24 @@ class pafsql
     function paf_update($value, $action, $id = 0)
     {
         switch ($action) {
-            
+
             case 'update':
 
             $accepted_field = array('date', 'pmdm', 'increase', 'promote', 'cot', 'attachfile', 'statdiv', 'status', 'remarks', 'orcomm', 'appid', 'pafad', 'computed', 'fscore', 'promotepos');
-        
+
                 $knum = 0;
-                foreach ($value as $key => $value) :        
+                foreach ($value as $key => $value) :
                     if (in_array($key, $accepted_field)) :
-                        $val[$knum]['field_name'] = $key;        
+                        $val[$knum]['field_name'] = $key;
                         $val[$knum]['field_value'] = $value;
                         if ($key == 'date' || $key == 'appid' || $key == 'pmdm' || $key == 'increase' || $key == 'promote' || $key == 'attachfile' || $key == 'cot' || $key == 'status' || $key == 'statdiv' || $key == 'pafad' || $key == 'fscore' || $key == 'computed' || $key == 'promotepos'):
                             $val[$knum]['field_type'] = SQLVARCHAR;
                         elseif ($key == 'remarks' || $key == 'orcomm'):
-                            $val[$knum]['field_type'] = SQLTEXT;
+                            $val[$knum]['field_type'] = SQLVARCHAR;
                         endif;
                         $val[$knum]['field_isoutput'] = false;
                         $val[$knum]['field_isnull'] = false;
-                        $val[$knum]['field_maxlen'] = 512;    
+                        $val[$knum]['field_maxlen'] = 512;
                         $knum++;
                     endif;
                 endforeach;
@@ -607,20 +607,20 @@ class pafsql
         case 'rating':
 
             $accepted_field = array('caID', 'caAp', 'caGaps', 'caRemarks', 'g2ID', 'g2Rad', 'g2Title1', 'g2Comments1', 'g3ID', 'g3Title1', 'g3MS', 'update');
-        
+
                 $knum = 0;
-                foreach ($value as $key => $value) :        
+                foreach ($value as $key => $value) :
                     if (in_array($key, $accepted_field)) :
-                        $val[$knum]['field_name'] = $key;        
+                        $val[$knum]['field_name'] = $key;
                         $val[$knum]['field_value'] = $value;
                         if ($key == 'caID' || $key == 'g2ID' || $key == 'g3ID' || $key == 'caAp' || $key == 'caGaps' || $key == 'g2Rad' || $key == 'g2Title1' || $key == 'g3Title1' || $key == 'update'):
                             $val[$knum]['field_type'] = SQLVARCHAR;
                         elseif ($key == 'caRemarks' || $key == 'g2Comments1' || $key == 'g3MS'):
-                            $val[$knum]['field_type'] = SQLTEXT;
+                            $val[$knum]['field_type'] = SQLVARCHAR;
                         endif;
                         $val[$knum]['field_isoutput'] = false;
                         $val[$knum]['field_isnull'] = false;
-                        $val[$knum]['field_maxlen'] = 512;    
+                        $val[$knum]['field_maxlen'] = 512;
                         $knum++;
                     endif;
                 endforeach;
@@ -641,26 +641,26 @@ class pafsql
     function pafgl_update($value, $action, $id = 0)
     {
         switch ($action) {
-            
+
             case 'update':
 
             $accepted_field = array('statdiv', 'appid', 'status',  'computed', 'pafad', 'promote', 'increase', 'nobjective', 'remarks', 'devplana', 'devplanb', 'devplanc', 'devpland', 'date', 'attachfile', 'promotepos');
-        
+
                 $knum = 0;
-                foreach ($value as $key => $value) :        
+                foreach ($value as $key => $value) :
                     if (in_array($key, $accepted_field)) :
-                        $val[$knum]['field_name'] = $key;        
+                        $val[$knum]['field_name'] = $key;
                         $val[$knum]['field_value'] = $value;
                         if ($key == 'statdiv' || $key == 'appid' || $key == 'status' || $key == 'computed' || $key == 'pafad' || $key == 'promote' || $key == 'increase' || $key == 'date' || $key == 'attachfile' || $key == 'promotepos'):
                             $val[$knum]['field_type'] = SQLVARCHAR;
                         elseif ($key == 'nobjective' || $key == 'remarks' || $key == 'devplana' || $key == 'devplanb' || $key == 'devplanc' || $key == 'devpland'):
-                            $val[$knum]['field_type'] = SQLTEXT;
+                            $val[$knum]['field_type'] = SQLVARCHAR;
                         endif;
                         $val[$knum]['field_isoutput'] = false;
                         $val[$knum]['field_isnull'] = false;
                         $val[$knum]['field_maxlen'] = 512;
                         if($key = 'remarks')
-                            $val[$knum]['field_maxlen'] = 2048;    
+                            $val[$knum]['field_maxlen'] = 2048;
                         $knum++;
                     endif;
                 endforeach;
@@ -675,30 +675,30 @@ class pafsql
         break;
 
         }
-    }   
+    }
 
     function pafgl_evaluate($value, $action, $id = 0)
     {
          switch ($action) {
             case 'wr':
-                
+
                 $accepted_field = array('wid', 'appid', 'rempid', 'stat', 'wrp3obj', 'wrp3weight', 'wrp3achieve', 'wrp3rating', 'wrp3wrating', 'wrp3resachieve', 'wrp3remarks');
                 //$accepted_field = array('g2Title1', 'g2Rad1', 'g2Rad2', 'g2Rad3', 'g2Rad4', 'g2Rad5', 'g2Comments1');
 
                 $knum = 0;
-                foreach ($value as $key => $value) :        
+                foreach ($value as $key => $value) :
                     if (in_array($key, $accepted_field)) :
-                        $val[$knum]['field_name'] = $key;        
-                        $val[$knum]['field_value'] = $value;            
+                        $val[$knum]['field_name'] = $key;
+                        $val[$knum]['field_value'] = $value;
                         if ($key == 'wrp3resachieve' || $key == 'wrp3remarks'):
-                            $val[$knum]['field_type'] = SQLTEXT;
+                            $val[$knum]['field_type'] = SQLVARCHAR;
                         elseif ($key == 'wid' || $key == 'appid' || $key == 'rempid' || $key == 'stat' || $key == 'wrp3obj' || $key == 'wrp3weight' || $key == 'wrp3achieve' || $key == 'wrp3rating' || $key == 'wrp3wrating'):
-                            $val[$knum]['field_type'] = SQLVARCHAR;              
-                        endif;  
+                            $val[$knum]['field_type'] = SQLVARCHAR;
+                        endif;
                         $val[$knum]['field_isoutput'] = false;
                         $val[$knum]['field_isnull'] = false;
-                        $val[$knum]['field_maxlen'] = 512;    
-                        
+                        $val[$knum]['field_maxlen'] = 512;
+
                         $knum++;
                     endif;
                 endforeach;
@@ -716,24 +716,24 @@ class pafsql
             break;
 
             case 'pcc':
-                
+
                 $accepted_field = array('pccid', 'appid', 'rempid', 'stat', 'pcccode', 'pcctitle', 'pccjd', 'pccweight', 'pccrate', 'pccwrating', 'pccremarks');
                 //$accepted_field = array('g2Title1', 'g2Rad1', 'g2Rad2', 'g2Rad3', 'g2Rad4', 'g2Rad5', 'g2Comments1');
 
                 $knum = 0;
-                foreach ($value as $key => $value) :        
+                foreach ($value as $key => $value) :
                     if (in_array($key, $accepted_field)) :
-                        $val[$knum]['field_name'] = $key;        
-                        $val[$knum]['field_value'] = $value;            
+                        $val[$knum]['field_name'] = $key;
+                        $val[$knum]['field_value'] = $value;
                         if ($key == 'pccjd' || $key == 'pccremarks'):
-                            $val[$knum]['field_type'] = SQLTEXT;
+                            $val[$knum]['field_type'] = SQLVARCHAR;
                         elseif ($key == 'pccid' || $key == 'appid' || $key == 'rempid' || $key == 'stat' || $key == 'pcccode' || $key == 'pcctitle' || $key == 'pccweight' || $key == 'pccrate' || $key == 'pccwrating'):
-                            $val[$knum]['field_type'] = SQLVARCHAR;              
-                        endif;  
+                            $val[$knum]['field_type'] = SQLVARCHAR;
+                        endif;
                         $val[$knum]['field_isoutput'] = false;
                         $val[$knum]['field_isnull'] = false;
-                        $val[$knum]['field_maxlen'] = 512;    
-                        
+                        $val[$knum]['field_maxlen'] = 512;
+
                         $knum++;
                     endif;
                 endforeach;
@@ -790,7 +790,7 @@ class pafsql
          $result = mssql_query($sql);
          return $result;
     }
-    
+
     function pafsample()
     {
          $sql = "SELECT TOP 1000 [id]
@@ -803,28 +803,28 @@ class pafsql
               ,[Rater4EmpID]
           FROM [DB_APPRAISAL].[dbo].[PAFMainEmpData]
           WHERE RateeEmpID IN (SELECT EmpID FROM [TOWNSQUARE].[dbo].[HREmpMaster])";
-        
-        $result = $this->get_row($sql); 
+
+        $result = $this->get_row($sql);
         return $result;
     }
-    
+
     function getnonsub($empid)
     {
          $sql = "SELECT FName, LName
           FROM [MEGAWORLD].[dbo].[HREmpMaster]
           WHERE EmpID = '".$empid."'";
-        
-        $result = $this->get_row($sql); 
+
+        $result = $this->get_row($sql);
         return $result;
     }
-    
+
     function getsub($empid)
     {
          $sql = "SELECT FName, LName
           FROM [TOWNSQUARE].[dbo].[HREmpMaster]
           WHERE EmpID = '".$empid."'";
-        
-        $result = $this->get_row($sql); 
+
+        $result = $this->get_row($sql);
         return $result;
     }
 
