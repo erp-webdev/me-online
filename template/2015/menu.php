@@ -13,7 +13,7 @@
 
 
 			<?php
-			if(in_array($profile_dbname, ['CITYLINK', 'ECOC', 'ECINEMA', 'EREX', 'LAFUERZA', 'LCTM', 'GL', 'MEGAWORLD', 'MLI', 'MCTI', 'NCCAI', 'SIRUS', 'SUNTRUST', 'TOWNSQUARE'])){
+			if(in_array($profile_dbname, ['CITYLINK', 'ECOC', 'ECINEMA', 'EREX', 'LAFUERZA', 'LCTM', 'GL', 'MEGAWORLD', 'MLI', 'NCCAI', 'SIRUS', 'SUNTRUST', 'TOWNSQUARE'])){
 				if(false || $profile_idnum == '2019-02-0033' || $profile_idnum == '2016-06-0457' || $profile_idnum == '2013-08-N300'){ ?>
 					<span class="spanred">NEW!</span>
 				<?php
