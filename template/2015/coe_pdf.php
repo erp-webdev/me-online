@@ -436,13 +436,15 @@
 				<?php
 				if($send_pdf){
 				?>
-					<img style="width: 150px" src="<?php echo IMG_WEB; ?>/coe/coe_alim_esig.png"/>
+					<img style="width: 150px" src="<?php echo IMG_WEB; ?>/coe/coe_gl.png"/>
+				<?php
+				}else{
+				?>
+				<b><p style="padding-top: 40px; <?php echo $send_pdf ? '' : 'padding-bottom: 40px;'; ?> padding-left: 50px; padding-right: 50px;">JOSEPHINE F. ALIM<br />
+				Associate Director</b>
 				<?php
 				}
 				?>
-
-				<b><p style="padding-top: 40px; <?php echo $send_pdf ? '' : 'padding-bottom: 40px;'; ?> padding-left: 50px; padding-right: 50px;">JOSEPHINE F. ALIM<br />
-				Associate Director</b>
 			<?php
 			}else{
 			?>
@@ -451,12 +453,15 @@
 				?>
 					<img style="width: 150px" src="<?php echo IMG_WEB; ?>/coe/coe_perez_esig.png"/>
 				<?php
-				}
+				}else{
 				?>
-
 				<b><p style="padding-top: 40px; <?php echo $send_pdf ? '' : 'padding-bottom: 40px;'; ?> padding-left: 50px; padding-right: 50px;">RAFAEL ANTONIO S. PEREZ<br />
 				Head, Human Resources and<br />
 				Corporate Administration Division</p></b>
+				<?php
+				}
+				?>
+
 			<?php
 			}
 		}
@@ -466,10 +471,10 @@
 		<!-- Breaklines START -  for Template - TCPDF cant render css height of div - FOOTER BREAKLINES -->
 		<?php if (in_array($coe[0]["type"], ['COE', 'COEHOUSINGPLAN', 'COEGOODMORAL', 'COEGOODMORAL', 'COESEPARATED', 'COECORRECTIONNAME', 'COEAPPROVEDLEAVE'])){ ?>
 			&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />
-			&nbsp;<br />
+
 			<?php if($coe[0]["type"] == 'COE' && !$send_pdf){ ?>
 				&nbsp;<br />&nbsp;<br />&nbsp;<br />
-				&nbsp;<br />&nbsp;<br />
+				&nbsp;<br />&nbsp;<br />&nbsp;<br />
 			<?php } ?>
 		<?php } ?>
 		<!-- Breaklines END -->
