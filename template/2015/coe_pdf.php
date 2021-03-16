@@ -117,10 +117,13 @@
 
 			<div style="text-align: justify;  text-justify: inter-word;">
 				<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo strtoupper($emp_info[0]["FullName"]); ?></b> is<?php if( in_array(strtolower(substr($emp_info[0]["PositionDesc"],0,1)), ['a','e','i','o','u']) ){ echo ' an '; }else{ echo ' a '; }?>
-				<b><?php echo $emp_info[0]["PositionDesc"]."</b> under <b>".
-				((in_array($coe[0]["company"], ['GLOBAL01', 'LGMI01'])) && $coe[0]["type"] != 'COECOMPENSATION') ? $emp_info[0]["DeptDesc"].' / ' : ''
-				.$emp_info[0]["DivisionName"]
-				." DIVISION</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"]; ?>
+				<b><?php
+				if((in_array($coe[0]["company"], ['GLOBAL01', 'LGMI01'])) && $coe[0]["type"] != 'COECOMPENSATION'){
+					echo $emp_info[0]["DeptDesc"].' / '.$emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." DIVISION</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"];
+				}else{
+					echo $emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." DIVISION</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"];
+				}
+				?>
 				<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
 				up to the present.</b></p>
 				<?php } ?>
@@ -147,9 +150,13 @@
 
 			<div style="text-align: justify;  text-justify: inter-word;">
 				<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo strtoupper($emp_info[0]["FullName"]); ?></b> is<?php if( in_array(strtolower(substr($emp_info[0]["PositionDesc"],0,1)), ['a','e','i','o','u']) ){ echo ' an '; }else{ echo ' a '; }?>
-				<b><?php echo $emp_info[0]["PositionDesc"]."</b> under <b>".
-				((in_array($coe[0]["company"], ['GLOBAL01', 'LGMI01'])) && $coe[0]["type"] != 'COECOMPENSATION') ? $emp_info[0]["DeptDesc"].' / ' : ''
-				.$emp_info[0]["DivisionName"]." DIVISION</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"]; ?>
+				<b><?php
+				if((in_array($coe[0]["company"], ['GLOBAL01', 'LGMI01'])) && $coe[0]["type"] != 'COECOMPENSATION'){
+					echo $emp_info[0]["DeptDesc"].' / '.$emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." DIVISION</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"];
+				}else{
+					echo $emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." DIVISION</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"];
+				}
+				?>
 				<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
 				up to the present.</b></p>
 				<?php } ?>
@@ -179,9 +186,13 @@
 
 			<div style="text-align: justify;  text-justify: inter-word;">
 				<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo strtoupper($emp_info[0]["FullName"]); ?></b> is<?php if( in_array(strtolower(substr($emp_info[0]["PositionDesc"],0,1)), ['a','e','i','o','u']) ){ echo ' an '; }else{ echo ' a '; }?>
-				<b><?php echo $emp_info[0]["PositionDesc"]."</b> under <b>".
-				((in_array($coe[0]["company"], ['GLOBAL01', 'LGMI01'])) && $coe[0]["type"] != 'COECOMPENSATION') ? $emp_info[0]["DeptDesc"].' / ' : ''
-				.$emp_info[0]["DivisionName"]." DIVISION</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"]; ?>
+				<b><?php
+				if((in_array($coe[0]["company"], ['GLOBAL01', 'LGMI01'])) && $coe[0]["type"] != 'COECOMPENSATION'){
+					echo $emp_info[0]["DeptDesc"].' / '.$emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." DIVISION</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"];
+				}else{
+					echo $emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." DIVISION</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"];
+				}
+				?>
 				<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
 				up to the present.</b></p>
 				<?php } ?>
@@ -261,9 +272,13 @@
 			<div style="text-align: justify;  text-justify: inter-word;">
 
 				<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo strtoupper($emp_info[0]["FullName"]); ?></b> is currently employed as
-				<b><?php echo $emp_info[0]["PositionDesc"]."</b> under <b>".
-				((in_array($coe[0]["company"], ['GLOBAL01', 'LGMI01'])) && $coe[0]["type"] != 'COECOMPENSATION') ? $emp_info[0]["DeptDesc"].' / ' : ''
-				.$emp_info[0]["DivisionName"]." DIVISION</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"]; ?>
+				<b><?php
+				if((in_array($coe[0]["company"], ['GLOBAL01', 'LGMI01'])) && $coe[0]["type"] != 'COECOMPENSATION'){
+					echo $emp_info[0]["DeptDesc"].' / '.$emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." DIVISION</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"];
+				}else{
+					echo $emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." DIVISION</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"];
+				}
+				?>
 				<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
 				up to the present.</b></p>
 				<?php } ?>
@@ -310,9 +325,13 @@
 
 			<div style="text-align: justify;  text-justify: inter-word;">
 				<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo strtoupper($emp_info[0]["FullName"]); ?></b> was employed as
-				<b><?php echo $emp_info[0]["PositionDesc"]."</b> under <b>".
-				((in_array($coe[0]["company"], ['GLOBAL01', 'LGMI01'])) && $coe[0]["type"] != 'COECOMPENSATION') ? $emp_info[0]["DeptDesc"].' / ' : ''
-				.$emp_info[0]["DivisionName"]." DIVISION</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"]; ?>
+				<b><?php
+				if((in_array($coe[0]["company"], ['GLOBAL01', 'LGMI01'])) && $coe[0]["type"] != 'COECOMPENSATION'){
+					echo $emp_info[0]["DeptDesc"].' / '.$emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." DIVISION</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"];
+				}else{
+					echo $emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." DIVISION</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"];
+				}
+				?>
 				<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
 				up to the present.</b></p>
 				<?php } ?>
