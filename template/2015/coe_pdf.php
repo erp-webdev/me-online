@@ -420,21 +420,26 @@
 		}else{
 			if($coe[0]["company"] == 'MCTI'){
 			?>
+
 				<?php
 				if($send_pdf){
 				?>
-					<img style="width: 150px" src="<?php echo IMG_WEB; ?>/coe/coe_villafuerte_esig.png"/>
+					<img style="width: 150px" src="<?php echo IMG_WEB; ?>/coe/coe_gl.png"/>
+				<?php
+				}else{
+				?>
+				<b><p style="padding-top: 40px; <?php echo $send_pdf ? '' : 'padding-bottom: 40px;'; ?> padding-left: 50px; padding-right: 50px;">JOEY I. VILLAFUERTE<br />
+				FIRST VICE PRESIDENT, CONTROLLERSHIP GROUP</p></b>
 				<?php
 				}
 				?>
 
-				<b><p style="padding-top: 40px; <?php echo $send_pdf ? '' : 'padding-bottom: 40px;'; ?> padding-left: 50px; padding-right: 50px;">JOEY I. VILLAFUERTE<br />
-				FIRST VICE PRESIDENT, CONTROLLERSHIP GROUP</p></b>
 			<?php
 			}elseif ($coe[0]["company"] == 'GLOBAL01' || $coe[0]["company"] == 'LGMI01' || $coe[0]["company"] == 'MIB01') {
 			?>
+
 				<?php
-				if(!$send_pdf){
+				if($send_pdf){
 				?>
 					<img style="width: 150px" src="<?php echo IMG_WEB; ?>/coe/coe_gl.png"/>
 				<?php
@@ -445,13 +450,15 @@
 				<?php
 				}
 				?>
+
 			<?php
 			}else{
 			?>
+
 				<?php
 				if($send_pdf){
 				?>
-					<img style="width: 150px" src="<?php echo IMG_WEB; ?>/coe/coe_perez_esig.png"/>
+					<img style="width: 150px" src="<?php echo IMG_WEB; ?>/coe/coe_etc.png"/>
 				<?php
 				}else{
 				?>
