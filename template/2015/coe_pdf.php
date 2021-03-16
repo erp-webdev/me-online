@@ -434,7 +434,7 @@
 			}elseif ($coe[0]["company"] == 'GLOBAL01' || $coe[0]["company"] == 'LGMI01' || $coe[0]["company"] == 'MIB01') {
 			?>
 				<?php
-				if($send_pdf){
+				if(!$send_pdf){
 				?>
 					<img style="width: 150px" src="<?php echo IMG_WEB; ?>/coe/coe_gl.png"/>
 				<?php
