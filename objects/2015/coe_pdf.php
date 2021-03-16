@@ -37,8 +37,8 @@
 
 		$query = "SELECT top 1
 					CASE
-						WHEN A.GENDER = 'F' or A.GENDER = 'FEMALE' THEN 'Ms.'
-						WHEN A.GENDER = 'M' or A.GENDER = 'MALE' THEN 'Mr.'
+						WHEN A.GENDER = 'F' or A.GENDER = 'FEMALE' THEN 'MS.'
+						WHEN A.GENDER = 'M' or A.GENDER = 'MALE' THEN 'MR.'
 					END AS Salutation,
 					CASE
 						WHEN A.GENDER = 'F' or A.GENDER = 'FEMALE' THEN 'She'
