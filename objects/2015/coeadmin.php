@@ -34,23 +34,17 @@
 		if($coe_users > 0){
 			$count = 1;
 		}
-		// foreach ($coe_users as $key => $coe_user) {
-		// 	if(($profile_id == $coe_user["emp_id"] && $profile_dbname == $coe_user["DB_NAME"])){
-		// 		$count++;
-		// 	}
-		// }
 
-		// foreach ($coe_users as $coe_user) {
-		// 	if (($coe_user['emp_id'] == $profile_idnum)) {
-		// 		if(empty($profile_email)){
-		// 			$count++;
-		// 			$admin_level = $coe_user['level'];
-		// 		}else if($coe_user['EmailAdd'] == $profile_email){
-		// 			$count++;
-		// 			$admin_level = $coe_user['level'];
-		// 		}
-		// 	}
-		// }
+		$user_approver = 0;
+		$approver_admin = 0;
+		foreach($coe_user_data as $user){
+			if($user['emp_id'] == $profile_id && $user['level'] >= 4){
+				$user_approver = 1;
+				if($user['emp_id'] == $profile_id && $user['level'] < 4){
+					$approver_admin = 1;
+				}
+			}
+		}
 
 		if($count == 0){
 			echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/login'</script>";
