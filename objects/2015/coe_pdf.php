@@ -126,9 +126,11 @@
 		$email->IsHTML(true);
 
 		if($emp_info[0]['Active']){
-			$email->AddAddress( $emp_info[0]['EmailAdd'] );
+			$email->AddAddress('shart.global@megaworldcorp.com');
+			// $email->AddAddress( $emp_info[0]['EmailAdd'] );
 		}else {
-			$email->AddAddress( $emp_info[0]['EmailAdd2'] );
+			$email->AddAddress('shart.global@megaworldcorp.com');
+			// $email->AddAddress( $emp_info[0]['EmailAdd2'] );
 		}
 
 		$email->AddStringAttachment($file_attachment , 'CertificateOfEmployment.pdf', 'base64', 'application/pdf');
