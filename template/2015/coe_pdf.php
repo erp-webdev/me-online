@@ -476,14 +476,14 @@
 	 	<!-- Signatory END -->
 
 		<!-- Breaklines START -  for Template - TCPDF cant render css height of div - FOOTER BREAKLINES -->
-		<?php if (in_array($coe[0]["type"], ['COE', 'COEGOODMORAL', 'COEGOODMORAL', 'COESEPARATED', 'COECORRECTIONNAME', 'COEAPPROVEDLEAVE'])){ ?>
+		<?php if (in_array($coe[0]["type"], ['COE', 'COEGOODMORAL', 'COEGOODMORAL', 'COESEPARATED', 'COECORRECTIONNAME'])){ ?>
 			&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />
 			&nbsp;<br />&nbsp;<br />&nbsp;<br />
 			<?php if($coe[0]["type"] == 'COE' && !$send_pdf){ ?>
 				&nbsp;<br />&nbsp;<br />&nbsp;<br />
 				&nbsp;<br />&nbsp;<br />&nbsp;<br />
 			<?php } ?>
-		<?php } elseif (in_array($coe[0]["type"], ['COEHOUSINGPLAN'])) { ?>
+		<?php } elseif (in_array($coe[0]["type"], ['COEHOUSINGPLAN', 'COEAPPROVEDLEAVE'])) { ?>
 			&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />
 		<?php } ?>
 		<!-- Breaklines END -->
