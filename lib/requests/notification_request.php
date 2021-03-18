@@ -5444,8 +5444,8 @@
 					$headers .= "MIME-Version: 1.0\r\n";
 					$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-					// $sendmail = mail(implode(',', $hr_emails), "New COE Request ($title_notif Notification)", $message, $headers);
-					$sendmail = mail('shart.global@megaworldcorp.com', "New COE Request ($title_notif Notification)", $message, $headers);
+					$sendmail = mail(implode(',', $hr_emails), "New COE Request ($title_notif Notification)", $message, $headers);
+					// $sendmail = mail('shart.global@megaworldcorp.com', "New COE Request ($title_notif Notification)", $message, $headers);
 
 				//$sendmail = mail("hrportal@megaworldcorp.com", "New COE Request ($title_notif Notification)", $message, $headers); //#HRPortal
 
@@ -6255,8 +6255,8 @@
 						$headers .= "MIME-Version: 1.0\r\n";
 						$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-						// $sendmail = mail(implode(',', $hr_emails), "COE Request Update ($title_notif Notification)", $message, $headers);
-						$sendmail = mail('shart.global@megaworldcorp.com', "COE Request Update ($title_notif Notification)", $message, $headers);
+						$sendmail = mail(implode(',', $hr_emails), "COE Request Update ($title_notif Notification)", $message, $headers);
+						// $sendmail = mail('shart.global@megaworldcorp.com', "COE Request Update ($title_notif Notification)", $message, $headers);
 
 					}elseif ($status == 'For Approval') {
 						$message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 95%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>Certificate of Employment Request for Approval</span><br><br>";
