@@ -731,7 +731,7 @@ class regsql {
                 $val[$knum]['field_name'] = $key;
                 $val[$knum]['field_value'] = $value;
                 if ($key == 'PICTURE') :
-                    $val[$knum]['field_type'] = SQLTEXT;
+                    $val[$knum]['field_type'] = SQLVARCHAR;
                     $val[$knum]['field_isoutput'] = false;
                     $val[$knum]['field_isnull'] = false;
                 elseif ($key == 'TRANS') :
