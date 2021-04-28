@@ -6275,8 +6275,8 @@
 						if($coetype != 'COECOMPENSATION'){
 							if ($coe_old[0]["company"] == 'GLOBAL01' || $coe_old[0]["company"] == 'LGMI01' || $coe_old[0]["company"] == 'MIB01') {
 								// Ma'am Joy Notification
-								// $approver_email = 'jfalim@globalcompanies.com.ph';
-								$approver_email = 'shart.global@megaworldcorp.com';
+								$approver_email = 'jfalim@globalcompanies.com.ph';
+								// $approver_email = 'shart.global@megaworldcorp.com';  
 							}elseif ($coe_old[0]["company"] == 'MCTI') {
 								// Sir Joey Notification
 								$approver_email = 'jvillafuerte@megaworldcorp.com';
