@@ -645,7 +645,7 @@
                                             <tr>
                                                 <td><span class="lorangetext">*</span> Gender<br>
                                                 <select name="EGender" id="EGender" class="txtbox" style="width: 165px;">
-																										<option value="0" selected>Please Select</option>
+																										<option selected>Please Select</option>
                                                     <option value="FEMALE"<?php echo ($emp_data['Gender'] == 'F' || $emp_data['Gender'] == 'FEMALE') ? ' selected' : ''; ?>>FEMALE</option>
                                                     <option value="MALE"<?php echo ($emp_data['Gender'] == 'M' || $emp_data['Gender'] == 'MALE') ? ' selected' : ''; ?>>MALE</option>
                                                 </select>
