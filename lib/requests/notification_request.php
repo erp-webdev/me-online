@@ -6076,8 +6076,7 @@
 			$avail_no = $_POST["avail_no"];
 
 			$tasks = json_encode($tasks);
-			echo "<script>console.log('$tasks');</script>";
-			exit(0);
+
 			$coe_old = "SELECT * FROM COERequests WHERE id=$id";
 
 			$coe_old = $mainsql->get_row($coe_old);
