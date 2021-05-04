@@ -6073,7 +6073,7 @@
 			$datetoday = date('Y-m-d');
 			$tasks = $_POST["coetasks"];
 
-			echo "<script>alert('$tasks');</script>";
+			echo "<script>console.log('$tasks');</script>";
 			exit(0);
 			$hpa_percent = $_POST["hpa_percent"];
 			$avail_no = $_POST["avail_no"];
