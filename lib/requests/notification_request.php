@@ -5017,6 +5017,7 @@
 
 			$ref_no = $_POST["ref_no"];
 			$level = $_POST["level"];
+			$approver = $_POST["approver"];
 
 			if($ref_no == '' || $ref_no == "" || $ref_no == null){
 				echo "<script>location.reload();</script>";
@@ -5057,7 +5058,7 @@
 				</tr>
 				<?php foreach ($result as $key => $value) : ?>
 				<?php //$appdata = $mainsql->get_notification($value['ReqNbr']); ?>
-				<tr class="btncoe cursorpoint trdata centertalign" attribute="<?php echo $value['id']; ?>" attribute5="2">
+				<tr class="btncoe cursorpoint trdata centertalign" attribute="<?php echo $value['id']; ?>" attribute5="2" attribute6="<?php echo $approver; ?>">
 					<td><?php echo $start + $key + 1; ?></td>
 					<!-- <td><?php //echo date('m/d/Y', strtotime($value['created_at'])); ?></td> -->
 					<td><?php echo $value['FullName']; ?></td>

@@ -880,11 +880,12 @@ $(function() {
 
 		ref_no = $("#coeref").val();
 		level = $(this).attr('attribute');
+		approver = $(this).attr('attribute6');
 
 		$.ajax(
 		{
 			url: "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=coesearch",
-			data: "ref_no=" + ref_no + "&level=" + level,
+			data: "ref_no=" + ref_no + "&level=" + level + "&approver=" + approver,
 			type: "POST",
 			complete: function(){
 				$("#loading").hide();
