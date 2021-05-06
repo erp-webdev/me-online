@@ -161,7 +161,7 @@
 				up to the present.</b></p>
 				<?php } ?>
 
-				<p style="padding-left: 50px; padding-right: 50px;">Furthermore, this is to certify that <?php echo $emp_info[0]["Gender"]; ?> is qualified for a
+				<p style="padding-left: 50px; padding-right: 50px;">Furthermore, this is to certify that <?php echo strtolower($emp_info[0]["Gender"]); ?> is qualified for a
 				<?php if($coe[0]["hpa_percent"] == '25%'){ ?>
 					twenty five percent (25%)
 				<?php }else if($coe[0]["hpa_percent"] == '30%'){ ?>
