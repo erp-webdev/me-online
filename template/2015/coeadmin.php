@@ -26,7 +26,7 @@
 											<label>Company: </label>
 										</td>
 										<td>
-											<select id="company_sort" name="company_sort" class="txtbox" style="width:193px;" attribute2="<?php echo $pages ? $pages : ''; ?>">
+											<select id="company_sort" name="company_sort" attribute="<?php echo $admin_level; ?>" class="txtbox" style="width:193px;" attribute2="<?php echo $pages ? $pages : ''; ?>">
 												<option value="">All Companies</option>
 												<?php
 													$dbase_array = array(

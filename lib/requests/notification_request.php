@@ -5054,7 +5054,7 @@
 					<th width="20%">FullName</th>
 					<th width="10%">Type</th>
 					<th width="10%">Employee</th>
-					<th width="10%">Company</th>
+					<th width="10%">Company ID</th>
 					<th width="10%">Status</th>
 					<th width="10%">Date Completed</th>
 				</tr>
@@ -5119,6 +5119,7 @@
 		case 'coesort':
 
 			$company_sort = $_POST["company_sort"];
+			$level = $_POST["level"];
 
 			$_SESSION["company_sort"] = $company_sort;
 
@@ -5131,6 +5132,12 @@
 
 			if($company_sort != ''){
 				$sql .= " WHERE company = '".$company_sort."'";
+			}
+
+			if($level == 3){
+				$sql .= " AND type <> 'COECOMPENSATION'";
+			}elseif ($level == 2) {
+				$sql .= " AND type = 'COECOMPENSATION'";
 			}
 
 			$sql .= ") as [outer] LEFT JOIN viewHREmpMaster B on B.empid = [outer].emp_id WHERE [outer].[ROW_NUMBER] BETWEEN 1 AND 10 ORDER BY CASE WHEN [outer].STATUS = 'CANCELLED' THEN 0

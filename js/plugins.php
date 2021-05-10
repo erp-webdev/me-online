@@ -900,11 +900,12 @@ $(function() {
 	$("#company_sort").on("change", function() {
 
 		var company_sort = $("select[name=company_sort]").val();
+		var level = $(this).attr('attribute');
 
 		$.ajax(
 		{
 			url: "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=coesort",
-			data: "company_sort=" + company_sort,
+			data: "company_sort=" + company_sort + "&level=" + level,
 			type: "POST",
 			complete: function(){
 				$("#loading").hide();
