@@ -5132,13 +5132,22 @@
 
 			if($company_sort != ''){
 				$sql .= " WHERE company = '".$company_sort."'";
+
+				if($level == 3){
+					$sql .= " AND type <> 'COECOMPENSATION'";
+				}elseif ($level == 2) {
+					$sql .= " AND type = 'COECOMPENSATION'";
+				}
+
+			}else{
+				if($level == 3){
+					$sql .= " WHERE type <> 'COECOMPENSATION'";
+				}elseif ($level == 2) {
+					$sql .= " WHERE type = 'COECOMPENSATION'";
+				}
 			}
 
-			if($level == 3){
-				$sql .= " AND type <> 'COECOMPENSATION'";
-			}elseif ($level == 2) {
-				$sql .= " AND type = 'COECOMPENSATION'";
-			}
+
 
 			$sql .= ") as [outer] LEFT JOIN viewHREmpMaster B on B.empid = [outer].emp_id WHERE [outer].[ROW_NUMBER] BETWEEN 1 AND 10 ORDER BY CASE WHEN [outer].STATUS = 'CANCELLED' THEN 0
 	              WHEN [outer].STATUS = 'DONE' THEN 1
