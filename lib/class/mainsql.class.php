@@ -1096,7 +1096,7 @@ class mainsql {
 				}elseif ($emp_type[0]['level'] == '4') {
 					$sql .= "WHERE status = 'For Approval' and type <> 'COECOMPENSATION'";
 				}elseif ($emp_type[0]['level'] == '5') {
-					$sql .= "WHERE status = 'For Approval' and type == 'COECOMPENSATION'";
+					$sql .= "WHERE status = 'For Approval' and type = 'COECOMPENSATION'";
 				}else{
 					$sql .= "WHERE type <> 'COECOMPENSATION'";
 				}
