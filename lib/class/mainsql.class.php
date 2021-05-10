@@ -1094,11 +1094,11 @@ class mainsql {
 				if($emp_type[0]['level'] == '2'){
 					$sql .= "WHERE type = 'COECOMPENSATION'";
 				}elseif ($emp_type[0]['level'] == '4') {
-					$sql .= "WHERE status = 'For Approval' and type != 'COMPENSATION'";
+					$sql .= "WHERE status = 'For Approval' and type <> 'COECOMPENSATION'";
 				}elseif ($emp_type[0]['level'] == '5') {
-					$sql .= "WHERE status = 'For Approval' and type == 'COMPENSATION'";
+					$sql .= "WHERE status = 'For Approval' and type == 'COECOMPENSATION'";
 				}else{
-					$sql .= "WHERE type != 'COECOMPENSATION'";
+					$sql .= "WHERE type <> 'COECOMPENSATION'";
 				}
 
 		        if($company_sort != null || $company_sort != ''){
