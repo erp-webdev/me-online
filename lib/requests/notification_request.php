@@ -4584,7 +4584,9 @@
 							<select id="coetype" name="coetype" class="txtbox" style="width:193px;">
 								<option value="">Please Select</option>
 								<option value="COE">Certificate Of Employment</option>
-								<!-- <option value="COECOMPENSATION">CoE with Compensation</option> -->
+								<?php if($profile_id == '2019-02-0033'){ ?>
+								<option value="COECOMPENSATION">CoE with Compensation</option>
+								<?php } ?>
 								<option value="COEHOUSINGPLAN">CoE with Housing Plan</option>
 								<option value="COEJOBDESC">CoE with Job Desc</option>
 								<option value="COEGOODMORAL">CoE with Good Moral</option>
@@ -6174,7 +6176,11 @@
 								WHERE ";
 
 					if($status == 'For Approval'){
-						$emp_hr .="A.[level] = '4'";
+						if(in_array($coetype, $coetypes["2"])){
+							$emp_hr .="A.[level] = '5'";
+						}else{
+							$emp_hr .="A.[level] = '4'";
+						}
 					}else{
 						if(in_array($coetype, $coetypes["2"])){
 							$emp_hr .="A.[level] = '2'";
@@ -6276,20 +6282,24 @@
 						if($coetype != 'COECOMPENSATION'){
 							if ($coe_old[0]["company"] == 'GLOBAL01' || $coe_old[0]["company"] == 'LGMI01' || $coe_old[0]["company"] == 'MIB01') {
 								// Ma'am Joy Notification
-								$approver_email = 'jfalim@globalcompanies.com.ph';
-								// $approver_email = 'shart.global@megaworldcorp.com';
+								// $approver_email = 'jfalim@globalcompanies.com.ph';
+								$approver_email = 'shart.global@megaworldcorp.com';
 							}elseif ($coe_old[0]["company"] == 'MCTI') {
 								// Sir Joey Notification
-								$approver_email = 'jvillafuerte@megaworldcorp.com';
+								// $approver_email = 'jvillafuerte@megaworldcorp.com';
 							}else{
 								// Sir Raffy Notification
-								$approver_email = 'rperez@megaworldcorp.com';
+								// $approver_email = 'rperez@megaworldcorp.com';
 							}
 							array_push($hr_emails, $approver_email);
 							// $sendmail = mail($approver_email, "COE Request for Approval", $message, $headers);
 							$sendmail = mail(implode(',', $hr_emails), "COE Request Update ($title_notif Notification)", $message, $headers);
 						}else{
 							// INSERT COMPENSATION APPROVERS HERE
+							$approver_email = 'shart.global@megaworldcorp.com';
+
+							array_push($hr_emails, $approver_email);
+							$sendmail = mail(implode(',', $hr_emails), "COE Request Update ($title_notif Notification)", $message, $headers);
 						}
 
 					}
