@@ -502,7 +502,7 @@
 			&nbsp;<br />&nbsp;<br />&nbsp;<br />
 			<?php if($coe[0]["type"] == 'COE' && !$send_pdf){ ?>
 				&nbsp;<br />&nbsp;<br />&nbsp;<br />
-				&nbsp;<br />&nbsp;<br />&nbsp;<br />
+				&nbsp;<br />
 			<?php } ?>
 		<?php } elseif (in_array($coe[0]["type"], ['COEHOUSINGPLAN', 'COEAPPROVEDLEAVE', 'COECORRECTIONNAME'])) { ?>
 			&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />
