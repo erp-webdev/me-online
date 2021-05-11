@@ -5471,7 +5471,7 @@
 			$date_resigned_sql = "SELECT DateResigned from viewHREmpMaster WHERE EmpID = '$date_resigned_empid'";
 			$date_resigned = $mainsql->get_row($date_resigned_sql);
 			if($date_resigned[0]['DateResigned'] >= date('Y-m-d')){
-				$date_resigned = $date_resigned[0]['DateResigned'];
+				$date_resigned = date('F j, Y', strtotime($date_resigned[0]['DateResigned']));
 			}
 
 			$coe_comp = $result[0]['company'];
@@ -5894,7 +5894,7 @@
 						var type = $(this).attr('attribute3');
 						var date_resigned = $(this).attr('attribute4');
 
-						if(!date_resigned){
+						if(date_resigned){
 							alert('You can send the CoE of the employee on '+date_resigned+' onwards.');
 							return;
 						}
