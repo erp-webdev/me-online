@@ -5895,7 +5895,7 @@
 						var date_resigned = $(this).attr('attribute4');
 
 						if(date_resigned){
-							alert('You can send the COE on or after the effectivity date of resignation. (resignation date:'+date_resigned+')');
+							alert('You can send the COE on or after the effectivity date of resignation. (Resignation Date: '+date_resigned+')');
 							return;
 						}
 
