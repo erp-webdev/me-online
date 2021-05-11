@@ -5485,6 +5485,13 @@
 
 			$result = $mainsql->get_row($sql);
 
+			$date_resigned_empid = $result[0]['emp_id'];
+			$date_resigned_sql = "SELECT DateResigned from viewHREmpMaster WHERE EmpID = '$date_resigned_empid'";
+			$date_resigned = $mainsql->get_row($date_resigned_sql);
+			if($date_resigned[0]['DateResigned'] >= date('Y-m-d')){
+				$date_resigned = $date_resigned[0]['DateResigned'];
+			}
+
 			$coe_comp = $result[0]['company'];
 			$coe_comp = "SELECT * FROM HRCompany Where CompanyID = '$coe_comp'";
 			$coe_comp = $mainsql->get_row($coe_comp);
@@ -5741,7 +5748,7 @@
 							<?php 	} ?>
 
 							<?php	if(($result[0]['status'] == 'For Release' || $result[0]['status'] == 'Done') && $result[0]['status'] != 'Cancelled' && $result[0]['approved'] == 1){?>
-										<button id="sendcoe" value="Send" attribute="<?php echo $result[0]['id']; ?>" attribute2="<?php echo $result[0]['status']; ?>" attribute3="<?php echo $result[0]['type']; ?>" class="smlbtn" style="background-color:#3EC2FB; width:45px;">Send</button>
+										<button id="sendcoe" value="Send" attribute4="<?php echo $date_resigned; ?>" attribute="<?php echo $result[0]['id']; ?>" attribute2="<?php echo $result[0]['status']; ?>" attribute3="<?php echo $result[0]['type']; ?>" class="smlbtn" style="background-color:#3EC2FB; width:45px;">Send</button>
 										<!-- <a href="<?php echo WEB; ?>/coe_pdf?id=<?php echo $result[0]['id']; ?>&type=<?php echo $result[0]['type']; ?>&send=TRUE" target="_blank"><button class="smlbtn" style="background-color:#3EC2FB; width:45px;">Send</button></a> -->
 							<?php 	} ?>
 							<?php	if($result[0]['status'] == 'Done' || $result[0]['status'] == 'Cancelled'){ ?>
@@ -5903,6 +5910,12 @@
 						var id = $(this).attr('attribute');
 						var status = $(this).attr('attribute2');
 						var type = $(this).attr('attribute3');
+						var date_resigned = $(this).attr('attribute4');
+
+						if(!date_resigned){
+							alert('You can send the CoE of the employee on '+date_resigned+' onwards.');
+							return;
+						}
 
 						if(type == 'COEAPPROVEDLEAVE'){
 							var start_date = "<?php echo date('m/d/Y', strtotime($result[0]['leave_from'])); ?>";
