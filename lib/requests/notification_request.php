@@ -5488,7 +5488,7 @@
 			$date_resigned_empid = $result[0]['emp_id'];
 			$date_resigned_sql = "SELECT DateResigned from viewHREmpMaster WHERE EmpID = '$date_resigned_empid'";
 			$date_resigned_data = $mainsql->get_row($date_resigned_sql);
-			if($date_resigned_data[0]['DateResigned'] >= date('Y-m-d')){
+			if(date('Y-m-d', strtotime($date_resigned_data[0]['DateResigned'])) > date('Y-m-d')){
 				$date_resigned = date('F j, Y', strtotime($date_resigned_data[0]['DateResigned']));
 			}
 
