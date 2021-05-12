@@ -4993,6 +4993,7 @@
 					console.log(form_data);
 
 					$("#submitcoe").hide();
+					$("#coedata").html('<i class="fa fa-refresh fa-spin fa-lg"></i> Loading...');
 
 					$.ajax(
 					{
@@ -5892,6 +5893,9 @@
 							alert('This request cannot be cancelled!');
 							return;
 						}
+
+						$("#coedata").html('<i class="fa fa-refresh fa-spin fa-lg"></i> Loading...');
+
 						$.ajax(
 						{
 							url: "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=coesave",
@@ -5923,15 +5927,18 @@
 						var tasks = $('input:text.tasks').serialize();
 						var hpa_percent = $("#hpa_percent2").val();
 						var avail_no = $("#avail_no2").val();
+						var cancel_remarks = '';
 
 						if(disabutton != ''){
 							return;
 						}
 
+						$("#coedata").html('<i class="fa fa-refresh fa-spin fa-lg"></i> Loading...');
+
 						$.ajax(
 						{
 							url: "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=coesave",
-							data: "id=" + id + "&emp_id=" + emp_id + "&status=" + status + "&others=" + others + "&" + tasks + "&ref_no=" + ref_no + "&type=" + type + '&hpa_percent=' + hpa_percent + '&avail_no=' + avail_no + '&old_status=' +old_status + '&company_id=' +company_id,
+							data: "id=" + id + "&emp_id=" + emp_id + "&status=" + status + "&others=" + others + "&" + tasks + "&ref_no=" + ref_no + "&type=" + type + '&hpa_percent=' + hpa_percent + '&avail_no=' + avail_no + '&old_status=' +old_status + '&company_id=' +company_id + '&cancel_remarks='+cancel_remarks,
 							type: "POST",
 							complete: function(){
 								$("#loading").hide();
@@ -6201,7 +6208,7 @@
 							id=$id";
 			}
 			$coe_message = 'CoE has been saved!';
-			if($coe_old[0]['status'] == 'For Approval'){
+			if($coe_old[0]['status'] == 'For Approval' && $status != 'Cancelled'){
 
 				$coe_message = 'CoE has been approved!';
 				$status = 'For Release';
