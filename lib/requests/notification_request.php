@@ -4513,6 +4513,9 @@
 
 		?>
 			<div style="padding-top:20px;font-size:12px;">
+				<div id="compensation_note" style="text-align: center; padding-bottom: 10px; color: red;">
+					<i>** Note: Kindly direct CoE with Compensation (Salary) requests to Payroll Group **</i>
+				</div>
 				<table align="center">
 					<tr>
 						<td width="5%"></td>
@@ -4822,6 +4825,7 @@
 				$("#coenamediv1").hide();
 				$("#coehpa").hide();
 				$("#coeavail").hide();
+				$("#compensation_note").hide();
 
 
 				$("select[name=coetype]").change(function(){
@@ -4838,6 +4842,7 @@
 						$("#coeleavediv4").hide();
 						$("#coeavail").hide();
 						$("#coehpa").hide();
+						$("#compensation_note").hide();
 
 						if($("select[name=coetype]").val() == "COEAPPROVEDLEAVE"){
 							$("#coeleavediv1").show();
@@ -4883,6 +4888,7 @@
 						$("#coehpa").hide();
 						$("#coeavail").hide();
 						$("#coeothersdiv").show();
+						$("#compensation_note").show();
 						// $("input[name=coeothers]").css({"visibility":"visible"});
 					}
 				});
@@ -5481,7 +5487,7 @@
 			$tasks = json_decode($result[0]['job_desc'], true);
 			?>
 
-			<div style="padding-top:20px;font-size:12px;">
+			<div style="padding-top:20px;font-size:12px;" id="coe_old_div">
 				<table align="center">
 					<tr>
 						<td width="5%"></td>
@@ -5710,6 +5716,18 @@
 						</td>
 					</tr>
 
+					<?php if($result[0]['status'] == 'Cancelled'){ ?>
+					<tr id="coe_cancelled">
+						<td></td>
+						<td align="left">
+							<label>Cancellation Remarks: </label>
+						</td>
+						<td align="left">
+							<?php echo $result[0]['cancel_remarks']; ?>
+						</td>
+					</tr>
+					<?php } ?>
+
 					<?php if($level == 2 && (in_array($result[0]['status'], ['For Release', 'Done'] ))){ ?>
 						<tr id="coeapproval">
 							<td></td>
@@ -5748,7 +5766,7 @@
 							<?php if($result[0]['status'] == 'Done' || $result[0]['status'] == 'Cancelled'){ ?>
 							<?php }else{ ?>
 
-								<button id="coecancel" value="Cancel" attribute9="<?php echo $result[0]['company']; ?>" attribute5="<?php echo $result[0]['ref_no']; ?>" attribute4="<?php echo $result[0]["type"]; ?>" attribute3="<?php echo $result[0]['emp_id']; ?>" attribute="<?php echo $result[0]['id'] ?>" attribute2="<?php echo $result[0]['cancelled_at'].$result[0]['released_at']; ?>" class="btncancel btnred smlbtn" style="width:45px;" <?php if($result[0]['cancelled_at'] != null || $result[0]['released_at'] != null){ echo "disabled";} ?>>Cancel</button>
+								<button id="coecancel" class="btncancel btnred smlbtn" style="width:45px;">Cancel</button>
 
 							<?php } ?>
 
@@ -5760,6 +5778,28 @@
 					</tr>
 				</table>
 			</div>
+
+			<div id="coe_old_cancel" style="padding-top:20px;font-size:12px;padding-top:50px;">
+				<table align="center">
+					<tr>
+						<td width="5%"></td>
+						<td width="40%" align="left"><label>Cancellation Remarks: </label></td>
+						<td width="55%" align="left">
+							<textarea id="cancel_remarks" name="cancel_remarks" class="txtbox" style="width:195px;"></textarea>
+							<!-- <input id="cancel_remarks" name="cancel_remarks" type="text" class="txtbox" style="width:185px;"> -->
+						</td>
+						<tr>
+							<td colspan="3" align="center">
+								<div style="padding-top: 25px;">
+									<button id="coecancelsubmit" value="Cancel" attribute9="<?php echo $result[0]['company']; ?>" attribute5="<?php echo $result[0]['ref_no']; ?>" attribute4="<?php echo $result[0]["type"]; ?>" attribute3="<?php echo $result[0]['emp_id']; ?>" attribute="<?php echo $result[0]['id'] ?>" attribute2="<?php echo $result[0]['cancelled_at'].$result[0]['released_at']; ?>" class=" smlbtn" style="background-color:#3EC2FB; width:50px;" <?php if($result[0]['cancelled_at'] != null || $result[0]['released_at'] != null){ echo "disabled";} ?>>Submit</button>
+									<button id="coeback" class="smlbtn btncancel btnred" style="width:50px;">Back</button>
+								</div>
+							</td>
+						</tr>
+					</tr>
+				</table>
+			</div>
+
 			<script>
 				$(document).ready(function(){
 
@@ -5773,6 +5813,7 @@
 					$("#coejobdiv1").hide();
 					$("#coeavail2").hide();
 					$("#coehpa2").hide();
+					$("#coe_old_cancel").hide();
 
 
 					if('<?php echo $level ?>' != 2){
@@ -5824,8 +5865,18 @@
 					});
 
 					$("#coecancel").on("click", function(){
+						$("#coe_old_cancel").show();
+						$("#coe_old_div").hide();
+					});
+
+					$("#coeback").on("click", function(){
+						$("#coe_old_cancel").hide();
+						$("#coe_old_div").show();
+					});
+
+					$("#coecancelsubmit").on("click", function(){
 						$("#savecoe").hide();
-						$("#coecancel").hide();
+						$("#coecancelsubmit").hide();
 						var id = $(this).attr('attribute');
 						var emp_id = $(this).attr('attribute3');
 						var company_id = $(this).attr('attribute9');
@@ -5833,16 +5884,20 @@
 						var ref_no = $(this).attr('attribute5');
 						var status = 'Cancelled';
 						var others = $("#coeothers2").val();
+						var cancel_remarks = $("#cancel_remarks").val();
 						var disabutton = $(this).attr('attribute2');
 						var tasks = $('input:text.tasks').serialize();
 
 						if(disabutton != ''){
+							alert('This request cannot be cancelled!');
 							return;
 						}
 						$.ajax(
 						{
 							url: "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=coesave",
-							data: "id=" + id + "&emp_id=" + emp_id + "&status=" + status + "&others=" + others + "&" + tasks + "&ref_no=" + ref_no + "&type=" + type + '&company_id=' +company_id,
+							data: "id=" + id + "&emp_id=" + emp_id + "&status=" + status + "&others=" + others + "&" + tasks
+										+ "&ref_no=" + ref_no + "&type=" + type + '&company_id=' +company_id
+										+ "&cancel_remarks=" +cancel_remarks,
 							type: "POST",
 							complete: function(){
 								$("#loading").hide();
@@ -6088,6 +6143,7 @@
 			$tasks = $_POST["coetasks"];
 			$hpa_percent = $_POST["hpa_percent"];
 			$avail_no = $_POST["avail_no"];
+			$cancel_remarks = $_POST["cancel_remarks"] ? $_POST["cancel_remarks"] : null ;
 
 			$tasks = json_encode($tasks);
 
@@ -6111,7 +6167,8 @@
 							updated_at = '".$datetoday."',
 							updated_by = '".$profile_idnum."',
 							cancelled_at = '".$datetoday."',
-							cancelled_by = '".$profile_idnum."'
+							cancelled_by = '".$profile_idnum."',
+							cancel_remarks = '".$cancel_remarks."'
 						WHERE
 							id=$id";
 			}else if($status == "Done"){
@@ -6220,7 +6277,12 @@
 							$message .= " Schedule of COE release is every Monday to Friday from 2:00 to 4:00 PM. Please coordinate with your HR Business Partner.";
 						}
 					}else if ($status == 'Cancelled'){
-						$message .= "Your Certificate of Employment ($coetype) with a Reference No. ".$refno." has been Cancelled at ".date('F j, Y', strtotime($coe_result[0]['created_at'])).".";
+						if($profile_idnum == $coeemp){
+							$cancelled_by_email = 'You';
+						}else{
+							$cancelled_by_email = 'the CoE Admins';
+						}
+						$message .= "Your Certificate of Employment ($coetype) with a Reference No. ".$refno." has been Cancelled by $cancelled_by_email at ".date('F j, Y', strtotime($coe_result[0]['created_at']))." with remarks: ".$cancel_remarks;
 					}else if ($status == 'On Process'){
 						$message .= "Your Certificate of Employment ($coetype) with a Reference No. ".$refno." is now On Process (".date('F j, Y', strtotime($coe_result[0]['updated_at'])).").";
 					}else if ($status == 'For Approval'){
@@ -6252,7 +6314,12 @@
 						$message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 95%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>Certificate of Employment Request</span><br><br>";
 
 						if($status == 'Cancelled'){// gohere
-							$message .= "The Requested Certificate of Employment ($coetype) for ".$emp_info[0]['FullName']."(".$emp_info[0]['CompanyName'].") - (".$emp_info[0]['DivisionName'].") with a Reference No. ".$refno." has been Cancelled at ".date('F j, Y', strtotime($coe_result[0]['created_at'])).".";
+							if($profile_idnum == $coeemp){
+								$cancelled_by_email = 'the Employee';
+							}else{
+								$cancelled_by_email = 'the CoE Admins';
+							}
+							$message .= "The Requested Certificate of Employment ($coetype) for ".$emp_info[0]['FullName']."(".$emp_info[0]['CompanyName'].") - (".$emp_info[0]['DivisionName'].") with a Reference No. ".$refno." has been Cancelled by $cancelled_by_email at ".date('F j, Y', strtotime($coe_result[0]['created_at']))." with remarks: ".$cancel_remarks;
 						}else if ($status == 'For Release' && $coe_old[0]['status'] == 'For Approval'){
 							$message .= "The Requested Certificate of Employment ($coetype) for ".$emp_info[0]['FullName']."(".$emp_info[0]['CompanyName'].") - (".$emp_info[0]['DivisionName'].") with a Reference No. ".$refno." has been Approved at ".date('F j, Y', strtotime($coe_result[0]['updated_at'])).".";
 						}else if ($status == 'Done'){
