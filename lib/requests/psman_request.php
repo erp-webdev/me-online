@@ -111,6 +111,7 @@
         
             endif;
 
+            // includes inactive employees
             $psman_data = $tblsql->get_employee_with_inactive($start, APPR_NUM_ROWS, $searchpsman, 0, $profile_dbname);
             $psman_count = $tblsql->get_employee_with_inactive(0, 0, $searchpsman, 1, $profile_dbname);
 

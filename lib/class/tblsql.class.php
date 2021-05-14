@@ -148,6 +148,7 @@ class tblsql {
 
     function get_employee_with_inactive($start = 0, $limit = 0, $search = NULL, $count = 0, $dbname = NULL)
 	{
+        // Includes in-active employees
 		$sql = "SELECT [outer].* FROM ( ";
         $sql .= " SELECT ROW_NUMBER() OVER(ORDER BY LName ASC) as ROW_NUMBER, ";
         $sql .= " EmpID, FName, MName, LName, EmailAdd, CompanyID,
