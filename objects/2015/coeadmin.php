@@ -35,6 +35,7 @@
 			$count = 1;
 		}
 
+		$admin_level = $coe_user_data[0]['level'];
 		$user_approver = 0;
 		$approver_admin = 0;
 		foreach($coe_user_data as $user){

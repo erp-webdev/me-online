@@ -31,8 +31,8 @@
                 $_POST['searchpsman'] = NULL;
             }                              
 
-            $psman_data = $tblsql->get_employee($start, APPR_NUM_ROWS, $searchpsman, 0, $profile_dbname);
-            $psman_count = $tblsql->get_employee(0, 0, $searchpsman, 1, $profile_dbname);
+            $psman_data = $tblsql->get_employee_with_inactive($start, APPR_NUM_ROWS, $searchpsman, 0, $profile_dbname);
+            $psman_count = $tblsql->get_employee_with_inactive(0, 0, $searchpsman, 1, $profile_dbname);
 
             $pages = $mainsql->pagination("pslipman", $psman_count, APPR_NUM_ROWS, 9);
         
