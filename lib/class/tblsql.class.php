@@ -152,7 +152,7 @@ class tblsql {
         $sql .= " SELECT ROW_NUMBER() OVER(ORDER BY LName ASC) as ROW_NUMBER, ";
         $sql .= " EmpID, FName, MName, LName, EmailAdd, CompanyID,
             SSSNbr, PhilHealthNbr, PagibigNbr, LocationID, AccountNo, EPassword, DBNAME
-            FROM VIEWHREMPMASTER_FULL ";
+            FROM VIEWHREMPMASTER_INACTIVE ";
         $sql .= " WHERE EmpID != '' AND CompanyActive = 1 ";
         if ($dbname) : $sql .= " AND DBNAME = '".$dbname."' "; endif;
         if ($search != NULL) : $sql .= " AND (EmpID = '".$search."' OR LName LIKE '%".$search."%' OR FName LIKE '%".$search."%') "; endif;
@@ -160,8 +160,6 @@ class tblsql {
         if ($limit) :
             $sql .= " WHERE [outer].[ROW_NUMBER] BETWEEN ".(intval($start) + 1)." AND ".intval($start + $limit)." ORDER BY [outer].[ROW_NUMBER] ";
         endif;
-
-        die($sql);
 
 		if ($count) : $result = $this->get_numrow($sql);
         else : $result = $this->get_row($sql);
