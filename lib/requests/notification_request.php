@@ -4587,9 +4587,7 @@
 							<select id="coetype" name="coetype" class="txtbox" style="width:193px;">
 								<option value="">Please Select</option>
 								<option value="COE">Certificate Of Employment</option>
-								<?php if($profile_id == '2019-02-0033'){ ?>
-								<option value="COECOMPENSATION">CoE with Compensation</option>
-								<?php } ?>
+								<!-- <option value="COECOMPENSATION">CoE with Compensation</option> -->
 								<option value="COEHOUSINGPLAN">CoE with Housing Plan</option>
 								<option value="COEJOBDESC">CoE with Job Desc</option>
 								<option value="COEGOODMORAL">CoE with Good Moral</option>
@@ -5061,7 +5059,7 @@
 					<th width="20%">FullName</th>
 					<th width="10%">Type</th>
 					<th width="10%">Employee</th>
-					<th width="10%">Company ID</th>
+					<th width="10%">Company</th>
 					<th width="10%">Status</th>
 					<th width="10%">Date Completed</th>
 				</tr>
@@ -5126,7 +5124,6 @@
 		case 'coesort':
 
 			$company_sort = $_POST["company_sort"];
-			$level = $_POST["level"];
 
 			$_SESSION["company_sort"] = $company_sort;
 
@@ -5139,22 +5136,7 @@
 
 			if($company_sort != ''){
 				$sql .= " WHERE company = '".$company_sort."'";
-
-				if($level == 3){
-					$sql .= " AND type <> 'COECOMPENSATION'";
-				}elseif ($level == 2) {
-					$sql .= " AND type = 'COECOMPENSATION'";
-				}
-
-			}else{
-				if($level == 3){
-					$sql .= " WHERE type <> 'COECOMPENSATION'";
-				}elseif ($level == 2) {
-					$sql .= " WHERE type = 'COECOMPENSATION'";
-				}
 			}
-
-
 
 			$sql .= ") as [outer] LEFT JOIN viewHREmpMaster B on B.empid = [outer].emp_id WHERE [outer].[ROW_NUMBER] BETWEEN 1 AND 10 ORDER BY CASE WHEN [outer].STATUS = 'CANCELLED' THEN 0
 	              WHEN [outer].STATUS = 'DONE' THEN 1
@@ -5182,7 +5164,7 @@
 					<th width="20%">FullName</th>
 					<th width="10%">Type</th>
 					<th width="10%">Employee</th>
-					<th width="10%">Company ID</th>
+					<th width="10%">Company</th>
 					<th width="10%">Status</th>
 					<th width="10%">Date Completed</th>
 				</tr>
@@ -6269,11 +6251,7 @@
 								WHERE ";
 
 					if($status == 'For Approval'){
-						if(in_array($coetype, $coetypes["2"])){
-							$emp_hr .="A.[level] = '5'";
-						}else{
-							$emp_hr .="A.[level] = '4'";
-						}
+						$emp_hr .="A.[level] = '4'";
 					}else{
 						if(in_array($coetype, $coetypes["2"])){
 							$emp_hr .="A.[level] = '2'";
@@ -6389,20 +6367,16 @@
 								// $approver_email = 'shart.global@megaworldcorp.com';  
 							}elseif ($coe_old[0]["company"] == 'MCTI') {
 								// Sir Joey Notification
-								// $approver_email = 'jvillafuerte@megaworldcorp.com';
+								$approver_email = 'jvillafuerte@megaworldcorp.com';
 							}else{
 								// Sir Raffy Notification
-								// $approver_email = 'rperez@megaworldcorp.com';
+								$approver_email = 'rperez@megaworldcorp.com';
 							}
 							array_push($hr_emails, $approver_email);
 							// $sendmail = mail($approver_email, "COE Request for Approval", $message, $headers);
-							$sendmail = mail(implode(',', $hr_emails), "COE Request Update (Approvers Notification)", $message, $headers);
+							$sendmail = mail(implode(',', $hr_emails), "COE Request Update ($title_notif Notification)", $message, $headers);
 						}else{
 							// INSERT COMPENSATION APPROVERS HERE
-							$approver_email = 'shart.global@megaworldcorp.com';
-
-							array_push($hr_emails, $approver_email);
-							$sendmail = mail(implode(',', $hr_emails), "COE Request Update (Approvers Notification)", $message, $headers);
 						}
 
 					}

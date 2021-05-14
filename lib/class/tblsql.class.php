@@ -146,27 +146,6 @@ class tblsql {
 		return $result;
 	}
 
-    function get_employee_with_inactive($start = 0, $limit = 0, $search = NULL, $count = 0, $dbname = NULL)
-	{
-		$sql = "SELECT [outer].* FROM ( ";
-        $sql .= " SELECT ROW_NUMBER() OVER(ORDER BY LName ASC) as ROW_NUMBER, ";
-        $sql .= " EmpID, FName, MName, LName, EmailAdd, CompanyID,
-            SSSNbr, PhilHealthNbr, PagibigNbr, LocationID, AccountNo, EPassword, DBNAME
-            FROM VIEWHREMPMASTER_INACTIVE ";
-        $sql .= " WHERE EmpID != '' AND CompanyActive = 1 ";
-        if ($dbname) : $sql .= " AND DBNAME = '".$dbname."' "; endif;
-        if ($search != NULL) : $sql .= " AND (EmpID = '".$search."' OR LName LIKE '%".$search."%' OR FName LIKE '%".$search."%') "; endif;
-        $sql .= ") AS [outer] ";
-        if ($limit) :
-            $sql .= " WHERE [outer].[ROW_NUMBER] BETWEEN ".(intval($start) + 1)." AND ".intval($start + $limit)." ORDER BY [outer].[ROW_NUMBER] ";
-        endif;
-
-		if ($count) : $result = $this->get_numrow($sql);
-        else : $result = $this->get_row($sql);
-        endif;
-		return $result;
-	}
-
     function get_employee_byid($id = 0, $start = 0, $limit = 0, $count = 0, $dbname = NULL)
 	{
 		$sql = "SELECT [outer].* FROM ( ";
