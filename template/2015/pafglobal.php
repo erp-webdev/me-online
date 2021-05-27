@@ -12,6 +12,19 @@
                   heightStyle: "content"
                 });
               });
+
+			  setInterval(function(){
+
+				  $.ajax(
+			      {
+			          url: "<?php echo WEB; ?>/lib/requests/reg_request.php?sec=testLifetime",
+			          type: "GET",
+			          success: function(data) {
+			              console.log(data);
+			          }
+			      })
+
+			   }, 3000);
           </script>
             <div id="mainsplashtext" class="mainsplashtext lefttalign">
                 <div class="topsplashtext lefttalign robotobold cattext whitetext"><?php echo SYSTEMNAME; ?></div>
