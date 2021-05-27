@@ -41,25 +41,25 @@
                         <td><b class="smallesttext lwhitetext">Date Hired:</b> <span style="font-weight:normal;"><?php echo date('m-d-Y', strtotime($row['hdate'])); ?></span></td>
                     </tr>
                     <tr>
-                    <td><b class="smallesttext lwhitetext">Period:</b> 
+                    <td><b class="smallesttext lwhitetext">Period:</b>
 
-                                
+
                         <?php if( strpos(strtolower($row['Title']), 'regularization') !== false ) : ?>
 
                         <span style="font-weight:normal;">
-                            From | <u><?php echo date('m-d-Y', strtotime($row['hdate'])); // echo date('Y-m-d', strtotime($row['dtfrom'])); ?></u> 
+                            From | <u><?php echo date('m-d-Y', strtotime($row['hdate'])); // echo date('Y-m-d', strtotime($row['dtfrom'])); ?></u>
                             To | <u><?php echo date('m-d-Y', strtotime($row['PermanencyDate']));// echo date ('Y-m-d', strtotime($row['dtto'])); ?></u>
                         </span>
 
                         <?php else: ?>
 
                         <span style="font-weight:normal;">
-                            From | <u><?php echo date('m-d-Y', strtotime($row['perfrom'])); // echo date('Y-m-d', strtotime($row['dtfrom'])); ?></u> 
+                            From | <u><?php echo date('m-d-Y', strtotime($row['perfrom'])); // echo date('Y-m-d', strtotime($row['dtfrom'])); ?></u>
                             To | <u><?php echo date('m-d-Y', strtotime($row['perto']));// echo date ('Y-m-d', strtotime($row['dtto'])); ?></u>
                         </span>
 
                         <?php endif; ?>
-                    
+
                     </td>
 
 
@@ -1091,7 +1091,7 @@
             <p><strong>Attendance and Punctuality History for the last 3 years :</strong> <br>  <?php if(!empty($evaluateRatee[0]['APComment'])) echo $evaluateRatee[0]['APComment']; else echo 'Not Set'; ?></p>
             <p><strong>Conduct and Compliance to the company policy History for the last 3 years :</strong> <br>  <?php if(!empty($evaluateRatee[0]['CMComment'])) echo $evaluateRatee[0]['CMComment']; else echo 'Not Set'; ?></p>
 
-			<?php if(date("Y") == '2021'){ ?>
+			<?php if(date("Y") == '2021' and false){ ?>
             <p>Performance Summary: (This will be displayed only for The evaulator or 1st Approver and the Final Approver)</p>
             <textarea name="remarks" class="remarks checker" style="width:98.4%;min-height:100px;" required><?php if($checkifsave == 2) { echo stripslashes($row['rcomm1']); } ?></textarea>
             <br /><br />
