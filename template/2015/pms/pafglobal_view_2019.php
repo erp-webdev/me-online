@@ -868,11 +868,11 @@
                                 <br /><br />
                                     <input type="hidden" name="increase" value="">
                                 <?php } ?>
-                                <p ><strong style="color:#F8FABC">Promotion History from the last 3 years: </strong> <br>
+                                <p ><strong style="color:#F8FABC">Promotion History from the past years: </strong> <br>
                                     <?php echo $checkEvaluation[0]['ProHistory']; ?>
-                                    <br> <strong style="color:#F8FABC">Conduct and Memo History from the last 3 years: </strong> <br>
+                                    <br> <strong style="color:#F8FABC">Conduct and Memo History from the past years: </strong> <br>
                                       <?php echo $checkEvaluation[0]['CMComment']; ?>
-                                      <br> <strong style="color:#F8FABC">Attendance and Punctuality History from the last 3 years: </strong> <br>
+                                      <br> <strong style="color:#F8FABC">Attendance and Punctuality History from the past years: </strong> <br>
                                       <?php echo $checkEvaluation[0]['APComment']; ?>
                                 </p>
 
@@ -1371,13 +1371,13 @@
                                 <input type="hidden" name="increase" value="">
                                 <input type="hidden" name="promotion" value="">
                             <?php } ?>
-                            <p ><strong style="color:#F8FABC">Promotion History from the last 3 years: </strong> <br>
+                            <p ><strong style="color:#F8FABC">Promotion History from the past years: </strong> <br>
                                 <?php echo $checkEvaluation[0]['ProHistory']; ?>
                             </p>
-                             <p ><strong style="color:#F8FABC">Attendance and Punctuality History from the last 3 years: </strong> <br>
+                             <p ><strong style="color:#F8FABC">Attendance and Punctuality History from the past years: </strong> <br>
                                 <?php echo $checkEvaluation[0]['APComment']; ?>
                             </p>
-                             <p ><strong style="color:#F8FABC">Conduct and Memo History from the last 3 years: </strong> <br>
+                             <p ><strong style="color:#F8FABC">Conduct and Memo History from the past years: </strong> <br>
                                 <?php echo $checkEvaluation[0]['CMComment']; ?>
                             </p>
 

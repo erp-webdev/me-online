@@ -5038,6 +5038,10 @@
 				$sql .= " AND type <> 'COECOMPENSATION'";
 			}elseif ($level == 2) {
 				$sql .= " AND type = 'COECOMPENSATION'";
+			}elseif ($level == 4) {
+				$sql .= " AND type <> 'COECOMPENSATION' AND status = 'For Approval'";
+			}elseif ($level == 5) {
+				$sql .= " AND type = 'COECOMPENSATION' AND status = 'For Approval'";
 			}
 
 			$sql .= " ORDER BY CASE WHEN A.STATUS = 'CANCELLED' THEN 0
