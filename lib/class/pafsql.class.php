@@ -4,7 +4,7 @@ class pafsql
 {
     function __construct()
     {
-		ini_set('session.gc_maxlifetime', 60);
+		// ini_set('session.gc_maxlifetime', 60);
         // ini_set('session.gc_maxlifetime', 360);
     }
 
