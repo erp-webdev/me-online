@@ -1,7 +1,7 @@
     <?php include(TEMP."/header.php"); ?>
-    <?php 
+    <?php
 
-echo "TT:: " . $maxlifetime = ini_get("session.gc_maxlifetime");
+// echo "TT:: " . $maxlifetime = ini_get("session.gc_maxlifetime");
      ?>
     <!-- BODY -->
         <?php date_default_timezone_set("Asia/Manila"); ?>
@@ -13,7 +13,7 @@ echo "TT:: " . $maxlifetime = ini_get("session.gc_maxlifetime");
                 });
               });
           </script>
-            <div id="mainsplashtext" class="mainsplashtext lefttalign">  
+            <div id="mainsplashtext" class="mainsplashtext lefttalign">
                 <div class="topsplashtext lefttalign robotobold cattext whitetext"><?php echo SYSTEMNAME; ?></div>
                 <div class="leftsplashtext lefttalign"><?php include(TEMP."/menu.php"); ?></div>
                 <div class="rightsplashtext lefttalign">
@@ -49,14 +49,14 @@ echo "TT:: " . $maxlifetime = ini_get("session.gc_maxlifetime");
                     <!-- Check Group -->
                     <?php if(count($rater0) > 0 ) {  ?>
                     <h2 class="mediumtext lorangetext"><a href="<?php echo WEB; ?>/paf"><i class="mediumtext fa fa-arrow-left" style="color:#fff;opacity:.8;"></i></a> Ratee Score Viewer</h2>
-                        
+
                         <!-- Table for PAF Ratee -->
                         <?php if(count($rater0) > 1 ) { ?>
                         <div id="pafm" style="overflow-x:none;overflow-y:scroll;height:100px;">
                         <?php } ?>
                             <table class="tdata" width="99%" style="margin-top:15px;" cellspacing="0">
                         <?php foreach($rater0 as $row) { ?>
-                                <?php 
+                                <?php
                                     if($row['DBNAME'] != $profile_dbname)
                                         continue;
 
@@ -79,30 +79,30 @@ echo "TT:: " . $maxlifetime = ini_get("session.gc_maxlifetime");
                                     <?php if($row['rempid3'] != NULL && $row['rempid3'] != 0) { ?><td <?php if($row['rstat3'] == 1){ echo 'style="color:#c6efce;"'; }?>><?php if($row['rstat3'] == NULL) { echo ucwords(strtolower(strtoupper($row['r3lname']))); } else { echo '<i class="fa fa-check"></i> '.ucwords(strtolower(strtoupper($row['r3lname']))); } ?></td><?php } ?>
                                     <?php if($row['rempid4'] != NULL && $row['rempid4'] != 0) { ?><td <?php if($row['rstat4'] == 1){ echo 'style="color:#c6efce;"'; }?>><?php if($row['rstat4'] == NULL) { echo ucwords(strtolower(strtoupper($row['r4lname']))); } else { echo '<i class="fa fa-check"></i> '.ucwords(strtolower(strtoupper($row['r4lname']))); } ?></td><?php } ?>
                                     <td style="text-align:center !important;">
-                                        <?php 
-                                            if($row['status'] == 'Completed') { 
-                                                echo $row['computed']; 
-                                            } else { 
-                                                echo '0'; 
-                                            } 
+                                        <?php
+                                            if($row['status'] == 'Completed') {
+                                                echo $row['computed'];
+                                            } else {
+                                                echo '0';
+                                            }
                                         ?>
                                     </td>
                                     <td style="text-align:center;">
-                                        <?php 
-                                            if($row['status'] == 'Completed') { 
-                                                if($row['computed'] == 5) { 
-                                                    echo '<p style="color:#c6efce;">Exceptional</p>'; 
-                                                } elseif($row['computed'] < 5 && $row['computed'] >= 4) { 
-                                                    echo '<p style="color:#c6efce;">Exceeds Expectations</p>'; 
-                                                } elseif($row['computed'] < 4 && $row['computed'] >= 3) { 
-                                                    echo '<p style="color:#c6efce;">Meets Expectations</p>'; 
-                                                } elseif($row['computed'] < 3 && $row['computed'] >= 2) { 
-                                                    echo '<p style="color:#c6efce;">Needs Improvement</p>'; 
-                                                } elseif($row['computed'] < 2 && $row['computed'] >= 1) { 
-                                                    echo '<p style="color:#FF5656;">No Evidence of Skill</p>'; 
+                                        <?php
+                                            if($row['status'] == 'Completed') {
+                                                if($row['computed'] == 5) {
+                                                    echo '<p style="color:#c6efce;">Exceptional</p>';
+                                                } elseif($row['computed'] < 5 && $row['computed'] >= 4) {
+                                                    echo '<p style="color:#c6efce;">Exceeds Expectations</p>';
+                                                } elseif($row['computed'] < 4 && $row['computed'] >= 3) {
+                                                    echo '<p style="color:#c6efce;">Meets Expectations</p>';
+                                                } elseif($row['computed'] < 3 && $row['computed'] >= 2) {
+                                                    echo '<p style="color:#c6efce;">Needs Improvement</p>';
+                                                } elseif($row['computed'] < 2 && $row['computed'] >= 1) {
+                                                    echo '<p style="color:#FF5656;">No Evidence of Skill</p>';
                                                 }
-                                            } elseif($row['rstat1'] == 1 && $row['status'] != 'Completed') { 
-                                                echo '<i class="fa fa-cog fa-spin"></i><span style="color:#5FFF77;"> On Process</span>'; 
+                                            } elseif($row['rstat1'] == 1 && $row['status'] != 'Completed') {
+                                                echo '<i class="fa fa-cog fa-spin"></i><span style="color:#5FFF77;"> On Process</span>';
                                             } else {
                                                 echo '<p style="color:#FFA25F;"><i class="fa fa-warning"></i> Incomplete</p>';
                                             }
@@ -140,7 +140,7 @@ echo "TT:: " . $maxlifetime = ini_get("session.gc_maxlifetime");
                     <!-- end of for ratercounter -->
                         </ul>
                     <?php foreach ($ratercount as $c) { if(count(${"rater$c"}) > 0) { ?>
-                        
+
                         <div id="tabs-<?php echo $c; ?>">
                         <!-- Table for PAF Rater 1 -->
 
@@ -150,7 +150,7 @@ echo "TT:: " . $maxlifetime = ini_get("session.gc_maxlifetime");
                         <?php $fin = $c-1; ?>
                         <h3><?php if($c == 1){ echo 'Evaluator'; } else { echo 'Approver '.$c; } ?></h3>
 
-                        <table class="tdata" width="99%" style="margin-top:15px;" cellspacing="0">   
+                        <table class="tdata" width="99%" style="margin-top:15px;" cellspacing="0">
 
                         <?php foreach(${"rater$c"} as $row) { ?>
                             <?php if(${"depdesc$c"} != $row['depdesc']) { ?>
@@ -190,29 +190,29 @@ echo "TT:: " . $maxlifetime = ini_get("session.gc_maxlifetime");
                                 <td style="text-align:center !important;"><?php if($row['computed'] != NULL) { echo $row['computed']; } else { echo '0'; } ?></td>
                                 <td style="text-align:center !important;"><?php if($row['computed'] != NULL) { $fxx = $row['computed'] / 5; echo round($fxx * 100); echo '%'; } else { echo '0'; } ?></td>
                                 <td style="text-align:center;">
-                                <?php 
-                                    if($row['status'] == 'Completed' && $row['computed'] != NULL) { 
-                                        if($row['computed'] == 5) { 
-                                            echo '<p style="color:#c6efce;">Exceptional</p>'; 
-                                        } elseif($row['computed'] < 5 && $row['computed'] >= 4) { 
-                                            echo '<p style="color:#c6efce;">Exceeds Expectations</p>'; 
-                                        } elseif($row['computed'] < 4 && $row['computed'] >= 3) { 
-                                            echo '<p style="color:#c6efce;">Meets Expectations</p>'; 
-                                        } elseif($row['computed'] < 3 && $row['computed'] >= 2) { 
-                                            echo '<p style="color:#c6efce;">Needs Improvement</p>'; 
-                                        } elseif($row['computed'] < 2 && $row['computed'] >= 1) { 
-                                            echo '<p style="color:#FF5656;">No Evidence of Skill</p>'; 
+                                <?php
+                                    if($row['status'] == 'Completed' && $row['computed'] != NULL) {
+                                        if($row['computed'] == 5) {
+                                            echo '<p style="color:#c6efce;">Exceptional</p>';
+                                        } elseif($row['computed'] < 5 && $row['computed'] >= 4) {
+                                            echo '<p style="color:#c6efce;">Exceeds Expectations</p>';
+                                        } elseif($row['computed'] < 4 && $row['computed'] >= 3) {
+                                            echo '<p style="color:#c6efce;">Meets Expectations</p>';
+                                        } elseif($row['computed'] < 3 && $row['computed'] >= 2) {
+                                            echo '<p style="color:#c6efce;">Needs Improvement</p>';
+                                        } elseif($row['computed'] < 2 && $row['computed'] >= 1) {
+                                            echo '<p style="color:#FF5656;">No Evidence of Skill</p>';
                                         }
-                                    } elseif($row['rstat1'] == 1) { 
-                                        echo '<i class="fa fa-cog fa-spin"></i><span style="color:#5FFF77;"> On Process</span>'; 
+                                    } elseif($row['rstat1'] == 1) {
+                                        echo '<i class="fa fa-cog fa-spin"></i><span style="color:#5FFF77;"> On Process</span>';
                                     } else {
                                         echo '<p style="color:#FFA25F;"><i class="fa fa-warning"></i> Incomplete</p>';
                                     }
                                 ?>
                                 </td>
-                               
+
                             </tr>
-                            <?php 
+                            <?php
                                 if (($row['rempid2'] == NULL || $row['rempid2'] == 0) && ($row['rempid3'] == NULL || $row['rempid3'] == 0) && ($row['rempid4'] == NULL || $row['rempid4'] == 0)) {
                                     $auth = 'Final1';
                                     $flashRater = 1;
@@ -229,15 +229,15 @@ echo "TT:: " . $maxlifetime = ini_get("session.gc_maxlifetime");
                                     $auth = '0';
                                     $flashRater = 0;
                                 }
-                             if($flashRater == $c && $c != 1) { 
+                             if($flashRater == $c && $c != 1) {
                             ?>
                             <tr>
                               <td colspan="6" style="width:100%;">
                                 <div class="accordion">
                                 <?php for ($g=1; $g < $flashRater; $g++) { ?>
-                                    <h3 style="background-color:#fff;"><?php if($g == 1){ echo 'Evaluator - '; } else { echo 'Approver '.$g.' - '; } ?><?php echo ucwords(strtolower($row["r".$g."fname"])).' '.ucwords(strtolower($row["r".$g."lname"])); ?> (Comments and Recommendations)</h3> 
+                                    <h3 style="background-color:#fff;"><?php if($g == 1){ echo 'Evaluator - '; } else { echo 'Approver '.$g.' - '; } ?><?php echo ucwords(strtolower($row["r".$g."fname"])).' '.ucwords(strtolower($row["r".$g."lname"])); ?> (Comments and Recommendations)</h3>
                                     <div>
-                                        <p><?php if($row["rcomm$g"] != NULL || $row["rcomm$g"] != '') { echo nl2br($row["rcomm$g"]); } else { echo 'No Comment'; } ?></p> 
+                                        <p><?php if($row["rcomm$g"] != NULL || $row["rcomm$g"] != '') { echo nl2br($row["rcomm$g"]); } else { echo 'No Comment'; } ?></p>
                                     </div>
                                 <?php } ?>
                                 </div>

@@ -1,5 +1,5 @@
 <!--<?php // if($rstat1 == 2) { ?>pow<?php// } ?>-->
-<!-- <?php echo "tt:: " . ini_get('session.gc_maxlifetime'); ?> -->
+<!-- <?php //echo "tt:: " . ini_get('session.gc_maxlifetime'); ?> -->
 <?php if (count($evaluateRatee) > 0) { ?>
 <b class="mediumtext lorangetext"><a href="<?php echo WEB; ?>/pafglobal?groupid=<?php echo $groupid; ?>"><i class="mediumtext fa fa-arrow-left" style="color:#fff;opacity:.8;"></i></a> Performance Appraisal Form - Supervisor/Rater</b><br><br>
 <div style="overflow-x:none;overflow-y:scroll;max-height:514px;">
@@ -53,20 +53,20 @@
             </tr>
             <tr>
             <td>
-                
-            <b class="smallesttext lwhitetext">Period:</b> 
-            
+
+            <b class="smallesttext lwhitetext">Period:</b>
+
             <?php if( strpos(strtolower($row['Title']), 'regularization') !== false ) : ?>
 
             <span style="font-weight:normal;">
-                From | <u><?php echo date('m-d-Y', strtotime($row['hdate'])); // echo date('Y-m-d', strtotime($row['dtfrom'])); ?></u> 
+                From | <u><?php echo date('m-d-Y', strtotime($row['hdate'])); // echo date('Y-m-d', strtotime($row['dtfrom'])); ?></u>
                 To | <u><?php if( empty($row['PermanencyDate'])) echo 'not set'; else echo date('m-d-Y', strtotime($row['PermanencyDate'])); ?></u>
             </span>
 
             <?php else: ?>
 
             <span style="font-weight:normal;">
-                From | <u><?php echo date('m-d-Y', strtotime($row['perfrom'])); // echo date('Y-m-d', strtotime($row['dtfrom'])); ?></u> 
+                From | <u><?php echo date('m-d-Y', strtotime($row['perfrom'])); // echo date('Y-m-d', strtotime($row['dtfrom'])); ?></u>
                 To | <u><?php echo date('m-d-Y', strtotime($row['perto']));// echo date ('Y-m-d', strtotime($row['dtto'])); ?></u>
             </span>
 
