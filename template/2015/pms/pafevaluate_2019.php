@@ -1091,7 +1091,7 @@
             <p><strong>Attendance and Punctuality History for the last 3 years :</strong> <br>  <?php if(!empty($evaluateRatee[0]['APComment'])) echo $evaluateRatee[0]['APComment']; else echo 'Not Set'; ?></p>
             <p><strong>Conduct and Compliance to the company policy History for the last 3 years :</strong> <br>  <?php if(!empty($evaluateRatee[0]['CMComment'])) echo $evaluateRatee[0]['CMComment']; else echo 'Not Set'; ?></p>
 
-			<?php if(date("Y") == '2021' and false){ ?>
+			<?php if(date("Y") == '2021' && false){ ?>
             <p>Performance Summary: (This will be displayed only for The evaulator or 1st Approver and the Final Approver)</p>
             <textarea name="remarks" class="remarks checker" style="width:98.4%;min-height:100px;" required><?php if($checkifsave == 2) { echo stripslashes($row['rcomm1']); } ?></textarea>
             <br /><br />
