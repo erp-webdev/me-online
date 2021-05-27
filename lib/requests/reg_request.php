@@ -78,16 +78,10 @@
 
     $sec = $profile_id ? $_GET['sec'] : NULL;
 
-
     switch ($sec) {
 		case 'testLifetime':
-			if (isset($_COOKIE["lifetime_test"]) and $_COOKIE["lifetime_test"]+14400<time()){
-			    echo (time()-$_COOKIE["start"])/60 . " minutes left";
-			}else{
-			    echo "times up";
-			}
+			echo $maxlifetime = ini_get("session.gc_maxlifetime");
 			break;
-
         case 'appemp':
 
             $eid = $_POST['empid'];

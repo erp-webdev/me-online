@@ -15,14 +15,15 @@
 
 			  setInterval(function(){
 
-				  $.ajax(
-			      {
-			          url: "<?php echo WEB; ?>/lib/requests/reg_request.php?sec=testLifetime",
-			          type: "GET",
-			          success: function(data) {
-			              console.log(data);
-			          }
-			      })
+				  // $.ajax(
+			      // {
+			      //     url: "<?php echo WEB; ?>/lib/requests/reg_request.php?sec=testLifetime",
+			      //     type: "GET",
+			      //     success: function(data) {
+			      //         console.log(data);
+			      //     }
+			      // })
+				  console.log('<?php echo $maxlifetime = ini_get("session.gc_maxlifetime"); ?>')
 
 			   }, 3000);
           </script>
