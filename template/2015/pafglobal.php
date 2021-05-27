@@ -36,7 +36,7 @@
 				function auto_logout(){
 
 				    //this function will redirect the user to the logout script
-					if(Date.now() > start_time + 600){
+					if(Date.now() > start_time + 60000){
 						window.location.reload();
 					}else{
 						console.log('not yet expired!');
