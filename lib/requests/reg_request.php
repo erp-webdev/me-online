@@ -81,7 +81,7 @@
     switch ($sec) {
 		case 'testLifetime':
 
-			return $maxlifetime = ini_get("session.gc_maxlifetime");
+			echo $maxlifetime = ini_get("session.gc_maxlifetime");
 			break;
 
         case 'appemp':
