@@ -23,7 +23,7 @@
 			      //         console.log(data);
 			      //     }
 			      // })
-				  console.log('<?php echo $maxlifetime = ini_get("session.gc_maxlifetime"); ?>')
+				  console.log('<?php echo ini_get("session.gc_maxlifetime"); ?>')
 
 			   }, 3000);
           </script>
