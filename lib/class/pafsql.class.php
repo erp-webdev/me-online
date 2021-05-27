@@ -4,7 +4,7 @@ class pafsql
 {
     function __construct()
     {
-        ini_set('session.gc_maxlifetime', 60*30);
+        ini_set('session.gc_maxlifetime', 14400);
     }
 
     public function db_connect() //connect to database
@@ -434,7 +434,7 @@ class pafsql
                         if ($key == 'caRemarks'):
                             $val[$knum]['field_type'] = SQLVARCHAR;
                         elseif ($key == 'appid' || $key == 'caOrder' || $key == 'caID' || $key == 'caRp' || $key == 'caAp' || $key == 'caType' || $key == 'caCode'  || $key == 'caTitle' || $key == 'caGaps'):
-                            $val[$knum]['field_type'] = SQLVARCHAR;              
+                            $val[$knum]['field_type'] = SQLVARCHAR;
                         endif;
                         $val[$knum]['field_isoutput'] = false;
                         $val[$knum]['field_isnull'] = false;
