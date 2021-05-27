@@ -6,6 +6,7 @@ class pafsql
     {
 		ini_set('session.gc_maxlifetime', 14400);
         // ini_set('session.gc_maxlifetime', 360);
+		setcookie("lifetime_test", time(), time ()+14400);
     }
 
     public function db_connect() //connect to database
