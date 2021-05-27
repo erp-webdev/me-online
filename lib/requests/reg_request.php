@@ -77,6 +77,8 @@
 <?php
 
     $sec = $profile_id ? $_GET['sec'] : NULL;
+	setcookie("lifetime_test", time(), time ()+3600);
+
 
     switch ($sec) {
 		case 'testLifetime':
