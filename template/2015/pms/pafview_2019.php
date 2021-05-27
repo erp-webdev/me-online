@@ -781,9 +781,9 @@
                                                 <!-- <input type="hidden" name="promotion" value=""> -->
                                             <?php } ?>
 
-                                            <p><strong>Promotion History for the past years :</strong> <br>  <?php if(!empty($row['ProHistory'])) echo $row['ProHistory']; else echo 'Not Set'; ?></p>
-                                            <p><strong>Attendance and Punctuality History for the past years :</strong> <br>  <?php if(!empty($row['APComment'])) echo $row['APComment']; else echo 'Not Set'; ?></p>
-                                            <p><strong>Conduct and Compliance to the company policy History for the past years :</strong> <br>  <?php if(!empty($row['CMComment'])) echo $row['CMComment']; else echo 'Not Set'; ?></p>
+                                            <p><strong>Promotion History for the last 3 years :</strong> <br>  <?php if(!empty($row['ProHistory'])) echo $row['ProHistory']; else echo 'Not Set'; ?></p>
+                                            <p><strong>Attendance and Punctuality History for the last 3 years :</strong> <br>  <?php if(!empty($row['APComment'])) echo $row['APComment']; else echo 'Not Set'; ?></p>
+                                            <p><strong>Conduct and Compliance to the company policy History for the last 3 years :</strong> <br>  <?php if(!empty($row['CMComment'])) echo $row['CMComment']; else echo 'Not Set'; ?></p>
 
 											<?php if(date("Y") == '2021'){?>
 												<?php if($max1i == 1) { ?>
