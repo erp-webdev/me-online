@@ -77,13 +77,16 @@
 <?php
 
     $sec = $profile_id ? $_GET['sec'] : NULL;
-	setcookie("lifetime_test", time(), time ()+3600);
+	setcookie("lifetime_test", time(), time ()+14400);
 
 
     switch ($sec) {
 		case 'testLifetime':
-
-			echo $maxlifetime = ini_get("session.gc_maxlifetime");
+			if (isset($_COOKIE["lifetime_test"]) and $_COOKIE["lifetime_test"]+14400<time()){
+			    echo (time()-$_COOKIE["start"])/60 . " minutes left";
+			}else{
+			    echo "times up";
+			}
 			break;
 
         case 'appemp':
