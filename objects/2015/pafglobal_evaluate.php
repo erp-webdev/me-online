@@ -267,6 +267,11 @@
 
             $pup = $pafsql->pafgl_update($pafup, 'update');
 
+			//Global Compute Score
+			$comp_score['RelAppID'] = $groupid;
+			$comp_score['RateeEmpID'] = $rid;
+			$update_computed_score = $pafsql->gl_compute_score($comp_score, 'update');
+
             if ($_POST['procAppraisal']):
                 echo '{"success": true, "type": 1}';
             elseif ($_POST['saveAppraisal']) :

@@ -468,7 +468,7 @@
                 }
             } elseif($_POST['saveAppraisal']) {
                 $pafup['statdiv'] = 2;
-				$pafup['status'] = 'Incomplete';  
+				$pafup['status'] = 'Incomplete';
             }
 
             $pafup['pmdm'] = '';
@@ -515,6 +515,11 @@
             } */
 
             $pup = $pafsql->paf_update($pafup, 'update');
+
+			//Megaworld Compute Score
+			$comp_score['RelAppID'] = $groupid;
+			$update_computed_score = $pafsql->mega_compute_score($comp_score, 'update');
+
 
             if ($_POST['procAppraisal']) :
                 echo '{"success": true, "type": 1}';
