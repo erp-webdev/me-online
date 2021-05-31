@@ -636,6 +636,65 @@ class pafsql
 
         }
     }
+	/* Mega Update Computed Score */
+	public function mega_compute_score($value, $action, $id = 0) {
+
+		$accepted_field = array('RelAppID');
+
+		$knum = 0;
+		foreach ($value as $key => $value) :
+			if (in_array($key, $accepted_field)) :
+				$val[$knum]['field_name'] = $key;
+				$val[$knum]['field_value'] = $value;
+				$val[$knum]['field_type'] = SQLVARCHAR;
+				$val[$knum]['field_isoutput'] = false;
+				$val[$knum]['field_isnull'] = false;
+				$val[$knum]['field_maxlen'] = 512;
+
+				$knum++;
+			endif;
+		endforeach;
+
+		//$add_paf = $this->get_sp_data('SP_PAFRelCAssessment_Insert', $val);
+		$add_paf = $this->get_sp_data('spMegaUpdateComputation', $val);
+
+		if($add_paf) {
+			//echo $add_paf;
+			return TRUE;
+		} else {
+			return FALSE;
+		}
+	}
+
+	/* Global Update Computed Score */
+	public function gl_compute_score($value, $action, $id = 0){
+
+		$accepted_field = array('RelAppID', 'RateeEmpID');
+
+		$knum = 0;
+		foreach ($value as $key => $value) :
+			if (in_array($key, $accepted_field)) :
+				$val[$knum]['field_name'] = $key;
+				$val[$knum]['field_value'] = $value;
+				$val[$knum]['field_type'] = SQLVARCHAR;
+				$val[$knum]['field_isoutput'] = false;
+				$val[$knum]['field_isnull'] = false;
+				$val[$knum]['field_maxlen'] = 512;
+
+				$knum++;
+			endif;
+		endforeach;
+
+		//$add_paf = $this->get_sp_data('SP_PAFRelCAssessment_Insert', $val);
+		$add_paf = $this->get_sp_data('spGlobalUpdateComputation', $val);
+
+		if($add_paf) {
+			//echo $add_paf;
+			return TRUE;
+		} else {
+			return FALSE;
+		}
+	}
 
     /* GLOBAL ONE PAF */
     function pafgl_update($value, $action, $id = 0)
