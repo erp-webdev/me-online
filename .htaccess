@@ -27,9 +27,3 @@ RewriteRule  ^qrcode/([a-zA-Z0-9_-]+)/$	      								    index.php?section=qrco
 RewriteRule  ^qrcode/([a-zA-Z0-9_-]+)$    									    index.php?section=qrcode&id=$1 [QSA,L]
 RewriteRule  ^qrcode/$												            index.php?section=qrcode [L]
 RewriteRule  ^qrcode$													        index.php?section=qrcode [QSA,L]
-
-php_value session.gc_maxlifetime 60
-
-php_value session.gc_probability 1
-
-php_value session.gc_divisor 1

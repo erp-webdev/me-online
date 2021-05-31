@@ -79,11 +79,6 @@
     $sec = $profile_id ? $_GET['sec'] : NULL;
 
     switch ($sec) {
-		case 'testLifetime':
-
-			echo $maxlifetime = ini_get("session.gc_maxlifetime");
-			break;
-
         case 'appemp':
 
             $eid = $_POST['empid'];

@@ -12,39 +12,6 @@
                   heightStyle: "content"
                 });
               });
-			  	var start_time = Date.now();
-
-			  //the interval 'timer' is set as soon as the page loads
-
-				var timer = setInterval(function(){ auto_logout() }, 20000);
-
-				// the figure '20000' (20 seconds) indicates how many milliseconds the timer be set to.
-
-				//e.g. if you want it to set 5 mins, calculate 5min= 5x60=300 sec => 300,000 milliseconds.
-
-				function reset_interval(){
-
-				    //first step: clear the existing timer
-				    clearInterval(timer);
-
-				    //second step: implement the timer again
-				    timer = setInterval(function(){ auto_logout() }, 20000);
-				    //..completed the reset of the timer
-
-				}
-
-				function auto_logout(){
-
-				    //this function will redirect the user to the logout script
-					if(Date.now() > start_time + 80000){
-						window.location.reload();
-					}else{
-						console.log('not yet expired!');
-					}
-
-				}
-
-				reset_interval();
           </script>
             <div id="mainsplashtext" class="mainsplashtext lefttalign">
                 <div class="topsplashtext lefttalign robotobold cattext whitetext"><?php echo SYSTEMNAME; ?></div>
