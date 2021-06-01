@@ -803,7 +803,7 @@
                                 </h3>
 
                                 <p><strong>Final Recommendation;</strong> please fill up your desired recommendations below. </p>
-                                Promotion To Level: <input type="text" class="promotion" name="promotion" value="<?php echo $checkEvaluation[0]['promote']; ?>" list="ranks" autocomplete="off" onChange="fnAlltotalpcc()" onclick="this.value = '';" data-promote="<?php echo $checkEvaluation[0]['randesc']; ?>">&nbsp;&nbsp;&nbsp;
+                                Promotion To Level: <input type="text" class="promotion" name="promotion" value="<?php echo $checkEvaluation[0]['promote']; ?>" list="ranks" autocomplete="off" onChange="fnAlltotalpcc()" onclick="" data-promote="<?php echo $checkEvaluation[0]['randesc']; ?>">&nbsp;&nbsp;&nbsp;
                                 New Position Title: <input type="text" name="promotionpos" value="<?php echo $checkEvaluation[0]['promotePos']; ?>">&nbsp;&nbsp;&nbsp;<br><br>
                                 <datalist id="ranks">
                                   <?php
