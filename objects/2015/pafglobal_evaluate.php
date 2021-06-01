@@ -22,7 +22,7 @@
         $rid = $_GET['rid'];
 
         $dbname = "AND a.Designation = 'GLOBAL01' AND b.DB_NAME = 'GL'  ";
-        $dbnamekev = "AND desig = 'GLOBAL01' AND DBNAME = 'GL'  ";
+        $dbnamekev = "AND desig = 'GLOBAL01'  ";
         $ratt = "AND b.DB_NAME = 'GL' ";
         $rattkev = "AND DBNAME = 'GL' ";
 
@@ -30,7 +30,7 @@
 
         $command = "a.id = '".$appid."' AND RateeEmpID = '".$rid."' AND (a.RaterStatus = NULL OR a.RaterStatus = '2') AND g.Status = 'Active' AND g.AppraisalDate <= '".$datenow." 00:00:00.000' ".$dbname." ";
 
-        $commandkev = "appid = '".$appid."' AND rempid = '".$rid."' AND (rstat1 = NULL OR rstat1 = '2') AND appStatus = 'Active' AND appdt <= '".$datenow." 00:00:00.000' ".$dbnamekev." and DBNAME='GL' ";
+        $commandkev = "appid = '".$appid."' AND rempid = '".$rid."' AND (rstat1 = NULL OR rstat1 = '2') AND appStatus = 'Active' AND appdt <= '".$datenow." 00:00:00.000' ".$dbnamekev."  ";
 
         $evaluateRatee = $pafsql->appFunctionKev($commandkev);
         //$checkRater = $pafsql->checkRater($rid, $status1, $company, $profile_idnum, $datenow);
