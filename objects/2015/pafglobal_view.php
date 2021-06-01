@@ -29,7 +29,7 @@
 
         if($pafad == 'ratee'){
 
-            $command = "appid = '".$appid."' AND rempid = '".$profile_idnum."' AND status = 'Completed' AND appStatus = 'Active' AND appdt <= '".$datenow." 00:00:00.000' and DBNAME='GL' AND desig = 'GLOBAL01'" ;
+            $command = "appid = '".$appid."' AND rempid = '".$profile_idnum."' AND status = 'Completed' AND appStatus = 'Active' AND appdt <= '".$datenow." 00:00:00.000' AND desig = 'GLOBAL01'" ;
             $viewAppraisal = $pafsql->appFunctionKev($command);
             // ADDED 05/04/2018 BY KEVS
             // DETERMINE UNIT VERSIONS FOR INTEGRATION OF NEW FUNCTIONS
@@ -93,7 +93,7 @@
             }
 
             $command = "appid = '".$appid."' AND rempid = '".$rid."' AND rstat1 = '1' ".$SQLCHECK." AND appStatus = 'Active' AND appdt <= '".$datenow." 00:00:00.000'
-                        AND DBNAME='GL' AND desig = 'GLOBAL01'";
+                        AND desig = 'GLOBAL01'";
             $checkEvaluation = $pafsql->appFunctionKev($command);
 
             // ADDED 05/04/2018 BY KEVS
