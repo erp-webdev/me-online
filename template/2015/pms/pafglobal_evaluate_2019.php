@@ -912,7 +912,7 @@
               </span>%
         </h3>
         <p><strong>Final Recommendation;</strong> please fill up your desired recommendations below. </p>
-        Promotion To Level: <input type="text" name="promotion" value="<?php echo $rprom1; ?>" list="ranks" autocomplete="off" onclick="fnAlltotalpcc()" data-promote="<?php echo $evaluateRatee[0]['randesc']; ?>" style="">&nbsp;&nbsp;&nbsp;
+        Promotion To Level: <input type="text" name="promotion" value="<?php echo $rprom1; ?>" list="ranks" autocomplete="off" onclick="this.value = ''; fnAlltotalpcc()" data-promote="<?php echo $evaluateRatee[0]['randesc']; ?>" style="">&nbsp;&nbsp;&nbsp;
         New Position Title: <input type="text" name="promotionpos" value="<?php echo $evaluateRatee[0]['promotePos']; ?>">&nbsp;&nbsp;&nbsp;<br><br>
         <datalist id="ranks">
           <?php
