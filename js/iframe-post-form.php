@@ -3085,6 +3085,22 @@ $(function ()
                 return false;
             }
 
+			if ($('input[name="promotion"]').val() == '')
+            {
+				$('.paf_msg')
+                    .html('Promotion level must not be blank (Select current rank if no promotion).')
+                    .css({
+                        color : '#9c0006',
+                        background : '#ffc7ce',
+                        border : '2px solid #9c0006',
+                        height : 'auto'
+                    })
+                    .slideDown()
+                    .effect('shake', {times: 3, distance: 5}, 420);
+
+                return false;
+            }
+
 
             if ($('#globalpart4').val())
             {
@@ -3237,7 +3253,7 @@ $(function ()
 
 			if($('input[name=promotion]').val() == ''){
 				$('.pafup_msg')
-					.html('Promotion level must not be blank. Please select a value.')
+					.html('Promotion level must not be blank (Select current rank if no promotion).')
 					.css({
 						color : '#9c0006',
 						background : '#ffc7ce',
