@@ -3235,6 +3235,21 @@ $(function ()
                 $('#alert').after('<div class="pafup_msg" style="display:none; padding:3px; margin-top:5px; margin-bottom:5px; text-align:center" />');
             }
 
+			if($('input[name=promotion]').val() == ''){
+				$('.pafup_msg')
+					.html('Promotion level must not be blank. Please select a value.')
+					.css({
+						color : '#9c0006',
+						background : '#ffc7ce',
+						border : '2px solid #9c0006',
+						height : 'auto'
+					})
+					.slideDown()
+					.effect('shake', {times: 3, distance: 5}, 420);
+
+				return false;
+			}
+
             if ($('.remarks').val().length)
             {
                 $('.pafup_msg')
