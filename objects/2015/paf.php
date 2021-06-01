@@ -1,24 +1,24 @@
 <?php
-    
+
     if ($logged == 1 && $profile_dbname != 'ECINEMA' && $profile_dbname != 'EPARKVIEW' && $profile_dbname != 'NEWTOWN') {
-        
+
         //*********************** MAIN CODE START **********************\\
 
         # ASSIGNED VALUE
-        $page_title = "Performance Appraisal Viewer";  
+        $page_title = "Performance Appraisal Viewer";
 
         //***********************  MAIN CODE END  **********************\\
 
         global $sroot, $profile_id, $unix3month;
         $dbnamekev = ''; $rattkev = ''; $participantkev = ''; $commandkev ='';
-        $datenow = date('Y-m-d'); //AND a.DateAppraisal >= '".$datenow." 00:00:00.000' 
+        $datenow = date('Y-m-d'); //AND a.DateAppraisal >= '".$datenow." 00:00:00.000'
 
         $groupid = $_GET['groupid'];
 
         if ($comp == 'GLOBA01' || $comp == 'GLOBAL1' ){ //|| $comp == 'LGMI01' ) {
             $dbname = "AND a.Designation = 'GLOBAL01' AND f.DB_NAME = 'GL' AND e.DB_NAME = 'GL' AND d.DB_NAME = 'GL' ";
 
-            $dbnamekev = "AND desig = 'GLOBAL01' AND DBNAME='GL' ";
+            $dbnamekev = "AND desig = 'GLOBAL01' ";
 
             $ratt = "AND b.DB_NAME = 'GL'";
             $rattkev = "AND DBNAME = 'GL'";
@@ -26,25 +26,25 @@
             $dbname = "AND a.Designation = 'MEGA01' ";
             $dbnamekev = "AND desig = 'MEGA01' ";
 
-            $ratt = "AND (b.DB_NAME = 'MEGAWORLD' OR b.DB_NAME = 'NCCAI' OR b.DB_NAME = 'LCTM' OR b.DB_NAME = 'MLI' OR b.DB_NAME = 'TOWNSQUARE' OR b.DB_NAME = 'SUNTRUST' OR b.DB_NAME = 'FIRSTCENTRO' OR b.DB_NAME = 'EREX' OR b.DB_NAME = 'EPARKVIEW' OR b.DB_NAME = 'ECOC' OR b.DB_NAME = 'ECINEMA' OR b.DB_NAME = 'CITYLINK') ";
+            $ratt = "AND (b.DB_NAME = 'MEGAWORLD' OR b.DB_NAME = 'NCCAI' OR b.DB_NAME = 'LCTM' OR b.DB_NAME = 'MLI' OR b.DB_NAME = 'TOWNSQUARE' OR b.DB_NAME = 'SUNTRUST' OR b.DB_NAME = 'FIRSTCENTRO' OR b.DB_NAME = 'EREX' OR b.DB_NAME = 'EPARKVIEW' OR b.DB_NAME = 'ECOC' OR b.DB_NAME = 'ECINEMA' OR b.DB_NAME = 'CITYLINK' OR DBNAME = 'SIRUS' OR DBNAME = 'ASIAAPMI') ";
 
-            $rattkev = "AND (DBNAME = 'MEGAWORLD' OR DBNAME = 'NCCAI' OR DBNAME = 'LCTM' OR DBNAME = 'MLI' OR DBNAME = 'TOWNSQUARE' OR DBNAME = 'SUNTRUST' OR DBNAME = 'FIRSTCENTRO' OR DBNAME = 'EREX' OR DBNAME = 'EPARKVIEW' OR DBNAME = 'ECOC' OR DBNAME = 'ECINEMA' OR DBNAME = 'CITYLINK') ";
+            $rattkev = "AND (DBNAME = 'MEGAWORLD' OR DBNAME = 'NCCAI' OR DBNAME = 'LCTM' OR DBNAME = 'MLI' OR DBNAME = 'TOWNSQUARE' OR DBNAME = 'SUNTRUST' OR DBNAME = 'FIRSTCENTRO' OR DBNAME = 'EREX' OR DBNAME = 'EPARKVIEW' OR DBNAME = 'ECOC' OR DBNAME = 'ECINEMA' OR DBNAME = 'CITYLINK' OR DBNAME = 'SIRUS' OR DBNAME = 'ASIAAPMI') ";
         }
 
         //echo $comp;
         if ($groupid == NULL) {
             $group = 0;
-                $participant[] = "RateeEmpID = '".$profile_idnum."' "; 
-                $participant[] .= "RaterEmpID = '".$profile_idnum."' "; 
-                $participant[] .= "Rater2EmpID = '".$profile_idnum."' "; 
-                $participant[] .= "Rater3EmpID = '".$profile_idnum."' "; 
-                $participant[] .= "Rater4EmpID = '".$profile_idnum."' "; 
+                $participant[] = "RateeEmpID = '".$profile_idnum."' ";
+                $participant[] .= "RaterEmpID = '".$profile_idnum."' ";
+                $participant[] .= "Rater2EmpID = '".$profile_idnum."' ";
+                $participant[] .= "Rater3EmpID = '".$profile_idnum."' ";
+                $participant[] .= "Rater4EmpID = '".$profile_idnum."' ";
 
-                $participantkev[] = "rempid = '".$profile_idnum."' "; 
-                $participantkev[] .= "rempid1 = '".$profile_idnum."' "; 
-                $participantkev[] .= "rempid2 = '".$profile_idnum."' "; 
-                $participantkev[] .= "rempid3 = '".$profile_idnum."' "; 
-                $participantkev[] .= "rempid4 = '".$profile_idnum."' "; 
+                $participantkev[] = "rempid = '".$profile_idnum."' ";
+                $participantkev[] .= "rempid1 = '".$profile_idnum."' ";
+                $participantkev[] .= "rempid2 = '".$profile_idnum."' ";
+                $participantkev[] .= "rempid3 = '".$profile_idnum."' ";
+                $participantkev[] .= "rempid4 = '".$profile_idnum."' ";
 
             $command = "(".implode( ' OR ', $participant).") AND b.Status = 'Active' AND b.AppraisalDate <= '".$datenow." 00:00:00.000'";
 
@@ -55,22 +55,22 @@
             //var_dump(count($groupapp));
         } else {
             $group = 1;
-            for ($i=0; $i <= 4; $i++) { 
+            for ($i=0; $i <= 4; $i++) {
 
-                if($i == 0){ 
+                if($i == 0){
 
                     $participant = " RateeEmpID = '".$profile_idnum."' ".$ratt." ";
                     $participantkev = " rempid = '".$profile_idnum."' ".$rattkev." ";
 
-                }elseif($i == 1){ 
+                }elseif($i == 1){
 
-                    $participant = "RaterEmpID = '".$profile_idnum."'"; 
-                    $participantkev = "rempid1 = '".$profile_idnum."'"; 
+                    $participant = "RaterEmpID = '".$profile_idnum."'";
+                    $participantkev = "rempid1 = '".$profile_idnum."'";
 
-                } else { 
+                } else {
 
-                    $participant = "Rater".$i."EmpID = '".$profile_idnum."'"; 
-                    $participantkev = "rempid".$i." = '".$profile_idnum."'"; 
+                    $participant = "Rater".$i."EmpID = '".$profile_idnum."'";
+                    $participantkev = "rempid".$i." = '".$profile_idnum."'";
 
                 }
 
@@ -78,14 +78,14 @@
 
 
                 $command = "".$participant." AND a.RelAppID = ".$groupid." AND b.FName IS NOT NULL AND g.Status = 'Active' AND g.AppraisalDate <= '".$datenow." 00:00:00.000' ".$dbname." ";
-                
+
                 $commandkev = "".$participantkev." AND RelAppID = ".$groupid." AND rfname IS NOT NULL AND appStatus = 'Active' AND appdt <= '".$datenow." 00:00:00.000' ".$dbnamekev." ";
-                
+
                 //echo $mco
                 ${"rater$i"} = $pafsql->appFunctionKev($commandkev);
                 //var_dump(${"rater$i"});
 
-                
+
                 foreach (${"rater$i"} as $row) {
                     if (($row['rempid2'] == NULL || $row['rempid2'] == 0) && ($row['rempid3'] == NULL || $row['rempid3'] == 0) && ($row['rempid4'] == NULL || $row['rempid4'] == 0)) {
                         $auth = 'Final1';
@@ -112,5 +112,5 @@
     {
         echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/login'</script>";
     }
-    
+
 ?>
