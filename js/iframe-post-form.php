@@ -2933,7 +2933,7 @@ $(function ()
 			if ($('input[name="promotion"]').val() == '')
             {
 				$('.paf_msg')
-                    .html('Promotion level must not be blank (Select current rank if no promotion).')
+                    .html('"Promotion To Level:" must not be blank (please select current rank if no promotion)')
                     .css({
                         color : '#9c0006',
                         background : '#ffc7ce',
@@ -3104,7 +3104,7 @@ $(function ()
 			if ($('input[name="promotion"]').val() == '')
             {
 				$('.paf_msg')
-                    .html('Promotion level must not be blank (Select current rank if no promotion).')
+                    .html('"Promotion To Level:" must not be blank (please select current rank if no promotion)')
                     .css({
                         color : '#9c0006',
                         background : '#ffc7ce',
@@ -3269,7 +3269,7 @@ $(function ()
 
 			if($('input[name=promotion]').val() == ''){
 				$('.pafup_msg')
-					.html('Promotion level must not be blank (Select current rank if no promotion).')
+					.html('"Promotion To Level:" must not be blank (please select current rank if no promotion)')
 					.css({
 						color : '#9c0006',
 						background : '#ffc7ce',
