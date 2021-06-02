@@ -1072,7 +1072,7 @@
                                         <td><b class="smallesttext lwhitetext">Date Hired:</b> <span style="font-weight:normal;"><?php echo date('Y-m-d', strtotime($row['hdate'])); ?></span></td>
                                     </tr>
                                     <tr>
-                                        <td><b class="smallesttext lwhitetext">Period:</b> <span style="font-weight:normal;">From | <u><?php echo '2019-01-01'; // echo date('Y-m-d', strtotime($row['dtfrom'])); ?></u> To | <u><?php echo '2019-12-31';// echo date('Y-m-d', strtotime($row['dtto'])); ?></u></span></td>
+                                        <td><b class="smallesttext lwhitetext">Period:</b> <span style="font-weight:normal;">From | <u><?php echo date('Y-m-d', strtotime($row['perfrom']));//echo '2019-01-01';  ?></u> To | <u><?php echo date('Y-m-d', strtotime($row['perto'])); //echo '2019-12-31';  ?></u></span></td>
                                         <td><b class="smallesttext lwhitetext">Date Appraisal:</b> <span style="font-weight:normal;"><?php echo date('Y-m-d', strtotime($row['appdt'])); ?></span></td>
                                     </tr>
                                 </tbody>
