@@ -1529,7 +1529,7 @@
                                         <ul style="list-style-type: none;margin:0;padding: 0;font-weight:bold;">
                                             <li style="display: inline;padding-left:13px"><?php echo $row['wobj']; ?></li>
                                             <li style="display: inline;padding-left:48px;"><?php echo $row['wachieve'] ?></li>
-                                            <li style="display: inline;padding-left:86px;"><?php $totalwr += $row['wwrating']; echo $row['wwrating']; ?></li>
+                                            <li style="display: inline;padding-left:86px;"><?php $totalwr += $row['wrating']; echo $row['wrating']; ?></li>
                                             <li style="display: inline;padding-left:63px;"><?php echo $row['wwrating'] ?></li>
                                         </ul>
                                     </div>
