@@ -1505,7 +1505,7 @@
                                     Minimum of 3 objective according the SMART goal definition, and carried over from the last review period. Results achieved to be stated by Job Holder and commented by Reviewing Mgr. An additional objective is added in case of staff management responsibilities as "PMS". Weight is the importance of each objective versus the others. Achievement % is the volume of the objective achieved, and the rating is the quality of what has been achieved. Examples can be found in PMS Guidelines.
                                 </div>
                                 <div style="clear:both;"></div>
-                                <?php $countwr = 0; $countobj1 = 1; foreach ($checkWResults as $row) { $fwobj += $row['wobj']; $fwrobj += $row['wwrating'];  ?>
+                                <?php $totalwr = 0; $countwr = 0; $countobj1 = 1; foreach ($checkWResults as $row) { $fwobj += $row['wobj']; $fwrobj += $row['wwrating'];  ?>
                                 <input type="hidden" name="wid[]" value="<?php echo $row['wid']; ?>">
                                 <div class="work-result-wrapper">
                                     <p style="text-decoration:underline;font-weight:bold;">OBJECTIVE <?php echo $countobj1++; ?></p>
@@ -1529,7 +1529,7 @@
                                         <ul style="list-style-type: none;margin:0;padding: 0;font-weight:bold;">
                                             <li style="display: inline;padding-left:13px"><?php echo $row['wobj']; ?></li>
                                             <li style="display: inline;padding-left:48px;"><?php echo $row['wachieve'] ?></li>
-                                            <li style="display: inline;padding-left:86px;"><?php $totalwr += $row['wrating']; echo $row['wrating']; ?></li>
+                                            <li style="display: inline;padding-left:86px;"><?php $totalwr += $row['wwrating']; echo $row['wrating']; ?></li>
                                             <li style="display: inline;padding-left:63px;"><?php echo $row['wwrating'] ?></li>
                                         </ul>
                                     </div>
