@@ -250,7 +250,20 @@
                                              }
                                              $('#sys_gen_inc').html(sys_gen_inc.toFixed(2));
 
+											 // Increase
+			                                 var reg_increase = <?php echo $checkEvaluation[0]['Increase']; ?>;
+			                                 var pro_increase = <?php echo $checkEvaluation[0]['Proincrease']; ?>;
+			                                 var inc = reg_increase;
+			                                 var rank_current = $('#promotion').data('promote');
+			                                 var rank_promotion = $.trim($('#promotion').val());
+			                                 if(rank_current != rank_promotion && rank_promotion != '' && rank_promotion != undefined){
 
+												 inc = pro_increase;
+											 }
+
+			                                 $('input[name="increase"]').attr({
+			                                     max: inc
+			                                 });
 
 
                                              if(op == 5) { $('.note').hide('fast'); $('.note5').show('slow'); }
@@ -391,6 +404,21 @@
                                       }
 
                                       $('#sys_gen_inc').html(sys_gen_inc.toFixed(2));
+
+									  // Increase
+									  var reg_increase = <?php echo $checkEvaluation[0]['Increase']; ?>;
+									  var pro_increase = <?php echo $checkEvaluation[0]['Proincrease']; ?>;
+									  var inc = reg_increase;
+									  var rank_current = $('#promotion').data('promote');
+									  var rank_promotion = $.trim($('#promotion').val());
+									  if(rank_current != rank_promotion && rank_promotion != '' && rank_promotion != undefined){
+
+										  inc = pro_increase;
+									  }
+
+									  $('input[name="increase"]').attr({
+										  max: inc
+									  });
 
                                       if(op == 5) { $('.note').hide('fast'); $('.note5').show('slow'); }
                                       else if(op < 5 && op >= 4) { $('.note').hide('fast'); $('.note4').show('slow'); }
@@ -803,7 +831,7 @@
                                 </h3>
 
                                 <p><strong>Final Recommendation;</strong> please fill up your desired recommendations below. </p>
-                                Promotion To Level: <input type="text" class="promotion" name="promotion" value="<?php echo $checkEvaluation[0]['promote']; ?>" list="ranks" autocomplete="off" onChange="fnAlltotalpcc()" onclick="this.value = '';" data-promote="<?php echo $checkEvaluation[0]['randesc']; ?>">&nbsp;&nbsp;&nbsp;
+                                Promotion To Level: <input type="text" class="promotion" id="promotion" name="promotion" value="<?php echo $checkEvaluation[0]['promote']; ?>" list="ranks" autocomplete="off" onChange="fnAlltotalpcc()" onclick="this.value = '';" data-promote="<?php echo $checkEvaluation[0]['randesc']; ?>">&nbsp;&nbsp;&nbsp;
                                 New Position Title: <input type="text" name="promotionpos" value="<?php echo $checkEvaluation[0]['promotePos']; ?>">&nbsp;&nbsp;&nbsp;<br><br>
                                 <datalist id="ranks">
                                   <?php
@@ -863,7 +891,7 @@
                                 </script>
 
                                 <?php if($max1i == 1) { ?>
-                                    Salary Increase: <input type="number" min="1" max="<?php echo $appraisal[0]['increase']; ?>" name="increase" value="<?php echo $checkEvaluation[0]['recinc']; ?>">%
+                                    Salary Increase: <input type="number" min="1" max="100" name="increase" value="<?php echo $checkEvaluation[0]['recinc']; ?>">%
                                 <?php } else { ?>
                                 <br /><br />
                                     <input type="hidden" name="increase" value="">
@@ -1365,7 +1393,7 @@
                                 Promotion To Level: <input type="text" name="promotion" value="<?php echo $checkEvaluation[0]['promote']; ?>" data-promote="<?php echo $checkEvaluation[0]['randesc']; ?>" onchange="fnAlltotalpcc()">&nbsp;&nbsp;&nbsp;
                                 New Position Title: <input type="text" name="promotionpos" value="<?php echo $checkEvaluation[0]['promotePos']; ?>">&nbsp;&nbsp;&nbsp;<br><br>
                             <?php if($max1i == 1) { ?>
-                                Salary Increase: <input type="text" min="1" max="<?php echo $appraisal[0]['increase']; ?>" name="increase" value="<?php echo $checkEvaluation[0]['recinc']; ?>" readonly>%
+                                Salary Increase: <input type="text" min="1" max="1000" name="increase" value="<?php echo $checkEvaluation[0]['recinc']; ?>">%
                                 <br /><br />
                             <?php } else { ?>
                                 <input type="hidden" name="increase" value="">
