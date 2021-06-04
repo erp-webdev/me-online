@@ -274,6 +274,10 @@
                         inc = pro_increase;
                      }
 
+					 $('input[name="increase"]').attr({
+	                     max: inc
+	                 });
+
                      var sys_gen_inc = (computed_score / 5 ) * (inc);
                      $('#sys_gen_inc').html(sys_gen_inc.toFixed(2));
 
@@ -455,6 +459,10 @@
                      if(rank != $.trim(prom) && prom != '' && prom != undefined){
                         inc = pro_increase;
                      }
+
+					 $('input[name="increase"]').attr({
+	                     max: inc
+	                 });
 
                      var sys_gen_inc = (computed_score / 5 ) * (inc);
                      $('#sys_gen_inc').html(sys_gen_inc.toFixed(2));
