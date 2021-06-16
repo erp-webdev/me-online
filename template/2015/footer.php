@@ -10,7 +10,7 @@
                     <div id="subcontainer" class="subcontainer">
                         <div id="lowersub" class="lowersub tbpadding10 whitebg">
                             <div id="lowerlist" class="lowerlist">
-                                <div class="vsmalltext dgraytext margintop10"><?php echo $wfooter; ?></div>
+                                <div class="vsmalltext dgraytext margintop10" style="font-weight: 400; text-align: center;"><?php echo $wfooter; ?></div>
                             </div>
                         </div>
                     </div>
@@ -21,7 +21,7 @@
             <div id="footercontainer" class="footercontainer">
 
               <div id="copyright" class="copyright">
-                <div class="lcopyright dgraytext tinytext">
+                <div class="lcopyright dgraytext tinytext" style="font-weight: 400;">
                 	&copy; <?php echo date("Y"); ?> Megaworld Corporation ISM Department, All Rights Reserved
                  </div>
               </div>
