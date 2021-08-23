@@ -62,7 +62,7 @@
 					E.PositionDesc,
 					A.HireDate as HireDate,
 					getdate() as CurrentDate,
-					DATEADD(day, -1, A.DateResigned) as DateResigned ,
+					'--' as DateResigned ,
 					A.CompanyID,
 					F.CompanyName,
 					A.Active,
