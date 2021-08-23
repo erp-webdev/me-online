@@ -4,8 +4,7 @@ class pafsql
 {
     function __construct()
     {
-		// ini_set('session.gc_maxlifetime', 60);
-        // ini_set('session.gc_maxlifetime', 360);
+        ini_set('session.gc_maxlifetime', 14400);
     }
 
     public function db_connect() //connect to database
