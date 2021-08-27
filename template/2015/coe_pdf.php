@@ -42,7 +42,7 @@
 		<?php } elseif ($coe[0]["company"] == 'SUNT01') {?>
 			<p><img style="width: <?php echo $send_pdf ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/suntrust_coe.png"/></p>
 		<?php } elseif ($coe[0]["company"] == 'ASIAAPMI') {?>
-			<p><img style="width: <?php echo $send_pdf ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/asiapmi_coe.png"/></p>
+			<p><img style="width: <?php echo $send_pdf ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/asiaapmi_coe.png"/></p>
 		<?php } else {?>
 			<p><img style="width: <?php echo $send_pdf ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/blank_coe.png"/></p>
 		<?php } ?>
