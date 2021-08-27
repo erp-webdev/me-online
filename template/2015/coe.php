@@ -19,7 +19,7 @@
 							<br><br>
 							<div>
 								<button id="coenewreq" value="New Request" class="smlbtn" attribute5="1">New Request</button>
-								<?php if($coe_users > 0 || $profile_idnum == '2016-06-0457'){ ?>
+								<?php if($coe_users > 0){ ?>
 											<a href="<?php echo WEB; ?>/coeadmin" id="coeadmin" class="smlbtn" style="background-color:#3EC2FB;">Administration</a>
 								<?php } ?>
 								<table border="0" cellspacing="0" class="tdata width100per">
