@@ -431,7 +431,7 @@
 	<?php
 		if($coe[0]["type"] == 'COECOMPENSATION'){
 
-			if($coe['company'] == 'ASIAAPMI'){ ?>
+			if($coe[0]['company'] == 'ASIAAPMI'){ ?>
 
 				<b><p style="padding-top: 40px; padding-bottom: 20px; padding-left: 50px; padding-right: 50px;">Jeriza Mae Socorro<br />
 				<i>Payroll Manager<i></p></b>
