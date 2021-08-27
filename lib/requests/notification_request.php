@@ -4587,7 +4587,7 @@
 							<select id="coetype" name="coetype" class="txtbox" style="width:193px;">
 								<option value="">Please Select</option>
 								<option value="COE">Certificate Of Employment</option>
-								<?php if($profile_id == '2019-02-0033'){ ?>
+								<?php if($profile_comp == 'ASIAAPMI'){ ?>
 								<option value="COECOMPENSATION">CoE with Compensation</option>
 								<?php } ?>
 								<option value="COEHOUSINGPLAN">CoE with Housing Plan</option>
