@@ -5493,7 +5493,7 @@
 			$result = $mainsql->get_row($sql);
 
 			$date_resigned_empid = $result[0]['emp_id'];
-			$date_resigned_sql = "SELECT DATEADD(DAY, -1, DateResigned) AS DateResigned from viewHREmpMaster WHERE EmpID = '$date_resigned_empid'";
+			$date_resigned_sql = "SELECT DateResigned from viewHREmpMaster WHERE EmpID = '$date_resigned_empid'";
 			$date_resigned_data = $mainsql->get_row($date_resigned_sql);
 			if(date('Y-m-d', strtotime($date_resigned_data[0]['DateResigned'])) > date('Y-m-d')){
 				$date_resigned = date('F j, Y', strtotime($date_resigned_data[0]['DateResigned']));
@@ -6103,7 +6103,7 @@
 						E.PositionDesc,
 						A.HireDate as HireDate,
 						getdate() as CurrentDate,
-						A.DateResigned as DateResigned,
+						DATEADD(DAY, -1, A.DateResigned) as DateResigned,
 						A.CompanyID,
 						F.CompanyName
 						FROM
