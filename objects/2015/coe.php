@@ -33,7 +33,7 @@
         // var_dump($coe_data);
         //var_dump($mreq_data);
 
-		if(!(in_array($profile_dbname, ['CITYLINK', 'ECOC', 'ECINEMA', 'EREX', 'LAFUERZA', 'LCTM', 'GL', 'MEGAWORLD', 'MLI', 'MCTI', 'NCCAI', 'SIRUS', 'SUNTRUST', 'TOWNSQUARE']))){
+		if(!(in_array($profile_dbname, ['ASIAAPMI', 'CITYLINK', 'ECOC', 'ECINEMA', 'EREX', 'LAFUERZA', 'LCTM', 'GL', 'MEGAWORLD', 'MLI', 'MCTI', 'NCCAI', 'SIRUS', 'SUNTRUST', 'TOWNSQUARE']))){
 			echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/login'</script>";
 		}
 

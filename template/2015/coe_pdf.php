@@ -41,6 +41,8 @@
 			<p><img style="width: <?php echo $send_pdf ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/mcti_coe.png"/></p>
 		<?php } elseif ($coe[0]["company"] == 'SUNT01') {?>
 			<p><img style="width: <?php echo $send_pdf ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/suntrust_coe.png"/></p>
+		<?php } elseif ($coe[0]["company"] == 'ASIAAPMI') {?>
+			<p><img style="width: <?php echo $send_pdf ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/asiaapmi_coe.png"/></p>
 		<?php } else {?>
 			<p><img style="width: <?php echo $send_pdf ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/blank_coe.png"/></p>
 		<?php } ?>
@@ -77,7 +79,8 @@
 		'ERA01' => '30th Floor, Alliance Global Tower, 36th Street cor 11th Avenue, Uptown Bonifacio, Taguig City',
 		'ECOC01' => 'GF The World Center Building, 330 Senator Gil Puyat Avenue, Makati City',
 		'CITYLINK01' => 'Ground Floor, McKinley Parking Building, Service Road 2, Mckinley Town Center, Fort Bonifacio Taguig',
-		'SIRUS' => 'Lot 28-7 Along M.A Roxas Highway, Clark Freeport Zone'
+		'SIRUS' => 'Lot 28-7 Along M.A Roxas Highway, Clark Freeport Zone',
+		'ASIAAPMI' => '24F ALLIANCE GLOBAL TOWER 36TH STREET CORNER 11 AVENUE UPTOWN BONIFACIO TAGUIG CITY'
 	];
 
 	if($coe[0]["type"] == "COEAPPROVEDLEAVE"){ // COE with Approved Leave
@@ -427,7 +430,13 @@
 	<!-- Signatory START -->
 	<?php
 		if($coe[0]["type"] == 'COECOMPENSATION'){
-			if(in_array($emp_info[0]["RankID"], $vpup)){ // for vp and up
+
+			if($coe[0]['company'] == 'ASIAAPMI'){ ?>
+
+				<b><p style="padding-top: 40px; padding-bottom: 20px; padding-left: 50px; padding-right: 50px;">Jeriza Mae Socorro<br />
+				<i>Payroll Manager<i></p></b>
+
+			<? }elseif(in_array($emp_info[0]["RankID"], $vpup)){ // for vp and up
 			?>
 				<b><p style="padding-top: 40px; padding-bottom: 20px; padding-left: 50px; padding-right: 50px;">LOURDES O. RAMILLO<br />
 				<i>Vice President - Financial Reporting Group<i></p></b>

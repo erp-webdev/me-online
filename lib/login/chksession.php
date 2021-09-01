@@ -4,9 +4,9 @@
 
 	$cookiename = 'megassep_user';
 
-	$username = $_SESSION[$cookiename];	
-	
-	if ($username) {	        
+	$username = $_SESSION[$cookiename];
+
+	if ($username) {
         echo "1";
 	}
 	else

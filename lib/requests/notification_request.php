@@ -4587,10 +4587,10 @@
 							<select id="coetype" name="coetype" class="txtbox" style="width:193px;">
 								<option value="">Please Select</option>
 								<option value="COE">Certificate Of Employment</option>
-								<?php if($profile_id == '2019-02-0033'){ ?>
+								<?php if($profile_comp == 'ASIAAPMI'){ ?>
 								<option value="COECOMPENSATION">CoE with Compensation</option>
 								<?php } ?>
-								<option value="COEHOUSINGPLAN">CoE with Housing Plan</option>
+								<option value="COEHOUSINGPLAN">CoE for Company Housing Plan</option>
 								<option value="COEJOBDESC">CoE with Job Desc</option>
 								<option value="COEGOODMORAL">CoE with Good Moral</option>
 								<option value="COEAPPROVEDLEAVE">CoE with Approved Leave</option>
@@ -5396,7 +5396,7 @@
 
 				$coes = [
 					'COECOMPENSATION' => 'CoE with Compensation',
-					'COEHOUSINGPLAN' => 'CoE with Housing Plan',
+					'COEHOUSINGPLAN' => 'CoE for Company Housing Plan',
 					'COEJOBDESC' => 'CoE with Job Description',
 					'COEGOODMORAL' => 'CoE with Good Moral',
 					'COEAPPROVEDLEAVE' => 'CoE with Approved Leave',
@@ -5493,7 +5493,7 @@
 			$result = $mainsql->get_row($sql);
 
 			$date_resigned_empid = $result[0]['emp_id'];
-			$date_resigned_sql = "SELECT DateResigned from viewHREmpMaster WHERE EmpID = '$date_resigned_empid'";
+			$date_resigned_sql = "SELECT DATEADD(DAY, -1, DateResigned) AS DateResigned from viewHREmpMaster WHERE EmpID = '$date_resigned_empid'";
 			$date_resigned_data = $mainsql->get_row($date_resigned_sql);
 			if(date('Y-m-d', strtotime($date_resigned_data[0]['DateResigned'])) > date('Y-m-d')){
 				$date_resigned = date('F j, Y', strtotime($date_resigned_data[0]['DateResigned']));
@@ -5526,7 +5526,7 @@
 						<td align="left">
 							<?php if($result[0]['type'] == 'COE'){ echo "Certificate Of Employment"; }?>
 							<?php if($result[0]['type'] == 'COECOMPENSATION'){ echo "CoE with Compensation"; }?>
-							<?php if($result[0]['type'] == 'COEHOUSINGPLAN'){ echo "CoE with Housing Plan"; }?>
+							<?php if($result[0]['type'] == 'COEHOUSINGPLAN'){ echo "CoE for Company Housing Plan"; }?>
 							<?php if($result[0]['type'] == 'COEJOBDESC'){ echo "CoE with Job Desc"; }?>
 							<?php if($result[0]['type'] == 'COEGOODMORAL'){ echo "CoE with Good Moral"; }?>
 							<?php if($result[0]['type'] == 'COEAPPROVEDLEAVE'){ echo "CoE with Approved Leave"; }?>
