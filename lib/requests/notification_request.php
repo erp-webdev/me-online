@@ -4587,9 +4587,7 @@
 							<select id="coetype" name="coetype" class="txtbox" style="width:193px;">
 								<option value="">Please Select</option>
 								<option value="COE">Certificate Of Employment</option>
-								<?php if($profile_comp == 'ASIAAPMI'){ ?>
 								<option value="COECOMPENSATION">CoE with Compensation</option>
-								<?php } ?>
 								<option value="COEHOUSINGPLAN">CoE for Company Housing Plan</option>
 								<option value="COEJOBDESC">CoE with Job Desc</option>
 								<option value="COEGOODMORAL">CoE with Good Moral</option>
