@@ -6397,7 +6397,7 @@
 							$sendmail = mail(implode(',', $hr_emails), "COE Request Update (Approvers Notification)", $message, $headers);
 						}else{
 							// INSERT COMPENSATION APPROVERS HERE
-							$approver_email = 'shart.global@megaworldcorp.com';
+							$approver_email = 'kayag.global@megaworldcorp.com';
 
 							array_push($hr_emails, $approver_email);
 							$sendmail = mail(implode(',', $hr_emails), "COE Request Update (Approvers Notification)", $message, $headers);
