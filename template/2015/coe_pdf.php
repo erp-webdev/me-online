@@ -1018,6 +1018,37 @@
 						],
 					]
 				
+					],
+
+				"ASIAAPMI" => [
+					'prepared' => [
+						'name' => 'SIOCO, JERIZA',
+						'id' => '2015-11-0550',
+						'designation' => ''
+					],
+					'approver' => [
+						'RFSP' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'M' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'AVP'=>[
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'VP' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+					]
+				
 				]
 				
 			];
