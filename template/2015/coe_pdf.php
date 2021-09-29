@@ -554,11 +554,8 @@
 						],
 					]
 				
-				]
-				
-			];
-
-			$COEC_APPROVERS = [
+					],
+					
 				"MLI01" => [
 					'prepared' => [
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
@@ -991,7 +988,7 @@
 					]
 				
 					],
-					
+
 				"NEWTOWN01" => [
 					'prepared' => [
 						'name' => 'ANASTACIO, MAE HAZEL BALAGOSA',
