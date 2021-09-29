@@ -431,6 +431,39 @@
 	<?php
 		if($coe[0]["type"] == 'COECOMPENSATION'){
 
+			$COEC_APPROVERS = [
+				"GLOBAL01" => [
+					'prepared' => [
+						'name' => '',
+						'id' => '',
+						'designation' => ''
+					],
+					'approver' => [
+						'RFSP' => [
+							'name' => '',
+							'id' => '',
+							'designation' => ''
+						],
+						'M' => [
+							'name' => '',
+							'id' => '',
+							'designation' => ''
+						],
+						'AVP'=>[
+							'name' => '',
+							'id' => '',
+							'designation' => ''
+						],
+						'VP' => [
+							'name' => '',
+							'id' => '',
+							'designation' => ''
+						],
+					]
+				
+				]
+			];
+
 			if($coe[0]['company'] == 'ASIAAPMI'){ ?>
 
 				<b><p style="padding-top: 40px; padding-bottom: 20px; padding-left: 50px; padding-right: 50px;">Jeriza Mae Socorro<br />
