@@ -434,35 +434,650 @@
 			$COEC_APPROVERS = [
 				"GLOBAL01" => [
 					'prepared' => [
-						'name' => '',
-						'id' => '',
+						'name' => 'SULAT, CLARA NUÑEZ',
+						'id' => '2021-02-0013',
 						'designation' => ''
 					],
 					'approver' => [
 						'RFSP' => [
-							'name' => '',
-							'id' => '',
+							'name' => 'BRANCO, ARLENE AYSON',
+							'id' => '2014-10-0004',
 							'designation' => ''
 						],
 						'M' => [
-							'name' => '',
-							'id' => '',
+							'name' => 'BRANCO, ARLENE AYSON',
+							'id' => '2014-10-0004',
 							'designation' => ''
 						],
 						'AVP'=>[
-							'name' => '',
-							'id' => '',
+							'name' => 'BRANCO, ARLENE AYSON',
+							'id' => '2014-10-0004',
 							'designation' => ''
 						],
 						'VP' => [
-							'name' => '',
-							'id' => '',
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
 							'designation' => ''
 						],
 					]
 				
 				]
+				
 			];
+
+			$COEC_APPROVERS = [
+				"LGMI01" => [
+					'prepared' => [
+						'name' => 'ESLIT, IRENE SUBONG',
+						'id' => '2021-02-0013',
+						'designation' => ''
+					],
+					'approver' => [
+						'RFSP' => [
+							'name' => 'BRANCO, ARLENE AYSON',
+							'id' => '2014-10-0004',
+							'designation' => ''
+						],
+						'M' => [
+							'name' => 'BRANCO, ARLENE AYSON',
+							'id' => '2014-10-0004',
+							'designation' => ''
+						],
+						'AVP'=>[
+							'name' => 'BRANCO, ARLENE AYSON',
+							'id' => '2014-10-0004',
+							'designation' => ''
+						],
+						'VP' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+					]
+				
+				]
+				
+			];
+
+			$COEC_APPROVERS = [
+				"GLOBALHOTEL" => [
+					'prepared' => [
+						'name' => 'ESLIT, IRENE SUBONG',
+						'id' => '2021-02-0013',
+						'designation' => ''
+					],
+					'approver' => [
+						'RFSP' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'M' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'AVP'=>[
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'VP' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+					]
+				
+				]
+				
+			];
+
+			$COEC_APPROVERS = [
+				"ECOC01" => [
+					'prepared' => [
+						'name' => 'TERMULO, MA. VERONICA SALUTA',
+						'id' => '2011-03-V837',
+						'designation' => ''
+					],
+					'approver' => [
+						'RFSP' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'M' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'AVP'=>[
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'VP' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+					]
+				
+				]
+				
+			];
+
+			$COEC_APPROVERS = [
+				"MLI01" => [
+					'prepared' => [
+						'name' => 'TERMULO, MA. VERONICA SALUTA',
+						'id' => '2011-03-V837',
+						'designation' => ''
+					],
+					'approver' => [
+						'RFSP' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'M' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'AVP'=>[
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'VP' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+					]
+				
+				]
+				
+			];
+
+			$COEC_APPROVERS = [
+				"MREIT_FMI" => [
+					'prepared' => [
+						'name' => 'TERMULO, MA. VERONICA SALUTA',
+						'id' => '2011-03-V837',
+						'designation' => ''
+					],
+					'approver' => [
+						'RFSP' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'M' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'AVP'=>[
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'VP' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+					]
+				
+				]
+				
+			];
+
+			$COEC_APPROVERS = [
+				"MREIT_INC" => [
+					'prepared' => [
+						'name' => 'TERMULO, MA. VERONICA SALUTA',
+						'id' => '2011-03-V837',
+						'designation' => ''
+					],
+					'approver' => [
+						'RFSP' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'M' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'AVP'=>[
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'VP' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+					]
+				
+				]
+				
+			];
+
+			$COEC_APPROVERS = [
+				"MREIT_PMI" => [
+					'prepared' => [
+						'name' => 'TERMULO, MA. VERONICA SALUTA',
+						'id' => '2011-03-V837',
+						'designation' => ''
+					],
+					'approver' => [
+						'RFSP' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'M' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'AVP'=>[
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'VP' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+					]
+				
+				]
+				
+			];
+
+			$COEC_APPROVERS = [
+				"Rowenta" => [
+					'prepared' => [
+						'name' => 'TERMULO, MA. VERONICA SALUTA',
+						'id' => '2011-03-V837',
+						'designation' => ''
+					],
+					'approver' => [
+						'RFSP' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'M' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'AVP'=>[
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'VP' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+					]
+				
+				]
+				
+			];
+
+			$COEC_APPROVERS = [
+				"LUCK01" => [
+					'prepared' => [
+						'name' => 'TERMULO, MA. VERONICA SALUTA',
+						'id' => '2011-03-V837',
+						'designation' => ''
+					],
+					'approver' => [
+						'RFSP' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'M' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'AVP'=>[
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'VP' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+					]
+				
+				]
+				
+			];
+
+			$COEC_APPROVERS = [
+				"SIRUS" => [
+					'prepared' => [
+						'name' => 'TERMULO, MA. VERONICA SALUTA',
+						'id' => '2011-03-V837',
+						'designation' => ''
+					],
+					'approver' => [
+						'RFSP' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'M' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'AVP'=>[
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'VP' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+					]
+				
+				]
+				
+			];
+
+			$COEC_APPROVERS = [
+				"ERA01" => [
+					'prepared' => [
+						'name' => 'TERMULO, MA. VERONICA SALUTA',
+						'id' => '2011-03-V837',
+						'designation' => ''
+					],
+					'approver' => [
+						'RFSP' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'M' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'AVP'=>[
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'VP' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+					]
+				
+				]
+				
+			];
+
+			$COEC_APPROVERS = [
+				"ECC02" => [
+					'prepared' => [
+						'name' => 'TERMULO, MA. VERONICA SALUTA',
+						'id' => '2011-03-V837',
+						'designation' => ''
+					],
+					'approver' => [
+						'RFSP' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'M' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'AVP'=>[
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'VP' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+					]
+				
+				]
+				
+			];
+
+			$COEC_APPROVERS = [
+				"CITYLINK01" => [
+					'prepared' => [
+						'name' => 'TERMULO, MA. VERONICA SALUTA',
+						'id' => '2011-03-V837',
+						'designation' => ''
+					],
+					'approver' => [
+						'RFSP' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'M' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'AVP'=>[
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'VP' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+					]
+				
+				]
+				
+			];
+
+			$COEC_APPROVERS = [
+				"NCCAI" => [
+					'prepared' => [
+						'name' => 'TERMULO, MA. VERONICA SALUTA',
+						'id' => '2011-03-V837',
+						'designation' => ''
+					],
+					'approver' => [
+						'RFSP' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'M' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'AVP'=>[
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'VP' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+					]
+				
+				]
+				
+			];
+
+			$COEC_APPROVERS = [
+				"MEGAWORLD" => [
+					'prepared' => [
+						'name' => 'ANASTACIO, MAE HAZEL BALAGOSA',
+						'id' => '2015-11-0550',
+						'designation' => ''
+					],
+					'approver' => [
+						'RFSP' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'M' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'AVP'=>[
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'VP' => [
+							'name' => 'RAMILO, LOURDES ONG',
+							'id' => '1997-03-8638',
+							'designation' => ''
+						],
+					]
+				
+				]
+				
+			];
+
+			$COEC_APPROVERS = [
+				"TOWN01" => [
+					'prepared' => [
+						'name' => 'ANASTACIO, MAE HAZEL BALAGOSA',
+						'id' => '2015-11-0550',
+						'designation' => ''
+					],
+					'approver' => [
+						'RFSP' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'M' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'AVP'=>[
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'VP' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+					]
+				
+				]
+				
+			];
+
+			$COEC_APPROVERS = [
+				"LFI01" => [
+					'prepared' => [
+						'name' => 'ANASTACIO, MAE HAZEL BALAGOSA',
+						'id' => '2015-11-0550',
+						'designation' => ''
+					],
+					'approver' => [
+						'RFSP' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'M' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'AVP'=>[
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'VP' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+					]
+				
+				]
+				
+			];
+
+			$COEC_APPROVERS = [
+				"NEWTOWN01" => [
+					'prepared' => [
+						'name' => 'ANASTACIO, MAE HAZEL BALAGOSA',
+						'id' => '2015-11-0550',
+						'designation' => ''
+					],
+					'approver' => [
+						'RFSP' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'M' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'AVP'=>[
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+						'VP' => [
+							'name' => 'GUARINA, MARILOU CABUHAT',
+							'id' => '1994-03-8275',
+							'designation' => ''
+						],
+					]
+				
+				]
+				
+			];
+
+			
 
 			if($coe[0]['company'] == 'ASIAAPMI'){ ?>
 
