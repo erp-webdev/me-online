@@ -461,11 +461,8 @@
 						],
 					]
 				
-				]
+					],
 				
-			];
-
-			$COEC_APPROVERS = [
 				"LGMI01" => [
 					'prepared' => [
 						'name' => 'ESLIT, IRENE SUBONG',
@@ -495,11 +492,8 @@
 						],
 					]
 				
-				]
-				
-			];
+					],
 
-			$COEC_APPROVERS = [
 				"GLOBALHOTEL" => [
 					'prepared' => [
 						'name' => 'ESLIT, IRENE SUBONG',
@@ -529,11 +523,8 @@
 						],
 					]
 				
-				]
-				
-			];
+					],
 
-			$COEC_APPROVERS = [
 				"ECOC01" => [
 					'prepared' => [
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
@@ -591,17 +582,13 @@
 							'designation' => ''
 						],
 						'VP' => [
-							'name' => 'GUARINA, MARILOU CABUHAT',
-							'id' => '1994-03-8275',
+							'name' => 'RAMILO, LOURDES ONG',
+							'id' => '1997-03-8638',
 							'designation' => ''
 						],
 					]
 				
-				]
-				
-			];
-
-			$COEC_APPROVERS = [
+					], 
 				"MREIT_FMI" => [
 					'prepared' => [
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
@@ -625,17 +612,14 @@
 							'designation' => ''
 						],
 						'VP' => [
-							'name' => 'GUARINA, MARILOU CABUHAT',
-							'id' => '1994-03-8275',
+							'name' => 'RAMILO, LOURDES ONG',
+							'id' => '1997-03-8638',
 							'designation' => ''
 						],
 					]
 				
-				]
-				
-			];
+					],
 
-			$COEC_APPROVERS = [
 				"MREIT_INC" => [
 					'prepared' => [
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
@@ -665,11 +649,8 @@
 						],
 					]
 				
-				]
-				
-			];
+					],
 
-			$COEC_APPROVERS = [
 				"MREIT_PMI" => [
 					'prepared' => [
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
@@ -699,11 +680,8 @@
 						],
 					]
 				
-				]
-				
-			];
+					],
 
-			$COEC_APPROVERS = [
 				"Rowenta" => [
 					'prepared' => [
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
@@ -733,11 +711,8 @@
 						],
 					]
 				
-				]
-				
-			];
-
-			$COEC_APPROVERS = [
+					],
+					
 				"LUCK01" => [
 					'prepared' => [
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
@@ -767,11 +742,8 @@
 						],
 					]
 				
-				]
-				
-			];
+					],
 
-			$COEC_APPROVERS = [
 				"SIRUS" => [
 					'prepared' => [
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
@@ -801,11 +773,8 @@
 						],
 					]
 				
-				]
-				
-			];
+					],
 
-			$COEC_APPROVERS = [
 				"ERA01" => [
 					'prepared' => [
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
@@ -835,11 +804,8 @@
 						],
 					]
 				
-				]
-				
-			];
+					],
 
-			$COEC_APPROVERS = [
 				"ECC02" => [
 					'prepared' => [
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
@@ -869,11 +835,8 @@
 						],
 					]
 				
-				]
-				
-			];
+					],
 
-			$COEC_APPROVERS = [
 				"CITYLINK01" => [
 					'prepared' => [
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
@@ -903,11 +866,8 @@
 						],
 					]
 				
-				]
-				
-			];
+					],
 
-			$COEC_APPROVERS = [
 				"NCCAI" => [
 					'prepared' => [
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
@@ -937,11 +897,8 @@
 						],
 					]
 				
-				]
-				
-			];
+					],
 
-			$COEC_APPROVERS = [
 				"MEGAWORLD" => [
 					'prepared' => [
 						'name' => 'ANASTACIO, MAE HAZEL BALAGOSA',
@@ -971,11 +928,8 @@
 						],
 					]
 				
-				]
-				
-			];
+					],
 
-			$COEC_APPROVERS = [
 				"TOWN01" => [
 					'prepared' => [
 						'name' => 'ANASTACIO, MAE HAZEL BALAGOSA',
@@ -1005,11 +959,8 @@
 						],
 					]
 				
-				]
-				
-			];
+					],
 
-			$COEC_APPROVERS = [
 				"LFI01" => [
 					'prepared' => [
 						'name' => 'ANASTACIO, MAE HAZEL BALAGOSA',
@@ -1039,11 +990,8 @@
 						],
 					]
 				
-				]
-				
-			];
-
-			$COEC_APPROVERS = [
+					],
+					
 				"NEWTOWN01" => [
 					'prepared' => [
 						'name' => 'ANASTACIO, MAE HAZEL BALAGOSA',
