@@ -1058,7 +1058,7 @@
 
 			?>
 
-			<table style="width:100%">
+			<table style="width:100%; padding-left: 50px">
 				<tr width="100%">
 					<td>
 						<span>Prepared By:</span> 
