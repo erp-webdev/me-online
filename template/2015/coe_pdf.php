@@ -50,19 +50,23 @@
 	&nbsp;
 
 	<?php
-	//R&F to AVP -- Ms Malou
-	$rfavp = array(
+	//R&F to Supervisor
+	$rfs = array(
 		'RF','RF II','SRF','SRF II','AS','AS II','AS III','S','S II','S III',
-		'SS','SS II','SS III','AM','AM II','AM III','MGR-A','M','M II','M III',
-		'SM','SM II','SM III','AVP', //end of megaworld ranks
+		'SS','SS II','SS III',
 		'RF','R001','R002','R003','R004','S005','S006','S007','S008','S','SS',
-		'M009','M010','M011','M012','M','M-TTTI','SM','SM - TTTI','D013','D014',
-		'AVP-TTTI','AVP' // end of GL RANKS
+		
 	);
+	$man = array('AM','AM II','AM III','MGR-A','M','M II','M III',
+				'SM','SM II','SM III', //end of megaworld ranks);
+				'M009','M010','M011','M012','M','M-TTTI','SM','SM - TTTI','D013','D014',
+				); // end of GL RANKS
+	
+	$avp = array('AVP','AVP-TTTI', 'SAVP');
 	//vp & up - Ms. Lourdes
 	$vpup = array(
-		'SAVP','FVP', //end of GL RANKS
-		'SAVP', 'VP', 'EVP','SEVP','SVP','FVP','COO','D015','D016' // end of MEGA RANKS
+		'FVP', //end of GL RANKS
+		'VP', 'EVP','SEVP','SVP','FVP','COO','D015','D016' // end of MEGA RANKS
 	);
 
 	$companies = [
@@ -418,7 +422,7 @@
 				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
 			</div>
 			&nbsp;
-			<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">Certified by:</p>
+			<!-- <p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">Certified by:</p> -->
 
 		<?php
 	}
@@ -1050,28 +1054,46 @@
 					]
 				
 				]
-				
 			];
 
-			
-
-			if($coe[0]['company'] == 'ASIAAPMI'){ ?>
-
-				<b><p style="padding-top: 40px; padding-bottom: 20px; padding-left: 50px; padding-right: 50px;">Jeriza Mae Socorro<br />
-				<i>Payroll Manager<i></p></b>
-
-			<? }elseif(in_array($emp_info[0]["RankID"], $vpup)){ // for vp and up
 			?>
-				<b><p style="padding-top: 40px; padding-bottom: 20px; padding-left: 50px; padding-right: 50px;">LOURDES O. RAMILLO<br />
-				<i>Vice President - Financial Reporting Group<i></p></b>
-			<?php
-			}elseif (in_array($emp_info[0]["RankID"], $rfavp)) { // for r&f to avp
-			?>
-				<b><p style="padding-top: 40px; padding-bottom: 20px; padding-left: 50px; padding-right: 50px;">MARILOU C. GUARIÑA<br />
-				<i>ASSISTANT VICE PRESIDENT - Payroll</i></p></b>
-			<?php
-			}
-		}else{
+
+			<table style="width:100%">
+				<tr width="100%">
+					<td>
+						<span>Prepared By:</span> 
+						<br><br>
+						<span><?php echo $COEC_APPROVERS[$emp_info[0]['CompanyID']]['prepared']['name']; ?></span><br>
+						<span><?php echo $COEC_APPROVERS[$emp_info[0]['CompanyID']]['prepared']['designation']; ?></span>
+					</td>
+					<td>
+						<span>Certified By:</span> 
+						<br><br>
+						<span><?php 
+
+							$rank_approver = '';
+							if(in_array($emp_info[0]['RankID'], $rfs))
+								$rank_approver = 'RFSP';
+							elseif(in_array($emp_info[0]['RankID'], $man))
+								$rank_approver = 'M';
+							elseif(in_array($emp_info[0]['RankID'], $avp))
+								$rank_approver = 'AVP';
+							elseif(in_array($emp_info[0]['RankID'], $vpup))
+								$rank_approver = 'VP';
+
+							echo $COEC_APPROVERS[$emp_info[0]['CompanyID']]['approver'][$rank_approver]['name']; 
+						
+						?></span><br>
+						<span>
+							<?php echo $COEC_APPROVERS[$emp_info[0]['CompanyID']]['approver'][$rank_approver]['designation']; ?>
+						</span>
+					</td>
+				</tr>
+			</table>
+
+		<?php
+
+		}else{ // HR COE
 			if($coe[0]["company"] == 'MCTI'){
 			?>
 
