@@ -439,10 +439,10 @@
 
 				<p style="padding-left: 50px; padding-right: 50px;">This document is issued upon the request of <b><?php echo $emp_info[0]["Salutation"]." ".strtoupper(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES')); ?>
 				<?php if($coe[0]["other_reason"]){ ?>
-					for <?php echo $emp_info[0]["Gender2"]. " <i>".$coe[0]["other_reason"]; ?></i></b>.</p>
+					for <?php echo $emp_info[0]["Gender2"]. " <i>".$coe[0]["other_reason"]; ?></i></b>.
 				<?php }else{ ?>
-				</b>for whatever legal purpose it may serve.</p> 
-				<?php } ?>  Hence, the company hold no responsibility for any misrepresentation of facts and data  enumerated herein.
+				</b>for whatever legal purpose it may serve.
+				<?php } ?>  Hence, the company hold no responsibility for any misrepresentation of facts and data  enumerated herein.</p>
 
 				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
 			</div>
