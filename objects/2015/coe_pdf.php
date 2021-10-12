@@ -87,7 +87,7 @@
 		
 		$emp_info[0]['HireDate'] = $emp_info[0]['HireDate'] ?  date('F j, Y', strtotime($emp_info[0]['HireDate'])) : null;
 		$emp_info[0]['CurrentDate'] = $emp_info[0]['CurrentDate'] ?  date('F j, Y', strtotime($emp_info[0]['CurrentDate'])) : null;
-		$DateResigned2 = $emp_info[0]['DateResigned'];
+		$DateResigned2 = date('Y-m-d',  strtotime($emp_info[0]['DateResigned']));
 		$emp_info[0]['DateResigned'] = $emp_info[0]['DateResigned'] ?  date('F j, Y', strtotime($emp_info[0]['DateResigned'])) : null;
 
 		ob_start();
