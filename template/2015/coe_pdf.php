@@ -1164,8 +1164,8 @@
 						<span>Prepared By:</span> 
 						<br><br>
 						<?php  if($send_pdf) :  ?>
-						<span><img style="width: 150px" src="<?php echo IMG_WEB; ?>/coe/"<?php echo $COEC_APPROVERS[$emp_info[0]['CompanyID']]
-						['prepared']['esign']; ?>/></span><br>
+						<span><img style="width: 150px" src="<?php echo IMG_WEB; ?>/coe/<?php echo $COEC_APPROVERS[$emp_info[0]['CompanyID']]
+						['prepared']['esign']; ?>"/></span><br>
 						<?php endif; ?>
 						<span><?php echo $COEC_APPROVERS[$emp_info[0]['CompanyID']]['prepared']['name']; ?></span><br>
 						<span><?php echo $COEC_APPROVERS[$emp_info[0]['CompanyID']]['prepared']['designation']; ?></span>
