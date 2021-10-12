@@ -441,14 +441,14 @@
 						'name' => 'SULAT, CLARA NUÑEZ',
 						'id' => '2021-02-0013',
 						'designation' => 'Payroll Analyst',
-						'esign' => 'abranco.png'
+						'esign' => 'mcg.png'
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'BRANCO, ARLENE AYSON',
 							'id' => '2014-10-0004',
 							'designation' => 'Payroll Manager',
-							'esign' => 'abranco.png'
+							'esign' => 'lor.png'
 						],
 						'M' => [
 							'name' => 'BRANCO, ARLENE AYSON',
