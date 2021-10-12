@@ -441,7 +441,7 @@
 						'name' => 'SULAT, CLARA NUÑEZ',
 						'id' => '2021-02-0013',
 						'designation' => 'Payroll Analyst',
-							'esign' => ''
+							'esign' => 'abranco.png'
 					],
 					'approver' => [
 						'RFSP' => [
