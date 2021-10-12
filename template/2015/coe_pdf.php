@@ -441,14 +441,14 @@
 						'name' => 'SULAT, CLARA NUÑEZ',
 						'id' => '2021-02-0013',
 						'designation' => 'Payroll Analyst',
-						'esign' => 'mcg.png'
+						'esign' => 'abranco.png'
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'BRANCO, ARLENE AYSON',
 							'id' => '2014-10-0004',
 							'designation' => 'Payroll Manager',
-							'esign' => 'lor.png'
+							'esign' => 'abranco.png'
 						],
 						'M' => [
 							'name' => 'BRANCO, ARLENE AYSON',
@@ -1298,7 +1298,7 @@
 
 		</b><p style="font-size: <?php echo $send_pdf ? '8px' : '10px'; ?>; padding-left: 50px; padding-right: 50px;">Ref No.:<?php echo $coe[0]["ref_no"]; ?></p>
 
-		<div style="position:absolute; bottom: 50px; text-align:center">
+		<div style="position:absolute; bottom: 50px; text-align:center; width: 100%">
 		<?php
 		if ((in_array($coe[0]["company"], ['GLOBAL01', 'LGMI01'])) ) {
 		?>
