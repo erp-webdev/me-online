@@ -1158,7 +1158,7 @@
 
 			?>
 
-			<table style="width:100%; padding-left: 50px">
+			<table style="width:100%; padding-left: 25px">
 				<tr width="100%">
 					<td style="padding-left: 25px">
 						<span>Prepared By:</span> 
