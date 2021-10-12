@@ -1188,7 +1188,7 @@
 						<span>Certified By:</span> 
 						<br><br>
 						<?php  if($send_pdf) :  ?>
-						<span><img style="width: 100px" src="<?php echo IMG_WEB; ?>/coe/<?php echo $COEC_APPROVERS[$emp_info[0]['CompanyID']]['approver'][$rank_approver]['esign']; ?>"/></span>
+						<span><img style="width: 100px" src="<?php echo IMG_WEB; ?>/coe/<?php echo $COEC_APPROVERS[$emp_info[0]['CompanyID']]['approver'][$rank_approver]['esign']; ?>"/></span> <br>
 						<?php endif; ?>
 						<span><?php 
 
