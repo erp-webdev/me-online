@@ -440,28 +440,33 @@
 					'prepared' => [
 						'name' => 'SULAT, CLARA NUÑEZ',
 						'id' => '2021-02-0013',
-						'designation' => ''
+						'designation' => 'Payroll Analyst',
+							'esign' => ''
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'BRANCO, ARLENE AYSON',
 							'id' => '2014-10-0004',
-							'designation' => ''
+							'designation' => 'Payroll Manager',
+							'esign' => 'abranco.png'
 						],
 						'M' => [
 							'name' => 'BRANCO, ARLENE AYSON',
 							'id' => '2014-10-0004',
-							'designation' => ''
+							'designation' => 'Payroll Manager',
+							'esign' => 'abranco.png'
 						],
 						'AVP'=>[
 							'name' => 'BRANCO, ARLENE AYSON',
 							'id' => '2014-10-0004',
-							'designation' => ''
+							'designation' => 'Payroll Manager',
+							'esign' => 'abranco.png'
 						],
 						'VP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 					]
 				
@@ -471,28 +476,33 @@
 					'prepared' => [
 						'name' => 'ESLIT, IRENE SUBONG',
 						'id' => '2021-02-0013',
-						'designation' => ''
+						'designation' => 'Payroll Analyst',
+							'esign' => ''
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'BRANCO, ARLENE AYSON',
 							'id' => '2014-10-0004',
-							'designation' => ''
+							'designation' => 'Payroll Manager',
+							'esign' => 'abranco.png'
 						],
 						'M' => [
 							'name' => 'BRANCO, ARLENE AYSON',
 							'id' => '2014-10-0004',
-							'designation' => ''
+							'designation' => 'Payroll Manager',
+							'esign' => 'abranco.png'
 						],
 						'AVP'=>[
 							'name' => 'BRANCO, ARLENE AYSON',
 							'id' => '2014-10-0004',
-							'designation' => ''
+							'designation' => 'Payroll Manager',
+							'esign' => 'abranco.png'
 						],
 						'VP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 					]
 				
@@ -502,28 +512,33 @@
 					'prepared' => [
 						'name' => 'ESLIT, IRENE SUBONG',
 						'id' => '2021-02-0013',
-						'designation' => ''
+						'designation' => 'Payroll Analyst',
+							'esign' => ''
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'M' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'AVP'=>[
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'VP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 					]
 				
@@ -533,28 +548,33 @@
 					'prepared' => [
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
-						'designation' => ''
+						'designation' => '',
+							'esign' => ''
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'M' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'AVP'=>[
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'VP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 					]
 				
@@ -564,28 +584,33 @@
 					'prepared' => [
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
-						'designation' => ''
+						'designation' => '',
+							'esign' => ''
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'M' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'AVP'=>[
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'VP' => [
 							'name' => 'RAMILO, LOURDES ONG',
 							'id' => '1997-03-8638',
-							'designation' => ''
+							'designation' => 'Vice President',
+							'esign' => 'lor.png'
 						],
 					]
 				
@@ -594,28 +619,33 @@
 					'prepared' => [
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
-						'designation' => ''
+						'designation' => '',
+							'esign' => ''
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'M' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'AVP'=>[
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'VP' => [
 							'name' => 'RAMILO, LOURDES ONG',
 							'id' => '1997-03-8638',
-							'designation' => ''
+							'designation' => 'Vice President',
+							'esign' => 'lor.png'
 						],
 					]
 				
@@ -625,28 +655,33 @@
 					'prepared' => [
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
-						'designation' => ''
+						'designation' => '',
+							'esign' => ''
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'M' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'AVP'=>[
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'VP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 					]
 				
@@ -656,28 +691,33 @@
 					'prepared' => [
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
-						'designation' => ''
+						'designation' => '',
+							'esign' => ''
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'M' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'AVP'=>[
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'VP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 					]
 				
@@ -687,28 +727,33 @@
 					'prepared' => [
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
-						'designation' => ''
+						'designation' => '',
+							'esign' => ''
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'M' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'AVP'=>[
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'VP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 					]
 				
@@ -718,28 +763,33 @@
 					'prepared' => [
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
-						'designation' => ''
+						'designation' => '',
+							'esign' => ''
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'M' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'AVP'=>[
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'VP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 					]
 				
@@ -749,28 +799,33 @@
 					'prepared' => [
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
-						'designation' => ''
+						'designation' => '',
+							'esign' => ''
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'M' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'AVP'=>[
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'VP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 					]
 				
@@ -780,28 +835,33 @@
 					'prepared' => [
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
-						'designation' => ''
+						'designation' => '',
+							'esign' => ''
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'M' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'AVP'=>[
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'VP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 					]
 				
@@ -811,28 +871,33 @@
 					'prepared' => [
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
-						'designation' => ''
+						'designation' => '',
+							'esign' => ''
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'M' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'AVP'=>[
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'VP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 					]
 				
@@ -842,28 +907,33 @@
 					'prepared' => [
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
-						'designation' => ''
+						'designation' => '',
+							'esign' => ''
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'M' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'AVP'=>[
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'VP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 					]
 				
@@ -873,28 +943,33 @@
 					'prepared' => [
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
-						'designation' => ''
+						'designation' => '',
+							'esign' => ''
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'M' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'AVP'=>[
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'VP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 					]
 				
@@ -904,28 +979,33 @@
 					'prepared' => [
 						'name' => 'ANASTACIO, MAE HAZEL BALAGOSA',
 						'id' => '2015-11-0550',
-						'designation' => ''
+						'designation' => '',
+							'esign' => ''
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'M' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'AVP'=>[
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'VP' => [
 							'name' => 'RAMILO, LOURDES ONG',
 							'id' => '1997-03-8638',
-							'designation' => ''
+							'designation' => 'Vice President',
+							'esign' => 'lor.png'
 						],
 					]
 				
@@ -935,28 +1015,33 @@
 					'prepared' => [
 						'name' => 'ANASTACIO, MAE HAZEL BALAGOSA',
 						'id' => '2015-11-0550',
-						'designation' => ''
+						'designation' => 'Payroll Analyst',
+							'esign' => ''
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'M' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'AVP'=>[
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'VP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 					]
 				
@@ -966,28 +1051,33 @@
 					'prepared' => [
 						'name' => 'ANASTACIO, MAE HAZEL BALAGOSA',
 						'id' => '2015-11-0550',
-						'designation' => ''
+						'designation' => '',
+							'esign' => ''
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'M' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'AVP'=>[
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'VP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 					]
 				
@@ -997,28 +1087,33 @@
 					'prepared' => [
 						'name' => 'ANASTACIO, MAE HAZEL BALAGOSA',
 						'id' => '2015-11-0550',
-						'designation' => ''
+						'designation' => '',
+							'esign' => ''
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'M' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'AVP'=>[
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'VP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 					]
 				
@@ -1028,28 +1123,33 @@
 					'prepared' => [
 						'name' => 'SIOCO, JERIZA',
 						'id' => '2015-11-0550',
-						'designation' => ''
+						'designation' => '',
+							'esign' => ''
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'M' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'AVP'=>[
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 						'VP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => ''
+							'designation' => 'AVP',
+							'esign' => 'mcg.png'
 						],
 					]
 				
@@ -1058,19 +1158,18 @@
 
 			?>
 
-			<table style="width:100%; padding-left: 50px">
+			<table style="width:100%;">
 				<tr width="100%">
 					<td>
 						<span>Prepared By:</span> 
 						<br><br>
+						<span><img style="width: 150px" src="<?php echo IMG_WEB; ?>/coe/"<?php echo $COEC_APPROVERS[$emp_info[0]['CompanyID']]['prepared']['esign']; ?>/></span><br>
 						<span><?php echo $COEC_APPROVERS[$emp_info[0]['CompanyID']]['prepared']['name']; ?></span><br>
 						<span><?php echo $COEC_APPROVERS[$emp_info[0]['CompanyID']]['prepared']['designation']; ?></span>
 					</td>
 					<td>
-						<span>Certified By:</span> 
-						<br><br>
-						<span><?php 
-
+						<?php
+						
 							$rank_approver = '';
 							if(in_array($emp_info[0]['RankID'], $rfs))
 								$rank_approver = 'RFSP';
@@ -1080,6 +1179,13 @@
 								$rank_approver = 'AVP';
 							elseif(in_array($emp_info[0]['RankID'], $vpup))
 								$rank_approver = 'VP';
+
+						?>
+
+						<span>Certified By:</span> 
+						<br><br>
+						<span><img style="width: 150px" src="<?php echo IMG_WEB; ?>/coe/<?php echo $COEC_APPROVERS[$emp_info[0]['CompanyID']]['approver'][$rank_approver]['esign']; ?>"/></span>
+						<span><?php 
 
 							echo $COEC_APPROVERS[$emp_info[0]['CompanyID']]['approver'][$rank_approver]['name']; 
 						
