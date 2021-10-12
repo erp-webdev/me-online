@@ -1,4 +1,3 @@
-<?php var_dump($emp_info); exit;?>
 <div id="myDivToPrint" style="height: 750px;">
 	<div style="text-align: center; padding-top: 10px;">
 
@@ -393,7 +392,7 @@
 			<h3 align="center" style="padding-top: 40px">CERTIFICATION OF EMPLOYMENT AND COMPENSATION</h3>
 			&nbsp;
 
-			<?php if(!$emp_info[0]["DateResigned2"]) : ?>
+			<?php if(!$DateResigned2) : ?>
 			<div style="text-align: justify;  text-justify: inter-word;">
 				<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">This is to certify that <b><?php echo strtoupper(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES')); ?></b> is an
 					employee of <b><?php echo $emp_info[0]["CompanyName"]; ?></b> since <b><?php echo $emp_info[0]["HireDate"]; ?>
@@ -421,7 +420,7 @@
 
 				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
 			</div>
-			<?php elseif(date('Y-m-d', strtotime($emp_info[0]["DateResigned2"])) >= date('Y-m-d')): ?>
+			<?php elseif(date('Y-m-d', strtotime($DateResigned2)) >= date('Y-m-d')): ?>
 			<div style="text-align: justify;  text-justify: inter-word;">
 				<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">This is to certify that <b><?php echo strtoupper(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES')); ?></b> is a former
 					employee of <b><?php echo $emp_info[0]["CompanyName"]; ?></b> from <b><?php echo $emp_info[0]["HireDate"]; ?> to 
