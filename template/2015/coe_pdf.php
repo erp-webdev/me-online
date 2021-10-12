@@ -1298,6 +1298,7 @@
 
 		</b><p style="font-size: <?php echo $send_pdf ? '8px' : '10px'; ?>; padding-left: 50px; padding-right: 50px;">Ref No.:<?php echo $coe[0]["ref_no"]; ?></p>
 
+		<div style="position:absolute; bottom: 50px;">
 		<?php
 		if ((in_array($coe[0]["company"], ['GLOBAL01', 'LGMI01'])) ) {
 		?>
@@ -1320,6 +1321,7 @@
 		<?php
 		}
 		?>
+		</div>
 		<!-- FOOTER END -->
 </div>
 <?php
