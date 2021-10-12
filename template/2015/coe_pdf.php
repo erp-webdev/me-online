@@ -1,6 +1,6 @@
 
 <div id="myDivToPrint" style="height: 750px;">
-
+	<?php var_dump($employee); ?>
 	<div style="text-align: center; padding-top: 10px;">
 
 		<?php $send_pdf = $_POST['send'] == 'true' ? true : false; ?>
