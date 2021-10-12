@@ -1160,7 +1160,7 @@
 
 			<table style="width:100%; padding-left: 50px">
 				<tr width="100%">
-					<td style="padding-left: 50px">
+					<td style="padding-left: 25px">
 						<span>Prepared By:</span> 
 						<br><br>
 						<?php  if($send_pdf) :  ?>
@@ -1170,7 +1170,7 @@
 						<span><?php echo $COEC_APPROVERS[$emp_info[0]['CompanyID']]['prepared']['name']; ?></span><br>
 						<span><?php echo $COEC_APPROVERS[$emp_info[0]['CompanyID']]['prepared']['designation']; ?></span>
 					</td>
-					<td style="padding-left: 50px">
+					<td style="padding-left: 25px">
 						<?php
 						
 							$rank_approver = '';
