@@ -477,7 +477,7 @@
 						'name' => 'ESLIT, IRENE SUBONG',
 						'id' => '2021-02-0013',
 						'designation' => 'Payroll Analyst',
-						'esign' => ''
+						'esign' => 'abranco.png'
 					],
 					'approver' => [
 						'RFSP' => [
@@ -513,7 +513,7 @@
 						'name' => 'ESLIT, IRENE SUBONG',
 						'id' => '2021-02-0013',
 						'designation' => 'Payroll Analyst',
-						'esign' => ''
+						'esign' => 'abranco.png'
 					],
 					'approver' => [
 						'RFSP' => [
@@ -549,7 +549,7 @@
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
 						'designation' => '',
-						'esign' => ''
+						'esign' => 'abranco.png'
 					],
 					'approver' => [
 						'RFSP' => [
@@ -585,7 +585,7 @@
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
 						'designation' => '',
-							'esign' => ''
+							'esign' => 'abranco.png'
 					],
 					'approver' => [
 						'RFSP' => [
@@ -620,7 +620,7 @@
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
 						'designation' => '',
-						'esign' => ''
+						'esign' => 'abranco.png'
 					],
 					'approver' => [
 						'RFSP' => [
@@ -656,7 +656,7 @@
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
 						'designation' => '',
-						'esign' => ''
+						'esign' => 'abranco.png'
 					],
 					'approver' => [
 						'RFSP' => [
@@ -692,7 +692,7 @@
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
 						'designation' => '',
-						'esign' => ''
+						'esign' => 'abranco.png'
 					],
 					'approver' => [
 						'RFSP' => [
@@ -728,7 +728,7 @@
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
 						'designation' => '',
-						'esign' => ''
+						'esign' => 'abranco.png'
 					],
 					'approver' => [
 						'RFSP' => [
@@ -764,7 +764,7 @@
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
 						'designation' => '',
-							'esign' => ''
+							'esign' => 'abranco.png'
 					],
 					'approver' => [
 						'RFSP' => [
@@ -800,7 +800,7 @@
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
 						'designation' => '',
-							'esign' => ''
+							'esign' => 'abranco.png'
 					],
 					'approver' => [
 						'RFSP' => [
@@ -836,7 +836,7 @@
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
 						'designation' => '',
-							'esign' => ''
+							'esign' => 'abranco.png'
 					],
 					'approver' => [
 						'RFSP' => [
@@ -872,7 +872,7 @@
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
 						'designation' => '',
-							'esign' => ''
+							'esign' => 'abranco.png'
 					],
 					'approver' => [
 						'RFSP' => [
@@ -908,7 +908,7 @@
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
 						'designation' => '',
-							'esign' => ''
+							'esign' => 'abranco.png'
 					],
 					'approver' => [
 						'RFSP' => [
@@ -944,7 +944,7 @@
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
 						'designation' => '',
-							'esign' => ''
+							'esign' => 'abranco.png'
 					],
 					'approver' => [
 						'RFSP' => [
@@ -980,7 +980,7 @@
 						'name' => 'ANASTACIO, MAE HAZEL BALAGOSA',
 						'id' => '2015-11-0550',
 						'designation' => '',
-							'esign' => ''
+							'esign' => 'abranco.png'
 					],
 					'approver' => [
 						'RFSP' => [
@@ -1016,7 +1016,7 @@
 						'name' => 'ANASTACIO, MAE HAZEL BALAGOSA',
 						'id' => '2015-11-0550',
 						'designation' => 'Payroll Analyst',
-							'esign' => ''
+							'esign' => 'abranco.png'
 					],
 					'approver' => [
 						'RFSP' => [
@@ -1052,7 +1052,7 @@
 						'name' => 'ANASTACIO, MAE HAZEL BALAGOSA',
 						'id' => '2015-11-0550',
 						'designation' => '',
-							'esign' => ''
+							'esign' => 'abranco.png'
 					],
 					'approver' => [
 						'RFSP' => [
@@ -1088,7 +1088,7 @@
 						'name' => 'ANASTACIO, MAE HAZEL BALAGOSA',
 						'id' => '2015-11-0550',
 						'designation' => '',
-							'esign' => ''
+							'esign' => 'abranco.png'
 					],
 					'approver' => [
 						'RFSP' => [
@@ -1124,7 +1124,7 @@
 						'name' => 'SIOCO, JERIZA',
 						'id' => '2015-11-0550',
 						'designation' => '',
-							'esign' => ''
+							'esign' => 'abranco.png'
 					],
 					'approver' => [
 						'RFSP' => [
