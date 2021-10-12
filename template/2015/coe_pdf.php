@@ -1,4 +1,3 @@
-<?php var_dump( $DateResigned2 ); exit; ?>
 <div id="myDivToPrint" style="height: 750px;">
 	<div style="text-align: center; padding-top: 10px;">
 
