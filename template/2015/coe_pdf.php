@@ -441,7 +441,7 @@
 						'name' => 'SULAT, CLARA NUÑEZ',
 						'id' => '2021-02-0013',
 						'designation' => 'Payroll Analyst',
-							'esign' => 'abranco.png'
+						'esign' => 'abranco.png'
 					],
 					'approver' => [
 						'RFSP' => [
@@ -477,7 +477,7 @@
 						'name' => 'ESLIT, IRENE SUBONG',
 						'id' => '2021-02-0013',
 						'designation' => 'Payroll Analyst',
-							'esign' => ''
+						'esign' => ''
 					],
 					'approver' => [
 						'RFSP' => [
@@ -513,7 +513,7 @@
 						'name' => 'ESLIT, IRENE SUBONG',
 						'id' => '2021-02-0013',
 						'designation' => 'Payroll Analyst',
-							'esign' => ''
+						'esign' => ''
 					],
 					'approver' => [
 						'RFSP' => [
@@ -549,7 +549,7 @@
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
 						'designation' => '',
-							'esign' => ''
+						'esign' => ''
 					],
 					'approver' => [
 						'RFSP' => [
@@ -620,7 +620,7 @@
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
 						'designation' => '',
-							'esign' => ''
+						'esign' => ''
 					],
 					'approver' => [
 						'RFSP' => [
@@ -656,7 +656,7 @@
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
 						'designation' => '',
-							'esign' => ''
+						'esign' => ''
 					],
 					'approver' => [
 						'RFSP' => [
@@ -692,7 +692,7 @@
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
 						'designation' => '',
-							'esign' => ''
+						'esign' => ''
 					],
 					'approver' => [
 						'RFSP' => [
@@ -728,7 +728,7 @@
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
 						'designation' => '',
-							'esign' => ''
+						'esign' => ''
 					],
 					'approver' => [
 						'RFSP' => [
@@ -1163,7 +1163,10 @@
 					<td>
 						<span>Prepared By:</span> 
 						<br><br>
-						<span><img style="width: 150px" src="<?php echo IMG_WEB; ?>/coe/"<?php echo $COEC_APPROVERS[$emp_info[0]['CompanyID']]['prepared']['esign']; ?>/></span><br>
+						<?php  if($send_pdf) :  ?>
+						<span><img style="width: 150px" src="<?php echo IMG_WEB; ?>/coe/"<?php echo $COEC_APPROVERS[$emp_info[0]['CompanyID']]
+						['prepared']['esign']; ?>/></span><br>
+						<?php endif; ?>
 						<span><?php echo $COEC_APPROVERS[$emp_info[0]['CompanyID']]['prepared']['name']; ?></span><br>
 						<span><?php echo $COEC_APPROVERS[$emp_info[0]['CompanyID']]['prepared']['designation']; ?></span>
 					</td>
@@ -1184,7 +1187,9 @@
 
 						<span>Certified By:</span> 
 						<br><br>
+						<?php  if($send_pdf) :  ?>
 						<span><img style="width: 150px" src="<?php echo IMG_WEB; ?>/coe/<?php echo $COEC_APPROVERS[$emp_info[0]['CompanyID']]['approver'][$rank_approver]['esign']; ?>"/></span>
+						<?php endif; ?>
 						<span><?php 
 
 							echo $COEC_APPROVERS[$emp_info[0]['CompanyID']]['approver'][$rank_approver]['name']; 
