@@ -6243,6 +6243,7 @@
                 // if COECOMPENSATION, send pdf after approval
                 if($coe_old[0]['type'] == 'COECOMPENSATION'){
 			        $result = $mainsql->get_execute($sql);
+                    $_POST["send"] = true;
                     include(OBJ."/coe_pdf.php");       
                 }
 			}
