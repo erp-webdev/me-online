@@ -6239,6 +6239,12 @@
 							approved = 1
 						WHERE
 							id=$id";
+
+                // if COECOMPENSATION, send pdf after approval
+                if($coe_old[0]['type'] == 'COECOMPENSATION'){
+			        $result = $mainsql->get_execute($sql);
+                    include(OBJ."/coe_pdf.php");       
+                }
 			}
 
 			$result = $mainsql->get_execute($sql);
@@ -6401,11 +6407,7 @@
 							$approver_email = 'kayag.global@megaworldcorp.com';
 
 							array_push($hr_emails, $approver_email);
-							$sendmail = mail(implode(',', $hr_emails), "COE Request Update (Approvers Notification)", $message, $headers);
-
-                            // if COECOMPENSATION, send pdf after approval
-                            if($coe_old[0]['type'] == 'COECOMPENSATION')
-                        	    include(OBJ."/coe_pdf.php");
+							$sendmail = mail(implode(',', $hr_emails), "COE Request Update (Approvers Notification)", $message, $headers); 
 
 						}
 
