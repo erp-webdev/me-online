@@ -4513,9 +4513,9 @@
 
 		?>
 			<div style="padding-top:20px;font-size:12px;">
-				<div id="compensation_note" style="text-align: center; padding-bottom: 10px; color: red;">
+				<!-- <div id="compensation_note" style="text-align: center; padding-bottom: 10px; color: red;">
 					<i>** Note: Kindly direct CoE with Compensation (Salary) requests to Payroll Group **</i>
-				</div>
+				</div> -->
 				<table align="center">
 					<tr>
 						<td width="5%"></td>
