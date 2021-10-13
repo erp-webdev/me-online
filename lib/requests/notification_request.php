@@ -6230,9 +6230,6 @@
 				$coe_message = 'CoE has been approved!';
 				$status = 'For Release';
 
-                if($coe_old[0]['type'] == 'COECOMPENSATION')
-                    $status = 'Done';
-
 				$sql = "UPDATE
 							COERequests
 						SET
@@ -6401,10 +6398,15 @@
 							$sendmail = mail(implode(',', $hr_emails), "COE Request Update (Approvers Notification)", $message, $headers);
 						}else{
 							// INSERT COMPENSATION APPROVERS HERE
-							$approver_email = 'kayag.global@megaworldcorp.com,kevcyber@gmail.com';
+							$approver_email = 'kayag.global@megaworldcorp.com';
 
 							array_push($hr_emails, $approver_email);
 							$sendmail = mail(implode(',', $hr_emails), "COE Request Update (Approvers Notification)", $message, $headers);
+
+                            // if COECOMPENSATION, send pdf after approval
+                            if($coe_old[0]['type'] == 'COECOMPENSATION')
+                        	    include(OBJ."/coe_pdf.php");
+
 						}
 
 					}
