@@ -5755,6 +5755,15 @@
 								<?php echo $result[0]['approved'] ? 'Approved' : 'N/A'; ?>
 							</td>
 						</tr>
+                        <tr id="coeapproval">
+							<td></td>
+							<td align="left">
+								<label>Released At</label>
+							</td>
+							<td align="left">
+								<?php echo $result[0]['released_at'] ? date("Y-m-d H:i A", strtotime($result[0]['released_at'])) : '--'; ?>
+							</td>
+						</tr>
 					<?php } ?>
 
 					<tr>
