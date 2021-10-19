@@ -6413,6 +6413,25 @@
 							// $sendmail = mail($approver_email, "COE Request for Approval", $message, $headers);
 							$sendmail = mail(implode(',', $hr_emails), "COE Request Update (Approvers Notification)", $message, $headers);
 						}else{
+                            //R&F to Supervisor
+                            $rfs = array(
+                                'RF','RF II','SRF','SRF II','AS','AS II','AS III','S','S II','S III',
+                                'SS','SS II','SS III',
+                                'RF','R001','R002','R003','R004','S005','S006','S007','S008','S','SS',
+                                
+                            );
+                            $man = array('AM','AM II','AM III','MGR-A','M','M II','M III',
+                                        'SM','SM II','SM III', //end of megaworld ranks);
+                                        'M009','M010','M011','M012','M','M-TTTI','SM','SM - TTTI','D013','D014',
+                                        ); // end of GL RANKS
+                            
+                            $avp = array('AVP','AVP-TTTI', 'SAVP');
+                            //vp & up - Ms. Lourdes
+                            $vpup = array(
+                                'FVP', //end of GL RANKS
+                                'VP', 'EVP','SEVP','SVP','FVP','COO','D015','D016' // end of MEGA RANKS
+                            );
+
                             $COEC_APPROVERS = [
                                 "GLOBAL01" => [
                                     'prepared' => [
