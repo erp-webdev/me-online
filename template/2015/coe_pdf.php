@@ -466,33 +466,38 @@
 					'prepared' => [
 						'name' => 'SULAT, CLARA NUÑEZ',
 						'id' => '2021-02-0013',
-						'designation' => 'Payroll Analyst',
-						'esign' => 'abranco.png'
+						'designation' => 'PAYROLL ASSOCIATE',
+						'esign' => 'coe_csulat.png',
+						'email' => 'cnsulat.global@megaworldcorp.com'
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'BRANCO, ARLENE AYSON',
 							'id' => '2014-10-0004',
 							'designation' => 'Payroll Manager',
-							'esign' => 'abranco.png'
+							'esign' => 'coe_abranco.png',
+							'email' => 'abranco@megaworldcorp.com'
 						],
 						'M' => [
 							'name' => 'BRANCO, ARLENE AYSON',
 							'id' => '2014-10-0004',
 							'designation' => 'Payroll Manager',
-							'esign' => 'abranco.png'
+							'esign' => 'coe_abranco.png',
+							'email' => 'abranco@megaworldcorp.com'
 						],
 						'AVP'=>[
 							'name' => 'BRANCO, ARLENE AYSON',
 							'id' => '2014-10-0004',
 							'designation' => 'Payroll Manager',
-							'esign' => 'abranco.png'
+							'esign' => 'coe_abranco.png',
+							'email' => 'abranco@megaworldcorp.com'
 						],
 						'VP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice President',
+							'esign' => 'coe_mguarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 					]
 				
@@ -501,34 +506,38 @@
 				"LGMI01" => [
 					'prepared' => [
 						'name' => 'ESLIT, IRENE SUBONG',
-						'id' => '2021-02-0013',
+						'id' => '2021-06-0163',
 						'designation' => 'Payroll Analyst',
-						'esign' => 'abranco.png'
+						'esign' => 'coe_ieslit.png',
+						'email' => 'ieslit.global@megaworldcorp.com'
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'BRANCO, ARLENE AYSON',
 							'id' => '2014-10-0004',
 							'designation' => 'Payroll Manager',
-							'esign' => 'abranco.png'
+							'esign' => 'coe_abranco.png',
+							'email' => 'abranco@megaworldcorp.com'
 						],
 						'M' => [
 							'name' => 'BRANCO, ARLENE AYSON',
 							'id' => '2014-10-0004',
 							'designation' => 'Payroll Manager',
-							'esign' => 'abranco.png'
+							'esign' => 'coe_abranco.png',
+							'email' => 'abranco@megaworldcorp.com'
 						],
 						'AVP'=>[
 							'name' => 'BRANCO, ARLENE AYSON',
 							'id' => '2014-10-0004',
 							'designation' => 'Payroll Manager',
-							'esign' => 'abranco.png'
+							'esign' => 'coe_abranco.png',
+							'email' => 'abranco@megaworldcorp.com'
 						],
 						'VP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 					]
 				
@@ -537,34 +546,35 @@
 				"GLOBALHOTEL" => [
 					'prepared' => [
 						'name' => 'ESLIT, IRENE SUBONG',
-						'id' => '2021-02-0013',
+						'id' => '2021-06-0163',
 						'designation' => 'Payroll Analyst',
-						'esign' => 'abranco.png'
+						'esign' => 'coe_ieslit.png',
+						'email' => 'ieslit.global@megaworldcorp.com'
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'M' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'AVP'=>[
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'VP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 					]
 				
@@ -574,33 +584,34 @@
 					'prepared' => [
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
-						'designation' => '',
-						'esign' => 'abranco.png'
+						'designation' => 'Payroll Supervisor', 
+						'esign' => 'coe_mtermulo.png',
+						'email' => 'vtermulo@megaworldcorp.com'
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'M' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'AVP'=>[
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'VP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 					]
 				
@@ -610,33 +621,35 @@
 					'prepared' => [
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
-						'designation' => '',
-							'esign' => 'abranco.png'
+							'designation' => 'Payroll Supervisor', 
+							'esign' => 'coe_mtermulo.png',
+							'email' => 'vtermulo@megaworldcorp.com'
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'M' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'AVP'=>[
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'VP' => [
 							'name' => 'RAMILO, LOURDES ONG',
 							'id' => '1997-03-8638',
 							'designation' => 'Vice President',
-							'esign' => 'lor.png'
+							'esign' => 'coe_lramilo.png',
+							'email' => 'dramilo@megaworldcorp.com'
 						],
 					]
 				
@@ -645,33 +658,35 @@
 					'prepared' => [
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
-						'designation' => '',
-						'esign' => 'abranco.png'
+						'designation' => 'Payroll Supervisor', 
+						'esign' => 'coe_mtermulo.png',
+						'email' => 'vtermulo@megaworldcorp.com'
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'M' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'AVP'=>[
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'VP' => [
 							'name' => 'RAMILO, LOURDES ONG',
 							'id' => '1997-03-8638',
 							'designation' => 'Vice President',
-							'esign' => 'lor.png'
+							'esign' => 'coe_lramilo.png',
+							'email' => 'dramilo@megaworldcorp.com'
 						],
 					]
 				
@@ -681,33 +696,34 @@
 					'prepared' => [
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
-						'designation' => '',
-						'esign' => 'abranco.png'
+						'designation' => 'Payroll Supervisor', 
+						'esign' => 'coe_mtermulo.png',
+						'email' => 'vtermulo@megaworldcorp.com'
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'M' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'AVP'=>[
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'VP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 					]
 				
@@ -717,33 +733,34 @@
 					'prepared' => [
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
-						'designation' => '',
-						'esign' => 'abranco.png'
+						'designation' => 'Payroll Supervisor', 
+						'esign' => 'coe_mtermulo.png',
+						'email' => 'vtermulo@megaworldcorp.com'
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'M' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'AVP'=>[
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'VP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 					]
 				
@@ -753,33 +770,34 @@
 					'prepared' => [
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
-						'designation' => '',
-						'esign' => 'abranco.png'
+						'designation' => 'Payroll Supervisor', 
+						'esign' => 'coe_mtermulo.png',
+						'email' => 'vtermulo@megaworldcorp.com'
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'M' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'AVP'=>[
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'VP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 					]
 				
@@ -789,33 +807,34 @@
 					'prepared' => [
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
-						'designation' => '',
-							'esign' => 'abranco.png'
+						'designation' => 'Payroll Supervisor', 
+							'esign' => 'coe_mtermulo.png',
+							'email' => 'vtermulo@megaworldcorp.com'
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'M' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'AVP'=>[
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'VP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 					]
 				
@@ -825,33 +844,34 @@
 					'prepared' => [
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
-						'designation' => '',
-							'esign' => 'abranco.png'
+						'designation' => 'Payroll Supervisor', 
+							'esign' => 'coe_mtermulo.png',
+							'email' => 'vtermulo@megaworldcorp.com'
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'M' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'AVP'=>[
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'VP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 					]
 				
@@ -861,33 +881,34 @@
 					'prepared' => [
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
-						'designation' => '',
-							'esign' => 'abranco.png'
+						'designation' => 'Payroll Supervisor', 
+							'esign' => 'coe_mtermulo.png',
+							'email' => 'vtermulo@megaworldcorp.com'
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'M' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'AVP'=>[
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'VP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 					]
 				
@@ -897,33 +918,34 @@
 					'prepared' => [
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
-						'designation' => '',
-							'esign' => 'abranco.png'
+						'designation' => 'Payroll Supervisor', 
+							'esign' => 'coe_mtermulo.png',
+							'email' => 'vtermulo@megaworldcorp.com'
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'M' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'AVP'=>[
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'VP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 					]
 				
@@ -933,33 +955,34 @@
 					'prepared' => [
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
-						'designation' => '',
-							'esign' => 'abranco.png'
+						'designation' => 'Payroll Supervisor', 
+							'esign' => 'coe_mtermulo.png',
+							'email' => 'vtermulo@megaworldcorp.com'
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'M' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'AVP'=>[
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'VP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 					]
 				
@@ -969,33 +992,34 @@
 					'prepared' => [
 						'name' => 'TERMULO, MA. VERONICA SALUTA',
 						'id' => '2011-03-V837',
-						'designation' => '',
-							'esign' => 'abranco.png'
+						'designation' => 'Payroll Supervisor', 
+							'esign' => 'coe_mtermulo.png',
+							'email' => 'vtermulo@megaworldcorp.com'
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'M' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'AVP'=>[
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'VP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 					]
 				
@@ -1005,33 +1029,35 @@
 					'prepared' => [
 						'name' => 'ANASTACIO, MAE HAZEL BALAGOSA',
 						'id' => '2015-11-0550',
-						'designation' => '',
-							'esign' => 'abranco.png'
+						'designation' => 'Senior Payroll Associate',
+							'esign' => 'coe_manastacio.png',
+							'email' => 'manastacio.global@megaworldcorp.com'
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'M' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'AVP'=>[
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'VP' => [
 							'name' => 'RAMILO, LOURDES ONG',
 							'id' => '1997-03-8638',
 							'designation' => 'Vice President',
-							'esign' => 'lor.png'
+							'esign' => 'coe_lramilo.png',
+							'email' => 'dramilo@megaworldcorp.com'
 						],
 					]
 				
@@ -1041,33 +1067,34 @@
 					'prepared' => [
 						'name' => 'ANASTACIO, MAE HAZEL BALAGOSA',
 						'id' => '2015-11-0550',
-						'designation' => 'Payroll Analyst',
-							'esign' => 'abranco.png'
+						'designation' => 'Senior Payroll Associate',
+							'esign' => 'abranco.png',
+							'email' => 'manastacio.global@megaworldcorp.com'
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'M' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'AVP'=>[
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'VP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 					]
 				
@@ -1077,33 +1104,34 @@
 					'prepared' => [
 						'name' => 'ANASTACIO, MAE HAZEL BALAGOSA',
 						'id' => '2015-11-0550',
-						'designation' => '',
-							'esign' => 'abranco.png'
+						'designation' => 'Senior Payroll Associate',
+							'esign' => 'abranco.png',
+							'email' => 'manastacio.global@megaworldcorp.com'
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'M' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'AVP'=>[
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'VP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 					]
 				
@@ -1113,33 +1141,34 @@
 					'prepared' => [
 						'name' => 'ANASTACIO, MAE HAZEL BALAGOSA',
 						'id' => '2015-11-0550',
-						'designation' => '',
-							'esign' => 'abranco.png'
+						'designation' => 'Senior Payroll Associate',
+							'esign' => 'abranco.png',
+							'email' => 'manastacio.global@megaworldcorp.com'
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'M' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'AVP'=>[
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'VP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 					]
 				
@@ -1149,33 +1178,34 @@
 					'prepared' => [
 						'name' => 'SIOCO, JERIZA',
 						'id' => '2015-11-0550',
-						'designation' => '',
-							'esign' => 'abranco.png'
+						'designation' => 'Senior Payroll Associate',
+						'esign' => 'abranco.png',
+						'email' => 'manastacio.global@megaworldcorp.com'
 					],
 					'approver' => [
 						'RFSP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'M' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'AVP'=>[
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'VP' => [
 							'name' => 'GUARINA, MARILOU CABUHAT',
 							'id' => '1994-03-8275',
-							'designation' => 'AVP',
-							'esign' => 'mcg.png'
+							'designation' => 'Senior Assistant Vice Presidentuarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 					]
 				

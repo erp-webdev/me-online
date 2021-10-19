@@ -86,7 +86,7 @@
 											<th width="10%">Employee</th>
 											<th width="10%">Company ID</th>
 											<th width="10%">Status</th>
-											<th width="10%">Date Completed</th>
+											<th width="10%">Date Released</th>
 										</tr>
 										<?php foreach ($coe_data as $key => $value) : ?>
 										<?php //$appdata = $mainsql->get_notification($value['ReqNbr']); ?>
@@ -98,7 +98,7 @@
 											<td><?php echo $value['emp_id']; ?></td>
 											<td><?php echo $value['company']; ?></td>
 											<td><?php echo $value['status']; ?></td>
-											<td><?php echo $value['released_at'] ? date('m/d/Y', strtotime($value['released_at'])) : ''; ?></td>
+											<td><?php echo $value['released_at'] ? date('m/d/Y H:i', strtotime($value['released_at'])) : ''; ?></td>
 										</tr>
 										<?php endforeach; ?>
 										<?php if ($pages) : ?>
