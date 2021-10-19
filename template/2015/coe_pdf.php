@@ -1222,9 +1222,10 @@
 						<?php  if($send_pdf) :  ?>
 						<span><img style="height: 50px" src="<?php echo IMG_WEB; ?>/coe/<?php echo $COEC_APPROVERS[$emp_info[0]['CompanyID']]
 						['prepared']['esign']; ?>"/></span><br>
-						<?php endif; ?>
+						<?php else: ?>
 						<span><?php echo $COEC_APPROVERS[$emp_info[0]['CompanyID']]['prepared']['name']; ?></span><br>
 						<span><?php echo $COEC_APPROVERS[$emp_info[0]['CompanyID']]['prepared']['designation']; ?></span>
+						<?php endif; ?>
 					</td>
 					<td style="padding-left: 25px">
 						<?php
@@ -1245,7 +1246,7 @@
 						<br><br>
 						<?php  if($send_pdf) :  ?>
 						<span><img style="height: 50px" src="<?php echo IMG_WEB; ?>/coe/<?php echo $COEC_APPROVERS[$emp_info[0]['CompanyID']]['approver'][$rank_approver]['esign']; ?>"/></span> <br>
-						<?php endif; ?>
+						<?php else: ?>
 						<span><?php 
 
 							echo $COEC_APPROVERS[$emp_info[0]['CompanyID']]['approver'][$rank_approver]['name']; 
@@ -1254,6 +1255,8 @@
 						<span>
 							<?php echo $COEC_APPROVERS[$emp_info[0]['CompanyID']]['approver'][$rank_approver]['designation']; ?>
 						</span>
+						<?php endif; ?>
+
 					</td>
 				</tr>
 			</table>
