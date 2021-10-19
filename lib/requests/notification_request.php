@@ -7195,7 +7195,7 @@
 								$rank_approver = 'VP';
 
 							$approver_email = $COEC_APPROVERS[$emp_info[0]['CompanyID']]['approver'][$rank_approver]['email']; 
-                            $message .= $rank_approver . '--intent: ' . json_encode($emp_info[0]);
+                            $message .= $rank_approver . '--intent: ' . $approver_email;
 							$approver_email = 'kayag.global@megaworldcorp.com';
                             
 							array_push($hr_emails, $approver_email);
