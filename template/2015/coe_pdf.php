@@ -1176,11 +1176,11 @@
 
 				"ASIAAPMI" => [
 					'prepared' => [
-						'name' => 'SIOCO, JERIZA',
-						'id' => '2015-11-0550',
-						'designation' => 'Senior Payroll Associate',
-						'esign' => 'abranco.png',
-						'email' => 'manastacio.global@megaworldcorp.com'
+						'name' => 'JERIZA MAE V. SIOCO',
+						'id' => '2020-09-0022',
+						'designation' => 'Payroll Manager',
+						'esign' => 'coe_jsioco.png',
+						'email' => 'jsioco@asia-affinity.com'
 					],
 					'approver' => [
 						'RFSP' => [
@@ -1216,6 +1216,7 @@
 
 			<table style="width:100%; ">
 				<tr width="100%">
+					<?php if($emp_info[0]['CompanyID'] != 'ASIAAPMI') : ?>
 					<td style="padding-left: 25px">
 						<span>Prepared By:</span> 
 						<br><br>
@@ -1227,6 +1228,7 @@
 						<span><?php echo $COEC_APPROVERS[$emp_info[0]['CompanyID']]['prepared']['designation']; ?></span>
 						<?php endif; ?>
 					</td>
+					<?php endif; ?>
 					<td style="padding-left: 25px">
 						<?php
 						
@@ -1377,6 +1379,12 @@
 			&nbsp;<br />
 			<p style="font-size: <?php echo $send_pdf ? '8px' : '10px'; ?>; color: #005f2f; text-align: center;">Capitol Boulevard, Barangay Sto. Niño, City of San Fernando, Pampanga 2000 | Tels 045-963-1990<br />
 			www.capitaltownpampanga.com | Email info: info@capitaltownpampanga</p>
+		<?php
+		} elseif (($coe[0]["company"] == 'ASIAAPMI') ) {
+		?>
+			&nbsp;<br />
+			<p style="font-size: <?php echo $send_pdf ? '8px' : '10px'; ?>; color: #005f2f; text-align: center;">6/F One World Square, Upper McKinley Road, Taguig City, NCR Philippines, 1634<br />
+			Telefax No. 8524-4284 | wwww.asia-affinity.com</p>
 		<?php
 		}
 		?>

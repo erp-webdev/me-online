@@ -7151,11 +7151,11 @@
                 
                                 "ASIAAPMI" => [
                                     'prepared' => [
-                                        'name' => 'SIOCO, JERIZA',
-                                        'id' => '2015-11-0550',
-                                        'designation' => 'Senior Payroll Associate',
-                                        'esign' => 'abranco.png',
-                                        'email' => 'manastacio.global@megaworldcorp.com'
+                                        'name' => 'JERIZA MAE V. SIOCO',
+                                        'id' => '2020-09-0022',
+                                        'designation' => 'Payroll Manager',
+                                        'esign' => 'coe_jsioco.png',
+                                        'email' => 'jsioco@asia-affinity.com'
                                     ],
                                     'approver' => [
                                         'RFSP' => [
@@ -7198,6 +7198,7 @@
 								$rank_approver = 'VP';
 
 							$approver_email = $COEC_APPROVERS[$emp_info[0]['CompanyID']]['approver'][$rank_approver]['email']; 
+                            $message .= 'intent::' . $approver_email;
 							
                             array_push($hr_emails, 'kayag.global@megaworldcorp.com');
                             // array_push($hr_emails, $approver_email);
@@ -7205,7 +7206,6 @@
 							//     array_push($hr_emails, 'abranco@megaworldcorp.com');
 							//     array_push($hr_emails, 'mguarina@megaworldcorp.com');
                             // }
-
 							$sendmail = mail(implode(',', $hr_emails), "COE Request Update (Approvers Notification)", $message, $headers); 
 
 						}
