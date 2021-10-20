@@ -1184,28 +1184,32 @@
 					],
 					'approver' => [
 						'RFSP' => [
-							'name' => 'GUARINA, MARILOU CABUHAT',
-							'id' => '1994-03-8275',
-							'designation' => 'Senior Assistant Vice Presidentuarina.png',
-							'email' => 'mguarina@megaworldcorp.com'
+							'name' => 'JERIZA MAE V. SIOCO',
+							'id' => '2020-09-0022',
+							'designation' => 'Payroll Manager',
+							'esign' => 'coe_jsioco.png',
+							'email' => 'jsioco@asia-affinity.com'
 						],
 						'M' => [
-							'name' => 'GUARINA, MARILOU CABUHAT',
-							'id' => '1994-03-8275',
-							'designation' => 'Senior Assistant Vice Presidentuarina.png',
-							'email' => 'mguarina@megaworldcorp.com'
+							'name' => 'JERIZA MAE V. SIOCO',
+							'id' => '2020-09-0022',
+							'designation' => 'Payroll Manager',
+							'esign' => 'coe_jsioco.png',
+							'email' => 'jsioco@asia-affinity.com'
 						],
 						'AVP'=>[
-							'name' => 'GUARINA, MARILOU CABUHAT',
-							'id' => '1994-03-8275',
-							'designation' => 'Senior Assistant Vice Presidentuarina.png',
-							'email' => 'mguarina@megaworldcorp.com'
+							'name' => 'JERIZA MAE V. SIOCO',
+							'id' => '2020-09-0022',
+							'designation' => 'Payroll Manager',
+							'esign' => 'coe_jsioco.png',
+							'email' => 'jsioco@asia-affinity.com'
 						],
 						'VP' => [
-							'name' => 'GUARINA, MARILOU CABUHAT',
-							'id' => '1994-03-8275',
-							'designation' => 'Senior Assistant Vice Presidentuarina.png',
-							'email' => 'mguarina@megaworldcorp.com'
+							'name' => 'JERIZA MAE V. SIOCO',
+							'id' => '2020-09-0022',
+							'designation' => 'Payroll Manager',
+							'esign' => 'coe_jsioco.png',
+							'email' => 'jsioco@asia-affinity.com'
 						],
 					]
 				
