@@ -5965,8 +5965,9 @@
 							url: "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=coesave",
 							data: "id=" + id + "&emp_id=" + emp_id + "&status=" + status + "&others=" + others + "&" + tasks + "&ref_no=" + ref_no + "&type=" + type + '&hpa_percent=' + hpa_percent + '&avail_no=' + avail_no + '&old_status=' +old_status + '&company_id=' +company_id + '&cancel_remarks='+cancel_remarks,
 							type: "POST",
-							complete: function(){
+							complete: function(data){
 								$("#loading").hide();
+								$("#coedata").html(data);
 							},
 							success: function(data) {
 								$("#coedata").html(data);
