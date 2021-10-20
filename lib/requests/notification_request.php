@@ -6253,7 +6253,8 @@
                 if($coe_old[0]['type'] == 'COECOMPENSATION'){
 			        $result = $mainsql->get_execute($sql);
                     $_POST["send"] = true;
-                    echo include(OBJ."/coe_pdf.php");       
+                    include(OBJ."/coe_pdf.php");   
+                    exit;    
                 }
 			}
 
