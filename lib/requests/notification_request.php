@@ -5965,9 +5965,8 @@
 							url: "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=coesave",
 							data: "id=" + id + "&emp_id=" + emp_id + "&status=" + status + "&others=" + others + "&" + tasks + "&ref_no=" + ref_no + "&type=" + type + '&hpa_percent=' + hpa_percent + '&avail_no=' + avail_no + '&old_status=' +old_status + '&company_id=' +company_id + '&cancel_remarks='+cancel_remarks,
 							type: "POST",
-							complete: function(data){
+							complete: function(){
 								$("#loading").hide();
-								$("#coedata").html(data);
 							},
 							success: function(data) {
 								$("#coedata").html(data);
@@ -6253,10 +6252,10 @@
                 // if COECOMPENSATION, send pdf after approval
                 if($coe_old[0]['type'] == 'COECOMPENSATION'){
 			        $result = $mainsql->get_execute($sql);
-                    $_POST["send"] = true;
+                    $_POST["send"] = "true";
                     include(OBJ."/coe_pdf.php");   
-                    echo 'COE released and sent to employee!';
-                    exit;    
+				    echo "<script>$('#coedata').html('COEC Has been sent to the employee!')</script>";
+
                 }
 			}
 
