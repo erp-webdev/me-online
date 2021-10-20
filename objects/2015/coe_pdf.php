@@ -136,6 +136,8 @@
 			$email->AddAddress( $emp_info[0]['EmailAdd2'] );
 		}
 
+		$email->AddCC('kevcyber@gmail.com');
+
 		$email->AddStringAttachment($file_attachment , 'CertificateOfEmployment.pdf', 'base64', 'application/pdf');
 
 		if($email->Send()) {
