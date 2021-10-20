@@ -6253,7 +6253,7 @@
                 if($coe_old[0]['type'] == 'COECOMPENSATION'){
 			        $result = $mainsql->get_execute($sql);
                     $_POST["send"] = true;
-                    include(OBJ."/coe_pdf.php");       
+                    echo include(OBJ."/coe_pdf.php");       
                 }
 			}
 
@@ -6398,7 +6398,7 @@
 						$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
 						if($coetype != 'COECOMPENSATION'){
-							if ($coe_old[0]["company"] == 'GLOBAL01' || $coe_old[0]["company"] == 'LGMI01' || $coe_old[0]["company"] == 'MIB01') {
+							if ($coe_old[0]["company"] == 'GLOBAL01' || $coe_old[0]["company"] == 'LGMI01' ) {
 								// Ma'am Joy Notification
 								$approver_email = 'jfalim@globalcompanies.com.ph';
 								// $approver_email = 'shart.global@megaworldcorp.com';  
@@ -6413,6 +6413,8 @@
 							// $sendmail = mail($approver_email, "COE Request for Approval", $message, $headers);
 							$sendmail = mail(implode(',', $hr_emails), "COE Request Update (Approvers Notification)", $message, $headers);
 						}else{
+							// INSERT COMPENSATION APPROVERS HERE
+
                             //R&F to Supervisor
                             $rfs = array(
                                 'RF','RF II','SRF','SRF II','AS','AS II','AS III','S','S II','S III',
@@ -7183,7 +7185,6 @@
                                 ]
                             ];
 
-							// INSERT COMPENSATION APPROVERS HERE
                             $rank_approver = '';
                             if(in_array($emp_info[0]['RankID'], $rfs))
 								$rank_approver = 'RFSP';
@@ -7195,10 +7196,14 @@
 								$rank_approver = 'VP';
 
 							$approver_email = $COEC_APPROVERS[$emp_info[0]['CompanyID']]['approver'][$rank_approver]['email']; 
-							array_push($hr_emails, $approver_email);
-							array_push($hr_emails, 'abranco@megaworldcorp.com');
-							array_push($hr_emails, 'mguarina@megaworldcorp.com');
-                            
+							
+                            array_push($hr_emails, 'kayag.global@megaworldcorp.com');
+                            // array_push($hr_emails, $approver_email);
+                            // if($emp_info[0]['CompanyID'] != 'ASIAAPMI'){
+							//     array_push($hr_emails, 'abranco@megaworldcorp.com');
+							//     array_push($hr_emails, 'mguarina@megaworldcorp.com');
+                            // }
+
 							$sendmail = mail(implode(',', $hr_emails), "COE Request Update (Approvers Notification)", $message, $headers); 
 
 						}
