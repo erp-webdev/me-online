@@ -6511,7 +6511,8 @@
                                         'VP' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                     ]
@@ -6530,25 +6531,29 @@
                                         'RFSP' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'M' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'AVP'=>[
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'VP' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                     ]
@@ -6567,25 +6572,29 @@
                                         'RFSP' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'M' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'AVP'=>[
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'VP' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                     ]
@@ -6604,19 +6613,22 @@
                                         'RFSP' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'M' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'AVP'=>[
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'VP' => [
@@ -6641,19 +6653,22 @@
                                         'RFSP' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'M' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'AVP'=>[
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'VP' => [
@@ -6679,25 +6694,29 @@
                                         'RFSP' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'M' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'AVP'=>[
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'VP' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                     ]
@@ -6716,25 +6735,29 @@
                                         'RFSP' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'M' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'AVP'=>[
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'VP' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                     ]
@@ -6753,25 +6776,29 @@
                                         'RFSP' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'M' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'AVP'=>[
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'VP' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                     ]
@@ -6790,25 +6817,29 @@
                                         'RFSP' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'M' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'AVP'=>[
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'VP' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                     ]
@@ -6827,25 +6858,29 @@
                                         'RFSP' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'M' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'AVP'=>[
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'VP' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                     ]
@@ -6864,25 +6899,29 @@
                                         'RFSP' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'M' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'AVP'=>[
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'VP' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                     ]
@@ -6901,25 +6940,29 @@
                                         'RFSP' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'M' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'AVP'=>[
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'VP' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                     ]
@@ -6938,25 +6981,29 @@
                                         'RFSP' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'M' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'AVP'=>[
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'VP' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                     ]
@@ -6975,25 +7022,29 @@
                                         'RFSP' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'M' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'AVP'=>[
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'VP' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                     ]
@@ -7012,19 +7063,22 @@
                                         'RFSP' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'M' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'AVP'=>[
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'VP' => [
@@ -7050,25 +7104,29 @@
                                         'RFSP' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'M' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'AVP'=>[
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'VP' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                     ]
@@ -7087,25 +7145,29 @@
                                         'RFSP' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'M' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'AVP'=>[
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'VP' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                     ]
@@ -7124,25 +7186,29 @@
                                         'RFSP' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'M' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'AVP'=>[
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'VP' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                     ]
@@ -7161,25 +7227,29 @@
                                         'RFSP' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'M' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'AVP'=>[
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                         'VP' => [
                                             'name' => 'GUARINA, MARILOU CABUHAT',
                                             'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice Presidentuarina.png',
+                                            'designation' => 'Senior Assistant Vice President',
+                                            'esign' => 'coe_mguarina.png',
                                             'email' => 'mguarina@megaworldcorp.com'
                                         ],
                                     ]
