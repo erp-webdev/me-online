@@ -23,7 +23,7 @@
 
 		$sql_users = "SELECT A.*, B.* FROM COEUsers A
 					LEFT JOIN SUBSIDIARY.DBO.viewHREmpMaster B on A.emp_id = B.EmpID AND A.[DB_NAME] = B.DBNAME
-					WHERE A.emp_id = '$profile_id' and B.CompanyID = '$profile_comp' and B.CompanyActive = 1";
+					WHERE A.emp_id = '$profile_id'  and B.CompanyActive = 1";
 		$coe_users = $mainsql->get_numrow($sql_users);
 
 
