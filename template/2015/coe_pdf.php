@@ -392,7 +392,7 @@
 			<h3 align="center" style="padding-top: 40px">CERTIFICATION OF EMPLOYMENT AND COMPENSATION</h3>
 			&nbsp;
 
-			<?php if(!$DateResigned2) : ?>
+			<?php if(!$DateResigned2 || date('Y-m-d', strtotime($DateResigned2)) > date('Y-m-d')) : ?>
 			<div style="text-align: justify;  text-justify: inter-word;">
 				<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">This is to certify that <b><?php echo strtoupper(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES')); ?></b> is an
 					employee of <b><?php echo $emp_info[0]["CompanyName"]; ?></b> since <b><?php echo $emp_info[0]["HireDate"]; ?>
