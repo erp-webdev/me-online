@@ -6321,9 +6321,15 @@
 					$message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 95%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>Certificate of Employment Request</span><br><br>Hi ".$emp_info[0]['NickName'].",<br><br>";
 
 					if($status == 'For Release'){
-						$message .= "Your Certificate of Employment ($coetype) with a Reference No: ".$refno." is now For Release (".date('F j, Y', strtotime($coe_result[0]['updated_at'])).").";
+						$message .= "Your Certificate of Employment ($coetype) with a Reference No: ".$refno." was sent to your ";
+					    
+                        if(!$emp_info[0]['Active']){
+                            $message .= "Personal Email Address.";
+                        }else{
+                            $message .= "Corporate Email Address.";
+                        }
 						if($emp_hr[0]['level'] != 2){
-							$message .= " Schedule of COE release is every Monday to Friday from 2:00 to 4:00 PM. Please coordinate with your HR Business Partner.";
+							$message .= " Should you need a copy with the original signature, please coordinate with your HR Business Partner.";
 						}
 					}else if ($status == 'Cancelled'){
 						if($profile_idnum == $coeemp){
