@@ -6112,7 +6112,8 @@
 						getdate() as CurrentDate,
 						DATEADD(DAY, -1, A.DateResigned) as DateResigned,
 						A.CompanyID,
-						F.CompanyName
+						F.CompanyName,
+                        G.StatusDesc
 						FROM
 							viewhrempmaster A
 						LEFT JOIN
@@ -6125,6 +6126,8 @@
 							HRPosition E on A.PositionID = E.PositionID
 						LEFT JOIN
 							HRCompany F on A.CompanyID = F.CompanyID
+                        LEFT JOIN 
+                            HRStatus G ON A.EmpStatus = G.StatusID 
 						WHERE
 							A.EmpID = '$emp_id'";
 

@@ -397,7 +397,7 @@
 				<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">This is to certify that <b><?php echo strtoupper(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES')); ?></b> is an
 					employee of <b><?php echo $emp_info[0]["CompanyName"]; ?></b> since <b><?php echo $emp_info[0]["HireDate"]; ?>
 				<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"].".</b>"; }else{ ?>
-				</b>and presently holding a regular appointment for the position of <b><?php echo $emp_info[0]["PositionDesc"]; ?>.</b></p>
+				</b>and presently holding a <?php echo strtolower($emp_info[0]["StatusDesc"]); ?> appointment for the position of <b><?php echo $emp_info[0]["PositionDesc"]; ?>.</b></p>
 				<?php } ?>
 
 				<p style="padding-left: 50px; padding-right: 50px;"><?php echo ucwords(strtolower($emp_info[0]["Gender2"])); ?> current monthly compensation are as follows:</p>
