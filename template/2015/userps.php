@@ -44,9 +44,10 @@
                                                         </option>
                                                     <!--13 MONTH - START -->
 
-                                                    <option value="SP08">
+                                                    <!-- <option value="SP08">
                                                         13TH MONTH 1/2 <?php echo date("Y"); ?>
-                                                    </option>
+                                                    </option> -->
+                                                    
                                                     <option value="SP21">
                                                         13TH MONTH <?php echo date("Y"); ?>
                                                     </option>

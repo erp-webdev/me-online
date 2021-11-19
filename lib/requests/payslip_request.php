@@ -111,7 +111,8 @@
                     endif;
                 endforeach;
                 $year_select .= '<option value="SP04">SL CONVERSION '.$payslip_year.'</option>';
-                if ($payslip_year == '2017') :
+                if($payslip_year <> '2021')
+                if (in_array($payslip_year, ['2017', '2021'])) :
                 $year_select .= '<option value="SP21">13TH MONTH '.$payslip_year.'</option>';
                 else :
                   $year_select .= '<option value="SP08">13TH MONTH 1/2 '.$payslip_year.'</option>';
