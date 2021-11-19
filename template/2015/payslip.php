@@ -49,11 +49,9 @@
                                                 <!-- <option value="SP08">
                                                     13TH MONTH 1/2 <?php echo date("Y"); ?>
                                                 </option> -->
-                                                <?php if (in_array($profile_idnum, ['2016-06-0457', '2014-09-0038'])) : ?>
                                                 <option value="SP21">
                                                     13TH MONTH <?php echo date("Y"); ?>
                                                 </option>
-                                                <?php endif; ?>
 
                                                 <!--13 MONTH - END -->
                                                 <?php if ($profile_idnum == '2016-06-0457') : ?>
