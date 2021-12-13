@@ -117,7 +117,7 @@
                   $year_select .= '<option value="SP08">13TH MONTH 1/2 '.$payslip_year.'</option>';
                   $year_select .= '<option value="SP21">13TH MONTH 2/2 '.$payslip_year.'</option>';
                 endif;
-                $year_select .= '<!--option value="SP23">YEAREND BONUS '.$payslip_year.'</option-->';
+                // $year_select .= '<!--option value="SP23">YEAREND BONUS '.$payslip_year.'</option-->';
             endif;
             echo $year_select;
         break;
