@@ -28,7 +28,6 @@
                                                 <?php foreach ($payslip_period as $key => $value) : ?>
 
                                                 <?php if ($value['PeriodID'] != 'SP23' && ($profile_idnum != '2019-12-0708') ) : ?>
-                                                    <?php if($value['PRYear'] == 2021 && $value['PeriodID'] != 'S23') : ?>
                                                 
                                                     <option value="<?php echo $value['PeriodID']; ?>"<?php echo $key == 1 ? ' selected' : ''; ?>>
                                                     <?php
@@ -40,7 +39,6 @@
                                                     ?>
                                                     <?php //echo $value['PaymentType']." ".$value['PRYear']." ".date("m/d/Y", strtotime($value['PeriodFrom']))." to ".date("m/d/Y", strtotime($value['PeriodTo'])); ?>
                                                 </option>
-                                                <?php endif; ?>
                                                 <?php endif; ?>
                                                 <?php endforeach; ?>
 
