@@ -57,10 +57,9 @@
                                  ?>
 
                                 <div class="dashcomp dashincentive" style="width: 90%; margin: 0; padding: 5%; <?php if(!$display) echo 'display:none'; ?>">
-                                    <span class="roboto orangetext mediumtext">Your 2020 Income Tax Return Form (BIR 2316)</span><br><br>
+                                    <span class="roboto orangetext mediumtext">Your 2021 Income Tax Return Form (BIR 2316)</span><br><br>
                                     <center class="robotobold dgraytext smalltext2"><a style="color:blue"  href="<?php echo WEB; ?>/itr" >Download here</a>
-                                    <?php if (in_array($profile_dbname, ['GL', 'LAFUERZA', 'MCTI', 'MLI', 'NCCAI', 'TOWNSQUARE', 'MEGAWORLD','GLOBAL_HOTEL', 'SUNTRUST', 'NEWTOWN', 
-                                    'SIRUS', 'LCTM', 'EREX', 'ECOC', 'ECINEMA', 'CITYLINK'])) : ?>
+                                    <?php if (in_array($profile_dbname, [''])) : ?>
                                     
                                     </center>
                                    
