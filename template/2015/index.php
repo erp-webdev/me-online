@@ -46,7 +46,7 @@
                                                 $display = true;
 											break;
                                         case 'ASIAAPMI':
-											$deadline = '2021-02-28';
+											$deadline = '2022-02-28';
                                             if(date('Y-m-d') > date('Y-m-d' ,strtotime($deadline)))
                                                 $display = false;
 											break;
@@ -83,7 +83,7 @@
 
                                             ?>
                                         <b ><a style="font-size:9px;  color:blue" href="mailto: <?php echo $itr_mailto; ?> "><?php echo $itr_mailto; ?></a> </b>
-                                        <br>- Subject : <b>ITR 2020 - Company Name<b>
+                                        <br>- Subject : <b>ITR 2021 - Company Name<b>
                                     </ul>
                                     
                                     <?php endif; ?>
