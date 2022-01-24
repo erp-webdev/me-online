@@ -38,7 +38,7 @@
                                     'ECOC', 'ECINEMA', 'MCTI', 'EREX', 'ROWENTA'])): ?>
                                 <?php
                                     $display = true;
-									$deadline = '2022-02-24';
+									$deadline = '2022-02-25';
 
                                     switch ($profile_dbname) {
                                         case 'GL':
