@@ -34,10 +34,11 @@
                                 </div>
                                 <?php endif; ?>
 
-                                <?php if(in_array($profile_dbname, ['ASIAAPMI'])): ?>
+                                <?php if(in_array($profile_dbname, ['ASIAAPMI', 'CITYLINK', 'LCTM', 'MLI', 'SIRUS', 
+                                    'ECOC', 'ECINEMA', 'MCTI', 'EREX', 'ROWENTA'])): ?>
                                 <?php
                                     $display = true;
-									$deadline = '2021-02-24';
+									$deadline = '2022-02-24';
 
                                     switch ($profile_dbname) {
                                         case 'GL':
@@ -59,26 +60,30 @@
                                     <span class="roboto orangetext mediumtext">Your 2021 Income Tax Return Form (BIR 2316)</span><br><br>
                                     <center class="robotobold dgraytext smalltext2"><a style="color:blue"  href="<?php echo WEB; ?>/itr" >Download here</a>
                                     <?php if (in_array($profile_dbname, ['GL', 'LAFUERZA', 'MCTI', 'MLI', 'NCCAI', 'TOWNSQUARE', 'MEGAWORLD','GLOBAL_HOTEL', 'SUNTRUST', 'NEWTOWN', 
-                                    'SIRUS', 'LCTM', 'EREX', 'ECOC', 'ECINEMA', 'CITYLINK'])) : ?>
+                                    'SIRUS', 'LCTM', 'EREX', 'ECOC', 'ECINEMA', 'CITYLINK', 'ROWENTA'])) : ?>
                                     
                                     </center>
                                    
                                         <br>- Due Date: <b><?php echo date('F j, Y', strtotime($deadline)); ?></b>
                                         <br>- Fill-up item No. <b>6, 6A, 7, 52 & 54</b>
-                                        <br>- Save in .pdf file with name format (ALL CAPS) <br><b style="font-size: 9px"> SURNAME_9DIGITTINNO.-0000_12312020</b>
-                                        <br> <b><i style="font-size:8px;"> ex: DELACRUZ_123-456-789-0000_1231202.pdf</i><b>
+                                        <br>- Save in .pdf file with name format (ALL CAPS) <br><b style="font-size: 9px"> SURNAME_9DIGITTINNO.-0000_12312021</b>
+                                        <br> <b><i style="font-size:8px;"> ex: DELACRUZ_123-456-789-0000_12312021.pdf</i><b>
                                         <br>- Send the ITR to  
                                             <?php 
                                                 $itr_mailto="";
-                                                if(in_array($profile_dbname, ['MEGAWORLD', 'GLOBAL_HOTEL', 'LAFUERZA', 'MLI', 'TOWNSQUARE', 'SIRUS', 'NEWTOWN']))
+                                                if(in_array($profile_dbname, ['']))
                                                     $itr_mailto= 'manastacio.global@megaworldcorp.com';
                                                 elseif(in_array($profile_dbname, ['GL'])){
                                                     if($profile_comp == 'GLOBAL01') 
                                                         $itr_mailto= 'fgarcia.global@megaworldcorp.com';
                                                     else 
                                                         $itr_mailto= 'cnsulat.glob  al@megaworldcorp.com';
-                                                }elseif(in_array($profile_dbname, ['CITYLINK', 'ECINEMA', 'ECOC', 'EREX', 'LCTM', 'MCTI','NCCAI', 'SUNTRUST'])){
+                                                }elseif(in_array($profile_dbname, ['LCTM', 'MLI', 'CITYLINK'])){
                                                     $itr_mailto= 'mpcasabon.global@megaworldcorp.com';
+                                                }elseif(in_array($profile_dbname, ['ROWENTA', 'SIRUS', 'ECOC'])){
+                                                    $itr_mailto= 'jeleazar.global@megaworldcorp.com';
+                                                }elseif(in_array($profile_dbname, ['ECINEMA', 'MCTI', 'EREX'])){
+                                                    $itr_mailto= ' jfabay.global@megaworldcorp.com';
                                                 }
 
                                             ?>
