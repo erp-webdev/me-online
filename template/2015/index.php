@@ -35,7 +35,7 @@
                                 <?php endif; ?>
 
                                 <?php if(in_array($profile_dbname, ['ASIAAPMI', 'CITYLINK', 'LCTM', 'MLI', 'SIRUS', 
-                                    'ECOC', 'ECINEMA', 'MCTI', 'EREX', 'ROWENTA'])): ?>
+                                    'ECOC', 'ECINEMA', 'MCTI', 'EREX', 'Rowenta'])): ?>
                                 <?php
                                     $display = true;
 									$deadline = '2022-01-25';
@@ -60,7 +60,7 @@
                                     <span class="roboto orangetext mediumtext">Your 2021 Income Tax Return Form (BIR 2316)</span><br><br>
                                     <center class="robotobold dgraytext smalltext2"><a style="color:blue"  href="<?php echo WEB; ?>/itr" >Download here</a>
                                     <?php if (in_array($profile_dbname, ['GL', 'LAFUERZA', 'MCTI', 'MLI', 'NCCAI', 'TOWNSQUARE', 'MEGAWORLD','GLOBAL_HOTEL', 'SUNTRUST', 'NEWTOWN', 
-                                    'SIRUS', 'LCTM', 'EREX', 'ECOC', 'ECINEMA', 'CITYLINK', 'ROWENTA'])) : ?>
+                                    'SIRUS', 'LCTM', 'EREX', 'ECOC', 'ECINEMA', 'CITYLINK', 'Rowenta'])) : ?>
                                     
                                     </center>
                                    
@@ -80,7 +80,7 @@
                                                         $itr_mailto= 'cnsulat.glob  al@megaworldcorp.com';
                                                 }elseif(in_array($profile_dbname, ['LCTM', 'MLI', 'CITYLINK'])){
                                                     $itr_mailto= 'mpcasabon.global@megaworldcorp.com';
-                                                }elseif(in_array($profile_dbname, ['ROWENTA', 'SIRUS', 'ECOC'])){
+                                                }elseif(in_array($profile_dbname, ['Rowenta', 'SIRUS', 'ECOC'])){
                                                     $itr_mailto= 'jeleazar.global@megaworldcorp.com';
                                                 }elseif(in_array($profile_dbname, ['ECINEMA', 'MCTI', 'EREX'])){
                                                     $itr_mailto= ' jfabay.global@megaworldcorp.com';
