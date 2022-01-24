@@ -35,7 +35,7 @@
                                 <?php endif; ?>
 
                                 <?php if(in_array($profile_dbname, ['ASIAAPMI', 'CITYLINK', 'LCTM', 'MLI', 'SIRUS', 
-                                    'ECOC', 'ECINEMA', 'MCTI', 'EREX', 'Rowenta'])): ?>
+                                    'ECOC', 'ECINEMA', 'MCTI', 'EREX', 'Rowenta', 'NCCAI', 'MREIT'])): ?>
                                 <?php
                                     $display = true;
 									$deadline = '2022-01-25';
@@ -60,7 +60,7 @@
                                     <span class="roboto orangetext mediumtext">Your 2021 Income Tax Return Form (BIR 2316)</span><br><br>
                                     <center class="robotobold dgraytext smalltext2"><a style="color:blue"  href="<?php echo WEB; ?>/itr" >Download here</a>
                                     <?php if (in_array($profile_dbname, ['GL', 'LAFUERZA', 'MCTI', 'MLI', 'NCCAI', 'TOWNSQUARE', 'MEGAWORLD','GLOBAL_HOTEL', 'SUNTRUST', 'NEWTOWN', 
-                                    'SIRUS', 'LCTM', 'EREX', 'ECOC', 'ECINEMA', 'CITYLINK', 'Rowenta'])) : ?>
+                                    'SIRUS', 'LCTM', 'EREX', 'ECOC', 'ECINEMA', 'CITYLINK', 'Rowenta', 'MREIT'])) : ?>
                                     
                                     </center>
                                    
