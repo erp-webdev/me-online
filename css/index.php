@@ -37,7 +37,9 @@
         $profile_location = $location;
         $profile_minothours = $minothours;
         $profile_dbname = $dbname;
-        $profile_compressed = $compressed;
+        // $profile_compressed = $compressed;
+        // convert all to compressed, for leave balance checking per hour instead of per day
+        $profile_compressed = true;
         if ($profile_comp ==  'GLOBALHOTEL') :
             define("SITENAME", "GLOBAL HOTEL SSEP - BETA");
             define("SYSTEMNAME", "GLOBAL HOTEL SSEP  - BETA");
