@@ -21,7 +21,9 @@
     $profile_location = $location;
     $profile_minothours = $minothours;
     $profile_dbname = $dbname;
-    $profile_compressed = $compressed;
+    // $profile_compressed = $compressed;
+        // convert all to compressed, for leave balance checking per hour instead of per day
+        $profile_compressed = true;
 
     if ($profile_dbname == "ECINEMA" || $profile_dbname == "EPARKVIEW" || $profile_dbname == "LAFUERZA" || $profile_dbname == "GLOBAL_HOTEL") :
         $adminarray = array("2011-03-V835");
