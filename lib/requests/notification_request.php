@@ -4878,6 +4878,7 @@
 						}else if($("select[name=coetype]").val() == "COENONCASHADVANCEMENT"){
 						    $("#coecatdiv").show();
 						    $("#other_reason").html("Other Reason:");
+                            $("select option[id=noncash]").show();
                             $("select option[id=coe]").hide();
 						}
 
@@ -5412,9 +5413,11 @@
 					'COESEPARATED' => 'CoE for Separated Employee'
 				];
 				$coes2 = [
-					'LOAN' => 'Certificate of Employment (Loan)',
+					'LOAN' => 'Certificate of Employment (Loan0)',
 					'SCHOOLREQ' => 'Certificate of Employment (School Requirement)',
-					'VISA' => 'Certificate of Employment (VISA)'
+					'VISA' => 'Certificate of Employment (VISA)',
+                    'MATERNITY' => 'Maternity',
+                    'SICKNESS' => 'Sickness'
 				];
 
 				//change dates according to database
@@ -5423,12 +5426,16 @@
 				if($coeemp == $profile_idnum){
 					if($coetype == 'COE'){
 						$message .= "You have successfully submitted a Certificate of Employment (".$coes2["$coecategory"].") with a Reference No: ".$refno.".";
+					}elseif($coetype == 'COENONCASHADVANCEMENT'){
+						$message .= "You have successfully submitted a Certificate of Employment (CoE for Non-Cash Advancement - ".$coes2["$coecategory"].") with a Reference No: ".$refno.".";
 					}else{
 						$message .= "You have successfully submitted a Certificate of Employment (".$coes["$coetype"].") with a Reference No: ".$refno.".";
 					}
 				}else{
 					if($coetype == 'COE'){
 						$message .= "A new Certificate of Employment (".$coes2["$coecategory"].") has been requested for you with a Reference No: ".$refno.".";
+					}elseif($coetype == 'COENONCASHADVANCEMENT'){
+						$message .= "You have successfully submitted a Certificate of Employment (CoE for Non-Cash Advancement - ".$coes2["$coecategory"].") with a Reference No: ".$refno.".";
 					}else{
 						$message .= "A new Certificate of Employment (".$coes["$coetype"].") has been requested for you with a Reference No: ".$refno.".";
 					}
@@ -5463,7 +5470,9 @@
 					$message .= "A new Certificate of Employment ";
 					if($coetype == 'COE'){
 						$message .= "(".$coes2["$coecategory"].")";
-					}else{
+					}elseif($coetype == 'COENONCASHADVANCEMENT'){
+                        $message .= "(CoE for Non-Cash Advancement - ".$coes2["$coecategory"].")";
+                    }else{
 						$message .= "(".$coes["$coetype"].")";
 					}
 					$message .= ", created at ".date('F j, Y', strtotime($coe_result[0]['created_at'])).", has been requested for ".$emp_info[0]['FullName']."(".$emp_info[0]['CompanyName'].") - (".$emp_info[0]['DeptDesc'].") with a Reference No: ".$refno.".";
