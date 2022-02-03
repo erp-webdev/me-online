@@ -1,6 +1,6 @@
 <?php include(TEMP."/header.php"); ?>
 <!-- BODY -->
-				<div id="coefloat" class="floatdiv invisible" devtest>
+				<div id="coefloat" class="floatdiv invisible" devtest1>
 					<!-- VIEW NOTIFICATION - BEGIN -->
 					<div id="coeview" class="fview" style="display: none;">
 						<div class="closebutton cursorpoint"><i class="fa fa-times-circle fa-3x redtext"></i></div>
