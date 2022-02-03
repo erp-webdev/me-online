@@ -4594,6 +4594,7 @@
 								<option value="COEAPPROVEDLEAVE">CoE with Approved Leave</option>
 								<?php if($level != 1){  ?><option value="COESEPARATED">CoE for Separated Employee</option> <?php } ?>
 								<option value="COECORRECTIONNAME">CoE for Correction Name</option>
+                                <option value="COENONCASHADVANCEMENT">CoE for Non-Cash Advancement</option>
 							</select>
 						</td>
 					</tr>
@@ -5618,6 +5619,15 @@
 						</td>
 					</tr>
 
+                    <!-- <tr id="coecatdiv3">
+						<td></td>
+						<td align="left"><label>Category: </label></td>
+						<td align="left">
+							<?php if($result[0]['category'] == 'MATERNITY'){ echo "Maternity"; }?>
+                            <?php if($result[0]['category'] == 'SICKNESS'){ echo "Sickness"; }?>
+						</td>
+					</tr> -->
+
 					<tr id="coereasondiv2">
 						<td></td>
 						<td align="left"><label>Reason: </label></td>
@@ -5835,6 +5845,7 @@
 					$("#coeleavediv4").hide();
 					$("#coenamediv1").hide();
 					$("#coecatdiv2").hide();
+					$("#coecatdiv3").hide();
 					$("#coereasondiv2").hide();
 					$("#coejobdiv1").hide();
 					$("#coeavail2").hide();
@@ -5853,24 +5864,30 @@
 						$("#coeleavediv4").show();
 
 						$("#coecatdiv2").hide();
+                        $("#coecatdiv3").hide();
 						$("#coereasondiv2").hide();
 					}else if ('<?php echo $result[0]['type']; ?>' == 'COECORRECTIONNAME') {
 						$("#coenamediv1").show();
 						$("#other_reason").html("Other Reason:");
 						$("#coecatdiv2").hide();
+                        $("#coecatdiv3").hide();
 						$("#coereasondiv2").hide();
 
 					}else if ('<?php echo $result[0]['type']; ?>' == 'COE') {
 						$("#coecatdiv2").show();
 						$("#coereasondiv2").show();
+                        $("#coecatdiv3").hide();
 					}else if ('<?php echo $result[0]['type']; ?>' == 'COEJOBDESC') {
 						$("#coejobdiv1").show();
 					}else if ('<?php echo $result[0]['type']; ?>' == 'COEHOUSINGPLAN') {
 						$("#coeothersdiv2").hide();
 						$("#coeavail2").show();
 						$("#coehpa2").show();
+					}else if ('<?php echo $result[0]['type']; ?>' == 'COENONCASHADVANCEMENT') {
+                        $("#coecatdiv3").show();
 					}
 
+                    
 
  					//add input box
 					var max_fields      = 10;
