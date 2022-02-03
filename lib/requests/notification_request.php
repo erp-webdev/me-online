@@ -4674,6 +4674,22 @@
 								<option value="SCHOOLREQ">School Requirements</option>
 								<option value="VISA">VISA</option>
 								<option value="OTHERS">Others</option>
+							</select>
+						</td>
+					</tr>
+
+                    <tr id="coecatdiv">
+						<td></td>
+						<td align="left">
+							<label>Category: </label>
+						</td>
+						<td align="left">
+							<select id="coecategory" name="coecategory" class="txtbox" style="width:193px;">
+								<option value="">Please Select</option>
+								<option value="LOAN">Loan</option>
+								<option value="SCHOOLREQ">School Requirements</option>
+								<option value="VISA">VISA</option>
+								<option value="OTHERS">Others</option>
 								<option value="MATERNITY">Maternity</option>
 								<option value="SICKNESS">Sickness</option>
 							</select>
@@ -5618,18 +5634,17 @@
 							<?php if($result[0]['category'] == 'SCHOOLREQ'){ echo "School Requirements"; }?>
 							<?php if($result[0]['category'] == 'VISA'){ echo "VISA"; }?>
 							<?php if($result[0]['category'] == 'OTHERS'){ echo "Others"; }?>
+						</td>
+					</tr>
+
+                    <tr id="coecatdiv3">
+						<td></td>
+						<td align="left"><label>Category: </label></td>
+						<td align="left">
                             <?php if($result[0]['category'] == 'MATERNITY'){ echo "Maternity"; }?>
                             <?php if($result[0]['category'] == 'SICKNESS'){ echo "Sickness"; }?>
 						</td>
 					</tr>
-
-                    <!-- <tr id="coecatdiv3">
-						<td></td>
-						<td align="left"><label>Category: </label></td>
-						<td align="left">
-
-						</td>
-					</tr> -->
 
 					<tr id="coereasondiv2">
 						<td></td>
@@ -5865,7 +5880,6 @@
 						$("#other_reason").html("Other Reason:");
 						$("#coeleavediv3").show();
 						$("#coeleavediv4").show();
-
 						$("#coecatdiv2").hide();
                         $("#coecatdiv3").hide();
 						$("#coereasondiv2").hide();
