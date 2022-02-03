@@ -4669,29 +4669,13 @@
 						</td>
 						<td align="left">
 							<select id="coecategory" name="coecategory" class="txtbox" style="width:193px;">
-								<option value="">Please Select</option>
-								<option value="LOAN">Loan</option>
-								<option value="SCHOOLREQ">School Requirements</option>
-								<option value="VISA">VISA</option>
-								<option value="OTHERS">Others</option>
-							</select>
-						</td>
-					</tr>
-
-                    <tr id="coenoncashcatdiv">
-						<td></td>
-						<td align="left">
-							<label>Category: </label>
-						</td>
-						<td align="left">
-							<select id="coecategory" name="coecategory" class="txtbox" style="width:193px;">
-								<option value="">Please Select</option>
-								<option value="LOAN">Loan</option>
-								<option value="SCHOOLREQ">School Requirements</option>
-								<option value="VISA">VISA</option>
-								<option value="OTHERS">Others</option>
-								<option value="MATERNITY">Maternity</option>
-								<option value="SICKNESS">Sickness</option>
+								<option id="coe" value="">Please Select</option>
+								<option id="coe" value="LOAN">Loan</option>
+								<option id="coe" value="SCHOOLREQ">School Requirements</option>
+								<option id="coe" value="VISA">VISA</option>
+								<option id="coe" value="OTHERS">Others</option>
+								<option id="noncash" value="MATERNITY">Maternity</option>
+								<option id="noncash" value="SICKNESS">Sickness</option>
 							</select>
 						</td>
 					</tr>
@@ -4835,7 +4819,6 @@
 				}
 
 				$("#coecatdiv").hide();
-				$("#coenoncashcatdiv").hide();
 				$("#coereasondiv").hide();
 				$("#coeleavediv1").hide();
 				$("#coejobdiv1").hide();
@@ -4893,8 +4876,9 @@
 							$("#other_reason").html("Requirement For:");
 							$("#coeothersdiv").show();
 						}else if($("select[name=coetype]").val() == "COENONCASHADVANCEMENT"){
-                            $("#coenoncashcatdiv").show();
-							$("#coeothersdiv").show();
+						    $("#coecatdiv").show();
+						    $("#other_reason").html("Other Reason:");
+                            $("select option[id=coe]").hide();
 						}
 
 					}else{
