@@ -2,7 +2,7 @@
 
     <!-- BODY -->
 
-                    <div id="mainsplashtext" class="mainsplashtext lefttalign">
+                    <div id="mainsplashtext" class="mainsplashtext lefttalign" kevtest>
                         <div class="topsplashtext lefttalign robotobold cattext whitetext"><?php echo WELCOME; ?></div>
                         <div class="leftsplashtext lefttalign"><?php include(TEMP."/menu.php"); ?></div>
                         <div class="rightsplashtext lefttalign">
