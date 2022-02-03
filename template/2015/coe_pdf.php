@@ -345,6 +345,8 @@
 
 			<div style="text-align: justify;  text-justify: inter-word;">
 
+				
+
 				<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo strtoupper(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES')); ?></b>
 					<?php if($emp_info[0]["DateResigned"]){ ?>
 						was employed as
@@ -362,8 +364,17 @@
 				up to the present.</b></p>
 				<?php } ?>
 
+				<p style="padding-left: 50px; padding-right: 50px;"> This is to further certify that <?php echo $emp_info[0]["Gender"]?> did not receive any advance payment from the company for <?php echo $emp_info[0]["Gender2"]?> SSS <?php echo $coe[0]["category"] ?> benefit.</p>
+				
 				<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo $emp_info[0]["Salutation"]." ".strtoupper(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES')); ?>
-				<?php
+				
+				
+				for the purpose of complying
+				with the documentary requirements for <?php echo $emp_info[0]["Gender2"]?> SSS <?php echo $coe[0]["category"] ?> benefit claim.</p>
+				
+				
+				
+				<!-- <?php
 					if($coe[0]["other_reason"]){
 				?>
 						as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["other_reason"];?>.</p>
@@ -389,7 +400,7 @@
 						for whatever legal purpose it may serve.</p>
 				<?php
 					}
-				?>
+				?> -->
 
 				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
 			</div>
