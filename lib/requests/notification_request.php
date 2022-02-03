@@ -4678,7 +4678,7 @@
 						</td>
 					</tr>
 
-                    <tr id="coecatdiv">
+                    <tr id="coenoncashcatdiv">
 						<td></td>
 						<td align="left">
 							<label>Category: </label>
@@ -4835,6 +4835,7 @@
 				}
 
 				$("#coecatdiv").hide();
+				$("#coenoncashcatdiv").hide();
 				$("#coereasondiv").hide();
 				$("#coeleavediv1").hide();
 				$("#coejobdiv1").hide();
@@ -4889,6 +4890,9 @@
 							$("#other_reason").html("Requirement For:");
 							$("#coeothersdiv").show();
 						}else if($("select[name=coetype]").val() == "COESEPARATED"){
+							$("#other_reason").html("Requirement For:");
+							$("#coeothersdiv").show();
+						}else if($("select[name=coetype]").val() == "COENONCASHADVANCEMENT"){
 							$("#other_reason").html("Requirement For:");
 							$("#coeothersdiv").show();
 						}
