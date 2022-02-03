@@ -287,7 +287,65 @@
 
 			<div style="text-align: justify;  text-justify: inter-word;">
 
-				<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">This certifies that that <b><?php echo strtoupper(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES')); ?></b>
+				<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo strtoupper(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES')); ?></b>
+					<?php if($emp_info[0]["DateResigned"]){ ?>
+						was employed as
+					<?php }else{ ?>
+						is currently employed as
+					<?php } ?>
+				<b><?php
+				if((in_array($coe[0]["company"], ['GLOBAL01', 'LGMI01'])) && $coe[0]["type"] != 'COECOMPENSATION'){
+					echo $emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DeptDesc"].' / '.$emp_info[0]["DivisionName"]." DIVISION</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"];
+				}else{
+					echo $emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." DIVISION</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"];
+				}
+				?>
+				<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
+				up to the present.</b></p>
+				<?php } ?>
+
+				<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo $emp_info[0]["Salutation"]." ".strtoupper(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES')); ?>
+				<?php
+					if($coe[0]["other_reason"]){
+				?>
+						as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["other_reason"];?>.</p>
+				<?php
+					}else if($coe[0]["reason"]){
+						if($coe[0]["category"] == 'VISA'){
+				 ?>
+							as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["category"]."(";
+							foreach($countries as $key => $country){
+								if($coe[0]["reason"] == $key){
+									echo $country;
+								}
+							}
+							?>).</p>
+				<?php
+						}else{
+				?>
+							as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["reason"];?>.</p>
+				<?php
+						}
+					}else{
+				?>
+						for whatever legal purpose it may serve.</p>
+				<?php
+					}
+				?>
+
+				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
+			</div>
+
+			<?php
+	}elseif ($coe[0]["type"] == "COENONCASHADVANCEMENT") {
+			?>
+
+			<h3 align="center" style="padding-top: 40px; letter-spacing: 10px;">CERTIFICATION</h3>
+			&nbsp;
+
+			<div style="text-align: justify;  text-justify: inter-word;">
+
+				<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo strtoupper(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES')); ?></b>
 					<?php if($emp_info[0]["DateResigned"]){ ?>
 						was employed as
 					<?php }else{ ?>
