@@ -5622,13 +5622,6 @@
 							<?php if($result[0]['category'] == 'SCHOOLREQ'){ echo "School Requirements"; }?>
 							<?php if($result[0]['category'] == 'VISA'){ echo "VISA"; }?>
 							<?php if($result[0]['category'] == 'OTHERS'){ echo "Others"; }?>
-						</td>
-					</tr>
-
-                    <tr id="coecatdiv3">
-						<td></td>
-						<td align="left"><label>Category: </label></td>
-						<td align="left">
                             <?php if($result[0]['category'] == 'MATERNITY'){ echo "Maternity"; }?>
                             <?php if($result[0]['category'] == 'SICKNESS'){ echo "Sickness"; }?>
 						</td>
@@ -5889,7 +5882,7 @@
 						$("#coeavail2").show();
 						$("#coehpa2").show();
 					}else if ('<?php echo $result[0]['type']; ?>' == 'COENONCASHADVANCEMENT') {
-                        $("#coecatdiv3").show();
+                        $("#coecatdiv2").show();
 					}
 
                     
