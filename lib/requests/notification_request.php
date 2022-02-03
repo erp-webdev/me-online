@@ -4674,6 +4674,8 @@
 								<option value="SCHOOLREQ">School Requirements</option>
 								<option value="VISA">VISA</option>
 								<option value="OTHERS">Others</option>
+								<option value="MATERNITY">Maternity</option>
+								<option value="SICKNESS">Sickness</option>
 							</select>
 						</td>
 					</tr>
