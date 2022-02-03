@@ -5619,14 +5619,14 @@
 						</td>
 					</tr>
 
-                    <!-- <tr id="coecatdiv3">
+                    <tr id="coecatdiv3">
 						<td></td>
 						<td align="left"><label>Category: </label></td>
 						<td align="left">
 							<?php if($result[0]['category'] == 'MATERNITY'){ echo "Maternity"; }?>
                             <?php if($result[0]['category'] == 'SICKNESS'){ echo "Sickness"; }?>
 						</td>
-					</tr> -->
+					</tr>
 
 					<tr id="coereasondiv2">
 						<td></td>
