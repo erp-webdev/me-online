@@ -4594,7 +4594,8 @@
 								<option value="COEAPPROVEDLEAVE">CoE with Approved Leave</option>
 								<?php if($level != 1){  ?><option value="COESEPARATED">CoE for Separated Employee</option> <?php } ?>
 								<option value="COECORRECTIONNAME">CoE for Correction Name</option>
-                                <option value="COENONCASHADVANCEMENT">CoE for Non-Cash Advancement</option>
+                                <?php if($level != 1){  ?><option value="COENONCASHADVANCEMENT">CoE for Non-Cash Advancement</option> <?php } ?>
+                                
 							</select>
 						</td>
 					</tr>

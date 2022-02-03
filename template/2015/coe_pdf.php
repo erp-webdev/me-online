@@ -364,43 +364,10 @@
 				up to the present.</b></p>
 				<?php } ?>
 
-				<p style="padding-left: 50px; padding-right: 50px;"> This is to further certify that <?php echo $emp_info[0]["Gender"]?> did not receive any advance payment from the company for <?php echo $emp_info[0]["Gender2"]?> SSS <?php echo $coe[0]["category"] ?> benefit.</p>
+				<p style="padding-left: 50px; padding-right: 50px;"> This is to further certify that <?php echo strtolower($emp_info[0]["Gender"])?> did not receive any advance payment from the company for <?php echo $emp_info[0]["Gender2"]?> SSS <?php echo $coe[0]["category"] ?> benefit.</p>
 				
 				<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo $emp_info[0]["Salutation"]." ".strtoupper(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES')); ?>
-				
-				
-				for the purpose of complying
-				with the documentary requirements for <?php echo $emp_info[0]["Gender2"]?> SSS <?php echo $coe[0]["category"] ?> benefit claim.</p>
-				
-				
-				
-				<!-- <?php
-					if($coe[0]["other_reason"]){
-				?>
-						as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["other_reason"];?>.</p>
-				<?php
-					}else if($coe[0]["reason"]){
-						if($coe[0]["category"] == 'VISA'){
-				 ?>
-							as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["category"]."(";
-							foreach($countries as $key => $country){
-								if($coe[0]["reason"] == $key){
-									echo $country;
-								}
-							}
-							?>).</p>
-				<?php
-						}else{
-				?>
-							as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["reason"];?>.</p>
-				<?php
-						}
-					}else{
-				?>
-						for whatever legal purpose it may serve.</p>
-				<?php
-					}
-				?> -->
+				for the purpose of complying with the documentary requirements for <?php echo $emp_info[0]["Gender2"]?> SSS <?php echo strtolower($coe[0]["category"]) ?> benefit claim.</p>
 
 				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
 			</div>
