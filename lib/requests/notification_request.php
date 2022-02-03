@@ -4896,6 +4896,9 @@
 						$("#coeavail").hide();
 						$("#coeothersdiv").show();
 						$("#compensation_note").show();
+                        $("select option[id=coe]").show();
+                        $("select option[id=noncash]").hide();
+                        
 						// $("input[name=coeothers]").css({"visibility":"visible"});
 					}
 				});
