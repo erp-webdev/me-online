@@ -5616,17 +5616,18 @@
 							<?php if($result[0]['category'] == 'SCHOOLREQ'){ echo "School Requirements"; }?>
 							<?php if($result[0]['category'] == 'VISA'){ echo "VISA"; }?>
 							<?php if($result[0]['category'] == 'OTHERS'){ echo "Others"; }?>
-						</td>
-					</tr>
-
-                    <tr id="coecatdiv3">
-						<td></td>
-						<td align="left"><label>Category: </label></td>
-						<td align="left">
-							<?php if($result[0]['category'] == 'MATERNITY'){ echo "Maternity"; }?>
+                            <?php if($result[0]['category'] == 'MATERNITY'){ echo "Maternity"; }?>
                             <?php if($result[0]['category'] == 'SICKNESS'){ echo "Sickness"; }?>
 						</td>
 					</tr>
+
+                    <!-- <tr id="coecatdiv3">
+						<td></td>
+						<td align="left"><label>Category: </label></td>
+						<td align="left">
+
+						</td>
+					</tr> -->
 
 					<tr id="coereasondiv2">
 						<td></td>
