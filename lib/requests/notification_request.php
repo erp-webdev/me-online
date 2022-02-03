@@ -4893,7 +4893,7 @@
 							$("#other_reason").html("Requirement For:");
 							$("#coeothersdiv").show();
 						}else if($("select[name=coetype]").val() == "COENONCASHADVANCEMENT"){
-							$("#other_reason").html("Requirement For:");
+                            $("#coenoncashcatdiv").show();
 							$("#coeothersdiv").show();
 						}
 
