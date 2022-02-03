@@ -5549,6 +5549,7 @@
 							<?php if($result[0]['type'] == 'COEAPPROVEDLEAVE'){ echo "CoE with Approved Leave"; }?>
 							<?php if($result[0]['type'] == 'COESEPARATED'){ echo "CoE for Separated Employee"; }?>
 							<?php if($result[0]['type'] == 'COECORRECTIONNAME'){ echo "CoE for Correction Name"; }?>
+							<?php if($result[0]['type'] == 'COENONCASHADVANCEMENT'){ echo "CoE for Non-Cash Advancement"; }?>
 						</td>
 					</tr>
 
