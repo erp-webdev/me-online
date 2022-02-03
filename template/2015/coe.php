@@ -1,6 +1,6 @@
 <?php include(TEMP."/header.php"); ?>
 <!-- BODY -->
-				<div id="coefloat" class="floatdiv invisible">
+				<div id="coefloat" class="floatdiv invisible" devtest>
 					<!-- VIEW NOTIFICATION - BEGIN -->
 					<div id="coeview" class="fview" style="display: none;">
 						<div class="closebutton cursorpoint"><i class="fa fa-times-circle fa-3x redtext"></i></div>
@@ -15,7 +15,7 @@
 					<div class="leftsplashtext lefttalign"><?php include(TEMP."/menu.php"); ?></div>
 					<div class="rightsplashtext lefttalign">
 						<div id="mainnotification" class="mainbody lefttalign whitetext">
-							<b class="mediumtext lorangetext" devtest>My COE Requests</b>
+							<b class="mediumtext lorangetext" >My COE Requests</b>
 							<br><br>
 							<div>
 								<button id="coenewreq" value="New Request" class="smlbtn" attribute5="1">New Request</button>
