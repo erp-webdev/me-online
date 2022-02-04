@@ -354,7 +354,7 @@
 				<b><?php
 				echo ucwords(strtolower($emp_info[0]["PositionDesc"]))."</b> by <b>".ucwords(strtolower($emp_info[0]["CompanyName"]))."</b> from <b>".$emp_info[0]["HireDate"];
 				?>
-				<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
+				<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"].".</b>"; }else{ ?>
 				up to the present.</b></p>
 				<?php } ?>
 
