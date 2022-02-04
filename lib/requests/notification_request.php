@@ -4879,6 +4879,7 @@
 						}else if($("select[name=coetype]").val() == "COENONCASHADVANCEMENT"){
 						    $("#coecatdiv").show();
 						    $("#other_reason").hide();
+							$("#coeothersdiv").hide();
                             $("select option[id=noncash]").show();
                             $("select option[id=coe]").hide();
 						}

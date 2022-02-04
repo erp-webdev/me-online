@@ -345,20 +345,14 @@
 
 			<div style="text-align: justify;  text-justify: inter-word;">
 
-				
-
-				<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo strtoupper(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES')); ?></b>
+				<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo $emp_info[0]["Salutation"]." ".strtoupper(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES')); ?></b>
 					<?php if($emp_info[0]["DateResigned"]){ ?>
 						was employed as
 					<?php }else{ ?>
 						is currently employed as
 					<?php } ?>
 				<b><?php
-				if((in_array($coe[0]["company"], ['GLOBAL01', 'LGMI01'])) && $coe[0]["type"] != 'COECOMPENSATION'){
-					echo $emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DeptDesc"].' / '.$emp_info[0]["DivisionName"]." DIVISION</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"];
-				}else{
-					echo $emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." DIVISION</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"];
-				}
+				echo $emp_info[0]["PositionDesc"]."</b> by <b>".$emp_info[0]["CompanyName"]."</b> from <b>".$emp_info[0]["HireDate"];
 				?>
 				<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
 				up to the present.</b></p>
