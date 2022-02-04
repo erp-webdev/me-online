@@ -364,7 +364,7 @@
 				up to the present.</b></p>
 				<?php } ?>
 
-				<p style="padding-left: 50px; padding-right: 50px;"> This is to further certify that <?php echo strtolower($emp_info[0]["Gender"])?> did not receive any advance payment from the company for <?php echo $emp_info[0]["Gender2"]?> SSS <?php echo $coe[0]["category"] ?> benefit.</p>
+				<p style="padding-left: 50px; padding-right: 50px;"> This is to further certify that <?php echo strtolower($emp_info[0]["Gender"])?> did not receive any advance payment from the company for <?php echo $emp_info[0]["Gender2"]?> SSS <?php echo strtolower($coe[0]["category"]) ?> benefit.</p>
 				
 				<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo $emp_info[0]["Salutation"]." ".strtoupper(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES')); ?>
 				for the purpose of complying with the documentary requirements for <?php echo $emp_info[0]["Gender2"]?> SSS <?php echo strtolower($coe[0]["category"]) ?> benefit claim.</p>

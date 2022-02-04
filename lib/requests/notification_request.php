@@ -4878,7 +4878,7 @@
 							$("#coeothersdiv").show();
 						}else if($("select[name=coetype]").val() == "COENONCASHADVANCEMENT"){
 						    $("#coecatdiv").show();
-						    $("#other_reason").html("Other Reason:");
+						    $("#other_reason").hide();
                             $("select option[id=noncash]").show();
                             $("select option[id=coe]").hide();
 						}
@@ -5897,6 +5897,7 @@
 						$("#coehpa2").show();
 					}else if ('<?php echo $result[0]['type']; ?>' == 'COENONCASHADVANCEMENT') {
                         $("#coecatdiv2").show();
+                        $("#coeothersdiv2").hide();
 					}
 
                     
