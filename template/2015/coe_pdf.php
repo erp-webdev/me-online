@@ -352,7 +352,7 @@
 						is currently employed as
 					<?php } ?>
 				<b><?php
-				echo $emp_info[0]["PositionDesc"]."</b> by <b>".$emp_info[0]["CompanyName"]."</b> from <b>".$emp_info[0]["HireDate"];
+				echo ucwords(strtolower($emp_info[0]["PositionDesc"]))."</b> by <b>".ucwords(strtolower($emp_info[0]["CompanyName"]))."</b> from <b>".$emp_info[0]["HireDate"];
 				?>
 				<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
 				up to the present.</b></p>
@@ -363,7 +363,7 @@
 				<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo $emp_info[0]["Salutation"]." ".strtoupper(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES')); ?>
 				for the purpose of complying with the documentary requirements for <?php echo $emp_info[0]["Gender2"]?> SSS <?php echo strtolower($coe[0]["category"]) ?> benefit claim.</p>
 
-				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
+				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
 			</div>
 
 			<?php
