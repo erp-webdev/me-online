@@ -345,7 +345,7 @@
 
 			<div style="text-align: justify;  text-justify: inter-word;">
 
-				<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo $emp_info[0]["Salutation"]." ".strtoupper(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES')); ?></b>
+				<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo ucwords(strtolower($emp_info[0]["Salutation"]." ".$emp_info[0]["FullName"])); ?></b>
 					<?php if($emp_info[0]["DateResigned"]){ ?>
 						was employed as
 					<?php }else{ ?>
