@@ -72,13 +72,8 @@
                                         <br>- Send the ITR to  
                                             <?php 
                                                 $itr_mailto="";
-                                                if(in_array($profile_dbname, ['']))
+                                                if(in_array($profile_dbname, [''])){
                                                     $itr_mailto= 'manastacio.global@megaworldcorp.com';
-                                                elseif(in_array($profile_dbname, ['GL'])){
-                                                    if($profile_comp == 'GLOBAL01') 
-                                                        $itr_mailto= 'fgarcia.global@megaworldcorp.com';
-                                                    else 
-                                                        $itr_mailto= 'cnsulat.glob  al@megaworldcorp.com';
                                                 }elseif(in_array($profile_dbname, ['LCTM', 'MLI', 'CITYLINK'])){
                                                     $itr_mailto= 'mpcasabon.global@megaworldcorp.com';
                                                 }elseif(in_array($profile_dbname, ['Rowenta', 'SIRUS', 'ECOC'])){
