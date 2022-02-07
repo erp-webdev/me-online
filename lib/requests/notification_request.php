@@ -4925,6 +4925,11 @@
 						$("select option[id=loanopt]").hide();
 						$("select option[id=schoolopt]").hide();
 						$("select option[id=visaopt]").show();
+						$("#coeothersdiv").hide();
+					}else if ($("select[name=coecategory]").val() == 'SICKNESS') {
+						$("#coeothersdiv").hide();
+					}else if ($("select[name=coecategory]").val() == 'MATERNITY') {
+						$("#coeothersdiv").hide();
 					}else{
 						$("#coereasondiv").hide();
 						$("#coeothersdiv").show();
