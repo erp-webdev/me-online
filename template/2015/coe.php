@@ -15,7 +15,7 @@
 					<div class="leftsplashtext lefttalign"><?php include(TEMP."/menu.php"); ?></div>
 					<div class="rightsplashtext lefttalign">
 						<div id="mainnotification" class="mainbody lefttalign whitetext">
-							<b class="mediumtext lorangetext">My COE Requests</b>
+							<b class="mediumtext lorangetext" >My COE Requests</b>
 							<br><br>
 							<div>
 								<button id="coenewreq" value="New Request" class="smlbtn" attribute5="1">New Request</button>
