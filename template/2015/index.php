@@ -35,17 +35,18 @@
                                 <?php endif; ?>
 
                                 <?php if(in_array($profile_dbname, ['ASIAAPMI', 'CITYLINK', 'LCTM', 'MLI', 'SIRUS', 
-                                    'ECOC', 'ECINEMA', 'MCTI', 'EREX', 'Rowenta', 'NCCAI', 'MREIT'])): ?>
+                                    'ECOC', 'ECINEMA', 'MCTI', 'EREX', 'Rowenta', 'NCCAI', 'MREIT', 'TOWNSQUARE', 'MEGAWORLD', 'GL', 'GLOBAL_HOTEL', 'NEWTOWN', 'LAFUERZA'])): ?>
                                 <?php
                                     $display = true;
 									$deadline = '2022-01-25';
 
-                                    switch ($profile_dbname) {
-                                        case 'GL':
-											$deadline = '2021-02-24';
+                                    if(in_array($profile_dbname, ['TOWNSQUARE', 'MEGAWORLD', 'GL', 'GLOBAL_HOTEL', 'NEWTOWN', 'LAFUERZA'])){
+                                        $deadline = '2022-02-11';
                                             if(date('Y-m-d') > date('Y-m-d' ,strtotime($deadline)))
-                                                $display = true;
-											break;
+                                                $display = false;
+                                    }
+
+                                    switch ($profile_dbname) {
                                         case 'ASIAAPMI':
 											$deadline = '2022-02-28';
                                             if(date('Y-m-d') > date('Y-m-d' ,strtotime($deadline)))
@@ -71,24 +72,22 @@
                                         <br>- Send the ITR to  
                                             <?php 
                                                 $itr_mailto="";
-                                                if(in_array($profile_dbname, ['']))
+                                                if(in_array($profile_dbname, [''])){
                                                     $itr_mailto= 'manastacio.global@megaworldcorp.com';
-                                                elseif(in_array($profile_dbname, ['GL'])){
-                                                    if($profile_comp == 'GLOBAL01') 
-                                                        $itr_mailto= 'fgarcia.global@megaworldcorp.com';
-                                                    else 
-                                                        $itr_mailto= 'cnsulat.glob  al@megaworldcorp.com';
                                                 }elseif(in_array($profile_dbname, ['LCTM', 'MLI', 'CITYLINK'])){
                                                     $itr_mailto= 'mpcasabon.global@megaworldcorp.com';
                                                 }elseif(in_array($profile_dbname, ['Rowenta', 'SIRUS', 'ECOC'])){
                                                     $itr_mailto= 'jeleazar.global@megaworldcorp.com';
                                                 }elseif(in_array($profile_dbname, ['ECINEMA', 'MCTI', 'EREX'])){
                                                     $itr_mailto= ' jfabay.global@megaworldcorp.com';
+                                                }elseif(in_array($profile_dbname, ['TOWNSQUARE', 'MEGAWORLD', 'GL', 'GLOBAL_HOTEL', 'NEWTOWN', 'LAFUERZA'])){
+                                                    $itr_mailto= 'payroll.bir2316@megaworldcorp.com';
                                                 }
 
                                             ?>
                                         <b ><a style="font-size:9px;  color:blue" href="mailto: <?php echo $itr_mailto; ?> "><?php echo $itr_mailto; ?></a> </b>
                                         <br>- Subject : <b>ITR 2021 - Company Name<b>
+                                        <br><i>Non-submission, BIR impose 1,000 penalty for each employee which will be charge to employee</i>
                                     </ul>
                                     
                                     <?php endif; ?>
