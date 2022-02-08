@@ -1,4 +1,4 @@
-<div id="myDivToPrint">
+<div id="myDivToPrint2">
 	<div style="text-align: center; padding-top: 10px;">
 
 		<?php $send_pdf = $_POST['send'] == 'true' ? true : false; ?>
@@ -64,7 +64,7 @@
 		return $str;
 	}
 
-	if ($coe[0]["type"] == "PHILHEALTHCSF") { // CoE with Compensation
+	if ($coe[0]["type"] == "PHILHEALTHCSF") {
 	?>
 	
 	<img style="width: 100%; position: absolute; top: 75px; left: 0px;" src="<?php echo IMG_WEB; ?>/ClaimSignatureForm_a.png"/></p>

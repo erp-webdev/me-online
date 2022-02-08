@@ -6188,7 +6188,7 @@
                 <script>
                     $(document).ready(function(){
                         $(".closebutton").click();
-                        var divToPrint=document.getElementById("myDivToPrint");
+                        var divToPrint=document.getElementById("myDivToPrint2");
                         newWin= window.open("");
                         newWin.document.write(divToPrint.outerHTML);
                         var is_chrome = Boolean(newWin.chrome);
