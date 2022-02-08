@@ -6182,29 +6182,52 @@
 		    $DateResigned2 = $emp_info[0]['DateResigned'] ?  date('Y-m-d', strtotime($emp_info[0]['DateResigned'])) : null;
 			$emp_info[0]['DateResigned'] = $emp_info[0]['DateResigned'] ?  date('F j, Y', strtotime($emp_info[0]['DateResigned'])) : null;
 
+            if ($type ='PHILHEALTHCFS'){
+                include(TEMP.'/philhealth_pdf.php');
+                ?>
+                <script>
+                    $(document).ready(function(){
+                        $(".closebutton").click();
+                        var divToPrint=document.getElementById("myDivToPrint");
+                        newWin= window.open("");
+                        newWin.document.write(divToPrint.outerHTML);
+                        var is_chrome = Boolean(newWin.chrome);
+    
+                        if (is_chrome) {
+                            setTimeout(function() { // wait until all resources loaded
+                                newWin.print();
+                                newWin.close();
+                            }, 250);
+                        } else {
+                            newWin.print();
+                            newWin.close();
+                        }
+                    });
+                </script>
 
-			include(TEMP.'/coe_pdf.php');
-			?>
-			<script>
-				$(document).ready(function(){
-					$(".closebutton").click();
-					var divToPrint=document.getElementById("myDivToPrint");
-					newWin= window.open("");
-					newWin.document.write(divToPrint.outerHTML);
-					var is_chrome = Boolean(newWin.chrome);
-
-					if (is_chrome) {
-						setTimeout(function() { // wait until all resources loaded
-							newWin.print();
-							newWin.close();
-						}, 250);
-					} else {
-						newWin.print();
-						newWin.close();
-					}
-				});
-			</script>
-			<?
+            <?php } else{
+                include(TEMP.'/coe_pdf.php');
+                ?>
+                <script>
+                    $(document).ready(function(){
+                        $(".closebutton").click();
+                        var divToPrint=document.getElementById("myDivToPrint");
+                        newWin= window.open("");
+                        newWin.document.write(divToPrint.outerHTML);
+                        var is_chrome = Boolean(newWin.chrome);
+    
+                        if (is_chrome) {
+                            setTimeout(function() { // wait until all resources loaded
+                                newWin.print();
+                                newWin.close();
+                            }, 250);
+                        } else {
+                            newWin.print();
+                            newWin.close();
+                        }
+                    });
+                </script>
+           <?php }
 
 		break;
 
