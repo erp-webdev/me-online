@@ -481,7 +481,7 @@
 		<!-- <p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">Certified by:</p> -->
 
 	<?php
-	}elseif ($coe[0]["type"] == "COECOMPENSATION") { // CoE with Compensation
+	}elseif ($coe[0]["type"] == "PHILHEALTHCSF") { // CoE with Compensation
 	?>
 
 	<h3 align="center" style="padding-top: 40px">CERTIFICATION OF EMPLOYMENT AND COMPENSATION</h3>
