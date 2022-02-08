@@ -6182,7 +6182,7 @@
 			$emp_info[0]['DateResigned'] = $emp_info[0]['DateResigned'] ?  date('F j, Y', strtotime($emp_info[0]['DateResigned'])) : null;
 
 
-			include(TEMP.'/coe_pdf.php');
+			include(TEMP.'/philhealth_pdf.php');
 			?>
 			<script>
 				$(document).ready(function(){
