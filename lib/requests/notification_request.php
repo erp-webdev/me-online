@@ -4595,6 +4595,8 @@
 								<?php if($level != 1){  ?><option value="COESEPARATED">CoE for Separated Employee</option> <?php } ?>
 								<option value="COECORRECTIONNAME">CoE for Correction Name</option>
                                 <?php if($level != 1){  ?><option value="COENONCASHADVANCEMENT">CoE for Non-Cash Advancement</option> <?php } ?>
+                                <option value="PHILHEALTHCSF">PhilHealth CSF</option>
+                                <option value="PHILHEALTHCF1">PhilHealth CF1</option>
                                 
 							</select>
 						</td>
