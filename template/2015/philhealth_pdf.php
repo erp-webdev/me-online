@@ -45,7 +45,36 @@
 	?>
 	
 	<img style="width: 100%; position: absolute; top: 75px; left: 0px;" src="<?php echo IMG_WEB; ?>/ClaimSignatureForm_a.png"/></p>
+	<body style="size: Legal; font-size: 9pt; font-family: Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif">
+		<!-- Start Print Alignment -->
+		<?php 
 
+		$ph_no = clean_str($philhealth->PhilHealthNbr_Emp);
+		place_text(substr($ph_no, 0, 2), 82, 71, 'letter-spacing: 10px');
+		place_text(substr($ph_no, 2, 9), 92.5, 71, 'letter-spacing: 8px');
+		place_text(substr($ph_no, 11, 1), 129.5, 71, 'letter-spacing: 10px');
+
+		place_text(mb_convert_encoding($philhealth->LName, 'UTF-8', 'HTML-ENTITIES'), 9.5, 79, '');
+		place_text(mb_convert_encoding($philhealth->FName, 'UTF-8', 'HTML-ENTITIES'), 43, 79, '');
+		// place_text($philhealth->LName, 10, 54, ''); For Extension
+		place_text(mb_convert_encoding($philhealth->MName, 'UTF-8', 'HTML-ENTITIES'), 112, 79, '');
+
+
+		place_text(date('m', strtotime($philhealth->BirthDate)), 145, 80.60, 'letter-spacing: 5.5px');
+		place_text(date('d', strtotime($philhealth->BirthDate)), 155, 80.60, 'letter-spacing: 5.5px;');
+		place_text(date('Y', strtotime($philhealth->BirthDate)), 165, 80.60, 'letter-spacing: 7.3px;');
+
+		$ph_no = clean_str($philhealth->PhilHealthNbr_Comp);
+		place_text(substr($ph_no, 0, 2), 62, 171.5, 'letter-spacing: 8px');
+		place_text(substr($ph_no, 2, 9), 72, 171.5, 'letter-spacing: 8px');
+		place_text(substr($ph_no, 11, 1),109, 171.5, 'letter-spacing:8px');
+
+		place_text($philhealth->CompanyName, 39, 175.3, '');
+		place_text($approver->name, 10, 198, '');
+		place_text($approver->position, 83, 198, '');
+
+		?>
+	</body>
 	<?php
 	} 
 	?>
