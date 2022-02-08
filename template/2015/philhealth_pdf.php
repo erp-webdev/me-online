@@ -40,6 +40,29 @@
 		'SIRUS' => 'Lot 28-7 Along M.A Roxas Highway, Clark Freeport Zone',
 		'ASIAAPMI' => '24F ALLIANCE GLOBAL TOWER 36TH STREET CORNER 11 AVENUE UPTOWN BONIFACIO TAGUIG CITY'
 	];
+	function place_text($str, $x, $y, $style)
+	{
+		$x .= 'mm';
+		$y .= 'mm';
+	   echo "<span style='position:absolute; top: $y; left: $x; $style'>$str</span>";
+	}
+	
+	function strip_dash($str)
+	{
+		return str_replace('-', '', $str);
+	}
+	
+	function strip_whitespace($str)
+	{
+		return str_replace(' ', '', $str);    
+	}
+	
+	function clean_str($str)
+	{
+		$str = strip_dash($str);
+		$str = strip_whitespace($str);
+		return $str;
+	}
 
 	if ($coe[0]["type"] == "PHILHEALTHCSF") { // CoE with Compensation
 	?>
@@ -49,29 +72,29 @@
 		<!-- Start Print Alignment -->
 		<?php 
 
-		$ph_no = clean_str($philhealth->PhilHealthNbr_Emp);
+		$ph_no = clean_str($emp_info[0]["PhilHealthNbr"]);
 		place_text(substr($ph_no, 0, 2), 82, 71, 'letter-spacing: 10px');
 		place_text(substr($ph_no, 2, 9), 92.5, 71, 'letter-spacing: 8px');
 		place_text(substr($ph_no, 11, 1), 129.5, 71, 'letter-spacing: 10px');
 
-		place_text(mb_convert_encoding($philhealth->LName, 'UTF-8', 'HTML-ENTITIES'), 9.5, 79, '');
-		place_text(mb_convert_encoding($philhealth->FName, 'UTF-8', 'HTML-ENTITIES'), 43, 79, '');
+		place_text(mb_convert_encoding($emp_info[0]["LName"], 'UTF-8', 'HTML-ENTITIES'), 9.5, 79, '');
+		place_text(mb_convert_encoding($emp_info[0]["FName"], 'UTF-8', 'HTML-ENTITIES'), 43, 79, '');
 		// place_text($philhealth->LName, 10, 54, ''); For Extension
-		place_text(mb_convert_encoding($philhealth->MName, 'UTF-8', 'HTML-ENTITIES'), 112, 79, '');
+		place_text(mb_convert_encoding($emp_info[0]["MName"], 'UTF-8', 'HTML-ENTITIES'), 112, 79, '');
 
 
-		place_text(date('m', strtotime($philhealth->BirthDate)), 145, 80.60, 'letter-spacing: 5.5px');
-		place_text(date('d', strtotime($philhealth->BirthDate)), 155, 80.60, 'letter-spacing: 5.5px;');
-		place_text(date('Y', strtotime($philhealth->BirthDate)), 165, 80.60, 'letter-spacing: 7.3px;');
+		place_text(date('m', strtotime($emp_info[0]["BirthDate"])), 145, 80.60, 'letter-spacing: 5.5px');
+		place_text(date('d', strtotime($emp_info[0]["BirthDate"])), 155, 80.60, 'letter-spacing: 5.5px;');
+		place_text(date('Y', strtotime($emp_info[0]["BirthDate"])), 165, 80.60, 'letter-spacing: 7.3px;');
 
-		$ph_no = clean_str($philhealth->PhilHealthNbr_Comp);
-		place_text(substr($ph_no, 0, 2), 62, 171.5, 'letter-spacing: 8px');
-		place_text(substr($ph_no, 2, 9), 72, 171.5, 'letter-spacing: 8px');
-		place_text(substr($ph_no, 11, 1),109, 171.5, 'letter-spacing:8px');
+		// $ph_no = clean_str($philhealth->PhilHealthNbr_Comp);
+		// place_text(substr($ph_no, 0, 2), 62, 171.5, 'letter-spacing: 8px');
+		// place_text(substr($ph_no, 2, 9), 72, 171.5, 'letter-spacing: 8px');
+		// place_text(substr($ph_no, 11, 1),109, 171.5, 'letter-spacing:8px');
 
-		place_text($philhealth->CompanyName, 39, 175.3, '');
-		place_text($approver->name, 10, 198, '');
-		place_text($approver->position, 83, 198, '');
+		// place_text($philhealth->CompanyName, 39, 175.3, '');
+		// place_text($approver->name, 10, 198, '');
+		// place_text($approver->position, 83, 198, '');
 
 		?>
 	</body>
