@@ -5419,7 +5419,10 @@
 					'COEGOODMORAL' => 'CoE with Good Moral',
 					'COEAPPROVEDLEAVE' => 'CoE with Approved Leave',
 					'COECORRECTIONNAME' => 'CoE for Correction Name',
-					'COESEPARATED' => 'CoE for Separated Employee'
+					'COESEPARATED' => 'CoE for Separated Employee',
+                    'COENONCASHADVANCEMENT' => 'CoE for Non-Cash Advancement',
+                    'PHILHEALTHCSF' => 'PhilHealth CSF',
+                    'PHILHEALTHCF1' => 'PhilHealth CF1'
 				];
 				$coes2 = [
 					'LOAN' => 'Certificate of Employment (Loan0)',
@@ -5444,7 +5447,7 @@
 					if($coetype == 'COE'){
 						$message .= "A new Certificate of Employment (".$coes2["$coecategory"].") has been requested for you with a Reference No: ".$refno.".";
 					}elseif($coetype == 'COENONCASHADVANCEMENT'){
-						$message .= "You have successfully submitted a Certificate of Employment (CoE for Non-Cash Advancement - ".$coes2["$coecategory"].") with a Reference No: ".$refno.".";
+						$message .= "A new Certificate of Employment (CoE for Non-Cash Advancement - ".$coes2["$coecategory"].") has been requested for you with a Reference No: ".$refno.".";
 					}else{
 						$message .= "A new Certificate of Employment (".$coes["$coetype"].") has been requested for you with a Reference No: ".$refno.".";
 					}
@@ -5559,6 +5562,8 @@
 							<?php if($result[0]['type'] == 'COESEPARATED'){ echo "CoE for Separated Employee"; }?>
 							<?php if($result[0]['type'] == 'COECORRECTIONNAME'){ echo "CoE for Correction Name"; }?>
 							<?php if($result[0]['type'] == 'COENONCASHADVANCEMENT'){ echo "CoE for Non-Cash Advancement"; }?>
+							<?php if($result[0]['type'] == 'PHILHEALTHCSF'){ echo "PhilHealth CSF"; }?>
+							<?php if($result[0]['type'] == 'PHILHEALTHCF1'){ echo "PhilHealth CF1"; }?>
 						</td>
 					</tr>
 
