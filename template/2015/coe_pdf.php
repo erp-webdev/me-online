@@ -2,7 +2,7 @@
 	<div style="text-align: center; padding-top: 10px;">
 
 		<?php $send_pdf = $_POST['send'] == 'true' ? true : false; ?>
-
+	<?php if ($coe[0]["type"] != 'PHILHEALTHCSF') { ?>
 		<?php if ($coe[0]["company"] == 'GLOBAL01') { ?>
 			<p><img style="width: <?php echo $send_pdf ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/gl_coe.png"/></p>
 		<?php } elseif ($coe[0]["company"] == 'LGMI01') {?>
@@ -44,6 +44,8 @@
 		<?php } else {?>
 			<p><img style="width: <?php echo $send_pdf ? '150px' : '200px'; ?>;" src="<?php echo IMG_WEB; ?>/blank_coe.png"/></p>
 		<?php } ?>
+	<?php } ?>
+	
 	</div>
 	&nbsp;
 
