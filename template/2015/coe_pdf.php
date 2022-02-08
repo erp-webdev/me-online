@@ -484,8 +484,7 @@
 	}elseif ($coe[0]["type"] == "PHILHEALTHCSF") { // CoE with Compensation
 	?>
 
-	<h3 align="center" style="padding-top: 40px">CERTIFICATION OF EMPLOYMENT AND COMPENSATION</h3>
-	&nbsp;
+	<img style="width: 100%; position: absolute; top: 75px; left: 0px;" src="<?php echo IMG_WEB; ?>/gl_coe.png"/></p>
 
 	<?php if(!$DateResigned2 || date('Y-m-d', strtotime($DateResigned2)) > date('Y-m-d')) : ?>
 	<div style="text-align: justify;  text-justify: inter-word;">
