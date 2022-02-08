@@ -488,7 +488,7 @@
 
 	<img style="width: 100%; position: absolute; top: 75px; left: 0px;" src="<?php echo IMG_WEB; ?>/ClaimSignatureForm_a.png"/></p>
 
-	<?php if(!$DateResigned2 || date('Y-m-d', strtotime($DateResigned2)) > date('Y-m-d')) : ?>
+	<!-- <?php if(!$DateResigned2 || date('Y-m-d', strtotime($DateResigned2)) > date('Y-m-d')) : ?>
 	<div style="text-align: justify;  text-justify: inter-word;">
 		<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">This is to certify that <b><?php echo strtoupper(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES')); ?></b> is an
 			employee of <b><?php echo $emp_info[0]["CompanyName"]; ?></b> since <b><?php echo $emp_info[0]["HireDate"]; ?>
@@ -544,7 +544,7 @@
 		</div>
 		<?php endif; ?>
 		&nbsp;
-	<!-- <p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">Certified by:</p> -->
+	<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">Certified by:</p> -->
 
 	<?php
 	} 
