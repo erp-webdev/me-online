@@ -6144,6 +6144,10 @@
 							WHEN A.GENDER = 'M' or A.GENDER = 'MALE' THEN 'him'
 						END AS Gender3,
 						A.FName+' '+SUBSTRING(A.MNAME, 1, 1)+'. '+A.LName AS FullName,
+                        A.FName,
+                        A.MName,
+                        A.LName,
+                        A.BirthDate,
 						A.Allowance,
 						A.MonthlyRate,
 						A.RankID,
