@@ -6182,12 +6182,12 @@
 			$emp_info[0]['DateResigned'] = $emp_info[0]['DateResigned'] ?  date('F j, Y', strtotime($emp_info[0]['DateResigned'])) : null;
 
 
-			include(TEMP.'/philhealth_pdf.php');
+			include(TEMP.'/coe_pdf.php');
 			?>
 			<script>
 				$(document).ready(function(){
 					$(".closebutton").click();
-					var divToPrint=document.getElementById("myDivToPrint2");
+					var divToPrint=document.getElementById("myDivToPrint");
 					newWin= window.open("");
 					newWin.document.write(divToPrint.outerHTML);
 					var is_chrome = Boolean(newWin.chrome);
