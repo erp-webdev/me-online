@@ -488,64 +488,6 @@
 
 	<img style="width: 100%; position: absolute; top: 75px; left: 0px;" src="<?php echo IMG_WEB; ?>/ClaimSignatureForm_a.png"/></p>
 
-	<!-- <?php if(!$DateResigned2 || date('Y-m-d', strtotime($DateResigned2)) > date('Y-m-d')) : ?>
-	<div style="text-align: justify;  text-justify: inter-word;">
-		<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">This is to certify that <b><?php echo strtoupper(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES')); ?></b> is an
-			employee of <b><?php echo $emp_info[0]["CompanyName"]; ?></b> since <b><?php echo $emp_info[0]["HireDate"]; ?>
-		<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"].".</b>"; }else{ ?>
-		</b>and presently holding a <?php echo strtolower($emp_info[0]["StatusDesc"]); ?> appointment for the position of <b><?php echo $emp_info[0]["PositionDesc"]; ?>.</b></p>
-		<?php } ?>
-
-		<p style="padding-left: 50px; padding-right: 50px;"><?php echo ucwords(strtolower($emp_info[0]["Gender2"])); ?> current monthly compensation are as follows:</p>
-		<!-- nbsp for the pdf conversion, tcpdf doesn't support inline block, and padding. TCPDF has different implementation for tables -->
-		<p style="padding-left: 50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Basic Salary</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><?php if(true){echo number_format($emp_info[0]["MonthlyRate"], 2);}else{ echo "SAMPLE"; }; ?></b></p>
-		<?php if($emp_info[0]["Allowance"] != 0){ ?>
-				<p style="padding-left: 50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Allowance</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><u><?php echo number_format($emp_info[0]["Allowance"], 2); ?></u></b></p>
-				<p style="padding-left: 50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Total</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><u><?php echo number_format($emp_info[0]["Allowance"] + $emp_info[0]["MonthlyRate"], 2); ?></u></b></p>
-		<?php } ?>
-
-		<p style="padding-left: 50px; padding-right: 50px;">In addition to the above compensation package, <?php echo strtolower($emp_info[0]["Gender"]); ?> receives the mandatory
-		13th month pay during the twelve (12) month period.</p>
-
-		<p style="padding-left: 50px; padding-right: 50px;">This document is issued upon the request of <b><?php echo $emp_info[0]["Salutation"]." ".strtoupper(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES')); ?>
-		<?php if($coe[0]["other_reason"]){ ?>
-			for <?php echo $emp_info[0]["Gender2"]. " <i>".$coe[0]["other_reason"]; ?></i></b>.</p>
-		<?php }else{ ?>
-		</b>for whatever legal purpose it may serve.</p>
-		<?php } ?>
-
-		<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
-		</div>
-		<?php elseif(date('Y-m-d', strtotime($DateResigned2)) <= date('Y-m-d')): ?>
-		<div style="text-align: justify;  text-justify: inter-word;">
-		<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">This is to certify that <b><?php echo strtoupper(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES')); ?></b> is a former
-			employee of <b><?php echo $emp_info[0]["CompanyName"]; ?></b> from <b><?php echo $emp_info[0]["HireDate"]; ?> to 
-		<?php echo $emp_info[0]["DateResigned"]; ?> </b> with last held position of <b><?php echo $emp_info[0]["PositionDesc"]; ?>.</b></p>
-
-		<p style="padding-left: 50px; padding-right: 50px;"><?php echo ucwords(strtolower($emp_info[0]["Gender2"])); ?> last monthly compensation are as follows:</p>
-		<!-- nbsp for the pdf conversion, tcpdf doesn't support inline block, and padding. TCPDF has different implementation for tables -->
-		<p style="padding-left: 50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Basic Salary</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><?php if(true){echo number_format($emp_info[0]["MonthlyRate"], 2);}else{ echo ""; }; ?></b></p>
-		<?php if($emp_info[0]["Allowance"] != 0){ ?>
-				<p style="padding-left: 50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Allowance</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><u><?php echo number_format($emp_info[0]["Allowance"], 2); ?></u></b></p>
-				<p style="padding-left: 50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Total</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><u><?php echo number_format($emp_info[0]["Allowance"] + $emp_info[0]["MonthlyRate"], 2); ?></u></b></p>
-		<?php } ?>
-
-		<p style="padding-left: 50px; padding-right: 50px;">In addition to the above compensation package, <?php echo strtolower($emp_info[0]["Gender"]); ?> receives the mandatory
-		13th month pay during the twelve (12) month period.</p>
-
-		<p style="padding-left: 50px; padding-right: 50px;">This document is issued upon the request of <b><?php echo $emp_info[0]["Salutation"]." ".strtoupper(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES')); ?>
-		<?php if($coe[0]["other_reason"]){ ?>
-			for <?php echo $emp_info[0]["Gender2"]. " <i>".$coe[0]["other_reason"]; ?></i></b>.
-		<?php }else{ ?>
-		</b>for whatever legal purpose it may serve.
-		<?php } ?>  Hence, the company hold no responsibility for any misrepresentation of facts and data  enumerated herein.</p>
-
-		<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
-		</div>
-		<?php endif; ?>
-		&nbsp;
-	<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">Certified by:</p> -->
-
 	<?php
 	} 
 	?>
