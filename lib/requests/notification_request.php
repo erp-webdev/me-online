@@ -4597,6 +4597,7 @@
                                 <?php if($level != 1){  ?><option value="COENONCASHADVANCEMENT">CoE for Non-Cash Advancement</option> <?php } ?>
                                 <option value="PHILHEALTHCSF">PhilHealth CSF</option>
                                 <option value="PHILHEALTHCF1">PhilHealth CF1</option>
+                                <?php if($level != 1){  ?><option value="COEFORCOMPENSATION">CoE for Employee Compensation</option> <?php } ?>
                                 
 							</select>
 						</td>
@@ -5422,7 +5423,8 @@
 					'COESEPARATED' => 'CoE for Separated Employee',
                     'COENONCASHADVANCEMENT' => 'CoE for Non-Cash Advancement',
                     'PHILHEALTHCSF' => 'PhilHealth CSF',
-                    'PHILHEALTHCF1' => 'PhilHealth CF1'
+                    'PHILHEALTHCF1' => 'PhilHealth CF1',
+                    'COEFORCOMPENSATION' => 'CoE for Employee Compensation'
 				];
 				$coes2 = [
 					'LOAN' => 'Certificate of Employment (Loan0)',
@@ -5564,6 +5566,7 @@
 							<?php if($result[0]['type'] == 'COENONCASHADVANCEMENT'){ echo "CoE for Non-Cash Advancement"; }?>
 							<?php if($result[0]['type'] == 'PHILHEALTHCSF'){ echo "PhilHealth CSF"; }?>
 							<?php if($result[0]['type'] == 'PHILHEALTHCF1'){ echo "PhilHealth CF1"; }?>
+							<?php if($result[0]['type'] == 'COEFORCOMPENSATION'){ echo "CoE for Employee Compensation"; }?>
 						</td>
 					</tr>
 

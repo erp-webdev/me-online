@@ -367,6 +367,34 @@
 			</div>
 
 			<?php
+	}elseif ($coe[0]["type"] == "COEFORCOMPENSATION") {
+			?>
+
+			<h3 align="center" style="padding-top: 40px; letter-spacing: 10px;">CERTIFICATION</h3>
+			&nbsp;
+
+			<div style="text-align: justify;  text-justify: inter-word;">
+
+				<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo strtoupper($emp_info[0]["FullName"]); ?></b>
+					<?php if($emp_info[0]["DateResigned"]){ ?>
+						was employed as
+					<?php }else{ ?>
+						is currently employed as
+					<?php } ?>
+				<b><?php
+				echo strtoupper($emp_info[0]["PositionDesc"])."</b> by <b>".strtoupper($emp_info[0]["CompanyName"])."</b> from <b>".$emp_info[0]["HireDate"];
+				?>
+				<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"].".</b>"; }else{ ?>
+				up to the present.</b></p>
+				<?php } ?>
+
+				<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo strtoupper($emp_info[0]["Salutation"])." ".strtoupper(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES')); ?>
+				as a requirment for <?php echo $emp_info[0]["Gender2"]?> Employee Compensation Application. <?php echo $emp_info[0]["Gender"]?> last reported for work on .</p>
+
+				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
+			</div>
+
+			<?php
 	}elseif ($coe[0]["type"] == "COEJOBDESC") { // CoE with Job Description
 
 			$tasks = json_decode($coe[0]["job_desc"], true);
