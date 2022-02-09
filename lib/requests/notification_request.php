@@ -4715,7 +4715,7 @@
 							<label id="other_reason">Requirement For: </label>
 						</td>
 						<td>
-							<input name="coeothers" type="textarea" value="" class="txtbox" style="width:185px;">
+							<input id= "coeotherss" name="coeothers" type="textarea" value="" class="txtbox" style="width:185px;">
 						</td>
 					</tr>
 
@@ -4889,7 +4889,7 @@
 						    $("#other_reason").html("Last Day Reported: ");
 							// $("coeothers").removeClass("txtbox");
 							// $("coeothers").addClass("txtbox datepick");
-                            $("coeothers").attr("class", "txtbox datepick");
+                            $("coeotherss").attr("class", "txtbox datepick");
 						}
 
 					}else{
