@@ -4887,6 +4887,7 @@
                             $("select option[id=coe]").hide();
 						}else if($("select[name=coetype]").val() == "COEFORCOMPENSATION"){
 						    $("#other_reason").html("Last Day Reported: ");
+							$("coeothers").removeClass("txtbox");
 							$("coeothers").addClass("txtbox datepick");
 						}
 
