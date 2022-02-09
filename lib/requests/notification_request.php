@@ -4885,6 +4885,9 @@
 							$("#coeothersdiv").hide();
                             $("select option[id=noncash]").show();
                             $("select option[id=coe]").hide();
+						}else if($("select[name=coetype]").val() == "COEFORCOMPENSATION"){
+							$("coeothers").addclass("txtbox datepick");
+						    $("#other_reason").html("Last Day Reported: ");
 						}
 
 					}else{
@@ -5688,6 +5691,7 @@
 							?>
 						</td>
 					</tr>
+                    
 
 					<tr id="coeavail2">
 						<td></td>
