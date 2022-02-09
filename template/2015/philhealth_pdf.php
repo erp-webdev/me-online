@@ -1,5 +1,5 @@
 <div id="myDivToPrint2">
-	<div style="text-align: center;">
+	<div style="text-align: center; padding-top: 10px;">
 
 		<?php $send_pdf = $_POST['send'] == 'true' ? true : false; ?>
 
