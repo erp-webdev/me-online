@@ -4883,7 +4883,7 @@
 						    $("#coecatdiv").show();
 						    $("#other_reason").hide();
 							$("#coeothersdiv").hide();
-                            // $("select option[id=noncash]").show();
+                            $("select option[id=noncash]").show();
                             $("select option[id=coe]").hide();
 						}else if($("select[name=coetype]").val() == "COEFORCOMPENSATION"){
 							$("coeothers").addclass("txtbox datepick");
@@ -4907,6 +4907,8 @@
 						$("#compensation_note").show();
                         $("select option[id=coe]").show();
                         $("select option[id=noncash]").hide();
+                        $("coeothers").addclass("txtbox datepick");
+						    $("#other_reason").html("Last Day Reported: ");
                         
 						// $("input[name=coeothers]").css({"visibility":"visible"});
 					}
