@@ -68,7 +68,7 @@
 	?>
 	
 	<img style="width: 100%; position: absolute; top: 75px; left: 0px;" src="<?php echo IMG_WEB; ?>/ClaimSignatureForm_a.png"/></p>
-	<body style="size: Legal; font-size: 9pt; font-family: Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif">
+	<body style="size: Legal; font-size: 7pt; font-family: Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif">
 		<!-- Start Print Alignment -->
 		<?php 
 
