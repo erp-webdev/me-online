@@ -87,14 +87,14 @@
 		place_text(date('d', strtotime($emp_info[0]["BirthDate"])), 155, 80.60, 'letter-spacing: 5.5px;');
 		place_text(date('Y', strtotime($emp_info[0]["BirthDate"])), 165, 80.60, 'letter-spacing: 7.3px;');
 
-		// $ph_no = clean_str($philhealth->PhilHealthNbr_Comp);
-		// place_text(substr($ph_no, 0, 2), 62, 171.5, 'letter-spacing: 8px');
-		// place_text(substr($ph_no, 2, 9), 72, 171.5, 'letter-spacing: 8px');
-		// place_text(substr($ph_no, 11, 1),109, 171.5, 'letter-spacing:8px');
+		$ph_no = clean_str($emp_info[0]["CompPhilHealthNbr"]);
+		place_text(substr($ph_no, 0, 2), 62, 171.5, 'letter-spacing: 8px');
+		place_text(substr($ph_no, 2, 9), 72, 171.5, 'letter-spacing: 8px');
+		place_text(substr($ph_no, 11, 1),109, 171.5, 'letter-spacing:8px');
 
-		// place_text($philhealth->CompanyName, 39, 175.3, '');
-		// place_text($approver->name, 10, 198, '');
-		// place_text($approver->position, 83, 198, '');
+		place_text($emp_info[0]["CompanyName"], 39, 175.3, '');
+		place_text($approver->name, 10, 198, '');
+		place_text($approver->position, 83, 198, '');
 
 		?>
 	</body>

@@ -6158,6 +6158,7 @@
                         A.LName,
                         A.BirthDate,
                         A.PhilHealthNbr,
+                        F.PhilHealthNbr as CompPhilHealthNbr,
 						A.Allowance,
 						A.MonthlyRate,
 						A.RankID,
