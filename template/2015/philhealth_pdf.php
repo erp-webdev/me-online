@@ -1,4 +1,5 @@
 <div id="myDivToPrint2">
+	<div style="text-align: center; padding-top: 10px;">
 
 		<?php $send_pdf = $_POST['send'] == 'true' ? true : false; ?>
 
@@ -72,9 +73,9 @@
 		<?php 
 
 		$ph_no = clean_str($emp_info[0]["PhilHealthNbr"]);
-		place_text(substr($ph_no, 0, 2), 82, 71.5, 'letter-spacing: 10px');
-		place_text(substr($ph_no, 2, 9), 92.5, 71.5, 'letter-spacing: 8px');
-		place_text(substr($ph_no, 11, 1), 129.5, 71.5, 'letter-spacing: 10px');
+		place_text(substr($ph_no, 0, 2), 83.5, 71.5, 'letter-spacing: 10px');
+		place_text(substr($ph_no, 2, 9), 94, 71.5, 'letter-spacing: 8px');
+		place_text(substr($ph_no, 11, 1), 131, 71.5, 'letter-spacing: 10px');
 
 		place_text(mb_convert_encoding($emp_info[0]["LName"], 'UTF-8', 'HTML-ENTITIES'), 9.5, 79, '');
 		place_text(mb_convert_encoding($emp_info[0]["FName"], 'UTF-8', 'HTML-ENTITIES'), 43, 79, '');
@@ -138,4 +139,5 @@
 		<?php
 		}
 		?>
+</div>
 <?php
