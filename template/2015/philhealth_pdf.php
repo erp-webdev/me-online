@@ -73,7 +73,7 @@
 		<?php 
 
 		$ph_no = clean_str($emp_info[0]["PhilHealthNbr"]);
-		place_text(substr($ph_no, 0, 2), 83.5, 71.5, 'letter-spacing: 10px');
+		place_text(substr($ph_no, 0, 2), 83.5, 71.5, 'letter-spacing: 9px');
 		place_text(substr($ph_no, 2, 9), 94, 71.5, 'letter-spacing: 8px');
 		place_text(substr($ph_no, 11, 1), 131, 71.5, 'letter-spacing: 10px');
 
