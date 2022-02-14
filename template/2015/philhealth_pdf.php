@@ -40,6 +40,95 @@
 		'SIRUS' => 'Lot 28-7 Along M.A Roxas Highway, Clark Freeport Zone',
 		'ASIAAPMI' => '24F ALLIANCE GLOBAL TOWER 36TH STREET CORNER 11 AVENUE UPTOWN BONIFACIO TAGUIG CITY'
 	];
+
+	function get_approver($company_id)
+	{
+	$approver = ['name' => '', 'position' => ''];
+	switch(true)
+		{
+			case in_array($company_id, ['GLOBAL01']) :
+				$approver['name'] = 'ARLENE A. BRANCO';
+				$approver['position'] = 'PAYROLL MANAGER';
+			break;
+			case in_array($company_id, ['LGMI01']) :
+				$approver['name'] = 'ARLENE A. BRANCO';
+				$approver['position'] = 'PAYROLL MANAGER';
+			break;
+			case in_array($company_id, ['MEGA01', 'MEGAWORLD']) :
+				   $approver['name'] = 'ARLENE A. BRANCO';
+				$approver['position'] = 'PAYROLL MANAGER';
+			break;
+			case in_array($company_id, ['LCCI']) :
+				   $approver['name'] = 'ARLENE A. BRANCO';
+				$approver['position'] = 'PAYROLL MANAGER';
+			break;
+			case in_array($company_id, ['LCTM']) :
+				   $approver['name'] = 'ARLENE A. BRANCO';
+				$approver['position'] = 'PAYROLL MANAGER';
+			break;
+			case in_array($company_id, ['LAFUERZA']) :
+				   $approver['name'] = 'ARLENE A. BRANCO';
+				$approver['position'] = 'PAYROLL MANAGER';
+			break;
+			case in_array($company_id, ['MLI']) :
+				$approver['name'] = 'ARLENE A. BRANCO';
+				$approver['position'] = 'PAYROLL MANAGER';
+			break;
+			case in_array($company_id, ['TDI']) :
+				$approver['name'] = 'ARLENE A. BRANCO';
+				$approver['position'] = 'PAYROLL MANAGER';
+			break;
+			case in_array($company_id, ['ECOC']) :
+				$approver['name'] = 'ARLENE A. BRANCO';
+				$approver['position'] = 'PAYROLL MANAGER';
+			break;
+			case in_array($company_id, ['SUNTRUST']) :
+				$approver['name'] = 'ARLENE A. BRANCO';
+				$approver['position'] = 'PAYROLL MANAGER';
+			break;
+			case in_array($company_id, ['EREX']) :
+				$approver['name'] = 'ARLENE A. BRANCO';
+				$approver['position'] = 'PAYROLL MANAGER';
+			break;
+			case in_array($company_id, ['CITYLINK']) :
+				$approver['name'] = 'ARLENE A. BRANCO';
+				$approver['position'] = 'PAYROLL MANAGER';
+			break;
+			case in_array($company_id, ['LUCK01']) :
+				$approver['name'] = 'ARLENE A. BRANCO';
+				$approver['position'] = 'PAYROLL MANAGER';
+			break;
+			case in_array($company_id, ['NCCAI']) :
+				$approver['name'] = 'ARLENE A. BRANCO';
+				$approver['position'] = 'PAYROLL MANAGER';
+			break;
+			case $company_id == 'GLOBALHOTEL' :
+				$approver['name'] = 'Bernadette Roxas';
+				$approver['position'] = 'HR Director';
+			break;
+			case in_array($company_id, ['NEWTOWN']) :
+				$approver['name'] = 'ARLENE A. BRANCO';
+				$approver['position'] = 'PAYROLL MANAGER';
+			break;
+			case in_array($company_id, ['MCTI']) :
+				$approver['name'] = 'ARLENE A. BRANCO';
+				$approver['position'] = 'PAYROLL MANAGER';
+			break;
+			case in_array($company_id, ['MARKETING']) :
+				$approver['name'] = 'ARLENE A. BRANCO';
+				$approver['position'] = 'PAYROLL MANAGER';
+			break;
+			case in_array($company_id, ['FIRSTCENTRO']) :
+				$approver['name'] = 'ARLENE A. BRANCO';
+				$approver['position'] = 'PAYROLL MANAGER';
+			break;
+			default:
+			break;
+		}
+
+	return $approver;
+	}
+
 	function place_text($str, $x, $y, $style)
 	{
 		$x .= 'mm';
@@ -72,6 +161,8 @@
 		<!-- Start Print Alignment -->
 		<?php 
 
+		$approver = get_approver($emp_info[0]["CompanyID"]);
+
 		$ph_no = clean_str($emp_info[0]["PhilHealthNbr"]);
 		place_text(substr($ph_no, 0, 2), 83.5, 71.5, 'letter-spacing: 9px');
 		place_text(substr($ph_no, 2, 9), 94, 71.5, 'letter-spacing: 7px');
@@ -90,7 +181,7 @@
 		$ph_no = clean_str($emp_info[0]["CompPhilHealthNbr"]);
 		place_text(substr($ph_no, 0, 2), 63, 174, 'letter-spacing: 8px');
 		place_text(substr($ph_no, 2, 9), 73, 174, 'letter-spacing: 7px');
-		place_text(substr($ph_no, 11, 1),110, 174, 'letter-spacing:8px');
+		place_text(substr($ph_no, 11, 1),111, 174, 'letter-spacing:8px');
 
 		place_text($emp_info[0]["CompanyName"], 39, 178.1, '');
 		place_text($approver->name, 10, 198, '');
