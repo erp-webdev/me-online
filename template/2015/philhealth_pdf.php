@@ -211,9 +211,9 @@
 			place_text(mb_convert_encoding($emp_info[0]["MName"], 'UTF-8', 'HTML-ENTITIES'), 113.5, 115, '');
 	
 	
-			place_text(date('m', strtotime($emp_info[0]["BirthDate"])), 147.50, 81.80, 'letter-spacing: 5.5px');
-			place_text(date('d', strtotime($emp_info[0]["BirthDate"])), 157.50, 81.80, 'letter-spacing: 5.5px;');
-			place_text(date('Y', strtotime($emp_info[0]["BirthDate"])), 167.50, 81.80, 'letter-spacing: 7.3px;');
+			place_text(date('m', strtotime($emp_info[0]["BirthDate"])), 147.50, 92, 'letter-spacing: 5.5px');
+			place_text(date('d', strtotime($emp_info[0]["BirthDate"])), 157.50, 92, 'letter-spacing: 5.5px;');
+			place_text(date('Y', strtotime($emp_info[0]["BirthDate"])), 167.50, 92, 'letter-spacing: 7.3px;');
 	
 			$ph_no = clean_str($emp_info[0]["CompPhilHealthNbr"]);
 			place_text(substr($ph_no, 0, 2), 63, 174, 'letter-spacing: 8px');
