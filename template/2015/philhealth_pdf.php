@@ -216,9 +216,9 @@
 			place_text(date('Y', strtotime($emp_info[0]["BirthDate"])), 167.50, 97, 'letter-spacing: 7.3px;');
 	
 			$ph_no = clean_str($emp_info[0]["CompPhilHealthNbr"]);
-			place_text(substr($ph_no, 0, 2), 63, 260, 'letter-spacing: 8px');
-			place_text(substr($ph_no, 2, 9), 73, 260, 'letter-spacing: 7px');
-			place_text(substr($ph_no, 11, 1),111, 260, 'letter-spacing:8px');
+			place_text(substr($ph_no, 0, 2), 63, 240, 'letter-spacing: 8px');
+			place_text(substr($ph_no, 2, 9), 73, 240, 'letter-spacing: 7px');
+			place_text(substr($ph_no, 11, 1),111, 240, 'letter-spacing:8px');
 	
 			place_text($emp_info[0]["CompanyName"], 39, 178.1, '');
 			place_text($approver->name, 11.5, 202, '');
