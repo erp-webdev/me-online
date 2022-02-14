@@ -126,7 +126,7 @@
 			break;
 		}
 
-	return $approver;
+		return (object)$approver;
 	}
 
 	function place_text($str, $x, $y, $style)
