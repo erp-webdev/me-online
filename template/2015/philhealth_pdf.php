@@ -185,7 +185,7 @@
 
 		place_text($emp_info[0]["CompanyName"], 39, 178.1, '');
 		place_text($approver->name, 11.5, 202, '');
-		place_text($approver->position, 84.5, 202, '');
+		place_text($approver->position, 85.5, 202, '');
 
 		?>
 	</body>
