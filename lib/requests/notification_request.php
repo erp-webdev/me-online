@@ -6196,7 +6196,7 @@
 		    $DateResigned2 = $emp_info[0]['DateResigned'] ?  date('Y-m-d', strtotime($emp_info[0]['DateResigned'])) : null;
 			$emp_info[0]['DateResigned'] = $emp_info[0]['DateResigned'] ?  date('F j, Y', strtotime($emp_info[0]['DateResigned'])) : null;
 
-            if ($coe[0]["type"] == 'PHILHEALTHCSF'){
+            if ($coe[0]["type"] == 'PHILHEALTHCSF' || $coe[0]["type"] == 'PHILHEALTHCF1'){
 			    include(TEMP.'/philhealth_pdf.php');
 			    ?>
 			    <script>
