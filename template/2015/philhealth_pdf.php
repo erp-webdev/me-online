@@ -184,8 +184,8 @@
 		place_text(substr($ph_no, 11, 1),111, 174, 'letter-spacing:8px');
 
 		place_text($emp_info[0]["CompanyName"], 39, 178.1, '');
-		place_text($approver->name, 11.5, 203, '');
-		place_text($approver->position, 84.5, 203, '');
+		place_text($approver->name, 11.5, 201, '');
+		place_text($approver->position, 84.5, 201, '');
 
 		?>
 	</body>
