@@ -201,9 +201,9 @@
 			$approver = get_approver($emp_info[0]["CompanyID"]);
 	
 			$ph_no = clean_str($emp_info[0]["PhilHealthNbr"]);
-			place_text(substr($ph_no, 0, 2), 83.5, 71.5, 'letter-spacing: 9px');
-			place_text(substr($ph_no, 2, 9), 94, 71.5, 'letter-spacing: 7px');
-			place_text(substr($ph_no, 11, 1), 131.5, 71.5, 'letter-spacing: 10px');
+			place_text(substr($ph_no, 0, 2), 83.5, 81.5, 'letter-spacing: 9px');
+			place_text(substr($ph_no, 2, 9), 94, 81.5, 'letter-spacing: 7px');
+			place_text(substr($ph_no, 11, 1), 131.5, 81.5, 'letter-spacing: 10px');
 	
 			place_text(mb_convert_encoding($emp_info[0]["LName"], 'UTF-8', 'HTML-ENTITIES'), 11, 80.5, '');
 			place_text(mb_convert_encoding($emp_info[0]["FName"], 'UTF-8', 'HTML-ENTITIES'), 44.5, 80.5, '');
