@@ -73,9 +73,9 @@
 		<?php 
 
 		$ph_no = clean_str($emp_info[0]["PhilHealthNbr"]);
-		place_text(substr($ph_no, 0, 2), 82, 71, 'letter-spacing: 10px');
-		place_text(substr($ph_no, 2, 9), 92.5, 71, 'letter-spacing: 8px');
-		place_text(substr($ph_no, 11, 1), 129.5, 71, 'letter-spacing: 10px');
+		place_text(substr($ph_no, 0, 2), 84, 71, 'letter-spacing: 10px');
+		place_text(substr($ph_no, 2, 9), 94.5, 71, 'letter-spacing: 8px');
+		place_text(substr($ph_no, 11, 1), 131.5, 71, 'letter-spacing: 10px');
 
 		place_text(mb_convert_encoding($emp_info[0]["LName"], 'UTF-8', 'HTML-ENTITIES'), 9.5, 79, '');
 		place_text(mb_convert_encoding($emp_info[0]["FName"], 'UTF-8', 'HTML-ENTITIES'), 43, 79, '');
