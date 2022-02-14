@@ -190,8 +190,45 @@
 		?>
 	</body>
 	<?php
-	} 
-	?>
+	} else {
+		?>
+		
+		<img style="width: 100%; position: absolute; top: 75px; left: 0px;" src="<?php echo IMG_WEB; ?>/ClaimForm1_a.png"/></p>
+		<body style="size: Legal; font-size: 7pt; font-family: Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif">
+			<!-- Start Print Alignment -->
+			<?php 
+	
+			$approver = get_approver($emp_info[0]["CompanyID"]);
+	
+			$ph_no = clean_str($emp_info[0]["PhilHealthNbr"]);
+			place_text(substr($ph_no, 0, 2), 83.5, 71.5, 'letter-spacing: 9px');
+			place_text(substr($ph_no, 2, 9), 94, 71.5, 'letter-spacing: 7px');
+			place_text(substr($ph_no, 11, 1), 131.5, 71.5, 'letter-spacing: 10px');
+	
+			place_text(mb_convert_encoding($emp_info[0]["LName"], 'UTF-8', 'HTML-ENTITIES'), 11, 80.5, '');
+			place_text(mb_convert_encoding($emp_info[0]["FName"], 'UTF-8', 'HTML-ENTITIES'), 44.5, 80.5, '');
+			// place_text($philhealth->LName, 10, 54, ''); For Extension
+			place_text(mb_convert_encoding($emp_info[0]["MName"], 'UTF-8', 'HTML-ENTITIES'), 113.5, 80.5, '');
+	
+	
+			place_text(date('m', strtotime($emp_info[0]["BirthDate"])), 147.50, 81.80, 'letter-spacing: 5.5px');
+			place_text(date('d', strtotime($emp_info[0]["BirthDate"])), 157.50, 81.80, 'letter-spacing: 5.5px;');
+			place_text(date('Y', strtotime($emp_info[0]["BirthDate"])), 167.50, 81.80, 'letter-spacing: 7.3px;');
+	
+			$ph_no = clean_str($emp_info[0]["CompPhilHealthNbr"]);
+			place_text(substr($ph_no, 0, 2), 63, 174, 'letter-spacing: 8px');
+			place_text(substr($ph_no, 2, 9), 73, 174, 'letter-spacing: 7px');
+			place_text(substr($ph_no, 11, 1),111, 174, 'letter-spacing:8px');
+	
+			place_text($emp_info[0]["CompanyName"], 39, 178.1, '');
+			place_text($approver->name, 11.5, 202, '');
+			place_text($approver->position, 85.5, 202, '');
+	
+			?>
+		</body>
+		<?php
+		} 
+		?>
 	<?php
 		echo !$send_pdf ? '&nbsp;<br />'  : '';
 	?>
