@@ -5049,10 +5049,6 @@
 						}
 					});
 				});
-                
-                $("#coeothers1").change(function{
-                    $("input[name=coeothers]").val($("input[name=coeothersdate]").val(''));
-                });
 
 			});
 			</script>
