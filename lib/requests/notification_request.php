@@ -4965,7 +4965,7 @@
 					var category = $("select[name=coecategory]").val();
 					var reason = $("select[name=coereason]").val();
 
-                    if (category == "" || category == ""){
+                    if (category == "COEFORCOMPENSATION"){
                         var other = $("input[name=coeothersdate]").val();
                     }else{
                         var other = $("input[name=coeothers]").val();
