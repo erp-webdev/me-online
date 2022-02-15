@@ -4715,7 +4715,7 @@
 							<label id="other_reason">Requirement For: </label>
 						</td>
 						<td>
-							<input id= "coeotherss" name="coeothers" type="textarea" value="" class="txtbox" style="width:185px;">
+							<input id="coeotherss" name="coeothers" type="textarea" value="" class="txtbox" style="width:185px;">
 						</td>
 					</tr>
 
@@ -4887,6 +4887,7 @@
                             $("select option[id=coe]").hide();
 						}else if($("select[name=coetype]").val() == "COEFORCOMPENSATION"){
 						    $("#other_reason").html("Last Day Reported: ");
+							$("#coeotherss").type("password");
 							$("#coeotherss").removeClass("txtbox").addClass("txtbox datepick");
 							// $("coeothers").addClass("txtbox datepick");
                             // $("coeotherss").attr("class", "txtbox datepick");
