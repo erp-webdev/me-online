@@ -5051,7 +5051,7 @@
 				});
                 
                 $("#coeothers1").change(function){
-                    $("input[name=coeothers]").val($("input[name=coeothersdate]").val(''););
+                    $("input[name=coeothers]").val($("input[name=coeothersdate]").val(''));
                 }
 
 			});
