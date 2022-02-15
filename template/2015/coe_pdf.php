@@ -389,7 +389,7 @@
 				<?php } ?>
 
 				<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo strtoupper($emp_info[0]["Salutation"])." ".strtoupper(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES')); ?>
-				as a requirment for <?php echo $emp_info[0]["Gender2"]?> Employee Compensation Application. <?php echo $emp_info[0]["Gender"]?> last reported for work on <?php echo $emp_info[0]["other_reason"] ?>.</p>
+				as a requirment for <?php echo $emp_info[0]["Gender2"]?> Employee Compensation Application. <?php echo $emp_info[0]["Gender"]?> last reported for work on <?php echo $coe[0]["other_reason"] ?>.</p>
 
 				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
 			</div>
