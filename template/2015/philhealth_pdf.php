@@ -220,9 +220,9 @@
 			place_text(substr($ph_no, 2, 9), 74, 248, 'letter-spacing: 7px');
 			place_text(substr($ph_no, 11, 1),112, 248, 'letter-spacing:8px');
 	
-			place_text($emp_info[0]["CompanyName"], 39, 278.1, '');
-			place_text($approver->name, 11.5, 302, '');
-			place_text($approver->position, 85.5, 302, '');
+			place_text($emp_info[0]["CompanyName"], 39, 258, '');
+			place_text($approver->name, 11.5, 262, '');
+			place_text($approver->position, 85.5, 262, '');
 	
 			?>
 		</body>
