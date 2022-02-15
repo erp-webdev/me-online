@@ -4924,6 +4924,10 @@
 					}
 				});
 
+                $("input[name=coeothersdate]").change(function(){
+                    $("input[name=coeothers]").val($("input[name=coeothers]").val());
+                });
+
 				$("select[name=coecategory]").change(function(){
 					if($("select[name=coecategory]").val() == 'LOAN'){
 						$("#coereasondiv").show();
