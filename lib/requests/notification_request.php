@@ -4717,9 +4717,9 @@
 						<td>
 							<input id="coeotherss" name="coeothers" type="text" value="" class="txtbox" style="width:185px;">
 						</td>
-						<!-- <td>
+						<td>
 							<input id="coeothers1" name="coeothersdate" type="text" class="txtbox datepick" style="width:185px;">
-						</td> -->
+						</td>
 					</tr>
 
 					<?php if($level != 1){ ?>
