@@ -4714,11 +4714,11 @@
 						<td>
 							<label id="other_reason">Requirement For: </label>
 						</td>
-						<td>
-							<input id="coeotherss" name="coeothers" type="text" value="" class="txtbox" style="width:185px;">
+						<td id="other_reason_text">
+							<input id="coeothers0" name="coeothers" type="textarea" value="" class="txtbox" style="width:185px;">
 						</td>
-						<td>
-							<input id="coeothers1" name="coeothersdate" type="hidden" class="txtbox datepick" style="width:185px;">
+						<td id="other_reason_date">
+							<input id="coeothers1" name="coeothersdate" type="text" class="txtbox datepick" style="width:185px;">
 						</td>
 					</tr>
 
@@ -4890,7 +4890,8 @@
                             $("select option[id=coe]").hide();
 						}else if($("select[name=coetype]").val() == "COEFORCOMPENSATION"){
 						    $("#other_reason").html("Last Day Reported: ");
-							$("#coeotherss").removeClass("txtbox").addClass("txtbox datepick");
+                            $("#coeothers0").hide();
+							// $("#coeotherss").removeClass("txtbox").addClass("txtbox datepick");
 							// $("coeothers").addClass("txtbox datepick");
                             // $("coeotherss").attr("class", "txtbox datepick");
 						}
@@ -4957,7 +4958,7 @@
 					var type = $("select[name=coetype]").val();
 					var category = $("select[name=coecategory]").val();
 					var reason = $("select[name=coereason]").val();
-					var other = $("input[name=coeothers]").val();
+					if $("select[name=coetype]").val() =  var other = $("input[name=coeothers]").val();
 					var leavefrom = $("input[name=coeleavefrom]").val();
 					var leaveto = $("input[name=coeleaveto]").val();
 					var leavereturn = $("input[name=coeleavereturn]").val();
