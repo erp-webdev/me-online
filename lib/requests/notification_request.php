@@ -4717,6 +4717,13 @@
 						<td id="other_reason_text">
 							<input id="coeothers0" name="coeothers" type="textarea" value="" class="txtbox" style="width:185px;">
 						</td>
+					</tr>
+
+                    <tr id="coeothersdiv0">
+						<td></td>
+						<td>
+							<label id="other_reason">Last Day Reported: </label>
+						</td>
 						<td id="other_reason_date">
 							<input id="coeothers1" name="coeothersdate" type="text" class="txtbox datepick" style="width:185px;">
 						</td>
@@ -4958,7 +4965,7 @@
 					var type = $("select[name=coetype]").val();
 					var category = $("select[name=coecategory]").val();
 					var reason = $("select[name=coereason]").val();
-					if $("select[name=coetype]").val() =  var other = $("input[name=coeothers]").val();
+					var other = $("input[name=coeothers]").val();
 					var leavefrom = $("input[name=coeleavefrom]").val();
 					var leaveto = $("input[name=coeleaveto]").val();
 					var leavereturn = $("input[name=coeleavereturn]").val();
@@ -5043,6 +5050,10 @@
 						}
 					});
 				});
+                
+                $("#coeothers1").change(function){
+                    $("input[name=coeothers]").val($("input[name=coeothersdate]").val(''););
+                }
 
 			});
 			</script>
