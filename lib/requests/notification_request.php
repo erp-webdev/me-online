@@ -4843,6 +4843,7 @@
 				$("#coehpa").hide();
 				$("#coeavail").hide();
 				$("#compensation_note").hide();
+                $("#coeothersdiv0").hide();
 
 
 				$("select[name=coetype]").change(function(){
@@ -4896,10 +4897,8 @@
                             $("select option[id=noncash]").show();
                             $("select option[id=coe]").hide();
 						}else if($("select[name=coetype]").val() == "COEFORCOMPENSATION"){
-						    // $("#other_reason").html("Last Day Reported: ");
-							// $("#coeotherss").removeClass("txtbox").addClass("txtbox datepick");
-							// $("coeothers").addClass("txtbox datepick");
-                            // $("coeotherss").attr("class", "txtbox datepick");
+							$("#coeothersdiv").hide();
+                            $("#coeothersdiv0").show();
 						}
 
 					}else{
@@ -4919,6 +4918,7 @@
 						$("#compensation_note").show();
                         $("select option[id=coe]").show();
                         $("select option[id=noncash]").hide();
+                        $("#coeothersdiv0").hide();
                         
 						// $("input[name=coeothers]").css({"visibility":"visible"});
 					}
