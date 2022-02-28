@@ -4791,9 +4791,9 @@
 				?>
 
 				$(".datepick").datepicker({
-					dateFormat: 'mm/01/yy',
+					dateFormat: 'mm/dd/yy',
 					changeMonth: true,
-					// changeDay: true,
+					changeDay: true,
 					changeYear: true
 				});
 
