@@ -4595,9 +4595,9 @@
 								<?php if($level != 1){  ?><option value="COESEPARATED">CoE for Separated Employee</option> <?php } ?>
 								<option value="COECORRECTIONNAME">CoE for Correction Name</option>
                                 <?php if($level != 1){  ?><option value="COENONCASHADVANCEMENT">CoE for Non-Cash Advancement</option> <?php } ?>
-                                <option value="PHILHEALTHCSF">PhilHealth CSF</option>
-                                <option value="PHILHEALTHCF1">PhilHealth CF1</option>
-                                <?php if($empid ="2021-09-0351"){  ?><option value="COEFORCOMPENSATION">CoE for Employee Compensation</option> <?php } ?>
+                                <?php if($empid ="2021-09-0351"){  ?><option value="PHILHEALTHCSF">PhilHealth CSF</option> <?php } ?>
+                                <?php if($empid ="2021-09-0351"){  ?><option value="PHILHEALTHCF1">PhilHealth CF1</option> <?php } ?>
+                                <?php if($empid ="2021-09-0351"){  ?><option value="COEFORCOMPENSATION">CoE for Employee Compensation</option> 
                                 <?php if($empid ="2021-09-0351"){  ?><option value="SSSCERT">SSS Certificate</option> <?php } ?>
                                 <?php if($empid ="2021-09-0351"){  ?><option value="PHILHEALTHCERT">Philhealth Certificate</option> <?php } ?>
                                 <?php if($empid ="2021-09-0351"){  ?><option value="PAGIBIGCERT">Pagibig Certificate</option> <?php } ?>
