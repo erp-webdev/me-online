@@ -4905,8 +4905,8 @@
 						}else if($("select[name=coetype]").val() == "SSSCERT"){
 							$("#coeleavediv1").show();
 						    $("#coeleavediv2").show();
-                            $("#leave_from").html("From:");
-                            $("#leave_to").html("To:");
+                            $("#leave_from1").html("From:");
+                            $("#leave_to1").html("To:");
 						}
 
 					}else{
@@ -5634,7 +5634,7 @@
 					<tr id="coeleavediv1">
 						<td></td>
 						<td align="left">
-							<label id="leave_from">Leave From: </label>
+							<label id="leave_from1">Leave From: </label>
 						</td>
 						<td align="left">
 							<?php echo date('m/d/Y', strtotime($result[0]['leave_from'])); ?>
@@ -5644,7 +5644,7 @@
 					<tr id="coeleavediv2">
 						<td></td>
 						<td align="left">
-							<label id="leave_from">Leave To: </label>
+							<label id="leave_to1">Leave To: </label>
 						</td>
 						<td align="left">
 							<?php echo date('m/d/Y', strtotime($result[0]['leave_to'])); ?>
