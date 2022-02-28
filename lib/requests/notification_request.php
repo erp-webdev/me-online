@@ -4598,6 +4598,9 @@
                                 <option value="PHILHEALTHCSF">PhilHealth CSF</option>
                                 <option value="PHILHEALTHCF1">PhilHealth CF1</option>
                                 <?php if($level != 1){  ?><option value="COEFORCOMPENSATION">CoE for Employee Compensation</option> <?php } ?>
+                                <?php if($level != 1){  ?><option value="SSSCERT">SSS Certificate</option> <?php } ?>
+                                <?php if($level != 1){  ?><option value="PHILHEALTHCERT">Philhealth Certificate</option> <?php } ?>
+                                <?php if($level != 1){  ?><option value="PAGIBIGCERT">Pagibig Certificate</option> <?php } ?>
                                 
 							</select>
 						</td>
@@ -4899,6 +4902,11 @@
 						}else if($("select[name=coetype]").val() == "COEFORCOMPENSATION"){
 							$("#coeothersdiv").hide();
                             $("#coeothersdiv0").show();
+						}else if($("select[name=coetype]").val() == "SSSCERT"){
+							$("#coeleavediv1").show();
+						    $("#coeleavediv2").show();
+                            $("#leave_from").html("From:");
+                            $("#leave_to").html("To:");
 						}
 
 					}else{
@@ -4911,6 +4919,7 @@
 						$("#coeleavediv3").hide();
 						$("#coeleavediv4").hide();
 						$("#coecatdiv").show();
+                        $("#coeothersdiv0").hide();
 						$("#other_reason").html("Other Reason:");
 						$("#coehpa").hide();
 						$("#coeavail").hide();
@@ -5625,7 +5634,7 @@
 					<tr id="coeleavediv1">
 						<td></td>
 						<td align="left">
-							<label>Leave From: </label>
+							<label id="leave_from">Leave From: </label>
 						</td>
 						<td align="left">
 							<?php echo date('m/d/Y', strtotime($result[0]['leave_from'])); ?>
@@ -5635,7 +5644,7 @@
 					<tr id="coeleavediv2">
 						<td></td>
 						<td align="left">
-							<label>Leave To: </label>
+							<label id="leave_from">Leave To: </label>
 						</td>
 						<td align="left">
 							<?php echo date('m/d/Y', strtotime($result[0]['leave_to'])); ?>
@@ -6174,6 +6183,8 @@
                         A.BirthDate,
                         A.PhilHealthNbr,
                         F.PhilHealthNbr as CompPhilHealthNbr,
+                        A.SSSNbr,
+                        F.SSSNbr as CompSSSNbr,
 						A.Allowance,
 						A.MonthlyRate,
 						A.RankID,

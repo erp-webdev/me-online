@@ -41,92 +41,115 @@
 		'ASIAAPMI' => '24F ALLIANCE GLOBAL TOWER 36TH STREET CORNER 11 AVENUE UPTOWN BONIFACIO TAGUIG CITY'
 	];
 
+
+	function get_sss_certificate_data($dbname, $EmpID, $date1, $date2)
+	{
+		$query = "
+			USE $dbname
+			SELECT 	SSSMonth,
+					SSSYear,
+					ReceiptNo,
+					ReceiptDate,
+					SSSEmployee,
+					SSSEmployer,
+					EndDate 
+			FROM dbo.SSSRemit 
+			WHERE 	EmpID='$EmpID' 
+			AND 	EndDate BETWEEN '". date('m/d/Y',strtotime($date1))."' 
+					AND '".date('m/d/Y',strtotime($date2))."' 
+			ORDER BY EndDate ASC";
+
+		$re = mssql_query($query);
+		return $this->get_all_rows($re);
+	}
+
+
 	function get_approver($company_id)
 	{
-	$approver = ['name' => '', 'position' => ''];
+	$dbapp = ['name' => '', 'position' => '', 'db_name' =>''];
 	switch(true)
 		{
 			case in_array($company_id, ['GLOBAL01']) :
-				$approver['name'] = 'ARLENE A. BRANCO';
-				$approver['position'] = 'PAYROLL MANAGER';
+				$dbapp['name'] = 'ARLENE A. BRANCO';
+				$dbapp['position'] = 'PAYROLL MANAGER';
 			break;
 			case in_array($company_id, ['LGMI01']) :
-				$approver['name'] = 'ARLENE A. BRANCO';
-				$approver['position'] = 'PAYROLL MANAGER';
+				$dbapp['name'] = 'ARLENE A. BRANCO';
+				$dbapp['position'] = 'PAYROLL MANAGER';
 			break;
 			case in_array($company_id, ['MEGA01', 'MEGAWORLD']) :
-				   $approver['name'] = 'ARLENE A. BRANCO';
-				$approver['position'] = 'PAYROLL MANAGER';
+				   $dbapp['name'] = 'ARLENE A. BRANCO';
+				$dbapp['position'] = 'PAYROLL MANAGER';
 			break;
 			case in_array($company_id, ['LCCI']) :
-				   $approver['name'] = 'ARLENE A. BRANCO';
-				$approver['position'] = 'PAYROLL MANAGER';
+				   $dbapp['name'] = 'ARLENE A. BRANCO';
+				$dbapp['position'] = 'PAYROLL MANAGER';
 			break;
 			case in_array($company_id, ['LCTM']) :
-				   $approver['name'] = 'ARLENE A. BRANCO';
-				$approver['position'] = 'PAYROLL MANAGER';
+				   $dbapp['name'] = 'ARLENE A. BRANCO';
+				$dbapp['position'] = 'PAYROLL MANAGER';
 			break;
 			case in_array($company_id, ['LAFUERZA']) :
-				   $approver['name'] = 'ARLENE A. BRANCO';
-				$approver['position'] = 'PAYROLL MANAGER';
+				   $dbapp['name'] = 'ARLENE A. BRANCO';
+				$dbapp['position'] = 'PAYROLL MANAGER';
 			break;
 			case in_array($company_id, ['MLI']) :
-				$approver['name'] = 'ARLENE A. BRANCO';
-				$approver['position'] = 'PAYROLL MANAGER';
+				$dbapp['name'] = 'ARLENE A. BRANCO';
+				$dbapp['position'] = 'PAYROLL MANAGER';
 			break;
 			case in_array($company_id, ['TDI']) :
-				$approver['name'] = 'ARLENE A. BRANCO';
-				$approver['position'] = 'PAYROLL MANAGER';
+				$dbapp['name'] = 'ARLENE A. BRANCO';
+				$dbapp['position'] = 'PAYROLL MANAGER';
 			break;
 			case in_array($company_id, ['ECOC']) :
-				$approver['name'] = 'ARLENE A. BRANCO';
-				$approver['position'] = 'PAYROLL MANAGER';
+				$dbapp['name'] = 'ARLENE A. BRANCO';
+				$dbapp['position'] = 'PAYROLL MANAGER';
 			break;
 			case in_array($company_id, ['SUNTRUST']) :
-				$approver['name'] = 'ARLENE A. BRANCO';
-				$approver['position'] = 'PAYROLL MANAGER';
+				$dbapp['name'] = 'ARLENE A. BRANCO';
+				$dbapp['position'] = 'PAYROLL MANAGER';
 			break;
 			case in_array($company_id, ['EREX']) :
-				$approver['name'] = 'ARLENE A. BRANCO';
-				$approver['position'] = 'PAYROLL MANAGER';
+				$dbapp['name'] = 'ARLENE A. BRANCO';
+				$dbapp['position'] = 'PAYROLL MANAGER';
 			break;
 			case in_array($company_id, ['CITYLINK']) :
-				$approver['name'] = 'ARLENE A. BRANCO';
-				$approver['position'] = 'PAYROLL MANAGER';
+				$dbapp['name'] = 'ARLENE A. BRANCO';
+				$dbapp['position'] = 'PAYROLL MANAGER';
 			break;
 			case in_array($company_id, ['LUCK01']) :
-				$approver['name'] = 'ARLENE A. BRANCO';
-				$approver['position'] = 'PAYROLL MANAGER';
+				$dbapp['name'] = 'ARLENE A. BRANCO';
+				$dbapp['position'] = 'PAYROLL MANAGER';
 			break;
 			case in_array($company_id, ['NCCAI']) :
-				$approver['name'] = 'ARLENE A. BRANCO';
-				$approver['position'] = 'PAYROLL MANAGER';
+				$dbapp['name'] = 'ARLENE A. BRANCO';
+				$dbapp['position'] = 'PAYROLL MANAGER';
 			break;
 			case $company_id == 'GLOBALHOTEL' :
-				$approver['name'] = 'Bernadette Roxas';
-				$approver['position'] = 'HR Director';
+				$dbapp['name'] = 'Bernadette Roxas';
+				$dbapp['position'] = 'HR Director';
 			break;
 			case in_array($company_id, ['NEWTOWN']) :
-				$approver['name'] = 'ARLENE A. BRANCO';
-				$approver['position'] = 'PAYROLL MANAGER';
+				$dbapp['name'] = 'ARLENE A. BRANCO';
+				$dbapp['position'] = 'PAYROLL MANAGER';
 			break;
 			case in_array($company_id, ['MCTI']) :
-				$approver['name'] = 'ARLENE A. BRANCO';
-				$approver['position'] = 'PAYROLL MANAGER';
+				$dbapp['name'] = 'ARLENE A. BRANCO';
+				$dbapp['position'] = 'PAYROLL MANAGER';
 			break;
 			case in_array($company_id, ['MARKETING']) :
-				$approver['name'] = 'ARLENE A. BRANCO';
-				$approver['position'] = 'PAYROLL MANAGER';
+				$dbapp['name'] = 'ARLENE A. BRANCO';
+				$dbapp['position'] = 'PAYROLL MANAGER';
 			break;
 			case in_array($company_id, ['FIRSTCENTRO']) :
-				$approver['name'] = 'ARLENE A. BRANCO';
-				$approver['position'] = 'PAYROLL MANAGER';
+				$dbapp['name'] = 'ARLENE A. BRANCO';
+				$dbapp['position'] = 'PAYROLL MANAGER';
 			break;
 			default:
 			break;
 		}
 
-		return (object)$approver;
+		return (object)$dbapp;
 	}
 
 	function place_text($str, $x, $y, $style)
@@ -153,41 +176,61 @@
 		return $str;
 	}
 
-	if ($coe[0]["type"] == "PHILHEALTHCSF") {
+	if ($coe[0]["type"] == "SSSCERT") {
 	?>
-	
-	<img style="width: 100%; position: absolute; top: 75px; left: 0px;" src="<?php echo IMG_WEB; ?>/ClaimSignatureForm_a.png"/></p>
-	<body style="size: Legal; font-size: 7pt; font-family: Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif">
-		<!-- Start Print Alignment -->
-		<?php 
-
-		$approver = get_approver($emp_info[0]["CompanyID"]);
-
-		$ph_no = clean_str($emp_info[0]["PhilHealthNbr"]);
-		place_text(substr($ph_no, 0, 2), 83.5, 71.5, 'letter-spacing: 9px');
-		place_text(substr($ph_no, 2, 9), 94, 71.5, 'letter-spacing: 7px');
-		place_text(substr($ph_no, 11, 1), 131.5, 71.5, 'letter-spacing: 10px');
-
-		place_text(mb_convert_encoding($emp_info[0]["LName"], 'UTF-8', 'HTML-ENTITIES'), 11, 80.5, '');
-		place_text(mb_convert_encoding($emp_info[0]["FName"], 'UTF-8', 'HTML-ENTITIES'), 44.5, 80.5, '');
-		// place_text($philhealth->LName, 10, 54, ''); For Extension
-		place_text(mb_convert_encoding($emp_info[0]["MName"], 'UTF-8', 'HTML-ENTITIES'), 113.5, 80.5, '');
-
-
-		place_text(date('m', strtotime($emp_info[0]["BirthDate"])), 147.50, 81.80, 'letter-spacing: 5.5px');
-		place_text(date('d', strtotime($emp_info[0]["BirthDate"])), 157.50, 81.80, 'letter-spacing: 5.5px;');
-		place_text(date('Y', strtotime($emp_info[0]["BirthDate"])), 167.50, 81.80, 'letter-spacing: 7.3px;');
-
-		$ph_no = clean_str($emp_info[0]["CompPhilHealthNbr"]);
-		place_text(substr($ph_no, 0, 2), 63, 174, 'letter-spacing: 8px');
-		place_text(substr($ph_no, 2, 9), 73, 174, 'letter-spacing: 7px');
-		place_text(substr($ph_no, 11, 1),111, 174, 'letter-spacing:8px');
-
-		place_text($emp_info[0]["CompanyName"], 39, 178.1, '');
-		place_text($approver->name, 11.5, 202, '');
-		place_text($approver->position, 85.5, 202, '');
-
+	<body>
+	<div style='margin-top: 45px; text-align: center; font-size: 35px; text-decoration: underline; margin-bottom: 50px;'><b>CERTIFICATE</div>
+	<p style='text-align: justify'>This is to certify that <?php echo $emp_info[0]["FullName"]  ?> with SSS # <?php echo $emp_info[0]["CompSSSNbr"]  ?> has remitted the following
+            SSS PREMIUM Contribution of Mr./Ms. <?php echo $emp_info[0]["FullName"]  ?> with SSS # <?php echo $emp_info[0]["SSSNbr"]  ?>.</p><br>"	
+	<!-- Start Print Alignment -->
+	<table>
+		<tr style='width: 100%' >
+    	    <td style='width:125px;text-align:center;height:70px'>   APPLICATION <br> MONTH     </td>
+    	    <td style='width:125px;text-align:center;height:70px'>   SSS <br> RECIEPT NO.       </td>
+    	    <td style='width:100px;text-align:center;height:70px'>   DATE <br> REMITTED         </td>
+    	    <td style='width:100px;text-align:center;height:70px'>   EMPLOYEE <br> SHARE        </td>
+    	    <td style='width:100px;text-align:center;height:70px'>   EMPLOYER <br> SHARE        </td>
+    	    <td style='width:100px;text-align:center;height:70px'>   TOTAL                      </td>
+    	</tr>
+		<?php
+				$employees = get_sss_certificate_data(DB_NAME, $data->EmpID, $data->Date1, $data->Date2);
+				$total=0;
+				$totalemployer=0;
+				$totalemployee=0;
+				 
+				foreach($employees as $r)
+				{
+				$details.="<tr>
+							<td align='center'> ".date('F',strtotime($r['EndDate']))." </td>
+							<td align='center'>".$r['ReceiptNo']."</td>
+							<td align='center'>".date('m/d/Y',strtotime($r['ReceiptDate']))."</td>
+							<td align='center'>".moneyformat($r['SSSEmployee'])."</td>
+							<td align='center'>".moneyformat($r['SSSEmployer'])."</td>
+							<td align='center'>".moneyformat($r['SSSEmployee']+$r['SSSEmployer'])."</td>
+							</tr>";
+					$total          +=       $r['SSSEmployee'] + $r['SSSEmployer'];
+					$totalemployee  +=       $r['SSSEmployee'];
+					$totalemployer  +=       $r['SSSEmployer'];
+				}
+				
+				$details.="<tr>
+							<td align='center' style='font-weight:bold'>TOTAL</td>
+							<td> </td>
+							<td></td>
+							<td style='text-decoration: underline overline; font-weight:bold' align='center'>".moneyformat($totalemployee)."</td>
+							<td style='text-decoration: underline overline; font-weight:bold' align='center'>".moneyformat($totalemployer)."</td>
+							<td style='text-decoration: underline overline; font-weight:bold' align='center'>".moneyformat($total)."</td>
+							</tr>";
+				
+				$details.="</table> <br> <br><br> <br>";
+				$details.="<table style='width:100%'>";
+				
+				$details.="</table>";
+		
 		?>
+
+
+
 	</body>
 	<?php
 	} else {
