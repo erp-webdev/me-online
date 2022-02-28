@@ -4632,7 +4632,7 @@
 					<tr id="coeleavediv1">
 						<td></td>
 						<td>
-							<label>Leave From: </label>
+							<label id="leave_from1">Leave From: </label>
 						</td>
 						<td>
 							<input id="coeleavefrom" name="coeleavefrom" type="text" class="txtbox datepick" style="width:185px;">
@@ -4642,7 +4642,7 @@
 					<tr id="coeleavediv2">
 						<td></td>
 						<td>
-							<label>Leave To: </label>
+							<label id="leave_to1">Leave To: </label>
 						</td>
 						<td>
 							<input id="coeleaveto" name="coeleaveto" type="text" class="txtbox datepick" style="width:185px;">
@@ -5634,7 +5634,7 @@
 					<tr id="coeleavediv1">
 						<td></td>
 						<td align="left">
-							<label id="leave_from1">Leave From: </label>
+							<label id="leave_from2">Leave From: </label>
 						</td>
 						<td align="left">
 							<?php echo date('m/d/Y', strtotime($result[0]['leave_from'])); ?>
@@ -5644,7 +5644,7 @@
 					<tr id="coeleavediv2">
 						<td></td>
 						<td align="left">
-							<label id="leave_to1">Leave To: </label>
+							<label id="leave_to2">Leave To: </label>
 						</td>
 						<td align="left">
 							<?php echo date('m/d/Y', strtotime($result[0]['leave_to'])); ?>
