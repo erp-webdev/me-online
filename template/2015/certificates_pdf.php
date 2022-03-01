@@ -193,7 +193,45 @@
     	    <td style='width:100px;text-align:center;height:70px'>   TOTAL                      </td>
     	</tr>
 
-
+		<?php
+		
+				$approver = get_approver($emp_info[0]["CompanyID"]);
+				
+				$employees = get_sss_certificate_data($approver->db_name, $emp_id,$emp_info[0]["leave_from"], $emp_info[0]["leave_to"]);
+				$total=0;
+				$totalemployer=0;
+				$totalemployee=0;
+				 
+				foreach($employees as $r)
+				{
+				$details.="<tr>
+							<td align='center'> ".date('F',strtotime($r['EndDate']))." </td>
+							<td align='center'>".$r['ReceiptNo']."</td>
+							<td align='center'>".date('m/d/Y',strtotime($r['ReceiptDate']))."</td>
+							<td align='center'>".moneyformat($r['SSSEmployee'])."</td>
+							<td align='center'>".moneyformat($r['SSSEmployer'])."</td>
+							<td align='center'>".moneyformat($r['SSSEmployee']+$r['SSSEmployer'])."</td>
+							</tr>";
+					$total          +=       $r['SSSEmployee'] + $r['SSSEmployer'];
+					$totalemployee  +=       $r['SSSEmployee'];
+					$totalemployer  +=       $r['SSSEmployer'];
+				}
+				
+				$details.="<tr>
+							<td align='center' style='font-weight:bold'>TOTAL</td>
+							<td> </td>
+							<td></td>
+							<td style='text-decoration: underline overline; font-weight:bold' align='center'>".moneyformat($totalemployee)."</td>
+							<td style='text-decoration: underline overline; font-weight:bold' align='center'>".moneyformat($totalemployer)."</td>
+							<td style='text-decoration: underline overline; font-weight:bold' align='center'>".moneyformat($total)."</td>
+							</tr>";
+				
+				$details.="</table> <br> <br><br> <br>";
+				$details.="<table style='width:100%'>";
+				
+				$details.="</table>";
+		echo $details;
+		?>
 
 
 	</body>
@@ -206,7 +244,6 @@
 			<!-- Start Print Alignment -->
 			<?php 
 	
-			$approver = get_approver($emp_info[0]["CompanyID"]);
 	
 			$ph_no = clean_str($emp_info[0]["PhilHealthNbr"]);
 			place_text(substr($ph_no, 0, 2), 83.5, 88, 'letter-spacing: 9px');
