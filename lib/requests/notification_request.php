@@ -6254,6 +6254,29 @@
 			    	});
 			    </script>
 			    <?}
+            elseif ($coe[0]["type"] == 'PHILHEALTHCSF' || $coe[0]["type"] == 'PHILHEALTHCF1'){
+			    include(TEMP.'/philhealth_pdf.php');
+			    ?>
+			    <script>
+			    	$(document).ready(function(){
+			    		$(".closebutton").click();
+			    		var divToPrint=document.getElementById("myDivToPrint3");
+			    		newWin= window.open("");
+			    		newWin.document.write(divToPrint.outerHTML);
+			    		var is_chrome = Boolean(newWin.chrome);
+
+    			    		if (is_chrome) {
+			    			setTimeout(function() { // wait until all resources loaded
+			    				newWin.print();
+			    				newWin.close();
+			    			}, 250);
+			    		} else {
+			    			newWin.print();
+			    			newWin.close();
+			    		}
+			    	});
+			    </script>
+			    <?}
             else {
                 include(TEMP.'/coe_pdf.php');
                 ?>

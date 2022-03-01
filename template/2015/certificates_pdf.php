@@ -1,4 +1,4 @@
-<div id="myDivToPrint2">
+<div id="myDivToPrint3">
 	<div style="text-align: center; padding-top: 10px;">
 
 		<?php $send_pdf = $_POST['send'] == 'true' ? true : false; ?>
@@ -226,7 +226,7 @@
 				$details.="<table style='width:100%'>";
 				
 				$details.="</table>";
-		
+		echo $details;
 		?>
 
 
