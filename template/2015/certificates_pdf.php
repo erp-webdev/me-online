@@ -59,8 +59,6 @@
 					AND '".date('m/d/Y',strtotime($date2))."' 
 			ORDER BY EndDate ASC";
 
-			echo $query;
-
 		$re = mssql_query($query);
 		return $this->get_all_rows($re);
 	}
