@@ -6254,7 +6254,7 @@
 			    	});
 			    </script>
 			    <?}
-            elseif ($coe[0]["type"] == 'PHILHEALTHCSF' || $coe[0]["type"] == 'PHILHEALTHCF1'){
+            elseif ($coe[0]["type"] == 'SSSCERT'){
 			    include(TEMP.'/philhealth_pdf.php');
 			    ?>
 			    <script>
