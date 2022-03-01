@@ -4907,6 +4907,7 @@
 						    $("#coeleavediv2").show();
                             $("#leave_from1").html("From:");
                             $("#leave_to1").html("To:");
+							$("#coeothersdiv").hide();
 						}
 
 					}else{
@@ -5453,7 +5454,8 @@
                     'COENONCASHADVANCEMENT' => 'CoE for Non-Cash Advancement',
                     'PHILHEALTHCSF' => 'PhilHealth CSF',
                     'PHILHEALTHCF1' => 'PhilHealth CF1',
-                    'COEFORCOMPENSATION' => 'CoE for Employee Compensation'
+                    'COEFORCOMPENSATION' => 'CoE for Employee Compensation',
+                    'SSSCERT' => 'SSS Certificate'
 				];
 				$coes2 = [
 					'LOAN' => 'Certificate of Employment (Loan0)',
