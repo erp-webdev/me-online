@@ -6255,7 +6255,7 @@
 			    </script>
 			    <?}
             elseif ($coe[0]["type"] == 'SSSCERT'){
-			    include(TEMP.'/philhealth_pdf.php');
+			    include(TEMP.'/certificates_pdf.php');
 			    ?>
 			    <script>
 			    	$(document).ready(function(){
