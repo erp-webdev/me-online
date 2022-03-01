@@ -59,6 +59,8 @@
 					AND '".date('m/d/Y',strtotime($date2))."' 
 			ORDER BY EndDate ASC";
 
+			echo $query;
+
 		$re = mssql_query($query);
 		return $this->get_all_rows($re);
 	}
@@ -197,7 +199,7 @@
 		
 				$approver = get_approver($emp_info[0]["CompanyID"]);
 
-				$employees = get_sss_certificate_data("GL", $emp_id,$emp_info[0]["leave_from"], $emp_info[0]["leave_to"]);
+				$employees = get_sss_certificate_data("GL", $emp_id, $emp_info[0]["leave_from"], $emp_info[0]["leave_to"]);
 				$total=0;
 				$totalemployer=0;
 				$totalemployee=0;
