@@ -5598,6 +5598,7 @@
 							<?php if($result[0]['type'] == 'PHILHEALTHCSF'){ echo "PhilHealth CSF"; }?>
 							<?php if($result[0]['type'] == 'PHILHEALTHCF1'){ echo "PhilHealth CF1"; }?>
 							<?php if($result[0]['type'] == 'COEFORCOMPENSATION'){ echo "CoE for Employee Compensation"; }?>
+							<?php if($result[0]['type'] == 'SSSCERT'){ echo "SSS Certificate"; }?>
 						</td>
 					</tr>
 
