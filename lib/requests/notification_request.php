@@ -5951,7 +5951,7 @@
 						$("#coeleavediv2").show();
                         $("#leave_from1").html("From:");
                         $("#leave_to1").html("To:");
-						$("#coeothersdiv").hide();
+						$("#coeothersdiv2").hide();
 					}
 
                     
