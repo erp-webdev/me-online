@@ -5946,6 +5946,12 @@
 					}else if ('<?php echo $result[0]['type']; ?>' == 'COENONCASHADVANCEMENT') {
                         $("#coecatdiv2").show();
                         $("#coeothersdiv2").hide();
+					}else if ('<?php echo $result[0]['type']; ?>' == 'SSSCERT') {
+                        $("#coeleavediv1").show();
+						$("#coeleavediv2").show();
+                        $("#leave_from1").html("From:");
+                        $("#leave_to1").html("To:");
+						$("#coeothersdiv").hide();
 					}
 
                     
