@@ -195,6 +195,8 @@
 		return $str;
 	}
 
+	echo $emp_info;
+
 	if ($coe[0]["type"] == "SSSCERT") {
 	?>
 	<body>
