@@ -217,6 +217,7 @@
 		<?php
 				$approver = get_approver($emp_info[0]["CompanyID"]);
 
+				echo $query;
 				$employees = get_sss_certificate_data("GL", "2019-02-0033", "2021-02-01 00:00:00.000", $coe[0]["leave_to"]);
 				echo $query;
 				$total=0;
