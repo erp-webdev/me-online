@@ -42,27 +42,6 @@
 	];
 
 
-	function get_sss_certificate_data($dbname, $EmpID, $date1, $date2)
-	{
-		$query = "
-			USE $dbname
-			SELECT 	SSSMonth,
-					SSSYear,
-					ReceiptNo,
-					ReceiptDate,
-					SSSEmployee,
-					SSSEmployer,
-					EndDate 
-			FROM dbo.SSSRemit 
-			WHERE 	EmpID='$EmpID' 
-			AND 	EndDate BETWEEN '". date('m/d/Y',strtotime($date1))."' 
-					AND '".date('m/d/Y',strtotime($date2))."' 
-			ORDER BY EndDate ASC";
-		$re = mssql_query($query);
-		return $this->get_all_rows($re);
-	}
-
-
 	function get_approver($company_id)
 	{
 	$dbapp = ['name' => '', 'position' => '', 'db_name' =>''];
@@ -230,8 +209,6 @@
 					AND '".date('m/d/Y',strtotime($coe[0]["leave_to"]))."' 
 			ORDER BY EndDate ASC";
 
-				// $employees = get_sss_certificate_data("GL", "2019-02-0033", "2021-02-01 00:00:00.000", $coe[0]["leave_to"]);
-				echo $query;
 				$employees = $mainsql->get_row($query);
 				$total=0;
 				$totalemployer=0;
@@ -240,12 +217,12 @@
 				foreach($employees as $r)
 				{ 
 				echo	"<tr>
-							<td align='center'> ".date('F',strtotime($r['EndDate']))." </td>
-							<td align='center'>".$r['ReceiptNo']."</td>
-							<td align='center'>".date('m/d/Y',strtotime($r['ReceiptDate']))."</td>
-							<td align='center'>".$r['SSSEmployee']."</td>
-							<td align='center'>".$r['SSSEmployer']."</td>
-							<td align='center'>".$r['SSSEmployee']+$r['SSSEmployer']."</td>
+							<td align='center'> ".date('F',strtotime($r[0]['EndDate']))." </td>
+							<td align='center'>".$r[0]['ReceiptNo']."</td>
+							<td align='center'>".date('m/d/Y',strtotime($r[0]['ReceiptDate']))."</td>
+							<td align='center'>".$r[0]['SSSEmployee']."</td>
+							<td align='center'>".$r[0]['SSSEmployer']."</td>
+							<td align='center'>".$r[0]['SSSEmployee']+$r[0]['SSSEmployer']."</td>
 						</tr>";
 					$total          +=       $r['SSSEmployee'] + $r['SSSEmployer'];
 					$totalemployee  +=       $r['SSSEmployee'];
