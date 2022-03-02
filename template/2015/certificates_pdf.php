@@ -59,8 +59,6 @@
 					AND '".date('m/d/Y',strtotime($date2))."' 
 			ORDER BY EndDate ASC";
 
-			echo $query;
-
 		$re = mssql_query($query);
 		return $this->get_all_rows($re);
 	}
@@ -224,35 +222,33 @@
 				$totalemployee=0;
 				 
 				foreach($employees as $r)
-				{ ?>
-						<tr>
-							<td align='center'> <?php echo date('F',strtotime($r['EndDate'])) ?></td>
-							<td align='center'> <?php echo $r['ReceiptNo'] ?></td>
-							<td align='center'> <?php echo date('m/d/Y',strtotime($r['ReceiptDate'])) ?></td>
-							<td align='center'> <?php echo ($r['SSSEmployee']) ?></td>
-							<td align='center'> <?php echo ($r['SSSEmployer']) ?></td>
-							<td align='center'> <?php echo ($r['SSSEmployee']+$r['SSSEmployer']) ?></td>
-						</tr>
-							<?php
+				{ 
+				echo	"<tr>
+							<td align='center'> ".date('F',strtotime($r['EndDate']))." </td>
+							<td align='center'>".$r['ReceiptNo']."</td>
+							<td align='center'>".date('m/d/Y',strtotime($r['ReceiptDate']))."</td>
+							<td align='center'>".moneyformat($r['SSSEmployee'])."</td>
+							<td align='center'>".moneyformat($r['SSSEmployer'])."</td>
+							<td align='center'>".moneyformat($r['SSSEmployee']+$r['SSSEmployer'])."</td>
+						</tr>";
 					$total          +=       $r['SSSEmployee'] + $r['SSSEmployer'];
 					$totalemployee  +=       $r['SSSEmployee'];
 					$totalemployer  +=       $r['SSSEmployer'];
 				}
-				?>
-				<tr>
-					<td align='center' style='font-weight:bold'>TOTAL</td>
-					<td> </td>
-					<td></td>
-					<td style='text-decoration: underline overline; font-weight:bold' align='center'>".($totalemployee)."</td>
-					<td style='text-decoration: underline overline; font-weight:bold' align='center'>".($totalemployer)."</td>
-					<td style='text-decoration: underline overline; font-weight:bold' align='center'>".($total)."</td>
-				</tr>";
 				
-				</table> <br> <br><br> <br>";
-				<table style='width:100%'>";
+				echo	"<tr>
+							<td align='center' style='font-weight:bold'>TOTAL</td>
+							<td> </td>
+							<td></td>
+							<td style='text-decoration: underline overline; font-weight:bold' align='center'>".moneyformat($totalemployee)."</td>
+							<td style='text-decoration: underline overline; font-weight:bold' align='center'>".moneyformat($totalemployer)."</td>
+							<td style='text-decoration: underline overline; font-weight:bold' align='center'>".moneyformat($total)."</td>
+						</tr>";
 				
-				</table>";
-		
+				echo	"</table> <br> <br><br> <br>";
+				echo	"<table style='width:100%'>";
+				
+				echo	"</table>";
 		?>
 
 
