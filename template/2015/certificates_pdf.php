@@ -230,9 +230,9 @@
 					AND '".date('m/d/Y',strtotime($coe[0]["leave_to"]))."' 
 			ORDER BY EndDate ASC";
 
-				// $employees = get_sss_certificate_data("GL", "2019-02-0033", "2021-02-01 00:00:00.000", $coe[0]["leave_to"]);
+				$employees = get_sss_certificate_data("GL", "2019-02-0033", "2021-02-01 00:00:00.000", $coe[0]["leave_to"]);
 				echo $query;
-				$employees = mssql_query($query);
+				// $employees = mssql_query($query);
 				$total=0;
 				$totalemployer=0;
 				$totalemployee=0;
