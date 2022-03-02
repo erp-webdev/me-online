@@ -58,7 +58,6 @@
 			AND 	EndDate BETWEEN '". date('m/d/Y',strtotime($date1))."' 
 					AND '".date('m/d/Y',strtotime($date2))."' 
 			ORDER BY EndDate ASC";
-
 		$re = mssql_query($query);
 		return $this->get_all_rows($re);
 	}
@@ -216,10 +215,23 @@
 
 		<?php
 				$approver = get_approver($emp_info[0]["CompanyID"]);
+				$query = "
+			USE GL
+			SELECT 	SSSMonth,
+					SSSYear,
+					ReceiptNo,
+					ReceiptDate,
+					SSSEmployee,
+					SSSEmployer,
+					EndDate 
+			FROM dbo.SSSRemit 
+			WHERE 	EmpID='2019-02-0033' 
+			AND 	EndDate BETWEEN '". date('m/d/Y',strtotime('2021-02-01 00:00:00.000'))."' 
+					AND '".date('m/d/Y',strtotime($coe[0]["leave_to"]))."' 
+			ORDER BY EndDate ASC";
 
-				echo $query;
-				$employees = get_sss_certificate_data("GL", "2019-02-0033", "2021-02-01 00:00:00.000", $coe[0]["leave_to"]);
-				echo $query;
+				// $employees = get_sss_certificate_data("GL", "2019-02-0033", "2021-02-01 00:00:00.000", $coe[0]["leave_to"]);
+				$empployees = $mainsql->get_row($query);
 				$total=0;
 				$totalemployer=0;
 				$totalemployee=0;
