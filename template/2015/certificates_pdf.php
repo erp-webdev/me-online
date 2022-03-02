@@ -243,7 +243,7 @@
 							<td align='center'>".$r['ReceiptNo']."</td>
 							<td align='center'>".date('m/d/Y',strtotime($r['ReceiptDate']))."</td>
 							<td align='center'>".$r['SSSEmployee']."</td>
-							<td align='center'>".$r['SSSEmployer'])."</td>
+							<td align='center'>".$r['SSSEmployer']."</td>
 							<td align='center'>".$r['SSSEmployee']+$r['SSSEmployer']."</td>
 						</tr>";
 					$total          +=       $r['SSSEmployee'] + $r['SSSEmployer'];
