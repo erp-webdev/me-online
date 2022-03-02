@@ -198,7 +198,6 @@
 	
 
 	if ($coe[0]["type"] == "SSSCERT") {
-	echo {{ $emp_info }};
 	?>
 	<body>
 	<div style='margin-top: 45px; text-align: center; font-size: 35px; text-decoration: underline; margin-bottom: 50px;'><b>CERTIFICATE</div>
