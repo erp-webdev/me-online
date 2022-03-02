@@ -222,15 +222,16 @@
 				$totalemployee=0;
 				 
 				foreach($employees as $r)
-				{
-				$details.="<tr>
-							<td align='center'> ".date('F',strtotime($r['EndDate']))." </td>
-							<td align='center'>".$r['ReceiptNo']."</td>
-							<td align='center'>".date('m/d/Y',strtotime($r['ReceiptDate']))."</td>
-							<td align='center'>".moneyformat($r['SSSEmployee'])."</td>
-							<td align='center'>".moneyformat($r['SSSEmployer'])."</td>
-							<td align='center'>".moneyformat($r['SSSEmployee']+$r['SSSEmployer'])."</td>
-							</tr>";
+				{ ?>
+						<tr>
+							<td align='center'> <?php echo date('F',strtotime($r['EndDate'])) ?></td>
+							<td align='center'> <?php echo $r['ReceiptNo'] ?></td>
+							<td align='center'> <?php echo date('m/d/Y',strtotime($r['ReceiptDate'])) ?></td>
+							<td align='center'> <?php echo ($r['SSSEmployee']) ?></td>
+							<td align='center'> <?php echo ($r['SSSEmployer']) ?></td>
+							<td align='center'> <?php echo ($r['SSSEmployee']+$r['SSSEmployer']) ?></td>
+						</tr>
+							<?php
 					$total          +=       $r['SSSEmployee'] + $r['SSSEmployer'];
 					$totalemployee  +=       $r['SSSEmployee'];
 					$totalemployer  +=       $r['SSSEmployer'];
@@ -240,9 +241,9 @@
 							<td align='center' style='font-weight:bold'>TOTAL</td>
 							<td> </td>
 							<td></td>
-							<td style='text-decoration: underline overline; font-weight:bold' align='center'>".moneyformat($totalemployee)."</td>
-							<td style='text-decoration: underline overline; font-weight:bold' align='center'>".moneyformat($totalemployer)."</td>
-							<td style='text-decoration: underline overline; font-weight:bold' align='center'>".moneyformat($total)."</td>
+							<td style='text-decoration: underline overline; font-weight:bold' align='center'>".($totalemployee)."</td>
+							<td style='text-decoration: underline overline; font-weight:bold' align='center'>".($totalemployer)."</td>
+							<td style='text-decoration: underline overline; font-weight:bold' align='center'>".($total)."</td>
 							</tr>";
 				
 				$details.="</table> <br> <br><br> <br>";
