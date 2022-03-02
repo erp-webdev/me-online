@@ -201,7 +201,7 @@
 	<body>
 	<div style='margin-top: 45px; text-align: center; font-size: 35px; text-decoration: underline; margin-bottom: 50px;'><b>CERTIFICATE</div>
 	<p style='text-align: justify'>This is to certify that <?php echo $emp_info[0]["FullName"]  ?> with SSS # <?php echo $emp_info[0]["CompSSSNbr"]  ?> has remitted the following
-            SSS PREMIUM Contribution of Mr./Ms. <?php echo $emp_info[0]["FullName"]  ?> with SSS # <?php echo $emp_info[0]["SSSNbr"]  ?>.</p><br>"	
+            SSS PREMIUM Contribution of Mr./Ms. <?php echo $emp_info[0]["FullName"]  ?> with SSS # <?php echo $emp_info[0]["SSSNbr"]  ?>.</p><br>	
 	<!-- Start Print Alignment -->
 	<table>
 		<tr style='width: 100%' >
@@ -232,7 +232,7 @@
 
 				// $employees = get_sss_certificate_data("GL", "2019-02-0033", "2021-02-01 00:00:00.000", $coe[0]["leave_to"]);
 				echo $query;
-				$empployees = mssql_query($query);
+				$employees = mssql_query($query);
 				$total=0;
 				$totalemployer=0;
 				$totalemployee=0;
