@@ -72,78 +72,97 @@
 			case in_array($company_id, ['GLOBAL01']) :
 				$dbapp['name'] = 'ARLENE A. BRANCO';
 				$dbapp['position'] = 'PAYROLL MANAGER';
+				$dbapp['db_name'] = 'GL';
 			break;
 			case in_array($company_id, ['LGMI01']) :
 				$dbapp['name'] = 'ARLENE A. BRANCO';
 				$dbapp['position'] = 'PAYROLL MANAGER';
+				$dbapp['db_name'] = 'GL';
 			break;
 			case in_array($company_id, ['MEGA01', 'MEGAWORLD']) :
 				   $dbapp['name'] = 'ARLENE A. BRANCO';
 				$dbapp['position'] = 'PAYROLL MANAGER';
+				$dbapp['db_name'] = 'GL';
 			break;
 			case in_array($company_id, ['LCCI']) :
 				   $dbapp['name'] = 'ARLENE A. BRANCO';
 				$dbapp['position'] = 'PAYROLL MANAGER';
+				$dbapp['db_name'] = 'GL';
 			break;
 			case in_array($company_id, ['LCTM']) :
 				   $dbapp['name'] = 'ARLENE A. BRANCO';
 				$dbapp['position'] = 'PAYROLL MANAGER';
+				$dbapp['db_name'] = 'GL';
 			break;
 			case in_array($company_id, ['LAFUERZA']) :
 				   $dbapp['name'] = 'ARLENE A. BRANCO';
 				$dbapp['position'] = 'PAYROLL MANAGER';
+				$dbapp['db_name'] = 'GL';
 			break;
 			case in_array($company_id, ['MLI']) :
 				$dbapp['name'] = 'ARLENE A. BRANCO';
 				$dbapp['position'] = 'PAYROLL MANAGER';
+				$dbapp['db_name'] = 'GL';
 			break;
 			case in_array($company_id, ['TDI']) :
 				$dbapp['name'] = 'ARLENE A. BRANCO';
 				$dbapp['position'] = 'PAYROLL MANAGER';
+				$dbapp['db_name'] = 'GL';
 			break;
 			case in_array($company_id, ['ECOC']) :
 				$dbapp['name'] = 'ARLENE A. BRANCO';
 				$dbapp['position'] = 'PAYROLL MANAGER';
+				$dbapp['db_name'] = 'GL';
 			break;
 			case in_array($company_id, ['SUNTRUST']) :
 				$dbapp['name'] = 'ARLENE A. BRANCO';
 				$dbapp['position'] = 'PAYROLL MANAGER';
+				$dbapp['db_name'] = 'GL';
 			break;
 			case in_array($company_id, ['EREX']) :
 				$dbapp['name'] = 'ARLENE A. BRANCO';
 				$dbapp['position'] = 'PAYROLL MANAGER';
+				$dbapp['db_name'] = 'GL';
 			break;
 			case in_array($company_id, ['CITYLINK']) :
 				$dbapp['name'] = 'ARLENE A. BRANCO';
 				$dbapp['position'] = 'PAYROLL MANAGER';
+				$dbapp['db_name'] = 'GL';
 			break;
 			case in_array($company_id, ['LUCK01']) :
 				$dbapp['name'] = 'ARLENE A. BRANCO';
 				$dbapp['position'] = 'PAYROLL MANAGER';
+				$dbapp['db_name'] = 'GL';
 			break;
 			case in_array($company_id, ['NCCAI']) :
 				$dbapp['name'] = 'ARLENE A. BRANCO';
 				$dbapp['position'] = 'PAYROLL MANAGER';
+				$dbapp['db_name'] = 'GL';
 			break;
 			case $company_id == 'GLOBALHOTEL' :
 				$dbapp['name'] = 'Bernadette Roxas';
 				$dbapp['position'] = 'HR Director';
+				$dbapp['db_name'] = 'GL';
 			break;
 			case in_array($company_id, ['NEWTOWN']) :
 				$dbapp['name'] = 'ARLENE A. BRANCO';
 				$dbapp['position'] = 'PAYROLL MANAGER';
+				$dbapp['db_name'] = 'GL';
 			break;
 			case in_array($company_id, ['MCTI']) :
 				$dbapp['name'] = 'ARLENE A. BRANCO';
 				$dbapp['position'] = 'PAYROLL MANAGER';
+				$dbapp['db_name'] = 'GL';
 			break;
 			case in_array($company_id, ['MARKETING']) :
 				$dbapp['name'] = 'ARLENE A. BRANCO';
 				$dbapp['position'] = 'PAYROLL MANAGER';
+				$dbapp['db_name'] = 'GL';
 			break;
 			case in_array($company_id, ['FIRSTCENTRO']) :
 				$dbapp['name'] = 'ARLENE A. BRANCO';
 				$dbapp['position'] = 'PAYROLL MANAGER';
+				$dbapp['db_name'] = 'GL';
 			break;
 			default:
 			break;
