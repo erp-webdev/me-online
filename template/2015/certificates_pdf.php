@@ -218,12 +218,12 @@
 				{ 
 					?>
 						<tr>
-							<td align='center'> ".date('F',strtotime($r[0]['EndDate']))." </td>
-							<td align='center'>".$r[0]['ReceiptNo']."</td>
-							<td align='center'>".date('m/d/Y',strtotime($r[0]['ReceiptDate']))."</td>
-							<td align='center'>".$r[0]['SSSEmployee']."</td>
-							<td align='center'>".$r[0]['SSSEmployer']."</td>
-							<td align='center'>".$r[0]['SSSEmployee']+$r[0]['SSSEmployer']."</td>
+							<td align='center'> <? echo date('F',strtotime($r['EndDate'])); ?> </td>
+							<td align='center'> <? echo $r['ReceiptNo']; ?></td>
+							<td align='center'> <? echo date('m/d/Y',strtotime($r['ReceiptDate'])); ?></td>
+							<td align='center'> <? echo $r['SSSEmployee']; ?></td>
+							<td align='center'> <? echo $r['SSSEmployer']; ?></td>
+							<td align='center'> <? echo $r['SSSEmployee']+$r['SSSEmployer']; ?></td>
 						</tr>
 						<?php
 					$total          +=       $r['SSSEmployee'] + $r['SSSEmployer'];
