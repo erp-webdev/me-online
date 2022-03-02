@@ -216,14 +216,16 @@
 				 
 				foreach($employees as $r)
 				{ 
-				echo	"<tr>
+					?>
+						<tr>
 							<td align='center'> ".date('F',strtotime($r[0]['EndDate']))." </td>
 							<td align='center'>".$r[0]['ReceiptNo']."</td>
 							<td align='center'>".date('m/d/Y',strtotime($r[0]['ReceiptDate']))."</td>
 							<td align='center'>".$r[0]['SSSEmployee']."</td>
 							<td align='center'>".$r[0]['SSSEmployer']."</td>
 							<td align='center'>".$r[0]['SSSEmployee']+$r[0]['SSSEmployer']."</td>
-						</tr>";
+						</tr>
+						<?php
 					$total          +=       $r['SSSEmployee'] + $r['SSSEmployer'];
 					$totalemployee  +=       $r['SSSEmployee'];
 					$totalemployer  +=       $r['SSSEmployer'];
