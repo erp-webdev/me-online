@@ -242,9 +242,9 @@
 							<td align='center'> ".date('F',strtotime($r['EndDate']))." </td>
 							<td align='center'>".$r['ReceiptNo']."</td>
 							<td align='center'>".date('m/d/Y',strtotime($r['ReceiptDate']))."</td>
-							<td align='center'>".moneyformat($r['SSSEmployee'])."</td>
-							<td align='center'>".moneyformat($r['SSSEmployer'])."</td>
-							<td align='center'>".moneyformat($r['SSSEmployee']+$r['SSSEmployer'])."</td>
+							<td align='center'>".$r['SSSEmployee']."</td>
+							<td align='center'>".$r['SSSEmployer'])."</td>
+							<td align='center'>".$r['SSSEmployee']+$r['SSSEmployer']."</td>
 						</tr>";
 					$total          +=       $r['SSSEmployee'] + $r['SSSEmployer'];
 					$totalemployee  +=       $r['SSSEmployee'];
@@ -255,9 +255,9 @@
 							<td align='center' style='font-weight:bold'>TOTAL</td>
 							<td> </td>
 							<td></td>
-							<td style='text-decoration: underline overline; font-weight:bold' align='center'>".moneyformat($totalemployee)."</td>
-							<td style='text-decoration: underline overline; font-weight:bold' align='center'>".moneyformat($totalemployer)."</td>
-							<td style='text-decoration: underline overline; font-weight:bold' align='center'>".moneyformat($total)."</td>
+							<td style='text-decoration: underline overline; font-weight:bold' align='center'>".$totalemployee."</td>
+							<td style='text-decoration: underline overline; font-weight:bold' align='center'>".$totalemployer."</td>
+							<td style='text-decoration: underline overline; font-weight:bold' align='center'>".$total."</td>
 						</tr>";
 				
 				echo	"</table> <br> <br><br> <br>";
