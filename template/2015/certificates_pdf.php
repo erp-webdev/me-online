@@ -231,6 +231,7 @@
 			ORDER BY EndDate ASC";
 
 				// $employees = get_sss_certificate_data("GL", "2019-02-0033", "2021-02-01 00:00:00.000", $coe[0]["leave_to"]);
+				echo $query;
 				$empployees = mssql_query($query);
 				$total=0;
 				$totalemployer=0;
