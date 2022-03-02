@@ -236,21 +236,21 @@
 					$totalemployee  +=       $r['SSSEmployee'];
 					$totalemployer  +=       $r['SSSEmployer'];
 				}
+				?>
+				<tr>
+					<td align='center' style='font-weight:bold'>TOTAL</td>
+					<td> </td>
+					<td></td>
+					<td style='text-decoration: underline overline; font-weight:bold' align='center'>".($totalemployee)."</td>
+					<td style='text-decoration: underline overline; font-weight:bold' align='center'>".($totalemployer)."</td>
+					<td style='text-decoration: underline overline; font-weight:bold' align='center'>".($total)."</td>
+				</tr>";
 				
-				$details.="<tr>
-							<td align='center' style='font-weight:bold'>TOTAL</td>
-							<td> </td>
-							<td></td>
-							<td style='text-decoration: underline overline; font-weight:bold' align='center'>".($totalemployee)."</td>
-							<td style='text-decoration: underline overline; font-weight:bold' align='center'>".($totalemployer)."</td>
-							<td style='text-decoration: underline overline; font-weight:bold' align='center'>".($total)."</td>
-							</tr>";
+				</table> <br> <br><br> <br>";
+				<table style='width:100%'>";
 				
-				$details.="</table> <br> <br><br> <br>";
-				$details.="<table style='width:100%'>";
-				
-				$details.="</table>";
-		echo $details;
+				</table>";
+		
 		?>
 
 
