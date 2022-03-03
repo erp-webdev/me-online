@@ -207,8 +207,7 @@
 			AND 	EndDate BETWEEN '". date('m/d/Y',strtotime($coe[0]["leave_from"]))."' 
 					AND '".date('m/d/Y',strtotime($coe[0]["leave_to"]))."' 
 			ORDER BY EndDate ASC";
-			
-			echo $query;
+
 				$employees = $mainsql->get_row($query);
 				$total=0;
 				$totalemployer=0;
@@ -245,7 +244,213 @@
 				
 				echo	"</table>";
 
+				switch(strtoupper($emp_info[0]["CompanyID"]))
+				{
+					case 'ASIAAPMI':
+				        echo ' <tr>
+				                        <td colspan="2" align="left">Prepared by:</td>
+				                    </tr>
+				                    <tr>
+				                        <td colspan="2" style="text-align:left;font-weight:bold;height: 50px;vertical-align: bottom;">Jeriza Mae V. Sioco</td>
+				                    <tr>
+				                        <td colspan="2" align="left">PAYROLL MANAGER</td>
+				                    </tr>';
+				    break;
+					
+				    case 'GLOBAL01':
+				        echo ' <tr>
+				                        <td colspan="2" align="center">Prepared by:</td>
+				                        <td colspan="2" align="center">Checked by:</td>
+				                    </tr>
+				                    <tr>
+				                        <td colspan="2" style="text-align:center;font-weight:bold;height: 10px;vertical-align: bottom;">Jeriza Mae V. Sioco</td>
+				                        <td colspan="2" style="text-align:center;font-weight:bold;vertical-align: bottom;">Arlene A. Branco</td>
+				                    <tr>
+				                        <td colspan="2" align="center">PAYROLL ANALYST</td>
+				                        <td colspan="2" align="center">PAYROLL MANAGER</td>
+				                    </tr>';
+				    break;
+					
+				    case 'LGMI01':
+				        echo ' <tr>
+				                        <td colspan="2" align="center">Prepared by:</td>
+				                        <td colspan="2" align="center">Checked by:</td>
+				                    </tr>
+				                    <tr>
+				                        <td colspan="2" style="text-align:center;font-weight:bold;height: 50px;vertical-align: bottom;">Mae Hazel B. Anastacio</td>
+				                        <td colspan="2" style="text-align:center;font-weight:bold;vertical-align: bottom;">Arlene A. Branco</td>
+				                    <tr>
+				                        <td colspan="2" align="center">PAYROLL ANALYST</td>
+				                        <td colspan="2" align="center">PAYROLL MANAGER</td>
+				                    </tr>';
+				    break;
+					
+				    case 'MEGA01':
+				        echo '
+				                    <tr>
+				                        <td colspan="2" align="center">Prepared by:</td>
+				                        <td colspan="2" align="center">Certified by:</td>
+				                    </tr>
+				                    <tr>
+				                        <td colspan="2" style="text-align:center;font-weight:bold;height: 50px;vertical-align: bottom; width:350px">'.$_SESSION['ipay_users'].'</td>
+				                        <td colspan="2" style="text-align:center;font-weight:bold;vertical-align: bottom;">'.strtoupper('Marilou C. GuariÑa').'</td>
+				                    </tr>
+				                    <tr>
+				                        <td colspan="2" align="center">PAYROLL ASSOCIATE</td>
+				                        <td colspan="2" align="center">ASSISTANT VICE PRESIDENT</td>
+				                    </tr>';
+				    break;
+					
+				    case 'LUCK01':
+				        echo ' <tr>
+				                        <td colspan="2" align="center">Prepared by:</td>
+				                        <td colspan="2" align="center">Certified by:</td>
+				                    </tr>
+				                    <tr>
+				                        <td colspan="2" style="text-align:center;font-weight:bold;height: 50px;vertical-align: bottom; width:350px">'.$_SESSION['ipay_users'].'</td>
+				                        <td colspan="2" style="text-align:center;font-weight:bold;vertical-align: bottom;">'.strtoupper('Marilou C. GuariÑa').'</td>
+				                    </tr>
+				                    <tr>
+				                        <td colspan="2" align="center">PAYROLL ASSOCIATE</td>
+				                        <td colspan="2" align="center">ASSISTANT VICE PRESIDENT</td>
+				                    </tr>';
+				    break;
+					
+				    case 'MLI01':
+				        echo ' <tr>
+				                        <td colspan="2" align="center">Prepared by:</td>
+				                        <td colspan="2" align="center">Certified by:</td>
+				                    </tr>
+				                    <tr>
+				                        <td colspan="2" style="text-align:center;font-weight:bold;height: 50px;vertical-align: bottom; width:350px">'.$_SESSION['ipay_users'].'</td>
+				                        <td colspan="2" style="text-align:center;font-weight:bold;vertical-align: bottom;">'.strtoupper('Marilou C. GuariÑa').'</td>
+				                    </tr>
+				                    <tr>
+				                        <td colspan="2" align="center">PAYROLL ASSOCIATE</td>
+				                        <td colspan="2" align="center">ASSISTANT VICE PRESIDENT</td>
+				                    </tr>';
+				    break;
+					
+				    case 'TDI':
+				        echo '<tr>
+				                        <td colspan="2" align="center">Prepared by:</td>
+				                        <td colspan="2" align="center">Certified by:</td>
+				                    </tr>
+				                    <tr>
+				                        <td colspan="2" align="center">Sonia O. Rodriguez</td>
+				                        <td colspan="2" align="center">Marilou C. Guarina</td>
+				                    </tr>';
+				    break;
+					
+				    case 'ECOC':
+				       echo '<tr>
+				                        <td colspan="2" align="center">Prepared by:</td>
+				                        <td colspan="2" align="center">Certified by:</td>
+				                    </tr>
+				                    <tr>
+				                        <td colspan="2" align="center">Sonia O. Rodriguez</td>
+				                        <td colspan="2" align="center">Marilou C. Guarina</td>
+				                    </tr>';
+				    break;
+					
+				    case 'SUNTRUST':
+				        echo '<tr>
+				                        <td colspan="2" align="center">Prepared by:</td>
+				                        <td colspan="2" align="center">Certified by:</td>
+				                    </tr>
+				                    <tr>
+				                        <td colspan="2" align="center">Sonia O. Rodriguez</td>
+				                        <td colspan="2" align="center">Marilou C. Guarina</td>
+				                    </tr>';
+				    break;
+					
+				    case 'EREX':
+				        echo '<tr>
+				                        <td colspan="2" align="center">Prepared by:</td>
+				                        <td colspan="2" align="center">Certified by:</td>
+				                    </tr>
+				                    <tr>
+				                        <td colspan="2" align="center">Sonia O. Rodriguez</td>
+				                        <td colspan="2" align="center">Marilou C. Guarina</td>
+				                    </tr>';
+				    break;
+					
+				    case 'CITYLINK':
+				        echo '<tr>
+				                        <td colspan="2" align="center">Prepared by:</td>
+				                        <td colspan="2" align="center">Certified by:</td>
+				                    </tr>
+				                    <tr>
+				                        <td colspan="2" align="center">Sonia O. Rodriguez</td>
+				                        <td colspan="2" align="center">Marilou C. Guarina</td>
+				                    </tr>';
+				    break;
+					
+				    case 'NCCAI':
+				        echo ' <tr>
+				                        <td colspan="2" align="center">Prepared by:</td>
+				                        <td colspan="2" align="center">Checked by:</td>
+				                    </tr>
+				                    <tr>
+				                        <td colspan="2" style="text-align:center;font-weight:bold;height: 50px;vertical-align: bottom; width:350px">'.$_SESSION['ipay_users'].'</td>
+				                        <td colspan="2" style="text-align:center;font-weight:bold;vertical-align: bottom;">'.strtoupper('Marilou C. GuariÑa').'</td>
+				                    </tr>
+				                    <tr>
+				                        <td colspan="2" align="center">PAYROLL ASSOCIATE</td>
+				                        <td colspan="2" align="center">ASSISTANT VICE PRESIDENT</td>
+				                    </tr>';
+				    break;
+					
+				    case 'LFI01':
+				         echo '<tr>
+				                        <td colspan="2" align="center">Prepared by:</td>
+				                        <td colspan="2" align="center">Certified by:</td>
+				                    </tr>
+				                    <tr>
+				                        <td colspan="2" style="text-align:center;font-weight:bold; height:50px; vertical-align:bottom; width:350px">'.$_SESSION['ipay_users'].'</td>
+				                        <td colspan="2" style="text-align:center;font-weight:bold;vertical-align: bottom;">'.strtoupper('Marilou C. GuariÑa').'</td>
+				                    </tr>
+				                    <tr>
+				                        <td colspan="2" align="center">PAYROLL ASSOCIATE</td>
+				                        <td colspan="2" align="center">ASSISTANT VICE PRESIDENT</td>
+				                    </tr>';
+				    break;
+					
+				    case 'MCTI':
+				        echo '<tr>
+				                        <td colspan="2" align="center"> Prepared by: </td>
+				                        <td colspan="2" align="center"> Certified by: </td>
+				                    </tr>
+				                    <tr>
+				                        <td colspan="2" style="text-align:center; font-weight:bold; height:50px; vertical-align:bottom; width:350px">'.$_SESSION['ipay_users'].'</td>
+				                        <td colspan="2" style="text-align:center; font-weight:bold; vertical-align:bottom;">'.strtoupper('JASON P. FALLER').'</td>
+				                    </tr>
+				                    <tr>
+				                        <td colspan="2" align="center">PAYROLL ASSOCIATE</td>
+				                        <td colspan="2" align="center">VICE PRESIDENT</td>
+				                    </tr>';
+				       break;
+					
+				     case 'GLOBALHOTEL' || 'GLOBAL_HOTEL' :
+				        echo '<tr>
+				                        <td colspan="2" align="center"> Prepared by: </td>
+				                        <td colspan="2" align="center"> Certified by: </td>
+				                    </tr>
+				                    <tr>
+				                        <td colspan="2" style="text-align:center; font-weight:bold; height:50px; vertical-align:bottom; width:350px">'.$_SESSION['ipay_users'].'</td>
+				                        <td colspan="2" style="text-align:center; font-weight:bold; vertical-align:bottom;">'.strtoupper('Marilou C. GuariÑa').'</td>
+				                    </tr>
+				                    <tr>
+				                        <td colspan="2" align="center">PAYROLL ASSOCIATE</td>
+				                        <td colspan="2" align="center">ASSISTANT VICE PRESIDENT</td>
+				                    </tr>';
+				       break;
+					
+				    default:
+				    break;
+				}
 
+				echo	"</table>";
 		?>
 
 	</body>
