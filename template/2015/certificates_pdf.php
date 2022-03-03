@@ -203,8 +203,8 @@
 					SSSEmployer,
 					EndDate 
 			FROM dbo.SSSRemit 
-			WHERE 	EmpID='2019-02-0033' 
-			AND 	EndDate BETWEEN '". date('m/d/Y',strtotime('2021-02-01 00:00:00.000'))."' 
+			WHERE 	EmpID= $emp_id 
+			AND 	EndDate BETWEEN '". date('m/d/Y',strtotime($coe[0]["leave_to"]))."' 
 					AND '".date('m/d/Y',strtotime($coe[0]["leave_to"]))."' 
 			ORDER BY EndDate ASC";
 
