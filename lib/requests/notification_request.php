@@ -4581,7 +4581,7 @@
 					<tr>
 						<td></td>
 						<td align="left">
-							<label>CoE Type: <?echo ;?> </label>
+							<label>CoE Type: </label>
 						</td>
 						<td align="left">
 							<select id="coetype" name="coetype" class="txtbox" style="width:193px;">
