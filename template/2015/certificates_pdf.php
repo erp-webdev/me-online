@@ -195,7 +195,6 @@
 		<?php
 				$approver = get_approver($emp_info[0]["CompanyID"]);
 				$query = "
-			USE GL
 			SELECT 	SSSMonth,
 					SSSYear,
 					ReceiptNo,
@@ -244,6 +243,8 @@
 				echo	"<table style='width:100%'>";
 				
 				echo	"</table>";
+
+				
 		?>
 
 

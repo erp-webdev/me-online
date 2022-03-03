@@ -4593,6 +4593,7 @@
 								<option value="COEGOODMORAL">CoE with Good Moral</option>
 								<option value="COEAPPROVEDLEAVE">CoE with Approved Leave</option>
 								<?php if($level != 1){  ?><option value="COESEPARATED">CoE for Separated Employee</option> <?php } ?>
+								<?php if($level != 1){  ?><option value="COESEPARATEDCOMPLETE">CoE for Separated Employee (Complete/No Accountability)</option> <?php } ?>
 								<option value="COECORRECTIONNAME">CoE for Correction Name</option>
                                 <?php if($level != 1){  ?><option value="COENONCASHADVANCEMENT">CoE for Non-Cash Advancement</option> <?php } ?>
                                 <?php if($empid = "2021-09-0351"){  ?><option value="PHILHEALTHCSF">PhilHealth CSF</option> <?php } ?>
@@ -4891,6 +4892,9 @@
 							$("#other_reason").html("Requirement For:");
 							$("#coeothersdiv").show();
 						}else if($("select[name=coetype]").val() == "COESEPARATED"){
+							$("#other_reason").html("Requirement For:");
+							$("#coeothersdiv").show();
+						}else if($("select[name=coetype]").val() == "COESEPARATEDCOMPLETE"){
 							$("#other_reason").html("Requirement For:");
 							$("#coeothersdiv").show();
 						}else if($("select[name=coetype]").val() == "COENONCASHADVANCEMENT"){
@@ -5322,7 +5326,7 @@
 			$coetypes = [
 				"2" => ["COECOMPENSATION"
 				],
-				"3" => ["COE","COEHOUSINGPLAN","COEJOBDESC","COEGOODMORAL","COEAPPROVEDLEAVE","COESEPARATED","COECORRECTIONNAME"
+				"3" => ["COE","COEHOUSINGPLAN","COEJOBDESC","COEGOODMORAL","COEAPPROVEDLEAVE","COESEPARATED","COESEPARATEDCOMPLETE","COECORRECTIONNAME"
 				]
 			];
 			$correction_name = $_POST["correctionname"];
@@ -5451,6 +5455,7 @@
 					'COEAPPROVEDLEAVE' => 'CoE with Approved Leave',
 					'COECORRECTIONNAME' => 'CoE for Correction Name',
 					'COESEPARATED' => 'CoE for Separated Employee',
+					'COESEPARATEDCOMPLETE' => 'CoE for Separated Employee (Complete/No Accountability)',
                     'COENONCASHADVANCEMENT' => 'CoE for Non-Cash Advancement',
                     'PHILHEALTHCSF' => 'PhilHealth CSF',
                     'PHILHEALTHCF1' => 'PhilHealth CF1',
@@ -5593,6 +5598,7 @@
 							<?php if($result[0]['type'] == 'COEGOODMORAL'){ echo "CoE with Good Moral"; }?>
 							<?php if($result[0]['type'] == 'COEAPPROVEDLEAVE'){ echo "CoE with Approved Leave"; }?>
 							<?php if($result[0]['type'] == 'COESEPARATED'){ echo "CoE for Separated Employee"; }?>
+							<?php if($result[0]['type'] == 'COESEPARATEDCOMPLETE'){ echo "CoE for Separated Employee (Complete/No Accountability)"; }?>
 							<?php if($result[0]['type'] == 'COECORRECTIONNAME'){ echo "CoE for Correction Name"; }?>
 							<?php if($result[0]['type'] == 'COENONCASHADVANCEMENT'){ echo "CoE for Non-Cash Advancement"; }?>
 							<?php if($result[0]['type'] == 'PHILHEALTHCSF'){ echo "PhilHealth CSF"; }?>
@@ -6329,7 +6335,7 @@
 			$coetypes = [
 				"2" => ["COECOMPENSATION"
 				],
-				"3" => ["COE","COEHOUSINGPLAN","COEJOBDESC","COEGOODMORAL","COEAPPROVEDLEAVE","COESEPARATED","COECORRECTIONNAME"
+				"3" => ["COE","COEHOUSINGPLAN","COEJOBDESC","COEGOODMORAL","COEAPPROVEDLEAVE","COESEPARATED","COESEPARATEDCOMPLETE","COECORRECTIONNAME"
 				]
 			];
 
