@@ -243,7 +243,7 @@
 				echo	"<table style='width:100%'>";
 				
 				echo	"</table>";
-
+				echo " <table style='width:100%'> ";
 				switch(strtoupper($emp_info[0]["CompanyID"]))
 				{
 					case 'ASIAAPMI':
