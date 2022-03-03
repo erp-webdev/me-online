@@ -261,9 +261,9 @@
 							<td align='center'> <? echo date('F',strtotime($r['EndDate'])); ?> </td>
 							<td align='center'> <? echo $r['ReceiptNo']; ?></td>
 							<td align='center'> <? echo date('m/d/Y',strtotime($r['ReceiptDate'])); ?></td>
-							<td align='center'> <? echo $r['SSSEmployee']; ?></td>
-							<td align='center'> <? echo $r['SSSEmployer']; ?></td>
-							<td align='center'> <? echo $r['SSSEmployee']+$r['SSSEmployer']; ?></td>
+							<td align='center'> <? echo moneyformat($r['SSSEmployee']); ?></td>
+							<td align='center'> <? echo moneyformat($r['SSSEmployer']); ?></td>
+							<td align='center'> <? echo moneyformat($r['SSSEmployee']+$r['SSSEmployer']); ?></td>
 						</tr>
 						<?php
 					$total          +=       $r['SSSEmployee'] + $r['SSSEmployer'];
@@ -275,9 +275,9 @@
 							<td align='center' style='font-weight:bold'>TOTAL</td>
 							<td> </td>
 							<td></td>
-							<td style='text-decoration: underline overline; font-weight:bold' align='center'>".$totalemployee."</td>
-							<td style='text-decoration: underline overline; font-weight:bold' align='center'>".$totalemployer."</td>
-							<td style='text-decoration: underline overline; font-weight:bold' align='center'>".$total."</td>
+							<td style='text-decoration: underline overline; font-weight:bold' align='center'>".moneyformat($totalemployee)."</td>
+							<td style='text-decoration: underline overline; font-weight:bold' align='center'>".moneyformat($totalemployer)."</td>
+							<td style='text-decoration: underline overline; font-weight:bold' align='center'>".moneyformat($total)."</td>
 						</tr>";
 				
 				echo	"</table> <br> <br><br> <br>";
@@ -496,43 +496,567 @@
 
 	</body>
 	<?php
-	} else {
+	} elseif ($coe[0]["type"] == "PHILHEALTHCERT") {
 		?>
-		
-		<img style="width: 100%; position: absolute; top: 75px; left: 0px;" src="<?php echo IMG_WEB; ?>/ClaimForm1_a.png"/></p>
-		<body style="size: Legal; font-size: 7pt; font-family: Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif">
-			<!-- Start Print Alignment -->
-			<?php 
+		<body>
+		<div style='margin-top: 45px; text-align: center; font-size: 35px; text-decoration: underline; margin-bottom: 50px;'><b>CERTIFICATE</div>
+		<p style='text-align: justify'>This is to certify that <?php echo $emp_info[0]["FullName"]  ?> with SSS # <?php echo $emp_info[0]["CompSSSNbr"]  ?> has remitted the following
+				SSS PREMIUM Contribution of Mr./Ms. <?php echo $emp_info[0]["FullName"]  ?> with SSS # <?php echo $emp_info[0]["SSSNbr"]  ?>.</p><br>	
+		<!-- Start Print Alignment -->
+		<table>
+			<tr style='width: 100%' >
+				<td style='width:125px;text-align:center;height:70px'>   APPLICATION <br> MONTH     </td>
+				<td style='width:125px;text-align:center;height:70px'>   SSS <br> RECIEPT NO.       </td>
+				<td style='width:100px;text-align:center;height:70px'>   DATE <br> REMITTED         </td>
+				<td style='width:100px;text-align:center;height:70px'>   EMPLOYEE <br> SHARE        </td>
+				<td style='width:100px;text-align:center;height:70px'>   EMPLOYER <br> SHARE        </td>
+				<td style='width:100px;text-align:center;height:70px'>   TOTAL                      </td>
+			</tr>
 	
+			<?php
+					$approver = get_approver($emp_info[0]["CompanyID"]);
+					$query = "
+				SELECT 	SSSMonth,
+						SSSYear,
+						ReceiptNo,
+						ReceiptDate,
+						SSSEmployee,
+						SSSEmployer,
+						EndDate 
+				FROM dbo.SSSRemit 
+				WHERE 	EmpID='".$emp_id."' 
+				AND 	EndDate BETWEEN '". date('m/d/Y',strtotime($coe[0]["leave_from"]))."' 
+						AND '".date('m/d/Y',strtotime($coe[0]["leave_to"]))."' 
+				ORDER BY EndDate ASC";
 	
-			$ph_no = clean_str($emp_info[0]["PhilHealthNbr"]);
-			place_text(substr($ph_no, 0, 2), 83.5, 88, 'letter-spacing: 9px');
-			place_text(substr($ph_no, 2, 9), 94, 88, 'letter-spacing: 7px');
-			place_text(substr($ph_no, 11, 1), 131.5, 88, 'letter-spacing: 10px');
+					$employees = $mainsql->get_row($query);
+					$total=0;
+					$totalemployer=0;
+					$totalemployee=0;
+					 
+					foreach($employees as $r)
+					{ 
+						?>
+							<tr>
+								<td align='center'> <? echo date('F',strtotime($r['EndDate'])); ?> </td>
+								<td align='center'> <? echo $r['ReceiptNo']; ?></td>
+								<td align='center'> <? echo date('m/d/Y',strtotime($r['ReceiptDate'])); ?></td>
+								<td align='center'> <? echo moneyformat($r['SSSEmployee']); ?></td>
+								<td align='center'> <? echo moneyformat($r['SSSEmployer']); ?></td>
+								<td align='center'> <? echo moneyformat($r['SSSEmployee']+$r['SSSEmployer']); ?></td>
+							</tr>
+							<?php
+						$total          +=       $r['SSSEmployee'] + $r['SSSEmployer'];
+						$totalemployee  +=       $r['SSSEmployee'];
+						$totalemployer  +=       $r['SSSEmployer'];
+					}
+					
+					echo	"<tr>
+								<td align='center' style='font-weight:bold'>TOTAL</td>
+								<td> </td>
+								<td></td>
+								<td style='text-decoration: underline overline; font-weight:bold' align='center'>".moneyformat($totalemployee)."</td>
+								<td style='text-decoration: underline overline; font-weight:bold' align='center'>".moneyformat($totalemployer)."</td>
+								<td style='text-decoration: underline overline; font-weight:bold' align='center'>".moneyformat($total)."</td>
+							</tr>";
+					
+					echo	"</table> <br> <br><br> <br>";
+					echo	"<table style='width:100%'>";
+					
+					echo	"</table>";
+					echo " <table style='width:100%'> ";
+					switch(strtoupper($emp_info[0]["CompanyID"]))
+					{
+						case 'ASIAAPMI':
+							echo ' <tr>
+											<td colspan="2" align="left">Prepared by:</td>
+										</tr>
+										<tr>
+											<td colspan="2" style="text-align:left;font-weight:bold;height: 50px;vertical-align: bottom;">Jeriza Mae V. Sioco</td>
+										<tr>
+											<td colspan="2" align="left">PAYROLL MANAGER</td>
+										</tr>';
+						break;
+						
+						case 'GLOBAL01':
+							echo ' <tr>
+											<td colspan="2" align="center">Prepared by:</td>
+											<td colspan="2" align="center">Checked by:</td>
+										</tr>
+										<tr>
+											<td colspan="2" style="text-align:center;font-weight:bold;height: 10px;vertical-align: bottom;">Jeriza Mae V. Sioco</td>
+											<td colspan="2" style="text-align:center;font-weight:bold;vertical-align: bottom;">Arlene A. Branco</td>
+										<tr>
+											<td colspan="2" align="center">PAYROLL ANALYST</td>
+											<td colspan="2" align="center">PAYROLL MANAGER</td>
+										</tr>';
+						break;
+						
+						case 'LGMI01':
+							echo ' <tr>
+											<td colspan="2" align="center">Prepared by:</td>
+											<td colspan="2" align="center">Checked by:</td>
+										</tr>
+										<tr>
+											<td colspan="2" style="text-align:center;font-weight:bold;height: 50px;vertical-align: bottom;">Mae Hazel B. Anastacio</td>
+											<td colspan="2" style="text-align:center;font-weight:bold;vertical-align: bottom;">Arlene A. Branco</td>
+										<tr>
+											<td colspan="2" align="center">PAYROLL ANALYST</td>
+											<td colspan="2" align="center">PAYROLL MANAGER</td>
+										</tr>';
+						break;
+						
+						case 'MEGA01':
+							echo '
+										<tr>
+											<td colspan="2" align="center">Prepared by:</td>
+											<td colspan="2" align="center">Certified by:</td>
+										</tr>
+										<tr>
+											<td colspan="2" style="text-align:center;font-weight:bold;height: 50px;vertical-align: bottom; width:350px">'.$_SESSION['ipay_users'].'</td>
+											<td colspan="2" style="text-align:center;font-weight:bold;vertical-align: bottom;">'.strtoupper('Marilou C. GuariÑa').'</td>
+										</tr>
+										<tr>
+											<td colspan="2" align="center">PAYROLL ASSOCIATE</td>
+											<td colspan="2" align="center">ASSISTANT VICE PRESIDENT</td>
+										</tr>';
+						break;
+						
+						case 'LUCK01':
+							echo ' <tr>
+											<td colspan="2" align="center">Prepared by:</td>
+											<td colspan="2" align="center">Certified by:</td>
+										</tr>
+										<tr>
+											<td colspan="2" style="text-align:center;font-weight:bold;height: 50px;vertical-align: bottom; width:350px">'.$_SESSION['ipay_users'].'</td>
+											<td colspan="2" style="text-align:center;font-weight:bold;vertical-align: bottom;">'.strtoupper('Marilou C. GuariÑa').'</td>
+										</tr>
+										<tr>
+											<td colspan="2" align="center">PAYROLL ASSOCIATE</td>
+											<td colspan="2" align="center">ASSISTANT VICE PRESIDENT</td>
+										</tr>';
+						break;
+						
+						case 'MLI01':
+							echo ' <tr>
+											<td colspan="2" align="center">Prepared by:</td>
+											<td colspan="2" align="center">Certified by:</td>
+										</tr>
+										<tr>
+											<td colspan="2" style="text-align:center;font-weight:bold;height: 50px;vertical-align: bottom; width:350px">'.$_SESSION['ipay_users'].'</td>
+											<td colspan="2" style="text-align:center;font-weight:bold;vertical-align: bottom;">'.strtoupper('Marilou C. GuariÑa').'</td>
+										</tr>
+										<tr>
+											<td colspan="2" align="center">PAYROLL ASSOCIATE</td>
+											<td colspan="2" align="center">ASSISTANT VICE PRESIDENT</td>
+										</tr>';
+						break;
+						
+						case 'TDI':
+							echo '<tr>
+											<td colspan="2" align="center">Prepared by:</td>
+											<td colspan="2" align="center">Certified by:</td>
+										</tr>
+										<tr>
+											<td colspan="2" align="center">Sonia O. Rodriguez</td>
+											<td colspan="2" align="center">Marilou C. Guarina</td>
+										</tr>';
+						break;
+						
+						case 'ECOC':
+						   echo '<tr>
+											<td colspan="2" align="center">Prepared by:</td>
+											<td colspan="2" align="center">Certified by:</td>
+										</tr>
+										<tr>
+											<td colspan="2" align="center">Sonia O. Rodriguez</td>
+											<td colspan="2" align="center">Marilou C. Guarina</td>
+										</tr>';
+						break;
+						
+						case 'SUNTRUST':
+							echo '<tr>
+											<td colspan="2" align="center">Prepared by:</td>
+											<td colspan="2" align="center">Certified by:</td>
+										</tr>
+										<tr>
+											<td colspan="2" align="center">Sonia O. Rodriguez</td>
+											<td colspan="2" align="center">Marilou C. Guarina</td>
+										</tr>';
+						break;
+						
+						case 'EREX':
+							echo '<tr>
+											<td colspan="2" align="center">Prepared by:</td>
+											<td colspan="2" align="center">Certified by:</td>
+										</tr>
+										<tr>
+											<td colspan="2" align="center">Sonia O. Rodriguez</td>
+											<td colspan="2" align="center">Marilou C. Guarina</td>
+										</tr>';
+						break;
+						
+						case 'CITYLINK':
+							echo '<tr>
+											<td colspan="2" align="center">Prepared by:</td>
+											<td colspan="2" align="center">Certified by:</td>
+										</tr>
+										<tr>
+											<td colspan="2" align="center">Sonia O. Rodriguez</td>
+											<td colspan="2" align="center">Marilou C. Guarina</td>
+										</tr>';
+						break;
+						
+						case 'NCCAI':
+							echo ' <tr>
+											<td colspan="2" align="center">Prepared by:</td>
+											<td colspan="2" align="center">Checked by:</td>
+										</tr>
+										<tr>
+											<td colspan="2" style="text-align:center;font-weight:bold;height: 50px;vertical-align: bottom; width:350px">'.$_SESSION['ipay_users'].'</td>
+											<td colspan="2" style="text-align:center;font-weight:bold;vertical-align: bottom;">'.strtoupper('Marilou C. GuariÑa').'</td>
+										</tr>
+										<tr>
+											<td colspan="2" align="center">PAYROLL ASSOCIATE</td>
+											<td colspan="2" align="center">ASSISTANT VICE PRESIDENT</td>
+										</tr>';
+						break;
+						
+						case 'LFI01':
+							 echo '<tr>
+											<td colspan="2" align="center">Prepared by:</td>
+											<td colspan="2" align="center">Certified by:</td>
+										</tr>
+										<tr>
+											<td colspan="2" style="text-align:center;font-weight:bold; height:50px; vertical-align:bottom; width:350px">'.$_SESSION['ipay_users'].'</td>
+											<td colspan="2" style="text-align:center;font-weight:bold;vertical-align: bottom;">'.strtoupper('Marilou C. GuariÑa').'</td>
+										</tr>
+										<tr>
+											<td colspan="2" align="center">PAYROLL ASSOCIATE</td>
+											<td colspan="2" align="center">ASSISTANT VICE PRESIDENT</td>
+										</tr>';
+						break;
+						
+						case 'MCTI':
+							echo '<tr>
+											<td colspan="2" align="center"> Prepared by: </td>
+											<td colspan="2" align="center"> Certified by: </td>
+										</tr>
+										<tr>
+											<td colspan="2" style="text-align:center; font-weight:bold; height:50px; vertical-align:bottom; width:350px">'.$_SESSION['ipay_users'].'</td>
+											<td colspan="2" style="text-align:center; font-weight:bold; vertical-align:bottom;">'.strtoupper('JASON P. FALLER').'</td>
+										</tr>
+										<tr>
+											<td colspan="2" align="center">PAYROLL ASSOCIATE</td>
+											<td colspan="2" align="center">VICE PRESIDENT</td>
+										</tr>';
+						   break;
+						
+						 case 'GLOBALHOTEL' || 'GLOBAL_HOTEL' :
+							echo '<tr>
+											<td colspan="2" align="center"> Prepared by: </td>
+											<td colspan="2" align="center"> Certified by: </td>
+										</tr>
+										<tr>
+											<td colspan="2" style="text-align:center; font-weight:bold; height:50px; vertical-align:bottom; width:350px">'.$_SESSION['ipay_users'].'</td>
+											<td colspan="2" style="text-align:center; font-weight:bold; vertical-align:bottom;">'.strtoupper('Marilou C. GuariÑa').'</td>
+										</tr>
+										<tr>
+											<td colspan="2" align="center">PAYROLL ASSOCIATE</td>
+											<td colspan="2" align="center">ASSISTANT VICE PRESIDENT</td>
+										</tr>';
+						   break;
+						
+						default:
+						break;
+					}
 	
-			place_text(mb_convert_encoding($emp_info[0]["LName"], 'UTF-8', 'HTML-ENTITIES'), 11, 115, '');
-			place_text(mb_convert_encoding($emp_info[0]["FName"], 'UTF-8', 'HTML-ENTITIES'), 44.5, 115, '');
-			// place_text($philhealth->LName, 10, 54, ''); For Extension
-			place_text(mb_convert_encoding($emp_info[0]["MName"], 'UTF-8', 'HTML-ENTITIES'), 113.5, 115, '');
-	
-	
-			place_text(date('m', strtotime($emp_info[0]["BirthDate"])), 147.50, 97, 'letter-spacing: 5.5px');
-			place_text(date('d', strtotime($emp_info[0]["BirthDate"])), 157.50, 97, 'letter-spacing: 5.5px;');
-			place_text(date('Y', strtotime($emp_info[0]["BirthDate"])), 167.50, 97, 'letter-spacing: 7.3px;');
-	
-			$ph_no = clean_str($emp_info[0]["CompPhilHealthNbr"]);
-			place_text(substr($ph_no, 0, 2), 64, 248.5, 'letter-spacing: 8px');
-			place_text(substr($ph_no, 2, 9), 74, 248.5, 'letter-spacing: 7px');
-			place_text(substr($ph_no, 11, 1),112, 248.5, 'letter-spacing:8px');
-	
-			place_text($emp_info[0]["CompanyName"], 39, 257.5, '');
-			place_text($approver->name, 11.5, 284.5, '');
-			place_text($approver->position, 85.5, 284.5, '');
-	
+					echo	"</table>";
 			?>
+	
 		</body>
 		<?php
-		} 
+		} else {
+			?>
+			<body>
+			<div style='margin-top: 45px; text-align: center; font-size: 35px; text-decoration: underline; margin-bottom: 50px;'><b>CERTIFICATE</div>
+			<p style='text-align: justify'>This is to certify that <?php echo $emp_info[0]["FullName"]  ?> with SSS # <?php echo $emp_info[0]["CompSSSNbr"]  ?> has remitted the following
+					SSS PREMIUM Contribution of Mr./Ms. <?php echo $emp_info[0]["FullName"]  ?> with SSS # <?php echo $emp_info[0]["SSSNbr"]  ?>.</p><br>	
+			<!-- Start Print Alignment -->
+			<table>
+				<tr style='width: 100%' >
+					<td style='width:125px;text-align:center;height:70px'>   APPLICATION <br> MONTH     </td>
+					<td style='width:125px;text-align:center;height:70px'>   SSS <br> RECIEPT NO.       </td>
+					<td style='width:100px;text-align:center;height:70px'>   DATE <br> REMITTED         </td>
+					<td style='width:100px;text-align:center;height:70px'>   EMPLOYEE <br> SHARE        </td>
+					<td style='width:100px;text-align:center;height:70px'>   EMPLOYER <br> SHARE        </td>
+					<td style='width:100px;text-align:center;height:70px'>   TOTAL                      </td>
+				</tr>
+		
+				<?php
+						$approver = get_approver($emp_info[0]["CompanyID"]);
+						$query = "
+					SELECT 	SSSMonth,
+							SSSYear,
+							ReceiptNo,
+							ReceiptDate,
+							SSSEmployee,
+							SSSEmployer,
+							EndDate 
+					FROM dbo.SSSRemit 
+					WHERE 	EmpID='".$emp_id."' 
+					AND 	EndDate BETWEEN '". date('m/d/Y',strtotime($coe[0]["leave_from"]))."' 
+							AND '".date('m/d/Y',strtotime($coe[0]["leave_to"]))."' 
+					ORDER BY EndDate ASC";
+		
+						$employees = $mainsql->get_row($query);
+						$total=0;
+						$totalemployer=0;
+						$totalemployee=0;
+						 
+						foreach($employees as $r)
+						{ 
+							?>
+								<tr>
+									<td align='center'> <? echo date('F',strtotime($r['EndDate'])); ?> </td>
+									<td align='center'> <? echo $r['ReceiptNo']; ?></td>
+									<td align='center'> <? echo date('m/d/Y',strtotime($r['ReceiptDate'])); ?></td>
+									<td align='center'> <? echo moneyformat($r['SSSEmployee']); ?></td>
+									<td align='center'> <? echo moneyformat($r['SSSEmployer']); ?></td>
+									<td align='center'> <? echo moneyformat($r['SSSEmployee']+$r['SSSEmployer']); ?></td>
+								</tr>
+								<?php
+							$total          +=       $r['SSSEmployee'] + $r['SSSEmployer'];
+							$totalemployee  +=       $r['SSSEmployee'];
+							$totalemployer  +=       $r['SSSEmployer'];
+						}
+						
+						echo	"<tr>
+									<td align='center' style='font-weight:bold'>TOTAL</td>
+									<td> </td>
+									<td></td>
+									<td style='text-decoration: underline overline; font-weight:bold' align='center'>".moneyformat($totalemployee)."</td>
+									<td style='text-decoration: underline overline; font-weight:bold' align='center'>".moneyformat($totalemployer)."</td>
+									<td style='text-decoration: underline overline; font-weight:bold' align='center'>".moneyformat($total)."</td>
+								</tr>";
+						
+						echo	"</table> <br> <br><br> <br>";
+						echo	"<table style='width:100%'>";
+						
+						echo	"</table>";
+						echo " <table style='width:100%'> ";
+						switch(strtoupper($emp_info[0]["CompanyID"]))
+						{
+							case 'ASIAAPMI':
+								echo ' <tr>
+												<td colspan="2" align="left">Prepared by:</td>
+											</tr>
+											<tr>
+												<td colspan="2" style="text-align:left;font-weight:bold;height: 50px;vertical-align: bottom;">Jeriza Mae V. Sioco</td>
+											<tr>
+												<td colspan="2" align="left">PAYROLL MANAGER</td>
+											</tr>';
+							break;
+							
+							case 'GLOBAL01':
+								echo ' <tr>
+												<td colspan="2" align="center">Prepared by:</td>
+												<td colspan="2" align="center">Checked by:</td>
+											</tr>
+											<tr>
+												<td colspan="2" style="text-align:center;font-weight:bold;height: 10px;vertical-align: bottom;">Jeriza Mae V. Sioco</td>
+												<td colspan="2" style="text-align:center;font-weight:bold;vertical-align: bottom;">Arlene A. Branco</td>
+											<tr>
+												<td colspan="2" align="center">PAYROLL ANALYST</td>
+												<td colspan="2" align="center">PAYROLL MANAGER</td>
+											</tr>';
+							break;
+							
+							case 'LGMI01':
+								echo ' <tr>
+												<td colspan="2" align="center">Prepared by:</td>
+												<td colspan="2" align="center">Checked by:</td>
+											</tr>
+											<tr>
+												<td colspan="2" style="text-align:center;font-weight:bold;height: 50px;vertical-align: bottom;">Mae Hazel B. Anastacio</td>
+												<td colspan="2" style="text-align:center;font-weight:bold;vertical-align: bottom;">Arlene A. Branco</td>
+											<tr>
+												<td colspan="2" align="center">PAYROLL ANALYST</td>
+												<td colspan="2" align="center">PAYROLL MANAGER</td>
+											</tr>';
+							break;
+							
+							case 'MEGA01':
+								echo '
+											<tr>
+												<td colspan="2" align="center">Prepared by:</td>
+												<td colspan="2" align="center">Certified by:</td>
+											</tr>
+											<tr>
+												<td colspan="2" style="text-align:center;font-weight:bold;height: 50px;vertical-align: bottom; width:350px">'.$_SESSION['ipay_users'].'</td>
+												<td colspan="2" style="text-align:center;font-weight:bold;vertical-align: bottom;">'.strtoupper('Marilou C. GuariÑa').'</td>
+											</tr>
+											<tr>
+												<td colspan="2" align="center">PAYROLL ASSOCIATE</td>
+												<td colspan="2" align="center">ASSISTANT VICE PRESIDENT</td>
+											</tr>';
+							break;
+							
+							case 'LUCK01':
+								echo ' <tr>
+												<td colspan="2" align="center">Prepared by:</td>
+												<td colspan="2" align="center">Certified by:</td>
+											</tr>
+											<tr>
+												<td colspan="2" style="text-align:center;font-weight:bold;height: 50px;vertical-align: bottom; width:350px">'.$_SESSION['ipay_users'].'</td>
+												<td colspan="2" style="text-align:center;font-weight:bold;vertical-align: bottom;">'.strtoupper('Marilou C. GuariÑa').'</td>
+											</tr>
+											<tr>
+												<td colspan="2" align="center">PAYROLL ASSOCIATE</td>
+												<td colspan="2" align="center">ASSISTANT VICE PRESIDENT</td>
+											</tr>';
+							break;
+							
+							case 'MLI01':
+								echo ' <tr>
+												<td colspan="2" align="center">Prepared by:</td>
+												<td colspan="2" align="center">Certified by:</td>
+											</tr>
+											<tr>
+												<td colspan="2" style="text-align:center;font-weight:bold;height: 50px;vertical-align: bottom; width:350px">'.$_SESSION['ipay_users'].'</td>
+												<td colspan="2" style="text-align:center;font-weight:bold;vertical-align: bottom;">'.strtoupper('Marilou C. GuariÑa').'</td>
+											</tr>
+											<tr>
+												<td colspan="2" align="center">PAYROLL ASSOCIATE</td>
+												<td colspan="2" align="center">ASSISTANT VICE PRESIDENT</td>
+											</tr>';
+							break;
+							
+							case 'TDI':
+								echo '<tr>
+												<td colspan="2" align="center">Prepared by:</td>
+												<td colspan="2" align="center">Certified by:</td>
+											</tr>
+											<tr>
+												<td colspan="2" align="center">Sonia O. Rodriguez</td>
+												<td colspan="2" align="center">Marilou C. Guarina</td>
+											</tr>';
+							break;
+							
+							case 'ECOC':
+							   echo '<tr>
+												<td colspan="2" align="center">Prepared by:</td>
+												<td colspan="2" align="center">Certified by:</td>
+											</tr>
+											<tr>
+												<td colspan="2" align="center">Sonia O. Rodriguez</td>
+												<td colspan="2" align="center">Marilou C. Guarina</td>
+											</tr>';
+							break;
+							
+							case 'SUNTRUST':
+								echo '<tr>
+												<td colspan="2" align="center">Prepared by:</td>
+												<td colspan="2" align="center">Certified by:</td>
+											</tr>
+											<tr>
+												<td colspan="2" align="center">Sonia O. Rodriguez</td>
+												<td colspan="2" align="center">Marilou C. Guarina</td>
+											</tr>';
+							break;
+							
+							case 'EREX':
+								echo '<tr>
+												<td colspan="2" align="center">Prepared by:</td>
+												<td colspan="2" align="center">Certified by:</td>
+											</tr>
+											<tr>
+												<td colspan="2" align="center">Sonia O. Rodriguez</td>
+												<td colspan="2" align="center">Marilou C. Guarina</td>
+											</tr>';
+							break;
+							
+							case 'CITYLINK':
+								echo '<tr>
+												<td colspan="2" align="center">Prepared by:</td>
+												<td colspan="2" align="center">Certified by:</td>
+											</tr>
+											<tr>
+												<td colspan="2" align="center">Sonia O. Rodriguez</td>
+												<td colspan="2" align="center">Marilou C. Guarina</td>
+											</tr>';
+							break;
+							
+							case 'NCCAI':
+								echo ' <tr>
+												<td colspan="2" align="center">Prepared by:</td>
+												<td colspan="2" align="center">Checked by:</td>
+											</tr>
+											<tr>
+												<td colspan="2" style="text-align:center;font-weight:bold;height: 50px;vertical-align: bottom; width:350px">'.$_SESSION['ipay_users'].'</td>
+												<td colspan="2" style="text-align:center;font-weight:bold;vertical-align: bottom;">'.strtoupper('Marilou C. GuariÑa').'</td>
+											</tr>
+											<tr>
+												<td colspan="2" align="center">PAYROLL ASSOCIATE</td>
+												<td colspan="2" align="center">ASSISTANT VICE PRESIDENT</td>
+											</tr>';
+							break;
+							
+							case 'LFI01':
+								 echo '<tr>
+												<td colspan="2" align="center">Prepared by:</td>
+												<td colspan="2" align="center">Certified by:</td>
+											</tr>
+											<tr>
+												<td colspan="2" style="text-align:center;font-weight:bold; height:50px; vertical-align:bottom; width:350px">'.$_SESSION['ipay_users'].'</td>
+												<td colspan="2" style="text-align:center;font-weight:bold;vertical-align: bottom;">'.strtoupper('Marilou C. GuariÑa').'</td>
+											</tr>
+											<tr>
+												<td colspan="2" align="center">PAYROLL ASSOCIATE</td>
+												<td colspan="2" align="center">ASSISTANT VICE PRESIDENT</td>
+											</tr>';
+							break;
+							
+							case 'MCTI':
+								echo '<tr>
+												<td colspan="2" align="center"> Prepared by: </td>
+												<td colspan="2" align="center"> Certified by: </td>
+											</tr>
+											<tr>
+												<td colspan="2" style="text-align:center; font-weight:bold; height:50px; vertical-align:bottom; width:350px">'.$_SESSION['ipay_users'].'</td>
+												<td colspan="2" style="text-align:center; font-weight:bold; vertical-align:bottom;">'.strtoupper('JASON P. FALLER').'</td>
+											</tr>
+											<tr>
+												<td colspan="2" align="center">PAYROLL ASSOCIATE</td>
+												<td colspan="2" align="center">VICE PRESIDENT</td>
+											</tr>';
+							   break;
+							
+							 case 'GLOBALHOTEL' || 'GLOBAL_HOTEL' :
+								echo '<tr>
+												<td colspan="2" align="center"> Prepared by: </td>
+												<td colspan="2" align="center"> Certified by: </td>
+											</tr>
+											<tr>
+												<td colspan="2" style="text-align:center; font-weight:bold; height:50px; vertical-align:bottom; width:350px">'.$_SESSION['ipay_users'].'</td>
+												<td colspan="2" style="text-align:center; font-weight:bold; vertical-align:bottom;">'.strtoupper('Marilou C. GuariÑa').'</td>
+											</tr>
+											<tr>
+												<td colspan="2" align="center">PAYROLL ASSOCIATE</td>
+												<td colspan="2" align="center">ASSISTANT VICE PRESIDENT</td>
+											</tr>';
+							   break;
+							
+							default:
+							break;
+						}
+		
+						echo	"</table>";
+				?>
+		
+			</body>
+			<?php
+			}
 		?>
 	<?php
 		echo !$send_pdf ? '&nbsp;<br />'  : '';
