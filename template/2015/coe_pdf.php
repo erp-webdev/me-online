@@ -286,18 +286,18 @@
 		&nbsp;
 
 		<div style="text-align: justify;  text-justify: inter-word;">
-			<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo strtoupper(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES')); ?></b>
+			<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo ucwords(strtolower(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES'))); ?></b>
 				<?php if($emp_info[0]["DateResigned"]){ ?>
 					was employed as
 				<?php }else{ ?>
 					is currently employed as
 				<?php } ?>
-			<b><?php echo $emp_info[0]["PositionDesc"]."</b> by <b>".$emp_info[0]["CompanyName"]."</b> from <b>".$emp_info[0]["HireDate"]; ?>
+			<b><?php echo ucwords(strtolower($emp_info[0]["PositionDesc"]))."</b> by <b>".ucwords(strtolower($emp_info[0]["CompanyName"]))."</b> from <b>".$emp_info[0]["HireDate"]; ?>
 			<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
 			up to the present.</b></p>
 			<?php } ?>
 
-			<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo $emp_info[0]["Salutation"]." ".strtoupper(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES')); ?>
+			<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES'))); ?>
 			<?php
 				if($coe[0]["other_reason"]){
 			?>
