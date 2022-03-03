@@ -4581,7 +4581,7 @@
 					<tr>
 						<td></td>
 						<td align="left">
-							<label>CoE Type: <?echo $userdata;?> </label>
+							<label>CoE Type: <?echo ;?> </label>
 						</td>
 						<td align="left">
 							<select id="coetype" name="coetype" class="txtbox" style="width:193px;">
@@ -4596,12 +4596,12 @@
 								<?php if($level != 1){  ?><option value="COESEPARATEDCOMPLETE">CoE for Separated Employee (Complete/No Accountability)</option> <?php } ?>
 								<option value="COECORRECTIONNAME">CoE for Correction Name</option>
                                 <?php if($level != 1){  ?><option value="COENONCASHADVANCEMENT">CoE for Non-Cash Advancement</option> <?php } ?>
-                                <?php if($empid == "2021-09-0351"){  ?><option value="PHILHEALTHCSF">PhilHealth CSF</option> <?php } ?>
-                                <?php if($empid == "2021-09-0351"){  ?><option value="PHILHEALTHCF1">PhilHealth CF1</option> <?php } ?>
-                                <?php if($empid == "2021-09-0351"){  ?><option value="COEFORCOMPENSATION">CoE for Employee Compensation</option> <?php } ?>
-                                <?php if($empid == "2021-09-0351"){  ?><option value="SSSCERT">SSS Certificate</option> <?php } ?>
-                                <?php if($empid == "2021-09-0351"){  ?><option value="PHILHEALTHCERT">Philhealth Certificate</option> <?php } ?>
-                                <?php if($empid == "2021-09-0351"){  ?><option value="PAGIBIGCERT">Pagibig Certificate</option> <?php } ?>
+                                <?php if($level == 3){  ?><option value="PHILHEALTHCSF">PhilHealth CSF</option> <?php } ?>
+                                <?php if($level == 3){  ?><option value="PHILHEALTHCF1">PhilHealth CF1</option> <?php } ?>
+                                <?php if($level == 3){  ?><option value="COEFORCOMPENSATION">CoE for Employee Compensation</option> <?php } ?>
+                                <?php if($level == 3){  ?><option value="SSSCERT">SSS Certificate</option> <?php } ?>
+                                <?php if($level == 3){  ?><option value="PHILHEALTHCERT">Philhealth Certificate</option> <?php } ?>
+                                <?php if($level == 3){  ?><option value="PAGIBIGCERT">Pagibig Certificate</option> <?php } ?>
                                 
 							</select>
 						</td>
