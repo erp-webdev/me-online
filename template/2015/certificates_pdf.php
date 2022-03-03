@@ -204,7 +204,7 @@
 					EndDate 
 			FROM dbo.SSSRemit 
 			WHERE 	EmpID= $emp_id 
-			AND 	EndDate BETWEEN '". date('m/d/Y',strtotime($coe[0]["leave_to"]))."' 
+			AND 	EndDate BETWEEN '". date('m/d/Y',strtotime($coe[0]["leave_from"]))."' 
 					AND '".date('m/d/Y',strtotime($coe[0]["leave_to"]))."' 
 			ORDER BY EndDate ASC";
 
