@@ -247,7 +247,7 @@
 				switch(strtoupper($companyid))
 				{
 					case 'ASIAAPMI':
-				        $details.=' <tr>
+				        echo ' <tr>
 				                        <td colspan="2" align="left">Prepared by:</td>
 				                    </tr>
 				                    <tr>
@@ -258,7 +258,7 @@
 				    break;
 					
 				    case 'GLOBAL01':
-				        $details.=' <tr>
+				        echo ' <tr>
 				                        <td colspan="2" align="center">Prepared by:</td>
 				                        <td colspan="2" align="center">Checked by:</td>
 				                    </tr>
@@ -272,7 +272,7 @@
 				    break;
 					
 				    case 'LGMI01':
-				        $details.=' <tr>
+				        echo ' <tr>
 				                        <td colspan="2" align="center">Prepared by:</td>
 				                        <td colspan="2" align="center">Checked by:</td>
 				                    </tr>
@@ -286,7 +286,7 @@
 				    break;
 					
 				    case 'MEGA01':
-				        $details.='
+				        echo '
 				                    <tr>
 				                        <td colspan="2" align="center">Prepared by:</td>
 				                        <td colspan="2" align="center">Certified by:</td>
@@ -302,7 +302,7 @@
 				    break;
 					
 				    case 'LUCK01':
-				        $details.=' <tr>
+				        echo ' <tr>
 				                        <td colspan="2" align="center">Prepared by:</td>
 				                        <td colspan="2" align="center">Certified by:</td>
 				                    </tr>
@@ -317,7 +317,7 @@
 				    break;
 					
 				    case 'MLI01':
-				        $details.=' <tr>
+				        echo ' <tr>
 				                        <td colspan="2" align="center">Prepared by:</td>
 				                        <td colspan="2" align="center">Certified by:</td>
 				                    </tr>
@@ -332,7 +332,7 @@
 				    break;
 					
 				    case 'TDI':
-				        $details.='<tr>
+				        echo '<tr>
 				                        <td colspan="2" align="center">Prepared by:</td>
 				                        <td colspan="2" align="center">Certified by:</td>
 				                    </tr>
@@ -343,7 +343,7 @@
 				    break;
 					
 				    case 'ECOC':
-				       $details.='<tr>
+				       echo '<tr>
 				                        <td colspan="2" align="center">Prepared by:</td>
 				                        <td colspan="2" align="center">Certified by:</td>
 				                    </tr>
@@ -354,7 +354,7 @@
 				    break;
 					
 				    case 'SUNTRUST':
-				        $details.='<tr>
+				        echo '<tr>
 				                        <td colspan="2" align="center">Prepared by:</td>
 				                        <td colspan="2" align="center">Certified by:</td>
 				                    </tr>
@@ -365,7 +365,7 @@
 				    break;
 					
 				    case 'EREX':
-				        $details.='<tr>
+				        echo '<tr>
 				                        <td colspan="2" align="center">Prepared by:</td>
 				                        <td colspan="2" align="center">Certified by:</td>
 				                    </tr>
@@ -376,7 +376,7 @@
 				    break;
 					
 				    case 'CITYLINK':
-				        $details.='<tr>
+				        echo '<tr>
 				                        <td colspan="2" align="center">Prepared by:</td>
 				                        <td colspan="2" align="center">Certified by:</td>
 				                    </tr>
@@ -387,7 +387,7 @@
 				    break;
 					
 				    case 'NCCAI':
-				        $details.=' <tr>
+				        echo ' <tr>
 				                        <td colspan="2" align="center">Prepared by:</td>
 				                        <td colspan="2" align="center">Checked by:</td>
 				                    </tr>
@@ -402,7 +402,7 @@
 				    break;
 					
 				    case 'LFI01':
-				         $details.='<tr>
+				         echo '<tr>
 				                        <td colspan="2" align="center">Prepared by:</td>
 				                        <td colspan="2" align="center">Certified by:</td>
 				                    </tr>
@@ -417,7 +417,7 @@
 				    break;
 					
 				    case 'MCTI':
-				        $details.='<tr>
+				        echo '<tr>
 				                        <td colspan="2" align="center"> Prepared by: </td>
 				                        <td colspan="2" align="center"> Certified by: </td>
 				                    </tr>
@@ -432,7 +432,7 @@
 				       break;
 					
 				     case 'GLOBALHOTEL' || 'GLOBAL_HOTEL' :
-				        $details.='<tr>
+				        echo '<tr>
 				                        <td colspan="2" align="center"> Prepared by: </td>
 				                        <td colspan="2" align="center"> Certified by: </td>
 				                    </tr>
@@ -449,8 +449,10 @@
 				    default:
 				    break;
 				}
-		?>
 
+
+		?>
+	</table>
 
 	</body>
 	<?php
