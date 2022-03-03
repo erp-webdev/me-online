@@ -82,7 +82,10 @@
 		'ASIAAPMI' => '24F ALLIANCE GLOBAL TOWER 36TH STREET CORNER 11 AVENUE UPTOWN BONIFACIO TAGUIG CITY'
 	];
 
-
+	function moneyformat($x)
+	{
+		return number_format($x,2,'.',',');
+	}
 	function get_approver($company_id)
 	{
 	$dbapp = ['name' => '', 'position' => '', 'db_name' =>''];
