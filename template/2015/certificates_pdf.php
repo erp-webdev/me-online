@@ -244,7 +244,7 @@
 				
 				echo	"</table>";
 
-				switch(strtoupper($companyid))
+				switch(strtoupper($emp_info[0]["CompanyID"]))
 				{
 					case 'ASIAAPMI':
 				        echo ' <tr>
@@ -450,9 +450,8 @@
 				    break;
 				}
 
-
+				echo	"</table>";
 		?>
-</table>
 
 	</body>
 	<?php
