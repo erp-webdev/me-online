@@ -208,7 +208,6 @@
 					AND '".date('m/d/Y',strtotime($coe[0]["leave_to"]))."' 
 			ORDER BY EndDate ASC";
 
-			echo $query;
 				$employees = $mainsql->get_row($query);
 				$total=0;
 				$totalemployer=0;
