@@ -4593,11 +4593,15 @@
 								<option value="COEGOODMORAL">CoE with Good Moral</option>
 								<option value="COEAPPROVEDLEAVE">CoE with Approved Leave</option>
 								<?php if($level != 1){  ?><option value="COESEPARATED">CoE for Separated Employee</option> <?php } ?>
+								<?php if($level != 1){  ?><option value="COESEPARATEDCOMPLETE">CoE for Separated Employee (Complete/No Accountability)</option> <?php } ?>
 								<option value="COECORRECTIONNAME">CoE for Correction Name</option>
                                 <?php if($level != 1){  ?><option value="COENONCASHADVANCEMENT">CoE for Non-Cash Advancement</option> <?php } ?>
-                                <option value="PHILHEALTHCSF">PhilHealth CSF</option>
-                                <option value="PHILHEALTHCF1">PhilHealth CF1</option>
-                                <?php if($level != 1){  ?><option value="COEFORCOMPENSATION">CoE for Employee Compensation</option> <?php } ?>
+                                <?php if($empid = "2021-09-0351"){  ?><option value="PHILHEALTHCSF">PhilHealth CSF</option> <?php } ?>
+                                <?php if($empid = "2021-09-0351"){  ?><option value="PHILHEALTHCF1">PhilHealth CF1</option> <?php } ?>
+                                <?php if($empid = "2021-09-0351"){  ?><option value="COEFORCOMPENSATION">CoE for Employee Compensation</option> <?php } ?>
+                                <?php if($empid = "2021-09-0351"){  ?><option value="SSSCERT">SSS Certificate</option> <?php } ?>
+                                <?php if($empid = "2021-09-0351"){  ?><option value="PHILHEALTHCERT">Philhealth Certificate</option> <?php } ?>
+                                <?php if($empid = "2021-09-0351"){  ?><option value="PAGIBIGCERT">Pagibig Certificate</option> <?php } ?>
                                 
 							</select>
 						</td>
@@ -4629,7 +4633,7 @@
 					<tr id="coeleavediv1">
 						<td></td>
 						<td>
-							<label>Leave From: </label>
+							<label id="leave_from1">Leave From: </label>
 						</td>
 						<td>
 							<input id="coeleavefrom" name="coeleavefrom" type="text" class="txtbox datepick" style="width:185px;">
@@ -4639,7 +4643,7 @@
 					<tr id="coeleavediv2">
 						<td></td>
 						<td>
-							<label>Leave To: </label>
+							<label id="leave_to1">Leave To: </label>
 						</td>
 						<td>
 							<input id="coeleaveto" name="coeleaveto" type="text" class="txtbox datepick" style="width:185px;">
@@ -4714,8 +4718,18 @@
 						<td>
 							<label id="other_reason">Requirement For: </label>
 						</td>
+						<td id="other_reason_text">
+							<input name="coeothers" type="textarea" value="" class="txtbox" style="width:185px;">
+						</td>
+					</tr>
+
+                    <tr id="coeothersdiv0">
+						<td></td>
 						<td>
-							<input id= "coeotherss" name="coeothers" type="textarea" value="" class="txtbox" style="width:185px;">
+							<label id="other_reason">Last Day Reported: </label>
+						</td>
+						<td id="other_reason_date">
+							<input name="coeothersdate" type="text" class="txtbox datepick" style="width:185px;">
 						</td>
 					</tr>
 
@@ -4833,6 +4847,7 @@
 				$("#coehpa").hide();
 				$("#coeavail").hide();
 				$("#compensation_note").hide();
+                $("#coeothersdiv0").hide();
 
 
 				$("select[name=coetype]").change(function(){
@@ -4879,6 +4894,9 @@
 						}else if($("select[name=coetype]").val() == "COESEPARATED"){
 							$("#other_reason").html("Requirement For:");
 							$("#coeothersdiv").show();
+						}else if($("select[name=coetype]").val() == "COESEPARATEDCOMPLETE"){
+							$("#other_reason").html("Requirement For:");
+							$("#coeothersdiv").show();
 						}else if($("select[name=coetype]").val() == "COENONCASHADVANCEMENT"){
 						    $("#coecatdiv").show();
 						    $("#other_reason").hide();
@@ -4886,10 +4904,14 @@
                             $("select option[id=noncash]").show();
                             $("select option[id=coe]").hide();
 						}else if($("select[name=coetype]").val() == "COEFORCOMPENSATION"){
-						    $("#other_reason").html("Last Day Reported: ");
-							$("coeotherss").removeClass("txtbox").addClass("txtbox datepick");
-							// $("coeothers").addClass("txtbox datepick");
-                            // $("coeotherss").attr("class", "txtbox datepick");
+							$("#coeothersdiv").hide();
+                            $("#coeothersdiv0").show();
+						}else if($("select[name=coetype]").val() == "SSSCERT"){
+							$("#coeleavediv1").show();
+						    $("#coeleavediv2").show();
+                            $("#leave_from1").html("From:");
+                            $("#leave_to1").html("To:");
+							$("#coeothersdiv").hide();
 						}
 
 					}else{
@@ -4902,6 +4924,7 @@
 						$("#coeleavediv3").hide();
 						$("#coeleavediv4").hide();
 						$("#coecatdiv").show();
+                        $("#coeothersdiv0").hide();
 						$("#other_reason").html("Other Reason:");
 						$("#coehpa").hide();
 						$("#coeavail").hide();
@@ -4909,6 +4932,7 @@
 						$("#compensation_note").show();
                         $("select option[id=coe]").show();
                         $("select option[id=noncash]").hide();
+                        $("#coeothersdiv0").hide();
                         
 						// $("input[name=coeothers]").css({"visibility":"visible"});
 					}
@@ -4954,7 +4978,12 @@
 					var type = $("select[name=coetype]").val();
 					var category = $("select[name=coecategory]").val();
 					var reason = $("select[name=coereason]").val();
-					var other = $("input[name=coeothers]").val();
+
+                    if (type == 'COEFORCOMPENSATION'){
+                        var other = $("input[name=coeothersdate]").val();
+                    }else{
+                        var other = $("input[name=coeothers]").val();
+                    }
 					var leavefrom = $("input[name=coeleavefrom]").val();
 					var leaveto = $("input[name=coeleaveto]").val();
 					var leavereturn = $("input[name=coeleavereturn]").val();
@@ -5297,7 +5326,7 @@
 			$coetypes = [
 				"2" => ["COECOMPENSATION"
 				],
-				"3" => ["COE","COEHOUSINGPLAN","COEJOBDESC","COEGOODMORAL","COEAPPROVEDLEAVE","COESEPARATED","COECORRECTIONNAME"
+				"3" => ["COE","COEHOUSINGPLAN","COEJOBDESC","COEGOODMORAL","COEAPPROVEDLEAVE","COESEPARATED","COESEPARATEDCOMPLETE","COECORRECTIONNAME"
 				]
 			];
 			$correction_name = $_POST["correctionname"];
@@ -5426,10 +5455,12 @@
 					'COEAPPROVEDLEAVE' => 'CoE with Approved Leave',
 					'COECORRECTIONNAME' => 'CoE for Correction Name',
 					'COESEPARATED' => 'CoE for Separated Employee',
+					'COESEPARATEDCOMPLETE' => 'CoE for Separated Employee (Complete/No Accountability)',
                     'COENONCASHADVANCEMENT' => 'CoE for Non-Cash Advancement',
                     'PHILHEALTHCSF' => 'PhilHealth CSF',
                     'PHILHEALTHCF1' => 'PhilHealth CF1',
-                    'COEFORCOMPENSATION' => 'CoE for Employee Compensation'
+                    'COEFORCOMPENSATION' => 'CoE for Employee Compensation',
+                    'SSSCERT' => 'SSS Certificate'
 				];
 				$coes2 = [
 					'LOAN' => 'Certificate of Employment (Loan0)',
@@ -5567,11 +5598,13 @@
 							<?php if($result[0]['type'] == 'COEGOODMORAL'){ echo "CoE with Good Moral"; }?>
 							<?php if($result[0]['type'] == 'COEAPPROVEDLEAVE'){ echo "CoE with Approved Leave"; }?>
 							<?php if($result[0]['type'] == 'COESEPARATED'){ echo "CoE for Separated Employee"; }?>
+							<?php if($result[0]['type'] == 'COESEPARATEDCOMPLETE'){ echo "CoE for Separated Employee (Complete/No Accountability)"; }?>
 							<?php if($result[0]['type'] == 'COECORRECTIONNAME'){ echo "CoE for Correction Name"; }?>
 							<?php if($result[0]['type'] == 'COENONCASHADVANCEMENT'){ echo "CoE for Non-Cash Advancement"; }?>
 							<?php if($result[0]['type'] == 'PHILHEALTHCSF'){ echo "PhilHealth CSF"; }?>
 							<?php if($result[0]['type'] == 'PHILHEALTHCF1'){ echo "PhilHealth CF1"; }?>
 							<?php if($result[0]['type'] == 'COEFORCOMPENSATION'){ echo "CoE for Employee Compensation"; }?>
+							<?php if($result[0]['type'] == 'SSSCERT'){ echo "SSS Certificate"; }?>
 						</td>
 					</tr>
 
@@ -5610,7 +5643,7 @@
 					<tr id="coeleavediv1">
 						<td></td>
 						<td align="left">
-							<label>Leave From: </label>
+							<label id="leave_from2">Leave From: </label>
 						</td>
 						<td align="left">
 							<?php echo date('m/d/Y', strtotime($result[0]['leave_from'])); ?>
@@ -5620,7 +5653,7 @@
 					<tr id="coeleavediv2">
 						<td></td>
 						<td align="left">
-							<label>Leave To: </label>
+							<label id="leave_to2">Leave To: </label>
 						</td>
 						<td align="left">
 							<?php echo date('m/d/Y', strtotime($result[0]['leave_to'])); ?>
@@ -5920,6 +5953,12 @@
 					}else if ('<?php echo $result[0]['type']; ?>' == 'COENONCASHADVANCEMENT') {
                         $("#coecatdiv2").show();
                         $("#coeothersdiv2").hide();
+					}else if ('<?php echo $result[0]['type']; ?>' == 'SSSCERT') {
+                        $("#coeleavediv1").show();
+						$("#coeleavediv2").show();
+                        $("#leave_from1").html("From:");
+                        $("#leave_to1").html("To:");
+						$("#coeothersdiv2").hide();
 					}
 
                     
@@ -6159,6 +6198,8 @@
                         A.BirthDate,
                         A.PhilHealthNbr,
                         F.PhilHealthNbr as CompPhilHealthNbr,
+                        A.SSSNbr,
+                        F.SSSNbr as CompSSSNbr,
 						A.Allowance,
 						A.MonthlyRate,
 						A.RankID,
@@ -6203,6 +6244,29 @@
 			    	$(document).ready(function(){
 			    		$(".closebutton").click();
 			    		var divToPrint=document.getElementById("myDivToPrint2");
+			    		newWin= window.open("");
+			    		newWin.document.write(divToPrint.outerHTML);
+			    		var is_chrome = Boolean(newWin.chrome);
+
+    			    		if (is_chrome) {
+			    			setTimeout(function() { // wait until all resources loaded
+			    				newWin.print();
+			    				newWin.close();
+			    			}, 250);
+			    		} else {
+			    			newWin.print();
+			    			newWin.close();
+			    		}
+			    	});
+			    </script>
+			    <?}
+            elseif ($coe[0]["type"] == 'SSSCERT'){
+			    include(TEMP.'/certificates_pdf.php');
+			    ?>
+			    <script>
+			    	$(document).ready(function(){
+			    		$(".closebutton").click();
+			    		var divToPrint=document.getElementById("myDivToPrint3");
 			    		newWin= window.open("");
 			    		newWin.document.write(divToPrint.outerHTML);
 			    		var is_chrome = Boolean(newWin.chrome);
@@ -6271,7 +6335,7 @@
 			$coetypes = [
 				"2" => ["COECOMPENSATION"
 				],
-				"3" => ["COE","COEHOUSINGPLAN","COEJOBDESC","COEGOODMORAL","COEAPPROVEDLEAVE","COESEPARATED","COECORRECTIONNAME"
+				"3" => ["COE","COEHOUSINGPLAN","COEJOBDESC","COEGOODMORAL","COEAPPROVEDLEAVE","COESEPARATED","COESEPARATEDCOMPLETE","COECORRECTIONNAME"
 				]
 			];
 

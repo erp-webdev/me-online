@@ -233,20 +233,6 @@
 		echo !$send_pdf ? '&nbsp;<br />'  : '';
 	?>
 
-
-		<!-- Breaklines START -  for Template - TCPDF cant render css height of div - FOOTER BREAKLINES -->
-		<?php if (in_array($coe[0]["type"], ['COE', 'COEGOODMORAL', 'COEGOODMORAL', 'COESEPARATED'])){ ?>
-			&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />
-			&nbsp;<br />&nbsp;<br />&nbsp;<br />
-			<?php if($coe[0]["type"] == 'COE' && !$send_pdf){ ?>
-				&nbsp;<br />&nbsp;<br />&nbsp;<br />
-				&nbsp;<br />
-			<?php } ?>
-		<?php } elseif (in_array($coe[0]["type"], ['COEHOUSINGPLAN', 'COEAPPROVEDLEAVE', 'COECORRECTIONNAME'])) { ?>
-			&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />
-		<?php } ?>
-		<!-- Breaklines END -->
-
 		<!-- FOOTER START -->
 		<?php
 		if((in_array($coe[0]["company"], ['GLOBAL01', 'LGMI01'])) && $coe[0]["type"] != 'COECOMPENSATION' && $coe[0]["type"] == 'COESEPARATED'){
