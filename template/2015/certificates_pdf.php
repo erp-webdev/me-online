@@ -509,7 +509,7 @@
 		<table>
 			<tr style='width: 100%' >
 				<td style='width:125px;text-align:center;height:70px'>   APPLICATION <br> MONTH     </td>
-				<td style='width:125px;text-align:center;height:70px'>   SSS <br> RECIEPT NO.       </td>
+				<td style='width:125px;text-align:center;height:70px'>   PHILHEALTH <br> RECIEPT NO.       </td>
 				<td style='width:100px;text-align:center;height:70px'>   DATE <br> REMITTED         </td>
 				<td style='width:100px;text-align:center;height:70px'>   EMPLOYEE <br> SHARE        </td>
 				<td style='width:100px;text-align:center;height:70px'>   EMPLOYER <br> SHARE        </td>
@@ -519,14 +519,14 @@
 			<?php
 					$approver = get_approver($emp_info[0]["CompanyID"]);
 					$query = "
-				SELECT 	SSSMonth,
-						SSSYear,
-						ReceiptNo,
-						ReceiptDate,
-						SSSEmployee,
-						SSSEmployer,
-						EndDate 
-				FROM dbo.SSSRemit 
+				SELECT 	PHMonth,
+                    PHYear,
+                    ReceiptNo,
+                    ReceiptDate,
+                    PHEmployee,
+                    PHEmployer,
+                    EndDate
+				FROM dbo.PHRemit 
 				WHERE 	EmpID='".$emp_id."' 
 				AND 	EndDate BETWEEN '". date('m/d/Y',strtotime($coe[0]["leave_from"]))."' 
 						AND '".date('m/d/Y',strtotime($coe[0]["leave_to"]))."' 
@@ -544,14 +544,14 @@
 								<td align='center'> <? echo date('F',strtotime($r['EndDate'])); ?> </td>
 								<td align='center'> <? echo $r['ReceiptNo']; ?></td>
 								<td align='center'> <? echo date('m/d/Y',strtotime($r['ReceiptDate'])); ?></td>
-								<td align='center'> <? echo moneyformat($r['SSSEmployee']); ?></td>
-								<td align='center'> <? echo moneyformat($r['SSSEmployer']); ?></td>
-								<td align='center'> <? echo moneyformat($r['SSSEmployee']+$r['SSSEmployer']); ?></td>
+								<td align='center'> <? echo moneyformat($r['PHEmployee']); ?></td>
+								<td align='center'> <? echo moneyformat($r['PHEmployer']); ?></td>
+								<td align='center'> <? echo moneyformat($r['PHEmployee']+$r['PHEmployer']); ?></td>
 							</tr>
 							<?php
-						$total          +=       $r['SSSEmployee'] + $r['SSSEmployer'];
-						$totalemployee  +=       $r['SSSEmployee'];
-						$totalemployer  +=       $r['SSSEmployer'];
+						$total          +=       $r['PHEmployee'] + $r['PHEmployer'];
+						$totalemployee  +=       $r['PHEmployee'];
+						$totalemployer  +=       $r['PHEmployer'];
 					}
 					
 					echo	"<tr>
@@ -799,14 +799,14 @@
 				<?php
 						$approver = get_approver($emp_info[0]["CompanyID"]);
 						$query = "
-					SELECT 	SSSMonth,
-							SSSYear,
-							ReceiptNo,
-							ReceiptDate,
-							SSSEmployee,
-							SSSEmployer,
-							EndDate 
-					FROM dbo.SSSRemit 
+					SELECT 	PagIbigMonth,
+					PagIbigYear,
+					ReceiptNo,
+					ReceiptDate,
+					PagIbigEmployee,
+					PagIbigEmployer,
+					EndDate
+					FROM dbo.PagibigRemit 
 					WHERE 	EmpID='".$emp_id."' 
 					AND 	EndDate BETWEEN '". date('m/d/Y',strtotime($coe[0]["leave_from"]))."' 
 							AND '".date('m/d/Y',strtotime($coe[0]["leave_to"]))."' 
@@ -824,14 +824,14 @@
 									<td align='center'> <? echo date('F',strtotime($r['EndDate'])); ?> </td>
 									<td align='center'> <? echo $r['ReceiptNo']; ?></td>
 									<td align='center'> <? echo date('m/d/Y',strtotime($r['ReceiptDate'])); ?></td>
-									<td align='center'> <? echo moneyformat($r['SSSEmployee']); ?></td>
-									<td align='center'> <? echo moneyformat($r['SSSEmployer']); ?></td>
-									<td align='center'> <? echo moneyformat($r['SSSEmployee']+$r['SSSEmployer']); ?></td>
+									<td align='center'> <? echo moneyformat($r['PagIbigEmployee']); ?></td>
+									<td align='center'> <? echo moneyformat($r['PagIbigEmployer']); ?></td>
+									<td align='center'> <? echo moneyformat($r['PagIbigEmployee']+$r['PagIbigEmployer']); ?></td>
 								</tr>
 								<?php
-							$total          +=       $r['SSSEmployee'] + $r['SSSEmployer'];
-							$totalemployee  +=       $r['SSSEmployee'];
-							$totalemployer  +=       $r['SSSEmployer'];
+							$total          +=       $r['PagIbigEmployee'] + $r['PagIbigEmployer'];
+							$totalemployee  +=       $r['PagIbigEmployee'];
+							$totalemployer  +=       $r['PagIbigEmployer'];
 						}
 						
 						echo	"<tr>
