@@ -4868,6 +4868,8 @@
 
 						if($("select[name=coetype]").val() == "COEAPPROVEDLEAVE"){
 							$("#coeleavediv1").show();
+                            $("#leave_from1").html("Leave From:");
+                            $("#leave_to1").html("Leave To:");
 							$("#coeleavediv2").show();
 							$("#coeleavediv3").show();
 							$("#coeleavediv4").show();
