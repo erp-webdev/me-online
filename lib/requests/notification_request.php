@@ -4908,7 +4908,8 @@
 						}else if($("select[name=coetype]").val() == "COEFORCOMPENSATION"){
 							$("#coeothersdiv").hide();
                             $("#coeothersdiv0").show();
-						}else if($("select[name=coetype]").val() == "SSSCERT" || $("select[name=coetype]").val() == "PHILHEALTHCERT" || $("select[name=coetype]").val() == "PAGIBIGCERT"){
+						}else if($("select[name=coetype]").val() == "SSSCERT" || $("select[name=coetype]").val() == "PHILHEALTHCERT" ||
+                         $("select[name=coetype]").val() == "PAGIBIGCERT"){
 							$("#coeleavediv1").show();
 						    $("#coeleavediv2").show();
                             $("#leave_from1").html("From:");
@@ -5955,7 +5956,8 @@
 					}else if ('<?php echo $result[0]['type']; ?>' == 'COENONCASHADVANCEMENT') {
                         $("#coecatdiv2").show();
                         $("#coeothersdiv2").hide();
-					}else if ('<?php echo $result[0]['type']; ?>' == 'SSSCERT') {
+					}else if ('<?php echo $result[0]['type']; ?>' == 'SSSCERT' || '<?php echo $result[0]['type']; ?>' == 'PAGIBIGCERT' ||
+                     '<?php echo $result[0]['type']; ?>' == 'PHILHEALTHCERT') {
                         $("#coeleavediv1").show();
 						$("#coeleavediv2").show();
                         $("#leave_from1").html("From:");
