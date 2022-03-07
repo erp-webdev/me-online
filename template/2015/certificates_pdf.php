@@ -503,8 +503,8 @@
 		?>
 		<body>
 		<div style='margin-top: 45px; text-align: center; font-size: 35px; text-decoration: underline; margin-bottom: 50px;'><b>CERTIFICATE</div>
-		<p style='text-align: justify'>This is to certify that <?php echo $emp_info[0]["FullName"]  ?> with SSS # <?php echo $emp_info[0]["CompSSSNbr"]  ?> has remitted the following
-				SSS PREMIUM Contribution of Mr./Ms. <?php echo $emp_info[0]["FullName"]  ?> with SSS # <?php echo $emp_info[0]["SSSNbr"]  ?>.</p><br>	
+		<p style='text-align: justify'>This is to certify that <?php echo $emp_info[0]["FullName"]  ?> with PHILHEALTH # <?php echo $emp_info[0]["CompSSSNbr"]  ?> has remitted the following
+				SSS PREMIUM Contribution of Mr./Ms. <?php echo $emp_info[0]["FullName"]  ?> with PHILHEALTH # <?php echo $emp_info[0]["SSSNbr"]  ?>.</p><br>	
 		<!-- Start Print Alignment -->
 		<table>
 			<tr style='width: 100%' >

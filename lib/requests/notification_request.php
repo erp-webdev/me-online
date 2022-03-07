@@ -6206,6 +6206,8 @@
                         F.PhilHealthNbr as CompPhilHealthNbr,
                         A.SSSNbr,
                         F.SSSNbr as CompSSSNbr,
+                        A.PagibigNbr,
+                        F.PagibigNbr as CompPagibigNbr,
 						A.Allowance,
 						A.MonthlyRate,
 						A.RankID,
