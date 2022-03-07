@@ -6268,7 +6268,7 @@
 			    	});
 			    </script>
 			    <?}
-            elseif ($coe[0]["type"] == 'SSSCERT'){
+            elseif ($coe[0]["type"] == 'SSSCERT' || $coe[0]["type"] == 'PHILHEALTHCERT' || $coe[0]["type"] == 'PAGIBIGCERT'){
 			    include(TEMP.'/certificates_pdf.php');
 			    ?>
 			    <script>
