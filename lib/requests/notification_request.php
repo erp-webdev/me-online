@@ -4906,7 +4906,7 @@
 						}else if($("select[name=coetype]").val() == "COEFORCOMPENSATION"){
 							$("#coeothersdiv").hide();
                             $("#coeothersdiv0").show();
-						}else if($("select[name=coetype]").val() == "SSSCERT" or $("select[name=coetype]").val() == "PHILHEALTHCERT" or $("select[name=coetype]").val() == "PAGIBIGCERT"){
+						}else if($("select[name=coetype]").val() == "SSSCERT" || $("select[name=coetype]").val() == "PHILHEALTHCERT" || $("select[name=coetype]").val() == "PAGIBIGCERT"){
 							$("#coeleavediv1").show();
 						    $("#coeleavediv2").show();
                             $("#leave_from1").html("From:");
