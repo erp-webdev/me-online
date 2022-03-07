@@ -5463,7 +5463,9 @@
                     'PHILHEALTHCSF' => 'PhilHealth CSF',
                     'PHILHEALTHCF1' => 'PhilHealth CF1',
                     'COEFORCOMPENSATION' => 'CoE for Employee Compensation',
-                    'SSSCERT' => 'SSS Certificate'
+                    'SSSCERT' => 'SSS Certificate',
+                    'PHILHEALTHCERT' => 'Philhealth Certificate',
+                    'PAGIBIGCERT' => 'Pagibig Certificate'
 				];
 				$coes2 = [
 					'LOAN' => 'Certificate of Employment (Loan0)',
