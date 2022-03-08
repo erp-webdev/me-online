@@ -240,6 +240,24 @@
             $profile_ps = 0;
         endif;
 
+        $sql = "select count (distinct empid)
+        from GLMEmpSignatory
+        where SIGNATORYID1 = $profile_idnum
+        or SIGNATORYID2 = $profile_idnum
+        or SIGNATORYID3 = $profile_idnum
+        or SIGNATORYID4 = $profile_idnum
+        or SIGNATORYID5 = $profile_idnum
+        or SIGNATORYID6 = $profile_idnum
+        AND [TYPE] = 'frmApplicationLVWeb'";
+		$isapprover = $mainsql->get_row($sql);
+
+        if ($isapprover > 0):
+            $profile_level = 9;
+        else:
+            $profile_ps = 0;
+        endif;
+        
+
         $llblock = $mainsql->get_emploan($profile_idnum);
         $psblock = $mainsql->get_psblock($profile_idnum, $dbname);
         //$unread_notification = $mainsql->get_read($profile_idnum, NULL, 1);
