@@ -137,6 +137,8 @@ class mainsql {
             $sql .= " WHERE [outer].[ROW_NUMBER] BETWEEN ".(intval($start) + 1)." AND ".intval($start + $limit)." ORDER BY [outer].[ROW_NUMBER] ";
         endif;
 
+        echo $sql;
+
 		if ($count) : $result = $this->get_numrow($sql);
         else : $result = $this->get_row($sql);
         endif;
@@ -247,7 +249,7 @@ class mainsql {
         endif;
 		return $result;
 	}
-    
+
     function get_wfh_user($empid, $dbname, $count = 0)
     {
     $sql = "SELECT EmpID, Name, DBNAME, start_date, end_date, CONVERT(varchar, end_date, 23) as end_convert, CONVERT(varchar, start_date, 23) as start_convert, CONVERT(varchar, DATEADD(day, 3,end_date), 23) as end_warning FROM WFHUsers WHERE EmpID = '".$empid."' and DBNAME = '".$dbname."'
