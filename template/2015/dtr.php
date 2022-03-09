@@ -29,9 +29,8 @@
                                                 <?php endforeach; ?>
                                             </select>&nbsp;&nbsp;
                                             <?php $attpost = $dtr_period[0]['AttPost']; ?>
-                                            <span id="txtposted11" class="lgreentext bold<?php echo $attpost == 1 ? "" : " invisible"; ?>"><i class="fa fa-check"></i> POSTED</span>
-                                            <span id="txtposted1" class="lgreentext bold<?php echo $attpost == 1 ? "" : " invisible"; ?>"><i class="fa fa-check"></i> POSTED</span>
-                                            
+                                            <span id="txtposted" class="lgreentext bold<?php echo $attpost == 1 ? "" : " invisible"; ?>"><i class="fa fa-check"></i> POSTED</span>
+                                            <span id="payslip" class="<?php echo $attpost == 1 ? "" : " invisible"; ?>">Payslip</span>
                                         </td>
                                     </tr>
                                 </table>
