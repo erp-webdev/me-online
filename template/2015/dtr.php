@@ -343,7 +343,8 @@
 
                     <script>
                             $("#btntopayslip").on("click", function(){
-                            $('#payslipclick').trigger('click')
+                            $section = "payslip";
+                            $('#payslipclick').trigger('click');
                             });
                     </script>
 
