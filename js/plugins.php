@@ -2679,9 +2679,13 @@ $(function() {
                 }
             }
             $("#txtposted").addClass('invisible');
+            $("#payslip").addClass('invisible');
+            
         }
         else {
             $("#txtposted").removeClass('invisible');
+            $("#payslip").addClass('invisible');
+            
         }
 
 
