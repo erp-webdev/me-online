@@ -5406,6 +5406,8 @@
 						VALUES ('".$refno."','".$coeemp."', '".$coetype."', '".$coecategory."', '".$coereason."', '".$coeother."', 'On Process', '".$coe_company."', '".$profile_idnum."', '".$datetoday."', '".$profile_idnum."', '".$datetoday."',
 								'".$leave_from."', '".$leave_to."', '".$leave_return."', '".$correction_name."', '".$tasks."', '".$hpa_percentage."', '".$avail_no."', '".$fixname."')";
 
+                                echo $sql;
+
 				$result = $mainsql->get_execute($sql);
 
 				$coe_sql = "SELECT * FROM COERequests Where ref_no='$refno'";
