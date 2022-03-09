@@ -86,7 +86,7 @@
                         <?php if ($section != "dtr") { ?><a href="<?php echo WEB; ?>/dtr" onclick="clickAndDisable(this);"><?php } ?><div<?php if ($section == "dtr") { ?> class="dselected"<?php } ?>>Daily Time Record</div><?php if ($section != "dtr") { ?></a><?php } ?>
                         <?php if (!$_SESSION['megassep_admin'] && $profile_dbname != 'OJTPAY') : ?>
                         <?php if ($psblock && $profile_dbname != 'OJTPAY') : ?>
-                        <?php if ($section != "payslip") { ?><a id="payslipclick" href="<?php echo WEB; ?>/payslip"  onclick="clickAndDisable(this);"><?php } ?><div<?php if ($section == "payslip") { ?> class="dselected"<?php } ?>>Payslip</div><?php if ($section != "payslip") { ?></a><?php } ?>
+                        <?php if ($section != "payslip") { ?><a id="payslipclick" href="<?php echo WEB; ?>/payslip"  onclick="clickAndDisable(payslipclick);"><?php } ?><div<?php if ($section == "payslip") { ?> class="dselected"<?php } ?>>Payslip</div><?php if ($section != "payslip") { ?></a><?php } ?>
                         <?php endif; ?>
                         <?php endif; ?>
 
