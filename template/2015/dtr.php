@@ -30,7 +30,7 @@
                                             </select>&nbsp;&nbsp;
                                             <?php $attpost = $dtr_period[0]['AttPost']; ?>
                                             <span id="txtposted" class="lgreentext bold<?php echo $attpost == 1 ? "" : " invisible"; ?>"><i class="fa fa-check"></i> POSTED</span>
-                                            <button id="btntopayslip" onclick="clickAndDisable(payslipclick);"  class="<?php echo $attpost == 1 ? "" : " invisible"; ?>"></i> Payslip</button>
+                                            <button id="btntopayslip" onclick="clickAndDisable(payslipclick);" class="<?php echo $attpost == 1 ? "" : " invisible"; ?>"></i> Payslip</button>
                                         </td>
                                     </tr>
                                 </table>

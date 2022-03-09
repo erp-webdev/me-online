@@ -5517,8 +5517,4 @@ $(function() {
         $('#fdbname').addClass('invisible');
 	});
 
-    <!-- $("#btntopayslip").on("click", function(){
-        $('#payslipclick').trigger('click');
-    }); -->
-
 });
