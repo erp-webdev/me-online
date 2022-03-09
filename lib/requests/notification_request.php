@@ -5308,8 +5308,8 @@
 			$coeemp = trim($_POST["emp"]);
 			$coetype = trim($_POST["type"]);
 			$coecategory = trim($_POST["category"]);
-			$coereason = str_replace("'","\'",$_POST["reason"]);
-			$coeother = str_replace("'","\'",$_POST["other"]);
+			$coereason = str_replace("'","''",$_POST["reason"]);
+			$coeother = str_replace("'","''",$_POST["other"]);
 			$leave_from = $_POST["leavefrom"];
 			$leave_to = $_POST["leaveto"];
 			$leave_return = $_POST["leavereturn"];
