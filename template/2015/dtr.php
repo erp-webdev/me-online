@@ -30,7 +30,8 @@
                                             </select>&nbsp;&nbsp;
                                             <?php $attpost = $dtr_period[0]['AttPost']; ?>
                                             <span id="txtposted" class="lgreentext bold<?php echo $attpost == 1 ? "" : " invisible"; ?>"><i class="fa fa-check"></i> POSTED</span>
-                                            <?php if ($section != "payslip") { ?><a id="payslipclick" href="<?php echo WEB; ?>/payslip"  onclick="clickAndDisable(this);"><?php } ?><div<?php if ($section == "payslip") { ?> class="dselected"<?php } ?>>Payslip</div><?php if ($section != "payslip") { ?></a><?php } ?>
+                                            <a href id="btntopayslip"  href="<?php echo WEB; ?>/payslip"  class="<?php echo $attpost == 1 ? "" : " invisible"; ?>"></i> Payslip</a>
+                                            
                                         </td>
                                     </tr>
                                 </table>
