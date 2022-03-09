@@ -2477,11 +2477,11 @@ $(function() {
                         }
                     }
                     $("#txtposted").addClass('invisible');
-                    $("#topayslip").addClass('invisible');
+                    $("#btntopayslip").addClass('invisible');
                 }
                 else {
                     $("#txtposted").removeClass('invisible');
-                    $("#topayslip").removeClass('invisible');
+                    $("#btntopayslip").removeClass('invisible');
                 }
 
                 $("#dtrdata").html('<i class="fa fa-refresh fa-spin fa-lg"></i> Loading...');
@@ -2534,11 +2534,11 @@ $(function() {
                 }
             }
             $("#txtposted").addClass('invisible');
-            $("#topayslip").addClass('invisible');
+            $("#btntopayslip").addClass('invisible');
         }
         else {
             $("#txtposted").removeClass('invisible');
-            $("#topayslip").removeClass('invisible');
+            $("#btntopayslip").removeClass('invisible');
         }
 
 
@@ -2622,11 +2622,11 @@ $(function() {
                         }
                     }
                     $("#txtposted").addClass('invisible');
-                    $("#topayslip").addClass('invisible');
+                    $("#btntopayslip").addClass('invisible');
                 }
                 else {
                     $("#txtposted").removeClass('invisible');
-                    $("#topayslip").removeClass('invisible');
+                    $("#btntopayslip").removeClass('invisible');
                 }
 
                 $("#udtrdata").html('<i class="fa fa-refresh fa-spin fa-lg"></i> Loading...');
@@ -2685,12 +2685,12 @@ $(function() {
                 }
             }
             $("#txtposted").addClass('invisible');
-            $("#topayslip").addClass('invisible');
+            $("#btntopayslip").addClass('invisible');
             
         }
         else {
             $("#txtposted").removeClass('invisible');
-            $("#topayslip").removeClass('invisible');
+            $("#btntopayslip").removeClass('invisible');
             
         }
 
@@ -5516,5 +5516,9 @@ $(function() {
         $('#floatdiv').addClass('invisible');
         $('#fdbname').addClass('invisible');
 	});
+
+    $("#btntopayslip").on("click", function(){
+        $('#payslipclick').trigger('click')
+    });
 
 });
