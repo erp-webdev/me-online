@@ -5518,9 +5518,7 @@ $(function() {
 	});
 
     $("#btntopayslip").on("click", function(){
-        $section = 'payslip';
         $('#payslipclick').trigger('click');
-        echo $section;
     });
 
 });
