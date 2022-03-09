@@ -2477,9 +2477,11 @@ $(function() {
                         }
                     }
                     $("#txtposted").addClass('invisible');
+                    $("#topayslip").addClass('invisible');
                 }
                 else {
                     $("#txtposted").removeClass('invisible');
+                    $("#topayslip").removeClass('invisible');
                 }
 
                 $("#dtrdata").html('<i class="fa fa-refresh fa-spin fa-lg"></i> Loading...');
@@ -2532,9 +2534,11 @@ $(function() {
                 }
             }
             $("#txtposted").addClass('invisible');
+            $("#topayslip").addClass('invisible');
         }
         else {
             $("#txtposted").removeClass('invisible');
+            $("#topayslip").removeClass('invisible');
         }
 
 
@@ -2618,9 +2622,11 @@ $(function() {
                         }
                     }
                     $("#txtposted").addClass('invisible');
+                    $("#topayslip").addClass('invisible');
                 }
                 else {
                     $("#txtposted").removeClass('invisible');
+                    $("#topayslip").removeClass('invisible');
                 }
 
                 $("#udtrdata").html('<i class="fa fa-refresh fa-spin fa-lg"></i> Loading...');
@@ -2679,12 +2685,12 @@ $(function() {
                 }
             }
             $("#txtposted").addClass('invisible');
-            $("#payslip").addClass('invisible');
+            $("#topayslip").addClass('invisible');
             
         }
         else {
             $("#txtposted").removeClass('invisible');
-            $("#payslip").addClass('invisible');
+            $("#topayslip").removeClass('invisible');
             
         }
 
