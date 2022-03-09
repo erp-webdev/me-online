@@ -341,12 +341,6 @@
                         </div>
                     </div>
 
-                    <script>
-                            $("#btntopayslip").on("click", function(){
-                            $section = "payslip";
-                            $('#payslipclick').trigger('click');
-                            });
-                    </script>
 
 
     <?php include(TEMP."/footer.php"); ?>
