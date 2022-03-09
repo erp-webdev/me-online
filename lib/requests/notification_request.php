@@ -5403,7 +5403,7 @@
 				}
 
 				$sql = "INSERT INTO COERequests (ref_no, emp_id, type, category, reason, other_reason, status, company, requested_by, created_at, updated_by, updated_at, leave_from, leave_to, leave_return, correction_name, job_desc, hpa_percent, avail_no, image_src)
-						VALUES ('".$refno."','".$coeemp."', '".$coetype."', '".$coecategory."', '".$coereason."', '".$coeother."', 'On Process', '".$coe_company."', '".$profile_idnum."', '".$datetoday."', '".$profile_idnum."', '".$datetoday."',
+						VALUES ('".$refno."','".$coeemp."', '".$coetype."', '".$coecategory."', '". mysql_real_escape_string($coereason)."', '".mysql_real_escape_string($coeother)."', 'On Process', '".$coe_company."', '".$profile_idnum."', '".$datetoday."', '".$profile_idnum."', '".$datetoday."',
 								'".$leave_from."', '".$leave_to."', '".$leave_return."', '".$correction_name."', '".$tasks."', '".$hpa_percentage."', '".$avail_no."', '".$fixname."')";
 
 				$result = $mainsql->get_execute($sql);
