@@ -154,7 +154,6 @@ class mainsql {
         if ($search != NULL) : $sql .= " AND (EmpID = '".$search."' OR LName LIKE '%".$search."%' OR FName LIKE '%".$search."%') "; endif;
         $sql .= " AND EmpStatus != 'RS'";
         $sql .= ") AS [outer] ";
-
             $sql.="WHERE [outer].EmpID in (
                 select distinct a.EMPID
                 from GLMEmpSignatory a
@@ -167,10 +166,11 @@ class mainsql {
                 or (SIGNATORYID6 ='".$profile_idnum."' and SIGNATORYDB6 = '".$dbname."')
                 AND [TYPE] = 'frmApplicationLVWeb')";
 
-
         if ($limit) :
             $sql .= " WHERE [outer].[ROW_NUMBER] BETWEEN ".(intval($start) + 1)." AND ".intval($start + $limit)." ORDER BY [outer].[ROW_NUMBER] ";
         endif;
+
+        echo $sql;
 
 		if ($count) : $result = $this->get_numrow($sql);
         else : $result = $this->get_row($sql);
