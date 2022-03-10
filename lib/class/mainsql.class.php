@@ -134,7 +134,7 @@ class mainsql {
         $sql .= " AND EmpStatus != 'RS'";
         $sql .= ") AS [outer] ";
 
-        echo "this is    ".$isapprover[0]['approving'];
+        echo "this is    ".$isapprover;
 
         if ($isapprover > 0) :
             $sql.="WHERE [outer].EmpID in (
