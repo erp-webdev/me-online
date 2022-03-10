@@ -118,7 +118,16 @@
             
         break;            
         case 'table': 
-            
+            $sql = "select count (distinct empid) as approving
+        from GLMEmpSignatory
+        where SIGNATORYID1 = $profile_idnum
+        or SIGNATORYID2 = $profile_idnum
+        or SIGNATORYID3 = $profile_idnum
+        or SIGNATORYID4 = $profile_idnum
+        or SIGNATORYID5 = $profile_idnum
+        or SIGNATORYID6 = $profile_idnum
+        AND [TYPE] = 'frmApplicationLVWeb'";
+		$isapprover = $mainsql->get_row($sql);
 
             # PAGINATION
             $page = isset($_GET["page"]) ? (int)$_GET["page"] : 1 ;
