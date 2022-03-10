@@ -249,10 +249,11 @@
         or SIGNATORYID5 = $profile_idnum
         or SIGNATORYID6 = $profile_idnum
         AND [TYPE] = 'frmApplicationLVWeb'";
-		$isapprover = $mainsql->get_row($sql);
+		$isapprover = $mainsql->get_rownum($sql);
 
-        echo $isapprover;
-        if ($isapprover[0]['approving'] > 0):
+
+
+        if ($isapprover > 0):
             $profile_level = 9;
         else:
             $profile_ps = 0;
