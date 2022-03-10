@@ -249,9 +249,9 @@
         or SIGNATORYID5 = $profile_idnum
         or SIGNATORYID6 = $profile_idnum
         AND [TYPE] = 'frmApplicationLVWeb'";
-		$isapprover = $mainsql->get_rownum($sql);
+		$isapprover = $mainsql->get_row($sql);
 
-
+        
 
         if ($isapprover > 0):
             $profile_level = 9;
