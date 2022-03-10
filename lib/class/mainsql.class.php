@@ -134,6 +134,8 @@ class mainsql {
         $sql .= " AND EmpStatus != 'RS'";
         $sql .= ") AS [outer] ";
 
+        echo $isapprover;
+
         if ($isapprover > 0) :
             $sql.="WHERE [outer].EmpID in (
                 select distinct a.EMPID
@@ -147,7 +149,7 @@ class mainsql {
                 or (SIGNATORYID6 ='".$profile_idnum."' and SIGNATORYDB6 = '".$dbname."')
                 AND [TYPE] = 'frmApplicationLVWeb')";
         endif;
-        echo $isapprover;
+
 
         if ($limit) :
             $sql .= " WHERE [outer].[ROW_NUMBER] BETWEEN ".(intval($start) + 1)." AND ".intval($start + $limit)." ORDER BY [outer].[ROW_NUMBER] ";
