@@ -136,7 +136,7 @@ class mainsql {
 
         echo "this is    ".$isapprover;
 
-        if ($isapprover > 0) :
+        if ($isapprover) :
             $sql.="WHERE [outer].EmpID in (
                 select distinct a.EMPID
                 from GLMEmpSignatory a

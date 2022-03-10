@@ -255,8 +255,10 @@
 
         if ($isapprover > 0):
             $profile_level = 9;
+            $isapprover = 1;
         else:
             $profile_ps = 0;
+            $isapprover = 0;
         endif;
 
         $llblock = $mainsql->get_emploan($profile_idnum);
