@@ -240,7 +240,7 @@
             $profile_ps = 0;
         endif;
 
-        $sql = "select count (distinct empid)
+        $sql = "select count (distinct empid) as approving
         from GLMEmpSignatory
         where SIGNATORYID1 = $profile_idnum
         or SIGNATORYID2 = $profile_idnum
@@ -251,7 +251,7 @@
         AND [TYPE] = 'frmApplicationLVWeb'";
 		$isapprover = $mainsql->get_row($sql);
 
-        if ($isapprover > 0):
+        if ($isapprover[0]['approving'] > 0):
             $profile_level = 9;
         else:
             $profile_ps = 0;
