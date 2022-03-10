@@ -133,6 +133,21 @@ class mainsql {
         if ($search != NULL) : $sql .= " AND (EmpID = '".$search."' OR LName LIKE '%".$search."%' OR FName LIKE '%".$search."%') "; endif;
         $sql .= " AND EmpStatus != 'RS'";
         $sql .= ") AS [outer] ";
+
+        if ($isapprover > 0) :
+            $sql.="WHERE [outer].EmpID in (
+                select distinct a.EMPID
+                from GLMEmpSignatory a
+                left join viewHREmpMaster b on a.EMPID = b.EmpID
+                where (SIGNATORYID1 ='".$profile_idnum."' and SIGNATORYDB1 = '".$dbname."')
+                or (SIGNATORYID2 ='".$profile_idnum."' and SIGNATORYDB2 = '".$dbname."')
+                or (SIGNATORYID3 ='".$profile_idnum."' and SIGNATORYDB3 = '".$dbname."')
+                or (SIGNATORYID4 ='".$profile_idnum."' and SIGNATORYDB4 = '".$dbname."')
+                or (SIGNATORYID5 ='".$profile_idnum."' and SIGNATORYDB5 = '".$dbname."')
+                or (SIGNATORYID6 ='".$profile_idnum."' and SIGNATORYDB6 = '".$dbname."')
+                AND [TYPE] = 'frmApplicationLVWeb')";
+        endif;
+
         if ($limit) :
             $sql .= " WHERE [outer].[ROW_NUMBER] BETWEEN ".(intval($start) + 1)." AND ".intval($start + $limit)." ORDER BY [outer].[ROW_NUMBER] ";
         endif;

@@ -256,7 +256,6 @@
         else:
             $profile_ps = 0;
         endif;
-        
 
         $llblock = $mainsql->get_emploan($profile_idnum);
         $psblock = $mainsql->get_psblock($profile_idnum, $dbname);
