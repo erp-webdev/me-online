@@ -147,8 +147,7 @@ class mainsql {
                 or (SIGNATORYID6 ='".$profile_idnum."' and SIGNATORYDB6 = '".$dbname."')
                 AND [TYPE] = 'frmApplicationLVWeb')";
         endif;
-
-        echo $sql;
+        echo $isapprover;
 
         if ($limit) :
             $sql .= " WHERE [outer].[ROW_NUMBER] BETWEEN ".(intval($start) + 1)." AND ".intval($start + $limit)." ORDER BY [outer].[ROW_NUMBER] ";
