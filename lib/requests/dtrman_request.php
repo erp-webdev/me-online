@@ -160,8 +160,8 @@
                 echo "this worked";
                 echo $profile_idnum;
                 if (strlen($searchdtrm) >= 3) :
-                    $dtrman_data = $mainsql->get_employee1($start, REQ_NUM_ROWS, $searchdtrm, 0);
-                    $dtrman_count = $mainsql->get_employee1(0, 0, $searchdtrm, 1);
+                    $dtrman_data = $mainsql->get_employee1($start, REQ_NUM_ROWS, $searchdtrm, 0,$profile_idnum,$profile_dbname);
+                    $dtrman_count = $mainsql->get_employee1(0, 0, $searchdtrm, 1,$profile_idnum,$profile_dbname);
                     $pages = $mainsql->pagination("dtrman", $dtrman_count, REQ_NUM_ROWS, 9);            
                 else :
                     $dtrman_data = NULL;

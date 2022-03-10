@@ -143,7 +143,7 @@ class mainsql {
 		return $result;
 	}
 
-    function get_employee1($start = 0, $limit = 0, $search = NULL, $count = 0)
+    function get_employee1($start = 0, $limit = 0, $search = NULL, $count = 0, $signatory = NULL, $signatorydb = NULL)
 	{
 		$sql = "SELECT [outer].* FROM ( ";
         $sql .= " SELECT ROW_NUMBER() OVER(ORDER BY LName ASC) as ROW_NUMBER, ";
@@ -158,12 +158,12 @@ class mainsql {
                 select distinct a.EMPID
                 from GLMEmpSignatory a
                 left join viewHREmpMaster b on a.EMPID = b.EmpID
-                where (SIGNATORYID1 ='".$profile_idnum."' and SIGNATORYDB1 = '".$dbname."')
-                or (SIGNATORYID2 ='".$profile_idnum."' and SIGNATORYDB2 = '".$dbname."')
-                or (SIGNATORYID3 ='".$profile_idnum."' and SIGNATORYDB3 = '".$dbname."')
-                or (SIGNATORYID4 ='".$profile_idnum."' and SIGNATORYDB4 = '".$dbname."')
-                or (SIGNATORYID5 ='".$profile_idnum."' and SIGNATORYDB5 = '".$dbname."')
-                or (SIGNATORYID6 ='".$profile_idnum."' and SIGNATORYDB6 = '".$dbname."')
+                where (SIGNATORYID1 ='".$signatory."' and SIGNATORYDB1 = '".$signatorydb."')
+                or (SIGNATORYID2 ='".$signatory."' and SIGNATORYDB2 = '".$signatorydb."')
+                or (SIGNATORYID3 ='".$signatory."' and SIGNATORYDB3 = '".$signatorydb."')
+                or (SIGNATORYID4 ='".$signatory."' and SIGNATORYDB4 = '".$signatorydb."')
+                or (SIGNATORYID5 ='".$signatory."' and SIGNATORYDB5 = '".$signatorydb."')
+                or (SIGNATORYID6 ='".$signatory."' and SIGNATORYDB6 = '".$signatorydb."')
                 AND [TYPE] = 'frmApplicationLVWeb')";
 
         if ($limit) :
