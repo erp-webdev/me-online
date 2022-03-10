@@ -167,7 +167,7 @@ class mainsql {
                 AND [TYPE] = 'frmApplicationLVWeb')";
 
         if ($limit) :
-            $sql .= " WHERE [outer].[ROW_NUMBER] BETWEEN ".(intval($start) + 1)." AND ".intval($start + $limit)." ORDER BY [outer].[ROW_NUMBER] ";
+            $sql .= " AND [outer].[ROW_NUMBER] BETWEEN ".(intval($start) + 1)." AND ".intval($start + $limit)." ORDER BY [outer].[ROW_NUMBER] ";
         endif;
 
         echo $sql;
