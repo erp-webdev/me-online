@@ -148,6 +148,7 @@
 
             if ($isapprover > 0)
             {
+                echo "this worked";
                 if (strlen($searchdtrm) >= 3) :
                     $dtrman_data = $mainsql->get_employee1($start, REQ_NUM_ROWS, $searchdtrm, 0);
                     $dtrman_count = $mainsql->get_employee1(0, 0, $searchdtrm, 1);
