@@ -146,15 +146,28 @@
         
             endif;
 
-            if (strlen($searchdtrm) >= 3) :
-                $dtrman_data = $mainsql->get_employee($start, REQ_NUM_ROWS, $searchdtrm, 0);
-                $dtrman_count = $mainsql->get_employee(0, 0, $searchdtrm, 1);
-                $pages = $mainsql->pagination("dtrman", $dtrman_count, REQ_NUM_ROWS, 9);            
-            else :
-                $dtrman_data = NULL;
-                $dtrman_count = NULL;
-                $pages = NULL;
-            endif;
+            if ($isapprover > 0)
+            {
+                if (strlen($searchdtrm) >= 3) :
+                    $dtrman_data = $mainsql->get_employee1($start, REQ_NUM_ROWS, $searchdtrm, 0);
+                    $dtrman_count = $mainsql->get_employee1(0, 0, $searchdtrm, 1);
+                    $pages = $mainsql->pagination("dtrman", $dtrman_count, REQ_NUM_ROWS, 9);            
+                else :
+                    $dtrman_data = NULL;
+                    $dtrman_count = NULL;
+                    $pages = NULL;
+                endif;
+            } else{
+                if (strlen($searchdtrm) >= 3) :
+                    $dtrman_data = $mainsql->get_employee($start, REQ_NUM_ROWS, $searchdtrm, 0);
+                    $dtrman_count = $mainsql->get_employee(0, 0, $searchdtrm, 1);
+                    $pages = $mainsql->pagination("dtrman", $dtrman_count, REQ_NUM_ROWS, 9);            
+                else :
+                    $dtrman_data = NULL;
+                    $dtrman_count = NULL;
+                    $pages = NULL;
+                endif;
+            }
             ?>   
 
             <script type="text/javascript">

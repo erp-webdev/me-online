@@ -133,10 +133,28 @@ class mainsql {
         if ($search != NULL) : $sql .= " AND (EmpID = '".$search."' OR LName LIKE '%".$search."%' OR FName LIKE '%".$search."%') "; endif;
         $sql .= " AND EmpStatus != 'RS'";
         $sql .= ") AS [outer] ";
+        if ($limit) :
+            $sql .= " WHERE [outer].[ROW_NUMBER] BETWEEN ".(intval($start) + 1)." AND ".intval($start + $limit)." ORDER BY [outer].[ROW_NUMBER] ";
+        endif;
 
-        echo "this is    ".$isapprover;
+		if ($count) : $result = $this->get_numrow($sql);
+        else : $result = $this->get_row($sql);
+        endif;
+		return $result;
+	}
 
-        if ($isapprover) :
+    function get_employee1($start = 0, $limit = 0, $search = NULL, $count = 0)
+	{
+		$sql = "SELECT [outer].* FROM ( ";
+        $sql .= " SELECT ROW_NUMBER() OVER(ORDER BY LName ASC) as ROW_NUMBER, ";
+        $sql .= " EmpID, FName, MName, LName, NickName, EmailAdd, CompanyID,
+            SSSNbr, PhilHealthNbr, TINNbr, PagibigNbr, TaxID, LocationID, AccountNo, EPassword
+            FROM viewHREmpMaster ";
+        $sql .= " WHERE EmpID != '' ";
+        if ($search != NULL) : $sql .= " AND (EmpID = '".$search."' OR LName LIKE '%".$search."%' OR FName LIKE '%".$search."%') "; endif;
+        $sql .= " AND EmpStatus != 'RS'";
+        $sql .= ") AS [outer] ";
+
             $sql.="WHERE [outer].EmpID in (
                 select distinct a.EMPID
                 from GLMEmpSignatory a
@@ -148,7 +166,6 @@ class mainsql {
                 or (SIGNATORYID5 ='".$profile_idnum."' and SIGNATORYDB5 = '".$dbname."')
                 or (SIGNATORYID6 ='".$profile_idnum."' and SIGNATORYDB6 = '".$dbname."')
                 AND [TYPE] = 'frmApplicationLVWeb')";
-        endif;
 
 
         if ($limit) :
