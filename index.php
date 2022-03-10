@@ -251,7 +251,7 @@
         AND [TYPE] = 'frmApplicationLVWeb'";
 		$isapprover = $mainsql->get_row($sql);
 
-        echo $isapprover;
+        echo $$isapprover[0]['approving'];
         if ($isapprover[0]['approving'] > 0):
             $profile_level = 9;
         else:
