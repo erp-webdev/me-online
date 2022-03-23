@@ -6083,10 +6083,7 @@
 						if( new Date(date_resigned) < new Date() && type != 'COECOMPENSATION'){
 							alert('You can send the COE on or after the resignation effectivity date. (Resignation Date: '+date_resigned+')');
 							return;
-						} else
-                        {
-                            alert('Working');
-                        }
+						}
 
 						if(type == 'COEAPPROVEDLEAVE'){
 							var start_date = "<?php echo date('m/d/Y', strtotime($result[0]['leave_from'])); ?>";
