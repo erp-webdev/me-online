@@ -127,6 +127,7 @@
             or (SIGNATORYID5 = $profile_idnum and SIGNATORYDB5 = $profile_dbname)
             or (SIGNATORYID6 = $profile_idnum and SIGNATORYDB6 = $profile_dbname)
             AND [TYPE] = 'frmApplicationLVWeb'";
+            echo $sql;
 		    $isapprover = $mainsql->get_row($sql);
 
             # PAGINATION
