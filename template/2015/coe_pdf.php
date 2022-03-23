@@ -351,7 +351,7 @@
 					echo $emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." DIVISION</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"];
 				}
 				?>
-				<?php if($emp_info[0]["DateResigned"] > date('Y-m-d')){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
+				<?php if(strtotime($emp_info[0]["DateResigned"]) < strtotime(date('Y-m-d'))){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
 				up to the present.</b></p>
 				<?php } ?>
 
