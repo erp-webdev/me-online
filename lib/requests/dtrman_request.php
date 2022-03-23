@@ -119,15 +119,15 @@
         break;            
         case 'table': 
             $sql = "select count (distinct empid) as approving
-        from GLMEmpSignatory
-        where SIGNATORYID1 = $profile_idnum
-        or SIGNATORYID2 = $profile_idnum
-        or SIGNATORYID3 = $profile_idnum
-        or SIGNATORYID4 = $profile_idnum
-        or SIGNATORYID5 = $profile_idnum
-        or SIGNATORYID6 = $profile_idnum
-        AND [TYPE] = 'frmApplicationLVWeb'";
-		$isapprover = $mainsql->get_row($sql);
+            from SUBSIDIARY.dbo.GLMEmpSignatory
+            where SIGNATORYID1 = $profile_idnum
+            or SIGNATORYID2 = $profile_idnum
+            or SIGNATORYID3 = $profile_idnum
+            or SIGNATORYID4 = $profile_idnum
+            or SIGNATORYID5 = $profile_idnum
+            or SIGNATORYID6 = $profile_idnum
+            AND [TYPE] = 'frmApplicationLVWeb'";
+		    $isapprover = $mainsql->get_row($sql);
 
             # PAGINATION
             $page = isset($_GET["page"]) ? (int)$_GET["page"] : 1 ;
@@ -157,7 +157,6 @@
 
             if ($isapprover > 0)
             {
-                echo "this worked";
                 if (strlen($searchdtrm) >= 3) :
                     $dtrman_data = $mainsql->get_employee1($start, REQ_NUM_ROWS, $searchdtrm, 0,$profile_idnum,$profile_dbname);
                     $dtrman_count = $mainsql->get_employee1(0, 0, $searchdtrm, 1,$profile_idnum,$profile_dbname);
@@ -169,7 +168,6 @@
                 endif;
             } else{
                 
-                echo "that worked";
                 if (strlen($searchdtrm) >= 3) :
                     $dtrman_data = $mainsql->get_employee($start, REQ_NUM_ROWS, $searchdtrm, 0);
                     $dtrman_count = $mainsql->get_employee(0, 0, $searchdtrm, 1);

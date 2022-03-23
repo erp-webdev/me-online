@@ -145,6 +145,7 @@ class mainsql {
 
     function get_employee1($start = 0, $limit = 0, $search = NULL, $count = 0, $signatory = NULL, $signatorydb = NULL)
 	{
+        
 		$sql = "SELECT [outer].* FROM ( ";
         $sql .= " SELECT ROW_NUMBER() OVER(ORDER BY LName ASC) as ROW_NUMBER, ";
         $sql .= " EmpID, FName, MName, LName, NickName, EmailAdd, CompanyID,
@@ -156,7 +157,7 @@ class mainsql {
         $sql .= ") AS [outer] ";
             $sql.="WHERE [outer].EmpID in (
                 select distinct a.EMPID
-                from GLMEmpSignatory a
+                from SUBSIDIARY.dbo.GLMEmpSignatory a
                 left join viewHREmpMaster b on a.EMPID = b.EmpID
                 where (SIGNATORYID1 ='".$signatory."' and SIGNATORYDB1 = '".$signatorydb."')
                 or (SIGNATORYID2 ='".$signatory."' and SIGNATORYDB2 = '".$signatorydb."')
