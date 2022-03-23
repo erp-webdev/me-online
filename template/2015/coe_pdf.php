@@ -339,7 +339,7 @@
 			<div style="text-align: justify;  text-justify: inter-word;">
 
 				<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo strtoupper(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES')); ?></b>
-					<?php if($emp_info[0]["DateResigned"] < date('Y-m-d')){ ?>
+					<?php if($emp_info[0]["DateResigned"] > date('Y-m-d')){ ?>
 						was employed as
 					<?php }else{ ?>
 						is currently employed as
@@ -351,7 +351,7 @@
 					echo $emp_info[0]["PositionDesc"]."</b> under <b>".$emp_info[0]["DivisionName"]." DIVISION</b> of <b>".$emp_info[0]["CompanyName"]."</b> since <b>".$emp_info[0]["HireDate"];
 				}
 				?>
-				<?php if($emp_info[0]["DateResigned"] < date('Y-m-d')){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
+				<?php if($emp_info[0]["DateResigned"] > date('Y-m-d')){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
 				up to the present.</b></p>
 				<?php } ?>
 
