@@ -151,7 +151,7 @@ class mainsql {
         $sql .= " EmpID, FName, MName, LName, NickName, EmailAdd, CompanyID,
             SSSNbr, PhilHealthNbr, TINNbr, PagibigNbr, TaxID, LocationID, AccountNo, EPassword
             FROM SUBSIDIARY.DBO.viewHREmpMaster ";
-        $sql .= " WHERE EmpID != '' ";
+        $sql .= " WHERE EmpID != '' AND COMPANYACTIVE = 1";
         if ($search != NULL) : $sql .= " AND (EmpID = '".$search."' OR LName LIKE '%".$search."%' OR FName LIKE '%".$search."%') "; endif;
         $sql .= " AND EmpStatus != 'RS'";
         $sql .= ") AS [outer] ";
@@ -170,8 +170,6 @@ class mainsql {
         if ($limit) :
             $sql .= " AND [outer].[ROW_NUMBER] BETWEEN ".(intval($start) + 1)." AND ".intval($start + $limit)." ORDER BY [outer].[ROW_NUMBER] ";
         endif;
-
-        echo $sql;
 
 		if ($count) : $result = $this->get_numrow($sql);
         else : $result = $this->get_row($sql);
