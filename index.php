@@ -240,6 +240,8 @@
             $profile_ps = 0;
         endif;
 
+        if ($profile_idnum == "2021-09-0351")
+        { 
         $sql = "select count (distinct empid) as approving
         from GLMEmpSignatory
         where SIGNATORYID1 = $profile_idnum
@@ -256,6 +258,7 @@
         else:
             $profile_ps = 0;
         endif;
+        }
 
         $llblock = $mainsql->get_emploan($profile_idnum);
         $psblock = $mainsql->get_psblock($profile_idnum, $dbname);
