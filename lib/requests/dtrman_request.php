@@ -128,6 +128,7 @@
             or (SIGNATORYID6 = '".$profile_idnum."' and SIGNATORYDB6 = '".$profile_dbname."')
             AND [TYPE] = 'frmApplicationLVWeb'";
 		    $isapprover = $mainsql->get_row($sql);
+            $isapprover = $isapprover[0]['approving'];
 
             # PAGINATION
             $page = isset($_GET["page"]) ? (int)$_GET["page"] : 1 ;
