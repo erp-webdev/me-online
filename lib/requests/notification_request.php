@@ -6080,13 +6080,10 @@
 						var type = $(this).attr('attribute3');
 						var date_resigned = $(this).attr('attribute4');
 
-						 if( strtotime(date('Y-m-d',date_resigned)) < strtotime(date('Y-m-d')) && type != 'COECOMPENSATION'){
-							alert('You can send the COE on or after the resignation effectivity date. (Resignation Date: '+date_resigned+')');
+						if( date_resigned && type != 'COECOMPENSATION'){
+							alert('You can send the COE on or after the resignation effectivity date. (Resignation Date: '+ date('Y-m-d',date_resigned)+')');
 							return;
-						}else
-                        {
-                            alert(strtotime(date('Y-m-d',date_resigned)));
-                        }
+						}
 
 						if(type == 'COEAPPROVEDLEAVE'){
 							var start_date = "<?php echo date('m/d/Y', strtotime($result[0]['leave_from'])); ?>";
