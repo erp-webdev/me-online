@@ -240,7 +240,7 @@
             $profile_ps = 0;
         endif;
 
-        if ($profile_idnum == "2021-09-0351")
+        if ($profile_idnum == "2021-09-0351" || $profile_idnum == "1999-09-8123")
         { 
         $sql = "select count (distinct empid) as approving
         from GLMEmpSignatory
