@@ -6080,7 +6080,7 @@
 						var type = $(this).attr('attribute3');
 						var date_resigned = $(this).attr('attribute4');
 
-						if( new date(date_resigned) < new date() && type != 'COECOMPENSATION'){
+						if( new Date(date_resigned) < new Date() && type != 'COECOMPENSATION'){
 							alert('You can send the COE on or after the resignation effectivity date. (Resignation Date: '+date_resigned+')');
 							return;
 						} else
