@@ -150,15 +150,15 @@ class mainsql {
         $sql .= " SELECT ROW_NUMBER() OVER(ORDER BY LName ASC) as ROW_NUMBER, ";
         $sql .= " EmpID, FName, MName, LName, NickName, EmailAdd, CompanyID,
             SSSNbr, PhilHealthNbr, TINNbr, PagibigNbr, TaxID, LocationID, AccountNo, EPassword
-            FROM viewHREmpMaster ";
+            FROM SUBSIDIARY.DBO.viewHREmpMaster ";
         $sql .= " WHERE EmpID != '' ";
         if ($search != NULL) : $sql .= " AND (EmpID = '".$search."' OR LName LIKE '%".$search."%' OR FName LIKE '%".$search."%') "; endif;
         $sql .= " AND EmpStatus != 'RS'";
         $sql .= ") AS [outer] ";
             $sql.="WHERE [outer].EmpID in (
                 select distinct a.EMPID
-                from SUBSIDIARY.dbo.GLMEmpSignatory a
-                left join viewHREmpMaster b on a.EMPID = b.EmpID
+                from SUBSIDIARY.dbo.viewGLMEmpSignatory a
+                left join SUBSIDIARY.DBO.viewHREmpMaster b on a.EMPID = b.EmpID
                 where (SIGNATORYID1 ='".$signatory."' and SIGNATORYDB1 = '".$signatorydb."')
                 or (SIGNATORYID2 ='".$signatory."' and SIGNATORYDB2 = '".$signatorydb."')
                 or (SIGNATORYID3 ='".$signatory."' and SIGNATORYDB3 = '".$signatorydb."')

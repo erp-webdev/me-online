@@ -119,13 +119,13 @@
         break;            
         case 'table': 
             $sql = "select count (distinct empid) as approving
-            from SUBSIDIARY.dbo.GLMEmpSignatory
-            where SIGNATORYID1 = $profile_idnum
-            or SIGNATORYID2 = $profile_idnum
-            or SIGNATORYID3 = $profile_idnum
-            or SIGNATORYID4 = $profile_idnum
-            or SIGNATORYID5 = $profile_idnum
-            or SIGNATORYID6 = $profile_idnum
+            from SUBSIDIARY.dbo.viewGLMEmpSignatory
+            where (SIGNATORYID1 = $profile_idnum and SIGNATORYDB1 = $profile_dbname)
+            or (SIGNATORYID2 = $profile_idnum and SIGNATORYDB2 = $profile_dbname)
+            or (SIGNATORYID3 = $profile_idnum and SIGNATORYDB3 = $profile_dbname)
+            or (SIGNATORYID4 = $profile_idnum and SIGNATORYDB4 = $profile_dbname)
+            or (SIGNATORYID5 = $profile_idnum and SIGNATORYDB5 = $profile_dbname)
+            or (SIGNATORYID6 = $profile_idnum and SIGNATORYDB6 = $profile_dbname)
             AND [TYPE] = 'frmApplicationLVWeb'";
 		    $isapprover = $mainsql->get_row($sql);
 
