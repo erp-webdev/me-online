@@ -339,10 +339,8 @@
 			<div style="text-align: justify;  text-justify: inter-word;">
 
 			<?php
-			$date1 = new DateTime($emp_info[0]["DateResigned"]);
-			$date2 = new DateTime(date('Y-m-d'));
-			echo $date1;
-			echo $date2;
+			echo strtotime($emp_info[0]["DateResigned"]);
+			echo strtotime(date('Y-m-d'));
 			?>
 				<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo strtoupper(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES')); ?></b>
 					<?php if($emp_info[0]["DateResigned"] > date('Y-m-d')){ ?>
