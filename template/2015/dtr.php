@@ -31,7 +31,7 @@
                                             <?php $attpost = $dtr_period[0]['AttPost']; ?>
                                             <span id="txtposted" class="lgreentext bold<?php echo $attpost == 1 ? "" : " invisible"; ?>"><i class="fa fa-check"></i> POSTED</span>
                                             <!-- <button id="btntopayslip" onclick="clickAndDisable(payslipclick);" class="<?php echo $attpost == 1 ? "" : " invisible"; ?>"></i> Payslip</button> -->
-                                            <?php if ($section != "payslip") { ?><a id="payslipclick" href="<?php echo WEB; ?>/payslip"  onclick="clickAndDisable(payslipclick);"><?php } ?><div<?php if ($section == "payslip") { ?> class="dselected"<?php } ?>> To Payslip</div><?php if ($section != "payslip") { ?></a><?php } ?>
+                                            <?php if ($section != "payslip") { ?><a id="payslipclick" href="<?php echo WEB; ?>/payslip?year=2020"  onclick="clickAndDisable(payslipclick);"><?php } ?><div<?php if ($section == "payslip") { ?> class="dselected"<?php } ?>> To Payslip</div><?php if ($section != "payslip") { ?></a><?php } ?>
                                         </td>
                                     </tr>
                                 </table>
