@@ -162,18 +162,9 @@ class mainsql {
         or (SIGNATORYID6 ='".$signatory."' and SIGNATORYDB6 = '".$signatorydb."'))
         AND [TYPE] = 'frmApplicationLVWeb'";
         $sql .= ") AS [outer] ";
-            $sql.="WHERE [outer].EmpID in (
-                select distinct a.EMPID
-                from SUBSIDIARY.dbo.viewGLMEmpSignatory a
-                left join SUBSIDIARY.DBO.viewHREmpMaster b on a.EMPID = b.EmpID
-                where 
-                AND [TYPE] = 'frmApplicationLVWeb')";
-
         if ($limit) :
             $sql .= " AND [outer].[ROW_NUMBER] BETWEEN ".(intval($start) + 1)." AND ".intval($start + $limit)." ORDER BY [outer].[ROW_NUMBER] ";
         endif;
-
-        echo $sql;
 		if ($count) : $result = $this->get_numrow($sql);
         else : $result = $this->get_row($sql);
         endif;
