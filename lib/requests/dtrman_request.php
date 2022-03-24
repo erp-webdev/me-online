@@ -86,8 +86,6 @@
     $isapprover = $mainsql->get_row($sql);
     $isapprover = $isapprover[0]['approving'];
 
-	echo $isapprover;
-    echo $notadmin;
 	//***************** USER MANAGEMENT - END *****************\\
 
     $sec = $profile_id ? $_GET['sec'] : NULL;
