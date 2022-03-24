@@ -163,7 +163,7 @@ class mainsql {
         AND [TYPE] = 'frmApplicationLVWeb'";
         $sql .= ") AS [outer] ";
         if ($limit) :
-            $sql .= " AND [outer].[ROW_NUMBER] BETWEEN ".(intval($start) + 1)." AND ".intval($start + $limit)." ORDER BY [outer].[ROW_NUMBER] ";
+            $sql .= " WHERE [outer].[ROW_NUMBER] BETWEEN ".(intval($start) + 1)." AND ".intval($start + $limit)." ORDER BY [outer].[ROW_NUMBER] ";
         endif;
 		if ($count) : $result = $this->get_numrow($sql);
         else : $result = $this->get_row($sql);
