@@ -157,7 +157,7 @@
         
             endif;
 
-            if ($isapprover > 0 && $profile_level < 9)
+            if ($isapprover > 0 && $notadmin > 0)
             {
                 if (strlen($searchdtrm) >= 3) :
                     $dtrman_data = $mainsql->get_employee1($start, REQ_NUM_ROWS, $searchdtrm, 0,$profile_idnum,$profile_dbname);
