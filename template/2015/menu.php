@@ -107,7 +107,7 @@
                         <?php endif; ?>
                         
                         <?php if ($profile_level >= 9 || $isapprover > 0 || $profile_idnum == '2016-06-0457') : ?>
-                        <?php $profile_level =9; ?>
+                        <?php $profile_level =9; $GLOBALS['level'] = $profile_level; ?>
                         <?php if ($section != "dtrman") { ?><a href="<?php echo WEB; ?>/dtrman" onclick="clickAndDisable(this);"><?php } ?><div<?php if ($section == "dtrman") { ?> class="dselected"<?php } ?>>System &amp; DTR Management<?php echo $notadmin?> </div><?php if ($section != "dtrman") { ?></a><?php } ?>
                         <?php endif; ?>
 
