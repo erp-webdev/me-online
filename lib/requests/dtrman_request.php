@@ -89,7 +89,7 @@
     {
         $isapprover = 0;
     } 
-	
+	echo '<script>alert($isapprover)</script>';
 	//***************** USER MANAGEMENT - END *****************\\
 
     $sec = $profile_id ? $_GET['sec'] : NULL;
@@ -163,7 +163,6 @@
         
             endif;
 
-            echo '<script>alert($isapprover)</script>';
             if ($isapprover > 0)
             {
                 if (strlen($searchdtrm) >= 3) :
