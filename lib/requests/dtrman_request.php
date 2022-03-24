@@ -145,7 +145,8 @@
         
             endif;
 
-            
+            echo $isapprover;
+            echo $profile_level;
             if ($isapprover > 0 && $profile_level < 9)
             {
                 if (strlen($searchdtrm) >= 3) :
