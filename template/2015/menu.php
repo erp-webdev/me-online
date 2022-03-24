@@ -92,7 +92,7 @@
 
 						<?php //if ($profile_dbname != 'ECINEMA' && $profile_dbname != 'EPARKVIEW' && $profile_dbname != 'NEWTOWN') : ?>
                         <?php if ($profile_dbname != 'EPARKVIEW' && $profile_dbname != 'NEWTOWN') : ?>
-                        <a href="<?php echo WEB; ?>/paf" onclick="clickAndDisable(this);"><div<?php if (($section == "paf")||($section == "pafevaluate")||($section == "pafview")) { ?> class="dselected"<?php } ?>>Performance Management</div></a>
+                        <a href="<?php echo WEB; ?>/paf" onclick="clickAndDisable(this);"><div<?php if (($section == "paf")||($section == "pafevaluate")||($section == "pafview")) { ?> class="dselected"<?php } ?>> <?echo $isapprover?>Performance Management</div></a>
                         <?php endif; ?>
 
                         <!-- addon -->
