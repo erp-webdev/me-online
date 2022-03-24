@@ -163,6 +163,7 @@
         
             endif;
 
+            alert($isapprover);
             if ($isapprover > 0)
             {
                 if (strlen($searchdtrm) >= 3) :
