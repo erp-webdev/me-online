@@ -160,6 +160,7 @@
         
             endif;
 
+            echo $notadmin;
             if ($isapprover > 0 && $notadmin > 0)
             {
                 if (strlen($searchdtrm) >= 3) :
