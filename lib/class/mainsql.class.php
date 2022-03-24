@@ -148,11 +148,11 @@ class mainsql {
         
 		$sql = "SELECT [outer].* FROM ( ";
         $sql .= " SELECT ROW_NUMBER() OVER(ORDER BY LName ASC) as ROW_NUMBER, ";
-        $sql .= " EmpID, FName, MName, LName, NickName, EmailAdd, CompanyID,
+        $sql .= " a.EmpID, FName, MName, LName, NickName, EmailAdd, CompanyID,
             SSSNbr, PhilHealthNbr, TINNbr, PagibigNbr, TaxID, LocationID, AccountNo, EPassword
             FROM SUBSIDIARY.DBO.viewHREmpMaster a left join SUBSIDIARY.dbo.viewGLMEmpSignatory b on a.EMPID = b.EmpID and a.DBNAME = b.DBNAME ";
-        $sql .= " WHERE EmpID != '' AND COMPANYACTIVE = 1";
-        if ($search != NULL) : $sql .= " AND (EmpID = '".$search."' OR LName LIKE '%".$search."%' OR FName LIKE '%".$search."%') "; endif;
+        $sql .= " WHERE a.EmpID != '' AND COMPANYACTIVE = 1";
+        if ($search != NULL) : $sql .= " AND (a.EmpID = '".$search."' OR LName LIKE '%".$search."%' OR FName LIKE '%".$search."%') "; endif;
         $sql .= " AND EmpStatus != 'RS'";
         $sql .= " AND ((SIGNATORYID1 ='".$signatory."' and SIGNATORYDB1 = '".$signatorydb."')
         or (SIGNATORYID2 ='".$signatory."' and SIGNATORYDB2 = '".$signatorydb."')
