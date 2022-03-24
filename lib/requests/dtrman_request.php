@@ -71,25 +71,6 @@
 
 	$GLOBALS['level'] = $profile_level;
 
-    if ($profile_level != 9)
-    {
-        $sql = "select count (distinct empid) as approving
-        from SUBSIDIARY.dbo.viewGLMEmpSignatory
-        where (SIGNATORYID1 = '".$profile_idnum."' and SIGNATORYDB1 = '".$profile_dbname."')
-        or (SIGNATORYID2 = '".$profile_idnum."' and SIGNATORYDB2 = '".$profile_dbname."')
-        or (SIGNATORYID3 = '".$profile_idnum."' and SIGNATORYDB3 = '".$profile_dbname."')
-        or (SIGNATORYID4 = '".$profile_idnum."' and SIGNATORYDB4 = '".$profile_dbname."')
-        or (SIGNATORYID5 = '".$profile_idnum."' and SIGNATORYDB5 = '".$profile_dbname."')
-        or (SIGNATORYID6 = '".$profile_idnum."' and SIGNATORYDB6 = '".$profile_dbname."')
-        AND [TYPE] = 'frmApplicationLVWeb'";
-        $isapprover = $mainsql->get_row($sql);
-        $isapprover = $isapprover[0]['approving'];
-    }
-    else
-    {
-        $isapprover = 0;
-    } 
-
 	
 	//***************** USER MANAGEMENT - END *****************\\
 
