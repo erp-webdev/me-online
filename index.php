@@ -253,7 +253,9 @@
         AND [TYPE] = 'frmApplicationLVWeb'";
         $isapprover = $mainsql->get_row($sql);
         $isapprover = $isapprover[0]['approving'];
-        
+        if($isapprover > 0):
+            $profile_level=9;
+        endif;
 
 
         $llblock = $mainsql->get_emploan($profile_idnum);
