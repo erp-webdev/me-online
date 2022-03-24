@@ -71,26 +71,7 @@
 
 	$GLOBALS['level'] = $profile_level;
 
-    echo $profile_level;
-    if ($profile_level != 9)
-    {
-        $sql = "select count (distinct empid) as approving
-        from SUBSIDIARY.dbo.viewGLMEmpSignatory
-        where (SIGNATORYID1 = '".$profile_idnum."' and SIGNATORYDB1 = '".$profile_dbname."')
-        or (SIGNATORYID2 = '".$profile_idnum."' and SIGNATORYDB2 = '".$profile_dbname."')
-        or (SIGNATORYID3 = '".$profile_idnum."' and SIGNATORYDB3 = '".$profile_dbname."')
-        or (SIGNATORYID4 = '".$profile_idnum."' and SIGNATORYDB4 = '".$profile_dbname."')
-        or (SIGNATORYID5 = '".$profile_idnum."' and SIGNATORYDB5 = '".$profile_dbname."')
-        or (SIGNATORYID6 = '".$profile_idnum."' and SIGNATORYDB6 = '".$profile_dbname."')
-        AND [TYPE] = 'frmApplicationLVWeb'";
-        $isapprover = $mainsql->get_row($sql);
-        $isapprover = $isapprover[0]['approving'];
-    }
-    else
-    {
-        $isapprover = 0;
-    } 
-	echo $isapprover;
+	
 	//***************** USER MANAGEMENT - END *****************\\
 
     $sec = $profile_id ? $_GET['sec'] : NULL;
@@ -164,8 +145,10 @@
         
             endif;
 
+            
             if ($isapprover > 0)
             {
+                echo 'This worked';
                 if (strlen($searchdtrm) >= 3) :
                     $dtrman_data = $mainsql->get_employee1($start, REQ_NUM_ROWS, $searchdtrm, 0,$profile_idnum,$profile_dbname);
                     $dtrman_count = $mainsql->get_employee1(0, 0, $searchdtrm, 1,$profile_idnum,$profile_dbname);
@@ -176,6 +159,7 @@
                     $pages = NULL;
                 endif;
             } else{
+                echo 'That worked';
                 if (strlen($searchdtrm) >= 3) :
                     $dtrman_data = $mainsql->get_employee($start, REQ_NUM_ROWS, $searchdtrm, 0);
                     $dtrman_count = $mainsql->get_employee(0, 0, $searchdtrm, 1);
