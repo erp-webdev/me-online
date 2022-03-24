@@ -71,6 +71,7 @@
 
 	$GLOBALS['level'] = $profile_level;
 
+    echo $profile_level;
     if ($profile_level != 9)
     {
         $sql = "select count (distinct empid) as approving
