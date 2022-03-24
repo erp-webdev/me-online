@@ -89,7 +89,7 @@
     {
         $isapprover = 0;
     } 
-	echo '<script>alert($isapprover)</script>';
+	echo $isapprover;
 	//***************** USER MANAGEMENT - END *****************\\
 
     $sec = $profile_id ? $_GET['sec'] : NULL;
