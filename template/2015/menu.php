@@ -92,7 +92,7 @@
 
 						<?php //if ($profile_dbname != 'ECINEMA' && $profile_dbname != 'EPARKVIEW' && $profile_dbname != 'NEWTOWN') : ?>
                         <?php if ($profile_dbname != 'EPARKVIEW' && $profile_dbname != 'NEWTOWN') : ?>
-                        <a href="<?php echo WEB; ?>/paf" onclick="clickAndDisable(this);"><div<?php if (($section == "paf")||($section == "pafevaluate")||($section == "pafview")) { ?> class="dselected"<?php } ?>> <?echo $isapprover?>Performance Management</div></a>
+                        <a href="<?php echo WEB; ?>/paf" onclick="clickAndDisable(this);"><div<?php if (($section == "paf")||($section == "pafevaluate")||($section == "pafview")) { ?> class="dselected"<?php } ?>>Performance Management</div></a>
                         <?php endif; ?>
 
                         <!-- addon -->
@@ -104,7 +104,7 @@
                         <?php if ($section != "approvers") { ?><a href="<?php echo WEB; ?>/approvers" onclick="clickAndDisable(this);"><?php } ?><div<?php if ($section == "approvers") { ?> class="dselected"<?php } ?>>Approvers Management</div><?php if ($section != "approvers") { ?></a><?php } ?>
                         <?php endif; ?>
                         <?php endif; ?>
-                        <?php if ($profile_level >= 9 || $isapprover > 0 || $profile_idnum == '2016-06-0457') : ?>
+                        <?php if ($profile_level >= 9 ||isapprover > 0 || $profile_idnum == '2016-06-0457') : ?>
                         <?php if ($section != "dtrman") { ?><a href="<?php echo WEB; ?>/dtrman" onclick="clickAndDisable(this);"><?php } ?><div<?php if ($section == "dtrman") { ?> class="dselected"<?php } ?>>System &amp; DTR Management</div><?php if ($section != "dtrman") { ?></a><?php } ?>
                         <?php endif; ?>
 
