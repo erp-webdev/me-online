@@ -157,7 +157,6 @@
         
             endif;
 
-            echo $isapprover;
             echo $notadmin;
 
             if ($isapprover > 0 && $notadmin > 0)
