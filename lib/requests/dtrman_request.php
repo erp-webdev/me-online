@@ -61,10 +61,13 @@
 
     if (in_array($profile_idnum, $adminarray)) :
         $profile_level = 9;
+        $notadmin = 0;
     elseif ($_SESSION['megassep_admin']) :
         $profile_level = 10;
+        $notadmin = 0;
     else :
         $profile_level = 0;
+        $notadmin = 1;
     endif;
 
     $profile_hash = md5('2014'.$profile_idnum);
@@ -156,8 +159,6 @@
                 }             
         
             endif;
-
-            echo $notadmin;
 
             if ($isapprover > 0 && $notadmin > 0)
             {
