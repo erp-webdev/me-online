@@ -150,21 +150,23 @@ class mainsql {
         $sql .= " SELECT ROW_NUMBER() OVER(ORDER BY LName ASC) as ROW_NUMBER, ";
         $sql .= " EmpID, FName, MName, LName, NickName, EmailAdd, CompanyID,
             SSSNbr, PhilHealthNbr, TINNbr, PagibigNbr, TaxID, LocationID, AccountNo, EPassword
-            FROM SUBSIDIARY.DBO.viewHREmpMaster ";
+            FROM SUBSIDIARY.DBO.viewHREmpMaster a left join SUBSIDIARY.dbo.viewGLMEmpSignatory b on a.EMPID = b.EmpID and a.DBNAME = b.DBNAME ";
         $sql .= " WHERE EmpID != '' AND COMPANYACTIVE = 1";
         if ($search != NULL) : $sql .= " AND (EmpID = '".$search."' OR LName LIKE '%".$search."%' OR FName LIKE '%".$search."%') "; endif;
         $sql .= " AND EmpStatus != 'RS'";
+        $sql .= " AND ((SIGNATORYID1 ='".$signatory."' and SIGNATORYDB1 = '".$signatorydb."')
+        or (SIGNATORYID2 ='".$signatory."' and SIGNATORYDB2 = '".$signatorydb."')
+        or (SIGNATORYID3 ='".$signatory."' and SIGNATORYDB3 = '".$signatorydb."')
+        or (SIGNATORYID4 ='".$signatory."' and SIGNATORYDB4 = '".$signatorydb."')
+        or (SIGNATORYID5 ='".$signatory."' and SIGNATORYDB5 = '".$signatorydb."')
+        or (SIGNATORYID6 ='".$signatory."' and SIGNATORYDB6 = '".$signatorydb."'))
+        AND [TYPE] = 'frmApplicationLVWeb'";
         $sql .= ") AS [outer] ";
             $sql.="WHERE [outer].EmpID in (
                 select distinct a.EMPID
                 from SUBSIDIARY.dbo.viewGLMEmpSignatory a
                 left join SUBSIDIARY.DBO.viewHREmpMaster b on a.EMPID = b.EmpID
-                where (SIGNATORYID1 ='".$signatory."' and SIGNATORYDB1 = '".$signatorydb."')
-                or (SIGNATORYID2 ='".$signatory."' and SIGNATORYDB2 = '".$signatorydb."')
-                or (SIGNATORYID3 ='".$signatory."' and SIGNATORYDB3 = '".$signatorydb."')
-                or (SIGNATORYID4 ='".$signatory."' and SIGNATORYDB4 = '".$signatorydb."')
-                or (SIGNATORYID5 ='".$signatory."' and SIGNATORYDB5 = '".$signatorydb."')
-                or (SIGNATORYID6 ='".$signatory."' and SIGNATORYDB6 = '".$signatorydb."')
+                where 
                 AND [TYPE] = 'frmApplicationLVWeb')";
 
         if ($limit) :
