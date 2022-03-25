@@ -11,7 +11,7 @@
                                 
                                 <table>
                                     <tr>
-                                        <td>Year: <?php echo strtotime(date('Y').'-12-15'); ?>
+                                        <td>Year: <?php echo date('Y').'-12-15'; ?>
                                             <select id="udtr_year" name="udtr_year" class="smltxtbox">
                                                 <?php $yearend = strtotime(date('Y').'-12-15'); ?>
                                                 <?php $yearval = date('U') > $yearend ? date("Y") + 1 : date("Y"); ?>
