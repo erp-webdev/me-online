@@ -5534,7 +5534,11 @@
 
 					$message .= "A new Certificate of Employment ";
 					if($coetype == 'COE'){
-						$message .= "(".$coes2["$coecategory"].")";
+                        if($coecategory = 'OTHERS'){
+                            $message .= "(".$coeother.")";
+                        }else{
+                            $message .= "(".$coes2["$coecategory"].")";
+                        }
 					}elseif($coetype == 'COENONCASHADVANCEMENT'){
                         $message .= "(CoE for Non-Cash Advancement - ".$coes2["$coecategory"].")";
                     }else{
