@@ -5470,7 +5470,7 @@
                     'PAGIBIGCERT' => 'Pagibig Certificate'
 				];
 				$coes2 = [
-					'LOAN' => 'Certificate of Employment (Loan)',
+					'LOAN' => 'Certificate of Employment (Loan0)',
 					'SCHOOLREQ' => 'Certificate of Employment (School Requirement)',
 					'VISA' => 'Certificate of Employment (VISA)',
                     'MATERNITY' => 'Maternity',
@@ -5482,11 +5482,15 @@
 				$message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 95%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>New Certificate of Employment Request</span><br><br>Hi ".$emp_info[0]['NickName'].",<br><br>";
 				if($coeemp == $profile_idnum){
 					if($coetype == 'COE'){
+<<<<<<< HEAD
                         if($category == 'OTHERS'){
                             $message .= "You have successfully submitted a Certificate of Employment (".$coeothers.") with a Reference No: ".$refno.".";
                         }else{
                             $message .= "You have successfully submitted a Certificate of Employment (".$coes2["$coecategory"].") with a Reference No: ".$refno.".";
                         }
+=======
+						$message .= "You have successfully submitted a Certificate of Employment (".$coes2["$coecategory"].") with a Reference No: ".$refno.".";
+>>>>>>> parent of 93d99007 (CoE Others, Blank on Email)
 					}elseif($coetype == 'COENONCASHADVANCEMENT'){
 						$message .= "You have successfully submitted a Certificate of Employment (CoE for Non-Cash Advancement - ".$coes2["$coecategory"].") with a Reference No: ".$refno.".";
 					}else{
