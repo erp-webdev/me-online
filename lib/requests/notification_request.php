@@ -5483,7 +5483,7 @@
 				if($coeemp == $profile_idnum){
 					if($coetype == 'COE'){
                         if($coecategory == 'OTHERS'){
-                            $message .= "You have successfully submitted a Certificate of Employment (".$coeothers.") with a Reference No: ".$refno.".";
+                            $message .= "You have successfully submitted a Certificate of Employment (".$coeother.") with a Reference No: ".$refno.".";
                         }else{
                             $message .= "You have successfully submitted a Certificate of Employment (".$coes2["$coecategory"].") with a Reference No: ".$refno.".";
                         }
@@ -5495,7 +5495,7 @@
 				}else{
 					if($coetype == 'COE'){
                         if($coecategory == 'OTHERS'){
-                            $message .= "You have successfully submitted a Certificate of Employment (".$coeothers.") with a Reference No: ".$refno.".";
+                            $message .= "You have successfully submitted a Certificate of Employment (".$coeother.") with a Reference No: ".$refno.".";
                         }else{
                             $message .= "You have successfully submitted a Certificate of Employment (".$coes2["$coecategory"].") with a Reference No: ".$refno.".";
                         }
