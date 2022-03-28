@@ -5494,7 +5494,11 @@
 					}
 				}else{
 					if($coetype == 'COE'){
-						$message .= "A new Certificate of Employment (".$coes2["$coecategory"].") has been requested for you with a Reference No: ".$refno.".";
+                        if($coecategory == 'OTHERS'){
+                            $message .= "You have successfully submitted a Certificate of Employment (".$coeothers.") with a Reference No: ".$refno.".";
+                        }else{
+                            $message .= "You have successfully submitted a Certificate of Employment (".$coes2["$coecategory"].") with a Reference No: ".$refno.".";
+                        }
 					}elseif($coetype == 'COENONCASHADVANCEMENT'){
 						$message .= "A new Certificate of Employment (CoE for Non-Cash Advancement - ".$coes2["$coecategory"].") has been requested for you with a Reference No: ".$refno.".";
 					}else{
