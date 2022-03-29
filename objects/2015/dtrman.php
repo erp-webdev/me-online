@@ -31,7 +31,7 @@
                 $_POST['searchdtrm'] = NULL;
             }                              
 
-            echo 'kevs--'  . $profile_level; exit;
+            echo 'kevs--'  . count($approver_employees); exit;
             if (strlen($searchdtrm) >= 3) :
                 $dtrman_data = $mainsql->get_employee($start, REQ_NUM_ROWS, $searchdtrm, 0);
                 $dtrman_count = $mainsql->get_employee(0, 0, $searchdtrm, 1);
