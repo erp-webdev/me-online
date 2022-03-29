@@ -31,6 +31,7 @@
                 $_POST['searchdtrm'] = NULL;
             }                              
 
+            if($profile_level){
                 if (strlen($searchdtrm) >= 3) :
                     $dtrman_data = $mainsql->get_employee($start, REQ_NUM_ROWS, $searchdtrm, 0);
                     $dtrman_count = $mainsql->get_employee(0, 0, $searchdtrm, 1);
@@ -40,6 +41,7 @@
                     $dtrman_count = NULL;
                     $pages = NULL;
                 endif;
+            }
         
         else :
         
