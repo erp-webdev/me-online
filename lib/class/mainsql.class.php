@@ -146,12 +146,12 @@ class mainsql {
     // Get the employee under approval of the login signatory
     function get_approver_employee($start = 0, $limit = 0, $search = NULL, $count = 0, $signatory = NULL, $signatorydb = NULL)
 	{
-        
 		$sql = "SELECT [outer].* FROM ( ";
         $sql .= " SELECT ROW_NUMBER() OVER(ORDER BY LName ASC) as ROW_NUMBER, ";
         $sql .= " a.EmpID, FName, MName, LName, NickName, EmailAdd, CompanyID,
             SSSNbr, PhilHealthNbr, TINNbr, PagibigNbr, TaxID, LocationID, AccountNo, EPassword
-            FROM SUBSIDIARY.DBO.viewHREmpMaster a left join SUBSIDIARY.dbo.viewGLMEmpSignatory b on a.EMPID = b.EmpID and a.DBNAME = b.DBNAME ";
+            FROM DBO.viewHREmpMaster a 
+            left join dbo.viewGLMEmpSignatory b on a.EMPID = b.EmpID and a.DBNAME = b.DBNAME ";
         $sql .= " WHERE a.EmpID != '' AND COMPANYACTIVE = 1";
 
         if ($search != NULL) : $sql .= " AND (a.EmpID = '".$search."' OR LName LIKE '%".$search."%' OR FName LIKE '%".$search."%') "; endif;
