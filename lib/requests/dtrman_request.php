@@ -158,7 +158,7 @@
                 }             
         
             endif;
-            var_dump($profile_level); exit;
+
             if($profile_level == 0 && count($approver_employees) > 0){
                 // Enable searching of employee dtr based on approvers
                 if (strlen($searchdtrm) >= 3) :
