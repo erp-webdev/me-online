@@ -155,7 +155,6 @@ class mainsql {
         $sql .= " WHERE a.EmpID != '' AND COMPANYACTIVE = 1";
 
         if ($search != NULL) : $sql .= " AND (a.EmpID = '".$search."' OR LName LIKE '%".$search."%' OR FName LIKE '%".$search."%') "; endif;
-
         $sql .= " AND EmpStatus != 'RS'";
         
         $sql .= " AND ((SIGNATORYID1 ='".$signatory."' and SIGNATORYDB1 = '".$signatorydb."')
