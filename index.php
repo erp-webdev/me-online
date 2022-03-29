@@ -223,19 +223,14 @@
             $profile_nadd = 'employee';
         endif;
 
-
         if (in_array($profile_idnum, $adminarray) ) :
             $profile_level = 9;
-            $notadmin = 0;
         elseif (in_array($profile_idnum, $adminarray2)) :
             $profile_level = 7;
-            $notadmin = 0;
         elseif ($_SESSION['megassep_admin']) :
             $profile_level = 10;
-            $notadmin = 0;
         else :
             $profile_level = 0;
-            $notadmin = 1;
         endif;
 
         if (in_array($profile_idnum, $psadminarray)) :
@@ -244,12 +239,16 @@
             $profile_ps = 0;
         endif;
 
+        // Activation of System And DTR Management Menu for approvers.
+        $approver_employees = $mainsql->get_employee($start, REQ_NUM_ROWS, null, 0, $profile_idnum, $profile_dbname);
+        var_dump($approver_employees); exit;
+
         $llblock = $mainsql->get_emploan($profile_idnum);
         $psblock = $mainsql->get_psblock($profile_idnum, $dbname);
         //$unread_notification = $mainsql->get_read($profile_idnum, NULL, 1);
         //$pend_notification = $tblsql->get_pendingnoti(NULL, 0, 0, NULL, 1, $profile_idnum, NULL, NULL, NULL, $profile_dbname);
 
-        //var_dump($profile_level);
+
 
         $profile_hash = md5($profile_idnum);
 

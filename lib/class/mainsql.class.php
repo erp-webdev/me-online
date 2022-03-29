@@ -143,7 +143,8 @@ class mainsql {
 		return $result;
 	}
 
-    function get_employee1($start = 0, $limit = 0, $search = NULL, $count = 0, $signatory = NULL, $signatorydb = NULL)
+    // Get the employee under approval of the login signatory
+    function get_approver_employee($start = 0, $limit = 0, $search = NULL, $count = 0, $signatory = NULL, $signatorydb = NULL)
 	{
         
 		$sql = "SELECT [outer].* FROM ( ";
