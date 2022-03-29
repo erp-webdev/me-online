@@ -2678,11 +2678,11 @@ $(function() {
                     //alert(dfrom);
                 }
             }
-            $("#txtposted").addClass('invisible'
+            $("#txtposted").addClass('invisible');
             
         }
         else {
-            $("#txtposted").removeClass('invisible'
+            $("#txtposted").removeClass('invisible');
             
         }
 
