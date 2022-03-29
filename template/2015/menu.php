@@ -105,6 +105,7 @@
                         <?php if ($section != "approvers") { ?><a href="<?php echo WEB; ?>/approvers" onclick="clickAndDisable(this);"><?php } ?><div<?php if ($section == "approvers") { ?> class="dselected"<?php } ?>>Approvers Management</div><?php if ($section != "approvers") { ?></a><?php } ?>
                         <?php endif; ?>
                         <?php endif; ?>
+                        <!-- <?php echo '--kevs--' . json_encode($approver_employees); -->
                         <?php if ($profile_level >= 9 || count($approver_employees) > 0) : ?>
                         <?php if ($section != "dtrman") { ?><a href="<?php echo WEB; ?>/dtrman" onclick="clickAndDisable(this);"><?php } ?><div<?php if ($section == "dtrman") { ?> class="dselected"<?php } ?>>System &amp; DTR Management</div><?php if ($section != "dtrman") { ?></a><?php } ?>
                         <?php endif; ?>
