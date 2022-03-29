@@ -156,7 +156,7 @@
                     $dtrman_count = NULL;
                     $pages = NULL;
                 endif;
-            }else{
+            }else if(count($approver_employees)){
                 // Enable searching of employee dtr based on approvers
                 if (strlen($searchdtrm) >= 3) :
                     $dtrman_data = $mainsql->get_approver_employee($start, REQ_NUM_ROWS, $searchdtrm, 0, $profile_idnum, $profile_dbname);
@@ -166,7 +166,7 @@
                     $dtrman_data = NULL;
                     $dtrman_count = NULL;
                     $pages = NULL;
-                endif;
+                endif if(count($approver_employees));
             }
 
             ?>   
