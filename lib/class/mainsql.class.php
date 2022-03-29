@@ -152,8 +152,11 @@ class mainsql {
             SSSNbr, PhilHealthNbr, TINNbr, PagibigNbr, TaxID, LocationID, AccountNo, EPassword
             FROM SUBSIDIARY.DBO.viewHREmpMaster a left join SUBSIDIARY.dbo.viewGLMEmpSignatory b on a.EMPID = b.EmpID and a.DBNAME = b.DBNAME ";
         $sql .= " WHERE a.EmpID != '' AND COMPANYACTIVE = 1";
+
         if ($search != NULL) : $sql .= " AND (a.EmpID = '".$search."' OR LName LIKE '%".$search."%' OR FName LIKE '%".$search."%') "; endif;
+
         $sql .= " AND EmpStatus != 'RS'";
+        
         $sql .= " AND ((SIGNATORYID1 ='".$signatory."' and SIGNATORYDB1 = '".$signatorydb."')
         or (SIGNATORYID2 ='".$signatory."' and SIGNATORYDB2 = '".$signatorydb."')
         or (SIGNATORYID3 ='".$signatory."' and SIGNATORYDB3 = '".$signatorydb."')

@@ -61,13 +61,10 @@
 
     if (in_array($profile_idnum, $adminarray)) :
         $profile_level = 9;
-        $notadmin = 0;
     elseif ($_SESSION['megassep_admin']) :
         $profile_level = 10;
-        $notadmin = 0;
     else :
         $profile_level = 0;
-        $notadmin = 1;
     endif;
 
     $profile_hash = md5('2014'.$profile_idnum);
@@ -147,18 +144,8 @@
         
             endif;
 
-            if($profile_level == 0 && count($approver_employees) > 0){
-                // Enable searching of employee dtr based on approvers
-                if (strlen($searchdtrm) >= 3) :
-                    $dtrman_data = $mainsql->get_approver_employee($start, REQ_NUM_ROWS, $searchdtrm, 0, $profile_idnum, $profile_dbname);
-                    $dtrman_count = $mainsql->get_approver_employee(0, 0, $searchdtrm, 1, $searchdtrm, 0, $profile_idnum, $profile_dbname);
-                    $pages = $mainsql->pagination("dtrman", $dtrman_count, REQ_NUM_ROWS, 9);            
-                else :
-                    $dtrman_data = NULL;
-                    $dtrman_count = NULL;
-                    $pages = NULL;
-                endif;
-            }else{
+            if($profile_level){
+        
                 // Admin viewing of dtr
                 if (strlen($searchdtrm) >= 3) :
                     $dtrman_data = $mainsql->get_employee($start, REQ_NUM_ROWS, $searchdtrm, 0);
@@ -169,8 +156,19 @@
                     $dtrman_count = NULL;
                     $pages = NULL;
                 endif;
+            }else{
+                // Enable searching of employee dtr based on approvers
+                if (strlen($searchdtrm) >= 3) :
+                    $dtrman_data = $mainsql->get_approver_employee($start, REQ_NUM_ROWS, $searchdtrm, 0, $profile_idnum, $profile_dbname);
+                    $dtrman_count = $mainsql->get_approver_employee(0, 0, $searchdtrm, 1, $searchdtrm, 0, $profile_idnum, $profile_dbname);
+                    $pages = $mainsql->pagination("dtrman", $dtrman_count, REQ_NUM_ROWS, 9);            
+                else :
+                    $dtrman_data = NULL;
+                    $dtrman_count = NULL;
+                    $pages = NULL;
+                endif;
             }
-            
+
             ?>   
 
             <script type="text/javascript">
