@@ -6261,11 +6261,10 @@
 			$emp_info[0]['DateResigned'] = $emp_info[0]['DateResigned'] ?  date('F j, Y', strtotime($emp_info[0]['DateResigned'])) : null;
 
             // if date of resignation is not yet in-effect, employee must be issued working up to present.
-            echo $emp_info[0]['DateResigned'];
-            if($emp_info[0]['DateResigned'] > date('Y-m-d') || $DateResigned2 > date('Y-m-d')){
-                $emp_info[0]['DateResigned'] = null;
-                $DateResigned2 = null;
-            }
+            // if($emp_info[0]['DateResigned'] > date('Y-m-d') || $DateResigned2 > date('Y-m-d')){
+            //     $emp_info[0]['DateResigned'] = null;
+            //     $DateResigned2 = null;
+            // }
 
 
             if ($coe[0]["type"] == 'PHILHEALTHCSF' || $coe[0]["type"] == 'PHILHEALTHCF1'){
