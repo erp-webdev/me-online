@@ -352,7 +352,7 @@
 				}
 				?>
 				<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
-				up to the present.  </b></p>
+				up to the present. </b></p>
 				<?php } ?>
 
 				<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo $emp_info[0]["Salutation"]." ".strtoupper(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES')); ?>

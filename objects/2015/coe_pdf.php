@@ -92,8 +92,7 @@
 		$DateResigned2 = $emp_info[0]['DateResigned'] ?  date('Y-m-d', strtotime($emp_info[0]['DateResigned'])) : null;
 		$emp_info[0]['DateResigned'] = $emp_info[0]['DateResigned'] ?  date('F j, Y', strtotime($emp_info[0]['DateResigned'])) : null;
 		// if date of resignation is not yet in-effect, employee must be issued working up to present.
-		echo 'kevs--' . $emp_info[0]['DateResigned'] > date('Y-m-d');
-		if($emp_info[0]['DateResigned'] > date('Y-m-d') || $DateResigned2 > date('Y-m-d')){
+		if($emp_info[0]['DateResigned'] > date('Y-m-d') && $DateResigned2 > date('Y-m-d')){
 			$emp_info[0]['DateResigned'] = null;
 			$DateResigned2 = null;
 		}
