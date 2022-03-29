@@ -2,7 +2,7 @@
 	
 	if ($logged == 1) {
         
-        if ($profile_level) :
+        if ($profile_level || count($approver_employees)) :
 
             $empid = $_GET['id'] ? $_GET['id'] : $profile_hash;
             $dbname = $_GET['db'] ? $_GET['db'] : 'SUBSIDIARY';
