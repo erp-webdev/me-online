@@ -2,7 +2,7 @@
 	
 	if ($logged == 1) {
         
-        if ($profile_level) :
+        if ($profile_level || count($approver_employees)) :
 
             # PAGINATION
             $page = isset($_GET["page"]) ? (int)$_GET["page"] : 1 ;
