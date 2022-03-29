@@ -144,7 +144,7 @@
         
             endif;
 
-            if($profile_level){
+            if($profile_level || count($approver_employees)){
         
             // Admin viewing of dtr
             if (strlen($searchdtrm) >= 3) :
