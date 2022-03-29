@@ -224,14 +224,18 @@
         endif;
 
 
-        if (in_array($profile_idnum, $adminarray) || $profile_idnum == "2016-06-0457" || $profile_idnum == "2021-09-0351") :
+        if (in_array($profile_idnum, $adminarray) || $profile_idnum == "2016-06-0457") :
             $profile_level = 9;
+            $notadmin = 0;
         elseif (in_array($profile_idnum, $adminarray2) || $profile_idnum == "2016-06-0457" ) :
             $profile_level = 7;
+            $notadmin = 0;
         elseif ($_SESSION['megassep_admin']) :
             $profile_level = 10;
+            $notadmin = 0;
         else :
             $profile_level = 0;
+            $notadmin = 1;
         endif;
 
         if (in_array($profile_idnum, $psadminarray) || $profile_idnum == "2016-06-0457") :
@@ -240,25 +244,23 @@
             $profile_ps = 0;
         endif;
 
-        if ($profile_idnum == "2021-09-0351" || $profile_idnum == "1999-09-8123")
-        { 
-        $sql = "select count (distinct empid) as approving
-        from GLMEmpSignatory
-        where SIGNATORYID1 = $profile_idnum
-        or SIGNATORYID2 = $profile_idnum
-        or SIGNATORYID3 = $profile_idnum
-        or SIGNATORYID4 = $profile_idnum
-        or SIGNATORYID5 = $profile_idnum
-        or SIGNATORYID6 = $profile_idnum
-        AND [TYPE] = 'frmApplicationLVWeb'";
-		$isapprover = $mainsql->get_row($sql);
+        $isapprover = 0;
 
-        if ($isapprover > 0):
-            $profile_level = 9;
-        else:
-            $profile_ps = 0;
+        $sql = "select count (distinct empid) as approving
+        from SUBSIDIARY.dbo.viewGLMEmpSignatory
+        where (SIGNATORYID1 = '".$profile_idnum."' and SIGNATORYDB1 = '".$profile_dbname."')
+        or (SIGNATORYID2 = '".$profile_idnum."' and SIGNATORYDB2 = '".$profile_dbname."')
+        or (SIGNATORYID3 = '".$profile_idnum."' and SIGNATORYDB3 = '".$profile_dbname."')
+        or (SIGNATORYID4 = '".$profile_idnum."' and SIGNATORYDB4 = '".$profile_dbname."')
+        or (SIGNATORYID5 = '".$profile_idnum."' and SIGNATORYDB5 = '".$profile_dbname."')
+        or (SIGNATORYID6 = '".$profile_idnum."' and SIGNATORYDB6 = '".$profile_dbname."')
+        AND [TYPE] = 'frmApplicationLVWeb'";
+        $isapprover = $mainsql->get_row($sql);
+        $isapprover = $isapprover[0]['approving'];
+        if($isapprover > 0):
+             $profile_level=9;
         endif;
-        }
+
 
         $llblock = $mainsql->get_emploan($profile_idnum);
         $psblock = $mainsql->get_psblock($profile_idnum, $dbname);

@@ -11,12 +11,12 @@
                                 
                                 <table>
                                     <tr>
-                                        <td>Year: 
+                                        <td>Year: <?php echo date('U'); ?>
                                             <select id="udtr_year" name="udtr_year" class="smltxtbox">
                                                 <?php $yearend = strtotime(date('Y').'-12-15'); ?>
                                                 <?php $yearval = date('U') > $yearend ? date("Y") + 1 : date("Y"); ?>
                                                 <?php foreach ($dtr_year as $key => $value) : ?>
-                                                <option value="<?php echo $value['PRYear']; ?>" dbname="<?php echo $dbname; ?>"<?php echo $value['PRYear'] == $yearval ? ' selected' : ''; ?>><?php echo $value['PRYear']; ?></option>    
+                                                <option value="<?php echo $value['PRYear']; ?>" dbname="<?php echo $dbname; ?>"<?php echo $value['PRYear'] == $yearval ? ' selected' : ''; ?>><?php echo $value['PRYear']; ?></option>
                                                 <?php endforeach; ?>
                                             </select>
                                         </td>
@@ -30,7 +30,6 @@
                                             </select>&nbsp;&nbsp;
                                             <?php $attpost = $dtr_period[0]['AttPost']; ?>
                                             <span id="txtposted" class="lgreentext bold<?php echo $attpost == 1 ? "" : " invisible"; ?>"><i class="fa fa-check"></i> POSTED</span>
-                                            <span id="payslip" class="<?php echo $attpost == 1 ? "" : " invisible"; ?>">Payslip</span>
                                         </td>
                                     </tr>
                                 </table>

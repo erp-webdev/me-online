@@ -61,16 +61,31 @@
 
     if (in_array($profile_idnum, $adminarray)) :
         $profile_level = 9;
+        $notadmin = 0;
     elseif ($_SESSION['megassep_admin']) :
         $profile_level = 10;
+        $notadmin = 0;
     else :
         $profile_level = 0;
+        $notadmin = 1;
     endif;
 
     $profile_hash = md5('2014'.$profile_idnum);
 
 	$GLOBALS['level'] = $profile_level;
-	
+
+    $sql = "select count (distinct empid) as approving
+    from SUBSIDIARY.dbo.viewGLMEmpSignatory
+    where (SIGNATORYID1 = '".$profile_idnum."' and SIGNATORYDB1 = '".$profile_dbname."')
+    or (SIGNATORYID2 = '".$profile_idnum."' and SIGNATORYDB2 = '".$profile_dbname."')
+    or (SIGNATORYID3 = '".$profile_idnum."' and SIGNATORYDB3 = '".$profile_dbname."')
+    or (SIGNATORYID4 = '".$profile_idnum."' and SIGNATORYDB4 = '".$profile_dbname."')
+    or (SIGNATORYID5 = '".$profile_idnum."' and SIGNATORYDB5 = '".$profile_dbname."')
+    or (SIGNATORYID6 = '".$profile_idnum."' and SIGNATORYDB6 = '".$profile_dbname."')
+    AND [TYPE] = 'frmApplicationLVWeb'";
+    $isapprover = $mainsql->get_row($sql);
+    $isapprover = $isapprover[0]['approving'];
+
 	//***************** USER MANAGEMENT - END *****************\\
 
     $sec = $profile_id ? $_GET['sec'] : NULL;
@@ -117,18 +132,7 @@
             echo $aeb_toggle;
             
         break;            
-        case 'table': 
-            $sql = "select count (distinct empid) as approving
-            from SUBSIDIARY.dbo.viewGLMEmpSignatory
-            where (SIGNATORYID1 = '".$profile_idnum."' and SIGNATORYDB1 = '".$profile_dbname."')
-            or (SIGNATORYID2 = '".$profile_idnum."' and SIGNATORYDB2 = '".$profile_dbname."')
-            or (SIGNATORYID3 = '".$profile_idnum."' and SIGNATORYDB3 = '".$profile_dbname."')
-            or (SIGNATORYID4 = '".$profile_idnum."' and SIGNATORYDB4 = '".$profile_dbname."')
-            or (SIGNATORYID5 = '".$profile_idnum."' and SIGNATORYDB5 = '".$profile_dbname."')
-            or (SIGNATORYID6 = '".$profile_idnum."' and SIGNATORYDB6 = '".$profile_dbname."')
-            AND [TYPE] = 'frmApplicationLVWeb'";
-		    $isapprover = $mainsql->get_row($sql);
-
+        case 'table':
             # PAGINATION
             $page = isset($_GET["page"]) ? (int)$_GET["page"] : 1 ;
             $start = REQ_NUM_ROWS * ($page - 1);   
@@ -155,7 +159,7 @@
         
             endif;
 
-            if ($isapprover > 0)
+            if ($isapprover > 0 && $notadmin == 1)
             {
                 if (strlen($searchdtrm) >= 3) :
                     $dtrman_data = $mainsql->get_employee1($start, REQ_NUM_ROWS, $searchdtrm, 0,$profile_idnum,$profile_dbname);
