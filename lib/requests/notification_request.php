@@ -6256,10 +6256,10 @@
 
 			$emp_info = $mainsql->get_row($query);
 
-            var_dump($emp_info); exit;
             // if date of resignation is not yet in-effect, employee must be issued working up to present.
             if(!empty($emp_info[0]['DateResigned'])){
-                if($emp_info[0]['DateResigned'] > date('Y-m-d'))
+            var_dump($emp_info[0]['DateResigned']); exit;
+            if($emp_info[0]['DateResigned'] > date('Y-m-d'))
                     $emp_info[0]['DateResigned'] = null;
             }
 
