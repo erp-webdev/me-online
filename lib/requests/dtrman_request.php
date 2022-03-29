@@ -170,6 +170,7 @@
                     $pages = NULL;
                 endif;
             }
+            
             ?>   
 
             <script type="text/javascript">
