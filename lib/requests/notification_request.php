@@ -6253,7 +6253,6 @@
 						WHERE
 							A.EmpID = '$emp_id'";
 
-var_dump($emp_info[0]); exit;
 
             // if date of resignation is not yet in-effect, employee must be issued working up to present.
             if(!empty($emp_info[0]['DateResigned'])){

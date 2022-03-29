@@ -87,7 +87,6 @@
 
 		$emp_info = $mainsql->get_row($query);
 
-		var_dump($emp_info[0]); exit;
 		if(!empty($emp_info[0]['DateResigned'])){
 			if($emp_info[0]['DateResigned'] > date('Y-m-d'))
 				$emp_info[0]['DateResigned'] = null;
