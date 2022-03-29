@@ -6097,7 +6097,7 @@
 							return;
 						} else
                         {
-                            alert('Working');
+                            // alert('Working');
                         }
 
 						if(type == 'COEAPPROVEDLEAVE'){
