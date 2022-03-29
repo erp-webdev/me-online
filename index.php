@@ -244,24 +244,6 @@
             $profile_ps = 0;
         endif;
 
-        $isapprover = 0;
-
-        $sql = "select count (distinct empid) as approving
-        from SUBSIDIARY.dbo.viewGLMEmpSignatory
-        where (SIGNATORYID1 = '".$profile_idnum."' and SIGNATORYDB1 = '".$profile_dbname."')
-        or (SIGNATORYID2 = '".$profile_idnum."' and SIGNATORYDB2 = '".$profile_dbname."')
-        or (SIGNATORYID3 = '".$profile_idnum."' and SIGNATORYDB3 = '".$profile_dbname."')
-        or (SIGNATORYID4 = '".$profile_idnum."' and SIGNATORYDB4 = '".$profile_dbname."')
-        or (SIGNATORYID5 = '".$profile_idnum."' and SIGNATORYDB5 = '".$profile_dbname."')
-        or (SIGNATORYID6 = '".$profile_idnum."' and SIGNATORYDB6 = '".$profile_dbname."')
-        AND [TYPE] = 'frmApplicationLVWeb'";
-        $isapprover = $mainsql->get_row($sql);
-        $isapprover = $isapprover[0]['approving'];
-        if($isapprover > 0):
-             $profile_level=9;
-        endif;
-
-
         $llblock = $mainsql->get_emploan($profile_idnum);
         $psblock = $mainsql->get_psblock($profile_idnum, $dbname);
         //$unread_notification = $mainsql->get_read($profile_idnum, NULL, 1);
