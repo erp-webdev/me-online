@@ -6254,7 +6254,7 @@
 							A.EmpID = '$emp_id'";
 
             // if date of resignation is not yet in-effect, employee must be issued working up to present.
-            if(!$emp_info[0]['DateResigned'] && ($emp_info[0]['DateResigned']) > date('Y-m-d') )){
+            if(!$emp_info[0]['DateResigned'] && $emp_info[0]['DateResigned'] > date('Y-m-d') ){
                 $emp_info[0]['DateResigned'] = null;
             }
 
