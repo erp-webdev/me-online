@@ -166,7 +166,7 @@
                     $dtrman_data = NULL;
                     $dtrman_count = NULL;
                     $pages = NULL;
-                endif if(count($approver_employees));
+                endif 
             }
 
             ?>   
