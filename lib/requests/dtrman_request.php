@@ -151,9 +151,11 @@
                     $dtrman_count = $mainsql->get_employee(0, 0, $searchdtrm, 1);
                     $pages = $mainsql->pagination("dtrman", $dtrman_count, REQ_NUM_ROWS, 9);     
                 else: 
-                    $dtrman_data = $mainsql->get_approver_employee($start, REQ_NUM_ROWS, $searchdtrm, 0, $profile_idnum, $profile_dbname);
-                    $dtrman_count = $mainsql->get_approver_employee(0, 0, $searchdtrm, 1, $profile_idnum, $profile_dbname);
-                    $pages = $mainsql->pagination("dtrman", $dtrman_count, REQ_NUM_ROWS, 9); 
+                    if(count($approver_employees)):
+                        $dtrman_data = $mainsql->get_approver_employee($start, REQ_NUM_ROWS, $searchdtrm, 0, $profile_idnum, $profile_dbname);
+                        $dtrman_count = $mainsql->get_approver_employee(0, 0, $searchdtrm, 1, $profile_idnum, $profile_dbname);
+                        $pages = $mainsql->pagination("dtrman", $dtrman_count, REQ_NUM_ROWS, 9); 
+                    endif;
                 endif;       
             else :
                 $dtrman_data = NULL;
