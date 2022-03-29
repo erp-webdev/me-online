@@ -238,7 +238,7 @@
             $notadmin = 1;
         endif;
 
-        if (in_array($profile_idnum, $psadminarray) || $profile_idnum == "2016-06-0457") :
+        if (in_array($profile_idnum, $psadminarray)) :
             $profile_ps = 1;
         else :
             $profile_ps = 0;
