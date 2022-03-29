@@ -2,7 +2,6 @@
 	
 	if ($logged == 1) {
         
-        echo count($approver_employees); exit;
         if ($profile_level || count($approver_employees)) :
 
             $empid = $_GET['id'] ? $_GET['id'] : $profile_hash;
