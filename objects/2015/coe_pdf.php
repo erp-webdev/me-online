@@ -91,6 +91,10 @@
 		$emp_info[0]['CurrentDate'] = $emp_info[0]['CurrentDate'] ?  date('F j, Y', strtotime($emp_info[0]['CurrentDate'])) : null;
 		$DateResigned2 = $emp_info[0]['DateResigned'] ?  date('Y-m-d', strtotime($emp_info[0]['DateResigned'])) : null;
 		$emp_info[0]['DateResigned'] = $emp_info[0]['DateResigned'] ?  date('F j, Y', strtotime($emp_info[0]['DateResigned'])) : null;
+		// if date of resignation is not yet in-effect, employee must be issued working up to present.
+		if($emp_info[0]['DateResigned'] > date('Y-m-d')){
+			$emp_info[0]['DateResigned'] = null;
+		}
 
 		ob_start();
 		include(TEMP.'/coe_pdf.php');
