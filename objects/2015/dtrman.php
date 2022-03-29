@@ -31,7 +31,6 @@
                 $_POST['searchdtrm'] = NULL;
             }                              
 
-            echo 'kevs--'  . count($approver_employees); exit;
             if($profile_level > 0){
                 if (strlen($searchdtrm) >= 3) :
                     $dtrman_data = $mainsql->get_employee($start, REQ_NUM_ROWS, $searchdtrm, 0);
@@ -42,7 +41,7 @@
                     $dtrman_count = NULL;
                     $pages = NULL;
                 endif;
-            }elseif(count($approver_employees) > 0){
+            }else if(count($approver_employees) > 0){
                 // enable dtr searching if approver of the employee being searched
                 if (strlen($searchdtrm) >= 3) :
                     $dtrman_data = $mainsql->get_employee($start, REQ_NUM_ROWS, $searchdtrm, 0);
