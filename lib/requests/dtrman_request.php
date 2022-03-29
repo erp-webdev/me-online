@@ -159,16 +159,30 @@
         
             endif;
 
-  
-            if (strlen($searchdtrm) >= 3) :
-                $dtrman_data = $mainsql->get_employee($start, REQ_NUM_ROWS, $searchdtrm, 0);
-                $dtrman_count = $mainsql->get_employee(0, 0, $searchdtrm, 1);
-                $pages = $mainsql->pagination("dtrman", $dtrman_count, REQ_NUM_ROWS, 9);            
-            else :
-                $dtrman_data = NULL;
-                $dtrman_count = NULL;
-                $pages = NULL;
-            endif;
+
+            if($profile_level && count($approver_employees)){
+                // Enable searching of employee dtr based on approvers
+                if (strlen($searchdtrm) >= 3) :
+                    $dtrman_data = $mainsql->get_employee($start, REQ_NUM_ROWS, $searchdtrm, 0, $profile_idnum, $profile_dbname);
+                    $dtrman_count = $mainsql->get_employee(0, 0, $searchdtrm, 1);
+                    $pages = $mainsql->pagination("dtrman", $dtrman_count, REQ_NUM_ROWS, 9);            
+                else :
+                    $dtrman_data = NULL;
+                    $dtrman_count = NULL;
+                    $pages = NULL;
+                endif;
+            }else{
+                // Admin viewing of dtr
+                if (strlen($searchdtrm) >= 3) :
+                    $dtrman_data = $mainsql->get_employee($start, REQ_NUM_ROWS, $searchdtrm, 0);
+                    $dtrman_count = $mainsql->get_employee(0, 0, $searchdtrm, 1);
+                    $pages = $mainsql->pagination("dtrman", $dtrman_count, REQ_NUM_ROWS, 9);            
+                else :
+                    $dtrman_data = NULL;
+                    $dtrman_count = NULL;
+                    $pages = NULL;
+                endif;
+            }
             ?>   
 
             <script type="text/javascript">
