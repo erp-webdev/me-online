@@ -224,10 +224,10 @@
         endif;
 
 
-        if (in_array($profile_idnum, $adminarray) || $profile_idnum == "2016-06-0457") :
+        if (in_array($profile_idnum, $adminarray) ) :
             $profile_level = 9;
             $notadmin = 0;
-        elseif (in_array($profile_idnum, $adminarray2) || $profile_idnum == "2016-06-0457" ) :
+        elseif (in_array($profile_idnum, $adminarray2)) :
             $profile_level = 7;
             $notadmin = 0;
         elseif ($_SESSION['megassep_admin']) :
