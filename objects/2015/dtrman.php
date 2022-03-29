@@ -32,15 +32,28 @@
             }                              
 
             echo 'kevs--'  . count($approver_employees); exit;
-            if (strlen($searchdtrm) >= 3) :
-                $dtrman_data = $mainsql->get_employee($start, REQ_NUM_ROWS, $searchdtrm, 0);
-                $dtrman_count = $mainsql->get_employee(0, 0, $searchdtrm, 1);
-                $pages = $mainsql->pagination("dtrman", $dtrman_count, REQ_NUM_ROWS, 9);            
-            else :
-                $dtrman_data = NULL;
-                $dtrman_count = NULL;
-                $pages = NULL;
-            endif;
+            if($profile_level > 0){
+                if (strlen($searchdtrm) >= 3) :
+                    $dtrman_data = $mainsql->get_employee($start, REQ_NUM_ROWS, $searchdtrm, 0);
+                    $dtrman_count = $mainsql->get_employee(0, 0, $searchdtrm, 1);
+                    $pages = $mainsql->pagination("dtrman", $dtrman_count, REQ_NUM_ROWS, 9);            
+                else :
+                    $dtrman_data = NULL;
+                    $dtrman_count = NULL;
+                    $pages = NULL;
+                endif;
+            }elseif(count($approver_employees) > 0){
+                // enable dtr searching if approver of the employee being searched
+                if (strlen($searchdtrm) >= 3) :
+                    $dtrman_data = $mainsql->get_approver_employee($start, REQ_NUM_ROWS, $searchdtrm, 0, $profile_idnum, $profile_dbname);
+                    $dtrman_count = $mainsql->get_employee(0, 0, $searchdtrm, 1, $profile_idnum, $profile_dbname);
+                    $pages = $mainsql->pagination("dtrman", $dtrman_count, REQ_NUM_ROWS, 9);            
+                else :
+                    $dtrman_data = NULL;
+                    $dtrman_count = NULL;
+                    $pages = NULL;
+                endif;
+            }
         
         else :
         
