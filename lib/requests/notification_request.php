@@ -5406,8 +5406,6 @@
 						VALUES ('".$refno."','".$coeemp."', '".$coetype."', '".$coecategory."', '".$coereason."', '".$coeother."', 'On Process', '".$coe_company."', '".$profile_idnum."', '".$datetoday."', '".$profile_idnum."', '".$datetoday."',
 								'".$leave_from."', '".$leave_to."', '".$leave_return."', '".$correction_name."', '".$tasks."', '".$hpa_percentage."', '".$avail_no."', '".$fixname."')";
 
-                                echo $sql;
-
 				$result = $mainsql->get_execute($sql);
 
 				$coe_sql = "SELECT * FROM COERequests Where ref_no='$refno'";
@@ -6261,6 +6259,13 @@
 			$emp_info[0]['CurrentDate'] = $emp_info[0]['CurrentDate'] ?  date('F j, Y', strtotime($emp_info[0]['CurrentDate'])) : null;
 		    $DateResigned2 = $emp_info[0]['DateResigned'] ?  date('Y-m-d', strtotime($emp_info[0]['DateResigned'])) : null;
 			$emp_info[0]['DateResigned'] = $emp_info[0]['DateResigned'] ?  date('F j, Y', strtotime($emp_info[0]['DateResigned'])) : null;
+
+            // if date of resignation is not yet in-effect, employee must be issued working up to present.
+            if($emp_info[0]['DateResigned'] > date('Y-m-d') || $DateResigned2 > date('Y-m-d')){
+                $emp_info[0]['DateResigned'] = null;
+                $DateResigned2 = null;
+            }
+
 
             if ($coe[0]["type"] == 'PHILHEALTHCSF' || $coe[0]["type"] == 'PHILHEALTHCF1'){
 			    include(TEMP.'/philhealth_pdf.php');
