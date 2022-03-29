@@ -240,7 +240,7 @@
         endif;
 
         // Activation of System And DTR Management Menu for approvers.
-        $approver_employees = $mainsql->get_employee($start, REQ_NUM_ROWS, null, 0, $profile_idnum, $profile_dbname);
+        $approver_employees = $mainsql->get_approver_employee($start, REQ_NUM_ROWS, null, 0, $profile_idnum, $profile_dbname);
         var_dump($approver_employees); exit;
 
         $llblock = $mainsql->get_emploan($profile_idnum);
