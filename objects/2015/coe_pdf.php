@@ -90,8 +90,6 @@
 		if(!empty($emp_info[0]['DateResigned'])){
 			if($emp_info[0]['DateResigned'] > date('Y-m-d'))
 				$emp_info[0]['DateResigned'] = null;
-			else 
-				$emp_info[0]['DateResigned'] = '2022-04-15';
 		}
 		
 		$emp_info[0]['HireDate'] = $emp_info[0]['HireDate'] ?  date('F j, Y', strtotime($emp_info[0]['HireDate'])) : null;
