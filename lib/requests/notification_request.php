@@ -6253,6 +6253,7 @@
 						WHERE
 							A.EmpID = '$emp_id'";
 
+var_dump($emp_info[0]['DateResigned']); exit;
 
             // if date of resignation is not yet in-effect, employee must be issued working up to present.
             if(!empty($emp_info[0]['DateResigned'])){
@@ -6262,7 +6263,6 @@
                     $emp_info[0]['DateResigned'] = '2022-04-15';
             }
 
-var_dump($emp_info[0]['DateResigned']); exit;
 
 
 			$emp_info = $mainsql->get_row($query);
