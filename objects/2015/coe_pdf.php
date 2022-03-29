@@ -88,9 +88,9 @@
 		$emp_info = $mainsql->get_row($query);
 
 		if(!empty($emp_info[0]['DateResigned'])){
-			if($emp_info[0]['DateResigned'] > date('Y-m-d'))
-				$emp_info[0]['DateResigned'] = null;
-		}
+            if(date('Y-m-d', strtotime($emp_info[0]['DateResigned'])) > date('Y-m-d'))
+                    $emp_info[0]['DateResigned'] = null;
+            }
 		
 		$emp_info[0]['HireDate'] = $emp_info[0]['HireDate'] ?  date('F j, Y', strtotime($emp_info[0]['HireDate'])) : null;
 		$emp_info[0]['CurrentDate'] = $emp_info[0]['CurrentDate'] ?  date('F j, Y', strtotime($emp_info[0]['CurrentDate'])) : null;
