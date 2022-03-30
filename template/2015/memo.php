@@ -90,7 +90,7 @@
                         <div class="leftsplashtext lefttalign"><?php include(TEMP."/menu.php"); ?></div>
                         <div class="rightsplashtext lefttalign">
                             <div id="mainmemo" class="mainbody lefttalign whitetext">
-                                <b class="mediumtext lorangetext">MEMORANDUM -- <?php var_dump($profile_level); ?></b><br><br>
+                                <b class="mediumtext lorangetext">MEMORANDUM </b><br><br>
 
                                 <table class="width100per">
                                     <tr>
