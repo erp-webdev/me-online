@@ -5,7 +5,7 @@
                     <div id="floatdiv" class="floatdiv invisible">
                         <?php if ($profile_level == 7 || $profile_level == 9 || $profile_level == 10) : ?>
                         <!-- CREATE MEMO - BEGIN -->
-                        -- <?php var_dump($profile_level); ?>
+                        --kevs <?php var_dump($profile_level); ?>
                         <div id="madd" class="fadd" style="display: none;">
                             <div class="closebutton cursorpoint"><i class="fa fa-times-circle fa-3x redtext"></i></div>
                             <div id="madd_title" class="robotobold cattext dbluetext">Create Memo</div>
