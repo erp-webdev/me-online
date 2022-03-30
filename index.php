@@ -226,7 +226,7 @@
         if (in_array($profile_idnum, $adminarray) ) :
             $profile_level = 9;
         elseif (in_array($profile_idnum, $adminarray2)) :
-            echo '--kevs'; var_dump($adminarray2);
+            echo '--kevs1'; var_dump($adminarray2);
             $profile_level = 7;
         elseif ($_SESSION['megassep_admin']) :
             $profile_level = 10;
