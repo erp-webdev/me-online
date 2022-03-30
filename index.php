@@ -233,6 +233,7 @@
         else :
             $profile_level = 0;
         endif;
+        echo '--kevs2'; var_dump($adminarray2);
 
         if (in_array($profile_idnum, $psadminarray)) :
             $profile_ps = 1;
