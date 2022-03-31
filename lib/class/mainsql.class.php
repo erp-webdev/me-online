@@ -1697,7 +1697,7 @@ class mainsql {
         $sql .= " WHERE EmpID = '".$empid."' AND DTRDATE BETWEEN '".$from." 00:00:00.000' AND '".$to." 23:59:59.000' ";
         $sql .= " AND Posted = (SELECT top 1 AttPost FROM HRCompanyCutOff WHERE PaymentType <> 'SPECIAL' AND PeriodFrom BETWEEN '".$from."' AND '".$to."' AND CompanyID='".$company."') ";
         $sql .= " ORDER BY DTRDATE ASC ";
-        echo '<!-- test2' . $sql . '-->';
+        echo '<!-- test2' . $dbname . '-->';
 		$result = $this->get_row($sql, $dbname);
 		return $result;
     }
