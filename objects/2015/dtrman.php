@@ -52,7 +52,6 @@
 
                     $dtrman_data = $mainsql->get_approver_employee($start, REQ_NUM_ROWS, null, 0, $profile_idnum, $profile_dbname);
                     $dtrman_count = $mainsql->get_approver_employee(0, 0, null, 1, $profile_idnum, $profile_dbname);
-                    echo '<!-- test2' . $dtrman_count . '-->';
                     $pages = $mainsql->pagination("dtrman", $dtrman_count, REQ_NUM_ROWS, 9); 
                 else:
                     $dtrman_data = NULL;

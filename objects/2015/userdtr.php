@@ -59,7 +59,6 @@
                     $_POST['STATUS'] = 'INITIAL'; 
                     $_POST['intFINALPAY'] = 0;             
 
-
                     $daydtr = date('j', $dfrom);
                     $month15 = date('U', strtotime(date('Y-m-15')));                        
                     $lastyear = date('Y', strtotime("-1 month"));
@@ -93,7 +92,8 @@
                     $dfrom = $dfrom + 86400;
                 endwhile;     
             endif;
-
+            echo '<!-- test2' . $dbname . '-->';
+            
             $dtr_data = $mainsql->get_dtr_data($udtr_idnum, date("m/d/Y", strtotime($expfrom[0].' '.$expfrom[1].' '.$expfrom[2].' 00:00:00')), date("m/d/Y", strtotime($expto[0].' '.$expto[1].' '.$expto[2].' 23:59:59')), $udtr_comp, $dbname);  
         
         else :
