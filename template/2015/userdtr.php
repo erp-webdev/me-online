@@ -203,7 +203,7 @@
                                             $total_ot22 = $total_ot22 + $value['OTHrs22'];
 
                                             $holidate = explode('/', date("m/d/Y", strtotime($value['DTRDATE'])));
-                                            $thisisholiday = $mainsql->get_holiday(1, $holidate[0], $holidate[1], $profile_location);
+                                            $thisisholiday = $mainsql->get_holiday(1, $holidate[0], $holidate[1], $profile_location, $dbname);
                                             $restdaydate = $mainsql->get_restday($profile_idnum, date("m/d/Y", strtotime($value['DTRDATE'])));
                                             $appliedrestdaydate = $mainsql->get_appliedrestday($profile_idnum, date("m/d/Y", strtotime($value['DTRDATE'])), $profile_comp);
                                             $appliedscheddate = $mainsql->get_appliedsched($profile_idnum, date("m/d/Y", strtotime($value['DTRDATE'])), $profile_comp);

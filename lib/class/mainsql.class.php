@@ -1697,7 +1697,6 @@ class mainsql {
         $sql .= " WHERE EmpID = '".$empid."' AND DTRDATE BETWEEN '".$from." 00:00:00.000' AND '".$to." 23:59:59.000' ";
         $sql .= " AND Posted = (SELECT top 1 AttPost FROM HRCompanyCutOff WHERE PaymentType <> 'SPECIAL' AND PeriodFrom BETWEEN '".$from."' AND '".$to."' AND CompanyID='".$company."') ";
         $sql .= " ORDER BY DTRDATE ASC ";
-        echo '<!-- test2' . $dbname . '-->';
 		$result = $this->get_row($sql, $dbname);
 		return $result;
     }
@@ -1757,7 +1756,7 @@ class mainsql {
 		return $result;
     }
 
-    function get_holiday($count = 0, $month = 0, $day = 0, $location = NULL)
+    function get_holiday($count = 0, $month = 0, $day = 0, $location = NULL, $dbname = NULL)
 	{
 		if ($location != NULL) :
             $sql = "SELECT ID, Description, HolidayMonth, HolidayDay, Type FROM viewHolidayList ";
@@ -1765,18 +1764,18 @@ class mainsql {
             $sql .= " AND ID = '".$location."' ";
         endif;
 		if ($count) :
-            $result = $this->get_numrow($sql);
+            $result = $this->get_numrow($sql, $dbname);
             if (!$result) :
                 $sql2 = "SELECT ID, Description, HolidayMonth, HolidayDay, Type FROM viewHolidayList ";
                 $sql2 .= " WHERE Type <> 'LC' AND HolidayMonth = '".$month.".00' AND HolidayDay = '".$day.".00' ";
-                $result = $this->get_numrow($sql2);
+                $result = $this->get_numrow($sql2, $dbname);
             endif;
         else :
             $result = $this->get_row($sql);
             if (!$result) :
                 $sql2 = "SELECT ID, Description, HolidayMonth, HolidayDay, Type FROM viewHolidayList ";
                 $sql2 .= " WHERE Type <> 'LC' AND HolidayMonth = '".$month.".00' AND HolidayDay = '".$day.".00' ";
-                $result = $this->get_row($sql2);
+                $result = $this->get_row($sql2, $dbname);
             endif;
         endif;
 
