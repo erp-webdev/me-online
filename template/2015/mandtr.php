@@ -62,6 +62,15 @@
                                                                         $dates = date("Y-m-d", $mandtr_from);
                                                                         $days = date("D m/d/y", $mandtr_from);
                                                                         $numdays = intval(date("N", $mandtr_from));
+
+                                                                        $_POST['strEMPID'] = $profile_idnum;
+                                                                        $_POST['dteDTRDate'] = date("m/d/Y", $mandtr_from);
+                                                                        $_POST['OVERWRITE'] = 0;
+                                                                        $_POST['STATUS'] = 'INITIAL';
+                                                                        $_POST['intFINALPAY'] = 0;
+                                                        
+                                                                        $dtr_calculate = $mainsql->dtr_action($_POST, 'calculate');
+                                                                        
                                                                         $dtr_data = $mainsql->get_dtr_bydate($profile_idnum, date("m/d/Y", $udate));  
 
                                                                         $shiftsched2 = $mainsql->get_schedshiftdtr($profile_idnum, $dates);       
