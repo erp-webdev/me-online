@@ -39,7 +39,7 @@
                 else :
                     // allow viewing of dtr if approver of the employee
                     if(count($approver_employees)) :
-                        if(empty($searchdtrm))
+                        if(!$searchdtrm)
                             $searchdtrm = NULL;
 
                         $dtrman_data = $mainsql->get_approver_employee($start, REQ_NUM_ROWS, $searchdtrm, 0, $profile_idnum, $profile_dbname);
