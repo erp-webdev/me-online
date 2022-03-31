@@ -176,7 +176,7 @@
                                         $chkneb = $mainsql->get_newemailblock($value['EmpID'], $value['DBNAME']);
                                         $chkaeb = $mainsql->get_appemailblock($value['EmpID'], $value['DBNAME']);
                                     ?>
-                                    <tr class="trdata centertalign whitetext" db="<?php echo $value['DBNAME']; ?>">
+                                    <tr class="trdata centertalign whitetext">
                                         <td><?php echo $value['EmpID']; ?></td>
                                         <td><?php echo $value['LName']; ?></td>
                                         <td><?php echo $value['FName']; ?></td>
