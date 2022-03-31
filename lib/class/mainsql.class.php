@@ -149,7 +149,8 @@ class mainsql {
 		$sql = "SELECT [outer].* FROM ( ";
         $sql .= " SELECT ROW_NUMBER() OVER(ORDER BY LName ASC) as ROW_NUMBER, ";
         $sql .= " a.EmpID, FName, MName, LName, NickName, EmailAdd, CompanyID,
-            SSSNbr, PhilHealthNbr, TINNbr, PagibigNbr, TaxID, LocationID, AccountNo, EPassword
+            SSSNbr, PhilHealthNbr, TINNbr, PagibigNbr, TaxID, LocationID, AccountNo, EPassword, 
+            a.DBNAME
             FROM viewHREmpMaster a 
             left join viewGLMEmpSignatory b on a.EMPID = b.EmpID and a.DBNAME = b.DBNAME ";
         $sql .= " WHERE a.EmpID != '' AND COMPANYACTIVE = 1";
