@@ -242,7 +242,7 @@
 
         // Activation of System And DTR Management Menu for approvers.
         $approver_employees = $mainsql->get_approver_employee($start, REQ_NUM_ROWS, null, 0, $profile_idnum, $profile_dbname);
-        echo '<!-- txt45 ' . $profile_dbname . '-->'
+        echo '<!-- txt45 ' . $profile_dbname . '-->';
         $llblock = $mainsql->get_emploan($profile_idnum);
         $psblock = $mainsql->get_psblock($profile_idnum, $dbname);
         //$unread_notification = $mainsql->get_read($profile_idnum, NULL, 1);
