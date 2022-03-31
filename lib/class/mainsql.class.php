@@ -45,11 +45,11 @@ class mainsql {
         return $result;
 	}
 
-	public function get_numrow($sql) //Get num rows of a table from $sql
+	public function get_numrow($sql, $dbname = NULL) //Get num rows of a table from $sql
 	{
         if(!$sql) return;
         $con = $this->db_connect();
-        $seltab = $this->db_select($con);
+        $seltab = $this->db_select($con, $dbname);
         $result = mssql_query($sql);
         if(!$result) return;
         $result = $this->db_result_to_num($result);
