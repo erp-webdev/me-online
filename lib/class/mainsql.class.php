@@ -131,7 +131,7 @@ class mainsql {
             FROM viewHREmpMaster ";
         $sql .= " WHERE EmpID != '' ";
         if ($search != NULL) : $sql .= " AND (EmpID = '".$search."' OR LName LIKE '%".$search."%' OR FName LIKE '%".$search."%') "; endif;
-        $sql .= " AND EmpStatus != 'RS'";
+        $sql .= " AND ISNULL(EmpStatus, '') != 'RS'";
         $sql .= ") AS [outer] ";
         if ($limit) :
             $sql .= " WHERE [outer].[ROW_NUMBER] BETWEEN ".(intval($start) + 1)." AND ".intval($start + $limit)." ORDER BY [outer].[ROW_NUMBER] ";
