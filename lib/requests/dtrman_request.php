@@ -27,7 +27,7 @@
     elseif ($profile_dbname == "CITYLINK" || $profile_dbname == "ECOC" || $profile_dbname == "EREX" || $profile_dbname == "FIRSTCENTRO" || $profile_dbname == "LCTM" || $profile_dbname == "MLI" || $profile_dbname == "NCCAI" || $profile_dbname == "SUNTRUST" || $profile_dbname == "TOWNSQUARE") :
         $adminarray = array("2009-10-V255");     
     elseif ($profile_dbname == 'ASIAAPMI')  :
-        $adminarray = array('2020-09-0022');
+        $adminarray = array('2020-09-0022', '2016-06-0457');
     elseif ($profile_dbname == "GL") :
         $adminarray = array("2014-10-0004", "2014-10-0568", "2016-03-0261", "2017-01-0792", '2016-06-0457'); 
     else :
