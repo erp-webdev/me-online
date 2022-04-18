@@ -23,7 +23,7 @@
     $profile_dbname = $dbname;
 
     if ($profile_dbname == "ECINEMA" || $profile_dbname == "EPARKVIEW" || $profile_dbname == "LAFUERZA" || $profile_dbname == "GLOBAL_HOTEL") :
-        $adminarray = array("2011-03-V835");
+        $adminarray = array("2011-03-V835", "2004-06-8006");
     elseif ($profile_dbname == "CITYLINK" || $profile_dbname == "ECOC" || $profile_dbname == "EREX" || $profile_dbname == "FIRSTCENTRO" || $profile_dbname == "LCTM" || $profile_dbname == "MLI" || $profile_dbname == "NCCAI" || $profile_dbname == "SUNTRUST" || $profile_dbname == "TOWNSQUARE") :
         $adminarray = array("2009-10-V255");     
     elseif ($profile_dbname == 'ASIAAPMI')  :
