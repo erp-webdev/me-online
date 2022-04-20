@@ -729,6 +729,7 @@
                                                       'Rank and File',
                                                       'Rank and File II',
                                                       'Senior Rank and File',
+                                                        'SENIOR RANK AND FILE I',
                                                       'Senior Rank and File II',
                                                       'Assistant Supervisor',
                                                       'Assistant Supervisor II',
