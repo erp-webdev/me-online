@@ -66,14 +66,12 @@
                 }elseif($i == 1){
 
                     $participant = "RaterEmpID = '".$profile_idnum."'";
-                    $participantkev = "rempid1 = '".$profile_idnum."'
-                     rempid1db='".$profile_dbname."'" ;
+                    $participantkev = "rempid1 = '".$profile_idnum."'";
 
                 } else {
 
                     $participant = "Rater".$i."EmpID = '".$profile_idnum."'";
-                    $participantkev = "rempid".$i." = '".$profile_idnum."'
-                     rempid".$i."db='".$profile_dbname."'" ;;
+                    $participantkev = "rempid".$i." = '".$profile_idnum."'";
 
                 }
 
