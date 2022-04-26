@@ -54,13 +54,15 @@
 
                 }elseif($i == 1){
 
-                    $participant = "RaterEmpID = '".$profile_idnum."'";
-                    $participantkev = "rempid1 = '".$profile_idnum."'";
+                    $participant = "RaterEmpID = '".$profile_idnum."' ";
+                    $participantkev = "rempid1 = '".$profile_idnum."' 
+                        and rempid1db='".$profile_dbname."'";
 
                 } else {
 
                     $participant = "Rater".$i."EmpID = '".$profile_idnum."'";
-                    $participantkev = "rempid" . $i . " = '".$profile_idnum."'";
+                    $participantkev = "rempid" . $i . " = '".$profile_idnum."' 
+                    and rempid".$i."db='".$profile_dbname."'";
                 }
 
                 $command = "".$participant." AND a.RelAppID = ".$groupid." AND g.Status = 'Active' AND a.Designation = 'GLOBAL01' AND g.AppraisalDate <= '".$datenow." 00:00:00.000' ".$dbname." ";
