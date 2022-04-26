@@ -36,10 +36,10 @@
         if ($groupid == NULL) {
             $group = 0;
                 $participant[] = "RateeEmpID = '".$profile_idnum."' ";
-                $participant[] .= "RaterEmpID = '".$profile_idnum."' ";
-                $participant[] .= "Rater2EmpID = '".$profile_idnum."' ";
-                $participant[] .= "Rater3EmpID = '".$profile_idnum."' ";
-                $participant[] .= "Rater4EmpID = '".$profile_idnum."' ";
+                $participant[] .= "RaterEmpID = '".$profile_idnum."' AND RaterCompanyID='".$profile_dbname."' ";
+                $participant[] .= "Rater2EmpID = '".$profile_idnum."' AND Rater2CompanyID='".$profile_dbname."' ";
+                $participant[] .= "Rater3EmpID = '".$profile_idnum."' AND Rater3CompanyID='".$profile_dbname."' ";
+                $participant[] .= "Rater4EmpID = '".$profile_idnum."' AND Rater4CompanyID='".$profile_dbname."' ";
 
                 $participantkev[] = "rempid = '".$profile_idnum."' ";
                 $participantkev[] .= "rempid1 = '".$profile_idnum."' ";
