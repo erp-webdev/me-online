@@ -42,10 +42,10 @@
                 $participant[] .= "Rater4EmpID = '".$profile_idnum."' ";
 
                 $participantkev[] = "rempid = '".$profile_idnum."' ";
-                $participantkev[] .= "rempid1 = '".$profile_idnum."' and rempid1db='".$profile_dbname."' ";
-                $participantkev[] .= "rempid2 = '".$profile_idnum."' and rempid2db='".$profile_dbname."' ";
-                $participantkev[] .= "rempid3 = '".$profile_idnum."' and rempid3db='".$profile_dbname."' ";
-                $participantkev[] .= "rempid4 = '".$profile_idnum."' and rempid4db='".$profile_dbname."' ";
+                $participantkev[] .= "rempid1 = '".$profile_idnum."' ";
+                $participantkev[] .= "rempid2 = '".$profile_idnum."' ";
+                $participantkev[] .= "rempid3 = '".$profile_idnum."' ";
+                $participantkev[] .= "rempid4 = '".$profile_idnum."' ";
 
             $command = "(".implode( ' OR ', $participant).") AND b.Status = 'Active' AND b.AppraisalDate <= '".$datenow." 00:00:00.000'";
 
@@ -66,14 +66,12 @@
                 }elseif($i == 1){
 
                     $participant = "RaterEmpID = '".$profile_idnum."'";
-                    $participantkev = "rempid1 = '".$profile_idnum."'
-                        and rempid1db='".$profile_dbname."'";
+                    $participantkev = "rempid1 = '".$profile_idnum."'";
 
                 } else {
 
                     $participant = "Rater".$i."EmpID = '".$profile_idnum."'";
-                    $participantkev = "rempid".$i." = '".$profile_idnum."'
-                     and rempid".$i."db='".$profile_dbname."'";
+                    $participantkev = "rempid".$i." = '".$profile_idnum."'";
 
                 }
 
