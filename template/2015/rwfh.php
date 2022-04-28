@@ -35,6 +35,7 @@
                                         <td width="85%" colspan="3">
                                             <select id="rwfh_type" name="rwfh_type" class="txtbox width95per">
                                                 <option value="sickness">Illness/Sickness</option>
+                                                <option value="sickness">Others</option>
                                             </select>
                                         </td>
                                     </tr>
@@ -55,7 +56,7 @@
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <i>* If there's something wrong with date or time represent within this application, please check your DTR first</i>
+                                <i>* For Illness/Sickness, please attach your Doctor's Medical Certificate</i>
                             </td>
                         </tr>
                     </table>
