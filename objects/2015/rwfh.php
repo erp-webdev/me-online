@@ -1,6 +1,6 @@
 <?php
 	if ($logged == 1) {
-        if ($rwh_app) :
+        if ($rwh_app || true) :
 
             # PAGINATION
             $page = isset($_GET["page"]) ? (int)$_GET["page"] : 1 ;
