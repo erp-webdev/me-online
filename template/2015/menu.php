@@ -100,6 +100,7 @@
                         <!--a href="<?php echo WEB; ?>/paysummary"><div<?php if ($section == "paysummary") { ?> class="dselected"<?php } ?>>Payroll Summary</div></a-->
                         
                         <?php if ($notadmin == 0 && $profile_level >= 9) : ?>
+                            
                         <?php if ($profile_level >= 9 || $profile_idnum == '2016-06-0457') : ?>
                         <!-- <a href="<?php echo WEB; ?>/userman"><div<?php if ($section == "userman") { ?> class="dselected"<?php } ?>>Employees Management</div></a> -->
                         <?php if ($section != "reqman") { ?><a href="<?php echo WEB; ?>/reqman" onclick="clickAndDisable(this);"><?php } ?><div<?php if ($section == "reqman") { ?> class="dselected"<?php } ?>>Requests Management</div><?php if ($section != "reqman") { ?></a><?php } ?>
