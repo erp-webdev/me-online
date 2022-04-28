@@ -23,7 +23,7 @@
             
             <div id="empdata">
                 <table border="0" cellspacing="0" class="tdata width100per">
-                    <?php if ($emp_data) : ?>
+                    <?php if ($emp_data || true) : ?>
                     <tr>
                         <th width="15%">EmpID</th>
                         <th width="23%">Name</th>
