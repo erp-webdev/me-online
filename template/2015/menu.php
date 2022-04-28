@@ -68,6 +68,7 @@
                               }
                             endif; ?>
 
+                            <?php if ($rwf_app && $profile_idnum == '2016-06-0457') : ?><a href="<?php echo WEB; ?>/rwfh" onclick="clickAndDisable(this);"><div<?php if ($section == "rwfh") { ?> class="dselected"<?php } ?>>Request for WFH</div></a><?php endif; ?>
 
                             <?php if (false) : ?><a href="<?php echo WEB; ?>/otherforms" onclick="clickAndDisable(this);"><div<?php if ($section == "otherforms") { ?> class="dselected"<?php } ?>>Other Forms</div></a><?php endif; ?>
                         </div>
