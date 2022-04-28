@@ -130,7 +130,8 @@ class tblsql {
 		$sql = "SELECT [outer].* FROM ( ";
         $sql .= " SELECT ROW_NUMBER() OVER(ORDER BY LName ASC) as ROW_NUMBER, ";
         $sql .= " EmpID, FName, MName, LName, EmailAdd, CompanyID,
-            SSSNbr, PhilHealthNbr, PagibigNbr, LocationID, AccountNo, EPassword, DBNAME
+            SSSNbr, PhilHealthNbr, PagibigNbr, LocationID, AccountNo, EPassword, DBNAME, 
+            PositionDesc, DeptDesc
             FROM VIEWHREMPMASTER ";
         $sql .= " WHERE EmpID != '' AND CompanyActive = 1 ";
         if ($dbname) : $sql .= " AND DBNAME = '".$dbname."' "; endif;
