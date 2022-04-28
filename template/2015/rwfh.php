@@ -42,7 +42,7 @@
                                         <td width="15%"><b>Coverage: </b></td>
                                         <td width="35%"><input type="text" id="rwfh_from" name="rwfh_from" value="<?php echo date('Y-m-d'); ?>" class="txtbox datepick7 width95per" readonly /></td>
                                         <td width="15%"><b>To: </b></td>
-                                        <td width="35%"><input type="text" id="rwfh_to" name="rwfh_to" value="<?php echo date('Y-m-d'); ?>" class="txtbox datepick7 width95per" readonly /><input type="text" class="txtbox width95per rwfh2" readonly /></td>
+                                        <td width="35%"><input type="text" id="rwfh_to" name="rwfh_to" value="<?php echo date('Y-m-d'); ?>" class="txtbox datepick7 width95per" readonly /></td>
                                     </tr>
                                     <tr>
                                         <td><b>Reason: </b></td>
