@@ -1,7 +1,6 @@
 <?php
 	if ($logged == 1) {
         if ($rwh_app || true) :
-            echo 'hello';
             # PAGINATION
             $page = isset($_GET["page"]) ? (int)$_GET["page"] : 1 ;
             $start = NUM_ROWS * ($page - 1);
