@@ -29,8 +29,8 @@
             $_POST['searchemp'] = NULL;
         }                     
         
-        $emp_data = $tblsql->get_employee($start, APPR_NUM_ROWS, $searchemp, 0, $profile_dbname);
-        $emp_count = $tblsql->get_employee(0, 0, $searchemp, 1, $profile_dbname);
+        $emp_data = $tblsql->get_employee($start, APPR_NUM_ROWS, $searchemp, 0);
+        $emp_count = $tblsql->get_employee(0, 0, $searchemp, 1);
         
         //var_dump($approver_data);
 
