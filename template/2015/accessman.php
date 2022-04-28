@@ -5,7 +5,7 @@
     <div class="leftsplashtext lefttalign"><?php include(TEMP."/menu.php"); ?></div>
     <div class="rightsplashtext lefttalign">
         <div id="mainapprovers" class="mainbody lefttalign whitetext">  
-            <b class="mediumtext lorangetext">Access MANAGEMENT</b><br><br>                                
+            <b class="mediumtext lorangetext">ACCESS MANAGEMENT</b><br><br>                                
             
             <table class="width100per">
                 <tr>
