@@ -30,7 +30,7 @@
         }                     
         
         $emp_data = $tblsql->get_employee($start, APPR_NUM_ROWS, $searchemp, 0, $profile_dbname);
-        $emp_count = $tblsql->get_employee(0, 0, $searchemp, 1);
+        $emp_count = $tblsql->get_employee(0, 0, $searchemp, 1, $profile_dbname);
         
         //var_dump($approver_data);
 
