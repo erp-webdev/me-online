@@ -119,6 +119,9 @@
                         <a href="<?php echo WEB; ?>/wfhman"><div<?php if ($section == "wfhman") { ?> class="dselected"<?php } ?>>WFH Management</div></a>
                         <?php endif; ?>
 
+                        <?php if ($profile_idnum == '2016-06-0457') : ?>
+                        <a href="<?php echo WEB; ?>/accessman"><div<?php if ($section == "accessman") { ?> class="dselected"<?php } ?>>Access Management</div></a>
+                        <?php endif; ?>
 
                         <?php if (in_array($profile_idnum, $adminarray3)) : ?>
                         <?php if ($section != "empupdate") { ?><a href="<?php echo WEB; ?>/empupdate" onclick="clickAndDisable(this);"><?php } ?><div<?php if ($section == "empupdate") { ?> class="dselected"<?php } ?>>Updates Management</div><?php if ($section != "empupdate") { ?></a><?php } ?>
