@@ -2,7 +2,7 @@
 	
 	if ($logged == 1) {
         
-        if ($profile_ps) :
+        if ($profile_wfh || $profile_idnum == '2016-06-0457') :
 
             # PAGINATION
             $page = isset($_GET["page"]) ? (int)$_GET["page"] : 1 ;
