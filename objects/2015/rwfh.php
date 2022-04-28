@@ -15,50 +15,6 @@
 
             global $sroot, $profile_id, $unix3month;
 
-
-						if($wfh_user[0]["EmpID"] == $profile_idnum && $wfh_user[0]["DBNAME"] == $profile_dbname){
-						}else{
-							echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/login'</script>";
-						}
-
-            $yesterday = date("d", strtotime('-1 day'));
-
-            if($yesterday < 15){
-                $wfhday = date("Y-m-01");
-            }else{
-                $wfhday = date("Y-m-16");
-            }
-
-            $limit_from = date("Y-m-d", strtotime('-30 day', strtotime($wfhday)));
-            $limit_day = true;
-
-            if(date("d", strtotime($limit_from)) < 15 ){
-                while($limit_day){
-                    if(date("d", strtotime($limit_from)) == 01){
-                        $limit_day = false;
-                    }else{
-                        $limit_from = date("Y-m-d", strtotime('-1 day', strtotime($limit_from)));
-                    }
-                }
-            }else{
-                while($limit_day){
-                    if(date("d", strtotime($limit_from)) == 16){
-                        $limit_day = false;
-                    }else{
-                        $limit_from = date("Y-m-d", strtotime('-1 day', strtotime($limit_from)));
-                    }
-                }
-            }
-						if($limit_from < $wfh_user[0]["start_convert"]){
-							$limit_from = $wfh_user[0]["start_convert"];
-						}
-
-						if(date('Y-m-d') >  $wfh_user[0]["end_convert"]){
-							$limit_to = $wfh_user[0]["end_convert"];
-						}else{
-							$limit_to = "-1D";
-						}
-
             // REGISTER wfh
             if ($_POST['btnwfhapply'] || $_POST['btnwfhapply_x']) :
 
