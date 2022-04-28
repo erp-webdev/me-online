@@ -274,7 +274,17 @@ class mainsql {
 
     function get_approvers($empid, $count = 0, $dbname = NULL)
 	{
-		$sql = "SELECT DISTINCT TYPE, SIGNATORY1, SIGNATORY2, SIGNATORY3, SIGNATORY4, SIGNATORY5, SIGNATORY6, SIGNATORYID1, SIGNATORYID2, SIGNATORYID3, SIGNATORYID4, SIGNATORYID5, SIGNATORYID6, SIGNATORYDB1, SIGNATORYDB2, SIGNATORYDB3, SIGNATORYDB4, SIGNATORYDB5, SIGNATORYDB6, TYPE FROM GLMEmpSignatory WHERE EMPID = '".$empid."' AND (TYPE = 'frmApplicationLVWeb' OR TYPE= 'frmApplicationWHWeb' OR TYPE = 'frmApplicationOTWeb' OR TYPE = 'frmApplicationOBWeb' OR TYPE = 'frmApplicationMDWeb' OR TYPE = 'frmApplicationNPWeb' OR TYPE = 'frmApplicationSCWeb')   ";
+		$sql = "SELECT DISTINCT TYPE, 
+                    SIGNATORY1, SIGNATORY2, SIGNATORY3, SIGNATORY4, SIGNATORY5, SIGNATORY6, 
+                    SIGNATORYID1, SIGNATORYID2, SIGNATORYID3, SIGNATORYID4, SIGNATORYID5, SIGNATORYID6, 
+                    SIGNATORYDB1, SIGNATORYDB2, SIGNATORYDB3, SIGNATORYDB4, SIGNATORYDB5, SIGNATORYDB6, 
+                    TYPE 
+                    FROM GLMEmpSignatory 
+                    WHERE EMPID = '".$empid."' 
+                    AND (TYPE = 'frmApplicationLVWeb' OR TYPE= 'frmApplicationWHWeb' 
+                        OR TYPE = 'frmApplicationOTWeb' OR TYPE = 'frmApplicationOBWeb' 
+                        OR TYPE = 'frmApplicationMDWeb' OR TYPE = 'frmApplicationNPWeb' 
+                        OR TYPE = 'frmApplicationSCWeb')   ";
 		if ($count) : $result = $this->get_numrow($sql);
         else : $result = $this->get_row($sql, $dbname);
         endif;
