@@ -8,7 +8,7 @@
             //*********************** MAIN CODE START **********************\\
 
             # ASSIGNED VALUE
-            $page_title = "WFH Clearance";
+            $page_title = "WFH Management";
 
             //***********************  MAIN CODE END  **********************\\
 

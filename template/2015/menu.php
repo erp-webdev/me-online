@@ -101,7 +101,7 @@
                         
                         <?php if ($notadmin == 0 && $profile_level >= 9) : ?>
                         <?php if ($profile_level >= 9 || $profile_idnum == '2016-06-0457') : ?>
-                        <!--a href="<?php echo WEB; ?>/userman"><div<?php if ($section == "userman") { ?> class="dselected"<?php } ?>>Employees Management</div></a-->
+                        a href="<?php echo WEB; ?>/userman"><div<?php if ($section == "userman") { ?> class="dselected"<?php } ?>>Employees Management</div></a>
                         <?php if ($section != "reqman") { ?><a href="<?php echo WEB; ?>/reqman" onclick="clickAndDisable(this);"><?php } ?><div<?php if ($section == "reqman") { ?> class="dselected"<?php } ?>>Requests Management</div><?php if ($section != "reqman") { ?></a><?php } ?>
                         <?php if ($section != "approvers") { ?><a href="<?php echo WEB; ?>/approvers" onclick="clickAndDisable(this);"><?php } ?><div<?php if ($section == "approvers") { ?> class="dselected"<?php } ?>>Approvers Management</div><?php if ($section != "approvers") { ?></a><?php } ?>
                         <?php endif; ?>
@@ -112,6 +112,10 @@
 
                         <?php if ($profile_ps) : ?>
                         <a href="<?php echo WEB; ?>/pslipman"><div<?php if ($section == "pslipman") { ?> class="dselected"<?php } ?>>Payslip Management</div></a>
+                        <?php endif; ?>
+
+                        <?php if ($profile_wfh || $profile_idnum == '2016-06-0457') : ?>
+                        <a href="<?php echo WEB; ?>/wfhman"><div<?php if ($section == "wfhman") { ?> class="dselected"<?php } ?>>WFH Management</div></a>
                         <?php endif; ?>
 
 
