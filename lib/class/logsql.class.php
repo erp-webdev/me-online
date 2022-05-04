@@ -127,6 +127,25 @@ class logsql {
 		return $result;
 	}
 
+    function get_member_forgot_password($username, $answer)
+	{
+		// $sql = "SELECT TOP 1 *
+        //     FROM VIEWHREMPMASTER 
+        //     WHERE EmpID = '".$username."' 
+        //     AND Active = 1 AND EmailAdd is not null";
+
+        $sql = "SELECT TOP 1 REPLACE(REPLACE(SSSNbr, '-', ''), ' ', ''), *
+            FROM VIEWHREMPMASTER 
+            WHERE EmpID = '".$username."' 
+            AND Active = 1 AND EmailAdd is not null
+            and '".$answer."' IN (REPLACE(REPLACE(SSSNbr, '-', ''), ' ', ''), 
+                REPLACE(REPLACE(TINNbr, '-', ''), ' ', ''), REPLACE(REPLACE(PagibigNbr, '-', ''), ' ', ''),
+                REPLACE(REPLACE(PhilHealthNbr, '-', ''), ' ', ''))";
+
+		$result = $this->get_row($sql);
+		return $result;
+	}
+
     function get_member2($username, $password, $dbname = NULL)
 	{
 		$sql = "SELECT *

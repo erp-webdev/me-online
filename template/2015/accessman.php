@@ -57,16 +57,16 @@
                     <tr class="cursorpoint trdata centertalign whitetext" attribute="<?php echo md5($value['EmpID']); ?>">
                         <td><?php echo $value['EmpID']; ?></td>
                         <td><?php echo $value['Fullname']; ?></td>
-                        <td style="text-align: left"><input type="checkbox" name="dtr" id="dtr" <?php if($value['Form'] == 'dtr') echo'checked'; ?>></td>
-                        <td style="text-align: left"><input type="checkbox" name="payslip" id="payslip" <?php if($value['Form'] == "payslip") echo'checked'; ?>></td>
-                        <td style="text-align: left"><input type="checkbox" name="requests" id="requests" <?php if($value['Form'] == "requests") echo'checked'; ?>></td>
-                        <td style="text-align: left"><input type="checkbox" name="approvers" id="approvers" <?php if($value['Form'] == "approvers") echo'checked'; ?>></td>
-                        <td style="text-align: left"><input type="checkbox" name="activities" id="activities" <?php if($value['Form'] == "activities") echo'checked'; ?>></td>
-                        <td style="text-align: left"><input type="checkbox" name="memo" id="memo" <?php if($value['Form'] == "memo") echo'checked'; ?>></td>
-                        <td style="text-align: left"><input type="checkbox" name="ads" id="ads" <?php if($value['Form'] == "ads") echo'checked'; ?>></td>
-                        <td style="text-align: left"><input type="checkbox" name="bday" id="bday" <?php if($value['Form'] == "bday") echo'checked'; ?>></td>
-                        <td style="text-align: left"><input type="checkbox" name="WFH" id="WFH" <?php if($value['Form'] == "WFH") echo'checked'; ?>></td>
-                        <td style="text-align: left"><input type="checkbox" name="access" id="access" <?php if($value['Form'] == "access") echo'checked'; ?>></td>
+                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="dtr" value="dtr" id="dtr" <?php if($value['Form'] == 'dtr') echo'checked'; ?>></td>
+                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="payslip" value="payslip" id="payslip" <?php if($value['Form'] == "payslip") echo'checked'; ?>></td>
+                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="requests" value="requests" id="requests" <?php if($value['Form'] == "requests") echo'checked'; ?>></td>
+                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="approvers" value="approvers" id="approvers" <?php if($value['Form'] == "approvers") echo'checked'; ?>></td>
+                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="activities" value="activities" id="activities" <?php if($value['Form'] == "activities") echo'checked'; ?>></td>
+                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="memo" value="memo" id="memo" <?php if($value['Form'] == "memo") echo'checked'; ?>></td>
+                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="ads" value="ads" id="ads" <?php if($value['Form'] == "ads") echo'checked'; ?>></td>
+                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="bday" value="bday" id="bday" <?php if($value['Form'] == "bday") echo'checked'; ?>></td>
+                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="WFH" value="WFH" id="WFH" <?php if($value['Form'] == "WFH") echo'checked'; ?>></td>
+                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="access" value="access" id="access" <?php if($value['Form'] == "access") echo'checked'; ?>></td>
                     </tr>
                     <?php endforeach; ?>
                     <?php if ($pages) : ?>
@@ -116,6 +116,119 @@
         })(jQuery);
      $(document).ready(function(){
         $('.yourtableclass').rotateTableCellContent();
+    });
+</script>
+<script type="text/javascript">
+    $(function() {	
+
+        $(".actoggle").on("click", function() {	
+
+            toggleval = $(this).attr('attribute');
+            empid = $(this).attr('attribute2');
+            dbname = $(this).attr('attribute3');
+
+            pstoggleobj = $(this);
+
+            $.ajax(
+            {
+                url: "<?php echo WEB; ?>/lib/requests/dtrman_request.php?sec=pstoggle",
+                data: "toggleval=" + toggleval + "&empid=" + empid + "&dbname=" + dbname,
+                type: "POST",
+                complete: function(){
+                    $("#loading").hide();
+                },
+                success: function(data) {
+                    if (toggleval == 1) {
+                        pstoggleobj.attr('attribute', 0);
+                        pstoggleobj.removeClass('fa-times');
+                        pstoggleobj.removeClass('redtext');
+                        pstoggleobj.addClass('fa-check');
+                        pstoggleobj.addClass('greentext');
+                    }
+                    else {
+                        pstoggleobj.attr('attribute', 1);
+                        pstoggleobj.removeClass('fa-check');
+                        pstoggleobj.removeClass('greentext');
+                        pstoggleobj.addClass('fa-times');
+                        pstoggleobj.addClass('redtext');
+                    }
+
+                }
+            })
+        });
+
+        $(".nebtoggle").on("click", function() {	
+
+            toggleval = $(this).attr('attribute');
+            empid = $(this).attr('attribute2');
+            dbname = $(this).attr('attribute3');
+
+            nebtoggleobj = $(this);
+
+            $.ajax(
+            {
+                url: "<?php echo WEB; ?>/lib/requests/dtrman_request.php?sec=nebtoggle",
+                data: "toggleval=" + toggleval + "&empid=" + empid + "&dbname=" + dbname,
+                type: "POST",
+                complete: function(){
+                    $("#loading").hide();
+                },
+                success: function(data) {
+                    if (toggleval == 1) {
+                        nebtoggleobj.attr('attribute', 0);
+                        nebtoggleobj.removeClass('fa-times');
+                        nebtoggleobj.removeClass('redtext');
+                        nebtoggleobj.addClass('fa-check');
+                        nebtoggleobj.addClass('greentext');
+                    }
+                    else {
+                        nebtoggleobj.attr('attribute', 1);
+                        nebtoggleobj.removeClass('fa-check');
+                        nebtoggleobj.removeClass('greentext');
+                        nebtoggleobj.addClass('fa-times');
+                        nebtoggleobj.addClass('redtext');
+                    }
+
+                }
+            })
+        });
+
+        $(".aebtoggle").on("click", function() {	
+
+            toggleval = $(this).attr('attribute');
+            empid = $(this).attr('attribute2');
+            dbname = $(this).attr('attribute3');
+
+            aebtoggleobj = $(this);
+
+            $.ajax(
+            {
+                url: "<?php echo WEB; ?>/lib/requests/dtrman_request.php?sec=aebtoggle",
+                data: "toggleval=" + toggleval + "&empid=" + empid + "&dbname=" + dbname,
+                type: "POST",
+                complete: function(){
+                    $("#loading").hide();
+                },
+                success: function(data) {
+                    if (toggleval == 1) {
+                        aebtoggleobj.attr('attribute', 0);
+                        aebtoggleobj.removeClass('fa-times');
+                        aebtoggleobj.removeClass('redtext');
+                        aebtoggleobj.addClass('fa-check');
+                        aebtoggleobj.addClass('greentext');
+                    }
+                    else {
+                        aebtoggleobj.attr('attribute', 1);
+                        aebtoggleobj.removeClass('fa-check');
+                        aebtoggleobj.removeClass('greentext');
+                        aebtoggleobj.addClass('fa-times');
+                        aebtoggleobj.addClass('redtext');
+                    }
+
+                }
+            })
+        });
+        
     });
 </script>
 <?php include(TEMP."/footer.php"); ?>

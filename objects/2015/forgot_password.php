@@ -20,7 +20,7 @@
             $qnumber = trim($_POST['qnumber']);
             $qanswer = trim(str_replace('-', '', $_POST['empidnum2']));
             
-            $emp_info = $logsql->get_member($_POST['empidnum']);
+            $emp_info = $logsql->get_member_forgot_password($_POST['empidnum'], $qanswer);
 
             if ($emp_info) :
 
