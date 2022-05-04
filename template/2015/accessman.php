@@ -23,8 +23,8 @@
             <style>
                 /* Styles for rotateTableCellContent plugin*/
                 table div.rotated {
-                    -webkit-transform: rotate(270deg);
-                    -moz-transform: rotate(270deg);
+                    -webkit-transform: rotate(180deg);
+                    -moz-transform: rotate(180deg);
                     writing-mode:tb-rl;
                     white-space: nowrap;
                 }
@@ -37,44 +37,6 @@
                     white-space: nowrap;
                 }
             </style>
-            <script>
-                (function ($) {
-                    $.fn.rotateTableCellContent = function (options) {
-                    /*
-                    Version 1.0
-                    7/2011
-                    Written by David Votrubec (davidjs.com) and
-                    Michal Tehnik (@Mictech) for ST-Software.com
-                    */
-
-                    var cssClass = ((options) ? options.className : false) || "vertical";
-
-                    var cellsToRotate = $('.' + cssClass, this);
-
-                    var betterCells = [];
-                    cellsToRotate.each(function () {
-                    var cell = $(this)
-                    , newText = cell.text()
-                    , height = cell.height()
-                    , width = cell.width()
-                    , newDiv = $('<div>', { height: width, width: height })
-                    , newInnerDiv = $('<div>', { text: newText, 'class': 'rotated' });
-
-                    newInnerDiv.css('-webkit-transform-origin', (width / 2) + 'px ' + (width / 2) + 'px');
-                    newInnerDiv.css('-moz-transform-origin', (width / 2) + 'px ' + (width / 2) + 'px');
-                    newDiv.append(newInnerDiv);
-
-                    betterCells.push(newDiv);
-                    });
-
-                    cellsToRotate.each(function (i) {
-                    $(this).html(betterCells[i]);
-                    });
-                    };
-                    })(jQuery);
-
-                   
-            </script>
             
             <div id="empdata">
                 <table border="0" cellspacing="0" class="yourtableclass tdata width100per">
@@ -117,8 +79,36 @@
     </div>
 </div>
 <script>
+    (function ($) {
+        $.fn.rotateTableCellContent = function (options) {
+
+        var cssClass = ((options) ? options.className : false) || "vertical";
+
+        var cellsToRotate = $('.' + cssClass, this);
+
+        var betterCells = [];
+        cellsToRotate.each(function () {
+        var cell = $(this)
+        , newText = cell.text()
+        , height = cell.height()
+        , width = cell.width()
+        , newDiv = $('<div>', { height: width, width: height })
+        , newInnerDiv = $('<div>', { text: newText, 'class': 'rotated' });
+
+        newInnerDiv.css('-webkit-transform-origin', (width / 2) + 'px ' + (width / 2) + 'px');
+        newInnerDiv.css('-moz-transform-origin', (width / 2) + 'px ' + (width / 2) + 'px');
+        newDiv.append(newInnerDiv);
+
+        betterCells.push(newDiv);
+        });
+
+        cellsToRotate.each(function (i) {
+        $(this).html(betterCells[i]);
+        });
+        };
+        })(jQuery);
      $(document).ready(function(){
-                        $('.yourtableclass').rotateTableCellContent();
-                    });
+        $('.yourtableclass').rotateTableCellContent();
+    });
 </script>
 <?php include(TEMP."/footer.php"); ?>
