@@ -23,8 +23,8 @@
             <style>
                 /* Styles for rotateTableCellContent plugin*/
                 table div.rotated {
-                    -webkit-transform: rotate(180deg);
-                    -moz-transform: rotate(180deg);
+                    -webkit-transform: rotate(178deg);
+                    -moz-transform: rotate(178deg);
                     writing-mode:tb-rl;
                     white-space: nowrap;
                 }
