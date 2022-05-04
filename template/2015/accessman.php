@@ -73,9 +73,7 @@
                     };
                     })(jQuery);
 
-                    $(document).ready(function(){
-                        $('.yourtableclass').rotateTableCellContent();
-                    });
+                   
             </script>
             
             <div id="empdata">
@@ -118,5 +116,9 @@
         </div>
     </div>
 </div>
-
+<script>
+     $(document).ready(function(){
+                        $('.yourtableclass').rotateTableCellContent();
+                    });
+</script>
 <?php include(TEMP."/footer.php"); ?>
