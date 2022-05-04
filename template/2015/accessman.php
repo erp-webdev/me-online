@@ -50,6 +50,7 @@
                         <th class="vertical">MEMO</th>
                         <th class="vertical">ADS</th>
                         <th class="vertical">BIRTHDAY</th>
+                        <th class="vertical">WFH</th>
                         <th class="vertical">ACCESS</th>
                     </tr>
                     <?php foreach ($acman_data as $key => $value) : ?>                                    
@@ -64,6 +65,7 @@
                         <td style="text-align: left"><input type="checkbox" name="memo" id="memo" <?php if($value['Form'] == "memo") echo'checked'; ?>></td>
                         <td style="text-align: left"><input type="checkbox" name="ads" id="ads" <?php if($value['Form'] == "ads") echo'checked'; ?>></td>
                         <td style="text-align: left"><input type="checkbox" name="bday" id="bday" <?php if($value['Form'] == "bday") echo'checked'; ?>></td>
+                        <td style="text-align: left"><input type="checkbox" name="WFH" id="WFH" <?php if($value['Form'] == "WFH") echo'checked'; ?>></td>
                         <td style="text-align: left"><input type="checkbox" name="access" id="access" <?php if($value['Form'] == "access") echo'checked'; ?>></td>
                     </tr>
                     <?php endforeach; ?>
