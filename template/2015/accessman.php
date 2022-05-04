@@ -42,8 +42,8 @@
                 <table border="0" cellspacing="0" class="yourtableclass tdata width100per">
                     <?php if ($acman_data) : ?>
                     <tr>
-                        <th width="50px">EmpID</th>
-                        <th width="75px">Name</th>
+                        <th>EmpID</th>
+                        <th >Name</th>
                         <th class="vertical">DTR</th>
                         <th class="vertical">PAYSLIP</th>
                         <th class="vertical">REQUESTS</th>
