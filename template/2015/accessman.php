@@ -95,8 +95,8 @@
         , newDiv = $('<div>', { height: width, width: height })
         , newInnerDiv = $('<div>', { text: newText, 'class': 'rotated' });
 
-        newInnerDiv.css('-webkit-transform-origin', (width / 2) + 'px ' + (width / 2) + 'px');
-        newInnerDiv.css('-moz-transform-origin', (width / 2) + 'px ' + (width / 2) + 'px');
+        newInnerDiv.css('-webkit-transform-origin', (50) + 'px ' + (50) + 'px');
+        newInnerDiv.css('-moz-transform-origin', (50) + 'px ' + (50) + 'px');
         newDiv.append(newInnerDiv);
 
         betterCells.push(newDiv);
