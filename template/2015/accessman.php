@@ -56,8 +56,8 @@
                     <tr class="cursorpoint trdata centertalign whitetext" attribute="<?php echo md5($value['EmpID']); ?>">
                         <td><?php echo $value['EmpID']; ?></td>
                         <td><?php echo $value['Fullname']; ?></td>
-                        <td style="text-align: left"><input type="checkbox" name="dtr" id="dtr" <?php ($value['Form'] == 'dtr') ? 'checked' : ''; ?>></td>
-                        <td style="text-align: left"><input type="checkbox" name="payslip" id="payslip" <?php ($value['Form'] == "payslip") ? 'checked' : ''; ?>></td>
+                        <td style="text-align: left"><input type="checkbox" name="dtr" id="dtr" <?php echo $value['Form']; ($value['Form'] == 'dtr') ? 'checked' : ''; ?>></td>
+                        <td style="text-align: left"><input type="checkbox" name="payslip" id="payslip" <?php echo $value['Form']; ($value['Form'] == "payslip") ? 'checked' : ''; ?>></td>
                         <td style="text-align: left"><input type="checkbox" name="requests" id="requests" <?php ($value['Form'] == "requests") ? 'checked' : ''; ?>></td>
                         <td style="text-align: left"><input type="checkbox" name="approvers" id="approvers" <?php ($value['Form'] == "approvers") ? 'checked' : ''; ?>></td>
                         <td style="text-align: left"><input type="checkbox" name="activities" id="activities" <?php ($value['Form'] == "activities") ? 'checked' : ''; ?>></td>
