@@ -55,7 +55,7 @@
                         <th class="vertical">ACCESS</th>
                     </tr>
                     <?php foreach ($acman_data as $key => $value) : ?>                                    
-                    <tr class="btnempdata cursorpoint trdata centertalign whitetext" attribute="<?php echo md5($value['EmpID']); ?>">
+                    <tr class="cursorpoint trdata centertalign whitetext" attribute="<?php echo md5($value['EmpID']); ?>">
                         <td><?php echo $value['EmpID']; ?></td>
                         <td><?php echo $value['FullName']; ?></td>
                         <td><input type="checkbox"></td>
