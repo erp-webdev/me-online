@@ -56,15 +56,15 @@
                     <tr class="cursorpoint trdata centertalign whitetext" attribute="<?php echo md5($value['EmpID']); ?>">
                         <td><?php echo $value['EmpID']; ?></td>
                         <td><?php echo $value['Fullname']; ?></td>
-                        <td><input type="checkbox"></td>
-                        <td><input type="checkbox"></td>
-                        <td><input type="checkbox"></td>
-                        <td><input type="checkbox"></td>
-                        <td><input type="checkbox"></td>
-                        <td><input type="checkbox"></td>
-                        <td><input type="checkbox"></td>
-                        <td><input type="checkbox"></td>
-                        <td><input type="checkbox"></td>
+                        <td style="text-align: left"><input type="checkbox"></td>
+                        <td style="text-align: left"><input type="checkbox"></td>
+                        <td style="text-align: left"><input type="checkbox"></td>
+                        <td style="text-align: left"><input type="checkbox"></td>
+                        <td style="text-align: left"><input type="checkbox"></td>
+                        <td style="text-align: left"><input type="checkbox"></td>
+                        <td style="text-align: left"><input type="checkbox"></td>
+                        <td style="text-align: left"><input type="checkbox"></td>
+                        <td style="text-align: left"><input type="checkbox"></td>
                     </tr>
                     <?php endforeach; ?>
                     <?php if ($pages) : ?>
