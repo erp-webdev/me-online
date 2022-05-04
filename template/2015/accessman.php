@@ -123,7 +123,7 @@
 
         $(".actoggle").on("click", function() {	
 
-            toggleval = $(this).attr('attribute');
+            toggleval = $(this).val();
             empid = $(this).attr('attribute2');
             dbname = $(this).attr('attribute3');
 

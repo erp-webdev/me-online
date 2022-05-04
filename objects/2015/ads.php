@@ -123,6 +123,7 @@
                         $message .= "Click the link to go to ads page.<br>";
                         $message .= "<a href='".UNIWEB."/ads'>".UNIWEB."/ads</a><br><br>";
                         if ($activity_filename) :
+                        $message .= '<img src="'..UNIWEB."/uploads/ads/".$activity_filename.'" alt="$activity_title" height="400px"> <br><br>';
                         $message .= "Click <a href='".UNIWEB."/uploads/ads/".$activity_filename."'>here</a> to view/download.<br><br>";
                         endif;
 
@@ -131,7 +132,7 @@
                             $message .= "ME Online - Global Companies";
                             $message .= "</div>";
 
-                            $headers = "From: meonline-ads-noreply@alias.megaworldcorp.com\r\n";
+                            $headers = "From: noreply@alias.megaworldcorp.com\r\n";
                             $headers .= "Reply-To: noreply@globalcompanies.com.ph\r\n";
                         else :
                             $message .= "Thanks,<br>";
@@ -150,9 +151,9 @@
                         //THRU DATABASE
                         if ($value['EmailAdd']) :
                             if ($memo_db == 'GL') :     
-                                $appendmail = $mails->mail_cue('meonline-ads-noreply@alias.megaworldcorp.com', $value['EmailAdd'], "ME Online Ad", $message, $headers);
+                                $appendmail = $mails->mail_cue('noreply@alias.megaworldcorp.com', $value['EmailAdd'], $activity_title, $message, $headers);
                             else :
-                                $appendmail = $mails->mail_cue('meonline-ads-noreply@alias.megaworldcorp.com', $value['EmailAdd'], "ME Online Ad", $message, $headers);
+                                $appendmail = $mails->mail_cue('noreply@alias.megaworldcorp.com', $value['EmailAdd'], $activity_title, $message, $headers);
                             endif;
                         endif;
                         if($appendmail) : 
