@@ -20,6 +20,23 @@
                     </td>
                 </tr>
             </table>
+            <style>
+                /* Styles for rotateTableCellContent plugin*/
+                table div.rotated {
+                    -webkit-transform: rotate(270deg);
+                    -moz-transform: rotate(270deg);
+                    writing-mode:tb-rl;
+                    white-space: nowrap;
+                }
+
+                thead th {
+                    vertical-align: top;
+                }
+
+                table .vertical {
+                    white-space: nowrap;
+                }
+            </style>
             <script>
                 (function ($) {
                     $.fn.rotateTableCellContent = function (options) {
@@ -60,23 +77,7 @@
                         $('.yourtableclass').rotateTableCellContent();
                     });
             </script>
-            <style>
-                /* Styles for rotateTableCellContent plugin*/
-                table div.rotated {
-                    -webkit-transform: rotate(270deg);
-                    -moz-transform: rotate(270deg);
-                    writing-mode:tb-rl;
-                    white-space: nowrap;
-                }
-
-                thead th {
-                    vertical-align: top;
-                }
-
-                table .vertical {
-                    white-space: nowrap;
-                }
-            </style>
+            
             <div id="empdata">
                 <table border="0" cellspacing="0" class="yourtableclass tdata width100per">
                     <?php if ($emp_data || true) : ?>
