@@ -123,7 +123,7 @@
                         $message .= "Click the link to go to ads page.<br>";
                         $message .= "<a href='".UNIWEB."/ads'>".UNIWEB."/ads</a><br><br>";
                         if ($activity_filename) :
-                        $message .= '<img src="'..UNIWEB."/uploads/ads/".$activity_filename.'" alt="$activity_title" height="400px"> <br><br>';
+                        $message .= '<img src="'.UNIWEB."/uploads/ads/".$activity_filename.'" alt="$activity_title" height="400px"> <br><br>';
                         $message .= "Click <a href='".UNIWEB."/uploads/ads/".$activity_filename."'>here</a> to view/download.<br><br>";
                         endif;
 
