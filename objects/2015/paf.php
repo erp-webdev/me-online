@@ -84,8 +84,7 @@
                 //var_dump(${"rater$i"});
 
                 foreach (${"rater$i"} as $row) {
-                    if (($row['rempid1'] != NULL || $row['rempid1'] != 0) 
-                        && ($row['rempid2'] == NULL || $row['rempid2'] == 0) 
+                    if ( ($row['rempid2'] == NULL || $row['rempid2'] == 0) 
                         && ($row['rempid3'] == NULL || $row['rempid3'] == 0) 
                         && ($row['rempid4'] == NULL || $row['rempid4'] == 0)) {
                         $auth = 'Final1';
