@@ -300,7 +300,7 @@ class tblsql {
         $sql .= " EmpID, FullName, FName, LName, EmailAdd
             FROM VIEWHREMPMASTER ";
         $sql .= " WHERE Active = 1 AND CompanyActive = 1";
-        $sql .= " AND EmailAdd IS NOT NULL AND EMPID='2016-06-0457'";
+        $sql .= " AND EmailAdd IS NOT NULL ";
         if ($db != NULL) $sql.=" AND DBNAME = '".$db."'";
         $sql .= ") AS [outer] ";
         if ($limit) :
