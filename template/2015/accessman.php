@@ -40,7 +40,7 @@
             
             <div id="empdata">
                 <table border="0" cellspacing="0" class="yourtableclass tdata width100per">
-                    <?php if ($emp_data || true) : ?>
+                    <?php if ($acman_data) : ?>
                     <tr>
                         <th width="50px">EmpID</th>
                         <th width="75px">Name</th>
@@ -54,7 +54,7 @@
                         <th class="vertical">BIRTHDAY</th>
                         <th class="vertical">ACCESS</th>
                     </tr>
-                    <?php foreach ($emp_data as $key => $value) : ?>                                    
+                    <?php foreach ($acman_data as $key => $value) : ?>                                    
                     <tr class="btnempdata cursorpoint trdata centertalign whitetext" attribute="<?php echo md5($value['EmpID']); ?>">
                         <td><?php echo $value['EmpID']; ?></td>
                         <td><?php echo $value['LName']; ?></td>
