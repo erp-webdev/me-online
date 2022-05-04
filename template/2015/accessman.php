@@ -20,21 +20,56 @@
                     </td>
                 </tr>
             </table>
-            
+            <script>
+                (function ($) {
+                    $.fn.rotateTableCellContent = function (options) {
+                    /*
+                    Version 1.0
+                    7/2011
+                    Written by David Votrubec (davidjs.com) and
+                    Michal Tehnik (@Mictech) for ST-Software.com
+                    */
+
+                    var cssClass = ((options) ? options.className : false) || "vertical";
+
+                    var cellsToRotate = $('.' + cssClass, this);
+
+                    var betterCells = [];
+                    cellsToRotate.each(function () {
+                    var cell = $(this)
+                    , newText = cell.text()
+                    , height = cell.height()
+                    , width = cell.width()
+                    , newDiv = $('<div>', { height: width, width: height })
+                    , newInnerDiv = $('<div>', { text: newText, 'class': 'rotated' });
+
+                    newInnerDiv.css('-webkit-transform-origin', (width / 2) + 'px ' + (width / 2) + 'px');
+                    newInnerDiv.css('-moz-transform-origin', (width / 2) + 'px ' + (width / 2) + 'px');
+                    newDiv.append(newInnerDiv);
+
+                    betterCells.push(newDiv);
+                    });
+
+                    cellsToRotate.each(function (i) {
+                    $(this).html(betterCells[i]);
+                    });
+                    };
+                    })(jQuery);
+            </script>
             <div id="empdata">
                 <table border="0" cellspacing="0" class="tdata width100per">
                     <?php if ($emp_data || true) : ?>
                     <tr>
                         <th width="15%">EmpID</th>
                         <th width="23%">Name</th>
-                        <th width="">DTR</th>
-                        <th width="">PAYSLIP</th>
-                        <th width="">REQUESTS</th>
-                        <th width="">APPROVERS</th>
-                        <th width="">ACTIVITIES</th>
-                        <th width="">MEMO</th>
-                        <th width="">ADS</th>
-                        <th width="">BIRTHDAY</th>
+                        <th width="" class="vertical">DTR</th>
+                        <th width="" class="vertical">PAYSLIP</th>
+                        <th width="" class="vertical">REQUESTS</th>
+                        <th width="" class="vertical">APPROVERS</th>
+                        <th width="" class="vertical">ACTIVITIES</th>
+                        <th width="" class="vertical">MEMO</th>
+                        <th width="" class="vertical">ADS</th>
+                        <th width="" class="vertical">BIRTHDAY</th>
                     </tr>
                     <?php foreach ($emp_data as $key => $value) : ?>                                    
                     <tr class="btnempdata cursorpoint trdata centertalign whitetext" attribute="<?php echo md5($value['EmpID']); ?>">
