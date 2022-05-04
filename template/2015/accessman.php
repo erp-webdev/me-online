@@ -81,16 +81,16 @@
                 <table border="0" cellspacing="0" class="yourtableclass tdata width100per">
                     <?php if ($emp_data || true) : ?>
                     <tr>
-                        <th width="15%">EmpID</th>
-                        <th width="23%">Name</th>
-                        <th width="" class="vertical">DTR</th>
-                        <th width="" class="vertical">PAYSLIP</th>
-                        <th width="" class="vertical">REQUESTS</th>
-                        <th width="" class="vertical">APPROVERS</th>
-                        <th width="" class="vertical">ACTIVITIES</th>
-                        <th width="" class="vertical">MEMO</th>
-                        <th width="" class="vertical">ADS</th>
-                        <th width="" class="vertical">BIRTHDAY</th>
+                        <th>EmpID</th>
+                        <th >Name</th>
+                        <th class="vertical">DTR</th>
+                        <th class="vertical">PAYSLIP</th>
+                        <th class="vertical">REQUESTS</th>
+                        <th class="vertical">APPROVERS</th>
+                        <th class="vertical">ACTIVITIES</th>
+                        <th class="vertical">MEMO</th>
+                        <th class="vertical">ADS</th>
+                        <th class="vertical">BIRTHDAY</th>
                     </tr>
                     <?php foreach ($emp_data as $key => $value) : ?>                                    
                     <tr class="btnempdata cursorpoint trdata centertalign whitetext" attribute="<?php echo md5($value['EmpID']); ?>">
