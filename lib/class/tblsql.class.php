@@ -170,7 +170,7 @@ class tblsql {
     function get_users_access($start = 0, $limit = 0, $search = NULL, $count = 0, $dbname)
 	{
 		$sql = "SELECT [outer].* FROM ( ";
-        $sql .= " SELECT ROW_NUMBER() OVER(ORDER BY LName ASC) as ROW_NUMBER, ";
+        $sql .= " SELECT ROW_NUMBER() OVER(ORDER BY Fullname ASC) as ROW_NUMBER, ";
         $sql .= " EmpID, CompanyDB, Fullname, Form
             FROM MEAccess ";
         $sql .= " WHERE EmpID != ''";
