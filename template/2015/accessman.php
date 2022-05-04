@@ -10,9 +10,9 @@
             <table class="width100per">
                 <tr>
                     <td><span class="fa fa-search"></span> Search: 
-                        <input type="text" id="searchpsman" name="searchpsman" value="<?php echo $_SESSION['searchpsman'] ? $_SESSION['searchpsman'] : ''; ?>" placeholder="by <?php echo $profile_nadd; ?> ID, lastname or firstname" class="smltxtbox width250" />&nbsp;
-                        <input type="button" id="btnpsman" name="btnpsman" value="Search" class="smlbtn" />
-                        <input type="button" id="btnpsmanall" name="btnpsmanall" value="View All" class="smlbtn<?php if (!$_SESSION['searchpsman']) : ?> invisible<?php endif; ?>" />                                            
+                        <input type="text" id="searchacman" name="searchacman" value="<?php echo $_SESSION['searchacman'] ? $_SESSION['searchacman'] : ''; ?>" placeholder="by <?php echo $profile_nadd; ?> ID, lastname or firstname" class="smltxtbox width250" />&nbsp;
+                        <input type="button" id="btnacman" name="btnacman" value="Search" class="smlbtn" />
+                        <input type="button" id="btnacmanall" name="btnacmanall" value="View All" class="smlbtn<?php if (!$_SESSION['searchacman']) : ?> invisible<?php endif; ?>" />                                            
                     </td>
                     <td class="righttalign">
                         <!--input type="button" id="btnread" name="btnread" value="Mark as Read" class="smlbtn btnred" />
@@ -42,8 +42,8 @@
                 <table border="0" cellspacing="0" class="yourtableclass tdata width100per">
                     <?php if ($emp_data || true) : ?>
                     <tr>
-                        <th>EmpID</th>
-                        <th >Name</th>
+                        <th width="50px">EmpID</th>
+                        <th width="75px">Name</th>
                         <th class="vertical">DTR</th>
                         <th class="vertical">PAYSLIP</th>
                         <th class="vertical">REQUESTS</th>
@@ -52,6 +52,7 @@
                         <th class="vertical">MEMO</th>
                         <th class="vertical">ADS</th>
                         <th class="vertical">BIRTHDAY</th>
+                        <th class="vertical">ACCESS</th>
                     </tr>
                     <?php foreach ($emp_data as $key => $value) : ?>                                    
                     <tr class="btnempdata cursorpoint trdata centertalign whitetext" attribute="<?php echo md5($value['EmpID']); ?>">

@@ -17,24 +17,24 @@
 
             global $sroot, $profile_id, $unix3month;
 
-            $searchpsman_sess = $_SESSION['searchpsman'];
+            $searchpsman_sess = $_SESSION['searchacman'];
             if ($_POST) {        
-                $searchpsman = $_POST['searchpsman'] ? $_POST['searchpsman'] : NULL;            
-                $_SESSION['searchpsman'] = $searchpsman;
+                $searchacman = $_POST['searchacman'] ? $_POST['searchacman'] : NULL;            
+                $_SESSION['searchacman'] = $searchacman;
             }
-            elseif ($searchpsman_sess) {
-                $searchpsman = $searchpsman_sess ? $searchpsman_sess : NULL;
-                $_POST['searchpsman'] = $searchpsman != 0 ? $searchpsman : NULL;
+            elseif ($searchacman_sess) {
+                $searchacman = $searchacman_sess ? $searchacman_sess : NULL;
+                $_POST['searchacman'] = $searchacman != 0 ? $searchacman : NULL;
             }
             else {
-                $searchpsman = NULL;
-                $_POST['searchpsman'] = NULL;
+                $searchacman = NULL;
+                $_POST['searchacman'] = NULL;
             }                              
 
-            $psman_data = $tblsql->get_employee_with_inactive($start, APPR_NUM_ROWS, $searchpsman, 0, $profile_dbname);
-            $psman_count = $tblsql->get_employee_with_inactive(0, 0, $searchpsman, 1, $profile_dbname);
+            $acman_data = $tblsql->get_users_access($start, APPR_NUM_ROWS, $searchacman, 0, $profile_dbname);
+            $acman_count = $tblsql->get_users_access(0, 0, $searchacman, 1, $profile_dbname);
 
-            $pages = $mainsql->pagination("pslipman", $psman_count, APPR_NUM_ROWS, 9);
+            $pages = $mainsql->pagination("accessman", $acman_count, APPR_NUM_ROWS, 9);
         
         else :
         
