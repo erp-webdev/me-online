@@ -43,7 +43,7 @@
                     <?php if ($acman_data) : ?>
                     <tr>
                         <th>EmpID</th>
-                        <th >Name</th>
+                        <th>Name</th>
                         <th class="vertical">DTR</th>
                         <th class="vertical">PAYSLIP</th>
                         <th class="vertical">REQUESTS</th>
@@ -57,10 +57,16 @@
                     <?php foreach ($acman_data as $key => $value) : ?>                                    
                     <tr class="btnempdata cursorpoint trdata centertalign whitetext" attribute="<?php echo md5($value['EmpID']); ?>">
                         <td><?php echo $value['EmpID']; ?></td>
-                        <td><?php echo $value['LName']; ?></td>
-                        <td><?php echo $value['FName']; ?></td>
-                        <td><?php echo $value['PositionDesc']; ?></td>
-                        <td><?php echo $value['DeptDesc']; ?></td>
+                        <td><?php echo $value['FullName']; ?></td>
+                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox"></td>
                     </tr>
                     <?php endforeach; ?>
                     <?php if ($pages) : ?>
