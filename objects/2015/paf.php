@@ -75,9 +75,6 @@
 
                 }
 
-
-
-
                 $command = "".$participant." AND a.RelAppID = ".$groupid." AND b.FName IS NOT NULL AND g.Status = 'Active' AND g.AppraisalDate <= '".$datenow." 00:00:00.000' ".$dbname." ";
 
                 $commandkev = "".$participantkev." AND RelAppID = ".$groupid." AND rfname IS NOT NULL AND appStatus = 'Active' AND appdt <= '".$datenow." 00:00:00.000' ".$dbnamekev." ";
@@ -86,18 +83,26 @@
                 ${"rater$i"} = $pafsql->appFunctionKev($commandkev);
                 //var_dump(${"rater$i"});
 
-
                 foreach (${"rater$i"} as $row) {
-                    if (($row['rempid2'] == NULL || $row['rempid2'] == 0) && ($row['rempid3'] == NULL || $row['rempid3'] == 0) && ($row['rempid4'] == NULL || $row['rempid4'] == 0)) {
+                    if (($row['rempid1'] != NULL || $row['rempid1'] != 0) 
+                        && ($row['rempid2'] == NULL || $row['rempid2'] == 0) 
+                        && ($row['rempid3'] == NULL || $row['rempid3'] == 0) 
+                        && ($row['rempid4'] == NULL || $row['rempid4'] == 0)) {
                         $auth = 'Final1';
                         $flashRater = 1;
-                    } elseif (($row['rempid2'] != NULL || $row['rempid2'] != 0) && ($row['rempid3'] == NULL || $row['rempid3'] == 0) && ($row['rempid4'] == NULL || $row['rempid4'] == 0)) {
+                    } elseif (($row['rempid2'] != NULL || $row['rempid2'] != 0) 
+                        && ($row['rempid3'] == NULL || $row['rempid3'] == 0) 
+                        && ($row['rempid4'] == NULL || $row['rempid4'] == 0)) {
                         $auth = 'Final2';
                         $flashRater = 2;
-                    } elseif (($row['rempid2'] != NULL || $row['rempid2'] != 0) && ($row['rempid3'] != NULL || $row['rempid3'] != 0) && ($row['rempid4'] == NULL || $row['rempid4'] == 0)) {
+                    } elseif (($row['rempid2'] != NULL || $row['rempid2'] != 0) 
+                        && ($row['rempid3'] != NULL || $row['rempid3'] != 0) 
+                        && ($row['rempid4'] == NULL || $row['rempid4'] == 0)) {
                         $auth = 'Final3';
                         $flashRater = 3;
-                    } elseif (($row['rempid2'] != NULL || $row['rempid2'] != 0) && ($row['rempid3'] != NULL || $row['rempid3'] != 0) && ($row['rempid4'] != NULL || $row['rempid4'] != 0)) {
+                    } elseif (($row['rempid2'] != NULL || $row['rempid2'] != 0) 
+                        && ($row['rempid3'] != NULL || $row['rempid3'] != 0) 
+                        && ($row['rempid4'] != NULL || $row['rempid4'] != 0)) {
                         $auth = 'Final4';
                         $flashRater = 4;
                     } else {
