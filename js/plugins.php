@@ -4634,6 +4634,75 @@ $(function() {
         })
     });
 
+    /* ACCESS MANAGEMENT */
+
+    $("#searchacman").on("keypress", function(e) {
+        if (e.keyCode == 13) {
+
+            searchacman = $("#searchacman").val();
+
+            acmanpage = 1;
+
+            $.ajax(
+            {
+                url: "<?php echo WEB; ?>/lib/requests/acman_request.php?sec=table",
+                data: "searchacman=" + searchacman,
+                type: "POST",
+                complete: function(){
+                    $("#loading").hide();
+                },
+                success: function(data) {
+                    $("#btnacmanall").removeClass("invisible");
+                    $("#acmandata").html(data);
+                    changeUrl('', '<?php echo WEB; ?>/accessman');
+                }
+            })
+        }
+    });
+
+    $("#btnacman").on("click", function() {
+
+        searchacman = $("#searchacman").val();
+
+        acmanpage = 1;
+
+        $.ajax(
+        {
+            url: "<?php echo WEB; ?>/lib/requests/acman_request.php?sec=table",
+            data: "searchacman=" + searchacman,
+            type: "POST",
+            complete: function(){
+                $("#loading").hide();
+            },
+            success: function(data) {
+                $("#btnacmanall").removeClass("invisible");
+                $("#acmandata").html(data);
+                changeUrl('', '<?php echo WEB; ?>/accessman');
+            }
+        })
+    });
+
+    $("#btnacmanall").on("click", function() {
+
+        acmanpage = 1;
+
+        $.ajax(
+        {
+            url: "<?php echo WEB; ?>/lib/requests/acman_request.php?sec=table",
+            data: "clear_search=1",
+            type: "POST",
+            complete: function(){
+                $("#loading").hide();
+            },
+            success: function(data) {
+                $("#searchacman").val("");
+                $("#btnacmanall").addClass("invisible");
+                $("#acmandata").html(data);
+                changeUrl('', '<?php echo WEB; ?>/accessman');
+            }
+        })
+    });
+
     /* LOGS */
 
     $("#btnlogs").on("click", function() {

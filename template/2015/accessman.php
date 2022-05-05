@@ -50,6 +50,7 @@
                         <th class="vertical">MEMO</th>
                         <th class="vertical">ADS</th>
                         <th class="vertical">BIRTHDAY</th>
+                        <th class="vertical">FORMS</th>
                         <th class="vertical">WFH</th>
                         <th class="vertical">ACCESS</th>
                     </tr>
@@ -65,7 +66,8 @@
                         <td style="text-align: left"><input type="checkbox" class="actoggle" name="memo" value="memo" id="memo" <?php if($value['Form'] == "memo") echo'checked'; ?>></td>
                         <td style="text-align: left"><input type="checkbox" class="actoggle" name="ads" value="ads" id="ads" <?php if($value['Form'] == "ads") echo'checked'; ?>></td>
                         <td style="text-align: left"><input type="checkbox" class="actoggle" name="bday" value="bday" id="bday" <?php if($value['Form'] == "bday") echo'checked'; ?>></td>
-                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="WFH" value="WFH" id="WFH" <?php if($value['Form'] == "WFH") echo'checked'; ?>></td>
+                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="wfh" value="wfh" id="wfh" <?php if($value['Form'] == "wfh") echo'checked'; ?>></td>
+                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="forms" value="forms" id="forms" <?php if($value['Form'] == "forms") echo'checked'; ?>></td>
                         <td style="text-align: left"><input type="checkbox" class="actoggle" name="access" value="access" id="access" <?php if($value['Form'] == "access") echo'checked'; ?>></td>
                     </tr>
                     <?php endforeach; ?>
