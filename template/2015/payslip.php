@@ -66,7 +66,7 @@
                                         </td>
                                         <?php if($profile_idnum == '2016-06-0457') : ?>
                                         <td>
-                                            <a href="<?php echo WEB; ?>/dtr" class="lorangetext">View DTR</a>
+                                            <a class="lorangetext viewDTR">View DTR</a>
                                         </td>
                                         <?php endif; ?>
                                     </tr>
@@ -1527,5 +1527,13 @@
                             </div>
                         </div>
                     </div>
+                    <script>
+                        $('.viewDTR').on('click', function(){
+                            var pryear = $('#payslip_year').val();
+                            var periodid = $('#payslip_cover').val();
+
+                            window.location.href = '<?php echo WEB; ?>/dtr?pryear=' + pryear + '&period='+periodid;
+                        })
+                    </script>
 
     <?php include(TEMP."/footer.php"); ?>
