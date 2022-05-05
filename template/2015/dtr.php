@@ -347,7 +347,7 @@
                             var pryear = $('.dtr_year').val();
                             var period = $('.dtr_cover').find('option[selected]').attr('period');
 
-                            window.location.href = '<?php echo WEB; ?>/pslipman?pryear=' + pryear + '&period=' + period;
+                            window.location.href = '<?php echo WEB; ?>/payslip?pryear=' + pryear + '&period=' + period;
                         });
                     </script>
     <?php include(TEMP."/footer.php"); ?>
