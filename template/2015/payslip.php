@@ -18,7 +18,7 @@
                                         <td>Year Period:
                                             <select id="payslip_year" name="payslip_year" class="width95 smltxtbox">
                                                 <?php foreach ($dtr_year as $key => $value) : ?>
-                                                <option value="<?php echo $value['PRYear']; ?>"<?php echo $value['PRYear'] == date("Y") ? ' selected' : ''; ?>><?php echo $value['PRYear']; ?></option>
+                                                <option value="<?php echo $value['PRYear']; ?>"<?php echo isset($_GET['pryear']) ? $_GET['pryear'] : $value['PRYear'] == date("Y") ? ' selected' : ''; ?>><?php echo $value['PRYear']; ?></option>
                                                 <?php endforeach; ?>
                                             </select>
                                         </td>
