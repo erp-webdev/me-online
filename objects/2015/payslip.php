@@ -33,7 +33,7 @@
         
         //LOANS
         // $payslip_loans = $mainsql->get_payslip_loan($profile_idnum);
-        $payslip_loans = $mainsql->get_payslip_loan2($profile_idnum, $payslip_period[1]['PRYear'], $payslip_period[1]['PeriodID']);
+        $payslip_loans = $mainsql->get_payslip_loan2($profile_idnum, $pryear, $payper);
         
         //EARNED TAXABLE
         $payslip_oemaster1 = $mainsql->get_payslip_oemaster($profile_idnum, $pryear, $payper, 1);         
