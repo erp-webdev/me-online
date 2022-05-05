@@ -64,6 +64,11 @@
                                                 <?php endif; ?>
                                             </select>
                                         </td>
+                                        <?php if($profile_idnum == '2016-06-0457') : ?>
+                                        <td>
+                                            <a href="<?php echo WEB; ?>/dtr" class="lorangetext">View DTR</a>
+                                        </td>
+                                        <?php endif; ?>
                                     </tr>
                                 </table>
 
