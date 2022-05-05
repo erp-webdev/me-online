@@ -16,16 +16,15 @@
 		global $sroot, $profile_id, $unix3month;
         $pryear = date("Y");
 
-        $dtr_year = $mainsql->get_dtr_year($profile_comp);     
-        $payslip_period = $mainsql->get_payslip_period($pryear, $profile_comp);          
-        //var_dump($payslip_period[1]['PeriodID']);
-        
-        $payper = $payslip_period[1]['PeriodID'] ? $payslip_period[1]['PeriodID'] : $payslip_period[0]['PeriodID'];
-        
         if(isset($_GET['pryear']) && isset($_GET['period'])){
             $payper = $_GET['period'];
             $pryear = $_GET['pryear'];
         }
+
+        $dtr_year = $mainsql->get_dtr_year($profile_comp);     
+        $payslip_period = $mainsql->get_payslip_period($pryear, $profile_comp);          
+        //var_dump($payslip_period[1]['PeriodID']);
+        $payper = isset($_GET['period']) ? $_GET['period'] : $payslip_period[1]['PeriodID'] ? $payslip_period[1]['PeriodID'] : $payslip_period[0]['PeriodID'];
         
         $payslip_data = $mainsql->get_payslip_data($profile_idnum, $pryear, $payper); 
         
