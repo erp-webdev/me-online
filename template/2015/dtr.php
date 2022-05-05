@@ -23,13 +23,16 @@
                                         <td>DTR Cut-off: 
                                             <select id="dtr_cover" name="dtr_cover" class="width250 smltxtbox">
                                                 <?php foreach ($dtr_period as $key => $value) : ?>
-                                                <option value="<?php echo date("Y-m-d", strtotime($value['PeriodFrom']))." ".date("Y-m-d", strtotime($value['PeriodTo'])); ?>" dfrom="<?php echo strtotime($value['PeriodFrom']); ?>" dto="<?php echo strtotime($value['PeriodTo']); ?>" posted="<?php echo $value['AttPost']; ?>">
+                                                <option value="<?php echo date("Y-m-d", strtotime($value['PeriodFrom']))." ".date("Y-m-d", strtotime($value['PeriodTo'])); ?>" dfrom="<?php echo strtotime($value['PeriodFrom']); ?>" dto="<?php echo strtotime($value['PeriodTo']); ?>" posted="<?php echo $value['AttPost']; ?>" period="<?php echo $value['PeriodID']; ?>">
                                                     <?php echo $value['PeriodID']." ".$value['PRYear']." ".date("m/d/Y", strtotime($value['PeriodFrom']))." to ".date("m/d/Y", strtotime($value['PeriodTo'])); ?>
                                                 </option>  
                                                 <?php endforeach; ?>
                                             </select>&nbsp;&nbsp;
                                             <?php $attpost = $dtr_period[0]['AttPost']; ?>
                                             <span id="txtposted" class="lgreentext bold<?php echo $attpost == 1 ? "" : " invisible"; ?>"><i class="fa fa-check"></i> POSTED</span>
+                                        </td>
+                                        <td>
+                                            <button class="smlbtn " id="viewPayslip">View Payslip</button>
                                         </td>
                                     </tr>
                                 </table>
@@ -339,5 +342,12 @@
                             </div>
                         </div>
                     </div>
+                    <script>
+                        $('#viewPayslip').on('click', function(){
+                            var pryear = $('.dtr_year').val();
+                            var period = $('.dtr_cover').find('option[selected]').attr('period');
 
+                            window.location.href = '<?php echo WEB; ?>/pslipman?pryear=' + pryear + '&period=' + period;
+                        });
+                    </script>
     <?php include(TEMP."/footer.php"); ?>
