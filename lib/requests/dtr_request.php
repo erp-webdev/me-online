@@ -117,7 +117,7 @@
             $dtr_period = $mainsql->get_dtr_period($dtr_year, $profile_comp, 1);
             if ($dtr_period) :
                 foreach ($dtr_period as $key => $value) :
-                    $year_select .= '<option value="'.date("Y-m-d", strtotime($value['PeriodFrom'])).' '.date("Y-m-d", strtotime($value['PeriodTo'])).'" dfrom="'.strtotime($value['PeriodFrom']).'" dto="'.strtotime($value['PeriodTo']).'" posted="'.$value['AttPost'].'">'.$value['PeriodID']." ".$value['PRYear'].' '.date("m/d/Y", strtotime($value['PeriodFrom'])).' to '.date("m/d/Y", strtotime($value['PeriodTo'])).'</option>';
+                    $year_select .= '<option value="'.date("Y-m-d", strtotime($value['PeriodFrom'])).' '.date("Y-m-d", strtotime($value['PeriodTo'])).'" dfrom="'.strtotime($value['PeriodFrom']).'" dto="'.strtotime($value['PeriodTo']).'" posted="'.$value['AttPost'].'" period="'.$value['PeriodID'].'">'.$value['PeriodID']." ".$value['PRYear'].' '.date("m/d/Y", strtotime($value['PeriodFrom'])).' to '.date("m/d/Y", strtotime($value['PeriodTo'])).'</option>';
                 endforeach;
             endif;
             echo $year_select;
