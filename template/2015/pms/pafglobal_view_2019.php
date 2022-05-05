@@ -1393,7 +1393,7 @@
                                 Promotion To Level: <input type="text" name="promotion" value="<?php echo $checkEvaluation[0]['promote']; ?>" data-promote="<?php echo $checkEvaluation[0]['randesc']; ?>" onchange="fnAlltotalpcc()">&nbsp;&nbsp;&nbsp;
                                 New Position Title: <input type="text" name="promotionpos" value="<?php echo $checkEvaluation[0]['promotePos']; ?>">&nbsp;&nbsp;&nbsp;<br><br>
                             <?php if($max1i == 1) { ?>
-                                Salary Increase: <input type="text" min="1" max="1000" name="increase" value="<?php echo $checkEvaluation[0]['recinc']; ?>">%
+                                RECOMMENDED SALARY INCREASE: <input type="text" min="1" max="1000" name="increase" value="<?php echo $checkEvaluation[0]['recinc']; ?>">%
                                 <br /><br />
                             <?php } else { ?>
                                 <input type="hidden" name="increase" value="">
