@@ -18,7 +18,7 @@
                                         <td>Year Period:
                                             <select id="payslip_year" name="payslip_year" class="width95 smltxtbox">
                                                 <?php foreach ($dtr_year as $key => $value) : ?>
-                                                <option value="<?php echo $value['PRYear']; ?>"<?php echo $value['PRYear'] == date("Y") ? ' selected' : ''; ?>><?php echo $value['PRYear']; ?></option>
+                                                <option value="<?php echo $value['PRYear']; ?>"<?php echo isset($_GET['pryear']) ? $_GET['pryear'] == $value['PRYear'] ? ' selected' : '' : $value['PRYear'] == date("Y") ? ' selected' : ''; ?>><?php echo $value['PRYear']; ?></option>
                                                 <?php endforeach; ?>
                                             </select>
                                         </td>
@@ -64,6 +64,11 @@
                                                 <?php endif; ?>
                                             </select>
                                         </td>
+                                        <?php if($profile_idnum == '2016-06-0457') : ?>
+                                        <td>
+                                            <button class="smlbtn viewDTR">View DTR</button>
+                                        </td>
+                                        <?php endif; ?>
                                     </tr>
                                 </table>
 
@@ -1522,5 +1527,13 @@
                             </div>
                         </div>
                     </div>
+                    <script>
+                        $('.viewDTR').on('click', function(){
+                            var pryear = $('#payslip_year').val();
+                            var periodid = $('#payslip_cover').val();
+
+                            window.location.href = '<?php echo WEB; ?>/dtr?pryear=' + pryear + '&period='+periodid;
+                        })
+                    </script>
 
     <?php include(TEMP."/footer.php"); ?>

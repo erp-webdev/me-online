@@ -14,26 +14,34 @@
 		//***********************  MAIN CODE END  **********************\\
 		
 		global $sroot, $profile_id, $unix3month;
+        $pryear = date("Y");
+
+        if(isset($_GET['pryear']) && isset($_GET['period'])){
+            $payper = $_GET['period'];
+            $pryear = $_GET['pryear'];
+        }
+
+        $payper = $payslip_period[1]['PeriodID'] ? $payslip_period[1]['PeriodID'] : $payslip_period[0]['PeriodID'];
 
         $dtr_year = $mainsql->get_dtr_year($profile_comp);     
-        $payslip_period = $mainsql->get_payslip_period(date("Y"), $profile_comp);          
+        $payslip_period = $mainsql->get_payslip_period($pryear, $profile_comp);          
         //var_dump($payslip_period[1]['PeriodID']);
+        if(isset($_GET['period']))
+            $payper = $_GET['period'] ;
         
-        $payper = $payslip_period[1]['PeriodID'] ? $payslip_period[1]['PeriodID'] : $payslip_period[0]['PeriodID'];
-        
-        $payslip_data = $mainsql->get_payslip_data($profile_idnum, date("Y"), $payper); 
+        $payslip_data = $mainsql->get_payslip_data($profile_idnum, $pryear, $payper); 
         
         $payslip_oedesc = $mainsql->get_payslip_oedesc(); 
         $payslip_oddesc = $mainsql->get_payslip_oddesc(); 
         
         //LOANS
         // $payslip_loans = $mainsql->get_payslip_loan($profile_idnum);
-        $payslip_loans = $mainsql->get_payslip_loan2($profile_idnum, $payslip_period[1]['PRYear'], $payslip_period[1]['PeriodID']);
+        $payslip_loans = $mainsql->get_payslip_loan2($profile_idnum, $pryear, $payper);
         
         //EARNED TAXABLE
-        $payslip_oemaster1 = $mainsql->get_payslip_oemaster($profile_idnum, date("Y"), $payper, 1);         
+        $payslip_oemaster1 = $mainsql->get_payslip_oemaster($profile_idnum, $pryear, $payper, 1);         
         //EARNED NON-TAXABLE
-        $payslip_oemaster2 = $mainsql->get_payslip_oemaster($profile_idnum, date("Y"), $payper);  
+        $payslip_oemaster2 = $mainsql->get_payslip_oemaster($profile_idnum, $pryear, $payper);  
         
         //EARNED TAXABLE
         $payslip_etaxable = $mainsql->get_payslip_allowancetype(2);         
@@ -66,20 +74,20 @@
         //var_dump($arrod);
 
         //EARNED TAXABLE
-        $payslip_getetaxable = $mainsql->get_payslip_allownacevalue($profile_idnum, $arrot, date("Y"), $payper);   
+        $payslip_getetaxable = $mainsql->get_payslip_allownacevalue($profile_idnum, $arrot, $pryear, $payper);   
         //EARNED NON-TAXABLE
-        $payslip_getenontaxable = $mainsql->get_payslip_allownacevalue($profile_idnum, $arron, date("Y"), $payper);       
+        $payslip_getenontaxable = $mainsql->get_payslip_allownacevalue($profile_idnum, $arron, $pryear, $payper);       
         //DEDUCTION
-        $payslip_getdeduction = $mainsql->get_payslip_allownacevalue($profile_idnum, $arrod, date("Y"), $payper); 
+        $payslip_getdeduction = $mainsql->get_payslip_allownacevalue($profile_idnum, $arrod, $pryear, $payper); 
         
-        $payslip_earn = $mainsql->get_payslip_otherearn($profile_idnum, date("Y"), $payper, 1); 
-        $payslip_earn2 = $mainsql->get_payslip_otherearn($profile_idnum, date("Y"), $payper, 0); 
-        $payslip_deduct = $mainsql->get_payslip_otherdeduct($profile_idnum, date("Y"), $payper); 
+        $payslip_earn = $mainsql->get_payslip_otherearn($profile_idnum, $pryear, $payper, 1); 
+        $payslip_earn2 = $mainsql->get_payslip_otherearn($profile_idnum, $pryear, $payper, 0); 
+        $payslip_deduct = $mainsql->get_payslip_otherdeduct($profile_idnum, $pryear, $payper); 
         
         //DEDUCT TAXABLE
-        $payslip_odmaster = $mainsql->get_payslip_odmaster($profile_idnum, date("Y"), $payper); 
+        $payslip_odmaster = $mainsql->get_payslip_odmaster($profile_idnum, $pryear, $payper); 
         
-        $payslip_otmaster = $mainsql->get_payslip_otmaster($profile_idnum, date("Y"), $payper); 
+        $payslip_otmaster = $mainsql->get_payslip_otmaster($profile_idnum, $pryear, $payper); 
                 
         $leave_data = $mainsql->get_leave();
 
