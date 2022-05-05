@@ -66,7 +66,7 @@
                                         </td>
                                         <?php if($profile_idnum == '2016-06-0457') : ?>
                                         <td>
-                                            <a class="lorangetext viewDTR">View DTR</a>
+                                            <button class="smlbtn viewDTR">View DTR</button>
                                         </td>
                                         <?php endif; ?>
                                     </tr>
