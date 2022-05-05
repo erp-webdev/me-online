@@ -891,7 +891,7 @@
                                 </script>
 
                                 <?php if($max1i == 1) { ?>
-                                    Salary Increase: <input type="number" min="1" max="100" name="increase" value="<?php echo $checkEvaluation[0]['recinc']; ?>">%
+                                    RECOMMENDED SALARY INCREASE: <input type="number" min="1" max="100" name="increase" value="<?php echo $checkEvaluation[0]['recinc']; ?>">%
                                 <?php } else { ?>
                                 <br /><br />
                                     <input type="hidden" name="increase" value="">
