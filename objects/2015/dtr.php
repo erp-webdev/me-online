@@ -15,11 +15,16 @@
 
 		global $sroot, $profile_id, $unix3month;
 
-        $dtr_year = $mainsql->get_dtr_year($profile_comp);
         $yearend = strtotime(date('Y').'-12-15');
         $yearval = date('U') > $yearend ? date("Y") + 1 : date("Y");
-        $dtr_period = $mainsql->get_dtr_period($yearval, $profile_comp, 1);
+        $dtr_year = $mainsql->get_dtr_year($profile_comp);
 
+        if(isset($_GET['pryear']) && isset($_GET['period'])){
+            $dtr_period = $mainsql->get_dtr_period_by_id($_GET['pryear'], $profile_comp, $_GET['period']);
+        }else{
+            $dtr_period = $mainsql->get_dtr_period($yearval, $profile_comp, 1);
+        }
+        
         //var_dump($dtr_period);
 
         $cleanfrom = str_replace("  ", " ", $dtr_period[0]['PeriodFrom']);

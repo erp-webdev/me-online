@@ -1701,6 +1701,18 @@ class mainsql {
 		return $result;
     }
 
+    function get_dtr_period_by_id($year, $company, $period, $dbname = NULL)
+	{
+
+		$sql = "SELECT PeriodID, PRYear, PRFrom, PRTo, PeriodFrom, PeriodTo, AttPost 
+            FROM HRCompanyCutOff WHERE PRYear='".$year."' 
+            AND PeriodID = '". $period ."'";
+
+        $sql .= " AND CompanyID = '".$company."' AND PaymentType = 'SEMI-MONTHLY' ORDER BY PeriodID DESC";
+		$result = $this->get_row($sql, $dbname);
+		return $result;
+    }
+
     function get_dtr_data($empid, $from, $to, $company, $dbname = NULL)
 	{
 		$sql = "SELECT DISTINCT DTRDATE, ShiftDesc, TimeINDate, TimeIN, TimeOutDate, TimeOut, LateHrs, UTHrs, Absent, LEAVETYPE, L01, L02, L03, L04, L05, L10, L12, L14, OTHrs01, OTHrs02, OTHrs03, OTHrs04, OTHrs05, OTHrs06, OTHrs07, OTHrs08, OTHrs09, OTHrs10, OTHrs11, OTHrs12, OTHrs13, OTHrs14, OTHrs15, OTHrs16, OTHrs17, OTHrs18, OTHrs19, OTHrs20, OTHrs21, OTHrs22, OTHrs23, OTHrs24, OTHrs25, WorkHrs, RegHrs, OB, ApprovedOTHrs, ActualOTHrs, NDHrs, LEAVE_DESC, L15, ML FROM viewHRDTR ";
