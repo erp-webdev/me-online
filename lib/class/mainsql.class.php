@@ -1703,12 +1703,18 @@ class mainsql {
 
     function get_dtr_period_by_id($year, $company, $period, $dbname = NULL)
 	{
+		$numbdays = date("j");
+        if ($numbdays <= 15) : $enddays = 15;
+        else : $enddays = date("t"); endif;
 
-		$sql = "SELECT PeriodID, PRYear, PRFrom, PRTo, PeriodFrom, PeriodTo, AttPost 
-            FROM HRCompanyCutOff WHERE PRYear='".$year."' 
-            AND PeriodID = '". $period ."'";
+		$sql = "SELECT PeriodID, PRYear, PRFrom, PRTo, PeriodFrom, PeriodTo, AttPost FROM HRCompanyCutOff WHERE PRYear='".$year."' ";
+        $sql .= " AND (PeriodID = '".$period."' ";
+        if ($all == 0) : $sql .= " OR  PeriodTo <= GETDATE() ";
+        else : $sql .= " OR PeriodTo <= '".date("m")."/".$enddays."/".date("Y")."') ";
+        endif;
 
-        $sql .= " AND CompanyID = '".$company."' AND PaymentType = 'SEMI-MONTHLY' ORDER BY PeriodID DESC";
+        $sql .= " AND CompanyID = '".$company."' AND PaymentType = 'SEMI-MONTHLY' 
+            ORDER BY CASE WHEN PeriodID = '".$period."' THEN '0' ELSE PeriodID END";
 		$result = $this->get_row($sql, $dbname);
 		return $result;
     }
