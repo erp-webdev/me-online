@@ -33,9 +33,11 @@
                                                     <?php
                                                         // new payslip period beginning april2020
                                                         if($value['PRYear'] > 2020 || ($value['PRYear'] == 2020 && !in_array( $value['PeriodID'], ['S01', 'S02', 'S03', 'S04', 'S05', 'S06', 'S07', 'S08', 'S09']))){
+                                                            
                                                             echo $value['PaymentType']." ".$value['PRYear']." ".date("m/d/Y", strtotime($value['PRFrom']))." to ".date("m/d/Y", strtotime($value['PRTo']));
                                                         }else
-                                                            echo $value['PaymentType']." ".$value['PRYear']." ".date("m/d/Y", strtotime($value['PeriodFrom']))." to ".date("m/d/Y", strtotime($value['PeriodTo']));
+                                                            
+                                                        echo $value['PaymentType']." ".$value['PRYear']." ".date("m/d/Y", strtotime($value['PeriodFrom']))." to ".date("m/d/Y", strtotime($value['PeriodTo']));
                                                     ?>
                                                     <?php //echo $value['PaymentType']." ".$value['PRYear']." ".date("m/d/Y", strtotime($value['PeriodFrom']))." to ".date("m/d/Y", strtotime($value['PeriodTo'])); ?>
                                                 </option>
@@ -82,7 +84,7 @@
                                     <b>Cut-off Date: </b><span id='payperiod'>
                                         <?php
                                             // new pay period beginning apr2020
-                                            if($payslip_period[1]['PRYear'] > 2020 || ($payslip_period[1]['PRYear'] == 2020 && !in_array( $payslip_period[1]['PeriodID'], ['S01', 'S02', 'S03', 'S04', 'S05', 'S06', 'S07', 'S08', 'S09'])))
+                                            if($payslip_period_[0]['PRYear'] > 2020 || ($payslip_period_[0]['PRYear'] == 2020 && !in_array( $payslip_period_[0]['PeriodID'], ['S01', 'S02', 'S03', 'S04', 'S05', 'S06', 'S07', 'S08', 'S09'])))
                                             
                                                 // echo date("m/d/Y", strtotime($payslip_period[1]['PRFrom'] ? $payslip_period[1]['PRFrom'] : $payslip_period[0]['PRFrom'])) . " to " . date("m/d/Y", strtotime($payslip_period[1]['PRTo'] ? $payslip_period[1]['PRTo'] : $payslip_period[0]['PRTo']));
                                                 
@@ -97,7 +99,7 @@
                                     <b>Pay Period: </b><span id='payto'>
                                         <?php
                                             // new pay period beginning apr2020
-                                            if($payslip_period[1]['PRYear'] > 2020 || ($payslip_period[1]['PRYear'] == 2020 && !in_array( $payslip_period[1]['PeriodID'], ['S01', 'S02', 'S03', 'S04', 'S05', 'S06', 'S07', 'S08', 'S09'])))
+                                            if($payslip_period_[0]['PRYear'] > 2020 || ($payslip_period_[0]['PRYear'] == 2020 && !in_array( $payslip_period_[0]['PeriodID'], ['S01', 'S02', 'S03', 'S04', 'S05', 'S06', 'S07', 'S08', 'S09'])))
                                                 
                                                 echo date("m/d/Y", strtotime($payslip_period_[0]['PRTo']));
                                             
