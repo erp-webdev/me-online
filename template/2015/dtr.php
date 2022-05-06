@@ -23,7 +23,7 @@
                                         <td>DTR Cut-off: 
                                             <select id="dtr_cover" name="dtr_cover" class="width250 smltxtbox">
                                                 <?php foreach ($dtr_period as $key => $value) : ?>
-                                                <option value="<?php echo date("Y-m-d", strtotime($value['PeriodFrom']))." ".date("Y-m-d", strtotime($value['PeriodTo'])); ?>" dfrom="<?php echo strtotime($value['PeriodFrom']); ?>" dto="<?php echo strtotime($value['PeriodTo']); ?>" posted="<?php echo $value['AttPost']; ?>" period="<?php echo $value['PeriodID']; ?>">
+                                                <option value="<?php echo date("Y-m-d", strtotime($value['PeriodFrom']))." ".date("Y-m-d", strtotime($value['PeriodTo'])); ?>" dfrom="<?php echo strtotime($value['PeriodFrom']); ?>" dto="<?php echo strtotime($value['PeriodTo']); ?>" posted="<?php echo $value['AttPost']; ?>" period="<?php echo $value['PeriodID']; ?>" <?php if(isset($_GET['period'])) echo $_GET['period'] == $value['PeriodID'] ? 'selected' : ''; ?>>
                                                     <?php echo $value['PeriodID']." ".$value['PRYear']." ".date("m/d/Y", strtotime($value['PeriodFrom']))." to ".date("m/d/Y", strtotime($value['PeriodTo'])); ?>
                                                 </option>  
                                                 <?php endforeach; ?>
