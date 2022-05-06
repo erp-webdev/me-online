@@ -1812,9 +1812,19 @@ class mainsql {
            // $sql .= " AND PeriodID != 'S02' ";
 	    $sql .= " AND PeriodID NOT IN ('SP13', 'SP23', 'SP24') ";
         if ($all == 0) : $sql .= " AND PeriodTo <= GETDATE() "; endif;
-        $sql .= " AND CompanyID = '".$company."' 
-        ORDER BY PaymentType, 
-        CASE WHEN PeriodID = '".$id."' THEN 'S50' ELSE PeriodID END DESC";
+        $sql .= " AND CompanyID = '".$company."' ORDER BY PaymentType, PeriodID DESC";
+		$result = $this->get_row($sql);
+		return $result;
+    }
+
+    function get_payslip_period_by_id($year, $company, $id, $all = 0)
+	{
+		$sql = "SELECT PeriodID, PRYear, PRFrom, PRTo, PeriodFrom, PeriodTo, PaymentType FROM HRCompanyCutOff WHERE PRYear='".$year."' AND PaymentType <> 'SPECIAL'  ";
+        $sql .= " AND (PeriodID = '".$id."' "; 
+           // $sql .= " AND PeriodID != 'S02' ";
+        $sql .= " AND PeriodTo <= GETDATE()) "; 
+        $sql .= " AND CompanyID = '".$company."' ORDER BY PaymentType, 
+            CASE WHEN PeriodID = '".$id."' THEN 'S50' ELSE PeriodID END DESC";
 		$result = $this->get_row($sql);
 		return $result;
     }
