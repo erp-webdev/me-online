@@ -1814,7 +1814,7 @@ class mainsql {
         if ($all == 0) : $sql .= " AND PeriodTo <= GETDATE() "; endif;
         $sql .= " AND CompanyID = '".$company."' 
         ORDER BY PaymentType, 
-        CASE WHEN PeriodID = '".$id."' THEN 'S50' ELSE PeriodID DESC";
+        CASE WHEN PeriodID = '".$id."' THEN 'S50' ELSE PeriodID END DESC";
 		$result = $this->get_row($sql);
 		return $result;
     }
