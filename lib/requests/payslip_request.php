@@ -107,7 +107,15 @@
             if ($payslip_period) :
                 foreach ($payslip_period as $key => $value) :
                     if ($value['PeriodID'] != 'SP23') :
-                    $year_select .= '<option value="'.$value['PeriodID'].'">'.$value['PaymentType']." ".$value['PRYear']." ".date("m/d/Y", strtotime($value['PeriodFrom']))." to ".date("m/d/Y", strtotime($value['PeriodTo'])).'</option>';
+
+                        if($value['PRYear'] > 2020 || ($value['PRYear'] == 2020 && !in_array( $value['PeriodID'], ['S01', 'S02', 'S03', 'S04', 'S05', 'S06', 'S07', 'S08', 'S09']))) :
+
+                            $year_select .= '<option value="'.$value['PeriodID'].'">'.$value['PaymentType']." ".$value['PRYear']." ".date("m/d/Y", strtotime($value['PRFrom']))." to ".date("m/d/Y", strtotime($value['PRTo'])).'</option>';
+
+                        else:
+                            $year_select .= '<option value="'.$value['PeriodID'].'">'.$value['PaymentType']." ".$value['PRYear']." ".date("m/d/Y", strtotime($value['PeriodFrom']))." to ".date("m/d/Y", strtotime($value['PeriodTo'])).'</option>';
+                        endif;
+                   
                     endif;
                 endforeach;
                 $year_select .= '<option value="SP04">SL CONVERSION '.$payslip_year.'</option>';
