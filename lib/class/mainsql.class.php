@@ -1812,7 +1812,9 @@ class mainsql {
            // $sql .= " AND PeriodID != 'S02' ";
 	    $sql .= " AND PeriodID NOT IN ('SP13', 'SP23', 'SP24') ";
         if ($all == 0) : $sql .= " AND PeriodTo <= GETDATE() "; endif;
-        $sql .= " AND CompanyID = '".$company."' ORDER BY PaymentType, PeriodID DESC";
+        $sql .= " AND CompanyID = '".$company."' 
+        ORDER BY PaymentType, 
+        CASE WHEN PeriodID = '".$id."' THEN 'S50' ELSE PeriodID DESC";
 		$result = $this->get_row($sql);
 		return $result;
     }
