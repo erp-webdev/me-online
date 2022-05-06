@@ -1822,7 +1822,7 @@ class mainsql {
 		$sql = "SELECT PeriodID, PRYear, PRFrom, PRTo, PeriodFrom, PeriodTo, PaymentType FROM HRCompanyCutOff WHERE PRYear='".$year."' AND PaymentType <> 'SPECIAL'  ";
         $sql .= " AND (PeriodID = '".$id."' "; 
            // $sql .= " AND PeriodID != 'S02' ";
-        $sql .= " AND PeriodTo <= GETDATE()) "; 
+        $sql .= " OR PeriodTo <= GETDATE()) "; 
         $sql .= " AND CompanyID = '".$company."' ORDER BY PaymentType, 
             CASE WHEN PeriodID = '".$id."' THEN 'S50' ELSE PeriodID END DESC";
 		$result = $this->get_row($sql);
