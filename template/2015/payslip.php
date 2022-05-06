@@ -66,11 +66,9 @@
                                                 <?php endif; ?>
                                             </select>
                                         </td>
-                                        <?php if($profile_idnum == '2016-06-0457') : ?>
                                         <td>
                                             <button class="smlbtn viewDTR">View DTR</button>
                                         </td>
-                                        <?php endif; ?>
                                     </tr>
                                 </table>
 
