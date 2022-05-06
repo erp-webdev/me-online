@@ -22,6 +22,7 @@
         if(isset($_GET['pryear']) && isset($_GET['period'])){
             $payper = $_GET['period'];
             $pryear = $_GET['pryear'];
+            $payslip_period = $mainsql->get_payslip_period($pryear, $profile_comp);          
         }
 
         $dtr_year = $mainsql->get_dtr_year($profile_comp);     
