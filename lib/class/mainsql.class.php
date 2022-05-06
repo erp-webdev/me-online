@@ -1715,7 +1715,7 @@ class mainsql {
         endif;
 
         $sql .= " AND CompanyID = '".$company."' AND PaymentType = 'SEMI-MONTHLY' 
-            ORDER BY CASE WHEN PeriodID = '".$period."' THEN '-' ELSE PeriodID END DESC";
+            ORDER BY PeriodID DESC";
 		$result = $this->get_row($sql, $dbname);
 		return $result;
     }
