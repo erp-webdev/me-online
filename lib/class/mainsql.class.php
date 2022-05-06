@@ -1819,10 +1819,9 @@ class mainsql {
 
     function get_payslip_period_by_id($year, $company, $id, $all = 0)
 	{
-		$sql = "SELECT PeriodID, PRYear, PRFrom, PRTo, PeriodFrom, PeriodTo, PaymentType FROM HRCompanyCutOff WHERE PRYear='".$year."' AND PaymentType <> 'SPECIAL'  ";
-        $sql .= " AND (PeriodID = '".$id."' "; 
+		$sql = "SELECT TOP 1 PeriodID, PRYear, PRFrom, PRTo, PeriodFrom, PeriodTo, PaymentType FROM HRCompanyCutOff WHERE PRYear='".$year."' AND PaymentType <> 'SPECIAL'  ";
+        $sql .= " AND PeriodID = '".$id."' "; 
            // $sql .= " AND PeriodID != 'S02' ";
-        $sql .= " OR PeriodTo <= GETDATE()) "; 
         $sql .= " AND CompanyID = '".$company."' ORDER BY PaymentType, 
             CASE WHEN PeriodID = '".$id."' THEN 'S50' ELSE PeriodID END DESC";
 		$result = $this->get_row($sql);

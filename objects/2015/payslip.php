@@ -25,6 +25,8 @@
             $payslip_period = $mainsql->get_payslip_period($pryear, $profile_comp);          
         }
 
+        $payslip_period_ = $mainsql->get_payslip_period_by_id($pryear, $profile_comp, $payper);          
+
         $dtr_year = $mainsql->get_dtr_year($profile_comp);     
         
         $payslip_data = $mainsql->get_payslip_data($profile_idnum, $pryear, $payper); 
