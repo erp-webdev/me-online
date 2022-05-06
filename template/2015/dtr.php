@@ -14,7 +14,12 @@
                                         <td>Year: 
                                             <select id="dtr_year" name="dtr_year" class="smltxtbox">
                                                 <?php $yearend = strtotime(date('Y').'-12-15'); ?>
-                                                <?php $yearval = isset($_GET['pryear']) ? $_GET['pryear'] : date('U') > $yearend ? date("Y") + 1 : date("Y"); ?>
+                                                <?php 
+                                                    $yearval = date('U') > $yearend ? date("Y") + 1 : date("Y");
+                                                    if(isset($_GET['pryear']))
+                                                        $yearval = $_GET['pryear'];
+                                                    
+                                                ?>
                                                 <?php foreach ($dtr_year as $key => $value) : ?>
                                                 <option value="<?php echo $value['PRYear']; ?>"<?php echo $value['PRYear'] == $yearval ? ' selected' : ''; ?>><?php echo $value['PRYear']; ?></option>    
                                                 <?php endforeach; ?>
