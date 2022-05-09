@@ -127,7 +127,7 @@ class mainsql {
 		$sql = "SELECT [outer].* FROM ( ";
         $sql .= " SELECT ROW_NUMBER() OVER(ORDER BY LName ASC) as ROW_NUMBER, ";
         $sql .= " EmpID, FName, MName, LName, NickName, EmailAdd, CompanyID,
-            SSSNbr, PhilHealthNbr, TINNbr, PagibigNbr, TaxID, LocationID, AccountNo, EPassword
+            SSSNbr, PhilHealthNbr, TINNbr, PagibigNbr, TaxID, LocationID, AccountNo, EPassword, DBNAME
             FROM viewHREmpMaster ";
         $sql .= " WHERE EmpID != '' ";
         if ($search != NULL) : $sql .= " AND (EmpID = '".$search."' OR LName LIKE '%".$search."%' OR FName LIKE '%".$search."%') "; endif;
