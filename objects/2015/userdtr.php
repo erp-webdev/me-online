@@ -92,7 +92,7 @@
                     */             
 
                     $dtr_calculate = $mainsql->dtr_action($_POST, 'calculate');
-                    $calculated = 'yup-' . $dfrom;
+                    $calculated = 'yup-' . $_POST['dteDTRDate'];
                     //var_dump($dfrom);
                     
 
