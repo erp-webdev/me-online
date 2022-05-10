@@ -7,7 +7,7 @@
                         <div class="leftsplashtext lefttalign"><?php include(TEMP."/menu.php"); ?></div>
                         <div class="rightsplashtext lefttalign">
                             <div id="mainnotification" class="mainbody lefttalign whitetext">  
-                                <b class="mediumtext lorangetext" posted="<?php echo $posted; ?>">DAILY TIME RECORD of <?php echo $udtr_full; ?></b>&nbsp;&nbsp;&nbsp;<a href="<?php echo WEB.'/dtrman'; ?>"><button class="btn">Back</button></a><br><br>
+                                <b class="mediumtext lorangetext" posted="<?php echo $dfrom_; ?>">DAILY TIME RECORD of <?php echo $udtr_full; ?></b>&nbsp;&nbsp;&nbsp;<a href="<?php echo WEB.'/dtrman'; ?>"><button class="btn">Back</button></a><br><br>
                                 
                                 <table>
                                     <tr>
