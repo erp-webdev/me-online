@@ -49,7 +49,7 @@
             $dto = strtotime($expto[0].' '.$expto[1].' '.$expto[2].' 23:59:59');
             $posted = $dtr_period[0]['AttPost'];
 
-            if(date('Y-m-d') >= $dfrom && date('Y-m-d') <= $dto)
+            if(date('Y-m-d') >= date('Y-m-d', strtotime($expfrom)) && date('Y-m-d') <= date('Y-m-d', strtotime($dto)))
                 $posted = 0;
             else
                 $posted = 1;
