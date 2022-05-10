@@ -49,6 +49,8 @@
             $dto = strtotime($expto[0].' '.$expto[1].' '.$expto[2].' 23:59:59');
             $posted = $dtr_period[0]['AttPost'];
 
+            
+
             if ($posted == 0) :
 
                 while($dfrom < $dto + 86400) : 
@@ -67,15 +69,15 @@
                     $month15l = date('U', strtotime(date($lastyear.'-'.$lastmonth.'-15')));   
                     $monthlast = date('U', strtotime(date($lastyear.'-'.$lastmonth.'-'.$lastday)));
             
-                    if ($daynow >= 3 && $daynow < 18) :
-                        $lastpoint = $monthlast;
-                    else :
-                        if ($daynow >= 1 && $daynow < 3) :
-                            $lastpoint = $month15l;
-                        else :
-                            $lastpoint = $month15;
-                        endif;
-                    endif;  
+                    // if ($daynow >= 3 && $daynow < 18) :
+                    //     $lastpoint = $monthlast;
+                    // else :
+                    //     if ($daynow >= 1 && $daynow < 3) :
+                    //         $lastpoint = $month15l;
+                    //     else :
+                    //         $lastpoint = $month15;
+                    //     endif;
+                    // endif;  
 
                     // temporary disabled: jan 31,2020 kevs
                     /*
