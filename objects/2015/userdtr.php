@@ -50,6 +50,7 @@
             $posted = $dtr_period[0]['AttPost'];
 
             $calculated = 'nope'; 
+            $calculated = 'yup-' . date("m/d/Y", $dfrom);
 
             if(date('Y-m-d') >= date('Y-m-d', strtotime($expfrom[0].' '.$expfrom[1].' '.$expfrom[2].' 00:00:00')) && date('Y-m-d') <= date('Y-m-d', strtotime($expto[0].' '.$expto[1].' '.$expto[2].' 23:59:59'))){
                 $posted = 0;
@@ -92,7 +93,6 @@
                     */             
 
                     $dtr_calculate = $mainsql->dtr_action($_POST, 'calculate');
-                    $calculated = 'yup-' . $_POST['dteDTRDate'];
                     //var_dump($dfrom);
                     
 
