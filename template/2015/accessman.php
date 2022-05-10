@@ -172,7 +172,7 @@
                 url: "<?php echo WEB; ?>/lib/requests/dtrman_request.php?sec=nebtoggle",
                 data: "toggleval=" + toggleval + "&empid=" + empid + "&dbname=" + dbname,
                 type: "POST",
-                complete: function(){
+                complete: function(){ 
                     $("#loading").hide();
                 },
                 success: function(data) {
