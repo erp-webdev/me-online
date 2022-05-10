@@ -89,7 +89,7 @@
                     endif;   
                     */             
 
-                    // $dtr_calculate = $mainsql->dtr_action($_POST, 'calculate');
+                    $dtr_calculate = $mainsql->dtr_action($_POST, 'calculate');
 
                     //var_dump($dfrom);
                     
