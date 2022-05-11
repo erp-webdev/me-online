@@ -171,7 +171,7 @@ class tblsql {
 	{
 		$sql = "SELECT [outer].* FROM ( ";
         $sql .= " SELECT ROW_NUMBER() OVER(ORDER BY Fullname ASC) as ROW_NUMBER, ";
-        $sql .= " EmpID, CompanyDB, Fullname, Form
+        $sql .= " *
             FROM MEAccess ";
         $sql .= " WHERE EmpID != ''";
         if ($dbname) : $sql .= " AND CompanyDB = '".$dbname."' "; endif;
