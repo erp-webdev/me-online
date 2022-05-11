@@ -54,7 +54,6 @@
 						WHEN A.GENDER = 'F' or A.GENDER = 'FEMALE' THEN 'her'
 						WHEN A.GENDER = 'M' or A.GENDER = 'MALE' THEN 'him'
 					END AS Gender3,
-					,
 					A.FName+' '+
 					 
 					 CASE WHEN RTRIM(LTRIM(ISNULL(A.MNAME, ''))) <> '' 
