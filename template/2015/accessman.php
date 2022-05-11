@@ -58,17 +58,17 @@
                     <tr class="cursorpoint trdata centertalign whitetext" attribute="<?php echo md5($value['EmpID']); ?>">
                         <td><?php echo $value['EmpID']; ?></td>
                         <td><?php echo $value['Fullname']; ?></td>
-                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="dtr" value="dtr" id="dtr" <?php if($value['Form'] == 'dtr') echo'checked'; ?>></td>
-                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="payslip" value="payslip" id="payslip" <?php if($value['Form'] == "payslip") echo'checked'; ?>></td>
-                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="requests" value="requests" id="requests" <?php if($value['Form'] == "requests") echo'checked'; ?>></td>
-                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="approvers" value="approvers" id="approvers" <?php if($value['Form'] == "approvers") echo'checked'; ?>></td>
-                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="activities" value="activities" id="activities" <?php if($value['Form'] == "activities") echo'checked'; ?>></td>
-                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="memo" value="memo" id="memo" <?php if($value['Form'] == "memo") echo'checked'; ?>></td>
-                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="ads" value="ads" id="ads" <?php if($value['Form'] == "ads") echo'checked'; ?>></td>
-                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="bday" value="bday" id="bday" <?php if($value['Form'] == "bday") echo'checked'; ?>></td>
-                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="wfh" value="wfh" id="wfh" <?php if($value['Form'] == "wfh") echo'checked'; ?>></td>
-                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="forms" value="forms" id="forms" <?php if($value['Form'] == "forms") echo'checked'; ?>></td>
-                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="access" value="access" id="access" <?php if($value['Form'] == "access") echo'checked'; ?>></td>
+                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="dtr" value="dtr" id="dtr" <?php if($value['dtr']) echo'checked'; ?>></td>
+                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="payslip" value="payslip" id="payslip" <?php if($value['payslip']) echo'checked'; ?>></td>
+                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="requests" value="requests" id="requests" <?php if($value['requests']) echo'checked'; ?>></td>
+                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="approvers" value="approvers" id="approvers" <?php if($value['approvers']) echo'checked'; ?>></td>
+                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="activities" value="activities" id="activities" <?php if($value['activities']) echo'checked'; ?>></td>
+                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="memo" value="memo" id="memo" <?php if($value['memo']) echo'checked'; ?>></td>
+                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="ads" value="ads" id="ads" <?php if($value['ads']) echo'checked'; ?>></td>
+                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="bday" value="bday" id="bday" <?php if($value['bday']) echo'checked'; ?>></td>
+                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="wfh" value="wfh" id="wfh" <?php if($value['wfh']) echo'checked'; ?>></td>
+                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="forms" value="forms" id="forms" <?php if($value['forms']) echo'checked'; ?>></td>
+                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="access" value="access" id="access" <?php if($value['access']) echo'checked'; ?>></td>
                     </tr>
                     <?php endforeach; ?>
                     <?php if ($pages) : ?>
