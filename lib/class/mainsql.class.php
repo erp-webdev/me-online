@@ -430,6 +430,9 @@ class mainsql {
 
     function set_emailblock($empid, $value = 0, $new = 0, $dbname = NULL)
 	{
+        $sql = "EXEC SP_PAYSLIP_NOTIF_SETUP '" . $empid ."'";
+		$result = $this->get_execute($sql, $dbname);
+        
 		$sql = "UPDATE SYEmailNotificationSettings ";
         if ($new == 1) : $sql .= " SET NewFormCreatedOrToBeApproved = ".$value." ";
         else : $sql .= " SET ApprovedOrDisapprove = ".$value." "; endif;
@@ -449,6 +452,9 @@ class mainsql {
 
     function set_psblock($empid, $value = 0, $dbname = NULL)
 	{
+        $sql = "EXEC SP_PAYSLIP_NOTIF_SETUP '" . $empid ."'";
+		$result = $this->get_execute($sql, $dbname);
+        
         $sql = "UPDATE SYUserRights SET UserView = ".$value." WHERE UserName = '".$empid."' and ProgramID = 'frmPersonalPayslipWeb'";
 		$result = $this->get_execute($sql, $dbname);
 		return $result ? 1 : 0;
