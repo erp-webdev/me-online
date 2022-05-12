@@ -54,6 +54,22 @@
                         <th class="vertical">WFH</th>
                         <th class="vertical">ACCESS</th>
                     </tr>
+                    <tr class="cursorpoint trdata centertalign whitetext" attribute="<?php echo md5($value['EmpID']); ?>">
+                        <td><input type="text" class="smlbtn" name="EmpID">
+                            <input type="hidden" name="EmpIDDB"></td>
+                        <td><input type="text" name="fullname" class="smlbtn"></td>
+                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="dtr" value="dtr" id="dtr" <?php if($value['dtr']) echo'checked'; ?>></td>
+                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="payslip" value="payslip" id="payslip" <?php if($value['payslip']) echo'checked'; ?>></td>
+                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="requests" value="requests" id="requests" <?php if($value['requests']) echo'checked'; ?>></td>
+                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="approvers" value="approvers" id="approvers" <?php if($value['approvers']) echo'checked'; ?>></td>
+                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="activities" value="activities" id="activities" <?php if($value['activities']) echo'checked'; ?>></td>
+                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="memo" value="memo" id="memo" <?php if($value['memo']) echo'checked'; ?>></td>
+                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="ads" value="ads" id="ads" <?php if($value['ads']) echo'checked'; ?>></td>
+                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="bday" value="bday" id="bday" <?php if($value['bday']) echo'checked'; ?>></td>
+                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="wfh" value="wfh" id="wfh" <?php if($value['wfh']) echo'checked'; ?>></td>
+                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="forms" value="forms" id="forms" <?php if($value['forms']) echo'checked'; ?>></td>
+                        <td style="text-align: left"><input type="checkbox" class="actoggle" name="access" value="access" id="access" <?php if($value['access']) echo'checked'; ?>></td>
+                    </tr>
                     <?php foreach ($acman_data as $key => $value) : ?>                                    
                     <tr class="cursorpoint trdata centertalign whitetext" attribute="<?php echo md5($value['EmpID']); ?>">
                         <td><?php echo $value['EmpID']; ?></td>
@@ -159,78 +175,6 @@
             })
         });
 
-        $(".nebtoggle").on("click", function() {	
-
-            toggleval = $(this).attr('attribute');
-            empid = $(this).attr('attribute2');
-            dbname = $(this).attr('attribute3');
-
-            nebtoggleobj = $(this);
-
-            $.ajax(
-            {
-                url: "<?php echo WEB; ?>/lib/requests/dtrman_request.php?sec=nebtoggle",
-                data: "toggleval=" + toggleval + "&empid=" + empid + "&dbname=" + dbname,
-                type: "POST",
-                complete: function(){ 
-                    $("#loading").hide();
-                },
-                success: function(data) {
-                    if (toggleval == 1) {
-                        nebtoggleobj.attr('attribute', 0);
-                        nebtoggleobj.removeClass('fa-times');
-                        nebtoggleobj.removeClass('redtext');
-                        nebtoggleobj.addClass('fa-check');
-                        nebtoggleobj.addClass('greentext');
-                    }
-                    else {
-                        nebtoggleobj.attr('attribute', 1);
-                        nebtoggleobj.removeClass('fa-check');
-                        nebtoggleobj.removeClass('greentext');
-                        nebtoggleobj.addClass('fa-times');
-                        nebtoggleobj.addClass('redtext');
-                    }
-
-                }
-            })
-        });
-
-        $(".aebtoggle").on("click", function() {	
-
-            toggleval = $(this).attr('attribute');
-            empid = $(this).attr('attribute2');
-            dbname = $(this).attr('attribute3');
-
-            aebtoggleobj = $(this);
-
-            $.ajax(
-            {
-                url: "<?php echo WEB; ?>/lib/requests/dtrman_request.php?sec=aebtoggle",
-                data: "toggleval=" + toggleval + "&empid=" + empid + "&dbname=" + dbname,
-                type: "POST",
-                complete: function(){
-                    $("#loading").hide();
-                },
-                success: function(data) {
-                    if (toggleval == 1) {
-                        aebtoggleobj.attr('attribute', 0);
-                        aebtoggleobj.removeClass('fa-times');
-                        aebtoggleobj.removeClass('redtext');
-                        aebtoggleobj.addClass('fa-check');
-                        aebtoggleobj.addClass('greentext');
-                    }
-                    else {
-                        aebtoggleobj.attr('attribute', 1);
-                        aebtoggleobj.removeClass('fa-check');
-                        aebtoggleobj.removeClass('greentext');
-                        aebtoggleobj.addClass('fa-times');
-                        aebtoggleobj.addClass('redtext');
-                    }
-
-                }
-            })
-        });
-        
     });
 </script>
 <?php include(TEMP."/footer.php"); ?>
