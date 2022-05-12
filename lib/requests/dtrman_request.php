@@ -289,10 +289,10 @@
                     <th width="20%">First Name</th>
                     <th width="15%">Company</th>
                     <?php if($profile_level): ?>
-                    <th width="17%">Payslip Menu</th>
-                    <th width="18%" colspan="2">Notification Mail</th>
+                    <th width="10%">Payslip Menu</th>
+                    <th width="17%" colspan="2">Notification Mail</th>
                     <?php endif; ?>
-                    <th width="20%">DTR</th>
+                    <th width="18%">DTR</th>
                 </tr>
                 <!--tr>
                     <th width="10%">New Request</th>
