@@ -284,7 +284,7 @@
             <table border="0" cellspacing="0" class="tdata width100per">
                 <?php if ($dtrman_data) : ?>
                 <tr>
-                    <th width="15%"><?php echo ucfirst($profile_nadd); ?>ID</th>
+                    <th width="15%"><?php echo ucfirst($profile_nadd); ?>Employee ID</th>
                     <th width="20%">Last Name</th>
                     <th width="20%">First Name</th>
                     <th width="15%">Company</th>
