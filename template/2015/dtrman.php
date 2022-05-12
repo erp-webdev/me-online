@@ -164,7 +164,7 @@
                                         <!--th width="15%">Company</th-->
                                         <!-- <th width="10%">Payslip Menu</th> -->
                                         <!-- <th width="17%" colspan="2">Notification Mail</th> -->
-                                        <!-- <th width="18%">DTR</th> -->
+                                        <th width="18%">DTR</th>
                                     </tr>
                                     <!--tr>
                                         <th width="10%">New Request</th>
