@@ -287,9 +287,11 @@
                     <th width="15%"><?php echo ucfirst($profile_nadd); ?>ID</th>
                     <th width="20%">Last Name</th>
                     <th width="20%">First Name</th>
-                    <!--th width="15%">Company</th-->
+                    <th width="15%">Company</th>
+                    <?php if($profile_level): ?>
                     <th width="17%">Payslip Menu</th>
                     <th width="18%" colspan="2">Notification Mail</th>
+                    <?php endif; ?>
                     <th width="20%">DTR</th>
                 </tr>
                 <!--tr>
@@ -306,10 +308,12 @@
                     <td><?php echo $value['EmpID']; ?></td>
                     <td><?php echo $value['LName']; ?></td>
                     <td><?php echo $value['FName']; ?></td>
-                    <!--td><?php echo $value['DBNAME']; ?></td-->
+                    <td><?php echo $value['DBNAME']; ?></td>
+                    <?php if($profile_level): ?>
                     <td class="chkps centertalign"><?php if ($chkps) : ?><i attribute="0" attribute2="<?php echo $value['EmpID']; ?>" attribute3="<?php echo $value['DBNAME']; ?>" class="pstoggle fa fa-check greentext cursorpoint"></i><?php else : ?><i attribute="1" attribute2="<?php echo $value['EmpID']; ?>" attribute3="<?php echo $value['DBNAME']; ?>" class="pstoggle fa fa-times redtext cursorpoint"></i><?php endif; ?></td>
                     <td class="chkps centertalign"><?php if ($chkneb) : ?><i attribute="0" attribute2="<?php echo $value['EmpID']; ?>" class="nebtoggle fa fa-check greentext cursorpoint"></i><?php else : ?><i attribute="1" attribute2="<?php echo $value['EmpID']; ?>" attribute3="<?php echo $value['DBNAME']; ?>" class="nebtoggle fa fa-times redtext cursorpoint"></i><?php endif; ?></td>
                     <td class="chkps centertalign"><?php if ($chkaeb) : ?><i attribute="0" attribute2="<?php echo $value['EmpID']; ?>" attribute3="<?php echo $value['DBNAME']; ?>" class="aebtoggle fa fa-check greentext cursorpoint"></i><?php else : ?><i attribute="1" attribute2="<?php echo $value['EmpID']; ?>" class="aebtoggle fa fa-times redtext cursorpoint"></i><?php endif; ?></td>
+                    <?php endif; ?>
                     <td><a href="<?php echo WEB.'/userdtr?id='.md5($value['EmpID']).'&db='.trim($profile_dbname); ?>" class="lorangetext">View/Edit DTR</a></td>
                 </tr>
                 <?php endforeach; ?>
