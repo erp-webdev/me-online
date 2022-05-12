@@ -314,7 +314,7 @@
                     <td class="chkps centertalign"><?php if ($chkneb) : ?><i attribute="0" attribute2="<?php echo $value['EmpID']; ?>" class="nebtoggle fa fa-check greentext cursorpoint"></i><?php else : ?><i attribute="1" attribute2="<?php echo $value['EmpID']; ?>" attribute3="<?php echo $value['DBNAME']; ?>" class="nebtoggle fa fa-times redtext cursorpoint"></i><?php endif; ?></td>
                     <td class="chkps centertalign"><?php if ($chkaeb) : ?><i attribute="0" attribute2="<?php echo $value['EmpID']; ?>" attribute3="<?php echo $value['DBNAME']; ?>" class="aebtoggle fa fa-check greentext cursorpoint"></i><?php else : ?><i attribute="1" attribute2="<?php echo $value['EmpID']; ?>" class="aebtoggle fa fa-times redtext cursorpoint"></i><?php endif; ?></td>
                     <?php endif; ?>
-                    <td><a href="<?php echo WEB.'/userdtr?id='.md5($value['EmpID']).'&db='.trim($profile_dbname); ?>" class="lorangetext">View/Edit DTR</a></td>
+                    <td><a href="<?php echo WEB.'/userdtr?id='.md5($value['EmpID']).'&db='.trim($profile_dbname); ?>" class="lorangetext">View DTR</a></td>
                 </tr>
                 <?php endforeach; ?>
                 <?php if ($pages) : ?>
