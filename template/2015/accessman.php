@@ -57,7 +57,7 @@
                     <tr class="cursorpoint trdata centertalign whitetext" attribute="<?php echo md5($value['EmpID']); ?>">
                         <td><input type="text" class="smltxtbox" name="EmpID">
                             <input type="hidden" name="EmpIDDB"></td>
-                        <td><input type="text" name="fullname" class="smltxtbox"></td>
+                        <td><span id="empname"></span></td>
                         <td style="text-align: left"><input type="checkbox" class="actoggle" name="dtr" value="dtr" id="dtr" <?php if($value['dtr']) echo'checked'; ?>></td>
                         <td style="text-align: left"><input type="checkbox" class="actoggle" name="payslip" value="payslip" id="payslip" <?php if($value['payslip']) echo'checked'; ?>></td>
                         <td style="text-align: left"><input type="checkbox" class="actoggle" name="requests" value="requests" id="requests" <?php if($value['requests']) echo'checked'; ?>></td>
