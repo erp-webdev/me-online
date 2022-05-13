@@ -37,6 +37,17 @@
             </style>
             
             <div id="empdata">
+                <div id="asearch" class="fsearch ">
+                    <div class="closebutton3 cursorpoint"><i class="fa fa-times-circle fa-3x redtext"></i></div>
+                    <i class="fa fa-search"></i> Search approver <input id="apsrsearch" type="text" name="apsrsearch" placeholder="and press ENTER..." class="txtbox" /> <button id="btnapsrdel" name="btnapsrdel" class="btnapsrdel redbtn invisible">Delete this Approver</button>
+                    <div id="apsr_data" class="apsr_data">
+
+                    </div>
+                    <div id="apsr_button" class="apsr_button centertalign">
+                        <input id="apsrtbid" type="hidden" name="apsrtbid" />
+                        <input id="apsrtbdb" type="hidden" name="apsrtbdb" />
+                    </div>
+                </div>
                 <table border="0" cellspacing="0" class="yourtableclass tdata width100per">
                     <?php if ($acman_data) : ?>
                     <tr>
