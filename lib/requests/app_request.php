@@ -1619,9 +1619,11 @@
                         <td width="40%" class="centertalign">
                             <select name="leave_duration[<?php echo $i; ?>]" id="leave_duration[<?php echo $i; ?>]" attribute="<?php echo $udates; ?>" class="leave_duration smltxtbox width95per" <?php echo $leave_type == 'L04' ? '' : ''; ?>>
                                 <option value="<?php echo 'WD' //echo $wdhours; ?>"<?php echo ($getnumhours[0]['NUMHrs'] == 9 || $leave_type == 'L04') ? ' selected' : ''; ?>>Whole-Day</option>
+                                <?php if($leave_type != 'L12') : ?>
                                 <option value="<?php echo 'HD1' //echo $hdhours; ?>"<?php echo ($getnumhours[0]['NUMHrs'] == 4 && $leave_type != 'L04') ? ' selected' : ''; echo ($leave_type == 'L04') ? 'style="display:none;"' : '';?>>Half-Day AM</option>
                                 <option value="<?php echo 'HD2' //echo $hdhours; ?>" <?php echo ($leave_type == 'L04') ? 'style="display:none;"' : ''; ?>>Half-Day PM</option>
 				                <option value="0" attribute="0" <?php echo ($leave_type == 'L04') ? 'style="display:none;"' : ''; ?>>None</option>
+                                <?php endif; ?>
                             </select>
                         </td>
                         <td width="20%" class="centertalign">
