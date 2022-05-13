@@ -1,1 +1,153 @@
-test
+<!-- BODY -->
+<div id="mainsplashtext" class="mainsplashtext lefttalign">
+	<div class="topsplashtext lefttalign robotobold cattext whitetext"><?php echo WELCOME; ?></div>
+	<div class="leftsplashtext lefttalign"><?php include(TEMP."/menu.php"); ?></div>
+	<div class="rightsplashtext lefttalign">
+		<div id="mainwfh" class="mainbody lefttalign whitetext">
+			<b class="mediumtext lorangetext">Work From Home</b> <small><i>Beta</i></small><br><br>
+			<b>MAIN INFORMATION</b><br><br>
+			<div class="column2">
+				<b><?php echo ucfirst($profile_nadd); ?> ID: </b><?php echo $profile_idnum; ?><br>
+				<b>Name: </b><?php echo $profile_full; ?><br>
+				<b>Position: </b><?php echo $profile_pos; ?><br>
+				<b>Status: </b>Open<br>
+				<b>Department: </b><?php echo $profile_dept; ?><br>
+			</div><br>
+
+			<div id="alert"></div>
+			
+			<form id="frmapplywd" name="frmapplywd" action="?ignore-page-cache=true" method="post" enctype="multipart/form-data">
+				<div id="tabs">
+					<ul>
+						<li><a href="#ldetails">Details</a></li>
+						<li><a href="#lapprover">Approvers</a></li>
+					</ul>
+
+					<div id="ldetails"  ng-app="WFHApp" ng-controller="WFHController">
+						<table class="tdataform" border="0" cellspacing="0" width="100%">
+							<tr>
+								<td width="15%"><b>DTR Date: </b></td>
+								<td width="85%"><input id="wfh_from_" type="text" name="wfh_from" attribute1="<?php echo $limit_from; ?>" value="" class="txtbox datepickwh_" readonly ng-model="wfh_from"/> - <input id="wfh_to_" attribute1="<?php echo $limit_from; ?>" type="text" name="wfh_to" value="" class="txtbox datepickwh_" readonly ng-model="wfh_to"/></td>
+							</tr>
+							<tr>
+								<td width="100%" colspan="3">
+									<div id="wfh" class="wfh">
+
+										<table width="100%" class="tdata vsmalltext" border="0" cellspacing="0">
+											<tr>
+												<th width="15px"><span class="fa fa-trash-o"></span></th>
+												<th width="80px">Date</th>
+												<th width="40px">Credit</th>
+												<th width="135px">Time</th>
+												<th >Task/s</th>
+											</tr>
+											<tr ng-repeat="wfh_day in wfh_days" id="tr{{ $index+1 }}">
+												<td class="centertalign">
+													<input type="hidden" name="wfh_disable[{{ $index+1 }}]" id="wfh_disable{{ $index+1 	}}" value="0">
+													<input id="mdtr_absent{{ $index+1 }}" type="checkbox" name="mdtr_absent[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="mdtr_absent" ng-click="excludeFunction($index+1)" title="Excluded">
+													<span ng-bind=" isApplied(wfh_day.DTR) ? excludeApplied($index+1) : '' "></span>
+												</td>
+												<td class="centertalign">
+													<span ng-bind="wfh_day.DTR | date: 'EEE MM/dd/yy'"></span> <br>
+													<span ng-show="isHoliday(wfh_day.DTR)">Holiday</span><br>
+												</td>
+												<td class="centertalign">
+													<span style="{{ (wfh_day.CREDIT > 8 ||  isWeekends(wfh_day.DTR) || isHoliday(wfh_day.DTR) || isOVerSix(wfh_day.ACTIVITIES)) ? 'color:yellow' : '' }}">
+														<strong><span ng-bind="wfh_day.CREDIT | number:2"></span></strong> hr<span ng-show="wfh_day.CREDIT > 1">s</span>
+														<span ng-show="wfh_day.CREDIT > 8 ||  isWeekends(wfh_day.DTR) || isHoliday(wfh_day.DTR) || isOVerSix(wfh_day.ACTIVITIES)">*</span>
+													</span>
+
+													<input value="{{ wfh_day.EXCESSHOURS }}" id="wfh_excesshours{{ $index+1 }}" type="hidden" name="wfh_excesshours[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="wfh_excesshours txtbox">
+
+													<input value="{{ wfh_day.CREDIT }}" id="wfh_totalworkedhours{{ $index+1 }}" type="hidden" name="wfh_totalworkedhours[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="wfh_totalworkedhours txtbox">
+													<input id="wfh_dayin{{ $index+1 }}" type="hidden" name="wfh_dayin[{{ $index+1 }}]" value="{{ wfh_day.DTR | date: 'y-MM-dd'}}" class="wfh_dayin{{ $index+1 }}" />
+												</td>
+												<td class="centertalign" >
+													<table>
+														<tr ng-repeat="activity in wfh_day.ACTIVITIES">
+															<td style="border-bottom: 0px; margin: 0; padding: 0" >
+																<!-- PATTERN ([0-1]{1}[0-9]{1}|20|21|22|23):[0-5]{1}[0-9]{1}-([0-1]{1}[0-9]{1}|20|21|22|23):[0-5]{1}[0-9]{1} -->
+																<input type="text" id="start_time" ng-click="timePick($event)" attribute1="{{wfh_day.DTR}}" readonly title="Start Time: eg. 8:00" timepicker class="txtbox width55 wfh_time{{ $parent.$index+1 }} timepick_angular" ng-model="wfh_days[$parent.$index].ACTIVITIES[$index].start_time" data-dtr_index="{{ $parent.$index }}" required >
+																<input type="text" id="end_time" ng-click="timePick($event)" attribute1="{{wfh_day.DTR}}" readonly title="End Time: eg. 9:00" timepicker class="txtbox width55 wfh_time{{ $parent.$index+1 }} timepick_angular" data-dtr_index="{{ $parent.$index }}" ng-model="wfh_days[$parent.$index].ACTIVITIES[$index].end_time" required>
+																<br>
+																<label ng-show="$index == wfh_days[$parent.$index].ACTIVITIES.length - 1" title="When checked, credit hours will be deducted with 1 hour break time" >
+																	<input id="include_break{{ $parent.$index+1 }}" value="{{ wfh_days[$parent.$index].BREAKTIME }}" attribute1="{{ wfh_day.DTR }}"  type="checkbox" name="include_break[{{ $index+1 }}]" attribute="{{ $index+1 }}" class="mdtr_absent" ng-checked="wfh_days[$parent.$index].BREAKTIME == 1" ng-click="includeFunction($event)" ng-show="false"><span ng-show="false">less 1 HR Break</span>
+																	&nbsp;
+																</label>
+															</td>
+														</tr>
+													</table>
+												</td>
+												<td >
+													<textarea rows="1" style="display: none;" name="wfh_activity[{{ $index+1 }}]" id="wfh_activity{{ $index+1 }}" class="txtbox">{{ wfh_days[$index].ACTIVITIES }}</textarea>
+													<table >
+														<tr ng-repeat="activity in wfh_day.ACTIVITIES">
+															<td style="border-bottom: 0px; margin: 0; padding: 0">
+																<textarea class="txtarea wfh_act{{ $parent.$index+1 }}" name="" id="" width="100%" rows="1" cols="43" ng-model="wfh_days[$parent.$index].ACTIVITIES[$index].act" required></textarea>
+															</td>
+															<td style="border-bottom: 0px; margin: 0; padding: 0; text-align:left">
+																<button  style="" type="button" class="redbtn wfh_delete{{ $parent.$index+1 }}" ng-show="wfh_days[$parent.$index].ACTIVITIES.length > 1" ng-click="delItem($parent.$index, $index)"><i class="fa fa-trash-o"></i></button>
+																<button  style="" type="button" class="smlbtn wfh_add{{ $parent.$index+1 }}" ng-show="$index+1 == wfh_days[$parent.$index].ACTIVITIES.length" ng-click="addItem($parent.$index, $index)"><i class="fa fa-plus"></i></button>
+															</td>
+														</tr>
+													</table>
+													<span ng-show="isApplied(wfh_day.DTR)" ng-bind="'Existing Application #' + applied_refs[applied.indexOf(wfh_day.DTR)]"></span>
+													<span>&nbsp;</span>
+												</td>
+											</tr>
+										</table>
+
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<i>Maximum 7 days per application. No credit hours between 12:00 - 1:00 pm.</i><br>
+									<i>Sample task: Prepared monthly attendance of employees for Perfect Attendance Report</i><br>
+									<i><strong>Credit Hours for Approval</strong></i><br>
+									<ul style="list-style: none;">
+										<li><i><span >* Maximum of 8 working hours per day</span></i></li>
+										<li><i><span >* Worked rendered on a Holiday, Saturday or Sunday</span></i></li>
+										<li><i><span >* Worked rendered past 6:00 pm</span></i></li>
+									</ul>
+								</td>
+							</tr>
+						</table>
+						<br><br>
+					</div>
+					<div id="lapprover">
+						<?php if ($wh_app) : ?>
+						<?php foreach($wh_app as $key => $value) : ?>
+							<?php if ($key < 7) : ?>
+							<b>Level <?php echo $key; ?>:</b> <?php echo trim($value[0]) ? $value[0] : '-- NOT SET --'; ?> <input type="hidden" name="approver<?php echo $key; ?>" value="<?php echo $value[1]; ?>" /><input type="hidden" name="dbapprover<?php echo $key; ?>" value="<?php echo $value[2]; ?>" /><br>
+							<?php endif; ?>
+						<?php endforeach; ?>
+						<?php else : ?>
+							No approvers has been set
+						<?php endif; ?>
+					</div>
+
+				</div>
+				<div class="righttalign">
+					<?php
+						$microsec = microtime();
+						$micsec = explode(' ', $microsec);
+						$finsec = str_replace('.', '', $micsec[1].$micsec[0]);
+					?>
+					<input id="ndays" type="hidden" name="ndays" value="<?php echo $dayn; ?>" />
+					<input type="hidden" name="empid" value="<?php echo $profile_idnum; ?>" />
+					<input type="hidden" name="reqnbr" value="<?php echo "MD-".$finsec; ?>" />
+					<input type="hidden" name="user" value="<?php echo $profile_idnum; ?>" />
+					<input id="btnwfhapply" type="submit" name="btnwfhapply" value="Submit" class="btn margintop10" />
+					<a href="<?php echo WEB; ?>/pending"><input type="button" onClick="localStorage.removeItem('wfh-entries');" name="btncancel" value="Cancel" class="redbtn margintop10" /></a>
+				</div>
+
+			</form>
+		</div>
+	</div>
+</div>
+
+<script>
+
+
+</script>
