@@ -15,11 +15,10 @@
 
             global $sroot, $profile_id, $unix3month;
 
-
-            // if($wfh_user[0]["EmpID"] == $profile_idnum && $wfh_user[0]["DBNAME"] == $profile_dbname){
-            // }else{
-            //     echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/login'</script>";
-            // }
+            if($wfh_user[0]["EmpID"] == $profile_idnum && $wfh_user[0]["DBNAME"] == $profile_dbname){
+            }else{
+                echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/login'</script>";
+            }
 
             $yesterday = date("d", strtotime('-1 day'));
 
