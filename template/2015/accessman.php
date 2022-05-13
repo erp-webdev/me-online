@@ -1,5 +1,37 @@
 <?php include(TEMP."/header.php"); ?>
+<div id="floatdiv" class="floatdiv invisible">                    
+                        
+<!-- ADD EMPLOYEE - BEGIN --> 
+<div id="aedit" class="fedit2" style="display: none;">
+    <div class="closebutton2 cursorpoint"><i class="fa fa-times-circle fa-3x redtext"></i></div>
+    
+    <!-- SEARCH APPROVERS - BEGIN --> 
+    <div id="asearch" class="fsearch invisible">
+        <div class="closebutton3 cursorpoint"><i class="fa fa-times-circle fa-3x redtext"></i></div>
+        <i class="fa fa-search"></i> Search employee <input id="apsrsearch" type="text" name="apsrsearch" placeholder="and press ENTER..." class="txtbox" /> <button id="btnapsrdel" name="btnapsrdel" class="btnapsrdel redbtn invisible">Delete this Approver</button>
+        <div id="apsr_data" class="apsr_data">
 
+        </div>
+        <div id="apsr_button" class="apsr_button centertalign">
+            <input id="apsrtbid" type="hidden" name="apsrtbid" />
+            <input id="apsrtbdb" type="hidden" name="apsrtbdb" />
+        </div>
+    </div>
+    <!-- SEARCH APPROVERS - END -->  
+    
+    <div id="appr_title" class="appr_title robotobold cattext dbluetext"></div>
+    <div id="appr_data">
+    
+    </div>
+    <div id="appr_button" class="appr_button centertalign">
+        <input id="appempid" type="hidden" name="appempid" />
+        <input id="appcount" type="hidden" name="appcount" />
+        <input id="appdbname" type="hidden" name="appdbname" />
+        <button id="btnapprovers" class="btn btnapprovers invisible">Update</button>
+    </div>
+</div>
+<!-- EDIT APPROVERS - END -->    
+</div>
 <div id="mainsplashtext" class="mainsplashtext lefttalign">  
     <div class="topsplashtext lefttalign robotobold cattext whitetext"><?php echo WELCOME; ?></div>
     <div class="leftsplashtext lefttalign"><?php include(TEMP."/menu.php"); ?></div>
@@ -37,17 +69,6 @@
             </style>
             
             <div id="empdata">
-                <div id="asearch" class="fsearch ">
-                    <div class="closebutton3 cursorpoint"><i class="fa fa-times-circle fa-3x redtext"></i></div>
-                    <i class="fa fa-search"></i> Search approver <input id="apsrsearch" type="text" name="apsrsearch" placeholder="and press ENTER..." class="txtbox" /> <button id="btnapsrdel" name="btnapsrdel" class="btnapsrdel redbtn invisible">Delete this Approver</button>
-                    <div id="apsr_data" class="apsr_data">
-
-                    </div>
-                    <div id="apsr_button" class="apsr_button centertalign">
-                        <input id="apsrtbid" type="hidden" name="apsrtbid" />
-                        <input id="apsrtbdb" type="hidden" name="apsrtbdb" />
-                    </div>
-                </div>
                 <table border="0" cellspacing="0" class="yourtableclass tdata width100per">
                     <?php if ($acman_data) : ?>
                     <tr>
