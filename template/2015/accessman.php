@@ -86,7 +86,7 @@
                         <th class="vertical">WFH</th>
                         <th class="vertical">ACCESS</th>
                     </tr>
-                    <tr class="cursorpoint trdata centertalign whitetext" attribute="<?php echo md5($value['EmpID']); ?>">
+                    <!-- <tr class="cursorpoint trdata centertalign whitetext" attribute="<?php echo md5($value['EmpID']); ?>">
                         <td><input type="text" class="smltxtbox" name="EmpID">
                             <input type="hidden" name="EmpIDDB"></td>
                         <td><span id="empname"></span></td>
@@ -101,7 +101,7 @@
                         <td style="text-align: left"><input type="checkbox" class="actoggle" name="wfh" value="wfh" id="wfh" <?php if($value['wfh']) echo'checked'; ?>></td>
                         <td style="text-align: left"><input type="checkbox" class="actoggle" name="forms" value="forms" id="forms" <?php if($value['forms']) echo'checked'; ?>></td>
                         <td style="text-align: left"><input type="checkbox" class="actoggle" name="access" value="access" id="access" <?php if($value['access']) echo'checked'; ?>></td>
-                    </tr>
+                    </tr> -->
                     <?php foreach ($acman_data as $key => $value) : ?>                                    
                     <tr class="cursorpoint trdata centertalign whitetext" attribute="<?php echo md5($value['EmpID']); ?>">
                         <td><?php echo $value['EmpID']; ?></td>
