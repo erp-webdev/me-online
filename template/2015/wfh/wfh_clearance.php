@@ -101,29 +101,6 @@
 		var wfh_app = angular.module('WFHApp', []);
 		wfh_app.controller('WFHController', ['$scope','$http', function($scope, $http){
 
-
-
-			
-
-			$scope.applyActivities = function(){
-
-				for(var i = 0; i < $scope.wfh_days.length; i++){
-					$scope.wfh_days[i].CREDIT = $scope.computeTotalDuration($scope.wfh_days[i].ACTIVITIES) ;
-					$scope.wfh_days[i].EXCESSHOURS = $scope.computeTotalExcessHours($scope.wfh_days[i].ACTIVITIES) ;
-
-					for(var j = 0; j < $scope.wfh_days[i].ACTIVITIES.length ; j++){
-						$scope.wfh_days[i].ACTIVITIES[j].excess = $scope.wfh_days[i].EXCESSHOURS;
-					}
-					if($scope.wfh_days[i].CREDIT > $scope.wfh_days[i].BREAKTIME)
-						$scope.wfh_days[i].CREDIT -= $scope.wfh_days[i].BREAKTIME;
-					else
-						$scope.wfh_days[i].CREDIT = 0;
-
-					$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].ACTIVITIES));
-				}
-
-			}
-
 			$scope.$watchGroup(['wfh_from', 'wfh_to'], function(newVal, oldVal){
 
 				$scope.applied_warn = false;
