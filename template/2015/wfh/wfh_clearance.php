@@ -32,8 +32,8 @@
 					<div id="ldetails"  ng-app="WFHApp" ng-controller="WFHController">
 						<table class="tdataform" border="0" cellspacing="0" width="100%">
                             <tr>
-								<td width="15%"><b>Type</b></td>
-								<td width="85%">
+								<td width="25%"><b>Type</b></td>
+								<td width="75%">
                                     <select name="wfh_type" id="wfh_type" class="txtbox width95per">
                                         <option value="sickness"  selected>Sickness / Illness</option>
                                         <!-- <option value="regular">Regular Work</option> -->
@@ -41,8 +41,8 @@
                                 </td>
 							</tr>
 							<tr>
-								<td width="15%"><b>Covered Period: </b></td>
-								<td width="85%">
+								<td width="25%"><b>Covered Period: </b></td>
+								<td width="75%">
                                     <input id="wfh_from_" type="text" name="wfh_from" attribute1="<?php echo $limit_from; ?>" value="" class="txtbox datepickwh_" readonly ng-model="wfh_from"/> - <input id="wfh_to_" attribute1="<?php echo $limit_from; ?>" type="text" name="wfh_to" value="" class="txtbox datepickwh_" readonly ng-model="wfh_to"/>
                                 </td>
 							</tr>
