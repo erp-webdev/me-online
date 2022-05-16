@@ -4,7 +4,7 @@
 	<div class="leftsplashtext lefttalign"><?php include(TEMP."/menu.php"); ?></div>
 	<div class="rightsplashtext lefttalign">
 		<div id="mainwfh" class="mainbody lefttalign whitetext">
-			<b class="mediumtext lorangetext">Work From Home</b> <small><i></i></small><br><br>
+			<b class="mediumtext lorangetext">Work From Home Clearance</b> <small><i></i></small><br><br>
 			<b>MAIN INFORMATION</b><br><br>
 			<div class="column2">
 				<b><?php echo ucfirst($profile_nadd); ?> ID: </b><?php echo $profile_idnum; ?><br>
@@ -18,7 +18,7 @@
 			<?php if(!$wfh_user[0]["end_date"]){ ?>
 			<div class="mleave_msg" style="padding: 10px; text-align: center; color: rgb(156, 0, 6); background: rgb(255, 199, 206);
 			border: 2px solid rgb(156, 0, 6); height: auto; display: block;">
-                You have no access to WFH Application. Please submit a WFH clearance.
+                You have no access to WFH Application. Please submit a WFH clearance and provide necessary attachment for approval.
             </div>
 			<?php } ?>
 			
@@ -31,9 +31,20 @@
 
 					<div id="ldetails"  ng-app="WFHApp" ng-controller="WFHController">
 						<table class="tdataform" border="0" cellspacing="0" width="100%">
+                            <tr>
+								<td width="15%"><b>Type</b></td>
+								<td width="85%">
+                                    <select name="wfh_type" id="wfh_type">
+                                        <option value="sickness" selected>Sickness / Illness</option>
+                                        <!-- <option value="regular">Regular Work</option> -->
+                                    </select>
+                                </td>
+							</tr>
 							<tr>
-								<td width="15%"><b>DTR Date: </b></td>
-								<td width="85%"><input id="wfh_from_" type="text" name="wfh_from" attribute1="<?php echo $limit_from; ?>" value="" class="txtbox datepickwh_" readonly ng-model="wfh_from"/> - <input id="wfh_to_" attribute1="<?php echo $limit_from; ?>" type="text" name="wfh_to" value="" class="txtbox datepickwh_" readonly ng-model="wfh_to"/></td>
+								<td width="15%"><b>Covered Period: </b></td>
+								<td width="85%">
+                                    <input id="wfh_from_" type="text" name="wfh_from" attribute1="<?php echo $limit_from; ?>" value="" class="txtbox datepickwh_" readonly ng-model="wfh_from"/> - <input id="wfh_to_" attribute1="<?php echo $limit_from; ?>" type="text" name="wfh_to" value="" class="txtbox datepickwh_" readonly ng-model="wfh_to"/>
+                                </td>
 							</tr>
 							<tr>
 								<td width="100%" colspan="3">
