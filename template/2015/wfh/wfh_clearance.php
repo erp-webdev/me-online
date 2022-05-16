@@ -4,7 +4,7 @@
 	<div class="leftsplashtext lefttalign"><?php include(TEMP."/menu.php"); ?></div>
 	<div class="rightsplashtext lefttalign">
 		<div id="mainwfh" class="mainbody lefttalign whitetext">
-			<b class="mediumtext lorangetext">Work From Home</b> <small><i>Beta</i></small><br><br>
+			<b class="mediumtext lorangetext">Work From Home</b> <small><i></i></small><br><br>
 			<b>MAIN INFORMATION</b><br><br>
 			<div class="column2">
 				<b><?php echo ucfirst($profile_nadd); ?> ID: </b><?php echo $profile_idnum; ?><br>
@@ -15,11 +15,11 @@
 			</div><br>
 
 			<div id="alert"></div>
-			<?php if($wfh_user[0]["end_date"]){ ?>
+			<?php if(!$wfh_user[0]["end_date"]){ ?>
 			<div class="mleave_msg" style="padding: 10px; text-align: center; color: rgb(156, 0, 6); background: rgb(255, 199, 206);
-			border: 2px solid rgb(156, 0, 6); height: auto; display: block;">Your WFH applications from <?php echo $wfh_user[0]["start_convert"]; ?> to <?php echo $wfh_user[0]["end_convert"]; ?> can be filed until <?php echo $wfh_user[0]["end_warning"]; ?> only.</br>
-			<b>Your access to WFH Application will be disabled after <?php echo $wfh_user[0]["end_warning"]; ?>.</b>
-			</div>
+			border: 2px solid rgb(156, 0, 6); height: auto; display: block;">
+                You have no access to WFH Application. Please submit a WFH clearance.
+            </div>
 			<?php } ?>
 			
 			<form id="frmapplywd" name="frmapplywd" action="?ignore-page-cache=true" method="post" enctype="multipart/form-data">
