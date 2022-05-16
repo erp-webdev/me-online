@@ -29,7 +29,7 @@
 						<li><a href="#lapprover">Approvers</a></li>
 					</ul>
 
-					<div id="ldetails"  ng-app="WFHApp" ng-controller="WFHController">
+					<div id="ldetails"  >
 						<table class="tdataform" border="0" cellspacing="0" width="100%">
                             <tr>
 								<td width="25%"><b>Type</b></td>
