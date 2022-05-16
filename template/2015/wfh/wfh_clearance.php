@@ -87,8 +87,8 @@
 					<input type="hidden" name="empid" value="<?php echo $profile_idnum; ?>" />
 					<input type="hidden" name="reqnbr" value="<?php echo "WC-".$finsec; ?>" />
 					<input type="hidden" name="user" value="<?php echo $profile_idnum; ?>" />
-					<input id="btnwfhapply" type="submit" name="btnwfhapply" value="Submit" class="btn margintop10" />
-					<a href="<?php echo WEB; ?>/pending"><input type="button" onClick="localStorage.removeItem('wfh-entries');" name="btncancel" value="Cancel" class="redbtn margintop10" /></a>
+					<input id="btnwfhclearanceapply" type="submit" name="btnwfhclearanceapply" value="Submit" class="btn margintop10" />
+					<a href="<?php echo WEB; ?>/pending"><input type="button"  name="btncancel" value="Cancel" class="redbtn margintop10" /></a>
 				</div>
 
 			</form>
