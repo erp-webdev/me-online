@@ -102,60 +102,8 @@
 		wfh_app.controller('WFHController', ['$scope','$http', function($scope, $http){
 
 
-			angular.element(document).ready(function () {
 
-
-				$scope.applyActivities();
-
-
-			});
-
-			$scope.isHoliday = function($dtr){
-				var isHol = false;
-				$scope.holidays.forEach(holiday => {
-					if(holiday == $dtr){
-						isHol = true;
-					}
-				});
-
-				return isHol;
-			}
-
-			$scope.isApplied = function($dtr){
-				var isApl = false;
-				if($scope.applied){
-					$scope.applied.forEach(date => {
-						if(date == $dtr){
-							isApl = true;
-						}
-					});
-				}
-
-				return isApl;
-			}
-
-			$scope.isWeekends = function($dtr){
-				$dtr = new Date($dtr);
-				// Saturday or Sunday
-				return $dtr.getDay() == 6 || $dtr.getDay() == 0;
-			}
-
-			$scope.isOVerSix = function($activities){
-				over_six = false;
-				six = new Date('01/01/1900 ' + '6:00 pm');
-
-				$activities.forEach(act => {
-
-					endTime = new Date('01/01/1900 ' + act.end_time);
-
-					if(endTime > six){
-						over_six = true;
-					}
-
-				});
-
-				return over_six;
-			}
+			
 
 		}]);
 	});
