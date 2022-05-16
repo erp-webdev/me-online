@@ -98,6 +98,8 @@
 	        changeYear: true
 	    });
 
+		var wfh_app = angular.module('WFHApp', []);
+		
 	});
 
 </script>
