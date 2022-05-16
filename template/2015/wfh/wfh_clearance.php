@@ -101,44 +101,7 @@
 		var wfh_app = angular.module('WFHApp', []);
 		wfh_app.controller('WFHController', ['$scope','$http', function($scope, $http){
 
-			$scope.timePick = function($event){
-				var date = angular.element($event.currentTarget).attr("attribute1");
-
-				var getTimeOption = function(event){
-					var opt = {
-						timeFormat: "hh:mm tt",
-						stepHour: 1,
-						stepMinute: 15,
-						hourMin: 0,
-						hourMax: 23,
-						defaultValue: null,
-						minTime: null,
-						maxTime: null,
-					}
-
-					if(event.$index == 0){
-						if($($event.currentTarget).attr('id') == 'start_time'){
-							if(event.activity.start_time == '' || event.activity.start_time == null )
-								opt.defaultValue = '08:00 am';
-						}else{
-							opt.minTime = event.activity.start_time;
-						}
-
-					}else{
-						if($($event.currentTarget).attr('id') == 'start_time'){
-							opt.minTime = event.$parent.wfh_day.ACTIVITIES[event.$index - 1].end_time;
-						}else{
-							opt.minTime = event.activity.start_time;
-						}
-					}
-
-					return opt;
-
-				}
-
-				angular.element($event.currentTarget).timepicker('destroy').timepicker(getTimeOption(this));
-				angular.element($event.currentTarget).timepicker("show");
-			}
+		
 
 			$scope.applied_warn = false;
 
