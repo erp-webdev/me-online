@@ -27,6 +27,7 @@
 					<ul>
 						<li><a href="#ldetails">Details</a></li>
 						<li><a href="#lapprover">Approvers</a></li>
+                        <li><a href="#lattach">Attachments</a></li>
 					</ul>
 
 					<div id="ldetails"  >
@@ -66,6 +67,15 @@
 							No approvers has been set
 						<?php endif; ?>
 					</div>
+                    <div id="lattach">
+                        <input id="attachment1" type="file" name="attachment1" class="whitetext" /><br>
+                        <input id="attachment2" type="file" name="attachment2" class="whitetext" /><br>
+                        <input id="attachment3" type="file" name="attachment3" class="whitetext" /><br>
+                        <input id="attachment4" type="file" name="attachment4" class="whitetext" /><br>
+                        <input id="attachment5" type="file" name="attachment5" class="whitetext" />
+                        <br><br>
+                        <i>* it must be PDF or image (JPG or GIF) and not more than 200Kb each</i>
+                    </div>
 				</div>
 				<div class="righttalign">
 					<?php
