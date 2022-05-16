@@ -50,7 +50,7 @@
                             <tr>
 								<td width="25%"><b>Reason: </b></td>
 								<td width="75%">
-                                    <textarea name="reason" id="reason" cols="30" rows="10" class="txtarea width95per"></textarea>
+                                    <textarea name="reason" id="reason" cols="30" rows="4" class="txtarea width95per"></textarea>
                                 </td>
 							</tr>
 						</table>
