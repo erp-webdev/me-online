@@ -34,8 +34,8 @@
                             <tr>
 								<td width="15%"><b>Type</b></td>
 								<td width="85%">
-                                    <select name="wfh_type" id="wfh_type">
-                                        <option value="sickness" selected>Sickness / Illness</option>
+                                    <select name="wfh_type" id="wfh_type" class="txtbox width95per">
+                                        <option value="sickness"  selected>Sickness / Illness</option>
                                         <!-- <option value="regular">Regular Work</option> -->
                                     </select>
                                 </td>
