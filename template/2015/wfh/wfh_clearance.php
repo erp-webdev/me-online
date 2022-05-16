@@ -102,66 +102,6 @@
 		wfh_app.controller('WFHController', ['$scope','$http', function($scope, $http){
 
 
-
-			$scope.includeFunction = function($event){
-
-				var breaktime = angular.element($event.currentTarget).attr("value");
-				var date = angular.element($event.currentTarget).attr("attribute1");
-
-				if(breaktime == 0){
-					breaktime = 1;
-				}else{
-					breaktime = 0;
-				}
-
-				angular.element($event.currentTarget).attr("value", breaktime);
-
-				var days_data = JSON.stringify($scope.wfh_days);
-				days_data = JSON.parse(days_data);
-
-				angular.forEach(days_data, function(value, key){
-					if(value.DTR == date){
-						value.BREAKTIME = breaktime;
-					}
-				});
-
-				$scope.wfh_days = days_data;
-
-			}
-
-			$scope.$watch('wfh_days', function(newVal, oldVal, $scope){
-
-
-				for(var i = 0; i < $scope.wfh_days.length; i++){
-					$scope.wfh_days[i].CREDIT = $scope.computeTotalDuration($scope.wfh_days[i].ACTIVITIES) ;
-					$scope.wfh_days[i].EXCESSHOURS = $scope.computeTotalExcessHours($scope.wfh_days[i].ACTIVITIES) ;
-
-					for(var j = 0; j < $scope.wfh_days[i].ACTIVITIES.length ; j++){
-						$scope.wfh_days[i].ACTIVITIES[j].excess = $scope.wfh_days[i].EXCESSHOURS;
-					}
-					if($scope.wfh_days[i].CREDIT > $scope.wfh_days[i].BREAKTIME)
-						$scope.wfh_days[i].CREDIT -= $scope.wfh_days[i].BREAKTIME;
-					else
-						$scope.wfh_days[i].CREDIT = 0;
-
-					$('#wfh_activity'+eval(i+1)).text(JSON.stringify($scope.wfh_days[i].ACTIVITIES));
-				}
-
-				localStorage.setItem('wfh-entries', JSON.stringify($scope.wfh_days));
-			}, true);
-
-			$scope.addItem = function(index, act){
-
-				$scope.wfh_days[index].ACTIVITIES.push(
-					{start_time : $scope.wfh_days[index].ACTIVITIES[act].end_time, end_time : null, act: '', excess: 0}
-				);
-
-			}
-
-			$scope.delItem = function(index, act){
-				$scope.wfh_days[index].ACTIVITIES.splice(act, 1);
-			}
-
 			angular.element(document).ready(function () {
 
 
