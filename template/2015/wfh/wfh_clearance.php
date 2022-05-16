@@ -26,8 +26,8 @@
 				<div id="tabs">
 					<ul>
 						<li><a href="#ldetails">Details</a></li>
-						<li><a href="#lapprover">Approvers</a></li>
                         <li><a href="#lattach">Attachments</a></li>
+						<li><a href="#lapprover">Approvers</a></li>
 					</ul>
 
 					<div id="ldetails"  >
