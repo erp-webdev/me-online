@@ -1,5 +1,24 @@
 <?php include(TEMP."/header.php"); ?>
-
+        <style>
+            .print {
+                display:block;
+            }
+            .no-print{
+                display:block;
+            }
+            @media print{
+                .print {
+                    display:block;
+                    overflow:none !important;
+                    max-height:100%  !important;
+                    margin-top:inherit  !important;
+                }
+                .no-print{
+                    display:none;
+                }
+                
+            }
+        </style>
     <!-- BODY -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <script type="text/javascript" src="<?php echo JS; ?>/addon-jqueryv2.min.js"></script>
@@ -22,5 +41,11 @@
                 </div>
             </div>
         </div>
-
+        <script>
+            var jsPrintAll = function () {
+            setTimeout(function () {
+                window.print();
+            }, 500);
+        }
+        </script>
 <?php include(TEMP."/footer.php"); ?>

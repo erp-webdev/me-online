@@ -1,9 +1,9 @@
-                <div id="paf" class="mainbody lefttalign whitetext">
+                <div id="paf" class="mainbody lefttalign whitetext print">
                 <?php if(count($checkEvaluation) > 0 && $pafad == 'rater') {  ?>
 
                     <b class="mediumtext lorangetext"><a href="<?php echo WEB; ?>/paf?groupid=<?php echo $groupid; ?>"><i class="mediumtext fa fa-arrow-left" style="color:#fff;opacity:.8;"></i></a> Performance Appraisal Viewer <?php if($pafad == 'divhead'){ echo '- Division Head'; } elseif($pafad == 'rater') { echo '- Supervisor/Approver'; } ?></b><br>
                         <!--<p>You're a ratee!</p>-->
-                        <div style="overflow-y:scroll;max-height:514px;margin-top:10px;">
+                        <div class="print" style="overflow-y:scroll;max-height:514px;margin-top:10px;">
                         <?php foreach($checkEvaluation as $row) { ?>
                         <hr style="width:99%;" />
                         <table style="width:98%;">
@@ -1053,7 +1053,7 @@
                         <!-- Checks if user is Ratee -->
                         <a href="<?php echo WEB; ?>/paf?groupid=<?php echo $groupid; ?>"><i class="mediumtext fa fa-arrow-left" style="color:#fff;opacity:.8;"></i></a> <b class="mediumtext lorangetext">Ratee - Appraisal Rating Result</b><br>
                         <!--<p>You're a ratee!</p>-->
-                        <div style="overflow-y:scroll;max-height:514px;margin-top:10px;">
+                        <div class="print" style="overflow-y:scroll;max-height:514px;margin-top:10px;">
                             <?php foreach($viewAppraisal as $row) { ?>
                             <input type="hidden" value="<?php echo $row['pafid']; ?>" name="pafid" />
                             <hr />
