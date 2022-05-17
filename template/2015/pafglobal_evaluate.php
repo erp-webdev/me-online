@@ -9,7 +9,7 @@
             <div class="leftsplashtext lefttalign"><?php include(TEMP."/menu.php"); ?></div>
             <div class="rightsplashtext lefttalign">
                 <div id="pafevaluateglobal" class="mainbody lefttalign whitetext">  
-                    <div class="printform">
+                    <div class="print">
                     <?php 
                         // Page versions
                         $appdt = date('Y-m-d', strtotime($evaluateRatee[0]['appdt']));

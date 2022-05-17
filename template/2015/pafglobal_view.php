@@ -1,7 +1,7 @@
 <?php include(TEMP."/header.php"); ?>
         <style>
             .print {
-                display:none;
+                display:block;
             }
             .no-print{
                 display:block;
