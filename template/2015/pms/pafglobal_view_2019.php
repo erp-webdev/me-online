@@ -1,6 +1,6 @@
 
                 <?php if(count($checkEvaluation) > 0 && $pafad == 'rater') {  ?>
-                <div id="paf" class="mainbody lefttalign whitetext">
+                <div id="paf" class="mainbody lefttalign whitetext print">
                 <?php $rtrstat = 'Approved'; $dhstat = 1; if($sub == 1 && $rstat1 == 1){ $param1 = 1; } elseif($sub == 2 && $rstat2 == 1) { $param1 = 1; } elseif($sub == 3 && $rstat3 == 1) { $param1 = 1; } elseif($sub == 4 && $rstat4 == 1) { $param1 = 1; } else { $param1 = 0; } ?>
 
                     <?php foreach($checkEvaluation as $row) {
@@ -15,7 +15,7 @@
 
                     ?>
                     <b class="mediumtext lorangetext"><a href="<?php echo WEB; ?>/pafglobal?groupid=<?php echo $groupid; ?>"><i class="mediumtext fa fa-arrow-left" style="color:#fff;opacity:.8;"></i></a> Performance Appraisal Viewer <?php if($pafad == 'divhead'){ echo '- Division Head'; } elseif($pafad == 'rater') { echo '- Supervisor/Approver'; } ?></b><br>
-                    <div style="overflow-y:scroll;max-height:514px;margin-top:10px;"><!-- wrapper -->
+                    <div class="print" style="overflow-y:scroll;max-height:514px;margin-top:10px;"><!-- wrapper -->
                     <!-- * FORM * -->
                     <form id="frm_pafview" class="formx"  method="post" enctype="multipart/form-data">
                         <?php if($flashRater == $sub) { $max1i = 1; ?><input type="hidden" name="final" value="Completed"><?php } else { $max1i = 2; ?> <input type="hidden" name="final" value="Incomplete"> <?php } ?>
@@ -1425,7 +1425,7 @@
 
                 <?php } elseif (count($viewAppraisal) > 0 && $pafad == 'ratee') { ?>
 
-                <div id="paf" class="mainbody lefttalign whitetext">
+                <div id="paf" class="mainbody lefttalign whitetext print">
                   <?php foreach($viewAppraisal as $row) {
 
                     $gresp = $row['gresp'];
@@ -1438,7 +1438,7 @@
 
                     ?>
                     <b class="mediumtext lorangetext"><a href="<?php echo WEB; ?>/pafglobal?groupid=<?php echo $groupid; ?>"><i class="mediumtext fa fa-arrow-left" style="color:#fff;opacity:.8;"></i></a> Performance Appraisal Viewer <?php if($pafad == 'divhead'){ echo '- Division Head'; } elseif($pafad == 'rater') { echo '- Supervisor/Approver'; } ?></b><br>
-                    <div style="overflow-y:scroll;max-height:514px;margin-top:10px;"><!-- wrapper -->
+                    <div class="print" style="overflow-y:scroll;max-height:514px;margin-top:10px;"><!-- wrapper -->
 
                     <!-- * FORM * -->
                      <form id="frm_pafview" class="formg" method="post" enctype="multipart/form-data">
