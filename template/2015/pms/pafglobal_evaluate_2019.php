@@ -2,7 +2,7 @@
 <!-- <?php //echo "tt:: " . ini_get('session.gc_maxlifetime'); ?> -->
 <?php if (count($evaluateRatee) > 0) { ?>
 <b class="mediumtext lorangetext"><a href="<?php echo WEB; ?>/pafglobal?groupid=<?php echo $groupid; ?>"><i class="mediumtext fa fa-arrow-left" style="color:#fff;opacity:.8;"></i></a> Performance Appraisal Form - Supervisor/Rater</b><br><br>
-<div style="overflow-x:none;overflow-y:scroll;max-height:514px;">
+<div class="print" style="overflow-x:none;overflow-y:scroll;max-height:514px;">
 
 <form id="frm_paf" method="post" <?php //action="?ignore-page-cache=true" ?> enctype="multipart/form-data">
         <fieldset>
