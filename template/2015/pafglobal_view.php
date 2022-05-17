@@ -9,9 +9,9 @@
             @media print{
                 .print {
                     display:block;
-                    overflow:none;
-                    max-height:100%;
-                    margin-top:inherit;
+                    overflow:none !important;
+                    max-height:100%  !important;
+                    margin-top:inherit  !important;
                 }
                 .no-print{
                     display:none;
