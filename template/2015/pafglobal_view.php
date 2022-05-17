@@ -9,7 +9,7 @@
             @media print{
                 .print {
                     display:block;
-                    overflow-y:none;
+                    overflow:none;
                     max-height:100%;
                     margin-top:inherit;
                 }
