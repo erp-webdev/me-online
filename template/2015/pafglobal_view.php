@@ -9,10 +9,14 @@
             @media print{
                 .print {
                     display:block;
+                    overflow-y:none;
+                    max-height:100%;
+                    margin-top:inherit;
                 }
                 .no-print{
                     display:none;
                 }
+                
             }
         </style>
     <!-- BODY -->
