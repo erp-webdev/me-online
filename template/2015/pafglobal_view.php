@@ -1,5 +1,20 @@
 <?php include(TEMP."/header.php"); ?>
-
+        <style>
+            .print {
+                display:none;
+            }
+            .no-print{
+                display:block;
+            }
+            @media print{
+                .print {
+                    display:block;
+                }
+                .no-print{
+                    display:none;
+                }
+            }
+        </style>
     <!-- BODY -->
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
         <script type="text/javascript" src="<?php echo JS; ?>/addon-jqueryv2.min.js"></script>
@@ -8,7 +23,7 @@
             <div class="topsplashtext lefttalign robotobold cattext whitetext"><?php echo SYSTEMNAME; ?></div>
             <div class="leftsplashtext lefttalign"><?php include(TEMP."/menu.php"); ?></div>
             <div class="rightsplashtext lefttalign">
-
+                <div class="print">
                 <?php 
                     // Page versions
                     if($pafad == 'ratee'){
@@ -27,10 +42,17 @@
                     }
 
                  ?>
-
+                </div>
             </div>
         </div>
 
+        <script>
+            var jsPrintAll = function () {
+            setTimeout(function () {
+                window.print();
+            }, 500);
+        }
+        </script>
 <?php include(TEMP."/footer.php"); ?>
 
 
