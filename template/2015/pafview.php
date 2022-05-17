@@ -25,8 +25,8 @@
         <div id="mainsplashtext" class="mainsplashtext lefttalign">
             <div class="topsplashtext lefttalign robotobold cattext whitetext"><?php echo WELCOME; ?></div>
             <div class="leftsplashtext lefttalign"><?php include(TEMP."/menu.php"); ?></div>
-            <div class="rightsplashtext lefttalign print">
-
+            <div class="rightsplashtext lefttalign ">
+                <div class="print">
                 <?php
 
                     if($pafad == 'ratee'){
@@ -41,7 +41,7 @@
                         include(TEMP.'/pms/pafview_2019.php');
                     }
                  ?>
-
+                </div>
             </div>
         </div>
         <script>
