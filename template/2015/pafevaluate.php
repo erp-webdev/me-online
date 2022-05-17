@@ -26,8 +26,8 @@
                 <div class="topsplashtext lefttalign robotobold cattext whitetext"><?php echo WELCOME; ?></div>
                 <div class="leftsplashtext lefttalign"><?php include(TEMP."/menu.php"); ?></div>
                 <div class="rightsplashtext lefttalign">
-                    <div id="pafevaluate" class="mainbody lefttalign whitetext print">  
-                        
+                    <div id="pafevaluate" class="mainbody lefttalign whitetext ">  
+                        <div class="print">
                         <?php 
 
                             $appdt = date('Y-m-d', strtotime($evaluateRatee[0]['appdt']));
@@ -37,7 +37,7 @@
                                 include(TEMP.'/pms/pafevaluate_2019.php');
 
                          ?>
-
+                        </div>
                     </div>
                 </div>
                 <script>
