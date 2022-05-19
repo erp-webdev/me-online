@@ -726,6 +726,7 @@
                                                         <td width="150px">Promotion To Level</td>
                                                         <td>
                                                             <input type="text" id="promoteto" class="promotion" name="promotion" list="ranks" value="<?php echo $row['promote']; ?>" autocomplete="off" onChange="" onClick="this.value = '';" data-promote="<?php echo $row['randesc']; ?>" width="200px">
+                                                            <br>
                                                             Current rank is "<?php echo $row['randesc']; ?>"
 
                                                             <datalist id="ranks">
