@@ -1053,7 +1053,7 @@
                         <!-- Checks if user is Ratee -->
                         <a href="<?php echo WEB; ?>/paf?groupid=<?php echo $groupid; ?>"><i class="mediumtext fa fa-arrow-left" style="color:#fff;opacity:.8;"></i></a> <b class="mediumtext lorangetext">Ratee - Appraisal Rating Result</b><br>
                         <!--<p>You're a ratee!</p>-->
-                        <div class="print" style="overflow-y:scroll;max-height:514px;margin-top:10px;">
+                        <div >
                             <?php foreach($viewAppraisal as $row) { ?>
                             <input type="hidden" value="<?php echo $row['pafid']; ?>" name="pafid" />
                             <hr />
@@ -1080,7 +1080,7 @@
                             </table>
                             <hr />
                             <?php } ?>
-
+                            <div class="print" style="overflow-y:scroll;max-height:514px;margin-top:10px;">
                             <!-- Competency Assessment -->
                             <h4>I. Comptency Assessment</h4>
 
@@ -1426,6 +1426,7 @@
                                 <?php } ?>
                             <!-- End of foreach looping -->
                             <?php } ?>
+                            </div>
                         </div>
                         <!-- end of ratee form -->
                         </form>
