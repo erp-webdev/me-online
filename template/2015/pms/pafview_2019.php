@@ -3,7 +3,7 @@
 
                     <b class="mediumtext lorangetext"><a href="<?php echo WEB; ?>/paf?groupid=<?php echo $groupid; ?>"><i class="mediumtext fa fa-arrow-left" style="color:#fff;opacity:.8;"></i></a> Performance Appraisal Viewer <?php if($pafad == 'divhead'){ echo '- Division Head'; } elseif($pafad == 'rater') { echo '- Supervisor/Approver'; } ?></b><br>
                         <!--<p>You're a ratee!</p>-->
-                        <div class="print" style="overflow-y:scroll;max-height:514px;margin-top:10px;">
+                        <div>
                         <?php foreach($checkEvaluation as $row) { ?>
                         <hr style="width:99%;" />
                         <table style="width:98%;">
@@ -51,7 +51,7 @@
                             }
                         ?>
                         <?php } ?>
-
+                            <div  class="print" style="overflow-y:scroll;max-height:514px;margin-top:10px;">
                             <!-- Competency Assessment -->
                             <h4>I. Competency Assessment</h4>
                             <!-- Rating Guide -->
@@ -887,7 +887,7 @@
                                 <?php } ?>
                             <!-- end of comments and approval -->
                             <?php } ?>
-
+                            </div>
                             </div>
                         <?php if ($pafad == 'rater' && $rtrstat == 'Approved' && $dhstat != $param1) { ?>
                         <!-- end of cheking if not yet approved by the division head -->
