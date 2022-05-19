@@ -782,20 +782,25 @@
                                                             </datalist>
                                                         </td>
                                                     </tr>
+                                                    <?php if($max1i == 1) { ?>
+                                                        <tr>
+                                                            <td width="150px">Salary Increase</td>
+                                                            <td>
+                                                                <input type="number" min="1" max="100" name="increase" value="<?php echo $row['recinc']; ?>"> %
+                                                            </td>
+                                                        </tr>
+                                                            
+                                                    <?php } else { ?>
+                                                        <!-- <input type="hidden" name="increase" value=""> -->
+                                                        <!-- <input type="hidden" name="promotion" value=""> -->
+                                                    <?php } ?>
                                                 </table>
                                                 <p>
                                                     
                                                 </p>
                                                 
 
-                                            <?php if($max1i == 1) { ?>
-                                                <p>
-                                                    Salary Increase: <input type="number" min="1" max="100" name="increase" value="<?php echo $row['recinc']; ?>">%
-                                                </p>
-                                            <?php } else { ?>
-                                                <!-- <input type="hidden" name="increase" value=""> -->
-                                                <!-- <input type="hidden" name="promotion" value=""> -->
-                                            <?php } ?>
+                                            
 
                                             <p><strong>Promotion History for the last 3 years :</strong> <br>  <?php if(!empty($row['ProHistory'])) echo $row['ProHistory']; else echo 'Not Set'; ?></p>
                                             <p><strong>Attendance and Punctuality History for the last 3 years :</strong> <br>  <?php if(!empty($row['APComment'])) echo $row['APComment']; else echo 'Not Set'; ?></p>
