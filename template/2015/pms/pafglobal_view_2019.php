@@ -890,6 +890,9 @@
                                             </datalist>
                                             <input type="text" class="promotion" id="promotion" name="promotion" value="<?php echo $checkEvaluation[0]['promote']; ?>" list="ranks" autocomplete="off" onChange="fnAlltotalpcc()" onclick="this.value = '';" data-promote="<?php echo $checkEvaluation[0]['randesc']; ?>" style="width: 350px !important">
                                             <br><br>
+                                            Current Position title is <b>"<?php echo $checkEvaluation[0]['posdesc']; ?>"</b>
+                                                            
+                                            <br><br>
                                             Current rank is <b>"<?php echo $checkEvaluation[0]['randesc']; ?>" </b>
                                             <br>
                                             <?php if($checkEvaluation[0]['promote']  == $ranks[array_search($checkEvaluation[0]['randesc'], $ranks) + 1]) : ?>
@@ -908,6 +911,9 @@
                                         <td style="vertical-align:top; width:150px">New Position Title</td>
                                         <td>
                                             <input type="text" name="promotionpos" value="<?php echo $checkEvaluation[0]['promotePos']; ?>" style="width: 350px !important">
+                                            <br><br>
+                                                            Current Position title is <b>"<?php echo $row['posdesc']; ?>"</b>
+                                                            
                                         </td>
                                     </tr>
                                     <?php if($max1i == 1) { ?>
