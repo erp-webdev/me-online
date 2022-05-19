@@ -193,7 +193,7 @@
                     <?php } ?>
 
                     <?php $counter = 0; $ratercount = array("1", "2", "3", "4"); ?>
-                    <div id="tabs" >
+                    <div id="tabslist" >
                         <ul>
                         <?php foreach($ratercount as $c) { if(count(${"rater$c"}) > 0) { ?>
                             <?php if($c == 1){ ?>
