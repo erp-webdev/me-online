@@ -942,7 +942,8 @@
                             'Senior Manager 1',
                             'Senior Manager 2',
                             'Director 1',
-                            'Director 2'
+                            'Director 2',
+                            'ASSISTANT VICE PRESIDENT'
                             ];
 
                             $i = false;
