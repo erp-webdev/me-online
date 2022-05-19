@@ -264,6 +264,16 @@
                     });
 
                     $( "#tabslist" ).tabs( "option", "active", <?php echo isset($_GET[sub]) ? $_GET['sub'] - 1 : 0; ?>);
+                    
+                    $(document).ready(function () {
+                        var target = $('#<?php echo $_GET['ref']; ?>')
+                        if (target.length) {
+                            $('html,body').animate({
+                                scrollTop: target.offset().top
+                            }, 1000);
+                            return false;
+                        }
+                    });
 
                     $(function() {
                         $('a[href*=#]:not([href=#])').click(function() {
