@@ -15,7 +15,8 @@
 
                     ?>
                     <b class="mediumtext lorangetext"><a href="<?php echo WEB; ?>/pafglobal?groupid=<?php echo $groupid; ?>"><i class="mediumtext fa fa-arrow-left" style="color:#fff;opacity:.8;"></i></a> Performance Appraisal Viewer <?php if($pafad == 'divhead'){ echo '- Division Head'; } elseif($pafad == 'rater') { echo '- Supervisor/Approver'; } ?></b><br>
-                    <div class="print" style="overflow-y:scroll;max-height:514px;margin-top:10px;"><!-- wrapper -->
+                    <!-- <div class="print" style="overflow-y:scroll;max-height:514px;margin-top:10px;"> -->
+                    <!-- wrapper -->
                     <!-- * FORM * -->
                     <form id="frm_pafview" class="formx"  method="post" enctype="multipart/form-data">
                         <?php if($flashRater == $sub) { $max1i = 1; ?><input type="hidden" name="final" value="Completed"><?php } else { $max1i = 2; ?> <input type="hidden" name="final" value="Incomplete"> <?php } ?>
@@ -60,6 +61,7 @@
                             </tbody>
                         </table>
                         <hr></hr>
+                    <div class="print" style="overflow-y:scroll;max-height:514px;margin-top:10px;">
 
                         <div style="border:2px solid #fff;padding-left:5px;width:98%;">
                             <p><strong>Use the following rating scale for each relevant part of this form :</strong></p>
