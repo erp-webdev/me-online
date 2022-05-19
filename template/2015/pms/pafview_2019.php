@@ -51,7 +51,7 @@
                             }
                         ?>
                         <?php } ?>
-                            <div  class="print" style="overflow-y:scroll;max-height:514px;margin-top:10px;">
+                            <div  class="print" style="overflow-y:scroll;max-height:400px;margin-top:10px;">
                             <!-- Competency Assessment -->
                             <h4>I. Competency Assessment</h4>
                             <!-- Rating Guide -->
