@@ -724,19 +724,17 @@
                                                 <table>
                                                     <tr>
                                                         <td width="150px">Promotion To Level</td>
-                                                        <td><input type="text" id="promoteto" class="promotion" name="promotion" list="ranks" value="<?php echo $row['promote']; ?>" autocomplete="off" onChange="" onClick="this.value = '';" data-promote="<?php echo $row['randesc']; ?>" width="200px"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td width="150px">New Position Title</td>
                                                         <td>
-                                                            <input type="text" id="promotetoPos" class="promotetoPos" name="promotetoPos" value="<?php echo $row['promotePos']; ?>">&nbsp;&nbsp;&nbsp;
+                                                            <input type="text" id="promoteto" class="promotion" name="promotion" list="ranks" value="<?php echo $row['promote']; ?>" autocomplete="off" onChange="" onClick="this.value = '';" data-promote="<?php echo $row['randesc']; ?>" width="200px">
+                                                            Current rank is "<?php echo $row['randesc']; ?>"
+
                                                             <datalist id="ranks">
                                                             <?php
                                                                 $ranks = [
                                                                 'Rank and File',
                                                                 'Rank and File II',
                                                                 'Senior Rank and File',
-                                                                    'SENIOR RANK AND FILE I',
+                                                                'SENIOR RANK AND FILE I',
                                                                 'Senior Rank and File II',
                                                                 'Assistant Supervisor',
                                                                 'Assistant Supervisor II',
@@ -780,6 +778,13 @@
 
                                                             ?>
                                                             </datalist>
+                                                    </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="150px">New Position Title</td>
+                                                        <td>
+                                                            <input type="text" id="promotetoPos" class="promotetoPos" name="promotetoPos" value="<?php echo $row['promotePos']; ?>">&nbsp;&nbsp;&nbsp;
+                                                            
                                                         </td>
                                                     </tr>
                                                     <?php if($max1i == 1) { ?>
