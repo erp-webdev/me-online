@@ -729,7 +729,7 @@
                                                             <br><br>
                                                             Current rank is "<?php echo $row['randesc']; ?>" 
                                                             <br>
-                                                            Approvers recommends for promotion to "<?php echo $row['promote']; ?>"
+                                                            Evaluator recommends for promotion to "<?php echo $row['promote']; ?>"
                                                             <datalist id="ranks">
                                                             <?php
                                                                 $ranks = [
