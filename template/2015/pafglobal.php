@@ -260,10 +260,10 @@
             <script>
                 $(function() {
                     $( "#tabslist" ).tabs({
-                        active: 1
+                        active: 0
                     });
 
-                    $( ".selector" ).tabs( "option", "active", <?php echo isset($_GET[sub]) ?  $_GET['sub'] : 1; ?>);
+                    $( ".selector" ).tabs( "option", "active", <?php echo isset($_GET[sub]) ? $_GET['sub'] - 1 : 0; ?>);
                 });
             </script>
 
