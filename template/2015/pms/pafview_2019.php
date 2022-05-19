@@ -784,7 +784,7 @@
                                                             <?php elseif($row['promote']  != $row['randesc'] && !empty(trim($row['promote']))) : ?>
                                                                 Evaluator recommends for promotion to <b>"<?php echo $row['promote']; ?>"</b> 
                                                                 <br>
-                                                                System recommends for promotion to <b> <?php echo $ranks[array_search($row['randesc'], $ranks) + 1]; ?>"</b>
+                                                                System recommends for promotion to <b> "<?php echo $ranks[array_search($row['randesc'], $ranks) + 1]; ?>"</b>
 
                                                             <?php endif; ?>
                                                             
