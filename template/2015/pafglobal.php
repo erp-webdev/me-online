@@ -162,7 +162,7 @@
                                 <th width="130" style="text-align:center !important;">Status</th>
                             </tr>
                             <?php ${"depdesc$c"} = $row['depdesc']; } ?>
-                            <tr id="<?php echo $row['appid']; ?>">
+                            <tr id="emp<?php echo $row['appid']; ?>">
                                  <td>
                                 <?php if($c == 1){ ?>
                                     <?php if($row["rstat1"] == 0 || $row["rstat1"] == NULL) { ?>
