@@ -1425,15 +1425,36 @@
                                         </span>%
                                 </h3>
                                 <p><strong>Final Recommendation;</strong> please fill up your desired recommendations below. </p>
-                                Promotion To Level: <input type="text" name="promotion" value="<?php echo $checkEvaluation[0]['promote']; ?>" data-promote="<?php echo $checkEvaluation[0]['randesc']; ?>" onchange="fnAlltotalpcc()">&nbsp;&nbsp;&nbsp;
-                                New Position Title: <input type="text" name="promotionpos" value="<?php echo $checkEvaluation[0]['promotePos']; ?>">&nbsp;&nbsp;&nbsp;<br><br>
-                            <?php if($max1i == 1) { ?>
-                                RECOMMENDED SALARY INCREASE: <input type="text" min="1" max="1000" name="increase" value="<?php echo $checkEvaluation[0]['recinc']; ?>">%
-                                <br /><br />
-                            <?php } else { ?>
-                                <input type="hidden" name="increase" value="">
-                                <input type="hidden" name="promotion" value="">
-                            <?php } ?>
+                                <table>
+                                    <tr>
+                                        <td class="vertical-align:top; width:150px">Promotion To Level.</td>
+                                        <td>
+                                            <input type="text" name="promotion" value="<?php echo $checkEvaluation[0]['promote']; ?>" data-promote="<?php echo $checkEvaluation[0]['randesc']; ?>" onchange="fnAlltotalpcc()">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="vertical-align:top; width:150px">New Position Title</td>
+                                        <td>
+                                            <input type="text" name="promotionpos" value="<?php echo $checkEvaluation[0]['promotePos']; ?>">
+                                            <br><br>
+                                            Current Position title is <b>"<?php echo $checkEvaluation[0]['posdesc']; ?>"</b>
+                                        </td>
+                                    </tr>
+                                    <?php if($max1i == 1) { ?>
+                                        <tr>
+                                            <td class="vertical-align:top; width:150px">Salary Increase</td>
+                                            <td>
+                                                <input type="text" min="1" max="1000" name="increase" value="<?php echo $checkEvaluation[0]['recinc']; ?>" step="0.01">%
+                                                <br>
+                                                Salary increase will be the final recommended increase.
+                                            </td>
+                                        </tr>
+                                    <?php } else { ?>
+                                        <input type="hidden" name="increase" value="">
+                                        <input type="hidden" name="promotion" value="">
+                                    <?php } ?>
+                                </table>
+                            
                             <p ><strong style="color:#F8FABC">Promotion History from the last 3 years: </strong> <br>
                                 <?php echo $checkEvaluation[0]['ProHistory']; ?>
                             </p>
