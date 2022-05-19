@@ -1429,7 +1429,7 @@
 
                                         </span>%
                                 </h3>
-                                <p><strong>Final Recommendation;</strong> please fill up your desired recommendations below. </p>
+                                <p><strong>Final Recommendation;</strong> please fill up your desired recommendations below.  This will override system generated percentage for salary increase.</p>
                                 <table>
                                     <tr>
                                         <td class="vertical-align:top; width:150px">Promotion To Level.</td>

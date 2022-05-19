@@ -919,61 +919,96 @@
 
               </span>%
         </h3>
-        <p><strong>Final Recommendation;</strong> please fill up your desired recommendations below. </p>
-        Promotion To Level: <input type="text" name="promotion" value="<?php echo $rprom1; ?>" list="ranks" autocomplete="off" onclick="this.value = ''; fnAlltotalpcc()" data-promote="<?php echo $evaluateRatee[0]['randesc']; ?>" style="">&nbsp;&nbsp;&nbsp;
-        New Position Title: <input type="text" name="promotionpos" value="<?php echo $evaluateRatee[0]['promotePos']; ?>">&nbsp;&nbsp;&nbsp;<br><br>
-        <datalist id="ranks">
-          <?php
-            $ranks = [
-              'Rank and File 1',
-              'Rank and File 2',
-              'Senior Rank and File 1',
-              'Senior Rank and File 2',
-              'Junior Supervisor/Professional 1',
-              'JUNIOR SUPERVISOR/PROFESSIONAL 2',
-              'Senior Supervisor/Professional 1',
-              'SENIOR SUPERVISOR/PROFESSIONAL 2',
-              'Junior Manager 1',
-              'Junior Manager 2',
-              'Manager 1',
-              'Manager 2',
-              'Senior Manager 1',
-              'Senior Manager 2',
-              'Director 1',
-              'Director 2'
-            ];
+        <p><strong>Final Recommendation;</strong> please fill up your desired recommendations below.  This will override system generated percentage for salary increase.</p>
+        <table>
+            <tr>
+                <td style="vertical-align:top; width:150px">Promotion To Level</td>
+                <td>
+                    <datalist id="ranks">
+                        <?php
+                            $ranks = [
+                            'Rank and File 1',
+                            'Rank and File 2',
+                            'Senior Rank and File 1',
+                            'Senior Rank and File 2',
+                            'Junior Supervisor/Professional 1',
+                            'JUNIOR SUPERVISOR/PROFESSIONAL 2',
+                            'Senior Supervisor/Professional 1',
+                            'SENIOR SUPERVISOR/PROFESSIONAL 2',
+                            'Junior Manager 1',
+                            'Junior Manager 2',
+                            'Manager 1',
+                            'Manager 2',
+                            'Senior Manager 1',
+                            'Senior Manager 2',
+                            'Director 1',
+                            'Director 2'
+                            ];
 
-            $i = false;
-            foreach($ranks as $rank):
-           ?>
+                            $i = false;
+                            foreach($ranks as $rank):
+                        ?>
 
-          <option value="<?php echo $rank ?>">
-                <?php
-                    // echo $rank;
+                        <option value="<?php echo $rank ?>">
+                                <?php
+                                    // echo $rank;
 
-                    if($i){
-                      echo '(system recommended)';
-                      $i = false;
-                    }
+                                    if($i){
+                                    echo '(system recommended)';
+                                    $i = false;
+                                    }
 
-                    if($evaluateRatee[0]['randesc'] == $rank){
-                      echo '(current rank)';
-                      $i = true;
-                    }
+                                    if($evaluateRatee[0]['randesc'] == $rank){
+                                    echo '(current rank)';
+                                    $i = true;
+                                    }
 
-                ?>
-          </option>
+                                ?>
+                        </option>
 
-          <?php endforeach; ?>
-        </datalist>
+                        <?php endforeach; ?>
+                        </datalist>
+                    <input type="text" name="promotion" value="<?php echo $rprom1; ?>" list="ranks" autocomplete="off" onclick="this.value = ''; fnAlltotalpcc()" data-promote="<?php echo $evaluateRatee[0]['randesc']; ?>"  syle="width:350px !important">&nbsp;&nbsp;&nbsp;
+                    <br><br>
+                    Current rank is <b>"<?php echo $evaluateRatee[0]['randesc']; ?>" </b>
+                    <br>
+                    <?php if($evaluateRatee[0]['promote']  == $ranks[array_search($evaluateRatee[0]['randesc'], $ranks) + 1]) : ?>
+                        Evaluator and System recommends for promotion to <b> "<?php echo $evaluateRatee[0]['promote']; ?>" </b>
+                    <?php else: ?>
+                        <?php if($evaluateRatee[0]['promote']  != $evaluateRatee[0]['randesc'] && !empty(trim($evaluateRatee[0]['promote']))) : ?>
+                        Evaluator recommends for promotion to <b>"<?php echo $evaluateRatee[0]['promote']; ?>"</b> 
+                        <br>
+                        <?php endif; ?>
+                        System recommends for promotion to <b> "<?php echo $ranks[array_search($evaluateRatee[0]['randesc'], $ranks) + 1]; ?>"</b>
 
-    <?php if($max1i == 1) { ?>
-        Salary Increase: <input type="number" min="1" max="<?php echo  $rincr1; ?>" name="increase" value="<?php echo $evaluateRatee[0]['recinc']; ?>">%
-        <br /><br />
+                    <?php endif; ?>
+                </td>
+            </tr>
+            <tr>
+                <td style="vertical-align:top; width:150px">New Position Title</td>
+                <td>
+                    <input type="text" name="promotionpos" value="<?php echo $evaluateRatee[0]['promotePos']; ?>" syle="width:350px !important"> 
+                    <br><br>
+                    Current Position title is <b>"<?php echo $evaluateRatee[0]['posdesc']; ?>"</b>
+                    
+                </td>
+            </tr>
+            <?php if($max1i == 1) { ?>
+                <tr>
+                    <td style="vertical-align:top; width:150px">Salary Increase</td>
+                    <td>
+                        <input type="number" min="1" max="<?php echo  $rincr1; ?>" name="increase" value="<?php echo $evaluateRatee[0]['recinc']; ?>" step="0.01"> %
+                        <br><br>
+                        Salary increase will be the final recommended increase.
+                    </td>
+                </tr>
+            <?php } else { ?>
+                <input type="hidden" name="increase" value="">
+            <?php } ?>
+        </table>
 
-    <?php } else { ?>
-        <input type="hidden" name="increase" value="">
-    <?php } ?>
+
+    
      <p ><strong style="color:#F8FABC">Promotion History from the last 3 years: </strong> <br>
           <?php echo $evaluateRatee[0]['ProHistory']; ?>
           <br> <strong style="color:#F8FABC">Conduct and Memo History from the last 3 years: </strong> <br>
