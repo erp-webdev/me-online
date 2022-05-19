@@ -784,7 +784,7 @@
                                                     </tr>
                                                     <?php if($max1i == 1) { ?>
                                                         <tr>
-                                                            <td width="150px">Salary Increase</td>
+                                                            <td width="150px">Recommended Salary Increase</td>
                                                             <td>
                                                                 <input type="number" min="1" max="100" name="increase" value="<?php echo $row['recinc']; ?>"> %
                                                             </td>
