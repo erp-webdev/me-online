@@ -846,7 +846,7 @@
 											<button type="submit" name="saveAppraisal2" class="saveapp smlbtn" id="saveapp2" style="float:right;background-color:#3EC2FB;margin-right:10px;">Save Appraisal</button>
                                             <a href="<?php echo WEB; ?>/pafview?groupid=<?php echo $groupid; ?>&pafad=rater&sub=<?php echo $sub; ?>&appid=<?php echo $appid; ?>&rid=<?php echo $rid; ?>" class="viewapp smlbtn" id="viewapp" style="display:none;float:right;background-color:#3EC2FB;margin-right:10px;">View Result</a>
 
-                                            <a class="smlbtn" style="float:right;margin-right:10px;background-color:#3EC2FB !important;" href="<?php echo WEB; ?>/pafglobal?groupid=<?php echo $groupid; if(isset($_GET['sub'])) echo '&sub=' . $_GET['sub']; ?>&ref=emp<?php echo $_GET['appid']; ?>"><i class=" fa fa-arrow-left" style="color:#fff;opacity:.8;"></i> Return to Approver's List</a>
+                                            <a class="smlbtn" style="float:right;margin-right:10px;background-color:#3EC2FB !important;" href="<?php echo WEB; ?>/paf?groupid=<?php echo $groupid; if(isset($_GET['sub'])) echo '&sub=' . $_GET['sub']; ?>&ref=emp<?php echo $_GET['appid']; ?>"><i class=" fa fa-arrow-left" style="color:#fff;opacity:.8;"></i> Return to Approver's List</a>
                                             <br /><br />
                                             <script type="text/javascript">
                                                  jQuery(document).ready(function($) {
