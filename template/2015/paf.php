@@ -15,11 +15,7 @@
                 <div class="leftsplashtext lefttalign"><?php include(TEMP."/menu.php"); ?></div>
                 <div class="rightsplashtext lefttalign">
                     <div id="paf" class="mainbody lefttalign whitetext">
-                    <script>
-                      $(function() {
-                        $( "#tabs" ).tabs();
-                      });
-                    </script>
+                   
                     <style type="text/css">
                         .thr{
                             text-align: left !important;
@@ -364,6 +360,26 @@
                     </div>
                 </div>
             </div>
+            <script>
+                $(function() {
+                    $( "#tabslist" ).tabs({
+                        active: 0
+                    });
 
+                    $( "#tabslist" ).tabs( "option", "active", <?php echo isset($_GET[sub]) ? $_GET['sub'] - 1 : 0; ?>);
+                    
+                    $(document).ready(function () {
+                        var target = $('#<?php echo $_GET['ref']; ?>')
+                        if (target.length) {
+                            $('html,body,#pafm').animate({
+                                scrollTop: target.offset().top - 400
+                            }, 1000);
+                            return false;
+                        }
+                    });
+
+                   
+                });
+            </script>
 
     <?php include(TEMP."/footer.php"); ?>
