@@ -61,7 +61,7 @@
                             </tbody>
                         </table>
                         <hr></hr>
-                    <div class="print" style="overflow-y:scroll;max-height:514px;margin-top:10px;">
+                    <div class="print" style="overflow-y:scroll;max-height:400px;margin-top:10px;">
 
                         <div style="border:2px solid #fff;padding-left:5px;width:98%;">
                             <p><strong>Use the following rating scale for each relevant part of this form :</strong></p>
@@ -1501,7 +1501,7 @@
                             </tbody>
                         </table>
                         <hr></hr>
-                        <div class="print" style="overflow-y:scroll;max-height:514px;margin-top:10px;">
+                        <div class="print" style="overflow-y:scroll;max-height:400px;margin-top:10px;">
                         <div style="border:2px solid #fff;padding-left:5px;width:98%;">
                             <p><strong>Use the following rating scale for each relevant part of this form :</strong></p>
                             <table>
