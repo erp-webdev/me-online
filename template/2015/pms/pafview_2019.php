@@ -777,14 +777,14 @@
                                                             </datalist>
                                                             <input type="text" id="promoteto" class="promotion" name="promotion" list="ranks" value="<?php echo $row['promote']; ?>" autocomplete="off" onChange="" onClick="this.value = '';" data-promote="<?php echo $row['randesc']; ?>" style="width: 250px !important">
                                                             <br><br>
-                                                            Current rank is "<?php echo $row['randesc']; ?>" 
+                                                            Current rank is <b>"<?php echo $row['randesc']; ?>" </b>
                                                             <br>
                                                             <?php if($row['promote']  == $ranks[array_search($row['randesc'], $ranks) + 1]) : ?>
-                                                                Evaluator and System recommends for promotion to "<?php echo $row['promote']; ?>"
+                                                                Evaluator and System recommends for promotion to <b> "<?php echo $row['promote']; ?>" </b>
                                                             <?php elseif($row['promote']  != $row['randesc'] && !empty(trim($row['promote']))) : ?>
-                                                                Evaluator recommends for promotion to "<?php echo $row['promote']; ?>"
+                                                                Evaluator recommends for promotion to <b>"<?php echo $row['promote']; ?>"</b> 
                                                                 <br>
-                                                                System recommends for promotion to <?php echo $ranks[array_search($row['randesc'], $ranks) + 1]; ?>"
+                                                                System recommends for promotion to <b> <?php echo $ranks[array_search($row['randesc'], $ranks) + 1]; ?>"</b>
 
                                                             <?php endif; ?>
                                                             
@@ -795,7 +795,7 @@
                                                         <td>
                                                             <input type="text" id="promotetoPos" class="promotetoPos" name="promotetoPos" value="<?php echo $row['promotePos']; ?>" style="width: 250px !important">
                                                             <br><br>
-                                                            Current Position title is "<?php echo $row['posdesc']; ?>"
+                                                            Current Position title is <b>"<?php echo $row['posdesc']; ?>"</b>
                                                             
                                                         </td>
                                                     </tr>
