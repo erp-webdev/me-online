@@ -269,7 +269,7 @@
                         var target = $('#<?php echo $_GET['ref']; ?>')
                         if (target.length) {
                             $('html,body,#pafm').animate({
-                                scrollTop: target.offset().top - 1000
+                                scrollTop: target.offset().top - 200
                             }, 1000);
                             return false;
                         }
