@@ -723,7 +723,7 @@
                                                 <p><strong>Final Recommendation;</strong> please fill up your desired recommendations below. This will override system generated percentage for salary increase.</p>
                                                 <table>
                                                     <tr>
-                                                        <td width="150px">Promotion To Level</td>
+                                                        <td style="vertical-align: top;" width="150px">Promotion To Level</td>
                                                         <td>
                                                             <input type="text" id="promoteto" class="promotion" name="promotion" list="ranks" value="<?php echo $row['promote']; ?>" autocomplete="off" onChange="" onClick="this.value = '';" data-promote="<?php echo $row['randesc']; ?>" style="width: 250px !important">
                                                             <br><br>
@@ -783,7 +783,7 @@
                                                     </td>
                                                     </tr>
                                                     <tr>
-                                                        <td width="150px">New Position Title</td>
+                                                        <td style="vertical-align: top;" width="150px">New Position Title</td>
                                                         <td>
                                                             <input type="text" id="promotetoPos" class="promotetoPos" name="promotetoPos" value="<?php echo $row['promotePos']; ?>" style="width: 250px !important">
                                                             <br><br>
@@ -793,7 +793,7 @@
                                                     </tr>
                                                     <?php if($max1i == 1) { ?>
                                                         <tr>
-                                                            <td width="150px">Salary Increase</td>
+                                                            <td style="vertical-align: top;" width="150px">Salary Increase</td>
                                                             <td>
                                                                 <input type="number" min="1" max="100" name="increase" value="<?php echo $row['recinc']; ?>" step="0.25" style="width: 250px !important"> % 
                                                                 <br><br>
