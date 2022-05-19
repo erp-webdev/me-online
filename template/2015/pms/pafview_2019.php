@@ -725,7 +725,7 @@
                                                     <tr>
                                                         <td style="vertical-align: top;" width="150px">Promotion To Level</td>
                                                         <td>
-                                                        <datalist id="ranks">
+                                                            <datalist id="ranks">
                                                             <?php
                                                                 $ranks = [
                                                                 'Rank and File',
@@ -779,7 +779,14 @@
                                                             <br><br>
                                                             Current rank is "<?php echo $row['randesc']; ?>" 
                                                             <br>
-                                                            Evaluator recommends for promotion to "<?php echo $row['promote']; ?>"
+                                                            <?php if($row['promote']  == $ranks[array_search($row['randesc'], $ranks) + 1]) : ?>
+                                                                Evaluator and System recommends for promotion to "<?php echo $row['promote']; ?>"
+                                                            <?php elseif($row['promote']  != $row['randesc'] && !empty(trim($row['promote']))) : ?>
+                                                                Evaluator recommends for promotion to "<?php echo $row['promote']; ?>"
+                                                                <br>
+                                                                System recommends for promotion to <?php echo $ranks[array_search($row['randesc'], $ranks) + 1]; ?>"
+
+                                                            <?php endif; ?>
                                                             
                                                     </td>
                                                     </tr>
