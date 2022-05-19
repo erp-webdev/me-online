@@ -1,7 +1,7 @@
 <!--<?php // if($rstat1 == 2) { ?>pow<?php// } ?>-->
 <!-- <?php //echo "tt:: " . ini_get('session.gc_maxlifetime'); ?> -->
 <?php if (count($evaluateRatee) > 0) { ?>
-<b class="mediumtext lorangetext"><a href="<?php echo WEB; ?>/pafglobal?groupid=<?php echo $groupid; ?>"><i class="mediumtext fa fa-arrow-left" style="color:#fff;opacity:.8;"></i></a> Performance Appraisal Form - Supervisor/Rater</b><br><br>
+<b class="mediumtext lorangetext"><a href="<?php echo WEB; ?>/pafglobal?groupid=<?php echo $groupid; if(isset($_GET['sub'])) echo '&sub=' . $_GET['sub']; ?>&ref=emp<?php echo $_GET['appid']; ?>"><i class="mediumtext fa fa-arrow-left" style="color:#fff;opacity:.8;"></i></a> Performance Appraisal Form - Supervisor/Rater</b><br><br>
 
 <form id="frm_paf" method="post" <?php //action="?ignore-page-cache=true" ?> enctype="multipart/form-data">
         <fieldset>
@@ -1029,6 +1029,8 @@
     <a onclick="myFunction()" class="relapp smlbtn" style="float:right;margin-right:10px;display:none;background-color:#3EC2FB;"><i class="fa fa-undo"></i> Refresh page</a>
     <a href="<?php echo WEB; ?>/pafglobal_view?groupid=<?php echo $groupid; ?>&pafad=rater&sub=1&appid=<?php echo $appid; ?>&rid=<?php echo $rid; ?>" class="viewapp smlbtn" id="viewapp" style="display:none;float:right;background-color:#3EC2FB;margin-right:10px;">View Result</a>
     <button type="submit" value="2" name="saveAppraisal" class="saveapp smlbtn" id="saveapp" style="float:right;background-color:#3EC2FB;margin-right:10px;">Save Appraisal</button>
+    
+    <a class="smlbtn" style="float:right;margin-right:10px;background-color:#3EC2FB !important;" href="<?php echo WEB; ?>/pafglobal?groupid=<?php echo $groupid; if(isset($_GET['sub'])) echo '&sub=' . $_GET['sub']; ?>&ref=emp<?php echo $_GET['appid']; ?>"><i class=" fa fa-arrow-left" style="color:#fff;opacity:.8;"></i> Return to Approver's List</a>
     <br /><br />
 </fieldset>
 </div><!-- end of performance evaluation form -->
