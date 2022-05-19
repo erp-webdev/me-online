@@ -1086,9 +1086,11 @@
                             <br>
                             <?php if($evaluateRatee[0]['promote']  == $ranks[array_search($evaluateRatee[0]['randesc'], $ranks) + 1]) : ?>
                                 Evaluator and System recommends for promotion to <b> "<?php echo $evaluateRatee[0]['promote']; ?>" </b>
-                            <?php elseif($evaluateRatee[0]['promote']  != $evaluateRatee[0]['randesc'] && !empty(trim($evaluateRatee[0]['promote']))) : ?>
+                            <?php else : ?>
+                                <?php if($evaluateRatee[0]['promote']  != $evaluateRatee[0]['randesc'] && !empty(trim($evalateRatee[0]['promote']))) :?>
                                 Evaluator recommends for promotion to <b>"<?php echo $evaluateRatee[0]['promote']; ?>"</b> 
                                 <br>
+                                <? endif; ?>
                                 System recommends for promotion to <b> "<?php echo $ranks[array_search($evaluateRatee[0]['randesc'], $ranks) + 1]; ?>"</b>
 
                             <?php endif; ?>
