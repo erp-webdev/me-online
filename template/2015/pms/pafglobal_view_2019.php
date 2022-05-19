@@ -890,7 +890,6 @@
                                             </datalist>
                                             <input type="text" class="promotion" id="promotion" name="promotion" value="<?php echo $checkEvaluation[0]['promote']; ?>" list="ranks" autocomplete="off" onChange="fnAlltotalpcc()" onclick="this.value = '';" data-promote="<?php echo $checkEvaluation[0]['randesc']; ?>">
                                             <br><br>
-                                            <br><br>
                                             Current rank is <b>"<?php echo $checkEvaluation[0]['randesc']; ?>" </b>
                                             <br>
                                             <?php if($checkEvaluation[0]['promote']  == $ranks[array_search($checkEvaluation[0]['randesc'], $ranks) + 1]) : ?>
