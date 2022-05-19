@@ -721,62 +721,68 @@
                                                      ?>
                                                 </span></h3>
                                                 <p><strong>Final Recommendation;</strong> please fill up your desired recommendations below. This will override system generated percentage for salary increase.</p>
-                                                Promotion To Level: <input type="text" id="promoteto" class="promotion" name="promotion" list="ranks" value="<?php echo $row['promote']; ?>" autocomplete="off" onChange="" onClick="this.value = '';" data-promote="<?php echo $row['randesc']; ?>">&nbsp;&nbsp;&nbsp;
-                                                New Position Title: <input type="text" id="promotetoPos" class="promotetoPos" name="promotetoPos" value="<?php echo $row['promotePos']; ?>">&nbsp;&nbsp;&nbsp;
-                                                <datalist id="ranks">
-                                                  <?php
-                                                    $ranks = [
-                                                      'Rank and File',
-                                                      'Rank and File II',
-                                                      'Senior Rank and File',
-                                                        'SENIOR RANK AND FILE I',
-                                                      'Senior Rank and File II',
-                                                      'Assistant Supervisor',
-                                                      'Assistant Supervisor II',
-                                                      'Assistant Supervisor III',
-                                                      'Supervisor',
-                                                      'Supervisor II',
-                                                      'Supervisor III',
-                                                      'Senior Supervisor',
-                                                      'Senior Supervisor II',
-                                                      'Senior Supervisor III',
-                                                      'Assistant Manager',
-                                                      'Assistant Manager II',
-                                                      'Assistant Manager III',
-                                                      'Manager',
-                                                      'Manager II',
-                                                      'MANAGER III',
-                                                      'Senior Manager',
-                                                      'Senior Manager II',
-                                                      'Assistant Vice President',
-                                                      'Senior Assistant Vice President',
-                                                      'VICE PRESIDENT',
-                                                      'SENIOR VICE PRESIDENT',
-                                                      'SENIOR EXECUTIVE VICE PRESIDENT',
-                                                      'FIRST VICE PRESIDENT',
-                                                      'CHIEF OPERATING OFFICER'
-                                                    ];
+                                                <p>
+                                                    Promotion To Level: <input type="text" id="promoteto" class="promotion" name="promotion" list="ranks" value="<?php echo $row['promote']; ?>" autocomplete="off" onChange="" onClick="this.value = '';" data-promote="<?php echo $row['randesc']; ?>">
+                                                </p>
+                                                <p>
+                                                    New Position Title: <input type="text" id="promotetoPos" class="promotetoPos" name="promotetoPos" value="<?php echo $row['promotePos']; ?>">&nbsp;&nbsp;&nbsp;
+                                                    <datalist id="ranks">
+                                                    <?php
+                                                        $ranks = [
+                                                        'Rank and File',
+                                                        'Rank and File II',
+                                                        'Senior Rank and File',
+                                                            'SENIOR RANK AND FILE I',
+                                                        'Senior Rank and File II',
+                                                        'Assistant Supervisor',
+                                                        'Assistant Supervisor II',
+                                                        'Assistant Supervisor III',
+                                                        'Supervisor',
+                                                        'Supervisor II',
+                                                        'Supervisor III',
+                                                        'Senior Supervisor',
+                                                        'Senior Supervisor II',
+                                                        'Senior Supervisor III',
+                                                        'Assistant Manager',
+                                                        'Assistant Manager II',
+                                                        'Assistant Manager III',
+                                                        'Manager',
+                                                        'Manager II',
+                                                        'MANAGER III',
+                                                        'Senior Manager',
+                                                        'Senior Manager II',
+                                                        'Assistant Vice President',
+                                                        'Senior Assistant Vice President',
+                                                        'VICE PRESIDENT',
+                                                        'SENIOR VICE PRESIDENT',
+                                                        'SENIOR EXECUTIVE VICE PRESIDENT',
+                                                        'FIRST VICE PRESIDENT',
+                                                        'CHIEF OPERATING OFFICER'
+                                                        ];
 
-                                                    foreach ($ranks as $rank) {
+                                                        foreach ($ranks as $rank) {
 
-                                                        ?>
+                                                            ?>
 
-                                                        <option value="<?php echo $rank; ?>">
-                                                            <?php if($row['randesc'] == $rank) {echo '(current rank)'; } ?>
-                                                            <?php if(trim($row['promote']) == $rank) echo 'Approver Recommendation'; ?>
-                                                            <?php if($rank == $ranks[array_search($row['randesc'], $ranks) + 1]) echo '(System recommended)'; ?>
+                                                            <option value="<?php echo $rank; ?>">
+                                                                <?php if($row['randesc'] == $rank) {echo '(current rank)'; } ?>
+                                                                <?php if(trim($row['promote']) == $rank) echo 'Approver Recommendation'; ?>
+                                                                <?php if($rank == $ranks[array_search($row['randesc'], $ranks) + 1]) echo '(System recommended)'; ?>
 
-                                                        </option>
+                                                            </option>
 
-                                                        <?php
-                                                    }
+                                                            <?php
+                                                        }
 
-                                                   ?>
-                                                </datalist>
+                                                    ?>
+                                                    </datalist>
+                                                </p>
+                                                
 
                                             <?php if($max1i == 1) { ?>
-                                                Salary Increase: <input type="number" min="1" max="100" name="increase" value="<?php echo $row['recinc']; ?>">%
-                                                <br /><br />
+                                                <p>
+                                                    Salary Increase: <input type="number" min="1" max="100" name="increase" value="<?php echo $row['recinc']; ?>">%
+                                                </p>
                                             <?php } else { ?>
                                                 <!-- <input type="hidden" name="increase" value=""> -->
                                                 <!-- <input type="hidden" name="promotion" value=""> -->
