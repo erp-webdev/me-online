@@ -26,7 +26,6 @@
 					WHERE A.emp_id = '$profile_id' and B.CompanyID = '$profile_comp' and B.CompanyActive = 1";
 
 		$coe_users = $mainsql->get_numrow($sql_users);
-		echo $profile_comp .'---';
 
 		$coe_count = $mainsql->get_coe(0, 0, $profile_idnum, 1);
 		$pages = $mainsql->pagination("coe", $coe_count, NUM_ROWS, 9);
