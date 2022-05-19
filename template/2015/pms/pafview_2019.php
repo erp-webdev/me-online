@@ -725,12 +725,7 @@
                                                     <tr>
                                                         <td style="vertical-align: top;" width="150px">Promotion To Level</td>
                                                         <td>
-                                                            <input type="text" id="promoteto" class="promotion" name="promotion" list="ranks" value="<?php echo $row['promote']; ?>" autocomplete="off" onChange="" onClick="this.value = '';" data-promote="<?php echo $row['randesc']; ?>" style="width: 250px !important">
-                                                            <br><br>
-                                                            Current rank is "<?php echo $row['randesc']; ?>" 
-                                                            <br>
-                                                            Evaluator recommends for promotion to "<?php echo $row['promote']; ?>"
-                                                            <datalist id="ranks">
+                                                        <datalist id="ranks">
                                                             <?php
                                                                 $ranks = [
                                                                 'Rank and File',
@@ -780,6 +775,12 @@
 
                                                             ?>
                                                             </datalist>
+                                                            <input type="text" id="promoteto" class="promotion" name="promotion" list="ranks" value="<?php echo $row['promote']; ?>" autocomplete="off" onChange="" onClick="this.value = '';" data-promote="<?php echo $row['randesc']; ?>" style="width: 250px !important">
+                                                            <br><br>
+                                                            Current rank is "<?php echo $row['randesc']; ?>" 
+                                                            <br>
+                                                            Evaluator recommends for promotion to "<?php echo $row['promote']; ?>"
+                                                            
                                                     </td>
                                                     </tr>
                                                     <tr>
