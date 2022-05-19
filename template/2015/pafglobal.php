@@ -270,7 +270,7 @@
                         if (target.length) {
                             $('html,body,#pafm').animate({
                                 scrollTop: target.offset().top
-                            }, 1000);
+                            }, 800);
                             return false;
                         }
                     });
