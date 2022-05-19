@@ -268,6 +268,7 @@
                     $(document).ready(function () {
                         var target = $('#<?php echo $_GET['ref']; ?>')
                         if (target.length) {
+                            var d = target.offset().top;
                             $('html,body,#pafm').animate({
                                 scrollTop: target.offset().top
                             }, 1000);
