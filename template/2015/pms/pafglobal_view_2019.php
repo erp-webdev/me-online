@@ -912,7 +912,7 @@
                                     </tr>
                                     <?php if($max1i == 1) { ?>
                                         <tr>
-                                            <td style="vertical-align:top; width:150px">RECOMMENDED SALARY INCREASE</td>
+                                            <td style="vertical-align:top; width:150px">Salary Increase</td>
                                             <td>
                                                 <input type="number" min="1" max="100" name="increase" value="<?php echo $checkEvaluation[0]['recinc']; ?>" step="0.01" > %
                                             </td>
