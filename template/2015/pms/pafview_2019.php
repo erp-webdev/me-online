@@ -1,7 +1,7 @@
                 <div id="paf" class="mainbody lefttalign whitetext print">
                 <?php if(count($checkEvaluation) > 0 && $pafad == 'rater') {  ?>
 
-                    <b class="mediumtext lorangetext"><a href="<?php echo WEB; ?>/paf?groupid=<?php echo $groupid; ?>"><i class="mediumtext fa fa-arrow-left" style="color:#fff;opacity:.8;"></i></a> Performance Appraisal Viewer <?php if($pafad == 'divhead'){ echo '- Division Head'; } elseif($pafad == 'rater') { echo '- Supervisor/Approver'; } ?></b><br>
+                    <b class="mediumtext lorangetext"><a href="<?php echo WEB; ?>/paf?groupid=<?php echo $groupid; if(isset($_GET['sub'])) echo '&sub=' . $_GET['sub']; ?>&ref=emp<?php echo $_GET['appid']; ?>"><i class="mediumtext fa fa-arrow-left" style="color:#fff;opacity:.8;"></i></a> Performance Appraisal Viewer <?php if($pafad == 'divhead'){ echo '- Division Head'; } elseif($pafad == 'rater') { echo '- Supervisor/Approver'; } ?></b><br>
                         <!--<p>You're a ratee!</p>-->
                         <div>
                         <?php foreach($checkEvaluation as $row) { ?>
@@ -845,6 +845,8 @@
 											<a onclick="myFunction()" id="refrbtn" class="relapp smlbtn" style="float:right;margin-right:10px;display:none;background-color:#3EC2FB;"><i class="fa fa-undo"></i> Refresh page</a>
 											<button type="submit" name="saveAppraisal2" class="saveapp smlbtn" id="saveapp2" style="float:right;background-color:#3EC2FB;margin-right:10px;">Save Appraisal</button>
                                             <a href="<?php echo WEB; ?>/pafview?groupid=<?php echo $groupid; ?>&pafad=rater&sub=<?php echo $sub; ?>&appid=<?php echo $appid; ?>&rid=<?php echo $rid; ?>" class="viewapp smlbtn" id="viewapp" style="display:none;float:right;background-color:#3EC2FB;margin-right:10px;">View Result</a>
+
+                                            <a class="smlbtn" style="float:right;margin-right:10px;background-color:#3EC2FB !important;" href="<?php echo WEB; ?>/pafglobal?groupid=<?php echo $groupid; if(isset($_GET['sub'])) echo '&sub=' . $_GET['sub']; ?>&ref=emp<?php echo $_GET['appid']; ?>"><i class=" fa fa-arrow-left" style="color:#fff;opacity:.8;"></i> Return to Approver's List</a>
                                             <br /><br />
                                             <script type="text/javascript">
                                                  jQuery(document).ready(function($) {
