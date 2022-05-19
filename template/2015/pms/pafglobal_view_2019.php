@@ -1429,13 +1429,13 @@
                                     <tr>
                                         <td class="vertical-align:top; width:150px">Promotion To Level.</td>
                                         <td>
-                                            <input type="text" name="promotion" value="<?php echo $checkEvaluation[0]['promote']; ?>" data-promote="<?php echo $checkEvaluation[0]['randesc']; ?>" onchange="fnAlltotalpcc()" style="width:250px !important">
+                                            <input type="text" name="promotion" value="<?php echo $checkEvaluation[0]['promote']; ?>" data-promote="<?php echo $checkEvaluation[0]['randesc']; ?>" onchange="fnAlltotalpcc()" style="width:350px !important">
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="vertical-align:top; width:150px">New Position Title</td>
                                         <td>
-                                            <input type="text" name="promotionpos" value="<?php echo $checkEvaluation[0]['promotePos']; ?>"  style="width:250px !important">
+                                            <input type="text" name="promotionpos" value="<?php echo $checkEvaluation[0]['promotePos']; ?>"  style="width:350px !important">
                                             <br><br>
                                             Current Position title is <b>"<?php echo $checkEvaluation[0]['posdesc']; ?>"</b>
                                         </td>
