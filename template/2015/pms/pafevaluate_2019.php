@@ -1094,20 +1094,29 @@
                             <?php endif; ?>
                         </td>
                     </tr>
+                    <tr>
+                        <td style="vertical-align:top; width:150px">New Position Title</td>
+                        <td>
+                            <input type="text" id="promotetoPos" class="promotetoPos" name="promotetoPos" value="<?php echo $evaluateRatee[0]['promotePos']; ?>" style="width:250px !important">
+                            <br><br>
+                            Current Position title is <b>"<?php echo $evaluateRatee[0]['posdesc']; ?>"</b>
+                        </td>
+                    </tr>
+                    <?php if($max1i == 1) { ?>
+                        <tr>
+                            <td style="vertical-align:top; width:150px">Salary Increase</td>
+                            <td>
+                                <input type="number" min="1" max="100" name="increase" value="<?php echo $evaluateRatee[0]['recinc']; ?>" step="0.25"> %
+                                <br><br>
+                                Salary increase will be the final recommended increase.
+                            </td>
+                        </tr>
+                    <?php } else { ?>
+                        
+                        <input type="hidden" name="increase" value="">
+
+                    <?php } ?>
                 </table>
-                : &nbsp;&nbsp;&nbsp;
-                New Position Title: <input type="text" id="promotetoPos" class="promotetoPos" name="promotetoPos" value="<?php echo $evaluateRatee[0]['promotePos']; ?>">&nbsp;&nbsp;&nbsp; <br><br>
-                
-
-
-
-
-            <?php if($max1i == 1) { ?>
-                Salary Increase: <input type="number" min="1" max="100" name="increase" value="<?php echo $evaluateRatee[0]['recinc']; ?>">%
-                <br /><br />
-            <?php } else { ?>
-                <input type="hidden" name="increase" value="">
-            <?php } ?>
 
             <p><strong>Promotion History for the last 3 years :</strong> <br>  <?php if(!empty($evaluateRatee[0]['ProHistory'])) echo $evaluateRatee[0]['ProHistory']; else echo 'Not Set'; ?></p>
             <p><strong>Attendance and Punctuality History for the last 3 years :</strong> <br>  <?php if(!empty($evaluateRatee[0]['APComment'])) echo $evaluateRatee[0]['APComment']; else echo 'Not Set'; ?></p>
