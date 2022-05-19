@@ -20,7 +20,9 @@
                     <div id="paf" class="mainbody lefttalign whitetext">
                     <script>
                       $(function() {
-                        $( "#tabs" ).tabs();
+                        $( "#tabs" ).tabs({
+                            active: <?php echo isset($_GET[sub]) ?  $_GET['sub'] : 1; ?>
+                            });
                       });
                     </script>
                     <style type="text/css">
