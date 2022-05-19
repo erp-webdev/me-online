@@ -893,13 +893,13 @@
                                             Current rank is <b>"<?php echo $checkEvaluation[0]['randesc']; ?>" </b>
                                             <br>
                                             <?php if($checkEvaluation[0]['promote']  == $ranks[array_search($checkEvaluation[0]['randesc'], $ranks) + 1]) : ?>
-                                                Evaluator and System recommends for promotion to <b> "<?php echo $checkEvaluation[0]['promote']; ?>" </b>
+                                                Evaluator and System recommends for promotion to <br><b> "<?php echo $checkEvaluation[0]['promote']; ?>" </b>
                                             <?php else: ?>
                                                 <?php if($checkEvaluation[0]['promote']  != $checkEvaluation[0]['randesc'] && !empty(trim($checkEvaluation[0]['promote']))) : ?>
                                                 Evaluator recommends for promotion to <b>"<?php echo $checkEvaluation[0]['promote']; ?>"</b> 
                                                 <br>
                                                 <?php endif; ?>
-                                                System recommends for promotion to <br> <b> "<?php echo $ranks[array_search($checkEvaluation[0]['randesc'], $ranks) + 1]; ?>"</b>
+                                                System recommends for promotion to <b> "<?php echo $ranks[array_search($checkEvaluation[0]['randesc'], $ranks) + 1]; ?>"</b>
 
                                             <?php endif; ?>
                                         </td>
