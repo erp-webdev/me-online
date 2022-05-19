@@ -1080,7 +1080,7 @@
 
                                 <?php endif; endforeach; ?>
                                 </datalist>
-                            <input type="text" id="promoteto" class="promotion" name="promotion" list="ranks" value="<?php echo $evaluateRatee[0]['promote']; ?>" autocomplete="off" onChange="totalp1()" onClick="this.value = ''; totalp1()" data-promote="<?php echo $evaluateRatee[0]['randesc']; ?>" style="width:250px !important">
+                            <input type="text" id="promoteto" class="promotion" name="promotion" list="ranks" value="<?php echo $evaluateRatee[0]['promote']; ?>" autocomplete="off" onChange="totalp1()" onClick="this.value = ''; totalp1()" data-promote="<?php echo $evaluateRatee[0]['randesc']; ?>" style="width:350px !important">
                             <br><br>
                             Current rank is <b>"<?php echo $evaluateRatee[0]['randesc']; ?>" </b>
                             <br>
@@ -1099,7 +1099,7 @@
                     <tr>
                         <td style="vertical-align:top; width:150px">New Position Title</td>
                         <td>
-                            <input type="text" id="promotetoPos" class="promotetoPos" name="promotetoPos" value="<?php echo $evaluateRatee[0]['promotePos']; ?>" style="width:250px !important">
+                            <input type="text" id="promotetoPos" class="promotetoPos" name="promotetoPos" value="<?php echo $evaluateRatee[0]['promotePos']; ?>" style="width:350px !important">
                             <br><br>
                             Current Position title is <b>"<?php echo $evaluateRatee[0]['posdesc']; ?>"</b>
                         </td>

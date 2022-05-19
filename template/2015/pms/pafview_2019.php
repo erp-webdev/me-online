@@ -775,7 +775,7 @@
 
                                                             ?>
                                                             </datalist>
-                                                            <input type="text" id="promoteto" class="promotion" name="promotion" list="ranks" value="<?php echo $row['promote']; ?>" autocomplete="off" onChange="" onClick="this.value = '';" data-promote="<?php echo $row['randesc']; ?>" style="width: 250px !important">
+                                                            <input type="text" id="promoteto" class="promotion" name="promotion" list="ranks" value="<?php echo $row['promote']; ?>" autocomplete="off" onChange="" onClick="this.value = '';" data-promote="<?php echo $row['randesc']; ?>" style="width: 350px !important">
                                                             <br><br>
                                                             Current rank is <b>"<?php echo $row['randesc']; ?>" </b>
                                                             <br>
@@ -795,7 +795,7 @@
                                                     <tr>
                                                         <td style="vertical-align: top;" width="150px">New Position Title</td>
                                                         <td>
-                                                            <input type="text" id="promotetoPos" class="promotetoPos" name="promotetoPos" value="<?php echo $row['promotePos']; ?>" style="width: 250px !important">
+                                                            <input type="text" id="promotetoPos" class="promotetoPos" name="promotetoPos" value="<?php echo $row['promotePos']; ?>" style="width: 350px !important">
                                                             <br><br>
                                                             Current Position title is <b>"<?php echo $row['posdesc']; ?>"</b>
                                                             
@@ -805,7 +805,7 @@
                                                         <tr>
                                                             <td style="vertical-align: top;" width="150px">Salary Increase</td>
                                                             <td>
-                                                                <input type="number" min="1" max="100" name="increase" value="<?php echo $row['recinc']; ?>" step="0.01" style="width: 250px !important"> % 
+                                                                <input type="number" min="1" max="100" name="increase" value="<?php echo $row['recinc']; ?>" step="0.01" style="width: 350px !important"> % 
                                                                 <br><br>
                                                                 Salary increase will be the final recommended increase.
                                                             </td>
