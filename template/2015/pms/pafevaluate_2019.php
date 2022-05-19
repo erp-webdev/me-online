@@ -1108,7 +1108,7 @@
                         <tr>
                             <td style="vertical-align:top; width:150px">Salary Increase</td>
                             <td>
-                                <input type="number" min="1" max="100" name="increase" value="<?php echo $evaluateRatee[0]['recinc']; ?>" step="0.25"> %
+                                <input type="number" min="1" max="100" name="increase" value="<?php echo $evaluateRatee[0]['recinc']; ?>" step="0.01"> %
                                 <br><br>
                                 Salary increase will be the final recommended increase.
                             </td>
