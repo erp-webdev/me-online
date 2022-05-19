@@ -890,9 +890,6 @@
                                             </datalist>
                                             <input type="text" class="promotion" id="promotion" name="promotion" value="<?php echo $checkEvaluation[0]['promote']; ?>" list="ranks" autocomplete="off" onChange="fnAlltotalpcc()" onclick="this.value = '';" data-promote="<?php echo $checkEvaluation[0]['randesc']; ?>" style="width: 350px !important">
                                             <br><br>
-                                            Current Position title is <b>"<?php echo $checkEvaluation[0]['posdesc']; ?>"</b>
-                                                            
-                                            <br><br>
                                             Current rank is <b>"<?php echo $checkEvaluation[0]['randesc']; ?>" </b>
                                             <br>
                                             <?php if($checkEvaluation[0]['promote']  == $ranks[array_search($checkEvaluation[0]['randesc'], $ranks) + 1]) : ?>
@@ -912,7 +909,7 @@
                                         <td>
                                             <input type="text" name="promotionpos" value="<?php echo $checkEvaluation[0]['promotePos']; ?>" style="width: 350px !important">
                                             <br><br>
-                                                            Current Position title is <b>"<?php echo $row['posdesc']; ?>"</b>
+                                            Current Position title is <b>"<?php echo $row['posdesc']; ?>"</b>
                                                             
                                         </td>
                                     </tr>
@@ -921,6 +918,8 @@
                                             <td style="vertical-align:top; width:150px">Salary Increase</td>
                                             <td>
                                                 <input type="number" min="1" max="100" name="increase" value="<?php echo $checkEvaluation[0]['recinc']; ?>" step="0.01" > %
+                                                <br><br>
+                                                Salary increase will be the final recommended increase.
                                             </td>
                                         </tr>
                                     <?php } else { ?>
