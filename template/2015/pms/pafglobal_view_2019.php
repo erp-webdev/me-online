@@ -899,7 +899,7 @@
                                                 Evaluator recommends for promotion to <b>"<?php echo $checkEvaluation[0]['promote']; ?>"</b> 
                                                 <br>
                                                 <?php endif; ?>
-                                                System recommends for promotion to <b> "<?php echo $ranks[array_search($checkEvaluation[0]['randesc'], $ranks) + 1]; ?>"</b>
+                                                System recommends for promotion to <br> <b> "<?php echo $ranks[array_search($checkEvaluation[0]['randesc'], $ranks) + 1]; ?>"</b>
 
                                             <?php endif; ?>
                                         </td>
