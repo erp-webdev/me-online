@@ -968,7 +968,7 @@
 
                         <?php endforeach; ?>
                         </datalist>
-                    <input type="text" name="promotion" value="<?php echo $rprom1; ?>" list="ranks" autocomplete="off" onclick="this.value = ''; fnAlltotalpcc()" data-promote="<?php echo $evaluateRatee[0]['randesc']; ?>"  syle="width:350px !important">&nbsp;&nbsp;&nbsp;
+                    <input type="text" name="promotion" value="<?php echo $rprom1; ?>" list="ranks" autocomplete="off" onclick="this.value = ''; fnAlltotalpcc()" data-promote="<?php echo $evaluateRatee[0]['randesc']; ?>"  syle="width:350px !important">
                     <br><br>
                     Current rank is <b>"<?php echo $evaluateRatee[0]['randesc']; ?>" </b>
                     <br>
