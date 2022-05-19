@@ -726,9 +726,10 @@
                                                         <td width="150px">Promotion To Level</td>
                                                         <td>
                                                             <input type="text" id="promoteto" class="promotion" name="promotion" list="ranks" value="<?php echo $row['promote']; ?>" autocomplete="off" onChange="" onClick="this.value = '';" data-promote="<?php echo $row['randesc']; ?>" style="width: 250px !important">
+                                                            <br><br>
+                                                            Current rank is "<?php echo $row['randesc']; ?>" 
                                                             <br>
-                                                            Current rank is "<?php echo $row['randesc']; ?>"
-
+                                                            Approvers recommends for promotion to "<?php echo $row['promote']; ?>"
                                                             <datalist id="ranks">
                                                             <?php
                                                                 $ranks = [
@@ -784,8 +785,8 @@
                                                     <tr>
                                                         <td width="150px">New Position Title</td>
                                                         <td>
-                                                            <input type="text" id="promotetoPos" class="promotetoPos" name="promotetoPos" value="<?php echo $row['promotePos']; ?>">
-                                                            <br>
+                                                            <input type="text" id="promotetoPos" class="promotetoPos" name="promotetoPos" value="<?php echo $row['promotePos']; ?>" style="width: 250px !important">
+                                                            <br><br>
                                                             Current Position title is "<?php echo $row['posdesc']; ?>"
                                                             
                                                         </td>
@@ -794,7 +795,9 @@
                                                         <tr>
                                                             <td width="150px">Salary Increase</td>
                                                             <td>
-                                                                <input type="number" min="1" max="100" name="increase" value="<?php echo $row['recinc']; ?>" step="0.25"> %
+                                                                <input type="number" min="1" max="100" name="increase" value="<?php echo $row['recinc']; ?>" step="0.25" style="width: 250px !important"> % 
+                                                                <br><br>
+                                                                Salary increase will be the final recommended increase.
                                                             </td>
                                                         </tr>
                                                             
