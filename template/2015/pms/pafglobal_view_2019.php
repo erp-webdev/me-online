@@ -946,7 +946,7 @@
                                 </p>
 
                             <input type="submit" value="Approve Rating" name="updateAppraisal" class="smlbtn" id="approveapp" style="float:right;margin-right:10px;" />
-							<a href="<?php echo WEB; ?>/pafglobal?groupid=<?php echo $groupid; ?>"><i class="smlbtn fa fa-arrow-left" style="color:#fff;opacity:.8;"></i> Return to Approver's List</a>
+							<a class="smlbtn" href="<?php echo WEB; ?>/pafglobal?groupid=<?php echo $groupid; ?>"><i class=" fa fa-arrow-left" style="color:#fff;opacity:.8;"></i> Return to Approver's List</a>
 							<a onclick="myFunction()" id="refrbtn" class="relapp smlbtn" style="float:right;margin-right:10px;display:none;background-color:#3EC2FB;"><i class="fa fa-undo"></i> Refresh page</a>
 							<button type="submit" name="saveAppraisal2" class="saveapp smlbtn" id="saveapp2" style="float:right;background-color:#3EC2FB;margin-right:10px;">Save Appraisal</button>
                             <a href="<?php echo WEB; ?>/pafglobal_view?groupid=<?php echo $groupid; ?>&pafad=rater&sub=<?php echo $sub; ?>&appid=<?php echo $appid; ?>&rid=<?php echo $rid; ?>" class="viewapp smlbtn" id="viewapp" style="display:none;float:right;background-color:#3EC2FB;margin-right:10px;">View Result</a>
