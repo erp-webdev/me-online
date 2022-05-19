@@ -1007,77 +1007,97 @@
 
                 <h3><strong>Equivalent system generated percentage increase: </strong><span id="computed_perc"> <?php echo $finincrease * ($appraisal[0]['Increase']/100).'%'; ?></span></h3>
                 <p><strong>Final Recommendation;</strong> please fill up your desired recommendations below.</p>
-                Promotion To Level: <input type="text" id="promoteto" class="promotion" name="promotion" list="ranks" value="<?php echo $evaluateRatee[0]['promote']; ?>" autocomplete="off" onChange="totalp1()" onClick="this.value = ''; totalp1()" data-promote="<?php echo $evaluateRatee[0]['randesc']; ?>">&nbsp;&nbsp;&nbsp;
+                <table>
+                    <tr>
+                        <td style="vertical-align:top; width:150px">Promotion To Level</td>
+                        <td>
+                            <datalist id="ranks">
+                                <?php
+                                    $ranks = [
+                                    'Rank and File',
+                                    'Rank and File II',
+                                    'Senior Rank and File',
+                                    'SENIOR RANK AND FILE I',
+                                    'Senior Rank and File II',
+                                    'Assistant Supervisor',
+                                    'Assistant Supervisor II',
+                                    'Assistant Supervisor III',
+                                    'Supervisor',
+                                    'Supervisor II',
+                                    'Supervisor III',
+                                    'Senior Supervisor',
+                                    'Senior Supervisor II',
+                                    'Senior Supervisor III',
+                                    'Assistant Manager',
+                                    'Assistant Manager II',
+                                    'Assistant Manager III',
+                                    'Manager',
+                                    'Manager II',
+                                    'MANAGER III',
+                                    'Senior Manager',
+                                    'Senior Manager II',
+                                    'Assistant Vice President',
+                                    'Senior Assistant Vice President',
+                                    'VICE PRESIDENT',
+                                    'SENIOR VICE PRESIDENT',
+                                    'SENIOR EXECUTIVE VICE PRESIDENT',
+                                    'FIRST VICE PRESIDENT',
+                                    'CHIEF OPERATING OFFICER'
+                                    ];
+
+                                    $i = false;
+                                    $j = false;
+                                    foreach($ranks as $rank):
+                                        if($rank == $evaluateRatee[0]['randesc'])
+                                            $j = true;
+
+                                        if($j):
+                                ?>
+
+                                <option class="datalistalist1" value="<?php echo $rank ?>">
+                                        <?php
+                                            // echo $rank;
+
+                                            if($i){
+                                            $txt =  '(system ';
+                                                if($evaluateRatee[0]['promote'] == $rank)
+                                                    $txt .= "and approver's ";
+
+                                            $txt .='recommended)';
+                                            echo $txt;
+                                            $i = false;
+                                            }elseif($evaluateRatee[0]['promote'] == $rank){
+                                                echo "(approver's recommendations)";
+                                            }
+
+                                            if($evaluateRatee[0]['randesc'] == $rank){
+                                            echo '(current rank)';
+                                            $i = true;
+                                            }
+
+                                        ?>
+                                </option>
+
+                                <?php endif; endforeach; ?>
+                                </datalist>
+                            <input type="text" id="promoteto" class="promotion" name="promotion" list="ranks" value="<?php echo $evaluateRatee[0]['promote']; ?>" autocomplete="off" onChange="totalp1()" onClick="this.value = ''; totalp1()" data-promote="<?php echo $evaluateRatee[0]['randesc']; ?>" style="width:250px !important">
+                            <br><br>
+                            Current rank is <b>"<?php echo $evaluateRatee[0]['randesc']; ?>" </b>
+                            <br>
+                            <?php if($evaluateRatee[0]['promote']  == $ranks[array_search($evaluateRatee[0]['randesc'], $ranks) + 1]) : ?>
+                                Evaluator and System recommends for promotion to <b> "<?php echo $evaluateRatee[0]['promote']; ?>" </b>
+                            <?php elseif($evaluateRatee[0]['promote']  != $evaluateRatee[0]['randesc'] && !empty(trim($evaluateRatee[0]['promote']))) : ?>
+                                Evaluator recommends for promotion to <b>"<?php echo $evaluateRatee[0]['promote']; ?>"</b> 
+                                <br>
+                                System recommends for promotion to <b> "<?php echo $ranks[array_search($evaluateRatee[0]['randesc'], $ranks) + 1]; ?>"</b>
+
+                            <?php endif; ?>
+                        </td>
+                    </tr>
+                </table>
+                : &nbsp;&nbsp;&nbsp;
                 New Position Title: <input type="text" id="promotetoPos" class="promotetoPos" name="promotetoPos" value="<?php echo $evaluateRatee[0]['promotePos']; ?>">&nbsp;&nbsp;&nbsp; <br><br>
-                <datalist id="ranks">
-                  <?php
-                    $ranks = [
-                      'Rank and File',
-                      'Rank and File II',
-                      'Senior Rank and File',
-                      'SENIOR RANK AND FILE I',
-                      'Senior Rank and File II',
-                      'Assistant Supervisor',
-                      'Assistant Supervisor II',
-                      'Assistant Supervisor III',
-                      'Supervisor',
-                      'Supervisor II',
-                      'Supervisor III',
-                      'Senior Supervisor',
-                      'Senior Supervisor II',
-                      'Senior Supervisor III',
-                      'Assistant Manager',
-                      'Assistant Manager II',
-                      'Assistant Manager III',
-                      'Manager',
-                      'Manager II',
-                      'MANAGER III',
-                      'Senior Manager',
-                      'Senior Manager II',
-                      'Assistant Vice President',
-                      'Senior Assistant Vice President',
-                      'VICE PRESIDENT',
-                      'SENIOR VICE PRESIDENT',
-                      'SENIOR EXECUTIVE VICE PRESIDENT',
-                      'FIRST VICE PRESIDENT',
-                      'CHIEF OPERATING OFFICER'
-                    ];
-
-                    $i = false;
-                    $j = false;
-                    foreach($ranks as $rank):
-                        if($rank == $evaluateRatee[0]['randesc'])
-                            $j = true;
-
-                        if($j):
-                   ?>
-
-                  <option class="datalistalist1" value="<?php echo $rank ?>">
-                        <?php
-                            // echo $rank;
-
-                            if($i){
-                              $txt =  '(system ';
-                                if($evaluateRatee[0]['promote'] == $rank)
-                                    $txt .= "and approver's ";
-
-                              $txt .='recommended)';
-                              echo $txt;
-                              $i = false;
-                            }elseif($evaluateRatee[0]['promote'] == $rank){
-                                echo "(approver's recommendations)";
-                            }
-
-                            if($evaluateRatee[0]['randesc'] == $rank){
-                              echo '(current rank)';
-                              $i = true;
-                            }
-
-                        ?>
-                  </option>
-
-                  <?php endif; endforeach; ?>
-                </datalist>
+                
 
 
 
