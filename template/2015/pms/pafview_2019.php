@@ -722,7 +722,7 @@
                                                 </span></h3>
                                                 <p><strong>Final Recommendation;</strong> please fill up your desired recommendations below. This will override system generated percentage for salary increase.</p>
                                                 <p>
-                                                    Promotion To Level: <input type="text" id="promoteto" class="promotion" name="promotion" list="ranks" value="<?php echo $row['promote']; ?>" autocomplete="off" onChange="" onClick="this.value = '';" data-promote="<?php echo $row['randesc']; ?>" width="100%">
+                                                    Promotion To Level: <input type="text" id="promoteto" class="promotion" name="promotion" list="ranks" value="<?php echo $row['promote']; ?>" autocomplete="off" onChange="" onClick="this.value = '';" data-promote="<?php echo $row['randesc']; ?>" width="200px">
                                                 </p>
                                                 <p>
                                                     New Position Title: <input type="text" id="promotetoPos" class="promotetoPos" name="promotetoPos" value="<?php echo $row['promotePos']; ?>">&nbsp;&nbsp;&nbsp;
