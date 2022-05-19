@@ -888,7 +888,7 @@
 
                                             <?php endforeach; ?>
                                             </datalist>
-                                            <input type="text" class="promotion" id="promotion" name="promotion" value="<?php echo $checkEvaluation[0]['promote']; ?>" list="ranks" autocomplete="off" onChange="fnAlltotalpcc()" onclick="this.value = '';" data-promote="<?php echo $checkEvaluation[0]['randesc']; ?>" style="width: 250px !important">
+                                            <input type="text" class="promotion" id="promotion" name="promotion" value="<?php echo $checkEvaluation[0]['promote']; ?>" list="ranks" autocomplete="off" onChange="fnAlltotalpcc()" onclick="this.value = '';" data-promote="<?php echo $checkEvaluation[0]['randesc']; ?>" style="width: 350px !important">
                                             <br><br>
                                             Current rank is <b>"<?php echo $checkEvaluation[0]['randesc']; ?>" </b>
                                             <br>
@@ -907,7 +907,7 @@
                                     <tr>
                                         <td style="vertical-align:top; width:150px">New Position Title</td>
                                         <td>
-                                            <input type="text" name="promotionpos" value="<?php echo $checkEvaluation[0]['promotePos']; ?>" style="width: 250px !important">
+                                            <input type="text" name="promotionpos" value="<?php echo $checkEvaluation[0]['promotePos']; ?>" style="width: 350px !important">
                                         </td>
                                     </tr>
                                     <?php if($max1i == 1) { ?>
@@ -1430,6 +1430,7 @@
                                         <td class="vertical-align:top; width:150px">Promotion To Level.</td>
                                         <td>
                                             <input type="text" name="promotion" value="<?php echo $checkEvaluation[0]['promote']; ?>" data-promote="<?php echo $checkEvaluation[0]['randesc']; ?>" onchange="fnAlltotalpcc()" style="width:350px !important">
+
                                         </td>
                                     </tr>
                                     <tr>
