@@ -1,7 +1,7 @@
         <!--<?php // if($rstat1 == 2) { ?>pow<?php// } ?>-->
         <?php if (count($evaluateRatee) > 0) { ?>
         <b class="mediumtext lorangetext"><a href="<?php echo WEB; ?>/paf?groupid=<?php echo $groupid; ?>"><i class="mediumtext fa fa-arrow-left" style="color:#fff;opacity:.8;"></i></a> Performance Appraisal Form - Supervisor/Rater</b><br><br>
-        <div class="print" style="overflow-x:none;overflow-y:scroll;max-height:514px;padding-bottom:5px;">
+        <div>
 
         <form id="frm_paf" method="post" <?php //action="?ignore-page-cache=true" ?> enctype="multipart/form-data" >
             <fieldset>
@@ -69,7 +69,8 @@
             </table>
             <hr style="width:99%;"></hr>
             <?php } ?>
-
+            
+            <div  class="print" style="overflow-x:none;overflow-y:scroll;max-height:400px;padding-bottom:5px;">
             <p><i>This Performance Appraisal Form aims to provide a formal, recorded, regular review of an individual's performance and competencies. It is to be used for annual evaluations, and at other times during the year when formal feedback is needed.</i></p>
             <p><i>This is a three (3) part Appraisal Form whice are as follows:</i></p>
             <!-- Part 1 -->
@@ -1298,7 +1299,7 @@
                 }
             });
         </script>
-
+    </div>
     </div>
     <!-- end if -->
     <?php } else { ?>
