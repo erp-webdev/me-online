@@ -1000,7 +1000,7 @@
                     <td>
                         <input type="number" min="1" max="<?php echo  $rincr1; ?>" name="increase" value="<?php echo $evaluateRatee[0]['recinc']; ?>" step="0.01"> %
                         <br><br>
-                        Salary increase will be the final recommended increase.
+                        Salary increase will be the final recommended increase. If left blank, equivalent system generated percentage increase will apply.
                     </td>
                 </tr>
             <?php } else { ?>

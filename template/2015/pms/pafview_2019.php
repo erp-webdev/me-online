@@ -807,7 +807,7 @@
                                                             <td>
                                                                 <input type="number" min="1" max="100" name="increase" value="<?php echo $row['recinc']; ?>" step="0.01" style="width: 350px !important"> % 
                                                                 <br><br>
-                                                                Salary increase will be the final recommended increase.
+                                                                Salary increase will be the final recommended increase. If left blank, equivalent system generated percentage increase will apply.
                                                             </td>
                                                         </tr>
                                                             
