@@ -781,9 +781,11 @@
                                                             <br>
                                                             <?php if($row['promote']  == $ranks[array_search($row['randesc'], $ranks) + 1]) : ?>
                                                                 Evaluator and System recommends for promotion to <b> "<?php echo $row['promote']; ?>" </b>
-                                                            <?php elseif($row['promote']  != $row['randesc'] && !empty(trim($row['promote']))) : ?>
+                                                            <?php else: ?>
+                                                                <?php if($row['promote']  != $row['randesc'] && !empty(trim($row['promote']))) : ?>
                                                                 Evaluator recommends for promotion to <b>"<?php echo $row['promote']; ?>"</b> 
                                                                 <br>
+                                                                <?php endif; ?>
                                                                 System recommends for promotion to <b> "<?php echo $ranks[array_search($row['randesc'], $ranks) + 1]; ?>"</b>
 
                                                             <?php endif; ?>
