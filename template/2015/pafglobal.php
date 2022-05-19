@@ -263,7 +263,7 @@
                         active: 0
                     });
 
-                    $( ".selector" ).tabs( "option", "active", 3);
+                    $( "#tabslist" ).tabs( "option", "active", <?php echo isset($_GET[sub]) ? $_GET['sub'] - 1 : 0; ?>);
                 });
             </script>
 
