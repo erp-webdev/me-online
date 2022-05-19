@@ -124,7 +124,7 @@
                     <?php } ?>
 
                     <?php $counter = 0; $ratercount = array("1", "2", "3", "4"); ?>
-                    <div id="tabs">
+                    <div id="tabslist">
                         <ul>
                         <?php foreach($ratercount as $c) { if(count(${"rater$c"}) > 0) { ?>
                             <?php if($c == 1){ ?>
@@ -259,9 +259,9 @@
             </div>
             <script>
                 $(function() {
-                $( "#tabs" ).tabs({
-                    active: <?php echo isset($_GET[sub]) ?  $_GET['sub'] : 1; ?>
-                });
+                    $( "#tabslist" ).tabs({
+                        active: <?php echo isset($_GET[sub]) ?  $_GET['sub'] : 1; ?>
+                    });
                 });
             </script>
 
