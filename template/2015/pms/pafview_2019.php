@@ -784,7 +784,9 @@
                                                     <tr>
                                                         <td width="150px">New Position Title</td>
                                                         <td>
-                                                            <input type="text" id="promotetoPos" class="promotetoPos" name="promotetoPos" value="<?php echo $row['promotePos']; ?>">&nbsp;&nbsp;&nbsp;
+                                                            <input type="text" id="promotetoPos" class="promotetoPos" name="promotetoPos" value="<?php echo $row['promotePos']; ?>">
+                                                            <br>
+                                                            Current Position title is "<?php echo $row['posdesc']; ?>"
                                                             
                                                         </td>
                                                     </tr>
