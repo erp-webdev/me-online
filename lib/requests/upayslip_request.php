@@ -1355,13 +1355,14 @@
                                         <td>SSS</td>
                                         <td class="righttalign"><?php echo number_format($payslip_data[0]['SSSEE'], 2); ?></td>
                                     </tr>
-									<?php if ($payslip_data[0]['PRYear'] >= 2021) : ?>
+									
+                                    <?php endif; ?>
+                                    <?php if ($payslip_data[0]['SSSEEP']) : ?>
 									<tr class="trdata">
                                         <td>Provident Fund</td>
                                         <td class="righttalign"><?php echo number_format($payslip_data[0]['SSSEEP'], 2); ?></td>
                                     </tr>
 									<?php endif; ?>
-                                    <?php endif; ?>
                                     <?php if ($payslip_data[0]['PhilHEE']) : ?>
                                     <tr class="trdata">
                                         <td>PhilHealth</td>
