@@ -58,7 +58,7 @@
 					 
 					 CASE WHEN RTRIM(LTRIM(ISNULL(A.MNAME, ''))) <> '' 
 						THEN SUBSTRING(A.MNAME, 1, 1) +  '. ' ELSE ' ' END +A.LName AS FullName,
-
+					A.LName,
 					A.Allowance,
 					A.MonthlyRate,
 					A.RankID,

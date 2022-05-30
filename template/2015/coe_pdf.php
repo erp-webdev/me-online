@@ -110,7 +110,7 @@
 				<p style="padding-left: 50px; padding-right: 50px;">This is to further certify that <?php echo $emp_info[0]["salutation"]." ".strtoupper(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES')); ?> shall be on leave from <b><?php echo date('F d, Y', strtotime($start_date))." to ".date('F d, Y', strtotime($end_date)); ?>
 				</b>as approved by the Management. <?php echo $emp_info[0]["Gender"]; ?> is expected to report back for work on <b><?php echo date('F d, Y', strtotime($return_date)); ?></b>.</p>
 
-				<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo $emp_info[0]["salutation"]." ".strtoupper(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES')); ?>
+				<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo $emp_info[0]["salutation"]." ".strtoupper(mb_convert_encoding($emp_info[0]["LName"], 'UTF-8', 'HTML-ENTITIES')); ?>
 				<?php if($coe[0]["other_reason"]){ ?>
 					as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["other_reason"]; ?>.</p>
 				<?php }else{ ?>
@@ -142,7 +142,7 @@
 				<p style="padding-left: 50px; padding-right: 50px;">This also certifies that <b><?php echo strtoupper(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES'))."</b> and <b>".strtoupper($coe[0]["correction_name"]); ?>
 				</b>is the same person as <?php echo strtoupper(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES')); ?>.</p>
 
-				<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo $emp_info[0]["Salutation"]." ".strtoupper(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES')); ?>
+				<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo $emp_info[0]["Salutation"]." ".strtoupper(mb_convert_encoding($emp_info[0]["LName"], 'UTF-8', 'HTML-ENTITIES')); ?>
 				<?php if($coe[0]["other_reason"]){ ?>
 					as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["other_reason"]; ?>.</p>
 				<?php }else{ ?>
@@ -182,7 +182,7 @@
 				<?php } ?>
 				discount in the company's housing program as stated in our employee handbook.</p>
 
-				<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo $emp_info[0]["Salutation"]." ".strtoupper(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES'))."
+				<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo $emp_info[0]["Salutation"]." ".strtoupper(mb_convert_encoding($emp_info[0]["LName"], 'UTF-8', 'HTML-ENTITIES'))."
 				as a requirement for the Deed of Absolute Sale of ".$emp_info[0]["Gender2"]." ".date('jS', mktime(0, 0, 0, 0, $coe[0]["avail_no"], 0)); ?> property availment under the company's housing program.</p>
 
 				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
@@ -210,7 +210,7 @@
 
 				<p style="padding-left: 50px; padding-right: 50px;">This further certifies that <?php echo strtolower($emp_info[0]["Gender"]); ?> has no derogatory record on file.</p>
 
-				<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo $emp_info[0]["Salutation"]." ".strtoupper(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES')); ?>
+				<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo $emp_info[0]["Salutation"]." ".strtoupper(mb_convert_encoding($emp_info[0]["LName"], 'UTF-8', 'HTML-ENTITIES')); ?>
 				<?php if($coe[0]["other_reason"]){ ?>
 					as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["other_reason"];?>.</p>
 				<?php }else{ ?>
@@ -246,7 +246,7 @@
 				all of <?php echo $emp_info[0]["Gender2"]; ?> accountabilities with the Company.</p>
 				<?php } ?>
 
-				<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo $emp_info[0]["Salutation"]." ".strtoupper(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES')); ?>
+				<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo $emp_info[0]["Salutation"]." ".strtoupper(mb_convert_encoding($emp_info[0]["LName"], 'UTF-8', 'HTML-ENTITIES')); ?>
 				<?php
 					if($coe[0]["other_reason"]){
 				?>
@@ -297,7 +297,7 @@
 			up to the present.</b></p>
 			<?php } ?>
 
-			<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES'))); ?>
+			<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower(mb_convert_encoding($emp_info[0]["LName"], 'UTF-8', 'HTML-ENTITIES'))); ?>
 			<?php
 				if($coe[0]["other_reason"]){
 			?>
@@ -355,7 +355,7 @@
 				up to the present. </b></p>
 				<?php } ?>
 
-				<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo $emp_info[0]["Salutation"]." ".strtoupper(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES')); ?>
+				<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo $emp_info[0]["Salutation"]." ".strtoupper(mb_convert_encoding($emp_info[0]["LName"], 'UTF-8', 'HTML-ENTITIES')); ?>
 				<?php
 					if($coe[0]["other_reason"]){
 				?>
@@ -411,7 +411,7 @@
 
 				<p style="padding-left: 50px; padding-right: 50px;"> This is to further certify that <?php echo strtolower($emp_info[0]["Gender"])?> did not receive any advance payment from the company for <?php echo $emp_info[0]["Gender2"]?> SSS <?php echo strtolower($coe[0]["category"]) ?> benefit.</p>
 				
-				<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES'))); ?>
+				<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower(mb_convert_encoding($emp_info[0]["LName"], 'UTF-8', 'HTML-ENTITIES'))); ?>
 				for the purpose of complying with the documentary requirements for <?php echo $emp_info[0]["Gender2"]?> SSS <?php echo strtolower($coe[0]["category"]) ?> benefit claim.</p>
 
 				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
@@ -439,7 +439,7 @@
 				up to the present.</b></p>
 				<?php } ?>
 
-				<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo strtoupper($emp_info[0]["Salutation"])." ".strtoupper(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES')); ?>
+				<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo strtoupper($emp_info[0]["Salutation"])." ".strtoupper(mb_convert_encoding($emp_info[0]["LName"], 'UTF-8', 'HTML-ENTITIES')); ?>
 				as a requirment for <?php echo $emp_info[0]["Gender2"]?> Employee Compensation application. <?php echo $emp_info[0]["Gender"]?> last reported for work on <?php echo date('d F Y', strtotime($coe[0]["other_reason"])); ?>.</p>
 
 				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
@@ -480,7 +480,7 @@
 				<?php } ?>
 				</ul>
 
-				<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo $emp_info[0]["Salutation"]." ".strtoupper(mb_convert_encoding($emp_info[0]["FullName"], 'UTF-8', 'HTML-ENTITIES')); ?>
+				<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo $emp_info[0]["Salutation"]." ".strtoupper(mb_convert_encoding($emp_info[0]["LName"], 'UTF-8', 'HTML-ENTITIES')); ?>
 				<?php if($coe[0]["other_reason"]){ ?>
 					as a requirement for <?php echo $emp_info[0]["Gender2"]. " ".$coe[0]["other_reason"]; ?>.</p>
 				<?php }else{ ?>
