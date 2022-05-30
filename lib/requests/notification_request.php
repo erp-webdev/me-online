@@ -6405,7 +6405,7 @@
 							COERequests
 						SET
 							status = '".$status."',
-							other_reason = '".mssql_escape($others)."',
+							other_reason = '".$others."',
 							updated_at = '".$datetoday."',
 							updated_by = '".$profile_idnum."',
 							job_desc = '".$tasks."',
@@ -6441,7 +6441,6 @@
 			}
 
 			$result = $mainsql->get_execute($sql);
-            echo "<!-- kevs--" . $result . "-->";
 
 			if($result){
 
