@@ -6414,6 +6414,8 @@
 						WHERE
 							id=$id";
 			}
+
+
 			$coe_message = 'CoE has been saved!';
 			if($coe_old[0]['status'] == 'For Approval' && $status != 'Cancelled'){
 
@@ -6440,6 +6442,7 @@
                 }
 			}
 
+            echo "<!-- ".$sql." -->";
 			$result = $mainsql->get_execute($sql);
 
 			if($result){
