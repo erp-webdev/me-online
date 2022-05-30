@@ -6441,6 +6441,7 @@
 			}
 
 			$result = $mainsql->get_execute($sql);
+            echo "<!-- kevs--" . $result . "-->";
 
 			if($result){
 
