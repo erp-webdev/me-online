@@ -6405,10 +6405,10 @@
 							COERequests
 						SET
 							status = '".$status."',
-							other_reason = `".$others."`,
+							other_reason = '".mssql_escape($others)."',
 							updated_at = '".$datetoday."',
 							updated_by = '".$profile_idnum."',
-							job_desc = `".$tasks."`,
+							job_desc = '".mssql_escape($tasks)."',
 							hpa_percent = '".$hpa_percent."',
 							avail_no = '".$avail_no."'
 						WHERE
@@ -6440,6 +6440,7 @@
                 }
 			}
 
+            echo "<!-- kevs--" . $sql . " -->"
 			$result = $mainsql->get_execute($sql);
 
 			if($result){
