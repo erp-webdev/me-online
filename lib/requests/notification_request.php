@@ -6405,10 +6405,10 @@
 							COERequests
 						SET
 							status = '".$status."',
-							other_reason = '".$others."',
+							other_reason = `".$others."`,
 							updated_at = '".$datetoday."',
 							updated_by = '".$profile_idnum."',
-							job_desc = '".$tasks."',
+							job_desc = `".$tasks."`,
 							hpa_percent = '".$hpa_percent."',
 							avail_no = '".$avail_no."'
 						WHERE
