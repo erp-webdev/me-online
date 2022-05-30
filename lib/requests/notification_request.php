@@ -6405,7 +6405,7 @@
 							COERequests
 						SET
 							status = '".$status."',
-							other_reason = '".$others."',
+							other_reason = '".mssql_escape($others)."',
 							updated_at = '".$datetoday."',
 							updated_by = '".$profile_idnum."',
 							job_desc = '".$tasks."',
