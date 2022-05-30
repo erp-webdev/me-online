@@ -6440,7 +6440,7 @@
                 }
 			}
 
-            echo "<!-- kevs--" . $sql . " -->"
+            echo "<!-- kevs--" . $sql . "-->";
 			$result = $mainsql->get_execute($sql);
 
 			if($result){
