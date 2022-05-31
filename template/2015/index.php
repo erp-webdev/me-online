@@ -191,7 +191,7 @@
                                 <img src="<?php echo WEB; ?>/images/glhandbook.png"  />
                             </a>
 
-                            <?php elseif (in_array($profile_dbname , ['ASIAAPMI']) && $profile_idnum == '2016-06-0457' ) : ?>
+                            <?php elseif (in_array($profile_dbname , ['ASIAAPMI'])) : ?>
                             
                             <a href="<?php echo WEB; ?>/uploads/download/KER_Version_AA_UPDATED_HANDBOOK_Page1-99_May 30_2022.pdf" target="_blank" style="float: right; bottom: 150px; position: absolute; right: 29px;">
                                 <img src="<?php echo WEB; ?>/images/asiaapmi_handbook.png"  />
