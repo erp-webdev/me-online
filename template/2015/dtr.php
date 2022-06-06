@@ -36,9 +36,14 @@
                                             <?php $attpost = $dtr_period[0]['AttPost']; ?>
                                             <span id="txtposted" class="lgreentext bold<?php echo $attpost == 1 ? "" : " invisible"; ?>"><i class="fa fa-check"></i> POSTED</span>
                                         </td>
+                                        <?php if ($psblock && $profile_dbname != 'OJTPAY') : ?>
+                                        
                                         <td>
                                             <button class="smlbtn " id="viewPayslip">View Payslip</button>
                                         </td>
+
+                                        <?php endif; ?>
+
                                     </tr>
                                 </table>
                                 
