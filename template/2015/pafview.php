@@ -38,11 +38,9 @@
                     if($appdt <= date('Y-m-d', strtotime('2018-12-31'))){
                         include(TEMP.'/pms/pafview_old.php');
                     }else{
-                        echo '<!-- kevs -->';
                         include(TEMP.'/pms/pafview_2019.php');
                     }
                  ?>
-                        echo '<!-- kevs1 -->';
                 </div>
             </div>
         </div>
