@@ -29,10 +29,8 @@
                 <div class="print">
                    
                 <?php
-                    echo "<!-- kevs:: ";
-                    echo json_encode($viewAppraisal); 
-                    echo "-->";
-                    
+                   
+
                     if($pafad == 'ratee'){
                         $appdt = date('Y-m-d', strtotime($viewAppraisal[0]['appdt']));
                     }else{
