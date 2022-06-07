@@ -27,8 +27,11 @@
             <div class="leftsplashtext lefttalign"><?php include(TEMP."/menu.php"); ?></div>
             <div class="rightsplashtext lefttalign ">
                 <div class="print">
+                    <!-- kevs::
+                    <?php echo json_decode($viewAppraisal); ?>
+                  -->
                 <?php
-
+    
                     if($pafad == 'ratee'){
                         $appdt = date('Y-m-d', strtotime($viewAppraisal[0]['appdt']));
                     }else{
@@ -41,9 +44,7 @@
                         include(TEMP.'/pms/pafview_2019.php');
                     }
                  ?>
-                 <!-- kevs::
-                     <?php echo json_decode($viewAppraisal); ?>
-                  -->
+                 
                 </div>
             </div>
         </div>
