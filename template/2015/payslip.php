@@ -1547,7 +1547,7 @@
                         });
 
                         $('.print').on('click', function () {
-                            $('body').print();
+                            window.print()
                         });
 
                     </script>
