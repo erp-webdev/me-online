@@ -1127,7 +1127,7 @@
 
 
                 <?php } elseif (count($viewAppraisal) > 0 && $pafad == 'ratee') { ?>
-                        <!-- kevs -->
+                       
                         <form id="frm_pafview" class="formg" method="post" enctype="multipart/form-data">
                         <!-- Checks if user is Ratee -->
                         <a href="<?php echo WEB; ?>/paf?groupid=<?php echo $groupid; ?>"><i class="mediumtext fa fa-arrow-left" style="color:#fff;opacity:.8;"></i></a> <b class="mediumtext lorangetext">Ratee - Appraisal Rating Result</b><br>

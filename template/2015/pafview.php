@@ -39,6 +39,7 @@
                         include(TEMP.'/pms/pafview_old.php');
                     }else{
                         include(TEMP.'/pms/pafview_2019.php');
+                        echo "<!-- kevs -->";
                     }
                  ?>
                 </div>
