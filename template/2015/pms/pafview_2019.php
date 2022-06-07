@@ -1520,15 +1520,3 @@
                 </div>
             </div>
         </div>
-
-
-
-    <!--
-
-        Status
-
-        -Recommendation for Promotion W/ Increase
-        -Recommendation for Promotion W/o Increase
-        -Recommendation for Salary Increase
-
-    -->
