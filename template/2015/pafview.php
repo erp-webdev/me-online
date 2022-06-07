@@ -42,9 +42,7 @@
                     }else{
                         
                         include(TEMP.'/pms/pafview_2019.php');
-                        echo "<!-- kevs:: ";
-                        echo json_encode($viewAppraisal); 
-                        echo "-->";
+                       
                         
                     }
                  ?>
