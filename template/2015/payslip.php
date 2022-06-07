@@ -10,6 +10,7 @@
                                 <div class="psheader-print" style="display:none;">
                                     <img src="<?php echo IMG_WEB; ?>/<?php echo $logoimg; ?>" />
                                 </div>
+                                <br>
                                 <b class="mediumtext lorangetext">PAYSLIP</b><br><br>
                                 <table>
 
