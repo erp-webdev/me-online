@@ -1,6 +1,6 @@
 <div id="paf" class="mainbody lefttalign whitetext print">
+            <?php dd($checkEvaluation); ?>
             <?php 
-                echo $pafad;
                 if(count($checkEvaluation) > 0 && $pafad == 'rater') {  ?>
                     <b class="mediumtext lorangetext"><a href="<?php echo WEB; ?>/paf?groupid=<?php echo $groupid; if(isset($_GET['sub'])) echo '&sub=' . $_GET['sub']; ?>&ref=emp<?php echo $_GET['appid']; ?>"><i class="mediumtext fa fa-arrow-left" style="color:#fff;opacity:.8;"></i></a> Performance Appraisal Viewer <?php if($pafad == 'divhead'){ echo '- Division Head'; } elseif($pafad == 'rater') { echo '- Supervisor/Approver'; } ?></b><br>
                         <!--<p>You're a ratee!</p>-->
