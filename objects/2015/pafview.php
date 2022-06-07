@@ -31,14 +31,10 @@
         $rid = $_GET['rid'];
         $sub = $_GET['sub'];
 
-        
-        echo "<!-- kevs:: ";
-        echo json_encode(['test']); 
-        echo "-->";
-
-        
         if($pafad == 'ratee'){
 
+         
+            
             $command = "appid = '".$appid."' AND rempid = '".$profile_idnum."' AND status = 'Completed' AND appStatus = 'Active' AND appdt <= '".$datenow." 00:00:00.000'  AND DBNAME <> 'GL'"; //
             $viewAppraisal = $pafsql->appFunctionKev($command);
 
