@@ -40,6 +40,10 @@
                     if($appdt <= date('Y-m-d', strtotime('2018-12-31'))){
                         include(TEMP.'/pms/pafview_old.php');
                     }else{
+                        echo "<!-- kevs:: ";
+                        echo json_encode($viewAppraisal); 
+                        echo "-->";
+                        
                         include(TEMP.'/pms/pafview_2019.php');
                     }
                  ?>
