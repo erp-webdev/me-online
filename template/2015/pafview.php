@@ -41,7 +41,8 @@
                         include(TEMP.'/pms/pafview_old.php');
                     }else{
                         
-                        include(TEMP.'/pms/pafview_2019.php');
+                        // include(TEMP.'/pms/pafview_2019.php');
+                        include(TEMP.'/pms/pms-test-page.php');
                        
                         
                     }
