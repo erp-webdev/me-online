@@ -3194,6 +3194,10 @@ th, td { padding: 5px; }
         width: 98% !important;
     }
 
+	.psheader-print{
+		display:block !important;
+	}
+
     /*a,
     a:visited {
         text-decoration: underline;
