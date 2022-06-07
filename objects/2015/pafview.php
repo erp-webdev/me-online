@@ -66,7 +66,9 @@
                 $checkEvalID = $pafsql->checkEvalID($row['appid']);
             }
 
-        
+            echo "<!-- kevs:: ";
+            echo json_encode($viewAppraisal); 
+            echo "-->";
             
         } elseif ($pafad == 'rater') {
 
