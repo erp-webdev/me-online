@@ -7,7 +7,7 @@
                         <div class="leftsplashtext lefttalign"><?php include(TEMP."/menu.php"); ?></div>
                         <div class="rightsplashtext lefttalign">
                             <div id="mainnotification" class="mainbody lefttalign whitetext">
-                                <div class="psheader-print" style="display:none; text-align:center">
+                                <div class="psheader-print" style="display:none;">
                                     <img src="<?php echo IMG_WEB; ?>/<?php echo $logoimg; ?>" />
                                 </div>
                                 <b class="mediumtext lorangetext">PAYSLIP</b><br><br>
