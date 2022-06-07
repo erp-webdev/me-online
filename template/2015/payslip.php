@@ -68,6 +68,8 @@
                                         </td>
                                         <td>
                                             <button class="smlbtn viewDTR">View DTR</button>
+                                            <button class="smlbtn print">Print</button>
+                                            
                                         </td>
                                     </tr>
                                 </table>
@@ -1542,7 +1544,12 @@
                             var periodid = $('#payslip_cover').val();
 
                             window.location.href = '<?php echo WEB; ?>/dtr?pryear=' + pryear + '&period='+periodid;
-                        })
+                        });
+
+                        $('.print').on('click', function () {
+                            $('body').print();
+                        });
+
                     </script>
 
     <?php include(TEMP."/footer.php"); ?>
