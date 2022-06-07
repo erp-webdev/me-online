@@ -33,6 +33,10 @@
 
         if($pafad == 'ratee'){
 
+            echo "<!-- kevs:: ";
+            echo json_encode(['test']); 
+            echo "-->";
+
             $command = "appid = '".$appid."' AND rempid = '".$profile_idnum."' AND status = 'Completed' AND appStatus = 'Active' AND appdt <= '".$datenow." 00:00:00.000'  AND DBNAME <> 'GL'"; //
             $viewAppraisal = $pafsql->appFunctionKev($command);
 
@@ -66,9 +70,7 @@
                 $checkEvalID = $pafsql->checkEvalID($row['appid']);
             }
 
-            echo "<!-- kevs:: ";
-            echo json_encode($viewAppraisal); 
-            echo "-->";
+           
             
         } elseif ($pafad == 'rater') {
 
