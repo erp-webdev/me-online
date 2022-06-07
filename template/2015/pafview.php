@@ -40,8 +40,7 @@
                     if($appdt <= date('Y-m-d', strtotime('2018-12-31'))){
                         include(TEMP.'/pms/pafview_old.php');
                     }else{
-                        if (count($viewAppraisal) > 0 && $pafad == 'ratee') echo '<!--kevs-->';
-                        include TEMP.'/pms/pafview_2019.php';
+                        include(TEMP.'/pms/pafview_2022.php');
                     }
                  ?>
                  
