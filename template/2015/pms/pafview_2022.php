@@ -1,6 +1,7 @@
 <div id="paf" class="mainbody lefttalign whitetext print">
             <?php 
                 if(count($checkEvaluation) > 0 && $pafad == 'rater') {  ?>
+                    --test
                     <b class="mediumtext lorangetext"><a href="<?php echo WEB; ?>/paf?groupid=<?php echo $groupid; if(isset($_GET['sub'])) echo '&sub=' . $_GET['sub']; ?>&ref=emp<?php echo $_GET['appid']; ?>"><i class="mediumtext fa fa-arrow-left" style="color:#fff;opacity:.8;"></i></a> Performance Appraisal Viewer <?php if($pafad == 'divhead'){ echo '- Division Head'; } elseif($pafad == 'rater') { echo '- Supervisor/Approver'; } ?></b><br>
                         <!--<p>You're a ratee!</p>-->
                         <div>
@@ -1513,7 +1514,7 @@
                         <div id="alert"></div>
 
                 <?php } else { ?>
-                    
+
                     <p style="text-align:center;background-color:#fff;font-weight:bold;color:#3063a4;padding:6px 0;font-size:1em;margin-top:25px;">You have no rights to view this appraisal result.</p>
 
                 <?php } ?>
