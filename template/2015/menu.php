@@ -77,7 +77,19 @@
                         <span class="spanred">NEW!</span><?php if ($section != "loanledger") { ?><a href="<?php echo WEB; ?>/loanledger" onclick="clickAndDisable(this);"><?php } ?><div<?php if ($section == "loanledger") { ?> class="dselected"<?php } ?>>Loan Ledger</div><?php if ($section != "loanledger") { ?></a><?php } ?>
                         <?php } ?>
                         <?php endif; ?>
+                       
                         <?php if ($section != "dtr") { ?><a href="<?php echo WEB; ?>/dtr" onclick="clickAndDisable(this);"><?php } ?><div<?php if ($section == "dtr") { ?> class="dselected"<?php } ?>>Daily Time Record</div><?php if ($section != "dtr") { ?></a><?php } ?>
+                      
+                        <?php if ($profile_level >= 9 || count($approver_employees) > 0) : ?>
+                        <?php if ($section != "dtrman") { ?>
+                            <?php if ($profile_level < 9 || count($approver_employees) > 0) : ?>
+                            <span class="spanred" <?php if(date('Y-m-d') < '2022-09-01') echo ' style="display:block"'; ?>>NEW!</span>
+                            <?php endif; ?>
+                            <a href="<?php echo WEB; ?>/dtrman" onclick="clickAndDisable(this);"><?php } ?><div<?php if ($section == "dtrman") { ?> class="dselected"<?php } ?>>
+                            <?php if ($profile_level >= 9 ) echo 'System &amp; '; ?>
+                            DTR Management</div><?php if ($section != "dtrman") { ?></a><?php } ?>
+                        <?php endif; ?>
+
                         <?php if (!$_SESSION['megassep_admin'] && $profile_dbname != 'OJTPAY') : ?>
                         <?php if ($psblock && $profile_dbname != 'OJTPAY') : ?>
                         <?php if ($section != "payslip") { ?><a id="payslipclick" href="<?php echo WEB; ?>/payslip"  onclick="clickAndDisable(payslipclick);"><?php } ?><div<?php if ($section == "payslip") { ?> class="dselected"<?php } ?>>Payslip</div><?php if ($section != "payslip") { ?></a><?php } ?>
@@ -100,15 +112,8 @@
                         <?php if ($section != "approvers") { ?><a href="<?php echo WEB; ?>/approvers" onclick="clickAndDisable(this);"><?php } ?><div<?php if ($section == "approvers") { ?> class="dselected"<?php } ?>>Approvers Management</div><?php if ($section != "approvers") { ?></a><?php } ?>
                         <?php endif; ?>
                         <?php endif; ?>
-                        <?php if ($profile_level >= 9 || count($approver_employees) > 0) : ?>
-                        <?php if ($section != "dtrman") { ?>
-                            <?php if ($profile_level < 9 || count($approver_employees) > 0) : ?>
-                            <span class="spanred" <?php if(date('Y-m-d') < '2022-09-01') echo ' style="display:block"'; ?>>NEW!</span>
-                            <?php endif; ?>
-                            <a href="<?php echo WEB; ?>/dtrman" onclick="clickAndDisable(this);"><?php } ?><div<?php if ($section == "dtrman") { ?> class="dselected"<?php } ?>>
-                            <?php if ($profile_level >= 9 ) echo 'System &amp; '; ?>
-                            DTR Management</div><?php if ($section != "dtrman") { ?></a><?php } ?>
-                        <?php endif; ?>
+
+                        
 
                         <?php if ($profile_ps) : ?>
                         <a href="<?php echo WEB; ?>/pslipman"><div<?php if ($section == "pslipman") { ?> class="dselected"<?php } ?>>Payslip Management</div></a>
