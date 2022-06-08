@@ -103,7 +103,7 @@
                         <?php if ($profile_level >= 9 || count($approver_employees) > 0) : ?>
                         <?php if ($section != "dtrman") { ?>
                             <?php if ($profile_level < 9 || count($approver_employees) > 0) : ?>
-                            <span class="spanred" style="display:block">NEW!</span>
+                            <span class="spanred" <?php if(date('Y-m-d') < '2022-09-01') echo ' style="display:block"'; ?>>NEW!</span>
                             <?php endif; ?>
                             <a href="<?php echo WEB; ?>/dtrman" onclick="clickAndDisable(this);"><?php } ?><div<?php if ($section == "dtrman") { ?> class="dselected"<?php } ?>>
                             <?php if ($profile_level >= 9 ) echo 'System &amp; '; ?>
