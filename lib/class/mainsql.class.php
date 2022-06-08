@@ -2188,7 +2188,25 @@ class mainsql {
         // Example: June 1 may be calculated only within June 1 - 15 
         // Example 2: June 20 may be calculated only within June 16 - end of June
 
-        echo 'kevs' . var_dump($value['dteDTRDate']);
+        $dtr = date('Y-m-d', strtotime($value['dteDTRDate']));
+
+        $periodfrom = date('Y-m-1',strtotime($value['dteDTRDate']));
+        $periodto =date('Y-m-15',strtotime($value['dteDTRDate']));
+
+        $dtr_day = date('d',strtotime($value['dteDTRDate']));
+
+        if($dtr_day > 15){
+            $periodfrom = date('Y-m-16',strtotime($value['dteDTRDate']));
+            $periodto = date('Y-m-t',strtotime($value['dteDTRDate']));
+        }
+
+        if(! ($dtr >= $periodfrom && $dtr <= $periodto)){
+            var_dump(
+                ['pf' => $periodfrom, 'pt' => $periodto]
+            );
+            // if DTR is not within the DTR period
+            return FALSE;
+        }
 
         $val = array();
 
