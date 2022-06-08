@@ -2195,12 +2195,14 @@ class mainsql {
 
         $dtr_day = date('d',strtotime($value['dteDTRDate']));
 
+        $today = date('Y-m-d');
+
         if($dtr_day > 15){
             $periodfrom = date('Y-m-16',strtotime($value['dteDTRDate']));
             $periodto = date('Y-m-t',strtotime($value['dteDTRDate']));
         }
 
-        if(! ($dtr >= $periodfrom && $dtr <= $periodto)){
+        if(! ($today >= $periodfrom && $today <= $periodto)){
             var_dump(
                 ['pf' => $periodfrom, 'pt' => $periodto]
             );
