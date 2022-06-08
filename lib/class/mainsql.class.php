@@ -2190,7 +2190,7 @@ class mainsql {
 
         $dtr = date('Y-m-d', strtotime($value['dteDTRDate']));
 
-        $periodfrom = date('Y-m-1',strtotime($value['dteDTRDate']));
+        $periodfrom = date('Y-m-01',strtotime($value['dteDTRDate']));
         $periodto =date('Y-m-15',strtotime($value['dteDTRDate']));
 
         $dtr_day = strtotime(date('d',strtotime($value['dteDTRDate'])));
