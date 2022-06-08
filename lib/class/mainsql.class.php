@@ -2183,6 +2183,13 @@ class mainsql {
 
     function dtr_action($value, $action, $id = 0)
 	{
+        // June 8, 2022 kevs
+        // Calculate DTR only when Date is within DTR Period
+        // Example: June 1 may be calculated only within June 1 - 15 
+        // Example 2: June 20 may be calculated only within June 16 - end of June
+
+        var_dump($value['dteDTRDate']);
+
         $val = array();
 
 		switch ($action) {
