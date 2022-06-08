@@ -25,8 +25,9 @@
                         <div class="rightsplashtext lefttalign">
                             <div id="mainapprovers" class="mainbody lefttalign whitetext">  
                                 <b class="mediumtext lorangetext">SYSTEM and DTR MANAGEMENT</b><br><br>    
-                                <span class="smalltext lorangetext">You may view DTR of employees under your approval or if you've been assigned as admin.</span>                            
-                                
+                                <?php if(count($approver_employees) > 0) : ?>
+                                <span class="smalltext lorangetext">View DTR of employees under your approval.</span>                            
+                                <?php endif; ?>
                                 <table class="width100per">
                                     <tr>
                                         <td><span class="fa fa-search"></span> Search: 
