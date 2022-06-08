@@ -2188,7 +2188,7 @@ class mainsql {
         // Example: June 1 may be calculated only within June 1 - 15 
         // Example 2: June 20 may be calculated only within June 16 - end of June
 
-        dd($value['dteDTRDate']);
+        echo 'kevs' . var_dump($value['dteDTRDate']);
 
         $val = array();
 
