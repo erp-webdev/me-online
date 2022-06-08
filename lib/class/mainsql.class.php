@@ -2204,7 +2204,8 @@ class mainsql {
 
         if(! ($today >= $periodfrom && $today <= $periodto)){
             var_dump(
-                ['pf' => $periodfrom, 'pt' => $periodto, 'today'=>$today]
+                ['pf' => $periodfrom, 'pt' => $periodto, 'today'=>$today, 
+                '>' => $today >= $periodfrom, '<' => $today <= $periodto]
             );
             echo 'not within cutoff';
             // if DTR is not within the DTR period
