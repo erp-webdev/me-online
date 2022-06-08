@@ -2206,6 +2206,7 @@ class mainsql {
             var_dump(
                 ['pf' => $periodfrom, 'pt' => $periodto]
             );
+            echo 'not within cutoff';
             // if DTR is not within the DTR period
             return FALSE;
         }
