@@ -352,7 +352,7 @@
                                                                                 <option value="<?php echo 'WD'; //echo $wdhours; ?>"<?php echo $getnumhours[0]['NUMHrs'] == 9 ? ' selected' : ''; ?>>Whole-Day</option>
                                                                                 <option value="<?php echo 'HD1'; //echo $hdhours; ?>"<?php echo $getnumhours[0]['NUMHrs'] == 4 ? ' selected' : ''; ?>>Half-Day AM</option>
                                                                                 <option value="<?php echo 'HD2'; //echo $hdhours; ?>">Half-Day PM</option>
-                                                                                <option value="0">None</option>
+                                                                                <!-- <option value="0">None</option> -->
                                                                             </select>
                                                                         </td>
                                                                         <td width="20%" class="centertalign"><input type="checkbox" name="leave_pay[<?php echo $i; ?>]" id="leave_pay[<?php echo $i; ?>]" value="1" attribute="<?php echo $udates; ?>" class="leave_pay" checked /></td>

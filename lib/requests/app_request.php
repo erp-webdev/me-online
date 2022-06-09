@@ -1622,7 +1622,7 @@
                                 <?php if($leave_type != 'L12') : ?>
                                 <option value="<?php echo 'HD1' //echo $hdhours; ?>"<?php echo ($getnumhours[0]['NUMHrs'] == 4 && $leave_type != 'L04') ? ' selected' : ''; echo ($leave_type == 'L04') ? 'style="display:none;"' : '';?>>Half-Day AM</option>
                                 <option value="<?php echo 'HD2' //echo $hdhours; ?>" <?php echo ($leave_type == 'L04') ? 'style="display:none;"' : ''; ?>>Half-Day PM</option>
-				                <option value="0" attribute="0" <?php echo ($leave_type == 'L04') ? 'style="display:none;"' : ''; ?>>None</option>
+				                <!-- <option value="0" attribute="0" <?php echo ($leave_type == 'L04') ? 'style="display:none;"' : ''; ?>>None</option> -->
                                 <?php endif; ?>
                             </select>
                         </td>
