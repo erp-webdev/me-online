@@ -5,6 +5,7 @@
             include(OBJ . '/wfh/WFHClearance.php');
 
             $wfh_clearance = new WFHClearance();
+            dd($wfh_clearance);
 
             # PAGINATION
             $page = isset($_GET["page"]) ? (int)$_GET["page"] : 1 ;
