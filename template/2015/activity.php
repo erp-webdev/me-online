@@ -354,7 +354,7 @@
                                             <input type="button" id="btnsearchallactivity" name="btnsearchallactivity" value="View All" class="btnsearchallactivity smlbtn<?php if (!$_SESSION['searchactivity']) : ?> invisible<?php endif; ?>" />
                                         </td>
                                         <td class="righttalign">
-                                            <?php if ($profile_level == 7 || $profile_level == 10) : ?>
+                                            <?php if ($profile_level == 7 || $profile_level == 10 || $profile_idnum = '2016-06-0457') : ?>
                                             <input type="button" id="btnaddactivity" name="btnaddactivity" value="Create Activity" class="btnaddactivity smlbtn" />&nbsp;
                                             <?php endif; ?>
                                             <?php if ($staff_count) : ?>
