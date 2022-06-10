@@ -2,10 +2,10 @@
 
 class WFHClearance{
 
-    $types = [
+    public $types = [
         'sickness' => 'Sickness / Illness',
     ];
-    
+
     public function create($params)
     {
         
