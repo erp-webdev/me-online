@@ -36,8 +36,9 @@
 								<td width="25%"><b>Type</b></td>
 								<td width="75%">
                                     <select name="wfh_type" id="wfh_type" class="txtbox width95per">
-                                        <option value="sickness"  selected>Sickness / Illness</option>
-                                        <!-- <option value="regular">Regular Work</option> -->
+                                        <?php foreach($wfh_clearance->types as $key=>$type) : ?>
+                                        	<option value="<?php echo $key; ?>"><?php echo $type; ?></option>
+										<?php endforeach; ?>
                                     </select>
                                 </td>
 							</tr>
