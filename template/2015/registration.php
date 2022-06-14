@@ -75,7 +75,7 @@
                                     ?>
                                     <tr>
                                         <td><a class="whitetext" attribute="<?php echo $value['registry_id']; ?>"><b><?php echo $value['activity_title']; ?></b><?php if ($value['activity_id'] == 150) : ?> (AUTO-REGISTERED)<?php endif; ?></a><?php if ($value['registry_status'] == 2) : ?><br>Confirmation Code: <?php echo $value['activity_id'].'-'.substr($profile_idnum, -4).$value['registry_date']; ?><?php endif; ?><?php echo trim($value['registry_details']) ? '<br><b>Attendees:</b> '.$value['registry_details'] : ''; ?><?php echo trim($value['registry_vehicle']) ? '<br><b>Bus No.:</b> '.$value['registry_vehicle'] : ''; ?>
-                                            <!-- kevs <?php var_dump($actfeedback);  ?> -->
+                                            <!-- kevs <?php var_dump($value['activity_datestart']);  ?> -->
                                             <?php if (!$checkfback && $actfeedback) : ?><br><a class="btnsendfback cursorpoint lgraytext" attribute="<?php echo $value['registry_id']; ?>">Send a feedback</a><?php else : ?><br><a class="tooltip cursorpoint whitetext" title="<?php echo 'Comment: '.$fb_info[0]['fback_comment']; ?>"><?php for($star=1; $star<=$fb_info[0]['fback_rate']; $star++) : ?><i class="fa fa-star lorangetext"></i><?php endfor; ?></a><?php endif; ?></td>
                                         <td class="centertalign"><?php echo $value['registry_godirectly'] ? '<i class="fa fa-check greentext"></i>' : '<i class="fa fa-times redtext"></i>'; ?></td>
                                         <td class="centertalign"><?php echo date("M j, Y", $value['registry_date']); ?><br><?php echo date("g:ia", $value['registry_date']); ?></td>
