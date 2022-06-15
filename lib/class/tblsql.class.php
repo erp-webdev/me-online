@@ -861,7 +861,7 @@ class tblsql {
 		$sql.=" FROM HREventRegistry r, VIEWHREMPMASTER e ";
 		$sql.=" WHERE r.registry_status >= 1
             AND r.registry_uid = e.EmpID AND e.CompanyActive = 1 ";
-		if ($id != NULL) $sql.=" AND CONVERT(NVARCHAR(32), HASHBYTES('MD5', CONVERT(VARCHAR,  r.registry_id, 2)), 2) = '".$id."'";
+		if ($id != NULL) $sql.=" AND r.registry_hash = '".$id."'";
 		if ($actid != 0) :
             if ($actid == 2106) :
                 $sql.=" AND r.registry_activityid IN (2661, 2660)";
