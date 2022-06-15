@@ -30,7 +30,7 @@
             endif;
 
         endif;
-
+		echo $profile_dbname; exit;
         $my_registration = $tblsql->get_registration(0, 0, 0, 0, $profile_id, $profile_dbname);
 
 		$_SESSION["xmas"] = 0;
