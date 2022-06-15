@@ -804,7 +804,7 @@ class tblsql {
 		return $result;
 	}
 
-    function get_registration($id = 0, $start = 0, $limit = 0, $count = 0, $uid = NULL)
+    function get_registration($id = 0, $start = 0, $limit = 0, $count = 0, $uid = NULL, $db = NULL)
 	{
         $sql = "SELECT [outer].* FROM ( ";
         $sql .= " SELECT ROW_NUMBER() OVER(ORDER BY registry_date DESC) as ROW_NUMBER, ";
@@ -812,6 +812,8 @@ class tblsql {
 		$sql.=" FROM HREventRegistry r, HRActivity a ";
 		$sql.=" WHERE r.registry_status >= 1
             AND r.registry_activityid = a.activity_id ";
+
+		if ($db != NULL) $sql.=" AND r.registry_db = ".$db;
 		if ($id != 0) $sql.=" AND r.registry_id = ".$id;
 		if ($uid != NULL) $sql.=" AND r.registry_uid = '".$uid."'";
 		if ($actid != 0) $sql.=" AND r.registry_activityid = '".$actid."'";

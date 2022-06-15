@@ -31,7 +31,7 @@
 
         endif;
 
-        $my_registration = $tblsql->get_registration(0, 0, 0, 0, $profile_id);
+        $my_registration = $tblsql->get_registration(0, 0, 0, 0, $profile_id, $profile_dbname);
 
 		$_SESSION["xmas"] = 0;
 		foreach($my_registration as $activ){
