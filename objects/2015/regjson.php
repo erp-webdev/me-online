@@ -31,6 +31,8 @@
                 $godir = 'Will take a tour bus';
             endif;
 
+                $godir='';
+
             if ($value['registry_status'] == 2) :
                 $status = 'PRE-REGISTERED AND ATTENDED';
             elseif ($value['registry_status'] == 4) :
