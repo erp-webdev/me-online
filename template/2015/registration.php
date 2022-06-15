@@ -69,7 +69,7 @@
                                     <?php foreach ($my_registration as $key => $value) : ?>
                                     <?php 
                                         $checkfback = $tblsql->get_feedback($profile_id, $value['activity_id'], 1); 
-                                        $fb_info = $checkfback ? $tblsql->get_feedback(0, 0, 0, $value['registry_id']) : NULL;
+                                        $fb_info = $checkfback ? $tblsql->get_feedback(0, $value['activity_id'], 0, $value['registry_id']) : NULL;
                                         $nobackout = ($value['activity_datestart'] - 172800) <= date('U') ? 1 : 0;
                                         $actfeedback = $value['activity_datestart'] <= date('U') ? 1 : 0;
                                     ?>
