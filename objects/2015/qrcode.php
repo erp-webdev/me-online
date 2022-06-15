@@ -14,7 +14,11 @@
 		// $table_draw = $mainsql->get_row($table_draw_query);
 		// $dept_name = $table_draw[0]['TABLE ASSIGNMENT'];
 		// $table = $table_draw[0]['TABLE NUMBER'];
-
+	
+		$sql = "SELECT * 
+			FROM SUBSIDIARY.DBO.HREventRegistry r
+			LEFT JOIN SUBSIDIARY.DBO.HRActivity b ON r.registry_activityid = b.activity_id
+			WHERE HASHBYTES('SHA1', b.activity_id + 'qr' + r.registry_uid)='".$id."'"
 
 		// $emp_dept_query = "SELECT DeptDesc FROM $profile_dbname.DBO.HRDepartment where DeptID = '$dept_id'";
 		// $emp_dept = $mainsql->get_row($emp_dept_query);
