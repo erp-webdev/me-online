@@ -1583,7 +1583,7 @@ class tblsql {
         //     registry_dateattend = '".date('U')."',
         //     registry_status = 4
         //     WHERE registry_id = ".$id;
-         $sql="UPDATE HREventRegistry
+         $sql="UPDATE SUBSIDIARY.DBO.HREventRegistry
             SET registry_vehicle = '',
             registry_dateattend = '".date('U')."',
             registry_status = 4

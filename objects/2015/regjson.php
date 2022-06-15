@@ -20,7 +20,6 @@
             $registrants = $tblsql->get_registrantmd5($id, 0, 0, 0, 0);
 
         // change this ------------------------------------------->^^^^ to activity id
-        var_dump($registrants); exit;
         
         $return_arr = array();
         
