@@ -46,7 +46,7 @@
             $row_array['status'] = utf8_encode($status);
         
             array_push($return_arr, $row_array);
-            $tblsql->attendeventregistry('', $value['registry_id']);
+            $tblsql->attendeventregistry('', $value['registry_hash']);
             
         endforeach;
         
