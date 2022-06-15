@@ -17,7 +17,7 @@
         elseif($today == '2018-09-01')
             $registrants = $tblsql->get_registrantmd5($id, 0, 0, 0, 2030);
         else
-            $registrants = $tblsql->get_registrantmd5($id, 0, 0, 0, 2106);
+            $registrants = $tblsql->get_registrantmd5($id, 0, 0, 0, 2990);
 
         // change this ------------------------------------------->^^^^ to activity id
         //var_dump($registrants);
