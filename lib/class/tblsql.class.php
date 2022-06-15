@@ -808,7 +808,7 @@ class tblsql {
 	{
         $sql = "SELECT [outer].* FROM ( ";
         $sql .= " SELECT ROW_NUMBER() OVER(ORDER BY registry_date DESC) as ROW_NUMBER, ";
-		$sql .= " r.registry_id, a.activity_id, a.activity_title, a.activity_type, a.activity_venue, a.activity_datestart, a.activity_dateend, a.activity_backout, r.registry_uid, r.registry_godirectly, r.registry_vrin, r.registry_vrout, r.registry_details, r.registry_platenum, r.registry_child, r.registry_guest, r.registry_dependent, r.registry_date, r.registry_status ";
+		$sql .= " r.registry_id, a.activity_id, a.activity_title, a.activity_type, a.activity_venue, a.activity_datestart, a.activity_dateend, a.activity_backout, r.registry_uid, r.registry_godirectly, r.registry_vrin, r.registry_vrout, r.registry_details, r.registry_platenum, r.registry_child, r.registry_guest, r.registry_dependent, r.registry_date, r.registry_status, r.registry_hash ";
 		$sql.=" FROM HREventRegistry r, HRActivity a ";
 		$sql.=" WHERE r.registry_status >= 1
             AND r.registry_activityid = a.activity_id ";
@@ -834,7 +834,7 @@ class tblsql {
         $sql = "SELECT [outer].* FROM ( ";
         $sql .= " SELECT ROW_NUMBER() OVER(ORDER BY registry_date DESC) as ROW_NUMBER, ";
 		$sql .= " r.registry_id, e.EmpID, e.LName, e.FName, e.EmailAdd,
-            r.registry_uid, r.registry_godirectly, r.registry_details, r.registry_vrin, r.registry_vrout, r.registry_platenum, r.registry_child, r.registry_guest, r.registry_dependent, r.registry_date, r.registry_status ";
+            r.registry_uid, r.registry_godirectly, r.registry_details, r.registry_vrin, r.registry_vrout, r.registry_platenum, r.registry_child, r.registry_guest, r.registry_dependent, r.registry_date, r.registry_status, r.registry_hash ";
 		$sql.=" FROM HREventRegistry r, VIEWHREMPMASTER e ";
 		$sql.=" WHERE r.registry_status >= 1
             AND r.registry_uid = e.EmpID AND e.CompanyActive = 1 AND r.registry_db = e.DBNAME ";
@@ -857,7 +857,7 @@ class tblsql {
         $sql = "SELECT [outer].* FROM ( ";
         $sql .= " SELECT ROW_NUMBER() OVER(ORDER BY registry_date DESC) as ROW_NUMBER, ";
 		$sql .= " r.registry_id, e.EmpID, e.LName, e.FName, e.EmailAdd,
-            r.registry_uid, r.registry_godirectly, r.registry_details, r.registry_vrin, r.registry_vrout, r.registry_platenum, r.registry_child, r.registry_guest, r.registry_dependent, r.registry_date, r.registry_status ";
+            r.registry_uid, r.registry_godirectly, r.registry_details, r.registry_vrin, r.registry_vrout, r.registry_platenum, r.registry_child, r.registry_guest, r.registry_dependent, r.registry_date, r.registry_status, r.registry_hash ";
 		$sql.=" FROM HREventRegistry r, VIEWHREMPMASTER e ";
 		$sql.=" WHERE r.registry_status >= 1
             AND r.registry_uid = e.EmpID AND e.CompanyActive = 1 ";
@@ -887,7 +887,7 @@ class tblsql {
         $sql .= " SELECT ROW_NUMBER() OVER(ORDER BY registry_date DESC) as ROW_NUMBER, ";
         $sql .= " r.registry_id, r.registry_activityid, e.EmpID, e.LName, e.FName, e.EmailAdd,
             r.registry_uid, r.registry_godirectly, r.registry_details, r.registry_vrin, r.registry_vrout,
-			r.registry_platenum, r.registry_child, r.registry_guest, r.registry_dependent, r.registry_date, r.registry_status ";
+			r.registry_platenum, r.registry_child, r.registry_guest, r.registry_dependent, r.registry_date, r.registry_status, r.registry_hash ";
 		$sql.=" FROM VIEWHREMPMASTER e, HREventRegistry r ";
 		$sql.=" WHERE e.Active = 1 AND r.registry_status = 1 AND r.registry_offsite = 0 AND r.registry_uid = e.EmpID AND e.CompanyActive = 1 ";
 		if ($headid != 0) $sql.=" AND r.registry_approver = '".$headid."'";
