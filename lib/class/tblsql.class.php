@@ -813,7 +813,7 @@ class tblsql {
 		$sql.=" WHERE r.registry_status >= 1
             AND r.registry_activityid = a.activity_id ";
 
-		if ($db != NULL) $sql.=" AND r.registry_db = ".$db;
+		if ($db != NULL) $sql.=" AND r.registry_db = '".$db."'";
 		if ($id != 0) $sql.=" AND r.registry_id = ".$id;
 		if ($uid != NULL) $sql.=" AND r.registry_uid = '".$uid."'";
 		if ($actid != 0) $sql.=" AND r.registry_activityid = '".$actid."'";
