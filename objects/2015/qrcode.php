@@ -20,7 +20,7 @@
 			LEFT JOIN SUBSIDIARY.DBO.HRActivity b ON r.registry_activityid = b.activity_id
 			WHERE HASHBYTES('SHA1', b.activity_id + 'qr' + r.registry_uid)='".$id."'";
 		$result = $mainsql->get_row($sql);
-		var_dump($result); exit;
+		var_dump($sql); exit;
 		// $emp_dept_query = "SELECT DeptDesc FROM $profile_dbname.DBO.HRDepartment where DeptID = '$dept_id'";
 		// $emp_dept = $mainsql->get_row($emp_dept_query);
 		// $emp_dept = $emp_dept[0]['DeptDesc'];
