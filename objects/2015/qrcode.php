@@ -15,7 +15,7 @@
 		$dept_name = $table_draw[0]['TABLE ASSIGNMENT'];
 		$table = $table_draw[0]['TABLE NUMBER'];
 
-
+		echo $id; exit;
 		// $emp_dept_query = "SELECT DeptDesc FROM $profile_dbname.DBO.HRDepartment where DeptID = '$dept_id'";
 		// $emp_dept = $mainsql->get_row($emp_dept_query);
 		// $emp_dept = $emp_dept[0]['DeptDesc'];
