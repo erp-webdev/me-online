@@ -1587,7 +1587,7 @@ class tblsql {
             SET registry_vehicle = '',
             registry_dateattend = '".date('U')."',
             registry_status = 4
-            WHERE registry_id = ".$id;
+            WHERE registry_hash = ".$id;
 
         $edit_reg = $this->get_execute($sql);
     }
