@@ -44,7 +44,7 @@
                                         <td class="centertalign"><?php echo date("M j, Y", $value['registry_date']); ?><br><?php echo date("g:ia", $value['registry_date']); ?></td>
                                         <td class="centertalign"><?php if ($value['registry_status'] == 2) : echo 'Approved'; elseif ($value['registry_status'] == 4) : echo '<span class="greentext">Attended</span>'; else : echo '<span class="redtext">For Approval</span>'; endif; ?></td>
                                         <td class="centertalign">
-                                            <?php $feedback = $tblsql->get_feedback($value['EmpID'], $value['registry_activityid']); ?>
+                                            <?php $feedback = $tblsql->get_feedback(0, $value['registry_activityid'], 0, $value['registry_id']); ?>
                                             <?php if ($feedback) : ?>
                                                 <?php echo '<a title="'.$feedback[0]['fback_comment'].' - '.date("F j, Y", $feedback[0]['fback_date']).'" class="cursorpoint tooltip">'; ?>
                                                 <?php for($i[$value['emp_id']]==0; $i[$value['emp_id']]<$feedback[0]['fback_rate']; $i[$value['emp_id']]++) : ?>
