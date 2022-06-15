@@ -10,8 +10,9 @@
                                 <b class="mediumtext lorangetext">QR CODE</b><br><br>
 
                                 <img src="https://chart.googleapis.com/chart?chs=400x400&cht=qr&chl=<?php echo $id; ?>&choe=UTF-8" width="400" height="400" onerror="alert('QR Code failed to load. Please check your internet connection');">
-								<!-- place if condition here if activity is xmas party -->
-								               
+
+                                <span><?php echo $_GET['title']; ?></span>
+                                
 								<div class="clearboth">
                                     <button onclick="window.history.back();" class="btn btnred margintop25">Back</button>
                                 </div>
