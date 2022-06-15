@@ -81,8 +81,8 @@
                                         <td class="centertalign"><?php echo date("M j, Y", $value['registry_date']); ?><br><?php echo date("g:ia", $value['registry_date']); ?></td>
                                         <td class="centertalign"><?php if ($value['registry_status'] == 2) : echo '<span class="whitetext">Approved</span>'; elseif ($value['registry_status'] == 1) : echo '<span class="whitetext">For Approval</span>'; else : echo '<span class="whitetext">Attended</span>'; endif; ?></td>
 
-                                        <td class="centertalign"><?php if ($value['activity_id'] > 2990) : ?>
-                                            
+                                        <td class="centertalign"><?php if ($value['activity_dateend'] + 86400 > date('U')) : ?>
+
                                             <a href="<?php echo WEB; ?>/qrcode/<?php echo md5($value['registry_id']); ?>"><button class="smlbtn">QR Code</button></a>
                                             
                                             <?php endif; ?><?php if (!$nobackout && !$value['activity_backout'] && $value['registry_status'] != 4) : ?> <a class="btndelreg cursorpoint" attribute="<?php echo $value['registry_id']; ?>"><button class="smlbtn btnred">Backout</button></a><?php endif; ?></td>
