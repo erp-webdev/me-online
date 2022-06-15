@@ -83,7 +83,7 @@
 
                                         <td class="centertalign"><?php if ($value['activity_dateend'] + 86400 > date('U')) : ?>
 
-                                            <a href="<?php echo WEB; ?>/qrcode/<?php echo $value['registry_hash']; ?>?title=<?php echo htmlentities($value['activity_title']); ?>><button class="smlbtn">QR Code</button></a>
+                                            <a href="<?php echo WEB; ?>/qrcode/<?php echo $value['registry_hash']; ?>?title=<?php echo htmlentities($value['activity_title']); ?>"><button class="smlbtn">QR Code</button></a>
                                             
                                             <?php endif; ?><?php if (!$nobackout && !$value['activity_backout'] && $value['registry_status'] != 4) : ?> <a class="btndelreg cursorpoint" attribute="<?php echo $value['registry_id']; ?>"><button class="smlbtn btnred">Backout</button></a><?php endif; ?></td>
                                     </tr>
