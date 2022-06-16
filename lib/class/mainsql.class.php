@@ -2202,7 +2202,7 @@ class mainsql {
             $periodto = strtotime(date('Y-m-t',strtotime($value['dteDTRDate'])));
         }
 
-        if(!($today >= $periodfrom && $today <= eval($periodto + '259200'))){
+        if(!($today >= $periodfrom && $today <= (int)$periodto + 259200)){
             // if DTR is not within the DTR period
             return FALSE;
         }
