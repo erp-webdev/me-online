@@ -2188,7 +2188,7 @@ class mainsql {
         // Example: June 1 may be calculated only within June 1 - 15 
         // Example 2: June 20 may be calculated only within June 16 - end of June
 
-         $dtr = strtotime($value['dteDTRDate']);
+        $dtr = strtotime($value['dteDTRDate']);
 
         $periodfrom = strtotime($value['dteDTRDate']);
         $periodto = strtotime($value['dteDTRDate']);
@@ -2204,7 +2204,6 @@ class mainsql {
 
         if(!($today >= $periodfrom && $today <= $periodto)){
             // if DTR is not within the DTR period
-            echo $dtr_day; 
             return FALSE;
         }
 
