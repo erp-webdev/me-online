@@ -2193,7 +2193,7 @@ class mainsql {
         $periodfrom = strtotime($value['dteDTRDate']);
         $periodto = strtotime($value['dteDTRDate']);
 
-        $dtr_day = strtotime(date('d',strtotime($value['dteDTRDate'])));
+        $dtr_day = date('d',strtotime($value['dteDTRDate']));
 
         $today = date('Y-m-d');
 
