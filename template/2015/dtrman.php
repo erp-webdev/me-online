@@ -24,7 +24,7 @@
                         <div class="leftsplashtext lefttalign"><?php include(TEMP."/menu.php"); ?></div>
                         <div class="rightsplashtext lefttalign">
                             <div id="mainapprovers" class="mainbody lefttalign whitetext">  
-                                <b class="mediumtext lorangetext">SYSTEM and DTR MANAGEMENT</b><br><br>    
+                                <b class="mediumtext lorangetext"><?php if ($profile_level >= 9 ) echo 'SYSTEM and '; ?> DTR MANAGEMENT</b><br><br>    
                                 <?php if(count($approver_employees) > 0) : ?>
                                 <span class="smalltext lorangetext">View DTR of employees under your approval.</span>                            
                                 <?php endif; ?>

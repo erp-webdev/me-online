@@ -2181,7 +2181,7 @@ class mainsql {
 
     # ACTIONS
 
-    function dtr_action($value, $action, $id = 0)
+    function dtr_action($value, $action, $id = 0, $db = NULL)
 	{
         // June 8, 2022 kevs
         // Calculate DTR only when Date is within DTR Period
@@ -2195,16 +2195,16 @@ class mainsql {
 
         $dtr_day = date('d',strtotime($value['dteDTRDate']));
 
-        $today = date('Y-m-d');
+        $today = date('U');
 
         if($dtr_day > 15){
-            $periodfrom = date('Y-m-16',strtotime($value['dteDTRDate']));
-            $periodto = date('Y-m-t',strtotime($value['dteDTRDate']));
+            $periodfrom = strtotime(date('Y-m-16',strtotime($value['dteDTRDate'])));
+            $periodto = strtotime(date('Y-m-t',strtotime($value['dteDTRDate'])));
         }
 
         if(!($today >= $periodfrom && $today <= $periodto)){
             // if DTR is not within the DTR period
-            return FALSE;
+            return false;
         }
 
         $val = array();
@@ -2228,7 +2228,7 @@ class mainsql {
                     endif;
                 endforeach;
 
-                $calculate_dtr = $this->get_sp_data('SP_COMPUTE_TK', $val);
+                $calculate_dtr = $this->get_sp_data('SP_COMPUTE_TK', $val, $db);
 
                 if($calculate_dtr) {
                     return TRUE;

@@ -90,7 +90,7 @@
             $dbname = $_POST['dbname'];
             
             $year_select = '';
-            $dtr_period = $mainsql->get_dtr_period($dtr_year, $profile_comp, 1);    
+            $dtr_period = $mainsql->get_dtr_period($dtr_year, $profile_comp, 1, $dbname);    
             if ($dtr_period) :
                 foreach ($dtr_period as $key => $value) :
                     $year_select .= '<option value="'.date("Y-m-d", strtotime($value['PeriodFrom'])).' '.date("Y-m-d", strtotime($value['PeriodTo'])).'" dfrom="'.strtotime($value['PeriodFrom']).'" dto="'.strtotime($value['PeriodTo']).'" posted="'.$value['AttPost'].'" dbname="'.$dbname.'">'.$value['PeriodID']." ".$value['PRYear'].' '.date("m/d/Y", strtotime($value['PeriodFrom'])).' to '.date("m/d/Y", strtotime($value['PeriodTo'])).'</option>';
@@ -112,6 +112,9 @@
             
         case 'calculate':
             $profile_idnum = $_POST['empid'];  
+            $db = NULL;
+            if(isset($_POST['db']))
+                $db = $_POST['db'];
             
             $_POST['strEMPID'] = $profile_idnum;            
             $_POST['dteDTRDate'] = date("m/d/Y", $_POST['dateunix']);
@@ -119,7 +122,7 @@
             $_POST['STATUS'] = 'INITIAL';
             $_POST['intFINALPAY'] = 0;            
             
-            $dtr_calculate = $mainsql->dtr_action($_POST, 'calculate');
+            $dtr_calculate = $mainsql->dtr_action($_POST, 'calculate', 0, $_POST['db']);
             
             echo $dtr_calculate;
         break;

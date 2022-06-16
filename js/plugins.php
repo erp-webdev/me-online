@@ -2666,7 +2666,7 @@ $(function() {
                     $.ajax(
                     {
                         url: "<?php echo WEB; ?>/lib/requests/udtr_request.php?sec=calculate",
-                        data: "dateunix=" + dfrom + "&empid=" + empid,
+                        data: "dateunix=" + dfrom + "&empid=" + empid + "&db=" + dbname,
                         type: "POST",
                         complete: function(){
                             $("#loading").hide();
