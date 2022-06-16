@@ -2188,25 +2188,25 @@ class mainsql {
         // Example: June 1 may be calculated only within June 1 - 15 
         // Example 2: June 20 may be calculated only within June 16 - end of June
 
-        $dtr = date('Y-m-d', strtotime($value['dteDTRDate']));
+        // $dtr = date('Y-m-d', strtotime($value['dteDTRDate']));
 
-        $periodfrom = date('Y-m-01',strtotime($value['dteDTRDate']));
-        $periodto =date('Y-m-15',strtotime($value['dteDTRDate']));
+        // $periodfrom = date('Y-m-01',strtotime($value['dteDTRDate']));
+        // $periodto =date('Y-m-15',strtotime($value['dteDTRDate']));
 
-        $dtr_day = strtotime(date('d',strtotime($value['dteDTRDate'])));
+        // $dtr_day = strtotime(date('d',strtotime($value['dteDTRDate'])));
 
-        $today = date('Y-m-d');
+        // $today = date('Y-m-d');
 
-        if($dtr_day > 15){
-            $periodfrom = date('Y-m-16',strtotime($value['dteDTRDate']));
-            $periodto = date('Y-m-t',strtotime($value['dteDTRDate']));
-        }
+        // if($dtr_day > 15){
+        //     $periodfrom = date('Y-m-16',strtotime($value['dteDTRDate']));
+        //     $periodto = date('Y-m-t',strtotime($value['dteDTRDate']));
+        // }
 
-        if(! ($today >= $periodfrom && $today <= $periodto)){
-            // if DTR is not within the DTR period
-            echo $today; 
-            return FALSE;
-        }
+        // if(! ($today >= $periodfrom && $today <= $periodto)){
+        //     // if DTR is not within the DTR period
+        //     echo $today; 
+        //     return FALSE;
+        // }
 
         $val = array();
 
