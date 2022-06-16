@@ -2195,16 +2195,16 @@ class mainsql {
 
         $dtr_day = date('d',strtotime($value['dteDTRDate']));
 
-        $today = strtotime(date('Y-m-d 00:00:00'));
+        $today = date('Y-m-d H:i:s');
 
         if($dtr_day > 15){
-            $periodfrom = strtotime($value['dteDTRDate']);
-            $periodto = strtotime($value['dteDTRDate']);
+            $periodfrom = date('Y-m-16',strtotime($value['dteDTRDate']));
+            $periodto = date('Y-m-t',strtotime($value['dteDTRDate']));
         }
 
         if(!($today >= $periodfrom && $today <= $periodto)){
             // if DTR is not within the DTR period
-            echo $today . '>=' . $periodfrom ;
+            echo "$today >= $periodfrom";
             return FALSE;
         }
 
