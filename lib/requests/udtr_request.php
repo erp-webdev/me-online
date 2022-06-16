@@ -112,6 +112,9 @@
             
         case 'calculate':
             $profile_idnum = $_POST['empid'];  
+            $db = NULL;
+            if(isset($_POST['db']))
+                $db = $_POST['db'];
             
             $_POST['strEMPID'] = $profile_idnum;            
             $_POST['dteDTRDate'] = date("m/d/Y", $_POST['dateunix']);
@@ -119,7 +122,7 @@
             $_POST['STATUS'] = 'INITIAL';
             $_POST['intFINALPAY'] = 0;            
             
-            $dtr_calculate = $mainsql->dtr_action($_POST, 'calculate');
+            $dtr_calculate = $mainsql->dtr_action($_POST, 'calculate', 0, $_POST['db']);
             
             echo $dtr_calculate;
         break;
