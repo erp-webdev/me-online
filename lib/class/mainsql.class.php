@@ -2181,7 +2181,7 @@ class mainsql {
 
     # ACTIONS
 
-    function dtr_action($value, $action, $id = 0)
+    function dtr_action($value, $action, $id = 0, $db = NULL)
 	{
         // June 8, 2022 kevs
         // Calculate DTR only when Date is within DTR Period
@@ -2228,7 +2228,7 @@ class mainsql {
                     endif;
                 endforeach;
 
-                $calculate_dtr = $this->get_sp_data('SP_COMPUTE_TK', $val);
+                $calculate_dtr = $this->get_sp_data('SP_COMPUTE_TK', $val, $db);
 
                 if($calculate_dtr) {
                     return TRUE;

@@ -162,7 +162,7 @@
             endif;
 
             if ($dfrom > $lastpoint) :
-                $dtr_calculate = $mainsql->dtr_action($_POST, 'calculate');
+                $dtr_calculate = $mainsql->dtr_action($_POST, 'calculate', 0, $_POST['db']);
             else :
                 $dtr_calculate = 0;
             endif;
