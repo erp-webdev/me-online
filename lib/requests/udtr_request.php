@@ -119,7 +119,7 @@
             $_POST['STATUS'] = 'INITIAL';
             $_POST['intFINALPAY'] = 0;            
             
-            $dtr_calculate = $mainsql->dtr_action($_POST, 'calculate');
+            $dtr_calculate = $mainsql->dtr_action($_POST, 'calculate', 0, $_POST['db']);
             
             echo $dtr_calculate;
         break;
