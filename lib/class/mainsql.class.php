@@ -2204,7 +2204,7 @@ class mainsql {
 
         if(!($today >= $periodfrom  + 259200 && $today <= $periodto)){
             // if DTR is not within the DTR period
-            return FALSE;
+            return false;
         }
 
         $val = array();
