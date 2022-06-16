@@ -2198,8 +2198,8 @@ class mainsql {
         $today = date('U');
 
         if($dtr_day > 15){
-            $periodfrom = date('Y-m-16',strtotime($value['dteDTRDate']));
-            $periodto = date('Y-m-t',strtotime($value['dteDTRDate']));
+            $periodfrom = strtotime(date('Y-m-16',strtotime($value['dteDTRDate'])));
+            $periodto = strtotime(date('Y-m-t',strtotime($value['dteDTRDate'])));
         }
 
         if(!($today >= $periodfrom && $today <= $periodto)){
