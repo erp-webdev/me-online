@@ -61,8 +61,8 @@
                                 <a href="<?php echo WEB; ?>/wfh" onclick="clickAndDisable(this);"><div<?php if ($section == "wfh") { ?> class="dselected"<?php } ?>>Work From Home</div></a>
                             <?php  endif; ?>
 
-                            <?php if ($profile_idnum == '2016-06-0457') : ?>
-                                <a href="<?php echo WEB; ?>/wfh" onclick="clickAndDisable(this);"><div<?php if ($section == "wfh") { ?> class="dselected"<?php } ?>>WFH Clearance</div></a>
+                            <?php if ($whc_app && $profile_idnum == '2016-06-0457') : ?>
+                                <a href="<?php echo WEB; ?>/wfh" onclick="clickAndDisable(this);"><div<?php if ($section == "wfhc") { ?> class="dselected"<?php } ?>>WFH Clearance</div></a>
                             <?php  endif; ?>
 
                             <!-- <?php if ($rwf_app && $profile_idnum == '2016-06-0457') : ?><a href="<?php echo WEB; ?>/rwfh" onclick="clickAndDisable(this);"><div<?php if ($section == "rwfh") { ?> class="dselected"<?php } ?>>WFH Clearance</div></a><?php endif; ?> -->
