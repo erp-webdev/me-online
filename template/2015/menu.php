@@ -61,7 +61,7 @@
                                 <a href="<?php echo WEB; ?>/wfh" onclick="clickAndDisable(this);"><div<?php if ($section == "wfh") { ?> class="dselected"<?php } ?>>Work From Home</div></a>
                             <?php  endif; ?>
 
-                            <?php if ($whc_app && $profile_idnum == '2016-06-0457') : ?>
+                            <?php if ($wfhc_app && $profile_idnum == '2016-06-0457') : ?>
                                 <a href="<?php echo WEB; ?>/wfhclearance" onclick="clickAndDisable(this);"><div<?php if ($section == "wfhc") { ?> class="dselected"<?php } ?>>WFH Clearance</div></a>
                             <?php  endif; ?>
 
