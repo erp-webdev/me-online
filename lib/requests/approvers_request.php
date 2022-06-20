@@ -397,8 +397,10 @@
                                         $app_name = "Non-Punching Authorization"; $app_var = "npa";
                                     elseif ($value['TYPE'] == "frmApplicationSCWeb") :
                                         $app_name = "Change Schedule"; $app_var = "sc";
-																		elseif ($value['TYPE'] == "frmApplicationWHWeb") :
+									elseif ($value['TYPE'] == "frmApplicationWHWeb") :
                                         $app_name = "Work From Home"; $app_var = "wh";
+                                    elseif ($value['TYPE'] == "frmApplicationWHCWeb") :
+                                        $app_name = "WFH Clearance"; $app_var = "whc";
                                     endif;
 
                                     $appkey = array_search($value['TYPE'], array_column($app_array, 'TYPE'));
