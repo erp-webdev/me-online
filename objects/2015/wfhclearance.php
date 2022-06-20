@@ -1,6 +1,6 @@
 <?php
 	if ($logged == 1) {
-        if ($wh_app && $profile_idnum == '2016-06-0457') :
+        if ($wfhc_app && $profile_idnum == '2016-06-0457') :
             
             include OBJ . '/wfh/WFHClearance.php';
             $wfh_clearance = new WFHClearance();
