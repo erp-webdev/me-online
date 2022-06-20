@@ -369,7 +369,7 @@
                                     4 => array("TYPE" => "frmApplicationOTWeb"),
 									5 => array("TYPE" => "frmApplicationSCWeb"),
                                     6 => array("TYPE" => "frmApplicationWHWeb"),
-                                    6 => array("TYPE" => "frmApplicationWHCWeb")
+                                    7 => array("TYPE" => "frmApplicationWHCWeb")
                                 );
                             ?>
 
