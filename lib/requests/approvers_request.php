@@ -368,8 +368,8 @@
                                     3 => array("TYPE" => "frmApplicationOBWeb"),
                                     4 => array("TYPE" => "frmApplicationOTWeb"),
 									5 => array("TYPE" => "frmApplicationSCWeb"),
-                                    7 => array("TYPE" => "frmApplicationWHCWeb")
-                                    6 => array("TYPE" => "frmApplicationWHWeb"),
+                                    7 => array("TYPE" => "frmApplicationWHCWeb"),
+                                    6 => array("TYPE" => "frmApplicationWHWeb")
                                 );
                             ?>
 
