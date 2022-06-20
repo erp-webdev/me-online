@@ -2,8 +2,8 @@
 	if ($logged == 1) {
         if ($wfhc_app && $profile_idnum == '2016-06-0457') :
             
-            include OBJ . '/wfh/WFHClearance.php';
-            $wfh_clearance = new WFHClearance();
+            // include OBJ . '/wfh/WFHClearance.php';
+            // $wfh_clearance = new WFHClearance();
 
             # PAGINATION
             $page = isset($_GET["page"]) ? (int)$_GET["page"] : 1 ;
