@@ -1,6 +1,6 @@
 <?php
 	if ($logged == 1) {
-        if ($wfhc_app && $profile_idnum == '2016-06-0457') :
+        if ($wfhc_app) :
             
             // include OBJ . '/wfh/WFHClearance.php';
             // $wfh_clearance = new WFHClearance();
@@ -12,7 +12,7 @@
             //*********************** MAIN CODE START **********************\\
 
             # ASSIGNED VALUE
-            $page_title = "Work from Home";
+            $page_title = "WFH Clearance";
 
             //***********************  MAIN CODE END  **********************\\
 
