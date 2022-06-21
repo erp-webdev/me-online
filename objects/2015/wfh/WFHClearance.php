@@ -1,7 +1,7 @@
 <?php 
 include OBJ . '/Mail/Mail.php';
 
-class WFHClearance implements Mail{
+class WFHClearance{
 
     private $types = [
         'sickness' => 'Sickness / Illness',
