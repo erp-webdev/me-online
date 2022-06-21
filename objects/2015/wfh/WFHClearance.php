@@ -2,9 +2,6 @@
 include OBJ . '/mail/Mail.php';
 class WFHClearance{
 
-    private $type;
-    private $covered
-
     private $types = [
         'sickness' => 'Sickness / Illness'
     ];
