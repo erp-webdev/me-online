@@ -1,3 +1,14 @@
+<?php 
+
+if ($coe[0]["type"] == "COECOMPENSATION") {
+	
+	include(TEMP . '/coe/layout.php');
+
+} else : 
+
+?>
+
+
 <div id="myDivToPrint" style="height: 750px;">
 	<div style="text-align: center; padding-top: 10px;">
 
@@ -1637,3 +1648,5 @@
 		<!-- FOOTER END -->
 </div>
 <?php
+
+	endif;
