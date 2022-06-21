@@ -1,8 +1,8 @@
 <?php 
-include OBJ . '/Mail/Mail.php';
+include OBJ . '/mail/Mail.php';
 class WFHClearance{
 
-    $types = [
+    private $types = [
         'sickness' => 'Sickness / Illness',
     ];
 
