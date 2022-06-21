@@ -1,7 +1,7 @@
 <?php 
 
 if ($coe[0]["type"] == "COENONCASHADVANCEMENT") {
-	
+	echo 'test';
 	include(TEMP . '/coe/layout.php');
 
 } else {
