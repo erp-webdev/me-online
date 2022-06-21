@@ -15,7 +15,7 @@
 
             global $sroot, $profile_id, $unix3month;
             
-            // $wfh_clearance = new WFHClearance();
+            $wfh_clearance = new WFHClearance;
 
             //***********************  MAIN CODE END  **********************\\
         else :
