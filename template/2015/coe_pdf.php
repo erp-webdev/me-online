@@ -4,7 +4,7 @@ if ($coe[0]["type"] == "COENONCASHADVANCEMENT") {
 	echo 'test';
 	include(TEMP . '/coe/layout.php');
 
-} else {
+} 
 
 ?>
 
@@ -1648,5 +1648,3 @@ if ($coe[0]["type"] == "COENONCASHADVANCEMENT") {
 		<!-- FOOTER END -->
 </div>
 <?php
-
-	} ?>
