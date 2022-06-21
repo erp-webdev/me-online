@@ -470,7 +470,7 @@
             $empid = $_POST['empid'];
             //$app_array = $mainsql->get_approvers($empid, 1);
 
-            echo 7;
+            echo 8;
 
         break;
         case 'searchapsr':
