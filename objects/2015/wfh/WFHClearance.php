@@ -6,7 +6,7 @@ class WFHClearance{
         'sickness' => 'Sickness / Illness',
     ];
 
-    function getTypes(){
+    public function getTypes(){
         return $this->types;
     }
 
