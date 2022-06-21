@@ -17,7 +17,7 @@ class WFHClearance{
             echo '{"success": false, "error": "Invalid selected type"}';
             exit();
         }
-        var_dump($params) ; exit();
+        
         // Check Covered Period
         if($params['wfhc_to'] < $params['wfhc_from']){
             echo '{"success": false, "error": "Incorrect coverage end of date."}';
