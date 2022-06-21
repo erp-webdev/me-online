@@ -30,6 +30,12 @@ class WFHClearance{
             exit();
         }
 
+        // Attachment
+        if(empty(trim($_FILES['attachment1']))){
+            echo '{"success": false, "error": "Attachment is required."}';
+            exit();
+        }
+
     }
 
     public function submit($params)
