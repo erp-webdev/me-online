@@ -21,8 +21,8 @@
                 case 'Submit':
                     $params = [
                         'wfh_type' => $_POST['wfh_type'],
-                        'wfh_from' => strtotime($_POST['wfh_from']),
-                        'wfh_to' => strtotime($_POST['wfh_to']),
+                        'wfhc_from' => strtotime($_POST['wfhc_from']),
+                        'wfhc_to' => strtotime($_POST['wfhc_to']),
                         'reason' => $_POST['reason'],
                         'attachments' => [
                             $_FILES['attachment1'],
