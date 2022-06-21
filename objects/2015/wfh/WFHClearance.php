@@ -3,7 +3,7 @@
 
 class WFHClearance{
 
-    public $types = [
+    $types = [
         'sickness' => 'Sickness / Illness',
     ];
 
