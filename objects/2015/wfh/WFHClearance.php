@@ -1,5 +1,5 @@
 <?php 
-include OBJ . '/mail/Mail.php';
+include OBJ . '/Mail/Mail.php';
 
 class WFHClearance implements Mail{
 

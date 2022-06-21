@@ -2,7 +2,7 @@
 	if ($logged == 1) {
         if ($wfhc_app) :
 
-            include(OBJ . '/WFH/WFHClearance.php');
+            include OBJ . '/WFH/WFHClearance.php';
 
             # PAGINATION
             $page = isset($_GET["page"]) ? (int)$_GET["page"] : 1 ;
@@ -17,7 +17,7 @@
             global $sroot, $profile_id, $unix3month;
             
             $wfh_clearance = new WFHClearance();
-            
+
 
             //***********************  MAIN CODE END  **********************\\
         else :
