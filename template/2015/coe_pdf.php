@@ -1,6 +1,6 @@
 <?php 
 
-if ($coe[0]["type"] == "COECOMPENSATION") {
+if ($coe[0]["type"] == "COENONCASHADVANCEMENT") {
 	
 	include(TEMP . '/coe/layout.php');
 
