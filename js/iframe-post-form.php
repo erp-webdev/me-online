@@ -2048,7 +2048,7 @@ $(function ()
             if ($('#ndays').val() >= 1)
             {
 
-                if ($('#wfh_from_').val().length && $('#wfh_to_').val().length)
+                if ($('#wfhc_from_').val().length && $('#wfhc_to_').val().length)
                 {
                     $('.wfh_msg')
                     .html('<i class="fa fa-refresh fa-spin fa-lg"></i> Processing Work From Home Clearance&hellip;')
