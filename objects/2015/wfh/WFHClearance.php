@@ -31,7 +31,7 @@ class WFHClearance{
         }
 
         // Attachment
-        if($_FILES['attachment1']){
+        if (!$_FILES['attachment1']['name']) {
             echo '{"success": false, "error": "Attachment is required."}';
             exit();
         }
