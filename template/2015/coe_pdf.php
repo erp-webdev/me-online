@@ -1,12 +1,3 @@
-<?php 
-
-if ($coe[0]["type"] == "COENONCASHADVANCEMENT") {
-	
-	include(TEMP . '/coe/layout.php');
-
-} else : 
-
-?>
 
 
 <div id="myDivToPrint" style="height: 750px;">
@@ -1648,5 +1639,3 @@ if ($coe[0]["type"] == "COENONCASHADVANCEMENT") {
 		<!-- FOOTER END -->
 </div>
 <?php
-
-	endif;
