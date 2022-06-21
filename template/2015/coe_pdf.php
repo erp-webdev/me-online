@@ -1,3 +1,12 @@
+<?php 
+
+if ($coe[0]["type"] == "COENONCASHADVANCEMENT") {
+	
+	include(TEMP . '/coe/layout.php');
+
+} else {
+
+?>
 
 
 <div id="myDivToPrint" style="height: 750px;">
@@ -1639,3 +1648,5 @@
 		<!-- FOOTER END -->
 </div>
 <?php
+
+	} ?>
