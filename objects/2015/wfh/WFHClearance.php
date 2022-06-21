@@ -6,7 +6,7 @@ class WFHClearance{
     private $covered
 
     private $types = [
-        'sickness' => 'Sickness / Illness',
+        'sickness' => 'Sickness / Illness'
     ];
 
     public function getTypes(){
