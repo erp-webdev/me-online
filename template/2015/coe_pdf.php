@@ -1,14 +1,15 @@
-<?php 
-if ($coe[0]["type"] == "COENONCASHADVANCEMENT") {
 
-	include(TEMP . '/coe/layout.php');
-	echo 'test'; exit;
-} 
-
-?>
 
 
 <div id="myDivToPrint" style="height: 750px;">
+	<?php 
+	if ($coe[0]["type"] == "COENONCASHADVANCEMENT") {
+
+		include(TEMP . '/coe/layout.php');
+		return;
+	} 
+
+	?>
 	<div style="text-align: center; padding-top: 10px;">
 
 		<?php $send_pdf = $_POST['send'] == 'true' ? true : false; ?>
