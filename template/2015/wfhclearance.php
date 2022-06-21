@@ -41,7 +41,7 @@
 							<tr>
 								<td width="25%"><b>Covered Period: </b></td>
 								<td width="75%">
-                                    <input id="wfhc_from_" type="text" name="wfhc_from" value="" class="txtbox datepickwh_" readonly /> - <input id="wfhc_to_"  type="text" name="wfhc_to" value="" class="txtbox datepickwh_" readonly/>
+                                    <input id="wfhc_from_" type="text" name="wfhc_from" value="" class="txtbox datepickwhc_" readonly /> - <input id="wfhc_to_"  type="text" name="wfhc_to" value="" class="txtbox datepickwhc_" readonly/>
                                 </td>
 							</tr>
                             <tr>
