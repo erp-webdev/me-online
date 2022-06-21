@@ -17,6 +17,31 @@
             
             $wfh_clearance = new WFHClearance();
             
+            switch ($_POST['btnwfhclearanceapply']) {
+                case 'Submit':
+                    $params = [
+                        'wfh_type' => $_POST['wfh_type'],
+                        'wfh_from' => strtotime($_POST['wfh_from']),
+                        'wfh_to' => strtotime($_POST['wfh_to']),
+                        'reason' => $_POST['reason'],
+                        'attachments' => [
+                            $_FILES['attachment1'],
+                            $_FILES['attachment2'],
+                            $_FILES['attachment3'],
+                            $_FILES['attachment4'],
+                            $_FILES['attachment5']
+                        ]
+                    ];
+
+                    $wfh_clearance->validate($params);
+                    $wfh_clearance->submit($params);
+
+                    break;
+                
+                default:
+                    # code...
+                    break;
+            }
 
             //***********************  MAIN CODE END  **********************\\
         else :
