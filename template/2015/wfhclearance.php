@@ -32,7 +32,7 @@
 								<td width="25%"><b>Type</b></td>
 								<td width="75%">
                                     <select name="wfh_type" id="wfh_type" class="txtbox width95per">
-                                        <?php foreach($wfh_clearance->types as $key=>$type) : ?>
+                                        <?php foreach($wfh_clearance->getTypes() as $key=>$type) : ?>
                                         	<option value="<?php echo $key; ?>"><?php echo $type; ?></option>
 										<?php endforeach; ?>
                                     </select>

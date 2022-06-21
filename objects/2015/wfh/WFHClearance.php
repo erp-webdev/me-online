@@ -3,12 +3,12 @@ include OBJ . '/mail/Mail.php';
 
 class WFHClearance implements Mail{
 
-    public $types = [
+    private $types = [
         'sickness' => 'Sickness / Illness',
     ];
 
-    public function create($params)
-    {
-        
+    public function getTypes(){
+        return $this->types;
     }
+
 }
