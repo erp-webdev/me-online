@@ -14,12 +14,16 @@ class WFHClearance{
     {
         // Check type
         if(!in_array($params['wfh_type'], array_keys($this->getTypes()))){
-            echo '{"success": false, "error": "All inputs on Work from Home must be completed (Total Worked Hours & Acitivities). Unless the date is excluded."}';
+            echo '{"success": false, "error": "Invalid selected type"}';
             exit();
         }
 
         // Check Covered Period
-        
+        if($params['wfhc_to'] < $params['wfhc_from']){
+            echo '{"success": false, "error": "Incorrect coverage end of date."}';
+            exit();
+
+        }
 
     }
 
