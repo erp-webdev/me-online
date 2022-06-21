@@ -2,7 +2,7 @@
 
 <?php 
 	
-		include(TEMP."/wfh/wfh_clearance.php"); 
+	include(TEMP."/wfh/wfh_clearance.php"); 
 
 ?>
 

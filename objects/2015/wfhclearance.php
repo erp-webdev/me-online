@@ -1,6 +1,5 @@
 <?php
 	if ($logged == 1) {
-        if ($wfhc_app) :
             
             # PAGINATION
             $page = isset($_GET["page"]) ? (int)$_GET["page"] : 1 ;
@@ -13,7 +12,6 @@
             global $sroot, $profile_id, $unix3month;
 
             //***********************  MAIN CODE END  **********************\\
-        endif;
 	}
 	else
 	{
