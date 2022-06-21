@@ -80,7 +80,7 @@
 						$micsec = explode(' ', $microsec);
 						$finsec = str_replace('.', '', $micsec[1].$micsec[0]);
 					?>
-					<input id="ndays" type="hidden" name="ndays" value="<?php echo $dayn; ?>" />
+					<!-- <input id="ndays" type="hidden" name="ndays" value="<?php echo $dayn; ?>" /> -->
 					<input type="hidden" name="empid" value="<?php echo $profile_idnum; ?>" />
 					<input type="hidden" name="reqnbr" value="<?php echo "WC-".$finsec; ?>" />
 					<input type="hidden" name="user" value="<?php echo $profile_idnum; ?>" />

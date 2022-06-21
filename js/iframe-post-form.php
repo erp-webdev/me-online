@@ -2045,7 +2045,7 @@ $(function ()
 				$('#alert').after('<div class="wfh_msg" style="display:none; padding:10px; text-align:center" />');
 			}
 
-            if ($('#ndays').val() >= 1)
+            if ($('#ndays').val() >= 1 || true)
             {
 
                 if ($('#wfhc_from_').val().length && $('#wfhc_to_').val().length)
