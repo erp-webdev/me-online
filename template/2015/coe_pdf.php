@@ -1,9 +1,8 @@
 <?php 
-var_dump($coe[0]["type"]); exit;
 if ($coe[0]["type"] == "COENONCASHADVANCEMENT") {
-	echo 'test';
-	include(TEMP . '/coe/layout.php');
 
+	include(TEMP . '/coe/layout.php');
+	echo 'test'; exit;
 } 
 
 ?>
