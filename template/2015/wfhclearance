@@ -1,1 +1,9 @@
-<?php echo 'testing'; ?>
+<?php include(TEMP."/header.php"); ?>
+
+<?php 
+	
+		include(TEMP."/wfh/wfh_clearance.php"); 
+
+?>
+
+<?php include(TEMP."/footer.php"); ?>
