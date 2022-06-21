@@ -2033,6 +2033,101 @@ $(function ()
 		}
 	});
 
+    $('#mainwfhc form').iframePostForm
+	({
+		json : true,
+		post : function ()
+		{
+			var wfh_msg;
+
+			if (!$('.wfh_msg').length)
+			{
+				$('#alert').after('<div class="wfh_msg" style="display:none; padding:10px; text-align:center" />');
+			}
+
+            if ($('#ndays').val() >= 1)
+            {
+
+                if ($('#wfh_from_').val().length && $('#wfh_to_').val().length)
+                {
+                    $('.wfh_msg')
+                    .html('<i class="fa fa-refresh fa-spin fa-lg"></i> Processing Work From Home Clearance&hellip;')
+                    .css({
+                        color : '#006100',
+                        background : '#c6efce',
+                        border : '2px solid #006100',
+                        height : 'auto'
+                    })
+                    .slideDown();
+                }
+                else
+                {
+                    $('.wfh_msg')
+                        .html('Date coverage is required.')
+                        .css({
+                            color : '#9c0006',
+                            background : '#ffc7ce',
+                            border : '2px solid #9c0006',
+                            height : 'auto'
+                        })
+                        .slideDown()
+                        .effect('shake', {times: 3, distance: 5}, 420);
+
+                    return false;
+                }
+            }
+            else
+            {
+                $('.wfh_msg')
+                    .html('Date coverage is invalid.')
+                    .css({
+                        color : '#9c0006',
+                        background : '#ffc7ce',
+                        border : '2px solid #9c0006',
+                        height : 'auto'
+                    })
+                    .slideDown()
+                    .effect('shake', {times: 3, distance: 5}, 420);
+
+                return false;
+            }
+
+		},
+		complete : function (response)
+		{
+			var style,
+				width,
+				html = '';
+
+
+			if (!response.success)
+			{
+				$('.wfh_msg').slideUp(function ()
+				{
+					$(this)
+						.html(response.error)
+						.css({
+							color : '#9c0006',
+							background : '#ffc7ce',
+							borderColor : '#9c0006',
+                            height : 'auto'
+						})
+						.slideDown();
+				});
+			}
+
+			else
+			{
+				//html += '<p>WFH has been successfully applied.</p>';
+        localStorage.removeItem('wfh-entries');
+				$('.wfh_msg').slideUp();
+                alert('Work from Home has been successfully applied.');
+                window.location.href='<?php echo WEB; ?>/myrequest?type=10';
+
+			}
+		}
+	});
+
     /* Manual DTR */
 
     $('#maindtr form').iframePostForm

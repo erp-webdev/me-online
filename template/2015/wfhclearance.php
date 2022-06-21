@@ -18,7 +18,7 @@
 
 			<div id="alert"></div>
 			
-			<form id="frmapplywdc" name="frmapplywdc" action="?ignore-page-cache=true" method="post" enctype="multipart/form-data">
+			<form id="frmapplywd" name="frmapplywd" action="?ignore-page-cache=true" method="post" enctype="multipart/form-data">
 				<div id="tabs">
 					<ul>
 						<li><a href="#ldetails">Details</a></li>
