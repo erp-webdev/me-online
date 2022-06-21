@@ -1,6 +1,5 @@
 <?php 
-// include OBJ . '/Mail/Mail.php';
-
+include OBJ . '/Mail/Mail.php';
 class WFHClearance{
 
     $types = [
