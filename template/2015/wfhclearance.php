@@ -5,7 +5,7 @@
 	<div class="topsplashtext lefttalign robotobold cattext whitetext"><?php echo WELCOME; ?></div>
 	<div class="leftsplashtext lefttalign"><?php include(TEMP."/menu.php"); ?></div>
 	<div class="rightsplashtext lefttalign">
-		<div id="mainwfh" class="mainbody lefttalign whitetext">
+		<div id="mainwfhc" class="mainbody lefttalign whitetext">
 			<b class="mediumtext lorangetext">Work From Home Clearance</b> <small><i></i></small><br><br>
 			<b>MAIN INFORMATION</b><br><br>
 			<div class="column2">
