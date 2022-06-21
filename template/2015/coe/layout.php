@@ -72,6 +72,7 @@
 
     switch ($coe[0]["type"]) {
         case 'COENONCASHADVANCEMENT':
+            echo 'testing';
             include(TEMP . '/coe/coe_non_cash_advancement.php');
             break;
         
