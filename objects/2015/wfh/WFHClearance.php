@@ -17,10 +17,16 @@ class WFHClearance{
             echo '{"success": false, "error": "Invalid selected type"}';
             exit();
         }
-        
+
         // Check Covered Period
         if($params['wfhc_to'] < $params['wfhc_from']){
             echo '{"success": false, "error": "Incorrect coverage end of date."}';
+            exit();
+        }
+
+        // Check reason 
+        if(empty(trim($params['reason']))){
+            echo '{"success": false, "error": "Reason for WFH Clearance is required."}';
             exit();
         }
 
