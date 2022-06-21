@@ -12,5 +12,3 @@ class WFHClearance implements Mail{
     }
 
 }
-
-?>
