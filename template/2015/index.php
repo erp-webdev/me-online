@@ -132,8 +132,7 @@
                                 <?php if ($profile_dbname != 'ECINEMA' && $profile_dbname != 'EPARKVIEW' && $profile_dbname != 'NEWTOWN' && $profile_dbname != 'LAFUERZA') : ?>
                                 
                                 <?php if (strtotime('2022-06-22') <= strtotime(date('Y-m-d'))) : ?>
-                                <div id="mainnotification" class="dashcomp dashincentive centertalign  marginbottom25">
-                                    <!-- <a onclick="showmeg()" class="roboto bluetext mediumtext" style="text-align:center">Megaworld Turns 33!</a> -->
+                                <div  onclick="showmeg()" id="mainnotification" class="dashcomp dashincentive centertalign  marginbottom25">
                                     <img src="<?php echo WEB; ?>/uploads/megaworld_turns_33.png" alt="Megaworld Turns 33!" width="100%">
                                 </div>
                                 <?php endif; ?>
