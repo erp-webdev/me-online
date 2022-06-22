@@ -123,10 +123,9 @@
                                 <?php endif; ?>
                                 <?php if ($profile_dbname != 'ECINEMA' && $profile_dbname != 'EPARKVIEW' && $profile_dbname != 'NEWTOWN' && $profile_dbname != 'LAFUERZA') : ?>
 
-                                <!--div id="mainnotification" class="lefttalign whitetext marginbottom25">
-                                    <b class="smalltext dorangetext">Great Hall - additional food service survey</b><br>
-                                    Please answer survey on the link below<br>Click <a href="https://goo.gl/forms/nodu9Vf2Ixuu9mk12" class="yellowtext" target="_blank">here</a>
-                                </div-->
+                                <div id="mainnotification" class="lefttalign whitetext marginbottom25">
+                                    <b class="smalltext dorangetext">Megaworld Turns 33</b><br>
+                                </div
 
                                 <!--<?php if (date('Y-m-d') >= '2018-01-08') : ?>
                                 <div id="mainnotification" class="lefttalign whitetext marginbottom25">
