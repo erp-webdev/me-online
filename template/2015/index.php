@@ -1,8 +1,8 @@
 	<?php include(TEMP."/header.php"); ?>
 
     <!-- BODY -->
-                    <div id="floatdiv" class="floatdiv invisible">                                        
-                        <div id="adview" class="fview" style="width: 700px !important; display:none">
+                    <div id="floatdiv" class="floatdiv ">                                        
+                        <div id="adview" class="fview" style="width: 700px !important; ">
                             <div class="closebutton cursorpoint" style="margin-left: 700px" onclick="stopmeg(this)"><i class="fa fa-times-circle fa-3x redtext"></i></div>
                             <div id="ads_data" class="floatdata margintop15">
                                 <video width="100%" controls >
@@ -14,7 +14,7 @@
                     </div>
                     <script>
                         $(document).ready(function () {
-                            $(".floatdiv").removeClass("invisible");
+                            // $(".floatdiv").removeClass("invisible");
                             // $("#adview").show({
                             //     effect : 'slide',
                             //     easing : 'easeOutQuart',
