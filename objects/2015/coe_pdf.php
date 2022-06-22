@@ -41,7 +41,7 @@
 					$footer .= '<p style="font-size:8px; color: #005f2f; text-align: center;">6/F One World Square, Upper McKinley Road, Taguig City, NCR Philippines, 1634<br />
 					Telefax No. 8524-4284 | wwww.asia-affinity.com</p>';
 			}
-
+			var_dump($footer); exit;
 			$footer .= '</div>';
 
 			$this->writeHTML($footer, false, true, false, true);
@@ -150,6 +150,7 @@
 
 		$pdf = new CoePdf(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 		$pdf->company = $emp_comp;
+
 		$pdf->SetPrintHeader(false);
 		$pdf->SetPrintFooter(true);
 		$pdf->SetLeftMargin(25);
