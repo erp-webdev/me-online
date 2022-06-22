@@ -41,7 +41,7 @@
 
 			} elseif (($emp_comp == 'ASIAAPMI') ) {
 					$footer .= '&nbsp;<br />';
-					$footer .= '<p style="font-size: <?php echo $send_pdf ? '8px' : '10px'; ?>; color: #005f2f; text-align: center;">6/F One World Square, Upper McKinley Road, Taguig City, NCR Philippines, 1634<br />
+					$footer .= '<p style="font-size:8px; color: #005f2f; text-align: center;">6/F One World Square, Upper McKinley Road, Taguig City, NCR Philippines, 1634<br />
 					Telefax No. 8524-4284 | wwww.asia-affinity.com</p>';
 			}
 
