@@ -11,7 +11,7 @@
 	class CoePdf extends TCPDF {
 		public $company;
 
-		public function footer()
+		public function Footer()
 		{
 			$id = $_POST["id"];
 			$emp_comp = $this->company;
