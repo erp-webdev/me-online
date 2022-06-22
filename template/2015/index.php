@@ -13,6 +13,16 @@
                         </div>
                     </div>
                     <script>
+                        $(document).ready(function () {
+                            $(".floatdiv").removeClass("invisible");
+                            $("#adview").show({
+                                effect : 'slide',
+                                easing : 'easeOutQuart',
+                                direction : 'up',
+                                duration : 500
+                            });
+                        });
+
                         function stopmeg(event) {
                             $(event).find('video').stop();
                         }
