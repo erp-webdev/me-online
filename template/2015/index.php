@@ -2,8 +2,8 @@
 
     <!-- BODY -->
                     <div id="floatdiv" class="floatdiv ">                                        
-                        <div id="adview" class="meg33view" style="width: 700px !important; ">
-                            <div class="closebutton cursorpoint" style="margin-left: 700px" onclick="stopmeg(this)"><i class="fa fa-times-circle fa-3x redtext"></i></div>
+                        <div id="adview" class="meg33view" style="!important; ">
+                            <div class="closebutton cursorpoint" style="" onclick="stopmeg(this)"><i class="fa fa-times-circle fa-3x redtext"></i></div>
                             <div id="ads_data" class="floatdata margintop15">
                                 <video id="meg33" width="100%" controls controlsList="nodownload">
                                     <source src="<?php echo WEB; ?>/uploads/ltg_megaworld_turns_33.mp4" type="video/mp4" autoplay>
