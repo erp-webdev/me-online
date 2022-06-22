@@ -1003,7 +1003,7 @@ a { text-decoration: none; color: #333; }
 	box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.75);
 }
 
-.meg33view {
+.fvreg, .bdayview, .mfview, .meg33view, .freg, .fadd, .fdel, .fedit, .fback {
 	position: relative;
 	width: 700px;
 	height: auto;
