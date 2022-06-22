@@ -108,7 +108,7 @@
 
 		require_once(DOCUMENT.'/lib/tcpdf/tcpdf.php');
 
-		$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, array(  595.276,  841.890), true, 'UTF-8', false);
+		$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, array(595.276,  841.890), true, 'UTF-8', false);
 		$pdf->SetPrintHeader(false);
 		$pdf->SetPrintFooter(false);
 		$pdf->SetLeftMargin(25);
