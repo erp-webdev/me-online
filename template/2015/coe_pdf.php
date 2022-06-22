@@ -11,11 +11,6 @@
             height: 29.7cm; 
 		}
 
-		#footer{
-			position: absolute;
-			bottom: -100;
-			right: 0;
-		}
 	}
 </style>
 <div id="myDivToPrint" style="">
