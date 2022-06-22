@@ -116,7 +116,6 @@
 		$pdf->SetTopMargin(0);
 		$pdf->SetAutoPageBreak(TRUE, 0);
 		$pdf->SetFont('times');
-		$pdf->SetPaper('A4');
 		$pdf->AddPage();
 		$pdf->writeHTML($content);
 
