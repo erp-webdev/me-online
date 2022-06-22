@@ -124,7 +124,7 @@
                                 <?php if ($profile_dbname != 'ECINEMA' && $profile_dbname != 'EPARKVIEW' && $profile_dbname != 'NEWTOWN' && $profile_dbname != 'LAFUERZA') : ?>
 
                                 <div id="mainnotification" class="dashcomp dashincentive centertalign  marginbottom25">
-                                    <b class="roboto bluetext mediumtext" style="text-align:center">Megaworld Turns 33</b>
+                                    <a class="roboto bluetext mediumtext" style="text-align:center">Megaworld Turns 33</a>
                                 </div>
 
                                 <!--<?php if (date('Y-m-d') >= '2018-01-08') : ?>
