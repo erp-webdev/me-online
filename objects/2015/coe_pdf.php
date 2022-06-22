@@ -13,6 +13,10 @@
 
 		public function Footer()
 		{
+
+			parent::Footer();
+			// $this->SetY(-13);
+			$this->SetFont( 'times', 'I', 8 );
 			$id = $_POST["id"];
 			$emp_comp = $this->company;
 
@@ -38,7 +42,8 @@
 			}
 			$footer .= '</div>';
 
-			$this->writeHTML($footer, false, true, false, true);
+			// $this->writeHTML($footer, false, true, false, true);
+			$this->Cell(0, 10, $footer, 0, false, 'L', 0, '', 0, false, 'T', 'M');
 		}
 	}
 
