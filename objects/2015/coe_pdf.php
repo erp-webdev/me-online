@@ -101,10 +101,12 @@
 		$DateResigned2 = $emp_info[0]['DateResigned'] ?  date('Y-m-d', strtotime($emp_info[0]['DateResigned'])) : null;
 		$emp_info[0]['DateResigned'] = $emp_info[0]['DateResigned'] ?  date('F j, Y', strtotime($emp_info[0]['DateResigned'])) : null;
 
-		exit;
+		
 		ob_start();
 		include(TEMP.'/coe_pdf.php');
 		$content = ob_get_clean();
+
+		echo $content; exit;
 
 		require_once(DOCUMENT.'/lib/tcpdf/tcpdf.php');
 
