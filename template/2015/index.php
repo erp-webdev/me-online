@@ -1,11 +1,12 @@
 	<?php include(TEMP."/header.php"); ?>
 
     <!-- BODY -->
-                    <div id="adview" class="fview" style="display:none">
-                        <div class="closebutton cursorpoint"><i class="fa fa-times-circle fa-3x redtext"></i></div>
-                        <div id="adview_title" class="robotobold cattext dbluetext"></div>
-                        <div id="ads_data" class="floatdata margintop15">
-                            <!-- TO Boss LTG video -->
+                    <div id="floatdiv" class="floatdiv invisible">                                        
+                        <div id="adview" class="fview" style="display: none;">
+                            <div class="closebutton cursorpoint"><i class="fa fa-times-circle fa-3x redtext"></i></div>
+                            <div id="adview_title" class="robotobold cattext dbluetext">Megaworld Turns 33</div>
+                            <div id="ads_data" class="floatdata margintop15">
+                            </div>
                         </div>
                     </div>
                     
