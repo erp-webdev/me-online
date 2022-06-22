@@ -146,7 +146,7 @@
 		$pdf->company = $emp_comp;
 
 		$pdf->SetPrintHeader(false);
-		$pdf->SetPrintFooter(true);
+		// $pdf->SetPrintFooter(true);
 		$pdf->Footer();
 		$pdf->SetLeftMargin(25);
 		$pdf->SetRightMargin(25);
