@@ -35,7 +35,6 @@
 
                     $wfh_clearance->validate($params);
                     $wfh_clearance->submit($params);
-                    echo 'test';
 
                     break;
                 
