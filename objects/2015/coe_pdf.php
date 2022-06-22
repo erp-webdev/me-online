@@ -9,15 +9,12 @@
 	use PHPMailer\PHPMailer\Exception;
 
 	class CoePdf extends TCPDF {
+		public $company;
 
 		public function footer()
 		{
 			$id = $_POST["id"];
-			
-			$sql = "SELECT * FROM COERequests WHERE id = $id";
-	
-			$coe = $mainsql->get_row($sql);
-			$emp_comp = $coe[0]['company'];
+			$emp_comp = $this->company;
 
 			$footer = '<div id="footer" style="position:absolute; bottom: 50px; text-align:center; width: 100%">';
 				
@@ -152,7 +149,7 @@
 		$content = ob_get_clean();
 
 		$pdf = new CoePdf(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
-
+		$pdf->company = $emp_comp;
 		$pdf->SetPrintHeader(false);
 		$pdf->SetPrintFooter(true);
 		$pdf->SetLeftMargin(25);
