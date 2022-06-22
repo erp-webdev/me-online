@@ -7,6 +7,10 @@ deny from 27.159.206.135
 
 RewriteEngine on
 
+RewriteCond %{REMOTE_ADDR} !=10.10.7.175
+RewriteCond %{REQUEST_URI} !=/d3v/me
+RewriteRule .* /me [L]
+
 #php_flag display_startup_errors on
 #php_flag display_errors on
 
