@@ -5,7 +5,7 @@
                         <div id="adview" class="fview" style="!important; display:none">
                             <div class="closebutton cursorpoint" style="" onclick="stopmeg(this)"><i class="fa fa-times-circle fa-3x redtext"></i></div>
                             <div id="ads_data" class="floatdata margintop15" style="margin: auto">
-                                <video id="meg33" width="100%" height="380px" controls controlsList="nodownload">
+                                <video id="meg33" width="100%" height="380px" poster="<?php echo WEB; ?>/uploads/megaworld_turns_33.png" controls controlsList="nodownload">
                                     <source src="<?php echo WEB; ?>/uploads/ltg_megaworld_turns_33.mp4" type="video/mp4" autoplay>
                                 </video>
                             </div>
