@@ -23,8 +23,8 @@
                             // });
                         });
 
-                        function stopmeg(event) {
-                            $(event).find('video').pause();
+                        function stopmeg() {
+                            $('video').pause();
                         }
                     </script>
                     <div id="mainsplashtext" class="mainsplashtext lefttalign" >
