@@ -123,7 +123,7 @@
                                 <?php endif; ?>
                                 <?php if ($profile_dbname != 'ECINEMA' && $profile_dbname != 'EPARKVIEW' && $profile_dbname != 'NEWTOWN' && $profile_dbname != 'LAFUERZA') : ?>
 
-                                <div id="mainnotification" class="dashcomp  lefttalign whitetext marginbottom25">
+                                <div id="mainnotification" class=" dashincentive lefttalign whitetext marginbottom25">
                                     <b class="">Megaworld Turns 33</b>
                                 </div>
 
