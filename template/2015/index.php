@@ -25,11 +25,14 @@
                                 direction : 'up',
                                 duration : 500
                             });
+
                         }
 
                         function stopmeg() {
                             var vid = document.getElementById("meg33");
                             vid.pause();
+                            vid.currentTime = 0;
+                            vid.load();
                         }
                     </script>
                     <div id="mainsplashtext" class="mainsplashtext lefttalign" >
