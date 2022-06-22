@@ -14,7 +14,8 @@
                     </div>
                     <script>
                         $(document).ready(function () {
-                            showmeg();
+                            if(new Date('06-24-2022') <= new Date())
+                                showmeg();
                         });
 
                         function showmeg(){
