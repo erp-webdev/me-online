@@ -57,8 +57,12 @@
                             <?php if ($np_app) : ?><a href="<?php echo WEB; ?>/npa" onclick="clickAndDisable(this);"><div<?php if ($section == "npa") { ?> class="dselected"<?php } ?>>No Punching Authorization</div></a><?php endif; ?>
 							<?php if ($sc_app) : ?><a href="<?php echo WEB; ?>/timesched" onclick="clickAndDisable(this);"><div<?php if ($section == "timesched") { ?> class="dselected"<?php } ?>>Time Scheduler</div></a><?php endif; ?>
 
-                            <?php if ($wh_app && $profile_idnum == '2016-06-0457') : ?>
+                            <?php if ($wh_app) : ?>
                                 <a href="<?php echo WEB; ?>/wfh" onclick="clickAndDisable(this);"><div<?php if ($section == "wfh") { ?> class="dselected"<?php } ?>>Work From Home</div></a>
+                            <?php  endif; ?>
+
+                            <?php if ($wfhc_app && $profile_idnum == '2016-06-0457') : ?>
+                                <a href="<?php echo WEB; ?>/wfhclearance" onclick="clickAndDisable(this);"><div<?php if ($section == "wfhc") { ?> class="dselected"<?php } ?>>WFH Clearance</div></a>
                             <?php  endif; ?>
 
                             <!-- <?php if ($rwf_app && $profile_idnum == '2016-06-0457') : ?><a href="<?php echo WEB; ?>/rwfh" onclick="clickAndDisable(this);"><div<?php if ($section == "rwfh") { ?> class="dselected"<?php } ?>>WFH Clearance</div></a><?php endif; ?> -->

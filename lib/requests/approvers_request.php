@@ -367,8 +367,9 @@
                                     2 => array("TYPE" => "frmApplicationNPWeb"),
                                     3 => array("TYPE" => "frmApplicationOBWeb"),
                                     4 => array("TYPE" => "frmApplicationOTWeb"),
-																		5 => array("TYPE" => "frmApplicationSCWeb"),
-                                    6 => array("TYPE" => "frmApplicationWHWeb")
+									5 => array("TYPE" => "frmApplicationSCWeb"),
+                                    // 6 => array("TYPE" => "frmApplicationWHCWeb"),
+                                    // 7 => array("TYPE" => "frmApplicationWHWeb")
                                 );
                             ?>
 
@@ -397,8 +398,10 @@
                                         $app_name = "Non-Punching Authorization"; $app_var = "npa";
                                     elseif ($value['TYPE'] == "frmApplicationSCWeb") :
                                         $app_name = "Change Schedule"; $app_var = "sc";
-																		elseif ($value['TYPE'] == "frmApplicationWHWeb") :
+									elseif ($value['TYPE'] == "frmApplicationWHWeb") :
                                         $app_name = "Work From Home"; $app_var = "wh";
+                                    elseif ($value['TYPE'] == "frmApplicationWHCWeb") :
+                                        $app_name = "WFH Clearance"; $app_var = "whc";
                                     endif;
 
                                     $appkey = array_search($value['TYPE'], array_column($app_array, 'TYPE'));
@@ -412,7 +415,8 @@
                                     $alt03 = $mainsql->get_altapprovers2($empid, $value['TYPE'], 3, $dbn);
                                     $alt04 = $mainsql->get_altapprovers2($empid, $value['TYPE'], 4, $dbn);
                                     $alt05 = $mainsql->get_altapprovers2($empid, $value['TYPE'], 5, $dbn);
-                                    $alt06 = $mainsql->get_altapprovers2($empid, $value['TYPE'], 6, $dbn);
+                                    // $alt06 = $mainsql->get_altapprovers2($empid, $value['TYPE'], 6, $dbn);
+                                    // $alt07 = $mainsql->get_altapprovers2($empid, $value['TYPE'], 7, $dbn);
                                 ?>
 
                                 <tr>
@@ -466,7 +470,7 @@
             $empid = $_POST['empid'];
             //$app_array = $mainsql->get_approvers($empid, 1);
 
-            echo 7;
+            echo 8;
 
         break;
         case 'searchapsr':

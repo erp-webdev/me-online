@@ -284,7 +284,24 @@ class mainsql {
                     AND (TYPE = 'frmApplicationLVWeb' OR TYPE= 'frmApplicationWHWeb' 
                         OR TYPE = 'frmApplicationOTWeb' OR TYPE = 'frmApplicationOBWeb' 
                         OR TYPE = 'frmApplicationMDWeb' OR TYPE = 'frmApplicationNPWeb' 
-                        OR TYPE = 'frmApplicationSCWeb')   ";
+                        OR TYPE = 'frmApplicationSCWeb' OR TYPE= 'frmApplicationWHCWeb')   ";
+		if ($count) : $result = $this->get_numrow($sql);
+        else : $result = $this->get_row($sql, $dbname);
+        endif;
+		return $result;
+	}
+
+    function get_approvers_wfhc($empid, $count = 0, $dbname = NULL)
+	{
+		$sql = "SELECT DISTINCT TYPE, 
+                    SIGNATORY1, SIGNATORY2, SIGNATORY3, SIGNATORY4, SIGNATORY5, SIGNATORY6, 
+                    SIGNATORYID1, SIGNATORYID2, SIGNATORYID3, SIGNATORYID4, SIGNATORYID5, SIGNATORYID6, 
+                    SIGNATORYDB1, SIGNATORYDB2, SIGNATORYDB3, SIGNATORYDB4, SIGNATORYDB5, SIGNATORYDB6, 
+                    TYPE 
+                    FROM GLMEmpSignatory 
+                    WHERE EMPID = '".$empid."' 
+                    AND (TYPE= 'frmApplicationWHCWeb')";
+                    
 		if ($count) : $result = $this->get_numrow($sql);
         else : $result = $this->get_row($sql, $dbname);
         endif;
@@ -293,10 +310,10 @@ class mainsql {
 
     function get_wfh_user($empid, $dbname, $count = 0)
     {
-    $sql = "SELECT EmpID, Name, DBNAME, start_date, end_date, CONVERT(varchar, end_date, 23) as end_convert, CONVERT(varchar, start_date, 23) as start_convert, CONVERT(varchar, DATEADD(day, 3,end_date), 23) as end_warning FROM WFHUsers WHERE EmpID = '".$empid."' and DBNAME = '".$dbname."'
-            and (end_date is null or DATEADD(day, 3,end_date) >= convert(date,GETDATE()))";
-    $result = $this->get_row($sql, 'SUBSIDIARY');
-    return $result;
+        $sql = "SELECT EmpID, Name, DBNAME, start_date, end_date, CONVERT(varchar, end_date, 23) as end_convert, CONVERT(varchar, start_date, 23) as start_convert, CONVERT(varchar, DATEADD(day, 3,end_date), 23) as end_warning FROM WFHUsers WHERE EmpID = '".$empid."' and DBNAME = '".$dbname."'
+                and (end_date is null or DATEADD(day, 3,end_date) >= convert(date,GETDATE()))";
+        $result = $this->get_row($sql, 'SUBSIDIARY');
+        return $result;
     }
 
     function get_altapprovers($empid, $count = 0, $dbname = NULL)
