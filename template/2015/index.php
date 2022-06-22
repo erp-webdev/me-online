@@ -4,7 +4,7 @@
                     <div id="floatdiv" class="floatdiv ">                                        
                         <div id="adview" class="fview" style="width: 700px !important">
                             <div class="closebutton cursorpoint" style="margin-left: 700px"><i class="fa fa-times-circle fa-3x redtext"></i></div>
-                            <div id="adview_title" class="robotobold cattext dbluetext">Megaworld Turns 33</div>
+                            <div id="adview_title" class="robotobold cattext dbluetext" style="text-align:center">Megaworld Turns 33</div>
                             <div id="ads_data" class="floatdata margintop15">
                                 <video width="100%" src="<?php echo WEB; ?>/uploads/ltg_megaworld_turns_33.mp4" type="video/mp4" autoplay></video>
                             </div>
