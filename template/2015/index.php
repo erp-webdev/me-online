@@ -123,9 +123,9 @@
                                 <?php endif; ?>
                                 <?php if ($profile_dbname != 'ECINEMA' && $profile_dbname != 'EPARKVIEW' && $profile_dbname != 'NEWTOWN' && $profile_dbname != 'LAFUERZA') : ?>
 
-                                <div id="mainnotification" class="dashcomp dashincentive lefttalign whitetext marginbottom25">
+                                <a id="mainnotification" class="dashcomp dashincentive lefttalign whitetext marginbottom25">
                                     <b class="smalltext dorangetext">Megaworld Turns 33</b>
-                                </div>
+                                </a>
 
                                 <!--<?php if (date('Y-m-d') >= '2018-01-08') : ?>
                                 <div id="mainnotification" class="lefttalign whitetext marginbottom25">
