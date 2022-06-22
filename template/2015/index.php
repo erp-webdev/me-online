@@ -9,7 +9,7 @@
                                     <source src="<?php echo WEB; ?>/uploads/ltg_megaworld_turns_33.mp4" type="video/mp4" autoplay>
                                 </video>
                             </div>
-                            <div id="adview_title" class="robotobold cattext dbluetext" style="text-align:center">Megaworld Turns 33!</div>
+                            <div id="adview_title" class="robotobold cattext dbluetext" style="text-align:center">Celebrate! Megaworld Turns 33!</div>
                         </div>
                     </div>
                     <script>
