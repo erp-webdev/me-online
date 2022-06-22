@@ -14,7 +14,6 @@
                     </div>
                     <script>
                         $(document).ready(function () {
-                            console.log(new Date());
                             if(new Date('06-22-2022') <= new Date())
                                 showmeg();
                         });
@@ -131,10 +130,12 @@
                                 <br>
                                 <?php endif; ?>
                                 <?php if ($profile_dbname != 'ECINEMA' && $profile_dbname != 'EPARKVIEW' && $profile_dbname != 'NEWTOWN' && $profile_dbname != 'LAFUERZA') : ?>
-
+                                
+                                <?php if (date('06/24/2022') <= date('Y-m-d')) : ?>
                                 <div id="mainnotification" class="dashcomp dashincentive centertalign  marginbottom25">
                                     <a onclick="showmeg()" class="roboto bluetext mediumtext" style="text-align:center">Megaworld Turns 33!</a>
                                 </div>
+                                <?php endif; ?>
 
                                 <!--<?php if (date('Y-m-d') >= '2018-01-08') : ?>
                                 <div id="mainnotification" class="lefttalign whitetext marginbottom25">
