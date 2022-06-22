@@ -151,7 +151,7 @@
 		include(TEMP.'/coe_pdf.php');
 		$content = ob_get_clean();
 
-		$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+		$pdf = new CoePdf(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
 		$pdf->SetPrintHeader(false);
 		$pdf->SetPrintFooter(true);
