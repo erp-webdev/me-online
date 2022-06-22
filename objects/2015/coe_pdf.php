@@ -149,10 +149,10 @@
 
 		$pdf = new CoePdf(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 		$pdf->company = $emp_comp;
+		$pdf->Footer();
 
 		$pdf->SetPrintHeader(false);
-		// $pdf->SetPrintFooter(true);
-		$pdf->Footer();
+		$pdf->SetPrintFooter(true);
 		$pdf->SetLeftMargin(25);
 		$pdf->SetRightMargin(25);
 		$pdf->SetTopMargin(0);
