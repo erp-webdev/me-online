@@ -24,7 +24,7 @@
                         });
 
                         function stopmeg(event) {
-                            $(event).find('video').stop();
+                            $(event).find('video').get(0).pause();
                         }
                     </script>
                     <div id="mainsplashtext" class="mainsplashtext lefttalign" >
