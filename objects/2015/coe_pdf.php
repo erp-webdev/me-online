@@ -108,7 +108,7 @@
 
 		require_once(DOCUMENT.'/lib/tcpdf/tcpdf.php');
 
-		$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+		$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, array(  595.276,  841.890), true, 'UTF-8', false);
 		$pdf->SetPrintHeader(false);
 		$pdf->SetPrintFooter(false);
 		$pdf->SetLeftMargin(25);
@@ -116,6 +116,7 @@
 		$pdf->SetTopMargin(0);
 		$pdf->SetAutoPageBreak(TRUE, 0);
 		$pdf->SetFont('times');
+		$pdf->SetPaper('A4');
 		$pdf->AddPage();
 		$pdf->writeHTML($content);
 
