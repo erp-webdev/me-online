@@ -1003,6 +1003,23 @@ a { text-decoration: none; color: #333; }
 	box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.75);
 }
 
+.meg33view {
+	position: relative;
+	width: 700px;
+	height: auto;
+	background-color: #FFF;
+	z-index: 10;
+	margin: 60px auto;
+	padding: 20px;
+	border: #999 1px solid;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-webkit-box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.75);
+	-moz-box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.75);
+	box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.75);
+}
+
 .commentlist {
     display: block;
     height: 160px;
