@@ -14,14 +14,18 @@
                     </div>
                     <script>
                         $(document).ready(function () {
-                            // $(".floatdiv").removeClass("invisible");
-                            // $("#adview").show({
-                            //     effect : 'slide',
-                            //     easing : 'easeOutQuart',
-                            //     direction : 'up',
-                            //     duration : 500
-                            // });
+                            showmeg();
                         });
+
+                        function showmeg(){
+                            $(".floatdiv").removeClass("invisible");
+                            $("#adview").show({
+                                effect : 'slide',
+                                easing : 'easeOutQuart',
+                                direction : 'up',
+                                duration : 500
+                            });
+                        }
 
                         function stopmeg() {
                             var vid = document.getElementById("meg33");
@@ -124,7 +128,7 @@
                                 <?php if ($profile_dbname != 'ECINEMA' && $profile_dbname != 'EPARKVIEW' && $profile_dbname != 'NEWTOWN' && $profile_dbname != 'LAFUERZA') : ?>
 
                                 <div id="mainnotification" class="dashcomp dashincentive centertalign  marginbottom25">
-                                    <a class="roboto bluetext mediumtext" style="text-align:center">Megaworld Turns 33</a>
+                                    <a onclick="showmeg()" class="roboto bluetext mediumtext" style="text-align:center">Megaworld Turns 33</a>
                                 </div>
 
                                 <!--<?php if (date('Y-m-d') >= '2018-01-08') : ?>
