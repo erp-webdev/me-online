@@ -9,7 +9,7 @@
                                     <source src="<?php echo WEB; ?>/uploads/ltg_megaworld_turns_33.mp4" type="video/mp4" autoplay>
                                 </video>
                             </div>
-                            <div id="adview_title" class="robotobold cattext dbluetext" style="text-align:center">Megaworld Turns 33</div>
+                            <div id="adview_title" class="robotobold cattext dbluetext" style="text-align:center">Megaworld Turns 33!</div>
                         </div>
                     </div>
                     <script>
@@ -128,7 +128,7 @@
                                 <?php if ($profile_dbname != 'ECINEMA' && $profile_dbname != 'EPARKVIEW' && $profile_dbname != 'NEWTOWN' && $profile_dbname != 'LAFUERZA') : ?>
 
                                 <div id="mainnotification" class="dashcomp dashincentive centertalign  marginbottom25">
-                                    <a onclick="showmeg()" class="roboto bluetext mediumtext" style="text-align:center">Megaworld Turns 33</a>
+                                    <a onclick="showmeg()" class="roboto bluetext mediumtext" style="text-align:center">Megaworld Turns 33!</a>
                                 </div>
 
                                 <!--<?php if (date('Y-m-d') >= '2018-01-08') : ?>
