@@ -34,13 +34,34 @@ class WFHClearance{
         if (!$_FILES['attachment1']['name']) {
             echo '{"success": false, "error": "Attachment is required."}';
             exit();
+        }else{
+            $errorfile = 0;
+            for($i=1; $i<=5; $i++) :
+
+                if ($_FILES['attachment'.$i]['name']) :
+                    $filename = $_FILES['attachment'.$i]['name'];
+                    $filesize = $_FILES['attachment'.$i]['size'];
+
+                    $tempext = explode(".", $filename);
+                    $extension = end($tempext);
+
+                    if (($filesize >= 209715) || !in_array($extension, $allowedExts)) :
+                        $errorfile++;
+                    endif;
+                endif;
+            endfor;
+
+            if ($errorfile) :
+                echo '{"success": false, "error": "One of the attachment isn\'t PDF, JPG nor GIF and/or not less then 200Kb"}';
+                exit();
+            endif;
         }
 
     }
 
     public function submit($params)
     {
-		echo '{"success": false, "error": "Your session has expired! Kindly logout and login again to continue."}';
+        
         exit();
     }
 
