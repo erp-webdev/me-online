@@ -7,6 +7,7 @@
                             <div id="ads_data" class="floatdata margintop15" style="margin: auto">
                                 <video id="meg33" width="100%" height="380px" poster="<?php echo WEB; ?>/uploads/megaworld_turns_33.png" controls controlsList="nodownload">
                                     <source src="<?php echo WEB; ?>/uploads/ltg_megaworld_turns_33.mp4" type="video/mp4" autoplay>
+                                    <source src="<?php echo WEB; ?>/uploads/ltg_megaworld_turns_33_low.webm" type="video/webm" >
                                 </video>
                             </div>
                             <div id="adview_title" class="robotobold cattext dbluetext" style="text-align:center">Celebrate! Megaworld Turns 33!</div>
@@ -14,7 +15,7 @@
                     </div>
                     <script>
                         $(document).ready(function () {
-                            if(new Date('06-24-2022') <= new Date())
+                            if(new Date('06-23-2022') <= new Date())
                                 showmeg();
                         });
 
