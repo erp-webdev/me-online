@@ -35,11 +35,11 @@
 
                     $wfh_clearance->validate($params);
                     $wfh_clearance->submit($params);
-
                     break;
                 
                 default:
-                    # code...
+                    echo '{"success": false, "error": "Unrecognized operations."}';
+                    exit();
                     break;
             }
 

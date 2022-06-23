@@ -386,7 +386,7 @@
                             $message .= "</table>";
                             $message .= "<br><br>Thanks,<br>";
                             $message .= SITENAME." Admin";
-			    $message .= "<br>Click<a href='https://portal.megaworldcorp.com/me/login'> here</a> to login";
+			                $message .= "<br>Click<a href='https://portal.megaworldcorp.com/me/login'> here</a> to login";
                             $message .= "<hr />".MAILFOOT."</div>";
 
                             $headers = "From: ".NOTIFICATION_EMAIL."\r\n";

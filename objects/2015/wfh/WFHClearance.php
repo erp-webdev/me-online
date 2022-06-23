@@ -62,7 +62,13 @@ class WFHClearance{
     public function submit($params)
     {
         
-        exit();
+        
+        $this->createLog($params, 'add');
+    }
+
+    private function createLog($params, $action)
+    {
+        $mainsql->log_action($post, 'add');
     }
 
 }
