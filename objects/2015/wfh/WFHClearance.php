@@ -41,6 +41,7 @@ class WFHClearance{
     public function submit($params)
     {
 		echo '{"success": false, "error": "Your session has expired! Kindly logout and login again to continue."}';
+        exit();
     }
 
 }
