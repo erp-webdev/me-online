@@ -6,8 +6,8 @@
                             <div class="closebutton cursorpoint" style="" onclick="stopmeg(this)"><i class="fa fa-times-circle fa-3x redtext"></i></div>
                             <div id="ads_data" class="floatdata margintop15" style="margin: auto">
                                 <video id="meg33" width="100%" height="380px" poster="<?php echo WEB; ?>/uploads/megaworld_turns_33.png" controls controlsList="nodownload">
-                                    <source src="<?php echo WEB; ?>/uploads/ltg_megaworld_turns_33.mp4" type="video/mp4" autoplay>
                                     <source src="<?php echo WEB; ?>/uploads/ltg_megaworld_turns_33_low.webm" type="video/webm" >
+                                    <source src="<?php echo WEB; ?>/uploads/ltg_megaworld_turns_33.mp4" type="video/mp4" autoplay>
                                 </video>
                             </div>
                             <div id="adview_title" class="robotobold cattext dbluetext" style="text-align:center">Celebrate! Megaworld Turns 33!</div>
