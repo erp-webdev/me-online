@@ -41,7 +41,7 @@
             $tempext = explode(".", $filename);
             $extension = end($tempext);
 
-            if (($filesize < 25485760) && in_array($extension, $allowedExts)) :
+            if (($filesize < 35485760) && in_array($extension, $allowedExts)) :
         
                 $path = "uploads/ads/";
                 $newfilename = 'ads'.date('U').'.'.$extension;
