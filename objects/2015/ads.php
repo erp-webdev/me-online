@@ -41,7 +41,7 @@
             $tempext = explode(".", $filename);
             $extension = end($tempext);
 
-            if (in_array($extension, $allowedExts)) :
+            if (in_array($extension, $allowedExts) || true) :
             // if (($filesize < 35485760) && in_array($extension, $allowedExts)) :
         
                 $path = "uploads/ads/";
