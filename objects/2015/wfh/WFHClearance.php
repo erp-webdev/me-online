@@ -131,7 +131,7 @@ class WFHClearance extends mainsql{
         // $request_info = $tblsql->get_mrequest(6, 0, 0, 0, $add_wc, 0, NULL, NULL, NULL, NULL);
         // $approver = $logsql->get_allmember($approver1, $approverdb1);
 
-        $reqemailblock = $this->mainsql->get_newemailblock($empid);
+        $reqemailblock = $this->get_newemailblock($empid);
         echo 'kevs---125';
 
         if ($reqemailblock) :
