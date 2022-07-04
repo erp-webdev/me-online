@@ -125,15 +125,11 @@ class WFHClearance extends mainsql{
 
     public function notifyRequestor($empid, $add_wc)
     {
-        echo 'kevs---123';
         $requestor = $this->register->get_member($empid);
-        echo 'kevs---124';
         // $request_info = $tblsql->get_mrequest(6, 0, 0, 0, $add_wc, 0, NULL, NULL, NULL, NULL);
         // $approver = $logsql->get_allmember($approver1, $approverdb1);
 
         $reqemailblock = $this->get_newemailblock($empid);
-        echo 'kevs---125';
-
         if ($reqemailblock) :
 
             //SEND EMAIL (REQUESTOR)
