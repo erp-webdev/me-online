@@ -2214,17 +2214,19 @@ class mainsql {
 
         $today = date('U');
 
+       
+
+        if((int)$dtr_day > 15){
+            $periodfrom = strtotime(date('Y-m-16',strtotime($value['dteDTRDate'])));
+            $periodto = strtotime(date('Y-m-t',strtotime($value['dteDTRDate'])));
+        }
+
         echo 'kevs---'. json_encode([
             'today'=>$today,
             'pfrom'=>$periodfrom,
             'pto'=>$periodto,
             'day'=>$dtr_day
         ]); exit;
-
-        if($dtr_day > 15){
-            $periodfrom = strtotime(date('Y-m-16',strtotime($value['dteDTRDate'])));
-            $periodto = strtotime(date('Y-m-t',strtotime($value['dteDTRDate'])));
-        }
 
         if(!($today >= $periodfrom && $today <= $periodto)){
             // if DTR is not within the DTR period
