@@ -3509,7 +3509,7 @@ class mainsql {
                 endforeach;
 
                 $add_wc = $this->get_sp_data_status('SP_INSERT_APPLY_WFHC', $val);
-
+                echo $add_wc; exit;
                 if($add_wc) {
                     return $add_wc;
                 } else {
