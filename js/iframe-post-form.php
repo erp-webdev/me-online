@@ -2118,10 +2118,10 @@ $(function ()
 
 			else
 			{
-				//html += '<p>WFH has been successfully applied.</p>';
+				//html += '<p>WFH Clearance has been successfully applied.</p>';
 
 				$('.wfh_msg').slideUp();
-                alert('Work from Home has been successfully applied.');
+                alert('WFH Clearance has been successfully applied.');
                 window.location.href='<?php echo WEB; ?>/myrequest?type=10';
 
 			}
