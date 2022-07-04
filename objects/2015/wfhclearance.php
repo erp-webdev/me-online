@@ -33,8 +33,32 @@
                         ]
                     ];
 
+                    $wcpost['EMPID'] = $_POST['empid'];
+                    $wcpost['REQNBR'] = $_POST['reqnbr'];
+                    $wcpost['TRANS'] = "APPLY";
+
+                    $wcpost['CLEARANCETYPE'] = $_POST['wfh_type'];
+                    $wcpost['DATESTART'] = $_POST['wfhc_from'];
+                    $wcpost['DATEEND'] = $_POST['wfhc_to'];
+                    $wcpost['REASON'] = $_POST['reason'];
+
+                    $wcpost['APPROVER01'] = $_POST['approver1'];
+                    $wcpost['APPROVER02'] = $_POST['approver2'];
+                    $wcpost['APPROVER03'] = $_POST['approver3'];
+                    $wcpost['APPROVER04'] = $_POST['approver4'];
+                    $wcpost['APPROVER05'] = $_POST['approver5'];
+                    $wcpost['APPROVER06'] = $_POST['approver6'];
+                    $wcpost['DBAPPROVER01'] = $_POST['dbapprover1'];
+                    $wcpost['DBAPPROVER02'] = $_POST['dbapprover2'];
+                    $wcpost['DBAPPROVER03'] = $_POST['dbapprover3'];
+                    $wcpost['DBAPPROVER04'] = $_POST['dbapprover4'];
+                    $wcpost['DBAPPROVER05'] = $_POST['dbapprover5'];
+                    $wcpost['DBAPPROVER06'] = $_POST['dbapprover6'];
+                    $wcpost['USER'] = $_POST['user'];
+                    $wcpost['REMARKS'] = "";
+
                     $wfh_clearance->validate($params);
-                    $wfh_clearance->submit($params);
+                    $wfh_clearance->submit($wcpost);
                     break;
             }
 

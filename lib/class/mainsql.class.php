@@ -3482,6 +3482,73 @@ class mainsql {
         }
     }
 
+    function wfc_action($value, $action, $id = 0)
+	{
+        $val = array();
+
+		switch ($action) {
+			case 'add':
+
+                $accepted_field = array('EMPID', 'REQNBR', 'CLEARANCETYPE', 'DATESTART', 'DATEEND', 'REASON', 
+                    'APPROVER01', 'APPROVER02', 'APPROVER03', 'APPROVER04', 'APPROVER05', 'APPROVER06', 
+                    'DBAPPROVER01', 'DBAPPROVER02', 'DBAPPROVER03', 'DBAPPROVER04', 'DBAPPROVER05', 'DBAPPROVER06', 
+                    'USER', 'REMARKS');
+
+                $knum = 0;
+                foreach ($value as $key => $value) :
+                    if (in_array($key, $accepted_field)) :
+                        $val[$knum]['field_name'] = $key;
+                        $val[$knum]['field_value'] = $value;
+                        $val[$knum]['field_type'] = SQLVARCHAR;
+                        $val[$knum]['field_isoutput'] = false;
+                        $val[$knum]['field_isnull'] = false;
+                        $val[$knum]['field_maxlen'] = 512;
+
+                        $knum++;
+                    endif;
+                endforeach;
+
+                $add_wc = $this->get_sp_data_status('SP_INSERT_APPLY_WFHC', $val);
+
+                if($add_wc) {
+                    return $add_wc;
+                } else {
+                    return FALSE;
+                }
+
+			break;
+
+            case 'approve':
+
+                $dbname = $value['DBNAME'];
+
+                $accepted_field = array('REQNBR', 'TRANS', 'USER', 'EMPID', 'REMARKS');
+
+                $knum = 0;
+                foreach ($value as $key => $value) :
+                    if (in_array($key, $accepted_field)) :
+                        $val[$knum]['field_name'] = $key;
+                        $val[$knum]['field_value'] = $value;
+                        $val[$knum]['field_type'] = SQLVARCHAR;
+                        $val[$knum]['field_isoutput'] = false;
+                        $val[$knum]['field_isnull'] = false;
+                        $val[$knum]['field_maxlen'] = 512;
+                        $knum++;
+                    endif;
+                endforeach;
+
+                $approve_np = $this->get_sp_data('SP_INSERT_APPLY_NPA', $val, $dbname);
+
+                if($approve_np) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+
+			break;
+        }
+    }
+
     function log_action($value, $action, $id = 0)
 	{
         $val = array();

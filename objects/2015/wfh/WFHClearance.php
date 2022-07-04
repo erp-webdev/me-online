@@ -61,14 +61,13 @@ class WFHClearance{
 
     public function submit($params)
     {
-        
-        
+        $this->wfc_action($params, 'add');
         $this->createLog($params, 'add');
     }
 
     private function createLog($params, $action)
     {
-        $mainsql->log_action($post, 'add');
+        $mainsql->log_action($params, 'add');
     }
 
 }
