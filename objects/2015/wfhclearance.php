@@ -62,8 +62,9 @@
 
                     if($add_wc) : 
 
-                        $wfh_clearance->upload_attachment($add_wc);
-                        
+                        $wfh_clearance->saveAttachment($add_wc);
+                        $wfh_clearance->notifyRequestor($_POST['empid'], $add_wc);
+                        $wfh_clearance->notifyApprovers($_POST['empid'], $add_wc, $_POST['approver1'], $_POST['dbapprover1']);
 
                     endif;
                     break;

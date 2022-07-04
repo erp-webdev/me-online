@@ -1,13 +1,22 @@
 <?php 
 include OBJ . '/mail/Mail.php';
+
 class WFHClearance extends mainsql{
 
     private $types = [
         'sickness' => 'Sickness / Illness'
     ];
 
+    private $register;
+    private $logsql;
+
     private $allowedExts = array("JPG", "JPEG", "GIF", "PNG", "PDF", "jpg", "jpeg", "gif", "png", "pdf");
-     
+    
+    public function __construct() {
+        $this->register = new regsql();
+        $this->logsql = new logsql();
+    }
+
     public function getTypes(){
         return $this->types;
     }
@@ -94,7 +103,7 @@ class WFHClearance extends mainsql{
                     $attach['reqnbr'] = $add_wc;
 
                     if($filemove) :
-                        $add_attach = $mainsql->attach_action($attach, 'add');			
+                        $add_attach = $this->attach_action($attach, 'add');			
                     endif;
                 endif;
 
@@ -105,8 +114,59 @@ class WFHClearance extends mainsql{
 
     public function approve($params)
     {
-        $this->wfc_action($params, 'add');
+        $this->wfc_action($params, 'approved');
         $this->createLog($params, 'add');
+    }
+
+    public function notifyRequestor($empid, $add_wc)
+    {
+        $requestor = $this->register->get_member($empid);
+        // $request_info = $tblsql->get_mrequest(6, 0, 0, 0, $add_wc, 0, NULL, NULL, NULL, NULL);
+        // $approver = $logsql->get_allmember($approver1, $approverdb1);
+
+        $reqemailblock = $this->mainsql->get_newemailblock($empid);
+
+        if ($reqemailblock) :
+
+            //SEND EMAIL (REQUESTOR)
+
+            $message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 100%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>New WFH Clearance Request</span><br><br>Hi ".$requestor[0]['NickName'].",<br><br>";
+            $message .= "You opened a new request for WFH Clearance with Reference No: ".$add_np." on ".date('F j, Y')." and it's subject for approval. ";
+            $message .= "<br><br>Thanks,<br>";
+            $message .= SITENAME." Admin";
+            $message .= "<br>Click<a href='https://portal.megaworldcorp.com/me/login'> here</a> to login";
+            $message .= "<hr />".MAILFOOT."</div>";
+
+            $mail = new Mail();
+            $sendmail = $mail->send($requestor[0]['EmailAdd'], "New WFH Clearance Request", $message);
+
+        endif; 
+    }
+
+    public function notifyApprovers($empid, $add_wc, $approver1, $approverdb1)
+    {
+        $requestor = $this->register->get_member($empid);
+        $approver = $this->logsql->get_allmember($approver1, $approverdb1);
+
+        // $reqemailblock = $mainsql->get_newemailblock($empid);
+        $appemailblock = $this->get_newemailblock($approver1);
+
+        if ($appemailblock) :             
+
+            //SEND EMAIL (APPROVER)
+
+            $message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 100%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>New WFH Clearance Request from ".$requestor[0]['FName']." ".$requestor[0]['LName']."</span><br><br>Hi ".$approver[0]['NickName'].",<br><br>";
+            $message .= "New request ".$requestor[0]['FName']." ".$requestor[0]['LName']." for WFH Clearance with Reference No: ".$add_np." on ".date('F j, Y')." for your approval. ";
+            $message .= "<br><br>Thanks,<br>";
+            $message .= SITENAME." Admin";
+            $message .= "<br>Click<a href='https://portal.megaworldcorp.com/me/login'> here</a> to login";
+
+            $message .= "<hr />".MAILFOOT."</div>";
+
+            $mail = new Mail();
+            $sendmail = $mail->send($approver[0]['EmailAdd'], "New WFH Clearance Request for your Approval", $message);
+
+        endif;
     }
 
     private function createLog($params, $action)
