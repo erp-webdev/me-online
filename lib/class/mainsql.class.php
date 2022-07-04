@@ -2214,6 +2214,8 @@ class mainsql {
 
         $today = date('U');
 
+        echo 'kevs---'. $periodfrom; exit;
+
         if($dtr_day > 15){
             $periodfrom = strtotime(date('Y-m-16',strtotime($value['dteDTRDate'])));
             $periodto = strtotime(date('Y-m-t',strtotime($value['dteDTRDate'])));
