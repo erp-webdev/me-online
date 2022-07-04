@@ -6,6 +6,8 @@ class WFHClearance{
         'sickness' => 'Sickness / Illness'
     ];
 
+    private $allowedExts = array("JPG", "JPEG", "GIF", "PNG", "PDF", "jpg", "jpeg", "gif", "png", "pdf");
+     
     public function getTypes(){
         return $this->types;
     }
@@ -45,7 +47,7 @@ class WFHClearance{
                     $tempext = explode(".", $filename);
                     $extension = end($tempext);
 
-                    if (($filesize >= 209715) || !in_array($extension, $allowedExts)) :
+                    if (($filesize >= 209715) || !in_array($extension, $this->allowedExts)) :
                         $errorfile++;
                     endif;
                 endif;
@@ -79,7 +81,7 @@ class WFHClearance{
                 $tempext = explode(".", $filename);
                 $extension = end($tempext);
 
-                if (($filesize < 524288) && in_array($extension, $allowedExts)) :
+                if (($filesize < 524288) && in_array($extension, $this->allowedExts)) :
 
                     $path = "uploads/wc/";
                     $fixname = 'attach_'.$add_wc.'_'.$i.'.'.$extension;
