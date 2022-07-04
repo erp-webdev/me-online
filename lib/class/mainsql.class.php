@@ -3484,7 +3484,6 @@ class mainsql {
 
     function wfc_action($value, $action, $id = 0)
 	{
-        echo 'testing'; exit;        
         $val = array();
 
 		switch ($action) {
