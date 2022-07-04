@@ -2215,10 +2215,12 @@ class mainsql {
         $today = date('U');
 
        
-
         if((int)$dtr_day > 15){
             $periodfrom = strtotime(date('Y-m-16',strtotime($value['dteDTRDate'])));
             $periodto = strtotime(date('Y-m-t',strtotime($value['dteDTRDate'])));
+        }else{
+            $periodfrom = strtotime(date('Y-m-1',strtotime($value['dteDTRDate'])));
+            $periodto = strtotime(date('Y-m-15',strtotime($value['dteDTRDate'])));
         }
 
         // echo 'kevs---'. json_encode([
