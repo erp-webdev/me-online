@@ -172,7 +172,7 @@ class WFHClearance extends mainsql{
 
     private function createLog($params, $action)
     {
-        $mainsql->log_action($params, 'add');
+        $this->log_action($params, 'add');
     }
 
 }
