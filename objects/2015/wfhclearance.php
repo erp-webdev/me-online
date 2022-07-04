@@ -58,7 +58,14 @@
                     $wcpost['REMARKS'] = "";
 
                     $wfh_clearance->validate($params);
-                    $wfh_clearance->submit($wcpost);
+                    $add_wc = $wfh_clearance->submit($wcpost);
+
+                    if($add_wc) : 
+
+                        $wfh_clearance->upload_attachment($add_wc);
+                        
+
+                    endif;
                     break;
             }
 

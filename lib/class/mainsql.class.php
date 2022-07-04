@@ -3484,6 +3484,7 @@ class mainsql {
 
     function wfc_action($value, $action, $id = 0)
 	{
+        echo 'testing'; exit;        
         $val = array();
 
 		switch ($action) {
@@ -3522,7 +3523,7 @@ class mainsql {
 
                 $dbname = $value['DBNAME'];
 
-                $accepted_field = array('REQNBR', 'TRANS', 'USER', 'EMPID', 'REMARKS');
+                $accepted_field = array('REQNBR', 'TRANS', 'USER', 'EMPID', 'REMARKS', 'WORKHOURS');
 
                 $knum = 0;
                 foreach ($value as $key => $value) :
@@ -3537,9 +3538,9 @@ class mainsql {
                     endif;
                 endforeach;
 
-                $approve_np = $this->get_sp_data('SP_INSERT_APPLY_NPA', $val, $dbname);
+                $approve_wc = $this->get_sp_data('SP_INSERT_APPLY_WFHC', $val, $dbname);
 
-                if($approve_np) {
+                if($approve_wc) {
                     return 1;
                 } else {
                     return 0;

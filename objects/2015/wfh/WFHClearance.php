@@ -65,6 +65,48 @@ class WFHClearance{
         $this->createLog($params, 'add');
     }
 
+    public function saveAttachment($add_wc)
+    {
+        for($i=1; $i<=5; $i++) :
+    
+            if ($_FILES['attachment'.$i]['name']) :
+
+                $image = $_FILES['attachment'.$i]['tmp_name'];
+                $filename = $_FILES['attachment'.$i]['name'];
+                $filesize = $_FILES['attachment'.$i]['size'];
+                $filetype = $_FILES['attachment'.$i]['type'];
+
+                $tempext = explode(".", $filename);
+                $extension = end($tempext);
+
+                if (($filesize < 524288) && in_array($extension, $allowedExts)) :
+
+                    $path = "uploads/wc/";
+                    $fixname = 'attach_'.$add_wc.'_'.$i.'.'.$extension;
+                    $target_path = $path.$fixname; 
+
+                    $filemove = move_uploaded_file($image, $target_path);
+
+                    $attach['attachfile'] = $fixname;
+                    $attach['attachtype'] = $filetype;
+                    $attach['reqnbr'] = $add_wc;
+
+                    if($filemove) :
+                        $add_attach = $mainsql->attach_action($attach, 'add');			
+                    endif;
+                endif;
+
+            endif;
+
+        endfor;
+    }
+
+    public function approve($params)
+    {
+        $this->wfc_action($params, 'add');
+        $this->createLog($params, 'add');
+    }
+
     private function createLog($params, $action)
     {
         $mainsql->log_action($params, 'add');
