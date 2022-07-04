@@ -14,10 +14,6 @@
                         </div>
                     </div>
                     <script>
-                        $(document).ready(function () {
-                            if(new Date('06-24-2022') <= new Date())
-                                showmeg();
-                        });
 
                         function showmeg(){
                             $(".floatdiv").removeClass("invisible");
