@@ -66,6 +66,17 @@
                         $wfh_clearance->notifyRequestor($_POST['empid'], $add_wc);
                         $wfh_clearance->notifyApprovers($_POST['empid'], $add_wc, $_POST['approver1'], $_POST['dbapprover1']);
 
+                        //AUDIT TRAIL
+                        $post['EMPID'] = $profile_idnum;
+                        $post['TASKS'] = "CREATE_WFHC";
+                        $post['DATA'] = $add_np;
+                        $post['DATE'] = date("m/d/Y H:i:s.000");
+
+                        $log = $mainsql->log_action($post, 'add');
+
+                        echo '{"success": true}';
+                        exit();
+                        
                     endif;
                     break;
             }
