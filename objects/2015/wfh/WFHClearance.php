@@ -72,8 +72,13 @@ class WFHClearance extends mainsql{
 
     public function submit($params)
     {
-        $this->wfc_action($params, 'add');
-        $this->createLog($params, 'add');
+        // $post['EMPID'] = $profile_idnum;
+        // $post['TASKS'] = "CREATE_WFHC";
+        // $post['DATA'] = $add_np;
+        // $post['DATE'] = date("m/d/Y H:i:s.000");
+        
+        return $this->wfc_action($params, 'add');
+        // $this->createLog($post, 'add');
     }
 
     public function saveAttachment($add_wc)
@@ -114,7 +119,7 @@ class WFHClearance extends mainsql{
 
     public function approve($params)
     {
-        $this->wfc_action($params, 'approved');
+         $this->wfc_action($params, 'approved');
         $this->createLog($params, 'add');
     }
 
