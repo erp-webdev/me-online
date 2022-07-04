@@ -2221,12 +2221,12 @@ class mainsql {
             $periodto = strtotime(date('Y-m-t',strtotime($value['dteDTRDate'])));
         }
 
-        echo 'kevs---'. json_encode([
-            'today'=>$today,
-            'pfrom'=>$periodfrom,
-            'pto'=>$periodto,
-            'day'=>$dtr_day
-        ]); exit;
+        // echo 'kevs---'. json_encode([
+        //     'today'=>$today,
+        //     'pfrom'=>$periodfrom,
+        //     'pto'=>$periodto,
+        //     'day'=>$dtr_day
+        // ]); exit;
 
         if(!($today >= $periodfrom && $today <= $periodto)){
             // if DTR is not within the DTR period
