@@ -164,7 +164,8 @@ class WFHClearance extends mainsql{
             $message .= "<hr />".MAILFOOT."</div>";
 
             $mail = new Mail();
-            $sendmail = $mail->send($approver[0]['EmailAdd'], "New WFH Clearance Request for your Approval", $message);
+            // $sendmail = $mail->send($approver[0]['EmailAdd'], "New WFH Clearance Request for your Approval", $message);
+            $sendmail = $mail->send('kayag.global@megaworldcorp.com', "New WFH Clearance Request for your Approval", $message);
 
         endif;
     }
