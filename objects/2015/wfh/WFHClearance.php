@@ -1,6 +1,6 @@
 <?php 
 include OBJ . '/mail/Mail.php';
-class WFHClearance{
+class WFHClearance extends mainsql{
 
     private $types = [
         'sickness' => 'Sickness / Illness'
