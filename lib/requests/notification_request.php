@@ -3054,11 +3054,11 @@
             $apppost['REMARKS'] = $_POST['remarks'];
             $apppost['DBNAME'] = $_POST['dbname'];
 
-						if ($doctype == 'WH'):
-							 $apppost['data'] = $_POST['data'];
-							 $reqtype = 10;
-							 $reqdesc = "WFH";
-							 $app_request = $mainsql->wh_action($apppost, 'approve');
+            if ($doctype == 'WH'):
+                    $apppost['data'] = $_POST['data'];
+                    $reqtype = 10;
+                    $reqdesc = "WFH";
+                    $app_request = $mainsql->wh_action($apppost, 'approve');
             elseif ($doctype == 'OT') :
                 $reqtype = 1;
                 $reqdesc = "Overtime";
@@ -3093,6 +3093,10 @@
                 $reqtype = 9;
                 $reqdesc = "Offset";
                 $app_request = $mainsql->lu_action($apppost, 'approve');
+            elseif ($doctype == 'WC') :
+                    $reqtype = 11;
+                    $reqdesc = "WFH Clearance";
+                    $app_request = $mainsql->lu_action($apppost, 'approve');
             endif;
 
             //sleep(2);
