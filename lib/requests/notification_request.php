@@ -3096,7 +3096,7 @@
             elseif ($doctype == 'WC') :
                     $reqtype = 11;
                     $reqdesc = "WFH Clearance";
-                    $app_request = $mainsql->lu_action($apppost, 'approve');
+                    $app_request = $mainsql->wfc_action($apppost, 'approve');
             endif;
 
             //sleep(2);
