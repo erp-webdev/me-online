@@ -135,7 +135,7 @@ class WFHClearance extends mainsql{
             //SEND EMAIL (REQUESTOR)
 
             $message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 100%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>New WFH Clearance Request</span><br><br>Hi ".$requestor[0]['NickName'].",<br><br>";
-            $message .= "You opened a new request for WFH Clearance with Reference No: ".$add_np." on ".date('F j, Y')." and it's subject for approval. ";
+            $message .= "You opened a new request for WFH Clearance with Reference No: ".$add_wc." on ".date('F j, Y')." and it's subject for approval. ";
             $message .= "<br><br>Thanks,<br>";
             $message .= SITENAME." Admin";
             $message .= "<br>Click<a href='https://portal.megaworldcorp.com/me/login'> here</a> to login";
@@ -160,7 +160,7 @@ class WFHClearance extends mainsql{
             //SEND EMAIL (APPROVER)
 
             $message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 100%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>New WFH Clearance Request from ".$requestor[0]['FName']." ".$requestor[0]['LName']."</span><br><br>Hi ".$approver[0]['NickName'].",<br><br>";
-            $message .= "New request ".$requestor[0]['FName']." ".$requestor[0]['LName']." for WFH Clearance with Reference No: ".$add_np." on ".date('F j, Y')." for your approval. ";
+            $message .= "New request ".$requestor[0]['FName']." ".$requestor[0]['LName']." for WFH Clearance with Reference No: ".$add_wc." on ".date('F j, Y')." for your approval. ";
             $message .= "<br><br>Thanks,<br>";
             $message .= SITENAME." Admin";
             $message .= "<br>Click<a href='https://portal.megaworldcorp.com/me/login'> here</a> to login";
