@@ -7654,7 +7654,7 @@
 
                 <?php
             //endif;
-
+            $application_data = NULL;
             if ($doctype == 'OT') :
                 $application_data = $tblsql->get_nrequest(1, $refnum);
 
