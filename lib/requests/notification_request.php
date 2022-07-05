@@ -7928,7 +7928,65 @@
                 <?php
                 $pdtrfrom = strtotime($application_data[0]['DateCovered']);
                 $pdtrto = strtotime($application_data[0]['DateCovered']);
-
+                elseif ($doctype == 'WC') :
+                    $application_data = $tblsql->get_nrequest(6, $refnum);
+    
+                    // $chkexpire = $mainsql->check_appexpire($application_data[0]['DTRFrom']);
+                    $chkexpire = 0;
+    
+                    ?>
+                        <?php if ($attachment_data) : ?>
+                        <tr>
+                            <td width="25%"><b>Attachment/s</b></td>
+                            <td width="75%"><?php
+                                foreach ($attachment_data as $key => $value) :
+                                    echo '<a href="'.($dbname == 'MARKETING' ? 'https://www.marketingsalesagents.com' : WEB).'/uploads/wc/'.$value['AttachFile'].'" target="_blank">'.$value['AttachFile'].'</a><br>';
+                                endforeach;
+                            ?>
+                            </td>
+                        </tr>
+                        <?php endif; ?>
+    
+                        <tr>
+                            <td width="25%"><b>Status</b></td>
+                            <td width="75%"><?php
+                                if ($notification_data[0]['Approved'] == 2) :
+                                    echo "<span class='redtext'>REJECTED</span>";
+                                elseif ($notification_data[0]['Approved'] == 1) :
+                                    echo "<span class='greentext'>APPROVED</span>";
+                                elseif ($notification_data[0]['Approved'] == 3) :
+                                    echo "<span class='redtext'>CANCELLED</span>";
+                                else :
+                                    echo "FOR APPROVAL";
+                                endif;
+                                ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>Clearance Type</b></td>
+                            <td><?php echo $notification_data[0]['ClearanceType']; ?></td>
+                        </tr>
+                        <tr>
+                            <td><b>Date Applied</b></td>
+                            <td><?php echo date('F j, Y | g:ia', strtotime($notification_data[0]['AppliedDate'])); ?></td>
+                        </tr>
+                        <tr>
+                            <td><b>DTR From</b></td>
+                            <td><?php echo date('F j, Y', strtotime($application_data[0]['DTRFrom'])); ?></td>
+                        </tr>
+                        <tr>
+                            <td><b>DTR To</b></td>
+                            <td><?php echo date('F j, Y', strtotime($application_data[0]['DTRTo'])); ?></td>
+                        </tr>
+                        <tr>
+                            <td><b>Reason</b></td>
+                            <td><?php echo stripslashes($application_data[0]['Reason']); ?></td>
+                        </tr>
+    
+                    <?php
+                    $pdtrfrom = strtotime($application_data[0]['DTRFrom']);
+                    $pdtrto = strtotime($application_data[0]['DTRTo']);
+    
 			elseif ($doctype == 'WH') : //WFH HERE
 				$application_data = $tblsql->get_mrequest(10, $refnum);
 

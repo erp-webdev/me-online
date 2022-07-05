@@ -725,6 +725,30 @@ class tblsql {
 
             break;
 
+            case 11: // WFH clearance
+
+                $sql = "SELECT [outer].* FROM ( ";
+                $sql .= " SELECT ROW_NUMBER() OVER(ORDER BY AppliedDate DESC) as ROW_NUMBER, ";
+                $sql .= " ReqNbr, AppliedDate, EmpID, DTRFrom, DTRTo, Reason, Status, ClearanceType, SeqID 
+                    FROM HRFrmApplyWFHClearance ";
+                $sql .= " WHERE SeqId != 0 ";
+                if ($id != NULL) : $sql .= " AND ReqNbr = '".$id."'"; endif;
+                if ($search != NULL) : $sql .= " AND ReqNbr LIKE '%".$search."%' "; endif;
+                if ($empid != NULL) : $sql .= " AND EmpID = '".$empid."' "; endif;
+                if ($from && $to) :
+                    $sql .= " AND AppliedDate BETWEEN '".$from."' AND '".$to."' ";
+                endif;
+                $sql .= ") AS [outer] ";
+                if ($limit) :
+                    $sql .= " WHERE [outer].[ROW_NUMBER] BETWEEN ".(intval($start) + 1)." AND ".intval($start + $limit)." ORDER BY [outer].[ROW_NUMBER] ";
+                endif;
+
+                if ($count) : $result = $this->get_numrow($sql);
+                else : $result = $this->get_row($sql);
+                endif;
+
+            break;
+
         }
 
 		return $result;
