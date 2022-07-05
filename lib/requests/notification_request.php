@@ -7654,7 +7654,6 @@
 
                 <?php
             //endif;
-            $application_data = NULL;
             if ($doctype == 'OT') :
                 $application_data = $tblsql->get_nrequest(1, $refnum);
 
@@ -8753,10 +8752,6 @@
 						                        <td><b>Date</b></td>
 						                        <td><?php echo date("F j, Y | g:ia", strtotime($notification_data[0]['ApprovedDate01'])); ?></td>
 						                    </tr>
-                                            <tr>
-						                        <td><b>Maximum Work Hour/s</b></td>
-						                        <td><?php echo $application_data[0]['WorkHours']; ?></td>
-						                    </tr>
 						                        <?php if (trim($notification_data[0]['Remarks01'])) : ?>
 						                        <tr>
 						                            <td><b>Remarks</b></td>
@@ -9615,6 +9610,10 @@
                     <tr>
                         <td><b>Reason</b></td>
                         <td><?php echo stripslashes($application_data[0]['Reason']); ?></td>
+                    </tr>
+                    <tr>
+                        <td><b>Maximum Work Hours</b></td>
+                        <td><?php echo stripslashes($application_data[0]['WorkHours']); ?></td>
                     </tr>
 
                 <?php
