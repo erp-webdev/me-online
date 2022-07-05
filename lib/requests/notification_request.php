@@ -8549,12 +8549,12 @@
 						                                <?php endif; ?>
 						                                <input id="remarks" type="text" name="remarks" placeholder="Remarks..." class="txtbox width95per<?php echo $doctype == 'OT' ? ' margintop10' : ''; ?> marginbottom10" />
 						                                <?php if ($doctype == 'WC') : ?>
-						                                    <!-- <script type="text/javascript">// slider
-						                                        $(".approvehours").spinner({
+						                                    <script type="text/javascript">// slider
+						                                        $(".workhours").spinner({
 						                                          step: 0.5,
 						                                          spin: function( event, ui ) {
-						                                            if ( ui.value > <?php echo $application_data[0]['Hrs']; ?> ) {
-						                                              $(this).spinner( "value", <?php echo $application_data[0]['Hrs']; ?> );
+						                                            if ( ui.value > <?php echo $application_data[0]['WorkHours']; ?> ) {
+						                                              $(this).spinner( "value", <?php echo $application_data[0]['WorkHours']; ?> );
 						                                              return false;
 						                                            } else if ( ui.value < 0 ) {
 						                                              $(this).spinner( "value", 0 );
@@ -8562,8 +8562,8 @@
 						                                            }
 						                                          }
 						                                        });
-						                                    </script> -->
-						                                    <b>Work Hour/s</b> <input type="text" name="workhours" id="workhours" value="<?php echo $application_data[0]['WorkHours'] < $application_data[0]['Hrs'] ? $application_data[0]['WorkHours'] :  $application_data[0]['WorkHours']; ?>" class="approvehours txtbox width50 righttalign" readonly />
+						                                    </script>
+						                                    <b>Work Hour/s</b> <input type="text" name="workhours" id="workhours" value="<?php echo $application_data[0]['WorkHours'] < $application_data[0]['Hrs'] ? $application_data[0]['WorkHours'] :  $application_data[0]['WorkHours']; ?>" class="workhours txtbox width50 righttalign" readonly />
 						                                <?php endif; ?>
                                                         
                                                         <?php if (!$chkexpire) : ?>
