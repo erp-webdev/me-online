@@ -8665,7 +8665,7 @@
 						                                <?php endif; ?>
 						                                <input id="remarks" type="text" name="remarks" placeholder="Remarks..." class="txtbox width95per<?php echo $doctype == 'OT' ? ' margintop10' : ''; ?> marginbottom10" />
 						                                <?php if ($doctype == 'WC') : ?>
-						                                    <b>Maximum Work Hour/s</b> <input type="number" name="workhours" id="workhours" min="1" max="9" value="<?php echo $application_data[0]['WorkHours'] < $application_data[0]['Hrs'] ? $application_data[0]['WorkHours'] :  $application_data[0]['WorkHours']; ?>" class="workhours txtbox width50 righttalign" /> <br>
+						                                    <b></b> <input type="number" name="workhours" placeholder="Maximum Work Hour/s" id="workhours" min="1" max="9" value="<?php echo $application_data[0]['WorkHours'] < $application_data[0]['Hrs'] ? $application_data[0]['WorkHours'] :  $application_data[0]['WorkHours']; ?>" class="workhours txtbox width95per marginbottom10 righttalign" /> <br>
 						                                <?php endif; ?>
                                                         
                                                         <?php if (!$chkexpire) : ?>
