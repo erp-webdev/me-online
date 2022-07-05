@@ -1456,32 +1456,50 @@ class mainsql {
             break;
 			case 10: // WFH
 
-			$sql = "SELECT [outer].* FROM ( ";
-			$sql .= " SELECT ROW_NUMBER() OVER(ORDER BY AppliedDate DESC) as ROW_NUMBER, ";
-			$sql .= "  EmpID,convert(varchar, AppliedDate, 121) as AppliedDate,convert(varchar, FromDate, 121) as FromDate,convert(varchar, ToDate, 121) as ToDate,Reference,Status,Approved FROM viewApplyWH ";
-			$sql .= " WHERE SeqID != 0 ";
-			if ($id != NULL) : $sql .= " AND Reference = '".$id."' "; endif;
-			if ($search != NULL) : $sql .= " AND Reference LIKE '%".$search."%' "; endif;
-			if ($empid != NULL) : $sql .= " AND EmpID = '".$empid."' "; endif;
-			if ($status != NULL) : $sql .= " AND Approved = '".$status."' ";
-			endif;
-			if ($from && $to) :
-				$sql .= " AND AppliedDate BETWEEN '".$from." 00:00:00.000' AND '".$to." 23:59:59.000' ";
-			endif;
-			$sql .= "GROUP BY EmpID,AppliedDate,FromDate,ToDate,Reference,Status,Approved ) AS [outer] ";
-			if ($limit) :
-				$sql .= " WHERE [outer].[ROW_NUMBER] BETWEEN ".(intval($start) + 1)." AND ".intval($start + $limit)." ORDER BY [outer].[ROW_NUMBER] ";
-			endif;
+                $sql = "SELECT [outer].* FROM ( ";
+                $sql .= " SELECT ROW_NUMBER() OVER(ORDER BY AppliedDate DESC) as ROW_NUMBER, ";
+                $sql .= "  EmpID,convert(varchar, AppliedDate, 121) as AppliedDate,convert(varchar, FromDate, 121) as FromDate,convert(varchar, ToDate, 121) as ToDate,Reference,Status,Approved FROM viewApplyWH ";
+                $sql .= " WHERE SeqID != 0 ";
+                if ($id != NULL) : $sql .= " AND Reference = '".$id."' "; endif;
+                if ($search != NULL) : $sql .= " AND Reference LIKE '%".$search."%' "; endif;
+                if ($empid != NULL) : $sql .= " AND EmpID = '".$empid."' "; endif;
+                if ($status != NULL) : $sql .= " AND Approved = '".$status."' ";
+			    endif;
+                if ($from && $to) :
+                    $sql .= " AND AppliedDate BETWEEN '".$from." 00:00:00.000' AND '".$to." 23:59:59.000' ";
+                endif;
+                $sql .= "GROUP BY EmpID,AppliedDate,FromDate,ToDate,Reference,Status,Approved ) AS [outer] ";
+                if ($limit) :
+                    $sql .= " WHERE [outer].[ROW_NUMBER] BETWEEN ".(intval($start) + 1)." AND ".intval($start + $limit)." ORDER BY [outer].[ROW_NUMBER] ";
+                endif;
 
-			/*$sql .= " ORDER BY ReqDate DESC ";
-			if ($limit) :
-				$sql .= " OFFSET ".$start." ROWS ";
-				$sql .= " FETCH NEXT ".$limit." ROWS ONLY ";
-			endif;*/
+                if ($count) : $result = $this->get_numrow($sql);
+                else : $result = $this->get_row($sql);
+                endif;
 
-			if ($count) : $result = $this->get_numrow($sql);
-			else : $result = $this->get_row($sql);
-			endif;
+            break;
+
+            case 11: // WFH Clearance
+
+                $sql = "SELECT [outer].* FROM ( ";
+                $sql .= " SELECT ROW_NUMBER() OVER(ORDER BY AppliedDate DESC) as ROW_NUMBER, ";
+                $sql .= "  EmpID,convert(varchar, AppliedDate, 121) as AppliedDate,convert(varchar, DTRFrom, 121) as DTRFrom,convert(varchar, DTRTo, 121) as DTRTo,RefNbr,Status FROM HRFrmApplyWFHClearance ";
+                $sql .= " WHERE SeqID != 0 ";
+                if ($id != NULL) : $sql .= " AND RefNbr = '".$id."' "; endif;
+                if ($search != NULL) : $sql .= " AND RefNbr LIKE '%".$search."%' "; endif;
+                if ($empid != NULL) : $sql .= " AND EmpID = '".$empid."' "; endif;
+
+                if ($from && $to) :
+                    $sql .= " AND AppliedDate BETWEEN '".$from." 00:00:00.000' AND '".$to." 23:59:59.000' ";
+                endif;
+                $sql .= "GROUP BY EmpID,AppliedDate,DTRFrom,DTRTo,RefNbr,Status) AS [outer] ";
+                if ($limit) :
+                    $sql .= " WHERE [outer].[ROW_NUMBER] BETWEEN ".(intval($start) + 1)." AND ".intval($start + $limit)." ORDER BY [outer].[ROW_NUMBER] ";
+                endif;
+
+                if ($count) : $result = $this->get_numrow($sql);
+                else : $result = $this->get_row($sql);
+                endif;
 
             break;
         }
