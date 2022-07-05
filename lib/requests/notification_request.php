@@ -8102,7 +8102,10 @@
                             <td><b>Reason</b></td>
                             <td><?php echo stripslashes($application_data[0]['Reason']); ?></td>
                         </tr>
-    
+                        <tr>
+                            <td><b>Maximum Work Hours</b></td>
+                            <td><?php echo stripslashes($application_data[0]['WorkHours']); ?></td>
+                        </tr>
                     <?php
                     $pdtrfrom = strtotime($application_data[0]['DTRFrom']);
                     $pdtrto = strtotime($application_data[0]['DTRTo']);
@@ -9611,10 +9614,7 @@
                         <td><b>Reason</b></td>
                         <td><?php echo stripslashes($application_data[0]['Reason']); ?></td>
                     </tr>
-                    <tr>
-                        <td><b>Maximum Work Hours</b></td>
-                        <td><?php echo stripslashes($application_data[0]['WorkHours']); ?></td>
-                    </tr>
+                    
 
                 <?php
                 $pdtrfrom = strtotime($application_data[0]['DtrDate']);
