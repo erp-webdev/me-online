@@ -949,6 +949,8 @@ $(function() {
         }
 		else if (doctype == 'WH') {
             title = "Work from Home Application #";
+        }else if (doctype == 'WC') {
+            title = "WFH Clearance Application #";
         }
 
         $("#pend_title").html(title + ' ' + refnum);
