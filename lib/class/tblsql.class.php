@@ -746,6 +746,7 @@ class tblsql {
                 if ($count) : $result = $this->get_numrow($sql);
                 else : $result = $this->get_row($sql);
                 endif;
+                echo $sql; exit;
 
             break;
 
