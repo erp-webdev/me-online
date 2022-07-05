@@ -3052,6 +3052,7 @@
             $apppost['USER'] = $_POST['user'];
             $apppost['EMPID'] = $_POST['empid'];
             $apppost['REMARKS'] = $_POST['remarks'];
+            $apppost['REASON'] = '';
             $apppost['DBNAME'] = $_POST['dbname'];
 
             if ($doctype == 'WH'):
