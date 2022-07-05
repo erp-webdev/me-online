@@ -7931,7 +7931,6 @@
             
             elseif ($doctype == 'WC') :
                     $application_data = $tblsql->get_nrequest(11, $refnum);
-                var_dump($application_data); exit;
                     // $chkexpire = $mainsql->check_appexpire($application_data[0]['DTRFrom']);
                     $chkexpire = 0;
     
