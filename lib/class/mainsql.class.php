@@ -911,7 +911,7 @@ class mainsql {
 
                 $sql = "SELECT [outer].* FROM ( ";
                 $sql .= " SELECT ROW_NUMBER() OVER(ORDER BY AppliedDate DESC) as ROW_NUMBER, ";
-                $sql .= " RefNbr, AppliedDate, EmpID, DTRFrom, DTRTo, Reason, Status, ClearanceType, SeqID 
+                $sql .= " RefNbr, AppliedDate, EmpID, DTRFrom, DTRTo, Reason, Status, ClearanceType, SeqID, WorkHours
                     FROM HRFrmApplyWFHClearance ";
                 $sql .= " WHERE SeqId != 0 ";
                 if ($id != NULL) : $sql .= " AND RefNbr = '".$id."'"; endif;
