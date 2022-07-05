@@ -8563,7 +8563,7 @@
 						                                          }
 						                                        });
 						                                    </script>
-						                                    <b>Work Hour/s</b> <input type="number" name="workhours" id="workhours" value="<?php echo $application_data[0]['WorkHours'] < $application_data[0]['Hrs'] ? $application_data[0]['WorkHours'] :  $application_data[0]['WorkHours']; ?>" class="workhours txtbox width50 righttalign" />
+						                                    <b>Work Hour/s</b> <input type="number" name="workhours" id="workhours" value="<?php echo $application_data[0]['WorkHours'] < $application_data[0]['Hrs'] ? $application_data[0]['WorkHours'] :  $application_data[0]['WorkHours']; ?>" class="workhours txtbox width50 righttalign" /> <br>
 						                                <?php endif; ?>
                                                         
                                                         <?php if (!$chkexpire) : ?>
