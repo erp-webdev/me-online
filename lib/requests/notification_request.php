@@ -8104,7 +8104,7 @@
                         </tr>
                         <tr>
                             <td><b>Maximum Work Hours</b></td>
-                            <td><?php echo stripslashes($application_data[0]['WorkHours']); ?></td>
+                            <td><?php echo ($application_data[0]['WorkHours']); ?></td>
                         </tr>
                     <?php
                     $pdtrfrom = strtotime($application_data[0]['DTRFrom']);
