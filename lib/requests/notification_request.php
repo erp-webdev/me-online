@@ -7932,6 +7932,7 @@
             elseif ($doctype == 'WC') :
                     $application_data = $tblsql->get_nrequest(11, $refnum);
                     // $chkexpire = $mainsql->check_appexpire($application_data[0]['DTRFrom']);
+                    var_dump($application_data); exit;
                     $chkexpire = 0;
                     ?>
                         <?php if ($attachment_data) : ?>
