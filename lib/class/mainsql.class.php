@@ -1501,8 +1501,6 @@ class mainsql {
                 else : $result = $this->get_row($sql);
                 endif;
 
-                var_dump($result); exit;
-
             break;
         }
 

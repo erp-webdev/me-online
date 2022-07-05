@@ -61,6 +61,51 @@
                                 <?php
                                 switch($mreqtype) {
 
+                                    case 11:
+                                        ?>
+    
+                                        <table border="0" cellspacing="0" class="tdata width100per">
+                                            <?php if ($mreq_data) : ?>
+                                            <tr>
+                                                <th colspan="10">WFH Clearance</th>
+                                            </tr>
+                                            <tr>
+                                                <th width="5%">#</th>
+                                                <th width="10%">Ref. #</th>
+                                                <th width="10%">Date Applied</th>
+                                                <th width="5%">Date From</th>
+                                                <th width="5%">Date To</th>
+                                                <th width="5%">Status</th>
+                                            </tr>
+    
+                                            <?php foreach ($mreq_data as $key => $value) : ?>
+                                            <?php $appdata = $mainsql->get_notification($value['RefNbr']);?>
+                                            <tr class="btnpenddata cursorpoint trdata centertalign" attribute="<?php echo $value['RefNbr']; ?>" attribute2="WC" attribute5="<?php echo $profile_dbname; ?>">
+                                                <td><?php echo $start + $key + 1; ?></td>
+                                                <td><?php echo $value['RefNbr']; ?></td>
+                                                <td><?php echo date("m/d/Y", strtotime($value['AppliedDate'])); ?></td>
+                                                <td><?php echo date("m/d/Y", strtotime($value['DTRFrom'])); ?></td>
+                                                <td><?php echo date("m/d/Y", strtotime($value['DTRTo'])); ?></td>
+                                                <td><?php echo $value['Status']; ?></td>
+                                            </tr>
+                                            <?php endforeach; ?>
+    
+    
+                                            <?php if ($pages) : ?>
+                                            <tr>
+                                                <td colspan="10" class="centertalign"><?php echo $pages; ?></td>
+                                            </tr>
+                                            <?php endif; ?>
+                                            <?php else : ?>
+                                            <tr>
+                                                <td class="bold centertalign noborder"><br><br>You have no WFH Clearance applied</td>
+                                            </tr>
+                                            <?php endif; ?>
+                                        </table>
+    
+                                        <?php
+                                        break;
+
 									case 10:
 									?>
 
