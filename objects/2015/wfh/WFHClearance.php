@@ -97,7 +97,7 @@ class WFHClearance extends mainsql{
 
                 if (($filesize < 524288) && in_array($extension, $this->allowedExts)) :
 
-                    $path = "/uploads/wc/";
+                    $path = "uploads/wc/";
                     $fixname = 'attach_'.$add_wc.'_'.$i.'.'.$extension;
                     $target_path = $path.$fixname; 
 
