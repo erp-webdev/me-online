@@ -8476,7 +8476,7 @@
 						                    </tr>
 																<tr>
 																	<td colspan="2">
-																		<div style="max-height: 120px; overflow-y: auto;" class='signatoryapp'>
+																		<div style="max-height: 150px; overflow-y: auto;" class='signatoryapp'>
 																			<script>
 																			$(document).ready(function(){
 																				if($("#approvehere").attr("appr")){
