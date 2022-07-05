@@ -129,7 +129,106 @@
             empid = $(this).attr("attribute4");
             trans = 'APPROVED';
 
-			if (doctype == "WH") {
+			if (doctype == "WC") {
+                workhours = $("#workhours").val();
+
+                var r = confirm("This action cannot be UNDONE. Are you sure you want to approve this request?");
+
+                if (r == true)
+                {
+                    var approve_msg;
+                    var pendpage = $("#pendpage").val();
+
+                    if (!$('.approve_msg').length)
+                    {
+                        $('#btnapp').before('<div class="approve_msg" style="display:none; padding:10px; text-align:center" />');
+                    }
+
+                    $('.approve_msg')
+                    .html('<i class="fa fa-refresh fa-spin fa-lg"></i> Processing your approval&hellip;')
+                    .css({
+                        color : '#006100',
+                        background : '#c6efce',
+                        border : '2px solid #006100',
+                        height : 'auto'
+                    })
+                    .slideDown();
+
+                    $.ajax(
+                    {
+                        url: "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=approve",
+                        data: "trans=" + trans + "&remarks=" + remarks + "&doctype=" + doctype + "&reqnbr=" + reqnbr + "&user=" + user + "&userdb=" + userdb + "&nxtapp=" + nxtapp  + "&nxtappdb=" + nxtappdb + "&empid=" + empid + "&workhours=" + workhours + "&dbname=" + dbname,
+                        type: "POST",
+                        complete: function(){
+                            $("#loading").hide();
+                        },
+                        success: function(data) {
+
+                            if (data == 1) {
+
+                                $('.approve_msg').slideUp(function ()
+                                {
+                                    $(this)
+                                        .html('<p>Your approval has been successfully completed.</p>')
+                                        .css({
+                                            'color' : '#006100',
+                                            'background' : '#c6efce',
+                                            'borderColor' : '#006100',
+                                            'margin-top' : '10px',
+                                            'height' : 'auto'
+                                        })
+                                        .slideDown();
+                                });
+                                $('#workhours').addClass("invisible");
+                                $('#remarks').addClass("invisible");
+                                $('#btnapp').addClass("invisible");
+                                $('#btnrej').addClass("invisible");
+
+                                searchnoti = $("#searchnoti").val();
+                                notifrom = $("#notifrom").val();
+                                notito = $("#notito").val();
+
+                                notipage = 1;
+
+                                $.ajax(
+                                {
+                                    url: "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=tablepend&page=" + pendpage,
+                                    data: "searchnoti=" + searchnoti + "&notifrom=" + notifrom + "&notito=" + notito,
+                                    type: "POST",
+                                    complete: function(){
+                                        $("#loading").hide();
+                                    },
+                                    success: function(data) {
+                                        $("#btnnotiall").removeClass("invisible");
+                                        $("#penddata").html(data);
+                                        changeUrl('', '<?php echo WEB; ?>/notification');
+                                    }
+                                })
+
+                            }
+                            else {
+
+                                $('.approve_msg').slideUp(function ()
+                                {
+                                    $(this)
+                                        .html("There was an error on approval.")
+                                        .css({
+                                            'color' : '#9c0006',
+                                            'background' : '#ffc7ce',
+                                            'borderColor' : '#9c0006',
+                                            'margin-top' : '10px',
+                                            'height' : 'auto'
+                                        })
+                                        .slideDown();
+                                });
+
+                            }
+                        }
+                    })
+
+                }
+			}
+            else if (doctype == "WH") {
 				var whArray = [];
 				var count = 0;
 				$.each($('.wfhseq'),function (){
@@ -839,8 +938,10 @@
             else if (doctype == 'TS') {
                 title = "Change Schedule Application #";
             }
-						else if (doctype == 'WH') {
+			else if (doctype == 'WH') {
                 title = "Work From Home #";
+            }else if (doctype == 'WC') {
+                title = "WFH Clearance #";
             }
 
             $("#noti_title").html(title + ' ' + refnum);
@@ -899,9 +1000,12 @@
             else if (doctype == 'TS') {
                 title = "Change Schedule Application #";
             }
-						else if (doctype == 'WH') {
-								title = "Work From Home Application #";
-						}
+            else if (doctype == 'WH') {
+                    title = "Work From Home Application #";
+            }
+            else if (doctype == 'WC') {
+                    title = "WFH Clearance Application #";
+            }
 
             $("#noti_title").html(title + ' ' + refnum);
             $(".floatdiv").removeClass("invisible");
@@ -959,8 +1063,11 @@
             else if (doctype == 'TS') {
                 title = "Change Schedule Application #";
             }
-						else if (doctype == 'WH') {
+			else if (doctype == 'WH') {
                 title = "Work From Home #";
+            }
+            else if (doctype == 'WC') {
+                title = "WFH Clearance #";
             }
 
             $("#pend_title").html(title + ' ' + refnum);
@@ -1001,6 +1108,7 @@
     <?php
 
     switch ($sec) {
+
         case 'periodsel':
             $dtr_year = $_POST['year'];
 
@@ -1013,6 +1121,7 @@
             endif;
             echo $year_select;
         break;
+
         case 'lvcancel':
 
             $lvcpost['REQ'] = $_POST['reqnbr'];
@@ -1024,6 +1133,7 @@
             echo $lvcancel_request;
 
         break;
+
         case 'obcancel':
 
             $obcpost['SEQID'] = $_POST['seqid'];
@@ -1032,6 +1142,7 @@
             echo $obcancel_request;
 
         break;
+
         case 'mdcancel':
             $mdcpost['REQ'] = $_POST['reqnbr'];
             $mdcpost['DTRDATE'] = $_POST['dtrdate'];
@@ -1042,6 +1153,7 @@
             echo $mdcancel_request;
 
         break;
+
         case 'sccancel':
 
             $sccpost['REQ'] = $_POST['reqnbr'];
@@ -1092,6 +1204,7 @@
             </table>
             <?php
         break;
+
         case 'obtable':
 
             $refnum = $_POST['reqnbr'];
@@ -1115,6 +1228,7 @@
             </table>
             <?php
         break;
+
         case 'mdtable':
 
             $refnum = $_POST['reqnbr'];
@@ -1163,6 +1277,7 @@
             </table>
             <?php
         break;
+
         case 'sctable':
 
             $refnum = $_POST['reqnbr'];
@@ -1198,6 +1313,7 @@
             </table>
             <?php
         break;
+
         case 'table':
 
             # PAGINATION
