@@ -33,7 +33,7 @@
                                                 
 												<option value="10"<?php echo $mreqtype == 10 ? ' selected' : ''; ?>>WFH</option>
 
-												<option value="11"<?php echo $mreqtype == 11 ? ' selected' : ''; ?>>WFH Clearance</option>
+												<option value="11"<?php echo $mreqtype == 11 ? ' selected' : ''; ?>>WFH CLEARANCE</option>
 												
                                             </select>
                                             <!--&nbsp;Status:
