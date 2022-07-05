@@ -7873,7 +7873,7 @@
 
             elseif ($doctype == 'NP') :
                 $application_data = $tblsql->get_nrequest(6, $refnum);
-
+                var_dump($application_data); exit;
                 $chkexpire = $mainsql->check_appexpire($application_data[0]['DateCovered']);
 
                 ?>
@@ -7964,28 +7964,28 @@
                         </tr>
                         <tr>
                             <td><b>Clearance Type</b></td>
-                            <td><?php echo $application_data['ClearanceType']; ?></td>
+                            <td><?php echo $application_data[0]['ClearanceType']; ?></td>
                         </tr>
                         <tr>
                             <td><b>Date Applied</b></td>
-                            <td><?php echo date('F j, Y | g:ia', strtotime($application_data['AppliedDate'])); ?></td>
+                            <td><?php echo date('F j, Y | g:ia', strtotime($application_data[0]['AppliedDate'])); ?></td>
                         </tr>
                         <tr>
                             <td><b>DTR From</b></td>
-                            <td><?php echo date('F j, Y', strtotime($application_data['DTRFrom'])); ?></td>
+                            <td><?php echo date('F j, Y', strtotime($application_data[0]['DTRFrom'])); ?></td>
                         </tr>
                         <tr>
                             <td><b>DTR To</b></td>
-                            <td><?php echo date('F j, Y', strtotime($application_data['DTRTo'])); ?></td>
+                            <td><?php echo date('F j, Y', strtotime($application_data[0]['DTRTo'])); ?></td>
                         </tr>
                         <tr>
                             <td><b>Reason</b></td>
-                            <td><?php echo stripslashes($application_data['Reason']); ?></td>
+                            <td><?php echo stripslashes($application_data[0]['Reason']); ?></td>
                         </tr>
     
                     <?php
-                    $pdtrfrom = strtotime($application_data['DTRFrom']);
-                    $pdtrto = strtotime($application_data['DTRTo']);
+                    $pdtrfrom = strtotime($application_data[0]['DTRFrom']);
+                    $pdtrto = strtotime($application_data[0]['DTRTo']);
     
 			elseif ($doctype == 'WH') : //WFH HERE
 				$application_data = $tblsql->get_mrequest(10, $refnum);
