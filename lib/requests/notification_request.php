@@ -8663,10 +8663,12 @@
 						                                    </script>
 						                                    <b>Approve Hour/s</b> <input type="text" name="approvehours" id="approvehours" value="<?php echo $application_data[0]['ApprovedHrs'] < $application_data[0]['Hrs'] ? $application_data[0]['ApprovedHrs'] :  $application_data[0]['Hrs']; ?>" class="approvehours txtbox width50 righttalign" readonly />
 						                                <?php endif; ?>
-						                                <input id="remarks" type="text" name="remarks" placeholder="Remarks..." class="txtbox width95per<?php echo $doctype == 'OT' ? ' margintop10' : ''; ?> marginbottom10" />
-						                                <?php if ($doctype == 'WC') : ?>
-						                                    <b></b> <input type="number" name="workhours" placeholder="Maximum Work Hour/s" id="workhours" min="1" max="9" value="<?php echo $application_data[0]['WorkHours'] < $application_data[0]['Hrs'] ? $application_data[0]['WorkHours'] :  $application_data[0]['WorkHours']; ?>" class="workhours txtbox width95per marginbottom10 righttalign" /> <br>
+                                                        <?php if ($doctype == 'WC') : ?>
+						                                    <input type="number" name="workhours" placeholder="Maximum Work Hour/s" id="workhours" min="1" max="9" value="<?php echo $application_data[0]['WorkHours'] < $application_data[0]['Hrs'] ? $application_data[0]['WorkHours'] :  $application_data[0]['WorkHours']; ?>" class="workhours txtbox width95per marginbottom10 righttalign" /> <br>
 						                                <?php endif; ?>
+
+						                                <input id="remarks" type="text" name="remarks" placeholder="Remarks..." class="txtbox width95per<?php echo $doctype == 'OT' ? ' margintop10' : ''; ?> marginbottom10" />
+						                                
                                                         
                                                         <?php if (!$chkexpire) : ?>
                                                             <?php if (!$notification_data[0]['ApprovedDate01'] && $notification_data[0]['Approved'] != 2) : ?>
@@ -8750,6 +8752,10 @@
 						                    <tr>
 						                        <td><b>Date</b></td>
 						                        <td><?php echo date("F j, Y | g:ia", strtotime($notification_data[0]['ApprovedDate01'])); ?></td>
+						                    </tr>
+                                            <tr>
+						                        <td><b>Maximum Work Hour/s</b></td>
+						                        <td><?php echo $notification_data[0]['WorkHours']; ?></td>
 						                    </tr>
 						                        <?php if (trim($notification_data[0]['Remarks01'])) : ?>
 						                        <tr>
