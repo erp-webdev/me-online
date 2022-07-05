@@ -8755,7 +8755,7 @@
 						                    </tr>
                                             <tr>
 						                        <td><b>Maximum Work Hour/s</b></td>
-						                        <td><?php echo $notification_data[0]['WorkHours']; ?></td>
+						                        <td><?php echo $application_data[0]['WorkHours']; ?></td>
 						                    </tr>
 						                        <?php if (trim($notification_data[0]['Remarks01'])) : ?>
 						                        <tr>
