@@ -7928,7 +7928,8 @@
                 <?php
                 $pdtrfrom = strtotime($application_data[0]['DateCovered']);
                 $pdtrto = strtotime($application_data[0]['DateCovered']);
-                elseif ($doctype == 'WC') :
+            
+            elseif ($doctype == 'WC') :
                     $application_data = $tblsql->get_nrequest(6, $refnum);
     
                     // $chkexpire = $mainsql->check_appexpire($application_data[0]['DTRFrom']);
@@ -7964,11 +7965,11 @@
                         </tr>
                         <tr>
                             <td><b>Clearance Type</b></td>
-                            <td><?php echo $notification_data[0]['ClearanceType']; ?></td>
+                            <td><?php echo $application_data[0]['ClearanceType']; ?></td>
                         </tr>
                         <tr>
                             <td><b>Date Applied</b></td>
-                            <td><?php echo date('F j, Y | g:ia', strtotime($notification_data[0]['AppliedDate'])); ?></td>
+                            <td><?php echo date('F j, Y | g:ia', strtotime($application_data[0]['AppliedDate'])); ?></td>
                         </tr>
                         <tr>
                             <td><b>DTR From</b></td>
