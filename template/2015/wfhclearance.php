@@ -76,7 +76,8 @@
 				</div>
 				<div class="righttalign">
 					<?php
-						$ref = date('U'); 
+						$ref = substr($profile_idnum, 6);
+						$ref .= date('U'); 
 					?>
 					<input type="hidden" name="empid" value="<?php echo $profile_idnum; ?>" />
 					<input type="hidden" name="reqnbr" value="<?php echo "WC".$ref; ?>" />
