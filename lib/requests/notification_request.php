@@ -4,6 +4,8 @@
 	//**************** USER MANAGEMENT - START ****************\\
 
 	include(LIB."/login/chklog.php");
+    include OBJ . '/mail/Mail.php';
+
 
     $logged = $logstat;
     $profile_full = $logfname;
@@ -44,6 +46,7 @@
     $register = new regsql;
     $pafsql	= new pafsql;
 	$lmssql = new lmssql;
+    $mail = new Mail;
 
     /* MAIN DB CONNECTOR - END */
 
@@ -3252,12 +3255,7 @@
                     $message .= SITENAME." Admin";
                     $message .= "<hr />".MAILFOOT."</div>";
 
-                    $headers = "From: ".NOTIFICATION_EMAIL."\r\n";
-                    $headers .= "Reply-To: ".NOTIFICATION_EMAIL."\r\n";
-                    $headers .= "MIME-Version: 1.0\r\n";
-                    $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-
-                    $sendmail = mail($requestor[0]['EmailAdd'], "Response to your ".$reqdesc." Request", $message, $headers);
+                    $sendmail = $mail->send($requestor[0]['EmailAdd'], "Response to your ".$reqdesc." Request", $message);
 
                 endif;
 
@@ -3271,12 +3269,7 @@
                     $message .= SITENAME." Admin";
                     $message .= "<hr />".MAILFOOT."</div>";
 
-                    $headers = "From: ".NOTIFICATION_EMAIL."\r\n";
-                    $headers .= "Reply-To: ".NOTIFICATION_EMAIL."\r\n";
-                    $headers .= "MIME-Version: 1.0\r\n";
-                    $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-
-                    $sendmail = mail($approver[0]['EmailAdd'], "Your Response to ".$reqdesc." Request", $message, $headers);
+                    $sendmail = $mail->send($approver[0]['EmailAdd'], "Your Response to ".$reqdesc." Request", $message);
 
                 endif;
 
@@ -3289,12 +3282,7 @@
                     $message .= SITENAME." Admin";
                     $message .= "<hr />".MAILFOOT."</div>";
 
-                    $headers = "From: ".NOTIFICATION_EMAIL."\r\n";
-                    $headers .= "Reply-To: ".NOTIFICATION_EMAIL."\r\n";
-                    $headers .= "MIME-Version: 1.0\r\n";
-                    $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-
-                    $sendmail = mail($nxtapprover[0]['EmailAdd'], "New $reqdesc for your Approval", $message, $headers);
+                    $sendmail = $mail->send($nxtapprover[0]['EmailAdd'], "New $reqdesc for your Approval", $message);
                 endif;
             endif;
 
