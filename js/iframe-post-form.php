@@ -2122,7 +2122,7 @@ $(function ()
 
 				$('.wfh_msg').slideUp();
                 alert('WFH Clearance has been successfully applied.');
-                window.location.href='<?php echo WEB; ?>/myrequest?type=10';
+                window.location.href='<?php echo WEB; ?>/myrequest?type=11';
 
 			}
 		}
