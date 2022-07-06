@@ -9586,7 +9586,7 @@
                     $pdtrto = strtotime($application_data[0]['DTRTo']);
 
 							
-            <?php elseif ($doctype == 'OT') :
+                elseif ($doctype == 'OT') :
                 $application_data = $tblsql->get_nrequest(1, $refnum);
 
                 $chkexpire = $mainsql->check_appexpire($application_data[0]['DtrDate']);
