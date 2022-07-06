@@ -11,8 +11,9 @@ class mainsql {
     public function db_select($con, $dbname = NULL) //connect to database
 	{
         $maindb = $dbname ? $dbname : MAINDB;
-        echo $dbname . '---' . MAINDB; exit;
+        
         $result = mssql_select_db($maindb, $con);
+        echo $result; exit;
         if(!$result) return false;
         else return $result;
 	}
