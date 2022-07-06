@@ -8102,10 +8102,12 @@
                             <td><b>Reason</b></td>
                             <td><?php echo stripslashes($application_data[0]['Reason']); ?></td>
                         </tr>
+                        <?php if($application_data[0]['WorkHours']): ?>
                         <tr>
                             <td><b>Maximum Work Hours</b></td>
                             <td><?php echo ($application_data[0]['WorkHours']); ?></td>
                         </tr>
+                        <?php endif; ?>
                     <?php
                     $pdtrfrom = strtotime($application_data[0]['DTRFrom']);
                     $pdtrto = strtotime($application_data[0]['DTRTo']);
