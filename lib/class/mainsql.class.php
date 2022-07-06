@@ -3565,7 +3565,7 @@ class mainsql {
 
                 $dbname = $value['DBNAME'];
 
-                $accepted_field = array('REQNBR', 'TRANS', 'USER', 'EMPID', 'REMARKS', 'REASON', 'WORKHOURS');
+                $accepted_field = array('REQNBR', 'TRANS', 'USER', 'EMPID', 'REMARKS', 'REASON', 'WORKHOURS', 'CLEARANCETYPE');
 
                 $knum = 0;
                 foreach ($value as $key => $value) :
