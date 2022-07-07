@@ -19,18 +19,18 @@
 
         elseif ($value['TYPE'] == 'frmApplicationWHWeb') :
 
-            // $wfh_user = $mainsql->get_wfh_user($logname, $dbname);
-            // if ($value['SIGNATORYID1'] || $value['SIGNATORYID2'] || $value['SIGNATORYID3'] || $value['SIGNATORYID4'] || $value['SIGNATORYID5'] || $value['SIGNATORYID6']) :
-            //     $wh_app = array(1 => array(0 => $value['SIGNATORY1'], 1 => $value['SIGNATORYID1'], 2 => ($value['SIGNATORYID1'] == '1994-03-8275' || $value['SIGNATORYID1'] == '2009-09-V206' || $value['SIGNATORYID1'] == '2011-03-V835' ? 'MEGAWORLD' : $value['SIGNATORYDB1'])),
-            //                     2 => array(0 => $value['SIGNATORY2'], 1 => $value['SIGNATORYID2'], 2 => ($value['SIGNATORYID2'] == '1994-03-8275' || $value['SIGNATORYID2'] == '2009-09-V206' || $value['SIGNATORYID2'] == '2011-03-V835' ? 'MEGAWORLD' : $value['SIGNATORYDB2'])),
-            //                     3 => array(0 => $value['SIGNATORY3'], 1 => $value['SIGNATORYID3'], 2 => ($value['SIGNATORYID3'] == '1994-03-8275' || $value['SIGNATORYID3'] == '2009-09-V206' || $value['SIGNATORYID3'] == '2011-03-V835' ? 'MEGAWORLD' : $value['SIGNATORYDB3'])),
-            //                     4 => array(0 => $value['SIGNATORY4'], 1 => $value['SIGNATORYID4'], 2 => ($value['SIGNATORYID4'] == '1994-03-8275' || $value['SIGNATORYID4'] == '2009-09-V206' || $value['SIGNATORYID4'] == '2011-03-V835' ? 'MEGAWORLD' : $value['SIGNATORYDB4'])),
-            //                     5 => array(0 => $value['SIGNATORY5'], 1 => $value['SIGNATORYID5'], 2 => ($value['SIGNATORYID5'] == '1994-03-8275' || $value['SIGNATORYID5'] == '2009-09-V206' || $value['SIGNATORYID5'] == '2011-03-V835' ? 'MEGAWORLD' : $value['SIGNATORYDB5'])),
-            //                     6 => array(0 => $value['SIGNATORY6'], 1 => $value['SIGNATORYID6'], 2 => ($value['SIGNATORYID6'] == '1994-03-8275' || $value['SIGNATORYID6'] == '2009-09-V206' || $value['SIGNATORYID6'] == '2011-03-V835' ? 'MEGAWORLD' : $value['SIGNATORYDB6']))
-            //                    );
-            // else :
-            //     $wh_app = NULL;
-            // endif;
+            $wfh_user = $mainsql->get_wfh_user($logname, $dbname);
+            if ($value['SIGNATORYID1'] || $value['SIGNATORYID2'] || $value['SIGNATORYID3'] || $value['SIGNATORYID4'] || $value['SIGNATORYID5'] || $value['SIGNATORYID6']) :
+                $wh_app = array(1 => array(0 => $value['SIGNATORY1'], 1 => $value['SIGNATORYID1'], 2 => ($value['SIGNATORYID1'] == '1994-03-8275' || $value['SIGNATORYID1'] == '2009-09-V206' || $value['SIGNATORYID1'] == '2011-03-V835' ? 'MEGAWORLD' : $value['SIGNATORYDB1'])),
+                                2 => array(0 => $value['SIGNATORY2'], 1 => $value['SIGNATORYID2'], 2 => ($value['SIGNATORYID2'] == '1994-03-8275' || $value['SIGNATORYID2'] == '2009-09-V206' || $value['SIGNATORYID2'] == '2011-03-V835' ? 'MEGAWORLD' : $value['SIGNATORYDB2'])),
+                                3 => array(0 => $value['SIGNATORY3'], 1 => $value['SIGNATORYID3'], 2 => ($value['SIGNATORYID3'] == '1994-03-8275' || $value['SIGNATORYID3'] == '2009-09-V206' || $value['SIGNATORYID3'] == '2011-03-V835' ? 'MEGAWORLD' : $value['SIGNATORYDB3'])),
+                                4 => array(0 => $value['SIGNATORY4'], 1 => $value['SIGNATORYID4'], 2 => ($value['SIGNATORYID4'] == '1994-03-8275' || $value['SIGNATORYID4'] == '2009-09-V206' || $value['SIGNATORYID4'] == '2011-03-V835' ? 'MEGAWORLD' : $value['SIGNATORYDB4'])),
+                                5 => array(0 => $value['SIGNATORY5'], 1 => $value['SIGNATORYID5'], 2 => ($value['SIGNATORYID5'] == '1994-03-8275' || $value['SIGNATORYID5'] == '2009-09-V206' || $value['SIGNATORYID5'] == '2011-03-V835' ? 'MEGAWORLD' : $value['SIGNATORYDB5'])),
+                                6 => array(0 => $value['SIGNATORY6'], 1 => $value['SIGNATORYID6'], 2 => ($value['SIGNATORYID6'] == '1994-03-8275' || $value['SIGNATORYID6'] == '2009-09-V206' || $value['SIGNATORYID6'] == '2011-03-V835' ? 'MEGAWORLD' : $value['SIGNATORYDB6']))
+                               );
+            else :
+                $wh_app = NULL;
+            endif;
 
             if ($value['SIGNATORYID1'] || $value['SIGNATORYID2'] || $value['SIGNATORYID3'] || $value['SIGNATORYID4'] || $value['SIGNATORYID5'] || $value['SIGNATORYID6']) :
                 $rwh_app = array(1 => array(0 => $value['SIGNATORY1'], 1 => $value['SIGNATORYID1'], 2 => ($value['SIGNATORYID1'] == '1994-03-8275' || $value['SIGNATORYID1'] == '2009-09-V206' || $value['SIGNATORYID1'] == '2011-03-V835' ? 'MEGAWORLD' : $value['SIGNATORYDB1'])),
