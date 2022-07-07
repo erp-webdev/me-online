@@ -1,13 +1,10 @@
 <?php
-    echo 3; 
 	include("../../config.php");
 
-    echo 2; 
 	//**************** USER MANAGEMENT - START ****************\\
 
 	include(LIB."/login/chklog.php");
-    include OBJ . '/mail/Mail.php';
-    echo 1; 
+    // include OBJ . '/mail/Mail.php';
 
     $logged = $logstat;
     $profile_full = $logfname;
