@@ -1,6 +1,7 @@
 <?php
 
 	include("../../config.php");
+    echo '1'; exit;
 	//**************** USER MANAGEMENT - START ****************\\
 
 	include(LIB."/login/chklog.php");
