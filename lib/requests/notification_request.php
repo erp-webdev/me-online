@@ -9587,9 +9587,10 @@
 
 							
                 elseif ($doctype == 'OT') :
-                $application_data = $tblsql->get_nrequest(1, $refnum);
+                    
+                    $application_data = $tblsql->get_nrequest(1, $refnum);
 
-                $chkexpire = $mainsql->check_appexpire($application_data[0]['DtrDate']);
+                    $chkexpire = $mainsql->check_appexpire($application_data[0]['DtrDate']);
 
                 ?>
                     <?php if ($attachment_data) : ?>
