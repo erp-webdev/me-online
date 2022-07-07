@@ -3,8 +3,8 @@
 
 	//**************** USER MANAGEMENT - START ****************\\
 
-	include(LIB."/login/chklog.php");
-    include OBJ . '/mail/Mail.php';
+	include(LIB . "/login/chklog.php");
+    include OBJ . "/mail/Mail.php";
 
     $logged = $logstat;
     $profile_full = $logfname;
