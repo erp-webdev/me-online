@@ -1,10 +1,11 @@
 <?php
-	include("../../config.php");
 
+	include("../../config.php");
 	//**************** USER MANAGEMENT - START ****************\\
 
-	include(LIB . "/login/chklog.php");
-    include(OBJ . "/mail/Mail.php");
+	include(LIB."/login/chklog.php");
+    include OBJ . '/mail/Mail.php';
+
 
     $logged = $logstat;
     $profile_full = $logfname;
@@ -9523,92 +9524,21 @@
                     </div>
                     </td>
                 </tr>
-            <?php if ($doctype == 'WC') : //WFH HERE 
+            <?php 
+            if ($doctype == 'WC') : //WFH HERE 
                 $application_data = $mainsql->get_nrequest(11, $refnum);
                     // $chkexpire = $mainsql->check_appexpire($application_data[0]['DTRFrom']);
                 $chkexpire = 0; ?>
-                        <?php if ($attachment_data) : ?>
-                        <tr>
-                            <td width="25%"><b>Attachment/s</b></td>
-                            <td width="75%"><?php
-                                foreach ($attachment_data as $key => $value) :
-                                    echo '<a href="'.($dbname == 'MARKETING' ? 'https://www.marketingsalesagents.com' : WEB).'/uploads/wc/'.$value['AttachFile'].'" target="_blank">'.$value['AttachFile'].'</a><br>';
-                                endforeach;
-                            ?>
-                            </td>
-                        </tr>
-                        <?php endif; ?>
-    
-                        <tr>
-                            <td width="25%"><b>Status</b></td>
-                            <td width="75%"><?php
-                                if ($notification_data[0]['Approved'] == 2) :
-                                    echo "<span class='redtext'>REJECTED</span>";
-                                elseif ($notification_data[0]['Approved'] == 1) :
-                                    echo "<span class='greentext'>APPROVED</span>";
-                                elseif ($notification_data[0]['Approved'] == 3) :
-                                    echo "<span class='redtext'>CANCELLED</span>";
-                                else :
-                                    echo "FOR APPROVAL";
-                                endif;
-                                ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><b>Clearance Type</b></td>
-                            <td><?php echo $application_data[0]['ClearanceType']; ?></td>
-                        </tr>
-                        <tr>
-                            <td><b>Date Applied</b></td>
-                            <td><?php echo date('F j, Y | g:ia', strtotime($application_data[0]['AppliedDate'])); ?></td>
-                        </tr>
-                        <tr>
-                            <td><b>DTR From</b></td>
-                            <td><?php echo date('F j, Y', strtotime($application_data[0]['DTRFrom'])); ?></td>
-                        </tr>
-                        <tr>
-                            <td><b>DTR To</b></td>
-                            <td><?php echo date('F j, Y', strtotime($application_data[0]['DTRTo'])); ?></td>
-                        </tr>
-                        <tr>
-                            <td><b>Reason</b></td>
-                            <td><?php echo stripslashes($application_data[0]['Reason']); ?></td>
-                        </tr>
-                        <?php if($application_data[0]['WorkHours']): ?>
-                        <tr>
-                            <td><b>Maximum Work Hours</b></td>
-                            <td><?php echo ($application_data[0]['WorkHours']); ?></td>
-                        </tr>
-                        <?php endif; ?>
-                    <?php
-                    $pdtrfrom = strtotime($application_data[0]['DTRFrom']);
-                    $pdtrto = strtotime($application_data[0]['DTRTo']);
-
-							
-                elseif ($doctype == 'OT') :
-                    
-                    $application_data = $tblsql->get_nrequest(1, $refnum);
-
-                    $chkexpire = $mainsql->check_appexpire($application_data[0]['DtrDate']);
-
-                ?>
                     <?php if ($attachment_data) : ?>
                     <tr>
                         <td width="25%"><b>Attachment/s</b></td>
                         <td width="75%"><?php
                             foreach ($attachment_data as $key => $value) :
-                                echo '<a href="'.WEB.'/uploads/ot/'.$value['AttachFile'].'" target="_blank">'.$value['AttachFile'].'</a><br>';
+                                echo '<a href="'.($dbname == 'MARKETING' ? 'https://www.marketingsalesagents.com' : WEB).'/uploads/wc/'.$value['AttachFile'].'" target="_blank">'.$value['AttachFile'].'</a><br>';
                             endforeach;
                         ?>
                         </td>
                     </tr>
-                    <?php endif; ?>
-
-                    <?php if ($notification_data[0]['EmpID'] == $profile_idnum && $notification_data[0]['Approved'] != 3 && $notification_data[0]['Approved'] != 2) : ?>
-                    <!--tr>
-                        <td width="25%">&nbsp;</td>
-                        <td width="75%"><a href="<?php echo WEB; ?>/otpdf?id=<?php echo $refnum; ?>" target="_blank"><button class="btn">Print OT Form</button></a></td>
-                    </tr-->
                     <?php endif; ?>
 
                     <tr>
@@ -9627,42 +9557,113 @@
                         </td>
                     </tr>
                     <tr>
+                        <td><b>Clearance Type</b></td>
+                        <td><?php echo $application_data[0]['ClearanceType']; ?></td>
+                    </tr>
+                    <tr>
                         <td><b>Date Applied</b></td>
-                        <td><?php echo date('F j, Y | g:ia', strtotime($application_data[0]['ReqDate'])); ?></td>
+                        <td><?php echo date('F j, Y | g:ia', strtotime($application_data[0]['AppliedDate'])); ?></td>
                     </tr>
                     <tr>
-                        <td><b>DTR Date</b></td>
-                        <td><?php echo date('F j, Y', strtotime($application_data[0]['DtrDate'])); ?></td>
+                        <td><b>DTR From</b></td>
+                        <td><?php echo date('F j, Y', strtotime($application_data[0]['DTRFrom'])); ?></td>
                     </tr>
                     <tr>
-                        <td><b>From</b></td>
-                        <td><?php echo date('F j, Y | g:ia', strtotime($application_data[0]['FromDate'])); ?></td>
+                        <td><b>DTR To</b></td>
+                        <td><?php echo date('F j, Y', strtotime($application_data[0]['DTRTo'])); ?></td>
                     </tr>
-                    <tr>
-                        <td><b>To</b></td>
-                        <td><?php echo date('F j, Y | g:ia', strtotime($application_data[0]['ToDate'])); ?></td>
-                    </tr>
-                    <tr>
-                        <td><b>OT Type</b></td>
-                        <td><?php echo $application_data[0]['OTType']; ?></td>
-                    </tr>
-                    <tr>
-                        <td><b>Applied Hours</b></td>
-                        <td><?php echo $application_data[0]['Hrs']; ?></td>
-                    </tr>
-                    <?php if ($notification_data[0]['Approved'] == 1) : ?>
-                    <tr>
-                        <td><b>Approved Hours</b></td>
-                        <td>
-                            <?php echo $application_data[0]['ApprovedHrs'] ? $application_data[0]['ApprovedHrs'] : 0; ?>
-                        </td>
-                    </tr>
-                    <?php endif; ?>
                     <tr>
                         <td><b>Reason</b></td>
                         <td><?php echo stripslashes($application_data[0]['Reason']); ?></td>
                     </tr>
-                    
+                    <?php if($application_data[0]['WorkHours']): ?>
+                    <tr>
+                        <td><b>Maximum Work Hours</b></td>
+                        <td><?php echo ($application_data[0]['WorkHours']); ?></td>
+                    </tr>
+                    <?php endif; ?>
+                <?php
+                $pdtrfrom = strtotime($application_data[0]['DTRFrom']);
+                $pdtrto = strtotime($application_data[0]['DTRTo']);
+
+                        
+            elseif ($doctype == 'OT') :
+                $application_data = $tblsql->get_nrequest(1, $refnum);
+
+                $chkexpire = $mainsql->check_appexpire($application_data[0]['DtrDate']);
+
+                ?>
+                <?php if ($attachment_data) : ?>
+                <tr>
+                    <td width="25%"><b>Attachment/s</b></td>
+                    <td width="75%"><?php
+                        foreach ($attachment_data as $key => $value) :
+                            echo '<a href="'.WEB.'/uploads/ot/'.$value['AttachFile'].'" target="_blank">'.$value['AttachFile'].'</a><br>';
+                        endforeach;
+                    ?>
+                    </td>
+                </tr>
+                <?php endif; ?>
+
+                <?php if ($notification_data[0]['EmpID'] == $profile_idnum && $notification_data[0]['Approved'] != 3 && $notification_data[0]['Approved'] != 2) : ?>
+                <!--tr>
+                    <td width="25%">&nbsp;</td>
+                    <td width="75%"><a href="<?php echo WEB; ?>/otpdf?id=<?php echo $refnum; ?>" target="_blank"><button class="btn">Print OT Form</button></a></td>
+                </tr-->
+                <?php endif; ?>
+
+                <tr>
+                    <td width="25%"><b>Status</b></td>
+                    <td width="75%"><?php
+                        if ($notification_data[0]['Approved'] == 2) :
+                            echo "<span class='redtext'>REJECTED</span>";
+                        elseif ($notification_data[0]['Approved'] == 1) :
+                            echo "<span class='greentext'>APPROVED</span>";
+                        elseif ($notification_data[0]['Approved'] == 3) :
+                            echo "<span class='redtext'>CANCELLED</span>";
+                        else :
+                            echo "FOR APPROVAL";
+                        endif;
+                        ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>Date Applied</b></td>
+                    <td><?php echo date('F j, Y | g:ia', strtotime($application_data[0]['ReqDate'])); ?></td>
+                </tr>
+                <tr>
+                    <td><b>DTR Date</b></td>
+                    <td><?php echo date('F j, Y', strtotime($application_data[0]['DtrDate'])); ?></td>
+                </tr>
+                <tr>
+                    <td><b>From</b></td>
+                    <td><?php echo date('F j, Y | g:ia', strtotime($application_data[0]['FromDate'])); ?></td>
+                </tr>
+                <tr>
+                    <td><b>To</b></td>
+                    <td><?php echo date('F j, Y | g:ia', strtotime($application_data[0]['ToDate'])); ?></td>
+                </tr>
+                <tr>
+                    <td><b>OT Type</b></td>
+                    <td><?php echo $application_data[0]['OTType']; ?></td>
+                </tr>
+                <tr>
+                    <td><b>Applied Hours</b></td>
+                    <td><?php echo $application_data[0]['Hrs']; ?></td>
+                </tr>
+                <?php if ($notification_data[0]['Approved'] == 1) : ?>
+                <tr>
+                    <td><b>Approved Hours</b></td>
+                    <td>
+                        <?php echo $application_data[0]['ApprovedHrs'] ? $application_data[0]['ApprovedHrs'] : 0; ?>
+                    </td>
+                </tr>
+                <?php endif; ?>
+                <tr>
+                    <td><b>Reason</b></td>
+                    <td><?php echo stripslashes($application_data[0]['Reason']); ?></td>
+                </tr>
+                
 
                 <?php
                 $pdtrfrom = strtotime($application_data[0]['DtrDate']);
