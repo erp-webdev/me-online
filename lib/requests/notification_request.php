@@ -3218,6 +3218,7 @@
                     $apppost['WORKHOURS'] = $_POST['workhours'];
                     $apppost['CLEARANCETYPE'] = '';
                     $apppost['REASON'] = '';
+                    
                     $app_request = $mainsql->wfc_action($apppost, 'approve');
             endif;
 

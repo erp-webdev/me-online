@@ -518,10 +518,12 @@ class mainsql {
 	{
 		$sql = "SELECT [outer].* FROM ( ";
         $sql .= " SELECT ROW_NUMBER() OVER(ORDER BY DateFiled DESC) as ROW_NUMBER, ";
-        $sql .= " EmpID, DateFiled, DocType, Reference, ApprovedDate01, ApprovedDate02, ApprovedDate03, ApprovedDate04, ApprovedDate05, ApprovedDate06,
-            Signatory01, Signatory02, Signatory03, Signatory04, Signatory05, Signatory06,
-            DB_NAME01, DB_NAME02, DB_NAME03, DB_NAME04, DB_NAME05, DB_NAME06,
-            Remarks01, Remarks02, Remarks03, Remarks04, Remarks05, Remarks06, Approved, RejectedDate, POSTEDDATE, APPROVALDATE FROM TED_VIEW_NOTIFICATION ";
+        $sql .= " EmpID, DateFiled, DocType, Reference, ApprovedDate01, 
+        ApprovedDate02, ApprovedDate03, ApprovedDate04, ApprovedDate05, ApprovedDate06,
+        Signatory01, Signatory02, Signatory03, Signatory04, Signatory05, Signatory06,
+        DB_NAME01, DB_NAME02, DB_NAME03, DB_NAME04, DB_NAME05, DB_NAME06,
+        Approved, RejectedDate, POSTEDDATE, APPROVALDATE, FULLNAME 
+        FROM TED_VIEW_NOTIFICATION ";
         $sql .= " WHERE EmpID IS NOT NULL ";
         if ($id != NULL) : $sql .= " AND Reference = '".$id."' "; endif;
         if ($search != NULL) : $sql .= " AND (Reference LIKE '%".$search."%' OR EmpID = '".$search."' OR FULLNAME LIKE '%".$search."%') "; endif;
