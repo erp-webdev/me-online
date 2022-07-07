@@ -30,6 +30,7 @@
             else :
                 $wh_app = NULL;
             endif;
+            
             $wfh_user = $mainsql->get_wfh_user($logname, $dbname);
 
             // if ($value['SIGNATORYID1'] || $value['SIGNATORYID2'] || $value['SIGNATORYID3'] || $value['SIGNATORYID4'] || $value['SIGNATORYID5'] || $value['SIGNATORYID6']) :
