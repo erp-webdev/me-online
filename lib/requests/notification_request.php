@@ -9435,7 +9435,6 @@
 
             <?php if ($doctype == 'WH') : //WFH HERE
                 $application_data = $tblsql->get_mrequest(10, $refnum);
-
                 ?>
 
                 <tr>
@@ -9457,7 +9456,6 @@
                     <td><b>Date Applied</b></td>
                     <td><?php echo date('F j, Y g:ia', strtotime($application_data[0]['AppliedDate'])); ?></td>
                 </tr>
-
                 <tr>
                     <td colspan="2">
                     <div class="divmddata width100per notidatadiv">
@@ -9525,10 +9523,11 @@
                     </td>
                 </tr>
             <?php 
-            if ($doctype == 'WC') : //WFH HERE 
+            elseif ($doctype == 'WC') : //WFH HERE 
                 $application_data = $mainsql->get_nrequest(11, $refnum);
                     // $chkexpire = $mainsql->check_appexpire($application_data[0]['DTRFrom']);
                 $chkexpire = 0; ?>
+
                     <?php if ($attachment_data) : ?>
                     <tr>
                         <td width="25%"><b>Attachment/s</b></td>
