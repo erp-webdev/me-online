@@ -310,16 +310,21 @@ class mainsql {
 
     function get_wfh_user($empid, $dbname, $count = 0)
     {
-        $sql = "SELECT EmpID, Name, DBNAME, start_date, end_date, CONVERT(varchar, end_date, 23) as end_convert, 
-        CONVERT(varchar, start_date, 23) as start_convert, 
-        CONVERT(varchar, DATEADD(day, 3,end_date), 23) as end_warning 
-        FROM WFHUsers WHERE EmpID = '".$empid."' and DBNAME = '".$dbname."'
-                and (end_date is null or DATEADD(day, 3,end_date) >= convert(date,GETDATE()))";
-        $result = $this->get_row($sql, 'SUBSIDIARY');
+        // $sql = "SELECT EmpID, Name, DBNAME, start_date, end_date, CONVERT(varchar, end_date, 23) as end_convert, 
+        // CONVERT(varchar, start_date, 23) as start_convert, 
+        // CONVERT(varchar, DATEADD(day, 3,end_date), 23) as end_warning 
+        // FROM WFHUsers WHERE EmpID = '".$empid."' and DBNAME = '".$dbname."'
+        //         and (end_date is null or DATEADD(day, 3,end_date) >= convert(date,GETDATE()))";
+        // $result = $this->get_row($sql, 'SUBSIDIARY');
         
-        $sql = "SELECT * 
-                FROM HRFrmApplyWFHClearance 
-                WHERE EmpID = '" . $empid . "'";
+        $sql = "SELECT A.EMPID, B.FullName AS [Name], DB_NAME(), DTRFrom as [start_date], DTRTo AS [end_date],
+            CONVERT(varchar, DTRTo, 23) as end_convert, 
+            CONVERT(varchar, DTRFrom, 23) as start_convert, 
+            CONVERT(varchar, DATEADD(day, 3,DTRTo), 23) as end_warning
+            FROM HRFrmApplyWFHClearance A
+            LEFT JOIN viewHREmpMaster B ON A.EmpID = B.EmpID
+            WHERE A.EMPID = '" . $empid . "' 
+            and (DTRFrom is null or DATEADD(day, 3, DTRFrom) >= convert(date,GETDATE()))";
 
         return $result;
     }
