@@ -21,7 +21,17 @@
 			<b>Your access to WFH Application will be disabled after <?php echo $wfh_user[0]["end_warning"]; ?>.</b>
 			</div>
 			<?php } ?>
-			<?php var_dump($wfh_user); ?>
+			
+			<?php if(!$wfh_user): ?>
+			
+			<div class="mleave_msg" style="padding: 10px; text-align: center; color: rgb(156, 0, 6); background: rgb(255, 199, 206);
+			border: 2px solid rgb(156, 0, 6); height: auto; display: block;">
+				You do not have clearance to submit a Work From Home. <br>
+				Submit a WFH Clearance instead <a href="/wfhclearance">here</a>
+			</div>
+
+			<?php else; ?>
+			
 			<form id="frmapplywd" name="frmapplywd" action="?ignore-page-cache=true" method="post" enctype="multipart/form-data">
 				<div id="tabs">
 					<ul>
@@ -149,6 +159,9 @@
 				</div>
 
 			</form>
+
+			<?php endif; ?>
+
 
 		</div>
 	</div>
