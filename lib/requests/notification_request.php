@@ -2775,8 +2775,9 @@
                 elseif ($value['DocType'] == 'OB') : $typestat = "OBT APPLICATION from ";
                 elseif ($value['DocType'] == 'NP') : $typestat = "NO PUNCH APPLICATION from ";
                 elseif ($value['DocType'] == 'MD') : $typestat = "MANUAL DTR APPLICATION from ";
-								elseif ($value['DocType'] == 'SC') : $typestat = "CHANGE SCHEDULE APPLICATION from ";
+				elseif ($value['DocType'] == 'SC') : $typestat = "CHANGE SCHEDULE APPLICATION from ";
                 elseif ($value['DocType'] == 'WH') : $typestat = "WORK FROM HOME from ";
+                elseif ($value['DocType'] == 'WC') : $typestat = "WFH CLEARANCE from ";
                 endif;
 
                 $displaychk = 0;
@@ -3133,7 +3134,7 @@
             <tr class="btnrnotidata cursorpoint trdata centertalign whitetext" attribute="<?php echo $value['Reference']; ?>" attribute2="<?php echo $value['DocType']; ?>">
                 <td><?php echo $value['DocType']; ?></td>
                 <td><?php echo $value['Reference']; ?></td>
-                <td><?php echo $value['EmpID']; ?></td>
+                <td><?php echo $value['EmpID'] . '<br>' . $value['FULLNAME']; ?></td>
                 <td><?php echo $nlevel; ?></td>
                 <td><?php echo date("M j, Y", strtotime($value['DateFiled'])); ?></td>
                 <?php $oldyear = date("Y", strtotime($value['APPROVALDATE'])); ?>
@@ -3218,7 +3219,7 @@
                     $apppost['WORKHOURS'] = $_POST['workhours'];
                     $apppost['CLEARANCETYPE'] = '';
                     $apppost['REASON'] = '';
-                    
+
                     $app_request = $mainsql->wfc_action($apppost, 'approve');
             endif;
 
