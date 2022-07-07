@@ -13,6 +13,7 @@ class mainsql {
         $maindb = $dbname ? $dbname : MAINDB;
         
         $result = mssql_select_db($maindb, $con);
+        echo $result; exit;
         if(!$result) return false;
         else return $result;
 	}
