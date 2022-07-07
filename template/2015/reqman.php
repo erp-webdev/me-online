@@ -430,7 +430,7 @@
                                     <tr class="btnrnotidata cursorpoint trdata centertalign whitetext" attribute="<?php echo $value['Reference']; ?>" attribute2="<?php echo $value['DocType']; ?>">
                                         <td><?php echo $value['DocType']; ?></td>
                                         <td><?php echo $value['Reference']; ?></td>
-                                        <td><?php echo $value['EmpID']; ?></td>
+                                        <td><?php echo $value['EmpID'] . '<br>' . $value['FULLNAME']; ?></td>
                                         <td><?php echo $nlevel; ?></td>
                                         <td><?php echo date("M j, Y", strtotime($value['DateFiled'])); ?></td>
                                         <?php $oldyear = date("Y", strtotime($value['APPROVALDATE'])); ?>
