@@ -76,13 +76,11 @@
 				</div>
 				<div class="righttalign">
 					<?php
-						$microsec = microtime();
-						$micsec = explode(' ', $microsec);
-						$finsec = str_replace('.', '', $micsec[1].$micsec[0]);
+						$ref = substr($profile_idnum, 8);
+						$ref .= date('U'); 
 					?>
-					<!-- <input id="ndays" type="hidden" name="ndays" value="<?php echo $dayn; ?>" /> -->
 					<input type="hidden" name="empid" value="<?php echo $profile_idnum; ?>" />
-					<input type="hidden" name="reqnbr" value="<?php echo "WC-".$finsec; ?>" />
+					<input type="hidden" name="reqnbr" value="<?php echo "WC".$ref; ?>" />
 					<input type="hidden" name="user" value="<?php echo $profile_idnum; ?>" />
 					<input id="btnwfhclearanceapply" type="submit" name="btnwfhclearanceapply" value="Submit" class="btn margintop10" />
 					<a href="<?php echo WEB; ?>/pending"><input type="button"  name="btncancel" value="Cancel" class="redbtn margintop10" /></a>

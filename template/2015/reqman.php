@@ -31,8 +31,9 @@
                                                 <option value="OB"<?php echo $_SESSION['rmantype'] == 'OB' ? ' selected' : ''; ?>>Official Business Trip</option>
                                                 <option value="NP"<?php echo $_SESSION['rmantype'] == 'NP' ? ' selected' : ''; ?>>Non-Punching Authorization</option>
                                                 <option value="MD"<?php echo $_SESSION['rmantype'] == 'MD' ? ' selected' : ''; ?>>Manual DTR</option>
-																								<option value="SC"<?php echo $_SESSION['rmantype'] == 'SC' ? ' selected' : ''; ?>>Time Scheduler</option>
+											    <option value="SC"<?php echo $_SESSION['rmantype'] == 'SC' ? ' selected' : ''; ?>>Time Scheduler</option>
                                                 <option value="WH"<?php echo $_SESSION['rmantype'] == 'WH' ? ' selected' : ''; ?>>Work From Home</option>
+                                                <option value="WC"<?php echo $_SESSION['rmantype'] == 'WC' ? ' selected' : ''; ?>>WFH Clearance</option>
                                             </select>
                                             <input type="text" id="rmanfrom" name="rmanfrom" value="<?php echo $_SESSION['rmanfrom'] ? $_SESSION['rmanfrom'] : date('Y-m-d', strtotime("-6 months")); ?>" placeholder="From.." class="smltxtbox width55 datepick2" /> -
                                             <input type="text" id="rmanto" name="rmanto" value="<?php echo $_SESSION['rmanto'] ? $_SESSION['rmanto'] : date("Y-m-d"); ?>" placeholder="To..." class="smltxtbox width55 datepick2" /> by
@@ -70,6 +71,8 @@
                                         elseif ($value['DocType'] == 'NP') : $typestat = "NO PUNCH APPLICATION from ";
                                         elseif ($value['DocType'] == 'MD') : $typestat = "MANUAL DTR APPLICATION from ";
                                         elseif ($value['DocType'] == 'SC') : $typestat = "CHANGE SCHEDULE APPLICATION from ";
+                                        elseif ($value['DocType'] == 'WH') : $typestat = "WORK FROM HOME APPLICATION from ";
+                                        elseif ($value['DocType'] == 'WC') : $typestat = "WFH CLEARANCE APPLICATION from ";
                                         endif;
 
                                         //var_dump($value['Signatory06']);
@@ -427,7 +430,7 @@
                                     <tr class="btnrnotidata cursorpoint trdata centertalign whitetext" attribute="<?php echo $value['Reference']; ?>" attribute2="<?php echo $value['DocType']; ?>">
                                         <td><?php echo $value['DocType']; ?></td>
                                         <td><?php echo $value['Reference']; ?></td>
-                                        <td><?php echo $value['EmpID']; ?></td>
+                                        <td><?php echo $value['EmpID'] . '<br>' . $value['FULLNAME']; ?></td>
                                         <td><?php echo $nlevel; ?></td>
                                         <td><?php echo date("M j, Y", strtotime($value['DateFiled'])); ?></td>
                                         <?php $oldyear = date("Y", strtotime($value['APPROVALDATE'])); ?>

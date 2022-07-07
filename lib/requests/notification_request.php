@@ -4,6 +4,8 @@
 	//**************** USER MANAGEMENT - START ****************\\
 
 	include(LIB."/login/chklog.php");
+    include OBJ . '/mail/Mail.php';
+
 
     $logged = $logstat;
     $profile_full = $logfname;
@@ -44,6 +46,7 @@
     $register = new regsql;
     $pafsql	= new pafsql;
 	$lmssql = new lmssql;
+    $mail = new Mail;
 
     /* MAIN DB CONNECTOR - END */
 
@@ -129,7 +132,106 @@
             empid = $(this).attr("attribute4");
             trans = 'APPROVED';
 
-			if (doctype == "WH") {
+			if (doctype == "WC") {
+                workhours = $("#workhours").val();
+
+                var r = confirm("This action cannot be UNDONE. Are you sure you want to approve this request?");
+
+                if (r == true)
+                {
+                    var approve_msg;
+                    var pendpage = $("#pendpage").val();
+
+                    if (!$('.approve_msg').length)
+                    {
+                        $('#btnapp').before('<div class="approve_msg" style="display:none; padding:10px; text-align:center" />');
+                    }
+
+                    $('.approve_msg')
+                    .html('<i class="fa fa-refresh fa-spin fa-lg"></i> Processing your approval&hellip;')
+                    .css({
+                        color : '#006100',
+                        background : '#c6efce',
+                        border : '2px solid #006100',
+                        height : 'auto'
+                    })
+                    .slideDown();
+
+                    $.ajax(
+                    {
+                        url: "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=approve",
+                        data: "trans=" + trans + "&remarks=" + remarks + "&doctype=" + doctype + "&reqnbr=" + reqnbr + "&user=" + user + "&userdb=" + userdb + "&nxtapp=" + nxtapp  + "&nxtappdb=" + nxtappdb + "&empid=" + empid + "&workhours=" + workhours + "&dbname=" + dbname,
+                        type: "POST",
+                        complete: function(){
+                            $("#loading").hide();
+                        },
+                        success: function(data) {
+
+                            if (data == 1) {
+
+                                $('.approve_msg').slideUp(function ()
+                                {
+                                    $(this)
+                                        .html('<p>Your approval has been successfully completed.</p>')
+                                        .css({
+                                            'color' : '#006100',
+                                            'background' : '#c6efce',
+                                            'borderColor' : '#006100',
+                                            'margin-top' : '10px',
+                                            'height' : 'auto'
+                                        })
+                                        .slideDown();
+                                });
+                                $('#workhours').addClass("invisible");
+                                $('#remarks').addClass("invisible");
+                                $('#btnapp').addClass("invisible");
+                                $('#btnrej').addClass("invisible");
+
+                                searchnoti = $("#searchnoti").val();
+                                notifrom = $("#notifrom").val();
+                                notito = $("#notito").val();
+
+                                notipage = 1;
+
+                                $.ajax(
+                                {
+                                    url: "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=tablepend&page=" + pendpage,
+                                    data: "searchnoti=" + searchnoti + "&notifrom=" + notifrom + "&notito=" + notito,
+                                    type: "POST",
+                                    complete: function(){
+                                        $("#loading").hide();
+                                    },
+                                    success: function(data) {
+                                        $("#btnnotiall").removeClass("invisible");
+                                        $("#penddata").html(data);
+                                        changeUrl('', '<?php echo WEB; ?>/notification');
+                                    }
+                                })
+
+                            }
+                            else {
+
+                                $('.approve_msg').slideUp(function ()
+                                {
+                                    $(this)
+                                        .html("There was an error on approval.")
+                                        .css({
+                                            'color' : '#9c0006',
+                                            'background' : '#ffc7ce',
+                                            'borderColor' : '#9c0006',
+                                            'margin-top' : '10px',
+                                            'height' : 'auto'
+                                        })
+                                        .slideDown();
+                                });
+
+                            }
+                        }
+                    })
+
+                }
+			}
+            else if (doctype == "WH") {
 				var whArray = [];
 				var count = 0;
 				$.each($('.wfhseq'),function (){
@@ -839,8 +941,10 @@
             else if (doctype == 'TS') {
                 title = "Change Schedule Application #";
             }
-						else if (doctype == 'WH') {
+			else if (doctype == 'WH') {
                 title = "Work From Home #";
+            }else if (doctype == 'WC') {
+                title = "WFH Clearance #";
             }
 
             $("#noti_title").html(title + ' ' + refnum);
@@ -899,9 +1003,12 @@
             else if (doctype == 'TS') {
                 title = "Change Schedule Application #";
             }
-						else if (doctype == 'WH') {
-								title = "Work From Home Application #";
-						}
+            else if (doctype == 'WH') {
+                    title = "Work From Home Application #";
+            }
+            else if (doctype == 'WC') {
+                    title = "WFH Clearance Application #";
+            }
 
             $("#noti_title").html(title + ' ' + refnum);
             $(".floatdiv").removeClass("invisible");
@@ -959,8 +1066,11 @@
             else if (doctype == 'TS') {
                 title = "Change Schedule Application #";
             }
-						else if (doctype == 'WH') {
+			else if (doctype == 'WH') {
                 title = "Work From Home #";
+            }
+            else if (doctype == 'WC') {
+                title = "WFH Clearance #";
             }
 
             $("#pend_title").html(title + ' ' + refnum);
@@ -1001,6 +1111,7 @@
     <?php
 
     switch ($sec) {
+
         case 'periodsel':
             $dtr_year = $_POST['year'];
 
@@ -1013,6 +1124,7 @@
             endif;
             echo $year_select;
         break;
+
         case 'lvcancel':
 
             $lvcpost['REQ'] = $_POST['reqnbr'];
@@ -1024,6 +1136,7 @@
             echo $lvcancel_request;
 
         break;
+
         case 'obcancel':
 
             $obcpost['SEQID'] = $_POST['seqid'];
@@ -1032,6 +1145,7 @@
             echo $obcancel_request;
 
         break;
+
         case 'mdcancel':
             $mdcpost['REQ'] = $_POST['reqnbr'];
             $mdcpost['DTRDATE'] = $_POST['dtrdate'];
@@ -1042,6 +1156,7 @@
             echo $mdcancel_request;
 
         break;
+
         case 'sccancel':
 
             $sccpost['REQ'] = $_POST['reqnbr'];
@@ -1092,6 +1207,7 @@
             </table>
             <?php
         break;
+
         case 'obtable':
 
             $refnum = $_POST['reqnbr'];
@@ -1115,6 +1231,7 @@
             </table>
             <?php
         break;
+
         case 'mdtable':
 
             $refnum = $_POST['reqnbr'];
@@ -1163,6 +1280,7 @@
             </table>
             <?php
         break;
+
         case 'sctable':
 
             $refnum = $_POST['reqnbr'];
@@ -1198,6 +1316,7 @@
             </table>
             <?php
         break;
+
         case 'table':
 
             # PAGINATION
@@ -2656,8 +2775,9 @@
                 elseif ($value['DocType'] == 'OB') : $typestat = "OBT APPLICATION from ";
                 elseif ($value['DocType'] == 'NP') : $typestat = "NO PUNCH APPLICATION from ";
                 elseif ($value['DocType'] == 'MD') : $typestat = "MANUAL DTR APPLICATION from ";
-								elseif ($value['DocType'] == 'SC') : $typestat = "CHANGE SCHEDULE APPLICATION from ";
+				elseif ($value['DocType'] == 'SC') : $typestat = "CHANGE SCHEDULE APPLICATION from ";
                 elseif ($value['DocType'] == 'WH') : $typestat = "WORK FROM HOME from ";
+                elseif ($value['DocType'] == 'WC') : $typestat = "WFH CLEARANCE from ";
                 endif;
 
                 $displaychk = 0;
@@ -3014,7 +3134,7 @@
             <tr class="btnrnotidata cursorpoint trdata centertalign whitetext" attribute="<?php echo $value['Reference']; ?>" attribute2="<?php echo $value['DocType']; ?>">
                 <td><?php echo $value['DocType']; ?></td>
                 <td><?php echo $value['Reference']; ?></td>
-                <td><?php echo $value['EmpID']; ?></td>
+                <td><?php echo $value['EmpID'] . '<br>' . $value['FULLNAME']; ?></td>
                 <td><?php echo $nlevel; ?></td>
                 <td><?php echo date("M j, Y", strtotime($value['DateFiled'])); ?></td>
                 <?php $oldyear = date("Y", strtotime($value['APPROVALDATE'])); ?>
@@ -3039,8 +3159,8 @@
                 <?php endif; ?>
             <?php endif; ?>
         </table>
-        <input type="hidden" id="notipage" name="notipage" value="<?php echo $page; ?>" />
-        <input type="hidden" id="rmandb" name="rmandb" value="<?php echo $profile_dbname; ?>" />
+            <input type="hidden" id="notipage" name="notipage" value="<?php echo $page; ?>" />
+            <input type="hidden" id="rmandb" name="rmandb" value="<?php echo $profile_dbname; ?>" />
 
             <?php
         break;
@@ -3054,11 +3174,11 @@
             $apppost['REMARKS'] = $_POST['remarks'];
             $apppost['DBNAME'] = $_POST['dbname'];
 
-						if ($doctype == 'WH'):
-							 $apppost['data'] = $_POST['data'];
-							 $reqtype = 10;
-							 $reqdesc = "WFH";
-							 $app_request = $mainsql->wh_action($apppost, 'approve');
+            if ($doctype == 'WH'):
+                    $apppost['data'] = $_POST['data'];
+                    $reqtype = 10;
+                    $reqdesc = "WFH";
+                    $app_request = $mainsql->wh_action($apppost, 'approve');
             elseif ($doctype == 'OT') :
                 $reqtype = 1;
                 $reqdesc = "Overtime";
@@ -3093,6 +3213,14 @@
                 $reqtype = 9;
                 $reqdesc = "Offset";
                 $app_request = $mainsql->lu_action($apppost, 'approve');
+            elseif ($doctype == 'WC') :
+                    $reqtype = 11;
+                    $reqdesc = "WFH Clearance";
+                    $apppost['WORKHOURS'] = $_POST['workhours'];
+                    $apppost['CLEARANCETYPE'] = '';
+                    $apppost['REASON'] = '';
+
+                    $app_request = $mainsql->wfc_action($apppost, 'approve');
             endif;
 
             //sleep(2);
@@ -3130,12 +3258,7 @@
                     $message .= SITENAME." Admin";
                     $message .= "<hr />".MAILFOOT."</div>";
 
-                    $headers = "From: ".NOTIFICATION_EMAIL."\r\n";
-                    $headers .= "Reply-To: ".NOTIFICATION_EMAIL."\r\n";
-                    $headers .= "MIME-Version: 1.0\r\n";
-                    $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-
-                    $sendmail = mail($requestor[0]['EmailAdd'], "Response to your ".$reqdesc." Request", $message, $headers);
+                    $sendmail = $mail->send($requestor[0]['EmailAdd'], "Response to your ".$reqdesc." Request", $message);
 
                 endif;
 
@@ -3149,12 +3272,7 @@
                     $message .= SITENAME." Admin";
                     $message .= "<hr />".MAILFOOT."</div>";
 
-                    $headers = "From: ".NOTIFICATION_EMAIL."\r\n";
-                    $headers .= "Reply-To: ".NOTIFICATION_EMAIL."\r\n";
-                    $headers .= "MIME-Version: 1.0\r\n";
-                    $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-
-                    $sendmail = mail($approver[0]['EmailAdd'], "Your Response to ".$reqdesc." Request", $message, $headers);
+                    $sendmail = $mail->send($approver[0]['EmailAdd'], "Your Response to ".$reqdesc." Request", $message);
 
                 endif;
 
@@ -3167,12 +3285,7 @@
                     $message .= SITENAME." Admin";
                     $message .= "<hr />".MAILFOOT."</div>";
 
-                    $headers = "From: ".NOTIFICATION_EMAIL."\r\n";
-                    $headers .= "Reply-To: ".NOTIFICATION_EMAIL."\r\n";
-                    $headers .= "MIME-Version: 1.0\r\n";
-                    $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-
-                    $sendmail = mail($nxtapprover[0]['EmailAdd'], "New $reqdesc for your Approval", $message, $headers);
+                    $sendmail = $mail->send($nxtapprover[0]['EmailAdd'], "New $reqdesc for your Approval", $message);
                 endif;
             endif;
 
@@ -7532,7 +7645,6 @@
 
                 <?php
             //endif;
-
             if ($doctype == 'OT') :
                 $application_data = $tblsql->get_nrequest(1, $refnum);
 
@@ -7873,7 +7985,7 @@
 
             elseif ($doctype == 'NP') :
                 $application_data = $tblsql->get_nrequest(6, $refnum);
-
+                
                 $chkexpire = $mainsql->check_appexpire($application_data[0]['DateCovered']);
 
                 ?>
@@ -7928,7 +8040,69 @@
                 <?php
                 $pdtrfrom = strtotime($application_data[0]['DateCovered']);
                 $pdtrto = strtotime($application_data[0]['DateCovered']);
-
+            
+            elseif ($doctype == 'WC') :
+                    $application_data = $mainsql->get_nrequest(11, $refnum);
+                    // $chkexpire = $mainsql->check_appexpire($application_data[0]['DTRFrom']);
+                    $chkexpire = 0;
+                    ?>
+                        <?php if ($attachment_data) : ?>
+                        <tr>
+                            <td width="25%"><b>Attachment/s</b></td>
+                            <td width="75%"><?php
+                                foreach ($attachment_data as $key => $value) :
+                                    echo '<a href="'.($dbname == 'MARKETING' ? 'https://www.marketingsalesagents.com' : WEB).'/uploads/wc/'.$value['AttachFile'].'" target="_blank">'.$value['AttachFile'].'</a><br>';
+                                endforeach;
+                            ?>
+                            </td>
+                        </tr>
+                        <?php endif; ?>
+    
+                        <tr>
+                            <td width="25%"><b>Status</b></td>
+                            <td width="75%"><?php
+                                if ($notification_data[0]['Approved'] == 2) :
+                                    echo "<span class='redtext'>REJECTED</span>";
+                                elseif ($notification_data[0]['Approved'] == 1) :
+                                    echo "<span class='greentext'>APPROVED</span>";
+                                elseif ($notification_data[0]['Approved'] == 3) :
+                                    echo "<span class='redtext'>CANCELLED</span>";
+                                else :
+                                    echo "FOR APPROVAL";
+                                endif;
+                                ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>Clearance Type</b></td>
+                            <td><?php echo $application_data[0]['ClearanceType']; ?></td>
+                        </tr>
+                        <tr>
+                            <td><b>Date Applied</b></td>
+                            <td><?php echo date('F j, Y | g:ia', strtotime($application_data[0]['AppliedDate'])); ?></td>
+                        </tr>
+                        <tr>
+                            <td><b>DTR From</b></td>
+                            <td><?php echo date('F j, Y', strtotime($application_data[0]['DTRFrom'])); ?></td>
+                        </tr>
+                        <tr>
+                            <td><b>DTR To</b></td>
+                            <td><?php echo date('F j, Y', strtotime($application_data[0]['DTRTo'])); ?></td>
+                        </tr>
+                        <tr>
+                            <td><b>Reason</b></td>
+                            <td><?php echo stripslashes($application_data[0]['Reason']); ?></td>
+                        </tr>
+                        <?php if($application_data[0]['WorkHours']): ?>
+                        <tr>
+                            <td><b>Maximum Work Hours</b></td>
+                            <td><?php echo ($application_data[0]['WorkHours']); ?></td>
+                        </tr>
+                        <?php endif; ?>
+                    <?php
+                    $pdtrfrom = strtotime($application_data[0]['DTRFrom']);
+                    $pdtrto = strtotime($application_data[0]['DTRTo']);
+    
 			elseif ($doctype == 'WH') : //WFH HERE
 				$application_data = $tblsql->get_mrequest(10, $refnum);
 
@@ -8419,7 +8593,7 @@
 						                    </tr>
 																<tr>
 																	<td colspan="2">
-																		<div style="max-height: 120px; overflow-y: auto;" class='signatoryapp'>
+																		<div style="max-height: 150px; overflow-y: auto;" class='signatoryapp'>
 																			<script>
 																			$(document).ready(function(){
 																				if($("#approvehere").attr("appr")){
@@ -8438,8 +8612,8 @@
 						                    <?php if ($notification_data[0]['Approved'] != 3) : ?>
 						                    <?php if (trim($notification_data[0]['Signatory01'])) : ?>
 						                    <tr>
-																	<td><b>Signatory 1</b></td>
-																	<td><?php echo $approver_data1[0]['FName'].' '.$approver_data1[0]['LName']; ?></td>
+												<td><b>Signatory 1</b></td>
+												<td><?php echo $approver_data1[0]['FName'].' '.$approver_data1[0]['LName']; ?></td>
 						                      <!-- <td width="50%">
 																		<table width="100%">
 																			<tr>
@@ -8484,56 +8658,62 @@
 						                                    </script>
 						                                    <b>Approve Hour/s</b> <input type="text" name="approvehours" id="approvehours" value="<?php echo $application_data[0]['ApprovedHrs'] < $application_data[0]['Hrs'] ? $application_data[0]['ApprovedHrs'] :  $application_data[0]['Hrs']; ?>" class="approvehours txtbox width50 righttalign" readonly />
 						                                <?php endif; ?>
+                                                        <?php if ($doctype == 'WC') : ?>
+						                                    <input type="number" name="workhours" placeholder="Maximum Work Hour/s" id="workhours" min="1" max="9" value="<?php echo $application_data[0]['WorkHours'] < $application_data[0]['Hrs'] ? $application_data[0]['WorkHours'] :  $application_data[0]['WorkHours']; ?>" class="workhours txtbox width95per marginbottom10" /> <br>
+						                                <?php endif; ?>
+
 						                                <input id="remarks" type="text" name="remarks" placeholder="Remarks..." class="txtbox width95per<?php echo $doctype == 'OT' ? ' margintop10' : ''; ?> marginbottom10" />
-						                                <?php if (!$chkexpire) : ?>
-																							<?php if (!$notification_data[0]['ApprovedDate01'] && $notification_data[0]['Approved'] != 2) : ?>
-																							<?php if ($doctype == 'WH') : ?>
-																								<script>
-																									$(".wfhapproveall").click(function(){
-																										var approve = $(this).attr("value");
-																										var overwrite = false;
+						                                
+                                                        
+                                                        <?php if (!$chkexpire) : ?>
+                                                            <?php if (!$notification_data[0]['ApprovedDate01'] && $notification_data[0]['Approved'] != 2) : ?>
+                                                                <?php if ($doctype == 'WH') : ?>
+                                                                    <script>
+                                                                        $(".wfhapproveall").click(function(){
+                                                                            var approve = $(this).attr("value");
+                                                                            var overwrite = false;
 
-																											if(approve == 0){
-																												$(this).attr("value", 1);
+                                                                                if(approve == 0){
+                                                                                    $(this).attr("value", 1);
 
-																												$(".ApprovedHrs").each(function(){
-																													if($(this).val() != $(this).attr("attribute3")){
-																														overwrite = true;
-																													}
-																												});
+                                                                                    $(".ApprovedHrs").each(function(){
+                                                                                        if($(this).val() != $(this).attr("attribute3")){
+                                                                                            overwrite = true;
+                                                                                        }
+                                                                                    });
 
-																												if(overwrite){
-																													if(confirm("All of your changes on the Approved hours will be overwritten with the applied hours. Are you sure you want to continue?")){
-																														$(".ApprovedHrs").each(function(){
-																															$(this).val($(this).attr("attribute2"));
-																														});
-																														$(".whwarning").attr("style", "display: none");
-																													}else{
-																														$(".wfhapproveall").click();
-																													}
-																												}else{
-																													$(".ApprovedHrs").each(function(){
-																														$(this).val($(this).attr("attribute2"));
-																													});
-																													$(".whwarning").attr("style", "display: none");
-																												}
+                                                                                    if(overwrite){
+                                                                                        if(confirm("All of your changes on the Approved hours will be overwritten with the applied hours. Are you sure you want to continue?")){
+                                                                                            $(".ApprovedHrs").each(function(){
+                                                                                                $(this).val($(this).attr("attribute2"));
+                                                                                            });
+                                                                                            $(".whwarning").attr("style", "display: none");
+                                                                                        }else{
+                                                                                            $(".wfhapproveall").click();
+                                                                                        }
+                                                                                    }else{
+                                                                                        $(".ApprovedHrs").each(function(){
+                                                                                            $(this).val($(this).attr("attribute2"));
+                                                                                        });
+                                                                                        $(".whwarning").attr("style", "display: none");
+                                                                                    }
 
 
-																											}else{
-																												$(this).attr("value", 0);
-																												$(".ApprovedHrs").each(function(){
-																													$(this).val($(this).attr("attribute3"));
-																												});
-																												$(".whwarning").attr("style", "color: red");
-																											}
+                                                                                }else{
+                                                                                    $(this).attr("value", 0);
+                                                                                    $(".ApprovedHrs").each(function(){
+                                                                                        $(this).val($(this).attr("attribute3"));
+                                                                                    });
+                                                                                    $(".whwarning").attr("style", "color: red");
+                                                                                }
 
-																									});
-																								</script>
-																								<input type="checkbox" class="wfhapproveall" value="0"><b>Approve all applied hours</b></br></br>
+                                                                        });
+                                                                    </script>
+                                                                    <input type="checkbox" class="wfhapproveall" value="0"><b>Approve all applied hours</b></br></br>
 
-																							<?php endif; ?>
-																							<?php endif; ?>
-																							<div id="approvehere" appr="1"></div>
+                                                                <?php endif; ?>
+                                                            <?php endif; ?>
+                                                            <div id="approvehere" appr="1"></div>
 						                                <input id="btnapp" type="button" name="btnapp" value="Approve" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory01']; ?>" attribute20="<?php echo $notification_data[0]['DB_NAME01'] ? $notification_data[0]['DB_NAME01'] : 0; ?>"<?php if ($notification_data[0]['Signatory02']) : ?> attribute21="<?php echo $notification_data[0]['Signatory02'] ? $notification_data[0]['Signatory02'] : 0; ?>" attribute22="<?php echo $notification_data[0]['DB_NAME02'] ? $notification_data[0]['DB_NAME02'] : 0; ?>"<?php endif; ?> attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnapp smlbtn" />&nbsp;
 						                                <?php endif; ?>
 						                                <input id="btnrej" type="button" name="btnrej" value="Reject" attribute="<?php echo $doctype; ?>" attribute2="<?php echo $notification_data[0]['Signatory01']; ?>" attribute20="<?php echo $notification_data[0]['DB_NAME01'] ? $notification_data[0]['DB_NAME01'] : 0; ?>" attribute3="<?php echo $refnum; ?>" attribute4="<?php echo $notification_data[0]['EmpID']; ?>" class="btnrej smlbtn btnred" />
@@ -9255,125 +9435,112 @@
                         </td>
                     </tr>
 
-                <?php
-            //endif;
-						if ($doctype == 'WH') : //WFH HERE
-							$application_data = $tblsql->get_mrequest(10, $refnum);
-
-							?>
-
-							<tr>
-								<td width="25%"><b>Status</b></td>
-								<td width="75%"><?php
-									if ($notification_data[0]['Approved'] == 2) :
-										echo "<span class='redtext'>REJECTED</span>";
-									elseif ($notification_data[0]['Approved'] == 1) :
-										echo "<span class='greentext'>APPROVED</span>";
-									elseif ($notification_data[0]['Approved'] == 3) :
-										echo "<span class='redtext'>CANCELLED</span>";
-									else :
-										echo "FOR APPROVAL";
-									endif;
-									?>
-								</td>
-							</tr>
-							<tr>
-								<td><b>Date Applied</b></td>
-								<td><?php echo date('F j, Y g:ia', strtotime($application_data[0]['AppliedDate'])); ?></td>
-							</tr>
-
-							<tr>
-								<td colspan="2">
-								<div class="divmddata width100per notidatadiv">
-									<table class="tdatablk">
-										<?php $appwh_data = $tblsql->get_whdata($refnum); ?>
-										<tr>
-											<th width="70px">DTR Date</th>
-											<th width="50px">Applied Hrs</th>
-											<th width="50px">Approved Hrs</th>
-											<th width="100%">Activities</th>
-											<th width="10px">x</th>
-										</tr>
-										<?php
-											$appwh_count = count($appwh_data);
-											$approvers = array($notification_data[0]['Signatory01'], $notification_data[0]['Signatory02'], $notification_data[0]['Signatory03'],
-																$notification_data[0]['Signatory04'], $notification_data[0]['Signatory05'], $notification_data[0]['Signatory06']);
-											foreach ($appwh_data as $key => $value) :
-												?>
-												<script>
-												$(function() {
-
-													$(".wfhcancel<?php echo $key; ?>").click(function() {
-														arrayid = $(this).attr('attribute');
-														$("#wfhApprovedHrs" + arrayid).val(0);
-
-													});
-
-												});
-												</script>
-												<tr>
-													<td <?php if($key != 0){ ?>style="border-top: 1px solid #888"<?php } ?> class="centertalign"><?php echo date('F j, Y', strtotime($value['DTRDate'])); ?></td>
-													<td <?php if($key != 0){ ?>style="border-top: 1px solid #888"<?php } ?> class="centertalign"><?php echo $value['AppliedHrs']; ?></td>
-													<td <?php if($key != 0){ ?>style="border-top: 1px solid #888"<?php } ?> class="centertalign">
-														<?php if(in_array($profile_idnum, $approvers)){ ?>
-															<input type="hidden" class="wfhseq" attribute="<?php echo $key; ?>" name="wfhSeq[<?php echo $key; ?>]" value="<?php echo $value['SeqID']; ?>">
-															<input style="width: 50px;" value="<?php echo $value['ApprovedHrs'] ?>" id="wfhApprovedHrs<?php echo $key; ?>" type="number" name="wfhApprovedHrs[<?php echo $key; ?>]" attribute="<?php echo $key; ?>" class="txtbox ApprovedHrs">
-														<?php }else{
-																echo $value['ApprovedHrs'];
-																}
-														 ?>
-													</td>
-													<td <?php if($key != 0){ ?>style="border-top: 1px solid #888"<?php } ?> width="100%" class="leftalign">
-														<?php
-															$wh_act = json_decode($value['Activities'], true);
-															foreach($wh_act as $act_details){
-																echo "(".$act_details['time'].") ".$act_details['act']."</br></br>";
-															}
-														?>
-													</td>
-													<td <?php if($key != 0){ ?>style="border-top: 1px solid #888"<?php } ?> class="centertalign">
-														<?php if(in_array($profile_idnum, $approvers)){ ?>
-															<?php if ($appwh_count > 1) : ?>
-																<i class="wfhcancel<?php echo $key; ?> fa fa-times redtext cursorpoint" attribute="<?php echo $key; ?>"></i>
-															<?php endif; ?>
-														<?php } ?>
-													</td>
-												</tr>
-												<?php
-												$pdtrto = strtotime($value['DTRDate']);
-											endforeach;
-
-										?>
-									</table>
-								</div>
-								</td>
-							</tr>
-
-							<?php
-
-            elseif ($doctype == 'OT') :
-                $application_data = $tblsql->get_nrequest(1, $refnum);
-
-                $chkexpire = $mainsql->check_appexpire($application_data[0]['DtrDate']);
+            <?php if ($doctype == 'WH') : //WFH HERE
+                $application_data = $tblsql->get_mrequest(10, $refnum);
 
                 ?>
+
+                <tr>
+                    <td width="25%"><b>Status</b></td>
+                    <td width="75%"><?php
+                        if ($notification_data[0]['Approved'] == 2) :
+                            echo "<span class='redtext'>REJECTED</span>";
+                        elseif ($notification_data[0]['Approved'] == 1) :
+                            echo "<span class='greentext'>APPROVED</span>";
+                        elseif ($notification_data[0]['Approved'] == 3) :
+                            echo "<span class='redtext'>CANCELLED</span>";
+                        else :
+                            echo "FOR APPROVAL";
+                        endif;
+                        ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>Date Applied</b></td>
+                    <td><?php echo date('F j, Y g:ia', strtotime($application_data[0]['AppliedDate'])); ?></td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                    <div class="divmddata width100per notidatadiv">
+                        <table class="tdatablk">
+                            <?php $appwh_data = $tblsql->get_whdata($refnum); ?>
+                            <tr>
+                                <th width="70px">DTR Date</th>
+                                <th width="50px">Applied Hrs</th>
+                                <th width="50px">Approved Hrs</th>
+                                <th width="100%">Activities</th>
+                                <th width="10px">x</th>
+                            </tr>
+                            <?php
+                                $appwh_count = count($appwh_data);
+                                $approvers = array($notification_data[0]['Signatory01'], $notification_data[0]['Signatory02'], $notification_data[0]['Signatory03'],
+                                                    $notification_data[0]['Signatory04'], $notification_data[0]['Signatory05'], $notification_data[0]['Signatory06']);
+                                foreach ($appwh_data as $key => $value) :
+                                    ?>
+                                    <script>
+                                    $(function() {
+
+                                        $(".wfhcancel<?php echo $key; ?>").click(function() {
+                                            arrayid = $(this).attr('attribute');
+                                            $("#wfhApprovedHrs" + arrayid).val(0);
+
+                                        });
+
+                                    });
+                                    </script>
+                                    <tr>
+                                        <td <?php if($key != 0){ ?>style="border-top: 1px solid #888"<?php } ?> class="centertalign"><?php echo date('F j, Y', strtotime($value['DTRDate'])); ?></td>
+                                        <td <?php if($key != 0){ ?>style="border-top: 1px solid #888"<?php } ?> class="centertalign"><?php echo $value['AppliedHrs']; ?></td>
+                                        <td <?php if($key != 0){ ?>style="border-top: 1px solid #888"<?php } ?> class="centertalign">
+                                            <?php if(in_array($profile_idnum, $approvers)){ ?>
+                                                <input type="hidden" class="wfhseq" attribute="<?php echo $key; ?>" name="wfhSeq[<?php echo $key; ?>]" value="<?php echo $value['SeqID']; ?>">
+                                                <input style="width: 50px;" value="<?php echo $value['ApprovedHrs'] ?>" id="wfhApprovedHrs<?php echo $key; ?>" type="number" name="wfhApprovedHrs[<?php echo $key; ?>]" attribute="<?php echo $key; ?>" class="txtbox ApprovedHrs">
+                                            <?php }else{
+                                                    echo $value['ApprovedHrs'];
+                                                    }
+                                                ?>
+                                        </td>
+                                        <td <?php if($key != 0){ ?>style="border-top: 1px solid #888"<?php } ?> width="100%" class="leftalign">
+                                            <?php
+                                                $wh_act = json_decode($value['Activities'], true);
+                                                foreach($wh_act as $act_details){
+                                                    echo "(".$act_details['time'].") ".$act_details['act']."</br></br>";
+                                                }
+                                            ?>
+                                        </td>
+                                        <td <?php if($key != 0){ ?>style="border-top: 1px solid #888"<?php } ?> class="centertalign">
+                                            <?php if(in_array($profile_idnum, $approvers)){ ?>
+                                                <?php if ($appwh_count > 1) : ?>
+                                                    <i class="wfhcancel<?php echo $key; ?> fa fa-times redtext cursorpoint" attribute="<?php echo $key; ?>"></i>
+                                                <?php endif; ?>
+                                            <?php } ?>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                    $pdtrto = strtotime($value['DTRDate']);
+                                endforeach;
+
+                            ?>
+                        </table>
+                    </div>
+                    </td>
+                </tr>
+            <?php 
+            elseif ($doctype == 'WC') : //WFH HERE 
+                $application_data = $mainsql->get_nrequest(11, $refnum);
+                    // $chkexpire = $mainsql->check_appexpire($application_data[0]['DTRFrom']);
+                $chkexpire = 0; ?>
                     <?php if ($attachment_data) : ?>
                     <tr>
                         <td width="25%"><b>Attachment/s</b></td>
                         <td width="75%"><?php
                             foreach ($attachment_data as $key => $value) :
-                                echo '<a href="'.WEB.'/uploads/ot/'.$value['AttachFile'].'" target="_blank">'.$value['AttachFile'].'</a><br>';
+                                echo '<a href="'.($dbname == 'MARKETING' ? 'https://www.marketingsalesagents.com' : WEB).'/uploads/wc/'.$value['AttachFile'].'" target="_blank">'.$value['AttachFile'].'</a><br>';
                             endforeach;
                         ?>
                         </td>
                     </tr>
-                    <?php endif; ?>
-
-                    <?php if ($notification_data[0]['EmpID'] == $profile_idnum && $notification_data[0]['Approved'] != 3 && $notification_data[0]['Approved'] != 2) : ?>
-                    <!--tr>
-                        <td width="25%">&nbsp;</td>
-                        <td width="75%"><a href="<?php echo WEB; ?>/otpdf?id=<?php echo $refnum; ?>" target="_blank"><button class="btn">Print OT Form</button></a></td>
-                    </tr-->
                     <?php endif; ?>
 
                     <tr>
@@ -9392,41 +9559,113 @@
                         </td>
                     </tr>
                     <tr>
+                        <td><b>Clearance Type</b></td>
+                        <td><?php echo $application_data[0]['ClearanceType']; ?></td>
+                    </tr>
+                    <tr>
                         <td><b>Date Applied</b></td>
-                        <td><?php echo date('F j, Y | g:ia', strtotime($application_data[0]['ReqDate'])); ?></td>
+                        <td><?php echo date('F j, Y | g:ia', strtotime($application_data[0]['AppliedDate'])); ?></td>
                     </tr>
                     <tr>
-                        <td><b>DTR Date</b></td>
-                        <td><?php echo date('F j, Y', strtotime($application_data[0]['DtrDate'])); ?></td>
+                        <td><b>DTR From</b></td>
+                        <td><?php echo date('F j, Y', strtotime($application_data[0]['DTRFrom'])); ?></td>
                     </tr>
                     <tr>
-                        <td><b>From</b></td>
-                        <td><?php echo date('F j, Y | g:ia', strtotime($application_data[0]['FromDate'])); ?></td>
+                        <td><b>DTR To</b></td>
+                        <td><?php echo date('F j, Y', strtotime($application_data[0]['DTRTo'])); ?></td>
                     </tr>
-                    <tr>
-                        <td><b>To</b></td>
-                        <td><?php echo date('F j, Y | g:ia', strtotime($application_data[0]['ToDate'])); ?></td>
-                    </tr>
-                    <tr>
-                        <td><b>OT Type</b></td>
-                        <td><?php echo $application_data[0]['OTType']; ?></td>
-                    </tr>
-                    <tr>
-                        <td><b>Applied Hours</b></td>
-                        <td><?php echo $application_data[0]['Hrs']; ?></td>
-                    </tr>
-                    <?php if ($notification_data[0]['Approved'] == 1) : ?>
-                    <tr>
-                        <td><b>Approved Hours</b></td>
-                        <td>
-                            <?php echo $application_data[0]['ApprovedHrs'] ? $application_data[0]['ApprovedHrs'] : 0; ?>
-                        </td>
-                    </tr>
-                    <?php endif; ?>
                     <tr>
                         <td><b>Reason</b></td>
                         <td><?php echo stripslashes($application_data[0]['Reason']); ?></td>
                     </tr>
+                    <?php if($application_data[0]['WorkHours']): ?>
+                    <tr>
+                        <td><b>Maximum Work Hours</b></td>
+                        <td><?php echo ($application_data[0]['WorkHours']); ?></td>
+                    </tr>
+                    <?php endif; ?>
+                <?php
+                $pdtrfrom = strtotime($application_data[0]['DTRFrom']);
+                $pdtrto = strtotime($application_data[0]['DTRTo']);
+
+                        
+            elseif ($doctype == 'OT') :
+                $application_data = $tblsql->get_nrequest(1, $refnum);
+
+                $chkexpire = $mainsql->check_appexpire($application_data[0]['DtrDate']);
+
+                ?>
+                <?php if ($attachment_data) : ?>
+                <tr>
+                    <td width="25%"><b>Attachment/s</b></td>
+                    <td width="75%"><?php
+                        foreach ($attachment_data as $key => $value) :
+                            echo '<a href="'.WEB.'/uploads/ot/'.$value['AttachFile'].'" target="_blank">'.$value['AttachFile'].'</a><br>';
+                        endforeach;
+                    ?>
+                    </td>
+                </tr>
+                <?php endif; ?>
+
+                <?php if ($notification_data[0]['EmpID'] == $profile_idnum && $notification_data[0]['Approved'] != 3 && $notification_data[0]['Approved'] != 2) : ?>
+                <!--tr>
+                    <td width="25%">&nbsp;</td>
+                    <td width="75%"><a href="<?php echo WEB; ?>/otpdf?id=<?php echo $refnum; ?>" target="_blank"><button class="btn">Print OT Form</button></a></td>
+                </tr-->
+                <?php endif; ?>
+
+                <tr>
+                    <td width="25%"><b>Status</b></td>
+                    <td width="75%"><?php
+                        if ($notification_data[0]['Approved'] == 2) :
+                            echo "<span class='redtext'>REJECTED</span>";
+                        elseif ($notification_data[0]['Approved'] == 1) :
+                            echo "<span class='greentext'>APPROVED</span>";
+                        elseif ($notification_data[0]['Approved'] == 3) :
+                            echo "<span class='redtext'>CANCELLED</span>";
+                        else :
+                            echo "FOR APPROVAL";
+                        endif;
+                        ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>Date Applied</b></td>
+                    <td><?php echo date('F j, Y | g:ia', strtotime($application_data[0]['ReqDate'])); ?></td>
+                </tr>
+                <tr>
+                    <td><b>DTR Date</b></td>
+                    <td><?php echo date('F j, Y', strtotime($application_data[0]['DtrDate'])); ?></td>
+                </tr>
+                <tr>
+                    <td><b>From</b></td>
+                    <td><?php echo date('F j, Y | g:ia', strtotime($application_data[0]['FromDate'])); ?></td>
+                </tr>
+                <tr>
+                    <td><b>To</b></td>
+                    <td><?php echo date('F j, Y | g:ia', strtotime($application_data[0]['ToDate'])); ?></td>
+                </tr>
+                <tr>
+                    <td><b>OT Type</b></td>
+                    <td><?php echo $application_data[0]['OTType']; ?></td>
+                </tr>
+                <tr>
+                    <td><b>Applied Hours</b></td>
+                    <td><?php echo $application_data[0]['Hrs']; ?></td>
+                </tr>
+                <?php if ($notification_data[0]['Approved'] == 1) : ?>
+                <tr>
+                    <td><b>Approved Hours</b></td>
+                    <td>
+                        <?php echo $application_data[0]['ApprovedHrs'] ? $application_data[0]['ApprovedHrs'] : 0; ?>
+                    </td>
+                </tr>
+                <?php endif; ?>
+                <tr>
+                    <td><b>Reason</b></td>
+                    <td><?php echo stripslashes($application_data[0]['Reason']); ?></td>
+                </tr>
+                
 
                 <?php
                 $pdtrfrom = strtotime($application_data[0]['DtrDate']);

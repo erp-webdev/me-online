@@ -30,15 +30,11 @@
                                                 <option value="6"<?php echo $mreqtype == 6 ? ' selected' : ''; ?>>NON PUNCHING AUTHORIZATION</option>
                                                 <option value="7"<?php echo $mreqtype == 7 ? ' selected' : ''; ?>>MANUAL DTR</option>
 												<option value="8"<?php echo $mreqtype == 8 ? ' selected' : ''; ?>>SCHEDULER</option>
-                                                <?php
-																								// $empids_wfh = array("2014-07-N923", "2004-04-8966","2016-06-0457","2000-06-8166","2018-11-0605","2016-06-0144","2010-12-V034","2020-03-0079","1999-09-8123","2019-02-0033","2007-06-M314","2015-03-0093","2019-01-0028","2019-02-0070","2018-08-0453","2016-06-0464","2019-07-0386","2017-04-0933","2018-07-0406","2019-07-0457","2009-07-V177","2011-08-U036",
-										                            //                     "1993-07-8463","2008-04-M764","2011-07-V980","2006-06-M168","2001-12-8773","1998-08-8602","2001-07-M219","2013-06-N202","2012-05-U417","2008-02-M719","2005-09-M103","2006-06-M163","1997-06-8727","2012-04-U354","1991-10-8274","2007-05-M477","1991-08-8310","1987-07-8128","1996-01-8509","1997-03-8638","2008-06-M829","2013-02-U861","2002-09-8855","1997-05-8715","2012-01-U197",
-										                            //                     "2001-10-8752","2009-07-V176","2013-03-U940","2016-04-0140","2016-06-0145","2017-11-0016","2019-01-0000","2019-02-0002","2019-09-0133","1990-03-8284");
+                                                
+												<option value="10"<?php echo $mreqtype == 10 ? ' selected' : ''; ?>>WFH</option>
 
-																								// if(in_array($profile_idnum, $empids_wfh)){ ?>
-													<option value="10"<?php echo $mreqtype == 10 ? ' selected' : ''; ?>>WFH</option>
-												<?php //} ?>
-                                                <!--option value="9"<?php echo $mreqtype == 9 ? ' selected' : ''; ?>>OFFSET</option-->
+												<option value="11"<?php echo $mreqtype == 11 ? ' selected' : ''; ?>>WFH CLEARANCE</option>
+												
                                             </select>
                                             <!--&nbsp;Status:
                                             <select id="mreqstatus" name="mreqstatus" class="width80 smltxtbox">
@@ -64,6 +60,51 @@
 
                                 <?php
                                 switch($mreqtype) {
+
+                                    case 11:
+                                        ?>
+    
+                                        <table border="0" cellspacing="0" class="tdata width100per">
+                                            <?php if ($mreq_data) : ?>
+                                            <tr>
+                                                <th colspan="10">WFH Clearance</th>
+                                            </tr>
+                                            <tr>
+                                                <th width="5%">#</th>
+                                                <th width="10%">Ref. #</th>
+                                                <th width="10%">Date Applied</th>
+                                                <th width="5%">Date From</th>
+                                                <th width="5%">Date To</th>
+                                                <th width="5%">Status</th>
+                                            </tr>
+    
+                                            <?php foreach ($mreq_data as $key => $value) : ?>
+                                            <?php $appdata = $mainsql->get_notification($value['RefNbr']);?>
+                                            <tr class="btnpenddata cursorpoint trdata centertalign" attribute="<?php echo $value['RefNbr']; ?>" attribute2="WC" attribute5="<?php echo $profile_dbname; ?>">
+                                                <td><?php echo $start + $key + 1; ?></td>
+                                                <td><?php echo $value['RefNbr']; ?></td>
+                                                <td><?php echo date("m/d/Y", strtotime($value['AppliedDate'])); ?></td>
+                                                <td><?php echo date("m/d/Y", strtotime($value['DTRFrom'])); ?></td>
+                                                <td><?php echo date("m/d/Y", strtotime($value['DTRTo'])); ?></td>
+                                                <td><?php echo $value['Status']; ?></td>
+                                            </tr>
+                                            <?php endforeach; ?>
+    
+    
+                                            <?php if ($pages) : ?>
+                                            <tr>
+                                                <td colspan="10" class="centertalign"><?php echo $pages; ?></td>
+                                            </tr>
+                                            <?php endif; ?>
+                                            <?php else : ?>
+                                            <tr>
+                                                <td class="bold centertalign noborder"><br><br>You have no WFH Clearance applied</td>
+                                            </tr>
+                                            <?php endif; ?>
+                                        </table>
+    
+                                        <?php
+                                        break;
 
 									case 10:
 									?>

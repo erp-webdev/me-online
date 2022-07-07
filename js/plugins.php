@@ -723,6 +723,10 @@ $(function() {
         }
         else if (doctype == 'TS') {
             title = "Change Schedule Application #";
+        }else if (doctype == 'WH') {
+            title = "Work From Home Application #";
+        }else if (doctype == 'WC') {
+            title = "WFH Clearance Application #";
         }
 
         $("#noti_title").html(title + ' ' + refnum);
@@ -783,6 +787,9 @@ $(function() {
         }
         else if (doctype == 'WH') {
             title = "Work from Home #";
+        }
+        else if (doctype == 'WC') {
+            title = "WFH Clearance #";
         }
 
         $("#noti_title").html(title + ' ' + refnum);
@@ -949,6 +956,9 @@ $(function() {
         }
 		else if (doctype == 'WH') {
             title = "Work from Home Application #";
+        }
+        else if (doctype == 'WC') {
+            title = "WFH Clearance Application #";
         }
 
         $("#pend_title").html(title + ' ' + refnum);

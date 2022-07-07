@@ -11,7 +11,7 @@ class mainsql {
     public function db_select($con, $dbname = NULL) //connect to database
 	{
         $maindb = $dbname ? $dbname : MAINDB;
-
+        
         $result = mssql_select_db($maindb, $con);
         if(!$result) return false;
         else return $result;
@@ -518,10 +518,12 @@ class mainsql {
 	{
 		$sql = "SELECT [outer].* FROM ( ";
         $sql .= " SELECT ROW_NUMBER() OVER(ORDER BY DateFiled DESC) as ROW_NUMBER, ";
-        $sql .= " EmpID, DateFiled, DocType, Reference, ApprovedDate01, ApprovedDate02, ApprovedDate03, ApprovedDate04, ApprovedDate05, ApprovedDate06,
-            Signatory01, Signatory02, Signatory03, Signatory04, Signatory05, Signatory06,
-            DB_NAME01, DB_NAME02, DB_NAME03, DB_NAME04, DB_NAME05, DB_NAME06,
-            Remarks01, Remarks02, Remarks03, Remarks04, Remarks05, Remarks06, Approved, RejectedDate, POSTEDDATE, APPROVALDATE FROM TED_VIEW_NOTIFICATION ";
+        $sql .= " EmpID, DateFiled, DocType, Reference, ApprovedDate01, 
+        ApprovedDate02, ApprovedDate03, ApprovedDate04, ApprovedDate05, ApprovedDate06,
+        Signatory01, Signatory02, Signatory03, Signatory04, Signatory05, Signatory06,
+        DB_NAME01, DB_NAME02, DB_NAME03, DB_NAME04, DB_NAME05, DB_NAME06,
+        Approved, RejectedDate, POSTEDDATE, APPROVALDATE, FULLNAME 
+        FROM TED_VIEW_NOTIFICATION ";
         $sql .= " WHERE EmpID IS NOT NULL ";
         if ($id != NULL) : $sql .= " AND Reference = '".$id."' "; endif;
         if ($search != NULL) : $sql .= " AND (Reference LIKE '%".$search."%' OR EmpID = '".$search."' OR FULLNAME LIKE '%".$search."%') "; endif;
@@ -905,6 +907,31 @@ class mainsql {
                 else : $result = $this->get_row($sql);
                 endif;
 
+            break;
+
+            case 11: 
+
+                $sql = "SELECT [outer].* FROM ( ";
+                $sql .= " SELECT ROW_NUMBER() OVER(ORDER BY AppliedDate DESC) as ROW_NUMBER, ";
+                $sql .= " RefNbr, AppliedDate, EmpID, DTRFrom, DTRTo, Reason, Status, ClearanceType, SeqID, WorkHours
+                    FROM HRFrmApplyWFHClearance ";
+                $sql .= " WHERE SeqId != 0 ";
+                if ($id != NULL) : $sql .= " AND RefNbr = '".$id."'"; endif;
+                if ($search != NULL) : $sql .= " AND RefNbr LIKE '%".$search."%' "; endif;
+                if ($empid != NULL) : $sql .= " AND EmpID = '".$empid."' "; endif;
+                if ($from && $to) :
+                    $sql .= " AND AppliedDate BETWEEN '".$from."' AND '".$to."' ";
+                endif;
+                $sql .= ") AS [outer] ";
+                if ($limit) :
+                    $sql .= " WHERE [outer].[ROW_NUMBER] BETWEEN ".(intval($start) + 1)." AND ".intval($start + $limit)." ORDER BY [outer].[ROW_NUMBER] ";
+                endif;
+
+                if ($count) : $result = $this->get_numrow($sql);
+                else : $result = $this->get_row($sql);
+                endif;
+
+                
             break;
         }
 
@@ -1456,32 +1483,50 @@ class mainsql {
             break;
 			case 10: // WFH
 
-			$sql = "SELECT [outer].* FROM ( ";
-			$sql .= " SELECT ROW_NUMBER() OVER(ORDER BY AppliedDate DESC) as ROW_NUMBER, ";
-			$sql .= "  EmpID,convert(varchar, AppliedDate, 121) as AppliedDate,convert(varchar, FromDate, 121) as FromDate,convert(varchar, ToDate, 121) as ToDate,Reference,Status,Approved FROM viewApplyWH ";
-			$sql .= " WHERE SeqID != 0 ";
-			if ($id != NULL) : $sql .= " AND Reference = '".$id."' "; endif;
-			if ($search != NULL) : $sql .= " AND Reference LIKE '%".$search."%' "; endif;
-			if ($empid != NULL) : $sql .= " AND EmpID = '".$empid."' "; endif;
-			if ($status != NULL) : $sql .= " AND Approved = '".$status."' ";
-			endif;
-			if ($from && $to) :
-				$sql .= " AND AppliedDate BETWEEN '".$from." 00:00:00.000' AND '".$to." 23:59:59.000' ";
-			endif;
-			$sql .= "GROUP BY EmpID,AppliedDate,FromDate,ToDate,Reference,Status,Approved ) AS [outer] ";
-			if ($limit) :
-				$sql .= " WHERE [outer].[ROW_NUMBER] BETWEEN ".(intval($start) + 1)." AND ".intval($start + $limit)." ORDER BY [outer].[ROW_NUMBER] ";
-			endif;
+                $sql = "SELECT [outer].* FROM ( ";
+                $sql .= " SELECT ROW_NUMBER() OVER(ORDER BY AppliedDate DESC) as ROW_NUMBER, ";
+                $sql .= "  EmpID,convert(varchar, AppliedDate, 121) as AppliedDate,convert(varchar, FromDate, 121) as FromDate,convert(varchar, ToDate, 121) as ToDate,Reference,Status,Approved FROM viewApplyWH ";
+                $sql .= " WHERE SeqID != 0 ";
+                if ($id != NULL) : $sql .= " AND Reference = '".$id."' "; endif;
+                if ($search != NULL) : $sql .= " AND Reference LIKE '%".$search."%' "; endif;
+                if ($empid != NULL) : $sql .= " AND EmpID = '".$empid."' "; endif;
+                if ($status != NULL) : $sql .= " AND Approved = '".$status."' ";
+			    endif;
+                if ($from && $to) :
+                    $sql .= " AND AppliedDate BETWEEN '".$from." 00:00:00.000' AND '".$to." 23:59:59.000' ";
+                endif;
+                $sql .= "GROUP BY EmpID,AppliedDate,FromDate,ToDate,Reference,Status,Approved ) AS [outer] ";
+                if ($limit) :
+                    $sql .= " WHERE [outer].[ROW_NUMBER] BETWEEN ".(intval($start) + 1)." AND ".intval($start + $limit)." ORDER BY [outer].[ROW_NUMBER] ";
+                endif;
 
-			/*$sql .= " ORDER BY ReqDate DESC ";
-			if ($limit) :
-				$sql .= " OFFSET ".$start." ROWS ";
-				$sql .= " FETCH NEXT ".$limit." ROWS ONLY ";
-			endif;*/
+                if ($count) : $result = $this->get_numrow($sql);
+                else : $result = $this->get_row($sql);
+                endif;
 
-			if ($count) : $result = $this->get_numrow($sql);
-			else : $result = $this->get_row($sql);
-			endif;
+            break;
+
+            case 11: // WFH Clearance
+
+                $sql = "SELECT [outer].* FROM ( ";
+                $sql .= " SELECT ROW_NUMBER() OVER(ORDER BY AppliedDate DESC) as ROW_NUMBER, ";
+                $sql .= "  EmpID,convert(varchar, AppliedDate, 121) as AppliedDate,convert(varchar, DTRFrom, 121) as DTRFrom,convert(varchar, DTRTo, 121) as DTRTo,RefNbr,Status FROM HRFrmApplyWFHClearance ";
+                $sql .= " WHERE SeqID != 0 ";
+                if ($id != NULL) : $sql .= " AND RefNbr = '".$id."' "; endif;
+                if ($search != NULL) : $sql .= " AND RefNbr LIKE '%".$search."%' "; endif;
+                if ($empid != NULL) : $sql .= " AND EmpID = '".$empid."' "; endif;
+
+                if ($from && $to) :
+                    $sql .= " AND AppliedDate BETWEEN '".$from." 00:00:00.000' AND '".$to." 23:59:59.000' ";
+                endif;
+                $sql .= "GROUP BY EmpID,AppliedDate,DTRFrom,DTRTo,RefNbr,Status) AS [outer] ";
+                if ($limit) :
+                    $sql .= " WHERE [outer].[ROW_NUMBER] BETWEEN ".(intval($start) + 1)." AND ".intval($start + $limit)." ORDER BY [outer].[ROW_NUMBER] ";
+                endif;
+
+                if ($count) : $result = $this->get_numrow($sql);
+                else : $result = $this->get_row($sql);
+                endif;
 
             break;
         }
@@ -3472,6 +3517,73 @@ class mainsql {
                 $approve_ul = $this->get_sp_data('SP_INSERT_APPLY_UL', $val, $dbname);
 
                 if($approve_ul) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+
+			break;
+        }
+    }
+
+    function wfc_action($value, $action, $id = 0)
+	{
+        $val = array();
+
+		switch ($action) {
+			case 'add':
+
+                $accepted_field = array('EMPID', 'REQNBR', 'CLEARANCETYPE', 'DATESTART', 'DATEEND', 'REASON', 'TRANS',
+                    'APPROVER01', 'APPROVER02', 'APPROVER03', 'APPROVER04', 'APPROVER05', 'APPROVER06', 
+                    'DBAPPROVER01', 'DBAPPROVER02', 'DBAPPROVER03', 'DBAPPROVER04', 'DBAPPROVER05', 'DBAPPROVER06', 
+                    'USER', 'REMARKS');
+
+                $knum = 0;
+                foreach ($value as $key => $value) :
+                    if (in_array($key, $accepted_field)) :
+                        $val[$knum]['field_name'] = $key;
+                        $val[$knum]['field_value'] = $value;
+                        $val[$knum]['field_type'] = SQLVARCHAR;
+                        $val[$knum]['field_isoutput'] = false;
+                        $val[$knum]['field_isnull'] = false;
+                        $val[$knum]['field_maxlen'] = 512;
+
+                        $knum++;
+                    endif;
+                endforeach;
+
+                $add_wc = $this->get_sp_data_status('SP_INSERT_APPLY_WFHC', $val);
+                
+                if($add_wc) {
+                    return $add_wc;
+                } else {
+                    return FALSE;
+                }
+
+			break;
+
+            case 'approve':
+
+                $dbname = $value['DBNAME'];
+
+                $accepted_field = array('REQNBR', 'TRANS', 'USER', 'EMPID', 'REMARKS', 'REASON', 'WORKHOURS', 'CLEARANCETYPE');
+
+                $knum = 0;
+                foreach ($value as $key => $value) :
+                    if (in_array($key, $accepted_field)) :
+                        $val[$knum]['field_name'] = $key;
+                        $val[$knum]['field_value'] = $value;
+                        $val[$knum]['field_type'] = SQLVARCHAR;
+                        $val[$knum]['field_isoutput'] = false;
+                        $val[$knum]['field_isnull'] = false;
+                        $val[$knum]['field_maxlen'] = 512;
+                        $knum++;
+                    endif;
+                endforeach;
+
+                $approve_wc = $this->get_sp_data('SP_INSERT_APPLY_WFHC', $val, $dbname);
+
+                if($approve_wc) {
                     return 1;
                 } else {
                     return 0;

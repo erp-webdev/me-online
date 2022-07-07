@@ -2118,11 +2118,11 @@ $(function ()
 
 			else
 			{
-				//html += '<p>WFH has been successfully applied.</p>';
-        localStorage.removeItem('wfh-entries');
+				//html += '<p>WFH Clearance has been successfully applied.</p>';
+
 				$('.wfh_msg').slideUp();
-                alert('Work from Home has been successfully applied.');
-                window.location.href='<?php echo WEB; ?>/myrequest?type=10';
+                alert('WFH Clearance has been successfully applied.');
+                window.location.href='<?php echo WEB; ?>/myrequest?type=11';
 
 			}
 		}
