@@ -27,7 +27,7 @@
 			<div class="mleave_msg" style="padding: 10px; text-align: center; color: rgb(156, 0, 6); background: rgb(255, 199, 206);
 			border: 2px solid rgb(156, 0, 6); height: auto; display: block;">
 				You do not have a clearance to submit a Work From Home. <br>
-				Submit a WFH Clearance instead <a href="/wfhclearance">here</a>
+				Submit a WFH Clearance instead <a href="/me/wfhclearance">here</a>
 			</div>
 
 			<?php else: ?>
