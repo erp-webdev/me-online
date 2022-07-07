@@ -325,8 +325,9 @@ class mainsql {
             LEFT JOIN viewHREmpMaster B ON A.EmpID = B.EmpID
             WHERE A.EMPID = '" . $empid . "' 
             and (DTRFrom is null or DATEADD(day, 3, DTRFrom) >= convert(date,GETDATE()))";
-        $result = $this->get_row($sql);
 
+        $result = $this->get_row($sql);
+        var_dump($result); exit;
         return $result;
     }
 
