@@ -327,7 +327,7 @@ class mainsql {
             and (DTRFrom is null or DATEADD(day, 3, DTRFrom) >= convert(date,GETDATE()))";
 
         $result = $this->get_row($sql);
-        var_dump($result); exit;
+        var_dump($sql); exit;
         return $result;
     }
 
