@@ -21,7 +21,7 @@
 			<b>Your access to WFH Application will be disabled after <?php echo $wfh_user[0]["end_warning"]; ?>.</b>
 			</div>
 			<?php } ?>
-			
+			<?php var_dump($wfh_user); ?>
 			<form id="frmapplywd" name="frmapplywd" action="?ignore-page-cache=true" method="post" enctype="multipart/form-data">
 				<div id="tabs">
 					<ul>
@@ -149,6 +149,7 @@
 				</div>
 
 			</form>
+
 		</div>
 	</div>
 </div>
