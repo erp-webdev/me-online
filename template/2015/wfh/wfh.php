@@ -30,7 +30,7 @@
 				Submit a WFH Clearance instead <a href="/wfhclearance">here</a>
 			</div>
 
-			<?php else; ?>
+			<?php else: ?>
 			
 			<form id="frmapplywd" name="frmapplywd" action="?ignore-page-cache=true" method="post" enctype="multipart/form-data">
 				<div id="tabs">
