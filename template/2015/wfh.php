@@ -1,6 +1,6 @@
 <?php include(TEMP."/header.php"); ?>
 
-<?php  if($wfh_user[0]["EmpID"] == $profile_idnum) : ?>
+<?php  if($wh_app[0]["EmpID"] == $profile_idnum) : ?>
 
 <?php	include(TEMP.'/wfh/wfh.php'); ?>
 	
