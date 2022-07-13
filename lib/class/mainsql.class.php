@@ -537,7 +537,8 @@ class mainsql {
         ApprovedDate02, ApprovedDate03, ApprovedDate04, ApprovedDate05, ApprovedDate06,
         Signatory01, Signatory02, Signatory03, Signatory04, Signatory05, Signatory06,
         DB_NAME01, DB_NAME02, DB_NAME03, DB_NAME04, DB_NAME05, DB_NAME06,
-        Approved, RejectedDate, POSTEDDATE, APPROVALDATE, FULLNAME 
+        Approved, RejectedDate, POSTEDDATE, APPROVALDATE, FULLNAME, 
+        Remarks01, Remarks02, Remarks03, Remarks04, Remarks05, Remarks06
         FROM TED_VIEW_NOTIFICATION ";
         $sql .= " WHERE EmpID IS NOT NULL ";
         if ($id != NULL) : $sql .= " AND Reference = '".$id."' "; endif;
