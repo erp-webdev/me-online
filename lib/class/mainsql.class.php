@@ -324,7 +324,8 @@ class mainsql {
             FROM HRFrmApplyWFHClearance A
             LEFT JOIN viewHREmpMaster B ON A.EmpID = B.EmpID
             WHERE A.EMPID = '" . $empid . "' 
-            and (DTRFrom is null or DATEADD(day, 3, DTRTo) >= convert(date,GETDATE()))";
+            and (DTRFrom is null or DATEADD(day, 3, DTRTo) >= convert(date,GETDATE()))
+            AND A.Status = 'APPROVED' ";
 
         $result = $this->get_row($sql);
         return $result;
