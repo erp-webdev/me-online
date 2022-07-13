@@ -237,7 +237,7 @@
                         $message .= "New request ".$requestor[0]['FName']." ".$requestor[0]['LName']." for Work from Home with Reference No: ".$add_wfh." on ".date('F j, Y')." for your approval. ";
                         $message .= "<br><br>Thanks,<br>";
                         $message .= SITENAME." Admin";
-			$message .= "<br>Click<a href='https://portal.megaworldcorp.com/me/login'> here</a> to login";
+			            $message .= "<br>Click<a href='https://portal.megaworldcorp.com/me/login'> here</a> to login";
                         $message .= "<hr />".MAILFOOT."</div>";
 
                         $headers = "From: ".NOTIFICATION_EMAIL."\r\n";
