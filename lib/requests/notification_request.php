@@ -3216,7 +3216,11 @@
             elseif ($doctype == 'WC') :
                     $reqtype = 11;
                     $reqdesc = "WFH Clearance";
-                    $apppost['WORKHOURS'] = isset($_POST['workhours']) || $_POST['workhours'] <> 'undefined' ? $_POST['workhours'] : 0;
+                    if(isset($_POST['workhours']) && $_POST['workhours'] <> 'undefined' )
+                        $apppost['WORKHOURS'] = $_POST['workhours'];
+                    else
+                        $apppost['WORKHOURS'] = 0;
+
                     $apppost['CLEARANCETYPE'] = '';
                     $apppost['REASON'] = '';
 
