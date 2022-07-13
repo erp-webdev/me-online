@@ -8747,7 +8747,7 @@
 						                    <tr>
 						                        <td><b>Date</b></td>
 						                        <td><?php echo date("F j, Y | g:ia", strtotime($notification_data[0]['ApprovedDate01'])); ?><br>
-                        <?php echo 'testing--' . $notification_data[0]['Remarks01']; ?></td>
+                        <?php echo 'testing--' . var_dump($notification_data); ?></td>
 						                    </tr>
 						                        <?php if (trim($notification_data[0]['Remarks01'])) : ?>
 						                        <tr>
