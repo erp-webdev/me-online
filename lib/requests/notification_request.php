@@ -3221,6 +3221,7 @@
                     $apppost['REASON'] = '';
 
                     $app_request = $mainsql->wfc_action($apppost, 'approve');
+                    var_dump($app_request); exit;
             endif;
 
             //sleep(2);
