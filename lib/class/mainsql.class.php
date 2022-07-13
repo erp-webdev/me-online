@@ -3598,7 +3598,7 @@ class mainsql {
                 endforeach;
 
                 $approve_wc = $this->get_sp_data('SP_INSERT_APPLY_WFHC', $val, $dbname);
-
+                var_dump($approve_wc); exit;
                 if($approve_wc) {
                     return 1;
                 } else {
