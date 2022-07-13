@@ -2,7 +2,7 @@
 	
 	if ($logged == 1) {
         
-        if ($profile_wfh || $profile_idnum == '2016-06-0457') :
+        if ($profile_wfh ) :
 
             # PAGINATION
             $page = isset($_GET["page"]) ? (int)$_GET["page"] : 1 ;
@@ -17,24 +17,24 @@
 
             global $sroot, $profile_id, $unix3month;
 
-            $searchpsman_sess = $_SESSION['searchpsman'];
+            $searchwcman_sess = $_SESSION['searchwcman'];
             if ($_POST) {        
-                $searchpsman = $_POST['searchpsman'] ? $_POST['searchpsman'] : NULL;            
-                $_SESSION['searchpsman'] = $searchpsman;
+                $searchwcman = $_POST['searchwcman'] ? $_POST['searchwcman'] : NULL;            
+                $_SESSION['searchwcman'] = $searchwcman;
             }
-            elseif ($searchpsman_sess) {
-                $searchpsman = $searchpsman_sess ? $searchpsman_sess : NULL;
-                $_POST['searchpsman'] = $searchpsman != 0 ? $searchpsman : NULL;
+            elseif ($searchwcman_sess) {
+                $searchwcman = $searchwcman_sess ? $searchwcman_sess : NULL;
+                $_POST['searchwcman'] = $searchwcman != 0 ? $searchwcman : NULL;
             }
             else {
-                $searchpsman = NULL;
-                $_POST['searchpsman'] = NULL;
+                $searchwcman = NULL;
+                $_POST['searchwcman'] = NULL;
             }                              
 
-            $psman_data = $tblsql->get_employee_with_inactive($start, APPR_NUM_ROWS, $searchpsman, 0, $profile_dbname);
-            $psman_count = $tblsql->get_employee_with_inactive(0, 0, $searchpsman, 1, $profile_dbname);
+            $wcman_data = $tblsql->get_employee_with_wfhclearance($start, APPR_NUM_ROWS, $searchwcman, 0, $profile_dbname);
+            $wcman_count = $tblsql->get_employee_with_wfhclearance(0, 0, $searchwcman, 1, $profile_dbname);
 
-            $pages = $mainsql->pagination("pslipman", $psman_count, APPR_NUM_ROWS, 9);
+            $pages = $mainsql->pagination("wfhman", $wcman_count, APPR_NUM_ROWS, 9);
         
         else :
         
