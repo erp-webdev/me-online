@@ -3216,12 +3216,11 @@
             elseif ($doctype == 'WC') :
                     $reqtype = 11;
                     $reqdesc = "WFH Clearance";
-                    $apppost['WORKHOURS'] = $_POST['workhours'];
+                    $apppost['WORKHOURS'] = isset($_POST['workhours']) ? $_POST['workhours'] : 0;
                     $apppost['CLEARANCETYPE'] = '';
                     $apppost['REASON'] = '';
 
                     $app_request = $mainsql->wfc_action($apppost, 'approve');
-                    var_dump($app_request); exit;
             endif;
 
             //sleep(2);
