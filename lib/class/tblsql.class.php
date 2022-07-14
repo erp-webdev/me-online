@@ -171,7 +171,7 @@ class tblsql {
     {
         $sql = "SELECT [outer].* FROM ( ";
         $sql .= " SELECT  ROW_NUMBER() OVER(ORDER BY LName ASC) as ROW_NUMBER, ";
-        $sql .= " EmpID, FName, MName, LName, FullName
+        $sql .= " EmpID, FName, MName, LName, FullName, DBNAME
             FROM viewApplyWFHClearance ";
         $sql .= " WHERE EmpID != '' ";
         if ($dbname) : $sql .= " AND DBNAME = '".$dbname."' "; endif;
