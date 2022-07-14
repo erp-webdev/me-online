@@ -26,26 +26,21 @@
             <table class="width100per">
                 <tr>
                     <td>
-                        <tr>
-                            <td>EmployeeID</td>
+                            <td>EmpID</td>
                             <td><?php echo $wciman_data[0][EmpID]; ?></td>
-                        </tr>
-                        <tr>
-                            <td>Name</td>
-                            <td><?php echo $wciman_data[0][FullName]; ?></td>
-                        </tr>
                     </td>
                     <td>
-                        <tr>
-                            <td>Department</td>
-                            <td><?php echo $wciman_data[0][DeptDesc]; ?></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                        </tr>
+                            <td>Name</td>
+                            <td><?php echo $wciman_data[0][FullName]; ?></td>
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                            <td>Department</td>
+                            <td><?php echo $wciman_data[0][DeptDesc]; ?></td>
+                    </td>
+                </tr>
+                    
             </table>
             
             <div id="wcimandata">
