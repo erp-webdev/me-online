@@ -8,6 +8,7 @@
         <div id="mainapprovers" class="mainbody lefttalign whitetext">  
             <b class="mediumtext lorangetext">WFH MANAGEMENT</b><br><br>                                
             
+            <?php /*
             <table class="width100per">
                 <tr>
                     <td><span class="fa fa-search"></span> Search: 
@@ -20,7 +21,7 @@
                         <input type="button" id="btnunread" name="btnunread" value="Mark as Unread" class="smlbtn btnred" /-->                            
                     </td>
                 </tr>
-            </table>
+            </table> */?>
             
             <div id="wcimandata">
             <table border="0" cellspacing="0" class="tdata width100per">
