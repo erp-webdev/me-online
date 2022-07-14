@@ -65,8 +65,6 @@
                                 <a href="<?php echo WEB; ?>/wfhclearance" onclick="clickAndDisable(this);"><div<?php if ($section == "wfhc") { ?> class="dselected"<?php } ?>>WFH Clearance</div></a>
                             <?php  endif; ?>
 
-                            <!-- <?php if ($rwf_app && $profile_idnum == '2016-06-0457') : ?><a href="<?php echo WEB; ?>/rwfh" onclick="clickAndDisable(this);"><div<?php if ($section == "rwfh") { ?> class="dselected"<?php } ?>>WFH Clearance</div></a><?php endif; ?> -->
-
                             <?php if (false) : ?><a href="<?php echo WEB; ?>/otherforms" onclick="clickAndDisable(this);"><div<?php if ($section == "otherforms") { ?> class="dselected"<?php } ?>>Other Forms</div></a><?php endif; ?>
                         </div>
                         <a id="applink" class="cursorpoint"><div<?php if ($section == "wfh" || $section == "leave" || $section == "overtime" || $section == "obt" || $section == "meal" || $section == "mandtr" || $section == "cts" || $section == "npa" || $section == "timesched") { ?> class="dselected"<?php } ?>>Application</div></a>

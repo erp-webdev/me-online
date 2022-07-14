@@ -1,0 +1,82 @@
+<?php include(TEMP."/header.php"); ?>
+
+<!-- BODY -->
+<div id="mainsplashtext" class="mainsplashtext lefttalign">  
+    <div class="topsplashtext lefttalign robotobold cattext whitetext"><?php echo WELCOME; ?></div>
+    <div class="leftsplashtext lefttalign"><?php include(TEMP."/menu.php"); ?></div>
+    <div class="rightsplashtext lefttalign">
+        <div id="mainapprovers" class="mainbody lefttalign whitetext">  
+            <b class="mediumtext lorangetext">WFH MANAGEMENT</b><br><br>                                
+            
+            <?php /*
+            <table class="width100per">
+                <tr>
+                    <td><span class="fa fa-search"></span> Search: 
+                        <input type="text" id="searchwciman" name="searchwciman" value="<?php echo $_SESSION['searchwciman'] ? $_SESSION['searchwciman'] : ''; ?>" placeholder="by <?php echo $profile_nadd; ?> ID, lastname or firstname" class="smltxtbox width250" />&nbsp;
+                        <input type="button" id="btnwciman" name="btnwciman" value="Search" class="smlbtn" />
+                        <input type="button" id="btnwcimanall" name="btnwcimanall" value="View All" class="smlbtn<?php if (!$_SESSION['searchwciman']) : ?> invisible<?php endif; ?>" />                                            
+                    </td>
+                    <td class="righttalign">
+                        <!--input type="button" id="btnread" name="btnread" value="Mark as Read" class="smlbtn btnred" />
+                        <input type="button" id="btnunread" name="btnunread" value="Mark as Unread" class="smlbtn btnred" /-->                            
+                    </td>
+                </tr>
+            </table> */?>
+
+            <table class="width100per">
+                <tr>
+                    <td>
+                            <td><b>EmpID</b> </td>
+                            <td><?php echo $wciman_data[0][EmpID]; ?></td>
+                    </td>
+                    <td>
+                            <td><b>Department</b></td>
+                            <td><?php echo $wciman_data[0][DeptDesc]; ?></td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                            <td><b>Name</b></td>
+                            <td><?php echo $wciman_data[0][FullName]; ?></td>
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
+            </table>
+            <hr>
+            <div id="wcimandata">
+            <table border="0" cellspacing="0" class="tdata width100per">
+                <?php if ($wciman_data) : ?>
+                <tr>
+                    <th width="30%">Reference</th>
+                    <th width="30%">DTR Date</th>
+                    <th width="20%">Work Hours</th>
+                    <th width="20%">Status</th>
+                </tr>
+                <?php foreach ($wciman_data as $key => $value) : ?>    
+                <tr class="trdata centertalign whitetext">
+                    <td><?php echo $value['RefNbr']; ?></td>
+                    <td><?php echo date('Y-m-d', strtotime($value['DTRDate'])); ?></td>
+                    <td><?php echo $value['DTRWorkHours']; ?></td>
+                    <td><?php echo $value['FormStatus']; ?></td>
+                </tr>
+                <?php endforeach; ?>
+                <?php if ($pages) : ?>
+                <tr>
+                    <td colspan="4" class="centertalign"><?php echo $pages; ?></td>
+                </tr>
+                <?php endif; ?>
+                <?php else : ?>
+                <tr>
+                    <td class="bold centertalign noborder"><br><br>No available WFH Clearance</td>
+                </tr>
+                <?php endif; ?>
+            </table>
+            <input type="hidden" id="wcimanpage" name="wcimanpage" value="<?php echo $page; ?>" />      
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php include(TEMP."/footer.php"); ?>

@@ -4,7 +4,7 @@
 	<div class="leftsplashtext lefttalign"><?php include(TEMP."/menu.php"); ?></div>
 	<div class="rightsplashtext lefttalign">
 		<div id="mainwfh" class="mainbody lefttalign whitetext">
-			<b class="mediumtext lorangetext">Work From Home</b> <small><i>Beta</i></small><br><br>
+			<b class="mediumtext lorangetext">Work From Home</b> <small><i></i></small><br><br>
 			<b>MAIN INFORMATION</b><br><br>
 			<div class="column2">
 				<b><?php echo ucfirst($profile_nadd); ?> ID: </b><?php echo $profile_idnum; ?><br>
@@ -21,6 +21,16 @@
 			<b>Your access to WFH Application will be disabled after <?php echo $wfh_user[0]["end_warning"]; ?>.</b>
 			</div>
 			<?php } ?>
+			
+			<?php if(!$wfh_user): ?>
+			
+			<div class="mleave_msg" style="padding: 10px; text-align: center; color: rgb(156, 0, 6); background: rgb(255, 199, 206);
+			border: 2px solid rgb(156, 0, 6); height: auto; display: block;">
+				You do not have a clearance to submit a Work From Home. <br>
+				Submit a WFH Clearance instead <a href="<?php echo WEB; ?>/wfhclearance">here</a>
+			</div>
+
+			<?php else: ?>
 			
 			<form id="frmapplywd" name="frmapplywd" action="?ignore-page-cache=true" method="post" enctype="multipart/form-data">
 				<div id="tabs">
@@ -149,6 +159,10 @@
 				</div>
 
 			</form>
+
+			<?php endif; ?>
+
+
 		</div>
 	</div>
 </div>

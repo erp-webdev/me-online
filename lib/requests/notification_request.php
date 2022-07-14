@@ -3216,7 +3216,11 @@
             elseif ($doctype == 'WC') :
                     $reqtype = 11;
                     $reqdesc = "WFH Clearance";
-                    $apppost['WORKHOURS'] = $_POST['workhours'];
+                    if(isset($_POST['workhours']) && $_POST['workhours'] <> 'undefined' )
+                        $apppost['WORKHOURS'] = $_POST['workhours'];
+                    else
+                        $apppost['WORKHOURS'] = 0;
+
                     $apppost['CLEARANCETYPE'] = '';
                     $apppost['REASON'] = '';
 
@@ -4125,7 +4129,7 @@
                         <?php if ($notification_data[0]['ApprovedDate01']) : ?>
                         <tr>
                             <td><b>Date</b></td>
-                            <td><?php echo date("F j, Y | g:ia", strtotime($notification_data[0]['ApprovedDate01'])); ?></td>
+                            <td><?php echo date("F j, Y | g:ia", strtotime($notification_data[0]['ApprovedDate01'])); ?> </td>
                         </tr>
                             <?php if (trim($notification_data[0]['Remarks01'])) : ?>
                             <tr>

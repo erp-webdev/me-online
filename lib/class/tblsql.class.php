@@ -167,6 +167,26 @@ class tblsql {
 		return $result;
 	}
 
+    public function get_employee_with_wfhclearance($start = 0, $limit = 0, $search = NULL, $count = 0, $dbname = NULL)
+    {
+        $sql = "SELECT [outer].* FROM ( ";
+        $sql .= " SELECT  ROW_NUMBER() OVER(ORDER BY LName ASC) as ROW_NUMBER, ";
+        $sql .= " EmpID, FName, MName, LName, FullName, DBNAME, DeptDesc
+            FROM viewApplyWFHClearance ";
+        $sql .= " WHERE EmpID != '' ";
+        if ($dbname) : $sql .= " AND DBNAME = '".$dbname."' "; endif;
+        if ($search != NULL) : $sql .= " AND (EmpID = '".$search."' OR LName LIKE '%".$search."%' OR FName LIKE '%".$search."%') "; endif;
+        $sql .= ") AS [outer] ";
+        if ($limit) :
+            $sql .= " WHERE [outer].[ROW_NUMBER] BETWEEN ".(intval($start) + 1)." AND ".intval($start + $limit)." ORDER BY [outer].[ROW_NUMBER] ";
+        endif;
+        
+		if ($count) : $result = $this->get_numrow($sql);
+        else : $result = $this->get_row($sql);
+        endif;
+		return $result;
+    }
+
     function get_users_access($start = 0, $limit = 0, $search = NULL, $count = 0, $dbname)
 	{
 		$sql = "SELECT [outer].* FROM ( ";
