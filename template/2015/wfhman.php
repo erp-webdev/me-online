@@ -37,6 +37,7 @@
                                     <td><?php echo $value['EmpID']; ?></td>
                                     <td><?php echo $value['LName']; ?></td>
                                     <td><?php echo $value['FName']; ?></td>
+                                    <td><?php echo $value['DeptDesc']; ?></td>
                                     <td><a href="<?php echo WEB.'/wfhmanitems?comp='.$value['DBNAME'].'&id='.$value['EmpID']; ?>" class="lorangetext">View Clearance</a></td>
                                 </tr>
                                 <?php endforeach; ?>
