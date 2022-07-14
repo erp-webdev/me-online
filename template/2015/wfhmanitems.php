@@ -22,6 +22,17 @@
                     </td>
                 </tr>
             </table> */?>
+
+            <table class="width100per">
+                <tr>
+                    <td>EmployeeID</td>
+                    <td><?php echo $wciman_data[0][EmpID]; ?></td>
+                </tr>
+                <tr>
+                    <td>Name</td>
+                    <td><?php echo $wciman_data[0][FullName]; ?></td>
+                </tr>
+            </table>
             
             <div id="wcimandata">
             <table border="0" cellspacing="0" class="tdata width100per">
