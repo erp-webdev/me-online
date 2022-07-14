@@ -170,7 +170,7 @@ class tblsql {
     public function get_employee_with_wfhclearance($start = 0, $limit = 0, $search = NULL, $count = 0, $dbname = NULL)
     {
         $sql = "SELECT [outer].* FROM ( ";
-        $sql .= " SELECT DISTINCT(RefNbr) ROW_NUMBER() OVER(ORDER BY LName ASC) as ROW_NUMBER, ";
+        $sql .= " SELECT  ROW_NUMBER() OVER(ORDER BY LName ASC) as ROW_NUMBER, ";
         $sql .= " EmpID, FName, MName, LName, FullName
             FROM viewApplyWFHClearance ";
         $sql .= " WHERE EmpID != '' ";
