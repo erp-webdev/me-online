@@ -26,17 +26,17 @@
             <table class="width100per">
                 <tr>
                     <td>
-                            <td>EmpID</td>
+                            <td><b>EmpID</b> </td>
                             <td><?php echo $wciman_data[0][EmpID]; ?></td>
                     </td>
                     <td>
-                            <td>Department</td>
+                            <td><b>Department</b></td>
                             <td><?php echo $wciman_data[0][DeptDesc]; ?></td>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                            <td>Name</td>
+                            <td><b>Name</b></td>
                             <td><?php echo $wciman_data[0][FullName]; ?></td>
                     </td>
                     <td>
