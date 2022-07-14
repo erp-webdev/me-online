@@ -1,10 +1,16 @@
 <?php 
 
-class WFHManagement extends tblsql{
+class WFHManagement extends mainsql{
 
-    public function getWfhClearances()
+    public function getWfhClearanceItems($empid, $dbname)
     {
-        # code...
+        $sql = "SELECT * FROM viewApplyWFHClearance 
+                WHERE EmpID = '$empid'
+                ORDER by DTRDATE DESC"
+        
+        return $result = $this->get_row($sql, $dbname);
     }
+
+    
 
 }
