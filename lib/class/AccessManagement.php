@@ -53,4 +53,10 @@ class AccessManagement extends tblsql{
         return $result;
     }
 
+    /*create access*/
+    public function setAccess($user_empid, $user_dbname, $company_db, $access)
+    {
+        
+    }
+
 }

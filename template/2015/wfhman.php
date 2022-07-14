@@ -46,7 +46,7 @@
                                 <?php endif; ?>
                                 <?php else : ?>
                                 <tr>
-                                    <td class="bold centertalign noborder"><br><br>You have no employees listed</td>
+                                    <td class="bold centertalign noborder"><br><br>No available WFH Clearances</td>
                                 </tr>
                                 <?php endif; ?>
                             </table>
