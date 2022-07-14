@@ -1,9 +1,6 @@
 <?php include(TEMP."/header.php"); ?>
 
 <!-- BODY -->
-
-                
-                
                 <div id="mainsplashtext" class="mainsplashtext lefttalign">  
                     <div class="topsplashtext lefttalign robotobold cattext whitetext"><?php echo WELCOME; ?></div>
                     <div class="leftsplashtext lefttalign"><?php include(TEMP."/menu.php"); ?></div>

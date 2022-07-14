@@ -2,7 +2,7 @@
 	
 	if ($logged == 1) {
         
-        if ($profile_wfh ) :
+        if ($accessman->hasAccess($profile_id, $profile_dbname, $profile_dbname, 'wfh')) :
 
             # PAGINATION
             $page = isset($_GET["page"]) ? (int)$_GET["page"] : 1 ;

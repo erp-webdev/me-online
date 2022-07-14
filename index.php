@@ -60,12 +60,14 @@
         include(CLASSES."/mainsql.class.php");
         include(CLASSES."/regsql.class.php");
         include(CLASSES."/pafsql.class.php");
+        include(CLASSES."/AccessManagement.php");
         //include(CLASSES."/lmssql.class.php");
 
         $mainsql = new mainsql;
         $register = new regsql;
         $pafsql	= new pafsql;
         //$lms = new lmssql;
+        $accessman = new AccessManagement;
 
         /* MAIN DB CONNECTOR - END */
 
