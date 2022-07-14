@@ -36,7 +36,7 @@
                                     <td><?php echo $value['EmpID']; ?></td>
                                     <td><?php echo $value['LName']; ?></td>
                                     <td><?php echo $value['FName']; ?></td>
-                                    <td><a href="<?php echo WEB.'/wfhmanitems?comp='.$value['DBNAME'].'&id='.md5($value['EmpID']); ?>" class="lorangetext">View Clearance</a></td>
+                                    <td><a href="<?php echo WEB.'/wfhmanitems?comp='.$value['DBNAME'].'&id='.$value['EmpID']; ?>" class="lorangetext">View Clearance</a></td>
                                 </tr>
                                 <?php endforeach; ?>
                                 <?php if ($pages) : ?>
