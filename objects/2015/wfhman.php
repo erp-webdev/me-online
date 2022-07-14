@@ -32,7 +32,6 @@
             }                              
 
             $wcman_data = $tblsql->get_employee_with_wfhclearance($start, APPR_NUM_ROWS, $searchwcman, 0, $profile_dbname);
-            var_dump($wcman_data); exit;
             $wcman_count = $tblsql->get_employee_with_wfhclearance(0, 0, $searchwcman, 1, $profile_dbname);
 
             $pages = $mainsql->pagination("wfhman", $wcman_count, APPR_NUM_ROWS, 9);
