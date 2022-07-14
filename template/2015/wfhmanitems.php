@@ -42,11 +42,9 @@
                     <td>
                         &nbsp;
                     </td>
-                    
                 </tr>
-                    
             </table>
-            
+            <hr>
             <div id="wcimandata">
             <table border="0" cellspacing="0" class="tdata width100per">
                 <?php if ($wciman_data) : ?>
