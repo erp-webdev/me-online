@@ -30,15 +30,19 @@
                             <td><?php echo $wciman_data[0][EmpID]; ?></td>
                     </td>
                     <td>
-                            <td>Name</td>
-                            <td><?php echo $wciman_data[0][FullName]; ?></td>
+                            <td>Department</td>
+                            <td><?php echo $wciman_data[0][DeptDesc]; ?></td>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                            <td>Department</td>
-                            <td><?php echo $wciman_data[0][DeptDesc]; ?></td>
+                            <td>Name</td>
+                            <td><?php echo $wciman_data[0][FullName]; ?></td>
                     </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                    
                 </tr>
                     
             </table>
