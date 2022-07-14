@@ -4,8 +4,10 @@
         
         if ($accessman->hasAccess($profile_id, $profile_dbname, $profile_dbname, 'wfh')) :
 
-            // include CLASS . '/WFHManagement.php';
-            // $wfhman = new WFHManagement;
+            include CLASS . '/WFHManagement.php';
+            $wfhman = new WFHManagement;
+
+            var_dump($wfhman); exit;
 
             # PAGINATION
             $page = isset($_GET["page"]) ? (int)$_GET["page"] : 1 ;
