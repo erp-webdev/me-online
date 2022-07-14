@@ -29,6 +29,7 @@
                                     <th width="20%"><?php echo ucfirst($profile_nadd); ?> ID</th>
                                     <th width="30%">Last Name</th>
                                     <th width="30%">First Name</th>
+                                    <th width="30%">Department</th>
                                     <th width="20%">Manage</th>
                                 </tr>
                                 <?php foreach ($wcman_data as $key => $value) : ?>    
