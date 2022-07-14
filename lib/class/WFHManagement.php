@@ -4,9 +4,8 @@ class WFHManagement extends mainsql{
 
     public function getWfhClearanceItems($empid, $dbname)
     {
-        $sql = "SELECT A.*, B.DeptDesc
+        $sql = "SELECT A.*
                 FROM viewApplyWFHClearance A
-                LEFT JOIN HRDepartment B on A.DeptID = B.DeptID
                 WHERE A.EmpID = '$empid'
                 ORDER by A.RefNbr, A.DTRDATE DESC";
         
