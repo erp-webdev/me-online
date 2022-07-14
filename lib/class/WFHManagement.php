@@ -8,9 +8,9 @@ class WFHManagement extends mainsql{
                 WHERE EmpID = '$empid'
                 ORDER by DTRDATE DESC"
         
-        return $result = $this->get_row($sql, $dbname);
+        return $this->get_row($sql, $dbname);
     }
 
-    
+
 
 }
