@@ -26,10 +26,10 @@
                             <table border="0" cellspacing="0" class="tdata width100per">
                                 <?php if ($wcman_data) : ?>
                                 <tr>
-                                    <th width="20%"><?php echo ucfirst($profile_nadd); ?> ID</th>
-                                    <th width="30%">Last Name</th>
-                                    <th width="30%">First Name</th>
-                                    <th width="30%">Department</th>
+                                    <th width=""><?php echo ucfirst($profile_nadd); ?> ID</th>
+                                    <th width="">Last Name</th>
+                                    <th width="">First Name</th>
+                                    <th width="">Department</th>
                                     <th width="20%">Manage</th>
                                 </tr>
                                 <?php foreach ($wcman_data as $key => $value) : ?>    
