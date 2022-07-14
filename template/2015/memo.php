@@ -3,7 +3,8 @@
     <!-- BODY -->
 
                     <div id="floatdiv" class="floatdiv invisible">
-                        <?php if ($profile_level == 7 || $profile_level == 9 || $profile_level == 10) : ?>
+                        <?php if (in_array($profile_level, [7, 9, 10]) || 
+                            $accessman->hasAccess($profile_id, $profile_dbname, 'memo')) : ?>
                         <!-- CREATE MEMO - BEGIN -->
                         
                         <div id="madd" class="fadd" style="display: none;">
