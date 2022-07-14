@@ -5,7 +5,7 @@
         if ($accessman->hasAccess($profile_id, $profile_dbname, $profile_dbname, 'wfh')) :
 
             include CLASS . '/WFHManagement.php';
-            $wfh_clearance = new WFHManagement;
+            $wfhman = new WFHManagement;
 
             # PAGINATION
             $page = isset($_GET["page"]) ? (int)$_GET["page"] : 1 ;
@@ -34,10 +34,9 @@
                 $_POST['searchwciman'] = NULL;
             }                              
 
-            $wciman_data = $tblsql->get_mployee_with_wfhclearance($start, APPR_NUM_ROWS, $searchwciman, 0, $profile_dbname);
-            $wciman_count = $tblsql->get_employee_with_wfhclearance(0, 0, $searchwciman, 1, $profile_dbname);
+            $wciman_data = $wfhman->getWfhClearanceItems($_GET['id'], $_GET['comp']);
 
-            $pages = $mainsql->pagination("wfhman", $wciman_count, APPR_NUM_ROWS, 9);
+            // $pages = $mainsql->pagination("wfhman", $wciman_count, APPR_NUM_ROWS, 9);
         
         else :
         
