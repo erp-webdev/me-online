@@ -49,17 +49,17 @@
             <table border="0" cellspacing="0" class="tdata width100per">
                 <?php if ($wciman_data) : ?>
                 <tr>
-                    <th width="20%"><?php echo ucfirst($profile_nadd); ?> ID</th>
-                    <th width="30%">Last Name</th>
-                    <th width="30%">First Name</th>
-                    <th width="20%">DTRDate</th>
+                    <th width="30%">Reference</th>
+                    <th width="30%">DTR Date</th>
+                    <th width="20%">Work Hours</th>
+                    <th width="20%">Status</th>
                 </tr>
                 <?php foreach ($wciman_data as $key => $value) : ?>    
                 <tr class="trdata centertalign whitetext">
-                    <td><?php echo $value['EmpID']; ?></td>
-                    <td><?php echo $value['LName']; ?></td>
-                    <td><?php echo $value['FName']; ?></td>
-                    <td><?php echo $value['DTRDate']; ?></td>
+                    <td><?php echo $value['RefNbr']; ?></td>
+                    <td><?php echo date('Y-m-d', strtotime($value['DTRDate'])); ?></td>
+                    <td><?php echo $value['DTRWorkHours']; ?></td>
+                    <td><?php echo $value['FormStatus']; ?></td>
                 </tr>
                 <?php endforeach; ?>
                 <?php if ($pages) : ?>
