@@ -1,4 +1,4 @@
-<style>
+<!-- <style>
 	#myDivToPrint{
 		/* height: 750px; */
 		width: 21cm;
@@ -12,8 +12,8 @@
 		}
 
 	}
-</style>
-<div id="myDivToPrint" style="">
+</style> -->
+<div id="myDivToPrint" style="height: 750px;">
 
 	<div style="text-align: center; padding-top: 10px;">
 

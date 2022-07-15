@@ -4644,6 +4644,76 @@ $(function() {
         })
     });
 
+    
+    /* WFH MANAGEMENT */
+
+    $("#searchwcman").on("keypress", function(e) {
+        if (e.keyCode == 13) {
+
+            searchwcman = $("#searchwcman").val();
+
+            wcmanpage = 1;
+
+            $.ajax(
+            {
+                url: "<?php echo WEB; ?>/lib/requests/wcman_request.php?sec=table",
+                data: "searchwcman=" + searchwcman,
+                type: "POST",
+                complete: function(){
+                    $("#loading").hide();
+                },
+                success: function(data) {
+                    $("#btnwcmanall").removeClass("invisible");
+                    $("#wcmandata").html(data);
+                    changeUrl('', '<?php echo WEB; ?>/wcmanan');
+                }
+            })
+        }
+    });
+
+    $("#btnwcman").on("click", function() {
+        
+        searchwcman = $("#searchwcman").val();
+
+        wcmanpage = 1;
+
+        $.ajax(
+        {
+            url: "<?php echo WEB; ?>/lib/requests/wcman_request.php?sec=table",
+            data: "searchwcman=" + searchwcman,
+            type: "POST",
+            complete: function(){
+                $("#loading").hide();
+            },
+            success: function(data) {
+                $("#btnwcmanall").removeClass("invisible");
+                $("#wcmandata").html(data);
+                changeUrl('', '<?php echo WEB; ?>/wcmanan');
+            }
+        })
+    });
+
+    $("#btnwcmanall").on("click", function() {
+
+        wcmanpage = 1;
+
+        $.ajax(
+        {
+            url: "<?php echo WEB; ?>/lib/requests/wcman_request.php?sec=table",
+            data: "clear_search=1",
+            type: "POST",
+            complete: function(){
+                $("#loading").hide();
+            },
+            success: function(data) {
+                $("#searchwcman").val("");
+                $("#btnwcmanall").addClass("invisible");
+                $("#wcmandata").html(data);
+                changeUrl('', '<?php echo WEB; ?>/wcmanan');
+            }
+        })
+    });
+
     /* ACCESS MANAGEMENT */
 
     $("#searchacman").on("keypress", function(e) {
