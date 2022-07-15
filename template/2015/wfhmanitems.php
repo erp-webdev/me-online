@@ -62,7 +62,7 @@
                 <?php foreach ($wciman_data as $key => $value) : ?>    
                 <tr class="trdata centertalign whitetext">
                     <td><?php echo $value['RefNbr']; ?></td>
-                    <td><?php echo $value['ClearanceType']; ?></td>
+                    <td><?php echo strtoupper($value['ClearanceType']); ?></td>
                     <td><?php echo date('Y-m-d', strtotime($value['DTRDate'])); ?></td>
                     <td><?php echo $value['DTRWorkHours']; ?></td>
                     <td><?php echo $value['FormStatus']; ?></td>
