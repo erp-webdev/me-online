@@ -53,14 +53,16 @@
             <table border="0" cellspacing="0" class="tdata width100per">
                 <?php if ($wciman_data) : ?>
                 <tr>
-                    <th width="30%">Reference</th>
-                    <th width="30%">DTR Date</th>
-                    <th width="20%">Work Hours</th>
-                    <th width="20%">Status</th>
+                    <th width="">Reference</th>
+                    <th width="">Type</th>
+                    <th width="">DTR Date</th>
+                    <th width="">Work Hours</th>
+                    <th width="">Status</th>
                 </tr>
                 <?php foreach ($wciman_data as $key => $value) : ?>    
                 <tr class="trdata centertalign whitetext">
                     <td><?php echo $value['RefNbr']; ?></td>
+                    <td><?php echo $value['ClearanceType']; ?></td>
                     <td><?php echo date('Y-m-d', strtotime($value['DTRDate'])); ?></td>
                     <td><?php echo $value['DTRWorkHours']; ?></td>
                     <td><?php echo $value['FormStatus']; ?></td>
