@@ -7,7 +7,7 @@ class WFHManagement extends mainsql{
         $sql = "SELECT A.*
                 FROM viewApplyWFHClearance A
                 WHERE A.EmpID = '$empid'
-                ORDER by A.RefNbr, A.DTRDATE DESC";
+                ORDER by A.DTRDATE DESC";
         
         return $this->get_row($sql, $dbname);
     }
