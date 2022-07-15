@@ -2274,7 +2274,6 @@ class mainsql {
         $dtr_day = date('d',strtotime($value['dteDTRDate']));
 
         $today = date('U');
-
        
         if((int)$dtr_day > 15){
             $periodfrom = strtotime(date('Y-m-16',strtotime($value['dteDTRDate'])));

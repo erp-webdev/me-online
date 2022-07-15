@@ -6,8 +6,9 @@
     <div class="leftsplashtext lefttalign"><?php include(TEMP."/menu.php"); ?></div>
     <div class="rightsplashtext lefttalign">
         <div id="mainapprovers" class="mainbody lefttalign whitetext">  
-            <b class="mediumtext lorangetext">WFH MANAGEMENT</b><br><br>                                
-            
+            <a href="<?php echo WEB; ?>/wfhman"><i class="mediumtext fa fa-arrow-left" style="color:#fff;opacity:.8;"></i></a>
+            <b class="mediumtext lorangetext">WFH MANAGEMENT</b>
+            <br><br>                                
             <?php /*
             <table class="width100per">
                 <tr>
