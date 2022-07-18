@@ -3175,10 +3175,10 @@
             $apppost['DBNAME'] = $_POST['dbname'];
 
             if ($doctype == 'WH'):
-                    $apppost['data'] = $_POST['data'];
-                    $reqtype = 10;
-                    $reqdesc = "WFH";
-                    $app_request = $mainsql->wh_action($apppost, 'approve');
+                $apppost['data'] = $_POST['data'];
+                $reqtype = 10;
+                $reqdesc = "WFH";
+                $app_request = $mainsql->wh_action($apppost, 'approve');
             elseif ($doctype == 'OT') :
                 $reqtype = 1;
                 $reqdesc = "Overtime";
@@ -5459,7 +5459,7 @@
 				?><h3 align="center">COE Request Failed! No Employee with the given Company ID found on the database.</h3><?php
 				exit(0);
 			} elseif (empty($coe_validation[0]['EmailAdd'])) {
-				?><h3 align="center">COE Request Failed! No Employee Email set on the database.</h3><?php
+				?><h3 align="center">COE Request Failed! Please contact your HR Business Partner to update your Email Address.</h3><?php
 				exit(0);
 			}
 			// end backend validation
