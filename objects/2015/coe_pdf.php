@@ -161,6 +161,8 @@
 		$pdf->AddPage();
 		$pdf->writeHTML($content);
 
+		exit;
+
 		ob_end_clean();
 		$file_attachment = $pdf->Output('CertificateOfEmployment.pdf', 'S');
 
