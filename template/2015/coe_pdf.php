@@ -104,7 +104,6 @@
                         include(TEMP.'/coe/approved-leave.php');
                         break;
                 }
-
                     
             ?>
 
