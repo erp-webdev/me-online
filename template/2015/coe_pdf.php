@@ -112,9 +112,7 @@
                 <span>HR Action No.: HRA2022-0001</span>
             </div> <!-- ref -->
             <div class="footer">
-                <p>25/F Alliance Global Tower, 36th Street corner 11th Avenue Uptown Bonifacio, Taguig City 1634 <br />
-        Trunkline: (632) 905-2900 • (632) 905-2800 <br />
-        www.megaworldcorp.com • Email: infodesk@megaworldcorp.com</p>
+                <p>25/F Alliance Global Tower, 36th Street corner 11th Avenue Uptown Bonifacio, Taguig City 1634 <br> Trunkline: (632) 905-2900 • (632) 905-2800 <br /> www.megaworldcorp.com • Email: infodesk@megaworldcorp.com</p>
             </div> <!-- footer -->
         </div> <!-- content -->
     </div> <!-- sub-page -->
