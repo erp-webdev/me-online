@@ -145,6 +145,7 @@
 		
 		ob_start();
 		include(TEMP.'/coe_pdf.php');
+		exit;
 		$content = ob_get_clean();
 
 		$pdf = new CoePdf(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
@@ -160,8 +161,6 @@
 		$pdf->SetFont('times');
 		$pdf->AddPage();
 		$pdf->writeHTML($content);
-
-		exit;
 
 		ob_end_clean();
 		$file_attachment = $pdf->Output('CertificateOfEmployment.pdf', 'S');
