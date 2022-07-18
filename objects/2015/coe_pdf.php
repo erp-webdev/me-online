@@ -145,7 +145,6 @@
 		
 		ob_start();
 		include(TEMP.'/coe_pdf.php');
-		exit;
 		$content = ob_get_clean();
 
 		$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
