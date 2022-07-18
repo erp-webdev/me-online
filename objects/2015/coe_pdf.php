@@ -8,44 +8,44 @@
 	use PHPMailer\PHPMailer\SMTP;
 	use PHPMailer\PHPMailer\Exception;
 
-	class CoePdf extends TCPDF {
-		public $company;
+	// class CoePdf extends TCPDF {
+	// 	public $company;
 
-		public function Footer()
-		{
+	// 	public function Footer()
+	// 	{
 
-			parent::Footer();
-			// $this->SetY(-13);
-			$this->SetFont( 'times', 'I', 8 );
-			$id = $_POST["id"];
-			$emp_comp = $this->company;
+	// 		parent::Footer();
+	// 		// $this->SetY(-13);
+	// 		$this->SetFont( 'times', 'I', 8 );
+	// 		$id = $_POST["id"];
+	// 		$emp_comp = $this->company;
 
-			$footer = '<div id="footer" style="position:absolute; bottom: 50px; text-align:center; width: 100%">';
+	// 		$footer = '<div id="footer" style="position:absolute; bottom: 50px; text-align:center; width: 100%">';
 				
-			if ((in_array($emp_comp, ['GLOBAL01', 'LGMI01'])) ) {
-				$footer .= '<p style="font-size: 8px; text-align: center;">Unit G, Ground Floor, 331 Building, 331 Sen. Gil Puyat Avenue, Barangay Bel-Air, Makati City 1200 • Tels (632) 5411979 / 8946345 <br />
-				<a href="www.globalcompanies.com.ph">www.globalcompanies.com.ph</a> • Email: <a href="globalonehr@globalcompanies.com.ph">globalonehr@globalcompanies.com.ph</a></p>';
+	// 		if ((in_array($emp_comp, ['GLOBAL01', 'LGMI01'])) ) {
+	// 			$footer .= '<p style="font-size: 8px; text-align: center;">Unit G, Ground Floor, 331 Building, 331 Sen. Gil Puyat Avenue, Barangay Bel-Air, Makati City 1200 • Tels (632) 5411979 / 8946345 <br />
+	// 			<a href="www.globalcompanies.com.ph">www.globalcompanies.com.ph</a> • Email: <a href="globalonehr@globalcompanies.com.ph">globalonehr@globalcompanies.com.ph</a></p>';
 
-			} elseif (($emp_comp == 'MEGA01')) {
+	// 		} elseif (($emp_comp == 'MEGA01')) {
 
-				$footer .= '<p style="font-size: 8px; text-align: center;">25/F Alliance Global Tower, 36th Street corner 11th Avenue Uptown Bonifacio, Taguig City 1634 <br />
-				Trunkline: (632) 905-2900 • (632) 905-2800 <br />
-				www.megaworldcorp.com • Email: infodesk@megaworldcorp.com</p>';
+	// 			$footer .= '<p style="font-size: 8px; text-align: center;">25/F Alliance Global Tower, 36th Street corner 11th Avenue Uptown Bonifacio, Taguig City 1634 <br />
+	// 			Trunkline: (632) 905-2900 • (632) 905-2800 <br />
+	// 			www.megaworldcorp.com • Email: infodesk@megaworldcorp.com</p>';
 
-			} elseif (($emp_comp == 'MCTI') ) {
-				$footer .= '<p style="font-size:8px; color: #005f2f; text-align: center;">Capitol Boulevard, Barangay Sto. Niño, City of San Fernando, Pampanga 2000 | Tels 045-963-1990<br />
-				www.capitaltownpampanga.com | Email info: info@capitaltownpampanga</p>';
+	// 		} elseif (($emp_comp == 'MCTI') ) {
+	// 			$footer .= '<p style="font-size:8px; color: #005f2f; text-align: center;">Capitol Boulevard, Barangay Sto. Niño, City of San Fernando, Pampanga 2000 | Tels 045-963-1990<br />
+	// 			www.capitaltownpampanga.com | Email info: info@capitaltownpampanga</p>';
 
-			} elseif (($emp_comp == 'ASIAAPMI') ) {
-					$footer .= '<p style="font-size:8px; color: #005f2f; text-align: center;">6/F One World Square, Upper McKinley Road, Taguig City, NCR Philippines, 1634<br />
-					Telefax No. 8524-4284 | wwww.asia-affinity.com</p>';
-			}
-			$footer .= '</div>';
+	// 		} elseif (($emp_comp == 'ASIAAPMI') ) {
+	// 				$footer .= '<p style="font-size:8px; color: #005f2f; text-align: center;">6/F One World Square, Upper McKinley Road, Taguig City, NCR Philippines, 1634<br />
+	// 				Telefax No. 8524-4284 | wwww.asia-affinity.com</p>';
+	// 		}
+	// 		$footer .= '</div>';
 
-			// $this->writeHTML($footer, false, true, false, true);
-			$this->Cell(0, 10, $footer, 0, false, 'L', 0, '', 0, false, 'T', 'M');
-		}
-	}
+	// 		// $this->writeHTML($footer, false, true, false, true);
+	// 		$this->Cell(0, 10, $footer, 0, false, 'L', 0, '', 0, false, 'T', 'M');
+	// 	}
+	// }
 
 
 	if ($logged == 1 && $_POST["send"] == "true" ) {
@@ -148,7 +148,7 @@
 		exit;
 		$content = ob_get_clean();
 
-		$pdf = new CoePdf(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+		$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 		$pdf->company = $emp_comp;
 		$pdf->Footer();
 
