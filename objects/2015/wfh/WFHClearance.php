@@ -69,7 +69,7 @@ class WFHClearance extends mainsql{
         }
 
         // check for applied coverage date
-        if($this->checkWFHDTR($params['empid'], $params['wfhc_from'], $params['wfhc_to']) <> 0){
+        if($this->checkWFHDTR($params['empid'], $params['wfhc_from'], $params['wfhc_to']) !== 0){
             echo '{"success": false, "error": "One of the dates has been applied and approved already."}';
             exit();
         }
