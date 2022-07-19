@@ -3608,6 +3608,16 @@ class mainsql {
         }
     }
 
+    function checkWFHDTR($empid, $from, $to)
+    {
+        $sql = "SELECT * FROM HRFrmApplyWFHClearanceItem 
+                WHERE DTRDate between '$from' and '$to'
+                AND FormStatus = 'APPROVED'";
+
+        $result = $this->get_numrow($sql);
+        return $result;
+    }
+
     function log_action($value, $action, $id = 0)
 	{
         $val = array();

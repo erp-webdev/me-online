@@ -6,7 +6,6 @@ class COE extends tbsql{
         
     }
 
-
 }
 
 ?>

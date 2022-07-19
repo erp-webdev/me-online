@@ -20,6 +20,7 @@
             switch ($_POST['btnwfhclearanceapply']) {
                 case 'Submit':
                     $params = [
+                        'empid' => $_POST['empid'],
                         'wfh_type' => $_POST['wfh_type'],
                         'wfhc_from' => strtotime($_POST['wfhc_from']),
                         'wfhc_to' => strtotime($_POST['wfhc_to']),

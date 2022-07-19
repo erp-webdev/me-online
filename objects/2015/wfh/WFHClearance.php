@@ -68,6 +68,11 @@ class WFHClearance extends mainsql{
             endif;
         }
 
+        // check for applied coverage date
+        if($this->checkWFHDTR($params['empid'], $params['wfhc_from'], $params['wfhc_to'])){
+            echo '{"success": false, "error": "One of the dates has been applied and approved already."}';
+            exit();
+        }
     }
 
     public function submit($params)
@@ -119,7 +124,7 @@ class WFHClearance extends mainsql{
 
     public function approve($params)
     {
-         $this->wfc_action($params, 'approved');
+        $this->wfc_action($params, 'approved');
         $this->createLog($params, 'add');
     }
 
