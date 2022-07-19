@@ -49,7 +49,7 @@ class AccessManagement extends tblsql{
                 AND CompanyDB = '$company_db'";
 
         $result = $this->get_row($sql);
-
+        var_dump($result); exit;
         return $result;
     }
 
