@@ -6,7 +6,7 @@ class AccessManagement extends tblsql{
     public function hasAccess($user_empid, $user_dbname, $company_db, $access)
     {
         $user_access = $this->userAccess($user_empid, $user_dbname, $company_db);
-        echo 'kesvs-----' . json_encode($user_access);
+        echo 'kesvs-----' . json_encode($user_empid);
         if(!count($user_access))
             return 0;
 
