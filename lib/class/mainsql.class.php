@@ -3615,7 +3615,10 @@ class mainsql {
                 AND FormStatus = 'APPROVED'";
 
         $result = $this->get_numrow($sql);
+
+        echo 'kevs--'; var_dump($result);
         return $result;
+
     }
 
     function log_action($value, $action, $id = 0)
