@@ -109,7 +109,7 @@
                                             <input type="button" id="btnsearchallads" name="btnsearchallads" value="View All" class="btnsearchallads smlbtn<?php if (!$_SESSION['searchads']) : ?> invisible<?php endif; ?>" />                                            
                                         </td>
                                         <td class="righttalign">
-                                            <?php if ($profile_level == 7 || $profile_level == 10 || $profile_idnum = '2016-06-0457') : ?>
+                                            <?php if ($profile_level == 7 || $profile_level == 10 || $accessman->hasAccess($profile_id, $profile_dbname, 'ads')) : ?>
                                             <input type="button" id="btnaddads" name="btnaddads" value="Create Ads" class="btnaddads smlbtn" />
                                             <?php endif; ?>
                                         </td>
