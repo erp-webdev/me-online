@@ -12,7 +12,7 @@
                         </div>
                         
                         <?php if ($profile_level == 7 || $profile_level == 9 || $profile_level == 10 || 
-                            $accessman->hasAccess($profile_id, $profile_dbname, 'ads')) : ?>
+                            $accessman->hasAccess($profile_id, $profile_dbname, $profile_comp, 'ads')) : ?>
                         <!-- CREATE ADS - BEGIN --> 
                         <div id="adadd" class="fadd" style="display: none;">
                             <div class="closebutton cursorpoint"><i class="fa fa-times-circle fa-3x redtext"></i></div>
@@ -99,17 +99,17 @@
                         <div class="leftsplashtext lefttalign"><?php include(TEMP."/menu.php"); ?></div>
                         <div class="rightsplashtext lefttalign">
                             <div id="mainads" class="mainbody lefttalign whitetext">  
-                                <b class="mediumtext lorangetext">ADS</b><br><br>                                
+                                <b class="mediumtext lorangetext">ADS <?php var_dump($profile_comp); ?></b><br><br>                                
                                 
                                 <table class="width100per">
                                     <tr>
-                                        <td><span class="fa fa-search"></span> <?php var_dump($accessman->hasAccess($profile_id, $profile_dbname, 'ads')); ?> Search by: 
+                                        <td><span class="fa fa-search"></span> Search by: 
                                             <input type="text" id="searchads" name="searchads" value="<?php echo $_SESSION['searchads'] ? $_SESSION['searchads'] : ''; ?>" placeholder="ads title" class="searchads smltxtbox" />&nbsp;
                                             <input type="button" id="btnsearchads" name="btnsearchads" value="Search" class="smlbtn btnsearchads" />
                                             <input type="button" id="btnsearchallads" name="btnsearchallads" value="View All" class="btnsearchallads smlbtn<?php if (!$_SESSION['searchads']) : ?> invisible<?php endif; ?>" />                                            
                                         </td>
                                         <td class="righttalign">
-                                            <?php if ($profile_level == 7 || $profile_level == 10 || $accessman->hasAccess($profile_id, $profile_dbname, 'ads')) : ?>
+                                            <?php if ($profile_level == 7 || $profile_level == 10 || $accessman->hasAccess($profile_id, $profile_dbname, '')) : ?>
                                             <input type="button" id="btnaddads" name="btnaddads" value="Create Ads" class="btnaddads smlbtn" />
                                             <?php endif; ?>
                                         </td>
