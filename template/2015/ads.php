@@ -11,7 +11,8 @@
                             </div>
                         </div>
                         
-                        <?php if ($profile_level == 7 || $profile_level == 9 || $profile_level == 10) : ?>
+                        <?php if ($profile_level == 7 || $profile_level == 9 || $profile_level == 10 || 
+                            $accessman->hasAccess($profile_id, $profile_dbname, 'ads')) : ?>
                         <!-- CREATE ADS - BEGIN --> 
                         <div id="adadd" class="fadd" style="display: none;">
                             <div class="closebutton cursorpoint"><i class="fa fa-times-circle fa-3x redtext"></i></div>
@@ -121,7 +122,7 @@
                                     <?php foreach ($ads_data as $key => $value) : ?>                                    
                                     <tr class="trdata centertalign">
                                         <td width="30%"<?php if ($key == 0) : ?> class="topborder"<?php endif; ?>><span attribute="<?php echo $value['activity_id']; ?>" attribute2="<?php echo $value['activity_title']; ?>" class="btnviewads"><img src="<?php echo WEB; ?>/uploads/<?php echo $value['activity_ads'] ? 'ads' : 'activity'; ?>/<?php echo $value['activity_filename']; ?>" class="activity_img cursorpoint" /></span></td>
-                                        <td width="70%" class="lefttalign<?php if ($key == 0) : ?> topborder<?php endif; ?>"><span class="btnviewads cursorpoint bold" attribute="<?php echo $value['activity_id']; ?>" attribute2="<?php echo $value['activity_title']; ?>"><?php echo $value['activity_title']; ?></span><?php if ($profile_level == 7 || $profile_level == 10) : ?><br><span class="btneditads cursorpoint" attribute="<?php echo $value['activity_id']; ?>">Edit</span> | <span class="btndelads cursorpoint" attribute="<?php echo $value['activity_id']; ?>">Delete</span><?php endif; ?></td>
+                                        <td width="70%" class="lefttalign<?php if ($key == 0) : ?> topborder<?php endif; ?>"><span class="btnviewads cursorpoint bold" attribute="<?php echo $value['activity_id']; ?>" attribute2="<?php echo $value['activity_title']; ?>"><?php echo $value['activity_title']; ?></span><?php if ($profile_level == 7 || $profile_level == 10 || $accessman->hasAccess($profile_id, $profile_dbname, 'ads')) : ?><br><span class="btneditads cursorpoint" attribute="<?php echo $value['activity_id']; ?>">Edit</span> | <span class="btndelads cursorpoint" attribute="<?php echo $value['activity_id']; ?>">Delete</span><?php endif; ?></td>
                                     </tr>
                                     <?php endforeach; ?>
                                     <?php if ($pages) : ?>
