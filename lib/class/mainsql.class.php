@@ -3616,7 +3616,6 @@ class mainsql {
 
         $result = $this->get_numrow($sql);
 
-        echo 'kevs--'; var_dump($result);
         return $result;
 
     }
