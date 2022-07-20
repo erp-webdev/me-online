@@ -38,7 +38,7 @@
             $wciman_data = $wfhman->getWfhClearanceItems($_GET['id'],$start, 5, $searchwciman, 0);
             $wciman_count = $wfhman->getWfhClearanceItems($_GET['id'], 0, 0, $searchwciman, 1);
             
-            $pages = $mainsql->pagination("wfhmanitems", $wciman_count, 5, 9, 0, 'comp=' . $_GET['comp'] . '&id='.$_GET['id']);
+            $pages = $mainsql->pagination("wfhmanitems", $wciman_count, 5, 5, 0, 'comp=' . $_GET['comp'] . '&id='.$_GET['id']);
             
         else :
         
