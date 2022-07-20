@@ -4792,7 +4792,7 @@ $(function() {
 
         workhours = $(this).parent('tr');
        // find('#workhours').val();
-        formstatus = $(this).parent('tr').find('#formstatus').val();
+        formstatus = $(this).parents('tr').find('#formstatus').val();
 
         $.ajax(
         {
