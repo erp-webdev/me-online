@@ -12,7 +12,7 @@ class WFHManagement extends mainsql{
     //     return $this->get_row($sql, $dbname);
     // }
 
-    function getWfhClearanceItems($start = 0, $limit = 0, $search = NULL, $count = 0)
+    function getWfhClearanceItems($id, $start = 0, $limit = 0, $search = NULL, $count = 0)
 	{
 		$sql = "SELECT [outer].* FROM ( ";
         $sql .= " SELECT ROW_NUMBER() OVER(ORDER BY DTRDATE ASC) as ROW_NUMBER, ";
@@ -21,6 +21,7 @@ class WFHManagement extends mainsql{
                     FROM viewApplyWFHClearance ";
         $sql .= " WHERE EmpID != '' ";
         if ($search != NULL) : $sql .= " AND (EmpID = '".$search."' OR LName LIKE '%".$search."%' OR FName LIKE '%".$search."%') "; endif;
+        $sql .= " AND EmpID = '$id'";
         $sql .= ") AS [outer] ";
         if ($limit) :
             $sql .= " WHERE [outer].[ROW_NUMBER] BETWEEN ".(intval($start) + 1)." AND ".intval($start + $limit)." ORDER BY [outer].[ROW_NUMBER] ";
