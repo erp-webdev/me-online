@@ -71,7 +71,16 @@
                         <?php   echo $value['DTRWorkHours'];  ?>
                         <?php endif; ?>
                     </td>
-                    <td><?php echo $value['FormStatus']; ?></td>
+                    <td>
+                        <?php if($value['FormStatus'] == 'APPROVED') : ?>
+                        <select name="formstatus" id="formstatus" class="width95 smltxtbox">
+                            <option value="APPROVED" <?php if($value['FormStatus'] == 'APPROVED') echo 'selected'; ?> >APPROVED</option>
+                            <option value="CANCELLED" <?php if($value['FormStatus'] == 'CANCELLED') echo 'selected'; ?>>CANCELLED</option>
+                        </select>
+                        <?php else : ?>
+                        <?php   echo $value['FormStatus'];  ?>
+                        <?php endif; ?>
+                    </td>
                 </tr>
                 <?php endforeach; ?>
 
