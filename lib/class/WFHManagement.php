@@ -26,7 +26,7 @@ class WFHManagement extends mainsql{
         if ($limit) :
             $sql .= " WHERE [outer].[ROW_NUMBER] BETWEEN ".(intval($start) + 1)." AND ".intval($start + $limit)." ORDER BY [outer].[ROW_NUMBER] ";
         endif;
-        
+        echo $sql; exit;
 		if ($count) : $result = $this->get_numrow($sql);
         else : $result = $this->get_row($sql);
         endif;
