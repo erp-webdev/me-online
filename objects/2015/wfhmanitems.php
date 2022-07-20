@@ -10,7 +10,7 @@
             # PAGINATION
             $page = isset($_GET["page"]) ? (int)$_GET["page"] : 1 ;
             
-            $start = APPR_NUM_ROWS * ($page - 1);
+            $start = 5 * ($page - 1);
 
             //*********************** MAIN CODE START **********************\\
 
