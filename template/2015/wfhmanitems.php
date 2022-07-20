@@ -71,7 +71,7 @@
 
                     <?php if ($pages) : ?>
                     <tr>
-                        <td colspan="4" class="centertalign"><?php echo $pages; ?></td>
+                        <td colspan="5" class="centertalign"><?php echo $pages; ?></td>
                     </tr>
                     <?php endif; ?>
                     
