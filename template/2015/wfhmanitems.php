@@ -69,6 +69,7 @@
                         <input type="number" class="" id="workhours" name="workhours">
                         <?php else : ?>
                         <?php   echo $value['DTRWorkHours'];  ?>
+                        <?php endif; ?>
                     </td>
                     <td><?php echo $value['FormStatus']; ?></td>
                 </tr>
