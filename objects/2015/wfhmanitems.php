@@ -34,10 +34,10 @@
                 $_POST['searchwciman'] = NULL;
             }                              
 
-            $wciman_data = $wfhman->getWfhClearanceItems($_GET['id'],$start, REQ_NUM_ROWS, $searchwciman, 0);
+            $wciman_data = $wfhman->getWfhClearanceItems($_GET['id'],$start, APPR_NUM_ROWS, $searchwciman, 0);
             $wciman_count = $wfhman->getWfhClearanceItems($_GET['id'], 0, 0, $searchwciman, 1);
             
-            $pages = $mainsql->pagination("wfhmanitems", $wciman_count, REQ_NUM_ROWS, 9);
+            $pages = $mainsql->pagination("wfhmanitems", $wciman_count, APPR_NUM_ROWS, 9);
             
         else :
         
