@@ -3618,8 +3618,8 @@ class mainsql {
                 A.DTRDate between '$from' and '$to'
                 AND A.FormStatus <> 'CANCELLED'";
 
-        $result = $this->get_row($sql);
-        var_dump($result);exit;
+        $result = $this->get_row($sql, $db);
+        var_dump($sql);exit;
         return $result;
 
     }
