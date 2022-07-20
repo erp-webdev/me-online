@@ -4790,13 +4790,14 @@ $(function() {
         $("#loading").show();
         $(this).html('<i class="fa fa-spin fa-spinner"></i>');
 
-        workhours = $(this).parent('tr').find('#workhours').val();
+        workhours = $(this).parent('tr');
+       # find('#workhours').val();
         formstatus = $(this).parent('tr').find('#formstatus').val();
 
         $.ajax(
         {
-            url: "<?php echo WEB; ?>/lib/requests/wciman_request.php?sec=update",
-            data: "workhours=" + workhours + "&formstatus=" + formstatus,
+            url: "<?php echo WEB; ?>/lib/requests/wcman_request.php?sec=update-item",
+            data: "workhours=" + workhours + "&formstatus=" + formstatus + "&id=" + this.value,
             type: "POST",
             complete: function(){
                 $(this).html('<i class="fa fa-save"></i>');
