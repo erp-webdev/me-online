@@ -3610,6 +3610,9 @@ class mainsql {
 
     function checkWFHDTR($empid, $from, $to)
     {
+        $from  = date('Y-m-d', strtotime($from));
+        $to  = date('Y-m-d', strtotime($to));
+        
         $sql = "SELECT * 
                 FROM HRFrmApplyWFHClearanceItem A
                 LEFT JOIN HRFrmApplyWFHClearance B ON A.ReqNbr = B.RefNbr
