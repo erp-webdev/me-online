@@ -70,20 +70,6 @@
                         <?php else : ?>
                         <?php   echo $value['DTRWorkHours'];  ?>
                         <?php endif; ?>
-                        <script type="text/javascript">// slider
-                            $("#workhours").spinner({
-                                step: 0.5,
-                                spin: function( event, ui ) {
-                                if ( ui.value > <?php echo $hours; ?> ) {
-                                    $(this).spinner( "value", <?php echo $hours; ?> );
-                                    return false;
-                                } else if ( ui.value < 0 ) {
-                                    $(this).spinner( "value", 0 );
-                                    return false;
-                                }
-                                }
-                            });
-                        </script>
                     </td>
                     <td><?php echo $value['FormStatus']; ?></td>
                 </tr>
