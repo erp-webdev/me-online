@@ -66,7 +66,7 @@
                     <td><?php echo date('Y-m-d', strtotime($value['DTRDate'])); ?></td>
                     <td>
                         <?php if($value['FormStatus'] == 'APPROVED') : ?>
-                        <input type="number" class="" id="workhours" name="workhours">
+                        <input type="number" id="workhours" name="workhours" value="<?php   echo $value['DTRWorkHours'];  ?>" min="0" max="9" step="0.5">
                         <?php else : ?>
                         <?php   echo $value['DTRWorkHours'];  ?>
                         <?php endif; ?>
