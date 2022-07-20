@@ -3610,9 +3610,13 @@ class mainsql {
 
     function checkWFHDTR($empid, $from, $to)
     {
-        $sql = "SELECT * FROM HRFrmApplyWFHClearanceItem 
-                WHERE DTRDate between '$from' and '$to'
-                AND FormStatus = 'APPROVED'";
+        $sql = "SELECT * 
+                FROM HRFrmApplyWFHClearanceItem A
+                LEFT JOIN HRFrmApplyWFHClearance B ON A.ReqNbr = B.RefNbr
+                LEFT JOIN Approval C ON A.ReqNbr = C.Reference
+                WHERE B.EmpID = '$empid' AND C.Approved <> 3  
+                A.DTRDate between '$from' and '$to'
+                AND A.FormStatus <> 'CANCELLED'";
 
         $result = $this->get_numrow($sql);
 
