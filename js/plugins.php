@@ -4788,7 +4788,7 @@ $(function() {
         var formstatus = '';
 
         $("#loading").show();
-        $(this).hide();
+        $(this).html('<i class="fa fa-spin fa-spinner"></i>');
 
         workhours = $(this).parent('td').find('#workhours').val();
         formstatus = $(this).parent('td').find('#formstatus').val();
@@ -4799,10 +4799,11 @@ $(function() {
             data: "workhours=" + workhours + "&formstatus=" + formstatus,
             type: "POST",
             complete: function(){
+                $(this).html('<i class="fa fa-save"></i>');
                 $("#loading").hide();
             },
             success: function(data) {
-                $(this).show();
+                $(this).html('<i class="fa fa-save"></i>');
             }
         })
         });
