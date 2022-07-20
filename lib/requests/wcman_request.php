@@ -24,10 +24,12 @@
         case 'update-item':
 
             echo "{success:true}";
+
             break;
+
         default:
             echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/login'</script>";
-
+            break;
     }
 
 ?>
