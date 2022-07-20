@@ -3614,7 +3614,7 @@ class mainsql {
                 FROM HRFrmApplyWFHClearanceItem A
                 LEFT JOIN HRFrmApplyWFHClearance B ON A.ReqNbr = B.RefNbr
                 LEFT JOIN Approval C ON A.ReqNbr = C.Reference
-                WHERE B.EmpID = '$empid' AND C.Approved <> 3  
+                WHERE B.EmpID = '$empid' AND C.Approved <> 3  AND
                 A.DTRDate between '$from' and '$to'
                 AND A.FormStatus <> 'CANCELLED'";
 
