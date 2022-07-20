@@ -15,7 +15,7 @@ class WFHManagement extends mainsql{
     function getWfhClearanceItems($id, $start = 0, $limit = 0, $search = NULL, $count = 0)
 	{
 		$sql = "SELECT [outer].* FROM ( ";
-        $sql .= " SELECT ROW_NUMBER() OVER(ORDER BY DTRDATE ASC) as ROW_NUMBER, ";
+        $sql .= " SELECT ROW_NUMBER() OVER(ORDER BY DTRDATE DESC) as ROW_NUMBER, ";
         $sql .= " EmpID, FName, MName, LName, DB_NAME() as DBNAME, DeptDesc, FullName, 
                     RefNbr, ClearanceType, DTRDate, FormStatus, DTRWorkHours, WorkHours 
                     FROM viewApplyWFHClearance ";
