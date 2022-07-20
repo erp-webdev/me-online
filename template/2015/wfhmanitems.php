@@ -64,7 +64,12 @@
                     <td><?php echo $value['RefNbr']; ?></td>
                     <td><?php echo strtoupper($value['ClearanceType']); ?></td>
                     <td><?php echo date('Y-m-d', strtotime($value['DTRDate'])); ?></td>
-                    <td><?php echo $value['DTRWorkHours']; ?></td>
+                    <td>
+                        <?php if($value['FormStatus'] == 'APPROVED') : ?>
+                        <input type="number" class="" id="workhours" name="workhours">
+                        <?php else : ?>
+                        <?php   echo $value['DTRWorkHours'];  ?>
+                    </td>
                     <td><?php echo $value['FormStatus']; ?></td>
                 </tr>
                 <?php endforeach; ?>
