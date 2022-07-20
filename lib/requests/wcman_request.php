@@ -24,7 +24,7 @@
         case 'update-item':
 
             echo "{success:true}";
-            exit();
+            exit;
 
             break;
 
