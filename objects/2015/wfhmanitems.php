@@ -37,8 +37,8 @@
             $wciman_data = $wfhman->getWfhClearanceItems($_GET['id'],$start, REQ_NUM_ROWS, $searchwciman, 0);
             $wciman_count = $wfhman->getWfhClearanceItems($_GET['id'],0, 0, $searchwciman, 1);
 
-            $pages = $mainsql->pagination("wfhman", $wciman_count, APPR_NUM_ROWS, 9);
-        
+            $pages = $mainsql->pagination("wfhmanitems", $wciman_count, APPR_NUM_ROWS, 9);
+            
         else :
         
             echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/login'</script>";    

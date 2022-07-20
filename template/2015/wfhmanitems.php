@@ -68,11 +68,13 @@
                     <td><?php echo $value['FormStatus']; ?></td>
                 </tr>
                 <?php endforeach; ?>
-                <?php if ($pages) : ?>
-                <tr>
-                    <td colspan="4" class="centertalign"><?php echo $pages; ?></td>
-                </tr>
-                <?php endif; ?>
+
+                    <?php if ($pages) : ?>
+                    <tr>
+                        <td colspan="4" class="centertalign"><?php echo $pages; ?></td>
+                    </tr>
+                    <?php endif; ?>
+                    
                 <?php else : ?>
                 <tr>
                     <td class="bold centertalign noborder"><br><br>No available WFH Clearance</td>
