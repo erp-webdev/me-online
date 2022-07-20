@@ -3686,7 +3686,7 @@ class mainsql {
 
 	function pagination($section, $record, $limit, $range = 9, $idnum = 0) {
 
-        echo $section . '----' . $record; exit;
+        echo $section . '----' . $limit; exit;
         // $paged - number of the current page
         global $paged;
         $web_root = ROOT;
