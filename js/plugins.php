@@ -4783,15 +4783,15 @@ $(function() {
         })
     });
 
-    $("#wfhciupdate").on("click", function() {
+    $("#wfhciupdate").on("click", function(event) {
         var workhours = 0; 
         var formstatus = '';
 
         $("#loading").show();
-        $(this).html('<i class="fa fa-spin fa-spinner"></i>');
+        $(event).html('<i class="fa fa-spin fa-spinner"></i>');
 
-        workhours = $(this).parent('td').find('#workhours').val();
-        formstatus = $(this).parent('td').find('#formstatus').val();
+        workhours = $(event).parent('td').find('#workhours').val();
+        formstatus = $(event).parent('td').find('#formstatus').val();
 
         $.ajax(
         {
@@ -4799,11 +4799,11 @@ $(function() {
             data: "workhours=" + workhours + "&formstatus=" + formstatus,
             type: "POST",
             complete: function(){
-                $(this).html('<i class="fa fa-save"></i>');
+                $(event).html('<i class="fa fa-save"></i>');
                 $("#loading").hide();
             },
             success: function(data) {
-                $(this).html('<i class="fa fa-save"></i>');
+                $(event).html('<i class="fa fa-save"></i>');
             }
         })
         });
