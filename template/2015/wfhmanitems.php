@@ -58,6 +58,7 @@
                     <th width="">DTR Date</th>
                     <th width="">Work Hours</th>
                     <th width="">Status</th>
+                    <th width="">Action</th>
                 </tr>
                 <?php foreach ($wciman_data as $key => $value) : ?>    
                 <tr class="trdata centertalign whitetext">
@@ -79,6 +80,11 @@
                         </select>
                         <?php else : ?>
                         <?php   echo $value['FormStatus'];  ?>
+                        <?php endif; ?>
+                    </td>
+                    <td>
+                        <?php if($value['FormStatus'] == 'APPROVED') : ?>
+                        <button type="submit" id="wfhciupdate" name="wfhciupdate" value="<?php  echo $value['SeqID'];  ?>"><i class="fa fa-save"></i></button>
                         <?php endif; ?>
                     </td>
                 </tr>
