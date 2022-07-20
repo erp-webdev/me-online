@@ -4790,8 +4790,8 @@ $(function() {
         $("#loading").show();
         $(event).html('<i class="fa fa-spin fa-spinner"></i>');
 
-        workhours = $(event).parent('td').find('#workhours').val();
-        formstatus = $(event).parent('td').find('#formstatus').val();
+        workhours = $(event).parent('tr').find('#workhours').val();
+        formstatus = $(event).parent('tr').find('#formstatus').val();
 
         $.ajax(
         {
