@@ -33,6 +33,15 @@ class WFHManagement extends mainsql{
 		return $result;
 	}
 
+    function updateItem($id, $workhours, $formstatus)
+    {
+        $sql = "UPDATE HRFRMApplyWFHClearanceItem SET 
+            WorkHours = '$workhours', FormStatus = '$formstatus' 
+            WHERE SeqID = $id";
+
+        return $this->get_execute($sql);
+    }
+
 
 
 }
