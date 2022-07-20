@@ -4791,7 +4791,7 @@ $(function() {
         $(this).html('<i class="fa fa-spin fa-spinner"></i>');
 
         workhours = $(this).parent('tr');
-       # find('#workhours').val();
+       // find('#workhours').val();
         formstatus = $(this).parent('tr').find('#formstatus').val();
 
         $.ajax(
