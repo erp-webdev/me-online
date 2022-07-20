@@ -4783,6 +4783,30 @@ $(function() {
         })
     });
 
+    $("#wfhciupdate").on("click", function() {
+        var workhours = 0; 
+        var formstatus = '';
+
+        $("#loading").show();
+        $(this).hide();
+
+        workhours = $(this).parent('td').find('#workhours').val();
+        formstatus = $(this).parent('td').find('#formstatus').val();
+
+        $.ajax(
+        {
+            url: "<?php echo WEB; ?>/lib/requests/wciman_request.php?sec=update",
+            data: "workhours=" + workhours + "&formstatus=" + formstatus,
+            type: "POST",
+            complete: function(){
+                $("#loading").hide();
+            },
+            success: function(data) {
+                $(this).show();
+            }
+        })
+        });
+
     /* ACCESS MANAGEMENT */
 
     $("#searchacman").on("keypress", function(e) {
