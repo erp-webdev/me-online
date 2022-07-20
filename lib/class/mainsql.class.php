@@ -3619,7 +3619,7 @@ class mainsql {
                 AND A.FormStatus <> 'CANCELLED'";
 
         $result = $this->get_row($sql);
-        var_dump($result); exit;
+        var_dump($sql); exit;
         return $result;
 
     }
