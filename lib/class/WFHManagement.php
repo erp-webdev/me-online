@@ -2,6 +2,16 @@
 
 class WFHManagement extends mainsql{
 
+    function getWfhClearanceItems($empid, $dbname)
+    {
+        $sql = "SELECT A.*
+                FROM viewApplyWFHClearance A
+                WHERE A.EmpID = '$empid'
+                ORDER by A.DTRDATE DESC";
+        
+        return $this->get_row($sql, $dbname);
+    }
+
     function getWfhClearanceItems($start = 0, $limit = 0, $search = NULL, $count = 0)
 	{
 		$sql = "SELECT [outer].* FROM ( ";
