@@ -3684,7 +3684,7 @@ class mainsql {
 
     # MISCELLEANNOUS
 
-	function pagination($section, $record, $limit, $range = 9, $idnum = 0) {
+	function pagination($section, $record, $limit, $range = 9, $idnum = 0, $get = NULL) {
 
         // $paged - number of the current page
         global $paged;
@@ -3709,9 +3709,9 @@ class mainsql {
 
             // On the first page, don't put the First page link
             if($paged != 1) {
-                $pagetxt .= "<a href='".$web_root."/".$section."/page/1".($idnum ? "?id=".$idnum : "")."' class='whitetext nodecor'><i class='fa fa-lg fa-angle-double-left'></i>&nbsp;&nbsp;&nbsp;</a>";
+                $pagetxt .= "<a href='".$web_root."/".$section."/page/1".($idnum ? "?id=".$idnum : (!empty($get) ? "?" . $get : ''))."' class='whitetext nodecor'><i class='fa fa-lg fa-angle-double-left'></i>&nbsp;&nbsp;&nbsp;</a>";
                 $prev_var = $_GET['page'] ? $_GET['page'] - 1 : "0"; //previous page_num
-                $pagetxt .= "<a href='".$web_root."/".$section."/page/".$prev_var."".($idnum ? "?id=".$idnum : "")."' class='whitetext nodecor'>Previous&nbsp;&nbsp;&nbsp;</a>";
+                $pagetxt .= "<a href='".$web_root."/".$section."/page/".$prev_var."".($idnum ? "?id=".$idnum : (!empty($get) ? "?" . $get : ''))."' class='whitetext nodecor'>Previous&nbsp;&nbsp;&nbsp;</a>";
             }
 
             // We need the sliding effect only if there are more pages than is the sliding range
@@ -3719,7 +3719,7 @@ class mainsql {
                 // When closer to the beginning
                 if($paged < $range) {
                     for($i = 1; $i <= ($range + 1); $i++) {
-                        $pagetxt .= "<a href='".$web_root."/".$section."/page/".$i."".($idnum ? "?id=".$idnum : "")."' class='nodecor'>";
+                        $pagetxt .= "<a href='".$web_root."/".$section."/page/".$i."".($idnum ? "?id=".$idnum : (!empty($get) ? "?" . $get : ''))."' class='nodecor'>";
                         if($i==$paged) $pagetxt .= "<div class = 'pageactive dgraytext'>".$i."</div>";
                         else $pagetxt .= "<div class = 'pagelink whitetext'>".$i."</div>";
                         $pagetxt .= "</a>";
@@ -3728,7 +3728,7 @@ class mainsql {
                 // When closer to the end
                 elseif($paged >= ($max_page - ceil(($range/2)))) {
                     for($i = $max_page - $range; $i <= $max_page; $i++) {
-                        $pagetxt .= "<a href='".$web_root."/".$section."/page/".$i."".($idnum ? "?id=".$idnum : "")."' class='nodecor'>";
+                        $pagetxt .= "<a href='".$web_root."/".$section."/page/".$i."".($idnum ? "?id=".$idnum : (!empty($get) ? "?" . $get : ''))."' class='nodecor'>";
                         if($i==$paged) $pagetxt .= "<div class = 'pageactive dgraytext'>".$i."</div>";
                         else $pagetxt .= "<div class = 'pagelink whitetext'>".$i."</div>";
                         $pagetxt .= "</a>";
@@ -3737,7 +3737,7 @@ class mainsql {
                 // Somewhere in the middle
                 elseif($paged >= $range && $paged < ($max_page - ceil(($range/2)))) {
                     for($i = ($paged - ceil($range/2)); $i <= ($paged + ceil(($range/2))); $i++) {
-                        $pagetxt .= "<a href='".$web_root."/".$section."/page/".$i."".($idnum ? "?id=".$idnum : "")."' class='nodecor'>";
+                        $pagetxt .= "<a href='".$web_root."/".$section."/page/".$i."".($idnum ? "?id=".$idnum : (!empty($get) ? "?" . $get : ''))."' class='nodecor'>";
                         if($i==$paged) $pagetxt .= "<div class = 'pageactive dgraytext'>".$i."</div>";
                         else $pagetxt .= "<div class = 'pagelink whitetext'>".$i."</div>";
                         $pagetxt .= "</a>";
@@ -3747,7 +3747,7 @@ class mainsql {
             // Less pages than the range, no sliding effect needed
             else {
                 for($i = 1; $i <= $max_page; $i++) {
-                    $pagetxt .= "<a href='".$web_root."/".$section."/page/".$i."".($idnum ? "?id=".$idnum : "")."' class='nodecor'>";
+                    $pagetxt .= "<a href='".$web_root."/".$section."/page/".$i."".($idnum ? "?id=".$idnum : (!empty($get) ? "?" . $get : ''))."' class='nodecor'>";
                     if($i==$paged) $pagetxt .= "<div class = 'pageactive dgraytext'>".$i."</div>";
                     else $pagetxt .= "<div class = 'pagelink whitetext'>".$i."</div>";
                     $pagetxt .= "</a>";
@@ -3758,8 +3758,8 @@ class mainsql {
             // On the last page, don't put the Last page link
             if($paged != $max_page) {
                 $next_var= $_GET['page'] ? $_GET['page'] + 1 : "2"; //next page_num
-                $pagetxt .= "<a href='".$web_root."/".$section."/page/".$next_var."".($idnum ? "?id=".$idnum : "")."' class = 'whitetext nodecor'>&nbsp;&nbsp;&nbsp;Next</a>";
-                $pagetxt .= "<a href='".$web_root."/".$section."/page/".$max_page."".($idnum ? "?id=".$idnum : "")."' class = 'whitetext nodecor'>&nbsp;&nbsp;&nbsp;<i class='fa fa-lg fa-angle-double-right'></i></a>";
+                $pagetxt .= "<a href='".$web_root."/".$section."/page/".$next_var."".($idnum ? "?id=".$idnum : (!empty($get) ? "?" . $get : ''))."' class = 'whitetext nodecor'>&nbsp;&nbsp;&nbsp;Next</a>";
+                $pagetxt .= "<a href='".$web_root."/".$section."/page/".$max_page."".($idnum ? "?id=".$idnum : (!empty($get) ? "?" . $get : ''))."' class = 'whitetext nodecor'>&nbsp;&nbsp;&nbsp;<i class='fa fa-lg fa-angle-double-right'></i></a>";
             }
         }
 
