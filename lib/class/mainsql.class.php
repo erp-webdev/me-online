@@ -3618,8 +3618,7 @@ class mainsql {
                 DATEDIFF(second,{d '1970-01-01'},A.DTRDate) between '$from' and '$to'
                 AND A.FormStatus <> 'CANCELLED'";
 
-        $result = $this->get_row($sql, $db);
-        var_dump($sql);exit;
+        $result = $this->get_numrow($sql, $db);
         return $result;
 
     }
