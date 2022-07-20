@@ -3610,15 +3610,12 @@ class mainsql {
 
     function checkWFHDTR($empid, $from, $to)
     {
-        $from  = date('Y-m-d', strtotime($from));
-        $to  = date('Y-m-d', strtotime($to));
-        
         $sql = "SELECT * 
                 FROM HRFrmApplyWFHClearanceItem A
                 LEFT JOIN HRFrmApplyWFHClearance B ON A.ReqNbr = B.RefNbr
                 LEFT JOIN Approval C ON A.ReqNbr = C.Reference
                 WHERE B.EmpID = '$empid' AND C.Approved <> 3  AND
-                A.DTRDate between '$from' and '$to'
+                DATEDIFF(second,{d '1970-01-01'},A.DTRDate) between '$from' and '$to'
                 AND A.FormStatus <> 'CANCELLED'";
 
         $result = $this->get_row($sql, $db);
