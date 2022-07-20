@@ -17,7 +17,7 @@ class WFHManagement extends mainsql{
 		$sql = "SELECT [outer].* FROM ( ";
         $sql .= " SELECT ROW_NUMBER() OVER(ORDER BY DTRDATE ASC) as ROW_NUMBER, ";
         $sql .= " EmpID, FName, MName, LName, DB_NAME() as DBNAME, DeptDesc,
-                    RefNbr, ClearanceType, DTRDate, FormStatus, DTRWorkHours, WorkHours, 
+                    RefNbr, ClearanceType, DTRDate, FormStatus, DTRWorkHours, WorkHours 
                     FROM viewApplyWFHClearance ";
         $sql .= " WHERE EmpID != '' ";
         if ($search != NULL) : $sql .= " AND (EmpID = '".$search."' OR LName LIKE '%".$search."%' OR FName LIKE '%".$search."%') "; endif;
