@@ -35,8 +35,9 @@
             }                              
 
             $wciman_data = $wfhman->getWfhClearanceItems($_GET['id'], $_GET['comp']);
+            $wciman_count = $wfhman->getWfhClearanceItems($_GET['id'], $_GET['comp']);
 
-            // $pages = $mainsql->pagination("wfhman", $wciman_count, APPR_NUM_ROWS, 9);
+            $pages = $mainsql->pagination("wfhman", $wciman_count, APPR_NUM_ROWS, 9);
         
         else :
         
