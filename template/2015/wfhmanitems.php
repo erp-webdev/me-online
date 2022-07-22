@@ -84,7 +84,7 @@
                     </td>
                     <td>
                         <?php if($value['FormStatus'] == 'APPROVED') : ?>
-                        <button type="submit" id="wfhciupdate" name="wfhciupdate" value="<?php  echo $value['SeqID'];  ?>"><i class="fa fa-save"></i></button><i class="fa fa-check" style="color:green"></i>
+                        <button type="submit" id="wfhciupdate" name="wfhciupdate" value="<?php  echo $value['SeqID'];  ?>"><i class="fa fa-save"></i></button><i class="fa fa-check-o" style="color:green"></i>
                         <?php endif; ?>
                     </td>
                 </tr>
