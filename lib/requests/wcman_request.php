@@ -23,8 +23,7 @@
         case 'update-item':
 
             $accessman->updateItem($_POST['id'], $_POST['workhours'], $_POST['formstatus']);
-
-            echo json_encode((object)['success' => true]);
+            echo true;
             exit;
 
             break;
