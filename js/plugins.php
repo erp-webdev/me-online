@@ -4783,7 +4783,7 @@ $(function() {
         })
     });
 
-    $('button[name="wfhciupdate"]').on("click", function() {
+    $('button[name="wfhciupdate[]"]').on("click", function() {
         var workhours = 0; 
         var formstatus = '';
         var btn = this;
