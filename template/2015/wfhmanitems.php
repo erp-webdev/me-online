@@ -86,7 +86,7 @@
                         <?php if($value['FormStatus'] == 'APPROVED') : ?>
                         <button type="submit" id="wfhciupdate" name="wfhciupdate" value="<?php  echo $value['SeqID'];  ?>"><i class="fa fa-save"></i></button>
                             <i id="updated-success" class="fa fa-check" style="color:green; display:none"></i>
-                            <i id="updated-error" class="fa fa-x" style="color:red; "></i>
+                            <i id="updated-error" class="fa fa-wrong" style="color:red; "></i>
                         <?php endif; ?>
                     </td>
                 </tr>
