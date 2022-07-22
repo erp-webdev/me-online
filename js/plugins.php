@@ -4802,10 +4802,13 @@ $(function() {
             type: "POST",
             complete: function(data){
                 $(btn).html('<i class="fa fa-save"></i>');
-                $(btn).parents('td').find('#updated').show();
                 $("#loading").hide();
             },
             success: function(data) {
+                $(btn).html('<i class="fa fa-save"></i>');
+                $(btn).parents('td').find('#updated').show();
+            },
+            error: function(data){
                 $(btn).html('<i class="fa fa-save"></i>');
                 $(btn).parents('td').find('#updated').show();
             }
