@@ -4806,7 +4806,7 @@ $(function() {
                 $("#loading").hide();
             },
             success: function(data) {
-                if(data.success){
+                if(data){
                     $(btn).html('<i class="fa fa-save"></i>');
                     $(btn).parents('td').find('#updated-success').show();
                 }else{
