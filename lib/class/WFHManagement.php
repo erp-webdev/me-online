@@ -39,8 +39,6 @@ class WFHManagement extends mainsql{
             WorkHours = '$workhours', FormStatus = '$formstatus' 
             WHERE SeqID = $id";
 
-        echo $sql; exit;
-
         return $this->get_execute($sql);
     }
 
