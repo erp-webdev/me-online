@@ -4789,22 +4789,25 @@ $(function() {
         var btn = this;
 
         $("#loading").show();
-        $(this).html('<i class="fa fa-spin fa-spinner"></i>');
+        $(btn).html('<i class="fa fa-spin fa-spinner"></i>');
+        $(btn).parents('td').find('#updated').hide();
 
-        workhours = $(this).parents('tr').find('#workhours').val();
-        formstatus = $(this).parents('tr').find('#formstatus').val();
+        workhours = $(btn).parents('tr').find('#workhours').val();
+        formstatus = $(btn).parents('tr').find('#formstatus').val();
 
         $.ajax(
         {
             url: "<?php echo WEB; ?>/lib/requests/wcman_request.php?sec=update-item",
-            data: "workhours=" + workhours + "&formstatus=" + formstatus + "&id=" + this.value,
+            data: "workhours=" + workhours + "&formstatus=" + formstatus + "&id=" + btn.value,
             type: "POST",
             complete: function(data){
                 $(btn).html('<i class="fa fa-save"></i>');
+                $(btn).parents('td').find('#updated').show();
                 $("#loading").hide();
             },
             success: function(data) {
                 $(btn).html('<i class="fa fa-save"></i>');
+                $(btn).parents('td').find('#updated').show();
             }
         })
         });
