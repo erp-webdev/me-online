@@ -19,10 +19,12 @@
     $mainsql = new mainsql;
     $accessman = new WFHManagement;
 
+    $accessman->updateItem($_POST['id'], $_POST['workhours'], $_POST['formstatus']);
+
     switch ($sec) {
 
         case 'update-item':
-            
+
             $accessman->updateItem($_POST['id'], $_POST['workhours'], $_POST['formstatus']);
 
             echo "{success:true}";
