@@ -4790,7 +4790,8 @@ $(function() {
 
         $("#loading").show();
         $(btn).html('<i class="fa fa-spin fa-spinner"></i>');
-        $(btn).parents('td').find('#updated').hide();
+        $(btn).parents('td').find('#updated-success').hide();
+        $(btn).parents('td').find('#updated-error').hide();
 
         workhours = $(btn).parents('tr').find('#workhours').val();
         formstatus = $(btn).parents('tr').find('#formstatus').val();
@@ -4805,12 +4806,18 @@ $(function() {
                 $("#loading").hide();
             },
             success: function(data) {
-                $(btn).html('<i class="fa fa-save"></i>');
-                $(btn).parents('td').find('#updated').show();
+                if(data.success){
+                    $(btn).html('<i class="fa fa-save"></i>');
+                    $(btn).parents('td').find('#updated-success').show();
+                }else{
+                    $(btn).html('<i class="fa fa-save"></i>');
+                    $(btn).parents('td').find('#updated-error').show();
+                }
+                
             },
             error: function(data){
                 $(btn).html('<i class="fa fa-save"></i>');
-                $(btn).parents('td').find('#updated').show();
+                $(btn).parents('td').find('#updated-error').show();
             }
         })
         });
