@@ -24,7 +24,7 @@
 
             $accessman->updateItem($_POST['id'], $_POST['workhours'], $_POST['formstatus']);
 
-            echo (object)['success' : true];
+            echo json_encode((object)['success' : true]);
             exit;
 
             break;
