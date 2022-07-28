@@ -21,3 +21,23 @@
 
     <p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
 </div>
+
+<?php
+    if((in_array($coe[0]["company"], ['GLOBAL01', 'LGMI01'])) && $coe[0]["type"] != 'COECOMPENSATION' && $coe[0]["type"] == 'COESEPARATED'){
+    ?>
+        <p style="font-size: <?php echo $send_pdf ? '8px' : '10px'; ?>; text-align: right; padding-right: 50px"><b>THIS DOCUMENT IS PRIVATE AND CONFIDENTIAL.<br />
+        FOR EMPLOYMENT DETAILS PURPOSES ONLY.<br />
+        NOT AS EMPLOYEE CLEARANCE.</b></p>
+    <?php
+    } elseif (($coe[0]["company"] == 'MEGA01') && $coe[0]["type"] != 'COECOMPENSATION') {
+    ?>
+        <?php
+            if($send_pdf){
+            ?>
+                <p style="font-size: <?php echo $send_pdf ? '8px' : '10px'; ?>; text-align: right; padding-right: 50px">This is a system generated document. Any alteration on this document is not valid.</p>
+            <?php
+            }
+        ?>
+    <?php
+    }
+    ?>
