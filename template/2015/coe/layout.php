@@ -92,6 +92,7 @@
 
     <div class="footer">
     <?php    include(TEMP.'/coe/footer.php'); ?>
+    </div>
 </page>
 </body>
 </html>
