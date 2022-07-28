@@ -10,7 +10,7 @@
         body {
             background: rgb(204,204,204); 
             width: 21cm;
-            height: 29.7cm;
+            height: 40cm;
         }
 
         page {
