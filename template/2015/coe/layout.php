@@ -8,83 +8,90 @@
     <title>COE Certificates</title>
     <style>
         body {
-            background: rgb(204,204,204); 
+            width: 21cm;
+            height: 29.7cm;
         }
-
         page {
             background: white;
             display: block;
             margin: 0 auto;
-            margin-bottom: 0.5cm;
-            box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
         }
-
         page[size="A4"] {  
             width: 21cm;
             height: 29.7cm; 
         }
-
         page[size="A4"][layout="portrait"] {
             width: 29.7cm;
             height: 21cm;  
         }
-
         page[size="A4"][layout="landscape"] {
             height: 29.7cm;
             width: 21cm;  
         }
-
         .container {
-            min-height:100%;
             position:relative;
+            margin: 1in;
+            width: 21cm;
+            height: 29.7cm;
+        }
+        .footer {
+            position:absolute !important;
+            bottom:0;
+            width:100%;
+            height:1in;   /* Height of the footer */
             margin: 1in;
         }
 
-        .header {
-            padding:1in;
-        }
-        
-        .body {
-            padding:1in;
-            padding-bottom:0.5in;   /* Height of the footer */
-        }
-
-        .footer {
-            position:absolute;
-            bottom:0;
-            width:100%;
-            height:0.5in;   /* Height of the footer */
-        }
-
-        @media print {
-            body, page {
-                margin: 0;
-                box-shadow: 0;
-            }
+        .content{
+            height: 26;
         }
 
     </style>
 </head>
 <body>
-<?php 
-    // header
-    include(TEMP.'/coe/header.php');
+<page >
+    <div class="container">
+        <div class="header">
+        <?php  include(TEMP.'/coe/header.php'); ?>
+        </div>
 
-    switch ($coe[0]["type"]) {
-        case 'COENONCASHADVANCEMENT':
-            echo 'testing';
-            include(TEMP . '/coe/coe_non_cash_advancement.php');
-            break;
+        <div class="content">
         
-        default:
-            # code...
-            break;
-    }
+        <?php
 
-    // footer
-    include(TEMP.'/coe/footer.php');
-?>
+        switch ($coe[0]["type"]) {
+            case 'COENONCASHADVANCEMENT':
+                include(TEMP . '/coe/coe_non_cash_advancement.php');
+                break;
+            
+            default:
+                # code...
+                break;
+        }
 
-
+        ?>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        
+       
+    </div>
+    <div class="footer">
+        <?php    include(TEMP.'/coe/footer.php'); ?>
+        </div>
+   
+</page>
 </body>
 </html>

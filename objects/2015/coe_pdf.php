@@ -104,7 +104,13 @@
 
 		
 		ob_start();
-		include(TEMP.'/coe_pdf.php');
+
+		if($coetype != 'COENONCASHADVANCEMENT'){
+			include(TEMP.'/coe_pdf.php');
+		}else{
+			include(TEMP.'/coe/layout.php');
+		}
+
 		$content = ob_get_clean();
 
 		$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
@@ -112,7 +118,7 @@
 		$pdf->Footer();
 
 		$pdf->SetPrintHeader(false);
-		$pdf->SetPrintFooter(true);
+		$pdf->SetPrintFooter(false);
 		$pdf->SetLeftMargin(25);
 		$pdf->SetRightMargin(25);
 		$pdf->SetTopMargin(0);
