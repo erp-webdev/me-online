@@ -11,12 +11,14 @@
             background: rgb(204,204,204); 
         }
 
-        /*page {
+        page {
             background: white;
             display: block;
             margin: 0 auto;
             margin-bottom: 0.5cm;
             box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+            width: 21cm;
+            height: 29.7cm; 
         }
 
         page[size="A4"] {  
@@ -32,16 +34,6 @@
         page[size="A4"][layout="landscape"] {
             height: 29.7cm;
             width: 21cm;  
-        }*/
-
-        @page{
-            background: white;
-            display: block;
-            margin: 0 auto;
-            margin-bottom: 0.5cm;
-            box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
-            width: 21cm;
-            height: 29.7cm;
         }
 
         .container {
@@ -67,7 +59,7 @@
         }
 
         @media print {
-            body, @page {
+            body, page {
                 margin: 0;
                 box-shadow: 0;
             }
@@ -76,10 +68,14 @@
     </style>
 </head>
 <body>
+<page>
+    <div class="header">
+    <?php  include(TEMP.'/coe/header.php'); ?>
+    </div>
+
+    <div class="content">
     
-<?php 
-    // header
-    include(TEMP.'/coe/header.php');
+    <?php
 
     switch ($coe[0]["type"]) {
         case 'COENONCASHADVANCEMENT':
@@ -91,10 +87,11 @@
             break;
     }
 
-    // footer
-    include(TEMP.'/coe/footer.php');
-?>
+    ?>
+    </div>
 
-
+    <div class="footer">
+    <?php    include(TEMP.'/coe/footer.php'); ?>
+</page>
 </body>
 </html>
