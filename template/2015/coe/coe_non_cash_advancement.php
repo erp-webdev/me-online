@@ -1,3 +1,4 @@
+<?php include(TEMP .'/coe/common.php'); ?>
 <h3 align="center" style="padding-top: 40px; letter-spacing: 10px;">CERTIFICATION</h3>
 <div style="text-align: justify;  text-justify: inter-word;">
 
@@ -956,3 +957,5 @@
 			}
 		}
 		?>
+
+</b><p style="font-size: <?php echo $send_pdf ? '8px' : '10px'; ?>; padding-left: 50px; padding-right: 50px;">Ref No.:<?php echo $coe[0]["ref_no"]; ?></p>
