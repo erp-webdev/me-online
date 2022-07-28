@@ -112,7 +112,7 @@
 		$pdf->Footer();
 
 		$pdf->SetPrintHeader(false);
-		$pdf->SetPrintFooter(true);
+		$pdf->SetPrintFooter(false);
 		$pdf->SetLeftMargin(25);
 		$pdf->SetRightMargin(25);
 		$pdf->SetTopMargin(0);
