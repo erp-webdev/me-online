@@ -57,9 +57,8 @@
 
         .footer {
             position:absolute !important;
-            bottom:27;
+            bottom:0;
             width:100%;
-            height:0.5in;   /* Height of the footer */
         }
 
         @media print {
