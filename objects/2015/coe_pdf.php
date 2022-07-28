@@ -105,7 +105,11 @@
 		
 		ob_start();
 
-		include(TEMP.'/coe_pdf.php');
+		if($coetype != 'COENONCASHADVANCEMENT'){
+			include(TEMP.'/coe_pdf.php');
+		}else{
+			include(TEMP.'/coe/layout.php');
+		}
 
 		$content = ob_get_clean();
 
