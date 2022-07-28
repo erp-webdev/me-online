@@ -39,6 +39,7 @@
             bottom:0;
             width:100%;
             height:1in;   /* Height of the footer */
+            margin: 1in;
         }
 
         .content{
@@ -71,11 +72,12 @@
         ?>
         </div>
 
-        <div class="footer">
-        <?php    include(TEMP.'/coe/footer.php'); ?>
-        </div>
+        
        
     </div>
+    <div class="footer">
+        <?php    include(TEMP.'/coe/footer.php'); ?>
+        </div>
    
 </page>
 </body>
