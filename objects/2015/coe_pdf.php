@@ -103,7 +103,7 @@
 		$emp_info[0]['DateResigned'] = $emp_info[0]['DateResigned'] ?  date('F j, Y', strtotime($emp_info[0]['DateResigned'])) : null;
 
 		
-		ob_start();
+		// ob_start();
 
 		if($coetype != 'COENONCASHADVANCEMENT'){
 			include(TEMP.'/coe_pdf.php');
@@ -111,7 +111,8 @@
 			include(TEMP.'/coe/layout.php');
 		}
 
-		$content = ob_get_clean();
+		exit;
+		// $content = ob_get_clean();
 
 		$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 		$pdf->company = $emp_comp;
