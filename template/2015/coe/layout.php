@@ -13,7 +13,11 @@
             padding: 1in;
         }
 
-        
+        @page{
+            @bottom-center{
+                content: 'testing';
+            }
+        }
 
     </style>
 </head>
