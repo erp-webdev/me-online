@@ -10,7 +10,7 @@
         body {
             background: rgb(204,204,204); 
             width: 21cm;
-            height: 40cm;
+            height: 29.7cm;
         }
 
         page {
@@ -38,9 +38,11 @@
         }
 
         .container {
-            min-height:100%;
+            /* min-height:100%; */
             position:relative;
             margin: 1in;
+            width: 21cm;
+            height: 29.7cm;
         }
 
         .header {
