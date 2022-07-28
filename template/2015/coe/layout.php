@@ -66,6 +66,7 @@
     </style>
 </head>
 <body>
+    -- TEST
 <?php 
     // header
     include(TEMP.'/coe/header.php');
