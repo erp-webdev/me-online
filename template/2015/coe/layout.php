@@ -65,15 +65,14 @@
 
     </style>
 </head>
-<body>
-    -- TEST
+<body class="size: A4; layout: portrait">
+    
 <?php 
     // header
     include(TEMP.'/coe/header.php');
 
     switch ($coe[0]["type"]) {
         case 'COENONCASHADVANCEMENT':
-            echo 'testing';
             include(TEMP . '/coe/coe_non_cash_advancement.php');
             break;
         
