@@ -68,30 +68,32 @@
     </style>
 </head>
 <body>
-<page class="container">
-    <div class="header">
-    <?php  include(TEMP.'/coe/header.php'); ?>
-    </div>
+<page >
+    <div class="container">
+        <div class="header">
+        <?php  include(TEMP.'/coe/header.php'); ?>
+        </div>
 
-    <div class="content">
-    
-    <?php
-
-    switch ($coe[0]["type"]) {
-        case 'COENONCASHADVANCEMENT':
-            include(TEMP . '/coe/coe_non_cash_advancement.php');
-            break;
+        <div class="content">
         
-        default:
-            # code...
-            break;
-    }
+        <?php
 
-    ?>
-    </div>
+        switch ($coe[0]["type"]) {
+            case 'COENONCASHADVANCEMENT':
+                include(TEMP . '/coe/coe_non_cash_advancement.php');
+                break;
+            
+            default:
+                # code...
+                break;
+        }
 
-    <div class="footer">
-    <?php    include(TEMP.'/coe/footer.php'); ?>
+        ?>
+        </div>
+
+        <div class="footer">
+        <?php    include(TEMP.'/coe/footer.php'); ?>
+        </div>
     </div>
 </page>
 </body>
