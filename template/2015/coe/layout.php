@@ -13,7 +13,7 @@
             padding: 1in;
         }
 
-        @page{
+        @page:content{
             @bottom-center{
                 content: 'testing';
             }
