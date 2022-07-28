@@ -1607,8 +1607,9 @@
 		</b><p style="font-size: <?php echo $send_pdf ? '8px' : '10px'; ?>; padding-left: 50px; padding-right: 50px;">Ref No.:<?php echo $coe[0]["ref_no"]; ?></p>
 
 		<?php if ($coe[0]["type"] == "COENONCASHADVANCEMENT") : ?>
-			<br><br><br><br><br><br><br><br><br><br><br><br>
+			<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 		<?php endif; ?>
+
 		<div id="footer" style="position:absolute !important; bottom: 50px; text-align:center; width: 100%">
 		<?php
 		if ((in_array($coe[0]["company"], ['GLOBAL01', 'LGMI01'])) ) {
