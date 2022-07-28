@@ -119,9 +119,9 @@
 
 		$pdf->SetPrintHeader(false);
 		$pdf->SetPrintFooter(false);
-		$pdf->SetLeftMargin(25);
-		$pdf->SetRightMargin(25);
-		$pdf->SetTopMargin(0);
+		// $pdf->SetLeftMargin(25);
+		// $pdf->SetRightMargin(25);
+		// $pdf->SetTopMargin(0);
 		$pdf->SetAutoPageBreak(TRUE, 0);
 		$pdf->SetFont('times');
 		$pdf->AddPage();
