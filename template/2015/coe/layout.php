@@ -67,7 +67,7 @@
 
     </style>
 </head>
-<body>
+<body class="container">
 <page>
     <div class="header">
     <?php  include(TEMP.'/coe/header.php'); ?>
