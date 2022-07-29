@@ -2290,7 +2290,7 @@ class mainsql {
         //     'day'=>$dtr_day
         // ]); exit;
 
-        if(!($today >= $periodfrom )){
+        if(!($today >= $periodfrom)){
             // if DTR is not within the DTR period
             return false;
         }
