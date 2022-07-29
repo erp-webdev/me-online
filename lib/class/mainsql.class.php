@@ -2289,7 +2289,7 @@ class mainsql {
         //     'pto'=>$periodto,
         //     'day'=>$dtr_day
         // ]); exit;
-
+        echo "dtr is $dtr less periodto $periodto"; exit;
         if($dtr < $periodto)
             if(!($today >= $periodfrom) ){
                 // if DTR is not within the DTR period
