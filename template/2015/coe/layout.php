@@ -40,6 +40,7 @@
             width:100%;
             height:1in;   /* Height of the footer */
             margin: 1in;
+            font-size: 9px;
         }
 
         .content{
