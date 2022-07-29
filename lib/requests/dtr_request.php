@@ -177,7 +177,8 @@
             $datefrom = date('U', strtotime($_POST['from']));
             $dateto = date('U', strtotime($_POST['to']));
             $dtrcal_count = 0;
-
+            echo $datefrom . '---' . $dateto;
+            exit();
             while ($datefrom <= $dateto ) :
                 $_POST['strEMPID'] = $profile_idnum;
                 $_POST['dteDTRDate'] = date("m/d/Y", $datefrom);
@@ -186,7 +187,7 @@
                 $_POST['intFINALPAY'] = 0;
 
                 $dtr_calculate = $mainsql->dtr_action($_POST, 'calculate');
-
+                
                 $dtrcal_count++;
                 $datefrom = $datefrom + 86400;
 
