@@ -178,6 +178,7 @@
             $dateto = date('U', strtotime($_POST['to']));
             $dtrcal_count = 0;
             echo $datefrom . '---' . $dateto;
+            exit();
             while ($datefrom <= $dateto ) :
                 $_POST['strEMPID'] = $profile_idnum;
                 $_POST['dteDTRDate'] = date("m/d/Y", $datefrom);
