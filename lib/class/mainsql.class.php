@@ -2283,18 +2283,31 @@ class mainsql {
             $periodto = strtotime(date('Y-m-15 23:59:59',strtotime($value['dteDTRDate'])));
         }
 
+        $today_periodfrom = $today;
+        $today_d = date('d');
+
+        if((int)$today_d > 15){
+            $periodfrom = strtotime(date('Y-m-16',strtotime(date('Y-m-d') )));
+            $periodto = strtotime(date('Y-m-t 23:59:59',strtotime(date('Y-m-d') )));
+        }else{
+            $periodfrom = strtotime(date('Y-m-1',strtotime(date('Y-m-d') )));
+            $periodto = strtotime(date('Y-m-15 23:59:59',strtotime(date('Y-m-d') )));
+        }
+        
         // echo 'kevs---'. json_encode([
         //     'today'=>$today,
         //     'pfrom'=>$periodfrom,
         //     'pto'=>$periodto,
         //     'day'=>$dtr_day
         // ]); exit;
-        echo "dtr is $dtr less periodto $periodto"; exit;
-        if($dtr < $today)
-            if(!($today >= $periodfrom) ){
-                // if DTR is not within the DTR period
-                return false;
-            }
+        
+        // if(!($today >= $periodfrom) ){
+        //     // if DTR is not within the DTR period
+        //     return false;
+        // }
+
+        if(!($dtr >= $periodfrom))
+            return false;
 
         $val = array();
 
