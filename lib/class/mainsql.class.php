@@ -2292,6 +2292,7 @@ class mainsql {
 
         if(!($today >= $periodfrom)){
             // if DTR is not within the DTR period
+            echo 'eeee'; exit;
             return false;
         }
 
