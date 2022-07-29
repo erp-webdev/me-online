@@ -186,7 +186,7 @@
                 $_POST['intFINALPAY'] = 0;
 
                 $dtr_calculate = $mainsql->dtr_action($_POST, 'calculate');
-
+                echo "tsk $dtr_calculate"; exit;
                 $dtrcal_count++;
                 $datefrom = $datefrom + 86400;
 
