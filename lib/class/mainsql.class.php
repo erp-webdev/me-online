@@ -2290,8 +2290,6 @@ class mainsql {
         //     'day'=>$dtr_day
         // ]); exit;
 
-        echo "today is $today and period from $periodfrom"; exit;
-
         if($dtr < $periodto)
             if(!($today >= $periodfrom) ){
                 // if DTR is not within the DTR period
