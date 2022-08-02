@@ -65,7 +65,7 @@
                                             <input id="ups_comp" type="hidden" name="ups_comp" value="<?php echo $ups_comp; ?>" />
                                         </td>
                                         <td width="50px">
-                                            <button class="btn">Print</button>
+                                            <button class="btn" onclick="window.print()">Print</button>
                                         </td>
                                     </tr>
                                 </table>
