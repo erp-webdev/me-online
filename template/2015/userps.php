@@ -64,6 +64,9 @@
                                             <input id="ups_empid" type="hidden" name="ups_empid" value="<?php echo $ups_idnum; ?>" />
                                             <input id="ups_comp" type="hidden" name="ups_comp" value="<?php echo $ups_comp; ?>" />
                                         </td>
+                                        <td width="50px">
+                                            <button class="btn">Print</button>
+                                        </td>
                                     </tr>
                                 </table>
 
