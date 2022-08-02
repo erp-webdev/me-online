@@ -35,13 +35,13 @@
 			 ?>
 
                         <?php endif; ?>
-
+                        <!--  
                         <?php if($profile_idnum == '2016-06-0457' || $profile_idnum == '2019-02-0033') : ?>
 
                         <span class="spanred">NEW!</span><?php if ($section != "lms") { ?><a href="<?php echo WEB; ?>/lms" onclick="clickAndDisable(this);"><?php } ?><div<?php if ($section == "lms") { ?> class="dselected"<?php } ?>>LMS</div><?php if ($section != "lms") { ?></a><?php } ?>
 
                         <?php endif; // end of LMS menu?>
-
+                        -->
 
                         <?php if (in_array($profile_dbname, ['MEGAWORLD', 'MLI', 'GL'])) : ?><span class="spanred">NEW!</span><?php if ($section != "forms") { ?><a href="<?php echo WEB; ?>/forms" onclick="clickAndDisable(this);"><?php } ?><div<?php if ($section == "forms") { ?> class="dselected"<?php } ?>>Forms</div><?php if ($section != "forms") { ?></a><?php } ?><?php endif; ?>
 
