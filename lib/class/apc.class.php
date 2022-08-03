@@ -955,8 +955,8 @@ class apc {
 	function get_logs($artid)
 	{		
 		$sql = "SELECT a.log_content, a.log_date, b.user_firstname, b. user_lastname
-			 FROM logs a, users b
-			 WHERE b.ID = a.user_id
+			 FROM logs a
+			 LEFT JOIN  users b on b.ID = a.user_id 
 			 AND a.object_id = $artid
 			 AND a.log_status = 1
 			 AND a.log_deleted = 0";

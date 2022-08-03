@@ -2020,8 +2020,9 @@ class mainsql {
     function get_payslip_allownacevalue($empid, $oe, $year, $pr)
 	{
 
-        $sql = "SELECT ".$oe." FROM PRSummaryH A, PRSummaryExtH B ";
-        $sql .= " WHERE A.BatNbr = B.BatNbr AND A.EmpID = '".$empid."' AND A.PRYear = '".$year."' AND A.PeriodID = '".$pr."' ";
+        $sql = "SELECT ".$oe." FROM PRSummaryH A
+            LEFT JOIN PRSummaryExtH B ON A.BatNbr = B.BatNbr ";
+        $sql .= " WHERE A.EmpID = '".$empid."' AND A.PRYear = '".$year."' AND A.PeriodID = '".$pr."' ";
 		$result = $this->get_row($sql);
 		return $result;
     }
@@ -2031,20 +2032,24 @@ class mainsql {
 	{
 		if ($tax) :
             if ($pr == 'SP21') :
-                $sql = "SELECT B.OE23, B.OE24, B.OE50, B.OE26, B.OE25, B.OE50 FROM PRSummaryH A, PRSummaryExtH B ";
-                $sql .= " WHERE A.BatNbr = B.BatNbr AND A.EmpID = '".$empid."' AND A.PRYear = '".$year."' AND A.PeriodID = '".$pr."' ";
+                $sql = "SELECT B.OE23, B.OE24, B.OE50, B.OE26, B.OE25, B.OE50 FROM PRSummaryH A
+                    LEFT JOIN PRSummaryExtH B ON  A.BatNbr = B.BatNbr ";
+                $sql .= " WHERE A.EmpID = '".$empid."' AND A.PRYear = '".$year."' AND A.PeriodID = '".$pr."' ";
             else :
-                $sql = "SELECT B.OE01, B.OE03, B.OE05, B.OE07, B.OE09, B.OE10, B.OE11, B.OE13, B.OE15, B.OE17, B.OE18, B.OE21, B.OE23, B.OE25, B.OE36, B.OE38, B.OE39, B.OE40, B.OE41, B.OE43, B.OE44, B.OE45, B.OE48 FROM PRSummaryH A, PRSummaryExtH B ";
-                $sql .= " WHERE A.BatNbr = B.BatNbr AND A.EmpID = '".$empid."' AND A.PRYear = '".$year."' AND A.PeriodID = '".$pr."' ";
+                $sql = "SELECT B.OE01, B.OE03, B.OE05, B.OE07, B.OE09, B.OE10, B.OE11, B.OE13, B.OE15, B.OE17, B.OE18, B.OE21, B.OE23, B.OE25, B.OE36, B.OE38, B.OE39, B.OE40, B.OE41, B.OE43, B.OE44, B.OE45, B.OE48 FROM PRSummaryH A
+                LEFT JOIN PRSummaryExtH B ON A.BatNbr = B.BatNbr ";
+                $sql .= " WHERE   A.EmpID = '".$empid."' AND A.PRYear = '".$year."' AND A.PeriodID = '".$pr."' ";
             endif;
         else :
             if ($pr == 'SP21') :
-                $sql = "SELECT B.OE23, B.OE24, B.OE50, B.OE26, B.OE25, B.OE50 FROM PRSummaryH A, PRSummaryExtH B ";
-                $sql .= " WHERE A.BatNbr = B.BatNbr AND A.EmpID = '".$empid."' AND A.PRYear = '".$year."' AND A.PeriodID = '".$pr."' ";
+                $sql = "SELECT B.OE23, B.OE24, B.OE50, B.OE26, B.OE25, B.OE50 FROM PRSummaryH A
+                LEFT JOIN PRSummaryExtH B ON A.BatNbr = B.BatNbr ";
+                $sql .= " WHERE  A.EmpID = '".$empid."' AND A.PRYear = '".$year."' AND A.PeriodID = '".$pr."' ";
             else :
                 //$sql = "SELECT A.AllowanceAdj, B.OE02, B.OE04, B.OE06, B.OE08, B.OE12, B.OE14, B.OE16, B.OE19, B.OE20, B.OE22, B.OE24, B.OE26, B.OE27, B.OE28, B.OE29, B.OE30, B.OE31, B.OE32, B.OE33, B.OE34, B.OE35, B.OE37, B.OE42, B.OE46, B.OE47, B.OE49, B.OE50 FROM PRSummaryH A, PRSummaryExtH B ";
-                $sql = "SELECT A.AllowanceAdj, B.OE02, B.OE04, B.OE06, B.OE08, B.OE12, B.OE14, B.OE16, B.OE19, B.OE20, B.OE22, B.OE24, B.OE26, B.OE27, B.OE28, B.OE29, B.OE30, B.OE31, B.OE32, B.OE33, B.OE34, B.OE35, B.OE37, B.OE42, B.OE46, B.OE47, B.OE49, B.OE50 FROM PRSummaryH A, PRSummaryExtH B ";
-                $sql .= " WHERE A.BatNbr = B.BatNbr AND A.EmpID = '".$empid."' AND A.PRYear = '".$year."' AND A.PeriodID = '".$pr."' ";
+                $sql = "SELECT A.AllowanceAdj, B.OE02, B.OE04, B.OE06, B.OE08, B.OE12, B.OE14, B.OE16, B.OE19, B.OE20, B.OE22, B.OE24, B.OE26, B.OE27, B.OE28, B.OE29, B.OE30, B.OE31, B.OE32, B.OE33, B.OE34, B.OE35, B.OE37, B.OE42, B.OE46, B.OE47, B.OE49, B.OE50 FROM PRSummaryH A
+                LEFT JOIN PRSummaryExtH B A.BatNbr = B.BatNbr ";
+                $sql .= " WHERE  A.EmpID = '".$empid."' AND A.PRYear = '".$year."' AND A.PeriodID = '".$pr."' ";
             endif;
         endif;
 

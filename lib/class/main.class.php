@@ -99,9 +99,9 @@ class main {
 		$sql="SELECT r.registry_id, a.activity_title, a.activity_venue, a.activity_datestart, a.activity_dateend, 
             r.registry_uid, r.registry_godirectly, r.registry_vrin, r.registry_vrout, 
 			r.registry_platenum, r.registry_guest, r.registry_dependent, r.registry_date, r.registry_status ";
-		$sql.=" FROM tbl_eventregistry r, tbl_activity a
-			WHERE r.registry_status >= 1 
-            AND a.activity_id = r.registry_activityid ";
+		$sql.=" FROM tbl_eventregistry r
+			LEFT JOIN tbl_activity a ON a.activity_id = r.registry_activityid 
+			WHERE r.registry_status >= 1 ";
 		if ($id != 0) $sql.=" AND r.registry_id = ".$id;
 		if ($uid != 0) $sql.=" AND r.registry_uid = ".$uid;
         $sql .= " ORDER BY r.registry_date DESC ";
@@ -143,10 +143,11 @@ class main {
     function get_users($id = 0, $start = 0, $limit = 0, $search, $count = 0, $nameid = 0, $profile_id = 0, $approver_id = 0, $status = 0, $level = 0)
 	{
 		$sql= "SELECT e.emp_id, e.emp_level, e.emp_idnum, e.emp_password, e.emp_firstname, e.emp_middlename, e.emp_lastname, e.emp_suffixname, e.emp_nickname, e.emp_corptel, e.emp_corpemail, d.dept_name, e.emp_status ";
-		$sql.= " FROM tbl_emplist e, tbl_dept d ";
+		$sql.= " FROM tbl_emplist e
+		LEFT JOIN tbl_dept d ON d.dept_id = e.emp_corpdept ";
 		if ($status != 0) : $sql.= " WHERE e.emp_status = ".$status." ";
         else : $sql.= " WHERE e.emp_status >= 1 "; endif;
-        $sql.= " AND d.dept_id = e.emp_corpdept ";
+        $sql.= " ";
 		if ($search != NULL) $sql.=" AND (e.emp_firstname LIKE '%".$search."%' OR e.emp_lastname LIKE '%".$search."%' OR e.emp_idnum LIKE '%".$search."%' )";
 		if ($id != 0) $sql.=" AND e.emp_id = ".$id;
 		if ($nameid != 0) $sql.=" AND e.emp_idnum = '".$nameid."'";
@@ -610,8 +611,8 @@ class main {
 	function get_logs($artid)
 	{		
 		$sql = "SELECT a.log_content, a.log_date, b.user_firstname, b. user_lastname
-			 FROM logs a, users b
-			 WHERE b.ID = a.user_id
+			 FROM logs a
+			 LEFT JOIN users b ON b.ID = a.user_id 
 			 AND a.object_id = $artid
 			 AND a.log_status = 1
 			 AND a.log_deleted = 0";
