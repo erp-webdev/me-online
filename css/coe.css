@@ -1,0 +1,135 @@
+body {
+    width: 230mm;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0;
+    font-size: 12pt;
+    background: rgb(204,204,204); 
+    font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+	line-height: 1.0;
+	font-size: 11pt;
+}
+
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.main-page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 10mm auto;
+    background: white;
+    box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+}
+
+.sub-page {
+    padding: 12mm 25mm 12mm 25mm;
+    height: 297mm;
+}
+
+.sub-page > .header{
+    font-size: 8pt;
+    height: 25mm;
+    text-align: center;
+}
+
+.sub-page > .header > img{
+    height: 18mm;
+}
+
+.sub-page > .content{
+    height: 210mm;
+    line-height: 2;
+}
+
+.sub-page > .ref{
+    height: 13mm;
+    font-size: 8pt;
+}
+
+.sub-page > .content > h2.title{
+    font-size: 14pt;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 18mm 0 18mm 0;
+}
+
+.sub-page > .content > h2.title-spaced{
+    letter-spacing: 8pt;
+}
+
+.sub-page > .content > .sign-row{
+    display: flex;
+    padding-top: 25mm;
+}
+
+.sub-page > .content > .sign-row > .sign-col{
+    flex: 50%;
+}
+
+.sub-page > .content > .sign-row > .sign-col > img{
+    height: 15mm;
+    position: relative;
+    bottom: -40px;
+}
+
+.sub-page > .content > .sign-row > .sign-col > .sign-desig{
+    position: absolute;
+}
+
+.sub-page > .content > .sign-row > .sign-col > .sign-desig > .sign-name{
+    break-after: always;
+    text-transform: uppercase;
+    font-weight: bold;
+    display: block;
+}
+
+.sub-page > .content > .sign-row > .sign-col > .sign-desig > .sign-position{
+    break-after: always;
+    text-transform: uppercase;
+    display: block;
+}
+
+.sub-page > .content > .sign-row > .sign-col > .sign-desig > .sign-department{
+    break-after: always;
+    text-transform: uppercase;
+    display: block;
+}
+
+.sub-page > .content > .sign-row > .sign-col > .sign-desig > .sign-division{
+    break-after: always;
+    text-transform: uppercase;
+    display: block;
+}
+
+.sub-page > .footer{
+    height: 25mm;
+    font-size: 8pt;
+    text-align: center;
+}
+
+@page {
+    size: A4;
+    margin: 0;
+}
+
+
+@media print {
+
+    html, body {
+        width: 210mm;
+        height: 297mm;        
+    }
+
+    .main-page {
+        margin: 0;
+        border: initial;
+        border-radius: initial;
+        width: initial;
+        min-height: initial;
+        box-shadow: initial;
+        background: initial;
+        page-break-after: always;
+    }
+}

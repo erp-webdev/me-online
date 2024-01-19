@@ -1,0 +1,4 @@
+Options +FollowSymLinks
+RewriteEngine On
+
+RewriteRule ^(.*)$ file.php?file=$1 [QSA,L]
