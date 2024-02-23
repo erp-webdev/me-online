@@ -127,12 +127,14 @@
 		$pdf->SetAutoPageBreak(TRUE, 0);
 		$pdf->SetFont('times');
 		$pdf->AddPage();
-		$pdf->writeHTML($content);
-		// $pdf->Output( IMG . '/coefornoncashadv-test.pdf', 'F');
+		$pdf->writeHTML($content, true, false, true, false, '');
 
-		ob_end_clean();
+//		$pdf->Output('/tmp/coefornoncashadv-test.pdf', 'F');
+
 		$file_attachment = $pdf->Output('CertificateOfEmployment.pdf', 'S');
-
+		
+		ob_end_clean();
+		
 		$email = new PHPMailer();
 		$email->SetFrom(NOTIFICATION_EMAIL); //Name is optional
 
@@ -148,10 +150,10 @@
 		$email->IsHTML(true);
 
 		if($emp_info[0]['Active']){
-			// $email->AddAddress('shart.global@megaworldcorp.com');
+			//$email->AddAddress('kayag.global@megaworldcorp.com');
 			$email->AddAddress( $emp_info[0]['EmailAdd'] );
 		}else {
-			// $email->AddAddress('shart.global@megaworldcorp.com');
+			// $email->AddAddress('kayag.global@megaworldcorp.com');
 			$email->AddAddress( $emp_info[0]['EmailAdd2'] );
 		}
 

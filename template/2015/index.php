@@ -50,10 +50,10 @@
                                 </div>
                                 <?php endif; ?>
 
-                                <?php if(in_array($profile_dbname, [])): ?>
+                                <?php if(in_array($profile_dbname, ['ASIAAPMI', 'MEGAWORLD',  'TOWNSQUARE', 'LAFUERZA', 'NEWTOWN',  'MEGAPARK', 'GLOBAL_HOTEL', 'GL'])): ?>
                                 <?php
                                     $display = true;
-									$deadline = '2023-03-15';
+									$deadline = '2023-03-31';
 
                                     if(in_array($profile_dbname, [''])){
                                         $deadline = '2023-02-28';
@@ -63,7 +63,7 @@
 
                                     switch ($profile_dbname) {
                                         case 'ASIAAPMI':
-											$deadline = '2023-02-28';
+											$deadline = '2024-02-28';
                                             if(date('Y-m-d') > date('Y-m-d' ,strtotime($deadline)))
                                                 $display = false;
 											break;
@@ -75,7 +75,7 @@
                                 <div class="dashcomp dashincentive " style="<?php if(!$display) echo 'display:none'; ?>">
                                     <center class="robotobold dgraytext smalltext2">
                                         <a style="color:blue"  href="<?php echo WEB; ?>/itr" >
-                                            <span class="roboto orangetext mediumtext">Download Your 2022 Income Tax Return Form (BIR 2316)</span>
+                                            <span class="roboto orangetext mediumtext">Download Your 2023 Income Tax Return Form (BIR 2316)</span>
                                         </a>
                                     </center>
                                 </div>

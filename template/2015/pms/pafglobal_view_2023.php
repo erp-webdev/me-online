@@ -13,7 +13,7 @@
                 <?php if(count($checkEvaluation) > 0 && $pafad == 'rater') {  ?>
                 <div id="paf" class="mainbody lefttalign whitetext print">
                 <?php $rtrstat = 'Approved'; $dhstat = 1; if($sub == 1 && $rstat1 == 1){ $param1 = 1; } elseif($sub == 2 && $rstat2 == 1) { $param1 = 1; } elseif($sub == 3 && $rstat3 == 1) { $param1 = 1; } elseif($sub == 4 && $rstat4 == 1) { $param1 = 1; } else { $param1 = 0; } ?>
-
+ 
                     <?php foreach($checkEvaluation as $row) {
 
                         $gresp = $row['gresp'];
@@ -25,7 +25,11 @@
                         $hrtot = $cmscore + $apscore + $s5score + $tscore;
 
                     ?>
-                    <b class="mediumtext lorangetext"><a href="<?php echo WEB; ?>/paf?groupid=<?php echo $groupid; if(isset($_GET['sub'])) echo '&sub=' . $_GET['sub']; ?>&ref=emp<?php echo $_GET['appid']; ?>"><i class="mediumtext fa fa-arrow-left" style="color:#fff;opacity:.8;"></i></a> Performance Appraisal Viewer <?php if($pafad == 'divhead'){ echo '- Division Head'; } elseif($pafad == 'rater') { echo '- Supervisor/Approver'; } ?></b><br>
+                    <b class="mediumtext lorangetext">
+                        <!-- <a href="<?php echo WEB; ?>/paf?groupid=<?php echo $groupid; if(isset($_GET['sub'])) echo '&sub=' . $_GET['sub']; ?>&ref=emp<?php echo $_GET['appid']; ?>"><i class="mediumtext fa fa-arrow-left" style="color:#fff;opacity:.8;"></i></a>  -->
+                        <a href="<?php echo WEB; ?>/pms?page=eval&GroupID=<?php echo $groupid; if(isset($_GET['sub'])) echo '&sub=' . $_GET['sub']; ?>&ref=emp<?php echo $_GET['appid']; ?>"><i class="mediumtext fa fa-arrow-left" style="color:#fff;opacity:.8;"></i></a> 
+                        
+                        Performance Appraisal Viewer <?php if($pafad == 'divhead'){ echo '- Division Head'; } elseif($pafad == 'rater') { echo '- Supervisor/Approver'; } ?></b><br>
                     <!-- <div class="print" style="overflow-y:scroll;max-height:514px;margin-top:10px;"> -->
                     <!-- wrapper -->
                     <!-- * FORM * -->
@@ -1749,7 +1753,7 @@
                     $hrtot = $cmscore + $apscore + $s5score + $tscore;
 
                     ?>
-                    <b class="mediumtext lorangetext"><a href="<?php echo WEB; ?>/pafglobal?groupid=<?php echo $groupid; ?>"><i class="mediumtext fa fa-arrow-left" style="color:#fff;opacity:.8;"></i></a> Performance Appraisal Viewer <?php if($pafad == 'divhead'){ echo '- Division Head'; } elseif($pafad == 'rater') { echo '- Supervisor/Approver'; } ?></b><br>
+                    <b class="mediumtext lorangetext"><a href="<?php echo WEB; ?>/pms?page=eval&GroupID=<?php echo $groupid; ?>"><i class="mediumtext fa fa-arrow-left" style="color:#fff;opacity:.8;"></i></a> Performance Appraisal Viewer <?php if($pafad == 'divhead'){ echo '- Division Head'; } elseif($pafad == 'rater') { echo '- Supervisor/Approver'; } ?></b><br>
                     <!-- <div class="print" style="overflow-y:scroll;max-height:514px;margin-top:10px;"> -->
                     <!-- wrapper -->
 

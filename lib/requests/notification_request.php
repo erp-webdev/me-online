@@ -6806,7 +6806,7 @@
                             $COEC_APPROVERS = [
                                 "GLOBAL01" => [
                                     'prepared' => [
-                                        'name' => 'SULAT, CLARA NUÃ‘EZ',
+                                        'name' => 'SULAT, CLARA NUÑEZ',
                                         'id' => '2021-02-0013',
                                         'designation' => 'PAYROLL ASSOCIATE',
                                         'esign' => 'coe_csulat.png',

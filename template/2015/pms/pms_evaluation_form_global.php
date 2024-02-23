@@ -1,0 +1,848 @@
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<style>
+    .loading-screen {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .spinner {
+        border: 4px solid rgba(0, 0, 0, 0.1);
+        border-radius: 50%;
+        border-top: 4px solid #3498db;
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+        margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        textarea.ng-invalid,
+        input.ng-invalid,
+        select.ng-invalid{
+            background-color: hsl(0deg 25% 50%);
+        }
+</style>
+
+<div class="rightsplashtext lefttalign">
+
+    <div ng-app='myApp' ng-controller='myCtrl' id="paf" class="mainbody lefttalign whitetext">
+        <form  name="myForm" >
+            <div class="loading-screen" ng-show="loading">
+                <div class="spinner"></div>
+                <p>Please wait...</p>
+            </div>
+
+            <div ng-show="!loading">
+                <h2 class="mediumtext lorangetext">
+                    <a href="<?php echo WEB; ?>/pms"><i class="mediumtext fa fa-arrow-left"
+                            style="color:#fff;opacity:.8;"></i></a> Performance Appraisal Form
+                </h2>
+                <hr>
+                <table style="width:100%;">
+                    <thead>
+                        <tr>
+                            <th colspan="2" style="font-weight:italic;">For (<span ng-bind="record.Rank"></span>) <span
+                                    style="font-weight:normal;">*Confidential</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><b class="smallesttext lwhitetext">Employee Name:</b> <span style="font-weight:normal;"
+                                    ng-bind="record.FullName"></span></td>
+                            <td><b class="smallesttext lwhitetext">Department:</b> <span style="font-weight:normal;"
+                                    ng-bind="record.Department"></span></td>
+                        </tr>
+                        <tr>
+                            <td><b class="smallesttext lwhitetext">Designation:</b> <span style="font-weight:normal;"
+                                    ng-bind="record.Position"></span></td>
+                            <td><b class="smallesttext lwhitetext">Date Hired:</b> <span style="font-weight:normal;"
+                                    ng-bind="record.HireDate"></span></td>
+                        </tr>
+                        <tr>
+                            <td>
+
+                                <b class="smallesttext lwhitetext">Period:</b>
+
+                                <span style="font-weight:normal;">
+                                    From | <u ng-bind="formatDate(record.group.PeriodFrom) |  date:'yyyy-MM-dd'"></u>
+                                    To | <u ng-bind="formatDate(record.group.PeriodTo) |  date:'yyyy-MM-dd'"></u>
+                                </span>
+
+                            </td>
+                            <td><b class="smallesttext lwhitetext">Appraisal Date:</b> <span style="font-weight:normal;"
+                                    ng-bind="formatDate(record.group.AppraisalDate) |  date:'yyyy-MM-dd'"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <hr/>
+
+                <div class="print" style="overflow-x:none;overflow-y:scroll;max-height:514px;">
+                    
+
+                    <div style="border:2px solid #fff;padding-left:5px;width:98%;">
+                        <p><strong>Use the following rating scale for each relevant part of this form :</strong></p>
+                        <table>
+                            <tr>
+                                <td>5</td>
+                                <td>Exceptional</td>
+                                <td>Conisistently exceeds expectations in all areas under review. Clearly outstanding.</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Superior</td>
+                                <td>Exceeds expectations in most areas. Always meets expectations in areas under review.</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Good</td>
+                                <td>Fully meets expectations. Solid performer.</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Developing</td>
+                                <td>Meets most expectations. Needs improvments in identified areas.</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Does Not Meet Expectations</td>
+                                <td>Immediate and continuous improvement needed.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <br />
+                    <!-- Part 1 -->
+                    <div style="border:1px solid #fff;padding:0 5px;width:98%;">
+                        <h4>I. GENERAL RESPONSIBILITIES <span style="font-size:10px;font-weight:normal;">(Reason for position, according to job description)</span></h4>
+                        <p style="margin-left:20px;" ng-bind="record.GeneralResponsibilities"></p>
+                        <p style="background-color:#fff;color:red;padding:5px;" ng-show="record.GeneralResponsibilities == '' || record.GeneralResponsibilities == null">General Responsiblity is not set by HR</p>
+                    </div><!-- End of part 1 -->
+                    <br />
+
+                    <div ng-show="record.goals.length == 0 || record.goals == null">
+                        <table style="width:100%;">
+                            <tr style="background-color:#fff;">
+                                <td colspan="7" style="text-align:center;font-weight:bold;color:#A70606;"> Kindly inform the HR for the Part II Work Result Form </td>
+                            </tr>
+                        </table>
+                        <br />
+                    </div>
+
+                    <div ng-show="record.goals.length > 0 ">
+                        <div style="border:1px solid #fff;padding-left:5px;padding-right:5px;width:98%;">
+                            <h4>II. WORK RESULTS</h4>
+                            <div style="font-size:9px;float:left;width:30%;">
+                                Parameter: Achievement (%()w/ Rating)<br />
+                                64 below (1)<br />
+                                65-74 (2)<br />
+                                75-84 (3)<br />
+                                85-94 (4)<br />
+                                95-100 (5)
+                            </div>
+                            <div style="font-size:10px;float:left;width:70%;">
+                                Minimum of 3 objective according the SMART goal definition, and carried over from the last review period. Results achieved to be stated by Job Holder and commented by Reviewing Mgr. An additional objective is added in case of staff management responsibilities as "PMS". Weight is the importance of each objective versus the others. Achievement % is the volume of the objective achieved, and the rating is the quality of what has been achieved. Examples can be found in PMS Guidelines.
+                            </div>
+                            <div style="clear:both;"></div>
+
+                            <div class="work-result-wrapper">
+                                <div ng-repeat="goal in record.goals">
+                                    <p style="text-decoration:underline;font-weight:bold;">OBJECTIVE <span ng-bind="$index+1"></span></p>
+                                    <!-- objectives and ratings -->
+                                    <div style="float:left;width:380px;">
+                                        <div style="float:left;width:380px;">
+                                            <p ng-bind="goal.Objective"></p>
+                                            <p><span style="color:#F8FABC"><strong>Measurement of Success: </strong><span ng-bind="goal.MeasureOfSuccess"></span></span></p>
+                                        </div>
+                                    </div>
+
+                                    <div style="width:320px;float:right;font-size:9px;margin-bottom:10px;">
+                                        <ul style="list-style-type: none;margin:0;padding: 0;font-weight:bold;">
+                                            <li style="display: inline;">Weight</li>
+                                            <li style="display: inline;padding-left:10px;">Achievement %</li>
+                                            <li style="display: inline;padding-left:41px;">Rating</li>
+                                            <li style="display: inline;padding-left:20px;">Weighted Rating</li>
+                                        </ul>
+                                    </div>
+                                    <div style="width:320px;float:right;font-size:9px;">
+                                        <span ng-bind="goal.Weight"></span>%
+                                        <input type="number"  min="1" max="100" class="width25 smltxtbox calcp3a checker" style="width:35px;margin-left:30px;" ng-model="goal.Achievement" ng-change="updateRecord()"> %</span>
+                                        <input type="number" class="width25 smltxtbox calcp3r checker" style="width:35px;margin-left:45px;" min="1" max="5" ng-model="goal.Rating" ng-change="updateRecord()">
+                                        </select>
+                                    <span style="margin-left:46px;" ng-bind="goal.WeightedRating = goal.Achievement/100 * goal.Weight / 100 * goal.Rating | number: 2"></span>
+                                    </div>
+
+                                    <div style="clear:both;"></div>
+                            
+                                    <table>
+                                        <tr>
+                                            <td style="width: 100px">Results Achieved: </td>
+                                            <td>
+                                                <textarea class="checker" cols="80" rows="2" ng-model="goal.ResultsAchieved"  minlength="10" required></textarea>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 100px">Comments: </td>
+                                            <td>
+                                                <textarea class="checker" cols="80" rows="2" ng-model="goal.Comments" minlength="10" required></textarea>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <div style="clear:both;"></div>
+                            
+                                </div>
+                                <hr></hr>
+                                <div style="padding:10px;margin-top:-15px;">
+                                    <table class="tdata" cellspacing="0" style="width:180px;float:right;font-size:9px;">
+                                        <tr>
+                                            <th>Final Weight</th>
+                                            <th style="text-align:center !important;">Final Weighted rating</th>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:center;"><span ng-bind="totalGoalAchievement | number: 2"></span>%</td>
+                                            <td style="text-align:center;"><span ng-bind="totalGoalWeightRating | number: 2"></span></td>
+                                        </tr>
+                                    </table>
+                                    <h4 style="float:right;margin-top:23px;margin-right:20px;">Overall Work Results</h4>
+                                    <div style="clear:both;"></div>
+                                </div><!-- end of overall work result -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div ng-show="record.competencies.length == 0 || record.competencies == null">
+                        <table style="width:100%;">
+                            <tr style="background-color:#fff;">
+                                <td colspan="7" style="text-align:center;font-weight:bold;color:#A70606;"> Kindly inform the HR for the Part III Personal Competencies Form </td>
+                            </tr>
+                        </table>
+                        <br />
+                    </div>
+
+                    <div ng-show="record.competencies.length > 0">
+                        <div style="border:1px solid #fff;padding-left:5px;padding-right:5px;width:98%;">
+                            <h4>III. PERSONAL CORE COMPETENCIES<span style="font-size:10px;font-weight:normal;"> (Minimum of 5 items agreed by both parties) </span></h4>
+
+                            <div class="work-result-wrapper" ng-repeat="competency in record.competencies">
+
+                                <p style="text-decoration:underline;font-weight:bold;margin-bottom:-5px;">
+                                    <span ng-bind="$index+1"></span>) <span ng-bind="competency.Competency"></span>
+                                </p>
+                                <!-- objectives and ratings -->
+                                <div style="float:left;width:400px;">
+                                    <!-- <p ng-bind-html="competency.Description"></p> -->
+                                    <p ng-bind-html="trustHTML(competency.Description)"></p>
+                                </div>
+                                <div style="width:220px;float:right;font-size:9px;margin-bottom:10px;">
+                                    <ul style="list-style-type: none;margin:0;padding: 0;font-weight:bold;">
+                                        <li style="display: inline;">Weight</li>
+                                        <li style="display: inline;padding-left:41px;">Rating</li>
+                                        <li style="display: inline;padding-left:20px;">Weighted Rating</li>
+                                    </ul>
+                                </div>
+                                <div style="width:220px;float:right;font-size:9px;">
+                                    <span ng-bind="competency.Weight"></span>%
+                                    <input type="number" style="margin-left:50px;" class="width25 smltxtbox pccrate checker" min="1" max="5" ng-model="competency.Rating" ng-change="updateRecord()" required>
+                                    <span style="margin-left:30px;" ng-bind="competency.WeightedRating = competency.Rating * competency.Weight / 100 | number: 2"></span>
+                                </div>
+                                <div style="width:710px;float:left;">
+                                <!-- cooments and achievments textarea -->
+                                Comments:
+                                <span class="px" style="font-style:italic;margin-left:5px;font-size:10px;" ng-show="competency.Rating != 3">(*Required field, if your rating is greater than or less than 3 to justify your rating to this employee)</span>
+                                <textarea id="" cols="90" rows="3" class="checker" ng-model="competency.Remarks" ng-required="competency.Rating != 3"></textarea>
+                                </div>
+                                <div style="clear:both;"></div>
+
+                            </div><!-- end of work result of each objectives -->
+                            <hr></hr>
+
+                            <!-- Overall work result -->
+                            <div style="padding:5px;">
+                                <table class="tdata" cellspacing="0" style="width:220px;float:right;font-size:9px;">
+                                    <tr>
+                                        <th>Final Weight</th>
+                                        <th style="text-align:center !important;">Final Weighted rating</th>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center;"><span ng-bind="totalCompetencyWeight"></span>%</td>
+                                        <td style="text-align:center;"><span ng-bind="totalCompetencyWeightRating | number: 2"></span></td>
+                                    </tr>
+                                </table>
+                                <h4 style="float:right;margin-top:12px;margin-right:20px;">Overall Personal Core Comptencies</h4>
+                                <div style="clear:both;"></div>
+                            </div><!-- end of overall work result -->
+                        </div><!-- End of part 4 -->
+                    </div>
+                    
+                    <div >
+                        <div style="border:1px solid #fff;padding-left:5px;padding-right:5px;width:98%;">
+                            <h4>IV. SETTING OBJECTIVES FOR NEXT REVIEW PERIOD</h4>
+                            <p style="font-weight:bold;">WORK RESULTS <span style="font-weight:normal;">(Minimum 3 SMART objectives and potential PMS, set by Reviewing Manager)</span></p>
+
+                            <div class="work-result-wrapper" id="partvwrap">
+                                <div id="partvwork">
+                                    <div ng-repeat="next_goal in record.goals_next">
+                                        <a class="smlbtn" id="delrowv" style="background-color:#D20404;" ng-click="deleteNextGoal($index)">Remove</a>
+                                        <p style="text-decoration:underline;font-weight:bold;">
+                                            OBJECTIVE <span ng-bind="$index+1"></span>
+                                        </p>
+                                        <div style="float:left;width:380px;">
+                                            <textarea style="width:167%;" class="checker" ng-model="next_goal.Objective" required minlength="10"></textarea>
+                                        </div>
+                                        <div style="width:60px;float:right;font-size:9px;">
+                                            <p style="font-weight:bold;">Weight</p>
+                                            <input style="width:35px;" type="number" ng-model="next_goal.Weight" min="1" max="100" class="width25 smltxtbox p5w checker" ng-change="updateRecord()" required> %
+                                        </div>
+                                        <div style="clear:both;"></div>
+                                        <div style="margin-top:-15px;">
+                                        <p> Measurement of accomplishment: </p>
+                                            <input type="text" style="margin-top:-8px;width:89%;" class="smltxtbox checker" ng-model="next_goal.MeasureOfSuccess" required minlength="10">
+                                            <div style="clear:both;"></div>
+                                        </div>
+                                        <hr/>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="smlbtn" id="addrowv" style="background-color:#3EC2FB;" ng-click="addNextGoal()">Add Objective</a>
+                            
+                            <div style="margin-top:-20px;">
+                                <table class="tdata" cellspacing="0" style="width:100px;float:right;font-size:9px;">
+                                    <tr>
+                                        <th>Total Weight %</th>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center;"><input type="number" class="width25 smltxtbox p5w checker" style="width:35px;" required min="100" max="100" ng-model="totalNextGoalWeight" readonly >
+                                    </tr>
+                                </table>
+                                <div style="clear:both;"></div>
+                            </div>
+                        
+                            <div>
+                                <h4>PERSONAL CORE COMPETENCIES <span style="font-size:10px;font-weight:normal;">(Minimum of 5 items agreed by both parties)</span></h4>
+                                <div class="pcc-main-wrapper">
+
+                                    <div class="pcc-left-wrapper" style="float:left;width:49%;">
+                                        <table>
+                                            <tr>
+                                                <th style="width:300px;"></th>
+                                                <th style="width:20px;text-align:center;border:1px solid #fff;font-size:8px;">Weight</th>
+                                            </tr>
+                                            <tr ng-repeat="next_pcc in record.competencies_next">
+                                                <td style="text-align:right;"> <span ng-bind="$index+1"></span>. <input type="text" ng-model="next_pcc.Competency" class="smltxtbox" style="width:245px;"  readonly></td>
+                                                <td><input type="number" ng-model="next_pcc.Weight" min="0" max="100" class="smltxtbox calcp5w checker" style="width:35px;" ng-change="updateRecord()"></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align: right">Total Weight %</td>
+                                                <td><input type="number" id="inputtotalnextweight" class="width25 smltxtbox p5w checker" style="width:35px;" required min="100" max="100" ng-model="totalNextCompetencyWeight" readonly ></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                    <div style="clear:both;"></div>
+                                </div> <!-- end of pcc main wrapper -->
+                                <hr></hr >
+                                <h4 style="margin-top:5px;">Comments on next year's objectives :</h4>
+                                <textarea ng-model="record.NObjective" style="width:99%;" class="smltxtbox checker"></textarea>
+
+                            </div>
+                        </div>
+                        <br />
+                    </div>
+                    <br />
+
+                    <table style="border:1px solid #fff;width:99.6%;">
+                        <thead>
+                        <tr>
+                            <th style="text-align:left;width:350px;">A. HR RELATED EVALUATION - 30%</th>
+                            <th style="text-align:center;">% Value</th>
+                            <th style="text-align:center;">Rate</th>
+                            <th style="text-align:center;">Final Value</th>
+                        </tr>
+                        </thead>
+                        <tr>
+                            <td>Conduct and Compliance to the company policy <br>
+                            <td style="text-align:center;">10%</td>
+                            <td style="text-align:center;"><span ng-bind="record.ConductMemoScore | number: 2"></span></td>
+                            <td style="text-align:center;"><span ng-bind="record.ConductMemoScore * 0.1 | number: 2"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Attendance and Punctuality <br>
+                            <td style="text-align:center;">10%</td>
+                            <td style="text-align:center;"><span ng-bind="record.AttendancePunctualityScore | number: 2"></td>
+                            <td style="text-align:center;"><span ng-bind="record.AttendancePunctualityScore * 0.1 | number: 2"></td>
+                        </tr>
+                        <tr>
+                            <td>Customer Experience</td>
+                            <td style="text-align:center;">5%</td>
+                            <td style="text-align:center;"><span ng-bind="record.FiveSScore | number: 2"></td>
+                            <td style="text-align:center;"><span ng-bind="record.FiveSScore * 0.05 | number: 2"></td>
+                        </tr>
+                        <tr>
+                            <td>Learning and Development</td>
+                            <td style="text-align:center;">5%</td>
+                            <td style="text-align:center;"><span ng-bind="record.TrainingScore | number: 2"></td>
+                            <td style="text-align:center;"><span ng-bind="record.TrainingScore * 0.05 | number: 2"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td style="text-align:center;"></td>
+                            <td style="text-align:right;font-weight:bold;">Total:</td>
+                            <td style="text-align:center;border-top:1px solid #fff;">
+                                <span ng-bind="(record.TrainingScore * 0.05) + (record.FiveSScore * 0.05) + (record.AttendancePunctualityScore * 0.1) + (record.ConductMemoScore * 0.1) | number:2"></span>
+                            </td>
+                        </tr>
+                    </table>
+                    <h4 style="text-align:center;"> Final Summary </h4>
+                    <div style="width:99%;background-color:#fff;padding:2px;" ng-show="record.AttendancePunctualityScore == null || record.TrainingScore == null || record.FiveSScore == null || record.ConductMemoScore == null">
+                        <p style="text-align:center;font-weight:bold;color:#A70606;"> Kindly inform the HR for the Employee Conduct/Memo, Attendance and Punctuality, Customer Experience and Training Scores </p>
+                    </div>
+
+                    <table style="border:1px solid #fff;width:99%;" >
+                        <thead>
+                            <tr>
+                                <th style="text-align:left;width:350px;">B. PERFORMANCE EVALUATION - 70%</th>
+                                <th style="text-align:center;">% Value</th>
+                                <th style="text-align:center;">Rate</th>
+                                <th style="text-align:center;">Final Value</th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td>PART II - Work Results </td>
+                            <td style="text-align:center;">35%</td>
+                            <td style="text-align:center;"><span ng-bind="totalGoalWeightRating | number:2"></span></td>
+                            <td style="text-align:center;"><span ng-bind="totalGoalWeightRating * 0.35 | number: 2"></span></td>
+                        </tr>
+                        <tr>
+                            <td>PART III - Personal Core Competencies</td>
+                            <td style="text-align:center;">35%</td>
+                            <td style="text-align:center;"><span ng-bind="totalCompetencyWeightRating|number:2"></span></td>
+                            <td style="text-align:center;"><span ng-bind="totalCompetencyWeightRating*0.35|number:2"></span></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td style="text-align:center;"></td>
+                            <td style="text-align:right;font-weight:bold;">Total:</td>
+                            <td style="text-align:center;border-top:1px solid #fff;"><span ng-bind="record.evaluation_score = ((totalCompetencyWeightRating*0.35) +  (totalGoalWeightRating * 0.35)) | number:2"></span></td>
+                        </tr>
+
+                        <tr>
+                            <td style="font-weight:bold;text-align:right;">Overall Performance : </td>
+                            <td style="text-align:center;"><span ng-bind="record.total_computed_score = record.evaluation_score + (record.TrainingScore * 0.05) + (record.FiveSScore * 0.05) + (record.AttendancePunctualityScore * 0.1) + (record.ConductMemoScore * 0.1)|number:2"></span></td>
+                            <td style="text-align:center;"></td>
+                            <td style="text-align:center;"></td>
+                        </tr>
+
+                        <tr>
+                            <!--<td style="font-weight:bold;text-align:right;">Percentage Equivalent : </td>-->
+                            <!--<td style="text-align:center;"><span id="pe">0</span>%</td>-->
+                            <td style="text-align:center;background-color:#fff;font-weight:bold;color:#06A716;" colspan="4">
+                                <p class="note5 note" style="color:#06A716;" ng-show="record.total_computed_score == 5">(<i class="fa fa-thumbs-up"></i>) This Employee is Exceptional</p>
+                                <p class="note4 note" style="color:#06A716;" ng-show="record.total_computed_score < 5 && record.total_computed_score >= 4">(<i class="fa fa-thumbs-up"></i>) This Employee Exceeds Expectations</p>
+                                <p class="note3 note" style="color:#06A716;" ng-show="record.total_computed_score < 4 && record.total_computed_score >= 3">(<i class="fa fa-thumbs-up"></i>) This Employee Meets Expectations</p>
+                                <p class="note2 note" style="color:#06A716;" ng-show="record.total_computed_score < 3 && record.total_computed_score >= 2">(<i class="fa fa-thumbs-up"></i>) This Employee Needs Improvement</p>
+                                <p class="note1 note" style="color:#A70606;" ng-show="record.total_computed_score < 2 && record.total_computed_score >= 1">(<i class="fa fa-thumbs-down"></i>) This Employee has No Evidence of Skill</p>
+                                <p class="note0 note" style="color:#06A716;" ng-show="record.total_computed_score == 0">No Performance Evaluation Score</p>
+                            </td>
+                        </tr>
+                    </table><br />
+
+                    <div style="border:1px solid #fff;padding-left:5px;padding-right:5px;width:98%;">
+                        <h4>V. DEVELOPMENT PLAN</h4>
+                        <p>A. Key competencies to strengthen performance in current job (set by reviewing mgr):</p>
+                        <textarea ng-model="record.DevPlanA" style="width:99%;" class="smltxtbox checker" required minlength="25"></textarea>
+                        <!--<p>B. Employee desired career path within next 2 to 3 years (set by job holder):</p>
+                        <textarea style="width:99%;" class="smltxtbox"></textarea>-->
+                        <p>B. Key competencies needed to advance in employee desired career path (set by reviewing mgr):</p>
+                        <textarea ng-model="record.DevPlanB" style="width:99%;" class="smltxtbox checker" required minlength="25"></textarea>
+                        <p>C. Planned development / training activities (agreed by reviewing mgr and as per the following priority / feasibility order):</p>
+                        <textarea ng-model="record.DevPlanC" style="width:99%;" class="smltxtbox checker" required minlength="25"></textarea>
+                    </div>
+                    <br />
+
+                    <div style="border:1px solid #fff;padding-left:5px;width:98.6%;">
+                        <h4>VI. PERFORMANCE SUMMARY <span style="font-size:10px;font-weight:normal;">(Written by Reviewing Manager)</span></h4>
+                        <p>
+                            <textarea ng-model="record.PerformanceSummary" class="perfsummary checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 1" required minlength="25"></textarea>
+                            <span ng-show="record.for_approval_level > 1" ng-bind="record.PerformanceSummary"></span>
+                        </p>
+                        <p>
+                            <textarea ng-model="record.Rater2Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 2"></textarea>
+                            <textarea ng-model="record.Rater3Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 3"></textarea>
+                            <textarea ng-model="record.Rater4Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 4"></textarea>
+                        </p>
+                        <div ng-show="record.Rater2Comment != null && record.for_approval_level >= 2">
+                            <h4><span ng-bind="record.Rater2FullName"></span>' Comment</h4>
+                            <p ng-bind="record.Rater2Comment"></p>
+                        </div>
+                        <div ng-show="record.Rater3Comment != null && record.for_approval_level >= 3">
+                            <h4><span ng-bind="record.Rater3FullName"></span>' Comment</h4>
+                            <p ng-bind="record.Rater3Comment"></p>
+                        </div>
+                        <div ng-show="record.Rater4Comment != null && record.for_approval_level >= 4">
+                            <h4><span ng-bind="record.Rater4FullName"></span>' Comment</h4>
+                            <p ng-bind="record.Rater4Comment"></p>
+                        </div>
+                    </div>
+                    <br>
+                    
+                    <h3 style="">
+                        <strong>Equivalent system generated percentage increase: </strong>
+                        <span id="sys_gen_inc" ng-bind="record.system_increase | number:2"></span>%
+                    </h3>
+
+                    <div id="floatdiv" class="floatdiv invisible">
+                        <div id="nview" class="fview" style="display: none;">
+                            <div id="paf_title" class="paf_title robotobold cattext dbluetext">
+                                Promotion To New Level
+                            </div>
+                            <div id="paf_data" style="color: black">
+                                <span>Please select your recommendation of promotion to a new level if applicable.</span>
+                                <table class="tdataform2 rightmargin margintop10 vsmalltext" width="100%" border="0" cellpadding="0" cellspacing="0">
+                                    <tbody>
+                                        <tr>
+                                            <td style="vertical-align:top; text-align:right">Current Level</td>
+                                            <th style="vertical-align:top;"><span ng-bind="record.Rank"></span></th>
+                                        </tr>
+                                        <tr>
+                                            <td style="vertical-align:top; text-align:right">Next Level</td>
+                                            <td style="vertical-align:top;">
+                                                <b ng-bind="record.ranks[getRankIndex(record.Rank)+1]"></b>
+                                                <br><span>Based on the Organizational Levels Hierarchy</span>
+                                            </td>
+                                        </tr>
+                                    
+                                        <tr>
+                                            <td style="vertical-align:top; text-align:right">Your Recommendation</td>
+                                            <th style="vertical-align:top;">
+                                                <select id="finalrank" class="txtbox width95per" ng-model="finalRankPromotion" ng-change="setFinalRankPromotion()">
+                                                    <option value="NOT FOR PROMOTION">NOT FOR PROMOTION</option>
+                                                    <option ng-repeat="rank in record.ranks" ng-show="$index > getRankIndex(record.Rank)">{{ rank }}</option>
+                                                </select>
+                                                <span>Please select "NOT FOR PROMOTION" if ratee is not recommended.</span>
+                                            </th>
+                                        </tr>
+                                        <tr ng-show="getRankIndex(finalRankPromotion) > getRankIndex(record.Rank)+1">
+                                            <th colspan="2"><span id="rankwarning" style="color: red;">You have skipped a level based on the organization's promotion level of hierarchy. Please click CONTINUE to proceed with the recommendation.</span></th>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="2" style="text-align:center"><button type="button" class="btn closebutton">Continue</button></th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- VIEW NOTIFICATION - END -->
+                    </div>
+
+                    <p><strong>Final Recommendation</strong> (Please fill up your desired recommendations below.)</p>
+                    <table>
+                        <tr>
+                            <td style="vertical-align:top; width:150px">Promotion To Level</td>
+                            <td>
+                                
+                                <input type="text" name="promotion" ng-model="finalRankPromotion" autocomplete="off" readonly style="width:350px !important">
+                                <br><br>
+                                Current rank is <b ng-bind="record.Rank"></b>
+                                <br> 
+                                <span ng-show="false">
+                                    System recommends for promotion to <b></b>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align:top; width:150px">New Position Title</td>
+                            <td>
+                                <input type="text" ng-model="finalPositionPromotion" ng-change="setFinalPositionPromotion()" style="width:350px !important"> 
+                                <br><br>
+                                Current Position title is <b><span ng-bind="record.Position"></span></b>
+                                
+                            </td>
+                        </tr>
+                        <tr ng-show="isFinalApprover()">
+                            <td style="vertical-align:top; width:150px">Salary Increase</td>
+                            <td>
+                                <input type="number" min="1" name="increase" ng-model="record.recommended_salary_increase" ng-change="setFinalRecommendedIncrease()" step="0.01"> %
+                                <br><br>
+                                Salary increase will be the final recommended increase. If left blank, equivalent system generated percentage increase will apply.
+                            </td>
+                        </tr>
+                    </table>
+
+
+                
+                <p ><strong style="color:#F8FABC">Promotion History from the last 3 years: </strong> <br>
+                    <span ng-bind="record.PromotionHistory"></span>
+                    <br> <strong style="color:#F8FABC">Conduct and Memo History from the last 3 years: </strong> <br>
+                    <span ng-bind="record.ConductMemoComment"></span>
+                    <br> <strong style="color:#F8FABC">Attendance and Punctuality History from the last 3 years: </strong> <br>
+                    <span ng-bind="record.AttendancePunctualityComment"></span>
+                </p>
+
+                <button type="button" class="subapp smlbtn" id="submapp" style="float:right;margin-right:10px;" ng-click="submit()">Submit Appraisal</button>
+                <button type="button" class="saveapp smlbtn" id="saveapp" style="float:right;background-color:#3EC2FB;margin-right:10px;" ng-click="save()">Save Appraisal</button>
+                
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+    <script>
+    // angular retrieve record from https://dev.megaworldcorp.com/test
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function($scope, $http,  $sce) {
+        let apiUrl = 'https://dev.megaworldcorp.com:8081/peoplesedge/api/pmsv1/';
+
+        $scope.record = [];
+        $scope.ApproverEmpID = '<?php echo $profile_idnum; ?>';
+        $scope.ApproverEmpDB = '<?php echo $profile_dbname; ?>';
+        $scope.loading = true;
+
+        $http({
+            method: 'GET',
+            url: apiUrl + 'evaluation/show/<?php echo $_GET['ratee']; ?>' 
+        }).then(function successCallback(response) {
+                // store the response data in a variable called `data`
+                $scope.record = response.data;
+                $scope.record.ApproverEmpID = $scope.ApproverEmpID;
+                $scope.record.ApproverEmpDB = $scope.ApproverEmpDB;
+                $scope.record.system_increase = parseFloat($scope.record.system_increase);
+                $scope.record.recommended_salary_increase = parseFloat($scope.record.recommended_salary_increase);
+                $scope.record.total_computed_score = parseFloat($scope.record.total_computed_score);
+                $scope.updateRecord();
+        
+                $scope.loading = false;
+                console.log("Successfully retrieved record");
+                },
+                function errorCallback(response) {
+                    // called asynchronously if an error occurs
+                    // or server returns response with an error status.
+                    console.error("Error while retrieving record", response);
+                    $scope.loading = true;
+                    window.location.reload();
+
+        });
+
+        $scope.formatDate = function(date){
+            var dateOut = new Date(date);
+            return dateOut;
+        };
+
+        $scope.updateRecord = function(){
+            $scope.totalGoalAchievement = $scope.record.goals.reduce(function(total, goal) {
+                return total + (parseFloat(goal.Achievement) * parseFloat(goal.Weight) / 100 || 0);
+            }, 0);
+
+            $scope.totalGoalWeightRating = $scope.record.goals.reduce(function(total, goal) {
+                return total + (parseFloat(goal.Achievement)/100 * parseFloat(goal.Weight) / 100 * parseFloat(goal.Rating) || 0);
+            }, 0);
+
+            $scope.totalCompetencyWeight= $scope.record.competencies.reduce(function(total, competency) {
+                return total + (parseFloat(competency.Weight) || 0);
+            }, 0);
+
+            $scope.totalCompetencyWeightRating = $scope.record.competencies.reduce(function(total, competency) {
+                return total + ( parseFloat(competency.Rating) * parseFloat(competency.Weight) / 100 || 0);
+            }, 0);
+
+            $scope.totalNextCompetencyWeight = $scope.record.competencies_next.reduce(function(total, competency) {
+                return total + ( parseFloat(competency.Weight) || 0);
+            }, 0);
+
+            $scope.totalNextGoalWeight = $scope.record.goals_next.reduce(function(total, goal) {
+                return total + (  parseFloat(goal.Weight)  || 0);
+            }, 0);
+
+            if($scope.record.Rater4EmpID != null && $scope.record.Rater4DB != null && $scope.record.Rater4PositionPromotion != null)
+                $scope.finalPositionPromotion = $scope.record.Rater4PositionPromotion;
+
+            if($scope.record.Rater3EmpID != null && $scope.record.Rater3DB != null && $scope.record.Rater3PositionPromotion != null)
+                $scope.finalPositionPromotion = $scope.record.Rater3PositionPromotion;
+
+            if($scope.record.Rater2EmpID != null && $scope.record.Rater2DB != null && $scope.record.Rater2PositionPromotion != null)
+                $scope.finalPositionPromotion = $scope.record.Rater2PositionPromotion;
+                
+            if($scope.record.Rater1EmpID != null && $scope.record.Rater1DB != null && $scope.record.Rater1PositionPromotion != null)
+                $scope.finalPositionPromotion = $scope.record.Rater1PositionPromotion;       
+
+            if($scope.record.Rater4EmpID != null && $scope.record.Rater4DB != null && $scope.record.Rater4RankPromotion != null)
+                $scope.finalRankPromotion = $scope.record.Rater4RankPromotion;
+
+            if($scope.record.Rater3EmpID != null && $scope.record.Rater3DB != null && $scope.record.Rater3RankPromotion != null)
+                $scope.finalRankPromotion = $scope.record.Rater3RankPromotion;
+
+            if($scope.record.Rater2EmpID != null && $scope.record.Rater2DB != null && $scope.record.Rater2RankPromotion != null)
+                $scope.finalRankPromotion = $scope.record.Rater2RankPromotion;
+                
+            if($scope.record.Rater1EmpID != null && $scope.record.Rater1DB != null && $scope.record.Rater1RankPromotion != null)
+                $scope.finalRankPromotion = $scope.record.Rater1RankPromotion;       
+            
+            if($scope.record.Rater4EmpID != null && $scope.record.Rater4DB != null && $scope.record.Rater4Increase != null)
+                $scope.finalRecommendedIncrease = parseFloat($scope.record.Rater4Increase);
+
+            if($scope.record.Rater3EmpID != null && $scope.record.Rater3DB != null && $scope.record.Rater3Increase != null)
+                $scope.finalRecommendedIncrease = parseFloat($scope.record.Rater3Increase);
+
+            if($scope.record.Rater2EmpID != null && $scope.record.Rater2DB != null && $scope.record.Rater2Increase != null)
+                $scope.finalRecommendedIncrease = parseFloat($scope.record.Rater2Increase);
+                
+            if($scope.record.Rater1EmpID != null && $scope.record.Rater1DB != null && $scope.record.Rater1Increase != null)
+                $scope.finalRecommendedIncrease = parseFloat($scope.record.Rater1Increase);  
+
+            $scope.record.evaluation_score = (($scope.totalCompetencyWeightRating*0.35) +  ($scope.totalGoalWeightRating * 0.35));
+            $scope.partHRScore = ($scope.record.TrainingScore * 0.05) + ($scope.record.FiveSScore * 0.05) + ($scope.record.AttendancePunctualityScore * 0.1) + ($scope.record.ConductMemoScore * 0.1);
+
+            $scope.record.total_computed_score = parseFloat($scope.record.evaluation_score) + parseFloat($scope.partHRScore);
+
+            let percentage_increase = parseFloat($scope.record.group.RegularIncrease);
+            if($scope.finalRankPromotion != 'NOT FOR PROMOTION')
+                percentage_increase = parseFloat($scope.record.group.PromotionalIncrease);
+            
+            $scope.record.system_increase = ($scope.record.total_computed_score/5) * 100 * (percentage_increase/100);
+        }
+
+        $scope.trustHTML = function(html){
+            return $sce.trustAsHtml(html);
+        }
+
+        $scope.addNextGoal = function (){
+            var newGoal = {
+                "EvaluationID": '<?php echo $_GET['ratee']; ?>',
+                "Objective":  "",
+                "MeasureOfSuccess": "",
+                "Weight": 0,
+                "id": null
+            }
+
+            $scope.record.goals_next.push(newGoal);
+        }
+
+        $scope.deleteNextGoal = function(index){
+            $scope.record.goals_next.splice(index, 1);
+        }
+
+        $scope.setFinalRankPromotion = function(){
+            if($scope.record.Rater1EmpID == $scope.ApproverEmpID && $scope.record.Rater1DB == $scope.ApproverEmpDB)
+                $scope.record.Rater1RankPromotion = $scope.finalRankPromotion;
+        
+            if($scope.record.Rater2EmpID == $scope.ApproverEmpID && $scope.record.Rater2DB == $scope.ApproverEmpDB)
+                $scope.record.Rater2RankPromotion = $scope.finalRankPromotion;
+
+            if($scope.record.Rater3EmpID == $scope.ApproverEmpID && $scope.record.Rater3DB == $scope.ApproverEmpDB)
+                $scope.record.Rater3RankPromotion = $scope.finalRankPromotion;
+        
+            if($scope.record.Rater4EmpID == $scope.ApproverEmpID && $scope.record.Rater4DB == $scope.ApproverEmpDB)
+                $scope.record.Rater4RankPromotion = $scope.finalRankPromotion;
+
+            $scope.updateRecord();
+        }
+
+        $scope.setFinalPositionPromotion = function(){
+            if($scope.record.Rater1EmpID == $scope.ApproverEmpID && $scope.record.Rater1DB == $scope.ApproverEmpDB)
+                $scope.record.Rater1PositionPromotion = $scope.finalPositionPromotion;
+        
+            if($scope.record.Rater2EmpID == $scope.ApproverEmpID && $scope.record.Rater2DB == $scope.ApproverEmpDB)
+                $scope.record.Rater2PositionPromotion = $scope.finalPositionPromotion;
+
+            if($scope.record.Rater3EmpID == $scope.ApproverEmpID && $scope.record.Rater3DB == $scope.ApproverEmpDB)
+                $scope.record.Rater3PositionPromotion = $scope.finalPositionPromotion;
+        
+            if($scope.record.Rater4EmpID == $scope.ApproverEmpID && $scope.record.Rater4DB == $scope.ApproverEmpDB)
+                $scope.record.Rater4PositionPromotion = $scope.finalPositionPromotion;
+        }
+
+        $scope.setFinalRecommendedIncrease = function(){
+            if($scope.record.Rater1EmpID == $scope.ApproverEmpID && $scope.record.Rater1DB == $scope.ApproverEmpDB)
+                $scope.record.Rater1Increase = $scope.finalRecommendedIncrease;
+        
+            if($scope.record.Rater2EmpID == $scope.ApproverEmpID && $scope.record.Rater2DB == $scope.ApproverEmpDB)
+                $scope.record.Rater2Increase = $scope.finalRecommendedIncrease;
+
+            if($scope.record.Rater3EmpID == $scope.ApproverEmpID && $scope.record.Rater3DB == $scope.ApproverEmpDB)
+                $scope.record.Rater3Increase = $scope.finalRecommendedIncrease;
+        
+            if($scope.record.Rater4EmpID == $scope.ApproverEmpID && $scope.record.Rater4DB == $scope.ApproverEmpDB)
+                $scope.record.Rater4Increase = $scope.finalRecommendedIncrease;       
+        }
+
+        $scope.isFinalApprover = function(){
+            if($scope.record.Rater1EmpID == $scope.ApproverEmpID && $scope.record.Rater1DB == $scope.ApproverEmpDB && $scope.record.final_approver_level == 1)
+                return true;
+        
+            if($scope.record.Rater2EmpID == $scope.ApproverEmpID && $scope.record.Rater2DB == $scope.ApproverEmpDB && $scope.record.final_approver_level == 2)
+                return true;
+
+            if($scope.record.Rater3EmpID == $scope.ApproverEmpID && $scope.record.Rater3DB == $scope.ApproverEmpDB && $scope.record.final_approver_level == 3)
+                return true;
+        
+            if($scope.record.Rater4EmpID == $scope.ApproverEmpID && $scope.record.Rater4DB == $scope.ApproverEmpDB && $scope.record.final_approver_level == 4)
+                return true;
+        }
+
+        $scope.getRankIndex = function(rank){
+            return $scope.record.ranks.indexOf(rank);
+        }
+
+        $scope.save = function(){
+            $scope.loading = true;
+            $http({
+                method: 'POST',
+                url: apiUrl + 'evaluation/save', 
+                data:  $scope.record
+            }).then(function successCallback(response) {
+                    // store the response data in a variable called `data`
+                    $scope.record = response.data;
+                    console.log("Successfully saved record");
+                    $scope.loading = false;
+                    $scope.record.submit = false;
+                },
+                function errorCallback(response) {
+                        // called asynchronously if an error occurs
+                        // or server returns response with an error status.
+                        $scope.loading = true;
+                        console.error("Error while saving record", response);
+            });
+        }
+
+        $scope.submit = function(){
+            if($scope.validate()){
+                $scope.record.submit = true;
+                $scope.save();
+            }
+        }
+
+        $scope.validate = function(){
+            // angular 1.7 validate form on submit
+            if($scope.myForm.$invalid){
+                $('input.ng-invalid').first().focus();
+                $('textarea.ng-invalid').first().focus();
+                $('select.ng-invalid').first().focus();
+                alert('Please check all required inputs!');
+            }
+
+            return !$scope.myForm.$invalid;
+        }
+
+    });
+    
+    $('input[name="promotion"]').on('click', function(e){
+        $(".floatdiv").removeClass("invisible");
+        $("#nview").show({
+            effect : 'slide',
+            easing : 'easeOutQuart',
+            direction : 'up',
+            duration : 500
+        });
+    });
+
+    </script>
+    

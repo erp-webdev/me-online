@@ -1,7 +1,6 @@
 <?php
 
-    // if ($logged == 1 && $profile_dbname != 'ECINEMA' && $profile_dbname != 'EPARKVIEW' && $profile_dbname != 'NEWTOWN') {
-	if ($profile_dbname != 'EPARKVIEW' && $profile_dbname != 'NEWTOWN') {
+    if ($logged == 1 ) {
 
         //*********************** MAIN CODE START **********************\\
 
