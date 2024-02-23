@@ -1,7 +1,7 @@
                 <div id="paf" class="mainbody lefttalign whitetext">
                 <?php if(count($checkEvaluation) > 0 && $pafad == 'rater') {  ?>
 
-                    <b class="mediumtext lorangetext"><a href="<?php echo WEB; ?>/paf?groupid=<?php echo $groupid; ?>"><i class="mediumtext fa fa-arrow-left" style="color:#fff;opacity:.8;"></i></a> Performance Appraisal Viewer <?php if($pafad == 'divhead'){ echo '- Division Head'; } elseif($pafad == 'rater') { echo '- Supervisor/Approver'; } ?></b><br>
+                    <b class="mediumtext lorangetext"><a href="<?php echo WEB; ?>/pms?page=eval&GroupID=<?php echo $groupid; ?>"><i class="mediumtext fa fa-arrow-left" style="color:#fff;opacity:.8;"></i></a> Performance Appraisal Viewer <?php if($pafad == 'divhead'){ echo '- Division Head'; } elseif($pafad == 'rater') { echo '- Supervisor/Approver'; } ?></b><br>
                         <!--<p>You're a ratee!</p>-->
                         <div style="overflow-y:scroll;max-height:514px;margin-top:10px;">
                         <?php foreach($checkEvaluation as $row) { ?>
@@ -848,7 +848,7 @@
 
                         <form id="frm_pafview" class="formg" method="post" enctype="multipart/form-data">
                         <!-- Checks if user is Ratee -->
-                        <a href="<?php echo WEB; ?>/paf?groupid=<?php echo $groupid; ?>"><i class="mediumtext fa fa-arrow-left" style="color:#fff;opacity:.8;"></i></a> <b class="mediumtext lorangetext">Ratee - Appraisal Rating Result</b><br>
+                        <a href="<?php echo WEB; ?>/pms?page=eval&GroupID=<?php echo $groupid; ?>"><i class="mediumtext fa fa-arrow-left" style="color:#fff;opacity:.8;"></i></a> <b class="mediumtext lorangetext">Ratee - Appraisal Rating Result</b><br>
                         <!--<p>You're a ratee!</p>-->
                         <div style="overflow-y:scroll;max-height:514px;margin-top:10px;">
                             <?php foreach($viewAppraisal as $row) { ?>

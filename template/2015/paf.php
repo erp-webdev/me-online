@@ -1,5 +1,4 @@
     <?php include(TEMP."/header.php"); ?>
-
     <!-- BODY -->
         <?php date_default_timezone_set("Asia/Manila"); ?>
         <script type="text/javascript" src="<?php echo SCRIPT; ?>/addon-jqueryv2.min.js"></script>

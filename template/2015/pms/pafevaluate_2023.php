@@ -12,7 +12,7 @@
         </style>
         <!--<?php // if($rstat1 == 2) { ?>pow<?php // } ?>-->
         <?php if (count($evaluateRatee) > 0) { ?>
-            <b class="mediumtext lorangetext"><a href="<?php echo WEB; ?>/paf?groupid=<?php echo $groupid;
+            <b class="mediumtext lorangetext"><a href="<?php echo WEB; ?>/pms?page=eval&GroupID=<?php echo $groupid;
                if (isset($_GET['sub']))
                    echo '&sub=' . $_GET['sub']; ?>&ref=emp<?php echo $_GET['appid']; ?>"><i class="mediumtext fa fa-arrow-left" style="color:#fff;opacity:.8;"></i></a> Performance Appraisal Form - Supervisor/Rater </b><br><br>
             <div>

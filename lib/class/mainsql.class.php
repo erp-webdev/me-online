@@ -1799,7 +1799,9 @@ class mainsql {
                 return 0;
             }
         }else{
-            return 1; // expired
+//            return 1; // expired
+            return $this->check_appexpire($date);
+
         }
         
     }

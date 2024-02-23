@@ -90,7 +90,7 @@
 		'SUNT01' => '26th Floor, Alliance Global Tower, 36th Street cor 11th Avenue, Uptown Bonifacio',
 		'NCCAI' => 'Star Cruises Centre, 100 Andrews Avenue, Newport City, Vlllamor Air Base, Pasay City, Metro Manila',
 		'MLI01' => '19/F Alliance Global Tower, 36th Street corner 11th Avenue, Uptown Bonifacio, Taguig City, 1634',
-		'MCTI' => 'Capital Boulevard, Barangay Sto. Niño, City of San Fernando, Pampanga',
+		'MCTI' => 'Capital Boulevard, Barangay Sto. Ni�o, City of San Fernando, Pampanga',
 		'LUCK01' => '5F Lucky Chinatown Mall, Reina Regente St. corner Dela Reina St., Brgy. 293, Zone 28, Binondo, Manila',
 		'ERA01' => '30th Floor, Alliance Global Tower, 36th Street cor 11th Avenue, Uptown Bonifacio, Taguig City',
 		'ECOC01' => 'GF The World Center Building, 330 Senator Gil Puyat Avenue, Makati City',
@@ -133,7 +133,7 @@
 				<?php }else{ ?>
 					for whatever legal purpose it may serve.</p>
 				<?php } ?>
-				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
+				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo mb_convert_encoding($companies[$emp_info[0]['CompanyID']], 'UTF-8', 'HTML-ENTITIES'); ?>, Philippines.</p>
 			</div>
 
 			<?php
@@ -166,7 +166,7 @@
 					for whatever legal purpose it may serve.</p>
 				<?php } ?>
 
-				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
+				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo mb_convert_encoding($companies[$emp_info[0]['CompanyID']], 'UTF-8', 'HTML-ENTITIES'); ?>, Philippines.</p>
 			</div>
 
 			<?php
@@ -202,7 +202,7 @@
 				<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo $emp_info[0]["Salutation"]." ".strtoupper(mb_convert_encoding($emp_info[0]["LName"], 'UTF-8', 'HTML-ENTITIES'))."
 				as a requirement for the Deed of Absolute Sale of ".$emp_info[0]["Gender2"]." ".date('jS', mktime(0, 0, 0, 0, $coe[0]["avail_no"], 0)); ?> property availment under the company's housing program.</p>
 
-				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
+				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo mb_convert_encoding($companies[$emp_info[0]['CompanyID']], 'UTF-8', 'HTML-ENTITIES'); ?>, Philippines.</p>
 			</div>
 
 			<?php
@@ -234,7 +234,7 @@
 					for whatever legal purpose it may serve.</p>
 				<?php } ?>
 
-				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
+				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo mb_convert_encoding($companies[$emp_info[0]['CompanyID']], 'UTF-8', 'HTML-ENTITIES'); ?>, Philippines.</p>
 			</div>
 
 			<?php
@@ -292,7 +292,7 @@
 					}
 				?>
 
-				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
+				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo mb_convert_encoding($companies[$emp_info[0]['CompanyID']], 'UTF-8', 'HTML-ENTITIES'); ?>, Philippines.</p>
 			</div>
 
 			<?php
@@ -343,7 +343,7 @@
 				}
 			?>
 
-			<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
+			<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo mb_convert_encoding($companies[$emp_info[0]['CompanyID']], 'UTF-8', 'HTML-ENTITIES'); ?>, Philippines.</p>
 		</div>
 
 		<?php
@@ -401,7 +401,7 @@
 					}
 				?>
 
-				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
+				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo mb_convert_encoding($companies[$emp_info[0]['CompanyID']], 'UTF-8', 'HTML-ENTITIES'); ?>, Philippines.</p>
 			</div>
 
 			<?php
@@ -431,7 +431,7 @@
 				<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower(mb_convert_encoding($emp_info[0]["LName"], 'UTF-8', 'HTML-ENTITIES'))); ?>
 				for the purpose of complying with the documentary requirements for <?php echo $emp_info[0]["Gender2"]?> SSS <?php echo strtolower($coe[0]["category"]) ?> benefit claim.</p>
 
-				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
+				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F Y'); ?> at <?php echo mb_convert_encoding($companies[$emp_info[0]['CompanyID']], 'UTF-8', 'HTML-ENTITIES'); ?>, Philippines.</p>
 			</div>
 
 			<?php
@@ -459,7 +459,7 @@
 				<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo strtoupper($emp_info[0]["Salutation"])." ".strtoupper(mb_convert_encoding($emp_info[0]["LName"], 'UTF-8', 'HTML-ENTITIES')); ?>
 				as a requirment for <?php echo $emp_info[0]["Gender2"]?> Employee Compensation application. <?php echo $emp_info[0]["Gender"]?> last reported for work on <?php echo date('d F Y', strtotime($coe[0]["other_reason"])); ?>.</p>
 
-				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
+				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F Y'); ?> at <?php echo mb_convert_encoding($companies[$emp_info[0]['CompanyID']], 'UTF-8', 'HTML-ENTITIES'); ?>, Philippines.</p>
 			</div>
 
 			<?php
@@ -506,7 +506,7 @@
 					for whatever legal purpose it may serve.</p>
 				<?php } ?>
 
-				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
+				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo mb_convert_encoding($companies[$emp_info[0]['CompanyID']], 'UTF-8', 'HTML-ENTITIES'); ?>, Philippines.</p>
 			</div>
 			<?php
 				echo !$send_pdf ? '&nbsp;<br />'  : '';
@@ -546,7 +546,7 @@
 			</b>for whatever legal purpose it may serve.</p>
 			<?php } ?>
 
-			<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
+			<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo mb_convert_encoding($companies[$emp_info[0]['CompanyID']], 'UTF-8', 'HTML-ENTITIES'); ?>, Philippines.</p>
 		</div>
 		<?php elseif(date('Y-m-d', strtotime($DateResigned2)) <= date('Y-m-d')): ?>
 		<div style="text-align: justify;  text-justify: inter-word;">
@@ -572,7 +572,7 @@
 			</b>for whatever legal purpose it may serve.
 			<?php } ?>  Hence, the company hold no responsibility for any misrepresentation of facts and data  enumerated herein.</p>
 
-			<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
+			<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo mb_convert_encoding($companies[$emp_info[0]['CompanyID']], 'UTF-8', 'HTML-ENTITIES'); ?>, Philippines.</p>
 		</div>
 		<?php endif; ?>
 		&nbsp;
@@ -611,7 +611,7 @@
 			</b>for whatever legal purpose it may serve.</p>
 			<?php } ?>
 
-			<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
+			<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo mb_convert_encoding($companies[$emp_info[0]['CompanyID']], 'UTF-8', 'HTML-ENTITIES'); ?>, Philippines.</p>
 		</div>
 		<?php elseif(date('Y-m-d', strtotime($DateResigned2)) <= date('Y-m-d')): ?>
 		<div style="text-align: justify;  text-justify: inter-word;">
@@ -637,7 +637,7 @@
 			</b>for whatever legal purpose it may serve.
 			<?php } ?>  Hence, the company hold no responsibility for any misrepresentation of facts and data  enumerated herein.</p>
 
-			<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
+			<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo mb_convert_encoding($companies[$emp_info[0]['CompanyID']], 'UTF-8', 'HTML-ENTITIES'); ?>, Philippines.</p>
 		</div>
 		<?php endif; ?>
 		&nbsp;
@@ -1686,20 +1686,20 @@
 		if ((in_array($coe[0]["company"], ['GLOBAL01', 'LGMI01'])) ) {
 		?>
 			&nbsp;<br />
-			<p style="font-size: <?php echo $send_pdf ? '8px' : '10px'; ?>; text-align: center;">Unit G, Ground Floor, 331 Building, 331 Sen. Gil Puyat Avenue, Barangay Bel-Air, Makati City 1200 • Tels (632) 5411979 / 8946345 <br />
-			<a href="www.globalcompanies.com.ph">www.globalcompanies.com.ph</a> • Email: <a href="globalonehr@globalcompanies.com.ph">globalonehr@globalcompanies.com.ph</a></p>
+			<p style="font-size: <?php echo $send_pdf ? '8px' : '10px'; ?>; text-align: center;">Unit G, Ground Floor, 331 Building, 331 Sen. Gil Puyat Avenue, Barangay Bel-Air, Makati City 1200 - Tels (632) 5411979 / 8946345 <br />
+			<a href="www.globalcompanies.com.ph">www.globalcompanies.com.ph</a> - Email: <a href="globalonehr@globalcompanies.com.ph">globalonehr@globalcompanies.com.ph</a></p>
 		<?php
 		} elseif (($coe[0]["company"] == '')) {
 		?>
 			&nbsp;
 			<p style="font-size: <?php echo $send_pdf ? '8px' : '10px'; ?>; text-align: center;">25/F Alliance Global Tower, 36th Street corner 11th Avenue Uptown Bonifacio, Taguig City 1634 <br />
-			Trunkline: (632) 905-2900 • (632) 905-2800 <br />
-			www.megaworldcorp.com • Email: infodesk@megaworldcorp.com</p>
+			Trunkline: (632) 905-2900 - (632) 905-2800 <br />
+			www.megaworldcorp.com - Email: infodesk@megaworldcorp.com</p>
 		<?php
 		} elseif (($coe[0]["company"] == 'MCTI') ) {
 		?>
 			&nbsp;<br />
-			<p style="font-size: <?php echo $send_pdf ? '8px' : '10px'; ?>; color: #005f2f; text-align: center;">Capitol Boulevard, Barangay Sto. Niño, City of San Fernando, Pampanga 2000 | Tels 045-963-1990<br />
+			<p style="font-size: <?php echo $send_pdf ? '8px' : '10px'; ?>; color: #005f2f; text-align: center;"><?php echo mb_convert_encoding($companies[$emp_info[0]['CompanyID']], 'UTF-8', 'HTML-ENTITIES'); ?> 2000 | Tels 045-963-1990<br />
 			www.capitaltownpampanga.com | Email info: info@capitaltownpampanga</p>
 		<?php
 		} elseif (($coe[0]["company"] == 'ASIAAPMI') ) {

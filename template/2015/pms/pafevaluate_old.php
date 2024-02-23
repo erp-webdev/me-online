@@ -1,6 +1,6 @@
         <!--<?php // if($rstat1 == 2) { ?>pow<?php// } ?>-->
         <?php if (count($evaluateRatee) > 0) { ?>
-        <b class="mediumtext lorangetext"><a href="<?php echo WEB; ?>/paf?groupid=<?php echo $groupid; ?>"><i class="mediumtext fa fa-arrow-left" style="color:#fff;opacity:.8;"></i></a> Performance Appraisal Form - Supervisor/Rater</b><br><br>
+        <b class="mediumtext lorangetext"><a href="<?php echo WEB; ?>/pms?page=eval&GroupID=<?php echo $groupid; ?>"><i class="mediumtext fa fa-arrow-left" style="color:#fff;opacity:.8;"></i></a> Performance Appraisal Form - Supervisor/Rater</b><br><br>
         <div class="print" style="overflow-x:none;overflow-y:scroll;max-height:514px;padding-bottom:5px;">
         
         <form id="frm_paf" method="post" <?php //action="?ignore-page-cache=true" ?> enctype="multipart/form-data" >  

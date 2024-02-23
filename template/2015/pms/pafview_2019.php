@@ -3,7 +3,7 @@
                 
                 if(count($checkEvaluation) > 0 && $pafad == 'rater') {  ?>
 
-                    <b class="mediumtext lorangetext"><a href="<?php echo WEB; ?>/paf?groupid=<?php echo $groupid; if(isset($_GET['sub'])) echo '&sub=' . $_GET['sub']; ?>&ref=emp<?php echo $_GET['appid']; ?>"><i class="mediumtext fa fa-arrow-left" style="color:#fff;opacity:.8;"></i></a> Performance Appraisal Viewer <?php if($pafad == 'divhead'){ echo '- Division Head'; } elseif($pafad == 'rater') { echo '- Supervisor/Approver'; } ?></b><br>
+                    <b class="mediumtext lorangetext"><a href="<?php echo WEB; ?>/pms?page=eval&GroupID=<?php echo $groupid; if(isset($_GET['sub'])) echo '&sub=' . $_GET['sub']; ?>&ref=emp<?php echo $_GET['appid']; ?>"><i class="mediumtext fa fa-arrow-left" style="color:#fff;opacity:.8;"></i></a> Performance Appraisal Viewer <?php if($pafad == 'divhead'){ echo '- Division Head'; } elseif($pafad == 'rater') { echo '- Supervisor/Approver'; } ?></b><br>
                         <!--<p>You're a ratee!</p>-->
                         <div>
                         <?php foreach($checkEvaluation as $row) { ?>

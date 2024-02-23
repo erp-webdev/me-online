@@ -1,7 +1,7 @@
 <!--<?php // if($rstat1 == 2) { ?>pow<?php// } ?>-->
 <!-- <?php //echo "tt:: " . ini_get('session.gc_maxlifetime'); ?> -->
 <?php if (count($evaluateRatee) > 0) { ?>
-<b class="mediumtext lorangetext"><a href="<?php echo WEB; ?>/pafglobal?groupid=<?php echo $groupid; if(isset($_GET['sub'])) echo '&sub=' . $_GET['sub']; ?>&ref=emp<?php echo $_GET['appid']; ?>"><i class="mediumtext fa fa-arrow-left" style="color:#fff;opacity:.8;"></i></a> Performance Appraisal Form - Supervisor/Rater</b><br><br>
+<b class="mediumtext lorangetext"><a href="<?php echo WEB; ?>/pms?page=eval&GroupID=<?php echo $groupid; if(isset($_GET['sub'])) echo '&sub=' . $_GET['sub']; ?>&ref=emp<?php echo $_GET['appid']; ?>"><i class="mediumtext fa fa-arrow-left" style="color:#fff;opacity:.8;"></i></a> Performance Appraisal Form - Supervisor/Rater</b><br><br>
 
 <form id="frm_paf" method="post" <?php //action="?ignore-page-cache=true" ?> enctype="multipart/form-data">
         <fieldset>
