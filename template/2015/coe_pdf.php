@@ -698,11 +698,11 @@
 				
 				"LGMI01" => [
 					'prepared' => [
-						'name' => 'SAMANTHA D. EBITA',
-						'id' => '2022-06-0387',
+						'name' => 'MA. CLARITA D. PELADAS',
+						'id' => '2023-07-0493',
 						'designation' => 'Payroll Associate',
-						'esign' => 'coe_sebita.png',
-						'email' => 'sebita.global@megaworldcorp.com'
+						'esign' => 'coe_mpeladas.png',
+						'email' => 'mpeladas.global@megaworldcorp.com'
 					],
 					'approver' => [
 						'RFSP' => [
@@ -1271,11 +1271,11 @@
 
 				"MEGA01" => [
 					'prepared' => [
-						'name' => 'MAE HAZEL B. ANASTACIO',
-						'id' => '2015-11-0550',
-						'designation' => 'Senior Payroll Associate',
-							'esign' => 'coe_manastacio.png',
-							'email' => 'manastacio.global@megaworldcorp.com'
+						'name' => 'SAMANTHA D. EBITA',
+						'id' => '2022-06-0387',
+						'designation' => 'Payroll Associate',
+						'esign' => 'coe_sebita.png',
+						'email' => 'sebita.global@megaworldcorp.com'
 					],
 					'approver' => [
 						'RFSP' => [
