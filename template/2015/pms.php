@@ -26,7 +26,11 @@
     <?php elseif($_GET['page'] == 'pafmega') : ?>
         <?php include(TEMP.'/pms/pms_evaluation_form_mega.php'); ?>
     <?php elseif($_GET['page'] == 'result') : ?>
-        <?php include(TEMP.'/pms/pms_evaluation_result.php'); ?>
+        <?php if($_GET['form'] == 'global') : ?>
+            <?php include(TEMP.'/pms/pms_evaluation_form_global.php'); ?>
+        <?php else: ?>
+            <?php include(TEMP.'/pms/pms_evaluation_form_mega.php'); ?>
+        <?php endif; ?>
     <?php endif; ?>
 </div>
 
