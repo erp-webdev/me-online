@@ -36,10 +36,22 @@
             if (myevaluation != null) {
                 $('.myscore').show();
 
-                let btnresult = `<a href="<?php echo WEB; ?>/pafglobal_view?groupid=${myevaluation.GroupID}&appid=${myevaluation.EvaluationID}&pafad=ratee" class="smlbtn" id="sendapp" style="float:right;margin-right:10px;background-color:#3EC2FB;display:${myevaluation.Status == 'Completed' ? '': 'none'}">Result</a>`;
+                let form = '&form=mega';
+                if(group.EvaluationForm == 'evaluation-form-2024-global')
+                    form = '&form=global';
+
+                let btnresult = `<a href="<?php echo WEB; ?>/pafview?groupid=${myevaluation.GroupID}&appid=${myevaluation.EvaluationID}&pafad=ratee" class="smlbtn" id="sendapp" style="float:right;margin-right:10px;background-color:#3EC2FB;display:${myevaluation.Status == 'Completed' ? '': 'none'}">Result</a>`;
+
+                if(group.EvaluationForm == 'evaluation-form-2024-global' || group.CompanyID == 'GLOBAL01' ){
+                    btnresult = `<a href="<?php echo WEB; ?>/pafglobal_view?groupid=${myevaluation.GroupID}&appid=${myevaluation.EvaluationID}&pafad=ratee" class="smlbtn" id="sendapp" style="float:right;margin-right:10px;background-color:#3EC2FB;display:${myevaluation.Status == 'Completed' ? '': 'none'}">Result</a>`;
+                }
                 
                 if(group.AppraisalDate>'2024-01-01'){
-                    btnresult = `<a href="<?php echo WEB; ?>/pms?page=result&id=${myevaluation.EvaluationID}" class="smlbtn" id="sendapp" style="float:right;margin-right:10px;background-color:#3EC2FB;display:${myevaluation.Status == 'Completed' ? '': 'none'}">Result</a>`;
+                    if(group.EvaluationForm == 'evaluation-form-2024-global'){
+                        btnresult = `<a href="<?php echo WEB; ?>/pms?page=result&ratee=${myevaluation.EvaluationID}${form}" class="smlbtn" id="sendapp" style="float:right;margin-right:10px;background-color:#3EC2FB;display:${myevaluation.Status == 'Completed' ? '': 'none'}">Result</a>`;
+                    }else{
+                        btnresult = `<a href="<?php echo WEB; ?>/pms?page=result&ratee=${myevaluation.EvaluationID}${form}" class="smlbtn" id="sendapp" style="float:right;margin-right:10px;background-color:#3EC2FB;display:${myevaluation.Status == 'Completed' ? '': 'none'}">Result</a>`;
+                    }
                 }
 
                 let tableHtml = '';
@@ -60,7 +72,7 @@
                                         <td class="thr" style="text-align: left; ${myevaluation.Rater2Status == 1 ? 'color:#c6efce;' : ''}"><span style="${myevaluation.Rater2FullName == null ? 'display:none' : ''}">${myevaluation.Rater2Status == 1 ? '<i class="fa fa-check"></i>' : '<i class="fa fa-times"></i>'} ${myevaluation.Rater2FullName}</span></td>
                                         <td class="thr" style="text-align: left; ${myevaluation.Rater3Status == 1 ? 'color:#c6efce;' : ''}"><span style="${myevaluation.Rater3FullName == null ? 'display:none' : ''}">${myevaluation.Rater3Status == 1 ? '<i class="fa fa-check"></i>' : '<i class="fa fa-times"></i>'} ${myevaluation.Rater3FullName}</span></td>
                                         <td class="thr" style="text-align: left; ${myevaluation.Rater4Status == 1 ? 'color:#c6efce;' : ''}"><span style="${myevaluation.Rater4FullName == null ? 'display:none' : ''}">${myevaluation.Rater4Status == 1 ? '<i class="fa fa-check"></i>' : '<i class="fa fa-times"></i>'} ${myevaluation.Rater4FullName}</span></td>
-                                        <td class="thr" style="text-align: center">${Number(Math.round(myevaluation.total_computed_score + 'e2') + 'e-2')}</td>
+                                        <td class="thr" style="text-align: center">${myevaluation.Status == 'Completed' ? Number(Math.round(myevaluation.total_computed_score + 'e2') + 'e-2') : ''}</td>
                                         <td class="thr" style="text-align: center">${myevaluation.Status}</td>
                                         <td style="text-align: center">${btnresult}</td>
                                     </tr>`;
@@ -128,7 +140,7 @@
                                     if (evaluations[i].Rater1Status != 1 && evaluations[i].for_approval_level == 1) {
                                         btn = `<a href="pms?page=paf&ratee=${evaluations[i].EvaluationID}${form}" class="smlbtn" style="background-color:green; text-align: center;">Evaluate</a>`;
                                     } else if (evaluations[i].Rater1Status == 1) {
-                                        btn = `<a href="pms?page=paf&ratee=${evaluations[i].EvaluationID}" class="smlbtn" style="background-color:blue; text-align: center; padding: 3px">Result</a>`;
+                                        btn = `<a href="pms?page=paf&ratee=${evaluations[i].EvaluationID}${form}" class="smlbtn" style="background-color:blue; text-align: center; padding: 3px">Result</a>`;
                                     }
                                 } else if (evaluations[i].Rater2EmpID == '<?php echo $profile_idnum; ?>' && evaluations[i].Rater2DB == '<?php echo $profile_dbname; ?>') {
                                     if (evaluations[i].Rater2Status != 1 && evaluations[i].for_approval_level == 2) {
@@ -140,13 +152,13 @@
                                     if (evaluations[i].Rater3Status != 1 && evaluations[i].for_approval_level == 3) {
                                         btn = `<a href="pms?page=paf&ratee=${evaluations[i].EvaluationID}${form}" class="smlbtn" style="background-color:green; text-align: center;">For ${evaluations[i].final_approver_level == 3 ? ' Final ' : ''} Approval</a>`;
                                     } else if (evaluations[i].Rater3Status == 1) {
-                                        btn = `<a href="pms?page=paf&ratee=${evaluations[i].EvaluationID}" class="smlbtn" style="background-color:blue; text-align: center; padding: 3px">Result</a>`;
+                                        btn = `<a href="pms?page=paf&ratee=${evaluations[i].EvaluationID}${form}" class="smlbtn" style="background-color:blue; text-align: center; padding: 3px">Result</a>`;
                                     }
                                 } else if (evaluations[i].Rater4EmpID == '<?php echo $profile_idnum; ?>' && evaluations[i].Rater4DB == '<?php echo $profile_dbname; ?>') {
                                     if (evaluations[i].Rater4Status != 1 && evaluations[i].for_approval_level == 4) {
                                         btn = `<a href="pms?page=paf&ratee=${evaluations[i].EvaluationID}${form}" class="smlbtn" style="background-color:green; text-align: center;">For Final Approval</a>`;
                                     } else if (evaluations[i].Rater4Status == 1) {
-                                        btn = `<a href="pms?page=paf&ratee=${evaluations[i].EvaluationID}" class="smlbtn" style="background-color:blue; text-align: center; padding: 3px">Result</a>`;
+                                        btn = `<a href="pms?page=paf&ratee=${evaluations[i].EvaluationID}${form}" class="smlbtn" style="background-color:blue; text-align: center; padding: 3px">Result</a>`;
                                     }
                                 }
                             }
