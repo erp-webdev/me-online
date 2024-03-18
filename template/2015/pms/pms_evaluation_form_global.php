@@ -642,7 +642,7 @@
     // angular retrieve record from https://dev.megaworldcorp.com/test
     var app = angular.module('myApp', []);
     app.controller('myCtrl', function($scope, $http,  $sce) {
-        let apiUrl = 'https://dev.megaworldcorp.com:8081/peoplesedge/api/pmsv1/';
+        let apiUrl = 'https://me.megaworldcorp.com/peoplesedge/api/pmsv1/';
 
         $scope.record = [];
         $scope.ApproverEmpID = '<?php echo $profile_idnum; ?>';
