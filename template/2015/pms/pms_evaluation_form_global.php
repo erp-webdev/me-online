@@ -34,7 +34,6 @@
 </style>
 
 <div class="rightsplashtext lefttalign">
-
     <div ng-app='myApp' ng-controller='myCtrl' id="paf" class="mainbody lefttalign whitetext">
         <form  name="myForm" >
             <div class="loading-screen" ng-show="loading">
@@ -99,34 +98,32 @@
                     
 
                     <div style="border:2px solid #fff;padding-left:5px;width:98%;">
-                        <p><strong>Use the following rating scale for each relevant part of this form :</strong></p>
-                        <table>
-                            <tr>
-                                <td>5</td>
-                                <td>Exceptional</td>
-                                <td>Conisistently exceeds expectations in all areas under review. Clearly outstanding.</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Superior</td>
-                                <td>Exceeds expectations in most areas. Always meets expectations in areas under review.</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Good</td>
-                                <td>Fully meets expectations. Solid performer.</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Developing</td>
-                                <td>Meets most expectations. Needs improvments in identified areas.</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>Does Not Meet Expectations</td>
-                                <td>Immediate and continuous improvement needed.</td>
-                            </tr>
-                        </table>
+                            <p><b>Rating Scale:</b></p>
+                            <p>Use the following descriptions to rate the staff member's performance for each of the required competencies.</p>
+                            <table style="width:100%;">
+                                <tbody>
+                                    <tr>
+                                        <td>5 - <b>E</b>xceptional</td>
+                                        <td style="text-align:center;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4 - <b>E</b>xceeds <b>E</b>xpectations</td>
+                                        <td style="text-align:center;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3 - <b>M</b>eets <b>E</b>xpectations</td>
+                                        <td style="text-align:center;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2 - <b>N</b>eeds <b>I<b/>mprovement</td>
+                                        <td style="text-align:center;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1 - Does Not Meet Expectations</td>
+                                        <td style="text-align:center;"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                     </div>
                     <br />
                     <!-- Part 1 -->
@@ -312,7 +309,9 @@
                                         <div style="clear:both;"></div>
                                         <div style="margin-top:-15px;">
                                         <p> Measurement of accomplishment: </p>
-                                            <input type="text" style="margin-top:-8px;width:89%;" class="smltxtbox checker" ng-model="next_goal.MeasureOfSuccess" required  ng-disabled="is_approved" minlength="10">
+                                            <textarea style="width:90%;" class="checker" ng-model="next_goal.MeasureOfSuccess" required  ng-disabled="is_approved" minlength="10"></textarea>
+                                        
+                                            <!-- <input type="text" style="margin-top:-8px;width:89%;" class="smltxtbox checker" ng-model="next_goal.MeasureOfSuccess" required  ng-disabled="is_approved" minlength="10"> -->
                                             <div style="clear:both;"></div>
                                         </div>
                                         <hr/>
@@ -345,8 +344,16 @@
                                                 <th style="width:20px;text-align:center;border:1px solid #fff;font-size:8px;">Weight</th>
                                             </thead>
                                             <tr ng-repeat="next_pcc in record.competencies_next">
-                                                <td style="border:1px solid #fff;"><span ng-bind="next_pcc.Competency"></span></td>
-                                                <td style="border:1px solid #fff;"><span ng-bind="next_pcc.Description"></span></td>
+                                                <td style="border:1px solid #fff;">
+                                                    <span ng-show="next_pcc.id != null" ng-bind="next_pcc.Competency"></span>
+                                                    <textarea  cols="15" rows="2" ng-show="next_pcc.id == null"  ng-model="next_pcc.Competency" width="100%" ng-disabled="is_approved"></textarea>
+
+                                                    <!-- <input type="text" ng-show="next_pcc.Competency == ''" width="100%" ng-model="next_pcc.Competency" class="smltxtbox calcp5w checker" ng-disabled="is_approved"> -->
+                                                </td>
+                                                <td style="border:1px solid #fff;">
+                                                    <span ng-show="next_pcc.id != null" ng-bind="next_pcc.Description"></span>
+                                                    <textarea id="description" cols="60" rows="2" ng-show="next_pcc.id == null"  ng-model="next_pcc.Description" width="100%" ng-disabled="is_approved"></textarea>
+                                                </td>
                                                 <td><input type="number" ng-model="next_pcc.Weight" min="0" max="100" class="smltxtbox calcp5w checker" style="width:35px;" ng-change="updateRecord()"  ng-disabled="is_approved"></td>
                                             </tr>
                                             <tr>
@@ -361,7 +368,7 @@
                                 </div> <!-- end of pcc main wrapper -->
                                 <hr></hr >
                                 <h4 style="margin-top:5px;">Comments on next year's objectives :</h4>
-                                <textarea ng-model="record.NObjective" style="width:99%;"  ng-disabled="is_approved" class="smltxtbox checker"></textarea>
+                                <textarea ng-model="record.NObjective" style="width:99%;"  ng-disabled="is_approved" class=" checker"></textarea>
 
                             </div>
                         </div>
@@ -459,7 +466,7 @@
                                 <p class="note4 note" style="color:#06A716;" ng-show="record.total_computed_score < 5 && record.total_computed_score >= 4">(<i class="fa fa-thumbs-up"></i>) This Employee Exceeds Expectations</p>
                                 <p class="note3 note" style="color:#06A716;" ng-show="record.total_computed_score < 4 && record.total_computed_score >= 3">(<i class="fa fa-thumbs-up"></i>) This Employee Meets Expectations</p>
                                 <p class="note2 note" style="color:#06A716;" ng-show="record.total_computed_score < 3 && record.total_computed_score >= 2">(<i class="fa fa-thumbs-up"></i>) This Employee Needs Improvement</p>
-                                <p class="note1 note" style="color:#A70606;" ng-show="record.total_computed_score < 2 && record.total_computed_score >= 1">(<i class="fa fa-thumbs-down"></i>) This Employee has No Evidence of Skill</p>
+                                <p class="note1 note" style="color:#A70606;" ng-show="record.total_computed_score < 2 && record.total_computed_score >= 1">(<i class="fa fa-thumbs-down"></i>) This Employee Does Not Meet Expectation</p>
                                 <p class="note0 note" style="color:#06A716;" ng-show="record.total_computed_score == 0">No Performance Evaluation Score</p>
                             </td>
                         </tr>
@@ -468,13 +475,13 @@
                     <div style="border:1px solid #fff;padding-left:5px;padding-right:5px;width:98%;">
                         <h4>V. DEVELOPMENT PLAN</h4>
                         <p>A. Key competencies to strengthen performance in current job (set by reviewing mgr):</p>
-                        <textarea ng-model="record.DevPlanA" style="width:99%;" class="smltxtbox checker" required minlength="25"  ng-disabled="is_approved"></textarea>
+                        <textarea ng-model="record.DevPlanA" style="width:99%;" class=" checker" required minlength="25" rows="3"  ng-disabled="is_approved"></textarea>
                         <!--<p>B. Employee desired career path within next 2 to 3 years (set by job holder):</p>
                         <textarea style="width:99%;" class="smltxtbox"></textarea>-->
                         <p>B. Key competencies needed to advance in employee desired career path (set by reviewing mgr):</p>
-                        <textarea ng-model="record.DevPlanB" style="width:99%;" class="smltxtbox checker" required minlength="25"  ng-disabled="is_approved"></textarea>
+                        <textarea ng-model="record.DevPlanB" style="width:99%;" class=" checker" required minlength="25" rows="3" ng-disabled="is_approved"></textarea>
                         <p>C. Planned development / training activities (agreed by reviewing mgr and as per the following priority / feasibility order):</p>
-                        <textarea ng-model="record.DevPlanC" style="width:99%;" class="smltxtbox checker" required minlength="25"  ng-disabled="is_approved"></textarea>
+                        <textarea ng-model="record.DevPlanC" style="width:99%;" class=" checker" required minlength="25" rows="3" ng-disabled="is_approved"></textarea>
                     </div>
                     <br />
 
@@ -485,7 +492,7 @@
                             <textarea ng-model="record.PerformanceSummary" class="perfsummary checker" style="width:98.4%;min-height:100px;" required ng-show="record.for_approval_level == 1" ng-disabled="is_approved || record.for_approval_level > 1" minlength="25"></textarea>
                             <span ng-show="record.for_approval_level > 1 || record.status == 'Completed'" ng-bind="record.PerformanceSummary"></span>
                         </p>
-                        <hr>
+                        <!-- <hr> -->
                         <div ng-show="record.Rater2Comment != null && (record.for_approval_level > 2 || record.status == 'Completed')">
                             <h4><span ng-bind="record.Rater2FullName"></span>' Comment</h4>
                             <p ng-bind="record.Rater2Comment"></p>
@@ -498,22 +505,22 @@
                             <h4><span ng-bind="record.Rater4FullName"></span>' Comment</h4>
                             <p ng-bind="record.Rater4Comment"></p>
                         </div>
-                        <div ng-show="record.status == 'Incomplete'">
-                            <hr>
-                            <h4>EVALUATION COMMENT</h4>
-                            <textarea ng-model="record.Rater2Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 2"  ng-disabled="is_approved"></textarea>
-                            <textarea ng-model="record.Rater3Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 3"  ng-disabled="is_approved"></textarea>
-                            <textarea ng-model="record.Rater4Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 4"  ng-disabled="is_approved"></textarea>
+                        <div ng-show="record.status == 'Incomplete' && !is_approved">
+                            <!-- <hr> -->
+                            <h4 ng-show="is_approved">EVALUATION COMMENT</h4>
+                            <textarea ng-model="record.Rater2Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 2 && !is_approved"  ng-disabled="is_approved"></textarea>
+                            <textarea ng-model="record.Rater3Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 3 && !is_approved"  ng-disabled="is_approved"></textarea>
+                            <textarea ng-model="record.Rater4Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 4 && !is_approved"  ng-disabled="is_approved"></textarea>
                         </div>
                     </div>
                     <br>
                     
                     <?php if(isset($_GET['page']))
                             if($_GET['page'] !== 'result') { ?>
-                    <h3 style="">
+                    <!-- <h3 style="">
                         <strong>Equivalent system generated percentage increase: </strong>
                         <span id="sys_gen_inc" ng-bind="record.system_increase | number:2"></span>%
-                    </h3>
+                    </h3> -->
 
                     <div id="floatdiv" class="floatdiv invisible">
                         <div id="nview" class="fview" style="display: none;">
@@ -642,7 +649,7 @@
     // angular retrieve record from https://dev.megaworldcorp.com/test
     var app = angular.module('myApp', []);
     app.controller('myCtrl', function($scope, $http,  $sce) {
-        let apiUrl = 'https://me.megaworldcorp.com/peoplesedge/api/pmsv1/';
+        let apiUrl = 'https://dev.megaworldcorp.com:8081/peoplesedge/api/pmsv1/';
 
         $scope.record = [];
         $scope.ApproverEmpID = '<?php echo $profile_idnum; ?>';
@@ -691,6 +698,10 @@
                         for (let index = 0; index < 3; index++) {
                             $scope.addNextGoal();
                         }
+                    }
+
+                    for(let i = $scope.record.competencies_next.length; i < 10; i++){
+                        $scope.addNextPcc();
                     }
                 }
 
@@ -748,14 +759,14 @@
                 $scope.finalPositionPromotion = $scope.record.Rater1PositionPromotion;       
             }
 
-            if($scope.record.Rater4EmpID != null && $scope.record.Rater4DB != null && $scope.record.Rater4RankPromotion != null){
+            if($scope.record.Rater4EmpID != null && $scope.record.Rater4DB != null && $scope.record.for_approval_level == 4){
                 $scope.finalRankPromotion = $scope.record.Rater4RankPromotion;
-            }else if($scope.record.Rater3EmpID != null && $scope.record.Rater3DB != null && $scope.record.Rater3RankPromotion != null){
+            }else if($scope.record.Rater3EmpID != null && $scope.record.Rater3DB != null && $scope.record.for_approval_level == 3){
                 $scope.finalRankPromotion = $scope.record.Rater3RankPromotion;
-            }else if($scope.record.Rater2EmpID != null && $scope.record.Rater2DB != null && $scope.record.Rater2RankPromotion != null){
+            }else if($scope.record.Rater2EmpID != null && $scope.record.Rater2DB != null && $scope.record.for_approval_level == 2){
                 $scope.finalRankPromotion = $scope.record.Rater2RankPromotion;
                 
-            }else if($scope.record.Rater1EmpID != null && $scope.record.Rater1DB != null && $scope.record.Rater1RankPromotion != null){
+            }else if($scope.record.Rater1EmpID != null && $scope.record.Rater1DB != null && $scope.record.for_approval_level == 1){
                 $scope.finalRankPromotion = $scope.record.Rater1RankPromotion;       
             }
 
@@ -796,6 +807,19 @@
             }
 
             $scope.record.goals_next.push(newGoal);
+        }
+
+        $scope.addNextPcc = function(){
+            var newPCC = {
+                "EvaluationID": '<?php echo $_GET['ratee']; ?>',
+                "Competency":  "",
+                "Description": "",
+                "Weight": 0,
+                "id": null,
+                "SeqOrder": 1
+            }
+
+            $scope.record.competencies_next.push(newPCC);
         }
 
         $scope.deleteNextGoal = function(index){

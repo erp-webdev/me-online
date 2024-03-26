@@ -3255,4 +3255,19 @@ th, td { padding: 5px; }
     h3 {
         page-break-after: avoid;
     }
+
+	.print{
+		overflow: visible !important;
+		max-height: 100% !important;
+	}
+
+	textarea {
+		height: 100px !important; /* Allow the textarea to expand to fit its content */
+		overflow: visible !important; /* Show all content, even if it overflows */
+	}
+	
+	#paf{
+		margin: 0px !important;
+		padding: 0px !important;
+	}
 }
