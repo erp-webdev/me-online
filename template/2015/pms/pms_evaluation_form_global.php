@@ -506,11 +506,21 @@
                             <p ng-bind="record.Rater4Comment"></p>
                         </div>
                         <div ng-show="record.status == 'Incomplete' && !is_approved">
-                            <!-- <hr> -->
-                            <h4 ng-show="is_approved">EVALUATION COMMENT</h4>
-                            <textarea ng-model="record.Rater2Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 2 && !is_approved"  ng-disabled="is_approved"></textarea>
-                            <textarea ng-model="record.Rater3Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 3 && !is_approved"  ng-disabled="is_approved"></textarea>
-                            <textarea ng-model="record.Rater4Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 4 && !is_approved"  ng-disabled="is_approved"></textarea>
+                            <div ng-show="record.for_approval_level == 2">
+                                <hr>
+                                <h4>EVALUATION COMMENT</h4>
+                                <textarea ng-model="record.Rater2Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 2"  ng-disabled="is_approved"></textarea>
+                            </div>
+                            <div ng-show="record.for_approval_level == 3">
+                                <hr>
+                                <h4>EVALUATION COMMENT</h4>
+                                <textarea ng-model="record.Rater3Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 3"  ng-disabled="is_approved"></textarea>
+                            </div>
+                            <div ng-show="record.for_approval_level == 4">
+                                <hr>
+                                <h4>EVALUATION COMMENT</h4>
+                                <textarea ng-model="record.Rater4Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 4"  ng-disabled="is_approved"></textarea>
+                            </div>
                         </div>
                     </div>
                     <br>
@@ -618,9 +628,9 @@
 
                 
                 <p ><strong style="color:#F8FABC">Promotion History from the last 3 years: </strong> <br>
-                    <span ng-bind="record.PromotionHistory"></span>
+                    <span ng-bind="record.PromotionHistory"></span><br>
                     <br> <strong style="color:#F8FABC">Conduct and Memo History from the last 3 years: </strong> <br>
-                    <span ng-bind="record.ConductMemoComment"></span>
+                    <span ng-bind="record.ConductMemoComment"></span><br>
                     <br> <strong style="color:#F8FABC">Attendance and Punctuality History from the last 3 years: </strong> <br>
                     <span ng-bind="record.AttendancePunctualityComment"></span>
                 </p>
@@ -671,6 +681,31 @@
                     $scope.record.recommended_salary_increase = parseFloat($scope.record.recommended_salary_increase);
                     $scope.record.total_computed_score = parseFloat($scope.record.total_computed_score);
                     $scope.is_approved = false;
+
+                    if($scope.record.Rater4EmpID != null && $scope.record.Rater4DB != null && $scope.record.Rater4Status != null ){
+                            $scope.finalRankPromotion = $scope.record.Rater4RankPromotion;
+                            $scope.finalPositionPromotion = $scope.record.Rater4PositionPromotion;
+                            $scope.finalRecommendedIncrease = parseFloat($scope.record.Rater4Increase);
+                    }else if($scope.record.Rater3EmpID != null 
+                        && $scope.record.Rater3DB != null 
+                        && $scope.record.Rater3Status != null ){
+                            $scope.finalRankPromotion = $scope.record.Rater3RankPromotion;
+                            $scope.finalPositionPromotion = $scope.record.Rater3PositionPromotion;
+                            $scope.finalRecommendedIncrease = parseFloat($scope.record.Rater3Increase);
+                    }else if($scope.record.Rater2EmpID != null 
+                        && $scope.record.Rater2DB != null 
+                        && $scope.record.Rater2Status != null ){
+                            $scope.finalRankPromotion = $scope.record.Rater2RankPromotion;
+                            $scope.finalPositionPromotion = $scope.record.Rater2PositionPromotion;
+                            $scope.finalRecommendedIncrease = parseFloat($scope.record.Rater2Increase);
+                    }else if($scope.record.Rater1EmpID != null 
+                        && $scope.record.Rater1DB != null 
+                        && $scope.record.Rater1Status != null ){
+                            $scope.finalRankPromotion = $scope.record.Rater1RankPromotion;
+                            $scope.finalPositionPromotion = $scope.record.Rater1PositionPromotion;
+                            $scope.finalRecommendedIncrease = parseFloat($scope.record.Rater1Increase);
+                    }
+
                     $scope.updateRecord();
 
                     if($scope.record.Rater1EmpID == $scope.ApproverEmpID 
@@ -745,41 +780,6 @@
             $scope.totalNextGoalWeight = $scope.record.goals_next.reduce(function(total, goal) {
                 return total + (  parseFloat(goal.Weight)  || 0);
             }, 0);
-
-            if($scope.record.Rater4EmpID != null && $scope.record.Rater4DB != null && $scope.record.Rater4PositionPromotion != null){
-                $scope.finalPositionPromotion = $scope.record.Rater4PositionPromotion;
-
-            }else if($scope.record.Rater3EmpID != null && $scope.record.Rater3DB != null && $scope.record.Rater3PositionPromotion != null){
-                $scope.finalPositionPromotion = $scope.record.Rater3PositionPromotion;
-
-            }else if($scope.record.Rater2EmpID != null && $scope.record.Rater2DB != null && $scope.record.Rater2PositionPromotion != null){
-                $scope.finalPositionPromotion = $scope.record.Rater2PositionPromotion;
-                
-            }else if($scope.record.Rater1EmpID != null && $scope.record.Rater1DB != null && $scope.record.Rater1PositionPromotion != null){
-                $scope.finalPositionPromotion = $scope.record.Rater1PositionPromotion;       
-            }
-
-            if($scope.record.Rater4EmpID != null && $scope.record.Rater4DB != null && $scope.record.for_approval_level == 4){
-                $scope.finalRankPromotion = $scope.record.Rater4RankPromotion;
-            }else if($scope.record.Rater3EmpID != null && $scope.record.Rater3DB != null && $scope.record.for_approval_level == 3){
-                $scope.finalRankPromotion = $scope.record.Rater3RankPromotion;
-            }else if($scope.record.Rater2EmpID != null && $scope.record.Rater2DB != null && $scope.record.for_approval_level == 2){
-                $scope.finalRankPromotion = $scope.record.Rater2RankPromotion;
-                
-            }else if($scope.record.Rater1EmpID != null && $scope.record.Rater1DB != null && $scope.record.for_approval_level == 1){
-                $scope.finalRankPromotion = $scope.record.Rater1RankPromotion;       
-            }
-
-            if($scope.record.Rater4EmpID != null && $scope.record.Rater4DB != null && $scope.record.Rater4Increase != null){
-                $scope.finalRecommendedIncrease = parseFloat($scope.record.Rater4Increase);
-            }else if($scope.record.Rater3EmpID != null && $scope.record.Rater3DB != null && $scope.record.Rater3Increase != null){
-                $scope.finalRecommendedIncrease = parseFloat($scope.record.Rater3Increase);
-            }else if($scope.record.Rater2EmpID != null && $scope.record.Rater2DB != null && $scope.record.Rater2Increase != null){
-                $scope.finalRecommendedIncrease = parseFloat($scope.record.Rater2Increase);
-                
-            }else if($scope.record.Rater1EmpID != null && $scope.record.Rater1DB != null && $scope.record.Rater1Increase != null){
-                $scope.finalRecommendedIncrease = parseFloat($scope.record.Rater1Increase);  
-            }
 
             $scope.record.evaluation_score = (($scope.totalCompetencyWeightRating*0.35) +  ($scope.totalGoalWeightRating * 0.35));
             $scope.partHRScore = ($scope.record.TrainingScore * 0.05) + ($scope.record.FiveSScore * 0.05) + ($scope.record.AttendancePunctualityScore * 0.1) + ($scope.record.ConductMemoScore * 0.1);
