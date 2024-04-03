@@ -765,7 +765,7 @@
                 return total + (parseFloat(goal.Achievement)/100 * parseFloat(goal.Weight) / 100 * parseFloat(goal.Rating) || 0);
             }, 0);
 
-            $scope.totalGoalWeightRating = Math.round($scope.totalGoalWeightRating * 100) / 100;
+            $scope.totalGoalWeightRating = parseFloat($scope.totalGoalWeightRating.toFixed(2));
 
             $scope.totalCompetencyWeight= $scope.record.competencies.reduce(function(total, competency) {
                 return total + (parseFloat(competency.Weight) || 0);
@@ -779,7 +779,7 @@
                 return total + ( parseFloat(competency.Weight) || 0);
             }, 0);
 
-            $scope.totalCompetencyWeightRating = Math.round($scope.totalCompetencyWeightRating * 100) / 100;
+            $scope.totalCompetencyWeightRating = parseFloat($scope.totalCompetencyWeightRating.toFixed(2));
 
             $scope.totalNextGoalWeight = $scope.record.goals_next.reduce(function(total, goal) {
                 return total + (  parseFloat(goal.Weight)  || 0);
