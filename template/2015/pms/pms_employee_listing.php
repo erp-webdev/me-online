@@ -17,7 +17,7 @@
     </div>
 </div>
 <script>
-    let apiUrl = 'https://me.megaworldcorp.com/peoplesedge/api/pmsv1/my-evaluations?EmpID=<?php echo $profile_idnum; ?>&EmpDB=<?php echo $profile_dbname; ?>&GroupID=<?php echo $_GET['GroupID']; ?>';
+    let apiUrl = '<?php echo MEWEB; ?>/peoplesedge/api/pmsv1/my-evaluations?EmpID=<?php echo $profile_idnum; ?>&EmpDB=<?php echo $profile_dbname; ?>&GroupID=<?php echo $_GET['GroupID']; ?>';
     axios.get(apiUrl)
         .then(response => {
             const group = response.data.group;
