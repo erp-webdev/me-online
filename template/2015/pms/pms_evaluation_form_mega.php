@@ -267,11 +267,11 @@
                             <tr ng-repeat="goal in record.goals">
                                 <td style="vertical-align: top;"><span ng-bind="$index+1"></span></td>
                                 <td style="">
-                                    <textarea class="checker" cols="80" rows="3" required ng-bind="goal.Goals" ng-disabled="goal.id != null || goal.Goals == '8 hrs mandatory training'" placeholder="Provide SMART Goal"></textarea>
+                                    <textarea class="checker" cols="80" rows="3" required ng-bind="goal.Goals" ng-disabled="goal.id != null || goal.Goals == '8 hrs mandatory training'" placeholder="Provide SMART Goal" required minlength="10"></textarea>
                                     <br>
                                     <br>
                                     <b ng-show="goal.Goals != '8 hrs mandatory training'">Measure of Success</b><br>
-                                    <textarea class="checker" cols="80" rows="3" ng-required="goal.Goals != '8 hrs mandatory training'" ng-model="goal.MeasureOfSuccess" ng-disabled="goal.id != null || goal.Goals == '8 hrs mandatory training' || is_approved"  ng-show="goal.Goals != '8 hrs mandatory training' && goal.id == null" placeholder="Provide measure of success"></textarea>
+                                    <textarea class="checker" cols="80" rows="3" ng-required="goal.Goals != '8 hrs mandatory training'" ng-model="goal.MeasureOfSuccess" ng-disabled="goal.id != null || goal.Goals == '8 hrs mandatory training' || is_approved"  ng-show="goal.Goals != '8 hrs mandatory training' && goal.id == null" placeholder="Provide measure of success" minlength="10"></textarea>
                                     <span ng-bind="goal.MeasureOfSuccess"  ng-show="goal.Goals != '8 hrs mandatory training' || goal.id != null"></span>
                                     <br> <br>
                                     <strong>Comments</strong><br>
