@@ -765,6 +765,8 @@
                 return total + (parseFloat(goal.Achievement)/100 * parseFloat(goal.Weight) / 100 * parseFloat(goal.Rating) || 0);
             }, 0);
 
+            $scope.totalGoalWeightRating = Math.round($scope.totalGoalWeightRating * 100) / 100;
+
             $scope.totalCompetencyWeight= $scope.record.competencies.reduce(function(total, competency) {
                 return total + (parseFloat(competency.Weight) || 0);
             }, 0);
@@ -777,9 +779,12 @@
                 return total + ( parseFloat(competency.Weight) || 0);
             }, 0);
 
+            $scope.totalCompetencyWeightRating = Math.round($scope.totalCompetencyWeightRating * 100) / 100;
+
             $scope.totalNextGoalWeight = $scope.record.goals_next.reduce(function(total, goal) {
                 return total + (  parseFloat(goal.Weight)  || 0);
             }, 0);
+
 
             $scope.record.evaluation_score = (($scope.totalCompetencyWeightRating*0.35) +  ($scope.totalGoalWeightRating * 0.35));
             $scope.partHRScore = ($scope.record.TrainingScore * 0.05) + ($scope.record.FiveSScore * 0.05) + ($scope.record.AttendancePunctualityScore * 0.1) + ($scope.record.ConductMemoScore * 0.1);
