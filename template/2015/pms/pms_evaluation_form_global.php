@@ -940,7 +940,7 @@
 
         $scope.round2 = function(num){
             // return +num.toFixed(2);
-            if(num ==  null || num == undefined) 
+            if(num ==  null || num == undefined || isNaN(num)) 
                 return 0;
 
             return Math.round(num*100)/100;
