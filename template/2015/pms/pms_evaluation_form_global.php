@@ -782,7 +782,6 @@
             }, 0);
 
             $scope.record.evaluation_score = $scope.round2($scope.round2($scope.totalCompetencyWeightRating*0.35) +  $scope.round2($scope.totalGoalWeightRating * 0.35));
-            console.log($scope.record.evaluation_score);
             $scope.partHRScore = $scope.round2($scope.record.TrainingScore * 0.05) + ($scope.record.FiveSScore * 0.05) + ($scope.record.AttendancePunctualityScore * 0.1) + ($scope.record.ConductMemoScore * 0.1);
 
             $scope.record.total_computed_score = $scope.round2(parseFloat($scope.record.evaluation_score)) + $scope.round2(parseFloat($scope.partHRScore));
@@ -941,6 +940,9 @@
 
         $scope.round2 = function(num){
             // return +num.toFixed(2);
+            if(num == NAN || num ==  null || num == undefined) 
+                return 0;
+
             return Math.round(num*100)/100;
         }
 
