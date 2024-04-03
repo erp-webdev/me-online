@@ -448,7 +448,7 @@
                             <td></td>
                             <td style="text-align:center;"></td>
                             <td style="text-align:right;font-weight:bold;">Total:</td>
-                            <td style="text-align:center;border-top:1px solid #fff;"><span ng-bind="record.evaluation_score = round2((totalCompetencyWeightRating*0.35) +  (totalGoalWeightRating * 0.35))"></span></td>
+                            <td style="text-align:center;border-top:1px solid #fff;"><span ng-bind="record.evaluation_score"></span></td>
                         </tr>
 
                         <tr>
@@ -781,10 +781,11 @@
                 return total + ($scope.round2(parseFloat(goal.Weight))  || 0);
             }, 0);
 
-            $scope.record.evaluation_score = $scope.round2(($scope.totalCompetencyWeightRating*0.35) +  ($scope.totalGoalWeightRating * 0.35));
+            $scope.record.evaluation_score = $scope.round2($scope.round2($scope.totalCompetencyWeightRating*0.35) +  $scope.round2($scope.totalGoalWeightRating * 0.35));
+            console.log($scope.record.evaluation_score);
             $scope.partHRScore = $scope.round2($scope.record.TrainingScore * 0.05) + ($scope.record.FiveSScore * 0.05) + ($scope.record.AttendancePunctualityScore * 0.1) + ($scope.record.ConductMemoScore * 0.1);
 
-            $scope.record.total_computed_score = parseFloat($scope.record.evaluation_score) + parseFloat($scope.partHRScore);
+            $scope.record.total_computed_score = $scope.round2(parseFloat($scope.record.evaluation_score)) + $scope.round2(parseFloat($scope.partHRScore));
 
             let percentage_increase = parseFloat($scope.record.group.RegularIncrease);
             if($scope.finalRankPromotion != 'NOT FOR PROMOTION')
@@ -939,7 +940,8 @@
         }
 
         $scope.round2 = function(num){
-            return +num.toFixed(2);
+            // return +num.toFixed(2);
+            return Math.round(num*100)/100;
         }
 
     });
