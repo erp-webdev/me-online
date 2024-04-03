@@ -275,7 +275,7 @@
                                     <span ng-bind="goal.MeasureOfSuccess"  ng-show="goal.Goals != '8 hrs mandatory training' || goal.id != null"></span>
                                     <br> <br>
                                     <strong>Comments</strong><br>
-                                    <textarea class="checker" cols="80" rows="2" ng-model="goal.Comments" placeholder="Provide your comments" ng-disabled="is_approved"></textarea>
+                                    <textarea class="checker" cols="80" rows="2" ng-model="goal.Comments" placeholder="Provide your comments" ng-disabled="is_approved" minlength="10"></textarea>
                                     <span ng-show="goal.id == null && goal.Goals != '8 hrs mandatory training'">
                                     <br><br>
                                     <a class="smlbtn" id="delrowg" style="background-color:#D20404;" ng-click="deleteGoal($index)">Delete</a>
