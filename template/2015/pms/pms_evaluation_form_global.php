@@ -182,7 +182,7 @@
                                         <span ng-bind="goal.Weight"></span>%
                                         <input type="number"  min="1" max="100" class="width25 smltxtbox calcp3a checker" style="width:35px;margin-left:30px;"  ng-model="goal.Achievement" ng-change="updateRecord()" ng-disabled="is_approved"> %</span>
                                         <input type="number" class="width25 smltxtbox calcp3r checker" style="width:35px;margin-left:45px;" min="1" max="5" ng-model="goal.Rating" ng-change="updateRecord()"  ng-disabled="is_approved">
-                                    <span style="margin-left:46px;" ng-bind="goal.WeightedRating = goal.Achievement/100 * goal.Weight / 100 * goal.Rating | number: 2"></span>
+                                    <span style="margin-left:46px;" ng-bind="goal.WeightedRating = round2(goal.Achievement/100 * goal.Weight / 100 * goal.Rating)"></span>
                                     </div>
 
                                     <div style="clear:both;"></div>
@@ -212,8 +212,8 @@
                                             <th style="text-align:center !important;">Final Weighted rating</th>
                                         </tr>
                                         <tr>
-                                            <td style="text-align:center;"><span ng-bind="totalGoalAchievement | number: 2"></span>%</td>
-                                            <td style="text-align:center;"><span ng-bind="totalGoalWeightRating | number: 2"></span></td>
+                                            <td style="text-align:center;"><span ng-bind="totalGoalAchievement"></span>%</td>
+                                            <td style="text-align:center;"><span ng-bind="totalGoalWeightRating"></span></td>
                                         </tr>
                                     </table>
                                     <h4 style="float:right;margin-top:23px;margin-right:20px;">Overall Work Results</h4>
@@ -256,7 +256,7 @@
                                 <div style="width:220px;float:right;font-size:9px;">
                                     <span ng-bind="competency.Weight"></span>%
                                     <input type="number" style="margin-left:50px;" class="width25 smltxtbox pccrate checker" min="1" max="5" ng-model="competency.Rating" ng-change="updateRecord()" required  ng-disabled="is_approved" >
-                                    <span style="margin-left:30px;" ng-bind="competency.WeightedRating = competency.Rating * competency.Weight / 100 | number: 2"></span>
+                                    <span style="margin-left:30px;" ng-bind="competency.WeightedRating = round2(competency.Rating * competency.Weight / 100)"></span>
                                 </div>
                                 <div style="width:710px;float:left;">
                                 <!-- cooments and achievments textarea -->
@@ -388,33 +388,33 @@
                         <tr>
                             <td>Conduct and Compliance to the company policy <br>
                             <td style="text-align:center;">10%</td>
-                            <td style="text-align:center;"><span ng-bind="record.ConductMemoScore | number: 2"></span></td>
-                            <td style="text-align:center;"><span ng-bind="record.ConductMemoScore * 0.1 | number: 2"></span></td>
+                            <td style="text-align:center;"><span ng-bind="record.ConductMemoScore"></span></td>
+                            <td style="text-align:center;"><span ng-bind="record.ConductMemoScore * 0.1"></span></td>
                         </tr>
                         <tr>
                             <td>Attendance and Punctuality <br>
                             <td style="text-align:center;">10%</td>
-                            <td style="text-align:center;"><span ng-bind="record.AttendancePunctualityScore | number: 2"></td>
-                            <td style="text-align:center;"><span ng-bind="record.AttendancePunctualityScore * 0.1 | number: 2"></td>
+                            <td style="text-align:center;"><span ng-bind="record.AttendancePunctualityScore"></td>
+                            <td style="text-align:center;"><span ng-bind="record.AttendancePunctualityScore * 0.1"></td>
                         </tr>
                         <tr>
                             <td>Customer Experience</td>
                             <td style="text-align:center;">5%</td>
-                            <td style="text-align:center;"><span ng-bind="record.FiveSScore | number: 2"></td>
-                            <td style="text-align:center;"><span ng-bind="record.FiveSScore * 0.05 | number: 2"></td>
+                            <td style="text-align:center;"><span ng-bind="record.FiveSScore"></td>
+                            <td style="text-align:center;"><span ng-bind="record.FiveSScore * 0.05"></td>
                         </tr>
                         <tr>
                             <td>Learning and Development</td>
                             <td style="text-align:center;">5%</td>
-                            <td style="text-align:center;"><span ng-bind="record.TrainingScore | number: 2"></td>
-                            <td style="text-align:center;"><span ng-bind="record.TrainingScore * 0.05 | number: 2"></td>
+                            <td style="text-align:center;"><span ng-bind="record.TrainingScore"></td>
+                            <td style="text-align:center;"><span ng-bind="record.TrainingScore * 0.05"></td>
                         </tr>
                         <tr>
                             <td></td>
                             <td style="text-align:center;"></td>
                             <td style="text-align:right;font-weight:bold;">Total:</td>
                             <td style="text-align:center;border-top:1px solid #fff;">
-                                <span ng-bind="(record.TrainingScore * 0.05) + (record.FiveSScore * 0.05) + (record.AttendancePunctualityScore * 0.1) + (record.ConductMemoScore * 0.1) | number:2"></span>
+                                <span ng-bind="round2((record.TrainingScore * 0.05) + (record.FiveSScore * 0.05) + (record.AttendancePunctualityScore * 0.1) + (record.ConductMemoScore * 0.1))"></span>
                             </td>
                         </tr>
                     </table>
@@ -435,25 +435,25 @@
                         <tr>
                             <td>PART II - Work Results </td>
                             <td style="text-align:center;">35%</td>
-                            <td style="text-align:center;"><span ng-bind="totalGoalWeightRating | number:2"></span></td>
-                            <td style="text-align:center;"><span ng-bind="totalGoalWeightRating * 0.35 | number: 2"></span></td>
+                            <td style="text-align:center;"><span ng-bind="totalGoalWeightRating"></span></td>
+                            <td style="text-align:center;"><span ng-bind="round2(totalGoalWeightRating * 0.35)"></span></td>
                         </tr>
                         <tr>
                             <td>PART III - Personal Core Competencies</td>
                             <td style="text-align:center;">35%</td>
-                            <td style="text-align:center;"><span ng-bind="totalCompetencyWeightRating|number:2"></span></td>
-                            <td style="text-align:center;"><span ng-bind="totalCompetencyWeightRating*0.35|number:2"></span></td>
+                            <td style="text-align:center;"><span ng-bind="totalCompetencyWeightRating"></span></td>
+                            <td style="text-align:center;"><span ng-bind="round2(totalCompetencyWeightRating*0.35)"></span></td>
                         </tr>
                         <tr>
                             <td></td>
                             <td style="text-align:center;"></td>
                             <td style="text-align:right;font-weight:bold;">Total:</td>
-                            <td style="text-align:center;border-top:1px solid #fff;"><span ng-bind="record.evaluation_score = ((totalCompetencyWeightRating*0.35) +  (totalGoalWeightRating * 0.35)) | number:2"></span></td>
+                            <td style="text-align:center;border-top:1px solid #fff;"><span ng-bind="record.evaluation_score = round2((totalCompetencyWeightRating*0.35) +  (totalGoalWeightRating * 0.35))"></span></td>
                         </tr>
 
                         <tr>
                             <td style="font-weight:bold;text-align:right;">Overall Performance : </td>
-                            <td style="text-align:center;"><span ng-bind="record.total_computed_score = record.evaluation_score + (record.TrainingScore * 0.05) + (record.FiveSScore * 0.05) + (record.AttendancePunctualityScore * 0.1) + (record.ConductMemoScore * 0.1)|number:2"></span></td>
+                            <td style="text-align:center;"><span ng-bind="record.total_computed_score = round2(record.evaluation_score + (round2(record.TrainingScore * 0.05)) + (round2(record.FiveSScore * 0.05)) + round2((record.AttendancePunctualityScore * 0.1)) + round2((record.ConductMemoScore * 0.1)))"></span></td>
                             <td style="text-align:center;"></td>
                             <td style="text-align:center;"></td>
                         </tr>
@@ -758,36 +758,31 @@
 
         $scope.updateRecord = function(){
             $scope.totalGoalAchievement = $scope.record.goals.reduce(function(total, goal) {
-                return total + (parseFloat(goal.Achievement) * parseFloat(goal.Weight) / 100 || 0);
+                return total + ($scope.round2(parseFloat(goal.Achievement) * parseFloat(goal.Weight) / 100) || 0);
             }, 0);
 
-            $scope.totalGoalWeightRating = $scope.record.goals.reduce(function(total, goal) {
-                return total + (parseFloat(goal.Achievement)/100 * parseFloat(goal.Weight) / 100 * parseFloat(goal.Rating) || 0);
-            }, 0);
-
-            $scope.totalGoalWeightRating = parseFloat($scope.totalGoalWeightRating.toFixed(2));
+            $scope.totalGoalWeightRating = $scope.round2($scope.record.goals.reduce(function(total, goal) {
+                return total + ($scope.round2(parseFloat(goal.Achievement)/100 * parseFloat(goal.Weight) / 100 * parseFloat(goal.Rating)) || 0);
+            }, 0));
 
             $scope.totalCompetencyWeight= $scope.record.competencies.reduce(function(total, competency) {
-                return total + (parseFloat(competency.Weight) || 0);
+                return total + ($scope.round2(parseFloat(competency.Weight)) || 0);
             }, 0);
 
-            $scope.totalCompetencyWeightRating = $scope.record.competencies.reduce(function(total, competency) {
-                return total + ( parseFloat(competency.Rating) * parseFloat(competency.Weight) / 100 || 0);
-            }, 0);
+            $scope.totalCompetencyWeightRating =$scope.round2( $scope.record.competencies.reduce(function(total, competency) {
+                return total + ($scope.round2(parseFloat(competency.Rating) * parseFloat(competency.Weight) / 100) || 0);
+            }, 0));
 
             $scope.totalNextCompetencyWeight = $scope.record.competencies_next.reduce(function(total, competency) {
-                return total + ( parseFloat(competency.Weight) || 0);
+                return total + ($scope.round2(parseFloat(competency.Weight)) || 0);
             }, 0);
-
-            $scope.totalCompetencyWeightRating = parseFloat($scope.totalCompetencyWeightRating.toFixed(2));
 
             $scope.totalNextGoalWeight = $scope.record.goals_next.reduce(function(total, goal) {
-                return total + (  parseFloat(goal.Weight)  || 0);
+                return total + ($scope.round2(parseFloat(goal.Weight))  || 0);
             }, 0);
 
-
-            $scope.record.evaluation_score = (($scope.totalCompetencyWeightRating*0.35) +  ($scope.totalGoalWeightRating * 0.35));
-            $scope.partHRScore = ($scope.record.TrainingScore * 0.05) + ($scope.record.FiveSScore * 0.05) + ($scope.record.AttendancePunctualityScore * 0.1) + ($scope.record.ConductMemoScore * 0.1);
+            $scope.record.evaluation_score = $scope.round2(($scope.totalCompetencyWeightRating*0.35) +  ($scope.totalGoalWeightRating * 0.35));
+            $scope.partHRScore = $scope.round2($scope.record.TrainingScore * 0.05) + ($scope.record.FiveSScore * 0.05) + ($scope.record.AttendancePunctualityScore * 0.1) + ($scope.record.ConductMemoScore * 0.1);
 
             $scope.record.total_computed_score = parseFloat($scope.record.evaluation_score) + parseFloat($scope.partHRScore);
 
@@ -795,7 +790,7 @@
             if($scope.finalRankPromotion != 'NOT FOR PROMOTION')
                 percentage_increase = parseFloat($scope.record.group.PromotionalIncrease);
             
-            $scope.record.system_increase = ($scope.record.total_computed_score/5) * 100 * (percentage_increase/100);
+            $scope.record.system_increase = $scope.round2(($scope.record.total_computed_score/5) * 100 * (percentage_increase/100));
         }
 
         $scope.trustHTML = function(html){
@@ -941,6 +936,10 @@
             }
 
             return !$scope.myForm.$invalid;
+        }
+
+        $scope.round2 = function(num){
+            return +num.toFixed(2);
         }
 
     });
