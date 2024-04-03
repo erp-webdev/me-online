@@ -8,7 +8,7 @@
 
 </div>
 <script>
-    let apiUrl = 'https://me.megaworldcorp.com/peoplesedge/api/pmsv1/my-groups?EmpID=<?php echo $profile_idnum; ?>&EmpDB=<?php echo $profile_dbname; ?>';
+    let apiUrl = '<?php echo MEWEB; ?>/peoplesedge/api/pmsv1/my-groups?EmpID=<?php echo $profile_idnum; ?>&EmpDB=<?php echo $profile_dbname; ?>';
     axios.get(apiUrl)
         .then(response => {
             const groups = response.data;
