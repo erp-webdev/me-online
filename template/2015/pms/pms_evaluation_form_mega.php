@@ -190,7 +190,7 @@
                                         </div> -->
                                         <br><br>
                                         <strong>Remarks</strong> <br>
-                                        <textarea ng-model="competency.Remarks" cols="60" rows="3" placeholder="Add your remarks" ng-disabled="is_approved" required class="checker caRemarks"></textarea>
+                                        <textarea ng-model="competency.Remarks" cols="60" rows="3" placeholder="Add your remarks" ng-disabled="is_approved" required class="checker caRemarks" minlength="10"></textarea>
                                     </td>
                                     <td style="text-align:center;width:25px;">
                                         <span ng-bind="competency.RequiredProficiency"></span>
@@ -217,7 +217,7 @@
                                         <b ng-bind="competency.Competency" ></b>
                                         <br><br>
                                         <strong>Remarks</strong><br>
-                                        <textarea ng-model="competency.Remarks" cols="60" rows="2" placeholder="Add your remarks" ng-disabled="is_approved" required class="checker caRemarks"></textarea>
+                                        <textarea ng-model="competency.Remarks" cols="60" rows="2" placeholder="Add your remarks" ng-disabled="is_approved" required class="checker caRemarks" minlength="10"></textarea>
                                     </td>
                                     <td style="text-align:center;width:25px;">
                                         <span ng-bind="competency.RequiredProficiency"></span>
