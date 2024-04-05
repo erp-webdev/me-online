@@ -389,25 +389,25 @@
                             <td>Conduct and Compliance to the company policy <br>
                             <td style="text-align:center;">10%</td>
                             <td style="text-align:center;"><span ng-bind="record.ConductMemoScore"></span></td>
-                            <td style="text-align:center;"><span ng-bind="record.ConductMemoScore * 0.1"></span></td>
+                            <td style="text-align:center;"><span ng-bind="round2(record.ConductMemoScore * 0.1)"></span></td>
                         </tr>
                         <tr>
                             <td>Attendance and Punctuality <br>
                             <td style="text-align:center;">10%</td>
                             <td style="text-align:center;"><span ng-bind="record.AttendancePunctualityScore"></td>
-                            <td style="text-align:center;"><span ng-bind="record.AttendancePunctualityScore * 0.1"></td>
+                            <td style="text-align:center;"><span ng-bind="round2(record.AttendancePunctualityScore * 0.1)"></td>
                         </tr>
                         <tr>
                             <td>Customer Experience</td>
                             <td style="text-align:center;">5%</td>
                             <td style="text-align:center;"><span ng-bind="record.FiveSScore"></td>
-                            <td style="text-align:center;"><span ng-bind="record.FiveSScore * 0.05"></td>
+                            <td style="text-align:center;"><span ng-bind="round2(record.FiveSScore * 0.05)"></td>
                         </tr>
                         <tr>
                             <td>Learning and Development</td>
                             <td style="text-align:center;">5%</td>
                             <td style="text-align:center;"><span ng-bind="record.TrainingScore"></td>
-                            <td style="text-align:center;"><span ng-bind="record.TrainingScore * 0.05"></td>
+                            <td style="text-align:center;"><span ng-bind="round2(record.TrainingScore * 0.05)"></td>
                         </tr>
                         <tr>
                             <td></td>
