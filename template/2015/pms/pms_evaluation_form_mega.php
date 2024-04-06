@@ -272,7 +272,7 @@
                                     <br>
                                     <br>
                                     <b ng-show="goal.Goals != '8 hrs mandatory training'">Measure of Success</b><br>
-                                    <textarea class="checker" cols="80" rows="3" ng-required="goal.Goals != '8 hrs mandatory training' && goal.id != null" ng-model="goal.MeasureOfSuccess" ng-disabled="goal.id != null || goal.Goals == '8 hrs mandatory training' || is_approved"  ng-show="goal.Goals != '8 hrs mandatory training' && goal.id == null" placeholder="Provide measure of success" ng-minlength="goal.Goals != '8 hrs mandatory training' ? 10 : ''"></textarea>
+                                    <textarea class="checker" cols="80" rows="3" ng-required="goal.Goals != '8 hrs mandatory training' && goal.id == null" ng-model="goal.MeasureOfSuccess" ng-disabled="goal.id != null || goal.Goals == '8 hrs mandatory training' || is_approved"  ng-show="goal.Goals != '8 hrs mandatory training' && goal.id == null" placeholder="Provide measure of success" ng-minlength="goal.Goals != '8 hrs mandatory training' ? 10 : ''"></textarea>
                                     <span ng-bind="goal.MeasureOfSuccess"  ng-show="goal.Goals != '8 hrs mandatory training' && goal.id != null"></span>
                                     <br> <br>
                                     <strong>Comments</strong><br>
