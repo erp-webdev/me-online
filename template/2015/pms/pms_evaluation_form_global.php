@@ -729,6 +729,10 @@
                     if($scope.record.status == 'Completed')
                         $scope.is_approved = true;
 
+                    $scope.setFinalRankPromotion();
+                    $scope.setFinalPositionPromotion();
+                    $scope.setFinalRecommendedIncrease();
+
                     if($scope.record.goals_next.length === 0){
                         for (let index = 0; index < 3; index++) {
                             $scope.addNextGoal();
