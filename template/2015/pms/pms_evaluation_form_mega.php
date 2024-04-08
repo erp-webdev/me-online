@@ -720,6 +720,10 @@
                             $scope.finalRecommendedIncrease = parseFloat($scope.record.Rater1Increase);
                     }
 
+                    $scope.setFinalRankPromotion();
+                    $scope.setFinalPositionPromotion();
+                    $scope.setFinalRecommendedIncrease();
+
                     if($scope.record.status == 'Completed')
                         $scope.is_approved = true;
                 }
