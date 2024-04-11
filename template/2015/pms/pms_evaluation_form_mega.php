@@ -547,7 +547,7 @@
                         <tr ng-show="isFinalApprover()">
                             <td style="vertical-align:top; width:150px">Salary Increase</td>
                             <td>
-                                <input type="number" min="0" ng-init="0" name="increase" ng-model="record.recommended_salary_increase" ng-max="finalRankPromotion != 'NOT FOR PROMOTION' ? record.group.PromotionalIncrease : record.group.RegularIncrease" ng-disabled="is_approved" ng-change="setFinalRecommendedIncrease()"> %
+                                <input type="number" name="increase" ng-model="record.recommended_salary_increase" ng-max="finalRankPromotion != 'NOT FOR PROMOTION' ? record.group.PromotionalIncrease : record.group.RegularIncrease" ng-disabled="is_approved" ng-change="setFinalRecommendedIncrease()"> %
                                 <br><br>
                                 Salary increase will be the final recommended increase. 
                                 Maximum increase of <span ng-bind="finalRankPromotion != 'NOT FOR PROMOTION' ? record.group.PromotionalIncrease : record.group.RegularIncrease"></span>%
