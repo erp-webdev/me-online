@@ -41,6 +41,15 @@
                 <p>Please wait...</p>
             </div>
 
+            <div ng-show="!loading && record == ''">
+                <table style="width:100%;">
+                    <tr style="background-color:#fff;">
+                        <td colspan="7" style="text-align:center;font-weight:bold;color:#A70606;"> You do not have permission to view this performance evaluation</td>
+                    </tr>
+                </table>
+                <br />
+            </div>
+
             <div ng-show="!loading && record !== ''">
                 <h2 class="mediumtext lorangetext">
                     <a href="<?php echo WEB; ?>/pms"><i class="mediumtext fa fa-arrow-left"
@@ -640,15 +649,6 @@
 
                 <?php } ?>
                 </div>
-            </div>
-
-            <div ng-show="!loading && record == ''">
-                <table style="width:100%;">
-                    <tr style="background-color:#fff;">
-                        <td colspan="7" style="text-align:center;font-weight:bold;color:#A70606;"> You do not have permission to view this performance evaluation</td>
-                    </tr>
-                </table>
-                <br />
             </div>
         </form>
     </div>
