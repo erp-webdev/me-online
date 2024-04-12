@@ -1,6 +1,6 @@
 
 <?php include(TEMP."/header.php"); ?>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script type="text/javascript" src="<?php echo JS; ?>/axios.min.js"></script>
 <div id="mainsplashtext" class="mainsplashtext lefttalign">
     <div class="topsplashtext lefttalign robotobold cattext whitetext">
         Welcome to <?php echo SYSTEMNAME; ?>
