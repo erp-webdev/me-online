@@ -50,6 +50,11 @@
 <div class="rightsplashtext lefttalign">
 
     <div ng-app='myApp' ng-controller='myCtrl' id="paf" class="mainbody lefttalign whitetext">
+        <table style="width:99%;" ng-show="record === ''">
+            <tr style="background-color:#fff;">
+                <td colspan="7" style="text-align:center;font-weight:bold;color:#A70606;"> You do not have permission to view this evaluation </td>
+            </tr>
+        </table>
         <form  name="myForm" ng-show="record != ''">
             <div class="loading-screen" ng-show="loading">
                 <div class="spinner"></div>
@@ -578,11 +583,6 @@
                 </div>
             </div>
         </form>
-        <table style="width:99%;" ng-show="record === ''">
-            <tr style="background-color:#fff;">
-                <td colspan="7" style="text-align:center;font-weight:bold;color:#A70606;"> You do not have permission to view this evaluation </td>
-            </tr>
-        </table>
     </div>
 </div>
 
