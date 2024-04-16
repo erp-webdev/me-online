@@ -68,7 +68,7 @@
                                                 $display = false;
 											break;
 										default:
-											$display = true;
+											$display = false;
                                     }
                                  ?>
 
