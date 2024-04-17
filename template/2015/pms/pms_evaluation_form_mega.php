@@ -588,7 +588,6 @@
 
 
     <script>
-    // angular retrieve record from https://dev.megaworldcorp.com/test
     var app = angular.module('myApp', []);
     app.controller('myCtrl', function($scope, $http,  $sce) {
         let apiUrl = '<?php echo MEWEB; ?>/peoplesedge/api/pmsv1/';
