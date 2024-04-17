@@ -618,7 +618,7 @@
                         <tr ng-show="isFinalApprover()">
                             <td style="vertical-align:top; width:150px">Salary Increase</td>
                             <td>
-                                <input type="number" name="increase" ng-model="record.recommended_salary_increase" ng-max="record.group.PromotionalIncrease" ng-disabled="is_approved" ng-change="setFinalRecommendedIncrease()" step="0.01"> %
+                                <input type="number" name="increase" ng-model="record.recommended_salary_increase" ng-max="finalRankPromotion != 'NOT FOR PROMOTION' ? record.group.PromotionalIncrease : record.group.RegularIncrease" ng-disabled="is_approved" ng-change="setFinalRecommendedIncrease()" step="0.01"> %
                                 <br><br>
                                 Salary increase will be the final recommended increase. If left blank, equivalent system generated percentage increase will apply.
                             </td>
@@ -656,7 +656,6 @@
 
 
     <script>
-    // angular retrieve record from https://dev.megaworldcorp.com/test
     var app = angular.module('myApp', []);
     app.controller('myCtrl', function($scope, $http,  $sce) {
         let apiUrl = '<?php echo MEWEB; ?>/peoplesedge/api/pmsv1/';
