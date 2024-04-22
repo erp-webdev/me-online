@@ -267,7 +267,7 @@
                             <tr ng-repeat="goal in record.goals">
                                 <td style="vertical-align: top;"><span ng-bind="$index+1"></span></td>
                                 <td style="">
-                                    <textarea class="checker" cols="80" rows="3" ng-model="goal.Goals" ng-readonly="goal.id != null || goal.Goals == '8 hrs mandatory training' || is_approved" placeholder="Provide SMART Goal" ng-required="goal.Goals != '8 hrs mandatory training'" minlength="10"></textarea>
+                                    <textarea class="checker" cols="80" rows="3" ng-model="goal.Goals" ng-readonly="goal.id != null || goal.Goals == '8 hrs mandatory training' || is_approved" placeholder="Provide SMART Goal" ng-required="goal.Goals != '8 hrs mandatory training'" minlength="goal.id != null || goal.Goals == '8 hrs mandatory training' || is_approved ? 5 : 10"></textarea>
                                     
                                     <br>
                                     <br>
