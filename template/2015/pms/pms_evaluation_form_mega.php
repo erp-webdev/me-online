@@ -557,7 +557,7 @@
                     </table>
 
                     <p><strong style="color:#F8FABC">Promotion History from the last 3 years: </strong> <br>
-                        <span ng-bind="record.PromotionHistory"></span><br>
+                        <span ng-bind="record.PromotionHistory"></span><br> 
                         <br> <strong style="color:#F8FABC">Conduct and Memo History from the last 3 years: </strong> <br>
                         <span ng-bind="record.ConductMemoComment"></span><br>
                         <br> <strong style="color:#F8FABC">Attendance and Punctuality History from the last 3 years: </strong> <br>
