@@ -638,16 +638,16 @@
                 <button type="button" class="subapp smlbtn" id="submapp" style="float:right;margin-right:10px;"  ng-show="!is_approved">Submit Appraisal</button>
                 <button type="button" class="saveapp smlbtn" id="saveapp" style="float:right;background-color:#3EC2FB;margin-right:10px;" ng-click="save()"  ng-show="!is_approved">Save Appraisal</button>
                 
-                <?php }else{ ?>
+                <?php } ?>
 
-                    <div style="border:1px solid #fff;padding-left:5px;width:98.6%;">
+
+                    <div style="border:1px solid #fff;padding-left:5px;width:98.6%;" ng-show="is_approved && record.DateCompleted != null">
                         <h4>Employee Comment </h4>
                         <textarea ng-model="record.EmpComment" class="checker" style="width:98.4%;min-height:100px;" ng-show="is_approved" ng-disabled="record.DateCompleted != null"></textarea>
                     </div>
                     <br>
                     <button type="button" class="subapp smlbtn" id="submapp" style="float:right;margin-right:10px;"  ng-show="is_approved && record.DateCompleted == null" ng-click="accept()">Accept Evaluation</button>
 
-                <?php } ?>
                 </div>
             </div>
         </form>
