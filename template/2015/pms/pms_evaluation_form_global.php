@@ -641,7 +641,7 @@
                 <?php } ?>
 
 
-                    <div style="border:1px solid #fff;padding-left:5px;width:98.6%;" ng-show="is_approved && record.DateCompleted != null">
+                    <div style="border:1px solid #fff;padding-left:5px;width:98.6%;" ng-show="is_approved">
                         <h4>Employee Comment </h4>
                         <textarea ng-model="record.EmpComment" class="checker" style="width:98.4%;min-height:100px;" ng-show="is_approved" ng-disabled="record.DateCompleted != null"></textarea>
                     </div>
