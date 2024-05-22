@@ -735,7 +735,47 @@
 						],
 					]
 				
+				],
+				"MEGAPARK" => [
+					'prepared' => [
+						'name' => 'MA. CLARITA D. PELADAS',
+						'id' => '2023-07-0493',
+						'designation' => 'Payroll Associate',
+						'esign' => 'coe_mpeladas.png',
+						'email' => 'mpeladas.global@megaworldcorp.com'
 					],
+					'approver' => [
+						'RFSP' => [
+							'name' => 'ARLENE A. BRANCO',
+							'id' => '2014-10-0004',
+							'designation' => 'Senior Payroll Manager',
+							'esign' => 'coe_abranco.png',
+							'email' => 'abranco@megaworldcorp.com'
+						],
+						'M' => [
+							'name' => 'ARLENE A. BRANCO',
+							'id' => '2014-10-0004',
+							'designation' => 'Senior Payroll Manager',
+							'esign' => 'coe_abranco.png',
+							'email' => 'abranco@megaworldcorp.com'
+						],
+						'AVP'=>[
+							'name' => 'ARLENE A. BRANCO',
+							'id' => '2014-10-0004',
+							'designation' => 'Senior Payroll Manager',
+							'esign' => 'coe_abranco.png',
+							'email' => 'abranco@megaworldcorp.com'
+						],
+						'VP' => [
+							'name' => 'MARILOU C. GUARINA',
+							'id' => '1994-03-8275',
+							'designation' => 'Senior Assistant Vice President',
+							'esign' => 'coe_mguarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
+						],
+					]
+				
+				],
 
 				"GLOBALHOTEL" => [
 					'prepared' => [
