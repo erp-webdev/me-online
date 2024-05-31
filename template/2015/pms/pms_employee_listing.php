@@ -38,12 +38,17 @@
                 let form = '&form=mega';
                 if(group.EvaluationForm == 'evaluation-form-2024-global')
                     form = '&form=global';
+                else if(group.EvaluationForm == 'regularization-form-2024-global')
+                    form = '&form=regularization';
+                else if(group.EvaluationForm == 'regularization-form-2024-mega')
+                    form = '&form=regularizationMega';
 
                 let btnresult = `<a href="<?php echo WEB; ?>/pafview?groupid=${myevaluation.GroupID}&appid=${myevaluation.EvaluationID}&pafad=ratee" class="smlbtn" id="sendapp" style="float:right;margin-right:10px;background-color:#3EC2FB;display:${myevaluation.Status == 'Completed' ? '': 'none'}">Result</a>`;
 
                 if(group.EvaluationForm == 'evaluation-form-2024-global' || group.CompanyID == 'GLOBAL01' ){
                     btnresult = `<a href="<?php echo WEB; ?>/pafglobal_view?groupid=${myevaluation.GroupID}&appid=${myevaluation.EvaluationID}&pafad=ratee" class="smlbtn" id="sendapp" style="float:right;margin-right:10px;background-color:#3EC2FB;display:${myevaluation.Status == 'Completed' ? '': 'none'}">Result</a>`;
                 }
+                
                 
                 if(group.AppraisalDate>'2024-01-01'){
                     if(group.EvaluationForm == 'evaluation-form-2024-global'){
@@ -103,6 +108,10 @@
                             let form = '&form=mega';
                             if(group.EvaluationForm == 'evaluation-form-2024-global')
                                 form = '&form=global';
+                            else if(group.EvaluationForm == 'regularization-form-2024-global')
+                                form = '&form=regularization';
+                            else if(group.EvaluationForm == 'regularization-form-2024-mega')
+                                form = '&form=regularizationMega';
 
                             if (evaluations[i].Status == 'Completed') {
 
