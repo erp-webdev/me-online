@@ -17,6 +17,10 @@
         <?php if(isset($_GET['form'])): ?>
             <?php if($_GET['form'] == 'global') : ?>
                 <?php include(TEMP.'/pms/pms_evaluation_form_global.php'); ?>
+            <?php elseif($_GET['form'] == 'regularization') : ?>
+                <?php include(TEMP.'/pms/pms_regularization_form_global.php'); ?>
+            <?php elseif($_GET['form'] == 'regularizationMega') : ?>
+                <?php include(TEMP.'/pms/pms_regularization_form_mega.php'); ?>
             <?php else: ?>
                 <?php include(TEMP.'/pms/pms_evaluation_form_mega.php'); ?>
             <?php endif; ?>
@@ -28,6 +32,10 @@
     <?php elseif($_GET['page'] == 'result') : ?>
         <?php if($_GET['form'] == 'global') : ?>
             <?php include(TEMP.'/pms/pms_evaluation_form_global.php'); ?>
+        <?php elseif($_GET['form'] == 'regularization') : ?>
+            <?php include(TEMP.'/pms/pms_regularization_form_global.php'); ?>
+        <?php elseif($_GET['form'] == 'regularizationMega') : ?>
+            <?php include(TEMP.'/pms/pms_regularization_form_mega.php'); ?>
         <?php else: ?>
             <?php include(TEMP.'/pms/pms_evaluation_form_mega.php'); ?>
         <?php endif; ?>

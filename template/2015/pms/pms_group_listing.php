@@ -12,6 +12,7 @@
     axios.get(apiUrl)
         .then(response => {
             const groups = response.data;
+            
             let tableHtml = '';
             tableHtml += `<tr>
                                 <th class="thr" style="text-align: center;">View</th>
@@ -24,7 +25,10 @@
                 const appraisalDate = new Date(group.AppraisalDate);
 
                 // Format the Date object as a string in the format "YYYY-MM-DD"
-                const formattedAppraisalDate = appraisalDate.toISOString().slice(0, 10);
+                var formattedAppraisalDate = appraisalDate.toISOString().slice(0, 10);
+                if(group.EvaluationType == 'Regularization'){
+                    formattedAppraisalDate = '';
+                }
 
                 tableHtml += `
                     <tr>
