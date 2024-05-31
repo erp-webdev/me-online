@@ -93,13 +93,13 @@
                                 <b class="smallesttext lwhitetext">Period:</b>
 
                                 <span style="font-weight:normal;">
-                                    From | <u ng-bind="formatDate(record.group.PeriodFrom) |  date:'yyyy-MM-dd'"></u>
-                                    To | <u ng-bind="formatDate(record.group.PeriodTo) |  date:'yyyy-MM-dd'"></u>
+                                    From | <u ng-bind="formatDate(record.HireDate) |  date:'yyyy-MM-dd'"></u>
+                                    To | <u ng-bind="formatDate(record.PermanencyDate) |  date:'yyyy-MM-dd'"></u>
                                 </span>
 
                             </td>
                             <td><b class="smallesttext lwhitetext">Appraisal Date:</b> <span style="font-weight:normal;"
-                                    ng-bind="formatDate(record.group.AppraisalDate) |  date:'yyyy-MM-dd'"></span></td>
+                                    ng-bind="formatDate(record.PermanencyDate) |  date:'yyyy-MM-dd'"></span></td>
                         </tr>
                     </tbody>
                 </table>
@@ -107,10 +107,10 @@
 
                 <div class="print" style="overflow-x:none;overflow-y:scroll;max-height:514px;">
                     <p><i>This Performance Appraisal Form aims to provide a formal, recorded, regular review of an individual's performance and competencies. It is to be used for annual evaluations, and at other times during the year when formal feedback is needed.</i></p>
-                    <p><i>This is a three (3) part Appraisal Form whice are as follows:</i></p>
+                    <p><i>This is a four (4) part Appraisal Form whice are as follows:</i></p>
                     <!-- Part 1 -->
                     <p>
-                        <b class="smallesttext lwhitetext">Part I - Staff Member's Competencies Assessment</b>
+                        <b class="smallesttext lwhitetext">Part I - Competency Assessment</b>
                         <br />
                         These include knowledge, skills and abilities. Rate each factor based on performance during the period identified above.
                     </p>
@@ -126,13 +126,16 @@
                         <br />
                         Input the agreed performance goals for the next period to be evaluated.
                     </p>
+                    <!-- Part 4 -->
+                    <p>
+                        <b class="smallesttext lwhitetext">Part IV - Individual Development Plan</b>
+                        <br />
+                        Action plan on how to close the competency gap/s improve future employee performance.
+                    </p>
 
                     <div ng-show="record.competencies.length > 0">
                         <hr>
                         <br />
-                        <p>
-                            <b class="smalltext lwhitetext">Part I - Staff Member's Competencies Assessment</b><br />
-                        </p>
                         <div style="width:98%;border: 2px solid #fff;padding:2px;margin-bottom:15px;">
                             <p><b>Rating Scale:</b></p>
                             <p>Use the following descriptions to rate the staff member's performance for each of the required competencies.</p>
@@ -151,7 +154,7 @@
                                         <td style="text-align:center;"></td>
                                     </tr>
                                     <tr>
-                                        <td>2 - <b>N</b>eeds <b>I<b/>mprovement</td>
+                                        <td>2 - <b>N</b>eeds <b>I</b>mprovement</td>
                                         <td style="text-align:center;"></td>
                                     </tr>
                                     <tr>
@@ -162,11 +165,14 @@
                             </table>
                         </div>
                         <br>
+                        <p>
+                            <b class="smalltext lwhitetext">Part I - Competency Assessment</b><br />
+                        </p>
                         <table id="comass" border="0" cellspacing="0" class="tdata" style="width:99%;">
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th width="60%;">Goals</th>
+                                    <th width="60%;">Competency</th>
                                     <th width="15%;">Required Proficiency</th>
                                     <th width="15%;">Actual Proficiency</th>
                                     <th width="15%;">Gaps</th>
@@ -196,7 +202,7 @@
                                         <span ng-bind="competency.RequiredProficiency"></span>
                                     </td>
                                     <td style="text-align:center;width:25px;">
-                                        <input type="number" clas="width50 smltxtbox actp " min="1" max="5" onkeypress="return event.charCode >= 48 && event.charCode <= 57" ng-model="competency.ActualProficiency" ng-disabled="is_approved" ng-change="competency.Gaps = compute_gaps(competency); updateRecord()" required>
+                                        <input type="number" class="width50 smltxtbox actp " min="1" max="5" onkeypress="return (event.charCode >= 49 && event.charCode <= 53) || event.charCode==8" onKeyDown="if(this.value.length==1 && event.keyCode!=8 ) return false;" onfocusin="(this.value == 0) ? this.value = '' : false" onfocusout="(this.value == '') ? this.value = 0 : false" ng-model="competency.ActualProficiency" ng-disabled="is_approved" ng-change="competency.Gaps = compute_gaps(competency); updateRecord()" required>
                                     </td>
                                     <td style="text-align:center;width:25px;">
                                         <span ng-bind="competency.Gaps"></span>
@@ -223,7 +229,7 @@
                                         <span ng-bind="competency.RequiredProficiency"></span>
                                     </td>
                                     <td style="text-align:center;width:25px;">
-                                        <input type="number" clas="width50 smltxtbox actp " min="1" max="5" onkeypress="return event.charCode >= 48 && event.charCode <= 57" ng-model="competency.ActualProficiency" ng-disabled="is_approved" ng-change="updateRecord()" required>
+                                        <input type="number" class="width50 smltxtbox actp " min="1" max="5" onkeypress="return (event.charCode >= 49 && event.charCode <= 53) || event.charCode==8" onKeyDown="if(this.value.length==1 && event.keyCode!=8) return false;" onfocusin="(this.value == 0) ? this.value = '' : false" onfocusout="(this.value == '') ? this.value = 0 : false" ng-model="competency.ActualProficiency" ng-disabled="is_approved" ng-change="updateRecord()" required>
                                     </td>
                                     <td style="text-align:center;width:25px;">
                                         <span ng-bind="competency.Gaps"></span>
@@ -267,7 +273,7 @@
                             <tr ng-repeat="goal in record.goals">
                                 <td style="vertical-align: top;"><span ng-bind="$index+1"></span></td>
                                 <td style="">
-                                    <textarea class="checker" cols="80" rows="3" required ng-bind="goal.Goals" ng-disabled="goal.id != null || goal.Goals == '8 hrs mandatory training'" placeholder="Provide SMART Goal"></textarea>
+                                    <textarea class="checker" cols="80" rows="3" ng-model ="goal.Goals" required ng-bind="goal.Goals" ng-disabled="goal.id != null || goal.Goals == '8 hrs mandatory training'" placeholder="Provide SMART Goal"></textarea>
                                     <br>
                                     <br>
                                     <b ng-show="goal.Goals != '8 hrs mandatory training'">Measure of Success</b><br>
@@ -283,7 +289,7 @@
                                     
                                 </td>
                                 <td style="text-align:center;">
-                                    <input type="number" clas="width50 smltxtbox actp " min="1" max="5" onkeypress="return event.charCode >= 48 && event.charCode <= 57" ng-model="goal.Grade" ng-disabled="goal.Goals == '8 hrs mandatory training' || is_approved" ng-change="updateRecord()" required>
+                                    <input type="number" clas="width50 smltxtbox actp " min="1" max="5" onkeypress="return (event.charCode >= 49 && event.charCode <= 53) || event.charCode==8" onKeyDown="if(this.value.length==1 && event.keyCode!=8) return false;" onfocusin="(this.value == 0) ? this.value = '' : false" onfocusout="(this.value == '') ? this.value = 0 : false" ng-model="goal.Grade" ng-disabled="goal.Goals == '8 hrs mandatory training' || is_approved" ng-change="updateRecord()" required>
                                 </td>
                                 <!-- <td style="text-align:center;">
                                     <textarea class="checker" cols="20" rows="2" ng-model="goal.Comments" placeholder="Provide your comments" ng-disabled="is_approved"></textarea>
@@ -325,46 +331,77 @@
                     <br>
                     <a class="smlbtn"style="background-color:#3EC2FB;" ng-show="!is_approved" ng-click="addNextGoal()">Add Row</a>
                     <hr>
-                    <table style="border:2px solid #fff;width:99%;" ng-show="record.AttendancePunctualityScore > 0 && record.ConductMemoScore > 0 && record.FiveSScore > 0">
-                        <thead>
-                        <tr>
-                            <th style="text-align:left;width:350px;">A. HR RELATED EVALUATION - 30%</th>
-                            <th style="text-align:center;">% Value</th>
-                            <th style="text-align:center;">Rate</th>
-                            <th style="text-align:center;">Final Value</th>
-                        </tr>
-                        </thead>
-                        <tr>
-                            <td>Attendance and Punctuality <br>
-                            <td style="text-align:center;">10%</td>
-                            <td style="text-align:center;"><span ng-bind="record.AttendancePunctualityScore"></span></td>
-                            <td style="text-align:center;"><span ng-bind="(record.AttendancePunctualityScore*10/100).toFixed(2)"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Conduct and Compliance to the company policy <br>
-                            <td style="text-align:center;">15%</td>
-                            <td style="text-align:center;"><span ng-bind="record.ConductMemoScore"></span></td>
-                            <td style="text-align:center;"><span ng-bind="(record.ConductMemoScore*15/100).toFixed(2)"></span></td>
-                        </tr>
+                    <p>
+                        <b class="smalltext lwhitetext">Part VI - Individual Development Plan</b><br />
+                    </p>
+                    <table id="comass" border="0" cellspacing="0" class="tdata" style="width:99%;">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th width="60%;">Summary of Competency Gaps</th>
+                                    <th width="15%;">Required Proficiency</th>
+                                    <th width="15%;">Actual Proficiency</th>
+                                    <th width="15%;">Gaps</th>
+                                    <!-- <th width="30%;">Training/Remarks</th> -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th colspan="5"><u>Core</u></th>
+                                </tr>
+                                
+                                <tr ng-repeat="competency in record.competencies" ng-if="competency.Type == 'CORE' && competency.Gaps != 0">
+                                    <td style="vertical-align: top;"></td>
+                                    <td>
+                                        <b ng-bind="competency.Competency"></b>
+                                        <br>
+                                        Remarks: <span ng-bind-html="displayDescription(competency.Remarks)"></span>
+                                        <br>
+                                        <br>
+                                    </td>
+                                    <td style="text-align:center;width:25px;">
+                                        <span ng-bind="competency.RequiredProficiency"></span>
+                                    </td>
+                                    <td style="text-align:center;width:25px;">
+                                        <span ng-bind="competency.ActualProficiency"></span>
+                                    </td>
+                                    <td style="text-align:center;width:25px;">
+                                        <span ng-bind="competency.Gaps"></span>
+                                    </td>
+                                    
+                                </tr>
 
-                        <tr>
-                            <td>Customer Experience</td>
-                            <td style="text-align:center;">5%</td>
-                            <td style="text-align:center;"><span ng-bind="record.FiveSScore"></span></td>
-                            <td style="text-align:center;"><span ng-bind="(record.FiveSScore*5/100).toFixed(2)"></span></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td style="text-align:center;"></td>
-                            <td style="text-align:right;font-weight:bold;">Total:</td>
-                            <td style="text-align:center;border-top:1px solid #fff;"><span ng-bind="partHRScore.toFixed(2)"></span></td>
-                        </tr>
-                    </table>      
+                                <tr>
+                                    <th colspan="5"><u>Job-Specific</u></th>
+                                </tr>
+
+                                <tr ng-repeat="competency in record.competencies" ng-if="competency.Type == 'JOB-SPECIFIC' && competency.Gaps != 0">
+                                    <td style="vertical-align: top;"><span ng-bind="$index + 1"></span></td>
+                                    <td>
+                                        <b ng-bind="competency.Competency" ></b>
+                                        <br><br>
+                                        Remarks: <span ng-bind-html="displayDescription(competency.Remarks)"></span>
+                                    </td>
+                                    <td style="text-align:center;width:25px;">
+                                        <span ng-bind="competency.RequiredProficiency"></span>
+                                    </td>
+                                    <td style="text-align:center;width:25px;">
+                                        <span ng-bind="competency.ActualProficiency"></span>
+                                    </td>
+                                    <td style="text-align:center;width:25px;">
+                                        <span ng-bind="competency.Gaps"></span>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
                     <h4 style="text-align:center;"> Final Summary </h4>
                     <table style="border:2px solid #fff;width:99%;">
                         <thead>
                         <tr>
-                            <th style="text-align:left;width:350px;">B. PERFORMANCE EVALUATION - 70%</th>
+                            <th style="text-align:left;width:350px;">A. PERFORMANCE EVALUATION - 100%</th>
                             <th style="text-align:center;">% Value</th>
                             <th style="text-align:center;">Rate</th>
                             <th style="text-align:center;">Final Value</th>
@@ -374,19 +411,25 @@
                             <td>Competency Assessment </td>
                             <td style="text-align:center;">30%</td>
                             <td style="text-align:center;"><span ng-bind="totalCompetency"></span></td>
-                            <td style="text-align:center;"><span ng-bind="(totalCompetency*30/100).toFixed(2)"></span></td>
+                            <td style="text-align:center;" >
+                                <span ng-bind="(totalCompetency*30/100) | number:2"></span>
+                            </td>
                         </tr>
                         <tr>
                             <td>Goals Covered Under The Evaluation Period</td>
-                            <td style="text-align:center;">40%</td>
+                            <td style="text-align:center;">70%</td>
                             <td style="text-align:center;"><span ng-bind="totalGoal"></span></td>
-                            <td style="text-align:center;"><span ng-bind="(totalGoal*40/100).toFixed(2)"></span></td>
+                            <td style="text-align:center;" >
+                                <span ng-bind="(totalGoal*70/100) | number:2"></span>
+                            </td>
                         </tr>
                         <tr>
                             <td></td>
                             <td style="text-align:center;"></td>
                             <td style="text-align:right;font-weight:bold;">Total:</td>
-                            <td style="text-align:center;border-top:1px solid #fff;"><span ng-bind="((totalCompetency*30/100)+(totalGoal*40/100)).toFixed(2)"></span></td>
+                            <td style="text-align:center;border-top:1px solid #fff;">
+                                <span  ng-bind="record.evaluation_score | number:2"></span>
+                            </td>
                         </tr>
 
                         <tr>
@@ -407,12 +450,6 @@
                             </td>
                         </tr>
                     </table><br />     
-                    
-                    <table style="width:99%;" ng-show="record.AttendancePunctualityScore == 0 || record.ConductMemoScore == 0 || record.FiveSScore == 0">
-                        <tr style="background-color:#fff;">
-                            <td colspan="7" style="text-align:center;font-weight:bold;color:#A70606;"> Kindly inform the HR for the Employee Conduct/Memo, Attendance Score, Customer Experience and Training Score </td>
-                        </tr>
-                    </table>
 
                     <div style="border:1px solid #fff;padding-left:5px;width:98.6%;">
                         <h4>PERFORMANCE SUMMARY <span style="font-size:10px;font-weight:normal;">(Written by Reviewing Manager)</span> </h4>
@@ -446,10 +483,6 @@
                     
                     <?php if(isset($_GET['page']))
                             if($_GET['page'] !== 'result') { ?>
-                    <!-- <h3 style="">
-                        <strong>Equivalent system generated percentage increase: </strong>
-                        <span id="sys_gen_inc" ng-bind="record.system_increase | number:2"></span>%
-                    </h3> -->
 
                     <div id="floatdiv" class="floatdiv invisible">
                         <div id="nview" class="fview" style="display: none;">
@@ -537,20 +570,12 @@
                         <tr ng-show="isFinalApprover()">
                             <td style="vertical-align:top; width:150px">Salary Increase</td>
                             <td>
-                                <input type="number" min="0" ng-init="0" name="increase" ng-model="record.recommended_salary_increase" ng-max="record.group.PromotionalIncrease" ng-disabled="is_approved" ng-change="setFinalRecommendedIncrease()" step="0.01"> %
+                                <input type="number" min="0" ng-init="0" name="increase" ng-model="record.recommended_salary_increase" ng-max="record.group.PromotionalIncrease" ng-disabled="is_approved" ng-change="setFinalRecommendedIncrease()" step="0.01" > %
                                 <br><br>
                                 Salary increase will be the final recommended increase. If left blank, equivalent system generated percentage increase will apply.
                             </td>
                         </tr>
                     </table>
-
-                    <p ><strong style="color:#F8FABC">Promotion History from the last 3 years: </strong> <br>
-                        <span ng-bind="record.PromotionHistory"></span>
-                        <br> <strong style="color:#F8FABC">Conduct and Memo History from the last 3 years: </strong> <br>
-                        <span ng-bind="record.ConductMemoComment"></span>
-                        <br> <strong style="color:#F8FABC">Attendance and Punctuality History from the last 3 years: </strong> <br>
-                        <span ng-bind="record.AttendancePunctualityComment"></span>
-                    </p>
 
                     <button type="button" class="subapp smlbtn" id="submapp" style="float:right;margin-right:10px;"  ng-show="!is_approved">Submit Appraisal</button>
                     <button type="button" class="saveapp smlbtn" id="saveapp" style="float:right;background-color:#3EC2FB;margin-right:10px;" ng-click="save()"  ng-show="!is_approved">Save Appraisal</button>
@@ -580,7 +605,7 @@
     // angular retrieve record from https://dev.megaworldcorp.com/test
     var app = angular.module('myApp', []);
     app.controller('myCtrl', function($scope, $http,  $sce) {
-        let apiUrl = 'https://dev.megaworldcorp.com:8081/peoplesedge/api/pmsv1/';
+        let apiUrl = 'https://dev.megaworldcorp.com:8082/peoplesedge/api/pmsv1/';
 
         $scope.record = [];
         $scope.ApproverEmpID = '<?php echo $profile_idnum; ?>';
@@ -600,7 +625,7 @@
                     $scope.record.ApproverEmpID = $scope.ApproverEmpID;
                     $scope.record.ApproverEmpDB = $scope.ApproverEmpDB;
                     $scope.record.system_increase = parseFloat($scope.record.system_increase);
-                    $scope.record.recommended_salary_increase = parseFloat($scope.record.recommended_salary_increase);
+                    $scope.record.recommended_salary_increase = $scope.record.recommended_salary_increase == 0 ? '' : parseFloat($scope.record.recommended_salary_increase);
                     $scope.record.total_computed_score = parseFloat($scope.record.total_computed_score);
                     $scope.record.TrainingScore = parseInt($scope.record.TrainingScore);
                     $scope.record.AttendancePunctualityScore = parseInt($scope.record.AttendancePunctualityScore);
@@ -626,19 +651,6 @@
                         return evaluation.Goals === '8 hrs mandatory training';
                     });
 
-                    if(!$scope.trainingexists){
-                        var newGoal = {
-                            "EvaluationID": '<?php echo $_GET['ratee']; ?>',
-                            "Goals":  "8 hrs mandatory training",
-                            "MeasureOfSuccess": "",
-                            "Comments": null,
-                            "Grade": $scope.record.TrainingScore,
-                            "id": null
-                        }
-
-                        $scope.record.goals.push(newGoal);
-                    }
-
                     if($scope.record.goals_next.length === 0){
                         for (let index = 0; index < 3; index++) {
                             $scope.addNextGoal();
@@ -647,6 +659,10 @@
 
                     $scope.updateRecord();
             
+                    $scope.record.group.PeriodFrom = $scope.record.HireDate;
+                    let date = new Date($scope.record.HireDate);
+                    $scope.record.group.PeriodTo = date.setMonth(date.getMonth() + 6);
+                    $scope.record.group.AppraisalDate = date.setDate(date.getDate() + 1);
                     $scope.loading = false;
                     console.log("Successfully retrieved record");
 
@@ -694,6 +710,8 @@
                     if($scope.record.status == 'Completed')
                         $scope.is_approved = true;
                 }
+
+
             },
             function errorCallback(response) {
                     // called asynchronously if an error occurs
@@ -715,15 +733,14 @@
 
         $scope.updateRecord = function(){
             $scope.totalGoal = parseFloat(($scope.record.goals.reduce(function(total, goal) {
-                if(goal.Grade == null || goal.Grade == '' || goal.Grade == undefined)
-                    goal.Grade = 0;
-                
                 return total + goal.Grade;
             }, 0) / $scope.record.goals.length).toFixed(2));
 
+            if(isNaN($scope.totalGoal)){
+                $scope.totalGoal = 0;
+            }
+
             $scope.totalCompetency= parseFloat(($scope.record.competencies.reduce(function(total, competency) {
-                if(competency.ActualProficiency == null || competency.ActualProficiency == '' || competency.ActualProficiency == undefined)
-                    competency.ActualProficiency = 0;
 
                 if(parseInt(competency.RequiredProficiency) - parseInt(competency.ActualProficiency) > 0)
                     competency.Gaps = parseInt(competency.RequiredProficiency) - parseInt(competency.ActualProficiency);
@@ -732,6 +749,10 @@
                 
                 return total + (parseFloat(competency.ActualProficiency) || 0);
             }, 0) / $scope.record.competencies.length).toFixed(2));
+
+            if(isNaN($scope.totalCompetency)){
+                $scope.totalCompetency = 0;
+            }
 
             if($scope.record.Rater4EmpID != null && $scope.record.Rater4DB != null && $scope.record.Rater4PositionPromotion != null){
                 $scope.finalPositionPromotion = $scope.record.Rater4PositionPromotion;
@@ -767,11 +788,11 @@
                 $scope.finalRecommendedIncrease = parseFloat($scope.record.Rater1Increase);  
             }
 
-            $scope.record.evaluation_score =  (parseFloat($scope.totalCompetency.toFixed(2)) * 30/100) + (parseFloat($scope.totalGoal).toFixed(2) * 40/100);
+            $scope.record.evaluation_score =  (parseFloat($scope.totalCompetency.toFixed(2)) * 30/100) + (parseFloat($scope.totalGoal).toFixed(2) * 70/100);
 
             $scope.partHRScore = parseFloat((($scope.record.FiveSScore * 0.05) + ($scope.record.AttendancePunctualityScore * 0.1) + parseFloat($scope.record.ConductMemoScore * 0.15)).toFixed(2));
 
-            $scope.record.total_computed_score = parseFloat($scope.record.evaluation_score) + parseFloat($scope.partHRScore);
+            $scope.record.total_computed_score = parseFloat($scope.record.evaluation_score);
 
             let percentage_increase = parseFloat($scope.record.group.RegularIncrease);
             if($scope.finalRankPromotion != 'NOT FOR PROMOTION')
@@ -832,7 +853,7 @@
         
             if($scope.record.Rater4EmpID == $scope.ApproverEmpID && $scope.record.Rater4DB == $scope.ApproverEmpDB)
                 $scope.record.Rater4RankPromotion = $scope.finalRankPromotion;
-            
+
             $scope.record.recommended_rank = $scope.finalRankPromotion;
             $scope.updateRecord();
         }
@@ -887,6 +908,9 @@
 
         $scope.save = function(){
             $scope.loading = true;
+            if($scope.record.recommended_salary_increase == '' || $scope.record.recommended_salary_increase == null){
+                $scope.record.recommended_salary_increase = 0;
+            }
             $http({
                 method: 'POST',
                 url: apiUrl + 'evaluation/save', 

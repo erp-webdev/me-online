@@ -8,10 +8,11 @@
 
 </div>
 <script>
-    let apiUrl = 'https://dev.megaworldcorp.com:8081/peoplesedge/api/pmsv1/my-groups?EmpID=<?php echo $profile_idnum; ?>&EmpDB=<?php echo $profile_dbname; ?>';
+    let apiUrl = 'https://dev.megaworldcorp.com:8082/peoplesedge/api/pmsv1/my-groups?EmpID=<?php echo $profile_idnum; ?>&EmpDB=<?php echo $profile_dbname; ?>';
     axios.get(apiUrl)
         .then(response => {
             const groups = response.data;
+            
             let tableHtml = '';
             tableHtml += `<tr>
                                 <th class="thr" style="text-align: center;">View</th>
@@ -24,7 +25,10 @@
                 const appraisalDate = new Date(group.AppraisalDate);
 
                 // Format the Date object as a string in the format "YYYY-MM-DD"
-                const formattedAppraisalDate = appraisalDate.toISOString().slice(0, 10);
+                var formattedAppraisalDate = appraisalDate.toISOString().slice(0, 10);
+                if(group.EvaluationType == 'Regularization'){
+                    formattedAppraisalDate = '';
+                }
 
                 tableHtml += `
                     <tr>
