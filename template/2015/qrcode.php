@@ -36,7 +36,9 @@
                 <br><br>
                 <!-- <span class="whitetext">Seat Plan: <h3 class="mediumtext"><?php echo $my_registration[0]['registry_seat'] ?  $my_registration[0]['registry_seat'] : 'TBA'; ?></h3></span> -->
                 <br><br>
-                <img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=<?php echo $id; ?>&choe=UTF-8" width="300" height="300" onerror="alert('QR Code failed to load. Please check your internet connection');">
+                <!-- <img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=<?php echo $id; ?>&choe=UTF-8" width="300" height="300" onerror="alert('QR Code failed to load. Please check your internet connection');" alt="Registration QR Code"> -->
+
+                <img src="https://quickchart.io/chart?chs=300x300&cht=qr&chl=<?php echo $id; ?>&choe=UTF-8" width="300" height="300" onerror="alert('QR Code failed to load. Please check your internet connection');" alt="Registration QR Code">
                 
                 <!-- <a  class="cursorpoint yellowtext" target="_blank" href="../uploads/activity/vaxcert/<?php echo $my_registration[0]['registry_vaxpath']; ?>">View Vaccination Certificate / Card </a> <br> 
                 <span class="whitetext">Vaccination Status: 
