@@ -4897,10 +4897,34 @@
 							<label id="other_reason">Requirement For: </label>
 						</td>
 						<td id="other_reason_text">
-							<input name="coeothers" type="textarea" value="" class="txtbox" style="width:185px;">
+							<input name="coeothers" type="textarea" class="txtbox" style="width:185px;">
+                            
 						</td>
 					</tr>
-
+                    <tr id="coecoption">
+						<td></td>
+						<td>
+							<label id="coeothers_options">Requirement For: </label>
+						</td>
+						<td id="coeothers_options">
+                            <select name="coeothers_options" id="coeothers_options" style="width:193px;" class="txtbox">
+                                <option value=""></option>
+                                <option value="ACQUISITION OF PROPERTY" >ACQUISITION OF PROPERTY</option>
+                                <option value="BANK LOAN APPLICATION">BANK LOAN APPLICATION</option>
+                                <option value="VEHICLE LOAN APPLICATION">VEHICLE LOAN APPLICATION</option>
+                                <option value="CREDIT CARD APPLICATION">CREDIT CARD APPLICATION</option>
+                                <option value="HOUSING LOAN APPLICATION">HOUSING LOAN APPLICATION</option>
+                                <option value="PERSONAL LOAN APPLICATION">PERSONAL LOAN APPLICATION</option>
+                                <option value="MOBILE PHONE / POSTPAID PLAN APPLICATION">MOBILE PHONE / POSTPAID PLAN APPLICATION</option>
+                                <option value="BANK REQUIREMENT">BANK REQUIREMENT</option>
+                                <option value="SOLO PARENT REQUIREMENT">SOLO PARENT REQUIREMENT</option>
+                                <option value="TRAVEL / VISA APPLICATION">TRAVEL / VISA APPLICATION</option>
+                                <option value="IMMIGRATION REQUIREMENT">IMMIGRATION REQUIREMENT</option>
+                                <option value="ADOPTION REQUIREMENT">ADOPTION REQUIREMENT</option>
+                                <option value="SCHOLARSHIP REQUIREMENT">SCHOLARSHIP REQUIREMENT</option>
+                            </select>
+						</td>
+					</tr>
                     <tr id="coeothersdiv0">
 						<td></td>
 						<td>
@@ -5026,6 +5050,7 @@
 				$("#coeavail").hide();
 				$("#compensation_note").hide();
                 $("#coeothersdiv0").hide();
+                $("#coecoption").hide();
 
 
 				$("select[name=coetype]").change(function(){
@@ -5043,6 +5068,7 @@
 						$("#coeavail").hide();
 						$("#coehpa").hide();
 						$("#compensation_note").hide();
+                        $("#coecoption").hide();
 
 						if($("select[name=coetype]").val() == "COEAPPROVEDLEAVE"){
 							$("#coeleavediv1").show();
@@ -5052,25 +5078,30 @@
 							$("#coeleavediv3").show();
 							$("#coeleavediv4").show();
 							$("#coeothersdiv").show();
+							$("#coecoption").hide();
 							$("#other_reason").html("Requirement For:");
 						}else if($("select[name=coetype]").val() == "COECORRECTIONNAME"){
 							$("#other_reason").html("Requirement For:");
 							$("#coeothersdiv").show();
+							$("#coecoption").hide();
 							$("#coenamediv1").show();
 						}else if ($("select[name=coetype]").val() == "COEJOBDESC") {
 							$("#other_reason").html("Requirement For:");
 							$("#coeothersdiv").show();
+							$("#coecoption").hide();
 							$("#coejobdiv1").show();
 						}else if($("select[name=coetype]").val() == "COEGOODMORAL"){
 							$("#coeothersdiv").show();
+							$("#coecoption").hide();
 							$("#other_reason").html("Requirement For:");
 						}else if($("select[name=coetype]").val() == "COEHOUSINGPLAN"){
 							$("#coehpa").show();
 							$("#coeavail").show();
 							$("#coeothersdiv").hide();
+							$("#coecoption").hide();
 						}else if($("select[name=coetype]").val() == "COECOMPENSATION"){
-							$("#other_reason").html("Requirement For:");
-							$("#coeothersdiv").show();
+							$("#coeothersdiv").hide();
+							$("#coecoption").show();
 						}else if($("select[name=coetype]").val() == "COESEPARATED"){
 							$("#other_reason").html("Requirement For:");
 							$("#coeothersdiv").show();
@@ -5081,6 +5112,7 @@
 						    $("#coecatdiv").show();
 						    $("#other_reason").hide();
 							$("#coeothersdiv").hide();
+							$("#coecoption").hide();
                             $("select option[id=noncash]").show();
                             $("select option[id=coe]").hide();
 						}else if($("select[name=coetype]").val() == "COEFORCOMPENSATION"){
@@ -5093,6 +5125,7 @@
                             $("#leave_from1").html("From:");
                             $("#leave_to1").html("To:");
 							$("#coeothersdiv").hide();
+							$("#coecoption").hide();
 						}
 
 					}else{
@@ -5110,6 +5143,7 @@
 						$("#coehpa").hide();
 						$("#coeavail").hide();
 						$("#coeothersdiv").show();
+							$("#coecoption").hide();
 						$("#compensation_note").show();
                         $("select option[id=coe]").show();
                         $("select option[id=noncash]").hide();
@@ -5139,13 +5173,18 @@
 						$("select option[id=schoolopt]").hide();
 						$("select option[id=visaopt]").show();
 						$("#coeothersdiv").hide();
+                        $("#coecoption").hide();
+
 					}else if ($("select[name=coecategory]").val() == 'SICKNESS') {
 						$("#coeothersdiv").hide();
+                        $("#coecoption").hide();
 					}else if ($("select[name=coecategory]").val() == 'MATERNITY') {
 						$("#coeothersdiv").hide();
+                        $("#coecoption").hide();
 					}else{
 						$("#coereasondiv").hide();
 						$("#coeothersdiv").show();
+                        $("#coecoption").hide();
 					}
 
 				});
@@ -5165,6 +5204,9 @@
                     }else{
                         var other = $("input[name=coeothers]").val();
                     }
+
+                    var coecoption = $("select[name=coeothers_options]").val();
+
 					var leavefrom = $("input[name=coeleavefrom]").val();
 					var leaveto = $("input[name=coeleaveto]").val();
 					var leavereturn = $("input[name=coeleavereturn]").val();
@@ -5226,6 +5268,7 @@
 					form_data.append('hpa_percentage', hpa_percentage);
 					form_data.append('coe_company', coe_company);
 					form_data.append('coetasks', tasks);
+					form_data.append('coecoption', coecoption);
 					console.log(form_data);
 
 					$("#submitcoe").hide();
@@ -5488,6 +5531,7 @@
 			$coecategory = trim($_POST["category"]);
 			$coereason = str_replace("'","''",$_POST["reason"]);
 			$coeother = str_replace("'","''",$_POST["other"]);
+			$coecoption = str_replace("'","''",$_POST["coecoption"]);
 			$leave_from = $_POST["leavefrom"];
 			$leave_to = $_POST["leaveto"];
 			$leave_return = $_POST["leavereturn"];
@@ -5523,6 +5567,20 @@
 				?><h3 align="center">COE Request Failed! Please contact your HR Business Partner to update your Email Address.</h3><?php
 				exit(0);
 			}
+
+            if($coetype == 'COECOMPENSATION'){
+                $coeother = $coecoption;
+
+                // CHECK FOR SIMILAR REASON WITHIN THE LAST 30 DAYS
+                $coec_check = "SELECT * from COERequests WHERE emp_id = '$coeemp' and company = '$coe_company' and type = '$coetype' AND other_reason = '$coeother'
+				and status not in ('Cancelled') AND  DATEDIFF(DAY, created_at, GETDATE()) <= 30 ";
+			    $coec_check_result = $mainsql->get_numrow($coec_check);
+
+                if($coec_check_result){
+                    ?><h3 align="center">COE Request Failed! You may submit the same certificate request after 30 days or with a different reason. </h3><?php
+                    exit(0);
+                }
+            }
 			// end backend validation
 
 			$coeref = "SELECT * FROM COERequests WHERE YEAR(created_at) = YEAR(GETDATE())";
@@ -5665,6 +5723,8 @@
                         }
 					}elseif($coetype == 'COENONCASHADVANCEMENT'){
 						$message .= "You have successfully submitted a Certificate of Employment (CoE for Non-Cash Advancement - ".$coes2["$coecategory"].") with a Reference No: ".$refno.".";
+					}elseif($coetype == 'COECOMPENSATION'){
+						$message .= "You have successfully submitted a Certificate of Employment With Compensation with a Reference No: ".$refno.". Please be advised that we are currently processing your request. Kindly allow 1 to 3 business days for completion.";
 					}else{
 						$message .= "You have successfully submitted a Certificate of Employment (".$coes["$coetype"].") with a Reference No: ".$refno.".";
 					}
@@ -5677,6 +5737,8 @@
                         }
 					}elseif($coetype == 'COENONCASHADVANCEMENT'){
 						$message .= "A new Certificate of Employment (CoE for Non-Cash Advancement - ".$coes2["$coecategory"].") has been requested for you with a Reference No: ".$refno.".";
+					}elseif($coetype == 'COECOMPENSATION'){
+						$message .= "A new Certificate of Employment with Compensation has been requested for you with a Reference No: ".$refno.". Please be advised that we are currently processing your request. Kindly allow 1 to 3 business days for completion.";
 					}else{
 						$message .= "A new Certificate of Employment (".$coes["$coetype"].") has been requested for you with a Reference No: ".$refno.".";
 					}
@@ -5750,12 +5812,29 @@
 			$level = $_POST['level'];
 			$approver_level = $_POST['approver_level'];
 
+            $sql_users = "SELECT A.*, B.* FROM COEUsers A
+					LEFT JOIN SUBSIDIARY.DBO.viewHREmpMaster B on A.emp_id = B.EmpID and A.[DB_NAME] = B.DBNAME
+					WHERE A.emp_id = '$profile_id' and B.CompanyID = '$profile_comp' and B.CompanyActive = 1 order by [level] ASC";
+
+            $coe_user_data = $mainsql->get_row($sql_users);
+
 			$sql = "SELECT * FROM COERequests WHERE id=$id";
 
 			$result = $mainsql->get_row($sql);
 
 			$date_resigned_empid = $result[0]['emp_id'];
-			$date_resigned_sql = "SELECT DateResigned from viewHREmpMaster WHERE EmpID = '$date_resigned_empid'";
+			$date_resigned_sql = "SELECT 
+                    A.FullName,
+                    A.DateResigned,
+                    A.HireDate,
+                    A.MonthlyRate,
+                    A.Allowance,
+                    E.PositionDesc,
+                    G.StatusDesc
+                from viewHREmpMaster A
+                LEFT JOIN HRPosition E on A.PositionID = E.PositionID
+                LEFT JOIN HRStatus G ON A.EmpStatus = G.StatusID  
+                WHERE A.EmpID = '$date_resigned_empid'";
 			$date_resigned_data = $mainsql->get_row($date_resigned_sql);
 			if(date('Y-m-d', strtotime($date_resigned_data[0]['DateResigned'])) > date('Y-m-d')){
 				$date_resigned = date('F j, Y', strtotime($date_resigned_data[0]['DateResigned']));
@@ -5775,6 +5854,12 @@
 						<td width="5%"></td>
 						<td width="40%" align="left" <?php if($level != 2) { ?>width="40%"<?php }else{ echo "width='40%'"; } ?>><label>Employee ID: </label></td>
 						<td width="55%" align="left"<?php if($level != 2) { ?>width="40%"<?php }else{ echo "width='55%'"; } ?>><?php echo $result[0]['emp_id']; ?></td>
+					</tr>
+
+                    <tr>
+						<td width="5%"></td>
+						<td width="40%" align="left" <?php if($level != 2) { ?>width="40%"<?php }else{ echo "width='40%'"; } ?>><label>Name: </label></td>
+						<td width="55%" align="left"<?php if($level != 2) { ?>width="40%"<?php }else{ echo "width='55%'"; } ?>><?php echo $date_resigned_data[0]['FullName']; ?></td>
 					</tr>
 
 					<?php if($level != 1){ ?>
@@ -5922,8 +6007,28 @@
 							?>
 						</td>
 					</tr>
-                    
-
+                    <?php if($level == 2 && in_array($coe_user_data[0]['level'], [2,5])) : ?>
+                    <tr id="monthlyrate">
+						<td></td>
+						<td align="left"><label id="">Monthly Rate: </label></td>
+						<td align="left"><?php  echo number_format($date_resigned_data[0]['MonthlyRate'], 2, '.', ',');  ?></td>
+					</tr>
+                    <tr id="allowancerate">
+						<td></td>
+						<td align="left"><label id="">Allowance: </label></td>
+						<td align="left"><?php  echo number_format($date_resigned_data[0]['Allowance'],2, '.', ',');  ?></td>
+					</tr>
+                    <tr id="position">
+						<td></td>
+						<td align="left"><label id="">Position: </label></td>
+						<td align="left"><?php  echo $date_resigned_data[0]['PositionDesc'];  ?></td>
+					</tr>
+                    <tr id="position">
+						<td></td>
+						<td align="left"><label id="">Employment Status: </label></td>
+						<td align="left"><?php  echo $date_resigned_data[0]['StatusDesc'];  ?></td>
+					</tr>
+                    <?php endif; ?>
 					<tr id="coeavail2">
 						<td></td>
 						<td align="left"><label>Avail No.: </label></td>
@@ -6806,7 +6911,7 @@
                             $COEC_APPROVERS = [
                                 "GLOBAL01" => [
                                     'prepared' => [
-                                        'name' => 'SULAT, CLARA NUÑEZ',
+                                        'name' => 'SULAT, CLARA NUï¿½EZ',
                                         'id' => '2021-02-0013',
                                         'designation' => 'PAYROLL ASSOCIATE',
                                         'esign' => 'coe_csulat.png',
