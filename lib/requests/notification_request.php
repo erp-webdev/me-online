@@ -6008,6 +6008,11 @@
 						</td>
 					</tr>
                     <?php if($level == 2 && in_array($coe_user_data[0]['level'], [2,5])) : ?>
+                    <tr id="hiredate">
+						<td></td>
+						<td align="left"><label id="">Hire Date: </label></td>
+						<td align="left"><?php  echo date('j F Y', strtotime($date_resigned_data[0]['HireDate']));  ?></td>
+					</tr>
                     <tr id="monthlyrate">
 						<td></td>
 						<td align="left"><label id="">Monthly Rate: </label></td>
