@@ -1340,11 +1340,11 @@
 							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'VP' => [
-							'name' => 'RAMILO, LOURDES ONG',
-							'id' => '1997-03-8638',
-							'designation' => 'Vice President',
-							'esign' => 'coe_lramilo.png',
-							'email' => 'dramilo@megaworldcorp.com'
+							'name' => 'MARILOU C. GUARINA',
+							'id' => '1994-03-8275',
+							'designation' => 'Senior Assistant Vice President',
+							'esign' => 'coe_mguarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 					]
 				
