@@ -21,86 +21,33 @@
                     position: relative;
                     font-family: 'Montserrat';
                     font-size: 14px;
-                    background: rgb(18,77,138);
-                    background: linear-gradient(284deg, rgba(18,77,138,1) 5%, rgba(166,255,64,1) 100%);
+                    /* background: rgb(18,77,138);
+                    background: linear-gradient(284deg, rgba(18,77,138,1) 5%, rgba(166,255,64,1) 100%); */
+                    background: rgb(182,211,66);
+                    background: linear-gradient(100deg, rgba(182,211,66,1) 0%, rgba(0,166,222,1) 100%);
                 }
                 .round-box {
                     border-radius: 18px; 
                     box-shadow: 10px 5px 10px 5px rgba(0, 0, 0, 0.3);
                     width: 85%;
-                }
-
-                .funrun::before{
-                    content: "";
-                    background: url('');
-                    position: absolute;
-                    top: 0px;
-                    right: 0px;
-                    bottom: 0px;
-                    left: 0px;
-                    opacity: 0.4;
-                }
-                .sec_marg{
-                    margin-bottom:100px;
-                    color: #FFFFFF;
+                    max-width:600px;
                 }
 
                 .frontpage {
                 position: relative;
-                height:100vh;
+                height:90vh;
                 background-color:#FFFFFF;
+                background: url('<?php echo IMG_WEB ?>/funrun-pc.png') white;
+                background-size: cover; 
+                background-position: center; 
+                background-repeat: no-repeat; 
 
                 }
 
-                .frontpage::before,
-                .frontpage::after {
-                content: '';
-                position: absolute;
-                background-size: cover;
-                background-repeat: no-repeat;
-                }
 
-                .frontpage::before {
-                top: 0;
-                right: 0;
-                width: 100%;
-                height: 60vh;
-                max-width: 300px;
-                max-height: 320px;
-                background-image: url(''); 
-                }
-
-                .frontpage::after {
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                height: 60vh;
-                max-width: 610px;
-                max-height: 400px;
-                background-image: url('');
-                }
-
-                .heartmega{
-                    position: absolute;
-                    top:10px;
-                    left:5px;
-                    max-width:110px;
-                    max-height: 75px;
-                }
-
-                .megafunrun-div{
-                    position: absolute;
-                    top:35vh;
-                    left:6%;
-                    right:4%;
-                    max-width:100%;
-                }
-
-                .megafunrun{
-                    max-width:100%;
-                    max-height:100%;
-                    display:block;
-                    margin: 0 auto;
+                .sec_marg{
+                    margin-bottom:100px;
+                    color: #FFFFFF;
                 }
                 
                 .logo{
@@ -119,15 +66,15 @@
                 a{
                     font-size: 12px;
                 }
-
                 .section-title{
                     font-size: 20px;
                 }
 
                 @media only screen and (max-width: 800px) {
                     .frontpage{
-                        padding: 10px;
+                        
                     }
+
                     .logo{
                         max-width:110px;
                         max-height: 100px;
@@ -152,13 +99,33 @@
                     max-width: 310px;
                     max-height: 300px;
                     }
+
+                    .frontpage {
+                        background: url('<?php echo IMG_WEB ?>/funrun-cp.png') white;
+                        background-size: cover; 
+                        background-position: center; 
+                        background-repeat: no-repeat; 
+                        padding: 10px;
+
+                        }
                 }
             </style>
             <script>
-                $(document).on('click','#imgView', function(){
+                $(document).on('click','#imgView3k', function(){
+                    var img = "<?php echo IMG_WEB ?>/3kmap.png";
+                    modalView(img);
+                });
+
+                $(document).on('click','#imgView5k', function(){
+                    var img = "<?php echo IMG_WEB ?>/5kmap.png";
+                    modalView(img);
+                });
+
+                function modalView(img){
                     $("#imgModal").modal("show");
                     var modal = $('#imgModal');
                     var imgInModal = $('#imginModal');
+                    imgInModal.attr("src", img);
                     
                     modal.css('display', 'block');
                     
@@ -176,7 +143,7 @@
                             'width': '100%'
                         });
                     }
-                });
+                }
 
                 $(document).on('click','#imgModal', function(){
                     $("#imgModal").modal("hide");
@@ -185,19 +152,14 @@
             </script>
         </head>
         <body class='funrun'> 
-                <section class="frontpage sec_marg">
-                    <img class="heartmega" src="<?php echo IMG_WEB ?>/mw.png" alt="oneheartonemega" >
-                    <div class="megafunrun-div">
-                        <img src="<?php echo IMG_WEB ?>/megafunrun-frontpic.png" class="megafunrun" alt="frontpic" >
-                    </div>
-                    <img class="logo" src="<?php echo IMG_WEB ?>/megafunrun-logo.png">
-                </section>
+                <section class="frontpage sec_marg"></section>
                 <?php if ($logstat==1){?>
                 <section id='qr' class="d-flex justify-content-center sec_marg">
                     <div class="card round-box border-0 p-5 m-3">
                         <div class="text-center">
                             <label class="text-center section-title fw-bold" style="color:#124D8A;">REGISTRATION QR CODE</label><br>
                             <label class="mt-5" style="font-size: 16px; color:#000;"><strong><?php echo $profile_full ?></strong></label><br>
+                            <label style="font-size: 13px; color:#000;"><strong><?php echo $profile_idnum ?></strong></label><br>
                             <p style="color:#000;"> 
                                 <?php echo $company[0]['CompanyName']; ?>
                                 <br>
@@ -210,11 +172,14 @@
                 </section>
                 <?php  } ?>
                 <section class="d-flex justify-content-center sec_marg">
-                    <div class="card round-box border-0 p-5 m-3">
+                    <div class="card round-box border-0">
                         <div class="card-body">
                             <div class="text-center">
-                                <label class="mb-3 text-center section-title fw-bold" style="color:#124D8A;">ROUTE</label><br>
-                                <img  src="<?php echo IMG_WEB ?>/megasaya-floorplan.png" alt="Fun Run Route" style="width:100%;" id="imgView"><br>
+                                <label class="mt-5 text-center section-title fw-bold" style="color:#124D8A;">ROUTE</label><br>
+                                <p class="mt-3 fw-bold">3km MAP</p>
+                                <img  src="<?php echo IMG_WEB ?>/3kmap.png" alt="Fun Run 3km Route" style="width:60%;" id="imgView3k"><br>
+                                <p class="mt-3 fw-bold">5km MAP</p>
+                                <img  src="<?php echo IMG_WEB ?>/5kmap.png" alt="Fun Run 5km Route" style="width:60%;" id="imgView5k"><br>
                                 <p class="mt-3"><i>Note: For a clear view of the map, please click on the image to enlarge it. </i></p><br>
                             </div>
                         </div>
@@ -223,45 +188,44 @@
                 <section id='programme' class="d-flex justify-content-center sec_marg">
                     <div class="text-center card round-box border-0 p-5 m-3">
                         <label class="mb-5 text-center section-title fw-bold" style="color:#124D8A;">PROGRAMME</label>
-                        <label class="text-center fw-bold" style="color:#000;">2:00 PM</label><br>
-                        <p>REGISTRATION</p><br>
-                        <label class="text-center fw-bold" style="color:#000;">4:00 PM</label><br>
-                        <p>START OF PROGRAM</p>
-                        <p>MESSAGE OF ALT</p>
+                        <label class="text-center fw-bold" style="color:#000;">3:00 AM</label><br>
+                        <p>REGISTRATION</p>
+                        <label class="text-center fw-bold" style="color:#000;">4:45 AM</label><br>
+                        <p>START OF PROGRAMME</p>
+                        <label class="text-center fw-bold" style="color:#000;">5:30 AM</label><br>
+                        <p>GUNSTART 5KM</p>
+                        <label class="text-center fw-bold" style="color:#000;">5:40 AM</label><br>
+                        <p>GUNSTART 3KM</p>
+                        <p>GUNSTART 5KM</p>
+                        <p>MESSAGE OF LTGA</p>
+                        <p>AWARDING OF RUNNERS</p>
                         <p>RAFFLE</p>
-                        <p>SERVICE AWARDS</p>
-                        <p>DINNER</p>
-                        <p>NEOCOLOURS</p>
-                        <p>LOLA AMOUR</p>
-                        <p>MAJOR RAFFLE</p>
-                        <p>MESSAGE OF RASP </p>
-                        <p>CHRISTMAS PARTY SDE</p>
+                        <p>MESSAGE OF RASP</p>
                     </div>
                 </section>
                 <section id='reminders' class="d-flex justify-content-center sec_marg">
                     <div class="card round-box border-0 p-5 m-3">
                         <label class="text-center section-title fw-bold" style="color:#124D8A;">REMINDERS</label><br>
                         <div class="p-1 text-left">
-                            <p><b>1.</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sagittis dignissim nibh ac accumsan.</p>
-                            <p><b>2.</b> Nam sed auctor odio, sit amet aliquet nulla. Proin eu diam non diam iaculis maximus.</p>
-                            <p><b>3.</b> Aliquam et commodo elit. Mauris sollicitudin risus eu quam vestibulum rhoncus.</p>
-                            <p><b>4.</b> Praesent at ante faucibus, faucibus dui quis, efficitur leo. Curabitur eget feugiat mi. Nullam eu lobortis ante. </p>
-                            <p><b>5.</b> Sed at erat et metus euismod faucibus. Nulla quis cursus ante. Ut a enim nec neque consectetur dignissim non vitae neque. Nunc maximus sagittis tortor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                            <p><b>1.</b> For NCR employees: Registration starts at 3am to 5am only.</p>
+                            <p><b>2.</b> For Regional employees: Registration starts at 3:30am to 4:30am only.</p>
+                            <p><b>3.</b> Do not forget your QR Code.</p>
+                            <p><b>4.</b> Bring your ID. </p>
+                            <p><b>5.</b> No shirt No entry policy.</p>
                         </div>
                     </div>
                 </section>
         </body>
         <footer class="d-flex justify-content-center pt-5 " style="background: #FFFFFF; height: 20vh; width:100%">
             <div class="text-center" style="background: #FFFFFF; height: 20vh; width:100%">
-                <a href="https://www.megaworldcorp.com/"><img class="align-items-center" src="https://upload.wikimedia.org/wikipedia/commons/a/a3/Megaworld_New_Logo_Horizontal.png" alt="" style="width:30%; max-width:105px;"></a>
-                <a href="https://www.globalcompanies.com.ph/"><img class="align-items-center" src="https://www.globalcompanies.com.ph/assets/img/global_one_and_luxury_global_malls-logo1.jpg" alt="" style="width:60%; max-width:210px;"></a><br>
-                <label class="m-3 text-center">All rights reserved 2024</label><br>
+                <a href="https://www.megaworldcorp.com/"><img class="align-items-center" src="<?php echo IMG_WEB ?>/gl - meg - lg.png" alt="" style="width:80%; max-width:500px;"></a><br>
+                <label class="m-3 text-center" style="font-size: 10px;">All rights reserved 2024</label><br>
             </div>
         </footer>
         <!-- Modal -->
         <div class="modal modal-xl" id="imgModal" tabindex="-1" role="dialog" aria-hidden="true" >
             <div class="modal-dialog modal-dialog-centered d-flex justify-content-center" role="document">
-                <img  class="modal-content" src="<?php echo IMG_WEB ?>/megasaya-floorplan.png" alt="Fun Run Route" id="imginModal">
+                <img  class="modal-content" alt="Fun Run Route" id="imginModal">
             </div>
         </div>
     </html>

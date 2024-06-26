@@ -6,7 +6,7 @@
         if($_GET['title']=="MEGA-SAYANG PASKONG PILIPINO 2023") {
             echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/mega-sayang-paskong-pilipino'</script>";
         }
-        else if($_GET['title']=="Megaworld 35th Anniversary Fun Run 2024") {
+        else if($_GET['title']=="Megaworld 35th Anniversary Celebration") {
             echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/megaworld-35th-anniversary-fun-run'</script>";
         }
     }
