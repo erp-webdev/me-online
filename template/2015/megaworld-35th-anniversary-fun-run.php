@@ -207,6 +207,7 @@
                         <p>GUNSTART 5KM</p>
                         <label class="text-center fw-bold" style="color:#000;">5:40 AM</label><br>
                         <p>GUNSTART 3KM</p>
+                        <br>
                         <p>MESSAGE OF LTGA</p>
                         <p>AWARDING OF RUNNERS</p>
                         <p>RAFFLE</p>
