@@ -170,7 +170,18 @@
                         </div>
                     </div>
                 </section>
-                <?php  } ?>
+                <?php  } 
+                else{?>
+                <section id='qr' class="d-flex justify-content-center sec_marg">
+                    <div class="card border-0 round-box">
+                        <div class="card-body">
+                            <div class="text-center">
+                                <label class="mb-3">Log in <a class="text-primary fw-bold" href="<?php echo WEB ?>/mfr35">here</a> to see your registration QR Code.</label><br>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <?php }?>
                 <section class="d-flex justify-content-center sec_marg">
                     <div class="card round-box border-0">
                         <div class="card-body">
@@ -196,7 +207,6 @@
                         <p>GUNSTART 5KM</p>
                         <label class="text-center fw-bold" style="color:#000;">5:40 AM</label><br>
                         <p>GUNSTART 3KM</p>
-                        <p>GUNSTART 5KM</p>
                         <p>MESSAGE OF LTGA</p>
                         <p>AWARDING OF RUNNERS</p>
                         <p>RAFFLE</p>
@@ -207,11 +217,13 @@
                     <div class="card round-box border-0 p-5 m-3">
                         <label class="text-center section-title fw-bold" style="color:#124D8A;">REMINDERS</label><br>
                         <div class="p-1 text-left">
-                            <p><b>1.</b> For NCR employees: Registration starts at 3am to 5am only.</p>
-                            <p><b>2.</b> For Regional employees: Registration starts at 3:30am to 4:30am only.</p>
-                            <p><b>3.</b> Do not forget your QR Code.</p>
-                            <p><b>4.</b> Bring your ID. </p>
-                            <p><b>5.</b> No shirt No entry policy.</p>
+                            <ul>
+                                <li>For NCR employees: Registration starts at 3am to 5am only.</li>
+                                <li>For Regional employees: Registration starts at 3:30am to 4:30am only.</li>
+                                <li>Do not forget your QR Code.</li>
+                                <li>Bring your ID.</li>
+                                <li>No shirt No entry policy.</li>
+                            </ul>
                         </div>
                     </div>
                 </section>
