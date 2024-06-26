@@ -5,6 +5,9 @@
 		if($_SESSION['megasaya']=="1"){
 			echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/mspp'</script>";
 		}
+		else if($_SESSION['megafunrun']=="1"){
+			echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/mfr35'</script>";
+		}
 		else{
 			# PAGINATION
 			$page = isset($_GET["page"]) ? (int)$_GET["page"] : 1 ;
