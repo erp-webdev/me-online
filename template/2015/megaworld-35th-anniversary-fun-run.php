@@ -35,7 +35,7 @@
 
                 .frontpage {
                 position: relative;
-                height:90vh;
+                height:93vh;
                 background-color:#FFFFFF;
                 background: url('<?php echo IMG_WEB ?>/funrun-pc.png') white;
                 background-size: cover; 
@@ -176,7 +176,7 @@
                     <div class="card border-0 round-box">
                         <div class="card-body">
                             <div class="text-center">
-                                <label class="mb-3">Log in <a class="text-primary fw-bold" href="<?php echo WEB ?>/mfr35">here</a> to see your registration QR Code.</label><br>
+                                <label class="m-3">Log in <a style ="font-size: 16px;" class="text-primary" href="<?php echo WEB ?>/mfr35"><b>here</b></a> to see your registration QR Code.</label><br>
                             </div>
                         </div>
                     </div>
