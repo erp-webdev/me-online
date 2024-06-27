@@ -83,8 +83,8 @@
 
 	$companies = [
 
-		'GLOBAL01' => 'Makati City',
-		'LGMI01' => 'Makati City',
+		'GLOBAL01' => 'Taguig City',
+		'LGMI01' => 'Taguig City',
 		'MEGA01' => 'Taguig City',
 		'TOWN01' => '3/F Forbestown Information Center, Rizal Drive corner 26th Street, Bonifacio Global City, Taguig',
 		'SUNT01' => '26th Floor, Alliance Global Tower, 36th Street cor 11th Avenue, Uptown Bonifacio',
@@ -1340,11 +1340,11 @@
 							'email' => 'mguarina@megaworldcorp.com'
 						],
 						'VP' => [
-							'name' => 'RAMILO, LOURDES ONG',
-							'id' => '1997-03-8638',
-							'designation' => 'Vice President',
-							'esign' => 'coe_lramilo.png',
-							'email' => 'dramilo@megaworldcorp.com'
+							'name' => 'MARILOU C. GUARINA',
+							'id' => '1994-03-8275',
+							'designation' => 'Senior Assistant Vice President',
+							'esign' => 'coe_mguarina.png',
+							'email' => 'mguarina@megaworldcorp.com'
 						],
 					]
 				
@@ -1726,7 +1726,7 @@
 		if ((in_array($coe[0]["company"], ['GLOBAL01', 'LGMI01'])) ) {
 		?>
 			&nbsp;<br />
-			<p style="font-size: <?php echo $send_pdf ? '8px' : '10px'; ?>; text-align: center;">Unit G, Ground Floor, 331 Building, 331 Sen. Gil Puyat Avenue, Barangay Bel-Air, Makati City 1200 - Tels (632) 5411979 / 8946345 <br />
+			<p style="font-size: <?php echo $send_pdf ? '8px' : '10px'; ?>; text-align: center;">20th Floor Alliance Global Tower, 36th Street, corner 11th Avenue Uptown Bonifacio Taguig City 1634 - Tels (632) 5411979 / 8946345 <br />
 			<a href="www.globalcompanies.com.ph">www.globalcompanies.com.ph</a> - Email: <a href="globalonehr@globalcompanies.com.ph">globalonehr@globalcompanies.com.ph</a></p>
 		<?php
 		} elseif (($coe[0]["company"] == '')) {
