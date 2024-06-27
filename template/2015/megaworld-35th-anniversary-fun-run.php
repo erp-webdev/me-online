@@ -239,7 +239,7 @@
                 </section>
                 <section id='programme' class="d-flex justify-content-center sec_marg">
                     <div class="text-center card round-box border-0 p-5 m-3">
-                        <label class="mb-5 text-center section-title fw-bold" style="color:#124D8A;">PROGRAMME FOR REGIONAL</label>
+                        <label class="mb-5 text-center section-title fw-bold" style="color:#124D8A;">PROGRAMME FOR ILOILO, BACOLOD & CEBU</label>
                         <label class="text-center fw-bold" style="color:#000;">3:30 AM</label><br>
                         <p>REGISTRATION</p>
                         <label class="text-center fw-bold" style="color:#000;">4:30 AM</label><br>
@@ -262,8 +262,8 @@
                                 <li>For NCR employees: Registration starts at 3am to 5am only.</li>
                                 <li>For Regional employees: Registration starts at 3:30am to 4:30am only.</li>
                                 <li>Do not forget your QR Code.</li>
-                                <li>Bring your ID.</li>
-                                <li>No official race shirt No entry policy.</li>
+                                <li>Bring your Company ID.</li>
+                                <li><b>No official race shirt No entry policy.<b></li>
                             </ul>
                         </div>
                     </div>
