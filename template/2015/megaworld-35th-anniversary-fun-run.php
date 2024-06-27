@@ -221,7 +221,7 @@
                 </section>
                 <section id='programme' class="d-flex justify-content-center sec_marg">
                     <div class="text-center card round-box border-0 p-5 m-3">
-                        <label class="mb-5 text-center section-title fw-bold" style="color:#124D8A;">PROGRAMME</label>
+                        <label class="mb-5 text-center section-title fw-bold" style="color:#124D8A;">PROGRAMME FOR NCR</label>
                         <label class="text-center fw-bold" style="color:#000;">3:00 AM</label><br>
                         <p>REGISTRATION</p>
                         <label class="text-center fw-bold" style="color:#000;">4:45 AM</label><br>
@@ -231,10 +231,27 @@
                         <label class="text-center fw-bold" style="color:#000;">5:40 AM</label><br>
                         <p>GUNSTART 3KM</p>
                         <br>
-                        <p>MESSAGE OF LTGA</p>
+                        <p>MESSAGE FROM LTGA</p>
                         <p>AWARDING OF RUNNERS</p>
                         <p>RAFFLE</p>
-                        <p>MESSAGE OF RASP</p>
+                        <p>MESSAGE FROM RASP</p>
+                    </div>
+                </section>
+                <section id='programme' class="d-flex justify-content-center sec_marg">
+                    <div class="text-center card round-box border-0 p-5 m-3">
+                        <label class="mb-5 text-center section-title fw-bold" style="color:#124D8A;">PROGRAMME FOR ILOILO, BACOLOD & CEBU</label>
+                        <label class="text-center fw-bold" style="color:#000;">3:30 AM</label><br>
+                        <p>REGISTRATION</p>
+                        <label class="text-center fw-bold" style="color:#000;">4:30 AM</label><br>
+                        <p>START OF PROGRAMME</p>
+                        <label class="text-center fw-bold" style="color:#000;">5:40 AM</label><br>
+                        <p>GUNSTART 3KM</p>
+                        <br>
+                        <p>PROGRAM PROPER</p>
+                        <p>LIVESTREAM MESSAGE FROM LTGA</p>
+                        <p>AWARDING OF RUNNERS</p>
+                        <p>RAFFLE</p>
+                        <p>CLOSING REMARKS</p>
                     </div>
                 </section>
                 <section id='reminders' class="d-flex justify-content-center sec_marg">
@@ -245,8 +262,8 @@
                                 <li>For NCR employees: Registration starts at 3am to 5am only.</li>
                                 <li>For Regional employees: Registration starts at 3:30am to 4:30am only.</li>
                                 <li>Do not forget your QR Code.</li>
-                                <li>Bring your ID.</li>
-                                <li>No shirt No entry policy.</li>
+                                <li>Bring your Company ID.</li>
+                                <li><b>No official race shirt No entry policy.<b></li>
                             </ul>
                         </div>
                     </div>
