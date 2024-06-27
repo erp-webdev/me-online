@@ -263,7 +263,7 @@
                                 <li>For Regional employees: Registration starts at 3:30am to 4:30am only.</li>
                                 <li>Do not forget your QR Code.</li>
                                 <li>Bring your ID.</li>
-                                <li>No shirt No entry policy.</li>
+                                <li>No official race shirt No entry policy.</li>
                             </ul>
                         </div>
                     </div>
