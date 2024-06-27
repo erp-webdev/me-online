@@ -35,7 +35,7 @@
 
                 .frontpage {
                 position: relative;
-                height:90vh;
+                height:93vh;
                 background-color:#FFFFFF;
                 background: url('<?php echo IMG_WEB ?>/funrun-pc.png') white;
                 background-size: cover; 
@@ -43,8 +43,6 @@
                 background-repeat: no-repeat; 
 
                 }
-
-
                 .sec_marg{
                     margin-bottom:100px;
                     color: #FFFFFF;
@@ -69,10 +67,14 @@
                 .section-title{
                     font-size: 20px;
                 }
+                .expand{
+                    display: block;
+                    justify-content: center;
+                }
 
                 @media only screen and (max-width: 800px) {
-                    .frontpage{
-                        
+                    .expand{
+                        display: flex;
                     }
 
                     .logo{
@@ -111,13 +113,9 @@
                 }
             </style>
             <script>
-                $(document).on('click','#imgView3k', function(){
-                    var img = "<?php echo IMG_WEB ?>/3kmap.png";
-                    modalView(img);
-                });
-
-                $(document).on('click','#imgView5k', function(){
-                    var img = "<?php echo IMG_WEB ?>/5kmap.png";
+                $(document).on('click','.imgView', function(){
+                    var filename = $(this).data('image');
+                    var img = "<?php echo IMG_WEB ?>/"+filename;
                     modalView(img);
                 });
 
@@ -176,7 +174,7 @@
                     <div class="card border-0 round-box">
                         <div class="card-body">
                             <div class="text-center">
-                                <label class="mb-3">Log in <a class="text-primary fw-bold" href="<?php echo WEB ?>/mfr35">here</a> to see your registration QR Code.</label><br>
+                                <label class="m-3">Log in <a style ="font-size: 16px;" class="text-primary" href="<?php echo WEB ?>/mfr35"><b>here</b></a> to see your registration QR Code.</label><br>
                             </div>
                         </div>
                     </div>
@@ -187,10 +185,35 @@
                         <div class="card-body">
                             <div class="text-center">
                                 <label class="mt-5 text-center section-title fw-bold" style="color:#124D8A;">ROUTE</label><br>
-                                <p class="mt-3 fw-bold">3km MAP</p>
-                                <img  src="<?php echo IMG_WEB ?>/3kmap.png" alt="Fun Run 3km Route" style="width:60%;" id="imgView3k"><br>
-                                <p class="mt-3 fw-bold">5km MAP</p>
-                                <img  src="<?php echo IMG_WEB ?>/5kmap.png" alt="Fun Run 5km Route" style="width:60%;" id="imgView5k"><br>
+                                <div class="mt-5 fw-bold" style="width:100%; font-size: 16px">NCR</div>
+                                <div class="row m-3">
+                                    <div class="col-6">
+                                        <div class="fw-bold">3km MAP</div>
+                                        <img  src="<?php echo IMG_WEB ?>/3kmap.png" alt="Fun Run 3km Route" style="width:100%;" class="imgView" data-image="3kmap.png">
+                                    </div>
+                                    <div class="col-6 ">
+                                        <div class="fw-bold">5km MAP</div>
+                                        <img  src="<?php echo IMG_WEB ?>/5kmap.png" alt="Fun Run 5km Route" style="width:100%;" class="imgView" data-image="5kmap.png">
+                                    </div>
+                                </div>
+
+                                <div class="mt-5 fw-bold" style="width:100%; font-size: 16px">BACOLOD</div>
+                                <div class="m-4">
+                                    <div class="fw-bold">3.5km MAP</div>
+                                    <img  src="<?php echo IMG_WEB ?>/3.5kmbacolod.jpg" alt="Fun Run 3km Route" style="width:50%;" class="imgView" data-image="3.5kmbacolod.jpg">
+                                </div>
+
+                                <div class="mt-5 fw-bold" style="width:100%; font-size: 16px">CEBU</div>
+                                <div class="m-4">
+                                    <div class="fw-bold">3.5km MAP</div>
+                                    <img  src="<?php echo IMG_WEB ?>/3.5kmcebu.png" alt="Fun Run 3km Route" style="width:50%;" class="imgView" data-image="3.5kmcebu.png">
+                                </div>
+
+                                <div class="mt-5 fw-bold" style="width:100%; font-size: 16px">ILOILO</div>
+                                <div class="m-4">
+                                    <div class="fw-bold">3.5km MAP</div>
+                                    <img  src="<?php echo IMG_WEB ?>/3.5kmIloilo.jpg" alt="Fun Run 3km Route" style="width:50%;" class="imgView" data-image="3.5kmIloilo.jpg">
+                                </div>
                                 <p class="mt-3"><i>Note: For a clear view of the map, please click on the image to enlarge it. </i></p><br>
                             </div>
                         </div>
@@ -207,6 +230,7 @@
                         <p>GUNSTART 5KM</p>
                         <label class="text-center fw-bold" style="color:#000;">5:40 AM</label><br>
                         <p>GUNSTART 3KM</p>
+                        <br>
                         <p>MESSAGE OF LTGA</p>
                         <p>AWARDING OF RUNNERS</p>
                         <p>RAFFLE</p>
@@ -236,7 +260,7 @@
         </footer>
         <!-- Modal -->
         <div class="modal modal-xl" id="imgModal" tabindex="-1" role="dialog" aria-hidden="true" >
-            <div class="modal-dialog modal-dialog-centered d-flex justify-content-center" role="document">
+            <div class="modal-dialog modal-dialog-centered expand" role="document">
                 <img  class="modal-content" alt="Fun Run Route" id="imginModal">
             </div>
         </div>
