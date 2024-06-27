@@ -206,13 +206,13 @@
                                 <div class="mt-5 fw-bold" style="width:100%; font-size: 16px">CEBU</div>
                                 <div class="m-4">
                                     <div class="fw-bold">3.5km MAP</div>
-                                    <img  src="<?php echo IMG_WEB ?>/3.5kmcebu.jpg" alt="Fun Run 3km Route" style="width:50%;" class="imgView" data-image="3.5kmcebu.jpg">
+                                    <img  src="<?php echo IMG_WEB ?>/3.5kmcebu.png" alt="Fun Run 3km Route" style="width:50%;" class="imgView" data-image="3.5kmcebu.png">
                                 </div>
 
                                 <div class="mt-5 fw-bold" style="width:100%; font-size: 16px">ILOILO</div>
                                 <div class="m-4">
                                     <div class="fw-bold">3.5km MAP</div>
-                                    <img  src="<?php echo IMG_WEB ?>/3.5kmiloilo.jpg" alt="Fun Run 3km Route" style="width:50%;" class="imgView" data-image="3.5kmiloilo.jpg">
+                                    <img  src="<?php echo IMG_WEB ?>/3.5kmIloilo.jpg" alt="Fun Run 3km Route" style="width:50%;" class="imgView" data-image="3.5kmIloilo.jpg">
                                 </div>
                                 <p class="mt-3"><i>Note: For a clear view of the map, please click on the image to enlarge it. </i></p><br>
                             </div>
