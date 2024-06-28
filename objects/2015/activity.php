@@ -1,6 +1,6 @@
 <?php
 
-	if ($logged == 1 && $profile_dbname != 'ECINEMA' && $profile_dbname != 'EPARKVIEW' && $profile_dbname != 'NEWTOWN' && $profile_dbname != 'LAFUERZA') {
+	if ($logged == 1 && $profile_dbname != 'ECINEMA' && $profile_dbname != 'EPARKVIEW' && $profile_dbname != 'NEWTOWN') {
 
 		# PAGINATION
 		$page = isset($_GET["page"]) ? (int)$_GET["page"] : 1 ;
