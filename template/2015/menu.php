@@ -4,11 +4,12 @@
                         <!--a href="<?php echo WEB; ?>/notification"><div<?php if ($section == "notification") { ?> class="dselected"<?php } ?>>Notifications<?php if ($unread_notification) : ?>&nbsp;&nbsp;<div class="circount"><?php echo $unread_notification; ?></div><?php endif; ?></div></a-->
                         <?php if ($section != "pending") : ?><a href="<?php echo WEB; ?>/pending" onclick="clickAndDisable(this);"><?php endif; ?><div<?php if ($section == "pending") { ?> class="dselected"<?php } ?>>Pending Requests<?php if ($pend_notification) : ?>&nbsp;&nbsp;<div class="circount"><?php echo $pend_notification; ?></div><?php endif; ?></div><?php if ($section != "pending") : ?></a><?php endif; ?>
                         <?php endif; ?>
+                        
+                        <span class="spanred">NEW!</span><?php if ($section != "ads") { ?><a href="<?php echo WEB; ?>/ads" onclick="clickAndDisable(this);"><?php } ?><div<?php if ($section == "ads") { ?> class="dselected"<?php } ?>>Ads</div><?php if ($section != "ads") { ?></a><?php } ?>
 
-                        <?php if ($profile_dbname != 'ECINEMA' && $profile_dbname != 'EPARKVIEW' && $profile_dbname != 'NEWTOWN' ) : ?>
+                        <?php if ($profile_dbname != 'ECINEMA' && $profile_dbname != 'EPARKVIEW' && $profile_dbname != 'NEWTOWN' && $profile_dbname != 'LAFUERZA') : ?>
 
                           
-                        <span class="spanred">NEW!</span><?php if ($section != "ads") { ?><a href="<?php echo WEB; ?>/ads" onclick="clickAndDisable(this);"><?php } ?><div<?php if ($section == "ads") { ?> class="dselected"<?php } ?>>Ads</div><?php if ($section != "ads") { ?></a><?php } ?>
 
                         <span class="spanred">NEW!</span><?php if ($section != "activity") { ?><a href="<?php echo WEB; ?>/activity" onclick="clickAndDisable(this);"><?php } ?><div<?php if ($section == "activity") { ?> class="dselected"<?php } ?>>Activities</div><?php if ($section != "activity") { ?></a><?php } ?>
 
