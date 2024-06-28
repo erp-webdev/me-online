@@ -5,7 +5,7 @@
                         <?php if ($section != "pending") : ?><a href="<?php echo WEB; ?>/pending" onclick="clickAndDisable(this);"><?php endif; ?><div<?php if ($section == "pending") { ?> class="dselected"<?php } ?>>Pending Requests<?php if ($pend_notification) : ?>&nbsp;&nbsp;<div class="circount"><?php echo $pend_notification; ?></div><?php endif; ?></div><?php if ($section != "pending") : ?></a><?php endif; ?>
                         <?php endif; ?>
 
-                        <?php if ($profile_dbname != 'ECINEMA' && $profile_dbname != 'EPARKVIEW' && $profile_dbname != 'NEWTOWN' && $profile_dbname != 'LAFUERZA') : ?>
+                        <?php if ($profile_dbname != 'ECINEMA' && $profile_dbname != 'EPARKVIEW' && $profile_dbname != 'NEWTOWN' ) : ?>
 
                           
                         <span class="spanred">NEW!</span><?php if ($section != "ads") { ?><a href="<?php echo WEB; ?>/ads" onclick="clickAndDisable(this);"><?php } ?><div<?php if ($section == "ads") { ?> class="dselected"<?php } ?>>Ads</div><?php if ($section != "ads") { ?></a><?php } ?>
