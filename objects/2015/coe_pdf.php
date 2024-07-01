@@ -74,7 +74,8 @@
 					F.CompanyName,
 					A.Active,
 					A.EmailAdd,
-					A.EmailAdd2
+					A.EmailAdd2,
+					G.StatusDesc
 					FROM
 						viewhrempmaster A
 					LEFT JOIN
@@ -87,6 +88,8 @@
 						HRPosition E on A.PositionID = E.PositionID
 					LEFT JOIN
 						HRCompany F on A.CompanyID = F.CompanyID
+					LEFT JOIN 
+						HRStatus G ON A.EmpStatus = G.StatusID 
 					WHERE
 						A.EmpID = '$emp_id'";
 
