@@ -995,7 +995,8 @@
             $numdays = intval(date("N", $odate));
 
             $shiftsched2 = $mainsql->get_schedshiftdtr($profile_idnum, $_POST['odate']);
-            $sft2 = $shiftsched2[0]['ShiftID'];
+            $shift_temp = $mainsql->get_shiftid_fromhrdtr($profile_idnum, $_POST['odate']);
+            $sft2 = $shift_temp[0]['ShiftID'];
 
             /*$restdaydate = $mainsql->get_restday($profile_idnum, date("m/d/Y", strtotime($vdates)));
             $appliedrestdaydate = $mainsql->get_appliedrestday($profile_idnum, date("m/d/Y", strtotime($vdates)), $profile_comp);
