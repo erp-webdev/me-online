@@ -1021,7 +1021,9 @@
 
             //GET OT DTR
 
-            $dtr_data = $mainsql->get_dtr_bydate($profile_idnum, date("m/d/Y", $odate));
+            $dtr_data = $mainsql->get_dtr_bydate_final($profile_idnum, date("m/d/Y", $odate));
+            if(empty($dtr_data));
+                $dtr_data = $mainsql->get_dtr_bydate($profile_idnum, date("m/d/Y", $odate));
 
             $dtrin = $dtr_data[0]['TimeIN'];
             $dtrout = $dtr_data[0]['TimeOut'];
