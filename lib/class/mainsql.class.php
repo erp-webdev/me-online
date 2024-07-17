@@ -2226,11 +2226,23 @@ class mainsql {
 
     function get_schedshiftdtr($empid = NULL, $date)
 	{
+
+        $sql = "SELECT TOP 1 ShiftID, null as ShiftDesc, TimeIN, TimeOut, CreditTimeIN, CreditTimeOut, LateHrs, UTHrs
+            FROM viewHRDTR_Final
+            WHERE DTRDate = '".date("m/d/Y", strtotime($date))."' ";
+        if ($empid != NULL) : $sql .= " AND EmpID = '".$empid."' "; endif;
+		$result = $this->get_row($sql);
+
+        if($result)
+            return $result;
+
 		$sql = "SELECT TOP 1 ShiftID, ShiftDesc, TimeIN, TimeOut, CreditTimeIN, CreditTimeOut, LateHrs, UTHrs
             FROM viewHRDTR
             WHERE DTRDate = '".date("m/d/Y", strtotime($date))."' ";
         if ($empid != NULL) : $sql .= " AND EmpID = '".$empid."' "; endif;
 		$result = $this->get_row($sql);
+
+        
 		return $result;
     }
 
