@@ -1112,9 +1112,11 @@
                 $usftin = strtotime('Jan  1 1900 '.$otimeout[0]['TimeOut']);
                 $usftout = strtotime('Jan  1 1900 '.$otimeout[0]['TimeOut']);
                 if ($usfttruein > $usftout) :
-                    $sftin = $nxtdates.' '.date('h:ia', strtotime($otimeout[0]['TimeOut']));
+                    $sftin = $nxtdates.' '.date('h:ia', strtotime('12:01:00'));
+                    // $sftin = $nxtdates.' '.date('h:ia', strtotime($otimeout[0]['TimeOut']));
                 else :
-                    $sftin = $vdates.' '.date('h:ia', strtotime($otimeout[0]['TimeOut']));
+                    $sftin = $vdates.' '.date('h:ia', strtotime('12:01:00'));
+                    // $sftin = $vdates.' '.date('h:ia', strtotime($otimeout[0]['TimeOut']));
                 endif;
                 if ($usftin > $usftout) :
                     $sftout = $nxtdates.' '.date('h:ia', strtotime($otimeout[0]['TimeOut']));
