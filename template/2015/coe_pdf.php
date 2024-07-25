@@ -738,11 +738,11 @@
 				],
 				"MEGAPARK" => [
 					'prepared' => [
-						'name' => 'MA. CLARITA D. PELADAS',
-						'id' => '2023-07-0493',
+						'name' => 'SAMANTHA D. EBITA',
+						'id' => '2022-06-0387',
 						'designation' => 'Payroll Associate',
-						'esign' => 'coe_mpeladas.png',
-						'email' => 'mpeladas.global@megaworldcorp.com'
+						'esign' => 'coe_sebita.png',
+						'email' => 'sebita.global@megaworldcorp.com'
 					],
 					'approver' => [
 						'RFSP' => [
@@ -1352,11 +1352,11 @@
 
 				"TOWN01" => [
 					'prepared' => [
-						'name' => 'MAE HAZEL B. ANASTACIO',
-						'id' => '2015-11-0550',
-						'designation' => 'Senior Payroll Associate',
-						'esign' => 'coe_manastacio.png',
-						'email' => 'manastacio.global@megaworldcorp.com'
+						'name' => 'SAMANTHA D. EBITA',
+						'id' => '2022-06-0387',
+						'designation' => 'Payroll Associate',
+						'esign' => 'coe_sebita.png',
+						'email' => 'sebita.global@megaworldcorp.com'
 					],
 					'approver' => [
 						'RFSP' => [
@@ -1393,11 +1393,11 @@
 
 				"LFI01" => [
 					'prepared' => [
-						'name' => 'MAE HAZEL B. ANASTACIO',
-						'id' => '2015-11-0550',
-						'designation' => 'Senior Payroll Associate',
-							'esign' => 'coe_manastacio.png',
-							'email' => 'manastacio.global@megaworldcorp.com'
+						'name' => 'SAMANTHA D. EBITA',
+						'id' => '2022-06-0387',
+						'designation' => 'Payroll Associate',
+						'esign' => 'coe_sebita.png',
+						'email' => 'sebita.global@megaworldcorp.com'
 					],
 					'approver' => [
 						'RFSP' => [
@@ -1434,11 +1434,11 @@
 
 				"NEWTOWN01" => [
 					'prepared' => [
-						'name' => 'MAE HAZEL B. ANASTACIO',
-						'id' => '2015-11-0550',
-						'designation' => 'Senior Payroll Associate',
-							'esign' => 'coe_manastacio.png',
-							'email' => 'manastacio.global@megaworldcorp.com'
+						'name' => 'SAMANTHA D. EBITA',
+						'id' => '2022-06-0387',
+						'designation' => 'Payroll Associate',
+						'esign' => 'coe_sebita.png',
+						'email' => 'sebita.global@megaworldcorp.com'
 					],
 					'approver' => [
 						'RFSP' => [
@@ -1550,8 +1550,6 @@
 							],
 						]],
 			];
-
-
 			?>
 
 			<table style="width:100%; ">
