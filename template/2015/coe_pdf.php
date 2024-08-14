@@ -133,7 +133,7 @@
 				<?php }else{ ?>
 					for whatever legal purpose it may serve.</p>
 				<?php } ?>
-				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo mb_convert_encoding($companies[$emp_info[0]['CompanyID']], 'UTF-8', 'HTML-ENTITIES'); ?>, Philippines.</p>
+				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
 			</div>
 
 			<?php
@@ -166,7 +166,7 @@
 					for whatever legal purpose it may serve.</p>
 				<?php } ?>
 
-				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo mb_convert_encoding($companies[$emp_info[0]['CompanyID']], 'UTF-8', 'HTML-ENTITIES'); ?>, Philippines.</p>
+				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
 			</div>
 
 			<?php
@@ -202,7 +202,7 @@
 				<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo $emp_info[0]["Salutation"]." ".strtoupper(mb_convert_encoding($emp_info[0]["LName"], 'UTF-8', 'HTML-ENTITIES'))."
 				as a requirement for the Deed of Absolute Sale of ".$emp_info[0]["Gender2"]." ".date('jS', mktime(0, 0, 0, 0, $coe[0]["avail_no"], 0)); ?> property availment under the company's housing program.</p>
 
-				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo mb_convert_encoding($companies[$emp_info[0]['CompanyID']], 'UTF-8', 'HTML-ENTITIES'); ?>, Philippines.</p>
+				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
 			</div>
 
 			<?php
@@ -234,7 +234,7 @@
 					for whatever legal purpose it may serve.</p>
 				<?php } ?>
 
-				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo mb_convert_encoding($companies[$emp_info[0]['CompanyID']], 'UTF-8', 'HTML-ENTITIES'); ?>, Philippines.</p>
+				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
 			</div>
 
 			<?php
@@ -292,7 +292,7 @@
 					}
 				?>
 
-				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo mb_convert_encoding($companies[$emp_info[0]['CompanyID']], 'UTF-8', 'HTML-ENTITIES'); ?>, Philippines.</p>
+				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
 			</div>
 
 			<?php
@@ -343,7 +343,7 @@
 				}
 			?>
 
-			<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo mb_convert_encoding($companies[$emp_info[0]['CompanyID']], 'UTF-8', 'HTML-ENTITIES'); ?>, Philippines.</p>
+			<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
 		</div>
 
 		<?php
@@ -401,7 +401,7 @@
 					}
 				?>
 
-				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo mb_convert_encoding($companies[$emp_info[0]['CompanyID']], 'UTF-8', 'HTML-ENTITIES'); ?>, Philippines.</p>
+				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
 			</div>
 
 			<?php
@@ -431,7 +431,7 @@
 				<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower(mb_convert_encoding($emp_info[0]["LName"], 'UTF-8', 'HTML-ENTITIES'))); ?>
 				for the purpose of complying with the documentary requirements for <?php echo $emp_info[0]["Gender2"]?> SSS <?php echo strtolower($coe[0]["category"]) ?> benefit claim.</p>
 
-				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F Y'); ?> at <?php echo mb_convert_encoding($companies[$emp_info[0]['CompanyID']], 'UTF-8', 'HTML-ENTITIES'); ?>, Philippines.</p>
+				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
 			</div>
 
 			<?php
@@ -459,7 +459,7 @@
 				<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo strtoupper($emp_info[0]["Salutation"])." ".strtoupper(mb_convert_encoding($emp_info[0]["LName"], 'UTF-8', 'HTML-ENTITIES')); ?>
 				as a requirment for <?php echo $emp_info[0]["Gender2"]?> Employee Compensation application. <?php echo $emp_info[0]["Gender"]?> last reported for work on <?php echo date('d F Y', strtotime($coe[0]["other_reason"])); ?>.</p>
 
-				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F Y'); ?> at <?php echo mb_convert_encoding($companies[$emp_info[0]['CompanyID']], 'UTF-8', 'HTML-ENTITIES'); ?>, Philippines.</p>
+				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
 			</div>
 
 			<?php
@@ -637,7 +637,7 @@
 			</b>for whatever legal purpose it may serve.
 			<?php } ?>  Hence, the company hold no responsibility for any misrepresentation of facts and data  enumerated herein.</p>
 
-			<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo mb_convert_encoding($companies[$emp_info[0]['CompanyID']], 'UTF-8', 'HTML-ENTITIES'); ?>, Philippines.</p>
+			<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F, Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
 		</div>
 		<?php endif; ?>
 		&nbsp;
