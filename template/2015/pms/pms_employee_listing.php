@@ -95,6 +95,7 @@
                                                     <th class="thr" style=""></th>
                                                     <th class="thr" style="text-align: left">Employee/Ratee</th>
                                                     <th class="thr" style="text-align: left; display:none">Rank / Position</th>
+                                                    <th class="thr" style="text-align: left">Regularization Date</th>
                                                     <th class="thr" style="text-align: left">Score</th>
                                                     <th class="thr" style="text-align: left">Percentage</th>
                                                     <th class="thr" style="text-align: center">Status</th>
@@ -171,14 +172,33 @@
                                 }
                             }
 
-                            empHtml += `<tr>
-                                                    <td class="thr" style="text-align: center">${btn}</td>
-                                                    <td class="thr">${evaluations[i].FullName}</td>
-                                                    <td class="thr" style="display:none">${evaluations[i].Rank} /<br> ${evaluations[i].Position}</td>
-                                                    <td class="thr" style="text-align: center">${Number(Math.round(evaluations[i].total_computed_score + 'e2') + 'e-2')}</td>
-                                                    <td class="thr" style="text-align: center">${Number(Math.round((evaluations[i].total_computed_score / 5 * 100) + 'e2') + 'e-2')}</td>
-                                                    <td class="thr" style="text-align: center">${evaluations[i].Status}</td>
-                                                </tr>`;
+                            let formattedDate = "";
+                            let current = new Date();
+                            let evaldate = new Date(evaluations[i].HireDate);
+                            if(evaluations[i].PermanencyDate){
+                                let date = new Date(evaluations[i].PermanencyDate);
+                                let options = { year: 'numeric', month: 'long', day:'numeric' };
+                                formattedDate = date.toLocaleDateString('en-US', options);
+
+                                evaldate = new Date(evaluations[i].PermanencyDate);
+                                evaldate.setMonth(evaldate.getMonth() - 2);
+                            }
+                            else{
+                                formattedDate = "";
+                                evaldate.setMonth(evaldate.getMonth() + 4);
+                            }
+
+                            if(resetTime(evaldate) <= resetTime(current) && (evaluations[i].PermanencyDate)){
+                                empHtml += `<tr>
+                                                <td class="thr" style="text-align: center">${btn}</td>
+                                                <td class="thr">${evaluations[i].FullName}</td>
+                                                <td class="thr" style="display:none">${evaluations[i].Rank} /<br> ${evaluations[i].Position}</td>
+                                                <td class="thr" style="text-align: center">${formattedDate}</td>
+                                                <td class="thr" style="text-align: center">${Number(Math.round(evaluations[i].total_computed_score + 'e2') + 'e-2')}</td>
+                                                <td class="thr" style="text-align: center">${Number(Math.round((evaluations[i].total_computed_score / 5 * 100) + 'e2') + 'e-2')}</td>
+                                                <td class="thr" style="text-align: center">${evaluations[i].Status}</td>
+                                            </tr>`;
+                            }
                         }
                     }
 
@@ -208,4 +228,8 @@
             document.getElementById('pafaccordion').innerHTML = 'an error occured';
 
         });
+
+    function resetTime(date) {
+        return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    }
 </script>

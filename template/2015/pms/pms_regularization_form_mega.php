@@ -94,12 +94,12 @@
 
                                 <span style="font-weight:normal;">
                                     From | <u ng-bind="formatDate(record.HireDate) |  date:'yyyy-MM-dd'"></u>
-                                    To | <u ng-bind="formatDate(record.PermanencyDate) |  date:'yyyy-MM-dd'"></u>
+                                    To | <u ng-bind="record.Permanency ? formatDate(record.PermanencyDate) | date:'yyyy-MM-dd' : ''"></u>
                                 </span>
 
                             </td>
                             <td><b class="smallesttext lwhitetext">Appraisal Date:</b> <span style="font-weight:normal;"
-                                    ng-bind="formatDate(record.PermanencyDate) |  date:'yyyy-MM-dd'"></span></td>
+                                ng-bind="record.Permanency ? formatDate(record.PermanencyDate) | date:'yyyy-MM-dd' : ''"></span></td>
                         </tr>
                     </tbody>
                 </table>
@@ -196,7 +196,7 @@
                                         </div> -->
                                         <br><br>
                                         <strong>Remarks</strong> <br>
-                                        <textarea ng-model="competency.Remarks" cols="60" rows="3" placeholder="Add your remarks" ng-disabled="is_approved" required class="checker caRemarks"></textarea>
+                                        <textarea spellcheck="true"  ng-model="competency.Remarks" cols="60" rows="3" placeholder="Add your remarks" ng-disabled="is_approved" required class="checker caRemarks"></textarea>
                                     </td>
                                     <td style="text-align:center;width:25px;">
                                         <span ng-bind="competency.RequiredProficiency"></span>
@@ -208,7 +208,7 @@
                                         <span ng-bind="competency.Gaps"></span>
                                     </td>
                                     <!-- <td style="text-align:left;">
-                                        <textarea ng-model="competency.Remarks" cols="20" rows="2" placeholder="Add your remarks" ng-disabled="is_approved" required class="checker caRemarks"></textarea>
+                                        <textarea spellcheck="true"  ng-model="competency.Remarks" cols="20" rows="2" placeholder="Add your remarks" ng-disabled="is_approved" required class="checker caRemarks"></textarea>
                                     </td> -->
                                     
                                 </tr>
@@ -223,7 +223,7 @@
                                         <b ng-bind="competency.Competency" ></b>
                                         <br><br>
                                         <strong>Remarks</strong><br>
-                                        <textarea ng-model="competency.Remarks" cols="60" rows="2" placeholder="Add your remarks" ng-disabled="is_approved" required class="checker caRemarks"></textarea>
+                                        <textarea spellcheck="true"  ng-model="competency.Remarks" cols="60" rows="2" placeholder="Add your remarks" ng-disabled="is_approved" required class="checker caRemarks"></textarea>
                                     </td>
                                     <td style="text-align:center;width:25px;">
                                         <span ng-bind="competency.RequiredProficiency"></span>
@@ -235,7 +235,7 @@
                                         <span ng-bind="competency.Gaps"></span>
                                     </td>
                                     <!-- <td style="text-align:left;">
-                                        <textarea ng-model="competency.Remarks" cols="20" rows="2" placeholder="Add your remarks" ng-disabled="is_approved" required class="checker caRemarks"></textarea>
+                                        <textarea spellcheck="true"  ng-model="competency.Remarks" cols="20" rows="2" placeholder="Add your remarks" ng-disabled="is_approved" required class="checker caRemarks"></textarea>
                                     </td> -->
                                 </tr>
 
@@ -273,15 +273,15 @@
                             <tr ng-repeat="goal in record.goals">
                                 <td style="vertical-align: top;"><span ng-bind="$index+1"></span></td>
                                 <td style="">
-                                    <textarea class="checker" cols="80" rows="3" ng-model ="goal.Goals" required ng-bind="goal.Goals" ng-disabled="goal.id != null || goal.Goals == '8 hrs mandatory training'" placeholder="Provide SMART Goal"></textarea>
+                                    <textarea spellcheck="true"  class="checker" cols="80" rows="3" ng-model ="goal.Goals" required ng-bind="goal.Goals" ng-disabled="goal.id != null || goal.Goals == '8 hrs mandatory training'" placeholder="Provide SMART Goal"></textarea>
                                     <br>
                                     <br>
                                     <b ng-show="goal.Goals != '8 hrs mandatory training'">Measure of Success</b><br>
-                                    <textarea class="checker" cols="80" rows="3" ng-required="goal.Goals != '8 hrs mandatory training'" ng-model="goal.MeasureOfSuccess" ng-disabled="goal.id != null || goal.Goals == '8 hrs mandatory training' || is_approved"  ng-show="goal.Goals != '8 hrs mandatory training' && goal.id == null" placeholder="Provide measure of success"></textarea>
+                                    <textarea spellcheck="true"  class="checker" cols="80" rows="3" ng-required="goal.Goals != '8 hrs mandatory training'" ng-model="goal.MeasureOfSuccess" ng-disabled="goal.id != null || goal.Goals == '8 hrs mandatory training' || is_approved"  ng-show="goal.Goals != '8 hrs mandatory training' && goal.id == null" placeholder="Provide measure of success"></textarea>
                                     <span ng-bind="goal.MeasureOfSuccess"  ng-show="goal.Goals != '8 hrs mandatory training' || goal.id != null"></span>
                                     <br> <br>
                                     <strong>Comments</strong><br>
-                                    <textarea class="checker" cols="80" rows="2" ng-model="goal.Comments" placeholder="Provide your comments" ng-disabled="is_approved"></textarea>
+                                    <textarea spellcheck="true"  class="checker" cols="80" rows="2" ng-model="goal.Comments" placeholder="Provide your comments" ng-disabled="is_approved"></textarea>
                                     <span ng-show="goal.id == null && goal.Goals != '8 hrs mandatory training'">
                                     <br><br>
                                     <a class="smlbtn" id="delrowg" style="background-color:#D20404;" ng-click="deleteGoal($index)">Delete</a>
@@ -292,7 +292,7 @@
                                     <input type="number" clas="width50 smltxtbox actp " min="1" max="5" onkeypress="return (event.charCode >= 49 && event.charCode <= 53) || event.charCode==8" onKeyDown="if(this.value.length==1 && event.keyCode!=8) return false;" onfocusin="(this.value == 0) ? this.value = '' : false" onfocusout="(this.value == '') ? this.value = 0 : false" ng-model="goal.Grade" ng-disabled="goal.Goals == '8 hrs mandatory training' || is_approved" ng-change="updateRecord()" required>
                                 </td>
                                 <!-- <td style="text-align:center;">
-                                    <textarea class="checker" cols="20" rows="2" ng-model="goal.Comments" placeholder="Provide your comments" ng-disabled="is_approved"></textarea>
+                                    <textarea spellcheck="true"  class="checker" cols="20" rows="2" ng-model="goal.Comments" placeholder="Provide your comments" ng-disabled="is_approved"></textarea>
                                 </td> -->
                             </tr>
                         </tbody>
@@ -320,10 +320,10 @@
                                     <a class="smlbtn"style="background-color:#D20404;" ng-click="deleteNextGoal($index)" ng-show="!is_approved">Delete</a>
                                 </td>
                                 <td style="text-align:center;">
-                                    <textarea class="checker" cols="40" rows="5" minlength="10" ng-model="goal.Goals" required ng-disabled="is_approved"></textarea>
+                                    <textarea spellcheck="true"  class="checker" cols="40" rows="5" minlength="10" ng-model="goal.Goals" required ng-disabled="is_approved"></textarea>
                                 </td>
                                 <td style="text-align:center;">
-                                    <textarea class="checker" cols="40" rows="5" minlength="10" ng-model="goal.MeasureOfSuccess" required ng-disabled="is_approved"></textarea>
+                                    <textarea spellcheck="true"  class="checker" cols="40" rows="5" minlength="10" ng-model="goal.MeasureOfSuccess" required ng-disabled="is_approved"></textarea>
                                 </td>
                             </tr>
                         </tbody>
@@ -455,7 +455,7 @@
                         <h4>PERFORMANCE SUMMARY <span style="font-size:10px;font-weight:normal;">(Written by Reviewing Manager)</span> </h4>
                         <h4><span ng-bind="record.Rater1FullName"></span></h4>
                         <p>
-                            <textarea ng-model="record.PerformanceSummary" class="perfsummary checker" style="width:98.4%;min-height:100px;" required ng-show="record.for_approval_level == 1" ng-disabled="is_approved || record.for_approval_level > 1" minlength="25"></textarea>
+                            <textarea spellcheck="true"  ng-model="record.PerformanceSummary" class="perfsummary checker" style="width:98.4%;min-height:100px;" required ng-show="record.for_approval_level == 1" ng-disabled="is_approved || record.for_approval_level > 1" minlength="25"></textarea>
                             <span ng-show="record.for_approval_level > 1 || record.status == 'Completed'" ng-bind="record.PerformanceSummary"></span>
                         </p>
                         <!-- <hr> -->
@@ -474,59 +474,15 @@
                         <div ng-show="record.status == 'Incomplete' && !is_approved">
                             <!-- <hr> -->
                             <h4 ng-show="is_approved">EVALUATION COMMENT</h4>
-                            <textarea ng-model="record.Rater2Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 2"  ng-disabled="is_approved"></textarea>
-                            <textarea ng-model="record.Rater3Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 3"  ng-disabled="is_approved"></textarea>
-                            <textarea ng-model="record.Rater4Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 4"  ng-disabled="is_approved"></textarea>
+                            <textarea spellcheck="true"  ng-model="record.Rater2Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 2"  ng-disabled="is_approved"></textarea>
+                            <textarea spellcheck="true"  ng-model="record.Rater3Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 3"  ng-disabled="is_approved"></textarea>
+                            <textarea spellcheck="true"  ng-model="record.Rater4Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 4"  ng-disabled="is_approved"></textarea>
                         </div>
                     </div>
                     <br>
                     
                     <?php if(isset($_GET['page']))
                             if($_GET['page'] !== 'result') { ?>
-
-                    <div id="floatdiv" class="floatdiv invisible">
-                        <div id="nview" class="fview" style="display: none;">
-                            <div id="paf_title" class="paf_title robotobold cattext dbluetext">
-                                Promotion To New Level
-                            </div>
-                            <div id="paf_data" style="color: black">
-                                <span>Please select your recommendation of promotion to a new level if applicable.</span>
-                                <table class="tdataform2 rightmargin margintop10 vsmalltext" width="100%" border="0" cellpadding="0" cellspacing="0">
-                                    <tbody>
-                                        <tr>
-                                            <td style="vertical-align:top; text-align:right">Current Level</td>
-                                            <th style="vertical-align:top;"><span ng-bind="record.Rank"></span></th>
-                                        </tr>
-                                        <tr>
-                                            <td style="vertical-align:top; text-align:right">Next Level</td>
-                                            <td style="vertical-align:top;">
-                                                <b ng-bind="record.ranks[getRankIndex(record.Rank)+1]"></b>
-                                                <br><span>Based on the Organizational Levels Hierarchy</span>
-                                            </td>
-                                        </tr>
-                                    
-                                        <tr>
-                                            <td style="vertical-align:top; text-align:right">Your Recommendation</td>
-                                            <th style="vertical-align:top;">
-                                                <select id="finalrank" class="txtbox width95per" ng-model="finalRankPromotion" ng-change="setFinalRankPromotion()"  ng-disabled="is_approved">
-                                                    <option value="NOT FOR PROMOTION">NOT FOR PROMOTION</option>
-                                                    <option ng-repeat="rank in record.ranks" ng-show="$index > getRankIndex(record.Rank)">{{ rank }}</option>
-                                                </select>
-                                                <span>Please select "NOT FOR PROMOTION" if ratee is not recommended.</span>
-                                            </th>
-                                        </tr>
-                                        <tr ng-show="getRankIndex(finalRankPromotion) > getRankIndex(record.Rank)+1">
-                                            <th colspan="2"><span id="rankwarning" style="color: red;">You have skipped a level based on the organization's promotion level of hierarchy. Please click CONTINUE to proceed with the recommendation.</span></th>
-                                        </tr>
-                                        <tr>
-                                            <th colspan="2" style="text-align:center"><button type="button" class="btn closebutton">Continue</button></th>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <!-- VIEW NOTIFICATION - END -->
-                    </div>
 
                     <div id="submitfloat" class="floatdiv invisible">
                         <div id="submitfloatnview" class="fview" style="display: none;">
@@ -543,40 +499,6 @@
                         </div>
                     </div>
 
-                    <p><strong>Final Recommendation</strong> (Please fill up your desired recommendations below.)</p>
-                    <table>
-                        <tr>
-                            <td style="vertical-align:top; width:150px">Promotion To Level</td>
-                            <td>
-                                
-                                <input type="text" name="promotion" ng-model="record.recommended_rank" autocomplete="off" readonly style="width:350px !important"  ng-disabled="is_approved" required>
-                                <br><br>
-                                Current rank is <b ng-bind="record.Rank"></b>
-                                <br> 
-                                <span ng-show="false">
-                                    System recommends for promotion to <b></b>
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="vertical-align:top; width:150px">New Position Title</td>
-                            <td>
-                                <input type="text" ng-model="finalPositionPromotion"  ng-disabled="is_approved" ng-change="setFinalPositionPromotion()" ng-required="finalRankPromotion != 'NOT FOR PROMOTION'" style="width:350px !important" > 
-                                <br><br>
-                                Current Position title is <b><span ng-bind="record.Position"></span></b>
-                                
-                            </td>
-                        </tr>
-                        <tr ng-show="isFinalApprover()">
-                            <td style="vertical-align:top; width:150px">Salary Increase</td>
-                            <td>
-                                <input type="number" min="0" ng-init="0" name="increase" ng-model="record.recommended_salary_increase" ng-max="record.group.PromotionalIncrease" ng-disabled="is_approved" ng-change="setFinalRecommendedIncrease()" step="0.01" > %
-                                <br><br>
-                                Salary increase will be the final recommended increase. If left blank, equivalent system generated percentage increase will apply.
-                            </td>
-                        </tr>
-                    </table>
-
                     <button type="button" class="subapp smlbtn" id="submapp" style="float:right;margin-right:10px;"  ng-show="!is_approved">Submit Appraisal</button>
                     <button type="button" class="saveapp smlbtn" id="saveapp" style="float:right;background-color:#3EC2FB;margin-right:10px;" ng-click="save()"  ng-show="!is_approved">Save Appraisal</button>
                     
@@ -584,7 +506,7 @@
 
                         <div style="border:1px solid #fff;padding-left:5px;width:98.6%;">
                             <h4 >Employee Comment </h4>
-                            <textarea ng-model="record.EmpComment" class="checker" style="width:98.4%;min-height:100px;" ng-show="is_approved" ng-disabled="record.DateCompleted != null"></textarea>
+                            <textarea spellcheck="true"  ng-model="record.EmpComment" class="checker" style="width:98.4%;min-height:100px;" ng-show="is_approved" ng-disabled="record.DateCompleted != null"></textarea>
                         </div>
                         <br>
                         <button type="button" class="subapp smlbtn" id="submapp" style="float:right;margin-right:10px;"  ng-show="is_approved && record.DateCompleted == null" ng-click="accept()">Accept Evaluation</button>
