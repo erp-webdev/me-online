@@ -196,7 +196,7 @@
                                         <span ng-bind="competency.RequiredProficiency"></span>
                                     </td>
                                     <td style="text-align:center;width:25px;">
-                                        <input type="number" clas="width50 smltxtbox actp " min="1" max="5" onkeypress="return event.charCode >= 48 && event.charCode <= 57" ng-model="competency.ActualProficiency" ng-disabled="is_approved" ng-change="competency.Gaps = compute_gaps(competency); updateRecord()" required>
+                                        <input type="number" clas="width50 smltxtbox actp " min="1" max="5" onkeypress="return (event.charCode >= 49 && event.charCode <= 53) || event.charCode==8" onKeyDown="if(this.value.length==1 && event.keyCode!=8 ) return false;" onfocusin="(this.value == 0) ? this.value = '' : false" onfocusout="(this.value == '') ? this.value = 0 : false" ng-model="competency.ActualProficiency" ng-disabled="is_approved" ng-change="competency.Gaps = compute_gaps(competency); updateRecord()" required>
                                     </td>
                                     <td style="text-align:center;width:25px;">
                                         <span ng-bind="competency.Gaps"></span>
@@ -223,7 +223,7 @@
                                         <span ng-bind="competency.RequiredProficiency"></span>
                                     </td>
                                     <td style="text-align:center;width:25px;">
-                                        <input type="number" clas="width50 smltxtbox actp " min="1" max="5" onkeypress="return event.charCode >= 48 && event.charCode <= 57" ng-model="competency.ActualProficiency" ng-disabled="is_approved" ng-change="updateRecord()" required>
+                                        <input type="number" clas="width50 smltxtbox actp " min="1" max="5" onkeypress="return (event.charCode >= 49 && event.charCode <= 53) || event.charCode==8" onKeyDown="if(this.value.length==1 && event.keyCode!=8 ) return false;" onfocusin="(this.value == 0) ? this.value = '' : false" onfocusout="(this.value == '') ? this.value = 0 : false" ng-model="competency.ActualProficiency" ng-disabled="is_approved" ng-change="updateRecord()" required>
                                     </td>
                                     <td style="text-align:center;width:25px;">
                                         <span ng-bind="competency.Gaps"></span>
@@ -284,7 +284,7 @@
                                     
                                 </td>
                                 <td style="text-align:center;">
-                                    <input type="number" clas="width50 smltxtbox actp " min="1" max="5" onkeypress="return event.charCode >= 48 && event.charCode <= 57" ng-model="goal.Grade" ng-disabled="goal.Goals == '8 hrs mandatory training' || is_approved" ng-change="updateRecord()" required>
+                                    <input type="number" clas="width50 smltxtbox actp " min="1" max="5" onkeypress="return (event.charCode >= 49 && event.charCode <= 53) || event.charCode==8" onKeyDown="if(this.value.length==1 && event.keyCode!=8 ) return false;" onfocusin="(this.value == 0) ? this.value = '' : false" onfocusout="(this.value == '') ? this.value = 0 : false" ng-model="goal.Grade" ng-disabled="goal.Goals == '8 hrs mandatory training' || is_approved" ng-change="updateRecord()" required>
                                 </td>
                                 <!-- <td style="text-align:center;">
                                     <textarea class="checker" cols="20" rows="2" ng-model="goal.Comments" placeholder="Provide your comments" ng-disabled="is_approved"></textarea>
@@ -375,13 +375,13 @@
                             <td>Competency Assessment </td>
                             <td style="text-align:center;">30%</td>
                             <td style="text-align:center;"><span ng-bind="totalCompetency"></span></td>
-                            <td style="text-align:center;"><span ng-bind="(totalCompetency*30/100).toFixed(2)"></span></td>
+                            <td style="text-align:center;"><span ng-bind="round2((totalCompetency*30)/100)"></span></td>
                         </tr>
                         <tr>
                             <td>Goals Covered Under The Evaluation Period</td>
                             <td style="text-align:center;">40%</td>
                             <td style="text-align:center;"><span ng-bind="totalGoal"></span></td>
-                            <td style="text-align:center;"><span ng-bind="(totalGoal*40/100).toFixed(2)"></span></td>
+                            <td style="text-align:center;"><span ng-bind="round2((totalGoal*40)/100)"></span></td>
                         </tr>
                         <tr>
                             <td></td>
@@ -567,7 +567,7 @@
                     <button type="button" class="subapp smlbtn" id="submapp" style="float:right;margin-right:10px;"  ng-show="!is_approved">Submit Appraisal</button>
                     <button type="button" class="saveapp smlbtn" id="saveapp" style="float:right;background-color:#3EC2FB;margin-right:10px;" ng-click="save()"  ng-show="!is_approved">Save Appraisal</button>
                     
-                    <?php } ?>
+                    <?php } else{ ?>
 
                         <div style="border:1px solid #fff;padding-left:5px;width:98.6%;" ng-show="is_approved">
                             <h4 >Employee Comment </h4>
@@ -575,7 +575,7 @@
                             <button type="button" class="subapp smlbtn" id="submapp" style="float:right;margin-right:10px;"  ng-show="is_approved && record.DateCompleted == null" ng-click="accept()">Accept Evaluation</button>
                         </div>
                         <br>
-
+                    <?php } ?>
 
                 </div>
                     
@@ -609,7 +609,7 @@
                     $scope.record.ApproverEmpID = $scope.ApproverEmpID;
                     $scope.record.ApproverEmpDB = $scope.ApproverEmpDB;
                     $scope.record.system_increase = parseFloat($scope.record.system_increase);
-                    $scope.record.recommended_salary_increase = parseFloat($scope.record.recommended_salary_increase);
+                    $scope.record.recommended_salary_increase = $scope.record.recommended_salary_increase == 0 ? '' : parseFloat($scope.record.recommended_salary_increase);
                     $scope.record.total_computed_score = parseFloat($scope.record.total_computed_score);
                     $scope.record.TrainingScore = parseInt($scope.record.TrainingScore);
                     $scope.record.AttendancePunctualityScore = parseInt($scope.record.AttendancePunctualityScore);
@@ -748,17 +748,19 @@
                 return total + goal.Grade;
             }, 0) / $scope.record.goals.length).toFixed(2));
 
-            $scope.totalCompetency= parseFloat(($scope.record.competencies.reduce(function(total, competency) {
-                if(competency.ActualProficiency == null || competency.ActualProficiency == '' || competency.ActualProficiency == undefined)
-                    competency.ActualProficiency = 0;
+            $scope.totalCompetency= $scope.round2(($scope.record.competencies.reduce(function(total, competency) {
 
                 if(parseInt(competency.RequiredProficiency) - parseInt(competency.ActualProficiency) > 0)
                     competency.Gaps = parseInt(competency.RequiredProficiency) - parseInt(competency.ActualProficiency);
                 else
                     competency.Gaps = 0;
-                
-                return total + (parseFloat(competency.ActualProficiency) || 0);
-            }, 0) / $scope.record.competencies.length).toFixed(2));
+
+            return total + (parseFloat(competency.ActualProficiency) || 0);
+            }, 0) / $scope.record.competencies.length));
+
+            if(isNaN($scope.totalCompetency)){
+                $scope.totalCompetency = 0;
+            }
 
             $scope.record.evaluation_score =  (parseFloat($scope.totalCompetency.toFixed(2)) * 30/100) + (parseFloat($scope.totalGoal).toFixed(2) * 40/100);
 
@@ -880,6 +882,11 @@
 
         $scope.save = function(){
             $scope.loading = true;
+
+            if($scope.record.recommended_salary_increase == '' || $scope.record.recommended_salary_increase == null){
+                $scope.record.recommended_salary_increase = 0;
+            }
+
             $http({
                 method: 'POST',
                 url: apiUrl + 'evaluation/save', 
@@ -923,6 +930,14 @@
             }
 
             return !$scope.myForm.$invalid;
+        }
+
+        $scope.round2 = function(num){
+            // return +num.toFixed(2);
+            if(num ==  null || num == undefined || isNaN(num)) 
+                return 0;
+
+            return Math.round(num*100)/100;
         }
 
     });

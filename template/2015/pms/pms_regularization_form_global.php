@@ -83,12 +83,13 @@
 
                                 <span style="font-weight:normal;">
                                     From | <u ng-bind="formatDate(record.HireDate) |  date:'yyyy-MM-dd'"></u>
-                                    To | <u ng-bind="record.Permanency ? formatDate(record.PermanencyDate) | date:'yyyy-MM-dd' : ''"></u>
+                                    To | <u ng-bind="record.EndOfContractDate ? (formatDate(record.EndOfContractDate) | date:'yyyy-MM-dd') : ''" class="ng-binding"></u>
+
                                 </span>
 
                             </td>
                             <td><b class="smallesttext lwhitetext">Appraisal Date:</b> <span style="font-weight:normal;"
-                                ng-bind="record.Permanency ? formatDate(record.PermanencyDate) | date:'yyyy-MM-dd' : ''"></span></td>
+                                ng-bind="record.EndOfContractDate ? (formatDate(record.EndOfContractDate) | date:'yyyy-MM-dd') : ''" class="ng-binding"></span></td>
                         </tr>
                     </tbody>
                 </table>
@@ -194,7 +195,7 @@
                                         <input type="number"  min="1" max="100" class="width25 smltxtbox calcp3a checker" style="width:35px;margin-left:30px;"  ng-model="goal.Achievement" ng-change="updateRecord()" ng-disabled="is_approved" onkeypress="return (event.charCode >= 48 && event.charCode <= 57) || event.charCode==8" onKeyDown="if ((this.value.length == 2 || this.value.length == 3) && ((this.value >= 10 && this.value <= 100 && !(this.value == 10 && event.keyCode == 48)) && event.keyCode != 8))  return false;" onfocusin="(this.value == 0) ? this.value = '' : false" onfocusout="(this.value == '') ? this.value = 0 : false" required> %</span>        
 
                                         <input type="number"  min="1" max="5" class="width25 smltxtbox calcp3r checker" style="width:35px;margin-left:45px;" ng-model="goal.Rating" ng-change="updateRecord()" ng-disabled="is_approved" onkeypress="return (event.charCode >= 49 && event.charCode <= 53) || event.charCode==8" onKeyDown="if(this.value.length==1 && event.keyCode!=8) return false;" onfocusin="(this.value == 0) ? this.value = '' : false" onfocusout="(this.value == '') ? this.value = 0 : false" required>
-                                        <span style="margin-left:46px;" ng-bind="goal.WeightedRating = (goal.Achievement * goal.Weight * goal.Rating) / 10000  | number: 2"></span>
+                                        <span style="margin-left:46px;" ng-bind="goal.WeightedRating = round2((goal.Achievement * goal.Weight * goal.Rating) / 10000)"></span>
                                     </div>
 
                                     <div style="clear:both;"></div>
@@ -255,8 +256,8 @@
                                 </p>
                                 <!-- objectives and ratings -->
                                 <div style="float:left;width:400px;">
-                                    <!-- <p ng-bind-html="competency.Description"></p> -->
-                                    <p ng-bind-html="trustHTML(competency.Description)"></p>
+                                    <p ng-if="competency.Description" ng-bind-html="trustHTML(competency.Description)"></p>
+                                    <p ng-if="!competency.Description" style="visibility:hidden;">-</p> <!-- This is the artificial placeholder -->
                                 </div>
                                 <div style="width:220px;float:right;font-size:9px;margin-bottom:10px;">
                                     <ul style="list-style-type: none;margin:0;padding: 0;font-weight:bold;">
@@ -268,7 +269,7 @@
                                 <div style="width:220px;float:right;font-size:9px;">
                                     <span ng-bind="competency.Weight"></span>%
                                     <input type="number" min='1' max='5' style="width:35px;margin-left:50px;" class="width25 smltxtbox pccrate checker" ng-model="competency.Rating" ng-change="updateRecord()" ng-disabled="is_approved" onkeypress="return (event.charCode >= 49 && event.charCode <= 53) || event.charCode==8" onKeyDown="if(this.value.length==1 && event.keyCode!=8) return false;" onfocusin="(this.value == 0) ? this.value = '' : false" onfocusout="(this.value == '') ? this.value = 0 : false" required>
-                                    <span style="margin-left:30px;" ng-bind="competency.WeightedRating = competency.Rating * competency.Weight / 100 | number: 2"></span>
+                                    <span style="margin-left:30px;" ng-bind="competency.WeightedRating = round2(competency.Rating * competency.Weight / 100)"></span>
                                 </div>
                                 <div style="width:710px;float:left;">
                                 <!-- comments and achievments textarea -->
@@ -606,8 +607,7 @@
             }, 0);
 
             $scope.totalGoalWeightRating = $scope.record.goals.reduce(function(total, goal) {
-                weightedRating = ((parseFloat(goal.Achievement) * parseFloat(goal.Weight) * parseFloat(goal.Rating)) / 10000) || 0;
-                weightedRating = parseFloat(weightedRating.toFixed(2)); 
+                weightedRating = $scope.round2((goal.Achievement * goal.Weight * goal.Rating) / 10000) || 0;
                 total += weightedRating;
 
                 return total;
@@ -618,8 +618,7 @@
             }, 0);
 
             $scope.totalCompetencyWeightRating = $scope.record.competencies.reduce(function(total, competency) {
-                weightedRating = parseFloat(competency.Rating) * parseFloat(competency.Weight) / 100 || 0;
-                weightedRating = parseFloat(weightedRating.toFixed(2)); 
+                weightedRating = $scope.round2(competency.Rating * competency.Weight / 100) || 0;
                 total += weightedRating;
                 return total
             }, 0);
@@ -843,6 +842,14 @@
             }
 
             return !$scope.myForm.$invalid;
+        }
+
+        $scope.round2 = function(num){
+            // return +num.toFixed(2);
+            if(num ==  null || num == undefined || isNaN(num)) 
+                return 0;
+
+            return Math.round(num*100)/100;
         }
 
     });

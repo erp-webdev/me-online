@@ -94,12 +94,12 @@
 
                                 <span style="font-weight:normal;">
                                     From | <u ng-bind="formatDate(record.HireDate) |  date:'yyyy-MM-dd'"></u>
-                                    To | <u ng-bind="record.Permanency ? formatDate(record.PermanencyDate) | date:'yyyy-MM-dd' : ''"></u>
+                                    To | <u ng-bind="record.EndOfContractDate ? (formatDate(record.EndOfContractDate) | date:'yyyy-MM-dd') : ''" class="ng-binding"></u>
                                 </span>
 
                             </td>
                             <td><b class="smallesttext lwhitetext">Appraisal Date:</b> <span style="font-weight:normal;"
-                                ng-bind="record.Permanency ? formatDate(record.PermanencyDate) | date:'yyyy-MM-dd' : ''"></span></td>
+                                 ng-bind="record.EndOfContractDate ? (formatDate(record.EndOfContractDate) | date:'yyyy-MM-dd') : ''" class="ng-binding"></span></td>
                         </tr>
                     </tbody>
                 </table>
