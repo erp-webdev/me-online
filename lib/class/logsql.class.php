@@ -347,5 +347,28 @@ class logsql {
         }
     }
 
+/// FOR GOOGLE LOG IN
+    function get_member_by_email($emailadd, $dbname=NULL)
+	{
+		$sql = "SELECT EmpID, CompanyID, DBNAME, EPassword
+            FROM VIEWHREMPMASTER WHERE EmailAdd = '".$emailadd."' ";
+        if ($dbname) : $sql .= " AND DBNAME = '".$dbname."' "; endif;
+        $sql .= " AND Active = 1";
+		$result = $this->get_row($sql);
+		return $result;
+	}
+
+    function check_member_by_email($emailadd)
+	{
+		$sql = "SELECT COUNT(EmpID) AS mcount FROM VIEWHREMPMASTER WHERE EmailAdd = '".$emailadd."' ";
+        $sql .= " AND Active = 1";
+		$result = $this->get_row($sql);
+		if($result[0]['mcount'] <= 0) :
+			return FALSE;
+		else :
+			return $result[0]['mcount'];
+		endif;
+	}
+
 }
 ?>
