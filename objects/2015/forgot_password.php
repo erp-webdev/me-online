@@ -19,11 +19,26 @@
 
             $qnumber = trim($_POST['qnumber']);
             $qanswer = trim(str_replace('-', '', $_POST['empidnum2']));
-            
+            if ($qnumber == 1) :
+                if (!preg_match('/^[0-9]{10}$/', $qanswer)) :
+                    echo '{"success": false, "error": "The SSS # must be a valid 10-digit number. No special characters."}';
+                    exit();
+                endif;
+            elseif ($qnumber == 2) :
+                if (!preg_match('/^[0-9]{9}$/', $qanswer)) :
+                    echo '{"success": false, "error": "The TIN # must be a valid 9-digit number. No special characters."}';
+                    exit();
+                endif;
+            elseif ($qnumber == 3) :
+                if (!preg_match('/^[0-9]{12}$/', $qanswer)) :
+                    echo '{"success": false, "error": "The PAGIBIG # must be a valid 12-digit number. No special characters."}';
+                    exit();
+                endif;
+            endif;
+
             $emp_info = $logsql->get_member_forgot_password($_POST['empidnum'], $qanswer);
 
             if ($emp_info) :
-
                 if ($qnumber == 1 && $emp_info[0]['SSSNbr']) :
                     if (trim(str_replace('-', '', $emp_info[0]['SSSNbr'])) != $qanswer) :
                         echo '{"success": false, "error": "SSS Number you provide is incorrect"}';
