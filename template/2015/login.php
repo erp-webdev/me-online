@@ -38,7 +38,7 @@
                             <tr>
                                 <td>
                                     <input type="submit" name="btnlogin" id="btnlogin" value="LOGIN" class="bigbtn btnlogin" style="width: 50%;border-radius: 15px;"/>
-                                    <br><span class="lgraytext">or</span><br>
+                                    <!-- <br><span class="lgraytext">or</span><br>
                                     <br><a href="<?php echo htmlspecialchars(GOOGLE_LOGIN_URL); ?>" style="display: inline-flex;
                                                     align-items: center;
                                                     justify-content: center;
@@ -52,7 +52,7 @@
                                                     width: 45%;">
                                         <img style="margin-right: 10px;" width="20" height="20" src="<?php echo IMG_WEB; ?>/google-icon.png" alt="Google logo">
                                         Sign in with Google
-                                    </a>
+                                    </a> -->
                                     <br><br><a href="<?php echo WEB; ?>/forgot_password" class="lgraytext">Forgot your password</a>
                                     <br><span id="errortd" class="redtext"></span>  
                                 </td>
