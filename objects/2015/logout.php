@@ -31,6 +31,7 @@
             $log = $mainsql->log_action($post, 'add');
         endif;
         
+		unset($_SESSION['access_token']);
 		unset($_SESSION[$cookiename]);
         unset($_SESSION['megasubs_db']);
         unset($_SESSION['ssep_comp']);

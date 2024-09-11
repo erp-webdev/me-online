@@ -89,18 +89,24 @@
 
                 for (let j = 0; j < departments.length; j++) {
 
+                    let additionalColumn = ``;
+                    if(group.EvaluationType == 'Regularization'){
+                        additionalColumn = `<th class="thr" style="text-align: left">End Of Contract</th>`;
+                    }
                     let empHtml = '';
                     let tableHtml = `<table class="tdata" cellspacing="0" width="100%" >
                                                 <tr>
                                                     <th class="thr" style=""></th>
                                                     <th class="thr" style="text-align: left">Employee/Ratee</th>
                                                     <th class="thr" style="text-align: left; display:none">Rank / Position</th>
+                                                    `+ additionalColumn +`
                                                     <th class="thr" style="text-align: left">Score</th>
                                                     <th class="thr" style="text-align: left">Percentage</th>
                                                     <th class="thr" style="text-align: center">Status</th>
                                                     <th style="text-align: center"></th>
                                                 </tr>`;
 
+                    var empPerDept = 0;
                     for (let i = 0; i < evaluations.length; i++) {
                         if (evaluations[i].Department == departments[j]) {
                             let raterStatus = false;
@@ -171,20 +177,51 @@
                                 }
                             }
 
-                            empHtml += `<tr>
-                                                    <td class="thr" style="text-align: center">${btn}</td>
-                                                    <td class="thr">${evaluations[i].FullName}</td>
-                                                    <td class="thr" style="display:none">${evaluations[i].Rank} /<br> ${evaluations[i].Position}</td>
-                                                    <td class="thr" style="text-align: center">${Number(Math.round(evaluations[i].total_computed_score + 'e2') + 'e-2')}</td>
-                                                    <td class="thr" style="text-align: center">${Number(Math.round((evaluations[i].total_computed_score / 5 * 100) + 'e2') + 'e-2')}</td>
-                                                    <td class="thr" style="text-align: center">${evaluations[i].Status}</td>
-                                                </tr>`;
+                            if(group.EvaluationType == 'Regularization'){
+                                let formattedDate = "";
+                                let current = new Date();
+                                let evaldate = new Date(evaluations[i].EvaluationDate);
+                                let date = new Date(evaluations[i].EndOfContractDate);
+                                let options = { year: 'numeric', month: 'long', day:'numeric' };
+                                formattedDate = date.toLocaleDateString('en-US', options);
+
+                                if(resetTime(evaldate) <= resetTime(current) && (evaluations[i].EvaluationDate)){
+                                    empHtml += `<tr>
+                                            <td class="thr" style="text-align: center">${btn}</td>
+                                            <td class="thr">${evaluations[i].FullName}</td>
+                                            <td class="thr" style="display:none">${evaluations[i].Rank} /<br> ${evaluations[i].Position}</td>
+                                            <td class="thr" style="text-align: center">${formattedDate}</td>
+                                            <td class="thr" style="text-align: center">${Number(Math.round(evaluations[i].total_computed_score + 'e2') + 'e-2')}</td>
+                                            <td class="thr" style="text-align: center">${Number(Math.round((evaluations[i].total_computed_score / 5 * 100) + 'e2') + 'e-2')}</td>
+                                            <td class="thr" style="text-align: center">${evaluations[i].Status}</td>
+                                        </tr>`;
+
+                                    empPerDept++;
+                                }
+                            }
+                            else{
+                                empHtml += `<tr>
+                                            <td class="thr" style="text-align: center">${btn}</td>
+                                            <td class="thr">${evaluations[i].FullName}</td>
+                                            <td class="thr" style="display:none">${evaluations[i].Rank} /<br> ${evaluations[i].Position}</td>
+                                            <td class="thr" style="text-align: center">${Number(Math.round(evaluations[i].total_computed_score + 'e2') + 'e-2')}</td>
+                                            <td class="thr" style="text-align: center">${Number(Math.round((evaluations[i].total_computed_score / 5 * 100) + 'e2') + 'e-2')}</td>
+                                            <td class="thr" style="text-align: center">${evaluations[i].Status}</td>
+                                        </tr>`;
+                                empPerDept++;
+                            }
+                            
                         }
                     }
 
                     tableHtml += empHtml + `</table>`;
 
-                    let x = `<h3 style="background-color:#fff;" class="ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all" role="tab" id="ui-accordion-51-header-0" aria-controls="ui-accordion-51-panel-0" aria-selected="false" tabindex="-1">
+                    let d = `display: block;`;
+                    if(empPerDept == 0){
+                        d = `display: none;`;
+                    }
+
+                    let x = `<h3 style="`+d+`background-color:#fff;" class="ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all" role="tab" id="ui-accordion-51-header-0" aria-controls="ui-accordion-51-panel-0" aria-selected="false" tabindex="-1">
                                     <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>${departments[j]}</h3>
 
                                 <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" id="ui-accordion-51-panel-0" aria-labelledby="ui-accordion-51-header-0" role="tabpanel" aria-expanded="false" aria-hidden="true" style="display: none;">${tableHtml}</div>`;
@@ -208,4 +245,8 @@
             document.getElementById('pafaccordion').innerHTML = 'an error occured';
 
         });
+
+    function resetTime(date) {
+        return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    }
 </script>
