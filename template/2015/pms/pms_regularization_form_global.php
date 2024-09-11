@@ -422,13 +422,13 @@
                             <td style="text-align:center;"></td>
                             <td style="text-align:right;font-weight:bold;">Total:</td>
                             <td style="text-align:center;border-top:1px solid #fff;" >
-                                <span ng-bind="record.evaluation_score | number:2"></span>
+                                <span ng-bind="round2(record.evaluation_score)"></span>
                             </td>
                         </tr>
 
                         <tr>
                             <td style="font-weight:bold;text-align:right;">Overall Performance : </td>
-                            <td style="text-align:center;"><span ng-bind="record.total_computed_score = record.evaluation_score | number:2"></span></td>
+                            <td style="text-align:center;"><span ng-bind="record.total_computed_score = round2(record.evaluation_score)"></span></td>
                             <td style="text-align:center;"></td>
                             <td style="text-align:center;"></td>
                         </tr>
@@ -668,7 +668,7 @@
 
             $scope.part2competency = parseFloat(($scope.totalCompetencyWeightRating).toFixed(2)) * 50/100;
             $scope.part1goal = parseFloat(($scope.totalGoalWeightRating).toFixed(2))  * 50/100;
-            $scope.record.evaluation_score = parseFloat($scope.part2competency.toFixed(2)) + parseFloat($scope.part1goal.toFixed(2));
+            $scope.record.evaluation_score = $scope.round2($scope.part2competency) + $scope.round2($scope.part1goal);
 
             $scope.record.total_computed_score = parseFloat($scope.record.evaluation_score);
 

@@ -93,7 +93,7 @@ if($success==1){
 }
 else if($success ==0){
    echo "<script language='javascript' type='text/javascript'>
-            alert('User selected is not authorized.');
+            alert('Invalid Login.');
             window.location.href='".WEB."';
           </script>";
 }

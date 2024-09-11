@@ -106,6 +106,7 @@
                                                     <th style="text-align: center"></th>
                                                 </tr>`;
 
+                    var empPerDept = 0;
                     for (let i = 0; i < evaluations.length; i++) {
                         if (evaluations[i].Department == departments[j]) {
                             let raterStatus = false;
@@ -194,6 +195,8 @@
                                             <td class="thr" style="text-align: center">${Number(Math.round((evaluations[i].total_computed_score / 5 * 100) + 'e2') + 'e-2')}</td>
                                             <td class="thr" style="text-align: center">${evaluations[i].Status}</td>
                                         </tr>`;
+
+                                    empPerDept++;
                                 }
                             }
                             else{
@@ -205,6 +208,7 @@
                                             <td class="thr" style="text-align: center">${Number(Math.round((evaluations[i].total_computed_score / 5 * 100) + 'e2') + 'e-2')}</td>
                                             <td class="thr" style="text-align: center">${evaluations[i].Status}</td>
                                         </tr>`;
+                                empPerDept++;
                             }
                             
                         }
@@ -212,7 +216,12 @@
 
                     tableHtml += empHtml + `</table>`;
 
-                    let x = `<h3 style="background-color:#fff;" class="ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all" role="tab" id="ui-accordion-51-header-0" aria-controls="ui-accordion-51-panel-0" aria-selected="false" tabindex="-1">
+                    let d = `display: block;`;
+                    if(empPerDept == 0){
+                        d = `display: none;`;
+                    }
+
+                    let x = `<h3 style="`+d+`background-color:#fff;" class="ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all" role="tab" id="ui-accordion-51-header-0" aria-controls="ui-accordion-51-panel-0" aria-selected="false" tabindex="-1">
                                     <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>${departments[j]}</h3>
 
                                 <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" id="ui-accordion-51-panel-0" aria-labelledby="ui-accordion-51-header-0" role="tabpanel" aria-expanded="false" aria-hidden="true" style="display: none;">${tableHtml}</div>`;
