@@ -97,7 +97,9 @@
 		'CITYLINK01' => 'Ground Floor, McKinley Parking Building, Service Road 2, Mckinley Town Center, Fort Bonifacio Taguig',
 		'SIRUS' => 'Lot 28-7 Along M.A Roxas Highway, Clark Freeport Zone',
 		'ASIAAPMI' => '24F ALLIANCE GLOBAL TOWER 36TH STREET CORNER 11 AVENUE UPTOWN BONIFACIO TAGUIG CITY',
-		'MREIT' => 'Taguig City'
+		'MREIT_FMI' => 'Taguig City',
+		'MREIT_PMI' => 'Taguig City',
+		'MREIT_INC' => 'Taguig City'
 	];
 
 	ini_set('default_charset', 'utf-8');
