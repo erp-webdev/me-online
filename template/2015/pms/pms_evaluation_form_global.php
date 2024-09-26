@@ -213,7 +213,7 @@
                                             <th style="text-align:center !important;">Final Weighted rating</th>
                                         </tr>
                                         <tr>
-                                            <td style="text-align:center;"><span ng-bind="totalGoalAchievement  | number: 2"></span>%</td>
+                                            <td style="text-align:center;"><span ng-bind="totalGoalAchievement"></span>%</td>
                                             <td style="text-align:center;"><span ng-bind="totalGoalWeightRating  | number: 2"></span></td>
                                         </tr>
                                     </table>
@@ -764,7 +764,8 @@
 
         $scope.updateRecord = function(){
             $scope.totalGoalAchievement = $scope.record.goals.reduce(function(total, goal) {
-                return total + (parseFloat(goal.Achievement) * parseFloat(goal.Weight) / 100 || 0);
+                return total + (parseFloat(goal.Weight) || 0);
+                //return total + (parseFloat(goal.Achievement) * parseFloat(goal.Weight) / 100 || 0);
             }, 0);
 
             $scope.totalGoalWeightRating = $scope.record.goals.reduce(function(total, goal) {
