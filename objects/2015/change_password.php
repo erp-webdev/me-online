@@ -22,10 +22,9 @@
             $conpass = $_POST['cpassword'];
             $dbname = $_POST['dbname'];
 
-            $chkmem = $register->get_member($idnum, $dbname);             
-
+            $chkmem = $register->get_member($idnum, $dbname);  
+            
             if ($chkmem) {
-
                 if ($chkmem[0]['PasswordHash']) {
                     if (!(password_verify($oldpass, $chkmem[0]['PasswordHash']))) {
                         echo '{"success":false,"error":"Error: Invalid old password"}';
@@ -47,7 +46,7 @@
              
             if(isStrongPassword($newpass)){
                 $hashedPassword = password_hash($newpass, PASSWORD_DEFAULT);
-                $edit_password = $register->change_password($newpass, $hashedPassword, $idnum, $dbname);
+                $edit_password = $register->change_password($hashedPassword, $idnum, $dbname);
                 
                 //AUDIT TRAIL
                 $post['EMPID'] = $profile_idnum;

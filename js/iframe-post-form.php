@@ -2866,7 +2866,7 @@ $(function ()
 
 			else
 			{
-				html += '<p>Your password has been successfully reset and sent you your email.</p>';
+				html += '<p>Reset password link has been sent to your email.</p>';
 
 				$('.forgot_msg').slideUp(function ()
 				{
