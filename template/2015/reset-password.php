@@ -11,7 +11,7 @@
                   <input type="password" name="resetpassword" size="20" id="resetpassword" placeholder="Set a New Password" class="txtbox width250" />
             </div><br>
             <div align="center" class="width250">
-                  <br><input type="submit" class="btn" value="Reset Password">&nbsp;<input type="button" value="Cancel" class="redbtn"/>
+                  <br><input type="submit" class="btn" value="Reset Password">&nbsp;<input type="button" value="Cancel" class="redbtn"  onClick="parent.location='<?php echo WEB; ?>'"/>
             </div>
          </form>
       </div>

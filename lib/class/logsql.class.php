@@ -95,16 +95,31 @@ class logsql {
 
     function check_member($username, $password = NULL)
 	{
-
-		$sql = "SELECT COUNT(EmpID) AS mcount FROM VIEWHREMPMASTER WHERE EmpID = '".$username."' ";
-        if ($password) : $sql .= " AND CONVERT(VARBINARY(250),LTRIM(RTRIM(EPassword))) = CONVERT(VARBINARY(250),LTRIM(RTRIM('".$password."'))) "; endif;
+		$sql = "SELECT * FROM VIEWHREMPMASTER WHERE EmpID = '".$username."' ";
         $sql .= " AND Active = 1";
-		$result = $this->get_row($sql);
-		if($result[0]['mcount'] <= 0) :
-			return FALSE;
-		else :
-			return $result[0]['mcount'];
-		endif;
+		$results = $this->get_row($sql);
+		if ($results) {
+            foreach ($results as $result) {
+                if ($result['PasswordHash']) {
+                    if ($password && password_verify($password, $result['PasswordHash'])) {
+                        $matchCount++;
+                    }
+                }
+                else{
+                    if ($password == $result['EPassword']) {
+                        $matchCount++;
+                    }
+                }
+            }
+
+            if ($matchCount > 0) {
+                return $matchCount; 
+            } else {
+                return FALSE; 
+            }
+        } else {
+            return FALSE; 
+        }
 	}
 
 	function check_user($username)
@@ -163,13 +178,22 @@ class logsql {
 
     function get_member2($username, $password=NULL, $dbname = NULL)
 	{
-		$sql = "SELECT *
-            FROM VIEWHREMPMASTER WHERE EmpID = '".$username."' ";
-         if ($password) : $sql .= " AND CONVERT(VARBINARY(250),LTRIM(RTRIM(EPassword))) = CONVERT(VARBINARY(250),LTRIM(RTRIM('".$password."'))) "; endif;
-        if ($dbname) : $sql .= " AND DBNAME = '".$dbname."' "; endif;
+		$sql = "SELECT * FROM VIEWHREMPMASTER WHERE EmpID = '".$username."' ";
+        //if ($dbname) : $sql .= " AND DBNAME = '".$dbname."' "; endif;
         $sql .= " AND Active = 1";
-		$result = $this->get_row($sql);
-		return $result;
+
+		$results = $this->get_row($sql);
+		if ($results) {
+            foreach ($results as $index => $result) {
+                if (!($password && (password_verify($password, $result['PasswordHash']) || $password == $result['EPassword']))) {
+                    unset($results[$index]);
+                }
+            }
+
+            return array_values($results);
+        } else {
+            return FALSE; 
+        }
 	}
 
     function get_allmember($username, $dbname = NULL)

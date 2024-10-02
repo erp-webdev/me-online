@@ -22,21 +22,15 @@
         if ($checkfmem == 1)
         {
             if($getmem[0]['DBNAME'] != 'MARKETING'){
-                if ($chkmem[0]['PasswordHash']) {
-                    $success = (password_verify($oldpass, $chkmem[0]['PasswordHash'])) ? 1 : 0;
-                }
-                else {
-                    $chkmem = $logsql->check_member($username, $password);    
-                    if($chkmem){
-                        $success=1;
-                    }
-                }
+                
+                $success=1;
+
                 if($success==1){
                     $expire = time() + 60;
                     $_SESSION[$cookiename] = $username;
                     //$_SESSION['ssep_comp'] = $company;
                     $_SESSION['ssep_comp'] = $getmem[0]['CompanyID'];
-                    $_SESSION['megasubs_password'] =$getmem[0]['EPassword'];
+                    $_SESSION['megasubs_password'] = $password;
                     $_SESSION['megasubs_db'] = $getmem[0]['DBNAME'];
         
                     //AUDIT TRAIL
