@@ -120,7 +120,7 @@ class regsql {
     function get_member($username, $dbname = NULL)
 	{
 		$sql = "SELECT TOP 1 *
-            FROM viewHREmpMaster WHERE EmpID = '".$username."' AND Active = 1";
+            FROM HREmpMaster WHERE EmpID = '".$username."'";
 		$result = $this->get_row($sql, $dbname);
 		return $result;
 	}
@@ -347,11 +347,10 @@ class regsql {
         endif;
     }
 
-    function change_password($newpassword, $hashedPassword, $empidnum, $dbname)
+    function change_password($hashedPassword, $empidnum, $dbname)
     {
         $sql = "UPDATE HREmpMaster SET
-            PasswordHash = '".$hashedPassword."', 
-            EPassword = '".$newpassword."'
+            PasswordHash = '".$hashedPassword."'
             WHERE EmpID = '".$empidnum."'";
 
         $result = $this->get_execute($sql, $dbname);
