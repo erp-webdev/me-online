@@ -71,9 +71,16 @@
 
                 $email = new PHPMailer(true);
                 $email->SetFrom(NOTIFICATION_EMAIL); 
+                if(DBHOST == "192.168.13.33"){
+                    $email->IsSMTP();  // telling the class to use SMTP
+                    $email->Host     = "192.168.13.34"; // SMTP server
+                    $email->Port       = 1025; // set the SMTP port for the Gemail server
+                    $email->Username   = "noreply@alias.megaworldcorp.com"; // SMTP account username example
+                    $email->Password   = "";
+                }
 
                 $message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 100%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>Megaworld SSEP Password Reset</span><br><br>Hi ".$emp_info[0]['FName'].",<br><br>";
-                $message .= "You are receiving this email because we received a password reset request for your account.<br><br>";
+                $message .= "You are receiving this email because we received a password reset request for your account.<br>";
                 $message .= "Please click <a href='".$reset_link."'>here</a> to reset your password<br><br>";
                 $message .= "If you did not request a password reset, no further action is required.<br><br>";
                 $message .= "Note: Reset link expires after an hour.<br><br>";
@@ -99,39 +106,6 @@
                     echo '{"success": false, "error": "Mail error"}';
                     exit();
                 }
-
-                // $message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 100%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>Megaworld SSEP Password Reset</span><br><br>Hi ".$emp_info[0]['FName'].",<br><br>";
-                // $message .= "You are receiving this email because we received a password reset request for your account.<br><br>";
-                // $message .= "Please click <a href='".$reset_link."'>here</a> to reset your password<br><br>";
-                // $message .= "If you did not request a password reset, no further action is required.<br><br>";
-                // $message .= "Note: Reset link expires after an hour.<br><br>";
-                // $message .= "Thanks,<br>";
-                // $message .= "Megaworld SSEP Admin";
-                // $message .= "<hr />".MAILFOOT."</div>";
-                
-                // $headers = "From: ssap-noreply@alias.megaworldcorp.com\r\n";
-                // $headers .= "Reply-To: noreply@megaworldcorp.com\r\n";
-                // $headers .= "MIME-Version: 1.0\r\n";
-                // $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-        
-                // $sendmail = mail($emp_info[0]['EmailAdd'], "Megaworld SSEP Password Reset", $message, $headers);   
-
-                // if ($sendmail) :
-
-                //     //AUDIT TRAIL
-                //     $post['EMPID'] = $profile_idnum;
-                //     $post['TASKS'] = "FORGOT_PASSWORD";
-                //     $post['DATA'] = $profile_idnum;
-                //     $post['DATE'] = date("m/d/Y H:i:s.000");
-
-                //     //$log = $tblsql->log_action($post, 'add');
-
-                //     echo '{"success": true}';
-                //     exit();
-                // else :
-                //     echo '{"success": false, "error": "Mail error"}';
-                //     exit();
-                // endif;
             else :
                 echo '{"success": false, "error": "The account is not exist or inactive. Please call payroll department"}';
                 exit();

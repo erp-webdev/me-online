@@ -1,18 +1,15 @@
 <?php
-   include(CLASSES."/regsql.class.php");
    if ($logged == 1) :
-
       echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."'</script>";		
 
    else :
-         
       //*********************** MAIN CODE START **********************\\
-         
          # ASSIGNED VALUE
          $page_title = "Reset Password";	
       
       //***********************  MAIN CODE END  **********************\\
 
+      include(CLASSES."/regsql.class.php");
       $register = new regsql;
 
       if ($_GET['token']) {
@@ -29,7 +26,7 @@
                if($accounts){
                   foreach($accounts as $acc){
                      $hashedPassword = password_hash($_POST['resetpassword'], PASSWORD_DEFAULT);
-                     $register->change_password($_POST['resetpassword'], $hashedPassword, $expiry[0]['EmpID'], $acc['DBNAME']);
+                     $register->change_password( $hashedPassword, $expiry[0]['EmpID'], $acc['DBNAME']);
                   }
 
                   //AUDIT TRAIL
@@ -37,7 +34,6 @@
                   $post['TASKS'] = "RESET_PASSWORD";
                   $post['DATA'] = $expiry[0]['EmpID'];
                   $post['DATE'] = date("m/d/Y H:i:s.000");
-      
                   //$log = $logsql->log_action($post, 'add');
          
                   echo '{"success":true}';
