@@ -126,18 +126,20 @@
             	<div id="maincontainer" class="maincontainer clearfix whitebg">            
                   <div id="header" class="header">  
                     <?php 
+                        $height="height: 60px";
                         switch ($profile_comp) :
-                            case 'GLOBAL01': $logoimg = 'mwhead2.png';  break;
+                            case 'GLOBAL01': $logoimg = 'mwhead2.png';   break;
                             case 'LGMI01': $logoimg = 'mwhead3.png';  break;
                             case 'CITYLINK01': $logoimg = 'mwhead5.png';  break;
                             case 'TOWN01': $logoimg = 'mwhead6.png';  break;
                             case 'NCCAI': $logoimg = 'mwhead7.png';  break;
                             case 'ECOC01': $logoimg = 'mwhead8.png';  break;
                             case 'GLOBALHOTEL': $logoimg = 'mwhead9.png';  break;
+                            case 'ASIAAPMI': $logoimg = 'asiaapmi_logo.png'; $height="height: 100px"; break;
                             default: $logoimg = 'mwhead.png';  break;
                         endswitch;
                     ?>
-                    <img src="<?php echo IMG_WEB; ?>/<?php echo $logoimg; ?>" style="height: 60px" />
+                    <img src="<?php echo IMG_WEB; ?>/<?php echo $logoimg; ?>" style="<?php echo $height; ?>" />
                   </div>     
                     
                   <?php if ($logged) : ?>
