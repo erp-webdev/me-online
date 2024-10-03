@@ -146,7 +146,7 @@
                                         <img width="150px" src="<?php echo WEB; ?>/images/glhandbook.png"  />
                                     </a>
                                     <?php elseif (in_array($profile_dbname , ['ASIAAPMI'])) : ?>
-                                    <a onclick="openfile('<?php echo WEB; ?>/lib/requests/download.php?type=a&file=KER_Version_AA_UPDATED_HANDBOOK_Page1-99_May 30_2022.pdf', 'Employee`s Handbook'" target="_blank" href="" target="_blank" style="">
+                                    <a onclick="openfile('<?php echo WEB; ?>/lib/requests/download.php?type=a&file=ASIAAPMIHANDBOOK.pdf', 'Employee`s Handbook')" target="_blank" style="">
                                         <img width="150px" src="<?php echo WEB; ?>/images/asiaapmi_handbook.png"  />
                                     </a>
 
@@ -206,6 +206,57 @@
                             <div id="mainannouncement" class="mainbody lefttalign whitetext">
                                 <b class="mediumtext lorangetext">MISSION</b><br><br>
                                 <i>Our mission is to ensure service excellence with full client satisfaction through technical competence, professionalism and integrity.</i>
+                            </div>
+                            <?php elseif ($profile_comp == 'ASIAAPMI') : ?>
+                            <div id="mainannouncement" class="mainbody lefttalign whitetext width60per">
+                                <b class="mediumtext lorangetext">Our Vision</b><br><br>
+                                <p>We aim to be <span class="smalltext lorangetext">excellent</span> — becoming a company that has dominant mindshare and is the immediate first choice in property management.</p>
+                                <p>We aim to be <span class="smalltext lorangetext">different</span> — elevating property management with personalized hospitality and hotel-caliber services that are engaging, relevant and sustainable.</p>
+                                <p>We aim to be <span class="smalltext lorangetext">memorable</span> — enriching the experiences of our clients and our people in a way that impacts their well-being and inspires them to share their stories.</p>
+                            </div>
+                            <div id="mainannouncement" class="mainbody lefttalign whitetext  width60per">
+                                <b class="mediumtext lorangetext">Our Mission</b><br><br>
+                                <p>We are attentive to the spoken and unspoken needs of our clients—tailoring our services for exemplary results.</p> 
+                                <p>We find uncommon and creative ways to delight our clients.</p>
+                                <p>We ensure that our activities and initiatives are environmentally conscious and contribute to the property’s sustainability.</p>
+                                <p>We explore opportunities to add value to our clients’ way of life.</p>
+                                <p>We amplify the positive stories of our clients and our people.</p>
+                            </div>
+                            <div id="mainannouncement" class="mainbody lefttalign whitetext  width60per">
+                                <b class="mediumtext lorangetext">Our Core Values</b><br><br>
+                                <!-- <p>
+                                    <span class="smalltext lorangetext">Respect</span>
+                                    We hold one another in high esteem, and appreciate our individual roles in the company.
+                                </p>
+                                <p>
+                                    <span class="smalltext lorangetext">Integrity</span><br>
+                                    We are honest, trustworthy, and uncompromising in doing what is right. 
+                                </p>
+                                <p>
+                                    <span class="smalltext lorangetext">Industry</span><br>
+                                    We gladly exert 100 percent energy and effort in our work.
+                                </p>
+                                <p>
+                                    <span class="smalltext lorangetext">Loyalty</span><br>
+                                    We support the company fully, and uphold our commitments to it and to our clients.
+                                </p> -->
+                                <p>
+                                    <b class="">Respect</b> &#8226; 
+                                    <b class="">Integrity</b> &#8226; 
+                                    <b class="">Industry</b> &#8226; 
+                                    <b class="">Loyalty</b> &#8226; 
+                                </p>
+                            </div>
+                            <div id="mainannouncement" class="mainbody lefttalign whitetext  width60per">
+                                <b class="mediumtext lorangetext">Our Commitment to Our People</b><br><br>
+                                <p>At Asia Affinity, we believe that in order to do our best in making our clients feel welcome and cared for, our employees must also feel welcome and cared for. 
+                                </p>
+                                <p>
+                                We are a company that values every individual team member for their unique strengths and contributions.  We support and nurture their growth, and align their development with the achievement of their personal aspirations.
+                                </p>
+                                <p>
+                                Asia Affinity promotes diversity and inclusivity in the workplace.  We believe that fresh perspectives make us better and stronger as a company, and allow us to be increasingly responsive to our ever-evolving client base.
+                                </p>
                             </div>
                             <?php else : ?>
                             <div id="mainannouncement" class="mainbody lefttalign whitetext width60per">
