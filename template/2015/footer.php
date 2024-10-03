@@ -22,7 +22,7 @@
 
               <div id="copyright" class="copyright">
                 <div class="lcopyright dgraytext tinytext" style="font-weight: 400;">
-                	&copy; <?php echo date("Y"); ?> Megaworld Corporation ISM Department, All Rights Reserved
+                	&copy; <?php echo date("Y"); ?> Megaworld Corporation, All Rights Reserved
                  </div>
               </div>
             </div>
