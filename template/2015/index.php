@@ -244,7 +244,7 @@
                                     <b class="">Respect</b> &#8226; 
                                     <b class="">Integrity</b> &#8226; 
                                     <b class="">Industry</b> &#8226; 
-                                    <b class="">Loyalty</b> &#8226; 
+                                    <b class="">Loyalty</b>
                                 </p>
                             </div>
                             <div id="mainannouncement" class="mainbody lefttalign whitetext  width60per">
