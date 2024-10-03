@@ -144,7 +144,9 @@
                     
                   <?php if ($logged) : ?>
                   <div id="loggedheader" class="loggedheader paddingtop45">
-                    <img src="<?php if ($profile_pic) : ?><?php echo PAYWEB; ?>/imageuploader/<?php echo $profile_pic; ?><?php else : ?><?php if ($profile_gender == 'f' || $profile_gender == 'F' || $profile_gender == 'female') : ?><?php echo IMG_WEB; ?>/davatar_female.png<?php elseif ($profile_gender == 'm' || $profile_gender == 'M' || $profile_gender == 'male') : ?><?php echo IMG_WEB; ?>/davatar_male.png<?php endif; ?><?php endif; ?>" class="leftfloat smallimg" />&nbsp;&nbsp;<a href="<?php echo WEB; ?>/profile"><b><?php echo $profile_full; ?></b> <b>(<?php echo $profile_idnum; ?> - <?php echo $profile_dbname; ?>)</b></a>&nbsp;|&nbsp;<a href="<?php echo WEB; ?>/change_password" class="orangetext">Change Password</a>&nbsp;|&nbsp;<a href="<?php echo WEB; ?>/logout" class="orangetext">Logout</a>
+                    <!-- <img src="<?php if ($profile_pic) : ?><?php echo PAYWEB; ?>/imageuploader/<?php echo $profile_pic; ?><?php else : ?><?php if ($profile_gender == 'f' || $profile_gender == 'F' || $profile_gender == 'female') : ?><?php echo IMG_WEB; ?>/davatar_female.png<?php elseif ($profile_gender == 'm' || $profile_gender == 'M' || $profile_gender == 'male') : ?><?php echo IMG_WEB; ?>/davatar_male.png<?php endif; ?><?php endif; ?>" class="leftfloat smallimg" /> -->
+                        
+                        &nbsp;&nbsp;<a href="<?php echo WEB; ?>/profile"><b><?php echo $profile_full; ?></b> <b>(<?php echo $profile_idnum; ?> - <?php echo $profile_dbname; ?>)</b></a>&nbsp;|&nbsp;<a href="<?php echo WEB; ?>/change_password" class="orangetext">Change Password</a>&nbsp;|&nbsp;<a href="<?php echo WEB; ?>/logout" class="orangetext">Logout</a>
                   </div>
                   <?php else : ?>
                   <div id="loginheader" class="loginheader paddingtop55"></div>
