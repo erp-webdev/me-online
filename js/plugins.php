@@ -5735,6 +5735,10 @@ $(function() {
                     else if (data == 1) {
                         window.location.href='<?php echo WEB; ?>';
                     }
+                    else if (data == 2) {
+                        alert('Due to consecutive failed login attempt, your account has been locked. You may use forgot password feature to reset password and re-activate your account.');
+                        window.location.href='<?php echo WEB; ?>/forgot_password';
+                    }
                     else {
                         $('#floatdiv').removeClass('invisible');
                         $('#fdbname').removeClass('invisible');
@@ -5777,6 +5781,10 @@ $(function() {
                     else if (data == 1) {
                         window.location.href='<?php echo WEB; ?>';
                     }
+                    else if (data == 2) {
+                        alert('Due to consecutive failed login attempt, your account has been locked. You may use forgot password feature to reset password and re-activate your account.');
+                        window.location.href='<?php echo WEB; ?>/forgot_password';
+                    }
                     else {
                         $('#floatdiv').removeClass('invisible');
                         $('#fdbname').removeClass('invisible');
@@ -5817,6 +5825,10 @@ $(function() {
                 else if (data == 1) {
                     window.location.href='<?php echo WEB; ?>';
 	        	}
+                else if (data == 2) {
+                    alert('Due to consecutive failed login attempt, your account has been locked. You may use forgot password feature to reset password and re-activate your account.');
+                    window.location.href='<?php echo WEB; ?>/forgot_password';
+                }
 	        	else {
 	        		$('#floatdiv').removeClass('invisible');
 	        		$('#fdbname').removeClass('invisible');
