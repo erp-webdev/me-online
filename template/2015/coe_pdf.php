@@ -82,7 +82,6 @@
 	);
 
 	$companies = [
-
 		'GLOBAL01' => 'Taguig City',
 		'LGMI01' => 'Taguig City',
 		'MEGA01' => 'Taguig City',
@@ -99,7 +98,8 @@
 		'ASIAAPMI' => '24F ALLIANCE GLOBAL TOWER 36TH STREET CORNER 11 AVENUE UPTOWN BONIFACIO TAGUIG CITY',
 		'MREIT_FMI' => 'Taguig City',
 		'MREIT_PMI' => 'Taguig City',
-		'MREIT_INC' => 'Taguig City'
+		'MREIT_INC' => 'Taguig City',
+		'MEGAPARK' => 'Taguig City'
 	];
 
 	ini_set('default_charset', 'utf-8');
@@ -1643,7 +1643,7 @@
 				?>
 
 			<?php
-			}elseif ($coe[0]["company"] == 'Rowenta') {
+			}elseif (in_array($coe[0]["company"], ['Rowenta', 'MEGAPARK'])) {
 			?>
 
 				<?php
@@ -1654,7 +1654,7 @@
 				}else{
 				?>
 				<b><p style="padding-top: 40px; <?php echo $send_pdf ? '' : 'padding-bottom: 40px;'; ?> padding-left: 50px; padding-right: 50px;">AIZELLE BARBARA FLORES<br />
-				ASSISTANT VICE PRESIDENT</b>
+				ASSISTANT VICE PRESIDENT - HR</b>
 				<?php
 				}
 				?>
