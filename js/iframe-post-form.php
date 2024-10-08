@@ -2959,7 +2959,7 @@ $(function ()
                 alert('Your password has been successfully changed.');
 
 
-                window.location.href='<?php echo WEB; ?>';
+                window.location.href='<?php echo WEB; ?>/logout';
 
 				/*$('.fpass_msg').slideUp(function ()
 				{
@@ -3052,7 +3052,7 @@ $(function ()
                 alert('Your password has been successfully reset.');
 
 
-                window.location.href='<?php echo WEB; ?>';
+                window.location.href='<?php echo WEB; ?>/logout';
 
                 /*$('.rpass_msg').slideUp(function ()
                 {
