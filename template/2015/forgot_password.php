@@ -19,7 +19,7 @@
                         <i class="whitetext">Note: Please remove any special character <br> for the required government id.</i><br><br>
                         
                         <input type="hidden" name="qnumber" value="<?php echo $qnum; ?>" />
-                        <input type="submit" name="btnforgot" id="btnforgot" value="Send Reset Link" class="btn" />&nbsp;<input type="button" value="Cancel" class="redbtn" onClick="parent.location='<?php echo WEB; ?>'" />
+                        <input type="submit" name="btnforgot" id="btnforgot" value="Send Reset Link" class="btn" />&nbsp;<input type="button" value="Cancel" class="redbtn" onClick="parent.location='<?php echo WEB; ?>/login'" />
                     </form>   
                     
                 </div>

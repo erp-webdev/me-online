@@ -107,7 +107,7 @@
                     exit();
                 }
             else :
-                echo '{"success": false, "error": "The account is not exist or inactive. Please call payroll department"}';
+                echo '{"success": false, "error": "The account does not exist or inactive. Please contact your People Partner."}';
                 exit();
             endif;
     

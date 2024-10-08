@@ -20,28 +20,29 @@
          $expiry = $logsql->check_reset_token($token);
 
          if ($expiry) {
-            if(isStrongPassword($_POST['resetpassword'])){
-               $accounts = $logsql->get_member_by_email($expiry[0]['EmailAdd']);
+            if($_POST['resetpassword'] == $_POST['confirmresetpassword']){
+               if(isStrongPassword($_POST['resetpassword'])){
+                  $accounts = $logsql->get_member_by_email($expiry[0]['EmailAdd']);
+   
+                  if($accounts){
+                     foreach($accounts as $acc){
+                        $hashedPassword = password_hash($_POST['resetpassword'], PASSWORD_DEFAULT);
+                        $register->change_password( $hashedPassword, $expiry[0]['EmpID'], $acc['DBNAME']);
+                     }
 
-               if($accounts){
-                  foreach($accounts as $acc){
-                     $hashedPassword = password_hash($_POST['resetpassword'], PASSWORD_DEFAULT);
-                     $register->change_password( $hashedPassword, $expiry[0]['EmpID'], $acc['DBNAME']);
+                    $logsql->update_users_activity($expiry[0]['EmpID'], $expiry[0]['EmailAdd']);
                   }
-
-                  //AUDIT TRAIL
-                  $post['EMPID'] = $$expiry[0]['EmpID'];
-                  $post['TASKS'] = "RESET_PASSWORD";
-                  $post['DATA'] = $expiry[0]['EmpID'];
-                  $post['DATE'] = date("m/d/Y H:i:s.000");
-                  //$log = $logsql->log_action($post, 'add');
          
                   echo '{"success":true}';
                   exit(); 
                }
+               else{
+                  echo '{"success":false,"error":"Password should contain uppercase & lowercase letter, a number, and special character, and should be at least 8 characters long."}';
+                  exit(); 
+               }
             }
             else{
-               echo '{"success":false,"error":"Password should contain uppercase & lowercase letter, a number, and special character, and should be at least 8 characters long."}';
+               echo '{"success":false,"error":"Password not match."}';
                exit(); 
             }
          } else {

@@ -264,11 +264,15 @@
 		    include(TEMP."/".$section.".php");
         endif;
 	else :
+        $user_login = $logsql->check_login_user($profile_idnum, $profile_email);
+        $last_password_update = $user_login[0]['password_update_at'];
+        if(date('Y-m') == date('Y-m', strtotime('+'.PASSWORD_REMINDER.' month', strtotime($last_password_update)))){
+            echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/advisory'</script>";
+        }
+
 		$ishome = 1;
 		include(OBJ."/index.php");
 		include(TEMP."/index.php");
     endif;
-
-
 
 ?>
