@@ -45,6 +45,42 @@ class regsql {
         return $result;
 	}
 
+    public function get_row_v2($sql, $params,  $dbname = NULL)
+	{
+        if(!$sql) return;
+        $con = $this->db_connect();
+        $seltab = $this->db_select($con, $dbname);
+        $query = $this->prepare_query($sql, $params);
+        $result = mssql_query($query);
+
+        if(!$result) return;
+        $result = $this->db_result_to_array($result);
+        return $result;
+	}
+
+    private function prepare_query($sql, $params = []) {
+        foreach ($params as $key => $param) {
+            if (is_string($param)) {
+                $params[$key] = "'" . addslashes($param) . "'";
+            } 
+            else if (is_numeric($param)) {
+                $params[$key] = (int)$param;  
+            } 
+            else {
+                $params[$key] = $param; 
+            }
+        }
+    
+        $query = '';
+        $sqlParts = explode('?', $sql);
+    
+        foreach ($sqlParts as $index => $part) {
+            $query .= $part . $params[$index]; 
+        }
+
+        return $query;
+    }
+
 	public function get_numrow($sql) //Get num rows of a table from $sql
 	{
         if(!$sql) return;
@@ -62,6 +98,17 @@ class regsql {
         $con = $this->db_connect();
         $seltab = $this->db_select($con, $dbname);
         $result = mssql_query($sql);
+        if(!$result) return;
+        return $result;
+	}
+
+    public function get_execute_v2($sql, $params, $dbname = NULL) //Get num rows of a table from $sql
+	{
+        if(!$sql) return;
+        $con = $this->db_connect();
+        $seltab = $this->db_select($con, $dbname);
+        $query = $this->prepare_query($sql, $params);
+        $result = mssql_query($query);
         if(!$result) return;
         return $result;
 	}
@@ -95,9 +142,14 @@ class regsql {
 
 	function check_member($username, $password)
 	{
+		$sql = "SELECT COUNT(EmpID) AS mcount 
+                FROM viewHREmpMaster 
+                WHERE EmpID = ? 
+                AND EPassword = ?  
+                AND Active = ?";
+        $params = array($username, $password, 1);
 
-		$sql = "SELECT COUNT(EmpID) AS mcount FROM viewHREmpMaster WHERE EmpID = '".$username."' AND EPassword = '".$password."'  AND Active = 1";
-		$result = $this->get_row($sql);
+		$result = $this->get_row_v2($sql, $params);
 		if($result[0]['mcount'] <= 0) :
 			return FALSE;
 		else :
@@ -108,7 +160,9 @@ class regsql {
 	function check_user($username)
 	{
 
-		$sql = "SELECT COUNT(EmpID) AS mcount FROM viewHREmpMaster WHERE EmpID = '".$username."'";
+		$sql = "SELECT COUNT(EmpID) AS mcount 
+                FROM viewHREmpMaster 
+                WHERE EmpID = '".$username."'";
 		$result = $this->get_row($sql);
 		if($result[0]['mcount'] <= 0) :
 			return FALSE;
@@ -119,16 +173,20 @@ class regsql {
 
     function get_member($username, $dbname = NULL)
 	{
-		$sql = "SELECT TOP 1 *
-            FROM HREmpMaster WHERE EmpID = '".$username."'";
-		$result = $this->get_row($sql, $dbname);
+		$sql = "SELECT TOP 1 * 
+                FROM HREmpMaster 
+                WHERE EmpID = ?";
+        $params = array($username);
+
+		$result = $this->get_row_v2($sql, $params, $dbname);
 		return $result;
 	}
 
     function get_allmember($username)
 	{
 		$sql = "SELECT TOP 1 *
-            FROM viewHREmpMaster WHERE EmpID = '".$username."'";
+                FROM viewHREmpMaster 
+                WHERE EmpID = '".$username."'";
 		$result = $this->get_row($sql);
 		return $result;
 	}
@@ -136,7 +194,8 @@ class regsql {
     function get_member_by_hash($emphash, $dbname = NULL)
 	{
 		$sql = "SELECT TOP 1 *
-            FROM viewHREmpMaster WHERE CONVERT(VARCHAR(32), HashBytes('MD5', EmpID), 2) = '".$emphash."'";
+                FROM viewHREmpMaster 
+                WHERE CONVERT(VARCHAR(32), HashBytes('MD5', EmpID), 2) = '".$emphash."'";
         // if ($dbname != NULL){
         //     $sql .= " AND DBNAME = ".'$dbname';
         // }
@@ -147,7 +206,8 @@ class regsql {
     function get_member_by_hash2($emphash, $dbname = NULL)
 	{
 		$sql = "SELECT TOP 1 *
-            FROM HREmpMaster WHERE CONVERT(VARCHAR(32), HashBytes('MD5', EmpID), 2) = '".$emphash."'";
+                FROM HREmpMaster 
+                WHERE CONVERT(VARCHAR(32), HashBytes('MD5', EmpID), 2) = '".$emphash."'";
 		$result = $this->get_row($sql, $dbname);
 		return $result;
 	}
@@ -155,7 +215,8 @@ class regsql {
     function get_family_data($empid)
 	{
 		$sql = "SELECT *
-            FROM HRFamilyBackGround WHERE EmpId = '".$empid."'
+                FROM HRFamilyBackGround 
+                WHERE EmpId = '".$empid."'
             ORDER BY LineSeqID ASC";
 		$result = $this->get_row($sql);
 		return $result;
@@ -164,7 +225,8 @@ class regsql {
     function get_education_data($empid)
 	{
 		$sql = "SELECT *
-            FROM HREducation WHERE EmpID = '".$empid."'
+                FROM HREducation 
+                WHERE EmpID = '".$empid."'
             ORDER BY LineSeqID ASC";
 		$result = $this->get_row($sql);
 		return $result;
@@ -173,7 +235,8 @@ class regsql {
     function get_training_data($empid)
 	{
 		$sql = "SELECT *
-            FROM HREmpTraining WHERE EmpID = '".$empid."'
+                FROM HREmpTraining 
+                WHERE EmpID = '".$empid."'
             ORDER BY LineSeqID ASC";
 		$result = $this->get_row($sql);
 		return $result;
@@ -182,7 +245,8 @@ class regsql {
     function get_skill_data($empid)
 	{
 		$sql = "SELECT *
-            FROM HREmpSkill WHERE EmpID = '".$empid."'";
+                FROM HREmpSkill 
+                WHERE EmpID = '".$empid."'";
 		$result = $this->get_row($sql);
 		return $result;
 	}
@@ -190,7 +254,8 @@ class regsql {
     function get_prevwork_data($empid)
 	{
 		$sql = "SELECT *
-            FROM HREmpPreviousWork WHERE EmpID = '".$empid."'
+                FROM HREmpPreviousWork 
+                WHERE EmpID = '".$empid."'
             ORDER BY SeqID DESC";
 		$result = $this->get_row($sql);
 		return $result;
@@ -199,7 +264,8 @@ class regsql {
     function get_org_data($empid)
 	{
 		$sql = "SELECT *
-            FROM HREmpOrg WHERE EmpID = '".$empid."'
+                FROM HREmpOrg 
+                WHERE EmpID = '".$empid."'
             ORDER BY SeqID DESC";
 		$result = $this->get_row($sql);
 		return $result;
@@ -208,7 +274,8 @@ class regsql {
     function get_pix_data($empid)
 	{
 		$sql = "SELECT *
-            FROM HREmpPictures WHERE EmpID = '".$empid."'";
+                FROM HREmpPictures 
+                WHERE EmpID = '".$empid."'";
 		$result = $this->get_row($sql);
 		return $result;
 	}
@@ -216,7 +283,8 @@ class regsql {
     function get_memtax($taxid)
 	{
 		$sql = "SELECT TOP 1 Description, Exemption
-            FROM HRTax WHERE Code = '".$taxid."'";
+                FROM HRTax 
+                WHERE Code = '".$taxid."'";
 		$result = $this->get_row($sql);
 		return $result;
 	}
@@ -226,7 +294,8 @@ class regsql {
     function get_upmember_by_hash($emphash)
 	{
 		$sql = "SELECT TOP 1 *
-            FROM HRUpdateEmpMaster WHERE CONVERT(VARCHAR(32), HashBytes('MD5', EmpID), 2) = '".$emphash."'";
+                FROM HRUpdateEmpMaster 
+                WHERE CONVERT(VARCHAR(32), HashBytes('MD5', EmpID), 2) = '".$emphash."'";
 		$result = $this->get_row($sql);
 		return $result;
 	}
@@ -234,7 +303,8 @@ class regsql {
     function get_upmember_data($empid)
 	{
 		$sql = "SELECT TOP 1 *
-            FROM HRUpdateEmpMaster WHERE EmpID = '".$empid."'";
+                FROM HRUpdateEmpMaster 
+                WHERE EmpID = '".$empid."'";
 		$result = $this->get_row($sql);
 		return $result;
 	}
@@ -242,8 +312,9 @@ class regsql {
     function get_upfamily_data($empid)
 	{
 		$sql = "SELECT *
-            FROM HRUpdateFamilyBackGround WHERE EmpID = '".$empid."'
-            ORDER BY LineSeqID ASC";
+                FROM HRUpdateFamilyBackGround 
+                WHERE EmpID = '".$empid."'
+                ORDER BY LineSeqID ASC";
 		$result = $this->get_row($sql);
 		return $result;
 	}
@@ -251,8 +322,9 @@ class regsql {
     function get_upeducation_data($empid)
 	{
 		$sql = "SELECT *
-            FROM HRUpdateEducation WHERE EmpID = '".$empid."'
-            ORDER BY LineSeqID ASC";
+                FROM HRUpdateEducation 
+                WHERE EmpID = '".$empid."'
+                ORDER BY LineSeqID ASC";
 		$result = $this->get_row($sql);
 		return $result;
 	}
@@ -260,8 +332,9 @@ class regsql {
     function get_upprevwork_data($empid)
 	{
 		$sql = "SELECT *
-            FROM HRUpdateEmpPreviousWork WHERE EmpID = '".$empid."'
-            ORDER BY SeqID DESC";
+                FROM HRUpdateEmpPreviousWork 
+                WHERE EmpID = '".$empid."'
+                ORDER BY SeqID DESC";
 		$result = $this->get_row($sql);
 		return $result;
 	}
@@ -269,15 +342,17 @@ class regsql {
     function get_uporg_data($empid)
 	{
 		$sql = "SELECT *
-            FROM HRUpdateEmpOrg WHERE EmpID = '".$empid."'
-            ORDER BY SeqID DESC";
+                FROM HRUpdateEmpOrg 
+                WHERE EmpID = '".$empid."'
+                ORDER BY SeqID DESC";
 		$result = $this->get_row($sql);
 		return $result;
 	}
 
     function del_upprofile_data($empid)
     {
-        $sql = "DELETE FROM HRUpdateEmpMaster WHERE EmpID = '".$empid."' ";
+        $sql = "DELETE FROM HRUpdateEmpMaster 
+                WHERE EmpID = '".$empid."' ";
         $del_upprofile = $this->get_execute($sql);
 
         if($del_upprofile) :
@@ -289,7 +364,8 @@ class regsql {
 
     function del_upfamily_data($empid)
     {
-        $sql = "DELETE FROM HRUpdateFamilyBackGround WHERE EmpID = '".$empid."' ";
+        $sql = "DELETE FROM HRUpdateFamilyBackGround 
+                WHERE EmpID = '".$empid."' ";
         $del_upfamily = $this->get_execute($sql);
 
         if($del_upfamily) :
@@ -301,7 +377,8 @@ class regsql {
 
     function del_upeducation_data($empid)
     {
-        $sql = "DELETE FROM HRUpdateEducation WHERE EmpID = '".$empid."' ";
+        $sql = "DELETE FROM HRUpdateEducation 
+                WHERE EmpID = '".$empid."' ";
         $del_upfamily = $this->get_execute($sql);
 
         if($del_upfamily) :
@@ -313,7 +390,8 @@ class regsql {
 
     function del_upprevwork_data($empid)
     {
-        $sql = "DELETE FROM HRUpdateEmpPreviousWork WHERE EmpID = '".$empid."' ";
+        $sql = "DELETE FROM HRUpdateEmpPreviousWork 
+                WHERE EmpID = '".$empid."' ";
         $del_upfamily = $this->get_execute($sql);
 
         if($del_upfamily) :
@@ -325,7 +403,8 @@ class regsql {
 
     function del_uporg_data($empid)
     {
-        $sql = "DELETE FROM HRUpdateEmpOrg WHERE EmpID = '".$empid."' ";
+        $sql = "DELETE FROM HRUpdateEmpOrg 
+                WHERE EmpID = '".$empid."' ";
         $del_upfamily = $this->get_execute($sql);
 
         if($del_upfamily) :
@@ -337,7 +416,8 @@ class regsql {
 
     function del_upimage($empid)
     {
-        $sql = "DELETE FROM HRUpdateEmpPictures WHERE EmpID = '".$empid."' ";
+        $sql = "DELETE FROM HRUpdateEmpPictures 
+                WHERE EmpID = '".$empid."' ";
         $del_upfamily = $this->get_execute($sql);
 
         if($del_upfamily) :
@@ -349,11 +429,12 @@ class regsql {
 
     function change_password($hashedPassword, $empidnum, $dbname)
     {
-        $sql = "UPDATE HREmpMaster SET
-            PasswordHash = '".$hashedPassword."'
-            WHERE EmpID = '".$empidnum."'";
+        $sql = "UPDATE HREmpMaster 
+                SET PasswordHash = ?
+                WHERE EmpID = ?";
+        $params = array($hashedPassword, $empidnum);
 
-        $result = $this->get_execute($sql, $dbname);
+        $result = $this->get_execute_v2($sql, $params, $dbname);
 
         if($result) :
             return TRUE;
@@ -847,8 +928,17 @@ class regsql {
                 $update_education = 1;
                 foreach ($eduinfo as $key => $value) :
 
-                    $sqledu = "INSERT HREducation (EmpID, EducAttainment, School, Course, YearGraduated)
-                        VALUES ('".$eid."', '".$value['EducAttainment']."', '".$value['School']."', '".$value['Course']."', '".$value['YearGraduated']."') ";
+                    $sqledu = "INSERT HREducation 
+                                    (EmpID, 
+                                    EducAttainment, 
+                                    School, 
+                                    Course, 
+                                    YearGraduated)
+                                VALUES ('".$eid."', 
+                                    '".$value['EducAttainment']."', 
+                                    '".$value['School']."', 
+                                    '".$value['Course']."', 
+                                    '".$value['YearGraduated']."') ";
 
                     $ueducation = $this->get_execute($sqledu);
 
@@ -874,8 +964,17 @@ class regsql {
                 $update_pwork = 1;
                 foreach ($pworkinfo as $key => $value) :
 
-                    $sqlpwork = "INSERT HREmpPreviousWork (EmpID, PrevCompany, PrevPosition, DateStarted, DateResigned)
-                        VALUES ('".$eid."', '".$value['PrevCompany']."', '".$value['PrevPosition']."', '".$value['DateStarted']."', '".$value['DateResigned']."') ";
+                    $sqlpwork = "INSERT HREmpPreviousWork (
+                                    EmpID, 
+                                    PrevCompany, 
+                                    PrevPosition, 
+                                    DateStarted, 
+                                    DateResigned)
+                                VALUES ('".$eid."', 
+                                    '".$value['PrevCompany']."', 
+                                    '".$value['PrevPosition']."', 
+                                    '".$value['DateStarted']."', 
+                                    '".$value['DateResigned']."') ";
 
                     $upwork = $this->get_execute($sqlpwork);
 
@@ -898,8 +997,13 @@ class regsql {
             $deluppwork = $this->del_uporg_data($eid);
 
             if ($deluppwork) :
-                $sqlorg = "INSERT HREmpOrg (EmpID, DeptID, PositionID)
-                    VALUES ('".$eid."', '".$orginfo[0]['DeptID']."', '".$orginfo[0]['PositionID']."') ";
+                $sqlorg = "INSERT HREmpOrg (
+                                EmpID,
+                                DeptID, 
+                                PositionID)
+                            VALUES ('".$eid."', 
+                                '".$orginfo[0]['DeptID']."', 
+                                '".$orginfo[0]['PositionID']."') ";
 
                 $update_org = $this->get_execute($sqlorg);
             endif;
@@ -914,7 +1018,13 @@ class regsql {
             $delupimg = $this->del_upimage($eid);
 
             if ($delupimg) :
-                $sqlimg = "INSERT HREmpPictures (EmpID, Picture) VALUES ($eid, SELECT Picture FROM HRUpdateEmpPictures WHERE EmpID = '".$eid."') ";
+                $sqlimg = "INSERT HREmpPictures (
+                                EmpID, 
+                                Picture) 
+                            VALUES ($eid, 
+                                SELECT Picture 
+                                FROM HRUpdateEmpPictures 
+                                WHERE EmpID = '".$eid."') ";
 
                 $update_img = $this->get_execute($sqlimg);
             endif;

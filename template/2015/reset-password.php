@@ -9,7 +9,11 @@
          <form id='resetpassfrm' method="post" enctype="multipart/form-data" action="<?php echo WEB; ?>/reset-password">
             <div class="divpass">
                   <input type="password" name="resetpassword" size="20" id="resetpassword" placeholder="Set a New Password" class="txtbox width250" />
-            </div><br>
+            </div>
+            <div class="divpass">
+                  <input type="password" name="confirmresetpassword" size="20" id="confirmresetpassword" placeholder="Confirm New Password" class="txtbox width250" />
+            </div>
+            <br>
             <div align="center" class="width250">
                   <br><input type="submit" class="btn" value="Reset Password">&nbsp;<input type="button" value="Cancel" class="redbtn"  onClick="parent.location='<?php echo WEB; ?>'"/>
             </div>

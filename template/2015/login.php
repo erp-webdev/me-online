@@ -56,7 +56,7 @@
                                         Sign in with Google
                                     </a>*/
                                     ?>
-                                    <br><br><a href="<?php echo WEB; ?>/forgot_password" class="lgraytext">Forgot your password</a>
+                                    <br><br><a href="<?php echo WEB; ?>/forgot_password" class="lgraytext">Forgot password</a>
                                     <br><span id="errortd" class="redtext"></span>  
                                 </td>
                             </tr>
