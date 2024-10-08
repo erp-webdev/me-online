@@ -45,15 +45,22 @@
             endif;
              
             if(isStrongPassword($newpass)){
-                $hashedPassword = password_hash($newpass, PASSWORD_DEFAULT);
-                $edit_password = $register->change_password($hashedPassword, $idnum, $dbname);
-                
+                $accounts = $logsql->get_member2($idnum, $oldpass);
+   
+                if($accounts){
+                   foreach($accounts as $acc){
+                        $hashedPassword = password_hash($newpass, PASSWORD_DEFAULT);
+                        $edit_password = $register->change_password($hashedPassword, $idnum, $acc['DBNAME']);
+                        
+                   }
+                    $logsql->update_users_activity($idnum, $profile_email);
+                }
+
                 //AUDIT TRAIL
                 $post['EMPID'] = $profile_idnum;
                 $post['TASKS'] = "CHANGE_PASSWORD";
-                $post['DATA'] = $idnum;
+                $post['DATA'] = $profile_idnum;
                 $post['DATE'] = date("m/d/Y H:i:s.000");
-    
                 $log = $mainsql->log_action($post, 'add');
             
                 echo '{"success":true}';
