@@ -6,10 +6,9 @@
                   <span class="lowerlist robotobold cattext whitetext centertalign">Password Update Advisory</span>
                   <br>
                   <p class="whitetext" style="text-align:justify;">
-                    To maintain the security of your account, we strongly recommend updating your ME Online portal password regularly. Ensure your password is strong by using at least 8 characters, including a combination of uppercase and lowercase letters, numbers, and special characters.
+                    To maintain the security of your account, we strongly recommend updating your ME Online portal password regularly.
                   </p>
-                  <p class="whitetext" style="text-align:justify;">
-                    You can update your password by logging into ME Online and navigating to the <b>"Change Password"</b> link located next to your account name. Regular password updates help safeguard your account from unauthorized access and ensure the protection of your data.
+                  <p class="whitetext" style="text-align:justify;">Regular password updates help safeguard your account from unauthorized access and ensure the protection of your data.
                   </p>
                   <br>
                   <p class="whitetext" style="text-align:justify;">

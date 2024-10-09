@@ -4,8 +4,8 @@
     
             <div id="mainsplashlog" class="mainsplashlog centertalign">  
                 <div id="forgot" class="div9 minheight150">                    
-                    <span id="ltitle" class="lowerlist robotobold cattext whitetext centertalign">Send My Password</span>
-                    <i id="forgot_title" class="whitetext">The password will sent to your account's email address.</i>
+                    <span id="ltitle" class="lowerlist robotobold cattext whitetext centertalign">Forgot Password</span>
+                    <i id="forgot_title" class="whitetext">The password reset link will be sent to your account's email address.</i>
                     <form name="formforget" method="post" enctype="multipart/form-data" class="margintop25">
                         <input type="text" name="empidnum" id="empidnum" class="txtbox width250" placeholder="Employee ID" /><br><br>
                         
