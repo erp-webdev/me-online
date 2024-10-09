@@ -5736,7 +5736,7 @@ $(function() {
                         window.location.href='<?php echo WEB; ?>';
                     }
                     else if (data == 2) {
-                        alert('Due to consecutive failed login attempt, your account has been locked. You may use forgot password feature to reset password and re-activate your account.');
+                        alert('Due to consecutive failed login attempt, your account has been locked. You may use Forgot Password feature to reset and re-activate your account.');
                         window.location.href='<?php echo WEB; ?>/forgot_password';
                     }
                     else {
@@ -5782,7 +5782,7 @@ $(function() {
                         window.location.href='<?php echo WEB; ?>';
                     }
                     else if (data == 2) {
-                        alert('Due to consecutive failed login attempt, your account has been locked. You may use forgot password feature to reset password and re-activate your account.');
+                        alert('Due to consecutive failed login attempt, your account has been locked. You may use Forgot Password feature to reset and re-activate your account.');
                         window.location.href='<?php echo WEB; ?>/forgot_password';
                     }
                     else {
@@ -5826,7 +5826,7 @@ $(function() {
                     window.location.href='<?php echo WEB; ?>';
 	        	}
                 else if (data == 2) {
-                    alert('Due to consecutive failed login attempt, your account has been locked. You may use forgot password feature to reset password and re-activate your account.');
+                    alert('Due to consecutive failed login attempt, your account has been locked. You may use Forgot Password feature to reset and re-activate your account.');
                     window.location.href='<?php echo WEB; ?>/forgot_password';
                 }
 	        	else {
