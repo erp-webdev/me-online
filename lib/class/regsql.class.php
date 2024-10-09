@@ -45,42 +45,6 @@ class regsql {
         return $result;
 	}
 
-    public function get_row_v2($sql, $params,  $dbname = NULL)
-	{
-        if(!$sql) return;
-        $con = $this->db_connect();
-        $seltab = $this->db_select($con, $dbname);
-        $query = $this->prepare_query($sql, $params);
-        $result = mssql_query($query);
-
-        if(!$result) return;
-        $result = $this->db_result_to_array($result);
-        return $result;
-	}
-
-    private function prepare_query($sql, $params = []) {
-        foreach ($params as $key => $param) {
-            if (is_string($param)) {
-                $params[$key] = "'" . addslashes($param) . "'";
-            } 
-            else if (is_numeric($param)) {
-                $params[$key] = (int)$param;  
-            } 
-            else {
-                $params[$key] = $param; 
-            }
-        }
-    
-        $query = '';
-        $sqlParts = explode('?', $sql);
-    
-        foreach ($sqlParts as $index => $part) {
-            $query .= $part . $params[$index]; 
-        }
-
-        return $query;
-    }
-
 	public function get_numrow($sql) //Get num rows of a table from $sql
 	{
         if(!$sql) return;
@@ -98,17 +62,6 @@ class regsql {
         $con = $this->db_connect();
         $seltab = $this->db_select($con, $dbname);
         $result = mssql_query($sql);
-        if(!$result) return;
-        return $result;
-	}
-
-    public function get_execute_v2($sql, $params, $dbname = NULL) //Get num rows of a table from $sql
-	{
-        if(!$sql) return;
-        $con = $this->db_connect();
-        $seltab = $this->db_select($con, $dbname);
-        $query = $this->prepare_query($sql, $params);
-        $result = mssql_query($query);
         if(!$result) return;
         return $result;
 	}
@@ -140,23 +93,6 @@ class regsql {
 		return $result;
 	}
 
-	function check_member($username, $password)
-	{
-		$sql = "SELECT COUNT(EmpID) AS mcount 
-                FROM viewHREmpMaster 
-                WHERE EmpID = ? 
-                AND EPassword = ?  
-                AND Active = ?";
-        $params = array($username, $password, 1);
-
-		$result = $this->get_row_v2($sql, $params);
-		if($result[0]['mcount'] <= 0) :
-			return FALSE;
-		else :
-			return TRUE;
-		endif;
-	}
-
 	function check_user($username)
 	{
 
@@ -173,13 +109,21 @@ class regsql {
 
     function get_member($username, $dbname = NULL)
 	{
-		$sql = "SELECT TOP 1 * 
-                FROM HREmpMaster 
-                WHERE EmpID = ?";
-        $params = array($username);
+        $fieldnames = ['ACTION', 'EMPID'];
+        $values = [1, $username];
 
-		$result = $this->get_row_v2($sql, $params, $dbname);
-		return $result;
+        foreach( $fieldnames as $i => $fieldname){
+            $val[$i]['field_name'] = $fieldname;
+            $val[$i]['field_value'] = $values[$i];
+            $val[$i]['field_type'] = (in_array($fieldname, ['ACTION'])) ? SQLINT1 : SQLVARCHAR;
+            $val[$i]['field_isoutput'] = false;
+            $val[$i]['field_isnull'] = false;
+        }
+
+        $sp_result = $this->get_sp_data('SP_GET_EMPLOYEE', $val, $dbname);
+        $results = $this->db_result_to_array($sp_result);
+
+		return $results;
 	}
 
     function get_allmember($username)
@@ -429,12 +373,18 @@ class regsql {
 
     function change_password($hashedPassword, $empidnum, $dbname)
     {
-        $sql = "UPDATE HREmpMaster 
-                SET PasswordHash = ?
-                WHERE EmpID = ?";
-        $params = array($hashedPassword, $empidnum);
+        $fieldnames = ['ACTION', 'EMPID', 'PASSWORDHASH'];
+        $values = [2, $empidnum, $hashedPassword];
 
-        $result = $this->get_execute_v2($sql, $params, $dbname);
+        foreach( $fieldnames as $i => $fieldname){
+            $val[$i]['field_name'] = $fieldname;
+            $val[$i]['field_value'] = $values[$i];
+            $val[$i]['field_type'] = (in_array($fieldname, ['ACTION'])) ? SQLINT1 : SQLVARCHAR;
+            $val[$i]['field_isoutput'] = false;
+            $val[$i]['field_isnull'] = false;
+        }
+
+        $result = $this->get_sp_data('SP_GET_EMPLOYEE', $val, $dbname);
 
         if($result) :
             return TRUE;

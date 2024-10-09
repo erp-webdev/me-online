@@ -43,19 +43,6 @@ class logsql {
         return $result;
 	}
 
-    public function get_row_v2($sql, $params)
-	{
-        if(!$sql) return;
-        $con = $this->db_connect();
-        $seltab = $this->db_select($con);
-        $query = $this->prepare_query($sql, $params);
-        $result = mssql_query($query);
-
-        if(!$result) return;
-        $result = $this->db_result_to_array($result);
-        return $result;
-	}
-
     private function prepare_query($query, $params = []) {
         foreach ($params as $key => $param) {
             if (is_string($param)) {
@@ -97,17 +84,6 @@ class logsql {
         return $result;
 	}
 
-    public function get_execute_v2($sql, $params) //Get num rows of a table from $sql
-	{
-        if(!$sql) return;
-        $con = $this->db_connect();
-        $seltab = $this->db_select($con);
-        $query = $this->prepare_query($sql, $params);
-        $result = mssql_query($query);
-        if(!$result) return;
-        return $result;
-	}
-
 	# MAINSQL CLASS
 
     function get_sp_data($sp_name, $parameters = NULL, $dbname = NULL)
@@ -139,13 +115,20 @@ class logsql {
 
     function check_member($username, $password = NULL)
 	{
-		$sql = "SELECT * 
-                FROM VIEWHREMPMASTER 
-                WHERE EmpID = ? 
-                AND Active = ?";
-        $params = array($username, 1);
+        $fieldnames = ['ACTION', 'EMPID'];
+        $values = [1, $username];
 
-		$results = $this->get_row_v2($sql, $params);
+        foreach( $fieldnames as $i => $fieldname){
+            $val[$i]['field_name'] = $fieldname;
+            $val[$i]['field_value'] = $values[$i];
+            $val[$i]['field_type'] = (in_array($fieldname, ['ACTION'])) ? SQLINT1 : SQLVARCHAR;
+            $val[$i]['field_isoutput'] = false;
+            $val[$i]['field_isnull'] = false;
+        }
+
+        $sp_result = $this->get_sp_data('SP_GET_EMPLOYEE', $val, 'SUBSIDIARY');
+        $results = $this->db_result_to_array($sp_result);
+
 		if ($results) {
             foreach ($results as $result) {
                 if ($result['PasswordHash']) {
@@ -215,118 +198,134 @@ class logsql {
 	}
 
     function check_login_user($empid, $email=NULL){
-        $sql = "SELECT TOP 1 login_failed, account_locked_at, password_waive, password_update_at
-                FROM users 
-                WHERE EmpID = ? 
-                AND reset_token IS NULL";
-        $sql .= $email ? " AND EmailAdd = ? " : "";
-        $params = $email ? array($empid, $email) : array($empid);
+        $fieldnames = ['ACTION', 'EMPID', 'EMAILADD'];
+        $values = [1, $empid, $email];
 
-        $result = $this->get_row_v2($sql, $params);
+        foreach( $fieldnames as $i => $fieldname){
+            $val[$i]['field_name'] = $fieldname;
+            $val[$i]['field_value'] = $values[$i];
+            $val[$i]['field_type'] = (in_array($fieldname, ['ACTION'])) ? SQLINT1 : SQLVARCHAR;
+            $val[$i]['field_isoutput'] = false;
+            $val[$i]['field_isnull'] = false;
+        }
+
+        $sp_result = $this->get_sp_data('SP_GET_USERS', $val, 'SUBSIDIARY');
+        $result = $this->db_result_to_array($sp_result);
+
         return $result;
-    }
 
-    function update_login_failed($empid, $login_failed, $email = NULL){
-        $sql = "UPDATE users 
-                SET login_failed = ? ";
-        $sql .= $email ? ", EmailAdd = ? " : '';
-        $sql .= $login_failed >=3 ? ", account_locked_at = GETDATE()" : ", account_locked_at = NULL";
-        $sql .= " WHERE EmpID= ? 
-                AND reset_token IS NULL";
-        $params = $email ? array($login_failed, $email, $empid) : array($login_failed, $empid);
-
-        $this->get_execute_v2($sql, $params);
-    }
-
-    function insert_login_failed($empid){
-        $sql = "INSERT INTO users(
-                    EmpID, 
-                    login_failed,
-                    created_at) 
-                VALUES(?, ?, GETDATE())";
-        $params = array($empid, 1);
-
-        $this->get_execute_v2($sql, $params);
     }
 
     function check_reset_token($reset_token){
-        $sql = "SELECT * 
-                FROM users 
-                WHERE reset_token= ? 
-                AND reset_token_expiry >  GETDATE()";
-        $params = array($reset_token);
+        $fieldnames = ['ACTION', 'RESET_TOKEN'];
+        $values = [2, $reset_token];
 
-		$result = $this->get_row_v2($sql, $params);
-		return $result;
+        foreach( $fieldnames as $i => $fieldname){
+            $val[$i]['field_name'] = $fieldname;
+            $val[$i]['field_value'] = $values[$i];
+            $val[$i]['field_type'] = (in_array($fieldname, ['ACTION'])) ? SQLINT1 : SQLVARCHAR;
+            $val[$i]['field_isoutput'] = false;
+            $val[$i]['field_isnull'] = false;
+        }
+
+        $sp_result = $this->get_sp_data('SP_GET_USERS', $val, 'SUBSIDIARY');
+        $result = $this->db_result_to_array($sp_result);
+
+        return $result;
     }
 
-    function insert_reset_token($empid, $emailadd, $reset_token){
-        $sql = "INSERT INTO users(
-                    EmpID, 
-                    EmailAdd, 
-                    reset_token, 
-                    reset_token_expiry, 
-                    created_at) 
-                VALUES(?, ?, ?, DATEADD(HOUR, 1,GETDATE()), GETDATE())";
-        $params = array($empid, $emailadd, $reset_token);
+    function insert_login_failed($empid){
+        $fieldnames = ['ACTION', 'EMPID'];
+        $values = [3, $empid];
 
-        $this->get_execute_v2($sql, $params);
+        foreach( $fieldnames as $i => $fieldname){
+            $val[$i]['field_name'] = $fieldname;
+            $val[$i]['field_value'] = $values[$i];
+            $val[$i]['field_type'] = (in_array($fieldname, ['ACTION'])) ? SQLINT1 : SQLVARCHAR;
+            $val[$i]['field_isoutput'] = false;
+            $val[$i]['field_isnull'] = false;
+        }
 
-        $sql = "SELECT TOP 1 * 
-                FROM users 
-                WHERE reset_token= ? ";
-        $params = array($reset_token);
-
-		$result = $this->get_row_v2($sql, $params);
-		return $result;
+        $sp_result = $this->get_sp_data('SP_GET_USERS', $val, 'SUBSIDIARY');
     }
 
     function insert_user_activity($empid, $email, $is_hash){
-        if($is_hash){
-            $sql = "INSERT INTO users(
-                EmpID, 
-                EmailAdd, 
-                password_update_at, 
-                created_at) 
-            VALUES(?, ?, GETDATE(), GETDATE())";
-        }
-        else{
-            $sql = "INSERT INTO users(
-                EmpID, 
-                EmailAdd, 
-                password_update_at, 
-                created_at) 
-            VALUES(?, ?, DATEADD(MONTH, -1,GETDATE()), GETDATE())";
-        }
-        $params = array($empid, $email);
+        $fieldnames = ['ACTION', 'EMPID', 'EMAILADD', 'IS_HASH'];
+        $values = [4, $empid, $email, $is_hash];
 
-        $this->get_execute_v2($sql, $params);
+        foreach( $fieldnames as $i => $fieldname){
+            $val[$i]['field_name'] = $fieldname;
+            $val[$i]['field_value'] = $values[$i];
+            $val[$i]['field_type'] = (in_array($fieldname, ['ACTION', 'IS_HASH'])) ? SQLINT1 : SQLVARCHAR;
+            $val[$i]['field_isoutput'] = false;
+            $val[$i]['field_isnull'] = false;
+        }
+
+        $sp_result = $this->get_sp_data('SP_GET_USERS', $val, 'SUBSIDIARY');
+    }
+
+    function insert_reset_token($empid, $email, $reset_token){
+        $fieldnames = ['ACTION', 'EMPID', 'EMAILADD', 'RESET_TOKEN'];
+        $values = [5, $empid, $email, $reset_token];
+
+        foreach( $fieldnames as $i => $fieldname){
+            $val[$i]['field_name'] = $fieldname;
+            $val[$i]['field_value'] = $values[$i];
+            $val[$i]['field_type'] = (in_array($fieldname, ['ACTION'])) ? SQLINT1 : SQLVARCHAR;
+            $val[$i]['field_isoutput'] = false;
+            $val[$i]['field_isnull'] = false;
+        }
+
+        $sp_result = $this->get_sp_data('SP_GET_USERS', $val, 'SUBSIDIARY');
+    }
+
+
+    function update_login_failed($empid, $login_failed, $email = NULL){
+        $fieldnames = ['ACTION', 'EMPID', 'EMAILADD', 'LOGIN_FAILED'];
+        $values = [6, $empid, $email, $login_failed];
+
+        foreach( $fieldnames as $i => $fieldname){
+            $val[$i]['field_name'] = $fieldname;
+            $val[$i]['field_value'] = $values[$i];
+            $val[$i]['field_type'] = (in_array($fieldname, ['ACTION', 'LOGIN_FAILED'])) ? SQLINT1 : SQLVARCHAR;
+            $val[$i]['field_isoutput'] = false;
+            $val[$i]['field_isnull'] = false;
+        }
+
+        $sp_result = $this->get_sp_data('SP_GET_USERS', $val, 'SUBSIDIARY');
     }
 
     function update_users_activity($empid, $email, $waive=0){
-        $sql = "DELETE FROM users 
-                WHERE EmpID= ?  
-                AND login_failed= ? ";
-        $params = array($empid, 3);
-        $this->get_execute_v2($sql, $params);
+        $fieldnames = ['ACTION', 'EMPID', 'EMAILADD', 'WAIVE'];
+        $values = [7, $empid, $email, $waive];
 
-        $sql = "UPDATE users 
-                SET reset_token = NULL, reset_token_expiry = NULL, password_update_at = GETDATE(), login_failed=NULL, password_waive=?
-                WHERE EmpID= ?  
-                AND EmailAdd= ? ";
-        $params = array($waive, $empid, $email);
-        $this->get_execute_v2($sql, $params);
+        foreach( $fieldnames as $i => $fieldname){
+            $val[$i]['field_name'] = $fieldname;
+            $val[$i]['field_value'] = $values[$i];
+            $val[$i]['field_type'] = (in_array($fieldname, ['ACTION', 'WAIVE'])) ? SQLINT1 : SQLVARCHAR;
+            $val[$i]['field_isoutput'] = false;
+            $val[$i]['field_isnull'] = false;
+        }
+
+        $sp_result = $this->get_sp_data('SP_GET_USERS', $val, 'SUBSIDIARY');
     }
 
     function get_member2($username, $password=NULL, $dbname = NULL)
 	{
-		$sql = "SELECT * 
-                FROM VIEWHREMPMASTER 
-                WHERE EmpID = ? 
-                AND Active = ?";
-        $params = array($username, 1);
+        $fieldnames = ['ACTION', 'EMPID', 'DBNAME'];
+        $values = [1, $username, $dbname];
 
-		$results = $this->get_row_v2($sql, $params);
+        foreach( $fieldnames as $i => $fieldname){
+            $val[$i]['field_name'] = $fieldname;
+            $val[$i]['field_value'] = $values[$i];
+            $val[$i]['field_type'] = (in_array($fieldname, ['ACTION'])) ? SQLINT1 : SQLVARCHAR;
+            $val[$i]['field_isoutput'] = false;
+            $val[$i]['field_isnull'] = false;
+        }
+
+        $sp_result = $this->get_sp_data('SP_GET_EMPLOYEE', $val, 'SUBSIDIARY');
+        $results = $this->db_result_to_array($sp_result);
+
 		if ($results) {
             foreach ($results as $index => $result) {
                 if (!($password && (password_verify($password, $result['PasswordHash']) || $password == $result['EPassword']))) {
@@ -537,31 +536,44 @@ class logsql {
 /// FOR GOOGLE LOG IN
     function get_member_by_email($emailadd, $dbname=NULL)
 	{
-		$sql = "SELECT EmpID, CompanyID, DBNAME, EPassword
-                FROM VIEWHREMPMASTER 
-                WHERE EmailAdd = ? ";
-        $sql .= $dbname ? " AND DBNAME = '".$dbname."' " : "";
-        $sql .= " AND Active = 1";
-        $params =  $dbname ? array($emailadd, $dbname) : array($emailadd);
+        $fieldnames = ['ACTION', 'EMAILADD', 'DBNAME'];
+        $values = [2, $emailadd, $dbname];
 
-		$result = $this->get_row_v2($sql,$params);
+        foreach( $fieldnames as $i => $fieldname){
+            $val[$i]['field_name'] = $fieldname;
+            $val[$i]['field_value'] = $values[$i];
+            $val[$i]['field_type'] = (in_array($fieldname, ['ACTION'])) ? SQLINT1 : SQLVARCHAR;
+            $val[$i]['field_isoutput'] = false;
+            $val[$i]['field_isnull'] = false;
+        }
 
-		return $result;
+        $sp_result = $this->get_sp_data('SP_GET_EMPLOYEE', $val, 'SUBSIDIARY');
+        $result = $this->db_result_to_array($sp_result);
+
+        return $result;
 	}
 
     function check_member_by_email($emailadd)
 	{
-		$sql = "SELECT COUNT(EmpID) AS mcount 
-                FROM VIEWHREMPMASTER 
-                WHERE EmailAdd = ? 
-                AND Active = 1";
-        $params = array($emailadd);
-		$result = $this->get_row_v2($sql, $params);
+        $fieldnames = ['ACTION', 'EMAILADD'];
+        $values = [2, $emailadd];
 
-		if($result[0]['mcount'] <= 0) :
+        foreach( $fieldnames as $i => $fieldname){
+            $val[$i]['field_name'] = $fieldname;
+            $val[$i]['field_value'] = $values[$i];
+            $val[$i]['field_type'] = (in_array($fieldname, ['ACTION'])) ? SQLINT1 : SQLVARCHAR;
+            $val[$i]['field_isoutput'] = false;
+            $val[$i]['field_isnull'] = false;
+        }
+
+        $sp_result = $this->get_sp_data('SP_GET_EMPLOYEE', $val, 'SUBSIDIARY');
+        $result = $this->db_result_to_array($sp_result);
+
+
+		if(count($result) <= 0) :
 			return FALSE;
 		else :
-			return $result[0]['mcount'];
+			return count($result);
 		endif;
 	}
 
