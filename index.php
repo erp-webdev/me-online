@@ -252,24 +252,27 @@
 
         $GLOBALS['level'] = $profile_level;
 
+        if(!in_array($section,['logout', 'change_password', 'waive_advisory'])){
+            $user_login = $logsql->check_login_user($profile_idnum, $profile_email);
+            $last_password_update = $user_login[0]['password_update_at'];
+            if(date('Y-m') == date('Y-m', strtotime('+'.PASSWORD_REMINDER.' month', strtotime($last_password_update)))){
+                $section = 'advisory';
+            }
+        }
+
+        
     endif;
 
 	//***************** USER MANAGEMENT - END *****************\\
 
 	if ($section) :
-		if (!file_exists(OBJ."/".$section.".php")) :
+        if (!file_exists(OBJ."/".$section.".php")) :
             echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/404'</script>";
         else :
             include(OBJ."/".$section.".php");
-		    include(TEMP."/".$section.".php");
+            include(TEMP."/".$section.".php");
         endif;
 	else :
-        $user_login = $logsql->check_login_user($profile_idnum, $profile_email);
-        $last_password_update = $user_login[0]['password_update_at'];
-        if(date('Y-m') == date('Y-m', strtotime('+'.PASSWORD_REMINDER.' month', strtotime($last_password_update)))){
-            echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/advisory'</script>";
-        }
-
 		$ishome = 1;
 		include(OBJ."/index.php");
 		include(TEMP."/index.php");
