@@ -65,7 +65,7 @@
                 $bytes = openssl_random_pseudo_bytes(50);
                 $token = bin2hex($bytes);
 
-                $reset = $logsql->insert_reset_token($_POST['empidnum'], $emp_info[0]['EmailAdd'], $token);
+                $logsql->insert_reset_token($_POST['empidnum'], $emp_info[0]['EmailAdd'], $token);
                 $reset_link = WEB.'/reset-password?token='.$token;
                 //var_dump($reset_link);
 

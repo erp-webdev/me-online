@@ -197,117 +197,82 @@ class logsql {
 		return $result;
 	}
 
-    function check_login_user($empid, $email=NULL){
+    public function check_login_user($empid, $email=NULL){
         $fieldnames = ['ACTION', 'EMPID', 'EMAILADD'];
         $values = [1, $empid, $email];
+        $intFieldnames = ['ACTION'];
 
-        foreach( $fieldnames as $i => $fieldname){
-            $val[$i]['field_name'] = $fieldname;
-            $val[$i]['field_value'] = $values[$i];
-            $val[$i]['field_type'] = (in_array($fieldname, ['ACTION'])) ? SQLINT1 : SQLVARCHAR;
-            $val[$i]['field_isoutput'] = false;
-            $val[$i]['field_isnull'] = false;
-        }
-
-        $sp_result = $this->get_sp_data('SP_GET_USERS', $val, 'SUBSIDIARY');
+        $sp_result = $this->execute_sp_get_user($fieldnames, $values, $intFieldnames);
         $result = $this->db_result_to_array($sp_result);
 
         return $result;
 
     }
 
-    function check_reset_token($reset_token){
+    public function check_reset_token($reset_token){
         $fieldnames = ['ACTION', 'RESET_TOKEN'];
         $values = [2, $reset_token];
+        $intFieldnames = ['ACTION'];
 
-        foreach( $fieldnames as $i => $fieldname){
-            $val[$i]['field_name'] = $fieldname;
-            $val[$i]['field_value'] = $values[$i];
-            $val[$i]['field_type'] = (in_array($fieldname, ['ACTION'])) ? SQLINT1 : SQLVARCHAR;
-            $val[$i]['field_isoutput'] = false;
-            $val[$i]['field_isnull'] = false;
-        }
-
-        $sp_result = $this->get_sp_data('SP_GET_USERS', $val, 'SUBSIDIARY');
+        $sp_result = $this->execute_sp_get_user($fieldnames, $values, $intFieldnames);
         $result = $this->db_result_to_array($sp_result);
 
         return $result;
     }
 
-    function insert_login_failed($empid){
+    public function insert_login_failed($empid){
         $fieldnames = ['ACTION', 'EMPID'];
         $values = [3, $empid];
+        $intFieldnames = ['ACTION'];
 
-        foreach( $fieldnames as $i => $fieldname){
-            $val[$i]['field_name'] = $fieldname;
-            $val[$i]['field_value'] = $values[$i];
-            $val[$i]['field_type'] = (in_array($fieldname, ['ACTION'])) ? SQLINT1 : SQLVARCHAR;
-            $val[$i]['field_isoutput'] = false;
-            $val[$i]['field_isnull'] = false;
-        }
-
-        $sp_result = $this->get_sp_data('SP_GET_USERS', $val, 'SUBSIDIARY');
+        $sp_result = $this->execute_sp_get_user($fieldnames, $values, $intFieldnames);
     }
 
-    function insert_user_activity($empid, $email, $is_hash){
+    public function insert_user_activity($empid, $email, $is_hash){
         $fieldnames = ['ACTION', 'EMPID', 'EMAILADD', 'IS_HASH'];
         $values = [4, $empid, $email, $is_hash];
+        $intFieldnames = ['ACTION', 'IS_HASH'];
 
-        foreach( $fieldnames as $i => $fieldname){
-            $val[$i]['field_name'] = $fieldname;
-            $val[$i]['field_value'] = $values[$i];
-            $val[$i]['field_type'] = (in_array($fieldname, ['ACTION', 'IS_HASH'])) ? SQLINT1 : SQLVARCHAR;
-            $val[$i]['field_isoutput'] = false;
-            $val[$i]['field_isnull'] = false;
-        }
-
-        $sp_result = $this->get_sp_data('SP_GET_USERS', $val, 'SUBSIDIARY');
+        $sp_result = $this->execute_sp_get_user($fieldnames, $values, $intFieldnames);
     }
 
-    function insert_reset_token($empid, $email, $reset_token){
+    public function insert_reset_token($empid, $email, $reset_token){
         $fieldnames = ['ACTION', 'EMPID', 'EMAILADD', 'RESET_TOKEN'];
         $values = [5, $empid, $email, $reset_token];
+        $intFieldnames = ['ACTION'];
 
-        foreach( $fieldnames as $i => $fieldname){
-            $val[$i]['field_name'] = $fieldname;
-            $val[$i]['field_value'] = $values[$i];
-            $val[$i]['field_type'] = (in_array($fieldname, ['ACTION'])) ? SQLINT1 : SQLVARCHAR;
-            $val[$i]['field_isoutput'] = false;
-            $val[$i]['field_isnull'] = false;
-        }
-
-        $sp_result = $this->get_sp_data('SP_GET_USERS', $val, 'SUBSIDIARY');
+        $sp_result = $this->execute_sp_get_user($fieldnames, $values, $intFieldnames);
     }
 
 
-    function update_login_failed($empid, $login_failed, $email = NULL){
+    public function update_login_failed($empid, $login_failed, $email = NULL){
         $fieldnames = ['ACTION', 'EMPID', 'EMAILADD', 'LOGIN_FAILED'];
         $values = [6, $empid, $email, $login_failed];
+        $intFieldnames = ['ACTION', 'LOGIN_FAILED'];
 
-        foreach( $fieldnames as $i => $fieldname){
-            $val[$i]['field_name'] = $fieldname;
-            $val[$i]['field_value'] = $values[$i];
-            $val[$i]['field_type'] = (in_array($fieldname, ['ACTION', 'LOGIN_FAILED'])) ? SQLINT1 : SQLVARCHAR;
-            $val[$i]['field_isoutput'] = false;
-            $val[$i]['field_isnull'] = false;
-        }
-
-        $sp_result = $this->get_sp_data('SP_GET_USERS', $val, 'SUBSIDIARY');
+        $sp_result = $this->execute_sp_get_user($fieldnames, $values, $intFieldnames);
     }
 
-    function update_users_activity($empid, $email, $waive=0){
+    public function update_users_activity($empid, $email, $waive=0){
         $fieldnames = ['ACTION', 'EMPID', 'EMAILADD', 'WAIVE'];
         $values = [7, $empid, $email, $waive];
+        $intFieldnames = ['ACTION', 'WAIVE'];
 
+        $sp_result = $this->execute_sp_get_user($fieldnames, $values, $intFieldnames);
+    }
+
+    private function execute_sp_get_user($fieldnames, $values, $intFieldnames){
         foreach( $fieldnames as $i => $fieldname){
             $val[$i]['field_name'] = $fieldname;
             $val[$i]['field_value'] = $values[$i];
-            $val[$i]['field_type'] = (in_array($fieldname, ['ACTION', 'WAIVE'])) ? SQLINT1 : SQLVARCHAR;
+            $val[$i]['field_type'] = (in_array($fieldname, $intFieldnames)) ? SQLINT1 : SQLVARCHAR;
             $val[$i]['field_isoutput'] = false;
             $val[$i]['field_isnull'] = false;
         }
 
         $sp_result = $this->get_sp_data('SP_GET_USERS', $val, 'SUBSIDIARY');
+
+        return $sp_result;
     }
 
     function get_member2($username, $password=NULL, $dbname = NULL)
