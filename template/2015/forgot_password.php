@@ -3,7 +3,7 @@
     <!-- BODY -->
     
             <div id="mainsplashlog" class="mainsplashlog centertalign">  
-                <div id="forgot" class="div9 minheight150">                    
+                <div id="forgot" class="div6 minheight150">                    
                     <span id="ltitle" class="lowerlist robotobold cattext whitetext centertalign">Forgot Password</span>
                     <i id="forgot_title" class="whitetext">The password reset link will be sent to your account's email address.</i>
                     <form name="formforget" method="post" enctype="multipart/form-data" class="margintop25">
