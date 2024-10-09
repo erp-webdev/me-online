@@ -2866,7 +2866,7 @@ $(function ()
 
 			else
 			{
-				html += '<p>Kindly please check your inbox. The password reset link is valid for 1 hour only and is single-use. If it expires, request a new link to proceed.</p>';
+				html += '<p>We just sent you the reset link, kindly check your inbox. The password reset link is valid for an hour only. </p>';
 
 				$('.forgot_msg').slideUp(function ()
 				{
