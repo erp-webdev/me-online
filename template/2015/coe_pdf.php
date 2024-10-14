@@ -27,6 +27,7 @@ function ucwordsExcept($string, $exceptions = []) {
 	}, $words);
 
 	// Join the words back into a single string
+	return 'test';
 	return implode(' ', $words);
 }
 ?>
