@@ -16,7 +16,7 @@
 
           <?php 
             $getmem = $logsql->get_member2($_SESSION['megasubs_user'], $_SESSION['megasubs_password'], $_SESSION['megasubs_db']);
-            $is_new_user = ((!isset($getmem[0]['PasswordHash'])) && (date('Y-m-d') <= date('Y-m-d', strtotime($getmem[0]['HireDate']. ' +3 months')))) ? 1 : 0;
+            $is_new_user = $getmem[0]['HireDate'] ? ((!isset($getmem[0]['PasswordHash'])) && (date('Y-m-d') <= date('Y-m-d', strtotime($getmem[0]['HireDate']. ' +3 months')))) ? 1 : 0 : 0;
           ?>
 
           <input type="button" value="Change Password" class="btn" onClick="parent.location='<?php echo WEB; ?>/change_password'" />
