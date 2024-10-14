@@ -1,3 +1,4 @@
+
 <div id="myDivToPrint" style="">
 
 	<div style="text-align: center; padding-top: 10px;">
