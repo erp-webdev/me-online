@@ -317,18 +317,18 @@
 		&nbsp;
 
 		<div style="text-align: justify;  text-justify: inter-word;">
-			<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo ucwordsExcept(strtolower($fullname)); ?></b>
+			<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo ucwords(strtolower($fullname)); ?></b>
 				<?php if($emp_info[0]["DateResigned"]){ ?>
 					was employed as
 				<?php }else{ ?>
 					is currently employed as
 				<?php } ?>
-			<b><?php echo ucwordsExcept(strtolower($emp_info[0]["PositionDesc"]))."</b> by <b>".ucwordsExcept(strtolower($emp_info[0]["CompanyName"]))."</b> from <b>".$emp_info[0]["HireDate"]; ?>
+			<b><?php echo ucwords(strtolower($emp_info[0]["PositionDesc"]))."</b> by <b>".ucwords(strtolower($emp_info[0]["CompanyName"]))."</b> from <b>".$emp_info[0]["HireDate"]; ?>
 			<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
 			up to the present.</b></p>
 			<?php } ?>
 
-			<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwordsExcept(strtolower($emp_info[0]["Salutation"]))." ".ucwordsExcept(strtolower(mb_convert_encoding($emp_info[0]["LName"], 'UTF-8', 'HTML-ENTITIES'))); ?>
+			<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower(mb_convert_encoding($emp_info[0]["LName"], 'UTF-8', 'HTML-ENTITIES'))); ?>
 			<?php
 				if($coe[0]["other_reason"]){
 			?>
@@ -431,14 +431,14 @@
 
 			<div style="text-align: justify;  text-justify: inter-word;">
 
-				<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo ucwordsExcept(strtolower($emp_info[0]["Salutation"]." ".$fullname)); ?></b>
+				<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo ucwords(strtolower($emp_info[0]["Salutation"]." ".$fullname)); ?></b>
 					<?php if($emp_info[0]["DateResigned"]){ ?>
 						was employed as
 					<?php }else{ ?>
 						is currently employed as
 					<?php } ?>
 				<b><?php
-				echo ucwordsExcept(strtolower($emp_info[0]["PositionDesc"]))."</b> by <b>".ucwordsExcept(strtolower($emp_info[0]["CompanyName"]))."</b> from <b>".$emp_info[0]["HireDate"];
+				echo ucwords(strtolower($emp_info[0]["PositionDesc"]))."</b> by <b>".ucwords(strtolower($emp_info[0]["CompanyName"]))."</b> from <b>".$emp_info[0]["HireDate"];
 				?>
 				<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"].".</b>"; }else{ ?>
 				up to the present.</b></p>
@@ -446,7 +446,7 @@
 
 				<p style="padding-left: 50px; padding-right: 50px;"> This is to further certify that <?php echo strtolower($emp_info[0]["Gender"])?> did not receive any advance payment from the company for <?php echo $emp_info[0]["Gender2"]?> SSS <?php echo strtolower($coe[0]["category"]) ?> benefit.</p>
 				
-				<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwordsExcept(strtolower($emp_info[0]["Salutation"]))." ".ucwordsExcept(strtolower(mb_convert_encoding($emp_info[0]["LName"], 'UTF-8', 'HTML-ENTITIES'))); ?>
+				<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of <?php echo ucwords(strtolower($emp_info[0]["Salutation"]))." ".ucwords(strtolower(mb_convert_encoding($emp_info[0]["LName"], 'UTF-8', 'HTML-ENTITIES'))); ?>
 				for the purpose of complying with the documentary requirements for <?php echo $emp_info[0]["Gender2"]?> SSS <?php echo strtolower($coe[0]["category"]) ?> benefit claim.</p>
 
 				<p style="padding-left: 50px; padding-right: 50px;">Given this <?php echo date('jS')." day of ".date('F Y'); ?> at <?php echo $companies[$emp_info[0]['CompanyID']]; ?>, Philippines.</p>
@@ -550,7 +550,7 @@
 			</b>and presently holding a <?php echo strtolower($emp_info[0]["StatusDesc"]); ?> appointment for the position of <b><?php echo $emp_info[0]["PositionDesc"]; ?>.</b></p>
 			<?php } ?>
 
-			<p style="padding-left: 50px; padding-right: 50px;"><?php echo ucwordsExcept(strtolower($emp_info[0]["Gender2"])); ?> current monthly compensation are as follows:</p>
+			<p style="padding-left: 50px; padding-right: 50px;"><?php echo ucwords(strtolower($emp_info[0]["Gender2"])); ?> current monthly compensation are as follows:</p>
 			<!-- nbsp for the pdf conversion, tcpdf doesn't support inline block, and padding. TCPDF has different implementation for tables -->
 			<p style="padding-left: 50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Basic Salary</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><?php if(true){echo number_format($emp_info[0]["MonthlyRate"], 2);}else{ echo "SAMPLE"; }; ?></b></p>
 			<?php if($emp_info[0]["Allowance"] != 0){ ?>
@@ -576,7 +576,7 @@
 				employee of <b><?php echo $emp_info[0]["CompanyName"]; ?></b> from <b><?php echo $emp_info[0]["HireDate"]; ?> to 
 			<?php echo $emp_info[0]["DateResigned"]; ?> </b> with last held position of <b><?php echo $emp_info[0]["PositionDesc"]; ?>.</b></p>
 
-			<p style="padding-left: 50px; padding-right: 50px;"><?php echo ucwordsExcept(strtolower($emp_info[0]["Gender2"])); ?> last monthly compensation are as follows:</p>
+			<p style="padding-left: 50px; padding-right: 50px;"><?php echo ucwords(strtolower($emp_info[0]["Gender2"])); ?> last monthly compensation are as follows:</p>
 			<!-- nbsp for the pdf conversion, tcpdf doesn't support inline block, and padding. TCPDF has different implementation for tables -->
 			<p style="padding-left: 50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Basic Salary</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><?php if(true){echo number_format($emp_info[0]["MonthlyRate"], 2);}else{ echo ""; }; ?></b></p>
 			<?php if($emp_info[0]["Allowance"] != 0){ ?>
@@ -615,7 +615,7 @@
 			</b>and presently holding a <?php echo strtolower($emp_info[0]["StatusDesc"]); ?> appointment for the position of <b><?php echo $emp_info[0]["PositionDesc"]; ?>.</b></p>
 			<?php } ?>
 
-			<p style="padding-left: 50px; padding-right: 50px;"><?php echo ucwordsExcept(strtolower($emp_info[0]["Gender2"])); ?> current monthly compensation are as follows:</p>
+			<p style="padding-left: 50px; padding-right: 50px;"><?php echo ucwords(strtolower($emp_info[0]["Gender2"])); ?> current monthly compensation are as follows:</p>
 			<!-- nbsp for the pdf conversion, tcpdf doesn't support inline block, and padding. TCPDF has different implementation for tables -->
 			<p style="padding-left: 50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Basic Salary</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><?php if(true){echo number_format($emp_info[0]["MonthlyRate"], 2);}else{ echo "SAMPLE"; }; ?></b></p>
 			<?php if($emp_info[0]["Allowance"] != 0){ ?>
@@ -641,7 +641,7 @@
 				employee of <b><?php echo $emp_info[0]["CompanyName"]; ?></b> from <b><?php echo $emp_info[0]["HireDate"]; ?> to 
 			<?php echo $emp_info[0]["DateResigned"]; ?> </b> with last held position of <b><?php echo $emp_info[0]["PositionDesc"]; ?>.</b></p>
 
-			<p style="padding-left: 50px; padding-right: 50px;"><?php echo ucwordsExcept(strtolower($emp_info[0]["Gender2"])); ?> last monthly compensation are as follows:</p>
+			<p style="padding-left: 50px; padding-right: 50px;"><?php echo ucwords(strtolower($emp_info[0]["Gender2"])); ?> last monthly compensation are as follows:</p>
 			<!-- nbsp for the pdf conversion, tcpdf doesn't support inline block, and padding. TCPDF has different implementation for tables -->
 			<p style="padding-left: 50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Basic Salary</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><?php if(true){echo number_format($emp_info[0]["MonthlyRate"], 2);}else{ echo ""; }; ?></b></p>
 			<?php if($emp_info[0]["Allowance"] != 0){ ?>
