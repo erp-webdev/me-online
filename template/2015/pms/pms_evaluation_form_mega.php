@@ -61,6 +61,15 @@
                 <p>Please wait...</p>
             </div>
 
+            <div ng-show="is_approved">
+                <table style="width:100%;">
+                    <tr style="background-color:#fff;">
+                        <td colspan="7" style="text-align:center;font-weight:bold;color:#A70606;">This evaluation form has been submitted.</td>
+                    </tr>
+                </table>
+                <br />
+            </div>
+
             <div ng-show="!loading">
                 <h2 class="mediumtext lorangetext">
                     <a href="<?php echo WEB; ?>/pms"><i class="mediumtext fa fa-arrow-left"
@@ -190,7 +199,7 @@
                                         </div> -->
                                         <br><br>
                                         <strong>Remarks</strong> <br>
-                                        <textarea ng-model="competency.Remarks" cols="60" rows="3" placeholder="Add your remarks" ng-disabled="is_approved" required class="checker caRemarks" minlength="10"></textarea>
+                                        <textarea ng-model="competency.Remarks" cols="60" rows="3" placeholder="Add your remarks" ng-disabled="is_approved" required class="checker caRemarks" minlength="25"></textarea>
                                     </td>
                                     <td style="text-align:center;width:25px;">
                                         <span ng-bind="competency.RequiredProficiency"></span>
@@ -217,7 +226,7 @@
                                         <b ng-bind="competency.Competency" ></b>
                                         <br><br>
                                         <strong>Remarks</strong><br>
-                                        <textarea ng-model="competency.Remarks" cols="60" rows="2" placeholder="Add your remarks" ng-disabled="is_approved" required class="checker caRemarks" minlength="10"></textarea>
+                                        <textarea ng-model="competency.Remarks" cols="60" rows="2" placeholder="Add your remarks" ng-disabled="is_approved" required class="checker caRemarks" minlength="25"></textarea>
                                     </td>
                                     <td style="text-align:center;width:25px;">
                                         <span ng-bind="competency.RequiredProficiency"></span>
@@ -276,7 +285,7 @@
                                     <span ng-bind="goal.MeasureOfSuccess"  ng-show="goal.Goals != '8 hrs mandatory training' && goal.id != null"></span>
                                     <br> <br>
                                     <strong>Comments</strong><br>
-                                    <textarea class="checker" cols="80" rows="2" ng-model="goal.Comments" placeholder="Provide your comments" ng-disabled="is_approved" minlength="10" required></textarea>
+                                    <textarea class="checker" cols="80" rows="2" ng-model="goal.Comments" placeholder="Provide your comments" ng-disabled="is_approved" minlength="25" required></textarea>
                                     <span ng-show="goal.id == null && goal.Goals != '8 hrs mandatory training'" >
                                     <br><br>
                                     <a class="smlbtn" id="delrowg" style="background-color:#D20404;" ng-click="deleteGoal($index)">Delete</a>
@@ -315,10 +324,10 @@
                                     <a class="smlbtn"style="background-color:#D20404;" ng-click="deleteNextGoal($index)" ng-show="!is_approved">Delete</a>
                                 </td>
                                 <td style="text-align:center;">
-                                    <textarea class="checker" cols="40" rows="5" minlength="10" ng-model="goal.Goals" required ng-disabled="is_approved"></textarea>
+                                    <textarea class="checker" cols="40" rows="5" minlength="25" ng-model="goal.Goals" required ng-disabled="is_approved"></textarea>
                                 </td>
                                 <td style="text-align:center;">
-                                    <textarea class="checker" cols="40" rows="5" minlength="10" ng-model="goal.MeasureOfSuccess" required ng-disabled="is_approved"></textarea>
+                                    <textarea class="checker" cols="40" rows="5" minlength="25" ng-model="goal.MeasureOfSuccess" required ng-disabled="is_approved"></textarea>
                                 </td>
                             </tr>
                         </tbody>

@@ -50,6 +50,15 @@
                 <br />
             </div>
 
+            <div ng-show="is_approved">
+                <table style="width:100%;">
+                    <tr style="background-color:#fff;">
+                        <td colspan="7" style="text-align:center;font-weight:bold;color:#A70606;">This evaluation form has been submitted.</td>
+                    </tr>
+                </table>
+                <br />
+            </div>
+
             <div ng-show="!loading && record !== ''">
                 <h2 class="mediumtext lorangetext">
                     <a href="<?php echo WEB; ?>/pms"><i class="mediumtext fa fa-arrow-left"
@@ -192,13 +201,13 @@
                                         <tr>
                                             <td style="width: 100px">Results Achieved: </td>
                                             <td>
-                                                <textarea class="checker" cols="80" rows="2" ng-model="goal.ResultsAchieved"  minlength="10"  ng-disabled="is_approved" required></textarea>
+                                                <textarea class="checker" cols="80" rows="2" ng-model="goal.ResultsAchieved"  minlength="25"  ng-disabled="is_approved" required></textarea>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td style="width: 100px">Comments: </td>
                                             <td>
-                                                <textarea class="checker" cols="80" rows="2" ng-model="goal.Comments" minlength="10"  ng-disabled="is_approved" required></textarea>
+                                                <textarea class="checker" cols="80" rows="2" ng-model="goal.Comments" minlength="25"  ng-disabled="is_approved" required></textarea>
                                             </td>
                                         </tr>
                                     </table>
@@ -264,7 +273,7 @@
                                 <!-- cooments and achievments textarea -->
                                 Comments:
                                 <span class="px" style="font-style:italic;margin-left:5px;font-size:10px;" ng-show="competency.Rating != 3">(*Required field, if your rating is greater than or less than 3 to justify your rating to this employee)</span>
-                                <textarea id="" cols="90" rows="3" class="checker" ng-model="competency.Remarks" ng-required="competency.Rating != 3"  ng-disabled="is_approved"></textarea>
+                                <textarea id="" cols="90" rows="3" class="checker" ng-model="competency.Remarks" ng-required="competency.Rating != 3"  ng-disabled="is_approved" ng-attr-minlength="{{competency.Rating != 3 ? 25 : 0}}"></textarea>
                                 </div>
                                 <div style="clear:both;"></div>
 
@@ -302,7 +311,7 @@
                                             OBJECTIVE <span ng-bind="$index+1"></span>
                                         </p>
                                         <div style="float:left;width:380px;">
-                                            <textarea style="width:167%;" class="checker" ng-model="next_goal.Objective" required  ng-disabled="is_approved" minlength="10"></textarea>
+                                            <textarea style="width:167%;" class="checker" ng-model="next_goal.Objective" required  ng-disabled="is_approved" minlength="25"></textarea>
                                         </div>
                                         <div style="width:60px;float:right;font-size:9px;">
                                             <p style="font-weight:bold;">Weight</p>
@@ -311,7 +320,7 @@
                                         <div style="clear:both;"></div>
                                         <div style="margin-top:-15px;">
                                         <p> Measurement of accomplishment: </p>
-                                            <textarea style="width:90%;" class="checker" ng-model="next_goal.MeasureOfSuccess" required  ng-disabled="is_approved" minlength="10"></textarea>
+                                            <textarea style="width:90%;" class="checker" ng-model="next_goal.MeasureOfSuccess" required  ng-disabled="is_approved" minlength="25"></textarea>
                                         
                                             <!-- <input type="text" style="margin-top:-8px;width:89%;" class="smltxtbox checker" ng-model="next_goal.MeasureOfSuccess" required  ng-disabled="is_approved" minlength="10"> -->
                                             <div style="clear:both;"></div>
