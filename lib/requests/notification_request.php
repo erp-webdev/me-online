@@ -4741,7 +4741,8 @@
 										'ASIAAPMI' => ['ASIAAPMI'],
 										'MALL_ADMIN' => ['Boracay'],
 										'AGILE' => ['AGILE'],
-										'MREIT' => ['MREIT_FMI', 'MREIT_INC', 'MREIT_PMI']
+										'MREIT' => ['MREIT_FMI', 'MREIT_INC', 'MREIT_PMI'],
+										'MEGAPARK' => ['MEGAPARK']
 									);
 
 								foreach ($admin_companies as $key => $admin_company) {
