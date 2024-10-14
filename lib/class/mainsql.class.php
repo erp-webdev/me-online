@@ -4061,7 +4061,7 @@ class mainsql {
         }, $words);
     
         // Join the words back into a single string
-        echo implode(' ', $words);
+        return implode(' ', $words);
     }
     
 }
