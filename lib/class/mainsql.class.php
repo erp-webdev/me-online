@@ -4052,15 +4052,12 @@ class mainsql {
                 'CAD'
             ];
 
-        // Convert the string to lowercase
-        $string = strtolower($string);
-    
         // Split the string into words
         $words = explode(' ', $string);
     
         // Capitalize each word except for those in the exceptions list
         $words = array_map(function($word) use ($exceptions) {
-            return in_array($word, $exceptions) ? $word : ucfirst($word);
+            return in_array($word, $exceptions) ? $word : ucfirst(strtolower($word));
         }, $words);
     
         // Join the words back into a single string
