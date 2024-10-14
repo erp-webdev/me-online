@@ -4051,7 +4051,7 @@ class mainsql {
                 'AMD',
                 'CAD'
             ];
-
+    
         // Split the string into words
         $words = explode(' ', $string);
     
