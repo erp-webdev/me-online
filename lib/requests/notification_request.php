@@ -48,6 +48,38 @@
 	$lmssql = new lmssql;
     $mail = new Mail;
 
+    function ucwordsExcept($string, $exceptions = []) {
+        return '';
+        // Except commonly used words for UPPERCASE
+        if(!$exceptions)
+            $exceptions = [
+                'IT',
+                'I',
+                'II',
+                'III',
+                'IV',
+                'ERP',
+                'ISM',
+                'CMD',
+                'MAG',
+                'HR',
+                'AMD',
+                'CAD'
+            ];
+    
+        // Split the string into words
+        $words = explode(' ', $string);
+    
+        // Capitalize each word except for those in the exceptions list
+        $words = array_map(function($word) use ($exceptions) {
+            return in_array($word, $exceptions) ? $word : ucfirst(strtolower($word));
+        }, $words);
+    
+        // Join the words back into a single string
+        return implode(' ', $words);
+    }
+
+
     /* MAIN DB CONNECTOR - END */
 
     $logdata = $logsql->get_member($_SESSION['megasubs_user']);
