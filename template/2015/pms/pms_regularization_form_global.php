@@ -150,7 +150,8 @@
                         <h4><span ng-bind="record.Rater1FullName"></span></h4>
                         <p>
                             <textarea spellcheck="true" ng-model="record.PerformanceSummary" class="perfsummary checker" style="width:98.4%;min-height:100px;" required ng-show="record.for_approval_level == 1" ng-disabled="is_approved || record.for_approval_level > 1" minlength="25"></textarea>
-                            <span ng-show="record.for_approval_level > 1 || record.status == 'Completed'" ng-bind="record.PerformanceSummary"></span>
+                            <span ng-show="record.for_approval_level > 1 || is_approved" ng-bind="record.PerformanceSummary"></span>
+                            <span  ng-show="record.for_approval_level == 1" style="font-style:italic;margin-left:5px;font-size:10px;">Note: Salary increase will be based on the Overall Performance Rating.</span>
                         </p>
                     </div><!-- End of part 2 -->
                     <br />
@@ -470,15 +471,15 @@
                     <br />
 
                     <div style="border:1px solid #fff;padding-left:5px;width:98.6%;">
-                        <div ng-show="record.Rater2Comment != null && (record.for_approval_level > 2 || record.status == 'Completed')">
+                        <div ng-show="record.Rater2Comment != null && (record.for_approval_level > 2 || is_approved)">
                             <h4><span ng-bind="record.Rater2FullName"></span>' Comment</h4>
                             <p ng-bind="record.Rater2Comment"></p>
                         </div>
-                        <div ng-show="record.Rater3Comment != null && (record.for_approval_level > 3 || record.status == 'Completed')">
+                        <div ng-show="record.Rater3Comment != null && (record.for_approval_level > 3 || is_approved)">
                             <h4><span ng-bind="record.Rater3FullName"></span>' Comment</h4>
                             <p ng-bind="record.Rater3Comment"></p>
                         </div>
-                        <div ng-show="record.Rater4Comment != null && (record.for_approval_level > 4 || record.status == 'Completed')">
+                        <div ng-show="record.Rater4Comment != null && (record.for_approval_level > 4 || is_approved)">
                             <h4><span ng-bind="record.Rater4FullName"></span>' Comment</h4>
                             <p ng-bind="record.Rater4Comment"></p>
                         </div>
@@ -488,6 +489,7 @@
                             <textarea spellcheck="true"  ng-model="record.Rater2Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 2 && !is_approved"  ng-disabled="is_approved"></textarea>
                             <textarea spellcheck="true"  ng-model="record.Rater3Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 3 && !is_approved"  ng-disabled="is_approved"></textarea>
                             <textarea spellcheck="true"  ng-model="record.Rater4Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 4 && !is_approved"  ng-disabled="is_approved"></textarea>
+                            <span style="font-style:italic;margin-left:5px;font-size:10px;">Note: Salary increase will be based on the Overall Performance Rating.</span>
                         </div>
                     </div>
                     <br>
