@@ -131,7 +131,7 @@
                         $leavepost['DBAPPROVER05'] = $_POST['dbapprover4'];
                         $leavepost['DBAPPROVER06'] = $_POST['dbapprover5'];
 
-                        echo "<script> alert('Company nurse has been added as first approver.'); </script>";
+                        echo "<script> alert('Company nurse has been added as first approver on 3 or more day sick leave.'); </script>";
                     
                     else:
                         $leavepost['APPROVER01'] = $_POST['approver1'];
