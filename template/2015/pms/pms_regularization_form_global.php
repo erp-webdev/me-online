@@ -50,14 +50,24 @@
                 <br />
             </div>
 
-            <div ng-show="is_approved">
+            <div ng-show="is_approved && record.DateCompleted == null">
                 <table style="width:100%;">
                     <tr style="background-color:#fff;">
-                        <td colspan="7" style="text-align:center;font-weight:bold;color:#A70606;">This evaluation form has been submitted.</td>
+                        <td colspan="7" style="text-align:center;font-weight:bold;color:#A70606;">This evaluation form has been submitted for the next approval.</td>
                     </tr>
                 </table>
                 <br />
             </div>
+
+            <div ng-show="is_approved && record.DateCompleted != null">
+                <table style="width:100%;">
+                    <tr style="background-color:#fff;">
+                        <td colspan="7" style="text-align:center;font-weight:bold;color:#A70606;">This evaluation form has been completed.</td>
+                    </tr>
+                </table>
+                <br />
+            </div>
+
 
             <div ng-show="!loading && record !== ''">
                 <h2 class="mediumtext lorangetext">
