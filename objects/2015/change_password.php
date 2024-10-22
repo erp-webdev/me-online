@@ -21,19 +21,34 @@
             $newpass = $_POST['npassword'];
             $conpass = $_POST['cpassword'];
             $dbname = $_POST['dbname'];
-            $chkmem = $register->check_member($idnum, $oldpass);                
-            if (!$chkmem) : 
-                echo '{"success":false,"error":"Error: Invalid old password"}';
-                exit(); 
-            endif;
+
+            $chkmem = $register->get_member($idnum, $dbname);             
+
+            if ($chkmem) {
+
+                if ($chkmem[0]['PasswordHash']) {
+                    if (!(password_verify($oldpass, $chkmem[0]['PasswordHash']))) {
+                        echo '{"success":false,"error":"Error: Invalid old password"}';
+                        exit(); 
+                    }
+                } else {
+                    $chkmem2 = $register->check_member($idnum, $oldpass);    
+                    if(!$chkmem2){
+                        echo '{"success":false,"error":"Error: Invalid old password"}';
+                        exit(); 
+                    }
+                }
+            }
+                
             if ($newpass != $conpass) : 
                 echo '{"success":false,"error":"Error: Password mismatch"}';
                 exit(); 
             endif;
              
             if(isStrongPassword($newpass)){
-                $edit_password = $register->change_password($newpass, $idnum, $dbname);
-        
+                $hashedPassword = password_hash($newpass, PASSWORD_DEFAULT);
+                $edit_password = $register->change_password($newpass, $hashedPassword, $idnum, $dbname);
+                
                 //AUDIT TRAIL
                 $post['EMPID'] = $profile_idnum;
                 $post['TASKS'] = "CHANGE_PASSWORD";
