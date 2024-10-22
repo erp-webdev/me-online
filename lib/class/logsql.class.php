@@ -97,7 +97,7 @@ class logsql {
 	{
 
 		$sql = "SELECT COUNT(EmpID) AS mcount FROM VIEWHREMPMASTER WHERE EmpID = '".$username."' ";
-        $sql .= " AND CONVERT(VARBINARY(250),LTRIM(RTRIM(EPassword))) = CONVERT(VARBINARY(250),LTRIM(RTRIM('".$password."'))) ";
+        if ($password) : $sql .= " AND CONVERT(VARBINARY(250),LTRIM(RTRIM(EPassword))) = CONVERT(VARBINARY(250),LTRIM(RTRIM('".$password."'))) "; endif;
         $sql .= " AND Active = 1";
 		$result = $this->get_row($sql);
 		if($result[0]['mcount'] <= 0) :
@@ -146,11 +146,26 @@ class logsql {
 		return $result;
 	}
 
-    function get_member2($username, $password, $dbname = NULL)
+    function insert_reset_token($empid, $emailadd, $reset_token){
+        $sql = "INSERT INTO users(EmpID, EmailAdd, reset_token, reset_token_expiry, created_at) VALUES('".$empid."', '".$emailadd."', '".$reset_token."', DATEADD(HOUR, 1,GETDATE()), GETDATE())";
+        $this->get_execute($sql);
+
+        $sql = "SELECT TOP 1 * FROM users where reset_token='".$reset_token."'";
+		$result = $this->get_row($sql);
+		return $result;
+    }
+
+    function check_reset_token($reset_token){
+        $sql = "SELECT * FROM users where reset_token='".$reset_token."' AND reset_token_expiry >  GETDATE()";
+		$result = $this->get_row($sql);
+		return $result;
+    }
+
+    function get_member2($username, $password=NULL, $dbname = NULL)
 	{
 		$sql = "SELECT *
             FROM VIEWHREMPMASTER WHERE EmpID = '".$username."' ";
-        $sql .= " AND CONVERT(VARBINARY(250),LTRIM(RTRIM(EPassword))) = CONVERT(VARBINARY(250),LTRIM(RTRIM('".$password."'))) ";
+         if ($password) : $sql .= " AND CONVERT(VARBINARY(250),LTRIM(RTRIM(EPassword))) = CONVERT(VARBINARY(250),LTRIM(RTRIM('".$password."'))) "; endif;
         if ($dbname) : $sql .= " AND DBNAME = '".$dbname."' "; endif;
         $sql .= " AND Active = 1";
 		$result = $this->get_row($sql);
@@ -355,6 +370,7 @@ class logsql {
         if ($dbname) : $sql .= " AND DBNAME = '".$dbname."' "; endif;
         $sql .= " AND Active = 1";
 		$result = $this->get_row($sql);
+
 		return $result;
 	}
 

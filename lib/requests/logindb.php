@@ -10,7 +10,6 @@
 
         $expire = time() + 60;
         $_SESSION[$cookiename] = $username;
-        $_SESSION['megasubs_password'] = $password;
         $_SESSION['megasubs_db'] = $dbname;
 
         //AUDIT TRAIL
