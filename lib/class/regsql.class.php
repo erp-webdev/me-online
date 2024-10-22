@@ -347,9 +347,10 @@ class regsql {
         endif;
     }
 
-    function change_password($newpassword, $empidnum, $dbname)
+    function change_password($newpassword, $hashedPassword, $empidnum, $dbname)
     {
         $sql = "UPDATE HREmpMaster SET
+            PasswordHash = '".$hashedPassword."', 
             EPassword = '".$newpassword."'
             WHERE EmpID = '".$empidnum."'";
 
