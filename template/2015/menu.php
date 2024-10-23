@@ -100,7 +100,7 @@
                         <?php endif; ?>
 
 						<?php //if ($profile_dbname != 'ECINEMA' && $profile_dbname != 'EPARKVIEW' && $profile_dbname != 'NEWTOWN') : ?>
-                        <?php if ($profile_dbname != 'EPARKVIEW' && $profile_dbname != 'NEWTOWN') : ?>
+                        <?php if ($profile_dbname != 'EPARKVIEW' && $profile_dbname != 'NEWTOWN' && $profile_dbname != 'GLOBAL_HOTEL' && $profile_dbname != 'ASIAAPMI') : ?>
                         <a href="<?php echo WEB; ?>/pms" onclick="clickAndDisable(this);"><div<?php if (($section == "paf")||($section == "pafevaluate")||($section == "pafview")) { ?> class="dselected"<?php } ?>>Performance Management</div></a>
                         <?php endif; ?>
 
