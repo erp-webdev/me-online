@@ -280,7 +280,7 @@
                 $receivers = $tblsql->get_users_bulkmail(0, 0, NULL, 0, $activity_db);
                 foreach ($receivers as $key => $value) :
 
-                    $message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 100%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>New ".($activity_db == 'GL' ? 'Global Companies' : 'Megaworld Corporation')." Activity Published</span><br><br>Hi ".$value['FullName'].",<br><br>";
+                    $message = "<div style='display: block; border: 5px solid #024485; padding: 10px; font-size: 12px; font-family: Verdana; width: 100%;'><span style='font-size: 18px; color: #024485; font-weight: bold;'>New ME Online Activity Published</span><br><br>Hi ".$value['FullName'].",<br><br>";
                     $message .= "A new activity has just been published!<br><br>";
                     $message .= "<b>Re: <span style='color: #024485;'>".$activity_title."</span></b><br><br>";
                     $message .= "Click the link to go to activity page.<br>";
@@ -291,7 +291,7 @@
         
                     if ($activity_db == 'GL') :        
                         $message .= "Thanks,<br>";
-                        $message .= "ME Online - Global Companies";
+                        $message .= "ME Online";
                         $message .= "</div>";
 
                         $headers = "From: noreply@globalcompanies.com.ph\r\n";
@@ -299,7 +299,7 @@
                         $headers .= "Reply-To: noreply@globalcompanies.com.ph\r\n";
                     else :
                         $message .= "Thanks,<br>";
-                        $message .= "ME Online - Megaworld Corporation";
+                        $message .= "ME Online";
                         $message .= "</div>";
 
                         $headers = "From: meonline-act-noreply@alias.megaworldcorp.com\r\n";
