@@ -2,6 +2,11 @@
 
     $approvers = $mainsql->get_approvers($logname, 0, $dbname);
 
+    $COMPANY_NURSE_EMPID = "2017-09-1287";
+    $COMPANY_NURSE_DBNAME = "GL";
+    $COMPANY_NURSE_NAME = "VILLA, SHIELA MARIE MIRABUNA";
+    $COMPANY_NURSE_DBEXCLUDE = ['ASIAAPMI', 'GLOBAL_HOTEL'];
+
     foreach($approvers as $key => $value) :
 
         if ($value['TYPE'] == 'frmApplicationLVWeb') :
