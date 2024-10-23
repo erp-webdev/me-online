@@ -1646,6 +1646,14 @@
 
                     $leave_from = strtotime("+1 day", $leave_from);
                 }
+
+                if ($leave_type == 'L01' && $i > 2 && !in_array($profile_dbname, $COMPANY_NURSE_DBEXCLUDE)) :  ?>
+                    <tr>
+                        <td class="centertalign" colspan="4">** Company nurse will be added as initial approver.</td>
+                    </tr>
+                <?php
+                endif;
+
                 if (!$i) :
                 ?>
                     <tr>
@@ -1658,7 +1666,24 @@
             ?>
 			<input type="checkbox" style="display:none" id="clickUpdate" attribute="<?php echo $udates; ?>" class="leave_pay"/>
             </table>
-			<script>$('#clickUpdate').trigger('click');</script>
+			<script>
+                $('#clickUpdate').trigger('click');
+                
+                <?php  if (!in_array($profile_dbname, $COMPANY_NURSE_DBEXCLUDE)) :  ?>
+
+                        let leave_type = $('[name^="leave_type"]').val();
+                        let durations = $('[name^="leave_duration"]').length;
+
+                        if(durations >= 3 && leave_type == 'L01'){
+                            $('.company_nurse').show();
+                        }else{
+                            $('.company_nurse').hide();
+                        }
+
+                <?php endif; ?>
+                
+            </script>
+            
             <?php
         break;
 
