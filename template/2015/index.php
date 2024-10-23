@@ -164,12 +164,14 @@
                                         <img width="150px" src="<?php echo WEB; ?>/images/quality-policy-icon.png" />
                                     </a>
                                 </div> 
-
+                                
+                                <?php if (!in_array($profile_comp, ['ASIAAPMI', 'GLOBALHOTEL'])) : ?>
                                 <div id="mainnotification" class="lefttalign whitetext marginbottom25" style="">
                                     <a href="https://docs.google.com/forms/d/e/1FAIpQLSeZ3HHajc62Dvas0CL7O5mN1QGPX8K1CWmMZOybhjhYFowWHw/viewform?authuser=3" target="_blank">
                                         <img width="150px" src="<?php echo WEB; ?>/images/traf.png" />
                                     </a>
                                 </div> 
+                                <?php endif; ?>
                                 
                                 <div id="mainnotification" class="lefttalign whitetext marginbottom25" style="">
                                     <a href="https://tinyurl.com/yyp6m44z" target="_blank">
