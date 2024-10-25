@@ -91,7 +91,7 @@
 
                     let additionalColumn = ``;
                     if(group.EvaluationType == 'Regularization'){
-                        additionalColumn = `<th class="thr" style="text-align: left">End Of Contract</th>`;
+                        additionalColumn = `<th class="thr" style="text-align: left; white-space: nowrap;">End Of Contract</th>`;
                     }
                     let empHtml = '';
                     let tableHtml = `<table class="tdata" cellspacing="0" width="100%" >
@@ -187,7 +187,7 @@
 
                                 if(resetTime(evaldate) <= resetTime(current) && (evaluations[i].EvaluationDate)){
                                     empHtml += `<tr>
-                                            <td class="thr" style="text-align: center">${btn}</td>
+                                            <td class="thr" style="text-align: center; white-space: nowrap;">${btn}</td>
                                             <td class="thr">${evaluations[i].FullName}</td>
                                             <td class="thr" style="display:none">${evaluations[i].Rank} /<br> ${evaluations[i].Position}</td>
                                             <td class="thr" style="text-align: center">${formattedDate}</td>
