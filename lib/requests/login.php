@@ -67,7 +67,7 @@
                         $attempt = $login_failed_attempt[0]['login_failed'] + 1;
                         $logsql->update_login_failed($username, $attempt);
 
-                        $success = ($attempt==3) ? 2 : 0;
+                        $success = ($attempt==MAX_FAILED_LOGIN) ? 2 : 0;
                     }
                     else{
                         $success=2;
