@@ -22,11 +22,12 @@
          if ($expiry) {
             if($_POST['resetpassword'] == $_POST['confirmresetpassword']){
                if(isStrongPassword($_POST['resetpassword'])){
-                  $accounts = $logsql->get_member_by_email($expiry[0]['EmailAdd']);
+                  $accounts = $_SESSION['megasubs_password'] ? $logsql->get_member2($expiry[0]['EmpID'], $_SESSION['megasubs_password']) : $logsql->get_member_by_email($expiry[0]['EmailAdd']);
    
                   if($accounts){
                      foreach($accounts as $acc){
-                        $hashedPassword = password_hash($_POST['resetpassword'], PASSWORD_DEFAULT);
+                        $passwordSalt = $_POST['resetpassword'] . 'N3vr$_';
+                        $hashedPassword = password_hash($passwordSalt, PASSWORD_DEFAULT);
                         $register->change_password( $hashedPassword, $expiry[0]['EmpID'], $acc['DBNAME']);
                      }
 

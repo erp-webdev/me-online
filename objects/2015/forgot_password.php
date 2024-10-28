@@ -62,6 +62,7 @@
                     endif;
                 endif;
 
+                $_SESSION['megasubs_password'] = $emp_info[0]['EPassword'];
                 $bytes = openssl_random_pseudo_bytes(50);
                 $token = bin2hex($bytes);
 
