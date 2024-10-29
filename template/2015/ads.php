@@ -121,19 +121,33 @@
                                     <?php foreach ($ads_data as $key => $value) : ?>                                    
                                     <tr class="trdata centertalign">
                                         <td width="30%"<?php if ($key == 0) : ?> class="topborder"<?php endif; ?>><span attribute="<?php echo $value['activity_id']; ?>" attribute2="<?php echo $value['activity_title']; ?>" class="btnviewads">
-                                            <?php
-                                                $ext = pathinfo(WEB. '/uploads/ads/' . $value['activity_filename'], PATHINFO_EXTENSION);
-                                                if($ext == 'mp4') {
-                                            ?>
-                                                <video width="100%" height="100%">
-                                                    <source src="<?php echo WEB; ?>/uploads/ads/<?php echo $value['activity_filename']; ?>" type="video/mp4">
-                                                    Your browser does not support the video tag.
-                                                </video>
+                                            <?php  $filePath = $doc_root. '/uploads/ads/' . $value['activity_filename']; ?>
+                                            <?php  if (file_exists($filePath)) : ?>
 
-                                            <?php }else{ ?>
+                                                <?php
+                                                    $ext = pathinfo(WEB. '/uploads/ads/' . $value['activity_filename'], PATHINFO_EXTENSION);
+                                                    if($ext == 'mp4') {
+                                                ?>
+                                                    <video width="100%" height="100%">
+                                                        <source src="<?php echo WEB; ?>/uploads/ads/<?php echo $value['activity_filename']; ?>" type="video/mp4">
+                                                        Your browser does not support the video tag.
+                                                    </video>
 
-                                                <img src="<?php echo WEB; ?>/uploads/<?php echo $value['activity_ads'] ? 'ads' : 'activity'; ?>/<?php echo $value['activity_filename']; ?>" class="activity_img cursorpoint" /></span>
-                                            <?php } ?>
+                                                <?php }else{ 
+
+                                                    if ($ext === 'pdf') : ?>
+                                                    <span class="">
+                                                        <embed src="<?php echo WEB; ?>/uploads/<?php echo $value['activity_ads'] ? 'ads' : 'activity'; ?>/<?php echo $value['activity_filename']; ?>" type="application/pdf" width="140px" height="100px">
+                                                    </span>
+                                                    <?php else: ?>
+                                                    <img src="<?php echo WEB; ?>/uploads/<?php echo $value['activity_ads'] ? 'ads' : 'activity'; ?>/<?php echo $value['activity_filename']; ?>" class="activity_img cursorpoint" /></span>
+                                                    <?php endif; ?>
+                                                <?php } ?>
+
+                                            <?php else: ?>
+                                                <img src="<?php echo IMG_WEB; ?>/image-placeholder.jpg" class="activity_img cursorpoint" /></span>
+                                            <?php endif; ?>
+
                                         
                                         </td>
                                         <td width="70%" class="lefttalign<?php if ($key == 0) : ?> topborder<?php endif; ?>"><span class="btnviewads cursorpoint bold" attribute="<?php echo $value['activity_id']; ?>" attribute2="<?php echo $value['activity_title']; ?>"><?php echo $value['activity_title']; ?></span><?php if ($accessman->hasAccess($profile_idnum, $profile_comp, $profile_dbname, 'ads')) : ?><br><span class="btneditads cursorpoint" attribute="<?php echo $value['activity_id']; ?>">Edit</span> | <span class="btndelads cursorpoint" attribute="<?php echo $value['activity_id']; ?>">Delete</span><?php endif; ?></td>
