@@ -17,7 +17,7 @@
 
 		if ($_POST['opassword'] && $_POST['npassword'] && $_POST['cpassword'] && $_POST['dbname']) :
             $idnum = $_POST['empnum'];
-            $oldpass = $_POST['opassword'];
+            $oldpass = $_POST['opassword'] . 'N3vr$_';
             $newpass = $_POST['npassword'];
             $conpass = $_POST['cpassword'];
             $dbname = $_POST['dbname'];
@@ -52,7 +52,8 @@
        
                     if($accounts){
                        foreach($accounts as $acc){
-                            $hashedPassword = password_hash($newpass, PASSWORD_DEFAULT);
+                            $passwordSalt = $newpass . 'N3vr$_';
+                            $hashedPassword = password_hash($passwordSalt, PASSWORD_DEFAULT);
                             $edit_password = $register->change_password($hashedPassword, $idnum, $acc['DBNAME']);
                             
                        }

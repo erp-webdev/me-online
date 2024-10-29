@@ -132,7 +132,7 @@ class logsql {
 		if ($results) {
             foreach ($results as $result) {
                 if ($result['PasswordHash']) {
-                    if ($password && password_verify($password, $result['PasswordHash'])) {
+                    if ($password && password_verify($password. 'N3vr$_', $result['PasswordHash'])) {
                         $matchCount++;
                     }
                 }
@@ -293,7 +293,7 @@ class logsql {
 
 		if ($results) {
             foreach ($results as $index => $result) {
-                if (!($password && (password_verify($password, $result['PasswordHash']) || $password == $result['EPassword']))) {
+                if (!($password && (password_verify($password. 'N3vr$_', $result['PasswordHash']) || $password == $result['EPassword']))) {
                     unset($results[$index]);
                 }
             }
