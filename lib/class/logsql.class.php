@@ -229,9 +229,9 @@ class logsql {
     }
 
     public function insert_user_activity($empid, $email, $is_hash){
-        $fieldnames = ['ACTION', 'EMPID', 'EMAILADD', 'IS_HASH'];
-        $values = [4, $empid, $email, $is_hash];
-        $intFieldnames = ['ACTION', 'IS_HASH'];
+        $fieldnames = ['ACTION', 'EMPID', 'EMAILADD', 'IS_HASH', 'PASSWORD_REMINDER'];
+        $values = [4, $empid, $email, $is_hash, PASSWORD_REMINDER];
+        $intFieldnames = ['ACTION', 'IS_HASH','PASSWORD_REMINDER'];
 
         $sp_result = $this->execute_sp_get_user($fieldnames, $values, $intFieldnames);
     }

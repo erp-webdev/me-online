@@ -3,7 +3,7 @@
       $user = $logsql->check_login_user($profile_idnum, $profile_email);
       $last_password_update = $user[0]['password_update_at'];
 
-      if(date('Y-m-d') >= date('Y-m-d', strtotime('+'.PASSWORD_REMINDER.' month', strtotime($last_password_update)))){
+      if(date('Y-m-d') >= date('Y-m-d', strtotime('+'.PASSWORD_UPDATE_IF_WAIVE.' month', strtotime($last_password_update)))){
          $waive = $user[0]['password_waive'] ? $user[0]['password_waive'] + 1 : 1;
 
          if($waive<=MAX_PASSWORD_WAIVE){
@@ -17,4 +17,9 @@
    }
 
    echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."'</script>";
+
+
+   //simulation
+   //
 ?>
+
