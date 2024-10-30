@@ -220,22 +220,34 @@
             $act_id = $_POST['actid'];
     
             $single_activity = $tblsql->get_activities($act_id);
-            $largeword = array('View this Ad on Different Level', 'YES, Make it Bigger', 'Don\'t See Anything with this Tiny Image?');
-            $whatlword = $largeword[rand(0, 2)];
+            $largeword = array('View Ad');
+            $whatlword = 'View Ad';
+            // $whatlword = $largeword[rand(0, 2)];
             
             ?>
             <div class="centertalign">
-                <?php
-                    $ext = pathinfo(WEB. '/uploads/ads/' . $single_activity[0]['activity_filename'], PATHINFO_EXTENSION);
-                    if($ext == 'mp4') {
-                ?>
-                    <video width="100%" height="100%" autoplay controls>
-                        <source src="<?php echo WEB; ?>/uploads/ads/<?php echo $single_activity[0]['activity_filename']; ?>" type="video/mp4">
-                        Your browser does not support the video tag.
-                        </video>
-                <?php }else{ ?>
-                    <img src="<?php echo WEB; ?>/uploads/ads/<?php echo $single_activity[0]['activity_filename']; ?>" class="width100per" />
-                <?php }?>
+                <?php  $filePath = $doc_root. '/uploads/ads/' . $single_activity[0]['activity_filename']; ?>
+                <?php  if (file_exists($filePath)) : ?>
+                     
+                    <?php
+                        $ext = pathinfo(WEB. '/uploads/ads/' . $single_activity[0]['activity_filename'], PATHINFO_EXTENSION);
+                        if($ext == 'mp4') {
+                    ?>
+                        <video width="100%" height="100%" autoplay controls>
+                            <source src="<?php echo WEB; ?>/uploads/ads/<?php echo $single_activity[0]['activity_filename']; ?>" type="video/mp4">
+                            Your browser does not support the video tag.
+                            </video>
+                    <?php }elseif($ext == 'pdf'){ ?>
+                        <embed src="<?php echo WEB; ?>/uploads/ads/<?php echo $single_activity[0]['activity_filename']; ?>" type="application/pdf" width="100%" height="350px">
+                    <?php }else{ ?>
+                        <img src="<?php echo WEB; ?>/uploads/ads/<?php echo $single_activity[0]['activity_filename']; ?>" class="width100per" />
+                    <?php }?>
+
+                <?php  else: ?>
+
+                    <img src="<?php echo IMG_WEB; ?>/image-placeholder.jpg" class="width100per" />
+
+                <?php  endif; ?>
 
                 <a href="<?php echo WEB; ?>/uploads/ads/<?php echo $single_activity[0]['activity_filename']; ?>" target="_blank"><button class="bigbtn"><?php echo $whatlword; ?></button></a>
             </div>
