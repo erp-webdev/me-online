@@ -845,7 +845,7 @@
 					'prepared' => [
 						'name' => 'MA. VERONICA S. TERMULO',
 						'id' => '2011-03-V837',
-						'designation' => 'Payroll Supervisor', 
+						'designation' => 'Assistant Payroll Manager', 
 						'esign' => 'coe_mtermulo.png',
 						'email' => 'vtermulo@megaworldcorp.com'
 					],
@@ -886,7 +886,7 @@
 					'prepared' => [
 						'name' => 'MA. VERONICA S. TERMULO',
 						'id' => '2011-03-V837',
-							'designation' => 'Payroll Supervisor', 
+							'designation' => 'Assistant Payroll Manager', 
 							'esign' => 'coe_mtermulo.png',
 							'email' => 'vtermulo@megaworldcorp.com'
 					],
@@ -926,7 +926,7 @@
 					'prepared' => [
 						'name' => 'MA. VERONICA S. TERMULO',
 						'id' => '2011-03-V837',
-						'designation' => 'Payroll Supervisor', 
+						'designation' => 'Assistant Payroll Manager', 
 						'esign' => 'coe_mtermulo.png',
 						'email' => 'vtermulo@megaworldcorp.com'
 					],
@@ -967,7 +967,7 @@
 					'prepared' => [
 						'name' => 'MA. VERONICA S. TERMULO',
 						'id' => '2011-03-V837',
-						'designation' => 'Payroll Supervisor', 
+						'designation' => 'Assistant Payroll Manager', 
 						'esign' => 'coe_mtermulo.png',
 						'email' => 'vtermulo@megaworldcorp.com'
 					],
@@ -1008,7 +1008,7 @@
 					'prepared' => [
 						'name' => 'MA. VERONICA S. TERMULO',
 						'id' => '2011-03-V837',
-						'designation' => 'Payroll Supervisor', 
+						'designation' => 'Assistant Payroll Manager', 
 						'esign' => 'coe_mtermulo.png',
 						'email' => 'vtermulo@megaworldcorp.com'
 					],
@@ -1049,7 +1049,7 @@
 					'prepared' => [
 						'name' => 'MA. VERONICA S. TERMULO',
 						'id' => '2011-03-V837',
-						'designation' => 'Payroll Supervisor', 
+						'designation' => 'Assistant Payroll Manager', 
 						'esign' => 'coe_mtermulo.png',
 						'email' => 'vtermulo@megaworldcorp.com'
 					],
@@ -1090,7 +1090,7 @@
 					'prepared' => [
 						'name' => 'MA. VERONICA S. TERMULO',
 						'id' => '2011-03-V837',
-						'designation' => 'Payroll Supervisor', 
+						'designation' => 'Assistant Payroll Manager', 
 							'esign' => 'coe_mtermulo.png',
 							'email' => 'vtermulo@megaworldcorp.com'
 					],
@@ -1131,7 +1131,7 @@
 					'prepared' => [
 						'name' => 'MA. VERONICA S. TERMULO',
 						'id' => '2011-03-V837',
-						'designation' => 'Payroll Supervisor', 
+						'designation' => 'Assistant Payroll Manager', 
 							'esign' => 'coe_mtermulo.png',
 							'email' => 'vtermulo@megaworldcorp.com'
 					],
@@ -1172,7 +1172,7 @@
 					'prepared' => [
 						'name' => 'MA. VERONICA S. TERMULO',
 						'id' => '2011-03-V837',
-						'designation' => 'Payroll Supervisor', 
+						'designation' => 'Assistant Payroll Manager', 
 							'esign' => 'coe_mtermulo.png',
 							'email' => 'vtermulo@megaworldcorp.com'
 					],
@@ -1213,7 +1213,7 @@
 					'prepared' => [
 						'name' => 'MA. VERONICA S. TERMULO',
 						'id' => '2011-03-V837',
-						'designation' => 'Payroll Supervisor', 
+						'designation' => 'Assistant Payroll Manager', 
 							'esign' => 'coe_mtermulo.png',
 							'email' => 'vtermulo@megaworldcorp.com'
 					],
@@ -1254,7 +1254,7 @@
 					'prepared' => [
 						'name' => 'MA. VERONICA S. TERMULO',
 						'id' => '2011-03-V837',
-						'designation' => 'Payroll Supervisor', 
+						'designation' => 'Assistant Payroll Manager', 
 							'esign' => 'coe_mtermulo.png',
 							'email' => 'vtermulo@megaworldcorp.com'
 					],
@@ -1295,7 +1295,7 @@
 					'prepared' => [
 						'name' => 'MA. VERONICA S. TERMULO',
 						'id' => '2011-03-V837',
-						'designation' => 'Payroll Supervisor', 
+						'designation' => 'Assistant Payroll Manager', 
 							'esign' => 'coe_mtermulo.png',
 							'email' => 'vtermulo@megaworldcorp.com'
 					],
@@ -1538,7 +1538,7 @@
 						'prepared' => [
 							'name' => 'MA. VERONICA S. TERMULO',
 							'id' => '2011-03-V837',
-							'designation' => 'Payroll Supervisor', 
+							'designation' => 'Assistant Payroll Manager', 
 								'esign' => 'coe_mtermulo.png',
 								'email' => 'vtermulo@megaworldcorp.com'
 						],
