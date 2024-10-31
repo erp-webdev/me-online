@@ -130,14 +130,13 @@
                                             ?>
                                                 <video width="100%" height="100%">
                                                     <source src="<?php echo WEB; ?>/uploads/ads/<?php echo $value['activity_filename']; ?>" type="video/mp4">
-                                                    Your browser does not support the video tag.
                                                 </video>
 
                                             <?php }else{ 
 
                                                 if ($ext === 'pdf') : ?>
-                                                <span class="">
-                                                    <embed src="<?php echo WEB; ?>/uploads/<?php echo $value['activity_ads'] ? 'ads' : 'activity'; ?>/<?php echo $value['activity_filename']; ?>" type="application/pdf" width="140px" height="100px">
+                                                <span width="140px" height="100px" style='overflow:hidden'>
+                                                    <embed src="<?php echo WEB; ?>/uploads/<?php echo $value['activity_ads'] ? 'ads' : 'activity'; ?>/<?php echo $value['activity_filename']; ?>" type="application/pdf" width="100%" height="100%" >
                                                 </span>
                                                 <?php else: ?>
                                                 <img src="<?php echo WEB; ?>/uploads/<?php echo $value['activity_ads'] ? 'ads' : 'activity'; ?>/<?php echo $value['activity_filename']; ?>" class="activity_img cursorpoint" /></span>
