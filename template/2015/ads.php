@@ -128,7 +128,7 @@
                                                 $ext = pathinfo(WEB. '/uploads/ads/' . $value['activity_filename'], PATHINFO_EXTENSION);
                                                 if($ext == 'mp4') {
                                             ?>
-                                                <video width="100%" height="100%">
+                                                <video width="100%" height="100%" class="activity_img cursorpoint" preload="none" poster="<?php echo IMG_WEB; ?>/image-placeholder.jpg">
                                                     <source src="<?php echo WEB; ?>/uploads/ads/<?php echo $value['activity_filename']; ?>" type="video/mp4">
                                                 </video>
 
