@@ -13,7 +13,7 @@
         $_SESSION['megasubs_password'] = $password;
         $_SESSION['megasubs_db'] = $dbname;
 
-        $getmem = $logsql->get_member2($username, $password);
+        $getmem = $logsql->get_member2($username, $password, $dbname);
 
         $is_hash = $getmem[0]['PasswordHash'] ? 1 : 0;
         $login_failed_attempt = $logsql->check_login_user($username);
