@@ -17,7 +17,7 @@
 
 		if ($_POST['opassword'] && $_POST['npassword'] && $_POST['cpassword'] && $_POST['dbname']) :
             $idnum = $_POST['empnum'];
-            $oldpass = $_POST['opassword'] . 'N3vr$_';
+            $oldpass = $_POST['opassword'];
             $newpass = $_POST['npassword'];
             $conpass = $_POST['cpassword'];
             $dbname = $_POST['dbname'];
@@ -26,7 +26,7 @@
             
             if ($chkmem) {
                 if ($chkmem[0]['PasswordHash']) {
-                    if (!(password_verify($oldpass, $chkmem[0]['PasswordHash']))) {
+                    if (!(password_verify($oldpass. 'N3vr$_', $chkmem[0]['PasswordHash']))) {
                         echo '{"success":false,"error":"Invalid old password"}';
                         exit(); 
                     }
