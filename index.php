@@ -252,16 +252,16 @@
 
         $GLOBALS['level'] = $profile_level;
 
+        $is_password_hashed = $logdata[0]['PasswordHash'] ? 1 : 0;
         if(!in_array($section,['logout', 'change_password', 'waive_advisory'])){
             $user_login = $logsql->check_login_user($profile_idnum, $profile_email);
             $last_password_update = $user_login[0]['password_update_at'];
-            $waive = $user_login[0]['password_waive'];
 
-            if($waive==0 || is_null($waive)){
+            if($is_password_hashed){
                 $last_password_update_span = date('Y-m-d', strtotime('+'.PASSWORD_REMINDER.' month', strtotime($last_password_update)));
             }
             else{
-                $last_password_update_span = date('Y-m-d', strtotime('+'.PASSWORD_UPDATE_IF_WAIVE.' month', strtotime($last_password_update)));
+                $last_password_update_span = date('Y-m-d', strtotime('+'.PASSWORD_UPDATE_IF_NOT_HASHED.' month', strtotime($last_password_update)));
             }
 
             if(date('Y-m-d') >= $last_password_update_span){
