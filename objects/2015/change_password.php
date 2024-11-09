@@ -21,33 +21,59 @@
             $newpass = $_POST['npassword'];
             $conpass = $_POST['cpassword'];
             $dbname = $_POST['dbname'];
-            $chkmem = $register->check_member($idnum, $oldpass);                
-            if (!$chkmem) : 
-                echo '{"success":false,"error":"Error: Invalid old password"}';
-                exit(); 
-            endif;
-            if ($newpass != $conpass) : 
-                echo '{"success":false,"error":"Error: Password mismatch"}';
-                exit(); 
-            endif;
-             
-            if(isStrongPassword($newpass)){
-                $edit_password = $register->change_password($newpass, $idnum, $dbname);
-        
-                //AUDIT TRAIL
-                $post['EMPID'] = $profile_idnum;
-                $post['TASKS'] = "CHANGE_PASSWORD";
-                $post['DATA'] = $idnum;
-                $post['DATE'] = date("m/d/Y H:i:s.000");
-    
-                $log = $mainsql->log_action($post, 'add');
+
+            $chkmem = $register->get_member($idnum, $dbname);  
             
-                echo '{"success":true}';
+            if ($chkmem) {
+                if ($chkmem[0]['PasswordHash']) {
+                    if (!(password_verify($oldpass. 'N3vr$_', $chkmem[0]['PasswordHash']))) {
+                        echo '{"success":false,"error":"Invalid old password"}';
+                        exit(); 
+                    }
+                } else {
+                    if($chkmem[0]['EPassword'] != $oldpass){
+                        echo '{"success":false,"error":"Invalid old password"}';
+                        exit(); 
+                    }
+                }
+            }
+                
+            if ($newpass==$oldpass){
+                echo '{"success":false,"error":"Old password should not be set as new password."}';
+                exit(); 
+            }
+            elseif($newpass != $conpass){
+                echo '{"success":false,"error":"Password mismatch"}';
                 exit(); 
             }
             else{
-                echo '{"success":false,"error":"Password should contain uppercase & lowercase letter, a number, and special character, and should be at least 8 characters long."}';
-                exit(); 
+                if(isStrongPassword($newpass)){
+                    $accounts = $logsql->get_member2($idnum, $oldpass);
+       
+                    if($accounts){
+                       foreach($accounts as $acc){
+                            $passwordSalt = $newpass . 'N3vr$_';
+                            $hashedPassword = password_hash($passwordSalt, PASSWORD_DEFAULT);
+                            $edit_password = $register->change_password($hashedPassword, $idnum, $acc['DBNAME']);
+                            
+                       }
+                        $logsql->update_users_activity($idnum, $profile_email);
+                    }
+    
+                    //AUDIT TRAIL
+                    $post['EMPID'] = $profile_idnum;
+                    $post['TASKS'] = "CHANGE_PASSWORD";
+                    $post['DATA'] = $profile_idnum;
+                    $post['DATE'] = date("m/d/Y H:i:s.000");
+                    $log = $mainsql->log_action($post, 'add');
+                
+                    echo '{"success":true}';
+                    exit(); 
+                }
+                else{
+                    echo '{"success":false,"error":"Password should contain uppercase & lowercase letter, a number, and special character, and should be at least 8 characters long."}';
+                    exit(); 
+                }
             }
         endif;
 

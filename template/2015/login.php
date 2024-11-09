@@ -36,9 +36,14 @@
                                 <td><div class="curvebox centermargin"><input type="password" name="password" id="password" placeholder="Password" class="txtbox width95" /></div></td>
                             </tr>
                             <tr>
+                                <td style="display: flex; justify-content: center;"><div class="g-recaptcha" data-sitekey="<?php echo RECAPTCHA_SITE_KEY; ?>"></div></td>
+                            </tr>
+                            <tr>
                                 <td>
                                     <input type="submit" name="btnlogin" id="btnlogin" value="LOGIN" class="bigbtn btnlogin" style="width: 50%;border-radius: 15px;"/>
-                                    <!-- <br><span class="lgraytext">or</span><br>
+                                    
+                                    <?php 
+                                    /*<br><span class="lgraytext">or</span><br>
                                     <br><a href="<?php echo htmlspecialchars(GOOGLE_LOGIN_URL); ?>" style="display: inline-flex;
                                                     align-items: center;
                                                     justify-content: center;
@@ -52,12 +57,14 @@
                                                     width: 45%;">
                                         <img style="margin-right: 10px;" width="20" height="20" src="<?php echo IMG_WEB; ?>/google-icon.png" alt="Google logo">
                                         Sign in with Google
-                                    </a> -->
-                                    <br><br><a href="<?php echo WEB; ?>/forgot_password" class="lgraytext">Forgot your password</a>
+                                    </a>*/
+                                    ?>
+                                    <br><br><a href="<?php echo WEB; ?>/forgot_password" class="lgraytext">Forgot password</a>
                                     <br><span id="errortd" class="redtext"></span>  
                                 </td>
                             </tr>
                         </table>
                     </div>
-
+                    
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <?php include(TEMP."/footer.php"); ?>
