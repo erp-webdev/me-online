@@ -3,7 +3,8 @@
 	if ($logged == 1) {
 
         //$lv_app = 0;
-
+        // Company Nurse Profile - for approval of Sick Leave with 3 or more days of consecutive leave.
+        
         if ($lv_app) :
 
             # PAGINATION
@@ -116,6 +117,40 @@
                             echo '{"success": false, "error": "Attachment is required on 3 or more day sick leave"}';
                             exit();
                         endif;
+
+                        //add company nurse here as approver1
+                        if(!in_array($dbname, $COMPANY_NURSE_DBEXCLUDE)){
+
+                            $leavepost['APPROVER01'] = $COMPANY_NURSE_EMPID;
+                            $leavepost['APPROVER02'] = $_POST['approver1'];
+                            $leavepost['APPROVER03'] = $_POST['approver2'];
+                            $leavepost['APPROVER04'] = $_POST['approver3'];
+                            $leavepost['APPROVER05'] = $_POST['approver4'];
+                            $leavepost['APPROVER06'] = $_POST['approver5'];
+
+                            $leavepost['DBAPPROVER01'] = $COMPANY_NURSE_DBNAME;
+                            $leavepost['DBAPPROVER02'] = $_POST['dbapprover1'];
+                            $leavepost['DBAPPROVER03'] = $_POST['dbapprover2'];
+                            $leavepost['DBAPPROVER04'] = $_POST['dbapprover3'];
+                            $leavepost['DBAPPROVER05'] = $_POST['dbapprover4'];
+                            $leavepost['DBAPPROVER06'] = $_POST['dbapprover5'];
+                        }
+
+                        echo "<script> alert('Company nurse has been added as first approver for 3 or more days of sick leave.'); </script>";
+                    
+                    else:
+                        $leavepost['APPROVER01'] = $_POST['approver1'];
+                        $leavepost['APPROVER02'] = $_POST['approver2'];
+                        $leavepost['APPROVER03'] = $_POST['approver3'];
+                        $leavepost['APPROVER04'] = $_POST['approver4'];
+                        $leavepost['APPROVER05'] = $_POST['approver5'];
+                        $leavepost['APPROVER06'] = $_POST['approver6'];
+                        $leavepost['DBAPPROVER01'] = $_POST['dbapprover1'];
+                        $leavepost['DBAPPROVER02'] = $_POST['dbapprover2'];
+                        $leavepost['DBAPPROVER03'] = $_POST['dbapprover3'];
+                        $leavepost['DBAPPROVER04'] = $_POST['dbapprover4'];
+                        $leavepost['DBAPPROVER05'] = $_POST['dbapprover5'];
+                        $leavepost['DBAPPROVER06'] = $_POST['dbapprover6'];
                     endif;
 
                     if ($_POST['leave_type'] == "L12") :
@@ -291,18 +326,6 @@
                     $leavepost['DAYS'] = $_POST['days'];
                     $leavepost['HOURS'] = $_POST['days'] * 8;
                     $leavepost['REASON'] = addslashes($_POST['leave_reason']);
-                    $leavepost['APPROVER01'] = $_POST['approver1'];
-                    $leavepost['APPROVER02'] = $_POST['approver2'];
-                    $leavepost['APPROVER03'] = $_POST['approver3'];
-                    $leavepost['APPROVER04'] = $_POST['approver4'];
-                    $leavepost['APPROVER05'] = $_POST['approver5'];
-                    $leavepost['APPROVER06'] = $_POST['approver6'];
-                    $leavepost['DBAPPROVER01'] = $_POST['dbapprover1'];
-                    $leavepost['DBAPPROVER02'] = $_POST['dbapprover2'];
-                    $leavepost['DBAPPROVER03'] = $_POST['dbapprover3'];
-                    $leavepost['DBAPPROVER04'] = $_POST['dbapprover4'];
-                    $leavepost['DBAPPROVER05'] = $_POST['dbapprover5'];
-                    $leavepost['DBAPPROVER06'] = $_POST['dbapprover6'];
                     $leavepost['USER'] = $_POST['user'];
                     $leavepost['REMARKS'] = "";
 
@@ -330,7 +353,7 @@
                                     $fixname = 'attach_'.$add_leave.'_'.$i.'.'.$extension;
                                     $target_path = $path.$fixname;
 
-                                    $filemove = move_uploaded_file($image, $target_path);
+                                    //$filemove = move_uploaded_file($image, $target_path);
 
                                     $attach['attachfile'] = $fixname;
                                     $attach['attachtype'] = $filetype;
