@@ -1,0 +1,30 @@
+	<?php include(TEMP."/header.php"); ?>
+  
+    <div id="mainsplashlog" class="mainsplashlog centertalign">  
+        <div class="">                    
+          <span class="lowerlist robotobold cattext whitetext centertalign">Password Update Advisory</span>
+          <br>
+          <p class="whitetext" style="text-align:justify;">
+            To maintain the security of your account, we strongly recommend updating your ME Online portal password regularly.
+          </p>
+          <p class="whitetext" style="text-align:justify;">Regular password updates help safeguard your account from unauthorized access and ensure the protection of your data.
+          </p>
+          <br>
+          <p class="whitetext" style="text-align:justify;">
+            <i>Note: This advisory will continue to appear on your screen until you change your password or opt to waive this reminder.</i>
+          </p>
+
+          <?php 
+            $getmem = $logsql->get_member2($_SESSION['megasubs_user'], $_SESSION['megasubs_password'], $_SESSION['megasubs_db']);
+            $is_new_user = $getmem[0]['HireDate'] ? ((!isset($getmem[0]['PasswordHash'])) && (date('Y-m-d') <= date('Y-m-d', strtotime($getmem[0]['HireDate']. ' +3 months')))) ? 1 : 0 : 0;
+          ?>
+
+          <input type="button" value="Change Password" class="btn" onClick="parent.location='<?php echo WEB; ?>/change_password'" />
+          <?php if($is_new_user == 0){?>
+          &nbsp;<input type="button" value="Waive" class="redbtn" onClick="parent.location='<?php echo WEB; ?>/waive_advisory'" />
+          <?php } ?>
+
+        </div>
+    </div>
+
+    <?php include(TEMP."/footer.php"); ?>

@@ -43,6 +43,26 @@ class logsql {
         return $result;
 	}
 
+    private function prepare_query($query, $params = []) {
+        foreach ($params as $key => $param) {
+            if (is_string($param)) {
+                $params[$key] = "'" . addslashes($param) . "'";
+            } 
+            else if (is_numeric($param)) {
+                $params[$key] = (int)$param;  
+            } 
+            else {
+                $params[$key] = $param; 
+            }
+        }
+    
+        foreach ($params as $index => $param) {
+            $query = preg_replace('/\?/', $param, $query, 1);
+        }
+
+        return $query;
+    }
+
 	public function get_numrow($sql) //Get num rows of a table from $sql
 	{
         if(!$sql) return;
@@ -95,22 +115,50 @@ class logsql {
 
     function check_member($username, $password = NULL)
 	{
+        $fieldnames = ['ACTION', 'EMPID'];
+        $values = [1, $username];
 
-		$sql = "SELECT COUNT(EmpID) AS mcount FROM VIEWHREMPMASTER WHERE EmpID = '".$username."' ";
-        $sql .= " AND CONVERT(VARBINARY(250),LTRIM(RTRIM(EPassword))) = CONVERT(VARBINARY(250),LTRIM(RTRIM('".$password."'))) ";
-        $sql .= " AND Active = 1";
-		$result = $this->get_row($sql);
-		if($result[0]['mcount'] <= 0) :
-			return FALSE;
-		else :
-			return $result[0]['mcount'];
-		endif;
+        foreach( $fieldnames as $i => $fieldname){
+            $val[$i]['field_name'] = $fieldname;
+            $val[$i]['field_value'] = $values[$i];
+            $val[$i]['field_type'] = (in_array($fieldname, ['ACTION'])) ? SQLINT1 : SQLVARCHAR;
+            $val[$i]['field_isoutput'] = false;
+            $val[$i]['field_isnull'] = false;
+        }
+
+        $sp_result = $this->get_sp_data('SP_GET_EMPLOYEE', $val, 'SUBSIDIARY');
+        $results = $this->db_result_to_array($sp_result);
+
+		if ($results) {
+            foreach ($results as $result) {
+                if ($result['PasswordHash']) {
+                    if ($password && password_verify($password. 'N3vr$_', $result['PasswordHash'])) {
+                        $matchCount++;
+                    }
+                }
+                else{
+                    if ($password == $result['EPassword']) {
+                        $matchCount++;
+                    }
+                }
+            }
+
+            if ($matchCount > 0) {
+                return $matchCount; 
+            } else {
+                return FALSE; 
+            }
+        } else {
+            return FALSE; 
+        }
 	}
 
 	function check_user($username)
 	{
+		$sql = "SELECT COUNT(EmpID) AS mcount 
+                FROM VIEWHREMPMASTER 
+                WHERE EmpID = '".$username."'";
 
-		$sql = "SELECT COUNT(EmpID) AS mcount FROM VIEWHREMPMASTER WHERE EmpID = '".$username."'";
 		$result = $this->get_row($sql);
 		if($result[0]['mcount'] <= 0) :
 			return FALSE;
@@ -122,7 +170,10 @@ class logsql {
     function get_member($username)
 	{
 		$sql = "SELECT TOP 1 *
-            FROM VIEWHREMPMASTER WHERE EmpID = '".$username."' AND Active = 1 AND EmailAdd is not null";
+                FROM VIEWHREMPMASTER 
+                WHERE EmpID = '".$username."' 
+                AND Active = 1 AND EmailAdd IS NOT NULL";
+
 		$result = $this->get_row($sql);
 		return $result;
 	}
@@ -135,33 +186,129 @@ class logsql {
         //     AND Active = 1 AND EmailAdd is not null";
 
         $sql = "SELECT TOP 1 REPLACE(REPLACE(SSSNbr, '-', ''), ' ', ''), *
-            FROM VIEWHREMPMASTER 
-            WHERE EmpID = '".$username."' 
-            AND Active = 1 AND EmailAdd is not null
-            and '".$answer."' IN (REPLACE(REPLACE(SSSNbr, '-', ''), ' ', ''), 
-                REPLACE(REPLACE(TINNbr, '-', ''), ' ', ''), REPLACE(REPLACE(PagibigNbr, '-', ''), ' ', ''),
-                REPLACE(REPLACE(PhilHealthNbr, '-', ''), ' ', ''))";
+                FROM VIEWHREMPMASTER 
+                WHERE EmpID = '".$username."' 
+                AND Active = 1 AND EmailAdd is not null
+                and '".$answer."' IN (REPLACE(REPLACE(SSSNbr, '-', ''), ' ', ''), 
+                    REPLACE(REPLACE(TINNbr, '-', ''), ' ', ''), REPLACE(REPLACE(PagibigNbr, '-', ''), ' ', ''),
+                    REPLACE(REPLACE(PhilHealthNbr, '-', ''), ' ', ''))";
 
 		$result = $this->get_row($sql);
 		return $result;
 	}
 
-    function get_member2($username, $password, $dbname = NULL)
+    public function check_login_user($empid, $email=NULL){
+        $fieldnames = ['ACTION', 'EMPID', 'EMAILADD'];
+        $values = [1, $empid, $email];
+        $intFieldnames = ['ACTION'];
+
+        $sp_result = $this->execute_sp_get_user($fieldnames, $values, $intFieldnames);
+        $result = $this->db_result_to_array($sp_result);
+
+        return $result;
+
+    }
+
+    public function check_reset_token($reset_token){
+        $fieldnames = ['ACTION', 'RESET_TOKEN'];
+        $values = [2, $reset_token];
+        $intFieldnames = ['ACTION'];
+
+        $sp_result = $this->execute_sp_get_user($fieldnames, $values, $intFieldnames);
+        $result = $this->db_result_to_array($sp_result);
+
+        return $result;
+    }
+
+    public function insert_login_failed($empid){
+        $fieldnames = ['ACTION', 'EMPID'];
+        $values = [3, $empid];
+        $intFieldnames = ['ACTION'];
+
+        $sp_result = $this->execute_sp_get_user($fieldnames, $values, $intFieldnames);
+    }
+
+    public function insert_user_activity($empid, $email, $is_hash){
+        $fieldnames = ['ACTION', 'EMPID', 'EMAILADD', 'IS_HASH', 'PASSWORD_REMINDER'];
+        $values = [4, $empid, $email, $is_hash, PASSWORD_REMINDER];
+        $intFieldnames = ['ACTION', 'IS_HASH','PASSWORD_REMINDER'];
+
+        $sp_result = $this->execute_sp_get_user($fieldnames, $values, $intFieldnames);
+    }
+
+    public function insert_reset_token($empid, $email, $reset_token){
+        $fieldnames = ['ACTION', 'EMPID', 'EMAILADD', 'RESET_TOKEN'];
+        $values = [5, $empid, $email, $reset_token];
+        $intFieldnames = ['ACTION'];
+
+        $sp_result = $this->execute_sp_get_user($fieldnames, $values, $intFieldnames);
+    }
+
+
+    public function update_login_failed($empid, $login_failed, $email = NULL){
+        $fieldnames = ['ACTION', 'EMPID', 'EMAILADD', 'LOGIN_FAILED'];
+        $values = [6, $empid, $email, $login_failed];
+        $intFieldnames = ['ACTION', 'LOGIN_FAILED'];
+
+        $sp_result = $this->execute_sp_get_user($fieldnames, $values, $intFieldnames);
+    }
+
+    public function update_users_activity($empid, $email, $waive=0){
+        $fieldnames = ['ACTION', 'EMPID', 'EMAILADD', 'WAIVE'];
+        $values = [7, $empid, $email, $waive];
+        $intFieldnames = ['ACTION', 'WAIVE'];
+
+        $sp_result = $this->execute_sp_get_user($fieldnames, $values, $intFieldnames);
+    }
+
+    private function execute_sp_get_user($fieldnames, $values, $intFieldnames){
+        foreach( $fieldnames as $i => $fieldname){
+            $val[$i]['field_name'] = $fieldname;
+            $val[$i]['field_value'] = $values[$i];
+            $val[$i]['field_type'] = (in_array($fieldname, $intFieldnames)) ? SQLINT1 : SQLVARCHAR;
+            $val[$i]['field_isoutput'] = false;
+            $val[$i]['field_isnull'] = false;
+        }
+
+        $sp_result = $this->get_sp_data('SP_GET_USERS', $val, 'SUBSIDIARY');
+
+        return $sp_result;
+    }
+
+    function get_member2($username, $password=NULL, $dbname = NULL)
 	{
-		$sql = "SELECT *
-            FROM VIEWHREMPMASTER WHERE EmpID = '".$username."' ";
-        $sql .= " AND CONVERT(VARBINARY(250),LTRIM(RTRIM(EPassword))) = CONVERT(VARBINARY(250),LTRIM(RTRIM('".$password."'))) ";
-        if ($dbname) : $sql .= " AND DBNAME = '".$dbname."' "; endif;
-        $sql .= " AND Active = 1";
-		$result = $this->get_row($sql);
-		return $result;
+        $fieldnames = ['ACTION', 'EMPID', 'DBNAME'];
+        $values = [1, $username, $dbname];
+
+        foreach( $fieldnames as $i => $fieldname){
+            $val[$i]['field_name'] = $fieldname;
+            $val[$i]['field_value'] = $values[$i];
+            $val[$i]['field_type'] = (in_array($fieldname, ['ACTION'])) ? SQLINT1 : SQLVARCHAR;
+            $val[$i]['field_isoutput'] = false;
+            $val[$i]['field_isnull'] = false;
+        }
+
+        $sp_result = $this->get_sp_data('SP_GET_EMPLOYEE', $val, 'SUBSIDIARY');
+        $results = $this->db_result_to_array($sp_result);
+
+		if ($results) {
+            foreach ($results as $index => $result) {
+                if (!($password && (password_verify($password. 'N3vr$_', $result['PasswordHash']) || $password == $result['EPassword']))) {
+                    unset($results[$index]);
+                }
+            }
+
+            return array_values($results);
+        } else {
+            return FALSE; 
+        }
 	}
 
     function get_allmember($username, $dbname = NULL)
 	{
-
 		$sql = "SELECT TOP 1 *
-            FROM VIEWHREMPMASTER WHERE EmpID = '".$username."'";
+                FROM VIEWHREMPMASTER 
+                WHERE EmpID = '".$username."'";
         if ($dbname) : $sql .= " AND DBNAME = '".$dbname."' AND Active = 1 "; endif;
 		$result = $this->get_row($sql);
 		return $result;
@@ -169,9 +316,9 @@ class logsql {
 
     function get_allmember_full($username, $dbname = NULL)
 	{
-
 		$sql = "SELECT TOP 1 *
-            FROM VIEWHREMPMASTER_INACTIVE WHERE EmpID = '".$username."'";
+                FROM VIEWHREMPMASTER_INACTIVE 
+                WHERE EmpID = '".$username."'";
         if ($dbname) : $sql .= " AND DBNAME = '".$dbname."' "; endif;
 		$result = $this->get_row($sql);
 		return $result;
@@ -180,7 +327,8 @@ class logsql {
     function get_member_by_hash($emphash)
 	{
 		$sql = "SELECT TOP 1 *
-            FROM VIEWHREMPMASTER WHERE CONVERT(VARCHAR(32), HashBytes('MD5', EmpID), 2) = '".$emphash."'";
+                FROM VIEWHREMPMASTER 
+                WHERE CONVERT(VARCHAR(32), HashBytes('MD5', EmpID), 2) = '".$emphash."'";
 		$result = $this->get_row($sql);
 		return $result;
 	}
@@ -188,7 +336,8 @@ class logsql {
     function get_upmember_by_hash($emphash)
 	{
 		$sql = "SELECT TOP 1 *
-            FROM HRUpdateEmpMaster WHERE CONVERT(VARCHAR(32), HashBytes('MD5', EmpID), 2) = '".$emphash."'";
+                FROM HRUpdateEmpMaster 
+                WHERE CONVERT(VARCHAR(32), HashBytes('MD5', EmpID), 2) = '".$emphash."'";
 		$result = $this->get_row($sql);
 		return $result;
 	}
@@ -196,7 +345,8 @@ class logsql {
     function get_depdata_by_hash($emphash)
 	{
 		$sql = "SELECT *
-            FROM HRUpdateDependents WHERE CONVERT(VARCHAR(32), HashBytes('MD5', EmpID), 2) = '".$emphash."'";
+                FROM HRUpdateDependents 
+                WHERE CONVERT(VARCHAR(32), HashBytes('MD5', EmpID), 2) = '".$emphash."'";
 		$result = $this->get_row($sql);
 		return $result;
 	}
@@ -204,7 +354,8 @@ class logsql {
     function get_memtax($taxid)
 	{
 		$sql = "SELECT TOP 1 Description, Exemption
-            FROM HRTax WHERE Code = '".$taxid."'";
+                FROM HRTax 
+                WHERE Code = '".$taxid."'";
 		$result = $this->get_row($sql);
 		return $result;
 	}
@@ -350,23 +501,44 @@ class logsql {
 /// FOR GOOGLE LOG IN
     function get_member_by_email($emailadd, $dbname=NULL)
 	{
-		$sql = "SELECT EmpID, CompanyID, DBNAME, EPassword
-            FROM VIEWHREMPMASTER WHERE EmailAdd = '".$emailadd."' ";
-        if ($dbname) : $sql .= " AND DBNAME = '".$dbname."' "; endif;
-        $sql .= " AND Active = 1";
-		$result = $this->get_row($sql);
-		return $result;
+        $fieldnames = ['ACTION', 'EMAILADD', 'DBNAME'];
+        $values = [2, $emailadd, $dbname];
+
+        foreach( $fieldnames as $i => $fieldname){
+            $val[$i]['field_name'] = $fieldname;
+            $val[$i]['field_value'] = $values[$i];
+            $val[$i]['field_type'] = (in_array($fieldname, ['ACTION'])) ? SQLINT1 : SQLVARCHAR;
+            $val[$i]['field_isoutput'] = false;
+            $val[$i]['field_isnull'] = false;
+        }
+
+        $sp_result = $this->get_sp_data('SP_GET_EMPLOYEE', $val, 'SUBSIDIARY');
+        $result = $this->db_result_to_array($sp_result);
+
+        return $result;
 	}
 
     function check_member_by_email($emailadd)
 	{
-		$sql = "SELECT COUNT(EmpID) AS mcount FROM VIEWHREMPMASTER WHERE EmailAdd = '".$emailadd."' ";
-        $sql .= " AND Active = 1";
-		$result = $this->get_row($sql);
-		if($result[0]['mcount'] <= 0) :
+        $fieldnames = ['ACTION', 'EMAILADD'];
+        $values = [2, $emailadd];
+
+        foreach( $fieldnames as $i => $fieldname){
+            $val[$i]['field_name'] = $fieldname;
+            $val[$i]['field_value'] = $values[$i];
+            $val[$i]['field_type'] = (in_array($fieldname, ['ACTION'])) ? SQLINT1 : SQLVARCHAR;
+            $val[$i]['field_isoutput'] = false;
+            $val[$i]['field_isnull'] = false;
+        }
+
+        $sp_result = $this->get_sp_data('SP_GET_EMPLOYEE', $val, 'SUBSIDIARY');
+        $result = $this->db_result_to_array($sp_result);
+
+
+		if(count($result) <= 0) :
 			return FALSE;
 		else :
-			return $result[0]['mcount'];
+			return count($result);
 		endif;
 	}
 
