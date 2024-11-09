@@ -447,6 +447,15 @@
                                             <i>* it must be PDF or image (JPG or GIF) and not more than 200Kb each</i>
                                         </div>
                                         <div id="lapprover">
+                                            <?php if(!in_array($profile_dbname, $COMPANY_NURSE_DBEXCLUDE)) : ?>
+                                                <div class="company_nurse" style="display: none">
+                                                    <b>Nurse    :</b> <?php echo $COMPANY_NURSE_NAME; ?><br>
+                                                    <input type="hidden" name="company_nurse_empid" value="<?php echo $COMPANY_NURSE_EMPID; ?>">
+                                                    <input type="hidden" name="company_nurse_dbname" value="<?php echo $COMPANY_NURSE_DBNAME; ?>">
+                                                    <input type="hidden" name="company_nurse_dbexclude" value="<?php echo implode(',', $COMPANY_NURSE_DBEXCLUDE); ?>">
+                                                </div>
+                                            <?php endif; ?>
+                                            
                                             <?php if($lv_app) : ?>
                                             <?php foreach($lv_app as $key => $value) : ?>
                                                 <?php if ($key < 6) : ?>
