@@ -245,7 +245,7 @@
 
                 <?php  else: ?>
 
-                    <img src="<?php echo IMG_WEB; ?>/image-placeholder.jpg" class="width100per" />
+                    <img src="<?php echo IMG_WEB; ?>/mw.png" class="width100per" />
 
                 <?php  endif; ?>
 
