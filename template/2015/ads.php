@@ -140,7 +140,7 @@
                                                         <embed src="<?php echo WEB; ?>/uploads/<?php echo $value['activity_ads'] ? 'ads' : 'activity'; ?>/<?php echo $value['activity_filename']; ?>" type="application/pdf" width="140px" height="100px">
                                                     </span>
                                                     <?php else: ?>
-                                                    <img src="<?php echo WEB; ?>/uploads/<?php echo $value['activity_ads'] ? 'ads' : 'activity'; ?>/<?php echo $value['activity_filename']; ?>" class="activity_img cursorpoint" /></span>
+                                                    <img loading="lazy" src="<?php echo WEB; ?>/uploads/<?php echo $value['activity_ads'] ? 'ads' : 'activity'; ?>/<?php echo $value['activity_filename']; ?>" class="activity_img cursorpoint" /></span>
                                                     <?php endif; ?>
                                                 <?php } ?>
 
