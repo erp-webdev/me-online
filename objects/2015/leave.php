@@ -353,7 +353,7 @@
                                     $fixname = 'attach_'.$add_leave.'_'.$i.'.'.$extension;
                                     $target_path = $path.$fixname;
 
-                                    //$filemove = move_uploaded_file($image, $target_path);
+                                    $filemove = move_uploaded_file($image, $target_path);
 
                                     $attach['attachfile'] = $fixname;
                                     $attach['attachtype'] = $filetype;
