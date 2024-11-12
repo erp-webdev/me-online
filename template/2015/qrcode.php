@@ -2,7 +2,7 @@
 <?php 
     $dateactivity = strtotime($my_registration[0]['activity_datestart']);
     $today = strtotime(date("%Y-%m-%d %H:%M:%S"));
-    if($today <= $dateactivity){
+    if($today <= $dateactivity && false){
         if($_GET['title']=="MEGA-SAYANG PASKONG PILIPINO 2023") {
             echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/mega-sayang-paskong-pilipino'</script>";
         }
