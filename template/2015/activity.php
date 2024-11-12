@@ -520,7 +520,7 @@
 
                                     ?>
                                     <?php $slot_remain = $value['activity_slots'] - $countreg; ?>
-                                    <tr class="trdata centertalign">
+                                    <tr class="trdata centertalign topborder">
                                         <td width="30%"<?php if ($key == 0) : ?> <?php endif; ?>><span attribute="<?php echo $value['activity_id']; ?>" attribute2="<?php echo $value['activity_title']; ?>" class="btnviewactivity image-container"><img data-src="<?php echo WEB; ?>/uploads/<?php echo $value['activity_ads'] ? 'ads' : 'activity'; ?>/<?php echo $value['activity_filename']; ?>" class=" cursorpoint lozad centered-image" style="left: 0 !important; object-fit: contain !important;" /></span></td>
                                         <td width="70%" class="lefttalign<?php if ($key == 0) : ?> topborder<?php endif; ?>"><span class="btnviewactivity cursorpoint bold" attribute="<?php echo $value['activity_id']; ?>" attribute2="<?php echo $value['activity_title']; ?>"><?php echo $value['activity_title']; ?></span><?php echo $if_registered ? ' <span class="stamp spangreen">REGISTERED</span>' : ''; ?><br><?php echo date('F j, Y', $value['activity_datestart']); ?> | <?php echo date('g:ia', $value['activity_datestart']); ?> to <?php echo date('g:ia', $value['activity_dateend']); ?><br><?php echo $value['activity_venue']; ?>
 
