@@ -1,5 +1,21 @@
 	<?php include(TEMP."/header.php"); ?>
+    <style>
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%; /* Set width as needed */
+            height: 100%; /* Adjust height as needed */
+            overflow: hidden;
+        }
 
+        .centered-image {
+            max-width: 140px;
+            max-height: 100px;
+            object-fit: contain; /* Adjust to cover if you want full coverage */
+        }
+
+    </style>
     <!-- BODY -->
 
                     <div id="floatdiv" class="floatdiv invisible">
@@ -505,7 +521,7 @@
                                     ?>
                                     <?php $slot_remain = $value['activity_slots'] - $countreg; ?>
                                     <tr class="trdata centertalign">
-                                        <td width="30%"<?php if ($key == 0) : ?> class="topborder"<?php endif; ?>><span attribute="<?php echo $value['activity_id']; ?>" attribute2="<?php echo $value['activity_title']; ?>" class="btnviewactivity"><img data-src="<?php echo WEB; ?>/uploads/<?php echo $value['activity_ads'] ? 'ads' : 'activity'; ?>/<?php echo $value['activity_filename']; ?>" class="activity_img cursorpoint lozad" /></span></td>
+                                        <td width="30%"<?php if ($key == 0) : ?> class="topborder image-container"<?php endif; ?>><span attribute="<?php echo $value['activity_id']; ?>" attribute2="<?php echo $value['activity_title']; ?>" class="btnviewactivity"><img data-src="<?php echo WEB; ?>/uploads/<?php echo $value['activity_ads'] ? 'ads' : 'activity'; ?>/<?php echo $value['activity_filename']; ?>" class=" cursorpoint lozad centered-image" style="left: 0 !important; object-fit: contain !important;" /></span></td>
                                         <td width="70%" class="lefttalign<?php if ($key == 0) : ?> topborder<?php endif; ?>"><span class="btnviewactivity cursorpoint bold" attribute="<?php echo $value['activity_id']; ?>" attribute2="<?php echo $value['activity_title']; ?>"><?php echo $value['activity_title']; ?></span><?php echo $if_registered ? ' <span class="stamp spangreen">REGISTERED</span>' : ''; ?><br><?php echo date('F j, Y', $value['activity_datestart']); ?> | <?php echo date('g:ia', $value['activity_datestart']); ?> to <?php echo date('g:ia', $value['activity_dateend']); ?><br><?php echo $value['activity_venue']; ?>
 
                                         <?php if(!$disable_reg) : ?>
