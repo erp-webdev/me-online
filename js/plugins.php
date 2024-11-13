@@ -5707,6 +5707,7 @@ $(function() {
         if (e.keyCode == 13) {
             username = $("#username").val();
 			password = $("#password").val();
+            var grecaptcharesponse = $("#g-recaptcha-response").val();
 
             /*password = password.replace("&", "");
             password = password.replace("+", "");
@@ -5721,7 +5722,7 @@ $(function() {
             {
                 url: "<?php echo WEB; ?>/lib/requests/login.php",
                 //data: "username=" + username + "&password=" + password + "&company=" + company,
-                data: {username: username, password: password},
+                data: {username: username, password: password,  grecaptcharesponse:  grecaptcharesponse },
 	            type: "POST",
 		        complete: function(){
 		        	$("#loading").hide();
@@ -5738,6 +5739,9 @@ $(function() {
                     else if (data == 2) {
                         alert('Due to consecutive failed login attempt, your account has been locked. You may use Forgot Password feature to reset and re-activate your account.');
                         window.location.href='<?php echo WEB; ?>/forgot_password';
+                    }
+                    else if (data == 3) {
+                        alert('reCAPTCHA verification is required upon log in.');
                     }
                     else {
                         $('#floatdiv').removeClass('invisible');
@@ -5754,6 +5758,7 @@ $(function() {
             username = $("#username").val();
             username = username.toUpperCase();
 			password = $("#password").val();
+            var grecaptcharesponse = $("#g-recaptcha-response").val();
 
             /*password = password.replace("&", "");
             password = password.replace("+", "");
@@ -5767,7 +5772,7 @@ $(function() {
             {
                 url: "<?php echo WEB; ?>/lib/requests/login.php",
                 //data: "username=" + username + "&password=" + password + "&company=" + company,
-                data: {username: username, password: password},
+                data: {username: username, password: password,  grecaptcharesponse:  grecaptcharesponse },
 	            type: "POST",
 		        complete: function(){
 		        	$("#loading").hide();
@@ -5784,6 +5789,9 @@ $(function() {
                     else if (data == 2) {
                         alert('Due to consecutive failed login attempt, your account has been locked. You may use Forgot Password feature to reset and re-activate your account.');
                         window.location.href='<?php echo WEB; ?>/forgot_password';
+                    }
+                    else if (data == 3) {
+                        alert('reCAPTCHA verification is required upon log in.');
                     }
                     else {
                         $('#floatdiv').removeClass('invisible');
