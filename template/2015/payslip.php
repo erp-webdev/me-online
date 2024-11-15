@@ -48,12 +48,12 @@
                                                 </option>
                                                 <!--13 MONTH - START -->
                                                     
-                                                <option value="SP08"> 13TH MONTH 1/2</option>
+                                                <!-- <option value="SP08"> 13TH MONTH 1/2</option>
 
                                                
                                                 <option value="SP21">
                                                     13TH MONTH 2/2
-                                                </option> 
+                                                </option>  -->
                                                 
 
                                                 <!--13 MONTH - END -->
