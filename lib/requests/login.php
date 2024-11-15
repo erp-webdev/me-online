@@ -16,13 +16,12 @@
         if ($grecaptcharesponse) {
             $ip = $_SERVER['REMOTE_ADDR'];
             if(ENABLE_RECAPTCHA && 
-                (!in_array($ip, ['218.66.169.201']) ||     //china
-                strpos($ip, '10.10.') !== 0 ||            //agt
-                strpos($ip, '192.168.32.') !== 0 ||       //tws
-                strpos($ip, '192.168.40.') !== 0 ||        //gcp
+                (!in_array($ip, ['218.66.169.201']) &&     //china
+                strpos($ip, '10.10.') !== 0 &&            //agt
+                strpos($ip, '192.168.32.') !== 0 &&       //tws
+                strpos($ip, '192.168.40.') !== 0 &&        //gcp
                 strpos($ip, '172.16.40.') !== 0)           //ueg
             ){           
-
                 $recaptchaResponse = $grecaptcharesponse;
                 $secretKey = RECAPTCHA_SECRET_KEY;
                 $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secretKey&response=$recaptchaResponse");
