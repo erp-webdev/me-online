@@ -127,11 +127,11 @@
                     if($payslip_year <= 2023){
                         $year_select .= '<option value="SP08">13TH MONTH 1/2 '.$payslip_year.'</option>';
                         $year_select .= '<option value="SP21">13TH MONTH 2/2 '.$payslip_year.'</option>';
-                    }elseif(in_array($payslip_year, ['2022', '2023'])){
+                    }elseif(in_array($payslip_year, ['2022', '2023', '2024'])){
                         if(date('Y-m-d') >= '2022-11-18')
                             $year_select .= '<option value="SP08">13TH MONTH 1/2 '.$payslip_year.'</option>';
                         
-                        if(date('Y-m-d') >= '2022-12-02')
+                        if(date('Y-m-d') >= '2022-12-06')
                             $year_select .= '<option value="SP21">13TH MONTH 2/2 '.$payslip_year.'</option>';
                     }
                 endif;
