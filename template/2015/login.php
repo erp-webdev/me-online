@@ -1,4 +1,13 @@
-	<?php include(TEMP."/header.php"); ?>
+	<?php 
+    
+        include(TEMP."/header.php"); 
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $ip_exeptions = explode(',', RECAPTCHA_IP_EXCEPTIONS);
+        $recaptcha_exceptions = array_filter($ip_exeptions, function ($exempted) use ($ip) {
+            return strpos($ip, trim($exempted)) !== false; 
+        });
+
+    ?>
 
     <!-- BODY -->
 
@@ -35,9 +44,11 @@
                             <tr>
                                 <td><div class="curvebox centermargin"><input type="password" name="password" id="password" placeholder="Password" class="txtbox width95" /></div></td>
                             </tr>
+                            <?php if(ENABLE_RECAPTCHA && empty($recaptcha_exceptions)): ?>
                             <tr>
                                 <td style="display: flex; justify-content: center;"><div class="g-recaptcha" data-sitekey="<?php echo RECAPTCHA_SITE_KEY; ?>"></div></td>
                             </tr>
+                            <?php endif; ?>
                             <tr>
                                 <td>
                                     <input type="submit" name="btnlogin" id="btnlogin" value="LOGIN" class="bigbtn btnlogin" style="width: 50%;border-radius: 15px;"/>
