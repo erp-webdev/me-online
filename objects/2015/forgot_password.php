@@ -66,9 +66,9 @@
                 $bytes = openssl_random_pseudo_bytes(50);
                 $token = bin2hex($bytes);
 
-                $logsql->insert_reset_token($_POST['empidnum'], $emp_info[0]['EmailAdd'], $token);
+                $user_login = $logsql->check_login_user($_POST['empidnum'], $emp_info[0]['EmailAdd']);
+                $user_login ? $logsql->update_reset_token($_POST['empidnum'], $emp_info[0]['EmailAdd'], $token) : $logsql->insert_reset_token($_POST['empidnum'], $emp_info[0]['EmailAdd'], $token);
                 $reset_link = WEB.'/reset-password?token='.$token;
-                //var_dump($reset_link);
 
                 $email = new PHPMailer(true);
                 $email->SetFrom(NOTIFICATION_EMAIL); 
@@ -93,17 +93,21 @@
                 $email->Body      = $message;
                 $email->IsHTML(true);
 
-                if($emp_info[0]['Active']){
+                if($emp_info[0]['EmailAdd']){
                     $email->addAddress( $emp_info[0]['EmailAdd'] );
-                }else {
+                }
+                else if($emp_info[0]['EmailAdd2']){
                     $email->addAddress( $emp_info[0]['EmailAdd2'] );
+                }
+                else{
+                    echo '{"success": false, "error": "No email address is currently recorded in your account. As a result, you will not be able to receive email notifications from ME Online portal. Please contact your People Partner to update employee details."}';
+                    exit();
                 }
 
                 if($email->Send()) {
                     echo '{"success": true}';
                     exit();
                 }else {
-                    
                     echo '{"success": false, "error": "Mail error"}';
                     exit();
                 }
