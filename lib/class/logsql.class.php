@@ -188,8 +188,8 @@ class logsql {
         $sql = "SELECT TOP 1 REPLACE(REPLACE(SSSNbr, '-', ''), ' ', ''), *
                 FROM VIEWHREMPMASTER 
                 WHERE EmpID = '".$username."' 
-                AND Active = 1 AND EmailAdd is not null
-                and '".$answer."' IN (REPLACE(REPLACE(SSSNbr, '-', ''), ' ', ''), 
+                AND Active = 1
+                AND '".$answer."' IN (REPLACE(REPLACE(SSSNbr, '-', ''), ' ', ''), 
                     REPLACE(REPLACE(TINNbr, '-', ''), ' ', ''), REPLACE(REPLACE(PagibigNbr, '-', ''), ' ', ''),
                     REPLACE(REPLACE(PhilHealthNbr, '-', ''), ' ', ''))";
 
@@ -244,6 +244,13 @@ class logsql {
         $sp_result = $this->execute_sp_get_user($fieldnames, $values, $intFieldnames);
     }
 
+    public function update_reset_token($empid, $email, $reset_token){
+        $fieldnames = ['ACTION', 'EMPID', 'EMAILADD', 'RESET_TOKEN'];
+        $values = [8, $empid, $email, $reset_token];
+        $intFieldnames = ['ACTION'];
+
+        $sp_result = $this->execute_sp_get_user($fieldnames, $values, $intFieldnames);
+    }
 
     public function update_login_failed($empid, $login_failed, $email = NULL){
         $fieldnames = ['ACTION', 'EMPID', 'EMAILADD', 'LOGIN_FAILED'];
