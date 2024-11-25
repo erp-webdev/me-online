@@ -1,13 +1,16 @@
 	
 <?php 
-    $dateactivity = strtotime($my_registration[0]['activity_datestart']);
-    $today = strtotime(date("%Y-%m-%d %H:%M:%S"));
-    if($today <= $dateactivity && false){
+    $dateactivity = date('Y-m-d',$my_registration[0]['activity_datestart']);
+    $today = date('Y-m-d');
+    if($today == $dateactivity){
         if($_GET['title']=="MEGA-SAYANG PASKONG PILIPINO 2023") {
             echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/mega-sayang-paskong-pilipino'</script>";
         }
         else if($_GET['title']=="Megaworld 35th Anniversary Celebration") {
             echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/megaworld-35th-anniversary-fun-run'</script>";
+        }
+        else if($_GET['title']=="MEGAWORLD YULETIDE GLAM BALL 2024") {
+            echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/megaworld-yuletide-glamball-2024'</script>";
         }
     }
     else{?>
