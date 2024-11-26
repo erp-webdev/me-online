@@ -318,13 +318,13 @@
 		&nbsp;
 
 		<div style="text-align: justify;  text-justify: inter-word;">
-			<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo ucwords(strtolower($fullname)); ?></b>
+			<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo strtoupper($fullname); ?></b>
 				<?php if($emp_info[0]["DateResigned"]){ ?>
 					was employed as
 				<?php }else{ ?>
 					is currently employed as
 				<?php } ?>
-			<b><?php echo ucwords(strtolower($emp_info[0]["PositionDesc"]))."</b> by <b>".ucwords(strtolower($emp_info[0]["CompanyName"]))."</b> from <b>".$emp_info[0]["HireDate"]; ?>
+			<b><?php echo strtoupper($emp_info[0]["PositionDesc"])."</b> by <b>".ucwords(strtolower($emp_info[0]["CompanyName"]))."</b> from <b>".$emp_info[0]["HireDate"]; ?>
 			<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"]."</b>"; }else{ ?>
 			up to the present.</b></p>
 			<?php } ?>
@@ -432,15 +432,13 @@
 
 			<div style="text-align: justify;  text-justify: inter-word;">
 
-				<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo ucwords(strtolower($emp_info[0]["Salutation"]." ".$fullname)); ?></b>
+				<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">This certifies that <b><?php echo strtoupper($emp_info[0]["Salutation"]." ".$fullname); ?></b>
 					<?php if($emp_info[0]["DateResigned"]){ ?>
 						was employed as
 					<?php }else{ ?>
 						is currently employed as
 					<?php } ?>
-				<b><?php
-				echo ucwords(strtolower($emp_info[0]["PositionDesc"]))."</b> by <b>".ucwords(strtolower($emp_info[0]["CompanyName"]))."</b> from <b>".$emp_info[0]["HireDate"];
-				?>
+				<b><?php echo strtoupper($emp_info[0]["PositionDesc"])."</b> by <b>".ucwords(strtolower($emp_info[0]["CompanyName"]))."</b> from <b>".$emp_info[0]["HireDate"]; ?>
 				<?php if($emp_info[0]["DateResigned"]){ echo "to ".$emp_info[0]["DateResigned"].".</b>"; }else{ ?>
 				up to the present.</b></p>
 				<?php } ?>
