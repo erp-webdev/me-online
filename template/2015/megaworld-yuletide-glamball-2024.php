@@ -1,7 +1,7 @@
 <?php 
     $dateactivity = date('Y-m-d',$my_registration[0]['activity_datestart']);
     $today = date('Y-m-d');
-    if($today == $dateactivity){
+    if($today == $dateactivity || true){
    ?>
 
     <!DOCTYPE html>
@@ -31,9 +31,10 @@
                     right: 0px;
                     bottom: 20vh;
                     left: 0px;
-                    opacity: 0.4;
+                    opacity: 0.3;
+                    filter: hue-rotate(180deg) saturate(3) brightness(1.2);
                 }
-
+/* 
                 .glamball::after {
                     content: "";
                     background: url('<?php echo IMG_WEB ?>/ray.gif') no-repeat center center;
@@ -48,11 +49,11 @@
                     height: 100vh;
                     z-index: 2;
                     opacity: 0.1; 
-                }
+                } */
 
                 .round-box {
                     border: 3px solid transparent; 
-                    border-image: linear-gradient(34deg, #871B06 4%, #D61302 29%, #ED1514 47%, #D61302 75%, #881B06 100%) 1; 
+                    border-image: linear-gradient(34deg, #00001C 4%, #3B6B8E 29%, #3B6B8E 47%, #3B6B8E 75%, #0A0A25 100%) 1; 
                     width: 85%;
                     max-width:600px;
                     border-radius: 10px;
@@ -61,7 +62,7 @@
                 .frontpage {
                      position: relative;
                     height:100vh;
-                    background: url('<?php echo IMG_WEB ?>/glamball-pc.png') no-repeat center center;
+                    background: url('<?php echo IMG_WEB ?>/glam-desktop.png') no-repeat center center;
                     background-size: cover;
                     z-index: 1;
                     overflow: hidden;
@@ -140,7 +141,7 @@
                     color: #000;
                 }
                 a, dt{
-                    color: #D61302;
+                    color: #014c85;
                 }
                 dd{
                     margin-bottom: 15px;
@@ -148,7 +149,7 @@
                 .section-title{
                     font-size: 1.5em;
                     font-weight: bold; 
-                    color: #D61302;
+                    color: #014c85;
         
                 }
                 .expand{
@@ -175,7 +176,7 @@
                     }
 
                     .frontpage {
-                        background: url('<?php echo IMG_WEB ?>/glamballcp.png');
+                        background: url('<?php echo IMG_WEB ?>/glam-mobile.png');
                         background-size: cover; 
                         background-position: center; 
                         background-repeat: no-repeat; 
@@ -203,8 +204,8 @@
                             'transform': 'rotate(90deg)',
                             'max-height': '100%',
                             'max-width': '100vh',
-                            'height': '360px',
-                            'width': '700px'
+                            'height': '260px',
+                            'width': '1000px'
                         });
                     } else {
                         imgInModal.css({
@@ -266,7 +267,7 @@
                                 <?php echo $profile_dept ?>
                             </p><br>
                             <img src="https://quickchart.io/chart?chs=300x300&cht=qr&chl=<?php echo $my_registration[0]['registry_id'] ?>&choe=UTF-8" alt="QR Code" style="width:90%; max-width:300px;"><br>
-                            <p class="mt-3">Note: Have your QR Code ready for scanning at the event's registration.</p><br>
+                            <p class="mt-3">Note: Have your QR Code ready for scanning at the event's registration and claiming of food.</p><br>
                         </div>
                     </div>
                 </section>
@@ -289,10 +290,14 @@
                                 <label class="mt-5 text-center section-title fw-bold">FLOOR PLAN</label><br>
                                 <div class="m-4">
                                     <?php if (!($my_registration[0]['registry_seat']=="")){?>
-                                        <label class="mt-5 text-white">Your seat number is </label><br>
+                                        <p>Your seat number is </p><br>
                                         <label class="mb-3 fs-5"><strong><?php echo $my_registration[0]['registry_seat']?></strong></label><br>
                                     <?php }?>
-                                    <img src="<?php echo IMG_WEB ?>/marriot-floorplan.png" alt="Seat Plan" class="imgView" style="width:90%;" data-image="marriot-floorplan.png"><br>
+                                    <div class="fw-bold">Main Hall</div>
+                                    <img src="<?php echo IMG_WEB ?>/mgb-mainhall.png" alt="Main Hall" class="imgView" style="width:90%;" data-image="mgb-mainhall.png"><br>
+
+                                    <div class="fw-bold">Sky Box</div>
+                                    <img src="<?php echo IMG_WEB ?>/mgb-skybox.png" alt="Sky Box" class="imgView" style="width:90%;" data-image="mgb-skybox.png"><br>
                                 </div>
                                 <p class="mt-3">Note: For a clear view of the floor plan, please click on the image to enlarge it.</p><br>
                             </div>
@@ -303,19 +308,44 @@
                     <div class="text-center card round-box  p-5 m-3">
                         <label class="mb-5 text-center section-title fw-bold">FOOD MENU</label>
                         <dl>
-                            <dt class="text-center fw-bold">CATEGORY</dt>
-                            <dd>FOOD HERE</dd>
-                            <dd>FOOD HERE</dd>
-                            <dt class="text-center fw-bold">CATEGORY</dt>
-                            <dd>FOOD HERE</dd>
-                            <dd>FOOD HERE</dd>
-                            <dt class="text-center fw-bold">CATEGORY</dt>
-                            <dd>FOOD HERE</dd>
-                            <dd>FOOD HERE</dd>
-                            <dt class="text-center fw-bold">CATEGORY</dt>
-                            <dd>FOOD HERE</dd>
-                            <dd>FOOD HERE</dd>
+                            <dt class="text-center fw-bold">SALAD BAR</dt>
+                            <dd>Curly green, Iceberg, Lollo rosso, Romaine</dd>
+                            <dd>Carrot, Cucumber, Roma Tomatoes, Red beans</dd>
+                            <dd>Cheddar Cheese, Parmesan Cheese, Croutons, Lemon wedges</dd>
+                            <dd>Thousand Island dressing, Kalamansi Vinaigrette, Caesar Dressing</dd>
+                            <dd>Corn kernel, Curly green lettuce</dd>
+
+                            <dt class="text-center fw-bold">APPETIZER</dt>
+                            <dd>Beancurd Salad</dd>
+                            <dd>Thai Pomelo Salad with Shrimp</dd>
+                            <dd>Chinese Soy Chicken, BBQ Pork Asado</dd>
+
+                            <dt class="text-center fw-bold">(SERVED PER TABLE ON A PLATTER)</dt>
+                            <dd>Christmas Rumball</dd>
+                            <dd>Casava Cake</dd>
+                            <dd>Bibingka Malagkit</dd>
+                            <dd>Soft and Hard Roll, Butter</dd>
+
+                            <dt class="text-center fw-bold">SOUP</dt>
+                            <dd>Pumpkin Soup</dd>
+
+                            <dt class="text-center fw-bold">MAIN COURSE</dt>
+                            <dd>Korean Marinated Meatball</dd>
+                            <dd>Lasagna</dd>
+                            <dd>Yuletide Roast Chicken</dd>
+                            <dd>With Lemon Butter, Rosemary and Basil</dd>
+                            <dd>Taiwanese Sticky Pork Riblets</dd>
+                            <dd>Steamed Rice</dd>
+
+                            <dt class="text-center fw-bold">CARVING</dt>
+                            <dd>Lechon Belly Roll</dd>
+
+                            <dt class="text-center fw-bold">DESSERTS</dt>
+                            <dd>Mango Sago</dd>
+                            <dd>Matcha Cheesecake</dd>
+                            <dd>Fresh Fruits</dd>
                         </dl>
+
                     </div>
                 </section>
                 <section id='programme' class="d-flex justify-content-center sec_marg">
@@ -326,13 +356,16 @@
                             <dd>REGISTRATION</dd>
                             <dt class="text-center fw-bold">4:00 PM</dt>
                             <dd>START OF PROGRAM</dd>
+                            <dd>DOXOLOGY</dd>
                             <dd>MESSAGE OF ALT</dd>
                             <dd>RAFFLE</dd>
                             <dd>SERVICE AWARDS</dd>
+                            <dd>RAFFLE</dd>
                             <dd>DINNER</dd>
-                            <dd>JOEY G.</dd>
-                            <dd>SILENT SANCTUARY</dd>
-                            <dd>MAJOR RAFFLE</dd>
+                            <dd>FRONT ACT - JOEY G.</dd>
+                            <dd>RAFFLE</dd>
+                            <dd>MAIN ACT - SILENT SANCTUARY</dd>
+                            <dd>RAFFLE</dd>
                             <dd>MESSAGE OF RASP </dd>
                             <dd>CHRISTMAS PARTY SDE</dd>
                         </dl>
@@ -343,9 +376,11 @@
                         <label class="text-center section-title fw-bold">REMINDERS</label><br>
                         <div class="p-1 text-left">
                             <ul>
+                                <li>Company Bus first trip at 12:00 noon.</li>
                                 <li>Registration starts at 2:00pm.</li>
                                 <li>Do not forget your QR Code.</li>
                                 <li>Bring your Company ID.</li>
+                                <li>For Service Awardees, be ready at the right side of the stage.</li>
                             </ul>
                         </div>
                     </div>
