@@ -8,6 +8,18 @@
 		else if($_SESSION['megafunrun']=="1"){
 			echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/mfr35'</script>";
 		}
+		else if($_SESSION['megaglamball']=="1"){
+			echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/mygb24'</script>";
+		}
+		else if($_SESSION['bacolod']=="1"){
+			echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/bwwc24'</script>";
+		}
+		else if($_SESSION['iloilo']=="1"){
+			echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/iggc24'</script>";
+		}
+		else if($_SESSION['cebu']=="1"){
+			echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/chcl24'</script>";
+		}
 		else{
 			# PAGINATION
 			$page = isset($_GET["page"]) ? (int)$_GET["page"] : 1 ;
