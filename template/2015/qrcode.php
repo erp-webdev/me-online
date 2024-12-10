@@ -1,13 +1,27 @@
 	
 <?php 
-    $dateactivity = strtotime($my_registration[0]['activity_datestart']);
-    $today = strtotime(date("%Y-%m-%d %H:%M:%S"));
-    if($today <= $dateactivity && false){
+    $dateactivity = date('Y-m-d', $my_registration[0]['activity_datestart']);
+    $today = date('Y-m-d');
+    $dayBeforeActivity = date('Y-m-d', strtotime($dateactivity . ' -1 day'));
+    
+    if ($today >= $dayBeforeActivity && $today <= $dateactivity) {
         if($_GET['title']=="MEGA-SAYANG PASKONG PILIPINO 2023") {
             echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/mega-sayang-paskong-pilipino'</script>";
         }
         else if($_GET['title']=="Megaworld 35th Anniversary Celebration") {
             echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/megaworld-35th-anniversary-fun-run'</script>";
+        }
+        else if($_GET['title']=="MEGAWORLD YULETIDE GLAM BALL 2024") {
+            echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/megaworld-yuletide-glamball-2024'</script>";
+        }
+        else if($_GET['title']=="BACOLOD Winter Wonderland Christmas 2024") {
+            echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/bacolod-winter-wonderland-christmas-2024'</script>";
+        }
+        else if($_GET['title']=="ILOILO GLITZ AND GLAM") {
+            echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/iloilo-glitz-and-glam-2024'</script>";
+        }
+        else if($_GET['title']=="CEBU HAWAIIAN CHRISTMAS LUAU") {
+            echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/cebu-hawaiian-christmas-luau-2024'</script>";
         }
     }
     else{?>
