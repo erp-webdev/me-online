@@ -1,15 +1,15 @@
 <?php 
-    $activity_date = $my_registration ? $my_registration[0]['activity_datestart'] : strtotime('2024-12-12'); // 2024-12-12
+    $activity_date = $my_registration ? $my_registration[0]['activity_datestart'] : strtotime('2024-12-20'); //2024-12-20
     $dateactivity = date('Y-m-d', $activity_date);
     $today = date('Y-m-d');
     $dayBeforeActivity = date('Y-m-d', strtotime($dateactivity . ' -1 day'));
-    if ($today >= $dayBeforeActivity && $today <= $dateactivity) {
+    if ($today >= $dayBeforeActivity && $today <= $dateactivity){
    ?>
 
     <!DOCTYPE html>
         <html>
         <head>
-            <title>MEGAWORLD YULETIDE GLAM BALL 2024</title>
+            <title>BACOLOD Winter Wonderland Christmas 2024</title>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -34,11 +34,12 @@
                     bottom: 20vh;
                     left: 0px;
                     opacity: 0.3;
+                    filter: hue-rotate(190deg) saturate(2) brightness(1.2);
                 }
 
                 .round-box {
                     border: 3px solid transparent; 
-                    border-image: linear-gradient(34deg, #871B06 4%, #D61302 29%, #ED1514 47%, #D61302 75%, #881B06 100%) 1; 
+                    border-image: linear-gradient(50deg, #6B7992 4%,  #6F708F 47%,  #214A76 100%) 1; 
                     width: 85%;
                     max-width:600px;
                     border-radius: 10px;
@@ -47,19 +48,48 @@
                 .frontpage {
                      position: relative;
                     height:100vh;
-                    background: url('<?php echo IMG_WEB ?>/glam-desktop.png') no-repeat center center;
+                    background: url('<?php echo IMG_WEB ?>/bacolod-wwc-pc.png') no-repeat center center;
                     background-size: cover;
                     z-index: 1;
                     overflow: hidden;
                 }
 
-                #tsparticles {
-                    position: relative;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100vh;
-                    z-index: 3; 
+                .snowflake {
+                    position: absolute;
+                    display: block;
+                    background: white; 
+                    border-radius: 50%; 
+                    opacity: 0.6;
+                }
+
+                .snowflake.small {
+                    width: 5px;
+                    height: 5px;
+                }
+
+                .snowflake.medium {
+                    width: 8px;
+                    height: 8px;
+                }
+
+                .snowflake.large {
+                    width: 12px;
+                    height: 12px;
+                }
+
+                @keyframes fall {
+                    0% {
+                        transform: translateY(0) rotate(0deg);
+                    }
+                    100% {
+                        transform: translateY(120vh) rotate(360deg); 
+                    }
+                }
+
+                .snowflake {
+                    animation-name: fall;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
                 }
                 
                 .sec_marg{
@@ -80,7 +110,7 @@
                     color: #000;
                 }
                 a, dt{
-                    color: #D61302;
+                    color: #014c85;
                 }
                 dd{
                     margin-bottom: 15px;
@@ -88,7 +118,7 @@
                 .section-title{
                     font-size: 1.5em;
                     font-weight: bold; 
-                    color: #D61302;
+                    color: #014c85;
         
                 }
                 .expand{
@@ -115,7 +145,7 @@
                     }
 
                     .frontpage {
-                        background: url('<?php echo IMG_WEB ?>/glam-mobile.png');
+                        background: url('<?php echo IMG_WEB ?>/bacolod-wwc-cp.png');
                         background-size: cover; 
                         background-position: center; 
                         background-repeat: no-repeat; 
@@ -158,13 +188,45 @@
                     $("#imgModal").modal("hide");
                 });
 
+                $(function() {
+                    var body = $('.frontpage'),
+                        template = $('.template.snowflake'),
+                        snowflakes = 70;
+
+                    var size = 'small';
+                    var createSnowflake = function() {
+                        var leftPosition = Math.random() * 100;
+                        var animationDuration = 10 + Math.random() * 10; 
+                        var delay = Math.random() * 10; 
+
+                        template.clone().removeAttr('id').css({
+                            top: '-10%', 
+                            left: leftPosition + '%', 
+                            animationDelay: delay + 's',
+                            animationDuration: animationDuration + 's'
+                        }).addClass(size).appendTo(body);
+                    };
+
+                    for (var i = 0; i < snowflakes; i++) {
+                        if (i % 2 === 0) {
+                            size = 'small';
+                        } else if (i % 3 === 0) {
+                            size = 'large';
+                        } else {
+                            size = 'medium';
+                        }
+
+                        createSnowflake();
+                    }
+                });
+
             </script>
         </head>
         <body class='glamball'> 
-                <section class="frontpage sec_marg">
-                    <div id="tsparticles"></div>
-                </section>
-                <?php if ($logstat==1){?>
+            <section class="frontpage sec_marg">
+                <div class="template snowflake"></div>
+            </section>
+            <?php if ($logstat==1){?>
                 <section id='qr' class="d-flex justify-content-center sec_marg">
                     <div class="card round-box  p-5 m-3">
                         <div class="text-center">
@@ -187,13 +249,13 @@
                     <div class="card  round-box">
                         <div class="card-body">
                             <div class="text-center">
-                                <label class="m-3">Log in <a href="<?php echo WEB ?>/mygb24"><b>here</b></a> to see your registration QR Code.</label><br>
+                                <label class="m-3">Log in <a href="<?php echo WEB ?>/bwwc24"><b>here</b></a> to see your registration QR Code.</label><br>
                             </div>
                         </div>
                     </div>
                 </section>
                 <?php }?>
-                <section class="d-flex justify-content-center sec_marg">
+                <section class="d-flex justify-content-center sec_marg d-none">
                     <div class="card round-box ">
                         <div class="card-body">
                             <div class="text-center">
@@ -218,42 +280,42 @@
                     <div class="text-center card round-box  p-5 m-3">
                         <label class="mb-5 text-center section-title fw-bold">FOOD MENU</label>
                         <dl>
-                            <dt class="text-center fw-bold">SALAD BAR</dt>
-                            <dd>Curly green, Iceberg, Lollo rosso, Romaine</dd>
-                            <dd>Carrot, Cucumber, Roma Tomatoes, Red beans</dd>
-                            <dd>Cheddar Cheese, Parmesan Cheese, Croutons, Lemon wedges</dd>
-                            <dd>Thousand Island dressing, Kalamansi Vinaigrette, Caesar Dressing</dd>
-                            <dd>Corn kernel, Curly green lettuce</dd>
+                            <dt>STARTERS</dt>
+                            <dd>Smoked Chorizo and Roasted Garlic Dip</dd>
+                            <dd>Vegetable Spring Roll</dd>
 
-                            <dt class="text-center fw-bold">APPETIZER</dt>
-                            <dd>Beancurd Salad</dd>
-                            <dd>Thai Pomelo Salad with Shrimp</dd>
-                            <dd>Chinese Soy Chicken, BBQ Pork Asado</dd>
+                            <dt>SOUP</dt>
+                            <dd>Spinach and Potato</dd>
 
-                            <dt class="text-center fw-bold">(SERVED PER TABLE ON A PLATTER)</dt>
-                            <dd>Christmas Rumball</dd>
-                            <dd>Casava Cake</dd>
-                            <dd>Bibingka Malagkit</dd>
-                            <dd>Soft and Hard Roll, Butter</dd>
+                            <dt>SALAD</dt>
+                            <dd>Roasted Herb Chicken with Potato</dd>
 
-                            <dt class="text-center fw-bold">SOUP</dt>
-                            <dd>Pumpkin Soup</dd>
+                            <dt>MAIN COURSE</dt>
+                            <dd>Beef Medallions</dd>
+                            <dd>Rosemary Rubbed Roasted</dd>
+                            <dd>Smoked Barbecue Glazed Ribs</dd>
 
-                            <dt class="text-center fw-bold">MAIN COURSE</dt>
-                            <dd>Korean Marinated Meatball</dd>
-                            <dd>Lasagna</dd>
-                            <dd>Yuletide Roast Chicken</dd>
-                            <dd>With Lemon Butter, Rosemary and Basil</dd>
-                            <dd>Taiwanese Sticky Pork Riblets</dd>
+                            <dt>CARVING</dt>
+                            <dd>US Angus Beef</dd>
+
+                            <dt>PASTA</dt>
+                            <dd>Penne - Bolognese</dd>
+
+                            <dt>STARCH</dt>
                             <dd>Steamed Rice</dd>
 
-                            <dt class="text-center fw-bold">CARVING</dt>
-                            <dd>Lechon Belly Roll</dd>
+                            <dt>VEGETABLE</dt>
+                            <dd>Stir Fry</dd>
 
-                            <dt class="text-center fw-bold">DESSERTS</dt>
-                            <dd>Mango Sago</dd>
-                            <dd>Matcha Cheesecake</dd>
-                            <dd>Fresh Fruits</dd>
+                            <dt>DESSERTS</dt>
+                            <dd>Blondies and Brownies</dd>
+                            <dd>British Sticky Toffee Pudding</dd>
+                            <dd>Eclair (Mini Salted Caramel Eclair & Mini Coffee Eclair)</dd>
+
+                            <dt>Lechon and Churros</dt>
+
+                            <dt>DRINKS</dt>
+                            <dd>Soda and Iced Tea (mixed)</dd>
                         </dl>
 
                     </div>
@@ -262,22 +324,22 @@
                     <div class="text-center card round-box  p-5 m-3">
                         <label class="mb-5 text-center section-title fw-bold">PROGRAMME</label>
                         <dl>
-                            <dt class="text-center fw-bold">2:00 PM</dt>
+                            <dt class="text-center fw-bold">3:00 PM</dt>
                             <dd>REGISTRATION</dd>
                             <dt class="text-center fw-bold">4:00 PM</dt>
-                            <dd>START OF PROGRAM</dd>
+                            <dd>5 MINUTES COUNTDOWN</dd>
                             <dd>DOXOLOGY</dd>
-                            <dd>MESSAGE OF ALT</dd>
+                            <dd>OPENING MESSAGE</dd>
                             <dd>RAFFLE</dd>
                             <dd>SERVICE AWARDS</dd>
-                            <dd>RAFFLE</dd>
+                            <dd>VIDEO MESSAGE</dd>
                             <dd>DINNER</dd>
-                            <dd>FRONT ACT - JOEY G.</dd>
+                            <dd>1ST SET BAND</dd>
                             <dd>RAFFLE</dd>
-                            <dd>MAIN ACT - SILENT SANCTUARY</dd>
+                            <dd>GROUP PRESENTATION</dd>
                             <dd>RAFFLE</dd>
-                            <dd>MESSAGE OF RASP </dd>
                             <dd>CHRISTMAS PARTY SDE</dd>
+                            <dd>FINAL SET BAND</dd>
                         </dl>
                     </div>
                 </section>
@@ -286,22 +348,10 @@
                         <label class="text-center section-title fw-bold">REMINDERS</label><br>
                         <div class="p-1 text-left">
                             <ul>
-                                <li>Registration starts at 2:00pm.</li>
-                                <li>Do not forget your QR Code.</li>
-                                <li>Bring your Company ID.</li>
-                                <li>To all Service Awardees: 
-                                    <ul>
-                                        <li>Claiming of plaques and pins will take place from 2:00 to 4:00pm at Executive West 16 (15, 20, 25 & 30 years) and Executive East 19 (5 & 10 years).</li>
-                                        <li>Please be ready at around 4:45 PM (after Dr. Tan’s speech) on the right side of the stage.</li>
-                                    </ul>
-                                </li>
-                                <li>Company Bus to MGB first trip as follows:
-                                    <ul>
-                                        <li>AGT 1:00PM</li>
-                                        <li>TWS 1:15PM</li>
-                                        <li>GCP 12:00PM</li>
-                                    </ul>
-                                </li>
+                                <li>Registration starts at 3:00 PM.</li>
+                                <li>Only pre-registered employees with QR codes will be allowed to attend the Christmas Party.</li>
+                                <li>Present your QR code at the Registration Area.</li>
+                                <li>For Service Awardees, they should be at the venue on or before 3:00 PM. Upon arrival, claim your plaque, pin, and printed photo at the Registration Area.</li>
                             </ul>
                         </div>
                     </div>
@@ -319,81 +369,6 @@
                 <label class="m-3 text-center" style="font-size: 10px;">All rights reserved 2024</label><br>
             </div>
         </footer>
-
-        <script src="https://cdn.jsdelivr.net/npm/tsparticles@1.37.4/tsparticles.min.js"></script>
-        <script>
-            tsParticles.load("tsparticles", {
-                fpsLimit: 60,
-                background: {
-                    color: "transparent"
-                },
-                particles: {
-                    color: { value: "#ffffff" },
-                    move: {
-                        direction: "none",
-                        enable: true,
-                        outModes: "out",
-                        random: false,
-                        speed: 1,
-                        straight: false
-                    },
-                    number: {
-                        density: {
-                            enable: true,
-                            area: 600
-                        },
-                        value: 80
-                    },
-                    opacity: {
-                        animation: {
-                            enable: true,
-                            speed: 0.08,
-                            sync: true,
-                            startValue: "max",
-                            count: 1,
-                            destroy: "min"
-                        },
-                        value: {
-                            min: 0,
-                            max: 1
-                        }
-                    },
-                    shape: {
-                        type: "circle"
-                    },
-                    size: {
-                        value: { min: 1, max: 2 }
-                    },
-                    life: {
-                        duration: {
-                            sync: false,
-                            value: 10 // lifespan of each particle in seconds
-                        },
-                        count: 1 // infinite regeneration
-                    }
-                },
-                emitters: {
-                    direction: "none",
-                    life: {
-                        count: 0, // infinite
-                        duration: 0.2, // how often particles are emitted
-                        delay: 0.1 // delay between emissions
-                    },
-                    rate: {
-                        delay: 0.2, // delay between particle bursts
-                        quantity: 2 // particles per burst
-                    },
-                    size: {
-                        width: 100, // emitter width
-                        height: 100 // emitter height
-                    },
-                    position: {
-                        x: 50,
-                        y: 50 // emitter position (in percentage)
-                    }
-                }
-            });
-        </script>
     </html>
 
 <?php } 
