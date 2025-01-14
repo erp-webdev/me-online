@@ -1145,7 +1145,7 @@
             if(num ==  null || num == undefined || isNaN(num)) 
                 return 0;
 
-            return Math.round(num*100)/100;
+            return Math.round((num + 0.00000001) *100)/100;
         }
 
     });
