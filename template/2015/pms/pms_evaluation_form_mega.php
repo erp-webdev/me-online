@@ -1,4 +1,5 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script type='text/javascript' src="<?php echo JS; ?>/JavaScriptSpellCheck/include.js" ></script>
 <style>
         .loading-screen {
             position: absolute;
@@ -195,7 +196,7 @@
                                 </tr>
                                 <tr ng-repeat="competency in record.competencies" ng-if="competency.Type == 'CORE'">
                                     <td style="vertical-align: top;"><span ng-bind="$index + 1"></span></td>
-                                    <td>
+                                    <td class='textareaGroup'>
                                         <b ng-bind="competency.Competency"></b>
                                         <br>
                                         <br>
@@ -206,15 +207,16 @@
                                         </div> -->
                                         <br><br>
                                         <strong>Remarks</strong> <br>
-                                        <textarea spellcheck='true' cols="60" rows="3"  placeholder="Add your remarks" 
+                                        <textarea oninput="$Spelling.SpellCheckAsYouType(this);" onfocus="$Spelling.SpellCheckAsYouType(this);" 
+                                                spellcheck='true' cols="60" rows="3"  placeholder="Add your remarks" 
                                                 class="checker caRemarks" 
                                                 ng-model="competency.Remarks" 
                                                 ng-disabled="is_approved" 
-                                                ng-class="{'ng-invalid': (!competency.Remarks || competency.Remarks.length < 25), 'ng-valid': (competency.Remarks && competency.Remarks.length >= 25)}">
+                                                minlength='25' required>
                                         </textarea>
                                         <br>
-                                        <small ng-show="competency.Remarks.length > 0 && competency.Remarks.length < 25" class='warningMsg'>
-                                            * Must be at least 25 characters long.
+                                        <small class='warningMsg' style="display:none;">
+                                            * This is a required field. Must be at least 25 characters long.
                                         </small>
                                     </td>
                                     <td style="text-align:center;width:25px;">
@@ -238,19 +240,20 @@
 
                                 <tr ng-repeat="competency in record.competencies" ng-if="competency.Type == 'JOB-SPECIFIC'">
                                     <td style="vertical-align: top;"><span ng-bind="$index + 1"></span></td>
-                                    <td>
+                                    <td class='textareaGroup'>
                                         <b ng-bind="competency.Competency" ></b>
                                         <br><br>
                                         <strong>Remarks</strong><br>
-                                        <textarea spellcheck='true' cols="60" rows="3"  placeholder="Add your remarks" 
+                                        <textarea oninput="$Spelling.SpellCheckAsYouType(this);" onfocus="$Spelling.SpellCheckAsYouType(this);"
+                                                spellcheck='true' cols="60" rows="3"  placeholder="Add your remarks" 
                                                 class="checker caRemarks" 
                                                 ng-model="competency.Remarks" 
                                                 ng-disabled="is_approved" 
-                                                ng-class="{'ng-invalid': (!competency.Remarks || competency.Remarks.length < 25), 'ng-valid': (competency.Remarks && competency.Remarks.length >= 25)}">
+                                                minlength='25' required>
                                         </textarea>
                                         <br>
-                                        <small ng-show="competency.Remarks.length > 0 && competency.Remarks.length < 25" class='warningMsg'>
-                                            * Must be at least 25 characters long.
+                                        <small class='warningMsg' style="display:none;">
+                                            * This is a required field. Must be at least 25 characters long.
                                         </small>
                                     </td>
                                     <td style="text-align:center;width:25px;">
@@ -300,7 +303,7 @@
                         <tbody id="jsgoals">
                             <tr ng-repeat="goal in record.goals">
                                 <td style="vertical-align: top;"><span ng-bind="$index+1"></span></td>
-                                <td style="">
+                                <td  class='textareaGroup'>
                                     <textarea class="checker" cols="80" rows="3" ng-model="goal.Goals" ng-readonly="goal.id != null || goal.Goals == '8 hrs mandatory training' || is_approved" placeholder="Provide SMART Goal" ng-required="goal.Goals != '8 hrs mandatory training'" minlength="goal.Goals != '8 hrs mandatory training' && goal.id == null ? 10 : ''"></textarea>
                                     
                                     <br>
@@ -310,15 +313,16 @@
                                     <span ng-bind="goal.MeasureOfSuccess"  ng-show="goal.Goals != '8 hrs mandatory training' && goal.id != null"></span>
                                     <br> <br>
                                     <strong>Comments</strong><br>
-                                    <textarea spellcheck='true' cols="80" rows="2" placeholder="Provide your comments" 
+                                    <textarea oninput="$Spelling.SpellCheckAsYouType(this);" onfocus="$Spelling.SpellCheckAsYouType(this);"
+                                            spellcheck='true' cols="80" rows="2" placeholder="Provide your comments" 
                                             class="checker" 
                                             ng-model="goal.Comments"
                                             ng-disabled="is_approved" 
-                                            ng-class="{'ng-invalid': (!goal.Comments || goal.Comments.length < 25), 'ng-valid': (goal.Comments && goal.Comments.length >= 25)}">
+                                            minlength='25' required>
                                     </textarea>
                                     <br>
-                                    <small ng-show="goal.Comments.length > 0 && goal.Comments.length < 25" class='warningMsg'>
-                                        * Must be at least 25 characters long.
+                                    <small class='warningMsg' style="display:none;">
+                                        * This is a required field. Must be at least 25 characters long.
                                     </small>
                                     <span ng-show="goal.id == null && goal.Goals != '8 hrs mandatory training'" >
                                     <br><br>
@@ -357,28 +361,30 @@
                                 <td>
                                     <a class="smlbtn"style="background-color:#D20404;" ng-click="deleteNextGoal($index)" ng-show="!is_approved">Delete</a>
                                 </td>
-                                <td style="text-align:center;">
-                                    <textarea spellcheck='true' cols="40" rows="5" 
+                                <td style="text-align:center;" class='textareaGroup'>
+                                    <textarea oninput="$Spelling.SpellCheckAsYouType(this);" onfocus="$Spelling.SpellCheckAsYouType(this);"
+                                            spellcheck='true' cols="40" rows="5" 
                                             class="checker" 
                                             ng-model="goal.Goals" 
                                             ng-disabled="is_approved" 
-                                            ng-class="{'ng-invalid': (!goal.Goals || goal.Goals.length < 25), 'ng-valid': (goal.Goals && goal.Goals.length >= 25)}">
+                                            minlength='25' required>
                                     </textarea>
                                     <br>
-                                    <small ng-show="goal.Goals.length > 0 && goal.Goals.length < 25" class='warningMsg'>
-                                        * Must be at least 25 characters long.
+                                    <small class='warningMsg' style="display:none;">
+                                        * This is a required field. Must be at least 25 characters long.
                                     </small>
                                 </td>
-                                <td style="text-align:center;">
-                                    <textarea spellcheck='true' cols="40" rows="5" 
+                                <td style="text-align:center;" class='textareaGroup'>
+                                    <textarea oninput="$Spelling.SpellCheckAsYouType(this);" onfocus="$Spelling.SpellCheckAsYouType(this);"
+                                            spellcheck='true' cols="40" rows="5" 
                                             class="checker" 
                                             ng-model="goal.MeasureOfSuccess" 
                                             ng-disabled="is_approved" 
-                                            ng-class="{'ng-invalid': (!goal.MeasureOfSuccess || goal.MeasureOfSuccess.length < 25), 'ng-valid': (goal.MeasureOfSuccess && goal.MeasureOfSuccess.length >= 25)}">
+                                            minlength='25' required>
                                     </textarea>
                                     <br>
-                                    <small ng-show="goal.MeasureOfSuccess.length > 0 && goal.MeasureOfSuccess.length < 25" class='warningMsg'>
-                                        * Must be at least 25 characters long.
+                                    <small class='warningMsg' style="display:none;">
+                                        * This is a required field. Must be at least 25 characters long.
                                     </small>
                                 </td>
                             </tr>
@@ -479,16 +485,14 @@
                     <div style="border:1px solid #fff;padding-left:5px;width:98.6%;">
                         <h4>PERFORMANCE SUMMARY <span style="font-size:10px;font-weight:normal;">(Written by Reviewing Manager)</span> </h4>
                         <h4><span ng-bind="record.Rater1FullName"></span></h4>
-                        <p>
-                            <textarea spellcheck='true' style="width:98.4%;min-height:100px;" class="perfsummary checker" rows="3" 
+                        <p class='textareaGroup'>
+                            <textarea oninput="$Spelling.SpellCheckAsYouType(this);" onfocus="$Spelling.SpellCheckAsYouType(this);" spellcheck='true' style="width:98.4%;min-height:100px;" class="perfsummary checker" rows="3" 
                                 ng-model="record.PerformanceSummary" 
                                 ng-show="record.for_approval_level == 1" ng-disabled="is_approved || record.for_approval_level > 1"
-                                ng-class="{'ng-invalid': !record.PerformanceSummary || record.PerformanceSummary.length < 25, 
-                                            'ng-valid': record.PerformanceSummary && record.PerformanceSummary.length >= 25}">
+                                minlength='25' required>
                             </textarea><br>
-                            <small ng-show="record.PerformanceSummary.length < 25 && record.PerformanceSummary.length > 0" 
-                            class='warningMsg'>
-                                * Must be at least 25 characters long.
+                            <small class='warningMsg' style="display:none;">
+                                * This is a required field. Must be at least 25 characters long.
                             </small>
                             <span ng-show="record.for_approval_level > 1 || record.status == 'Completed'" ng-bind="record.PerformanceSummary"></span>
                         </p>
@@ -508,17 +512,17 @@
                             <div ng-show="record.for_approval_level == 2">
                                 <hr>
                                 <h4>EVALUATION COMMENT</h4>
-                                <textarea ng-model="record.Rater2Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 2"  ng-disabled="is_approved"></textarea>
+                                <textarea oninput="$Spelling.SpellCheckAsYouType(this);" onfocus="$Spelling.SpellCheckAsYouType(this);" spellcheck="true"  ng-model="record.Rater2Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 2"  ng-disabled="is_approved"></textarea>
                             </div>
                             <div ng-show="record.for_approval_level == 3">
                                 <hr>
                                 <h4>EVALUATION COMMENT</h4>
-                                <textarea ng-model="record.Rater3Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 3"  ng-disabled="is_approved"></textarea>
+                                <textarea oninput="$Spelling.SpellCheckAsYouType(this);" onfocus="$Spelling.SpellCheckAsYouType(this);" spellcheck="true"  ng-model="record.Rater3Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 3"  ng-disabled="is_approved"></textarea>
                             </div>
                             <div ng-show="record.for_approval_level == 4">
                                 <hr>
                                 <h4>EVALUATION COMMENT</h4>
-                                <textarea ng-model="record.Rater4Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 4"  ng-disabled="is_approved"></textarea>
+                                <textarea oninput="$Spelling.SpellCheckAsYouType(this);" onfocus="$Spelling.SpellCheckAsYouType(this);" spellcheck="true"  ng-model="record.Rater4Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 4"  ng-disabled="is_approved"></textarea>
                             </div>
 
                             <span  ng-show="!is_approved" style="font-style:italic;margin-left:5px;font-size:10px;">Note: Kindly refrain from including any information regarding salary increases or promotions. You may use the designated field for this purpose.</span>
@@ -993,65 +997,50 @@
         }
 
         $scope.validate = function(){
-            if($scope.myForm.$invalid || $scope.isAnyTextAreaInvalid()){
+            if($scope.myForm.$invalid){
                 $('input.ng-invalid').first().focus();
                 $('textarea.ng-invalid').first().focus();
                 $('select.ng-invalid').first().focus();
                 alert('Please check all required inputs!');
+
+                return false;
+            }
+            else if($scope.checkSpelling()){
+                $('span.livespell_redwiggle').closest('div').focus();
+                alert('Spelling errors found. Please review and correct the highlighted words before submitting the form. \n\nNote: To fix, right click on misspelled word to see suggestions.');
+
+                return false;
             }
 
-            return !$scope.myForm.$invalid && !$scope.isAnyTextAreaInvalid();
-        };
-        
-        $scope.fields = [
-            { model: 'record.PerformanceSummary', minLength: 25 }
-        ];
-
-        $scope.repeatFields = [
-            { cluster: 'record.goals_next', model: 'goal.MeasureOfSuccess', minLength: 25 },
-            { cluster: 'record.goals_next', model: 'goal.Goals', minLength: 25 },
-            { cluster:'record.competencies', model: 'competency.Remarks', minLength: 25 },
-            { cluster:'record.goals', model: 'goal.Comments', minLength: 25 },
-        ];
-
-        $scope.isAnyTextAreaInvalid = function() {
-            const invalidFields = $scope.fields.some(function(field) {
-                return !$scope.$eval(field.model) || $scope.$eval(field.model).length < field.minLength;
-            });
-
-            let invalidRepeatFields = false;
-
-            $scope.repeatFields.forEach(function(field) {
-                const clusterItems = $scope.$eval(field.cluster); 
-
-                if (Array.isArray(clusterItems)) {
-                    clusterItems.forEach(function(item, index) {
-                        const modelValue = $scope.$eval(`${field.cluster}[${index}].${field.model.split('.')[1]}`);
-                        if (!modelValue || modelValue.length < field.minLength) {
-                            invalidRepeatFields = true;
-                        }
-                    });
-                } else {
-                    const modelValue = $scope.$eval(field.model);
-                    if (!modelValue || modelValue.length < field.minLength) {
-                        invalidRepeatFields = true;
-                    }
-                }
-            });
-
-            return invalidFields || invalidRepeatFields;
+           return true
         };
 
-        $scope.round2 = function(num){
-            // return +num.toFixed(2);
-            if(num ==  null || num == undefined || isNaN(num)) 
-                return 0;
+        $scope.checkSpelling = function(){
+            if ($('span.livespell_redwiggle').length > 0){
+                return true;
+            }
 
-            return Math.round(num*100)/100;
+            return false;
         }
 
     });
-    
+
+    $(document).on('input focusin', '.livespell_textarea', function() {
+        var content = $(this).text(); 
+        var msg=$(this).closest('.textareaGroup').find('small.warningMsg');
+
+        if(msg.length != 0){
+            if (!content || content.length < 25) {
+                $(this).css('background-color', 'hsl(0deg 25% 50%)');
+                msg.show();
+            } 
+            else {
+                $(this).css('background-color', '#fff');
+                msg.hide();
+            }
+        }
+    });
+
     $('input[name="promotion"]').on('click', function(e){
         $("#floatdiv").removeClass("invisible");
         $("#nview").show({
@@ -1063,6 +1052,7 @@
     });
 
     $('#submapp').on('click', function(e){
+        $Spelling.SpellCheckAsYouType($('.checker:visible'));
         $("#submitfloat").removeClass("invisible");
         $("#submitfloatnview").show({
             effect : 'slide',
