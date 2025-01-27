@@ -556,7 +556,7 @@
                         </div>
                         <div ng-show="record.status == 'Incomplete' && !is_approved">
                             <!-- <hr> -->
-                            <h4 ng-show="is_approved">EVALUATION COMMENT</h4>
+                            <h4 ng-show="!is_approved">EVALUATION COMMENT</h4>
                             <textarea oninput="$Spelling.SpellCheckAsYouType(this);" onfocus="$Spelling.SpellCheckAsYouType(this);" spellcheck="true"  ng-model="record.Rater2Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 2"  ng-disabled="is_approved"></textarea>
                             <textarea oninput="$Spelling.SpellCheckAsYouType(this);" onfocus="$Spelling.SpellCheckAsYouType(this);" spellcheck="true"  ng-model="record.Rater3Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 3"  ng-disabled="is_approved"></textarea>
                             <textarea oninput="$Spelling.SpellCheckAsYouType(this);" onfocus="$Spelling.SpellCheckAsYouType(this);" spellcheck="true"  ng-model="record.Rater4Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 4"  ng-disabled="is_approved"></textarea>
@@ -952,7 +952,7 @@
         $scope.validate = function(){
             if($scope.myForm.$invalid){
                 $('input.ng-invalid').first().focus();
-                $('textarea.ng-invalid').first().focus();
+                $('textarea.ng-invalid').first().closest('.textareaGroup').find('.livespell_textarea').focus();
                 $('select.ng-invalid').first().focus();
                 alert('Please check all required inputs!');
 
@@ -1031,4 +1031,4 @@
     });
 
     </script>
-      <?php include('session.php'); ?>
+    <?php include('session.php'); ?>

@@ -935,7 +935,7 @@
         $scope.validate = function(){
             if($scope.myForm.$invalid){
                 $('input.ng-invalid').first().focus();
-                $('textarea.ng-invalid').first().focus();
+                $('textarea.ng-invalid').first().closest('.textareaGroup').find('.livespell_textarea').focus();
                 $('select.ng-invalid').first().focus();
                 alert('Please check all required inputs!');
 

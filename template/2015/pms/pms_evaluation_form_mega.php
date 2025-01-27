@@ -999,7 +999,7 @@
         $scope.validate = function(){
             if($scope.myForm.$invalid){
                 $('input.ng-invalid').first().focus();
-                $('textarea.ng-invalid').first().focus();
+                $('textarea.ng-invalid').first().closest('.textareaGroup').find('.livespell_textarea').focus();
                 $('select.ng-invalid').first().focus();
                 alert('Please check all required inputs!');
 
@@ -1021,6 +1021,14 @@
             }
 
             return false;
+        }
+
+        $scope.round2 = function(num){
+            // return +num.toFixed(2);
+            if(num ==  null || num == undefined || isNaN(num)) 
+                return 0;
+
+            return Math.round((num + 0.00000001) *100)/100;
         }
 
     });
