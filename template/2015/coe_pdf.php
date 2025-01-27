@@ -913,7 +913,7 @@
 						'VP' => [
 							'name' => 'RAMILO, LOURDES ONG',
 							'id' => '1997-03-8638',
-							'designation' => 'Vice President',
+							'designation' => 'First Vice President',
 							'esign' => 'coe_lramilo.png',
 							'email' => 'dramilo@megaworldcorp.com'
 						],
