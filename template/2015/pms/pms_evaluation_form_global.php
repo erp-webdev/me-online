@@ -353,6 +353,10 @@
                                                 * This is a required field. Must be at least 25 characters long.
                                             </small>
                                         </div>
+                                        <div style="width:60px;float:right;font-size:9px;">
+                                            <p style="font-weight:bold;">Weight</p>
+                                            <input style="width:35px;" type="number" ng-model="next_goal.Weight" min="1" max="100" class="width25 smltxtbox p5w checker" ng-change="updateRecord()" required  ng-disabled="is_approved"  onkeypress="return (event.charCode >= 48 && event.charCode <= 57) || event.charCode==8" onKeyDown="if ((this.value.length == 2 || this.value.length == 3) && ((this.value >= 10 && this.value <= 100 && !(this.value == 10 && event.keyCode == 48)) && event.keyCode != 8))  return false;" onfocusin="(this.value == 0) ? this.value = '' : false" onfocusout="(this.value == '') ? this.value = 0 : false"> %
+                                        </div>
                                         <div style="clear:both;"></div>
                                         <div class='textareaGroup'>
                                             <p> Measurement of accomplishment: </p>
@@ -682,7 +686,7 @@
                             <td style="vertical-align:top; width:150px">Promotion To Level</td>
                             <td>
                                 
-                                <input type="text" name="promotion" ng-model="record.recommended_rank" autocomplete="off" readonly style="width:350px !important"  ng-disabled="is_approved" required>
+                                <input type="text" name="promotion" ng-model="finalRankPromotion" ng-value="record.recommended_rank"  autocomplete="off" readonly style="width:350px !important"  ng-disabled="is_approved" ng-required="!is_approved">
                                 <br><br>
                                 Current rank is <b ng-bind="record.Rank"></b>
                                 <br> 
@@ -970,7 +974,6 @@
             if($scope.record.Rater4EmpID == $scope.ApproverEmpID && $scope.record.Rater4DB == $scope.ApproverEmpDB)
                 $scope.record.Rater4RankPromotion = $scope.finalRankPromotion;
 
-            $scope.record.recommended_rank = $scope.finalRankPromotion;
             $scope.updateRecord();
         }
 
@@ -1065,7 +1068,7 @@
         $scope.validate = function(){
             if($scope.myForm.$invalid){
                 $('input.ng-invalid').first().focus();
-                $('textarea.ng-invalid').first().focus();
+                $('textarea.ng-invalid').first().closest('.textareaGroup').find('.livespell_textarea').focus();
                 $('select.ng-invalid').first().focus();
                 alert('Please check all required inputs!');
             
