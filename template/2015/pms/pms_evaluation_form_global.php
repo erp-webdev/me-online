@@ -1076,7 +1076,8 @@
             }
             else if($scope.checkSpelling()){
                 $('span.livespell_redwiggle').closest('div').focus();
-                alert('Spelling errors found. Please review and correct the highlighted words before submitting the form. \n\nNote: To fix, right click on misspelled word to see suggestions.');
+                $('span.livespell_greenwiggle').closest('div').focus();
+                alert('Spelling errors found. Please review and correct the highlighted words before submitting the form. \n\nNote: To see suggestions, right click on misspelled word.');
 
                 return false;
             }
@@ -1086,6 +1087,9 @@
 
         $scope.checkSpelling = function(){
             if ($('span.livespell_redwiggle').length > 0){
+                return true;
+            }
+            else if ($('span.livespell_greenwiggle').length > 0){
                 return true;
             }
 
