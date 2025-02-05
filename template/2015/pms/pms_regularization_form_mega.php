@@ -535,7 +535,7 @@
                             class='warningMsg'>
                                 * Must be at least 25 characters long.
                             </small>
-                            <span ng-show="record.for_approval_level > 1 || record.status == 'Completed'" ng-bind="record.PerformanceSummary"></span>
+                            <span ng-show="record.for_approval_level > 1 || is_approved" ng-bind="record.PerformanceSummary"></span>
                         </p>
                         <!-- <hr> -->
                         <div ng-show="record.Rater2Comment != null && (record.for_approval_level > 2 || record.status == 'Completed')">
@@ -584,11 +584,14 @@
                     <?php }else{ ?>
 
                         <div style="border:1px solid #fff;padding-left:5px;width:98.6%;">
-                            <h4 >Employee Comment </h4>
-                            <textarea spellcheck="true"  ng-model="record.EmpComment" class="checker" style="width:98.4%;min-height:100px;" ng-show="is_approved" ng-disabled="record.DateCompleted != null"></textarea>
+                            <h4>Employee Comment </h4>
+                            <textarea spellcheck="true" id="EmployeeAccept" class="checker" style="width:98.4%;min-height:100px;" ng-show="is_approved" ng-hide="record.EmpComment != null"></textarea>
+                            <div ng-show="record.EmpComment != null && is_approved">
+                                <p ng-bind="record.EmpComment"></p>
+                            </div>
                         </div>
                         <br>
-                        <button type="button" class="subapp smlbtn" id="submapp" style="float:right;margin-right:10px;"  ng-show="is_approved && record.DateCompleted == null" ng-click="accept()">Accept Evaluation</button>
+                        <button type="button" class="subapp smlbtn" id="submapp" style="float:right;margin-right:10px;"  ng-show="is_approved && record.EmpComment == null" ng-click="accept()">Accept Evaluation</button>
 
                     <?php } ?>
 
@@ -940,6 +943,7 @@
         }
 
         $scope.accept = function(){
+            $scope.record.EmpComment = $("#EmployeeAccept").val();
             $scope.record.accept = true;
             $scope.save();
         }
