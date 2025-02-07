@@ -2356,16 +2356,16 @@ switch ($sec) {
                         </td>
                         <td class="centertalign">
                             <input id="obt_timein<?php echo $key; ?>" type="text" name="obt_timein[<?php echo $key; ?>]"
-                                value="<?php echo $sft2 ? date('h:ia', $obtin) : '08:30am'; ?>"
+                                value=""
                                 class="obt_timein<?php echo $key; ?> txtbox width95 timepick" readonly />
                         </td>
                         <td class="centertalign">
                             <input id="obt_dateout<?php echo $key; ?>" type="text" name="obt_dateout[<?php echo $key; ?>]"
-                                value="<?php echo $dates; ?>" class="txtbox width95 obtdateout<?php echo $key; ?>" readonly />
+                                value="" class="txtbox width95 obtdateout<?php echo $key; ?>" readonly />
                         </td>
                         <td class="centertalign">
                             <input id="obt_timeout<?php echo $key; ?>" type="text" name="obt_timeout[<?php echo $key; ?>]"
-                                value="<?php echo $sft2 ? date('h:ia', $obtout) : '05:30pm'; ?>"
+                                value=""
                                 class="obt_timeout<?php echo $key; ?> txtbox width95 timepick" readonly />
                             <input id="obt_hours<?php echo $key; ?>" type="hidden" name="obt_hours[<?php echo $key; ?>]"
                                 value="<?php echo $shiftsched2[0]['ShiftID'] ? $totaltime : 0; ?>"
@@ -3074,7 +3074,7 @@ switch ($sec) {
                             $timeinval = $dtimein ? date('h:ia', strtotime($dtimein)) : date('h:ia', strtotime($sft[0]['TimeIN']));
                             ?>
                             <input id="mdtr_timein<?php echo $key; ?>" type="text" name="mdtr_timein[<?php echo $key; ?>]" dtr="0"
-                                value="<?php echo $shiftsched2[0]['ShiftID'] ? $timeinval : ''; ?>"
+                                value=""
                                 class="mdtr_timein<?php echo $key; ?> txtbox width70 timepick" readonly />
                             <?php //endif; ?>
                         </td>
@@ -3086,7 +3086,7 @@ switch ($sec) {
                             //else :
                             ?>
                             <input id="mdtr_dayout<?php echo $key; ?>" type="text" name="mdtr_dayout[<?php echo $key; ?>]"
-                                value="<?php echo $dates; ?>" class="mdtr_dayout<?php echo $key; ?> txtbox width70 datepick3"
+                                value="" class="mdtr_dayout<?php echo $key; ?> txtbox width70 datepick3"
                                 readonly />
                             <?php //endif; ?>
                         </td>
@@ -3100,7 +3100,7 @@ switch ($sec) {
                             $timeoutval = $dtimeout ? date('h:ia', strtotime($dtimeout)) : date('h:ia', strtotime($sft[0]['TimeOUT']));
                             ?>
                             <input id="mdtr_timeout<?php echo $key; ?>" type="text" name="mdtr_timeout[<?php echo $key; ?>]" dtr="0"
-                                value="<?php echo $shiftsched2[0]['ShiftID'] ? $timeoutval : ''; ?>"
+                                value=""
                                 class="mdtr_timeout<?php echo $key; ?> txtbox width70 timepick" readonly />
                             <?php //endif; ?>
                         </td>
@@ -3476,11 +3476,11 @@ switch ($sec) {
                     <td width="20%"><b>Date Out: </b></td>
                     <td width="30%">
                         <?php if ($dtimeout): ?>
-                            <input id="npa_dout" type="text" name="npa_dout" value="<?php echo date('Y-m-d', strtotime($ddateout)); ?>"
+                            <input id="npa_dout" type="text" name="npa_dout" value=""
                                 class="txtbox width135 datepick3" readonly />
                         <?php else: ?>
                             <input id="npa_dout" type="text" name="npa_dout"
-                                value="<?php echo date('Y-m-d', strtotime($ddatein ? $ddatein : $npa_daten)); ?>"
+                                value=""
                                 class="txtbox width135 datepick3" readonly />
                         <?php endif; ?>
                     </td>
@@ -3489,22 +3489,22 @@ switch ($sec) {
                     <td width="20%"><b>Time In: </b></td>
                     <td width="30%">
                         <?php if ($dtimein): ?>
-                            <input id="npa_in" type="text" name="npa_in" value="<?php echo date('h:ia', strtotime($dtimein)); ?>"
+                            <input id="npa_in" type="text" name="npa_in" value=""
                                 class="txtbox width135 timepick" readonly />
                         <?php else: ?>
                             <input id="npa_in" type="text" name="npa_in"
-                                value="<?php echo date('h:ia', strtotime($shifts2[0]['TimeIN'])); ?>" class="txtbox width135 timepick"
+                                value="" class="txtbox width135 timepick"
                                 readonly />
                         <?php endif; ?>
                     </td>
                     <td width="20%"><b>Time Out: </b></td>
                     <td width="30%">
                         <?php if ($dtimeout): ?>
-                            <input id="npa_out" type="text" name="npa_out" value="<?php echo date('h:ia', strtotime($dtimeout)); ?>"
+                            <input id="npa_out" type="text" name="npa_out" value=""
                                 class="txtbox width135 timepick" readonly />
                         <?php else: ?>
                             <input id="npa_out" type="text" name="npa_out"
-                                value="<?php echo date('h:ia', strtotime($shifts2[0]['TimeOUT'])); ?>" class="txtbox width135 timepick"
+                                value="" class="txtbox width135 timepick"
                                 readonly />
                         <?php endif; ?>
                     </td>
