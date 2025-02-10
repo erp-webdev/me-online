@@ -76,7 +76,7 @@ if ($clearance)
                 ?>
 
                 <div class="dashcomp dashincentive2"
-                    style="<?php if (!$display)
+                    style="<?php if ($display)
                         echo 'display:none'; ?>; height: auto; background: #F0F0F0; padding: 5px; border-radius: 5px;-webkit-border-radius: 3px;-moz-border-radius: 3px;border:1px dashed #999">
                     <center class=" dgraytext smalltext2">
                         <a class="robotobold" style="color:blue; " href="<?php echo WEB; ?>/itr">
