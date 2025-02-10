@@ -50,7 +50,7 @@ if ($clearance)
                 </div>
             <?php endif; ?>
 
-            <?php if (in_array($profile_dbname, ['ASIAAPMI', 'MREIT', 'ECOC', 'CITYLINK', 'ECINEMA', 'EREX', 'LCTM', 'MCTI', 'MLI', 'Rowenta', 'NCCAI', 'SIRUS'])): ?>
+            <?php if (in_array($profile_dbname, ['ASIAAPMI', 'MREIT', 'ECOC', 'CITYLINK', 'ECINEMA', 'EREX', 'LCTM', 'MCTI', 'MLI', 'Rowenta', 'NCCAI', 'SIRUS', 'MEGAWORLD', 'GL', 'GLOBAL_HOTEL', 'TOWNSQUARE', 'LAFUERZA', 'NEWTOWN', 'MEGAPARK'])): ?>
                 <?php
                 $display = true;
                 $deadline = '2025-12-31';
