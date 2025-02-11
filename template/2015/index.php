@@ -56,18 +56,16 @@ if ($clearance)
                 $deadline = '2025-12-31';
                 $deadline_text = '';
 
-                if (date('Y-m-d') > date('Y-m-d', strtotime($deadline)))
-                    $display = false;
-
                 switch ($profile_dbname) {
                     case 'ASIAAPMI':
                         $deadline = '2025-01-31';
-                        if (date('Y-m-d') > date('Y-m-d', strtotime($deadline)))
-                            $display = false;
 
                         $deadline_text = '<br><span class="smalltext">Please submit your signed ITR on or before Jan 31st using this <br><b><a target="_blank" href="https://forms.gle/fENWhwirwjqz4KUDA" style="text-decoration: underline; color: blue">Form Link</a></b>.</span>';
                         break;
                 }
+
+                if (date('Y-m-d') <= date('Y-m-d', strtotime($deadline)))
+                    $display = false;
                 ?>
 
                 <div class="dashcomp dashincentive2"
