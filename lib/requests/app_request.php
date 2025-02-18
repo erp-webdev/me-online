@@ -118,12 +118,12 @@ switch ($sec) {
             $("#npa_dout").datepicker({
                 dateFormat: 'yy-mm-dd',
                 <?php if ($dtimeout): ?>
-                                            minDate: '<?php echo date("Y-m-d", strtotime($ddateout)); ?>',
+                                                        minDate: '<?php echo date("Y-m-d", strtotime($ddateout)); ?>',
                     maxDate: '<?php echo date("Y-m-d", strtotime($ddateout)); ?>'
-                                    <?php else: ?>
-                                            minDate: '<?php echo date("Y-m-d", strtotime($ddatein)); ?>',
+                                            <?php else: ?>
+                                                        minDate: '<?php echo date("Y-m-d", strtotime($ddatein)); ?>',
                     maxDate: '<?php echo date("Y-m-d", strtotime($ddatein) + 86400); ?>'
-                                    <?php endif; ?>
+                                            <?php endif; ?>
             });
             $('#npa_in').timepicker({
                 timeFormat: "hh:mmtt"
@@ -315,13 +315,13 @@ switch ($sec) {
                         dateFormat: 'yy-mm-dd',
                         timeFormat: "hh:mmtt",
                         <?php if ($usftin > $usftout): ?>
-                                                                    minDate: '<?php echo date("Y-m-d", $odate + 86400); ?>',
+                                                                                        minDate: '<?php echo date("Y-m-d", $odate + 86400); ?>',
                             maxDate: '<?php echo date("Y-m-d", $odate + 86400); ?>',
                         <?php else: ?>
-                                                                    minDate: '<?php echo date("Y-m-d", $odate); ?>',
+                                                                                        minDate: '<?php echo date("Y-m-d", $odate); ?>',
                             maxDate: '<?php echo date("Y-m-d", $odate); ?>',
                         <?php endif; ?>
-                                                            minTime: '<?php echo date("H:i:s", $limitin1); ?>'
+                                                                            minTime: '<?php echo date("H:i:s", $limitin1); ?>'
                         //maxTime: '<?php echo date("H:i:s", $limitin2); ?>'
                     });
 
@@ -329,21 +329,21 @@ switch ($sec) {
                         dateFormat: 'yy-mm-dd',
                         timeFormat: "hh:mmtt",
                         <?php if ($usftin > $usftout): ?>
-                                                                    minDate: '<?php echo date("Y-m-d", $odate + 86400); ?>',
+                                                                                        minDate: '<?php echo date("Y-m-d", $odate + 86400); ?>',
                             maxDate: '<?php echo date("Y-m-d", $odate + 86400); ?>'
-                                                            <?php else: ?>
-                                                                    minDate: '<?php echo date("Y-m-d", $odate); ?>',
+                                                                            <?php else: ?>
+                                                                                        minDate: '<?php echo date("Y-m-d", $odate); ?>',
                             <?php //if ($chkdtrout) : ?>
-                                                                    //maxDate: '<?php echo date("Y-m-d", $odate); ?>'
-                                                                    <?php //else : ?>
-                                                                    maxDate: '<?php echo date("Y-m-d", $odate + 86400); ?>'
-                                                                    <?php //endif; ?>
-                                                            <?php endif; ?>
+                                                                                        //maxDate: '<?php echo date("Y-m-d", $odate); ?>'
+                                                                                        <?php //else : ?>
+                                                                                        maxDate: '<?php echo date("Y-m-d", $odate + 86400); ?>'
+                                                                                        <?php //endif; ?>
+                                                                            <?php endif; ?>
 
-                                                            <?php if ($chkdtrout): ?>//,
-                                                                    //minTime: '<?php echo date("H:i:s", $limitout1); ?>',
-                                                                    //maxTime: '<?php echo date("H:i:s", $limitout2); ?>'
-                                                            <?php endif; ?>
+                                                                            <?php if ($chkdtrout): ?>//,
+                                                                                        //minTime: '<?php echo date("H:i:s", $limitout1); ?>',
+                                                                                        //maxTime: '<?php echo date("H:i:s", $limitout2); ?>'
+                                                                            <?php endif; ?>
                     });
                 </script>
 
@@ -363,10 +363,10 @@ switch ($sec) {
                         timeFormat: "hh:mmtt",
                         minDate: '<?php echo date("Y-m-d", $odate); ?>',
                         maxDate: '<?php echo date("Y-m-d", $odate); ?>'
-                                                            <?php if ($chkdtrin): ?>,
+                                                                            <?php if ($chkdtrin): ?>,
                             minTime: '<?php echo date("H:i:s", $limitin1); ?>',
                             maxTime: '<?php echo date("H:i:s", $limitin2); ?>'
-                                                            <?php endif; ?>
+                                                                            <?php endif; ?>
                     });
 
                     $('.datetimepickot2').datetimepicker({
@@ -393,10 +393,10 @@ switch ($sec) {
                         timeFormat: "hh:mmtt",
                         minDate: '<?php echo date("Y-m-d", $odate); ?>',
                         maxDate: '<?php echo date("Y-m-d", $odate); ?>'
-                                                            <?php if ($chkdtrin): ?>,
+                                                                            <?php if ($chkdtrin): ?>,
                             minTime: '<?php echo date("H:i:s", $limitin1); ?>',
                             maxTime: '<?php echo date("H:i:s", $limitin2); ?>'
-                                                            <?php endif; ?>
+                                                                            <?php endif; ?>
                     });
 
                     $('.datetimepickot2').datetimepicker({
@@ -404,10 +404,10 @@ switch ($sec) {
                         timeFormat: "hh:mmtt",
                         minDate: '<?php echo date("Y-m-d", $odate); ?>',
                         maxDate: '<?php echo date("Y-m-d", $odate + 86400); ?>'
-                                                            <?php if ($chkdtrout): ?>,
+                                                                            <?php if ($chkdtrout): ?>,
                             minTime: '<?php echo date("H:i:s", $limitout1); ?>',
                             maxTime: '<?php echo date("H:i:s", $limitout2); ?>'
-                                                            <?php endif; ?>
+                                                                            <?php endif; ?>
                     });
                 </script>
 
@@ -1873,6 +1873,8 @@ switch ($sec) {
 
                 if ($appliedscheddate[0]['NEWSHIFTID']):
                     $restday = 0;
+                elseif (!empty($appliedrestdaydate)):
+                    $restday = $$appliedrestdaydate[0]['RESTDAY'];
                 else:
                     $restday = $restdaydate[0]['DAYOFF'] ? 1 : $appliedrestdaydate[0]['RESTDAY'];
                 endif;
@@ -3112,8 +3114,8 @@ switch ($sec) {
                         </td>
                         <td class="centertalign">
                             <?php /*if ($dtimein && $dtimeout) :
-                                                      echo $shiftsched2[0]['ShiftID'] ? $sft[0]['ShiftDesc'] : 'REST DAY';
-                                                  else :*/
+                                                                 echo $shiftsched2[0]['ShiftID'] ? $sft[0]['ShiftDesc'] : 'REST DAY';
+                                                             else :*/
                             ?>
                             <select id="mdtr_newsched<?php echo $key; ?>" name="mdtr_newsched[<?php echo $key; ?>]"
                                 attribute="<?php echo $key; ?>" class="mdtr_newsched txtbox width95">
