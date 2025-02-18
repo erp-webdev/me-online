@@ -118,12 +118,12 @@ switch ($sec) {
             $("#npa_dout").datepicker({
                 dateFormat: 'yy-mm-dd',
                 <?php if ($dtimeout): ?>
-                                minDate: '<?php echo date("Y-m-d", strtotime($ddateout)); ?>',
+                                            minDate: '<?php echo date("Y-m-d", strtotime($ddateout)); ?>',
                     maxDate: '<?php echo date("Y-m-d", strtotime($ddateout)); ?>'
-                            <?php else: ?>
-                                minDate: '<?php echo date("Y-m-d", strtotime($ddatein)); ?>',
+                                    <?php else: ?>
+                                            minDate: '<?php echo date("Y-m-d", strtotime($ddatein)); ?>',
                     maxDate: '<?php echo date("Y-m-d", strtotime($ddatein) + 86400); ?>'
-                            <?php endif; ?>
+                                    <?php endif; ?>
             });
             $('#npa_in').timepicker({
                 timeFormat: "hh:mmtt"
@@ -315,13 +315,13 @@ switch ($sec) {
                         dateFormat: 'yy-mm-dd',
                         timeFormat: "hh:mmtt",
                         <?php if ($usftin > $usftout): ?>
-                                                minDate: '<?php echo date("Y-m-d", $odate + 86400); ?>',
+                                                                    minDate: '<?php echo date("Y-m-d", $odate + 86400); ?>',
                             maxDate: '<?php echo date("Y-m-d", $odate + 86400); ?>',
                         <?php else: ?>
-                                                minDate: '<?php echo date("Y-m-d", $odate); ?>',
+                                                                    minDate: '<?php echo date("Y-m-d", $odate); ?>',
                             maxDate: '<?php echo date("Y-m-d", $odate); ?>',
                         <?php endif; ?>
-                                            minTime: '<?php echo date("H:i:s", $limitin1); ?>'
+                                                            minTime: '<?php echo date("H:i:s", $limitin1); ?>'
                         //maxTime: '<?php echo date("H:i:s", $limitin2); ?>'
                     });
 
@@ -329,21 +329,21 @@ switch ($sec) {
                         dateFormat: 'yy-mm-dd',
                         timeFormat: "hh:mmtt",
                         <?php if ($usftin > $usftout): ?>
-                                                minDate: '<?php echo date("Y-m-d", $odate + 86400); ?>',
+                                                                    minDate: '<?php echo date("Y-m-d", $odate + 86400); ?>',
                             maxDate: '<?php echo date("Y-m-d", $odate + 86400); ?>'
-                                            <?php else: ?>
-                                                minDate: '<?php echo date("Y-m-d", $odate); ?>',
+                                                            <?php else: ?>
+                                                                    minDate: '<?php echo date("Y-m-d", $odate); ?>',
                             <?php //if ($chkdtrout) : ?>
-                                                //maxDate: '<?php echo date("Y-m-d", $odate); ?>'
-                                                <?php //else : ?>
-                                                maxDate: '<?php echo date("Y-m-d", $odate + 86400); ?>'
-                                                <?php //endif; ?>
-                                            <?php endif; ?>
+                                                                    //maxDate: '<?php echo date("Y-m-d", $odate); ?>'
+                                                                    <?php //else : ?>
+                                                                    maxDate: '<?php echo date("Y-m-d", $odate + 86400); ?>'
+                                                                    <?php //endif; ?>
+                                                            <?php endif; ?>
 
-                                            <?php if ($chkdtrout): ?>//,
-                                                //minTime: '<?php echo date("H:i:s", $limitout1); ?>',
-                                                //maxTime: '<?php echo date("H:i:s", $limitout2); ?>'
-                                            <?php endif; ?>
+                                                            <?php if ($chkdtrout): ?>//,
+                                                                    //minTime: '<?php echo date("H:i:s", $limitout1); ?>',
+                                                                    //maxTime: '<?php echo date("H:i:s", $limitout2); ?>'
+                                                            <?php endif; ?>
                     });
                 </script>
 
@@ -363,10 +363,10 @@ switch ($sec) {
                         timeFormat: "hh:mmtt",
                         minDate: '<?php echo date("Y-m-d", $odate); ?>',
                         maxDate: '<?php echo date("Y-m-d", $odate); ?>'
-                                            <?php if ($chkdtrin): ?>,
+                                                            <?php if ($chkdtrin): ?>,
                             minTime: '<?php echo date("H:i:s", $limitin1); ?>',
                             maxTime: '<?php echo date("H:i:s", $limitin2); ?>'
-                                            <?php endif; ?>
+                                                            <?php endif; ?>
                     });
 
                     $('.datetimepickot2').datetimepicker({
@@ -393,10 +393,10 @@ switch ($sec) {
                         timeFormat: "hh:mmtt",
                         minDate: '<?php echo date("Y-m-d", $odate); ?>',
                         maxDate: '<?php echo date("Y-m-d", $odate); ?>'
-                                            <?php if ($chkdtrin): ?>,
+                                                            <?php if ($chkdtrin): ?>,
                             minTime: '<?php echo date("H:i:s", $limitin1); ?>',
                             maxTime: '<?php echo date("H:i:s", $limitin2); ?>'
-                                            <?php endif; ?>
+                                                            <?php endif; ?>
                     });
 
                     $('.datetimepickot2').datetimepicker({
@@ -404,10 +404,10 @@ switch ($sec) {
                         timeFormat: "hh:mmtt",
                         minDate: '<?php echo date("Y-m-d", $odate); ?>',
                         maxDate: '<?php echo date("Y-m-d", $odate + 86400); ?>'
-                                            <?php if ($chkdtrout): ?>,
+                                                            <?php if ($chkdtrout): ?>,
                             minTime: '<?php echo date("H:i:s", $limitout1); ?>',
                             maxTime: '<?php echo date("H:i:s", $limitout2); ?>'
-                                            <?php endif; ?>
+                                                            <?php endif; ?>
                     });
                 </script>
 
@@ -1652,9 +1652,12 @@ switch ($sec) {
                     $restdaydate = $mainsql->get_restday($profile_idnum, $wdates);
                     $appliedrestdaydate = $mainsql->get_appliedrestday($profile_idnum, $wdates, $profile_comp);
                     $appliedscheddate = $mainsql->get_appliedsched($profile_idnum, $wdates, $profile_comp);
-                    echo "<!-- company:   $profile_comp -->";
+                    echo "<!-- company: " . json_encode($appliedrestdaydate[0]['RESTDAY']) . " -->";
+
                     if ($appliedscheddate[0]['NEWSHIFTID']):
                         $thisisrestday = 0;
+                    elseif (!empty($appliedrestdaydate)):
+                        $thisisrestday = $appliedrestdaydate[0]['RESTDAY'];
                     else:
                         $thisisrestday = $restdaydate[0]['DAYOFF'] ? 1 : $appliedrestdaydate[0]['RESTDAY'];
                     endif;
@@ -2355,17 +2358,15 @@ switch ($sec) {
                                 value="<?php echo $dates; ?>" class="obt_date<?php echo $key; ?>" />
                         </td>
                         <td class="centertalign">
-                            <input id="obt_timein<?php echo $key; ?>" type="text" name="obt_timein[<?php echo $key; ?>]"
-                                value=""
+                            <input id="obt_timein<?php echo $key; ?>" type="text" name="obt_timein[<?php echo $key; ?>]" value=""
                                 class="obt_timein<?php echo $key; ?> txtbox width95 timepick" readonly />
                         </td>
                         <td class="centertalign">
-                            <input id="obt_dateout<?php echo $key; ?>" type="text" name="obt_dateout[<?php echo $key; ?>]"
-                                value="" class="txtbox width95 obtdateout<?php echo $key; ?>" readonly />
+                            <input id="obt_dateout<?php echo $key; ?>" type="text" name="obt_dateout[<?php echo $key; ?>]" value=""
+                                class="txtbox width95 obtdateout<?php echo $key; ?>" readonly />
                         </td>
                         <td class="centertalign">
-                            <input id="obt_timeout<?php echo $key; ?>" type="text" name="obt_timeout[<?php echo $key; ?>]"
-                                value=""
+                            <input id="obt_timeout<?php echo $key; ?>" type="text" name="obt_timeout[<?php echo $key; ?>]" value=""
                                 class="obt_timeout<?php echo $key; ?> txtbox width95 timepick" readonly />
                             <input id="obt_hours<?php echo $key; ?>" type="hidden" name="obt_hours[<?php echo $key; ?>]"
                                 value="<?php echo $shiftsched2[0]['ShiftID'] ? $totaltime : 0; ?>"
@@ -3074,8 +3075,7 @@ switch ($sec) {
                             $timeinval = $dtimein ? date('h:ia', strtotime($dtimein)) : date('h:ia', strtotime($sft[0]['TimeIN']));
                             ?>
                             <input id="mdtr_timein<?php echo $key; ?>" type="text" name="mdtr_timein[<?php echo $key; ?>]" dtr="0"
-                                value=""
-                                class="mdtr_timein<?php echo $key; ?> txtbox width70 timepick" readonly />
+                                value="" class="mdtr_timein<?php echo $key; ?> txtbox width70 timepick" readonly />
                             <?php //endif; ?>
                         </td>
                         <td class="centertalign">
@@ -3085,9 +3085,8 @@ switch ($sec) {
                             <?php
                             //else :
                             ?>
-                            <input id="mdtr_dayout<?php echo $key; ?>" type="text" name="mdtr_dayout[<?php echo $key; ?>]"
-                                value="" class="mdtr_dayout<?php echo $key; ?> txtbox width70 datepick3"
-                                readonly />
+                            <input id="mdtr_dayout<?php echo $key; ?>" type="text" name="mdtr_dayout[<?php echo $key; ?>]" value=""
+                                class="mdtr_dayout<?php echo $key; ?> txtbox width70 datepick3" readonly />
                             <?php //endif; ?>
                         </td>
                         <td class="centertalign">
@@ -3100,8 +3099,7 @@ switch ($sec) {
                             $timeoutval = $dtimeout ? date('h:ia', strtotime($dtimeout)) : date('h:ia', strtotime($sft[0]['TimeOUT']));
                             ?>
                             <input id="mdtr_timeout<?php echo $key; ?>" type="text" name="mdtr_timeout[<?php echo $key; ?>]" dtr="0"
-                                value=""
-                                class="mdtr_timeout<?php echo $key; ?> txtbox width70 timepick" readonly />
+                                value="" class="mdtr_timeout<?php echo $key; ?> txtbox width70 timepick" readonly />
                             <?php //endif; ?>
                         </td>
                         <td class="centertalign">
@@ -3114,8 +3112,8 @@ switch ($sec) {
                         </td>
                         <td class="centertalign">
                             <?php /*if ($dtimein && $dtimeout) :
-                                           echo $shiftsched2[0]['ShiftID'] ? $sft[0]['ShiftDesc'] : 'REST DAY';
-                                       else :*/
+                                                      echo $shiftsched2[0]['ShiftID'] ? $sft[0]['ShiftDesc'] : 'REST DAY';
+                                                  else :*/
                             ?>
                             <select id="mdtr_newsched<?php echo $key; ?>" name="mdtr_newsched[<?php echo $key; ?>]"
                                 attribute="<?php echo $key; ?>" class="mdtr_newsched txtbox width95">
@@ -3436,8 +3434,8 @@ switch ($sec) {
                     <?php if ($ddatein): ?>
                         <td width="20%"><b>Actual Time In: </b></td>
                         <td width="30%">
-                            <?php echo date('m/d/Y', strtotime($ddatein)) . ' ' . date('h:ia', strtotime($dtimein)); ?><input id="npa_atin"
-                                type="hidden" name="npa_atin"
+                            <?php echo date('m/d/Y', strtotime($ddatein)) . ' ' . date('h:ia', strtotime($dtimein)); ?><input
+                                id="npa_atin" type="hidden" name="npa_atin"
                                 value="<?php echo date('Y-m-d', strtotime($ddatein)) . ' ' . date('h:ia', strtotime($dtimein)); ?>" />
                         </td>
                     <?php else: ?>
@@ -3476,12 +3474,9 @@ switch ($sec) {
                     <td width="20%"><b>Date Out: </b></td>
                     <td width="30%">
                         <?php if ($dtimeout): ?>
-                            <input id="npa_dout" type="text" name="npa_dout" value=""
-                                class="txtbox width135 datepick3" readonly />
+                            <input id="npa_dout" type="text" name="npa_dout" value="" class="txtbox width135 datepick3" readonly />
                         <?php else: ?>
-                            <input id="npa_dout" type="text" name="npa_dout"
-                                value=""
-                                class="txtbox width135 datepick3" readonly />
+                            <input id="npa_dout" type="text" name="npa_dout" value="" class="txtbox width135 datepick3" readonly />
                         <?php endif; ?>
                     </td>
                 </tr>
@@ -3489,23 +3484,17 @@ switch ($sec) {
                     <td width="20%"><b>Time In: </b></td>
                     <td width="30%">
                         <?php if ($dtimein): ?>
-                            <input id="npa_in" type="text" name="npa_in" value=""
-                                class="txtbox width135 timepick" readonly />
+                            <input id="npa_in" type="text" name="npa_in" value="" class="txtbox width135 timepick" readonly />
                         <?php else: ?>
-                            <input id="npa_in" type="text" name="npa_in"
-                                value="" class="txtbox width135 timepick"
-                                readonly />
+                            <input id="npa_in" type="text" name="npa_in" value="" class="txtbox width135 timepick" readonly />
                         <?php endif; ?>
                     </td>
                     <td width="20%"><b>Time Out: </b></td>
                     <td width="30%">
                         <?php if ($dtimeout): ?>
-                            <input id="npa_out" type="text" name="npa_out" value=""
-                                class="txtbox width135 timepick" readonly />
+                            <input id="npa_out" type="text" name="npa_out" value="" class="txtbox width135 timepick" readonly />
                         <?php else: ?>
-                            <input id="npa_out" type="text" name="npa_out"
-                                value="" class="txtbox width135 timepick"
-                                readonly />
+                            <input id="npa_out" type="text" name="npa_out" value="" class="txtbox width135 timepick" readonly />
                         <?php endif; ?>
                     </td>
                 </tr>
@@ -3703,7 +3692,8 @@ switch ($sec) {
                                 <option value="" <?php echo $sft ? " selected" : ""; ?>>REST DAY</option>
                                 <?php foreach ($shiftlist as $k => $v): ?>
                                     <option value="<?php echo $v['ShiftID']; ?>" <?php echo $v['ShiftID'] == $sft ? " selected" : ""; ?>>
-                                        <?php echo $v['ShiftDesc']; ?></option>
+                                        <?php echo $v['ShiftDesc']; ?>
+                                    </option>
                                 <?php endforeach; ?>
                             </select>
                         </td>
