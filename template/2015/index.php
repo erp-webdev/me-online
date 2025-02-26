@@ -50,33 +50,26 @@ if ($clearance)
                 </div>
             <?php endif; ?>
 
-            <?php if (in_array($profile_dbname, ['ASIAAPMI', 'MREIT', 'ECOC', 'CITYLINK', 'ECINEMA', 'EREX', 'LCTM', 'MCTI', 'MLI', 'Rowenta', 'NCCAI', 'SIRUS'])): ?>
+            <?php if (in_array($profile_dbname, ['ASIAAPMI', 'MREIT', 'ECOC', 'CITYLINK', 'ECINEMA', 'EREX', 'LCTM', 'MCTI', 'MLI', 'Rowenta', 'NCCAI', 'SIRUS', 'MEGAWORLD', 'GL', 'GLOBAL_HOTEL', 'TOWNSQUARE', 'LAFUERZA', 'NEWTOWN', 'MEGAPARK'])): ?>
                 <?php
                 $display = true;
                 $deadline = '2025-12-31';
                 $deadline_text = '';
 
-                if (in_array($profile_dbname, [''])) {
-                    $deadline = '2023-02-28';
-                    if (date('Y-m-d') > date('Y-m-d', strtotime($deadline)))
-                        $display = false;
-                }
-
                 switch ($profile_dbname) {
                     case 'ASIAAPMI':
                         $deadline = '2025-01-31';
-                        if (date('Y-m-d') > date('Y-m-d', strtotime($deadline)))
-                            $display = false;
 
                         $deadline_text = '<br><span class="smalltext">Please submit your signed ITR on or before Jan 31st using this <br><b><a target="_blank" href="https://forms.gle/fENWhwirwjqz4KUDA" style="text-decoration: underline; color: blue">Form Link</a></b>.</span>';
                         break;
-                    default:
-                        $display = false;
                 }
+
+                if (date('Y-m-d') <= date('Y-m-d', strtotime($deadline)))
+                    $display = false;
                 ?>
 
                 <div class="dashcomp dashincentive2"
-                    style="<?php if (!$display)
+                    style="<?php if ($display)
                         echo 'display:none'; ?>; height: auto; background: #F0F0F0; padding: 5px; border-radius: 5px;-webkit-border-radius: 3px;-moz-border-radius: 3px;border:1px dashed #999">
                     <center class=" dgraytext smalltext2">
                         <a class="robotobold" style="color:blue; " href="<?php echo WEB; ?>/itr">
