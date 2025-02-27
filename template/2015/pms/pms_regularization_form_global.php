@@ -167,7 +167,7 @@
                         <h4>II. PERFORMANCE SUMMARY <span style="font-size:10px;font-weight:normal;">(Written by Reviewing Manager)</span> </h4>
                         <h4><span ng-bind="record.Rater1FullName"></span></h4>
                         <p class='textareaGroup'>
-                            <textarea oninput="$Spelling.SpellCheckAsYouType(this);" onfocus="$Spelling.SpellCheckAsYouType(this);" spellcheck='true' style="width:98.4%;min-height:100px;" class="perfsummary checker" rows="3" 
+                            <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck='true' style="width:98.4%;min-height:100px;" class="perfsummary checker" rows="3" 
                                 ng-model="record.PerformanceSummary" 
                                 ng-show="record.for_approval_level == 1" ng-disabled="is_approved || record.for_approval_level > 1"
                                 minlength='25' required>
@@ -239,7 +239,7 @@
                                         <tr>
                                             <td style="width: 100px">Results Achieved: </td>
                                             <td  class='textareaGroup'>
-                                                <textarea onfocus="$Spelling.SpellCheckAsYouType(this);" oninput="$Spelling.SpellCheckAsYouType(this);" spellcheck='true' class="checker" cols="80" rows="2" 
+                                                <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck='true' class="checker" cols="80" rows="2" 
                                                         ng-model="goal.ResultsAchieved"
                                                         ng-disabled="is_approved" 
                                                         minlength='25' required>
@@ -252,7 +252,7 @@
                                         <tr>
                                             <td style="width: 100px">Comments: </td>
                                             <td  class='textareaGroup'>
-                                                <textarea onfocus="$Spelling.SpellCheckAsYouType(this);" oninput="$Spelling.SpellCheckAsYouType(this);"
+                                                <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();"
                                                         spellcheck='true' class="checker" cols="80" rows="2" 
                                                         ng-model="goal.Comments" 
                                                         ng-disabled="is_approved" 
@@ -325,7 +325,7 @@
                                     <!-- comments and achievments textarea -->
                                     Comments:
                                     <span class="px" style="font-style:italic;margin-left:5px;font-size:10px;" ng-show="competency.Rating != 3">(*Required field, if your rating is greater than or less than 3 to justify your rating to this employee)</span>
-                                    <textarea onfocus="$Spelling.SpellCheckAsYouType(this);" oninput="$Spelling.SpellCheckAsYouType(this);" spellcheck='true'  cols="90" rows="3" 
+                                    <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck='true'  cols="90" rows="3" 
                                             class="checker" 
                                             ng-model="competency.Remarks" 
                                             ng-disabled="is_approved" 
@@ -372,7 +372,7 @@
                                             OBJECTIVE <span ng-bind="$index+1"></span>
                                         </p>
                                         <div style="float:left;width:380px;"  class='textareaGroup'>
-                                            <textarea onfocus="$Spelling.SpellCheckAsYouType(this);" oninput="$Spelling.SpellCheckAsYouType(this);" spellcheck='true' style="width:167%;" class="checker" cols="80" rows="2" 
+                                            <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck='true' style="width:167%;" class="checker" cols="80" rows="2" 
                                                     ng-model="next_goal.Objective" 
                                                     ng-disabled="is_approved" 
                                                     minlength='25' required>
@@ -389,7 +389,7 @@
                                         <div style="clear:both;"></div>
                                         <div class='textareaGroup'>
                                             <p> Measurement of accomplishment: </p>
-                                            <textarea onfocus="$Spelling.SpellCheckAsYouType(this);" oninput="$Spelling.SpellCheckAsYouType(this);" spellcheck='true' style="width:90%;" class="checker" cols="80" rows="2" 
+                                            <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck='true' style="width:90%;" class="checker" cols="80" rows="2" 
                                                     ng-model="next_goal.MeasureOfSuccess" 
                                                     ng-disabled="is_approved" 
                                                     minlength='25' required>
@@ -524,7 +524,7 @@
                     <div style="border:1px solid #fff;padding-left:5px;padding-right:5px;width:98%;">
                         <h4>VI. DEVELOPMENT PLAN</h4>
                         <p  class='textareaGroup'>A. Key competencies to strengthen performance in current job (set by reviewing mgr):
-                            <textarea onfocus="$Spelling.SpellCheckAsYouType(this);" oninput="$Spelling.SpellCheckAsYouType(this);" spellcheck='true'  style="width:99%;" class="checker" rows="3" 
+                            <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck='true'  style="width:99%;" class="checker" rows="3" 
                                     ng-model="record.DevPlanA" 
                                     ng-disabled="is_approved" 
                                     minlength='25' required>
@@ -536,7 +536,7 @@
                         <!--<p>B. Employee desired career path within next 2 to 3 years (set by job holder):</p>
                         <textarea spellcheck="true"  style="width:99%;" class="smltxtbox"></textarea>-->
                         <p  class='textareaGroup'>B. Key competencies needed to advance in employee desired career path (set by reviewing mgr):
-                            <textarea onfocus="$Spelling.SpellCheckAsYouType(this);" oninput="$Spelling.SpellCheckAsYouType(this);" spellcheck='true'  style="width:99%;" class="checker" rows="3" 
+                            <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck='true'  style="width:99%;" class="checker" rows="3" 
                                     ng-model="record.DevPlanB" 
                                     ng-disabled="is_approved" 
                                     minlength='25' required>
@@ -546,7 +546,7 @@
                             </small>
                         </p>
                         <p  class='textareaGroup'>C. Planned development / training activities (agreed by reviewing mgr and as per the following priority / feasibility order):
-                            <textarea onfocus="$Spelling.SpellCheckAsYouType(this);" oninput="$Spelling.SpellCheckAsYouType(this);" spellcheck='true'  style="width:99%;" class="checker" rows="3" 
+                            <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck='true'  style="width:99%;" class="checker" rows="3" 
                                     ng-model="record.DevPlanC" 
                                     ng-disabled="is_approved" 
                                     minlength='25' required>
@@ -574,9 +574,9 @@
                         <div ng-show="record.status == 'Incomplete' && !is_approved">
                             <!-- <hr> -->
                             <h4 ng-show="!is_approved">EVALUATION COMMENT</h4>
-                            <textarea onfocus="$Spelling.SpellCheckAsYouType(this);" oninput="$Spelling.SpellCheckAsYouType(this);" spellcheck="true"  ng-model="record.Rater2Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 2 && !is_approved"  ng-disabled="is_approved" ></textarea>
-                            <textare onfocus="$Spelling.SpellCheckAsYouType(this);" oninput="$Spelling.SpellCheckAsYouType(this);"a spellcheck="true"  ng-model="record.Rater3Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 3 && !is_approved"  ng-disabled="is_approved" ></textarea>
-                            <textarea onfocus="$Spelling.SpellCheckAsYouType(this);" oninput="$Spelling.SpellCheckAsYouType(this);" spellcheck="true"  ng-model="record.Rater4Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 4 && !is_approved"  ng-disabled="is_approved" ></textarea>
+                            <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck="true"  ng-model="record.Rater2Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 2 && !is_approved"  ng-disabled="is_approved" ></textarea>
+                            <textare onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();"a spellcheck="true"  ng-model="record.Rater3Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 3 && !is_approved"  ng-disabled="is_approved" ></textarea>
+                            <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck="true"  ng-model="record.Rater4Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 4 && !is_approved"  ng-disabled="is_approved" ></textarea>
                             <span ng-show="!is_approved" style="font-style:italic;margin-left:5px;font-size:10px;">Note: Salary increase will be based on the Overall Performance Rating.</span>
                         </div>
                     </div>
