@@ -1038,5 +1038,33 @@
         popup.css("display", "none");
     });
 
+    setInterval(() => {
+        let menu = document.querySelector("#livespell___contextmenu");
+        if (menu) {
+            let items = menu.querySelectorAll("li");
+            let arr = [
+                "JavaScriptSpellCheck",
+                "**Trial**",
+                "Please register online",
+                "javascriptspellcheck.com",
+                "*PHP Spellcheck Trial*",
+                "www.phpspellcheck.com"
+            ];
+
+            items.forEach((item) => {
+                let text = item.innerText.trim();
+                if (arr.includes(text)) {
+                    item.remove();
+                }
+            });
+
+            if(items.length==4){
+                let separators = menu.querySelectorAll("li.ls_hr");
+                separators.forEach((separator) => {
+                    separator.remove();
+                });
+            }
+        }
+    }, 10);
     </script>
     <?php include('session.php'); ?>
