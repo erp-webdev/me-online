@@ -783,6 +783,8 @@
                     $scope.record.total_computed_score = parseFloat($scope.record.total_computed_score);
                     $scope.is_approved = false;
 
+                    $scope.updateRecord();
+                    
                     if($scope.record.Rater4EmpID != null && $scope.record.Rater4DB != null && $scope.record.Rater4Status != null ){
                             $scope.finalRankPromotion = $scope.record.Rater4RankPromotion;
                             $scope.finalPositionPromotion = $scope.record.Rater4PositionPromotion;
@@ -806,8 +808,6 @@
                             $scope.finalPositionPromotion = $scope.record.Rater1PositionPromotion;
                             $scope.finalRecommendedIncrease = parseFloat($scope.record.Rater1Increase);
                     }
-
-                    $scope.updateRecord();
 
                     if($scope.record.Rater1EmpID == $scope.ApproverEmpID 
                         && $scope.record.Rater1DB == $scope.ApproverEmpDB 
@@ -1035,7 +1035,9 @@
         }
 
         $scope.getRankIndex = function(rank){
-            return $scope.record.ranks.indexOf(rank);
+            if($scope.record.ranks){
+                return $scope.record.ranks.indexOf(rank);
+            }
         }
 
         $scope.save = function(){
