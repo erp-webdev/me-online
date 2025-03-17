@@ -101,7 +101,7 @@
                             <td><b class="smallesttext lwhitetext">Designation:</b> <span style="font-weight:normal;"
                                     ng-bind="record.Position"></span></td>
                             <td><b class="smallesttext lwhitetext">Date Hired:</b> <span style="font-weight:normal;"
-                                    ng-bind="record.HireDate"></span></td>
+                                    ng-bind="formatDate(record.HireDate) |  date:'yyyy-MM-dd'"></span></td>
                         </tr>
                         <tr>
                             <td>
