@@ -53,7 +53,7 @@
             $('#APEfloatdiv').removeClass('invisible');
             $("#apeview").removeAttr("style");
             $.ajax({
-                url: '<?php echo MEWEB; ?>/peoplesedge/api/employee-file/medical',
+                url: '<?php echo MEWEB; ?>/peoplesedge/api/employee/medical',
                 type: 'GET',
                 data: {
                     Action: 'View',
