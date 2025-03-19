@@ -1,5 +1,5 @@
 <?php include(TEMP . "/header.php"); ?>
-<?php include(TEMP . "/ape.php"); ?>
+<?php include(TEMP . "/ape_modal.php"); ?>
 <div id="floatdiv" class="floatdiv invisible">
     <div id="adview" class="fview" style="!important; display:none">
         <div class="closebutton cursorpoint" style=""><i class="fa fa-times-circle fa-3x redtext"></i></div>
