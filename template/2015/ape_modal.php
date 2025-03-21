@@ -9,10 +9,6 @@
             <i class="fa fa-spinner fa-spin fa-2x"></i> Please wait...
         </div>
 
-        <div id="availableIndicator" style="text-align: center; margin-top: 80px; font-size: 0.9rem;">
-            <i>Annual Physical Examination result is not yet available.</i>
-        </div>
-
         <div id="ape_data" class="floatdata margintop15" style="display: none;"> 
             <div id='apeViewer'></div>
         </div>
@@ -23,7 +19,6 @@
     $(document).ready(function() {
         $('#btnAPE').click(function() {
             $('#loadingIndicator').show();
-            $('#availableIndicator').hide();
             $('#ape_data').hide();
 
             $('#APEfloatdiv').removeClass('invisible');
@@ -33,15 +28,15 @@
                 url: '<?php echo WEB; ?>/ape',
                 type: 'GET',
                 success: function(data) {
-                    if(data){
+                    const accessToken = '<?php echo $_SESSION['peoplesedge_access_token']; ?>';
+                        
+                    if(accessToken){
                         $("#apeViewer").html(data);
                         $('#loadingIndicator').hide();
-                        $('#availableIndicator').hide();
                         $('#ape_data').fadeIn();
 
                         $('#downloadAPE').click(function() {
                             const downloadUrl = $(this).data('url');
-                            const accessToken = '<?php echo $_SESSION['peoplesedge_access_token']; ?>';
 
                             fetch(downloadUrl, {
                                 headers: { 
@@ -63,14 +58,12 @@
                         });
                     }
                     else{
-                        $('#loadingIndicator').hide();
-                        $('#availableIndicator').show();
-                        $('#ape_data').hide();
+                        $('#APEfloatdiv').addClass('invisible');
+                        alert('Something went wrong! Error: <?php echo $_SESSION['peoplesedge_login_error']; ?>')
                     }
                 },
                 error: function(xhr, status, error) {
                     $('#loadingIndicator').hide();
-                    $('#availableIndicator').show();
                     $('#ape_data').hide();
                 }
             });

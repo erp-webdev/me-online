@@ -1,61 +1,40 @@
 <?php
     if ($logged == 1 ) {
-        $url = MEWEB.'/peoplesedge/api/jwt/login'; 
+        if (isset($_SESSION['peoplesedge_access_token'])) {
+            $access_token = $_SESSION['peoplesedge_access_token'];
 
-        $data = [
-            'email' => 'noreply@megaworldcorp.com',
-            'password' => 'QL5qdf7Bzcrp9a83RZ'
-        ];
+            $access_file_url = MEWEB.'/peoplesedge/api/employee/medical'; 
+            $data = [
+                'EmpID' => $profile_idnum,
+                'EmpDB' => $profile_dbname,
+                'CompanyID' => $profile_comp
+            ];
 
-        $options = [
-            'http' => [
-                'header' => "Content-Type: application/json\r\n",
-                'method' => 'POST',
-                'content' => json_encode($data),
-                'ignore_errors' => true
-            ]
-        ];
+            $options = [
+                'http' => [
+                    'header' => "Content-Type: application/json\r\n" .
+                                "Authorization: Bearer " . $access_token . "\r\n",
+                    'method' => 'POST',
+                    'content' => json_encode($data),
+                    'ignore_errors' => true
+                ]
+            ];
 
-        $context = stream_context_create($options);
-        $response = file_get_contents($url, false, $context);
+            $file_context = stream_context_create($options);
+            $ape_file_response = file_get_contents($access_file_url, false, $file_context);
 
-        if($response){
-            $result = json_decode($response, true);
+            if($ape_file_response){
+                $ape_result = json_decode($ape_file_response, true);
 
-            if (isset($result['access_token'])) {
-                $_SESSION['peoplesedge_access_token'] = $result['access_token'];
-    
-                $access_file_url = MEWEB.'/peoplesedge/api/employee/medical'; 
-                $data = [
-                    'EmpID' => $profile_idnum,
-                    'EmpDB' => $profile_dbname,
-                    'CompanyID' => $profile_comp
-                ];
-    
-                $options = [
-                    'http' => [
-                        'header' => "Content-Type: application/json\r\n" .
-                                    "Authorization: Bearer " . $_SESSION['peoplesedge_access_token'] . "\r\n",
-                        'method' => 'POST',
-                        'content' => json_encode($data),
-                        'ignore_errors' => true
-                    ]
-                ];
-    
-                $file_context = stream_context_create($options);
-                $ape_file_response = file_get_contents($access_file_url, false, $file_context);
-
-                if($ape_file_response){
-                    $ape_result = json_decode($ape_file_response, true);
-
-                    $MedicalDate = $ape_result['MedicalDate'];
-                    $MedicalRemarks = $ape_result['MedicalRemarks'];
-                    $ViewURL = $ape_result['viewUrl'];
-                    $DownloadURL = $ape_result['downloadUrl'];
-                }
+                $MedicalDate = $ape_result['MedicalDate'];
+                $MedicalRemarks = $ape_result['MedicalRemarks'];
+                $ViewURL = $ape_result['viewUrl'];
+                $DownloadURL = $ape_result['downloadUrl'];
             }
         }
-
+        else{
+            echo "Error: " . $_SESSION['peoplesedge_login_error'];
+        }
 	}
 	else
 	{
