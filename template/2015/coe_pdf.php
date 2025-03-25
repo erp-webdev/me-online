@@ -864,7 +864,7 @@
 
 		<?php if (!$DateResigned2 || date('Y-m-d', strtotime($DateResigned2)) > date('Y-m-d')): ?>
 			<div style="text-align: justify;  text-justify: inter-word;">
-				<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">This is to certify that
+				<p style="padding-top: 5px; padding-left: 50px; padding-right: 50px;">This is to certify that
 					<b><?php echo strtoupper($fullname); ?></b> is an
 					employee of <b><?php echo $emp_info[0]["CompanyName"]; ?></b> since
 					<b><?php echo $emp_info[0]["HireDate"]; ?>
@@ -886,16 +886,18 @@
 						} else {
 							echo "SAMPLE";
 						}
-						; ?></b>
+						; ?></b><br />
+
+					<?php if ($emp_info[0]["Allowance"] != 0) { ?>
+						<span style="padding-left: 50px;">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Allowance</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><u><?php echo number_format($emp_info[0]["Allowance"], 2); ?></u></b>
+						</span><br />
+						<span style="padding-left: 50px;">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Total</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><u><?php echo number_format($emp_info[0]["Allowance"] + $emp_info[0]["MonthlyRate"], 2); ?></u></b>
+						</span><br />
+					<?php } ?>
 				</p>
-				<?php if ($emp_info[0]["Allowance"] != 0) { ?>
-					<p style="padding-left: 50px;">
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Allowance</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><u><?php echo number_format($emp_info[0]["Allowance"], 2); ?></u></b>
-					</p>
-					<p style="padding-left: 50px;">
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Total</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><u><?php echo number_format($emp_info[0]["Allowance"] + $emp_info[0]["MonthlyRate"], 2); ?></u></b>
-					</p>
-				<?php } ?>
+
 
 				<p style="padding-left: 50px; padding-right: 50px;">In addition to the above compensation package,
 					<?php echo strtolower($emp_info[0]["Gender"]); ?> receives the mandatory
@@ -1920,7 +1922,7 @@
 					<span>Certified By:</span>
 					<br><br>
 					<?php if ($send_pdf): ?>
-						<span><img style="height: 50px"
+						<span><img style="height: 60px"
 								src="<?php echo IMG_WEB; ?>/coe/<?php echo $COEC_APPROVERS[$emp_info[0]['CompanyID']]['approver'][$rank_approver]['esign']; ?>" /></span>
 						<br>
 					<?php else: ?>
