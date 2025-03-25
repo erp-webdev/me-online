@@ -7695,44 +7695,43 @@
                 
                                 "ASIAAPMI" => [
                                     'prepared' => [
-                                        'name' => 'JERIZA MAE V. SIOCO',
-                                        'id' => '2020-09-0022',
-                                        'designation' => 'Payroll Manager',
-                                        'esign' => 'coe_jsioco.png',
-                                        'email' => 'jsioco@asia-affinity.com'
+                                        'name' => 'HAZEL MAE ANASTACIO',
+                                        'id' => '2024-04-0452',
+                                        'designation' => 'Senior Payroll Supervisor',
+                                        'esign' => 'coe_manastacio.png',
+                                        'email' => 'manastacio@asia-affinity.com'
                                     ],
                                     'approver' => [
                                         'RFSP' => [
-                                            'name' => 'GUARINA, MARILOU CABUHAT',
-                                            'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice President',
-                                            'esign' => 'coe_mguarina.png',
-                                            'email' => 'mguarina@megaworldcorp.com'
+                                            'name' => 'HAZEL MAE ANASTACIO',
+                                            'id' => '2024-04-0452',
+                                            'designation' => 'Senior Payroll Supervisor',
+                                            'esign' => 'coe_manastacio.png',
+                                            'email' => 'manastacio@asia-affinity.com'
                                         ],
                                         'M' => [
-                                            'name' => 'GUARINA, MARILOU CABUHAT',
-                                            'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice President',
-                                            'esign' => 'coe_mguarina.png',
-                                            'email' => 'mguarina@megaworldcorp.com'
+                                            'name' => 'HAZEL MAE ANASTACIO',
+                                            'id' => '2024-04-0452',
+                                            'designation' => 'Senior Payroll Supervisor',
+                                            'esign' => 'coe_manastacio.png',
+                                            'email' => 'manastacio@asia-affinity.com'
                                         ],
-                                        'AVP'=>[
-                                            'name' => 'GUARINA, MARILOU CABUHAT',
-                                            'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice President',
-                                            'esign' => 'coe_mguarina.png',
-                                            'email' => 'mguarina@megaworldcorp.com'
+                                        'AVP' => [
+                                            'name' => 'HAZEL MAE ANASTACIO',
+                                            'id' => '2024-04-0452',
+                                            'designation' => 'Senior Payroll Supervisor',
+                                            'esign' => 'coe_manastacio.png',
+                                            'email' => 'manastacio@asia-affinity.com'
                                         ],
                                         'VP' => [
-                                            'name' => 'GUARINA, MARILOU CABUHAT',
-                                            'id' => '1994-03-8275',
-                                            'designation' => 'Senior Assistant Vice President',
-                                            'esign' => 'coe_mguarina.png',
-                                            'email' => 'mguarina@megaworldcorp.com'
+                                            'name' => 'HAZEL MAE ANASTACIO',
+                                            'id' => '2024-04-0452',
+                                            'designation' => 'Senior Payroll Supervisor',
+                                            'esign' => 'coe_manastacio.png',
+                                            'email' => 'manastacio@asia-affinity.com'
                                         ],
                                     ]
-                                
-                                ]
+                                ],
                             ];
 
                             $rank_approver = '';
