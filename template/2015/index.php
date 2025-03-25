@@ -35,7 +35,7 @@ if ($clearance)
             <?php endif; ?>
 
             <?php if ($cutoff_date): ?>
-                <div id="mainnotification" class="lefttalign whitetext marginbottom25 ">
+                <div id="mainnotification" class="lefttalign whitetext marginbottom5 ">
                     <b class="smalltext lorangetext">REMINDER</b><br><br>
                     <?php if (date('Y-m-d H:i:s') >= '2017-11-03 00:00:00'): ?>
                         Deadline for this cutoff will be <?php echo date("F j, Y", strtotime($cutoff_date)); ?><br><br>
@@ -79,9 +79,17 @@ if ($clearance)
                             <?php echo $deadline_text; ?>
                         </center>
                 </div>
+            <?php endif; ?>
+
+            <?php if (!in_array($profile_dbname, ['ASIAAPMI',  'GLOBAL_HOTEL', 'NEWTOWN', 'MEGAPARK'])): ?>
+                <?php
+                    $viewingDate = '2025-04-01';
+                    $displayAPE = (date('Y-m-d') < $viewingDate);
+                ?>
 
                 <div class="dashcomp dashincentive2"
-                    style="height: auto; background: #F0F0F0; padding: 5px; border-radius: 5px;-webkit-border-radius: 3px;-moz-border-radius: 3px;border:1px dashed #999">
+                    style=" <?php if ($displayAPE)
+                        echo 'display:none;'; ?> height: auto; background: #F0F0F0; padding: 5px; border-radius: 5px;-webkit-border-radius: 3px;-moz-border-radius: 3px;border:1px dashed #999">
                         <center class=" dgraytext smalltext2">
                             <a id="btnAPE" class="robotobold" style="color:blue;" >
                                 <span class="roboto orangetext mediumtext" style="text-decoration: underline;">Download
