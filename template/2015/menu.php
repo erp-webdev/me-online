@@ -55,7 +55,7 @@ if (in_array($profile_dbname, ['CITYLINK', 'ECOC', 'ECINEMA', 'EREX', 'LAFUERZA'
 
 ?>
 <?php
-if (in_array($profile_dbname, ['ASIAAPMI']) && in_array($profile_idnum, ['2024-04-0452', '2023-01-0000', '2020-07-0020', '2019-12-0003'])) {
+if (in_array($profile_dbname, ['ASIAAPMI']) && in_array($profile_idnum, ['2024-04-0452', '2023-01-0000', '2020-07-0020'])) {
     if (date('Y-m-d') >= '2024-07-01') { ?>
         <?php if ($profile_dbname == 'ASIAAPMI'): ?>
             <span class="spanred">NEW!</span>
