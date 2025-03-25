@@ -133,13 +133,16 @@
         
     endif;
 
-    if(!in_array($success, [0, 2, 3])){
+    $_SESSION['peoplesedge_access_token'] = NULL;
+    $_SESSION['peoplesedge_login_error'] = NULL;
+    
+    if(!in_array($success, [2, 3])){
         
         $url = MEWEB.'/peoplesedge/api/jwt/login'; 
 
         $data = [
-            'email' => 'noreply@megaworldcorp.com',
-            'password' => 'QL5qdf7Bzcrp9a83RZ'
+            'email' => API_CLIENT_USERNAME,
+            'password' => API_CLIENT_PASSWORD
         ];
 
         $options = [
@@ -157,7 +160,6 @@
         if($response){
             $result = json_decode($response, true);
 
-            $_SESSION['peoplesedge_access_token'] = NULL;
             if (isset($result['access_token'])) {
                 $_SESSION['peoplesedge_access_token'] = $result['access_token'];
             }
