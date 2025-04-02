@@ -1864,15 +1864,49 @@ $(function ()
 
                 if ($('#obt_destination').val().length && $('#obt_from').val().length && $('#obt_to').val().length && $('#obt_purpose').val().length)
                 {
-                    $('.mob_msg')
-                    .html('<i class="fa fa-refresh fa-spin fa-lg"></i> Processing official business trip&hellip;')
-                    .css({
-                        color : '#006100',
-                        background : '#c6efce',
-                        border : '2px solid #006100',
-                        height : 'auto'
-                    })
-                    .slideDown();
+                    let incomplete = false;
+                    let obtDateOut = $('input[name^="obt_dateout["]');
+                    let obtTimeOut = $('input[name^="obt_timeout["]');
+                    let obtDate = $('input[name^="obt_date["]');
+                    let obtTimeIn = $('input[name^="obt_timein["]');
+
+                    for (let i = 0; i < obtDateOut.length; i++) {
+                        let dateOutVal = obtDateOut.eq(i).val();
+                        let timeOutVal = obtTimeOut.eq(i).val();
+                        let dateVal = obtDate.eq(i).val();
+                        let timeInVal = obtTimeIn.eq(i).val();
+
+                        if (!dateOutVal || !timeOutVal || !dateVal || !timeInVal) {
+                            incomplete = true;
+                            break;
+                        }
+                    }
+                    
+                    if (incomplete) {
+                        $('.mob_msg')
+                            .html('One of the date/time fields is incomplete.')
+                            .css({
+                                color : '#9c0006',
+                                background : '#ffc7ce',
+                                border : '2px solid #9c0006',
+                                height : 'auto'
+                            })
+                            .slideDown()
+                            .effect('shake', {times: 3, distance: 5}, 420);
+
+                        return false;
+                    }
+                    else{
+                        $('.mob_msg')
+                        .html('<i class="fa fa-refresh fa-spin fa-lg"></i> Processing official business trip&hellip;')
+                        .css({
+                            color : '#006100',
+                            background : '#c6efce',
+                            border : '2px solid #006100',
+                            height : 'auto'
+                        })
+                        .slideDown();
+                    }
                 }
                 else
                 {
