@@ -1,6 +1,6 @@
 
 <?php if($_SESSION['peoplesedge_access_token']) {?>
-    <?php if($ape_file_response) {?>
+    <?php if($ape_result) {?>
         <div width="100%" height="700px">
             <iframe id="filePreview" src='<?php echo $ViewURL; ?>#toolbar=1&zoom=60' width="100%" height="250px" style="border: none; margin-bottom:10px;"></iframe>
 

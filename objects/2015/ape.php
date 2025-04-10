@@ -23,6 +23,7 @@
             $file_context = stream_context_create($options);
             $ape_file_response = file_get_contents($access_file_url, false, $file_context);
 
+            $ape_result = NULL;
             if($ape_file_response){
                 $ape_result = json_decode($ape_file_response, true);
 
