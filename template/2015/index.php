@@ -83,7 +83,7 @@ if ($clearance)
 
             <?php if (!in_array($profile_dbname, ['ASIAAPMI',  'GLOBAL_HOTEL', 'NEWTOWN', 'MEGAPARK'])): ?>
                 <?php
-                    $viewingDate = '2025-04-10';
+                    $viewingDate = '2025-04-14';
                     $displayAPE = (date('Y-m-d') < $viewingDate);
                 ?>
 
