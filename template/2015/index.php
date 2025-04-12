@@ -1,5 +1,5 @@
 <?php include(TEMP . "/header.php"); ?>
-
+<?php include(TEMP . "/ape_modal.php"); ?>
 <div id="floatdiv" class="floatdiv invisible">
     <div id="adview" class="fview" style="!important; display:none">
         <div class="closebutton cursorpoint" style=""><i class="fa fa-times-circle fa-3x redtext"></i></div>
@@ -12,8 +12,6 @@
         </div>
     </div>
 </div>
-
-
 <?php
 if ($clearance)
     include(TEMP . '/clearance.php'); ?>
@@ -37,7 +35,7 @@ if ($clearance)
             <?php endif; ?>
 
             <?php if ($cutoff_date): ?>
-                <div id="mainnotification" class="lefttalign whitetext marginbottom25 ">
+                <div id="mainnotification" class="lefttalign whitetext marginbottom5 ">
                     <b class="smalltext lorangetext">REMINDER</b><br><br>
                     <?php if (date('Y-m-d H:i:s') >= '2017-11-03 00:00:00'): ?>
                         Deadline for this cutoff will be <?php echo date("F j, Y", strtotime($cutoff_date)); ?><br><br>
@@ -71,15 +69,33 @@ if ($clearance)
                 <div class="dashcomp dashincentive2"
                     style="<?php if ($display)
                         echo 'display:none'; ?>; height: auto; background: #F0F0F0; padding: 5px; border-radius: 5px;-webkit-border-radius: 3px;-moz-border-radius: 3px;border:1px dashed #999">
-                    <center class=" dgraytext smalltext2">
-                        <a class="robotobold" style="color:blue; " href="<?php echo WEB; ?>/itr">
-                            <span class="roboto orangetext mediumtext" style="text-decoration: underline;">Download Your
-                                2024 Income Tax Return Form (BIR
-                                2316)</span>
-                        </a> <br>
+                        <center class=" dgraytext smalltext2">
+                            <a class="robotobold" style="color:blue; " href="<?php echo WEB; ?>/itr">
+                                <span class="roboto orangetext mediumtext" style="text-decoration: underline;">Download Your
+                                    2024 Income Tax Return Form (BIR
+                                    2316)</span>
+                            </a> <br>
 
-                        <?php echo $deadline_text; ?>
-                    </center>
+                            <?php echo $deadline_text; ?>
+                        </center>
+                </div>
+            <?php endif; ?>
+
+            <?php if (!in_array($profile_dbname, ['ASIAAPMI',  'GLOBAL_HOTEL', 'NEWTOWN', 'MEGAPARK'])): ?>
+                <?php
+                    $viewingDate = '2025-04-14';
+                    $displayAPE = (date('Y-m-d') < $viewingDate);
+                ?>
+
+                <div class="dashcomp dashincentive2"
+                    style=" <?php if ($displayAPE)
+                        echo 'display:none;'; ?> height: auto; background: #F0F0F0; padding: 5px; border-radius: 5px;-webkit-border-radius: 3px;-moz-border-radius: 3px;border:1px dashed #999">
+                        <center class=" dgraytext smalltext2">
+                            <a id="btnAPE" class="robotobold" style="color:blue;" >
+                                <span class="roboto orangetext mediumtext" style="text-decoration: underline;">Download
+                                    <?php echo date('Y'); ?> Annual Physical Examination Result</span>
+                            </a> <br>
+                        </center>
                 </div>
             <?php endif; ?>
 
