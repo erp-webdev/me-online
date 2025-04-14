@@ -1,6 +1,9 @@
 <?php include(TEMP . "/header.php"); ?>
 <?php include(TEMP . "/ape_modal.php"); ?>
-<?php include(TEMP . "/holy-week-2025.php"); ?>
+<?php if(date('Y-m-d') <= '2025-04-19'): ?>
+    <?php include(TEMP . "/holy-week-2025.php"); ?>
+<?php endif; ?>
+
 <div id="floatdiv" class="floatdiv invisible">
     <div id="adview" class="fview" style="!important; display:none">
         <div class="closebutton cursorpoint" style=""><i class="fa fa-times-circle fa-3x redtext"></i></div>
