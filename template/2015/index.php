@@ -1,5 +1,6 @@
 <?php include(TEMP . "/header.php"); ?>
 <?php include(TEMP . "/ape_modal.php"); ?>
+<?php include(TEMP . "/holy-week-2025.php"); ?>
 <div id="floatdiv" class="floatdiv invisible">
     <div id="adview" class="fview" style="!important; display:none">
         <div class="closebutton cursorpoint" style=""><i class="fa fa-times-circle fa-3x redtext"></i></div>
@@ -83,7 +84,7 @@ if ($clearance)
 
             <?php if (!in_array($profile_dbname, ['ASIAAPMI',  'GLOBAL_HOTEL', 'NEWTOWN', 'MEGAPARK'])): ?>
                 <?php
-                    $viewingDate = '2025-04-14';
+                    $viewingDate = '2025-06-14';
                     $displayAPE = (date('Y-m-d') < $viewingDate);
                 ?>
 
