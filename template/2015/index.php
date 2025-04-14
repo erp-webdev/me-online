@@ -1,6 +1,6 @@
 <?php include(TEMP . "/header.php"); ?>
 <?php include(TEMP . "/ape_modal.php"); ?>
-<?php if(date('Y-m-d') <= '2025-04-19'): ?>
+<?php if(date('Y-m-d') <= '2025-04-13'): ?>
     <?php include(TEMP . "/holy-week-2025.php"); ?>
 <?php endif; ?>
 
