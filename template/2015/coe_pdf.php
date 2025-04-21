@@ -746,7 +746,7 @@
 
 		<?php if (!$DateResigned2 || date('Y-m-d', strtotime($DateResigned2)) > date('Y-m-d')): ?>
 			<div style="text-align: justify;  text-justify: inter-word;">
-				<p style="padding-top: 15px; padding-left: 50px; padding-right: 50px;">This is to certify that
+				<p style="padding-left: 50px; padding-right: 50px; padding-top: 0 !important; margin-top: 0 !important;">This is to certify that
 					<b><?php echo strtoupper($fullname); ?></b> is an
 					employee of <b><?php echo $emp_info[0]["CompanyName"]; ?></b> since
 					<b><?php echo $emp_info[0]["HireDate"]; ?>
@@ -769,15 +769,12 @@
 							echo "SAMPLE";
 						}
 						; ?></b>
-				</p>
-				<?php if ($emp_info[0]["Allowance"] != 0) { ?>
-					<p style="padding-left: 50px;">
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Allowance</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><u><?php echo number_format($emp_info[0]["Allowance"], 2); ?></u></b>
-					</p>
-					<p style="padding-left: 50px;">
+				<?php if ($emp_info[0]["Allowance"] != 0) { ?> 
+						<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Allowance</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><u><?php echo number_format($emp_info[0]["Allowance"], 2); ?></u></b><br>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Total</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><u><?php echo number_format($emp_info[0]["Allowance"] + $emp_info[0]["MonthlyRate"], 2); ?></u></b>
-					</p>
 				<?php } ?>
+				</p>
 
 				<p style="padding-left: 50px; padding-right: 50px;">In addition to the above compensation package,
 					<?php echo strtolower($emp_info[0]["Gender"]); ?> receives the mandatory
@@ -864,7 +861,7 @@
 
 		<?php if (!$DateResigned2 || date('Y-m-d', strtotime($DateResigned2)) > date('Y-m-d')): ?>
 			<div style="text-align: justify;  text-justify: inter-word;">
-				<p style="padding-top: 5px; padding-left: 50px; padding-right: 50px;">This is to certify that
+				<p style="padding-left: 50px; padding-right: 50px;  padding-top: 0 !important; margin-top: 0 !important;">This is to certify that
 					<b><?php echo strtoupper($fullname); ?></b> is an
 					employee of <b><?php echo $emp_info[0]["CompanyName"]; ?></b> since
 					<b><?php echo $emp_info[0]["HireDate"]; ?>
@@ -940,15 +937,13 @@
 							echo "";
 						}
 						; ?></b>
-				</p>
 				<?php if ($emp_info[0]["Allowance"] != 0) { ?>
-					<p style="padding-left: 50px;">
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Allowance</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><u><?php echo number_format($emp_info[0]["Allowance"], 2); ?></u></b>
-					</p>
-					<p style="padding-left: 50px;">
+						<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Allowance</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><u><?php echo number_format($emp_info[0]["Allowance"], 2); ?></u></b><br>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Total</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><u><?php echo number_format($emp_info[0]["Allowance"] + $emp_info[0]["MonthlyRate"], 2); ?></u></b>
-					</p>
 				<?php } ?>
+				</p>
+
 
 				<p style="padding-left: 50px; padding-right: 50px;">In addition to the above compensation package,
 					<?php echo strtolower($emp_info[0]["Gender"]); ?> receives the mandatory
@@ -1894,7 +1889,7 @@
 						<span>Prepared By:</span>
 						<br><br>
 						<?php if ($send_pdf): ?>
-							<span><img style="height: 50px" src="<?php echo IMG_WEB; ?>/coe/<?php echo $COEC_APPROVERS[$emp_info[0]['CompanyID']]
+							<span><img style="height: 60px" src="<?php echo IMG_WEB; ?>/coe/<?php echo $COEC_APPROVERS[$emp_info[0]['CompanyID']]
 							   ['prepared']['esign']; ?>" /></span><br>
 						<?php else: ?>
 							<span><?php echo $COEC_APPROVERS[$emp_info[0]['CompanyID']]['prepared']['name']; ?></span><br>
