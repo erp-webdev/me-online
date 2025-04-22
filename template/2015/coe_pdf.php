@@ -741,7 +741,7 @@
 	} elseif ($coe[0]["type"] == "COECOMPENSATION") { // CoE with Compensation
 		?>
 
-		<h3 align="center" style="padding-top: 40px">CERTIFICATION OF EMPLOYMENT AND COMPENSATION</h3>
+		<h3 align="center">CERTIFICATION OF EMPLOYMENT AND COMPENSATION</h3>
 		&nbsp;
 
 		<?php if (!$DateResigned2 || date('Y-m-d', strtotime($DateResigned2)) > date('Y-m-d')): ?>
@@ -856,7 +856,7 @@
 	} elseif ($coe[0]["type"] == "COECOMPENSATION") { // CoE with Compensation
 		?>
 
-		<h3 align="center" style="padding-top: 40px">CERTIFICATION OF EMPLOYMENT AND COMPENSATION</h3>
+		<h3 align="center">CERTIFICATION OF EMPLOYMENT AND COMPENSATION</h3>
 		&nbsp;
 
 		<?php if (!$DateResigned2 || date('Y-m-d', strtotime($DateResigned2)) > date('Y-m-d')): ?>
@@ -2006,23 +2006,21 @@
 
 			<table style="width:100%; ">
 				<tr width="100%">
-					<?php if ($emp_info[0]['CompanyID'] != 'ASIAAPMI'): ?>
-						<td style="padding-left: 25px">
-							<span>Prepared By:</span>
-							<br><br>
-							<?php if ($send_pdf): ?>
-								<span><img style="height: 50px" src="" /></span><br>
-							<?php else: ?>
-								<span>Shiena T. Saballo</span><br>
-								<span>Human Resources Officer</span>
-							<?php endif; ?>
-						</td>
-					<?php endif; ?>
+					<td style="padding-left: 25px">
+						<span>Prepared By:</span>
+						<br><br>
+						<?php if ($send_pdf): ?>
+							<span><img style="height: 60px" src="<?php echo IMG_WEB; ?>/coe/coe_ssaballo.png" /></span><br>
+						<?php else: ?>
+							<span>Shiena T. Saballo</span><br>
+							<span>Human Resources Officer</span>
+						<?php endif; ?>
+					</td>
 					<td style="padding-left: 25px">
 						<span>Certified By:</span>
 						<br><br>
 						<?php if ($send_pdf): ?>
-							<span><img style="height: 50px" src="" /></span>
+							<span><img style="height: 60px" src="<?php echo IMG_WEB; ?>/coe/coe_krodil.png" /></span>
 							<br>
 						<?php else: ?>
 							<span>Christian Mary Kates E. Rodil</span><br>
@@ -2102,8 +2100,7 @@
 		<?php
 		if ($send_pdf) {
 			?>
-			< style="font-size: <?php echo $send_pdf ? '8px' : '10px'; ?>; text-align: right; padding-right: 50px"><i>This is a
-					system generated document. Any alteration on this document is not valid.</i></p>
+			<p style="font-size: <?php echo $send_pdf ? '8px' : '10px'; ?>; text-align: right; padding-right: 50px"><i>This electronically generated document shall have the same force and effect as that of an original document. <br> Any alteration on this document is not valid.</i></p>
 				<?php
 		}
 		?>
@@ -2160,8 +2157,7 @@
 				<?php
 			} elseif (($coe[0]["company"] == 'ASIAAPMI')) {
 				?>
-				&nbsp;<br />
-				<p style="font-size: <?php echo $send_pdf ? '8px' : '10px'; ?>; color: #005f2f; text-align: center;">6/F One
+				<p style="font-size: <?php echo $send_pdf ? '8px' : '10px'; ?>; color: black; text-align: center; ">6/F One
 					World Square, Upper McKinley Road, Taguig City, NCR, Philippines, 1630<br />
 					Telefax No. (02) 8524-4248 | infodesk@asia-affinity.com</p>
 				<?php
