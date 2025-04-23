@@ -2187,15 +2187,54 @@ $(function ()
 
                 if ($('#mdtr_from').val().length && $('#mdtr_to').val().length)
                 {
-                    $('.mdtr_msg')
-                    .html('<i class="fa fa-refresh fa-spin fa-lg"></i> Processing manual DTR&hellip;')
-                    .css({
-                        color : '#006100',
-                        background : '#c6efce',
-                        border : '2px solid #006100',
-                        height : 'auto'
-                    })
-                    .slideDown();
+                    let incomplete = false;
+                    let isAbsent = $('input[name^="mdtr_absent["]');
+                    let mdtrDateOut = $('input[name^="mdtr_dayout["]');
+                    let mdtrTimeOut = $('input[name^="mdtr_timeout["]');
+                    let mdtrDate = $('input[name^="mdtr_dayin["]');
+                    let mdtrTimeIn = $('input[name^="mdtr_timein["]');
+
+                    for (let i = 0; i < mdtrDateOut.length; i++) {
+                        let dateOutVal = mdtrDateOut.eq(i).val();
+                        let timeOutVal = mdtrTimeOut.eq(i).val();
+                        let dateVal = mdtrDate.eq(i).val();
+                        let timeInVal = mdtrTimeIn.eq(i).val();
+
+                        if (!dateOutVal || !timeOutVal || !dateVal || !timeInVal) {
+                            incomplete = true;
+                            if(isAbsent[i].checked){
+                                incomplete = false;
+                            }
+
+                            break;
+                        }
+                    }
+                    
+                    if (incomplete) {
+                        $('.mdtr_msg')
+                            .html('One of the date/time fields is incomplete.')
+                            .css({
+                                color : '#9c0006',
+                                background : '#ffc7ce',
+                                border : '2px solid #9c0006',
+                                height : 'auto'
+                            })
+                            .slideDown()
+                            .effect('shake', {times: 3, distance: 5}, 420);
+
+                        return false;
+                    }
+                    else{
+                        $('.mdtr_msg')
+                        .html('<i class="fa fa-refresh fa-spin fa-lg"></i> Processing manual DTR&hellip;')
+                        .css({
+                            color : '#006100',
+                            background : '#c6efce',
+                            border : '2px solid #006100',
+                            height : 'auto'
+                        })
+                        .slideDown();
+                    }
                 }
                 else
                 {
