@@ -88,12 +88,11 @@ if ($clearance)
             <?php if (!in_array($profile_dbname, ['ASIAAPMI',  'GLOBAL_HOTEL', 'NEWTOWN', 'MEGAPARK'])): ?>
                 <?php
                     $viewingDate = '2025-04-25';
-                    $viewingDate = '2025-05-24';
                     $displayAPE = (date('Y-m-d') < $viewingDate);
                 ?>
 
                 <div class="dashcomp dashincentive2"
-                    style=" <?php if ($displayAPE && !in_array($profile_idnum, ['2016-06-0457', '2023-08-0579']))
+                    style=" <?php if ($displayAPE)
                         echo 'display:none;'; ?> height: auto; background: #F0F0F0; padding: 5px; border-radius: 5px;-webkit-border-radius: 3px;-moz-border-radius: 3px;border:1px dashed #999">
                         <center class=" dgraytext smalltext2">
                             <a id="btnAPE" class="robotobold" style="color:blue;" >
