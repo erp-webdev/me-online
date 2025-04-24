@@ -4767,13 +4767,13 @@
 								<option value="">Please Select</option>
 								<option value="COE">Certificate Of Employment</option>
 								<option value="COECOMPENSATION">CoE with Compensation</option>
-								<option value="COEHOUSINGPLAN">CoE for Company Housing Plan</option>
-								<option value="COEJOBDESC">CoE with Job Desc</option>
-								<option value="COEGOODMORAL">CoE with Good Moral</option>
+								<?php if($level != 1 && $profile_dbname != 'ASIAAPMI'){  ?><option value="COEHOUSINGPLAN">CoE for Company Housing Plan</option> <?php } ?>
+                                <?php if($level != 1 && $profile_dbname != 'ASIAAPMI'){  ?><option value="COEJOBDESC">CoE with Job Desc</option> <?php } ?>
+                                <?php if($level != 1 && $profile_dbname != 'ASIAAPMI'){  ?><option value="COEGOODMORAL">CoE with Good Moral</option> <?php } ?>
 								<option value="COEAPPROVEDLEAVE">CoE with Approved Leave</option>
 								<?php if($level != 1){  ?><option value="COESEPARATED">CoE for Separated Employee</option> <?php } ?>
 								<?php if($level != 1){  ?><option value="COESEPARATEDCOMPLETE">CoE for Separated Employee (Complete/No Accountability)</option> <?php } ?>
-								<option value="COECORRECTIONNAME">CoE for Correction Name</option>
+								<?php if($level != 1 && $profile_dbname != 'ASIAAPMI'){  ?><option value="COECORRECTIONNAME">CoE for Correction Name</option>
                                 <?php if($level != 1){  ?><option value="COENONCASHADVANCEMENT">CoE for Non-Cash Advancement</option> <?php } ?>
                                 <?php if($profile_idnum == '2021-09-0351'){  ?><option value="PHILHEALTHCSF">PhilHealth CSF</option> <?php } ?>
                                 <?php if($profile_idnum == '2021-09-0351'){  ?><option value="PHILHEALTHCF1">PhilHealth CF1</option> <?php } ?>
