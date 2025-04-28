@@ -32,7 +32,7 @@
 
 <?php endif; ?>
 <?php
-if (in_array($profile_dbname, ['CITYLINK', 'ECOC', 'ECINEMA', 'EREX', 'LAFUERZA', 'LCTM', 'GL', 'MEGAWORLD', 'MLI', 'NCCAI', 'SIRUS', 'SUNTRUST', 'TOWNSQUARE', 'MREIT', 'MCTI', 'NEWTOWN', 'GLOBAL_HOTEL', 'Rowenta', 'MEGAPARK'])) {
+if (in_array($profile_dbname, ['CITYLINK', 'ECOC', 'ECINEMA', 'EREX', 'LAFUERZA', 'LCTM', 'GL', 'MEGAWORLD', 'MLI', 'NCCAI', 'SIRUS', 'SUNTRUST', 'TOWNSQUARE', 'MREIT', 'MCTI', 'NEWTOWN', 'GLOBAL_HOTEL', 'Rowenta', 'MEGAPARK', 'ASIAAPMI'])) {
     if (date('Y-m-d') >= '2024-07-01') { ?>
         <?php if ($profile_dbname == 'ASIAAPMI'): ?>
             <span class="spanred">NEW!</span>
@@ -44,29 +44,6 @@ if (in_array($profile_dbname, ['CITYLINK', 'ECOC', 'ECINEMA', 'EREX', 'LAFUERZA'
             <div <?php
             if ($section == "coe") { ?> class="dselected" <?php
             } ?>>COE Requisition</div>
-            <?php
-            if ($section != "coe") {
-                ?>
-            </a>
-            <?php
-            }
-    }
-}
-
-?>
-<?php
-if (in_array($profile_dbname, ['ASIAAPMI']) && in_array($profile_idnum, ['2024-04-0452', '2023-01-0000', '2020-07-0020', '2016-06-0457'])) {
-    if (date('Y-m-d') >= '2024-07-01') { ?>
-        <?php if ($profile_dbname == 'ASIAAPMI'): ?>
-            <span class="spanred">NEW!</span>
-        <?php endif; ?>
-        <?php
-        if ($section != "coe") { ?>
-            <a href="<?php echo WEB; ?>/coe" onclick="clickAndDisable(this);"><?php
-        } ?>
-            <div <?php
-            if ($section == "coe") { ?> class="dselected" <?php
-            } ?>>COE Requisition (Beta)</div>
             <?php
             if ($section != "coe") {
                 ?>
