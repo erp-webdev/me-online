@@ -296,3 +296,11 @@ else:
     <?php
 endif;
 ?>
+
+<?php if ($profile_dbname != 'OJTPAY'): ?>
+    <?php if ($section != "training"): ?><a href="<?php echo WEB; ?>/training"
+            onclick="clickAndDisable(this);"><?php endif; ?>
+        <div<?php if ($section == "training") { ?> class="dselected" <?php } ?>>Training Records</div>
+            <?php if ($section != "training"): ?>
+        </a><?php endif; ?>
+<?php endif; ?>
