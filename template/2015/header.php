@@ -72,6 +72,7 @@
 
 
     <?php endif; ?>
+
     <script language='javascript' type='text/javascript'>
         function openfile(url, title) {
             $('#filewviewer').find('#file_title').html(title);
