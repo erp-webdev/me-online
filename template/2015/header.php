@@ -110,7 +110,7 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
-        gtag('config', <?php echo GA_TRACKING_ID; ?>);
+        gtag('config', '<?php echo GA_TRACKING_ID; ?>');
     </script>
 
     <script type="text/javascript">
