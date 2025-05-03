@@ -100,7 +100,7 @@
     <?php if ($profile_idnum == '2016-06-0457'): ?>
         <!-- <link rel="stylesheet" href="<?php echo JS . '/bootstrap-tour/css/bootstrap-tour-standalone.min.css'; ?>">      				 -->
     <?php endif; ?>
-
+        
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <!-- Google tag (gtag.js) -->
