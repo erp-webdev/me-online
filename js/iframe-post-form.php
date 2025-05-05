@@ -2188,6 +2188,7 @@ $(function ()
                 if ($('#mdtr_from').val().length && $('#mdtr_to').val().length)
                 {
                     let incomplete = false;
+                    let mdtrNewSched = $('[name^="mdtr_newsched["]');
                     let isAbsent = $('input[name^="mdtr_absent["]');
                     let mdtrDateOut = $('input[name^="mdtr_dayout["]');
                     let mdtrTimeOut = $('input[name^="mdtr_timeout["]');
@@ -2199,10 +2200,11 @@ $(function ()
                         let timeOutVal = mdtrTimeOut.eq(i).val();
                         let dateVal = mdtrDate.eq(i).val();
                         let timeInVal = mdtrTimeIn.eq(i).val();
+                        let newsched = mdtrNewSched.eq(i).val();
 
                         if (!dateOutVal || !timeOutVal || !dateVal || !timeInVal) {
                             incomplete = true;
-                            if(isAbsent[i].checked){
+                            if(isAbsent[i].checked || newsched==''){
                                 incomplete = false;
                             }
 
