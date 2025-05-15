@@ -85,7 +85,7 @@ if ($clearance)
                 </div>
             <?php endif; ?>
 
-            <?php if (!in_array($profile_dbname, ['ASIAAPMI',  'GLOBAL_HOTEL', 'NEWTOWN', 'MEGAPARK'])): ?>
+            <?php if (!in_array($profile_dbname, ['ASIAAPMI',  'GLOBAL_HOTEL', 'NEWTOWN'])): ?>
                 <?php
                     $viewingDate = '2025-04-25';
                     $displayAPE = (date('Y-m-d') < $viewingDate);
