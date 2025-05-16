@@ -44,13 +44,13 @@
                         <?php foreach($trainings as $index => $training) { ?>
                             <tr>
                                 <td><?php echo $index + 1; ?></td>
-                                <td><?php echo $training['DateFrom']; ?></td>
+                                <td><?php echo $training['TrainingDate']; ?></td>
                                 <td><?php echo $training['TrainingDesc']; ?></td>
                                 <td><?php echo $training['Category']; ?></td>
                                 <td><?php echo number_format($training['TrainingHrs'],2); ?></td>
                                 <td><?php echo number_format($training['TrainingCost'], 2); ?></td>
-                                <td><?php echo date('Y-m-d', strtotime('-' . number_format($training['BondDuration'],0) . ' month', strtotime($training['BondExpiry']))); ?></td>
-                                <td><?php echo $training['BondExpiry']; ?></td>
+                                <td><?php echo $training['Bond'] ? $training['BondStart'] : ''; ?></td>
+                                <td><?php echo $training['Bond'] ? $training['BondExpiry'] : ''; ?></td>
                             </tr>
                             <?php $total_trainings += $training['TrainingHrs']; ?>
                         <?php }
