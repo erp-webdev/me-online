@@ -77,9 +77,9 @@
                 $leavestart = date("Y-m-d", strtotime($_POST['leave_from']));
                 $leaveend = date("Y-m-d", strtotime($_POST['leave_to']));
 
-                $getdtr = $mainsql->get_dtr_data($profile_idnum, $leavestart, $leaveend, $profile_comp);
+                $getdtr = $mainsql->get_dtr_dates($profile_idnum, $leavestart, $leaveend, $profile_comp);
                 foreach ($getdtr as $dtr){
-                    if ($dtr['TimeIN'] || $dtr['TimeOut']) :
+                    if ($dtr['TimeIN'] && $dtr['TimeOut'] && $dtr['Absent'] == 0) :
                         echo '{"success": false, "error": "You have biometric entry on one of the selected date/s."}';
                         exit();
                     endif;
