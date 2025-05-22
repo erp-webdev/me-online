@@ -22,47 +22,53 @@
                         </td>
                     </tr>
                 </table>
+                <table border="0" cellspacing="0" class="tdata width100per">
+                    <thead>
+                        <tr>
+                            <th colspan="6" ></th>
+                            <th colspan="2" >Training Bond Period </th>
+                        </tr>
+                        <tr>
+                            <th style='text-align:center; width:4%;'>#</th>
+                            <th style='text-align:center; width:15%;'>Training Date</th>
+                            <th style='text-align:left; width:25%;'>Training Program</th>
+                            <th style='text-align:center; width:10%;'>Category</th>
+                            <th style='text-align:center; width:6%;'>Training Hours</th>
+                            <th style='text-align:center; width:10%;'>Training Cost</th>
+                            <th style='text-align:center; width:15%;'>Start of Bond</th>
+                            <th style='text-align:center; width:15%;'>End of Bond</th>
+                        </tr>
+                    </thead>
+                </table>
+                <div id="training_data" style="max-height: 300px; overflow-y: auto;">
+                    <table border="0" cellspacing="0" class="tdata width100per"  style="border-collapse: collapse;">
+                        <tbody>
+                        <?php $total_trainings = 0; ?>
+                        <?php if ($trainings): ?>
+                            <?php foreach ($trainings as $index => $training): ?>
+                                <tr>
+                                    <td style='text-align:center; width:4%;'><?php echo $index + 1; ?></td>
+                                    <td style='text-align:center; width:15%;'><?php echo $training['TrainingDate']; ?></td>
+                                    <td style='text-align:left; width:25%;'><?php echo $training['TrainingDesc']; ?></td>
+                                    <td style='text-align:center; width:10%;'><?php echo $training['Category']; ?></td>
+                                    <td style='text-align:center; width:6%;'><?php echo number_format($training['TrainingHrs'], 2); ?></td>
+                                    <td style='text-align:center; width:10%;'><?php echo number_format($training['TrainingCost'], 2); ?></td>
+                                    <td style='text-align:center; width:15%;'><?php echo $training['Bond'] ? date('Y-m-d', strtotime($training['BondStart'])) : ''; ?></td>
+                                    <td style='text-align:center; width:15%;'><?php echo $training['Bond'] ? date('Y-m-d', strtotime($training['BondExpiry'])) : ''; ?></td>
+                                </tr>
+                                <?php $total_trainings += $training['TrainingHrs']; ?>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                        </tbody>
 
-                <div id="training_data">
-                    <table border="0" cellspacing="0" class="tdata width100per">
-                        <tr>
-                            <th colspan="6"> </th>
-                            <th colspan="2">Training Bond Period</th>
-                        </tr>
-                        <tr>
-                            <th>#</th>
-                            <th>Training Date</th>
-                            <th>Training Program</th>
-                            <th>Category</th>
-                            <th>Training Hours</th>
-                            <th>Training Cost</th>
-                            <th>Start of Bond</th>
-                            <th>End of Bond</th>
-                        </tr>
-
-                        <?php if($trainings) {?>
-                        <?php foreach($trainings as $index => $training) { ?>
-                            <tr>
-                                <td><?php echo $index + 1; ?></td>
-                                <td><?php echo $training['TrainingDate']; ?></td>
-                                <td><?php echo $training['TrainingDesc']; ?></td>
-                                <td><?php echo $training['Category']; ?></td>
-                                <td><?php echo number_format($training['TrainingHrs'],2); ?></td>
-                                <td><?php echo number_format($training['TrainingCost'], 2); ?></td>
-                                <td><?php echo $training['Bond'] ? $training['BondStart'] : ''; ?></td>
-                                <td><?php echo $training['Bond'] ? $training['BondExpiry'] : ''; ?></td>
-                            </tr>
-                            <?php $total_trainings += $training['TrainingHrs']; ?>
-                        <?php }
-                        } ?>
-                    </table>
-                    <table style='margin-top:5%' class="width100per">
-                        <tr>
-                            <th colspan="7" style='text-align: end;'>Total Training Hours:</th>
-                            <th><?php echo $total_trainings; ?></th>
-                        </tr>
                     </table>
                 </div>
+                <table style='margin-top:5%' class="width100per">
+                    <tr>
+                        <th colspan="7" style='text-align: end;'>Total Training Hours:</th>
+                        <th><?php echo $total_trainings; ?></th>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
