@@ -101,7 +101,7 @@
                             <td><b class="smallesttext lwhitetext">Designation:</b> <span style="font-weight:normal;"
                                     ng-bind="record.Position"></span></td>
                             <td><b class="smallesttext lwhitetext">Date Hired:</b> <span style="font-weight:normal;"
-                                    ng-bind="record.HireDate"></span></td>
+                                    ng-bind="formatDate(record.HireDate) |  date:'yyyy-MM-dd'"></span></td>
                         </tr>
                         <tr>
                             <td>
@@ -439,7 +439,7 @@
                                                 </td>
                                                 <td style="border:1px solid #fff;">
                                                     <span ng-show="next_pcc.id != null" ng-bind="next_pcc.Description"></span>
-                                                    <textarea spellcheck="true"  id="description" cols="60" rows="2" ng-show="next_pcc.id == null"  ng-model="next_pcc.Description" width="100%" ng-disabled="is_approved"></textarea>
+                                                    <textarea spellcheck="true"  id="description" cols="60" rows="2" ng-show="next_pcc.id == null || ((next_pcc.Description == null || next_pcc.Description.length <=50) && !is_approved)" ng-model="next_pcc.Description" width="100%" ng-disabled="is_approved"></textarea>
                                                 </td>
                                                 <td><input type="number" ng-model="next_pcc.Weight" min="0" max="100" class="smltxtbox calcp5w checker" style="width:35px;" ng-change="updateRecord()"  ng-disabled="is_approved"  onkeypress="return (event.charCode >= 48 && event.charCode <= 57) || event.charCode==8" onKeyDown="if ((this.value.length == 2 || this.value.length == 3) && ((this.value >= 10 && this.value <= 100 && !(this.value == 10 && event.keyCode == 48)) && event.keyCode != 8))  return false;" onfocusin="(this.value == 0) ? this.value = '' : false" onfocusout="(this.value == '') ? this.value = 0 : false" required></td>
                                             </tr>
