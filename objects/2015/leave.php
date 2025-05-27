@@ -72,11 +72,20 @@
                 $balanceval = $balance <= 0 ? 0 : $balance;
 
 
-                //CHECK DATE IF ITS APPLIED - START
+                //CHECK DATES IF ONE HAS DTR
 
                 $leavestart = date("Y-m-d", strtotime($_POST['leave_from']));
                 $leaveend = date("Y-m-d", strtotime($_POST['leave_to']));
 
+                $getdtr = $mainsql->get_dtr_dates($profile_idnum, $leavestart, $leaveend, $profile_comp);
+                foreach ($getdtr as $dtr){
+                    if ($dtr['TimeIN'] && $dtr['TimeOut'] && $dtr['Absent'] == 0) :
+                        echo '{"success": false, "error": "You have biometric entry on one of the selected date/s."}';
+                        exit();
+                    endif;
+                }
+
+                //CHECK DATE IF ITS APPLIED - START
                 if ($_POST['totaldays'] == 0) :
                     echo '{"success": false, "error": "You\'ve no date series on leave details. Please check DTR first"}';
                     exit();

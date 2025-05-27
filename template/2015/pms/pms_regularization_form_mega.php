@@ -111,7 +111,7 @@
                             <td><b class="smallesttext lwhitetext">Designation:</b> <span style="font-weight:normal;"
                                     ng-bind="record.Position"></span></td>
                             <td><b class="smallesttext lwhitetext">Date Hired:</b> <span style="font-weight:normal;"
-                                    ng-bind="record.HireDate"></span></td>
+                                    ng-bind="formatDate(record.HireDate) |  date:'yyyy-MM-dd'"></span></td>
                         </tr>
                         <tr>
                             <td>
@@ -323,7 +323,7 @@
                                     <br>
                                     <br>
                                     <b ng-show="goal.Goals != '8 hrs mandatory training'">Measure of Success</b><br>
-                                    <textarea spellcheck="true"  class="checker" cols="80" rows="3" ng-required="goal.Goals != '8 hrs mandatory training'" ng-model="goal.MeasureOfSuccess" ng-disabled="goal.id != null || goal.Goals == '8 hrs mandatory training' || is_approved"  ng-show="goal.Goals != '8 hrs mandatory training' && goal.id == null" placeholder="Provide measure of success" ng-attr-minlength="{{goal.id == null ? 25 : 0}}"></textarea>
+                                    <textarea spellcheck="true"  class="checker" cols="80" rows="3" ng-required="goal.Goals != '8 hrs mandatory training' && goal.id == null" ng-model="goal.MeasureOfSuccess" ng-disabled="goal.id != null || goal.Goals == '8 hrs mandatory training' || is_approved"  ng-show="goal.Goals != '8 hrs mandatory training' && goal.id == null" placeholder="Provide measure of success" ng-attr-minlength="{{goal.id == null ? 25 : 0}}"></textarea>
                                     <span ng-bind="goal.MeasureOfSuccess"  ng-show="goal.Goals != '8 hrs mandatory training' || goal.id != null"></span>
                                     <br> <br>
                                     <strong>Comments</strong><br>

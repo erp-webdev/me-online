@@ -133,6 +133,43 @@
         
     endif;
 
+    $_SESSION['peoplesedge_access_token'] = NULL;
+    $_SESSION['peoplesedge_login_error'] = NULL;
+    
+    if(!in_array($success, [2, 3])){
+        
+        $url = MEWEB.'/peoplesedge/api/jwt/login'; 
+
+        $data = [
+            'email' => API_CLIENT_USERNAME,
+            'password' => API_CLIENT_PASSWORD
+        ];
+
+        $options = [
+            'http' => [
+                'header' => "Content-Type: application/json\r\n",
+                'method' => 'POST',
+                'content' => json_encode($data),
+                'ignore_errors' => true
+            ]
+        ];
+
+        $context = stream_context_create($options);
+        $response = file_get_contents($url, false, $context);
+
+        if($response){
+            $result = json_decode($response, true);
+
+            if (isset($result['access_token'])) {
+                $_SESSION['peoplesedge_access_token'] = $result['access_token'];
+            }
+            else{
+                $_SESSION['peoplesedge_login_error'] = $result['error'] ? $result['error'] : json_encode($result['errors']);
+            }
+        }
+
+    }
+
 	echo $success;
 
 ?>
