@@ -15,7 +15,7 @@
                                     if(isset($_GET['year']))
                                         $yearval = $_GET['year'];
                                                     
-                                for($year=date('Y'); $year >= 2010; $year-- ) { ?>
+                                for($year=date('Y'); $year >= 2025; $year-- ) { ?>
                                     <option value="<?php echo $year ?>" <?php echo $yearval == $year ? ' selected' : ''; ?>><?php echo $year ?></option>    
                                 <?php } ?>
                             </select>
@@ -53,8 +53,8 @@
                                     <td style='text-align:center; width:10%;'><?php echo $training['Category']; ?></td>
                                     <td style='text-align:center; width:6%;'><?php echo number_format($training['TrainingHrs'], 2); ?></td>
                                     <td style='text-align:center; width:10%;'><?php echo number_format($training['TrainingCost'], 2); ?></td>
-                                    <td style='text-align:center; width:15%;'><?php echo $training['Bond'] ? date('Y-m-d', strtotime($training['BondStart'])) : ''; ?></td>
-                                    <td style='text-align:center; width:15%;'><?php echo $training['Bond'] ? date('Y-m-d', strtotime($training['BondExpiry'])) : ''; ?></td>
+                                    <td style='text-align:center; width:15%;'><?php echo $training['Bond'] ? date('Y-m-d', strtotime($training['BondStart'])) : 'NONE'; ?></td>
+                                    <td style='text-align:center; width:15%;'><?php echo $training['Bond'] ? date('Y-m-d', strtotime($training['BondExpiry'])) : 'NONE'; ?></td>
                                 </tr>
                                 <?php $total_trainings += $training['TrainingHrs']; ?>
                             <?php endforeach; ?>
@@ -65,8 +65,8 @@
                 </div>
                 <table style='margin-top:5%' class="width100per">
                     <tr>
-                        <th colspan="7" style='text-align: end;'>Total Training Hours:</th>
-                        <th><?php echo $total_trainings; ?></th>
+                        <th colspan="7" style='text-align: end; width:90%'>Total Training Hours:</th>
+                        <th><?php echo number_format($total_trainings, 2); ?></th>
                     </tr>
                 </table>
             </div>
