@@ -21,7 +21,21 @@
                         <div class="rightsplashtext lefttalign">
                             <div id="mainnotification" class="mainbody lefttalign whitetext">  
                                 <b class="mediumtext lorangetext">LEAVE BALANCE</b><br><br>
-                                
+                                <table class="marginbottom5">
+                                    <tr>
+                                        <td>Year: 
+                                            <select id="leave_ledger_year" name="leave_ledger_year" class="smltxtbox" onchange="location.href='<?php echo WEB; ?>/leavebal?year=' + this.value;">
+                                                <?php 
+                                                    if(isset($_GET['year']))
+                                                        $yearval = $_GET['year'];
+                                                                    
+                                                for($year=date('Y'); $year >= 2010; $year-- ) { ?>
+                                                    <option value="<?php echo $year ?>" <?php echo $yearval == $year ? ' selected' : ''; ?>><?php echo $year ?></option>    
+                                                <?php } ?>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
                                 <table border="0" cellspacing="0" class="tdata" style="width: 100%">
                                     <tr>
                                         <th width="35%" rowspan="2">Leave Type</th>
@@ -36,11 +50,12 @@
                                     </tr>
                                     
                                     <?php 
+                                        $ledger_year = $_GET['year'] ? $_GET['year'] : date('Y');
                                         if ($leave_data) :
                                         
                                             foreach ($leave_data as $key => $value) :
                                             ?>
-                                                <?php $leave_bal = $mainsql->get_leavebal_byid($profile_idnum, $value['LeaveID']); ?>
+                                                <?php $leave_bal = $mainsql->get_leavebal_by_year($profile_idnum, $value['LeaveID'], $ledger_year); ?>
                                                 <tr class="trdata">
                                                     <td><?php echo $value['LeaveDesc']; ?></td>
                                                     <?php if ($profile_compressed) : ?>

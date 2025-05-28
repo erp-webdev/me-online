@@ -2846,6 +2846,7 @@ $(function() {
     $(".btnlbaldata").on("click", function() {
 
         ltype = $(this).attr('attribute');
+        ledger_year = $('#leave_ledger_year').val();
 
         $("#lbal_title").html(ltype + ' Summary');
 		$(".floatdiv").removeClass("invisible");
@@ -2858,7 +2859,7 @@ $(function() {
 
         $.ajax(
         {
-            url: "<?php echo WEB; ?>/lib/requests/leavebal_request.php?sec=data",
+            url: "<?php echo WEB; ?>/lib/requests/leavebal_request.php?sec=data&year=" + ledger_year,
             data: "type=" + ltype,
             type: "POST",
             complete: function(){
@@ -2874,6 +2875,7 @@ $(function() {
 
         ltype = $(this).attr('attribute');
         ltype2 = $(this).attr('attribute2');
+        ledger_year = $('#leave_ledger_year').val();
 
         $("#lbal_title").html(ltype + ' Ledger');
 		$(".floatdiv").removeClass("invisible");
@@ -2886,7 +2888,7 @@ $(function() {
 
         $.ajax(
         {
-            url: "<?php echo WEB; ?>/lib/requests/leavebal_request.php?sec=ledger",
+            url: "<?php echo WEB; ?>/lib/requests/leavebal_request.php?sec=ledger&year=" + ledger_year,
             data: "type=" + ltype + "&type2=" + ltype2,
             type: "POST",
             complete: function(){
