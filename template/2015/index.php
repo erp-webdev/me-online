@@ -151,7 +151,7 @@ You have <a href="<?php echo WEB; ?>/memo" class="bold whitetext"><?php echo $un
                 <?php else: ?>
                     <?php if ($profile_dbname != 'ECINEMA' && $profile_dbname != 'EPARKVIEW' && $profile_dbname != 'NEWTOWN' && $profile_dbname != 'LAFUERZA'): ?>
                         <button class="icon-btn" 
-                            onclick="openfile('<?php echo WEB; ?>/lib/requests/download.php?type=a&file=MWDPA.pdf', 'Employee`s Handbook')" 
+                            onclick="openfile('<?php echo WEB; ?>/lib/requests/download.php?type=a&file=EmployeeHandbook.pdf', 'Employee`s Handbook')" 
                             aria-label="Download Employee`s Handbook">
                             <img src="<?php echo WEB; ?>/images/mw_handbook.png" alt="MW: Employee`s Handbook"/>
                         </button>
