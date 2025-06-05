@@ -1061,7 +1061,7 @@ class mainsql {
     function get_leavebal_by_year($empid, $leaveid, $year)
 	{
 		$sql = "SELECT LeaveID, PRYear, SUM(EarnedHrs) as EarnedHrs, SUM(UsedHrs) as UsedHrs, (SUM(EarnedHrs) - SUM(UsedHrs)) as BalanceHrs
-                FROM GL.dbo.viewSLVL_Ledger 
+                FROM  viewSLVL_Ledger 
                 WHERE EmpID = '$empid' AND LeaveID = '$leaveid' AND PRYear = '$year'
                 GROUP BY EmpID, LeaveID, PRYear ";
 		$result = $this->get_row($sql);
