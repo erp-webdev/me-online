@@ -31,6 +31,16 @@
 
         $registered_location = $tblsql->get_registered_location();
 
+        $reserved_slots =  [
+            'uptown' => 816,
+            'eastwood' => 435,
+            'mckinley' => 904,
+            'iloilo' => 345,
+            'newport' => 336,
+            'lctm' => 290,
+            'southwood' => 319,
+        ];
+
         // REGISTER ACTIVITY
         if ($_POST['btnregsub'] || $_POST['btnregsub_x']) :
 
@@ -74,25 +84,25 @@
                     }
                 }
 
-                if($_POST['registry_location'] == 'Uptown Cinemas' && $locations['uptown'] >= 816){
+                if($_POST['registry_location'] == 'Uptown Cinemas' && $locations['uptown'] >= $reserved_slots['uptown']){
                     echo '{"success": false, "details": "Registration is full on the selected cinema"}';
                     exit();
-                }elseif($_POST['registry_location'] == 'Eastwood Cinemas' && $locations['eastwood'] >= 435){
+                }elseif($_POST['registry_location'] == 'Eastwood Cinemas' && $locations['eastwood'] >= $reserved_slots['eastwood']){
                     echo '{"success": false, "details": "Registration is full on the selected cinema"}';
                     exit();
-                }elseif($_POST['registry_location'] == 'Venice Cineplex' && $locations['mckinley'] >= 904){
+                }elseif($_POST['registry_location'] == 'Venice Cineplex' && $locations['mckinley'] >= $reserved_slots['mckinley']){
                     echo '{"success": false, "details": "Registration is full on the selected cinema"}';
                     exit();
-                }elseif($_POST['registry_location'] == 'Festivewalk Iloilo Cinemas' && $locations['iloilo'] >= 345){
+                }elseif($_POST['registry_location'] == 'Festivewalk Iloilo Cinemas' && $locations['iloilo'] >= $reserved_slots['iloilo']){
                     echo '{"success": false, "details": "Registration is full on the selected cinema"}';
                     exit();
-                }elseif($_POST['registry_location'] == 'Newport Cinemas' && $locations['newport'] >= 336){
+                }elseif($_POST['registry_location'] == 'Newport Cinemas' && $locations['newport'] >= $reserved_slots['newport']){
                     echo '{"success": false, "details": "Registration is full on the selected cinema"}';
                     exit();
-                }elseif($_POST['registry_location'] == 'Lucky Chinatown Cinemas' && $locations['lctm'] >= 290){
+                }elseif($_POST['registry_location'] == 'Lucky Chinatown Cinemas' && $locations['lctm'] >= $reserved_slots['lctm']){
                     echo '{"success": false, "details": "Registration is full on the selected cinema"}';
                     exit();
-                }elseif($_POST['registry_location'] == 'Southwoods Cinemas' && $locations['southwood'] >= 319){
+                }elseif($_POST['registry_location'] == 'Southwoods Cinemas' && $locations['southwood'] >= $reserved_slots['southwood']){
                     echo '{"success": false, "details": "Registration is full on the selected cinema"}';
                     exit();
                 }
