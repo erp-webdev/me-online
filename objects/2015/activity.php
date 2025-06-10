@@ -30,9 +30,75 @@
         }   
 
         $registered_location = $tblsql->get_registered_location();
-        
+
         // REGISTER ACTIVITY
         if ($_POST['btnregsub'] || $_POST['btnregsub_x']) :
+
+            if(isset($_POST['registry_location']) && !empty($_POST['registry_location'])){
+                $locations = [
+                    'uptown' => 0,
+                    'eastwood' => 0,
+                    'mckinley' => 0,
+                    'iloilo' => 0,
+                    'newport' => 0,
+                    'lctm' => 0,
+                    'southwood' => 0,
+                ];
+                if(isset($registered_location)){
+                    if(count($registered_location) > 0){
+                        foreach($registered_location as $loc){
+                            switch ($loc['registry_location']) {
+                                case 'Uptown Cinemas':
+                                    $locations['uptown'] = $loc['total'];
+                                    break;
+                                case 'Eastwood Cinemas':
+                                    $locations['eastwood'] = $loc['total'];
+                                    break;
+                                case 'Venice Cineplex':
+                                    $locations['mckinley'] = $loc['total'];
+                                    break;
+                                case 'Festivewalk Iloilo Cinemas':
+                                    $locations['iloilo'] = $loc['total'];
+                                    break;
+                                case 'Newport Cinemas':
+                                    $locations['newport'] = $loc['total'];
+                                    break;
+                                case 'Lucky Chinatown Cinemas':
+                                    $locations['lctm'] = $loc['total'];
+                                    break;
+                                case 'Southwoods Cinemas':
+                                    $locations['southwood'] = $loc['total'];
+                                    break;
+                            }
+                        }
+                    }
+                }
+
+                if($_POST['registry_location'] == 'Uptown Cinemas' && $locations['uptown'] >= 816){
+                    echo '{"success": false, "details": "Registration is full on the selected cinema"}';
+                    exit();
+                }elseif($_POST['registry_location'] == 'Eastwood Cinemas' && $locations['eastwood'] >= 435){
+                    echo '{"success": false, "details": "Registration is full on the selected cinema"}';
+                    exit();
+                }elseif($_POST['registry_location'] == 'Venice Cineplex' && $locations['mckinley'] >= 904){
+                    echo '{"success": false, "details": "Registration is full on the selected cinema"}';
+                    exit();
+                }elseif($_POST['registry_location'] == 'Festivewalk Iloilo Cinemas' && $locations['iloilo'] >= 345){
+                    echo '{"success": false, "details": "Registration is full on the selected cinema"}';
+                    exit();
+                }elseif($_POST['registry_location'] == 'Newport Cinemas' && $locations['newport'] >= 336){
+                    echo '{"success": false, "details": "Registration is full on the selected cinema"}';
+                    exit();
+                }elseif($_POST['registry_location'] == 'Lucky Chinatown Cinemas' && $locations['lctm'] >= 290){
+                    echo '{"success": false, "details": "Registration is full on the selected cinema"}';
+                    exit();
+                }elseif($_POST['registry_location'] == 'Southwoods Cinemas' && $locations['southwood'] >= 319){
+                    echo '{"success": false, "details": "Registration is full on the selected cinema"}';
+                    exit();
+                }
+            }
+            
+
             $activity_data = $tblsql->get_activities($_POST['registry_activityid']);
         
             $count_registry = 0;
