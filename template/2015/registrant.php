@@ -18,6 +18,7 @@
                                             <a href="<?php echo WEB; ?>/activity">
                                                 <input type="button" id="btnact" name="btnact" value="List of Activities" class="smlbtn" />
                                             </a>
+                                            <input type="button" id="btnexport" name="btnexport" value="Download Registrants" class="smlbtn" onClick="location.href='<?php echo WEB; ?>/registrant?id=<?php echo $activity_title[0]['activity_id']; ?>&export=true'"/>
                                         </td>
                                     </tr>
                                 </table>
@@ -25,7 +26,8 @@
                                 <div id="registration_table" class="dirheight">
                                 <table class="tdata" width="100%">
                                     <tr>
-                                        <th width="40%">Registrants</th>
+                                        <th width="30%">Registrants</th>
+                                        <th width="10%">Location</th>
                                         <th width="10%">Will go directly</th>
                                         <th width="15%">Date Registered</th>
                                         <th width="15%">Status</th>
@@ -40,6 +42,7 @@
                                     <?php foreach ($registrants as $key => $value) : ?>
                                     <tr>
                                         <td><a class="bold whitetext" attribute="<?php echo $value['registry_id']; ?>"><?php echo $value['FName'].' '.$value['LName']; ?></a><?php if ($value['registry_status'] >= 2) : ?><br><b>Confirmation Code:</b> <?php echo $id.'-'.substr($value['EmpID'], -4).$value['registry_date']; ?><?php endif; ?><?php echo trim($value['registry_details']) ? '<br><b>Attendees:</b> '.$value['registry_details'] : ''; ?><?php if ($value['EmailAdd']) : ?><br><a href="mailto: <?php echo $value['EmailAdd']; ?>" class="greentext">Email this registrant</a><?php endif; ?></td>
+                                        <td><?php echo $value['registry_location']; ?></td>
                                         <td class="centertalign"><?php echo $value['registry_godirectly'] ? '<i class="fa fa-check greentext"></i>' : '<i class="fa fa-times redtext"></i>'; ?></td>
                                         <td class="centertalign"><?php echo date("M j, Y", $value['registry_date']); ?><br><?php echo date("g:ia", $value['registry_date']); ?></td>
                                         <td class="centertalign"><?php if ($value['registry_status'] == 2) : echo 'Approved'; elseif ($value['registry_status'] == 4) : echo '<span class="greentext">Attended</span>'; else : echo '<span class="redtext">For Approval</span>'; endif; ?></td>
@@ -68,7 +71,7 @@
                                     <?php endif; ?>
 
                                     <tr>
-                                        <td colspan="4" class="righttalign"><b>Average Rating</b></td>
+                                        <td colspan="5" class="righttalign"><b>Average Rating</b></td>
                                         <td class="centertalign">
                                             <?php $average_rate = round($ratescore / $ratee, 0); ?>
                                             <?php if ($average_rate) : ?>
