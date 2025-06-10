@@ -4,6 +4,33 @@
     <?php include(TEMP . "/holy-week-2025.php"); ?>
 <?php endif; ?>
 
+<style>
+    .icon-btn {
+        display: inline-block;
+        border: none;
+        background: none;
+        padding: 0;
+        cursor: pointer;
+        outline: none;
+        transition: transform 0.15s cubic-bezier(.4,2,.6,1);
+    }
+    .icon-btn:active {
+        transform: scale(0.93);
+    }
+    .icon-btn:hover, .icon-btn:focus {
+        transform: scale(1.07);
+        box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    }
+    .icon-btn img {
+        width: 200px;
+        transition: filter 0.2s;
+        filter: drop-shadow(0 2px 8px rgba(0,0,0,0.08));
+    }
+    .icon-btn:focus img {
+        filter: brightness(1.1);
+    }
+</style>
+
 <div id="floatdiv" class="floatdiv invisible">
     <div id="adview" class="fview" style="!important; display:none">
         <div class="closebutton cursorpoint" style=""><i class="fa fa-times-circle fa-3x redtext"></i></div>
@@ -25,7 +52,7 @@ if ($clearance)
     <div class="leftsplashtext lefttalign"><?php include(TEMP . "/menu.php"); ?></div>
     <div class="rightsplashtext lefttalign">
 
-        <div class="notifloat">
+        <div class="notifloat" style="width: 225px;">
             <?php
             $date1 = date("Y-m-d");
             $date2 = "2016-12-25";
@@ -70,19 +97,13 @@ if ($clearance)
                     $display = false;
                 ?>
 
-                <div class="dashcomp dashincentive2"
-                    style="<?php if ($display)
-                        echo 'display:none'; ?>; height: auto; background: #F0F0F0; padding: 5px; border-radius: 5px;-webkit-border-radius: 3px;-moz-border-radius: 3px;border:1px dashed #999">
-                        <center class=" dgraytext smalltext2">
-                            <a class="robotobold" style="color:blue; " href="<?php echo WEB; ?>/itr">
-                                <span class="roboto orangetext mediumtext" style="text-decoration: underline;">Download Your
-                                    2024 Income Tax Return Form (BIR
-                                    2316)</span>
-                            </a> <br>
-
-                            <?php echo $deadline_text; ?>
-                        </center>
+                <?php if (!$display): ?>
+                <div id="mainnotification" class="centertalign whitetext marginbottom5" style="">
+                    <a class="icon-btn" href="<?php echo WEB; ?>/itr">
+                        <img src="<?php echo WEB; ?>/images/bir_2316_itr_icon.png" alt="BIR 2316 ITR"/>
+                    </a>
                 </div>
+                <?php endif; ?>
             <?php endif; ?>
 
             <?php if (!in_array($profile_dbname, ['ASIAAPMI',  'GLOBAL_HOTEL', 'NEWTOWN'])): ?>
@@ -90,30 +111,16 @@ if ($clearance)
                     $viewingDate = '2025-04-25';
                     $displayAPE = (date('Y-m-d') < $viewingDate);
                 ?>
-
-                <div class="dashcomp dashincentive2"
-                    style=" <?php if ($displayAPE)
-                        echo 'display:none;'; ?> height: auto; background: #F0F0F0; padding: 5px; border-radius: 5px;-webkit-border-radius: 3px;-moz-border-radius: 3px;border:1px dashed #999">
-                        <center class=" dgraytext smalltext2">
-                            <a id="btnAPE" class="robotobold" style="color:blue;" >
-                                <span class="roboto orangetext mediumtext" style="text-decoration: underline;">Download
-                                    <?php echo date('Y'); ?> Annual Physical Examination Result</span>
-                            </a> <br>
-                        </center>
+                <?php if (!$displayAPE): ?>
+                <div id="mainnotification" class="centertalign whitetext marginbottom5" style="">
+                    <button id="btnAPE" class="icon-btn">
+                        <img src="<?php echo WEB; ?>/images/ape_result_icon.png" alt="APE Result"/>
+                    </button>
                 </div>
+                <?php endif; ?>
             <?php endif; ?>
 
             <?php if ($profile_dbname != 'ECINEMA' && $profile_dbname != 'EPARKVIEW' && $profile_dbname != 'NEWTOWN' && $profile_dbname != 'LAFUERZA'): ?>
-
-                <?php if (date('Y-m-d H:i:s') <= '2020-02-28 23:59:00'): ?>
-                    <div id="mainnotification" class="lefttalign whitetext marginbottom25">
-                        <b class="smalltext dorangetext">Valentine's Day Event Feedback</b>
-                        <br>
-                        Click
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSf-RzwbZQvDi3cYFsk5q735OrkKldULeJbcaVXvAACHQ0kz_Q/viewform?vc=0&c=0&w=1"
-                            class="yellowtext" target="_blank">here</a>
-                    </div>
-                <?php endif; ?>
 
                 <?php /*
 <!--div id="mainnotification" class="lefttalign whitetext">
@@ -128,69 +135,90 @@ You have <a href="<?php echo WEB; ?>/memo" class="bold whitetext"><?php echo $un
 */ ?>
 
             <?php endif; ?>
-
-            <div id="mainnotification" class="centertalign whitetext marginbottom25" style="">
+            <div id="mainnotification" class="centertalign whitetext marginbottom5" >
                 <?php if (in_array($profile_dbname, ['GL', 'MCTI'])): ?>
-                    <a onclick="openfile('<?php echo WEB; ?>/lib/requests/download.php?type=a&file=GLDPA.pdf', 'Data Privacy Act Manual')"
-                        target="_blank" style="">
-                        <img width="150px" src="<?php echo WEB; ?>/images/dpa-icon.png" />
-                    </a>
-                <?php else: ?>
-                    <?php if ($profile_dbname != 'ECINEMA' && $profile_dbname != 'EPARKVIEW' && $profile_dbname != 'NEWTOWN' && $profile_dbname != 'LAFUERZA'): ?>
-                        <a onclick="openfile('<?php echo WEB; ?>/lib/requests/download.php?type=a&file=MWDPA.pdf', 'Data Privacy Act Manual')"
-                            target="_blank" style="cursor: pointer">
-                            <img width="150px" src="<?php echo WEB; ?>/images/dpa-icon.png" />
-                        </a>
-                    <?php endif; ?>
-                <?php endif; ?>
-            </div> <?php // end of dpa ?>
-
-            <div id="mainnotification" class="centertalign whitetext marginbottom25" style="">
-                <a target="_blank" style="cursor: pointer" onclick="create_log('corporate_governance')">
-                    <img width="150px" src="<?php echo WEB; ?>/images/corporate_governance.png" />
-                </a>
-            </div> <?php // end of corp gov ?>
-
-            <div id="mainnotification" class="centertalign whitetext marginbottom25" style="">
-                <?php if (in_array($profile_dbname, ['GL', 'MCTI'])): ?>
-                    <a onclick="openfile('<?php echo WEB; ?>/lib/requests/download.php?type=a&file=GLEmployeeHandbook.pdf', 'Employees` Handbook')"
-                        target="_blank" style="">
-                        <img width="150px" src="<?php echo WEB; ?>/images/glhandbook.png" />
-                    </a>
+                    <button class="icon-btn" 
+                        onclick="openfile('<?php echo WEB; ?>/lib/requests/download.php?type=a&file=GLEmployeeHandbook.pdf', 'Employee`s Handbook')" 
+                        aria-label="Download Employee`s Handbook">
+                        <img src="<?php echo WEB; ?>/images/gl_handbook_icon.png" alt="GL: Employee`s Handbook"/>
+                    </button>
                 <?php elseif (in_array($profile_dbname, ['ASIAAPMI'])): ?>
-                    <a onclick="openfile('<?php echo WEB; ?>/lib/requests/download.php?type=a&file=ASIAAPMIHANDBOOK.pdf', 'Employee`s Handbook')"
-                        target="_blank" style="">
-                        <img width="150px" src="<?php echo WEB; ?>/images/asiaapmi_handbook.png" />
-                    </a>
-
+                    <button class="icon-btn" 
+                        onclick="openfile('<?php echo WEB; ?>/lib/requests/download.php?type=a&file=ASIAAPMIHANDBOOK.pdf', 'Employee`s Handbook')" 
+                        aria-label="Download Employee`s Handbook">
+                        <img src="<?php echo WEB; ?>/images/asiaapmi_handbook_icon.png" alt="ASIAAPMI: Employee`s Handbook"/>
+                    </button>
                 <?php else: ?>
                     <?php if ($profile_dbname != 'ECINEMA' && $profile_dbname != 'EPARKVIEW' && $profile_dbname != 'NEWTOWN' && $profile_dbname != 'LAFUERZA'): ?>
-                        <a onclick="openfile('<?php echo WEB; ?>/lib/requests/download.php?type=a&file=EmployeeHandbook.pdf', 'Employee`s Handbook')"
-                            target="_blank" style="" target="_blank">
-                            <img width="150px" src="<?php echo WEB; ?>/images/mwhandbook.png" />
-                        </a>
+                        <button class="icon-btn" 
+                            onclick="openfile('<?php echo WEB; ?>/lib/requests/download.php?type=a&file=EmployeeHandbook.pdf', 'Employee`s Handbook')" 
+                            aria-label="Download Employee`s Handbook">
+                            <img src="<?php echo WEB; ?>/images/mw_handbook.png" alt="MW: Employee`s Handbook"/>
+                        </button>
                     <?php endif; ?>
                 <?php endif; ?>
             </div><?php // end of handbook ?>
 
-            <div id="mainnotification" class="centertalign whitetext marginbottom25" style="">
-                <a target="_blank" class="btnviewads-quality-policy">
-                    <img width="150px" src="<?php echo WEB; ?>/images/quality-policy-icon.png" />
-                </a>
+            <div id="mainnotification" class="centertalign whitetext marginbottom5" style="">
+                <?php if (in_array($profile_dbname, ['GL', 'MCTI'])): ?>
+                   
+                <?php elseif (in_array($profile_dbname, ['ASIAAPMI'])): ?>
+                    <button class="icon-btn" 
+                        onclick="openfile('<?php echo WEB; ?>/lib/requests/download.php?type=a&file=ASIAAPMI_CODE_OF_CONDUCT.pdf', 'Code of Conduct')" 
+                        aria-label="Download Code of Conduct">
+                        <img src="<?php echo WEB; ?>/images/asiaapmi_code_of_conduct_icon.png" alt="ASIAAPMI: Code of Conduct"/>
+                    </button>
+                <?php else: ?>
+                   
+                <?php endif; ?>
+            </div><?php // end of code of conduct ?>
+
+            <div id="mainnotification" class="centertalign whitetext marginbottom5" style="">
+                <?php if (in_array($profile_dbname, ['GL', 'MCTI'])): ?>
+                    <button class="icon-btn" 
+                        onclick="openfile('<?php echo WEB; ?>/lib/requests/download.php?type=a&file=GLDPA.pdf', 'Data Privacy Act Manual')" 
+                        aria-label="Download Data Privacy Act Manual">
+                        <img src="<?php echo WEB; ?>/images/gl_dpa_icon.png" alt="Data Privacy Act Manual"/>
+                    </button>
+                <?php else: ?>
+                    <?php if ($profile_dbname != 'ECINEMA' && $profile_dbname != 'EPARKVIEW' && $profile_dbname != 'NEWTOWN' && $profile_dbname != 'LAFUERZA'): ?>
+                    <button class="icon-btn" 
+                        onclick="openfile('<?php echo WEB; ?>/lib/requests/download.php?type=a&file=MWDPA.pdf', 'Data Privacy Act Manual')" 
+                        aria-label="Download Data Privacy Act Manual">
+                        <img src="<?php echo WEB; ?>/images/mw_dpa_icon.png" alt="Data Privacy Act Manual"/>
+                    </button>
+                    <?php endif; ?>
+                <?php endif; ?>
+            </div> <?php // end of dpa ?>
+
+             <div id="mainnotification" class="centertalign whitetext marginbottom5" style="">
+                <button class="icon-btn" 
+                    target="_blank" 
+                    onclick="create_log('corporate_governance')" 
+                    aria-label="View Corporate Governance">
+                    <img src="<?php echo WEB; ?>/images/mw_corporate_governance_icon.png" alt="View Corporate Governance"/>
+                </button>
+            </div> <?php // end of corp gov ?>
+
+            <div id="mainnotification" class="centertalign whitetext marginbottom5" style="">
+                <button target="_blank" class="icon-btn btnviewads-quality-policy">
+                    <img src="<?php echo WEB; ?>/images/mw_quality_policy.png" alt="MW Quality Policy"/>
+                </button>
             </div>
 
             <?php if (!in_array($profile_comp, ['ASIAAPMI', 'GLOBALHOTEL'])): ?>
-                <div id="mainnotification" class="centertalign whitetext marginbottom25" style="">
+                <div id="mainnotification" class="centertalign whitetext marginbottom5" style="">
                     <a href="https://docs.google.com/forms/d/e/1FAIpQLSeZ3HHajc62Dvas0CL7O5mN1QGPX8K1CWmMZOybhjhYFowWHw/viewform?authuser=3"
-                        target="_blank">
-                        <img width="150px" src="<?php echo WEB; ?>/images/traf.png" />
+                        target="_blank"
+                        class="icon-btn">
+                        <img src="<?php echo WEB; ?>/images/traf_icon.png" alt="Training Request & Accreditation Form"/>
                     </a>
                 </div>
             <?php endif; ?>
 
-            <div id="mainnotification" class="centertalign whitetext marginbottom25" style="">
-                <a href="https://tinyurl.com/yyp6m44z" target="_blank">
-                    <img width="150px" src="<?php echo WEB; ?>/images/CLUBACC.png" />
+            <div id="mainnotification" class="centertalign whitetext marginbottom5" style="">
+                <a class="icon-btn" href="https://tinyurl.com/yyp6m44z" target="_blank">
+                    <img src="<?php echo WEB; ?>/images/mw_club_access_icon.png" />
                 </a>
             </div>
             <?php // end of club access ?>

@@ -949,8 +949,7 @@
 				}else{
 				?>
 				<b><p style="padding-top: 40px; <?php echo $send_pdf ? '' : 'padding-bottom: 40px;'; ?> padding-left: 50px; padding-right: 50px;">RAFAEL ANTONIO S. PEREZ<br />
-				Head, Human Resources and<br />
-				Corporate Administration Division</p></b>
+				Chief People and Culture Officer</p></b>
 				<?php
 				}
 				?>

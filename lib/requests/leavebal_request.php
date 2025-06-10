@@ -80,6 +80,7 @@
 <?php
 
     $sec = $profile_id ? $_GET['sec'] : NULL;
+    $ledger_year = $_GET['year'] ? $_GET['year'] : date('Y');
 
     ?>
 
@@ -94,8 +95,8 @@
             $type = $_POST['type'];
             $leavetype = $mainsql->get_leave($type);
 
-            $leave_data = $mainsql->get_leavebytype($profile_idnum, $type, date('Y'));
-            $leave_balance = $mainsql->get_leavebal($profile_idnum, $leavetype[0]['LeaveID']);
+            $leave_data = $mainsql->get_leavebytype($profile_idnum, $type, $ledger_year);
+            $leave_balance = $mainsql->get_leavebal_by_year($profile_idnum, $leavetype[0]['LeaveID'], $ledger_year);
 
             //var_dump($leave_data);
 
@@ -153,9 +154,9 @@
                     <tr>
                         <td><b>Remaining Balance</b></td>
                         <?php if ($profile_compressed) : ?>
-                        <td class="righttalign"><?php echo $leave_balance[0]['BalanceHrs']; ?> hours</td>
+                        <td class="righttalign"><?php echo number_format($leave_balance[0]['BalanceHrs'], 2); ?> hours</td>
                         <?php else : ?>
-                        <td class="righttalign"><?php echo $leave_balance[0]['BalanceDays']; ?> days</td>
+                        <td class="righttalign"><?php echo number_format($leave_balance[0]['BalanceDays'], 2); ?> days</td>
                         <?php endif; ?>
                     </tr>
             </table>
@@ -171,10 +172,10 @@
             $type = $_POST['type'];
             $type2 = $_POST['type2'];
 
-            $leave_data = $mainsql->get_leaveledgerbytype($profile_idnum, $type2, date('Y'));
-            $leave_balance = $mainsql->get_leavebal($profile_idnum, $type2);
-						$usable_balance = $mainsql->get_usablebal($profile_idnum, $type2);
-						$leave_approval = $mainsql->get_forapproval($profile_idnum, $type2);
+            $leave_data = $mainsql->get_leaveledgerbytype($profile_idnum, $type2, $ledger_year);
+            $leave_balance = $mainsql->get_leavebal_by_year($profile_idnum, $type2, $ledger_year);
+            $usable_balance = $mainsql->get_usablebal_by_year($profile_idnum, $type2, $ledger_year);
+            $leave_approval = $mainsql->get_forapproval($profile_idnum, $type2, $ledger_year);
 
             //var_dump($leave_data);
 
