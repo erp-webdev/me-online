@@ -468,9 +468,11 @@ $(function ()
 
 			if (!response.success)
 			{
-                if (response.details = 'not available') {
+                if (response.details == 'not available') {
                     html += 'Registration denied. Maybe the event registration has been ended or slot is full.';
-                } else {
+                }else if (response.details == 'Registration is full on the selected cinema') {
+                    html += 'Registration is full on the selected cinema';
+                }else {
 				    html += 'There was a problem on registering on activity';
                 }
 
@@ -491,7 +493,7 @@ $(function ()
 			else
 			{
                 $('.actreg_msg').slideUp();
-                alert('You have been successfully registered to the activity.');
+                alert('You have been successfully registered to the activity. You will be redirected to the Registration Page. Always check that you have a QR Code generated.');
                 window.location.href='<?php echo WEB; ?>/registration';
 			}
 		}

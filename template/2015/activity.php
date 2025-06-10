@@ -37,7 +37,7 @@
                                                     <td width="30%"><b>Registrant</b></td>
                                                     <td width="70%"><?php echo $profile_full.' ('.$profile_idnum.')'; ?></td>
                                                 </tr>
-                                                <!-- <tr id="location">
+                                                <tr id="location">
                                                     <td><b>Cinema</b></td>
                                                     <td>
                                                         <?php 
@@ -45,27 +45,35 @@
                                                                 'uptown' => 0,
                                                                 'eastwood' => 0,
                                                                 'mckinley' => 0,
-                                                                'southwood' => 0,
                                                                 'iloilo' => 0,
+                                                                'newport' => 0,
+                                                                'lctm' => 0,
+                                                                'southwood' => 0,
                                                             ];
                                                             if(isset($registered_location)){
                                                                 if(count($registered_location) > 0){
                                                                     foreach($registered_location as $loc){
                                                                         switch ($loc['registry_location']) {
-                                                                            case 'Uptown Mall Cinema':
-                                                                                $locations['uptown'] = $loc['total'];
+                                                                            case 'Uptown Cinemas':
+                                                                                $locations['uptown'] = (int)$loc['total'];
                                                                                 break;
-                                                                            case 'Eastwood Mall Cinema':
-                                                                                $locations['eastwood'] = $loc['total'];
+                                                                            case 'Eastwood Cinemas':
+                                                                                $locations['eastwood'] = (int)$loc['total'];
                                                                                 break;
-                                                                            case 'Venice Grand Canal Mall Cinema':
-                                                                                $locations['mckinley'] = $loc['total'];
+                                                                            case 'Venice Cineplex':
+                                                                                $locations['mckinley'] = (int)$loc['total'];
                                                                                 break;
-                                                                            case 'Iloilo Festive Walk Mall Cinema':
-                                                                                $locations['iloilo'] = $loc['total'];
+                                                                            case 'Festivewalk Iloilo Cinemas':
+                                                                                $locations['iloilo'] = (int)$loc['total'];
                                                                                 break;
-                                                                            case 'Southwoods Mall Cinema':
-                                                                                $locations['southwood'] = $loc['total'];
+                                                                            case 'Newport Cinemas':
+                                                                                $locations['newport'] = (int)$loc['total'];
+                                                                                break;
+                                                                            case 'Lucky Chinatown Cinemas':
+                                                                                $locations['lctm'] = (int)$loc['total'];
+                                                                                break;
+                                                                            case 'Southwoods Cinemas':
+                                                                                $locations['southwood'] = (int)$loc['total'];
                                                                                 break;
                                                                         }
                                                                     }
@@ -74,14 +82,16 @@
                                                             
                                                         ?>
                                                         <select id="registry_location" name="registry_location" class="txtbox" required>
-                                                            <option value="Uptown Mall Cinema" <?php echo $locations['uptown'] >= 819 ? 'disabled' : '' ?>>Uptown Mall Cinema <?php echo $locations['uptown'] >= 819 ? '(Full)' : '' ?></option>
-                                                            <option value="Eastwood Mall Cinema" <?php $locations['eastwood'] >= 974 ? 'disabled' : '' ?>>Eastwood Mall Cinema  <?php $locations['eastwood'] >= 974 ? '(Full)' : '' ?></option>
-                                                            <option value="Venice Grand Canal Mall Cinema" <?php $locations['mckinley'] >= 1147 ? 'disabled' : '' ?>>Venice Grand Canal Mall Cinema  <?php $locations['mckinley'] >= 1147 ? '(Full)' : '' ?></option>
-                                                            <option value="Southwoods Mall Cinema" <?php $locations['southwood'] >= 200 ? 'disabled' : '' ?>>Southwoods Mall Cinema  <?php $locations['southwood'] >= 200 ? '(Full)' : '' ?></option>
-                                                            <option value="Iloilo Festive Walk Mall Cinema" >Iloilo Festive Walk Mall Cinema </option>
+                                                            <option value="Uptown Cinemas" <?php echo $locations['uptown'] >= $reserved_slots['uptown'] ? 'disabled' : '' ?> slots="<?php echo $reserved_slots['uptown']; ?>" reserved="<?php echo $locations['uptown']; ?>">Uptown Cinemas <?php echo $locations['uptown'] >= $reserved_slots['uptown'] ? '(Full)' : '' ?></option>
+                                                            <option value="Eastwood Cinemas" <?php echo $locations['eastwood'] >= $reserved_slots['eastwood'] ? 'disabled' : '' ?> slots="<?php echo $reserved_slots['eastwood']; ?>" reserved="<?php echo $locations['eastwood']; ?>">Eastwood Cinemas  <?php echo $locations['eastwood'] >= $reserved_slots['eastwood'] ? '(Full)' : '' ?></option>
+                                                            <option value="Venice Cineplex" <?php echo $locations['mckinley'] >= $reserved_slots['mckinley'] ? 'disabled' : '' ?> slots="<?php echo $reserved_slots['mckinley']; ?>" reserved="<?php echo $locations['mckinley']; ?>">Venice Cineplex  <?php echo $locations['mckinley'] >= $reserved_slots['mckinley'] ? '(Full)' : '' ?></option>
+                                                            <option value="Festivewalk Iloilo Cinemas" <?php echo $locations['iloilo'] >= $reserved_slots['iloilo'] ? 'disabled' : '' ?> slots="<?php echo $reserved_slots['iloilo']; ?>" reserved="<?php echo $locations['iloilo']; ?>">Festivewalk Iloilo Cinemas  <?php echo $locations['iloilo'] >= $reserved_slots['iloilo'] ? '(Full)' : '' ?></option>
+                                                            <option value="Newport Cinemas" <?php echo $locations['newport'] >= $reserved_slots['newport'] ? 'disabled' : '' ?> slots="<?php echo $reserved_slots['newport']; ?>" reserved="<?php echo $locations['newport']; ?>">Newport Cinemas  <?php echo $locations['newport'] >= $reserved_slots['newport'] ? '(Full)' : '' ?></option>
+                                                            <option value="Lucky Chinatown Cinemas" <?php echo $locations['lctm'] >= $reserved_slots['lctm'] ? 'disabled' : '' ?> slots="<?php echo $reserved_slots['lctm']; ?>" reserved="<?php echo $locations['lctm']; ?>">Lucky Chinatown Cinemas  <?php echo $locations['lctm'] >= $reserved_slots['lctm'] ? '(Full)' : '' ?></option>
+                                                            <option value="Southwoods Cinemas" <?php echo $locations['southwood'] >= $reserved_slots['southwood'] ? 'disabled' : '' ?> slots="<?php echo $reserved_slots['southwood']; ?>" reserved="<?php echo $locations['southwood']; ?>">Southwoods Cinemas  <?php echo $locations['southwood'] >= $reserved_slots['southwood'] ? '(Full)' : '' ?></option>
                                                         </select>
                                                     </td>
-                                                </tr> -->
+                                                </tr>
                                                 <?php if(date('Y') == 2022) : ?>
                                                 <tr id="vaxcert">
                                                     <td><b>Vaccination Certificate / Card</b></td>
@@ -107,6 +117,7 @@
                                                     </td>
                                                 </tr>
                                                 <?PHP endif; ?>
+                                                
                                                 <tr id="godir">
                                                     <td><b>I'll go directly</b></td>
                                                     <td>
@@ -116,6 +127,7 @@
                                                         </select>
                                                     </td>
                                                 </tr>
+                                                <?php /*
                                                 <tr id="numchild">
                                                     <td class="valigntop"><b>No. of Children</b></td>
                                                     <td>
@@ -158,6 +170,7 @@
                                                     <td class="valigntop"><b>Guest/s</b></td>
                                                     <td id="divguestdata"></td>
                                                 </tr> 
+                                                */ ?>
                                             </table>
                                             <!--table id="godiryes" class="width100per">
                                                 <tr>
@@ -167,6 +180,7 @@
                                                     </td>
                                                 </tr>
                                             </table-->
+                                            <?php /*
                                             <table id="pickupfrom" class="width100per invisible">
                                                 <tr>
                                                     <td width="30%"><b>Pickup</b></td>
@@ -196,6 +210,8 @@
                                                 </tr>
                                             </table>
                                             <div class="spanapp width100per redtext italic margintop25 righttalign">* subject by your superior's approval</div>
+                                            */ ?>
+                                            
                                             <div class="width100per margintop25 centertalign">
                                                 <?php if($profile_dbname <> 'GL') : ?>
                                                 <p>
