@@ -55,25 +55,25 @@
                                                                     foreach($registered_location as $loc){
                                                                         switch ($loc['registry_location']) {
                                                                             case 'Uptown Cinemas':
-                                                                                $locations['uptown'] = $loc['total'];
+                                                                                $locations['uptown'] = (int)$loc['total'];
                                                                                 break;
                                                                             case 'Eastwood Cinemas':
-                                                                                $locations['eastwood'] = $loc['total'];
+                                                                                $locations['eastwood'] = (int)$loc['total'];
                                                                                 break;
                                                                             case 'Venice Cineplex':
-                                                                                $locations['mckinley'] = $loc['total'];
+                                                                                $locations['mckinley'] = (int)$loc['total'];
                                                                                 break;
                                                                             case 'Festivewalk Iloilo Cinemas':
-                                                                                $locations['iloilo'] = $loc['total'];
+                                                                                $locations['iloilo'] = (int)$loc['total'];
                                                                                 break;
                                                                             case 'Newport Cinemas':
-                                                                                $locations['newport'] = $loc['total'];
+                                                                                $locations['newport'] = (int)$loc['total'];
                                                                                 break;
                                                                             case 'Lucky Chinatown Cinemas':
-                                                                                $locations['lctm'] = $loc['total'];
+                                                                                $locations['lctm'] = (int)$loc['total'];
                                                                                 break;
                                                                             case 'Southwoods Cinemas':
-                                                                                $locations['southwood'] = $loc['total'];
+                                                                                $locations['southwood'] = (int)$loc['total'];
                                                                                 break;
                                                                         }
                                                                     }
