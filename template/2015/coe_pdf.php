@@ -1064,11 +1064,11 @@
 			],
 			"MEGAPARK" => [
 				'prepared' => [
-					'name' => 'SAMANTHA D. EBITA',
-					'id' => '2022-06-0387',
+					'name' => 'MA. CLARITA D. PELADAS',
+					'id' => '2023-07-0493',
 					'designation' => 'Payroll Associate',
-					'esign' => 'coe_sebita.png',
-					'email' => 'sebita.global@megaworldcorp.com'
+					'esign' => 'coe_mpeladas.png',
+					'email' => 'mpeladas.global@megaworldcorp.com'
 				],
 				'approver' => [
 					'RFSP' => [
