@@ -853,7 +853,7 @@ class tblsql {
 		$sql="SELECT r.registry_location, COUNT(*) as total ";
 		$sql.=" FROM HREventRegistry r
 			WHERE r.registry_status >= 1  and registry_location is not null
-            AND r.registry_activityid >= 3296";
+            AND r.registry_activityid in (3296, 3297)";
         $sql.=" GROUP BY r.registry_location";
         
 		$result = $this->get_row($sql, 1);
