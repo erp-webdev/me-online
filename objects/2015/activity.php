@@ -106,8 +106,10 @@
                     echo '{"success": false, "details": "Registration is full on the selected cinema"}';
                     exit();
                 }
+            }else{
+                echo '{"success": false, "details": "Please select a cinema location"}';
+                exit();
             }
-            
 
             $activity_data = $tblsql->get_activities($_POST['registry_activityid']);
         
