@@ -945,13 +945,13 @@
 
                 return false;
             }
-            else if($scope.checkSpelling()){
-                $('span.livespell_redwiggle').closest('div').focus();
-                $('span.livespell_greenwiggle').closest('div').focus();
-                alert('Spelling errors found. Please review and correct the highlighted words before submitting the form. \n\nNote: To see suggestions, right click on misspelled word.');
+            // else if($scope.checkSpelling()){
+            //     $('span.livespell_redwiggle').closest('div').focus();
+            //     $('span.livespell_greenwiggle').closest('div').focus();
+            //     alert('Spelling errors found. Please review and correct the highlighted words before submitting the form. \n\nNote: To see suggestions, right click on misspelled word.');
 
-                return false;
-            }
+            //     return false;
+            // }
 
            return true
         };
