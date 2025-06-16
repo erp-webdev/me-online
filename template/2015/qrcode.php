@@ -27,7 +27,6 @@
     else{?>
 
     <?php include(TEMP."/header.php"); ?>
-    <!-- BODY -->
     <div id="mainsplashtext" class="mainsplashtext lefttalign">
         <div class="topsplashtext lefttalign robotobold cattext whitetext"><?php echo WELCOME; ?></div>
         <div class="leftsplashtext lefttalign"><?php include(TEMP."/menu.php"); ?></div>
@@ -38,8 +37,9 @@
                 <span class="whitetext"><span class="mediumtext"><?php echo $profile_full; ?></span></span><br>
                 <span class="whitetext"><span class="mediumtext"><?php echo $profile_idnum; ?></span></span><br>
                 <br>
-                
-                <?php if($my_registration[0]['registry_godirectly'] == 0){ ?>
+
+                <?php /*
+                <!-- <?php if($my_registration[0]['registry_godirectly'] == 0){ ?>
                     <?php if($my_registration[0]['registry_vrin'] == 1) { ?>
                         <span class="whitetext">Company Vehicle from <b class="whitetext"><?php echo $my_registration[0]['registry_pickup_location']; ?></b> to <?php echo $my_registration[0]['activity_venue']; ?></span> <br>
                     <?php } ?>
@@ -48,15 +48,18 @@
                     <?php } ?>
                 <?php } else { ?>
                         <span class="whitetext">I'll go directly</span>
-                <?php } ?>
+                <?php } ?> -->
+                */ ?>
 
-                <!-- <span class="whitetext">Cinema: <h3 class="mediumtext"><?php echo $my_registration[0]['registry_location']; ?></h3></span> -->
+                <span class="whitetext">Cinema: <h3 class="mediumtext"><?php echo $my_registration[0]['registry_location']; ?></h3></span>
                 <br><br>
+                <?php /*
                 <!-- <span class="whitetext">Seat Plan: <h3 class="mediumtext"><?php echo $my_registration[0]['registry_seat'] ?  $my_registration[0]['registry_seat'] : 'TBA'; ?></h3></span> -->
                 <br><br>
                 <!-- <img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=<?php echo $id; ?>&choe=UTF-8" width="300" height="300" onerror="alert('QR Code failed to load. Please check your internet connection');" alt="Registration QR Code"> -->
-
+                */ ?>
                 <img src="https://quickchart.io/chart?chs=300x300&cht=qr&chl=<?php echo $id; ?>&choe=UTF-8" width="300" height="300" onerror="alert('QR Code failed to load. Please check your internet connection');" alt="Registration QR Code">
+                <?php /*
                 
                 <!-- <a  class="cursorpoint yellowtext" target="_blank" href="../uploads/activity/vaxcert/<?php echo $my_registration[0]['registry_vaxpath']; ?>">View Vaccination Certificate / Card </a> <br> 
                 <span class="whitetext">Vaccination Status: 
@@ -73,10 +76,10 @@
                 <br>
                 <br>
                 <span class="whitetext">Group Table Assignment: <?php echo $my_registration[0]['registry_seat']; ?></span>
-                -->
                 <br><span class="whitetext">Seat Plan: <b>To Be Determined</b></span><br>
                 <span>Please check back later</span>
-                
+                -->
+                */ ?>
                 <div class="clearboth">
                     <button onclick="window.history.back();" class="btn btnred margintop25">Back</button>
                 </div>

@@ -1029,13 +1029,23 @@ class mainsql {
     return $result;
   }
 
-  function get_forapproval($empid, $leaveid)
+  function get_usablebal_by_year($empid, $leaveid, $year)
+  {
+    $sql = "select ROUND(sum(a.EarnedHrs - a.UsedHrs),2) as BalanceHrs
+            from viewSLVLLEAVELEDGERCURRENT a
+            left join HREmpLBalance b on a.EmpID = b.EmpID and b.LeaveID = a.LeaveID
+            where   a.LeaveID IN ('$leaveid') AND a.EMPID = '$empid' and b.DateEffect <= GETDATE() and a.PRYear = $year";
+    $result = $this->get_row($sql);
+    return $result;
+  }
+
+  function get_forapproval($empid, $leaveid, $year)
   {
   $sql = "select ROUND(sum(a.UsedHrs),2) as BalanceHrs
           from viewSLVLLEAVELEDGERCURRENT a
           left join HREmpLBalance b on a.EmpID = b.EmpID and b.LeaveID = a.LeaveID
           where   a.LeaveID IN ('$leaveid') AND a.EMPID = '$empid'
-          and b.DateEffect <= GETDATE() and a.PRYear = YEAR(GETDATE())
+          and b.DateEffect <= GETDATE() and a.PRYear = $year
           and A.Remark like '%FOR APPROVAL'";
   $result = $this->get_row($sql);
   return $result;
@@ -1044,6 +1054,16 @@ class mainsql {
     function get_leavebal_byid($empid, $leaveid)
 	{
 		$sql = "SELECT LeaveID, EarnedDays, EarnedHrs, UsedDays, UsedHrs, BalanceDays, BalanceHrs, DateEffect FROM HREmpLBalance WHERE EmpID = '".$empid."' AND LeaveID = '".$leaveid."' AND DateEffect <= GETDATE() ";
+		$result = $this->get_row($sql);
+		return $result;
+	}
+
+    function get_leavebal_by_year($empid, $leaveid, $year)
+	{
+		$sql = "SELECT LeaveID, PRYear, SUM(EarnedHrs) as EarnedHrs, SUM(UsedHrs) as UsedHrs, (SUM(EarnedHrs) - SUM(UsedHrs)) as BalanceHrs
+                FROM  viewSLVL_Ledger 
+                WHERE EmpID = '$empid' AND LeaveID = '$leaveid' AND PRYear = '$year'
+                GROUP BY EmpID, LeaveID, PRYear ";
 		$result = $this->get_row($sql);
 		return $result;
 	}
