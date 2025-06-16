@@ -297,7 +297,7 @@ else:
 endif;
 ?>
 
-<?php if ($profile_dbname != 'OJTPAY'): ?>
+<?php if ($profile_dbname != 'OJTPAY' && $profile_dbname == 'ASIAAPMI'): ?>
     <?php if ($section != "training"): ?><a href="<?php echo WEB; ?>/training"
             onclick="clickAndDisable(this);"><?php endif; ?>
         <div<?php if ($section == "training") { ?> class="dselected" <?php } ?>>Training Records</div>
