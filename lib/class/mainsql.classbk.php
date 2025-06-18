@@ -1205,7 +1205,7 @@ class mainsql {
     
     function get_dtr_data($empid, $from, $to, $company)
 	{
-		$sql = "SELECT DISTINCT DTRDATE, ShiftDesc, TimeIN, TimeOut, LateHrs, UTHrs, Absent, LEAVETYPE, L01, L02, L03, L04, L05, L10, L12, L14, OTHrs01, OTHrs02, OTHrs03, OTHrs04, OTHrs05, OTHrs06, OTHrs07, OTHrs08, OTHrs09, OTHrs10, OTHrs11, OTHrs12, OTHrs13, OTHrs14, OTHrs15, OTHrs16, OTHrs17, OTHrs18, OTHrs19, OTHrs20, OTHrs21, OTHrs22, OTHrs23, OTHrs24, OTHrs25, WorkHrs, RegHrs, OB, ApprovedOTHrs, ActualOTHrs, NDHrs, LEAVE_DESC FROM viewHRDTR ";
+		$sql = "SELECT DISTINCT DTRDATE, ShiftDesc, TimeIN, TimeOut, LateHrs, UTHrs, Absent, LEAVETYPE, L01, L02, L03, L04, L05, L10, L12, L14, OTHrs01, OTHrs02, OTHrs03, OTHrs04, OTHrs05, OTHrs06, OTHrs07, OTHrs08, OTHrs09, OTHrs10, OTHrs11, OTHrs12, OTHrs13, OTHrs14, OTHrs15, OTHrs16, OTHrs17, OTHrs18, OTHrs19, OTHrs20, OTHrs21, OTHrs22, OTHrs23, OTHrs24, OTHrs25, WorkHrs, RegHrs, OB, ApprovedOTHrs, ActualOTHrs, NDHrs, LEAVE_DESC, CreatedDate FROM viewHRDTR ";
         $sql .= " WHERE EmpID = '".$empid."' AND DTRDATE BETWEEN '".$from." 00:00:00.000' AND '".$to." 23:59:59.000' ";
         $sql .= " AND Posted = (SELECT AttPost FROM HRCompanyCutOff WHERE PeriodFrom BETWEEN '".$from."' AND '".$to."' AND CompanyID='".$company."') ";
         $sql .= " ORDER BY DTRDATE ASC ";
