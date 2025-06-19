@@ -4,7 +4,13 @@
     $today = date('Y-m-d');
     $dayBeforeActivity = date('Y-m-d', strtotime($dateactivity . ' -1 day'));
     
-    if ($today >= $dayBeforeActivity && $today <= $dateactivity) {
+    if (($today >= $dayBeforeActivity && $today <= $dateactivity) && !in_array($_GET['title'], 
+            ['MEGA-SAYANG PASKONG PILIPINO 2023', 
+            'Megaworld 35th Anniversary Celebration', 
+            'MEGAWORLD YULETIDE GLAM BALL 2024', 
+            'BACOLOD WINTER WONDERLAND CHRISTMAS 2024', 
+            'ILOILO GLITZ AND GLAM', 
+            'CEBU HAWAIIAN CHRISTMAS LUAU'])) {
         if($_GET['title']=="MEGA-SAYANG PASKONG PILIPINO 2023") {
             echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/mega-sayang-paskong-pilipino'</script>";
         }
