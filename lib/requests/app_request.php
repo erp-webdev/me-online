@@ -103,8 +103,8 @@ switch ($sec) {
 
         $dtr_data = $mainsql->get_dtr_bydate($profile_idnum, $_POST['date']);
 
-        $ddatein = $dtr_data[0]['DTRDATE'];
-        $ddateout = $dtr_data[0]['TimeOutDate'];
+        $ddatein = $dtr_data[0]['DTRDATE'] ? $dtr_data[0]['DTRDATE'] : $_POST['date'];
+        $ddateout = $dtr_data[0]['TimeOutDate'] ? $dtr_data[0]['TimeOutDate'] : $_POST['date'];
 
         //var_dump(date("Y-m-d", strtotime($ddateout)));
         //var_dump($ddatein.' '.$ddateout);
