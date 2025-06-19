@@ -4,7 +4,7 @@
     $today = date('Y-m-d');
     $dayBeforeActivity = date('Y-m-d', strtotime($dateactivity . ' -1 day'));
     
-    if (($today >= $dayBeforeActivity && $today <= $dateactivity) && !in_array($_GET['title'], 
+    if (($today >= $dayBeforeActivity && $today <= $dateactivity) && in_array($_GET['title'], 
             ['MEGA-SAYANG PASKONG PILIPINO 2023', 
             'Megaworld 35th Anniversary Celebration', 
             'MEGAWORLD YULETIDE GLAM BALL 2024', 
