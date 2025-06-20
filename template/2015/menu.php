@@ -297,10 +297,16 @@ else:
 endif;
 ?>
 
-<?php if ($profile_dbname != 'OJTPAY' && $profile_dbname == 'ASIAAPMI'): ?>
+<?php if ($profile_dbname != 'OJTPAY'): ?>
+    <?php
+        $viewingDate = '2025-07-01';
+        $displayTraining = (date('Y-m-d') >= $viewingDate);
+    ?>
+    <?php if ($displayTraining || $profile_dbname == 'ASIAAPMI'): ?>
     <?php if ($section != "training"): ?><a href="<?php echo WEB; ?>/training"
             onclick="clickAndDisable(this);"><?php endif; ?>
         <div<?php if ($section == "training") { ?> class="dselected" <?php } ?>>Training Records</div>
             <?php if ($section != "training"): ?>
         </a><?php endif; ?>
+    <?php endif;?>
 <?php endif;?>
