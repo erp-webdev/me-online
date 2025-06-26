@@ -475,7 +475,7 @@
 			<?php } ?>
 
 			<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of
-				<?php echo ucwords(strtolower($emp_info[0]["Salutation"])) . " " . ucwords(strtolower(mb_convert_encoding($emp_info[0]["LName"], 'UTF-8', 'HTML-ENTITIES'))); ?>
+				<?php echo ucwords(strtolower($emp_info[0]["Salutation"])) . " " . mb_convert_case($emp_info[0]["LName"], MB_CASE_TITLE, 'UTF-8'); ?>
 				<?php
 				if ($coe[0]["other_reason"]) {
 					?>
