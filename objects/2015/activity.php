@@ -33,7 +33,7 @@
 
         $reserved_slots =  [
             'uptown' => 816,
-            'eastwood' => 435,
+            'eastwood' => 472,
             'mckinley' => 904,
             'iloilo' => 345,
             'newport' => 336,
