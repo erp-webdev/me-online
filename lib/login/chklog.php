@@ -39,20 +39,18 @@
             $compressed = $userdata[0]['Compressed'];	
             
             $dbname = $userdb ? $userdb : $userdata[0]['DBNAME'];	
-            
-            //var_dump($userdb);
-            
             $minothours = $userdata[0]['MinOTHrs'];	
             
             $usertax = $logsql->get_memtax($userdata[0]['TaxID']);
             $taxdesc = $usertax[0]['Description'];	
 
+			//Checking PeoplesEdge API endpoint
 			$peoplesedge_login_required = true;
 			if(isset($_SESSION['peoplesedge_access_token'])){
 				$access_token = $_SESSION['peoplesedge_access_token'];
 
 				// Ping PeoplesEdge JWT API
-				$url = MEWEB.'/peoplesedge/api/jwt/me'; 
+				$ping_url = MEWEB.'/peoplesedge/api/jwt/me'; 
 				$options = [
 					'http' => [
 						'header' => "Content-Type: application/json\r\n" .
@@ -64,37 +62,28 @@
 				];
 
 				$file_context = stream_context_create($options);
-				$test_response = file_get_contents($url, false, $file_context);
+				$ping_response = file_get_contents($ping_url, false, $file_context);
 
-				if ($test_response === false) {
-					echo "Error: Unable to connect to the PeoplesEdge service.";
-					// login needed
-				} else {
+				if ($ping_response) {
 					$status_code = 0;
 					if (isset($http_response_header)) {
 						sscanf($http_response_header[0], 'HTTP/%*d.%*d %d', $status_code);
 					}
 
 					if ($status_code >= 200 && $status_code < 300) {
-						// no login needed
 						$peoplesedge_login_required = false;
-						// echo 'Login not required';
-					} elseif ($status_code == 401) {
-						// login needed
-						echo "Error: Unauthorized. Your session may have expired. Please log out and log in again.";
-					} else {
-						// login needed
-
-						$error_message = "Error fetching PeoplesEdge data (HTTP status: $status_code).";
-						$error_data = json_decode($test_response, true);
-						if (json_last_error() === JSON_ERROR_NONE && isset($error_data['message'])) {
-							$error_message .= " " . htmlspecialchars($error_data['message']);
+					} 
+					else {
+						error_log("Error connecting to PeoplesEdge API (HTTP status: $status_code).");
+						$error_data = json_decode($ping_response, true);
+						if (json_last_error() === JSON_ERROR_NONE && isset($error_data['error'])) {
+							error_log($error . htmlspecialchars($error_data['error']));
 						}
-						echo $error_message;
 					}
 				}
 			}
 
+			// Re-login to PeoplesEdge API if token expires
 			if($peoplesedge_login_required){
 				$url = MEWEB.'/peoplesedge/api/jwt/login'; 
 
@@ -118,8 +107,21 @@
 				if($response){
 					$result = json_decode($response, true);
 
-					if (isset($result['access_token'])) {
-						$_SESSION['peoplesedge_access_token'] = $result['access_token'];
+					$status_code = 0;
+					if (isset($http_response_header)) {
+						sscanf($http_response_header[0], 'HTTP/%*d.%*d %d', $status_code);
+					}
+
+					if ($status_code >= 200 && $status_code < 300) {
+						if (isset($result['access_token'])) {
+							$_SESSION['peoplesedge_access_token'] = $result['access_token'];
+						}
+					}
+					else {
+						error_log("Error connecting to PeoplesEdge API (HTTP status: $status_code).");
+						if (json_last_error() === JSON_ERROR_NONE && isset($result['error'])) {
+							error_log(htmlspecialchars($result['error']));
+						}
 					}
 				}
 			}

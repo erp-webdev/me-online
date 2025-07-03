@@ -38,36 +38,46 @@
             $file_context = stream_context_create($options);
             $training_response = file_get_contents($access_url, false, $file_context);
 
-            if ($training_response === false) {
-                // echo "Error: Unable to connect to the training service.";
-                $trainings = [];
-            } else {
-                $status_code = 0;
+            if ($training_response) {
+                $http_status_code = 0;
                 if (isset($http_response_header)) {
-                    sscanf($http_response_header[0], 'HTTP/%*d.%*d %d', $status_code);
+                    sscanf($http_response_header[0], 'HTTP/%*d.%*d %d', $http_status_code);
                 }
 
-                if ($status_code >= 200 && $status_code < 300) {
+                if ($http_status_code >= 200 && $http_status_code < 300) {
                     $training_data = json_decode($training_response, true);
+
                     if (json_last_error() === JSON_ERROR_NONE) {
-                        $trainings = isset($training_data['trainings']) ? $training_data['trainings'] : [];
+                        if (isset($training_data['trainings']) && !empty($training_data['trainings'])) {
+                            $trainings = $training_data['trainings'];
+                        } else {
+                            $error_message = "NO TRAINING RECORDS AVAILABLE";
+                        }
                     } else {
-                        echo "Error: Invalid data received from the training service.";
+                        $error_message = "We received an unexpected response from the server. Please try again by refreshing the page.";
                     }
-                } elseif ($status_code == 401) {
-                    echo "Error: Unauthorized. Your session may have expired. Please log out and log in again.";
-                } else {
-                    $error_message = "Error fetching training data (HTTP status: $status_code).";
+
+                } 
+                else {
                     $error_data = json_decode($training_response, true);
-                    if (json_last_error() === JSON_ERROR_NONE && isset($error_data['message'])) {
-                        $error_message .= " " . htmlspecialchars($error_data['message']);
+
+                    if (json_last_error() === JSON_ERROR_NONE && isset($error_data['error'])) {
+                        $error_message = "There was a problem: " . htmlspecialchars($error_data['error']) . ". Please try again.";
+                    } elseif (in_array($http_status_code, [401, 403])) {
+                        $error_message = "Your session has expired. Please try to log in again.";
+                    } elseif ($http_status_code === 404) {
+                        $error_message = "We couldn't track your records. It may have been moved or no longer exists.";
+                    } elseif ($http_status_code >= 500) {
+                        $error_message = "The server is currently experiencing issues. Please try again later.";
+                    } else {
+                        $error_message = "Something went wrong (Error code: $http_status_code). Please try again, or contact support if the problem continues.";
                     }
-                    echo $error_message;
                 }
             }
-        }
-        else{
-            echo "Error: " . $_SESSION['peoplesedge_login_error'];
+            else{
+                $error_message = "We couldn’t connect to the server. Please check your internet connection, or try again in a few minutes.";
+            }
+
         }
 
 	}
