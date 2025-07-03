@@ -47,7 +47,34 @@
             $usertax = $logsql->get_memtax($userdata[0]['TaxID']);
             $taxdesc = $usertax[0]['Description'];	
             
-            
+			if(!(isset($_SESSION['peoplesedge_access_token']) && $_SESSION['peoplesedge_access_token'])){
+				$url = MEWEB.'/peoplesedge/api/jwt/login'; 
+
+				$data = [
+					'email' => API_CLIENT_USERNAME,
+					'password' => API_CLIENT_PASSWORD
+				];
+
+				$options = [
+					'http' => [
+						'header' => "Content-Type: application/json\r\n",
+						'method' => 'POST',
+						'content' => json_encode($data),
+						'ignore_errors' => true
+					]
+				];
+
+				$context = stream_context_create($options);
+				$response = file_get_contents($url, false, $context);
+
+				if($response){
+					$result = json_decode($response, true);
+
+					if (isset($result['access_token'])) {
+						$_SESSION['peoplesedge_access_token'] = $result['access_token'];
+					}
+				}
+			}
 		}		
 	}
 	else
