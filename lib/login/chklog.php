@@ -46,8 +46,56 @@
             
             $usertax = $logsql->get_memtax($userdata[0]['TaxID']);
             $taxdesc = $usertax[0]['Description'];	
-            
-			if(!(isset($_SESSION['peoplesedge_access_token']) && $_SESSION['peoplesedge_access_token'])){
+
+			$peoplesedge_login_required = true;
+			if(isset($_SESSION['peoplesedge_access_token'])){
+				$access_token = $_SESSION['peoplesedge_access_token'];
+
+				// Ping PeoplesEdge JWT API
+				$url = MEWEB.'/peoplesedge/api/jwt/me'; 
+				$options = [
+					'http' => [
+						'header' => "Content-Type: application/json\r\n" .
+									"Authorization: Bearer " . $access_token . "\r\n",
+						'method' => 'GET',
+						'content' => json_encode($data),
+						'ignore_errors' => true
+					]
+				];
+
+				$file_context = stream_context_create($options);
+				$test_response = file_get_contents($url, false, $file_context);
+
+				if ($test_response === false) {
+					echo "Error: Unable to connect to the PeoplesEdge service.";
+					// login needed
+				} else {
+					$status_code = 0;
+					if (isset($http_response_header)) {
+						sscanf($http_response_header[0], 'HTTP/%*d.%*d %d', $status_code);
+					}
+
+					if ($status_code >= 200 && $status_code < 300) {
+						// no login needed
+						$peoplesedge_login_required = false;
+						// echo 'Login not required';
+					} elseif ($status_code == 401) {
+						// login needed
+						echo "Error: Unauthorized. Your session may have expired. Please log out and log in again.";
+					} else {
+						// login needed
+
+						$error_message = "Error fetching PeoplesEdge data (HTTP status: $status_code).";
+						$error_data = json_decode($test_response, true);
+						if (json_last_error() === JSON_ERROR_NONE && isset($error_data['message'])) {
+							$error_message .= " " . htmlspecialchars($error_data['message']);
+						}
+						echo $error_message;
+					}
+				}
+			}
+
+			if($peoplesedge_login_required){
 				$url = MEWEB.'/peoplesedge/api/jwt/login'; 
 
 				$data = [
