@@ -63,15 +63,13 @@
 
                     if (json_last_error() === JSON_ERROR_NONE && isset($error_data['error'])) {
                         $error_message = "There was a problem: " . htmlspecialchars($error_data['error']) . ". Please try again.";
-                    } elseif (in_array($http_status_code, [401, 403])) {
+                    } elseif (in_array($http_status_code, [401, 403]) || $peoplesedge_login_required) {
                         $error_message = "Your session has expired. Please try to log in again.";
                     } elseif ($http_status_code === 404) {
                         $error_message = "We couldn't track your records. It may have been moved or no longer exists.";
                     } elseif ($http_status_code >= 500) {
                         $error_message = "The server is currently experiencing issues. Please try again later.";
-                    } else {
-                        $error_message = "Something went wrong (Error code: $http_status_code). Please try again, or contact support if the problem continues.";
-                    }
+                    } 
                 }
             }
             else{
