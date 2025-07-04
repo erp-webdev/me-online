@@ -63,7 +63,7 @@
 
                     if (json_last_error() === JSON_ERROR_NONE && isset($error_data['error'])) {
                         $error_message = "There was a problem: " . htmlspecialchars($error_data['error']) . ". Please try again.";
-                    } elseif (in_array($http_status_code, [401, 403]) || $peoplesedge_login_required) {
+                    } elseif (in_array($http_status_code, [401, 403])) {
                         $error_message = "Your session has expired. Please try to log in again.";
                     } elseif ($http_status_code === 404) {
                         $error_message = "We couldn't track your records. It may have been moved or no longer exists.";
