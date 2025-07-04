@@ -1059,11 +1059,20 @@ class mainsql {
 	}
 
     function get_leavebal_by_year($empid, $leaveid, $year)
-	{
-		$sql = "SELECT LeaveID, PRYear, SUM(EarnedHrs) as EarnedHrs, SUM(UsedHrs) as UsedHrs, (SUM(EarnedHrs) - SUM(UsedHrs)) as BalanceHrs
-                FROM  viewSLVL_Ledger 
-                WHERE EmpID = '$empid' AND LeaveID = '$leaveid' AND PRYear = '$year'
-                GROUP BY EmpID, LeaveID, PRYear ";
+    {
+		$sql = "SELECT 
+                    LeaveID, 
+                    PRYear, 
+                    SUM(EarnedHrs) as EarnedHrs, 
+                    SUM(UsedHrs) as UsedHrs, 
+                    (SUM(EarnedHrs) - SUM(UsedHrs)) as BalanceHrs,
+                    B.DateEffect
+                FROM  viewSLVL_Ledger A
+                LEFT JOIN HREmpLBalance B ON A.LeaveID = B.LeaveID AND A.EmpID = B.EmpID
+                WHERE A.EmpID = '$empid' AND A.LeaveID = '$leaveid' 
+                AND A.PRYear = '$year'
+                AND B.DateEffect <= GETDATE()
+                GROUP BY A.LeaveID, A.PRYear, B.DateEffect";
 		$result = $this->get_row($sql);
 		return $result;
 	}
