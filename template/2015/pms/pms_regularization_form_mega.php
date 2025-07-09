@@ -56,213 +56,333 @@
 </style>
 
 <div class="rightsplashtext lefttalign">
-
     <div ng-app='myApp' ng-controller='myCtrl' id="paf" class="mainbody lefttalign whitetext">
-        <table style="width:99%;" ng-show="record === ''">
-            <tr style="background-color:#fff;">
-                <td colspan="7" style="text-align:center;font-weight:bold;color:#A70606;"> You do not have permission to view this evaluation </td>
-            </tr>
-        </table>
         <form  name="myForm" ng-show="record != ''">
-            <div class="loading-screen" ng-show="loading">
+           <div class="loading-screen" ng-show="loading">
                 <div class="spinner"></div>
-                <p>Please wait...</p>
+                <p class="blacktext">Just a moment while we set things up</p>
             </div>
 
-            <div ng-show="is_approved && record.DateCompleted == null">
-                <table style="width:100%;">
-                    <tr style="background-color:#fff;">
-                        <td colspan="7" style="text-align:center;font-weight:bold;color:#A70606;">This evaluation form has been submitted for the next approval.</td>
-                    </tr>
-                </table>
-                <br />
-            </div>
-
-            <div ng-show="is_approved && record.DateCompleted != null">
-                <table style="width:100%;">
-                    <tr style="background-color:#fff;">
-                        <td colspan="7" style="text-align:center;font-weight:bold;color:#A70606;">This evaluation form has been completed.</td>
-                    </tr>
-                </table>
-                <br />
-            </div>
-
-            <div ng-show="!loading">
-                <h2 class="mediumtext lorangetext">
-                    <a href="<?php echo WEB; ?>/pms"><i class="mediumtext fa fa-arrow-left"
-                            style="color:#fff;opacity:.8;"></i> </a> Performance Appraisal Form
-                </h2>
-                <hr>
-                <table style="width:100%;">
-                    <thead>
-                        <tr>
-                            <th colspan="2" style="font-weight:italic;">For (<span ng-bind="record.Rank"></span>) <span
-                                    style="font-weight:normal;">*Confidential</span></th>
+            <div id='evaluation-form-wrapper'>
+                <div ng-show="!loading && record == ''">
+                    <table style="width:100%;">
+                        <tr style="background-color:#fff;">
+                            <td colspan="7" style="text-align:center;font-weight:bold;color:#A70606;"> You do not have permission to view this performance evaluation</td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><b class="smallesttext lwhitetext">Employee Name:</b> <span style="font-weight:normal;"
-                                    ng-bind="record.FullName"></span></td>
-                            <td><b class="smallesttext lwhitetext">Department:</b> <span style="font-weight:normal;"
-                                    ng-bind="record.Department"></span></td>
+                    </table>
+                    <br />
+                </div>
+                <div ng-show="is_approved && record.DateCompleted == null">
+                    <table style="width:100%;">
+                        <tr style="background-color:#fff;">
+                            <td colspan="7" style="text-align:center;font-weight:bold;color:#A70606;">This evaluation form has been submitted for the next approval.</td>
                         </tr>
-                        <tr>
-                            <td><b class="smallesttext lwhitetext">Designation:</b> <span style="font-weight:normal;"
-                                    ng-bind="record.Position"></span></td>
-                            <td><b class="smallesttext lwhitetext">Date Hired:</b> <span style="font-weight:normal;"
-                                    ng-bind="formatDate(record.HireDate) |  date:'yyyy-MM-dd'"></span></td>
+                    </table>
+                    <br />
+                </div>
+
+                <div ng-show="is_approved && record.DateCompleted != null">
+                    <table style="width:100%;">
+                        <tr style="background-color:#fff;">
+                            <td colspan="7" style="text-align:center;font-weight:bold;color:#A70606;">This evaluation form has been completed.</td>
                         </tr>
-                        <tr>
-                            <td>
+                    </table>
+                    <br />
+                </div>
 
-                                <b class="smallesttext lwhitetext">Period:</b>
+                <div ng-show="!loading">
+                    <h2 class="mediumtext lorangetext">
+                        <a href="<?php echo WEB; ?>/pms"><i class="mediumtext fa fa-arrow-left"
+                                style="color:#fff;opacity:.8;"></i> </a> Performance Appraisal Form
+                    </h2>
+                    <hr>
+                    <table style="width:100%;">
+                        <thead>
+                            <tr>
+                                <th colspan="2" style="font-weight:italic;">For (<span ng-bind="record.Rank"></span>) <span
+                                        style="font-weight:normal;">*Confidential</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><b class="smallesttext lwhitetext">Employee Name:</b> <span style="font-weight:normal;"
+                                        ng-bind="record.FullName"></span></td>
+                                <td><b class="smallesttext lwhitetext">Department:</b> <span style="font-weight:normal;"
+                                        ng-bind="record.Department"></span></td>
+                            </tr>
+                            <tr>
+                                <td><b class="smallesttext lwhitetext">Designation:</b> <span style="font-weight:normal;"
+                                        ng-bind="record.Position"></span></td>
+                                <td><b class="smallesttext lwhitetext">Date Hired:</b> <span style="font-weight:normal;"
+                                        ng-bind="formatDate(record.HireDate) |  date:'yyyy-MM-dd'"></span></td>
+                            </tr>
+                            <tr>
+                                <td>
 
-                                <span style="font-weight:normal;">
-                                    From | <u ng-bind="formatDate(record.HireDate) |  date:'yyyy-MM-dd'"></u>
-                                    To | <u ng-bind="record.EndOfContractDate ? (formatDate(record.EndOfContractDate) | date:'yyyy-MM-dd') : ''" class="ng-binding"></u>
-                                </span>
+                                    <b class="smallesttext lwhitetext">Period:</b>
 
-                            </td>
-                            <td><b class="smallesttext lwhitetext">Appraisal Date:</b> <span style="font-weight:normal;"
-                                 ng-bind="record.EndOfContractDate ? (formatDate(record.EndOfContractDate) | date:'yyyy-MM-dd') : ''" class="ng-binding"></span></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <hr/>
+                                    <span style="font-weight:normal;">
+                                        From | <u ng-bind="formatDate(record.HireDate) |  date:'yyyy-MM-dd'"></u>
+                                        To | <u ng-bind="record.EndOfContractDate ? (formatDate(record.EndOfContractDate) | date:'yyyy-MM-dd') : ''" class="ng-binding"></u>
+                                    </span>
 
-                <div class="print" style="overflow-x:none;overflow-y:scroll;max-height:514px;">
-                    <p><i>This Performance Appraisal Form aims to provide a formal, recorded, regular review of an individual's performance and competencies. It is to be used for annual evaluations, and at other times during the year when formal feedback is needed.</i></p>
-                    <p><i>This is a four (4) part Appraisal Form whice are as follows:</i></p>
-                    <!-- Part 1 -->
-                    <p>
-                        <b class="smallesttext lwhitetext">Part I - Competency Assessment</b>
-                        <br />
-                        These include knowledge, skills and abilities. Rate each factor based on performance during the period identified above.
-                    </p>
-                    <!-- Part 2 -->
-                    <p>
-                        <b class="smallesttext lwhitetext">Part II - Goals from previous year or previous evaluation period</b>
-                        <br />
-                        Rate employee's performance on each goal established at the beginning of the period.
-                    </p>
-                    <!-- Part 3 -->
-                    <p>
-                        <b class="smallesttext lwhitetext">Part III - Goals for the coming year or evaluation period</b>
-                        <br />
-                        Input the agreed performance goals for the next period to be evaluated.
-                    </p>
-                    <!-- Part 4 -->
-                    <p>
-                        <b class="smallesttext lwhitetext">Part IV - Individual Development Plan</b>
-                        <br />
-                        Action plan on how to close the competency gap/s improve future employee performance.
-                    </p>
+                                </td>
+                                <td><b class="smallesttext lwhitetext">Appraisal Date:</b> <span style="font-weight:normal;"
+                                    ng-bind="record.EndOfContractDate ? (formatDate(record.EndOfContractDate) | date:'yyyy-MM-dd') : ''" class="ng-binding"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <hr/>
 
-                    <div ng-show="record.competencies.length > 0">
-                        <hr>
-                        <br />
-                        <div style="width:98%;border: 2px solid #fff;padding:2px;margin-bottom:15px;">
-                            <p><b>Rating Scale:</b></p>
-                            <p>Use the following descriptions to rate the staff member's performance for each of the required competencies.</p>
-                            <table style="width:100%;">
+                    <div class="print" style="overflow-x:none;overflow-y:scroll;max-height:514px;">
+                        <p><i>This Performance Appraisal Form aims to provide a formal, recorded, regular review of an individual's performance and competencies. It is to be used for annual evaluations, and at other times during the year when formal feedback is needed.</i></p>
+                        <p><i>This is a four (4) part Appraisal Form whice are as follows:</i></p>
+                        <!-- Part 1 -->
+                        <p>
+                            <b class="smallesttext lwhitetext">Part I - Competency Assessment</b>
+                            <br />
+                            These include knowledge, skills and abilities. Rate each factor based on performance during the period identified above.
+                        </p>
+                        <!-- Part 2 -->
+                        <p>
+                            <b class="smallesttext lwhitetext">Part II - Goals from previous year or previous evaluation period</b>
+                            <br />
+                            Rate employee's performance on each goal established at the beginning of the period.
+                        </p>
+                        <!-- Part 3 -->
+                        <p>
+                            <b class="smallesttext lwhitetext">Part III - Goals for the coming year or evaluation period</b>
+                            <br />
+                            Input the agreed performance goals for the next period to be evaluated.
+                        </p>
+                        <!-- Part 4 -->
+                        <p>
+                            <b class="smallesttext lwhitetext">Part IV - Individual Development Plan</b>
+                            <br />
+                            Action plan on how to close the competency gap/s improve future employee performance.
+                        </p>
+
+                        <div ng-show="record.competencies.length > 0">
+                            <hr>
+                            <br />
+                            <div style="width:98%;border: 2px solid #fff;padding:2px;margin-bottom:15px;">
+                                <p><b>Rating Scale:</b></p>
+                                <p>Use the following descriptions to rate the staff member's performance for each of the required competencies.</p>
+                                <table style="width:100%;">
+                                    <tbody>
+                                        <tr>
+                                            <td>5 - <b>E</b>xceptional</td>
+                                            <td style="text-align:center;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>4 - <b>E</b>xceeds <b>E</b>xpectations</td>
+                                            <td style="text-align:center;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>3 - <b>M</b>eets <b>E</b>xpectations</td>
+                                            <td style="text-align:center;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>2 - <b>N</b>eeds <b>I</b>mprovement</td>
+                                            <td style="text-align:center;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>1 - Does Not Meet Expectations</td>
+                                            <td style="text-align:center;"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <br>
+                            <p>
+                                <b class="smalltext lwhitetext">Part I - Competency Assessment</b><br />
+                            </p>
+                            <table id="comass" border="0" cellspacing="0" class="tdata" style="width:99%;">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th width="60%;">Competency</th>
+                                        <th width="15%;">Required Proficiency</th>
+                                        <th width="15%;">Actual Proficiency</th>
+                                        <th width="15%;">Gaps</th>
+                                        <!-- <th width="30%;">Training/Remarks</th> -->
+                                    </tr>
+                                </thead>
                                 <tbody>
                                     <tr>
-                                        <td>5 - <b>E</b>xceptional</td>
-                                        <td style="text-align:center;"></td>
+                                        <th colspan="5"><u>Core</u></th>
                                     </tr>
+                                    <tr ng-repeat="competency in record.competencies" ng-if="competency.Type == 'CORE'">
+                                        <td style="vertical-align: top;"><span ng-bind="$index + 1"></span></td>
+                                        <td class='textareaGroup'>
+                                            <b ng-bind="competency.Competency"></b>
+                                            <br>
+                                            <br>
+                                            <span ng-bind-html="displayDescription(competency.Description)"></span>
+                                            <!-- <i ng-show="competency.Type == 'CORE'" class="jobdesc-btn" style="cursor: pointer"> Click to see description </i>
+                                            <div class="jobdesc-popup">
+                                                <span  ng-bind="competency.Description"></span>
+                                            </div> -->
+                                            <br><br>
+                                            <strong>Remarks</strong> <br>
+                                            <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" 
+                                                    spellcheck='true' cols="60" rows="3"  placeholder="Add your remarks" 
+                                                    class="checker caRemarks" 
+                                                    ng-model="competency.Remarks" 
+                                                    ng-disabled="is_approved" 
+                                                    minlength='25' required>
+                                            </textarea>
+                                            <br>
+                                            <small class='warningMsg' style="display:none;">
+                                                * This is a required field. Must be at least 25 characters long.
+                                            </small><br>
+                                        </td>
+                                        <td style="text-align:center;width:25px;">
+                                            <span ng-bind="competency.RequiredProficiency"></span>
+                                        </td>
+                                        <td style="text-align:center;width:25px;">
+                                            <input type="number" class="width50 smltxtbox actp " min="1" max="5" onkeypress="return (event.charCode >= 49 && event.charCode <= 53) || event.charCode==8" onKeyDown="if(this.value.length==1 && event.keyCode!=8 ) return false;" onfocusin="(this.value == 0) ? this.value = '' : false" onfocusout="(this.value == '') ? this.value = 0 : false" ng-model="competency.ActualProficiency" ng-disabled="is_approved" ng-change="competency.Gaps = compute_gaps(competency); updateRecord()" required>
+                                        </td>
+                                        <td style="text-align:center;width:25px;">
+                                            <span ng-bind="competency.Gaps"></span>
+                                        </td>
+                                        <!-- <td style="text-align:left;">
+                                            <textarea spellcheck="true"  ng-model="competency.Remarks" cols="20" rows="2" placeholder="Add your remarks" ng-disabled="is_approved" required class="checker caRemarks"></textarea>
+                                        </td> -->
+                                        
+                                    </tr>
+
                                     <tr>
-                                        <td>4 - <b>E</b>xceeds <b>E</b>xpectations</td>
-                                        <td style="text-align:center;"></td>
+                                        <th colspan="5"><u>Job-Specific</u></th>
                                     </tr>
-                                    <tr>
-                                        <td>3 - <b>M</b>eets <b>E</b>xpectations</td>
-                                        <td style="text-align:center;"></td>
+
+                                    <tr ng-repeat="competency in record.competencies" ng-if="competency.Type == 'JOB-SPECIFIC'">
+                                        <td style="vertical-align: top;"><span ng-bind="$index + 1"></span></td>
+                                        <td class='textareaGroup'>
+                                            <b ng-bind="competency.Competency" ></b>
+                                            <br><br>
+                                            <strong>Remarks</strong><br>
+                                            <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();"
+                                                    spellcheck='true' cols="60" rows="3"  placeholder="Add your remarks" 
+                                                    class="checker caRemarks" 
+                                                    ng-model="competency.Remarks" 
+                                                    ng-disabled="is_approved" 
+                                                    minlength='25' required>
+                                            </textarea>
+                                            <br>
+                                            <small class='warningMsg' style="display:none;">
+                                                * This is a required field. Must be at least 25 characters long.
+                                            </small>
+                                        </td>
+                                        <td style="text-align:center;width:25px;">
+                                            <span ng-bind="competency.RequiredProficiency"></span>
+                                        </td>
+                                        <td style="text-align:center;width:25px;">
+                                            <input type="number" class="width50 smltxtbox actp " min="1" max="5" onkeypress="return (event.charCode >= 49 && event.charCode <= 53) || event.charCode==8" onKeyDown="if(this.value.length==1 && event.keyCode!=8) return false;" onfocusin="(this.value == 0) ? this.value = '' : false" onfocusout="(this.value == '') ? this.value = 0 : false" ng-model="competency.ActualProficiency" ng-disabled="is_approved" ng-change="updateRecord()" required>
+                                        </td>
+                                        <td style="text-align:center;width:25px;">
+                                            <span ng-bind="competency.Gaps"></span>
+                                        </td>
+                                        <!-- <td style="text-align:left;">
+                                            <textarea spellcheck="true"  ng-model="competency.Remarks" cols="20" rows="2" placeholder="Add your remarks" ng-disabled="is_approved" required class="checker caRemarks"></textarea>
+                                        </td> -->
                                     </tr>
-                                    <tr>
-                                        <td>2 - <b>N</b>eeds <b>I</b>mprovement</td>
-                                        <td style="text-align:center;"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>1 - Does Not Meet Expectations</td>
-                                        <td style="text-align:center;"></td>
-                                    </tr>
+
                                 </tbody>
+
                             </table>
                         </div>
-                        <br>
-                        <p>
-                            <b class="smalltext lwhitetext">Part I - Competency Assessment</b><br />
-                        </p>
-                        <table id="comass" border="0" cellspacing="0" class="tdata" style="width:99%;">
+
+                        <div ng-show="record.competencies.length == 0">
+                            <hr>
+                            <table style="width:99%;">
+                                <tr style="background-color:#fff;">
+                                    <td colspan="7" style="text-align:center;font-weight:bold;color:#A70606;"> Kindly inform the HR for the Competency Assessment Form </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div>
+                        <br />
+                            <p>
+                                <b class="smalltext lwhitetext">Part II - Goals Covered Under the Evaluation Period</b><br />
+                            </p>
+
+                        </div>
+                        <table id="gcutep" border="0" cellspacing="0" class="tdata" style="width:99%;">
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th width="60%;">Competency</th>
-                                    <th width="15%;">Required Proficiency</th>
-                                    <th width="15%;">Actual Proficiency</th>
-                                    <th width="15%;">Gaps</th>
-                                    <!-- <th width="30%;">Training/Remarks</th> -->
+                                    <th>Goals</th>
+                                    <th width="40px">Rating</th>
+                                    <!-- <th>Comments</th> -->
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <th colspan="5"><u>Core</u></th>
-                                </tr>
-                                <tr ng-repeat="competency in record.competencies" ng-if="competency.Type == 'CORE'">
-                                    <td style="vertical-align: top;"><span ng-bind="$index + 1"></span></td>
+                            <tbody id="jsgoals">
+                                <tr ng-repeat="goal in record.goals">
+                                    <td style="vertical-align: top;"><span ng-bind="$index+1"></span></td>
                                     <td class='textareaGroup'>
-                                        <b ng-bind="competency.Competency"></b>
+                                        <textarea spellcheck="true"  class="checker" cols="80" rows="3" ng-model ="goal.Goals" required ng-bind="goal.Goals" ng-disabled="goal.id != null || goal.Goals == '8 hrs mandatory training'" placeholder="Provide SMART Goal" ng-attr-minlength="{{goal.id == null ? 25 : 0}}"></textarea>
                                         <br>
                                         <br>
-                                        <span ng-bind-html="displayDescription(competency.Description)"></span>
-                                        <!-- <i ng-show="competency.Type == 'CORE'" class="jobdesc-btn" style="cursor: pointer"> Click to see description </i>
-                                        <div class="jobdesc-popup">
-                                            <span  ng-bind="competency.Description"></span>
-                                        </div> -->
-                                        <br><br>
-                                        <strong>Remarks</strong> <br>
-                                        <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" 
-                                                spellcheck='true' cols="60" rows="3"  placeholder="Add your remarks" 
-                                                class="checker caRemarks" 
-                                                ng-model="competency.Remarks" 
+                                        <b ng-show="goal.Goals != '8 hrs mandatory training'">Measure of Success</b><br>
+                                        <textarea spellcheck="true"  class="checker" cols="80" rows="3" ng-required="goal.Goals != '8 hrs mandatory training' && goal.id == null" ng-model="goal.MeasureOfSuccess" ng-disabled="goal.id != null || goal.Goals == '8 hrs mandatory training' || is_approved"  ng-show="goal.Goals != '8 hrs mandatory training' && goal.id == null" placeholder="Provide measure of success" ng-attr-minlength="{{goal.id == null ? 25 : 0}}"></textarea>
+                                        <span ng-bind="goal.MeasureOfSuccess"  ng-show="goal.Goals != '8 hrs mandatory training' || goal.id != null"></span>
+                                        <br> <br>
+                                        <strong>Comments</strong><br>
+                                        <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();"
+                                                spellcheck='true' cols="80" rows="2" placeholder="Provide your comments" 
+                                                class="checker" 
+                                                ng-model="goal.Comments"
                                                 ng-disabled="is_approved" 
                                                 minlength='25' required>
                                         </textarea>
                                         <br>
                                         <small class='warningMsg' style="display:none;">
                                             * This is a required field. Must be at least 25 characters long.
-                                        </small><br>
-                                    </td>
-                                    <td style="text-align:center;width:25px;">
-                                        <span ng-bind="competency.RequiredProficiency"></span>
-                                    </td>
-                                    <td style="text-align:center;width:25px;">
-                                        <input type="number" class="width50 smltxtbox actp " min="1" max="5" onkeypress="return (event.charCode >= 49 && event.charCode <= 53) || event.charCode==8" onKeyDown="if(this.value.length==1 && event.keyCode!=8 ) return false;" onfocusin="(this.value == 0) ? this.value = '' : false" onfocusout="(this.value == '') ? this.value = 0 : false" ng-model="competency.ActualProficiency" ng-disabled="is_approved" ng-change="competency.Gaps = compute_gaps(competency); updateRecord()" required>
-                                    </td>
-                                    <td style="text-align:center;width:25px;">
-                                        <span ng-bind="competency.Gaps"></span>
-                                    </td>
-                                    <!-- <td style="text-align:left;">
-                                        <textarea spellcheck="true"  ng-model="competency.Remarks" cols="20" rows="2" placeholder="Add your remarks" ng-disabled="is_approved" required class="checker caRemarks"></textarea>
-                                    </td> -->
-                                    
-                                </tr>
-
-                                <tr>
-                                    <th colspan="5"><u>Job-Specific</u></th>
-                                </tr>
-
-                                <tr ng-repeat="competency in record.competencies" ng-if="competency.Type == 'JOB-SPECIFIC'">
-                                    <td style="vertical-align: top;"><span ng-bind="$index + 1"></span></td>
-                                    <td class='textareaGroup'>
-                                        <b ng-bind="competency.Competency" ></b>
+                                        </small>
+                                        <span ng-show="goal.id == null && goal.Goals != '8 hrs mandatory training'">
                                         <br><br>
-                                        <strong>Remarks</strong><br>
+                                        <a class="smlbtn" id="delrowg" style="background-color:#D20404;" ng-click="deleteGoal($index)">Delete</a>
+                                        </span>
+                                        
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <input type="number" clas="width50 smltxtbox actp " min="1" max="5" onkeypress="return (event.charCode >= 49 && event.charCode <= 53) || event.charCode==8" onKeyDown="if(this.value.length==1 && event.keyCode!=8) return false;" onfocusin="(this.value == 0) ? this.value = '' : false" onfocusout="(this.value == '') ? this.value = 0 : false" ng-model="goal.Grade" ng-disabled="goal.Goals == '8 hrs mandatory training' || is_approved" ng-change="updateRecord()" required>
+                                    </td>
+                                    <!-- <td style="text-align:center;">
+                                        <textarea spellcheck="true"  class="checker" cols="20" rows="2" ng-model="goal.Comments" placeholder="Provide your comments" ng-disabled="is_approved"></textarea>
+                                    </td> -->
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br />
+                        <a class="smlbtn" id="addrowg" style="background-color:#3EC2FB;" ng-show="!is_approved" ng-click="add_goal()">Add Row</a>
+                        <!-- <a class="smlbtn" id="delrowg" style="background-color:#D20404;" >Delete</a>  -->
+                        <i>Note: Don't use word with 'mandatory training' as new goal/objective</i>
+                        <br /><br />
+
+                        <p>
+                            <b class="smalltext lwhitetext">Part III - Goals For The Coming Year Or Evaluation Period</b><br />
+                        </p>
+                        <table id="gftcyoep" border="0" cellspacing="0" class="tdata" style="width:99%;">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th width="50%;">Goals</th>
+                                    <th width="50%;">Measure of Success</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="goal in record.goals_next">
+                                    <td>
+                                        <a class="smlbtn"style="background-color:#D20404;" ng-click="deleteNextGoal($index)" ng-show="!is_approved">Delete</a>
+                                    </td>
+                                    <td style="text-align:center;" class='textareaGroup'>
                                         <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();"
-                                                spellcheck='true' cols="60" rows="3"  placeholder="Add your remarks" 
-                                                class="checker caRemarks" 
-                                                ng-model="competency.Remarks" 
+                                                spellcheck='true' cols="40" rows="5" 
+                                                class="checker" 
+                                                ng-model="goal.Goals" 
                                                 ng-disabled="is_approved" 
                                                 minlength='25' required>
                                         </textarea>
@@ -271,337 +391,221 @@
                                             * This is a required field. Must be at least 25 characters long.
                                         </small>
                                     </td>
-                                    <td style="text-align:center;width:25px;">
-                                        <span ng-bind="competency.RequiredProficiency"></span>
+                                    <td style="text-align:center;" class='textareaGroup'>
+                                        <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();"
+                                                spellcheck='true' cols="40" rows="5" 
+                                                class="checker" 
+                                                ng-model="goal.MeasureOfSuccess" 
+                                                ng-disabled="is_approved" 
+                                                minlength='25' required>
+                                        </textarea>
+                                        <br>
+                                        <small class='warningMsg' style="display:none;">
+                                            * This is a required field. Must be at least 25 characters long.
+                                        </small>
                                     </td>
-                                    <td style="text-align:center;width:25px;">
-                                        <input type="number" class="width50 smltxtbox actp " min="1" max="5" onkeypress="return (event.charCode >= 49 && event.charCode <= 53) || event.charCode==8" onKeyDown="if(this.value.length==1 && event.keyCode!=8) return false;" onfocusin="(this.value == 0) ? this.value = '' : false" onfocusout="(this.value == '') ? this.value = 0 : false" ng-model="competency.ActualProficiency" ng-disabled="is_approved" ng-change="updateRecord()" required>
-                                    </td>
-                                    <td style="text-align:center;width:25px;">
-                                        <span ng-bind="competency.Gaps"></span>
-                                    </td>
-                                    <!-- <td style="text-align:left;">
-                                        <textarea spellcheck="true"  ng-model="competency.Remarks" cols="20" rows="2" placeholder="Add your remarks" ng-disabled="is_approved" required class="checker caRemarks"></textarea>
-                                    </td> -->
                                 </tr>
-
                             </tbody>
-
                         </table>
-                    </div>
-
-                    <div ng-show="record.competencies.length == 0">
+                        <br>
+                        <a class="smlbtn"style="background-color:#3EC2FB;" ng-show="!is_approved" ng-click="addNextGoal()">Add Row</a>
                         <hr>
-                        <table style="width:99%;">
-                            <tr style="background-color:#fff;">
-                                <td colspan="7" style="text-align:center;font-weight:bold;color:#A70606;"> Kindly inform the HR for the Competency Assessment Form </td>
-                            </tr>
-                        </table>
-                    </div>
-
-                    <div>
-                    <br />
                         <p>
-                            <b class="smalltext lwhitetext">Part II - Goals Covered Under the Evaluation Period</b><br />
+                            <b class="smalltext lwhitetext">Part VI - Individual Development Plan</b><br />
                         </p>
-
-                    </div>
-                    <table id="gcutep" border="0" cellspacing="0" class="tdata" style="width:99%;">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>Goals</th>
-                                <th width="40px">Rating</th>
-                                <!-- <th>Comments</th> -->
-                            </tr>
-                        </thead>
-                        <tbody id="jsgoals">
-                            <tr ng-repeat="goal in record.goals">
-                                <td style="vertical-align: top;"><span ng-bind="$index+1"></span></td>
-                                <td class='textareaGroup'>
-                                    <textarea spellcheck="true"  class="checker" cols="80" rows="3" ng-model ="goal.Goals" required ng-bind="goal.Goals" ng-disabled="goal.id != null || goal.Goals == '8 hrs mandatory training'" placeholder="Provide SMART Goal" ng-attr-minlength="{{goal.id == null ? 25 : 0}}"></textarea>
-                                    <br>
-                                    <br>
-                                    <b ng-show="goal.Goals != '8 hrs mandatory training'">Measure of Success</b><br>
-                                    <textarea spellcheck="true"  class="checker" cols="80" rows="3" ng-required="goal.Goals != '8 hrs mandatory training' && goal.id == null" ng-model="goal.MeasureOfSuccess" ng-disabled="goal.id != null || goal.Goals == '8 hrs mandatory training' || is_approved"  ng-show="goal.Goals != '8 hrs mandatory training' && goal.id == null" placeholder="Provide measure of success" ng-attr-minlength="{{goal.id == null ? 25 : 0}}"></textarea>
-                                    <span ng-bind="goal.MeasureOfSuccess"  ng-show="goal.Goals != '8 hrs mandatory training' || goal.id != null"></span>
-                                    <br> <br>
-                                    <strong>Comments</strong><br>
-                                    <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();"
-                                            spellcheck='true' cols="80" rows="2" placeholder="Provide your comments" 
-                                            class="checker" 
-                                            ng-model="goal.Comments"
-                                            ng-disabled="is_approved" 
-                                            minlength='25' required>
-                                    </textarea>
-                                    <br>
-                                    <small class='warningMsg' style="display:none;">
-                                        * This is a required field. Must be at least 25 characters long.
-                                    </small>
-                                    <span ng-show="goal.id == null && goal.Goals != '8 hrs mandatory training'">
-                                    <br><br>
-                                    <a class="smlbtn" id="delrowg" style="background-color:#D20404;" ng-click="deleteGoal($index)">Delete</a>
-                                    </span>
+                        <table id="comass" border="0" cellspacing="0" class="tdata" style="width:99%;">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th width="60%;">Summary of Competency Gaps</th>
+                                        <th width="15%;">Required Proficiency</th>
+                                        <th width="15%;">Actual Proficiency</th>
+                                        <th width="15%;">Gaps</th>
+                                        <!-- <th width="30%;">Training/Remarks</th> -->
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th colspan="5"><u>Core</u></th>
+                                    </tr>
                                     
-                                </td>
-                                <td style="text-align:center;">
-                                    <input type="number" clas="width50 smltxtbox actp " min="1" max="5" onkeypress="return (event.charCode >= 49 && event.charCode <= 53) || event.charCode==8" onKeyDown="if(this.value.length==1 && event.keyCode!=8) return false;" onfocusin="(this.value == 0) ? this.value = '' : false" onfocusout="(this.value == '') ? this.value = 0 : false" ng-model="goal.Grade" ng-disabled="goal.Goals == '8 hrs mandatory training' || is_approved" ng-change="updateRecord()" required>
-                                </td>
-                                <!-- <td style="text-align:center;">
-                                    <textarea spellcheck="true"  class="checker" cols="20" rows="2" ng-model="goal.Comments" placeholder="Provide your comments" ng-disabled="is_approved"></textarea>
-                                </td> -->
-                            </tr>
-                        </tbody>
-                    </table>
-                    <br />
-                    <a class="smlbtn" id="addrowg" style="background-color:#3EC2FB;" ng-show="!is_approved" ng-click="add_goal()">Add Row</a>
-                    <!-- <a class="smlbtn" id="delrowg" style="background-color:#D20404;" >Delete</a>  -->
-                    <i>Note: Don't use word with 'mandatory training' as new goal/objective</i>
-                    <br /><br />
+                                    <tr ng-repeat="competency in record.competencies" ng-if="competency.Type == 'CORE' && competency.Gaps != 0">
+                                        <td style="vertical-align: top;"></td>
+                                        <td>
+                                            <b ng-bind="competency.Competency"></b>
+                                            <br>
+                                            Remarks: <span ng-bind-html="displayDescription(competency.Remarks)"></span>
+                                            <br>
+                                            <br>
+                                        </td>
+                                        <td style="text-align:center;width:25px;">
+                                            <span ng-bind="competency.RequiredProficiency"></span>
+                                        </td>
+                                        <td style="text-align:center;width:25px;">
+                                            <span ng-bind="competency.ActualProficiency"></span>
+                                        </td>
+                                        <td style="text-align:center;width:25px;">
+                                            <span ng-bind="competency.Gaps"></span>
+                                        </td>
+                                        
+                                    </tr>
 
-                    <p>
-                        <b class="smalltext lwhitetext">Part III - Goals For The Coming Year Or Evaluation Period</b><br />
-                    </p>
-                    <table id="gftcyoep" border="0" cellspacing="0" class="tdata" style="width:99%;">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th width="50%;">Goals</th>
-                                <th width="50%;">Measure of Success</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="goal in record.goals_next">
-                                <td>
-                                    <a class="smlbtn"style="background-color:#D20404;" ng-click="deleteNextGoal($index)" ng-show="!is_approved">Delete</a>
-                                </td>
-                                <td style="text-align:center;" class='textareaGroup'>
-                                    <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();"
-                                            spellcheck='true' cols="40" rows="5" 
-                                            class="checker" 
-                                            ng-model="goal.Goals" 
-                                            ng-disabled="is_approved" 
-                                            minlength='25' required>
-                                    </textarea>
-                                    <br>
-                                    <small class='warningMsg' style="display:none;">
-                                        * This is a required field. Must be at least 25 characters long.
-                                    </small>
-                                </td>
-                                <td style="text-align:center;" class='textareaGroup'>
-                                    <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();"
-                                            spellcheck='true' cols="40" rows="5" 
-                                            class="checker" 
-                                            ng-model="goal.MeasureOfSuccess" 
-                                            ng-disabled="is_approved" 
-                                            minlength='25' required>
-                                    </textarea>
-                                    <br>
-                                    <small class='warningMsg' style="display:none;">
-                                        * This is a required field. Must be at least 25 characters long.
-                                    </small>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <br>
-                    <a class="smlbtn"style="background-color:#3EC2FB;" ng-show="!is_approved" ng-click="addNextGoal()">Add Row</a>
-                    <hr>
-                    <p>
-                        <b class="smalltext lwhitetext">Part VI - Individual Development Plan</b><br />
-                    </p>
-                    <table id="comass" border="0" cellspacing="0" class="tdata" style="width:99%;">
+                                    <tr>
+                                        <th colspan="5"><u>Job-Specific</u></th>
+                                    </tr>
+
+                                    <tr ng-repeat="competency in record.competencies" ng-if="competency.Type == 'JOB-SPECIFIC' && competency.Gaps != 0">
+                                        <td style="vertical-align: top;"><span ng-bind="$index + 1"></span></td>
+                                        <td>
+                                            <b ng-bind="competency.Competency" ></b>
+                                            <br><br>
+                                            Remarks: <span ng-bind-html="displayDescription(competency.Remarks)"></span>
+                                        </td>
+                                        <td style="text-align:center;width:25px;">
+                                            <span ng-bind="competency.RequiredProficiency"></span>
+                                        </td>
+                                        <td style="text-align:center;width:25px;">
+                                            <span ng-bind="competency.ActualProficiency"></span>
+                                        </td>
+                                        <td style="text-align:center;width:25px;">
+                                            <span ng-bind="competency.Gaps"></span>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        <h4 style="text-align:center;"> Final Summary </h4>
+                        <table style="border:2px solid #fff;width:99%;">
                             <thead>
-                                <tr>
-                                    <th></th>
-                                    <th width="60%;">Summary of Competency Gaps</th>
-                                    <th width="15%;">Required Proficiency</th>
-                                    <th width="15%;">Actual Proficiency</th>
-                                    <th width="15%;">Gaps</th>
-                                    <!-- <th width="30%;">Training/Remarks</th> -->
-                                </tr>
+                            <tr>
+                                <th style="text-align:left;width:350px;">A. PERFORMANCE EVALUATION - 100%</th>
+                                <th style="text-align:center;">% Value</th>
+                                <th style="text-align:center;">Rate</th>
+                                <th style="text-align:center;">Final Value</th>
+                            </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <th colspan="5"><u>Core</u></th>
-                                </tr>
-                                
-                                <tr ng-repeat="competency in record.competencies" ng-if="competency.Type == 'CORE' && competency.Gaps != 0">
-                                    <td style="vertical-align: top;"></td>
-                                    <td>
-                                        <b ng-bind="competency.Competency"></b>
-                                        <br>
-                                        Remarks: <span ng-bind-html="displayDescription(competency.Remarks)"></span>
-                                        <br>
-                                        <br>
-                                    </td>
-                                    <td style="text-align:center;width:25px;">
-                                        <span ng-bind="competency.RequiredProficiency"></span>
-                                    </td>
-                                    <td style="text-align:center;width:25px;">
-                                        <span ng-bind="competency.ActualProficiency"></span>
-                                    </td>
-                                    <td style="text-align:center;width:25px;">
-                                        <span ng-bind="competency.Gaps"></span>
-                                    </td>
-                                    
-                                </tr>
+                            <tr>
+                                <td>Competency Assessment </td>
+                                <td style="text-align:center;">30%</td>
+                                <td style="text-align:center;"><span ng-bind="totalCompetency"></span></td>
+                                <td style="text-align:center;" >
+                                    <span ng-bind="(totalCompetency*30/100) | number:2"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Goals Covered Under The Evaluation Period</td>
+                                <td style="text-align:center;">70%</td>
+                                <td style="text-align:center;"><span ng-bind="totalGoal"></span></td>
+                                <td style="text-align:center;" >
+                                    <span ng-bind="(totalGoal*70/100) | number:2"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td style="text-align:center;"></td>
+                                <td style="text-align:right;font-weight:bold;">Total:</td>
+                                <td style="text-align:center;border-top:1px solid #fff;">
+                                    <span  ng-bind="record.evaluation_score | number:2"></span>
+                                </td>
+                            </tr>
 
-                                <tr>
-                                    <th colspan="5"><u>Job-Specific</u></th>
-                                </tr>
+                            <tr>
+                                <td style="font-weight:bold;text-align:right;">Overall Performance : </td>
+                                <td style="text-align:center;"><span ng-bind="record.total_computed_score.toFixed(2)"></span><td style="text-align:center;"></td>
+                                <td style="text-align:center;"></td>
+                            </tr>
 
-                                <tr ng-repeat="competency in record.competencies" ng-if="competency.Type == 'JOB-SPECIFIC' && competency.Gaps != 0">
-                                    <td style="vertical-align: top;"><span ng-bind="$index + 1"></span></td>
-                                    <td>
-                                        <b ng-bind="competency.Competency" ></b>
-                                        <br><br>
-                                        Remarks: <span ng-bind-html="displayDescription(competency.Remarks)"></span>
-                                    </td>
-                                    <td style="text-align:center;width:25px;">
-                                        <span ng-bind="competency.RequiredProficiency"></span>
-                                    </td>
-                                    <td style="text-align:center;width:25px;">
-                                        <span ng-bind="competency.ActualProficiency"></span>
-                                    </td>
-                                    <td style="text-align:center;width:25px;">
-                                        <span ng-bind="competency.Gaps"></span>
-                                    </td>
-                                </tr>
-
-                            </tbody>
-
-                        </table>
-
-                    <h4 style="text-align:center;"> Final Summary </h4>
-                    <table style="border:2px solid #fff;width:99%;">
-                        <thead>
-                        <tr>
-                            <th style="text-align:left;width:350px;">A. PERFORMANCE EVALUATION - 100%</th>
-                            <th style="text-align:center;">% Value</th>
-                            <th style="text-align:center;">Rate</th>
-                            <th style="text-align:center;">Final Value</th>
-                        </tr>
-                        </thead>
-                        <tr>
-                            <td>Competency Assessment </td>
-                            <td style="text-align:center;">30%</td>
-                            <td style="text-align:center;"><span ng-bind="totalCompetency"></span></td>
-                            <td style="text-align:center;" >
-                                <span ng-bind="(totalCompetency*30/100) | number:2"></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Goals Covered Under The Evaluation Period</td>
-                            <td style="text-align:center;">70%</td>
-                            <td style="text-align:center;"><span ng-bind="totalGoal"></span></td>
-                            <td style="text-align:center;" >
-                                <span ng-bind="(totalGoal*70/100) | number:2"></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td style="text-align:center;"></td>
-                            <td style="text-align:right;font-weight:bold;">Total:</td>
-                            <td style="text-align:center;border-top:1px solid #fff;">
-                                <span  ng-bind="record.evaluation_score | number:2"></span>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td style="font-weight:bold;text-align:right;">Overall Performance : </td>
-                            <td style="text-align:center;"><span ng-bind="record.total_computed_score.toFixed(2)"></span><td style="text-align:center;"></td>
-                            <td style="text-align:center;"></td>
-                        </tr>
-
-                        <tr>
-                            <td style="font-weight:bold;text-align:right;">Percentage Equivalent : </td>
-                            <td style="text-align:center;"><span id="perctotal" ng-bind="(record.total_computed_score/5*100).toFixed(2)"></span>%</td>
-                            <td class="note" id="note" style="text-align:center;background-color:#fff;font-weight:bold;" colspan="2">
-                                <span ng-show="record.total_computed_score == 5" style="color: #06A716">(<i class="fa fa-thumbs-up"></i>) This Employee is Exceptional</span>
-                                <span ng-show="record.total_computed_score < 5 && record.total_computed_score >= 4" style="color: #06A716">(<i class="fa fa-thumbs-up"></i>) This Employee Exceeds Expectations</span>
-                                <span ng-show="record.total_computed_score < 4 && record.total_computed_score >= 3" style="color: #06A716">(<i class="fa fa-thumbs-up"></i>) This Employee Meets Expectations</span>
-                                <span ng-show="record.total_computed_score < 3 && record.total_computed_score >= 2" style="color: #06A716">(<i class="fa fa-thumbs-up"></i>) This Employee Needs Improvement</span>
-                                <span ng-show="record.total_computed_score < 2 && record.total_computed_score >= 0" style="color: #A70606">(<i class="fa fa-thumbs-down"></i>) This Employee Does not Meet Expectation</span>
-                            </td>
-                        </tr>
-                    </table><br />     
-
-                    <div style="border:1px solid #fff;padding-left:5px;width:98.6%;">
-                        <h4>PERFORMANCE SUMMARY <span style="font-size:10px;font-weight:normal;">(Written by Reviewing Manager)</span> </h4>
-                        <h4><span ng-bind="record.Rater1FullName"></span></h4>
-                        <p class='textareaGroup'>
-                            <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck='true' style="width:98.4%;min-height:100px;" class="perfsummary checker" rows="3" 
-                                ng-model="record.PerformanceSummary" 
-                                ng-show="record.for_approval_level == 1" ng-disabled="is_approved || record.for_approval_level > 1"
-                                minlength='25' required>
-                            </textarea><br>
-                            <small class='warningMsg' style="display:none;">
-                                * This is a required field. Must be at least 25 characters long.
-                            </small>
-                            <span ng-show="record.for_approval_level > 1 || is_approved" ng-bind="record.PerformanceSummary"></span>
-                        </p>
-                        <!-- <hr> -->
-                        <div ng-show="record.Rater2Comment != null && (record.for_approval_level > 2 || record.status == 'Completed')">
-                            <h4><span ng-bind="record.Rater2FullName"></span>' Comment</h4>
-                            <p ng-bind="record.Rater2Comment"></p>
-                        </div>
-                        <div ng-show="record.Rater3Comment != null && (record.for_approval_level > 3 || record.status == 'Completed')">
-                            <h4><span ng-bind="record.Rater3FullName"></span>' Comment</h4>
-                            <p ng-bind="record.Rater3Comment"></p>
-                        </div>
-                        <div ng-show="record.Rater4Comment != null && (record.for_approval_level > 4 || record.status == 'Completed')">
-                            <h4><span ng-bind="record.Rater4FullName"></span>' Comment</h4>
-                            <p ng-bind="record.Rater4Comment"></p>
-                        </div>
-                        <div ng-show="record.status == 'Incomplete' && !is_approved">
-                            <!-- <hr> -->
-                            <h4 ng-show="!is_approved">EVALUATION COMMENT</h4>
-                            <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck="true"  ng-model="record.Rater2Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 2"  ng-disabled="is_approved"></textarea>
-                            <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck="true"  ng-model="record.Rater3Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 3"  ng-disabled="is_approved"></textarea>
-                            <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck="true"  ng-model="record.Rater4Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 4"  ng-disabled="is_approved"></textarea>
-                        </div>
-                    </div>
-                    <br>
-                    
-                    <?php if(isset($_GET['page']))
-                            if($_GET['page'] !== 'result') { ?>
-
-                    <div id="submitfloat" class="floatdiv invisible">
-                        <div id="submitfloatnview" class="fview" style="display: none;">
-                            <div class="robotobold cattext dbluetext" style="text-align:center">
-                                Submit Evaluation
-                            </div>
-                            <div>
-                                <p style="text-align:center; color: black">Are you sure you want to submit this evaluation?</p>
-                                <p style="text-align:center">
-                                    <button type="button" class="btn closebutton">Cancel</button>
-                                    <button type="button" class="btn closebutton" ng-click="submit()">Submit</button>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button type="button" class="subapp smlbtn" id="submapp" style="float:right;margin-right:10px;"  ng-show="!is_approved">Submit Appraisal</button>
-                    <button type="button" class="saveapp smlbtn" id="saveapp" style="float:right;background-color:#3EC2FB;margin-right:10px;" ng-click="save()"  ng-show="!is_approved">Save Appraisal</button>
-                    
-                    <?php }else{ ?>
+                            <tr>
+                                <td style="font-weight:bold;text-align:right;">Percentage Equivalent : </td>
+                                <td style="text-align:center;"><span id="perctotal" ng-bind="(record.total_computed_score/5*100).toFixed(2)"></span>%</td>
+                                <td class="note" id="note" style="text-align:center;background-color:#fff;font-weight:bold;" colspan="2">
+                                    <span ng-show="record.total_computed_score == 5" style="color: #06A716">(<i class="fa fa-thumbs-up"></i>) This Employee is Exceptional</span>
+                                    <span ng-show="record.total_computed_score < 5 && record.total_computed_score >= 4" style="color: #06A716">(<i class="fa fa-thumbs-up"></i>) This Employee Exceeds Expectations</span>
+                                    <span ng-show="record.total_computed_score < 4 && record.total_computed_score >= 3" style="color: #06A716">(<i class="fa fa-thumbs-up"></i>) This Employee Meets Expectations</span>
+                                    <span ng-show="record.total_computed_score < 3 && record.total_computed_score >= 2" style="color: #06A716">(<i class="fa fa-thumbs-up"></i>) This Employee Needs Improvement</span>
+                                    <span ng-show="record.total_computed_score < 2 && record.total_computed_score >= 0" style="color: #A70606">(<i class="fa fa-thumbs-down"></i>) This Employee Does not Meet Expectation</span>
+                                </td>
+                            </tr>
+                        </table><br />     
 
                         <div style="border:1px solid #fff;padding-left:5px;width:98.6%;">
-                            <h4>Employee Comment </h4>
-                            <textarea spellcheck="true" id="EmployeeAccept" class="checker" style="width:98.4%;min-height:100px;" ng-show="is_approved" ng-hide="record.EmpComment != null"></textarea>
-                            <div ng-show="record.EmpComment != null && is_approved">
-                                <p ng-bind="record.EmpComment"></p>
+                            <h4>PERFORMANCE SUMMARY <span style="font-size:10px;font-weight:normal;">(Written by Reviewing Manager)</span> </h4>
+                            <h4><span ng-bind="record.Rater1FullName"></span></h4>
+                            <p class='textareaGroup'>
+                                <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck='true' style="width:98.4%;min-height:100px;" class="perfsummary checker" rows="3" 
+                                    ng-model="record.PerformanceSummary" 
+                                    ng-show="record.for_approval_level == 1" ng-disabled="is_approved || record.for_approval_level > 1"
+                                    minlength='25' required>
+                                </textarea><br>
+                                <small class='warningMsg' style="display:none;">
+                                    * This is a required field. Must be at least 25 characters long.
+                                </small>
+                                <span ng-show="record.for_approval_level > 1 || is_approved" ng-bind="record.PerformanceSummary"></span>
+                            </p>
+                            <!-- <hr> -->
+                            <div ng-show="record.Rater2Comment != null && (record.for_approval_level > 2 || record.status == 'Completed')">
+                                <h4><span ng-bind="record.Rater2FullName"></span>' Comment</h4>
+                                <p ng-bind="record.Rater2Comment"></p>
+                            </div>
+                            <div ng-show="record.Rater3Comment != null && (record.for_approval_level > 3 || record.status == 'Completed')">
+                                <h4><span ng-bind="record.Rater3FullName"></span>' Comment</h4>
+                                <p ng-bind="record.Rater3Comment"></p>
+                            </div>
+                            <div ng-show="record.Rater4Comment != null && (record.for_approval_level > 4 || record.status == 'Completed')">
+                                <h4><span ng-bind="record.Rater4FullName"></span>' Comment</h4>
+                                <p ng-bind="record.Rater4Comment"></p>
+                            </div>
+                            <div ng-show="record.status == 'Incomplete' && !is_approved">
+                                <!-- <hr> -->
+                                <h4 ng-show="!is_approved">EVALUATION COMMENT</h4>
+                                <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck="true"  ng-model="record.Rater2Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 2"  ng-disabled="is_approved"></textarea>
+                                <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck="true"  ng-model="record.Rater3Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 3"  ng-disabled="is_approved"></textarea>
+                                <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck="true"  ng-model="record.Rater4Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 4"  ng-disabled="is_approved"></textarea>
                             </div>
                         </div>
                         <br>
-                        <button type="button" class="subapp smlbtn" id="submapp" style="float:right;margin-right:10px;"  ng-show="is_approved && record.EmpComment == null" ng-click="accept()">Accept Evaluation</button>
+                        
+                        <?php if(isset($_GET['page']))
+                                if($_GET['page'] !== 'result') { ?>
 
-                    <?php } ?>
+                        <div id="submitfloat" class="floatdiv invisible">
+                            <div id="submitfloatnview" class="fview" style="display: none;">
+                                <div class="robotobold cattext dbluetext" style="text-align:center">
+                                    Submit Evaluation
+                                </div>
+                                <div>
+                                    <p style="text-align:center; color: black">Are you sure you want to submit this evaluation?</p>
+                                    <p style="text-align:center">
+                                        <button type="button" class="btn closebutton">Cancel</button>
+                                        <button type="button" class="btn closebutton" ng-click="submit()">Submit</button>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
 
-                </div>
+                        <button type="button" class="subapp smlbtn" id="submapp" style="float:right;margin-right:10px;"  ng-show="!is_approved">Submit Appraisal</button>
+                        <button type="button" class="saveapp smlbtn" id="saveapp" style="float:right;background-color:#3EC2FB;margin-right:10px;" ng-click="save()"  ng-show="!is_approved">Save Appraisal</button>
+                        
+                        <?php }else{ ?>
 
-                    
+                            <div style="border:1px solid #fff;padding-left:5px;width:98.6%;">
+                                <h4>Employee Comment </h4>
+                                <textarea spellcheck="true" id="EmployeeAccept" class="checker" style="width:98.4%;min-height:100px;" ng-show="is_approved" ng-hide="record.EmpComment != null"></textarea>
+                                <div ng-show="record.EmpComment != null && is_approved">
+                                    <p ng-bind="record.EmpComment"></p>
+                                </div>
+                            </div>
+                            <br>
+                            <button type="button" class="subapp smlbtn" id="submapp" style="float:right;margin-right:10px;"  ng-show="is_approved && record.EmpComment == null" ng-click="accept()">Accept Evaluation</button>
+
+                        <?php } ?>
+
+                    </div>
+
+                        
+                    </div>
                 </div>
             </div>
         </form>
@@ -609,8 +613,9 @@
 </div>
 
 
-    <script>
+<script>
     // angular retrieve record from https://dev.megaworldcorp.com/test
+    $('#evaluation-form-wrapper').hide();
     var app = angular.module('myApp', []);
     app.controller('myCtrl', function($scope, $http,  $sce) {
         let apiUrl = '<?php echo MEWEB; ?>/peoplesedge/api/pmsv1/';
@@ -627,7 +632,6 @@
         }).then(function successCallback(response) {
                 // store the response data in a variable called `data`
                 $scope.record = response.data;
-                $scope.loading = false;
                 
                 if($scope.record != ""){
                     $scope.record.ApproverEmpID = $scope.ApproverEmpID;
@@ -671,7 +675,6 @@
                     let date = new Date($scope.record.HireDate);
                     $scope.record.group.PeriodTo = date.setMonth(date.getMonth() + 6);
                     $scope.record.group.AppraisalDate = date.setDate(date.getDate() + 1);
-                    $scope.loading = false;
                     console.log("Successfully retrieved record");
 
                     // // redirect, if evaluation is complete
@@ -719,14 +722,14 @@
                         $scope.is_approved = true;
                 }
 
-
+                $scope.loading = false;
+                $('#evaluation-form-wrapper').show();
             },
             function errorCallback(response) {
                     // called asynchronously if an error occurs
                     // or server returns response with an error status.
                     console.error("Error while retrieving record", response);
-                    $scope.loading = true;
-                    // window.location.reload();
+                    window.location.reload();
 
         });
 
@@ -915,6 +918,7 @@
 
         $scope.save = function(){
             $scope.loading = true;
+            $('#evaluation-form-wrapper').hide();
             if($scope.record.recommended_salary_increase == '' || $scope.record.recommended_salary_increase == null){
                 $scope.record.recommended_salary_increase = 0;
             }
@@ -923,19 +927,19 @@
                 url: apiUrl + 'evaluation/save', 
                 data:  $scope.record
             }).then(function successCallback(response) {
-                    // store the response data in a variable called `data`
                     $scope.record = response.data;
                     console.log("Successfully saved record");
-                    $scope.loading = false;
-
                     // refresh page
                     window.location.reload();
                 },
                 function errorCallback(response) {
                         // called asynchronously if an error occurs
                         // or server returns response with an error status.
-                        $scope.loading = true;
+                        $scope.loading = false;
+                        $('#evaluation-form-wrapper').show();
+                        
                         console.error("Error while saving record", response);
+                        $scope.validate();
             });
         }
 
