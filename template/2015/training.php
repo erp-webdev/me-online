@@ -59,9 +59,11 @@
                                 <?php $total_trainings += $training['TrainingHrs']; ?>
                             <?php endforeach; ?>
                         <?php else: ?>
-                            <tr>
-                                <td colspan="8" style='text-align: center;'><i>NO TRAINING RECORDS AVAILABLE</i></td>
-                            </tr>
+                            <?php if($error_message): ?>
+                                <tr>
+                                    <td colspan="8" style='text-align: center;'><i><?php echo $error_message; ?></i></td>
+                                </tr>
+                            <?php endif; ?>
                         <?php endif; ?>
                         </tbody>
 
