@@ -1,4 +1,3 @@
-// We can import `harper.js` using native ECMAScript syntax.
 import { WorkerLinter } from 'https://unpkg.com/harper.js@0.14.0/dist/harper.js';
 
 class SpellChecker {
@@ -45,7 +44,7 @@ class SpellChecker {
         this.textarea.classList.add('spellcheck-input', 'editor');
         this.textarea.setAttribute('spellcheck', 'false');
 
-        // Sync height from the original textarea. Using offsetHeight is more reliable.
+        // Sync height from the original textarea.
         this.textarea.style.height = this.textarea.scrollHeight + 'px';
         this.wrapper.style.height = this.textarea.offsetHeight + 'px';
         this.wrapper.style.width = this.textarea.offsetWidth + 'px';
@@ -66,7 +65,9 @@ class SpellChecker {
         });
 
         const resizeObserver = new ResizeObserver(() => {
+            this.textarea.style.height = this.textarea.scrollHeight + 'px';
             this.wrapper.style.height = this.textarea.offsetHeight + 'px';
+            this.wrapper.style.width = this.textarea.offsetWidth + 'px';
         });
         resizeObserver.observe(this.textarea);
     }
@@ -299,13 +300,9 @@ const initSpellChecker = (textarea) => {
     new SpellChecker(textarea);
 };
 
-// Wait for the DOM to be fully loaded before initializing.
-// This prevents race conditions with frameworks like Angular that modify the DOM after the initial parse.
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize for any textareas that already exist on the page
+export function initializeSpellingChecker() { 
     document.querySelectorAll('textarea.spellcheck').forEach(initSpellChecker);
 
-    // Observe the body for new textareas being added dynamically
     const observer = new MutationObserver((mutationsList) => {
         for (const mutation of mutationsList) {
             if (mutation.type === 'childList') {
@@ -318,10 +315,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     observer.observe(document.body, { childList: true, subtree: true });
-
-    $(document).on('input change focus', 'textarea.spellcheck', function() {
-        this.style.height = 'auto'; 
-        this.style.height = this.scrollHeight + 'px';
-    });
-    
-});
+}
