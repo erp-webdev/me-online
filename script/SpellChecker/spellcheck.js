@@ -1,9 +1,12 @@
-import { WorkerLinter } from 'https://unpkg.com/harper.js@0.14.0/dist/harper.js';
+// We can import `harper.js` using native ECMAScript syntax.
+import { WorkerLinter, BinaryModule, Dialect, binaryInlinedUrl } from './harper.js/dist/harper.js';
 
 class SpellChecker {
     constructor(textarea) {
         this.textarea = textarea;
-        this.linter = new WorkerLinter();
+        // The linter needs to be initialized with the wasm binary and a dialect.
+        const binary = new BinaryModule(binaryInlinedUrl);
+        this.linter = new WorkerLinter({ binary, dialect: Dialect.American });
         this.allLints = [];
 
         // Shared state for ignored lints across all instances
@@ -174,20 +177,18 @@ class SpellChecker {
         actionsList.className = 'popover-actions';
 
         // "Add to Dictionary" action
-        // if (lint.lint_kind() === 'Spelling') {
-        // 	const word = this.textarea.value.substring(lint.span().start, lint.span().end);
-        // 	const item = document.createElement('li');
-        // 	item.className = 'action-item add-dict';
-        // 	item.textContent = `Add "${this.escapeHtml(word)}" to dictionary`;
-        // 	item.addEventListener('click', async () => {
-        // 		const wordLower = word.toLowerCase();
-        // 		await this.linter.add_word(wordLower);
-        // 		this.addWordToCustomDictionary(wordLower);
-        // 		this.hidePopover();
-        // 		this.runLinter(); // Trigger a full re-lint
-        // 	});
-        // 	actionsList.appendChild(item);
-        // }
+        if (lint.lint_kind() === 'Spelling') {
+            const word = this.textarea.value.substring(lint.span().start, lint.span().end);
+            const item = document.createElement('li');
+            item.className = 'action-item add-dict';
+            item.textContent = `Add "${this.escapeHtml(word)}" to dictionary`;
+            item.addEventListener('click', async () => {
+                await this.addWordToDictionary(word);
+                this.hidePopover();
+                await this.runLinter(); // Re-lint and re-render the UI
+            });
+            actionsList.appendChild(item);
+        }
 
         // "Ignore" action
         const ignoreItem = document.createElement('li');
@@ -247,14 +248,17 @@ class SpellChecker {
         return stored ? new Set(JSON.parse(stored)) : new Set();
     }
 
-    async loadDictionaryIntoLinter() {
-        for (const word of this.customDictionary) {
-            await this.linter.add_word(word);
-        }
+    loadDictionaryIntoLinter() {
+        // The linter's importWords method can take an array of words.
+        this.linter.importWords(Array.from(this.customDictionary));
     }
 
-    addWordToCustomDictionary(word) {
-        this.customDictionary.add(word);
+    async addWordToDictionary(word) {
+        const wordLower = word.toLowerCase();
+        // Add to the linter's runtime dictionary
+        await this.linter.importWords([wordLower]);
+        // Add to the persisted dictionary and save to localStorage
+        this.customDictionary.add(wordLower);
         localStorage.setItem(this.CUSTOM_DICTIONARY_KEY, JSON.stringify(Array.from(this.customDictionary)));
     }
 
@@ -303,6 +307,7 @@ const initSpellChecker = (textarea) => {
 export function initializeSpellingChecker() { 
     document.querySelectorAll('textarea.spellcheck').forEach(initSpellChecker);
 
+    // Observe the body for new textareas being added dynamically
     const observer = new MutationObserver((mutationsList) => {
         for (const mutation of mutationsList) {
             if (mutation.type === 'childList') {
