@@ -165,7 +165,11 @@
 
                         <!-- Part 2 -->
                         <div style="border:1px solid #fff;padding:0 5px;width:98%;">
-                            <h4>II. PERFORMANCE SUMMARY <span style="font-size:10px;font-weight:normal;">(Written by Reviewing Manager)</span> </h4>
+                            <h4>
+                                II. PERFORMANCE SUMMARY 
+                                <span style="font-size:10px;font-weight:normal;">(Written by Reviewing Manager)</span><br>
+                                <span  ng-show="record.for_approval_level == 1" style=" font-weight:normal; font-size:11px;">Note: When creating the performance summary for the ratee, <b>DO NOT include details about salary increases or promotions, as the ratee will have access to this information.</b></span> 
+                            </h4>
                             <h4><span ng-bind="record.Rater1FullName"></span></h4>
                             <p class='textareaGroup'>
                                 <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck='true' style="width:98.4%;min-height:100px;" class="perfsummary checker" rows="3" 
@@ -177,7 +181,6 @@
                                     * This is a required field. Must be at least 25 characters long.
                                 </small><br>
                                 <span ng-show="record.for_approval_level > 1 || is_approved" ng-bind="record.PerformanceSummary"></span>
-                                <span  ng-show="record.for_approval_level == 1" style="font-style:italic;margin-left:5px;font-size:10px;">Note: Salary increase will be based on the Overall Performance Rating.</span>
                             </p>
                         </div><!-- End of part 2 -->
                         <br />
