@@ -567,7 +567,11 @@
                         <br />
 
                         <div style="border:1px solid #fff;padding-left:5px;width:98.6%;">
-                            <h4>VI. PERFORMANCE SUMMARY <span style="font-size:10px;font-weight:normal;">(Written by Reviewing Manager)</span> </h4>
+                            <h4>
+                                VI. PERFORMANCE SUMMARY 
+                                <span style="font-size:10px;font-weight:normal;">(Written by Reviewing Manager)</span><br>
+                                <span  ng-show="record.for_approval_level == 1" style=" font-weight:normal; font-size:11px;">Note: When creating the performance summary for the ratee, <b>DO NOT include details about salary increases or promotions, as the ratee will have access to this information.</b> Please use the designated field for all compensation and advancement details.</span> 
+                            </h4>
                             <h4><span ng-bind="record.Rater1FullName"></span></h4>
                             <p class='textareaGroup'>
                                 <textarea oninput="$Spelling.SpellCheckAsYouType(this);" onfocus="$Spelling.SpellCheckAsYouType(this);" spellcheck='true' style="width:98.4%;min-height:100px;" class="perfsummary checker" rows="3" 
@@ -609,8 +613,6 @@
                                     <h4>EVALUATION COMMENT</h4>
                                     <textarea  onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck='true' ng-model="record.Rater4Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 4"  ng-disabled="is_approved"></textarea>
                                 </div>
-
-                                <span  ng-show="!is_approved" style="font-style:italic;margin-left:5px;font-size:10px;">Note: Kindly refrain from including any information regarding salary increases or promotions. You may use the designated field for this purpose.</span>
                             </div>
                         </div>
                         <br>
