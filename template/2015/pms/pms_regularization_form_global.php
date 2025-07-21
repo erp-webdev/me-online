@@ -1,5 +1,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <script type='text/javascript' src="<?php echo JS; ?>/JavaScriptSpellCheck/include.js" ></script>
+<link rel="stylesheet" href="<?php echo CSS; ?>/SpellChecker/spellcheck.css">
 <style>
     .loading-screen {
             position: absolute;
@@ -168,7 +169,7 @@
                             <h4>II. PERFORMANCE SUMMARY <span style="font-size:10px;font-weight:normal;">(Written by Reviewing Manager)</span> </h4>
                             <h4><span ng-bind="record.Rater1FullName"></span></h4>
                             <p class='textareaGroup'>
-                                <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck='true' style="width:98.4%;min-height:100px;" class="perfsummary checker" rows="3" 
+                                <textarea spellcheck='true' ng-class="record.for_approval_level == 1 ? 'spellcheck' : '' " style="width:710px; min-height:100px;" class="perfsummary checker" rows="3" 
                                     ng-model="record.PerformanceSummary" 
                                     ng-show="record.for_approval_level == 1" ng-disabled="is_approved || record.for_approval_level > 1"
                                     minlength='25' required>
@@ -206,7 +207,6 @@
                                     Minimum of 3 objective according the SMART goal definition, and carried over from the last review period. Results achieved to be stated by Job Holder and commented by Reviewing Mgr. An additional objective is added in case of staff management responsibilities as "PMS". Weight is the importance of each objective versus the others. Achievement % is the volume of the objective achieved, and the rating is the quality of what has been achieved. Examples can be found in PMS Guidelines.
                                 </div>
                                 <div style="clear:both;"></div>
-
                                 <div class="work-result-wrapper">
                                     <div ng-repeat="goal in record.goals">
                                         <p style="text-decoration:underline;font-weight:bold;">OBJECTIVE <span ng-bind="$index+1"></span></p>
@@ -234,58 +234,57 @@
                                             <span style="margin-left:46px;" ng-bind="goal.WeightedRating = round2((goal.Achievement * goal.Weight * goal.Rating) / 10000)"></span>
                                         </div>
 
-                                        <div style="clear:both;"></div>
-                                
-                                        <table>
-                                            <tr>
-                                                <td style="width: 100px">Results Achieved: </td>
-                                                <td  class='textareaGroup'>
-                                                    <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck='true' class="checker" cols="80" rows="2" 
-                                                            ng-model="goal.ResultsAchieved"
-                                                            ng-disabled="is_approved" 
-                                                            minlength='25' required>
-                                                    </textarea>
-                                                    <small class='warningMsg' style="display:none;">
-                                                        * This is a required field. Must be at least 25 characters long.
-                                                    </small>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 100px">Comments: </td>
-                                                <td  class='textareaGroup'>
-                                                    <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();"
-                                                            spellcheck='true' class="checker" cols="80" rows="2" 
-                                                            ng-model="goal.Comments" 
-                                                            ng-disabled="is_approved" 
-                                                            minlength='25' required>
-                                                    </textarea>
-                                                    <small class='warningMsg' style="display:none;">
-                                                        * This is a required field. Must be at least 25 characters long.
-                                                    </small>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                        <div style="clear:both;"></div>
-                                
-                                    </div>
-                                    <hr></hr>
-                                    <div style="padding:10px;margin-top:-15px;">
-                                        <table class="tdata" cellspacing="0" style="width:180px;float:right;font-size:9px;">
-                                            <tr>
-                                                <th>Final Weight</th>
-                                                <th style="text-align:center !important;">Final Weighted rating</th>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align:center;"><span ng-bind="totalGoalAchievement"></span>%</td>
-                                                <td style="text-align:center;"><span ng-bind="totalGoalWeightRating | number: 2"></span></td>
-                                            </tr>
-                                        </table>
-                                        <h4 style="float:right;margin-top:23px;margin-right:20px;">Overall Work Results</h4>
-                                        <div style="clear:both;"></div>
-                                    </div><!-- end of overall work result -->
+                                    <div style="clear:both;"></div>
+                            
+                                    <table>
+                                        <tr>
+                                            <td style="width: 100px">Results Achieved: </td>
+                                            <td  class='textareaGroup'>
+                                                <textarea spellcheck='true' ng-class="is_approved ? '' : 'spellcheck' " class="checker" cols="80" rows="2" 
+                                                        ng-model="goal.ResultsAchieved"
+                                                        ng-disabled="is_approved" 
+                                                        minlength='25' required>
+                                                </textarea>
+                                                <small class='warningMsg' style="display:none;">
+                                                    * This is a required field. Must be at least 25 characters long.
+                                                </small>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 100px">Comments: </td>
+                                            <td  class='textareaGroup'>
+                                                <textarea spellcheck='true' ng-class="is_approved ? '' : 'spellcheck' " class="checker" cols="80" rows="2" 
+                                                        ng-model="goal.Comments" 
+                                                        ng-disabled="is_approved" 
+                                                        minlength='25' required>
+                                                </textarea>
+                                                <small class='warningMsg' style="display:none;">
+                                                    * This is a required field. Must be at least 25 characters long.
+                                                </small>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <div style="clear:both;"></div>
+                            
                                 </div>
+                                <hr></hr>
+                                <div style="padding:10px;margin-top:-15px;">
+                                    <table class="tdata" cellspacing="0" style="width:180px;float:right;font-size:9px;">
+                                        <tr>
+                                            <th>Final Weight</th>
+                                            <th style="text-align:center !important;">Final Weighted rating</th>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:center;"><span ng-bind="totalGoalAchievement"></span>%</td>
+                                            <td style="text-align:center;"><span ng-bind="totalGoalWeightRating | number: 2"></span></td>
+                                        </tr>
+                                    </table>
+                                    <h4 style="float:right;margin-top:23px;margin-right:20px;">Overall Work Results</h4>
+                                    <div style="clear:both;"></div>
+                                </div><!-- end of overall work result -->
                             </div>
                         </div>
+                    </div>
 
                         <div ng-show="record.competencies.length == 0 || record.competencies == null">
                             <table style="width:100%;">
@@ -326,7 +325,7 @@
                                         <!-- comments and achievments textarea -->
                                         Comments:
                                         <span class="px" style="font-style:italic;margin-left:5px;font-size:10px;" ng-show="competency.Rating != 3">(*Required field, if your rating is greater than or less than 3 to justify your rating to this employee)</span>
-                                        <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck='true'  cols="90" rows="3" 
+                                        <textarea spellcheck='true' ng-class="is_approved ? '' : 'spellcheck' "  cols="90" rows="3" 
                                                 class="checker" 
                                                 ng-model="competency.Remarks" 
                                                 ng-disabled="is_approved" 
@@ -365,64 +364,77 @@
                                 <h4>V. SETTING OBJECTIVES FOR NEXT REVIEW PERIOD</h4>
                                 <p style="font-weight:bold;">WORK RESULTS <span style="font-weight:normal;">(Minimum 3 SMART objectives and potential PMS, set by Reviewing Manager)</span></p>
 
-                                <div class="work-result-wrapper" id="partvwrap">
-                                    <div id="partvwork">
-                                        <div ng-repeat="next_goal in record.goals_next">
-                                            <p style="text-decoration:underline;font-weight:bold;">
-                                                <a class="smlbtn" id="delrowv" style="background-color:#D20404;" ng-click="deleteNextGoal($index)" ng-show="!is_approved">Remove</a> 
-                                                OBJECTIVE <span ng-bind="$index+1"></span>
-                                            </p>
-                                            <div style="float:left;width:380px;"  class='textareaGroup'>
-                                                <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck='true' style="width:167%;" class="checker" cols="80" rows="2" 
-                                                        ng-model="next_goal.Objective" 
-                                                        ng-disabled="is_approved" 
-                                                        minlength='25' required>
-                                                </textarea>
-                                                <br>
-                                                <small class='warningMsg' style="display:none;">
-                                                    * This is a required field. Must be at least 25 characters long.
-                                                </small>
-                                            </div>
-                                            <div style="width:60px;float:right;font-size:9px;">
-                                                <p style="font-weight:bold;">Weight</p>
-                                                <input style="width:35px;" type="number" ng-model="next_goal.Weight" min="1" max="100" class="width25 smltxtbox p5w checker" ng-change="updateRecord()" required  ng-disabled="is_approved"  onkeypress="return (event.charCode >= 48 && event.charCode <= 57) || event.charCode==8" onKeyDown="if ((this.value.length == 2 || this.value.length == 3) && ((this.value >= 10 && this.value <= 100 && !(this.value == 10 && event.keyCode == 48)) && event.keyCode != 8))  return false;" onfocusin="(this.value == 0) ? this.value = '' : false" onfocusout="(this.value == '') ? this.value = 0 : false"> %
-                                            </div>
-                                            <div style="clear:both;"></div>
-                                            <div class='textareaGroup'>
-                                                <p> Measurement of accomplishment: </p>
-                                                <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck='true' style="width:90%;" class="checker" cols="80" rows="2" 
-                                                        ng-model="next_goal.MeasureOfSuccess" 
-                                                        ng-disabled="is_approved" 
-                                                        minlength='25' required>
-                                                </textarea><br>
-                                                <small class='warningMsg' style="display:none;">
-                                                    * This is a required field. Must be at least 25 characters long.
-                                                </small>
-                                            
-                                                <!-- <input type="text" style="margin-top:-8px;width:89%;" class="smltxtbox checker" ng-model="next_goal.MeasureOfSuccess" required  ng-disabled="is_approved" minlength="10"> -->
-                                                <div style="clear:both;"></div>
-                                            </div>
-                                            <hr/>
+                            <div class="work-result-wrapper" id="partvwrap">
+                                <div id="partvwork">
+                                    <div ng-repeat="next_goal in record.goals_next">
+                                        <p style="text-decoration:underline;font-weight:bold;">
+                                            <a class="smlbtn" id="delrowv" style="background-color:#D20404;" ng-click="deleteNextGoal($index)" ng-show="!is_approved">Remove</a> 
+                                            OBJECTIVE <span ng-bind="$index+1"></span>
+                                        </p>
+                                        <div  class='textareaGroup'>
+                                            <textarea spellcheck='true' ng-class="is_approved ? '' : 'spellcheck' " class="checker" cols="80" rows="2" 
+                                                    ng-model="next_goal.Objective" 
+                                                    ng-disabled="is_approved" 
+                                                    minlength='25' required>
+                                            </textarea>
+                                            <br>
+                                            <small class='warningMsg' style="display:none;">
+                                                * This is a required field. Must be at least 25 characters long.
+                                            </small>
                                         </div>
+                                        <div class='textareaGroup'>
+                                            <p> Measurement of accomplishment: </p>
+                                            <textarea spellcheck='true' ng-class="is_approved ? '' : 'spellcheck' " class="checker" cols="80" rows="2" 
+                                                    ng-model="next_goal.MeasureOfSuccess" 
+                                                    ng-disabled="is_approved" 
+                                                    minlength='25' required>
+                                            </textarea><br>
+                                            <small class='warningMsg' style="display:none;">
+                                                * This is a required field. Must be at least 25 characters long.
+                                            </small>
+                                        
+                                            <!-- <input type="text" style="margin-top:-8px;width:89%;" class="smltxtbox checker" ng-model="next_goal.MeasureOfSuccess" required  ng-disabled="is_approved" minlength="10"> -->
+                                        </div>
+                                        <div style="display: flex; justify-content: flex-end; align-items: center;">
+                                            <label style="font-weight: bold; margin-right: 5px;">Weight</label>
+                                            <input
+                                                style="width: 35px;"
+                                                type="number"
+                                                ng-model="next_goal.Weight"
+                                                min="1"
+                                                max="100"
+                                                class="width25 smltxtbox p5w checker"
+                                                ng-change="updateRecord()"
+                                                required
+                                                ng-disabled="is_approved"
+                                                onkeypress="return (event.charCode >= 48 && event.charCode <= 57) || event.charCode==8"
+                                                onkeydown="if ((this.value.length == 2 || this.value.length == 3) && ((this.value >= 10 && this.value <= 100 && !(this.value == 10 && event.keyCode == 48)) && event.keyCode != 8))  return false;"
+                                                onfocusin="(this.value == 0) ? this.value = '' : false"
+                                                onfocusout="(this.value == '') ? this.value = 0 : false"
+                                            >
+                                            %
+                                        </div>
+                                        <hr/>
                                     </div>
                                 </div>
-                                <a class="smlbtn" id="addrowv" style="background-color:#3EC2FB;" ng-click="addNextGoal()" ng-show="!is_approved">Add Objective</a>
-                                
-                                <div style="margin-top:-20px;" >
-                                    <table class="tdata" cellspacing="0" style="width:100px;float:right;font-size:9px;">
-                                        <tr>
-                                            <th>Total Weight %</th>
-                                        </tr>
-                                        <tr>
-                                            <td style="text-align:center;"><input type="number" class="width25 smltxtbox p5w checker" style="width:35px;" required min="100" max="100" ng-model="totalNextGoalWeight" readonly  ng-disabled="is_approved">
-                                        </tr>
-                                    </table>
-                                    <div style="clear:both;"></div>
-                                </div>
+                            </div>
+                            <a class="smlbtn" id="addrowv" style="background-color:#3EC2FB;" ng-click="addNextGoal()" ng-show="!is_approved">Add Objective</a>
                             
-                                <div>
-                                    <h4>PERSONAL CORE COMPETENCIES <span style="font-size:10px;font-weight:normal;">(Minimum of 5 items agreed by both parties)</span></h4>
-                                    <div class="pcc-main-wrapper">
+                            <div style="margin-top:-20px;" >
+                                <table class="tdata" cellspacing="0" style="width:100px;float:right;font-size:9px;">
+                                    <tr>
+                                        <th>Total Weight %</th>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center;"><input type="number" class="width25 smltxtbox p5w checker" style="width:35px;" required min="100" max="100" ng-model="totalNextGoalWeight" readonly  ng-disabled="is_approved">
+                                    </tr>
+                                </table>
+                                <div style="clear:both;"></div>
+                            </div>
+                        
+                            <div>
+                                <h4>PERSONAL CORE COMPETENCIES <span style="font-size:10px;font-weight:normal;">(Minimum of 5 items agreed by both parties)</span></h4>
+                                <div class="pcc-main-wrapper">
 
                                         <div class="pcc-left-wrapper" style="float:left;width:100%;">
                                             <table class="tdata" cellspacing="5" style="width:100%;">
@@ -463,8 +475,6 @@
                             <br />
                         </div>
                         <br />
-
-                    
 
                         <table style="border:1px solid #fff;width:99%;" >
                             <thead>
@@ -524,8 +534,8 @@
 
                         <div style="border:1px solid #fff;padding-left:5px;padding-right:5px;width:98%;">
                             <h4>VI. DEVELOPMENT PLAN</h4>
-                            <p  class='textareaGroup'>A. Key competencies to strengthen performance in current job (set by reviewing mgr):
-                                <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck='true'  style="width:99%;" class="checker" rows="3" 
+                            <div class='textareaGroup'>A. Key competencies to strengthen performance in current job (set by reviewing mgr):
+                                <textarea ng-class="is_approved ? '' : 'spellcheck' " class="checker" style="width:710px;"
                                         ng-model="record.DevPlanA" 
                                         ng-disabled="is_approved" 
                                         minlength='25' required>
@@ -533,11 +543,11 @@
                                 <small class='warningMsg' style="display:none;">
                                     * This is a required field. Must be at least 25 characters long.
                                 </small>
-                            </p>
+                            </div>
                             <!--<p>B. Employee desired career path within next 2 to 3 years (set by job holder):</p>
                             <textarea spellcheck="true"  style="width:99%;" class="smltxtbox"></textarea>-->
-                            <p  class='textareaGroup'>B. Key competencies needed to advance in employee desired career path (set by reviewing mgr):
-                                <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck='true'  style="width:99%;" class="checker" rows="3" 
+                            <div  class='textareaGroup'>B. Key competencies needed to advance in employee desired career path (set by reviewing mgr):
+                                <textarea ng-class="is_approved ? '' : 'spellcheck' " class="checker" cols="80" style="width:710px;" 
                                         ng-model="record.DevPlanB" 
                                         ng-disabled="is_approved" 
                                         minlength='25' required>
@@ -545,9 +555,9 @@
                                 <small class='warningMsg' style="display:none;">
                                     * This is a required field. Must be at least 25 characters long.
                                 </small>
-                            </p>
-                            <p  class='textareaGroup'>C. Planned development / training activities (agreed by reviewing mgr and as per the following priority / feasibility order):
-                                <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck='true'  style="width:99%;" class="checker" rows="3" 
+                            </div>
+                            <div  class='textareaGroup'>C. Planned development / training activities (agreed by reviewing mgr and as per the following priority / feasibility order):
+                                <textarea ng-class="is_approved ? '' : 'spellcheck' " class="checker" cols="80" style="width:710px;" 
                                         ng-model="record.DevPlanC" 
                                         ng-disabled="is_approved" 
                                         minlength='25' required>
@@ -555,7 +565,7 @@
                                 <small class='warningMsg' style="display:none;">
                                     * This is a required field. Must be at least 25 characters long.
                                 </small>
-                            </p>
+                            </div>
                         </div>
                         <br />
 
@@ -575,9 +585,9 @@
                             <div ng-show="record.status == 'Incomplete' && !is_approved">
                                 <!-- <hr> -->
                                 <h4 ng-show="!is_approved">EVALUATION COMMENT</h4>
-                                <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck="true"  ng-model="record.Rater2Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 2 && !is_approved"  ng-disabled="is_approved" ></textarea>
-                                <textare onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();"a spellcheck="true"  ng-model="record.Rater3Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 3 && !is_approved"  ng-disabled="is_approved" ></textarea>
-                                <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck="true"  ng-model="record.Rater4Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 4 && !is_approved"  ng-disabled="is_approved" ></textarea>
+                                <textarea ng-class="record.for_approval_level == 2 && !is_approved ? '' : 'spellcheck' " style="width:710px; min-height:100px;" ng-model="record.Rater2Comment" class="checker" ng-show="record.for_approval_level == 2 && !is_approved"  ng-disabled="is_approved" ></textarea>
+                                <textare ng-class="record.for_approval_level == 3 && !is_approved ? '' : 'spellcheck' " style="width:710px; min-height:100px;" ng-model="record.Rater2Comment" class="checker" ng-show="record.for_approval_level == 3 && !is_approved"  ng-disabled="is_approved" ></textarea>
+                                <textarea ng-class="record.for_approval_level == 4 && !is_approved ? '' : 'spellcheck' " style="width:710px; min-height:100px;" ng-model="record.Rater2Comment" class="checker" ng-show="record.for_approval_level == 4 && !is_approved"  ng-disabled="is_approved" ></textarea>
                                 <span ng-show="!is_approved" style="font-style:italic;margin-left:5px;font-size:10px;">Note: Salary increase will be based on the Overall Performance Rating.</span>
                             </div>
                         </div>
@@ -607,7 +617,7 @@
 
 
 
-                    <button type="button" class="subapp smlbtn" id="submapp" style="float:right;margin-right:10px;"  ng-show="!is_approved">Submit Appraisal</button>
+                    <button type="button" class="subapp smlbtn btn-spellchecker" id="submapp" style="float:right;margin-right:10px;"  ng-show="!is_approved">Submit Appraisal</button>
                     <button type="button" class="saveapp smlbtn" id="saveapp" style="float:right;background-color:#3EC2FB;margin-right:10px;" ng-click="save()"  ng-show="!is_approved">Save Appraisal</button>
                     
                     <?php }else{ ?>
@@ -632,7 +642,58 @@
 <script>
     $('#evaluation-form-wrapper').hide();
     var app = angular.module('myApp', []);
-    app.controller('myCtrl', function($scope, $http,  $sce) {
+    app.factory('spellCheckerService', ['$q', function($q) {
+        let spellCheckerModule = null; 
+        const SPELLCHECK_MODULE_PATH = '<?php echo JS; ?>/SpellChecker/spellcheck.js';
+
+        async function loadSpellCheckerModule() {
+            if (spellCheckerModule) {
+                return spellCheckerModule; 
+            }
+            try {
+                const module = await import(SPELLCHECK_MODULE_PATH);
+                spellCheckerModule = module;
+                console.log('SpellChecker module loaded successfully:', module);
+                return module;
+            } catch (error) {
+                console.error('Failed to load SpellChecker module:', error);
+                return $q.reject(error);
+            }
+        }
+
+        return {
+            initializeSpellingChecker: async function() {
+                try {
+                    const module = await loadSpellCheckerModule();
+                    if (module && typeof module.initializeSpellingChecker === 'function') {
+                        module.initializeSpellingChecker();
+                    } else {
+                        console.warn('initializeSpellingChecker function not found in the module.');
+                    }
+                } catch (error) {
+                    console.error('Error calling initializeSpellingChecker:', error);
+                }
+            },
+
+            
+            getSpellCheckerClass: async function() {
+                try {
+                    const module = await loadSpellCheckerModule();
+                    if (module && module.SpellChecker) {
+                        return module.SpellChecker;
+                    } else {
+                        console.warn('SpellChecker class not found in the module.');
+                        return null;
+                    }
+                } catch (error) {
+                    console.error('Error getting SpellChecker class:', error);
+                    return null;
+                }
+            }
+        };
+    }]);
+    
+    app.controller('myCtrl', function($scope, $http, $sce, spellCheckerService) {
         let apiUrl = '<?php echo MEWEB; ?>/peoplesedge/api/pmsv1/';
 
         $scope.record = [];
@@ -691,6 +752,7 @@
 
                 $scope.loading = false;
                 $('#evaluation-form-wrapper').show();
+                spellCheckerService.initializeSpellingChecker();
             },
             function errorCallback(response) {
                     // called asynchronously if an error occurs
@@ -942,28 +1004,24 @@
         $scope.validate = function(){
             if($scope.myForm.$invalid){
                 $('input.ng-invalid').first().focus();
-                $('textarea.ng-invalid').first().closest('.textareaGroup').find('.livespell_textarea').focus();
+                $('textarea.ng-invalid').first().focus();
                 $('select.ng-invalid').first().focus();
                 alert('Please check all required inputs!');
 
                 return false;
             }
-            // else if($scope.checkSpelling()){
-            //     $('span.livespell_redwiggle').closest('div').focus();
-            //     $('span.livespell_greenwiggle').closest('div').focus();
-            //     alert('Spelling errors found. Please review and correct the highlighted words before submitting the form. \n\nNote: To see suggestions, right click on misspelled word.');
+            else if($scope.checkSpelling()){
+                $('.editor-wrapper.invalid-spellcheck').find('textarea.spellcheck').first().focus();
+                alert('Spelling errors found. Please review and correct the highlighted words before submitting the form. \n\nNote: To see suggestions, click on misspelled word.');
 
-            //     return false;
-            // }
-
-           return true
+                return false;
+            }
+            //TODO: NEED TO UNCOMMENT THIS AFTER TESTING
+            return true
         };
 
         $scope.checkSpelling = function(){
-            if ($('span.livespell_redwiggle').length > 0){
-                return true;
-            }
-            else if ($('span.livespell_greenwiggle').length > 0){
+            if ($('.editor-wrapper.invalid-spellcheck').length > 0){
                 return true;
             }
 
@@ -980,8 +1038,8 @@
 
     });
 
-    $(document).on('input focusin', '.livespell_textarea', function() {
-        var content = $(this).text(); 
+    $(document).on('input focusin change', '.editor-wrapper', function() {
+        var content = $(this).find('textarea').val(); 
         var msg=$(this).closest('.textareaGroup').find('small.warningMsg');
 
         if(msg.length != 0){
@@ -1008,8 +1066,8 @@
     $(document).on('input change', '.pccrate', function() {
         var wrapper = $(this).closest('.work-result-wrapper');
         var rate = $(this).val(); 
-        var spell = wrapper.find('.livespell_textarea');  
-        var content = spell.text();
+        var spell = wrapper.find('.editor-wrapper');  
+        var content = spell.find('textarea').val();
         var msg = wrapper.find('small.warningMsg');
 
         if (msg.length !== 0) {
@@ -1042,7 +1100,6 @@
     });
 
     $('#submapp').on('click', function(e){
-        $Spelling.SpellCheckAsYouType($('.checker:visible'));
         $("#submitfloat").removeClass("invisible");
         $("#submitfloatnview").show({
             effect : 'slide',
@@ -1054,35 +1111,10 @@
         // $scope.submit();
     });
 
-    setInterval(() => {
-        let menu = document.querySelector("#livespell___contextmenu");
-        if (menu) {
-            let items = menu.querySelectorAll("li");
-            let arr = [
-                "JavaScriptSpellCheck",
-                "**Trial**",
-                "Please register online",
-                "javascriptspellcheck.com",
-                "*PHP Spellcheck Trial*",
-                "www.phpspellcheck.com"
-            ];
-
-            items.forEach((item) => {
-                let text = item.innerText.trim();
-                if (arr.includes(text)) {
-                    item.remove();
-                }
-            });
-
-            if(items.length==4){
-                let separators = menu.querySelectorAll("li.ls_hr");
-                separators.forEach((separator) => {
-                    separator.remove();
-                });
-            }
-        }
-    }, 10);
-
+    $(document).on('input change focus', 'textarea.spellcheck', function() {
+        this.style.height = 'auto';
+        this.style.height = this.scrollHeight + 'px';
+    });
  </script>
 
 <?php include('session.php'); ?>
