@@ -200,7 +200,11 @@
             $dtr_cover = $_POST['cover'];
             $dtr_period = explode(" ", $dtr_cover);
 
-            $dtr_data = $mainsql->get_dtr_data($profile_idnum, date("m/d/Y", strtotime($dtr_period[0].' 00:00:00')), date("m/d/Y", strtotime($dtr_period[1].' 23:59:59')), $profile_comp);
+            $dtr_data = $mainsql->get_dtr_data_final($profile_idnum, date("m/d/Y", strtotime($dtr_period[0].' 00:00:00')), date("m/d/Y", strtotime($dtr_period[1].' 23:59:59')), $profile_comp);
+
+            if($_POST['posted'] == 0){
+                $dtr_data = $mainsql->get_dtr_data($profile_idnum, date("m/d/Y", strtotime($dtr_period[0].' 00:00:00')), date("m/d/Y", strtotime($dtr_period[1].' 23:59:59')), $profile_comp);
+            }
 
             //var_dump($dtr_data);
             $dates_calculated = [];
@@ -505,7 +509,9 @@
                 </table>
             </div>
             <div class="margintop10">
+                <?php if($dates_calculated):?>
                 <span class="italic">Last updated at <?php echo date('Y-m-d H:i:s', strtotime(max($dates_calculated))); ?></span><br>
+                <?php endif; ?>
             </div>
             <?php
         break;
