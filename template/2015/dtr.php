@@ -349,7 +349,9 @@
                                 </table>
                                 </div>
                                 <div class="margintop10">
+                                    <?php if($dates_calculated):?>
                                     <span class="italic">Last updated at <?php echo date('Y-m-d H:i:s', strtotime(max($dates_calculated))); ?></span><br>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                             

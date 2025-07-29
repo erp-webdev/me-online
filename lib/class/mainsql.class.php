@@ -1882,6 +1882,43 @@ class mainsql {
 		return $result;
     }
 
+    function get_dtr_data_final($empid, $from, $to, $company, $dbname = NULL)
+	{
+        $sql = "SELECT DISTINCT 
+                        DTRDATE, 
+                        (SELECT ShiftDesc FROM HRShift where HRShift.ShiftID = viewHRDTR_Final.ShiftID) AS ShiftDesc,
+                        TimeINDate, 
+                        TimeIN, 
+                        TimeOutDate, 
+                        TimeOut, 
+                        LateHrs, 
+                        UTHrs, 
+                        Absent, 
+                        LEAVETYPE, 
+                        L01, L02, L03, L04, L05, L10, L12, L14, L15, ML,
+                        OTHrs01, OTHrs02, OTHrs03, OTHrs04, OTHrs05, 
+                        OTHrs06, OTHrs07, OTHrs08, OTHrs09, OTHrs10, 
+                        OTHrs11, OTHrs12, OTHrs13, OTHrs14, OTHrs15, 
+                        OTHrs16, OTHrs17, OTHrs18, OTHrs19, OTHrs20, 
+                        OTHrs21, OTHrs22, OTHrs23, OTHrs24, OTHrs25, 
+                        WorkHrs, RegHrs, OB, ApprovedOTHrs, ActualOTHrs, NDHrs, 
+                        (CASE 
+                            WHEN Leave01 <> 0 THEN 'SICK LEAVE' 
+                            WHEN Leave02 <> 0 THEN 'EMERGENCY LEAVE' 
+                            WHEN Leave03 <> 0 THEN 'VACATION LEAVE' 
+                            WHEN Leave04 <> 0 THEN 'MATERNITY LEAVE'
+                            WHEN Leave05 <> 0 THEN 'PATERNITY LEAVE' 
+                            WHEN Leave10 <> 0 THEN 'BEREAVEMENT LEAVE' 
+                            WHEN Leave14 <> 0 THEN 'SOLO PARENT LEAVE' 
+                            WHEN Leave15 <> 0 THEN 'PATERNITY LEAVE ALLOCATION' 
+                        END) AS LEAVE_DESC, 
+                        CreatedDate FROM viewHRDTR_Final
+                        WHERE  EmpID = '".$empid."' AND DTRDATE BETWEEN '".$from." 00:00:00.000' AND '".$to." 23:59:59.000'
+                        ORDER BY DTRDATE ASC";
+		$result = $this->get_row($sql, $dbname);
+		return $result;
+    }
+
     function get_dtr_dates($empid, $from, $to, $company, $dbname = NULL)
     {
 	$sql = "SELECT DISTINCT DTRDATE, ShiftDesc, TimeINDate, TimeIN, TimeOutDate, TimeOut, LateHrs, UTHrs, Absent, LEAVETYPE, L01, L02, L03, L04, L05, L10, L12, L14, OTHrs01, OTHrs02, OTHrs03, OTHrs04, OTHrs05, OTHrs06, OTHrs07, OTHrs08, OTHrs09, OTHrs10, OTHrs11, OTHrs12, OTHrs13, OTHrs14, OTHrs15, OTHrs16, OTHrs17, OTHrs18, OTHrs19, OTHrs20, OTHrs21, OTHrs22, OTHrs23, OTHrs24, OTHrs25, WorkHrs, RegHrs, OB, ApprovedOTHrs, ActualOTHrs, NDHrs, LEAVE_DESC FROM viewHRDTR ";
