@@ -159,7 +159,10 @@
             
             $dbname = $_POST['dbname'] ? $_POST['dbname'] : 'SUBSIDIARY';
         
-            $dtr_data = $mainsql->get_dtr_data($profile_idnum, date("m/d/Y", strtotime($dtr_period[0].' 00:00:00')), date("m/d/Y", strtotime($dtr_period[1].' 23:59:59')), $profile_comp, $dbname);  
+            $dtr_data = $mainsql->get_dtr_data_final($profile_idnum, date("m/d/Y", strtotime($dtr_period[0].' 00:00:00')), date("m/d/Y", strtotime($dtr_period[1].' 23:59:59')), $profile_comp, $dbname);  
+            if($_POST['posted'] == 0){
+                $dtr_data = $mainsql->get_dtr_data($profile_idnum, date("m/d/Y", strtotime($dtr_period[0].' 00:00:00')), date("m/d/Y", strtotime($dtr_period[1].' 23:59:59')), $profile_comp, $dbname);  
+            }
             
             //var_dump($dtr_data);
             ?>   
