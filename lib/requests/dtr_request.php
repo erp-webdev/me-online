@@ -208,6 +208,7 @@
 
             //var_dump($dtr_data);
             $dates_calculated = [];
+            $referenceTable = [];
             ?>
             <div class="innerdata">
                 <table border="0" cellspacing="0" class="tdata" style="width:<?php echo $dtr_data ? ' 2400px' : ' 100%'; ?>">
@@ -294,6 +295,10 @@
                         <?php
 
                             array_push($dates_calculated, $value['CreatedDate']);
+                            if($value['ReferenceTable'] == 'HRDTR_LateF'){
+                                array_push($referenceTable, $value['ReferenceTable']);
+                            }
+
                             $numdays = intval(date("N", strtotime($value['DTRDATE'])));
 
                             $leavedays = $value['L01'] + $value['L02'] + $value['L03'] + $value['L04'] + $value['L05'] + $value['L06'] + $value['L07'] + $value['L08'] + $value['L09'] + $value['L10'] + $value['L11'] + $value['L12'] + $value['L13'] + $value['L14'] + $value['L15'] + $value['L16'] + $value['L17'] + $value['L18'] + $value['L19'] + $value['L20'];
@@ -510,7 +515,12 @@
             </div>
             <div class="margintop10">
                 <?php if($dates_calculated):?>
-                <span class="italic">Last updated at <?php echo date('Y-m-d H:i:s', strtotime(max($dates_calculated))); ?></span><br>
+                    <span class="italic">
+                        Last updated at <?php echo date('Y-m-d H:i:s', strtotime(max($dates_calculated))); ?> 
+                        <?php if($referenceTable):?>
+                            with adjustments
+                        <?php endif; ?>
+                    </span><br>
                 <?php endif; ?>
             </div>
             <?php
