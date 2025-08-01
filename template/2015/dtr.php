@@ -129,10 +129,14 @@
                                             $shiftsched = $mainsql->get_schedshift($profile_idnum);      
                                             
                                             $dates_calculated = [];
+                                            $referenceTable = [];
                                         ?>
                                         <?php foreach ($dtr_data as $key => $value) : ?>
                                         <?php 
                                             array_push($dates_calculated, $value['CreatedDate']);
+                                            if($value['ReferenceTable'] == 'HRDTR_LateF'){
+                                                array_push($referenceTable, $value['ReferenceTable']);
+                                            }
 
                                             $numdays = intval(date("N", strtotime($value['DTRDATE'])));
 
@@ -350,7 +354,12 @@
                                 </div>
                                 <div class="margintop10">
                                     <?php if($dates_calculated):?>
-                                    <span class="italic">Last updated at <?php echo date('Y-m-d H:i:s', strtotime(max($dates_calculated))); ?></span><br>
+                                        <span class="italic">
+                                            Last updated at <?php echo date('Y-m-d H:i:s', strtotime(max($dates_calculated))); ?> 
+                                            <?php if($referenceTable):?>
+                                                with adjustments
+                                            <?php endif; ?>
+                                        </span><br>
                                     <?php endif; ?>
                                 </div>
                             </div>
