@@ -413,7 +413,9 @@
 
                         ?>
 
-                        <tr class="trdata centertalign">
+                        <tr class="trdata centertalign 
+                            <?php echo $value['ReferenceTable'] == 'HRDTR_LateF' ? 'lorangetext' : ''; ?>" 
+                            <?php echo $value['ReferenceTable'] == 'HRDTR_LateF' ? "title='Adjusted DTR'" : ""; ?>>
                             <td><?php echo date("M j", strtotime($value['DTRDATE'])); ?></td>
                             <td><?php echo date("l", strtotime($value['DTRDATE'])); ?></td>
                             <td><?php
@@ -518,7 +520,7 @@
                     <span class="italic">
                         Last updated at <?php echo date('Y-m-d H:i:s', strtotime(max($dates_calculated))); ?> 
                         <?php if($referenceTable):?>
-                            with adjustments
+                            <span class='lorangetext'> with adjustments </span>
                         <?php endif; ?>
                     </span><br>
                 <?php endif; ?>
