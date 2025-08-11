@@ -1,5 +1,5 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-<script type='text/javascript' src="<?php echo JS; ?>/JavaScriptSpellCheck/include.js" ></script>
+<link rel="stylesheet" href="<?php echo CSS; ?>/SpellChecker/spellcheck.css">
 <style>
         .loading-screen {
             position: absolute;
@@ -225,7 +225,7 @@
                                             </div> -->
                                             <br><br>
                                             <strong>Remarks</strong> <br>
-                                            <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" 
+                                            <textarea ng-class="is_approved ? '' : 'spellcheck' "
                                                     spellcheck='true' cols="60" rows="3"  placeholder="Add your remarks" 
                                                     class="checker caRemarks" 
                                                     ng-model="competency.Remarks" 
@@ -262,7 +262,7 @@
                                             <b ng-bind="competency.Competency" ></b>
                                             <br><br>
                                             <strong>Remarks</strong><br>
-                                            <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();"
+                                            <textarea ng-class="is_approved ? '' : 'spellcheck' "
                                                     spellcheck='true' cols="60" rows="3"  placeholder="Add your remarks" 
                                                     class="checker caRemarks" 
                                                     ng-model="competency.Remarks" 
@@ -322,15 +322,15 @@
                                 <tr ng-repeat="goal in record.goals">
                                     <td style="vertical-align: top;"><span ng-bind="$index+1"></span></td>
                                     <td class='textareaGroup'>
-                                        <textarea spellcheck="true"  class="checker" cols="80" rows="3" ng-model ="goal.Goals" required ng-bind="goal.Goals" ng-disabled="goal.id != null || goal.Goals == '8 hrs mandatory training'" placeholder="Provide SMART Goal" ng-attr-minlength="{{goal.id == null ? 25 : 0}}"></textarea>
+                                        <textarea spellcheck="true"  class="checker" cols="80" rows="3" ng-model ="goal.Goals" required ng-bind="goal.Goals" ng-disabled="goal.id != null || goal.Goals == '8 hrs mandatory training'" placeholder="Provide SMART Goal" ng-attr-minlength="{{goal.id == null ? 25 : 0}}" ng-class="goal.id == null ? 'spellcheck' : '' "></textarea>
                                         <br>
                                         <br>
                                         <b ng-show="goal.Goals != '8 hrs mandatory training'">Measure of Success</b><br>
-                                        <textarea spellcheck="true"  class="checker" cols="80" rows="3" ng-required="goal.Goals != '8 hrs mandatory training' && goal.id == null" ng-model="goal.MeasureOfSuccess" ng-disabled="goal.id != null || goal.Goals == '8 hrs mandatory training' || is_approved"  ng-show="goal.Goals != '8 hrs mandatory training' && goal.id == null" placeholder="Provide measure of success" ng-attr-minlength="{{goal.id == null ? 25 : 0}}"></textarea>
-                                        <span ng-bind="goal.MeasureOfSuccess"  ng-show="goal.Goals != '8 hrs mandatory training' || goal.id != null"></span>
+                                        <textarea spellcheck="true"  class="checker" cols="80" rows="3" ng-required="goal.Goals != '8 hrs mandatory training' && goal.id == null" ng-model="goal.MeasureOfSuccess" ng-disabled="goal.id != null || goal.Goals == '8 hrs mandatory training' || is_approved"  ng-show="goal.Goals != '8 hrs mandatory training' && goal.id == null" placeholder="Provide measure of success" ng-attr-minlength="{{goal.id == null ? 25 : 0}}" ng-class="goal.id == null ? 'spellcheck' : '' "></textarea>
+                                        <span ng-bind="goal.MeasureOfSuccess"  ng-show="goal.Goals != '8 hrs mandatory training' && goal.id != null"></span>
                                         <br> <br>
                                         <strong>Comments</strong><br>
-                                        <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();"
+                                        <textarea ng-class="is_approved ? '' : 'spellcheck' "
                                                 spellcheck='true' cols="80" rows="2" placeholder="Provide your comments" 
                                                 class="checker" 
                                                 ng-model="goal.Comments"
@@ -378,9 +378,9 @@
                                     <td>
                                         <a class="smlbtn"style="background-color:#D20404;" ng-click="deleteNextGoal($index)" ng-show="!is_approved">Delete</a>
                                     </td>
-                                    <td style="text-align:center;" class='textareaGroup'>
-                                        <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();"
-                                                spellcheck='true' cols="40" rows="5" 
+                                    <td class='textareaGroup'>
+                                        <textarea ng-class="is_approved ? '' : 'spellcheck' "
+                                                spellcheck='true' cols="40" rows="3" 
                                                 class="checker" 
                                                 ng-model="goal.Goals" 
                                                 ng-disabled="is_approved" 
@@ -391,9 +391,9 @@
                                             * This is a required field. Must be at least 25 characters long.
                                         </small>
                                     </td>
-                                    <td style="text-align:center;" class='textareaGroup'>
-                                        <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();"
-                                                spellcheck='true' cols="40" rows="5" 
+                                    <td class='textareaGroup'>
+                                        <textarea ng-class="is_approved ? '' : 'spellcheck' "
+                                                spellcheck='true' cols="40" rows="3" 
                                                 class="checker" 
                                                 ng-model="goal.MeasureOfSuccess" 
                                                 ng-disabled="is_approved" 
@@ -538,8 +538,9 @@
                             </h4>
                             <h4><span ng-bind="record.Rater1FullName"></span></h4>
                             <p class='textareaGroup'>
-                                <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck='true' style="width:98.4%;min-height:100px;" class="perfsummary checker" rows="3" 
+                                <textarea spellcheck='true' style="width:710px; min-height:100px;"  class="perfsummary checker" rows="3" 
                                     ng-model="record.PerformanceSummary" 
+                                    ng-class="record.for_approval_level == 1 ? 'spellcheck' : '' " 
                                     ng-show="record.for_approval_level == 1" ng-disabled="is_approved || record.for_approval_level > 1"
                                     minlength='25' required>
                                 </textarea><br>
@@ -549,24 +550,24 @@
                                 <span ng-show="record.for_approval_level > 1 || is_approved" ng-bind="record.PerformanceSummary"></span>
                             </p>
                             <!-- <hr> -->
-                            <div ng-show="record.Rater2Comment != null && (record.for_approval_level > 2 || record.status == 'Completed')">
+                            <div ng-show="record.Rater2Comment != null && (record.for_approval_level > 2 || is_approved)">
                                 <h4><span ng-bind="record.Rater2FullName"></span>' Comment</h4>
                                 <p ng-bind="record.Rater2Comment"></p>
                             </div>
-                            <div ng-show="record.Rater3Comment != null && (record.for_approval_level > 3 || record.status == 'Completed')">
+                            <div ng-show="record.Rater3Comment != null && (record.for_approval_level > 3 || is_approved)">
                                 <h4><span ng-bind="record.Rater3FullName"></span>' Comment</h4>
                                 <p ng-bind="record.Rater3Comment"></p>
                             </div>
-                            <div ng-show="record.Rater4Comment != null && (record.for_approval_level > 4 || record.status == 'Completed')">
+                            <div ng-show="record.Rater4Comment != null && (record.for_approval_level > 4 || is_approved)">
                                 <h4><span ng-bind="record.Rater4FullName"></span>' Comment</h4>
                                 <p ng-bind="record.Rater4Comment"></p>
                             </div>
-                            <div ng-show="record.status == 'Incomplete' && !is_approved">
+                            <div ng-show="!is_approved && record.for_approval_level > 1">
                                 <!-- <hr> -->
-                                <h4 ng-show="!is_approved">EVALUATION COMMENT</h4>
-                                <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck="true"  ng-model="record.Rater2Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 2"  ng-disabled="is_approved"></textarea>
-                                <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck="true"  ng-model="record.Rater3Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 3"  ng-disabled="is_approved"></textarea>
-                                <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck="true"  ng-model="record.Rater4Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 4"  ng-disabled="is_approved"></textarea>
+                                 <h4 ng-show="!is_approved">EVALUATION COMMENT</h4>
+                                <textarea ng-class="record.for_approval_level == 2 && !is_approved ? 'spellcheck' : '' " style="width:710px; min-height:100px;" ng-model="record.Rater2Comment" class="checker" ng-show="record.for_approval_level == 2 && !is_approved"  ng-disabled="is_approved" ></textarea>
+                                <textarea ng-class="record.for_approval_level == 3 && !is_approved ? 'spellcheck' : '' " style="width:710px; min-height:100px;" ng-model="record.Rater3Comment" class="checker" ng-show="record.for_approval_level == 3 && !is_approved"  ng-disabled="is_approved" ></textarea>
+                                <textarea ng-class="record.for_approval_level == 4 && !is_approved ? 'spellcheck' : '' " style="width:710px; min-height:100px;" ng-model="record.Rater4Comment" class="checker" ng-show="record.for_approval_level == 4 && !is_approved"  ng-disabled="is_approved" ></textarea>
                             </div>
                         </div>
                         <br>
@@ -596,7 +597,13 @@
 
                             <div style="border:1px solid #fff;padding-left:5px;width:98.6%;">
                                 <h4>Employee Comment </h4>
-                                <textarea spellcheck="true" id="EmployeeAccept" class="checker" style="width:98.4%;min-height:100px;" ng-show="is_approved" ng-hide="record.EmpComment != null"></textarea>
+                                <textarea spellcheck="true" 
+                                    id="EmployeeAccept" 
+                                    class="checker" 
+                                    style="width:98.4%;min-height:100px;" 
+                                    ng-show="is_approved" 
+                                    ng-hide="record.EmpComment != null"
+                                    ng-class="record.EmpComment == null ? 'spellcheck' : '' "></textarea>
                                 <div ng-show="record.EmpComment != null && is_approved">
                                     <p ng-bind="record.EmpComment"></p>
                                 </div>
@@ -621,7 +628,58 @@
     // angular retrieve record from https://dev.megaworldcorp.com/test
     $('#evaluation-form-wrapper').hide();
     var app = angular.module('myApp', []);
-    app.controller('myCtrl', function($scope, $http,  $sce) {
+    app.factory('spellCheckerService', ['$q', function($q) {
+        let spellCheckerModule = null; 
+        const SPELLCHECK_MODULE_PATH = '<?php echo JS; ?>/SpellChecker/spellcheck.js';
+
+        async function loadSpellCheckerModule() {
+            if (spellCheckerModule) {
+                return spellCheckerModule; 
+            }
+            try {
+                const module = await import(SPELLCHECK_MODULE_PATH);
+                spellCheckerModule = module;
+                console.log('SpellChecker module loaded successfully:', module);
+                return module;
+            } catch (error) {
+                console.error('Failed to load SpellChecker module:', error);
+                return $q.reject(error);
+            }
+        }
+
+        return {
+            initializeSpellingChecker: async function() {
+                try {
+                    const module = await loadSpellCheckerModule();
+                    if (module && typeof module.initializeSpellingChecker === 'function') {
+                        module.initializeSpellingChecker();
+                    } else {
+                        console.warn('initializeSpellingChecker function not found in the module.');
+                    }
+                } catch (error) {
+                    console.error('Error calling initializeSpellingChecker:', error);
+                }
+            },
+
+            
+            getSpellCheckerClass: async function() {
+                try {
+                    const module = await loadSpellCheckerModule();
+                    if (module && module.SpellChecker) {
+                        return module.SpellChecker;
+                    } else {
+                        console.warn('SpellChecker class not found in the module.');
+                        return null;
+                    }
+                } catch (error) {
+                    console.error('Error getting SpellChecker class:', error);
+                    return null;
+                }
+            }
+        };
+    }]);
+
+    app.controller('myCtrl', function($scope, $http,  $sce, spellCheckerService) {
         let apiUrl = '<?php echo MEWEB; ?>/peoplesedge/api/pmsv1/';
 
         $scope.record = [];
@@ -728,6 +786,7 @@
 
                 $scope.loading = false;
                 $('#evaluation-form-wrapper').show();
+                spellCheckerService.initializeSpellingChecker();
             },
             function errorCallback(response) {
                     // called asynchronously if an error occurs
@@ -970,22 +1029,17 @@
 
                 return false;
             }
-            // else if($scope.checkSpelling()){
-            //     $('span.livespell_redwiggle').closest('div').focus();
-            //     $('span.livespell_greenwiggle').closest('div').focus();
-            //     alert('Spelling errors found. Please review and correct the highlighted words before submitting the form. \n\nNote: To see suggestions, right click on misspelled word.');
+            else if($scope.checkSpelling()){
+                $('.editor-wrapper.invalid-spellcheck').find('textarea.spellcheck').first().focus();
+                alert('Spelling errors found. Please review and correct the highlighted words before submitting the form. \n\nNote: To see suggestions, click on misspelled word.');
 
-            //     return false;
-            // }
-
-           return true
+                return false;
+            }
+            return true
         };
 
         $scope.checkSpelling = function(){
-            if ($('span.livespell_redwiggle').length > 0){
-                return true;
-            }
-            else if ($('span.livespell_greenwiggle').length > 0){
+            if ($('.editor-wrapper.invalid-spellcheck').length > 0){
                 return true;
             }
 
@@ -994,14 +1048,23 @@
 
     });
 
-    $(document).on('input focusin', '.livespell_textarea', function() {
-        var content = $(this).text(); 
+    $(document).on('input focusin change', '.editor-wrapper', function() {
+        var content = $(this).find('textarea').val(); 
         var msg=$(this).closest('.textareaGroup').find('small.warningMsg');
 
         if(msg.length != 0){
             if (!content || content.length < 25) {
                 $(this).css('background-color', 'hsl(0deg 25% 50%)');
-                msg.show();
+
+                var $wrapper = $(this).closest('.work-result-wrapper');
+                var rating = $wrapper.find('input.pccrate').val();
+                if(rating==3){
+                    $(this).css('background-color', '#fff');
+                    msg.hide();
+                }
+                else{
+                    msg.show();
+                }
             } 
             else {
                 $(this).css('background-color', '#fff');
@@ -1021,7 +1084,6 @@
     });
 
     $('#submapp').on('click', function(e){
-        $Spelling.SpellCheckAsYouType($('.checker:visible'));
         $("#submitfloat").removeClass("invisible");
         $("#submitfloatnview").show({
             effect : 'slide',
@@ -1046,33 +1108,9 @@
         popup.css("display", "none");
     });
 
-    setInterval(() => {
-        let menu = document.querySelector("#livespell___contextmenu");
-        if (menu) {
-            let items = menu.querySelectorAll("li");
-            let arr = [
-                "JavaScriptSpellCheck",
-                "**Trial**",
-                "Please register online",
-                "javascriptspellcheck.com",
-                "*PHP Spellcheck Trial*",
-                "www.phpspellcheck.com"
-            ];
-
-            items.forEach((item) => {
-                let text = item.innerText.trim();
-                if (arr.includes(text)) {
-                    item.remove();
-                }
-            });
-
-            if(items.length==4){
-                let separators = menu.querySelectorAll("li.ls_hr");
-                separators.forEach((separator) => {
-                    separator.remove();
-                });
-            }
-        }
-    }, 10);
+    $(document).on('input change focus', 'textarea.spellcheck', function() {
+        this.style.height = 'auto';
+        this.style.height = this.scrollHeight + 'px';
+    });
     </script>
     <?php include('session.php'); ?>
