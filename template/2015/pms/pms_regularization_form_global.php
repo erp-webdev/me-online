@@ -1,5 +1,4 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-<script type='text/javascript' src="<?php echo JS; ?>/JavaScriptSpellCheck/include.js" ></script>
 <link rel="stylesheet" href="<?php echo CSS; ?>/SpellChecker/spellcheck.css">
 <style>
     .loading-screen {
@@ -585,12 +584,12 @@
                                 <h4><span ng-bind="record.Rater4FullName"></span>' Comment</h4>
                                 <p ng-bind="record.Rater4Comment"></p>
                             </div>
-                            <div ng-show="record.status == 'Incomplete' && !is_approved">
+                            <div ng-show=" !is_approved && record.for_approval_level > 1">
                                 <!-- <hr> -->
                                 <h4 ng-show="!is_approved">EVALUATION COMMENT</h4>
-                                <textarea ng-class="record.for_approval_level == 2 && !is_approved ? '' : 'spellcheck' " style="width:710px; min-height:100px;" ng-model="record.Rater2Comment" class="checker" ng-show="record.for_approval_level == 2 && !is_approved"  ng-disabled="is_approved" ></textarea>
-                                <textare ng-class="record.for_approval_level == 3 && !is_approved ? '' : 'spellcheck' " style="width:710px; min-height:100px;" ng-model="record.Rater2Comment" class="checker" ng-show="record.for_approval_level == 3 && !is_approved"  ng-disabled="is_approved" ></textarea>
-                                <textarea ng-class="record.for_approval_level == 4 && !is_approved ? '' : 'spellcheck' " style="width:710px; min-height:100px;" ng-model="record.Rater2Comment" class="checker" ng-show="record.for_approval_level == 4 && !is_approved"  ng-disabled="is_approved" ></textarea>
+                                <textarea ng-class="record.for_approval_level == 2 && !is_approved ? 'spellcheck' : '' " style="width:710px; min-height:100px;" ng-model="record.Rater2Comment" class="checker" ng-show="record.for_approval_level == 2 && !is_approved"  ng-disabled="is_approved" ></textarea>
+                                <textarea ng-class="record.for_approval_level == 3 && !is_approved ? 'spellcheck' : '' " style="width:710px; min-height:100px;" ng-model="record.Rater3Comment" class="checker" ng-show="record.for_approval_level == 3 && !is_approved"  ng-disabled="is_approved" ></textarea>
+                                <textarea ng-class="record.for_approval_level == 4 && !is_approved ? 'spellcheck' : '' " style="width:710px; min-height:100px;" ng-model="record.Rater4Comment" class="checker" ng-show="record.for_approval_level == 4 && !is_approved"  ng-disabled="is_approved" ></textarea>
                                 <span ng-show="!is_approved" style="font-style:italic;margin-left:5px;font-size:10px;">Note: Salary increase will be based on the Overall Performance Rating.</span>
                             </div>
                         </div>
@@ -627,7 +626,14 @@
 
                         <div style="border:1px solid #fff;padding-left:5px;width:98.6%;">
                             <h4>Employee Comment </h4>
-                            <textarea spellcheck="true" id="EmployeeAccept" class="checker" style="width:98.4%;min-height:100px;" ng-show="is_approved" ng-hide="record.EmpComment != null"></textarea>
+                            <textarea spellcheck="true" 
+                                id="EmployeeAccept" 
+                                class="checker"
+                                style="width:710px;min-height:100px;" 
+                                ng-show="is_approved" 
+                                ng-hide="record.EmpComment != null"
+                                ng-class="record.EmpComment == null ? 'spellcheck' : '' ">
+                            </textarea>
                             <div ng-show="record.EmpComment != null && is_approved">
                                 <p ng-bind="record.EmpComment"></p>
                             </div>
@@ -1019,7 +1025,6 @@
 
                 return false;
             }
-            //TODO: NEED TO UNCOMMENT THIS AFTER TESTING
             return true
         };
 
