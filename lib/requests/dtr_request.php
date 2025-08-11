@@ -200,10 +200,15 @@
             $dtr_cover = $_POST['cover'];
             $dtr_period = explode(" ", $dtr_cover);
 
-            $dtr_data = $mainsql->get_dtr_data($profile_idnum, date("m/d/Y", strtotime($dtr_period[0].' 00:00:00')), date("m/d/Y", strtotime($dtr_period[1].' 23:59:59')), $profile_comp);
+            $dtr_data = $mainsql->get_dtr_data_final($profile_idnum, date("m/d/Y", strtotime($dtr_period[0].' 00:00:00')), date("m/d/Y", strtotime($dtr_period[1].' 23:59:59')), $profile_comp);
+
+            if($_POST['posted'] == 0){
+                $dtr_data = $mainsql->get_dtr_data($profile_idnum, date("m/d/Y", strtotime($dtr_period[0].' 00:00:00')), date("m/d/Y", strtotime($dtr_period[1].' 23:59:59')), $profile_comp);
+            }
 
             //var_dump($dtr_data);
             $dates_calculated = [];
+            $referenceTable = [];
             ?>
             <div class="innerdata">
                 <table border="0" cellspacing="0" class="tdata" style="width:<?php echo $dtr_data ? ' 2400px' : ' 100%'; ?>">
@@ -290,6 +295,10 @@
                         <?php
 
                             array_push($dates_calculated, $value['CreatedDate']);
+                            if($value['ReferenceTable'] == 'HRDTR_LateF'){
+                                array_push($referenceTable, $value['ReferenceTable']);
+                            }
+
                             $numdays = intval(date("N", strtotime($value['DTRDATE'])));
 
                             $leavedays = $value['L01'] + $value['L02'] + $value['L03'] + $value['L04'] + $value['L05'] + $value['L06'] + $value['L07'] + $value['L08'] + $value['L09'] + $value['L10'] + $value['L11'] + $value['L12'] + $value['L13'] + $value['L14'] + $value['L15'] + $value['L16'] + $value['L17'] + $value['L18'] + $value['L19'] + $value['L20'];
@@ -404,7 +413,9 @@
 
                         ?>
 
-                        <tr class="trdata centertalign">
+                        <tr class="trdata centertalign 
+                            <?php echo $value['ReferenceTable'] == 'HRDTR_LateF' ? 'lorangetext' : ''; ?>" 
+                            <?php echo $value['ReferenceTable'] == 'HRDTR_LateF' ? "title='Adjusted DTR'" : ""; ?>>
                             <td><?php echo date("M j", strtotime($value['DTRDATE'])); ?></td>
                             <td><?php echo date("l", strtotime($value['DTRDATE'])); ?></td>
                             <td><?php
@@ -505,7 +516,14 @@
                 </table>
             </div>
             <div class="margintop10">
-                <span class="italic">Last updated at <?php echo date('Y-m-d H:i:s', strtotime(max($dates_calculated))); ?></span><br>
+                <?php if($dates_calculated):?>
+                    <span class="italic">
+                        Last updated at <?php echo date('Y-m-d H:i:s', strtotime(max($dates_calculated))); ?> 
+                        <?php if($referenceTable):?>
+                            <span class='lorangetext'> with adjustments </span>
+                        <?php endif; ?>
+                    </span><br>
+                <?php endif; ?>
             </div>
             <?php
         break;
