@@ -54,6 +54,7 @@
             }else
                 $posted = 1;
 
+            $dtr_data = $mainsql->get_dtr_data_final($udtr_idnum, date("m/d/Y", strtotime($expfrom[0].' '.$expfrom[1].' '.$expfrom[2].' 00:00:00')), date("m/d/Y", strtotime($expto[0].' '.$expto[1].' '.$expto[2].' 23:59:59')), $udtr_comp, $dbname);  
             if ($posted == 0) :
 
                 while($dfrom < $dto + 86400) : 
@@ -95,10 +96,9 @@
 
                     $dfrom = $dfrom + 86400;
                 endwhile;     
-            endif;
-            
-            $dtr_data = $mainsql->get_dtr_data($udtr_idnum, date("m/d/Y", strtotime($expfrom[0].' '.$expfrom[1].' '.$expfrom[2].' 00:00:00')), date("m/d/Y", strtotime($expto[0].' '.$expto[1].' '.$expto[2].' 23:59:59')), $udtr_comp, $dbname);  
-        
+
+                $dtr_data = $mainsql->get_dtr_data($udtr_idnum, date("m/d/Y", strtotime($expfrom[0].' '.$expfrom[1].' '.$expfrom[2].' 00:00:00')), date("m/d/Y", strtotime($expto[0].' '.$expto[1].' '.$expto[2].' 23:59:59')), $udtr_comp, $dbname);
+            endif;  
         else :
         
             echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/login'</script>";    

@@ -531,7 +531,11 @@
                         </table><br />     
 
                         <div style="border:1px solid #fff;padding-left:5px;width:98.6%;">
-                            <h4>PERFORMANCE SUMMARY <span style="font-size:10px;font-weight:normal;">(Written by Reviewing Manager)</span> </h4>
+                            <h4>
+                                VI. PERFORMANCE SUMMARY 
+                                <span style="font-size:10px;font-weight:normal;">(Written by Reviewing Manager)</span><br>
+                                <span  ng-show="record.for_approval_level == 1" style=" font-weight:normal; font-size:11px;">Note: When creating the performance summary for the ratee, <b>DO NOT include details about salary increases or promotions, as the ratee will have access to this information.</b></span> 
+                            </h4>
                             <h4><span ng-bind="record.Rater1FullName"></span></h4>
                             <p class='textareaGroup'>
                                 <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck='true' style="width:98.4%;min-height:100px;" class="perfsummary checker" rows="3" 
