@@ -2344,6 +2344,20 @@ class mainsql {
             FROM HRShift ";
         $sql .= " WHERE Active = 1 ";
         if ($shiftid != NULL) : $sql .= " AND ShiftID = '".$shiftid."' "; endif;
+        
+		$result = $this->get_row($sql);
+		return $result;
+    }
+
+     function get_shift_compressed($shiftid = NULL, $compressed = NULL)
+	{
+		$sql = "SELECT ShiftID, ShiftDesc, TimeIN, TimeOUT, NUMHrs, BreakIN, BreakOUT, BreakHours
+            FROM HRShift ";
+        $sql .= " WHERE Active = 1 ";
+        if ($shiftid != NULL) : $sql .= " AND ShiftID = '".$shiftid."' "; endif;
+        if($compressed !== NULL) 
+            $compressed ? $sql .= " AND ShiftDesc LIKE '%COMP%' " : $sql .= " AND ShiftDesc NOT LIKE '%COMP%' " ; 
+
 		$result = $this->get_row($sql);
 		return $result;
     }
