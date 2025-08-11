@@ -129,10 +129,14 @@
                                             $shiftsched = $mainsql->get_schedshift($profile_idnum);      
                                             
                                             $dates_calculated = [];
+                                            $referenceTable = [];
                                         ?>
                                         <?php foreach ($dtr_data as $key => $value) : ?>
                                         <?php 
                                             array_push($dates_calculated, $value['CreatedDate']);
+                                            if($value['ReferenceTable'] == 'HRDTR_LateF'){
+                                                array_push($referenceTable, $value['ReferenceTable']);
+                                            }
 
                                             $numdays = intval(date("N", strtotime($value['DTRDATE'])));
 
@@ -248,7 +252,9 @@
 
                                         ?>
 
-                                        <tr class="trdata centertalign">
+                                        <tr class="trdata centertalign 
+                                            <?php echo $value['ReferenceTable'] == 'HRDTR_LateF' ? 'lorangetext' : ''; ?>" 
+                                            <?php echo $value['ReferenceTable'] == 'HRDTR_LateF' ? "title='Adjusted DTR'" : ""; ?>>
                                             <td><?php echo date("M j", strtotime($value['DTRDATE'])); ?></td>
                                             <td><?php echo date("l", strtotime($value['DTRDATE'])); ?></td>
                                             <td><?php 
@@ -349,7 +355,14 @@
                                 </table>
                                 </div>
                                 <div class="margintop10">
-                                    <span class="italic">Last updated at <?php echo date('Y-m-d H:i:s', strtotime(max($dates_calculated))); ?></span><br>
+                                    <?php if($dates_calculated):?>
+                                        <span class="italic">
+                                            Last updated at <?php echo date('Y-m-d H:i:s', strtotime(max($dates_calculated))); ?> 
+                                            <?php if($referenceTable):?>
+                                                <span class='lorangetext'> with adjustments </span>
+                                            <?php endif; ?>
+                                        </span><br>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                             
