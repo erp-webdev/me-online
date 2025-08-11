@@ -2834,7 +2834,7 @@ switch ($sec) {
 
                     $dtr_data = $mainsql->get_dtr_bydate($profile_idnum, date("m/d/Y", $udate));
 
-                    $shiftlist = $mainsql->get_shift();
+                    $shiftlist = $mainsql->get_shift_compressed(NULL, $compressed);
 
                     $shiftsched2 = $mainsql->get_schedshiftdtr($profile_idnum, $dates);
                     $sft = $mainsql->get_shift($shiftsched2[0]['ShiftID']);
@@ -3627,7 +3627,7 @@ switch ($sec) {
                 $key = 1;
 
                 $shiftsched = $mainsql->get_schedshift($profile_idnum);
-                $shiftlist = $mainsql->get_shift();
+                $shiftlist = $mainsql->get_shift_compressed(NULL, $compressed);
 
                 while ($tsched_from <= $tsched_to) {
 
