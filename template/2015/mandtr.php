@@ -54,7 +54,7 @@
                                                                     $key = 1;
 
                                                                     $shiftsched = $mainsql->get_schedshift($profile_idnum);
-                                                                    $shiftlist = $mainsql->get_shift();
+                                                                    $shiftlist = $mainsql->get_shift_compressed(NULL, $compressed);
 
                                                                     while($mandtr_from <= $mandtr_today) {
 
