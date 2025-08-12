@@ -2005,10 +2005,12 @@ class mainsql {
 
     function get_payslip_period($year, $company, $id = 0, $all = 0)
 	{
-		$sql = "SELECT PeriodID, PRYear, PRFrom, PRTo, PeriodFrom, PeriodTo, PaymentType FROM HRCompanyCutOff WHERE PRYear='".$year."' AND PaymentType <> 'SPECIAL'  ";
+		// $sql = "SELECT PeriodID, PRYear, PRFrom, PRTo, PeriodFrom, PeriodTo, PaymentType FROM HRCompanyCutOff WHERE PRYear='".$year."' AND PaymentType <> 'SPECIAL'  ";
+        // Aug 12, 2025 : Allow viewing of payslip for special payroll EXCEPT SP12, SP24, SP23 (SPECIAL INCENTIVE)
+		$sql = "SELECT PeriodID, PRYear, PRFrom, PRTo, PeriodFrom, PeriodTo, PaymentType FROM HRCompanyCutOff WHERE PRYear='".$year."' ";
         if ($id) : $sql .= " AND PeriodID = '".$id."' "; endif;
            // $sql .= " AND PeriodID != 'S02' ";
-	    $sql .= " AND PeriodID NOT IN ('SP13', 'SP23', 'SP24') ";
+	    $sql .= " AND PeriodID NOT IN ('SP12', 'SP13', 'SP23', 'SP24') ";
         if ($all == 0) : $sql .= " AND PeriodTo <= GETDATE() "; endif;
         $sql .= " AND CompanyID = '".$company."' ORDER BY PaymentType, PeriodID DESC";
 		$result = $this->get_row($sql);
