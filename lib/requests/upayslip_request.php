@@ -115,7 +115,8 @@
                         $year_select .= '<option value="'.$value['PeriodID'].'">'.$value['PaymentType']." ".$value['PRYear']." ".date("m/d/Y", strtotime($value['PeriodFrom']))." to ".date("m/d/Y", strtotime($value['PeriodTo'])).'</option>';
                 endforeach;
                     $year_select .= '<option value="SP04">SL CONVERSION ' .$_POST['year'].'</option>';
-                    $year_select .= '<option value="SP21">13TH MONTH ' .$_POST['year'].'</option>';
+                    $year_select .= '<option value="SP08">13TH MONTH 1/2 ' .$_POST['year'].'</option>';
+                    $year_select .= '<option value="SP21">13TH MONTH 2/2 ' .$_POST['year'].'</option>';
             endif;
             echo $year_select;
         break;
