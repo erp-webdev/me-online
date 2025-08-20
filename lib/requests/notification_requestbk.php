@@ -32,6 +32,7 @@
     $mainsql = new mainsql;
     $register = new regsql;
     $pafsql	= new pafsql;
+    $logsql = new logsql;
 
     /* MAIN DB CONNECTOR - END */
 
@@ -762,6 +763,21 @@
 
             $lvcancel_request = $mainsql->leave_action($lvcpost, 'lvitemcancel');
 
+            if($lvcancel_request){
+                //AUDIT TRAIL
+                $post['EMPID'] = $profile_id;
+                $post['TASKS'] = "CANCELLED LEAVE ITEM";
+                $audit_data = [
+                                    'EmpID' => $profile_id,
+                                    'DBName' => $profile_dbname,
+                                    'RefNo'=> $lvcpost['REQ'],
+                                    'DTRDate' => $lvcpost['DTRDATE']
+                            ];
+                $post['DATA'] = json_encode($audit_data);
+                $post['DATE'] = date("m/d/Y H:i:s.000");
+                $log = $logsql->log_action($post, 'add');
+            }
+
             echo $lvcancel_request;
 
         break;
@@ -773,6 +789,21 @@
 
             $mdcancel_request = $mainsql->md_action($mdcpost, 'mditemcancel');
 
+            if($mdcancel_request){
+                //AUDIT TRAIL
+                $post['EMPID'] = $profile_id;
+                $post['TASKS'] = "CANCELLED MANUAL DTR ITEM";
+                $audit_data = [
+                                    'EmpID' => $profile_id,
+                                    'DBName' => $profile_dbname,
+                                    'RefNo'=> $mdcpost['REQ'],
+                                    'DTRDate' => $mdcpost['DTRDATE']
+                            ];
+                $post['DATA'] = json_encode($audit_data);
+                $post['DATE'] = date("m/d/Y H:i:s.000");
+                $log = $logsql->log_action($post, 'add');
+            }
+
             echo $mdcancel_request;
 
         break;
@@ -783,6 +814,21 @@
             $sccpost['STATUS'] = 0;
 
             $sccancel_request = $mainsql->sc_action($sccpost, 'scitemcancel');
+
+            if($sccancel_request){
+                //AUDIT TRAIL
+                $post['EMPID'] = $profile_id;
+                $post['TASKS'] = "CANCELLED TIMESCHEDULER ITEM";
+                $audit_data = [
+                                    'EmpID' => $profile_id,
+                                    'DBName' => $profile_dbname,
+                                    'RefNo'=> $sccpost['REQ'],
+                                    'DTRDate' => $sccpost['DTRDATE']
+                            ];
+                $post['DATA'] = json_encode($audit_data);
+                $post['DATE'] = date("m/d/Y H:i:s.000");
+                $log = $logsql->log_action($post, 'add');
+            }
 
             echo $sccancel_request;
 
