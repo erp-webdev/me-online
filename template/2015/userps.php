@@ -49,7 +49,7 @@
                                                     </option> 
                                                     
                                                     <option value="SP21">
-                                                        13TH MONTH  2/2<?php echo date("Y"); ?>
+                                                        13TH MONTH 2/2 <?php echo date("Y"); ?>
                                                     </option>
 
                                                     <!--13 MONTH - END -->
