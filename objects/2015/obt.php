@@ -25,6 +25,7 @@
                 //CHECK IF DATE AND TIME OVERLAP
         
                 $overlap = 0;
+                $incomplete = false;
                 for ($i=1; $i<=($obtitemcount - 1); $i++) :
                     $outob = strtotime($_POST['obt_dateout'][$i].' '.$_POST['obt_timeout'][$i]);
                     $inob = strtotime($_POST['obt_date'][($i + 1)].' '.$_POST['obt_timein'][($i + 1)]);
@@ -32,12 +33,23 @@
                     if ($outob > $inob) :
                         $overlap++;
                     endif;
+
+                    if (empty($_POST['obt_dateout'][$i]) || empty($_POST['obt_timeout'][$i]) || 
+                    empty($_POST['obt_date'][$i + 1]) || empty($_POST['obt_timein'][$i + 1])) {
+                        $incomplete = true;
+                        break;
+                    }
                 endfor;
         
                 if ($overlap) :                        
                     echo '{"success": false, "error": "You provide an overlap date in your application"}';
                     exit();
                 endif;
+                
+                if ($incomplete) {
+                    echo '{"success": false, "error": "One of the date/time fields is incomplete."}';
+                    exit();
+                }
         
                 //CHECK FOR INVALID DATE/TIME IN AND OUT
         

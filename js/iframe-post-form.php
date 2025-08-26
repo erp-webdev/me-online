@@ -468,9 +468,11 @@ $(function ()
 
 			if (!response.success)
 			{
-                if (response.details = 'not available') {
+                if (response.details == 'not available') {
                     html += 'Registration denied. Maybe the event registration has been ended or slot is full.';
-                } else {
+                }else if (response.details == 'Registration is full on the selected cinema') {
+                    html += 'Registration is full on the selected cinema';
+                }else {
 				    html += 'There was a problem on registering on activity';
                 }
 
@@ -491,7 +493,7 @@ $(function ()
 			else
 			{
                 $('.actreg_msg').slideUp();
-                alert('You have been successfully registered to the activity.');
+                alert('You have been successfully registered to the activity. You will be redirected to the Registration Page. Always check that you have a QR Code generated.');
                 window.location.href='<?php echo WEB; ?>/registration';
 			}
 		}
@@ -1864,15 +1866,49 @@ $(function ()
 
                 if ($('#obt_destination').val().length && $('#obt_from').val().length && $('#obt_to').val().length && $('#obt_purpose').val().length)
                 {
-                    $('.mob_msg')
-                    .html('<i class="fa fa-refresh fa-spin fa-lg"></i> Processing official business trip&hellip;')
-                    .css({
-                        color : '#006100',
-                        background : '#c6efce',
-                        border : '2px solid #006100',
-                        height : 'auto'
-                    })
-                    .slideDown();
+                    let incomplete = false;
+                    let obtDateOut = $('input[name^="obt_dateout["]');
+                    let obtTimeOut = $('input[name^="obt_timeout["]');
+                    let obtDate = $('input[name^="obt_date["]');
+                    let obtTimeIn = $('input[name^="obt_timein["]');
+
+                    for (let i = 0; i < obtDateOut.length; i++) {
+                        let dateOutVal = obtDateOut.eq(i).val();
+                        let timeOutVal = obtTimeOut.eq(i).val();
+                        let dateVal = obtDate.eq(i).val();
+                        let timeInVal = obtTimeIn.eq(i).val();
+
+                        if (!dateOutVal || !timeOutVal || !dateVal || !timeInVal) {
+                            incomplete = true;
+                            break;
+                        }
+                    }
+                    
+                    if (incomplete) {
+                        $('.mob_msg')
+                            .html('One of the date/time fields is incomplete.')
+                            .css({
+                                color : '#9c0006',
+                                background : '#ffc7ce',
+                                border : '2px solid #9c0006',
+                                height : 'auto'
+                            })
+                            .slideDown()
+                            .effect('shake', {times: 3, distance: 5}, 420);
+
+                        return false;
+                    }
+                    else{
+                        $('.mob_msg')
+                        .html('<i class="fa fa-refresh fa-spin fa-lg"></i> Processing official business trip&hellip;')
+                        .css({
+                            color : '#006100',
+                            background : '#c6efce',
+                            border : '2px solid #006100',
+                            height : 'auto'
+                        })
+                        .slideDown();
+                    }
                 }
                 else
                 {
@@ -2153,15 +2189,56 @@ $(function ()
 
                 if ($('#mdtr_from').val().length && $('#mdtr_to').val().length)
                 {
-                    $('.mdtr_msg')
-                    .html('<i class="fa fa-refresh fa-spin fa-lg"></i> Processing manual DTR&hellip;')
-                    .css({
-                        color : '#006100',
-                        background : '#c6efce',
-                        border : '2px solid #006100',
-                        height : 'auto'
-                    })
-                    .slideDown();
+                    let incomplete = false;
+                    let mdtrNewSched = $('[name^="mdtr_newsched["]');
+                    let isAbsent = $('input[name^="mdtr_absent["]');
+                    let mdtrDateOut = $('input[name^="mdtr_dayout["]');
+                    let mdtrTimeOut = $('input[name^="mdtr_timeout["]');
+                    let mdtrDate = $('input[name^="mdtr_dayin["]');
+                    let mdtrTimeIn = $('input[name^="mdtr_timein["]');
+
+                    for (let i = 0; i < mdtrDateOut.length; i++) {
+                        let dateOutVal = mdtrDateOut.eq(i).val();
+                        let timeOutVal = mdtrTimeOut.eq(i).val();
+                        let dateVal = mdtrDate.eq(i).val();
+                        let timeInVal = mdtrTimeIn.eq(i).val();
+                        let newsched = mdtrNewSched.eq(i).val();
+
+                        if (!dateOutVal || !timeOutVal || !dateVal || !timeInVal) {
+                            incomplete = true;
+                            if(isAbsent[i].checked || newsched==''){
+                                incomplete = false;
+                            }
+
+                            break;
+                        }
+                    }
+                    
+                    if (incomplete) {
+                        $('.mdtr_msg')
+                            .html('One of the date/time fields is incomplete.')
+                            .css({
+                                color : '#9c0006',
+                                background : '#ffc7ce',
+                                border : '2px solid #9c0006',
+                                height : 'auto'
+                            })
+                            .slideDown()
+                            .effect('shake', {times: 3, distance: 5}, 420);
+
+                        return false;
+                    }
+                    else{
+                        $('.mdtr_msg')
+                        .html('<i class="fa fa-refresh fa-spin fa-lg"></i> Processing manual DTR&hellip;')
+                        .css({
+                            color : '#006100',
+                            background : '#c6efce',
+                            border : '2px solid #006100',
+                            height : 'auto'
+                        })
+                        .slideDown();
+                    }
                 }
                 else
                 {
