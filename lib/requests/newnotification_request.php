@@ -685,6 +685,22 @@
 
             $sccancel_request = $mainsql->sc_action($sccpost, 'scitemcancel');
 
+            if($sccancel_request){
+                //AUDIT TRAIL
+                $post['EMPID'] = $profile_id;
+                $post['TASKS'] = "CANCELLED TIMESCHEDULER ITEM";
+                $audit_data = [
+                                    'EmpID' => $profile_id,
+                                    'DBName' => $profile_dbname,
+                                    'RefNo'=> $sccpost['REQ'],
+                                    'DTRDate' => $sccpost['DTRDATE']
+                            ];
+                $post['DATA'] = json_encode($audit_data);
+                $post['DATE'] = date("m/d/Y H:i:s.000");
+                $log = $logsql->log_action($post, 'add');
+            }
+
+
             echo $sccancel_request;
 
         break;
