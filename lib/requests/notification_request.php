@@ -5543,6 +5543,25 @@
 			$hpa_percentage = $_POST["hpa_percentage"];
 			$coe_company = ($_POST["coe_company"] != '') ? $_POST["coe_company"] : $profile_comp;
 			$avail_no = $_POST["avail_no"];
+
+            if($coetype == 'COEJOBDESC'){
+                $latest_evaluation = "SELECT TOP 1 GeneralResponsibilities 
+                        FROM PEOPLESEDGE.DBO.pms_evaluation
+                        WHERE EmpID = '$coeemp' 
+                        AND CompanyID = '$coe_company'
+                        AND status='Completed'
+                        ORDER BY created_at DESC";
+			    $latest_evaluation = $mainsql->get_row($latest_evaluation);
+                
+                if($latest_evaluation[0]['GeneralResponsibilities']){
+                    array_push($tasks, $latest_evaluation[0]['GeneralResponsibilities']);
+
+                    $tasks = array_values(array_filter($tasks, function($item) {
+                        return trim($item) !== '';
+                    }));
+                }
+            }
+
 			$tasks = json_encode($tasks);
 
 			if($coe_company == ''){
