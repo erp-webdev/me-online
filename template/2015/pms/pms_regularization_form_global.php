@@ -39,6 +39,13 @@
             /* background-color: #FFE57D;  */
             padding: 5px;
         }
+
+        .disabled-div {
+            pointer-events: none;
+            opacity: 0.6;        
+            filter: grayscale(100%);
+        }
+
 </style>
 
 <div class="rightsplashtext lefttalign">
@@ -361,7 +368,7 @@
                             </div><!-- End of part 4 -->
                         </div>
                         
-                        <div >
+                        <div ng-class="record.total_computed_score >= 3 ? '' : 'disabled-div'">
                             <div style="border:1px solid #fff;padding-left:5px;padding-right:5px;width:98%;">
                                 <h4>V. SETTING OBJECTIVES FOR NEXT REVIEW PERIOD</h4>
                                 <p style="font-weight:bold;">WORK RESULTS <span style="font-weight:normal;">(Minimum 3 SMART objectives and potential PMS, set by Reviewing Manager)</span></p>
@@ -377,7 +384,7 @@
                                             <textarea spellcheck='true' ng-class="is_approved ? '' : 'spellcheck' " class="checker" cols="80" rows="2" 
                                                     ng-model="next_goal.Objective" 
                                                     ng-disabled="is_approved" 
-                                                    minlength='25' required>
+                                                    minlength='25' ng-required="record.total_computed_score >= 3">
                                             </textarea>
                                             <br>
                                             <small class='warningMsg' style="display:none;">
@@ -389,7 +396,7 @@
                                             <textarea spellcheck='true' ng-class="is_approved ? '' : 'spellcheck' " class="checker" cols="80" rows="2" 
                                                     ng-model="next_goal.MeasureOfSuccess" 
                                                     ng-disabled="is_approved" 
-                                                    minlength='25' required>
+                                                    minlength='25' ng-required="record.total_computed_score >= 3">
                                             </textarea><br>
                                             <small class='warningMsg' style="display:none;">
                                                 * This is a required field. Must be at least 25 characters long.
@@ -403,11 +410,11 @@
                                                 style="width: 35px;"
                                                 type="number"
                                                 ng-model="next_goal.Weight"
-                                                min="1"
+                                                ng-min="record.total_computed_score >= 3 ? 1 : 0"
                                                 max="100"
                                                 class="width25 smltxtbox p5w checker"
                                                 ng-change="updateRecord()"
-                                                required
+                                                ng-required="record.total_computed_score >= 3"
                                                 ng-disabled="is_approved"
                                                 onkeypress="return (event.charCode >= 48 && event.charCode <= 57) || event.charCode==8"
                                                 onkeydown="if ((this.value.length == 2 || this.value.length == 3) && ((this.value >= 10 && this.value <= 100 && !(this.value == 10 && event.keyCode == 48)) && event.keyCode != 8))  return false;"
@@ -428,7 +435,7 @@
                                         <th>Total Weight %</th>
                                     </tr>
                                     <tr>
-                                        <td style="text-align:center;"><input type="number" class="width25 smltxtbox p5w checker" style="width:35px;" required min="100" max="100" ng-model="totalNextGoalWeight" readonly  ng-disabled="is_approved">
+                                        <td style="text-align:center;"><input type="number" class="width25 smltxtbox p5w checker" style="width:35px;" ng-min="record.total_computed_score >= 3 ? 1 : 0" max="100" ng-model="totalNextGoalWeight" readonly  ng-disabled="is_approved" ng-required="record.total_computed_score >= 3">
                                     </tr>
                                 </table>
                                 <div style="clear:both;"></div>
@@ -543,14 +550,14 @@
                                                             onkeydown="if ((this.value.length == 2 || this.value.length == 3) && ((this.value >= 10 && this.value <= 100 && !(this.value == 10 && event.keyCode == 48)) && event.keyCode != 8)) return false;"
                                                             onfocusin="(this.value == 0) ? this.value = '' : false"
                                                             onfocusout="(this.value == '') ? this.value = 0 : false"
-                                                            required>
+                                                            ng-required="record.total_computed_score >= 3">
                                                     </td>
                                                 </tr>
 
                                                 <tr>
                                                     <td style="text-align: right"></td>
                                                     <td style="text-align: right">Total Weight %</td>
-                                                    <td><input type="number" id="inputtotalnextweight" class="width25 smltxtbox p5w checker" style="width:35px;" required min="100" max="100" ng-model="totalNextCompetencyWeight" readonly  ng-disabled="is_approved"></td>
+                                                    <td><input type="number" id="inputtotalnextweight" class="width25 smltxtbox p5w checker" style="width:35px;" ng-min="record.total_computed_score >= 3 ? 100 : 0" max="100" ng-model="totalNextCompetencyWeight" readonly  ng-disabled="is_approved" ng-required="record.total_computed_score >= 3"></td>
                                                 </tr>
                                             </table>
                                         </div>
@@ -615,21 +622,21 @@
                                 <td style="text-align:center;background-color:#fff;font-weight:bold;color:#06A716;" colspan="4">
                                     <p class="note5 note" style="color:#06A716;" ng-show="record.total_computed_score == 5">(<i class="fa fa-thumbs-up"></i>) This Employee is Exceptional</p>
                                     <p class="note4 note" style="color:#06A716;" ng-show="record.total_computed_score < 5 && record.total_computed_score >= 4">(<i class="fa fa-thumbs-up"></i>) This Employee Exceeds Expectations</p>
-                                    <p class="note3 note" style="color:#06A716;" ng-show="record.total_computed_score < 4 && record.total_computed_score >= 3">(<i class="fa fa-thumbs-up"></i>) This Employee Meets Expectations</p>
-                                    <p class="note2 note" style="color:#06A716;" ng-show="record.total_computed_score < 3 && record.total_computed_score >= 2">(<i class="fa fa-thumbs-up"></i>) This Employee Needs Improvement</p>
+                                    <p class="note3 note" style="color:#17A2B8;" ng-show="record.total_computed_score < 4 && record.total_computed_score >= 3">(<i class="fa fa-thumbs-up"></i>) This Employee Meets Expectations</p>
+                                    <p class="note2 note" style="color:#FFA500;" ng-show="record.total_computed_score < 3 && record.total_computed_score >= 2">(<i class="fa fa-thumbs-up"></i>) This Employee Needs Improvement</p>
                                     <p class="note1 note" style="color:#A70606;" ng-show="record.total_computed_score < 2 && record.total_computed_score >= 1">(<i class="fa fa-thumbs-down"></i>) This Employee Does Not Meet Expectation</p>
-                                    <p class="note0 note" style="color:#06A716;" ng-show="record.total_computed_score == 0">No Performance Evaluation Score</p>
+                                    <p class="note0 note" style="color:#000;" ng-show="record.total_computed_score == 0">No Performance Evaluation Score</p>
                                 </td>
                             </tr>
                         </table><br />
 
-                        <div style="border:1px solid #fff;padding-left:5px;padding-right:5px;width:98%;">
+                        <div style="border:1px solid #fff;padding-left:5px;padding-right:5px;width:98%;" ng-class="record.total_computed_score >= 3 ? '' : 'disabled-div'">
                             <h4>VI. DEVELOPMENT PLAN</h4>
                             <div class='textareaGroup'>A. Key competencies to strengthen performance in current job (set by reviewing mgr):
                                 <textarea ng-class="is_approved ? '' : 'spellcheck' " class="checker" style="width:710px;"
                                         ng-model="record.DevPlanA" 
                                         ng-disabled="is_approved" 
-                                        minlength='25' required>
+                                        minlength='25' ng-required="record.total_computed_score >= 3">
                                 </textarea><br>
                                 <small class='warningMsg' style="display:none;">
                                     * This is a required field. Must be at least 25 characters long.
@@ -641,7 +648,7 @@
                                 <textarea ng-class="is_approved ? '' : 'spellcheck' " class="checker" cols="80" style="width:710px;" 
                                         ng-model="record.DevPlanB" 
                                         ng-disabled="is_approved" 
-                                        minlength='25' required>
+                                        minlength='25' ng-required="record.total_computed_score >= 3">
                                 </textarea><br>
                                 <small class='warningMsg' style="display:none;">
                                     * This is a required field. Must be at least 25 characters long.
@@ -651,7 +658,7 @@
                                 <textarea ng-class="is_approved ? '' : 'spellcheck' " class="checker" cols="80" style="width:710px;" 
                                         ng-model="record.DevPlanC" 
                                         ng-disabled="is_approved" 
-                                        minlength='25' required>
+                                        minlength='25' ng-required="record.total_computed_score >= 3">
                                 </textarea><br>
                                 <small class='warningMsg' style="display:none;">
                                     * This is a required field. Must be at least 25 characters long.
