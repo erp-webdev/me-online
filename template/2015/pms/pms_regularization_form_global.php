@@ -51,7 +51,8 @@
         align-items: center;
         gap: 6px;
         font-size: 10px;
-        color: #4da3ff;   /* blue like Bootstrap primary */
+        font-weight: bold;
+        color: #4da3ff;   
         cursor: pointer;
         text-decoration: none;
         padding: 4px 8px;
@@ -516,7 +517,7 @@
                                             class="add-comment-btn feedback-trigger"
                                             ng-show="(record.hr_comments | filter:{ 
                                                 Section: 'current_competencies', 
-                                                PartID: competency.id
+                                                PartID: competency.id,
                                                 ReadAt: null, 
                                                 AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length > 0"
                                             data-field="current_competencies"
@@ -545,14 +546,14 @@
                                         <span class="px" style="font-style:italic;margin-left:5px;font-size:10px;" ng-show="competency.Rating != 3">(*Required field, if your rating is greater than or less than 3 to justify your rating to this employee)</span>
                                         <textarea spellcheck='true' ng-class="is_approved && (record.hr_comments | filter:{ 
                                                 Section: 'current_competencies', 
-                                                PartID: competency.id
+                                                PartID: competency.id,
                                                 ReadAt: null, 
                                                 AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length == 0 ? '' : 'spellcheck' "  cols="90" rows="3" 
                                                 class="checker" 
                                                 ng-model="competency.Remarks" 
                                                 ng-disabled="is_approved && (record.hr_comments | filter:{ 
                                                 Section: 'current_competencies', 
-                                                PartID: competency.id
+                                                PartID: competency.id,
                                                 ReadAt: null, 
                                                 AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length == 0" 
                                                 ng-required="competency.Rating != 3" 
@@ -607,8 +608,9 @@
                                             data-field="next_goal"
                                             data-partid="{{ next_goal.id }}">View Feedback</a>
                                         </p>
-                                        <div  class='textareaGroup'>
-                                            <textarea spellcheck='true' ng-class="is_approved  && (record.hr_comments | filter:{ 
+                                        <div class='textareaGroup'>
+                                            <textarea style="width:700px;" 
+                                                    spellcheck='true' ng-class="is_approved  && (record.hr_comments | filter:{ 
                                                         Section: 'next_goal', 
                                                         PartID: next_goal.id,
                                                         ReadAt: null, 
@@ -628,7 +630,8 @@
                                         </div>
                                         <div class='textareaGroup'>
                                             <p> Measurement of accomplishment: </p>
-                                            <textarea spellcheck='true' ng-class="is_approved && (record.hr_comments | filter:{ 
+                                            <textarea style="width:700px;" 
+                                                    spellcheck='true' ng-class="is_approved && (record.hr_comments | filter:{ 
                                                         Section: 'next_goal', 
                                                         PartID: next_goal.id,
                                                         ReadAt: null, 
@@ -1459,6 +1462,135 @@
             return Math.round((num + 0.00000001) *100)/100;
         }
 
+        $scope.markAsDone = function(CommentID){
+            $scope.record.markAsDone = true;
+            $scope.record.CommentIDtoComplete = CommentID;
+
+            if($scope.validate()){
+                $scope.save();
+            }
+        }
+
+        $scope.markALLAsDone = function(Section, PartID){
+            $scope.record.markALLAsDone = true;
+            $scope.record.SectionToComplete = Section;
+            $scope.record.PartToComplete = PartID;
+
+            if($scope.validate()){
+                $scope.save();
+            }
+        }
+
+        $(document).on("click", ".add-comment-btn", function (event) {
+            event.stopPropagation();
+
+            let fieldId = $(this).data("field");
+            let partID = $(this).data("partid");
+            let $button = $(this);
+
+            $(".floating-feedback").remove();
+
+            if (allComments) {
+                let filteredComments = allComments
+                    .filter(c =>
+                        c.Section == fieldId &&
+                        c.PartID == partID &&
+                        c.ReadAt == null &&
+                        c.AssignedTo == '<?php echo $profile_idnum . '|' . $profile_dbname; ?>'
+                    )
+                    .map(c => {
+                        c.Username = c.CreatedBy.split(' - ')[1];
+                        return c;
+                    });
+
+                existingCommentsHTML = filteredComments.map(c =>
+                    `<li class="list-group-item feedback-item">
+                        <div class="feedback-header">
+                            <div class="avatar">${c.Username.charAt(0).toUpperCase()}</div>
+                            <div>
+                                <span class="author">${c.Username}</span>
+                                <span class="date">${ new Date(c.CreatedAt).toLocaleString('en-US', {
+                                    dateStyle: 'medium',
+                                    timeStyle: 'short',
+                                    hour12: true
+                                })}</span>
+                            </div>
+                        </div>
+                        <div class="remarks">${c.Remarks}</div>
+                        <div class='action-comment'><a href='#' class='done' data-id='${c.CommentID}'>Mark as Done</a></div>
+                    </li>`
+                ).join('');
+            }
+
+            let commentBox = $(`
+                <div class="floating-feedback">
+                    <div class="feedback-header-title">HR Feedback</div>
+                    <div class="feedback-content">
+                        <div class="feedback-list">
+                            ${existingCommentsHTML}
+                        </div>
+                    </div>
+                    <button class="resolve-btn">Mark All as Done</button>
+                </div>
+            `);
+
+            // Function to update box position
+            function updatePosition() {
+                let rect = $button[0].getBoundingClientRect();
+                let newTop = rect.top + window.scrollY;
+                let newLeft = rect.right + window.scrollX + 10;
+
+                // If the comment box goes above 350px from the top → remove it
+                if (newTop < 350) {
+                    commentBox.remove();
+                    $(document).off("click.closeCommentBox");
+                    $(window).off("scroll.updateCommentBox"); // or your scroll parent if different
+                    return;
+                }
+
+                // Otherwise, update position normally
+                commentBox.css({
+                    top: newTop,
+                    left: newLeft
+                });
+            }
+
+
+            // Initial position
+            $("body").append(commentBox);
+            updatePosition();
+
+            // Track scrolling on parent containers AND window
+            // Add scroll tracking
+            let $scrollParents = $button.parents().filter(function () {
+                return /(auto|scroll)/.test($(this).css("overflow") + $(this).css("overflow-y") + $(this).css("overflow-x"));
+            });
+            $scrollParents = $scrollParents.add($(window));
+
+            $scrollParents.on("scroll.updateCommentBox", updatePosition);
+
+            // Close if clicked outside
+            $(document).on("click.closeCommentBox", function (e) {
+                if (!commentBox.is(e.target) && commentBox.has(e.target).length === 0 && !$(e.target).is(".add-comment-btn")) {
+                    commentBox.remove();
+                    $(document).off("click.closeCommentBox");
+                    $scrollParents.off("scroll.updateCommentBox");
+                }
+            });
+
+            $(document).on("click.action-comment", ".done", function (e) {
+                e.preventDefault();
+                var id = $(this).data('id');
+                $scope.markAsDone(id);
+                $(".floating-feedback").remove();
+            });
+
+            $(document).on("click", ".resolve-btn", function (e) {
+                e.preventDefault();
+                $scope.markALLAsDone(fieldId, partID);
+            });
+        });
+
     });
 
     $(document).on('input focusin change', '.editor-wrapper', function() {
@@ -1538,105 +1670,6 @@
         this.style.height = 'auto';
         this.style.height = this.scrollHeight + 'px';
     });
-
-    $(document).on("click", ".add-comment-btn", function (event) {
-        event.stopPropagation();
-
-        let fieldId = $(this).data("field");
-        let partID = $(this).data("partid");
-        let $button = $(this);
-
-        $(".floating-feedback").remove();
-
-        if (allComments) {
-            let filteredComments = allComments
-                .filter(c =>
-                    c.Section == fieldId &&
-                    c.PartID == partID &&
-                    c.ReadAt == null &&
-                    c.AssignedTo == '<?php echo $profile_idnum . '|' . $profile_dbname; ?>'
-                )
-                .map(c => {
-                    c.Username = c.CreatedBy.split(' - ')[1];
-                    return c;
-                });
-
-            existingCommentsHTML = filteredComments.map(c =>
-                `<li class="list-group-item feedback-item">
-                    <div class="feedback-header">
-                        <div class="avatar">${c.Username.charAt(0).toUpperCase()}</div>
-                        <div>
-                            <span class="author">${c.Username}</span>
-                            <span class="date">${ new Date(c.CreatedAt).toLocaleString('en-US', {
-                                dateStyle: 'medium',
-                                timeStyle: 'short',
-                                hour12: true
-                            })}</span>
-                        </div>
-                    </div>
-                    <div class="remarks">${c.Remarks}</div>
-                    <div class='action-comment'><a href='#' class='done'>Mark as Done</a></div>
-                </li>`
-            ).join('');
-        }
-
-        let commentBox = $(`
-            <div class="floating-feedback">
-                <div class="feedback-header-title">HR Feedback</div>
-                <div class="feedback-content">
-                    <div class="feedback-list">
-                        ${existingCommentsHTML}
-                    </div>
-                </div>
-                <button class="resolve-btn">Mark All as Done</button>
-            </div>
-        `);
-
-        // Function to update box position
-        function updatePosition() {
-            let rect = $button[0].getBoundingClientRect();
-            let newTop = rect.top + window.scrollY;
-            let newLeft = rect.right + window.scrollX + 10;
-
-            // If the comment box goes above 350px from the top → remove it
-            if (newTop < 350) {
-                commentBox.remove();
-                $(document).off("click.closeCommentBox");
-                $(window).off("scroll.updateCommentBox"); // or your scroll parent if different
-                return;
-            }
-
-            // Otherwise, update position normally
-            commentBox.css({
-                top: newTop,
-                left: newLeft
-            });
-        }
-
-
-        // Initial position
-        $("body").append(commentBox);
-        updatePosition();
-
-        // Track scrolling on parent containers AND window
-        // Add scroll tracking
-        let $scrollParents = $button.parents().filter(function () {
-            return /(auto|scroll)/.test($(this).css("overflow") + $(this).css("overflow-y") + $(this).css("overflow-x"));
-        });
-        $scrollParents = $scrollParents.add($(window));
-
-        $scrollParents.on("scroll.updateCommentBox", updatePosition);
-
-        // Close if clicked outside
-        $(document).on("click.closeCommentBox", function (e) {
-            if (!commentBox.is(e.target) && commentBox.has(e.target).length === 0 && !$(e.target).is(".add-comment-btn")) {
-                commentBox.remove();
-                $(document).off("click.closeCommentBox");
-                $scrollParents.off("scroll.updateCommentBox");
-            }
-        });
-    });
-
  </script>
 
 <?php include('session.php'); ?>
