@@ -1134,7 +1134,10 @@ switch ($sec) {
 
         if ($otype == 'Reg OT PM'):
 
-            $otimeout = $mainsql->get_otout($profile_idnum, date("m/d/Y", $odate));
+            $otimeout = $mainsql->get_otout_final($profile_idnum, date("m/d/Y", $odate));
+            if (empty($otimeout)){
+                $otimeout = $mainsql->get_otout($profile_idnum, date("m/d/Y", $odate));
+            }
 
             //var_dump($otimeout);
 

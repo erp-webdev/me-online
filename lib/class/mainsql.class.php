@@ -2326,6 +2326,14 @@ class mainsql {
 		return $result;
     }
 
+    function get_otout_final($empid, $date)
+    {
+        $sql = "SELECT [TimeOut]=CONVERT(CHAR(8), DATEADD(MINUTE,(SELECT NUMHrs FROM HRShift WHERE ShiftID=viewHRDTR_Final.ShiftID)*60, CONVERT(CHAR(10), TIMEINDATE, 101) + ' ' + CONVERT(CHAR(8), CASE WHEN TimeIN>CreditTimeIN THEN TimeIN ELSE CreditTimeIN END, 108)),108) FROM viewHRDTR_Final ";
+        $sql .= " WHERE EMPID = '".$empid."' AND DTRDate = '".date("m/d/Y", strtotime($date))."'";
+		$result = $this->get_row($sql);
+		return $result;
+    }
+
     # Leave
 
     function get_schedshift($empid = NULL)
