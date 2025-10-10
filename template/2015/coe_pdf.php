@@ -612,7 +612,9 @@
 			</p>
 
 			<p style="padding-left: 50px; padding-right: 50px;">This certification is being issued upon the request of
-				<?php echo ucwords(strtolower($emp_info[0]["Salutation"])) . " " . ucwords(strtolower(mb_convert_encoding($emp_info[0]["LName"], 'UTF-8', 'HTML-ENTITIES'))); ?>
+				<?php //echo $emp_info[0]["Salutation"] . " " . strtoupper(mb_convert_encoding($emp_info[0]["LName"], 'UTF-8', 'HTML-ENTITIES')); ?>
+				
+				<?php echo ucwords(strtolower($emp_info[0]["Salutation"])) . " " . strtoupper(mb_convert_encoding($emp_info[0]["LName"], 'UTF-8', 'HTML-ENTITIES')); ?>
 				for the purpose of complying with the documentary requirements for <?php echo $emp_info[0]["Gender2"] ?> SSS
 				<?php echo strtolower($coe[0]["category"]) ?> benefit claim.
 			</p>
