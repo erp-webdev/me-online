@@ -43,7 +43,12 @@
                                     </td>
 
                                     <?php endif; ?>
-
+                                    <td>
+                                        <label  class="lorangetext">
+                                            <input type="checkbox" id="showAdjustedDtr" style="width: 16px; height: 16px; accent-color: #ffb649;">
+                                            Show Adjusted DTR
+                                        </label>
+                                    </td>
                                 </tr>
                             </table>
                             
