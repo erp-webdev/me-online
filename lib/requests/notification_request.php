@@ -8038,7 +8038,7 @@
                                     <td class="centertalign">
                                         <?php echo $value['WithPay'] ? "<i class='fa fa-check'></i>" : "<i class='fa fa-times'></i>"; ?>
                                     </td>
-                                    <td class="centertalign"><?php if ($applv_count > 1) : ?><i class="btnlvcancel fa fa-times redtext cursorpoint" attribute="<?php echo $refnum; ?>" attribute2="<?php echo date('Y-m-d 00:00:00.000', strtotime($value['LeaveDate'])); ?>"></i><?php endif; ?></td>
+                                    <td class="centertalign"><?php if ($applv_count > 1 && $notification_data[0]['IsCancellable'] == 'YES') : ?><i class="btnlvcancel fa fa-times redtext cursorpoint" attribute="<?php echo $refnum; ?>" attribute2="<?php echo date('Y-m-d 00:00:00.000', strtotime($value['LeaveDate'])); ?>"></i><?php endif; ?></td>
                                 </tr>
                                 <?php endforeach; ?>
                             </table>
@@ -8184,7 +8184,7 @@
                                 <tr>
                                     <td><?php echo date("M j, Y g:ia", strtotime($value['ObTimeInDate'])); ?></td>
                                     <td><?php echo date("M j, Y g:ia", strtotime($value['ObTimeOutDate'])); ?></td>
-                                    <td class="centertalign"><?php if ($appobt_count > 1) : ?><i class="btnobcancel fa fa-times redtext cursorpoint" attribute="<?php echo $refnum; ?>" attribute2="<?php echo date('Y-m-d', strtotime($value['ObTimeInDate'])); ?>" attribute3="<?php echo $value['SeqID']; ?>"></i><?php endif; ?></td>
+                                    <td class="centertalign"><?php if ($appobt_count > 1 && $notification_data[0]['IsCancellable'] == 'YES') : ?><i class="btnobcancel fa fa-times redtext cursorpoint" attribute="<?php echo $refnum; ?>" attribute2="<?php echo date('Y-m-d', strtotime($value['ObTimeInDate'])); ?>" attribute3="<?php echo $value['SeqID']; ?>"></i><?php endif; ?></td>
                                 </tr>
                                 <?php endforeach; ?>
                             </table>
@@ -8649,7 +8649,7 @@
                                             <?php endif; ?>
                                             <td><?php echo $value['ShiftDesc']; ?></td>
                                             <td><?php echo $value['NewShiftDesc'] ? $shifts2[0]['ShiftDesc'] : 'REST DAY'; ?></td>
-                                            <td class="centertalign"><?php if ($appmd_count > 1) : ?><i class="btnmdcancel fa fa-times redtext cursorpoint" attribute="<?php echo $refnum; ?>" attribute2="<?php echo date('Y-m-d 00:00:00.000', strtotime($value['DTRDate'])); ?>"></i><?php endif; ?></td>
+                                            <td class="centertalign"><?php if ($appmd_count > 1 && $notification_data[0]['IsCancellable'] == 'YES') : ?><i class="btnmdcancel fa fa-times redtext cursorpoint" attribute="<?php echo $refnum; ?>" attribute2="<?php echo date('Y-m-d 00:00:00.000', strtotime($value['DTRDate'])); ?>"></i><?php endif; ?></td>
                                         </tr>
                                         <?php
                                         $pdtrto = strtotime($value['DTRDate']);
@@ -8736,7 +8736,7 @@
                                             <td><?php echo $value['NewShiftDesc'] ? $value['NewShiftDesc'] : 'REST DAY'; ?></td>
                                             <td><?php echo $value['TimeIn'] ? date('g:ia', strtotime($value['TimeIn'])) : 'N/A'; ?></td>
                                             <td><?php echo $value['TimeOut'] ? date('g:ia', strtotime($value['TimeOut'])) : 'N/A'; ?></td>
-                                            <td class="centertalign"><?php if ($appts_count > 1 && $notification_data[0]['Approved'] != 3) : ?><i class="btnsccancel fa fa-times redtext cursorpoint" attribute="<?php echo $refnum; ?>" attribute2="<?php echo date('Y-m-d 00:00:00.000', strtotime($value['DTRDate'])); ?>"></i><?php endif; ?></td>
+                                            <td class="centertalign"><?php if ($appts_count > 1 && $notification_data[0]['Approved'] != 3 && $notification_data[0]['IsCancellable'] == 'YES') : ?><i class="btnsccancel fa fa-times redtext cursorpoint" attribute="<?php echo $refnum; ?>" attribute2="<?php echo date('Y-m-d 00:00:00.000', strtotime($value['DTRDate'])); ?>"></i><?php endif; ?></td>
                                         </tr>
                                         <?php
                                         $pdtrto = strtotime($value['DTRDate']);
