@@ -31,6 +31,12 @@
                                             <?php $attpost = $dtr_period[0]['AttPost']; ?>
                                             <span id="txtposted" class="lgreentext bold<?php echo $attpost == 1 ? "" : " invisible"; ?>"><i class="fa fa-check"></i> POSTED</span>
                                         </td>
+                                        <td>
+                                            <label  class="lorangetext">
+                                                <input type="checkbox" id="ushowAdjustedDtr" style="width: 16px; height: 16px; accent-color: #ffb649;">
+                                                Show Adjusted DTR
+                                            </label>
+                                        </td>
                                     </tr>
                                 </table>
                                 
