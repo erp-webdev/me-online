@@ -2579,12 +2579,13 @@ $(function() {
                     $("#txtposted").removeClass('invisible');
                 }
 
+                $("#showAdjustedDtr").prop('checked', false);
                 $("#dtrdata").html('<i class="fa fa-refresh fa-spin fa-lg"></i> Loading...');
 
                 $.ajax(
                 {
                     url: "<?php echo WEB; ?>/lib/requests/dtr_request.php?sec=table",
-                    data: "cover=" + dcover + "&dfrom=" + dfrom + "&dto=" + dto + "&posted=" + posted,
+                    data: "cover=" + dcover + "&dfrom=" + dfrom + "&dto=" + dto + "&posted=" + posted + "&showAdjusted=" + false,
                     type: "POST",
                     complete: function(){
                         $("#loading").hide();
@@ -2602,6 +2603,7 @@ $(function() {
         dfrom = $("#dtr_cover option:selected").attr("dfrom");
         dto = $("#dtr_cover option:selected").attr("dto");
         posted = $("#dtr_cover option:selected").attr("posted");
+        showAdjusted = $("#showAdjustedDtr").prop('checked');
 
         dfrom = parseInt(dfrom);
         dto = parseInt(dto);
@@ -2640,7 +2642,62 @@ $(function() {
         $.ajax(
         {
             url: "<?php echo WEB; ?>/lib/requests/dtr_request.php?sec=table",
-            data: "cover=" + dcover + "&dfrom=" + dfrom + "&dto=" + dto + "&posted=" + posted,
+            data: "cover=" + dcover + "&dfrom=" + dfrom + "&dto=" + dto + "&posted=" + posted + "&showAdjusted=" + showAdjusted,
+            type: "POST",
+            complete: function(){
+                $("#loading").hide();
+            },
+            success: function(data) {
+                $("#dtrdata").html(data);
+            }
+        })
+    });
+
+    $("#showAdjustedDtr").change(function() {
+        dcover = $("#dtr_cover option:selected").val();
+        dfrom = $("#dtr_cover option:selected").attr("dfrom");
+        dto = $("#dtr_cover option:selected").attr("dto");
+        posted = $("#dtr_cover option:selected").attr("posted");
+        showAdjusted = $("#showAdjustedDtr").prop('checked');
+
+        dfrom = parseInt(dfrom);
+        dto = parseInt(dto);
+
+        plus5dto = dto + 432000;
+        curunixdate = Math.floor(Date.now() / 1000);
+
+        if (posted == 0) {
+            if (curunixdate <= plus5dto) {
+                while(dfrom < (dto + 86400)) {
+
+                    $.ajax(
+                    {
+                        url: "<?php echo WEB; ?>/lib/requests/dtr_request.php?sec=calculate",
+                        data: "dateunix=" + dfrom,
+                        type: "POST",
+                        complete: function(){
+                            $("#loading").hide();
+                        },
+                        success: function(data) {}
+                    })
+
+                    dfrom = dfrom + 86400;
+                    //alert(dfrom);
+                }
+            }
+            $("#txtposted").addClass('invisible');
+        }
+        else {
+            $("#txtposted").removeClass('invisible');
+        }
+
+
+        $("#dtrdata").html('<i class="fa fa-refresh fa-spin fa-lg"></i> Loading...');
+
+        $.ajax(
+        {
+            url: "<?php echo WEB; ?>/lib/requests/dtr_request.php?sec=table",
+            data: "cover=" + dcover + "&dfrom=" + dfrom + "&dto=" + dto + "&posted=" + posted + "&showAdjusted=" + showAdjusted,
             type: "POST",
             complete: function(){
                 $("#loading").hide();
@@ -2720,12 +2777,13 @@ $(function() {
                     $("#txtposted").removeClass('invisible');
                 }
 
+                $("#ushowAdjustedDtr").prop('checked', false);
                 $("#udtrdata").html('<i class="fa fa-refresh fa-spin fa-lg"></i> Loading...');
 
                 $.ajax(
                 {
                     url: "<?php echo WEB; ?>/lib/requests/udtr_request.php?sec=table",
-                    data: "cover=" + dcover + "&dfrom=" + dfrom + "&dto=" + dto + "&posted=" + posted + "&empid=" + empid + "&comp=" + comp + "&minothours=" + minothours + "&dbname=" + dbname,
+                    data: "cover=" + dcover + "&dfrom=" + dfrom + "&dto=" + dto + "&posted=" + posted + "&empid=" + empid + "&comp=" + comp + "&minothours=" + minothours + "&dbname=" + dbname + "&showAdjusted=" + false,
                     type: "POST",
                     complete: function(){
                         $("#loading").hide();
@@ -2746,6 +2804,7 @@ $(function() {
         dfrom = $("#udtr_cover option:selected").attr("dfrom");
         dto = $("#udtr_cover option:selected").attr("dto");
         posted = $("#udtr_cover option:selected").attr("posted");
+        showAdjusted = $("#ushowAdjustedDtr").prop('checked');
 
         dbname = $("#udtr_cover option:selected").attr("dbname");
 
@@ -2789,7 +2848,70 @@ $(function() {
         $.ajax(
         {
             url: "<?php echo WEB; ?>/lib/requests/udtr_request.php?sec=table",
-            data: "cover=" + dcover + "&dfrom=" + dfrom + "&dto=" + dto + "&posted=" + posted + "&empid=" + empid + "&comp=" + comp + "&minothours=" + minothours + "&dbname=" + dbname,
+            data: "cover=" + dcover + "&dfrom=" + dfrom + "&dto=" + dto + "&posted=" + posted + "&empid=" + empid + "&comp=" + comp + "&minothours=" + minothours + "&dbname=" + dbname + "&showAdjusted=" + showAdjusted,
+            type: "POST",
+            complete: function(){
+                $("#loading").hide();
+            },
+            success: function(data) {
+                $("#udtrdata").html(data);
+            }
+        })
+    });
+
+    $("#ushowAdjustedDtr").change(function() {
+        empid = $("#udtr_empid").val();
+        comp = $("#udtr_comp").val();
+        minothours = $("#udtr_minothours").val();
+        dcover = $("#udtr_cover option:selected").val();
+        dfrom = $("#udtr_cover option:selected").attr("dfrom");
+        dto = $("#udtr_cover option:selected").attr("dto");
+        posted = $("#udtr_cover option:selected").attr("posted");
+        showAdjusted = $("#ushowAdjustedDtr").prop('checked');
+
+        dbname = $("#udtr_cover option:selected").attr("dbname");
+
+        dfrom = parseInt(dfrom);
+        dto = parseInt(dto);
+
+        plus5dto = dto + 432000;
+        curunixdate = Math.floor(Date.now() / 1000);
+
+        if (posted == 0) {
+            if (curunixdate <= plus5dto) {
+
+                while(dfrom < dto) {
+
+                    $.ajax(
+                    {
+                        url: "<?php echo WEB; ?>/lib/requests/udtr_request.php?sec=calculate",
+                        data: "dateunix=" + dfrom + "&empid=" + empid + "&db=" + dbname,
+                        type: "POST",
+                        complete: function(){
+                            $("#loading").hide();
+                        },
+                        success: function(data) {}
+                    })
+
+                    dfrom = dfrom + 86400;
+                    //alert(dfrom);
+                }
+            }
+            $("#txtposted").addClass('invisible');
+            
+        }
+        else {
+            $("#txtposted").removeClass('invisible');
+            
+        }
+
+
+        $("#udtrdata").html('<i class="fa fa-refresh fa-spin fa-lg"></i> Loading...');
+
+        $.ajax(
+        {
+            url: "<?php echo WEB; ?>/lib/requests/udtr_request.php?sec=table",
+            data: "cover=" + dcover + "&dfrom=" + dfrom + "&dto=" + dto + "&posted=" + posted + "&empid=" + empid + "&comp=" + comp + "&minothours=" + minothours + "&dbname=" + dbname + "&showAdjusted=" + showAdjusted,
             type: "POST",
             complete: function(){
                 $("#loading").hide();
