@@ -2574,9 +2574,11 @@ $(function() {
                         }
                     }
                     $("#txtposted").addClass('invisible');
+                    $("#showAdjustedDtrLabel").addClass('invisible');
                 }
                 else {
                     $("#txtposted").removeClass('invisible');
+                    $("#showAdjustedDtrLabel").removeClass('invisible');
                 }
 
                 $("#showAdjustedDtr").prop('checked', false);
@@ -2631,9 +2633,11 @@ $(function() {
                 }
             }
             $("#txtposted").addClass('invisible');
+            $("#showAdjustedDtrLabel").addClass('invisible');
         }
         else {
             $("#txtposted").removeClass('invisible');
+            $("#showAdjustedDtrLabel").removeClass('invisible');
         }
 
 
@@ -2686,9 +2690,11 @@ $(function() {
                 }
             }
             $("#txtposted").addClass('invisible');
+            $("#showAdjustedDtrLabel").addClass('invisible');
         }
         else {
             $("#txtposted").removeClass('invisible');
+            $("#showAdjustedDtrLabel").removeClass('invisible');
         }
 
 
@@ -2772,9 +2778,11 @@ $(function() {
                         }
                     }
                     $("#txtposted").addClass('invisible');
+                    $("#showAdjustedDtrLabel").addClass('invisible');
                 }
                 else {
                     $("#txtposted").removeClass('invisible');
+                    $("#showAdjustedDtrLabel").removeClass('invisible');
                 }
 
                 $("#ushowAdjustedDtr").prop('checked', false);
@@ -2835,11 +2843,11 @@ $(function() {
                 }
             }
             $("#txtposted").addClass('invisible');
-            
+            $("#showAdjustedDtrLabel").addClass('invisible');
         }
         else {
             $("#txtposted").removeClass('invisible');
-            
+            $("#showAdjustedDtrLabel").removeClass('invisible');
         }
 
 
@@ -2898,11 +2906,11 @@ $(function() {
                 }
             }
             $("#txtposted").addClass('invisible');
-            
+            $("#showAdjustedDtrLabel").addClass('invisible');
         }
         else {
             $("#txtposted").removeClass('invisible');
-            
+            $("#showAdjustedDtrLabel").removeClass('invisible');
         }
 
 
