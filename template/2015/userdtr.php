@@ -21,7 +21,7 @@
                                             </select>
                                         </td>
                                         <td>DTR Cut-off: 
-                                            <select id="udtr_cover" name="udtr_cover" class="width250 smltxtbox">
+                                            <select id="udtr_cover" name="udtr_cover" class="smltxtbox">
                                                 <?php foreach ($dtr_period as $key => $value) : ?>
                                                 <option value="<?php echo date("Y-m-d", strtotime($value['PeriodFrom']))." ".date("Y-m-d", strtotime($value['PeriodTo'])); ?>" dfrom="<?php echo strtotime($value['PeriodFrom']); ?>" dto="<?php echo strtotime($value['PeriodTo']); ?>" posted="<?php echo $value['AttPost']; ?>" dbname="<?php echo $dbname; ?>">
                                                     <?php echo $value['PeriodID']." ".$value['PRYear']." ".date("m/d/Y", strtotime($value['PeriodFrom']))." to ".date("m/d/Y", strtotime($value['PeriodTo'])); ?>
@@ -32,7 +32,7 @@
                                             <span id="txtposted" class="lgreentext bold<?php echo $attpost == 1 ? "" : " invisible"; ?>"><i class="fa fa-check"></i> POSTED</span>
                                         </td>
                                         <td>
-                                            <label  class="lorangetext">
+                                            <label id='showAdjustedDtrLabel' class="lorangetext <?php echo $attpost == 1 ? "" : " invisible"; ?>">
                                                 <input type="checkbox" id="ushowAdjustedDtr" style="width: 16px; height: 16px; accent-color: #ffb649;">
                                                 Show Adjusted DTR
                                             </label>
