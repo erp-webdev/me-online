@@ -493,8 +493,14 @@ $(function ()
 			else
 			{
                 $('.actreg_msg').slideUp();
-                alert('You have been successfully registered to the activity. You will be redirected to the Registration Page. Always check that you have a QR Code generated.');
-                window.location.href='<?php echo WEB; ?>/registration';
+
+                if( parseInt(response.registry_id) > 0 ){
+                    alert('You have been successfully registered to the activity. You will be redirected to the Registration Page. Always check that you have a QR Code generated.');
+                    window.location.href='<?php echo WEB; ?>/registration';
+                }else{
+                    alert("Your registration failed. Please try again.");
+                }
+
 			}
 		}
 	});

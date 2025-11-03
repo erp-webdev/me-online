@@ -1361,6 +1361,10 @@ $(function() {
     });
 
     $(".btnregactivity").on("click", function() {
+        $('#actreg').addClass('invisible');
+        $('#actloading').removeClass('invisible');
+
+
         $(".actreg_msg").css("display","none");
         $("#children").addClass('invisible');
         $("#dependent").addClass('invisible');
@@ -1452,6 +1456,10 @@ $(function() {
                             $(".spanapp").addClass('invisible');
                             $("#registry_approve").val(0);
                         }
+
+                        $('#actreg').removeClass('invisible');
+                        $('#actloading').addClass('invisible');
+
                     }
                 })
 

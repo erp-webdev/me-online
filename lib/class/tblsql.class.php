@@ -899,9 +899,12 @@ class tblsql {
         $sql = "SELECT [outer].* FROM ( ";
         $sql .= " SELECT ROW_NUMBER() OVER(ORDER BY registry_date DESC) as ROW_NUMBER, ";
 		$sql .= " r.registry_id, e.EmpID, e.LName, e.FName, e.EmailAdd,
-            r.registry_uid, r.registry_godirectly, r.registry_details, r.registry_vrin, r.registry_vrout, r.registry_platenum, r.registry_child, r.registry_guest, r.registry_dependent, r.registry_date, r.registry_status, r.registry_hash, r.registry_location, e.CompanyID ";
+            r.registry_uid, r.registry_godirectly, r.registry_details, r.registry_vrin, r.registry_vrout, 
+            r.registry_platenum, r.registry_child, r.registry_guest, r.registry_dependent, r.registry_date, 
+            r.registry_status, r.registry_hash, r.registry_location, e.CompanyID, HRDepartment.DeptDesc, registry_pickup_location";
 		$sql.=" FROM HREventRegistry r
-        LEFT JOIN VIEWHREMPMASTER e ON r.registry_uid = e.EmpID and r.registry_db = e.DBNAME ";
+        LEFT JOIN VIEWHREMPMASTER e ON r.registry_uid = e.EmpID and r.registry_db = e.DBNAME 
+        LEFT JOIN HRDepartment ON e.DeptID = HRDepartment.DeptID AND e.DBNAME = HRDepartment.DBNAME";
 		$sql.=" WHERE r.registry_status >= 1 AND e.CompanyActive = 1  ";
 		if ($id != 0) $sql.=" AND r.registry_id = ".$id;
 		if ($actid != 0) $sql.=" AND r.registry_activityid = ".$actid;
