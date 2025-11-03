@@ -43,16 +43,22 @@
             header('Content-Type: text/csv');
             header('Content-Disposition: attachment; filename="'.$filename.'"');
             $output = fopen('php://output', 'w');
-            fputcsv($output, array('Company', 'Employee ID', 'Name', 'Location', 'Will go directly', 'Date Registered', 'Status'));
+            fputcsv($output, array('Company', 'Employee ID', 'Last Name', 'First Name', 'Department', 'Email', 'Location', 'Date Registered', 'Status',  'Will go directly', 'Pick Up Location', 'To Venue', 'From Venue'));
             foreach ($registrants as $value) {
                 fputcsv($output, array(
                     $value['CompanyID'],
                     $value['EmpID'],
-                    $value['FName'].' '.$value['LName'],
+                    $value['LName'],
+                    $value['FName'],
+                    $value['DeptDesc'],
+                    $value['EmailAdd'],
                     $value['registry_location'],
-                    $value['registry_godirectly'] ? 'Yes' : 'No',
                     date("M j, Y", $value['registry_date']).' '.date("g:ia", $value['registry_date']),
-                    ($value['registry_status'] == 2) ? 'Approved' : (($value['registry_status'] == 4) ? 'Attended' : 'For Approval')
+                    ($value['registry_status'] == 2) ? 'Approved' : (($value['registry_status'] == 4) ? 'Attended' : 'For Approval'),
+                    $value['registry_godirectly'] ? 'Yes' : 'No',
+                    $value['registry_pickup_location'],
+                    $value['registry_vrin'] ? 'Yes' : 'No',
+                    $value['registry_vrout'] ? 'Yes' : 'No'
                 ));
             }
             fclose($output);
