@@ -37,6 +37,7 @@
                                                     <td width="30%"><b>Registrant</b></td>
                                                     <td width="70%"><?php echo $profile_full.' ('.$profile_idnum.')'; ?></td>
                                                 </tr>
+                                                <?php /*
                                                 <tr id="location">
                                                     <td><b>Cinema</b></td>
                                                     <td>
@@ -81,7 +82,7 @@
                                                             }
                                                             
                                                         ?>
-                                                        <select id="registry_location" name="registry_location" class="txtbox" required>
+                                                        <select id="registry_location" name="registry_location" class="txtbox" >
                                                             <option value="Uptown Cinemas" <?php echo $locations['uptown'] >= $reserved_slots['uptown'] ? 'disabled' : '' ?> slots="<?php echo $reserved_slots['uptown']; ?>" reserved="<?php echo $locations['uptown']; ?>">Uptown Cinemas <?php echo $locations['uptown'] >= $reserved_slots['uptown'] ? '(Full)' : '' ?></option> 
                                                             <option value="Eastwood Cinemas" <?php echo $locations['eastwood'] >= $reserved_slots['eastwood'] ? 'disabled' : '' ?> slots="<?php echo $reserved_slots['eastwood']; ?>" reserved="<?php echo $locations['eastwood']; ?>">Eastwood Cinemas  <?php echo $locations['eastwood'] >= $reserved_slots['eastwood'] ? '(Full)' : '' ?></option>
                                                             <option value="Venice Cineplex" <?php echo $locations['mckinley'] >= $reserved_slots['mckinley'] ? 'disabled' : '' ?> slots="<?php echo $reserved_slots['mckinley']; ?>" reserved="<?php echo $locations['mckinley']; ?>">Venice Cineplex  <?php echo $locations['mckinley'] >= $reserved_slots['mckinley'] ? '(Full)' : '' ?></option>
@@ -92,6 +93,7 @@
                                                         </select>
                                                     </td>
                                                 </tr>
+                                                */ ?>
                                                 <?php if(date('Y') == 2022) : ?>
                                                 <tr id="vaxcert">
                                                     <td><b>Vaccination Certificate / Card</b></td>
@@ -180,12 +182,11 @@
                                                     </td>
                                                 </tr>
                                             </table-->
-                                            <?php /*
                                             <table id="pickupfrom" class="width100per invisible">
                                                 <tr>
                                                     <td width="30%"><b>Pickup</b></td>
                                                     <td width="70%">
-                                                        <select id="pickup" name="pickup" class="txtbox">
+                                                        <select id="pickup" name="pickup" class="txtbox" > 
                                                             <!-- <option value="">Select Pickup</option> -->
                                                             <option value="AGT" selected>AGT</option>
                                                             <option value="TWS">TWS</option>
@@ -210,7 +211,6 @@
                                                 </tr>
                                             </table>
                                             <div class="spanapp width100per redtext italic margintop25 righttalign">* subject by your superior's approval</div>
-                                            */ ?>
                                             
                                             <div class="width100per margintop25 centertalign">
                                                 <?php if($profile_dbname <> 'GL') : ?>
@@ -231,6 +231,13 @@
                                         </form>
                                     </div>
                                 </div>
+                                <div id="actloading" align="center">
+                                    <div class="image-container">
+                                        <img src="<?php echo WEB; ?>/images/loading.gif" class="centered-image" alt="Loading..." /> 
+                                    </div>
+                                    <span>Retrieving registration...</span>
+                                </div>
+                                
                             </div>
                         </div>
 
@@ -570,9 +577,27 @@
 						$(document).ready(function(){
 							$(".btnregsub").show();
 							$(".btnreg2").show();
+
 							$(".btnregsub").on("click", function(){
 								$(".btnregsub").hide();
 								$(".btnreg2").hide();
+
+                                // If go directly set to no, require pickup location and vehicle option
+                                var goDirectly = $("#registry_godirectly").val();
+                                if(goDirectly == "0"){
+
+                                    var vrin = $("#registry_vrin").is(":checked");
+                                    var vrout = $("#registry_vrout").is(":checked");
+
+                                    if(!vrin && !vrout){
+                                        alert("Please select at least one (1) option for Company Vehicle.");
+                                        $(".btnregsub").show();
+                                        $(".btnreg2").show();
+                                        return false;
+                                    }
+
+                                }
+                                    
 							});
 						});
 
