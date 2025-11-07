@@ -87,6 +87,7 @@
         font-family: Arial, sans-serif;
         z-index: 999;
         color: #e6e6e6; /* Light text */
+        overflow: hidden;
     }
 
     .feedback-content {
@@ -873,7 +874,7 @@
                             </div>
                             <br>
                             <button type="button" class="subapp smlbtn" id="submapp" style="float:right;margin-right:10px;"  ng-show="is_approved && record.EmpComment == null" ng-click="accept()">Accept Evaluation</button>
-
+                            <button type="button" class="smlbtn" style="float:right;background-color:#3EC2FB;margin-right:10px;" ng-show="record.status == 'Completed' && record.group.EvaluationType == 'Regularization'" id='pmr_sign_doc'>Sign PMR Documents</button>
                         <?php } ?>
 
                     </div>
@@ -1505,6 +1506,15 @@
     $(document).on('input change focus', 'textarea.spellcheck', function() {
         this.style.height = 'auto';
         this.style.height = this.scrollHeight + 'px';
+    });
+
+    
+    $('#pmr_sign_doc').on('click', function(){
+        var userConfirmed = confirm('You will be redirected to another page for signing document. Would you like to continue?');
+
+        if(userConfirmed){
+            window.open("<?php echo WEB; ?>/pmr_signing?ratee=<?php echo $_GET['ratee']; ?>");
+        }
     });
     </script>
     <?php include('session.php'); ?>
