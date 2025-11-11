@@ -1,5 +1,5 @@
 <?php 
-    $activity_date = $my_registration ? $my_registration[0]['activity_datestart'] : strtotime('2025-11-10'); //2025-12-18
+    $activity_date = $my_registration ? $my_registration[0]['activity_datestart'] : strtotime('2025-11-12'); //2025-12-18
     $dateactivity = date('Y-m-d', $activity_date);
     $today = date('Y-m-d');
     $dayBeforeActivity = date('Y-m-d', strtotime($dateactivity . ' -1 day'));
@@ -14,7 +14,7 @@
     <!DOCTYPE html>
         <html>
         <head>
-            <title><?php echo $page_title;?></title>
+            <title>MAKULAY ANG PASKO SA MEGA 2025</title>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -58,7 +58,7 @@
                 }
 
                 .frontpage {
-                     position: relative;
+                    position: relative;
                     height:100vh;
                     background: url('<?php echo IMG_WEB ?>/makulay-ang-pasko-sa-mega-2025-pc-ncr.png') no-repeat center center;
                     background-size: cover;
@@ -140,7 +140,7 @@
                         padding-top: 60px; 
                     }
 
-                    .round-box::after {
+                    .round-box::before {
                         content: "";
                         position: absolute;
                         top: 0;
@@ -153,6 +153,7 @@
                         background-size: cover;
                         background-repeat: no-repeat;
                         background-position: center top;
+                        pointer-events: none;
                     }
                 }
             </style>
@@ -201,7 +202,7 @@
                 <section id='qr' class="d-flex justify-content-center sec_marg">
                     <div class="card round-box  p-5 m-3">
                         <div class="text-center">
-                            <label class="text-center section-title fw-bold">REGISTRATION QR CODE</label><br>
+                            <label class="text-center section-title fw-bold mt-3">REGISTRATION QR CODE</label><br>
                             <label class="mt-5"><strong><?php echo $profile_full ?></strong></label><br>
                             <label class="idnum"><strong><?php echo $profile_idnum ?></strong></label><br>
                             <p> 
@@ -217,33 +218,29 @@
                 <?php  } 
                 else{?>
                 <section class="d-flex justify-content-center sec_marg">
-                    <div class="card  round-box">
-                        <div class="card-body">
-                            <div class="text-center">
-                                <label class="m-3">Log in <a href="<?php echo WEB ?>/mega-christmas-page-checker"><b>here</b></a> to see your registration QR Code.</label><br>
-                            </div>
+                    <div class="card  round-box p-5">
+                        <div class="text-center">
+                            <label class="m-3">Log in <a href="<?php echo WEB ?>/mega-christmas-page-checker"><b>here</b></a> to see your registration QR Code.</label><br>
                         </div>
                     </div>
                 </section>
                 <?php }?>
                 <section class="d-flex justify-content-center sec_marg">
-                    <div class="card round-box ">
-                        <div class="card-body">
-                            <div class="text-center">
-                                <label class="text-center section-title fw-bold">FLOOR PLAN</label><br>
-                                <div class="m-4">
-                                    <?php if (!($my_registration[0]['registry_seat']=="")){?>
-                                        <span>Your seat number is</span>
-                                        <label class="mb-3"><strong><?php echo $my_registration[0]['registry_seat']?></strong></label><br>
-                                    <?php }?>
-                                    <div class="fw-bold">Main Hall</div>
-                                    <img src="<?php echo IMG_WEB ?>/mgb-mainhall.png" alt="Main Hall" class="imgView" style="width:90%;" data-image="mgb-mainhall.png"><br>
+                    <div class="card round-box p-5">
+                        <div class="text-center">
+                            <label class="text-center section-title fw-bold mt-3">FLOOR PLAN</label><br>
+                            <div class="mt-5">
+                                <?php if (!($my_registration[0]['registry_seat']=="")){?>
+                                    <span>Your seat number is</span>
+                                    <label class="mb-3"><strong><?php echo $my_registration[0]['registry_seat']?></strong></label><br>
+                                <?php }?>
+                                <div class="fw-bold">Main Hall</div>
+                                <img src="<?php echo IMG_WEB ?>/mgb-mainhall.png" alt="Main Hall" class="imgView" style="width:90%;" data-image="mgb-mainhall.png"><br>
 
-                                    <div class="fw-bold">Sky Box</div>
-                                    <img src="<?php echo IMG_WEB ?>/mgb-skybox.png" alt="Sky Box" class="imgView" style="width:90%;" data-image="mgb-skybox.png"><br>
-                                </div>
-                                <p class="mt-3">Note: For a clear view of the floor plan, please click on the image to enlarge it.</p><br>
+                                <div class="fw-bold">Sky Box</div>
+                                <img src="<?php echo IMG_WEB ?>/mgb-skybox.png" alt="Sky Box" class="imgView" style="width:90%;" data-image="mgb-skybox.png"><br>
                             </div>
+                            <p class="mt-3">Note: For a clear view of the floor plan, please click on the image to enlarge it.</p><br>
                         </div>
                     </div>
                 </section>

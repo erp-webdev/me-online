@@ -1,5 +1,5 @@
 <?php 
-    $activity_date = $my_registration ? $my_registration[0]['activity_datestart'] : strtotime('2025-11-10'); //2025-12-12
+    $activity_date = $my_registration ? $my_registration[0]['activity_datestart'] : strtotime('2025-11-12'); //2025-12-12
     $dateactivity = date('Y-m-d', $activity_date);
     $today = date('Y-m-d');
     $dayBeforeActivity = date('Y-m-d', strtotime($dateactivity . ' -1 day'));
@@ -14,7 +14,7 @@
     <!DOCTYPE html>
         <html>
         <head>
-            <title><?php echo $page_title;?></title>
+            <title>BACOLOD MAKULAY ANG PASKO SA MEGA 2025</title>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -43,11 +43,11 @@
                 .round-box {
                     position: relative; 
                     border: 3px solid transparent;
-                    border-image: linear-gradient(50deg, 
-                                                #9A2B63,
-                                                #ffffff,
-                                                #86A32E
-                                                ) 1;
+                    border-image: linear-gradient(135deg, 
+                                                #0081B3, 
+                                                #95A322, 
+                                                #A8307D, 
+                                                #FBC116) 1;
                     width: 85%;
                     max-width: 600px;
                     border-radius: 10px;
@@ -114,7 +114,7 @@
                 }
 
                 footer{
-                    background: #FFF; 
+                    background: url('<?php echo IMG_WEB ?>/bacolod-bg.png') center center repeat;
                     height: 20vh; 
                     width:100%
                 }
@@ -183,7 +183,7 @@
                 <section id='qr' class="d-flex justify-content-center sec_marg">
                     <div class="card round-box  p-5 m-3">
                         <div class="text-center">
-                            <label class="text-center section-title fw-bold">REGISTRATION QR CODE</label><br>
+                            <label class="text-center section-title fw-bold mt-4">REGISTRATION QR CODE</label><br>
                             <label class="mt-5"><strong><?php echo $profile_full ?></strong></label><br>
                             <label class="idnum"><strong><?php echo $profile_idnum ?></strong></label><br>
                             <p> 
@@ -202,7 +202,7 @@
                     <div class="card  round-box">
                         <div class="card-body">
                             <div class="text-center">
-                                <label class="m-3">Log in <a href="<?php echo WEB ?>/mega-christmas-page-checker"><b>here</b></a> to see your registration QR Code.</label><br>
+                                <label class="mb-3">Log in <a href="<?php echo WEB ?>/mega-christmas-page-checker"><b>here</b></a> to see your registration QR Code.</label><br>
                             </div>
                         </div>
                     </div>
@@ -231,7 +231,7 @@
                 </section>
                 <section id='food' class="d-flex justify-content-center sec_marg">
                     <div class="text-center card round-box  p-5 m-3">
-                        <label class="mb-5 text-center section-title fw-bold">FOOD MENU</label>
+                        <label class="mb-5 text-center section-title fw-bold mt-4">FOOD MENU</label>
                         <dl>
                             <dt class="text-center fw-bold">SALAD BAR</dt>
                             <dd>Curly green, Iceberg, Lollo rosso, Romaine</dd>
@@ -275,7 +275,7 @@
                 </section>
                 <section id='programme' class="d-flex justify-content-center sec_marg">
                     <div class="text-center card round-box  p-5 m-3">
-                        <label class="mb-5 text-center section-title fw-bold">PROGRAMME</label>
+                        <label class="mb-5 text-center section-title fw-bold mt-4">PROGRAMME</label>
                         <dl>
                             <dt class="text-center fw-bold">2:00 PM</dt>
                             <dd>REGISTRATION</dd>
@@ -298,7 +298,7 @@
                 </section>
                 <section id='reminders' class="d-flex justify-content-center sec_marg">
                     <div class="card round-box  p-5 m-3">
-                        <label class="text-center section-title fw-bold">REMINDERS</label><br>
+                        <label class="text-center section-title fw-bold mt-4">REMINDERS</label><br>
                         <div class="p-1 text-left">
                             <ul>
                                 <li>Registration starts at 3:00 PM.</li>
@@ -317,7 +317,7 @@
             </div>
         </div>
         <footer class="d-flex justify-content-center pt-5 ">
-            <div class="text-center" style="background: #FFFFFF; height: 20vh; width:100%">
+            <div class="text-center">
                 <a href="https://www.megaworldcorp.com/"><img class="align-items-center" src="<?php echo IMG_WEB ?>/gl - meg - lg.png" alt="" style="width:80%; max-width:500px;"></a><br>
                 <label class="m-3 text-center" style="font-size: 10px;">All rights reserved 2025</label><br>
             </div>

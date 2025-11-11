@@ -1,5 +1,5 @@
 <?php 
-    $activity_date = $my_registration ? $my_registration[0]['activity_datestart'] : strtotime('2025-11-10'); //2025-12-03
+    $activity_date = $my_registration ? $my_registration[0]['activity_datestart'] : strtotime('2025-11-12'); //2025-12-03
     $dateactivity = date('Y-m-d', $activity_date);
     $today = date('Y-m-d');
     $dayBeforeActivity = date('Y-m-d', strtotime($dateactivity . ' -1 day'));
@@ -14,7 +14,7 @@
     <!DOCTYPE html>
         <html>
         <head>
-            <title><?php echo $page_title;?></title>
+            <title>CEBU MAKULAY ANG PASKO SA MEGA 2025</title>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -42,7 +42,7 @@
                 }
 
                 .round-box {
-                    border: 3px solid #d76400ff; 
+                    border: 3px solid #D1222A; 
                     width: 85%;
                     max-width:600px;
                     border-radius: 10px;
@@ -84,7 +84,7 @@
                     color: #000;
                 }
                 a, dt{
-                    color: #d76400ff;
+                    color: #D1222A;
                 }
                 dd{
                     margin-bottom: 15px;
@@ -92,7 +92,7 @@
                 .section-title{
                     font-size: 1.5em;
                     font-weight: bold; 
-                    color: #d76400ff;
+                    color: #D1222A;
         
                 }
                 .expand{
@@ -201,7 +201,7 @@
                     <div class="card round-box ">
                         <div class="card-body">
                             <div class="text-center">
-                                <label class="mt-5 text-center section-title fw-bold">FLOOR PLAN</label><br>
+                                <label class="mt-4 text-center section-title fw-bold">FLOOR PLAN</label><br>
                                 <div class="m-4">
                                     <?php if (!($my_registration[0]['registry_seat']=="")){?>
                                         <span>Your seat number is</span>
@@ -328,7 +328,7 @@
                         enable: true,
                         outModes: "out",
                         random: true,
-                        speed: 0.4, // slow movement
+                        speed: 0.4,
                         straight: false
                     },
                     number: {
@@ -336,66 +336,31 @@
                             enable: true,
                             area: 800
                         },
-                        value: 20
+                        value: 100
                     },
                     opacity: {
                         animation: {
                             enable: true,
-                            speed: 0.5,
-                            minimumValue: 0.2,
+                            speed: 0.3,
+                            minimumValue: 0.1,
                             sync: false
                         },
-                        value: { min: 0.2, max: 0.8 }
+                        value: { min: 0.1, max: 0.4 }
                     },
                     shape: {
                         type: "circle"
                     },
                     size: {
-                        value: { min: 2, max: 4 },
+                        value: { min: 2, max: 5 },
                         animation: {
                             enable: true,
-                            speed: 1,
+                            speed: 0.5,
                             minimumValue: 1,
                             sync: false
                         }
                     },
-                    glow: {
-                        enable: true, // glow effect
-                        color: "#ffffff",
-                        blur: 10
-                    },
                     life: {
-                        duration: {
-                            sync: false,
-                            value: 20
-                        },
                         count: 0
-                    }
-                },
-                interactivity: {
-                    events: {
-                        onHover: { enable: false },
-                        onClick: { enable: false }
-                    }
-                },
-                emitters: {
-                    direction: "none",
-                    life: {
-                        count: 0, // infinite
-                        duration: 0.2,
-                        delay: 0.1
-                    },
-                    rate: {
-                        delay: 0.3,
-                        quantity: 1
-                    },
-                    size: {
-                        width: 100,
-                        height: 100
-                    },
-                    position: {
-                        x: 50,
-                        y: 50
                     }
                 }
             });
