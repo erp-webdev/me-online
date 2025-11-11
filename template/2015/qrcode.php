@@ -5,29 +5,23 @@
     $dayBeforeActivity = date('Y-m-d', strtotime($dateactivity . ' -1 day'));
     
     if (($today >= $dayBeforeActivity && $today <= $dateactivity) && in_array($_GET['title'], 
-            ['MEGA-SAYANG PASKONG PILIPINO 2023', 
-            'Megaworld 35th Anniversary Celebration', 
-            'MEGAWORLD YULETIDE GLAM BALL 2024', 
-            'BACOLOD WINTER WONDERLAND CHRISTMAS 2024', 
-            'ILOILO GLITZ AND GLAM', 
-            'CEBU HAWAIIAN CHRISTMAS LUAU'])) {
-        if($_GET['title']=="MEGA-SAYANG PASKONG PILIPINO 2023") {
-            echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/mega-sayang-paskong-pilipino'</script>";
+            [
+                'MAKULAY ANG PASKO SA MEGA 2025',
+                'CEBU MAKULAY ANG PASKO SA MEGA 2025',
+                'BACOLOD MAKULAY ANG PASKO SA MEGA 2025',
+                'ILOILO MAKULAY ANG PASKO SA MEGA 2025'
+            ])) {
+        if($_GET['title']=="MAKULAY ANG PASKO SA MEGA 2025") {
+            echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/makulay-ang-pasko-sa-mega-2025'</script>";
         }
-        else if($_GET['title']=="Megaworld 35th Anniversary Celebration") {
-            echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/megaworld-35th-anniversary-fun-run'</script>";
+        else if($_GET['title']=="CEBU MAKULAY ANG PASKO SA MEGA 2025") {
+            echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/makulay-ang-pasko-sa-mega-2025-cebu'</script>";
         }
-        else if($_GET['title']=="MEGAWORLD YULETIDE GLAM BALL 2024") {
-            echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/megaworld-yuletide-glamball-2024'</script>";
+        else if($_GET['title']=="BACOLOD MAKULAY ANG PASKO SA MEGA 2025") {
+            echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/makulay-ang-pasko-sa-mega-2025-bacolod'</script>";
         }
-        else if($_GET['title']=="BACOLOD Winter Wonderland Christmas 2024") {
-            echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/bacolod-winter-wonderland-christmas-2024'</script>";
-        }
-        else if($_GET['title']=="ILOILO GLITZ AND GLAM") {
-            echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/iloilo-glitz-and-glam-2024'</script>";
-        }
-        else if($_GET['title']=="CEBU HAWAIIAN CHRISTMAS LUAU") {
-            echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/cebu-hawaiian-christmas-luau-2024'</script>";
+        else if($_GET['title']=="ILOILO MAKULAY ANG PASKO SA MEGA 2025") {
+            echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/makulay-ang-pasko-sa-mega-2025-iloilo'</script>";
         }
     }
     else{?>

@@ -1,5 +1,5 @@
 <?php 
-    $activity_date = $my_registration ? $my_registration[0]['activity_datestart'] : strtotime('2025-11-10'); //2025-12-11
+    $activity_date = $my_registration ? $my_registration[0]['activity_datestart'] : strtotime('2025-11-12'); //2025-12-11
     $dateactivity = date('Y-m-d', $activity_date);
     $today = date('Y-m-d');
     $dayBeforeActivity = date('Y-m-d', strtotime($dateactivity . ' -1 day'));
@@ -14,7 +14,7 @@
     <!DOCTYPE html>
         <html>
         <head>
-            <title><?php echo $page_title;?></title>
+            <title>ILOILO MAKULAY ANG PASKO SA MEGA 2025</title>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -43,12 +43,23 @@
 
                 .round-box {
                     position: relative;
-                    border: 3px solid #d76400ff; 
+                    border: 3px solid transparent; 
+                    border-image: linear-gradient(135deg,
+                                    #007A5E 0%,
+                                    #007A5E 12%,
+                                    #8DC63F 22%,
+                                    #8DC63F 34%,
+                                    #C05FA8 44%,
+                                    #C05FA8 56%,
+                                    #6C4099 66%,
+                                    #6C4099 78%,
+                                    #EF4023 86%,
+                                    #F7941D 100%) 1;
                     width: 85%;
                     max-width:600px;
                     border-radius: 10px;
                     z-index: 3;
-                    padding-top: 60px; 
+                    padding-top: 30px; 
                     background: #fff; 
                 }
 
@@ -62,9 +73,11 @@
                     max-width: 600px;
                     height: 50px; 
                     background-image: url("<?php echo IMG_WEB ?>/star.png");
+                    margin-top: 10px;
+                    margin-left: -8px;
                     background-size: contain;
                     background-repeat: no-repeat;
-                    background-position: left top;
+                    background-position: right top;
                 }
 
                 .frontpage {
@@ -210,7 +223,7 @@
                     <div class="card  round-box">
                         <div class="card-body">
                             <div class="text-center">
-                                <label class="m-3">Log in <a href="<?php echo WEB ?>/mega-christmas-page-checker"><b>here</b></a> to see your registration QR Code.</label><br>
+                                <label class="mx-3 mb-3">Log in <a href="<?php echo WEB ?>/mega-christmas-page-checker"><b>here</b></a> to see your registration QR Code.</label><br>
                             </div>
                         </div>
                     </div>
@@ -343,31 +356,26 @@
                     move: {
                         direction: "none",
                         enable: true,
-                        outModes: "out",
-                        random: false,
-                        speed: 1,
+                        outModes: "bounce",
+                        random: true,
+                        speed: 0.4,
                         straight: false
                     },
                     number: {
                         density: {
                             enable: true,
-                            area: 600
+                            area: 800
                         },
-                        value: 100
+                        value: 50
                     },
                     opacity: {
                         animation: {
                             enable: true,
-                            speed: 0.08,
-                            sync: true,
-                            startValue: "max",
-                            count: 1,
-                            destroy: "min"
+                            speed: 1,
+                            minimumValue: 0.1,
+                            sync: false
                         },
-                        value: {
-                            min: 0,
-                            max: 1
-                        }
+                        value: { min: 0.1, max: 0.8 }
                     },
                     shape: {
                         type: "image",
@@ -381,31 +389,7 @@
                         value: { min: 1, max: 10 }
                     },
                     life: {
-                        duration: {
-                            sync: false,
-                            value: 5 // lifespan of each particle in seconds
-                        },
                         count: 0
-                    }
-                },
-                emitters: {
-                    direction: "none",
-                    life: {
-                        count: 0, // infinite
-                        duration: 2,
-                        delay: 10 // delay between emissions
-                    },
-                    rate: {
-                        delay: 0.2, // delay between particle bursts
-                        quantity: 1 // particles per burst
-                    },
-                    size: {
-                        width: 100, // emitter width
-                        height: 100 // emitter height
-                    },
-                    position: {
-                        x: 50,
-                        y: 50 // emitter position (in percentage)
                     }
                 }
             });
