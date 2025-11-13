@@ -7,20 +7,20 @@
     if (($today >= $dayBeforeActivity && $today <= $dateactivity) && in_array($_GET['title'], 
             [
                 'MAKULAY ANG PASKO SA MEGA 2025',
-                'CEBU MAKULAY ANG PASKO SA MEGA 2025',
-                'BACOLOD MAKULAY ANG PASKO SA MEGA 2025',
-                'ILOILO MAKULAY ANG PASKO SA MEGA 2025'
+                'MAKULAY ANG PASKO SA MEGA 2025 MACTAN NEWTOWN',
+                'MAKULAY ANG PASKO SA MEGA 2025 BACOLOD',
+                'MAKULAY ANG PASKO SA MEGA 2025 ILOILO'
             ])) {
         if($_GET['title']=="MAKULAY ANG PASKO SA MEGA 2025") {
             echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/makulay-ang-pasko-sa-mega-2025'</script>";
         }
-        else if($_GET['title']=="CEBU MAKULAY ANG PASKO SA MEGA 2025") {
+        else if($_GET['title']=="MAKULAY ANG PASKO SA MEGA 2025 MACTAN NEWTOWN") {
             echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/makulay-ang-pasko-sa-mega-2025-cebu'</script>";
         }
-        else if($_GET['title']=="BACOLOD MAKULAY ANG PASKO SA MEGA 2025") {
+        else if($_GET['title']=="MAKULAY ANG PASKO SA MEGA 2025 BACOLOD") {
             echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/makulay-ang-pasko-sa-mega-2025-bacolod'</script>";
         }
-        else if($_GET['title']=="ILOILO MAKULAY ANG PASKO SA MEGA 2025") {
+        else if($_GET['title']=="MAKULAY ANG PASKO SA MEGA 2025 ILOILO") {
             echo "<script language='javascript' type='text/javascript'>window.location.href='".WEB."/makulay-ang-pasko-sa-mega-2025-iloilo'</script>";
         }
     }
