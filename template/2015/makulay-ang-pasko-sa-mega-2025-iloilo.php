@@ -1,5 +1,5 @@
 <?php 
-    $activity_date = $my_registration ? $my_registration[0]['activity_datestart'] : strtotime('2025-11-12'); //2025-12-11
+    $activity_date = $my_registration ? $my_registration[0]['activity_datestart'] : strtotime('2025-11-14'); //2025-12-11
     $dateactivity = date('Y-m-d', $activity_date);
     $today = date('Y-m-d');
     $dayBeforeActivity = date('Y-m-d', strtotime($dateactivity . ' -1 day'));
@@ -14,7 +14,7 @@
     <!DOCTYPE html>
         <html>
         <head>
-            <title>ILOILO MAKULAY ANG PASKO SA MEGA 2025</title>
+            <title>MAKULAY ANG PASKO SA MEGA 2025 ILOILO</title>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -44,7 +44,7 @@
                 .round-box {
                     position: relative;
                     border: 3px solid transparent; 
-                    border-image: linear-gradient(135deg,
+                    border-image: linear-gradient(65deg,
                                     #007A5E 0%,
                                     #007A5E 12%,
                                     #8DC63F 22%,
@@ -229,7 +229,7 @@
                     </div>
                 </section>
                 <?php }?>
-                <section class="d-flex justify-content-center sec_marg">
+                <section class="d-flex justify-content-center sec_marg d-none">
                     <div class="card round-box ">
                         <div class="card-body">
                             <div class="text-center">
@@ -254,66 +254,50 @@
                     <div class="text-center card round-box  p-5 m-3">
                         <label class="mb-5 text-center section-title fw-bold">FOOD MENU</label>
                         <dl>
-                            <dt class="text-center fw-bold">SALAD BAR</dt>
-                            <dd>Curly green, Iceberg, Lollo rosso, Romaine</dd>
-                            <dd>Carrot, Cucumber, Roma Tomatoes, Red beans</dd>
-                            <dd>Cheddar Cheese, Parmesan Cheese, Croutons, Lemon wedges</dd>
-                            <dd>Thousand Island dressing, Kalamansi Vinaigrette, Caesar Dressing</dd>
-                            <dd>Corn kernel, Curly green lettuce</dd>
+                            <dt class="text-center fw-bold">COLD FOOD</dt>
+                            <dd>Ham and Cheese Triangle</dd>
 
-                            <dt class="text-center fw-bold">APPETIZER</dt>
-                            <dd>Beancurd Salad</dd>
-                            <dd>Thai Pomelo Salad with Shrimp</dd>
-                            <dd>Chinese Soy Chicken, BBQ Pork Asado</dd>
-
-                            <dt class="text-center fw-bold">(SERVED PER TABLE ON A PLATTER)</dt>
-                            <dd>Christmas Rumball</dd>
-                            <dd>Casava Cake</dd>
-                            <dd>Bibingka Malagkit</dd>
-                            <dd>Soft and Hard Roll, Butter</dd>
-
-                            <dt class="text-center fw-bold">SOUP</dt>
-                            <dd>Pumpkin Soup</dd>
+                            <dt class="text-center fw-bold">SALAD</dt>
+                            <dd>Macaroni De Luxe</dd>
 
                             <dt class="text-center fw-bold">MAIN COURSE</dt>
-                            <dd>Korean Marinated Meatball</dd>
                             <dd>Lasagna</dd>
-                            <dd>Yuletide Roast Chicken</dd>
-                            <dd>With Lemon Butter, Rosemary and Basil</dd>
-                            <dd>Taiwanese Sticky Pork Riblets</dd>
-                            <dd>Steamed Rice</dd>
+                            <dd>Salisbury Steak</dd>
+                            <dd>Baked Chicken in Herbs</dd>
+                            <dd>Steamed Fish Oriental</dd>
+                            <dd>Lechon</dd>
 
-                            <dt class="text-center fw-bold">CARVING</dt>
-                            <dd>Lechon Belly Roll</dd>
+                            <dt class="text-center fw-bold">DESSERT</dt>
+                            <dd>Sago Melaka</dd>
+                            <dd>Black Sambo</dd>
 
-                            <dt class="text-center fw-bold">DESSERTS</dt>
-                            <dd>Mango Sago</dd>
-                            <dd>Matcha Cheesecake</dd>
-                            <dd>Fresh Fruits</dd>
+                            <dt class="text-center fw-bold">DRINKS</dt>
+                            <dd>Iced Tea</dd>
                         </dl>
-
                     </div>
                 </section>
                 <section id='programme' class="d-flex justify-content-center sec_marg">
                     <div class="text-center card round-box  p-5 m-3">
                         <label class="mb-5 text-center section-title fw-bold">PROGRAMME</label>
                         <dl>
-                            <dt class="text-center fw-bold">2:00 PM</dt>
+                            <dt class="text-center fw-bold">3:00 PM</dt>
                             <dd>REGISTRATION</dd>
                             <dt class="text-center fw-bold">4:00 PM</dt>
-                            <dd>START OF PROGRAM</dd>
+                            <dd>5 MINUTES COUNTDOWN</dd>
                             <dd>DOXOLOGY</dd>
-                            <dd>MESSAGE OF ALT</dd>
+                            <dd>OPENING MESSAGE</dd>
                             <dd>RAFFLE</dd>
                             <dd>SERVICE AWARDS</dd>
-                            <dd>RAFFLE</dd>
+                            <dd>VIDEO MESSAGE</dd>
                             <dd>DINNER</dd>
-                            <dd>FRONT ACT - JOEY G.</dd>
+                            <dd>1ST SET BAND</dd>
+                            <dd>GROUP PRESENTATION</dd>
+                            <dd>AWARDING: STAR OF THE NIGHT</dd>
                             <dd>RAFFLE</dd>
-                            <dd>MAIN ACT - SILENT SANCTUARY</dd>
+                            <dd>CLOSING REMARKS</dd>
                             <dd>RAFFLE</dd>
-                            <dd>MESSAGE OF RASP </dd>
                             <dd>CHRISTMAS PARTY SDE</dd>
+                            <dd>FINAL SET BAND</dd>
                         </dl>
                     </div>
                 </section>
@@ -322,10 +306,10 @@
                         <label class="text-center section-title fw-bold">REMINDERS</label><br>
                         <div class="p-1 text-left">
                             <ul>
-                                <li>Registration starts at 3:00 PM.</li>
-                                <li>Only pre-registered employees with QR codes will be allowed to attend the Christmas Party.</li>
-                                <li>Present your QR code at the Registration Area.</li>
-                                <li>For Service Awardees, they should be at the venue on or before 3:00 PM. Upon arrival, claim your plaque, pin, and printed photo at the Registration Area.</li>
+                                <li>Registration starts at 3:00 PM</li>
+                                <li>Only pre-registered employees with QR codes will be allowed to attend the Christmas Party</li>
+                                <li>Present your QR code at the Registration Area</li>
+                                <li>For Service Awardees, they should be at the venue on or before 3:00PM. Upon arrival, claim your plaque, pin and printed photo at the Registration Area.</li>
                             </ul>
                         </div>
                     </div>
