@@ -151,7 +151,7 @@
                     }
 
                     .frontpage {
-                        background: url('<?php echo IMG_WEB ?>/makulay-ang-pasko-sa-mega-2025-mobile-iloilo.png');
+                        background: url('<?php echo IMG_WEB ?>/makulay-ang-pasko-sa-mega-2025-mobile-iloilo.webp');
                         background-size: cover; 
                         background-position: center; 
                         background-repeat: no-repeat; 
