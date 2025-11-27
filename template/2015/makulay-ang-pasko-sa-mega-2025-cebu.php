@@ -1,5 +1,5 @@
 <?php 
-    $activity_date = $my_registration ? $my_registration[0]['activity_datestart'] : strtotime('2025-11-14'); //2025-12-03
+    $activity_date = $my_registration ? $my_registration[0]['activity_datestart'] : strtotime('2025-12-03'); //2025-12-03
     $dateactivity = date('Y-m-d', $activity_date);
     $today = date('Y-m-d');
     $dayBeforeActivity = date('Y-m-d', strtotime($dateactivity . ' -1 day'));
@@ -119,7 +119,7 @@
                     }
 
                     .frontpage {
-                        background: url('<?php echo IMG_WEB ?>/makulay-ang-pasko-sa-mega-2025-mobile-cebu.webp');
+                        background: url('<?php echo IMG_WEB ?>/makulay-ang-pasko-sa-mega-2025-mobile-cebuv2.webp');
                         background-size: cover; 
                         background-position: center; 
                         background-repeat: no-repeat; 
@@ -245,24 +245,26 @@
                     <div class="text-center card round-box  p-5 m-3">
                         <label class="mb-5 text-center section-title fw-bold">PROGRAMME</label>
                         <dl>
-                            <dt class="text-center fw-bold">3:00 PM</dt>
+                            <dt class="text-center fw-bold">2:00 PM</dt>
                             <dd>REGISTRATION</dd>
+
                             <dt class="text-center fw-bold">4:00 PM</dt>
-                            <dd>5 MINUTES COUNTDOWN</dd>
+                            <dd>COUNTDOWN</dd>
                             <dd>DOXOLOGY</dd>
                             <dd>OPENING MESSAGE</dd>
+                            <dd>SPECIAL MESSAGE</dd>
                             <dd>RAFFLE</dd>
                             <dd>SERVICE AWARDS</dd>
-                            <dd>VIDEO MESSAGE</dd>
                             <dd>DINNER</dd>
-                            <dd>1ST SET BAND</dd>
+                            <dd>GUEST PERFORMER</dd>
                             <dd>GROUP PRESENTATION</dd>
-                            <dd>AWARDING: STAR OF THE NIGHT</dd>
+                            <dd>STAR OF THE NIGHT</dd>
                             <dd>RAFFLE</dd>
+                            <dd>AWARDING OF WINNERS</dd>
                             <dd>CLOSING REMARKS</dd>
                             <dd>RAFFLE</dd>
-                            <dd>CHRISTMAS PARTY SDE</dd>
-                            <dd>FINAL SET BAND</dd>
+                            <dd>CHRISTMAS PARTY SAME DAY EDIT</dd>
+                            <dd>GUEST PERFORMER</dd>
                         </dl>
                     </div>
                 </section>
@@ -270,12 +272,12 @@
                     <div class="card round-box  p-5 m-3">
                         <label class="text-center section-title fw-bold">REMINDERS</label><br>
                         <div class="p-1 text-left">
-                            <ul>
-                                <li>Registration starts at 3:00 PM</li>
-                                <li>Only pre-registered employees with QR codes will be allowed to attend the Christmas Party</li>
-                                <li>Present your QR code at the Registration Area</li>
-                                <li>For Service Awardees, they should be at the venue on or before 3:00PM. Upon arrival, claim your plaque, pin and printed photo at the Registration Area.</li>
-                            </ul>
+                        <ul>
+                            <li>Registration starts at 2:00 PM</li>
+                            <li>Only pre-registered employees with QR codes will be allowed to attend the Christmas Party</li>
+                            <li>Present your QR code at the Registration Area</li>
+                            <li>For Service Awardees: Please be at the venue on or before 2:00 PM. Upon arrival, please claim your plaque, pin, and printed photo at the Registration Area, or feel free to approach Ms. Rhona Imperial.</li>
+                        </ul>
                         </div>
                     </div>
                 </section>
