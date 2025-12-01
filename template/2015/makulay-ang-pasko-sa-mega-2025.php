@@ -1,5 +1,5 @@
 <?php 
-    $activity_date = $my_registration ? $my_registration[0]['activity_datestart'] : strtotime('2025-11-14'); //2025-12-18
+    $activity_date = $my_registration ? $my_registration[0]['activity_datestart'] : strtotime('2025-12-18'); //2025-12-18
     $dateactivity = date('Y-m-d', $activity_date);
     $today = date('Y-m-d');
     $dayBeforeActivity = date('Y-m-d', strtotime($dateactivity . ' -1 day'));
@@ -32,7 +32,8 @@
   
                 .party-theme::before{
                     content: "";
-                    background: url('<?php echo IMG_WEB ?>/circles.png') center center;
+                    /* background: url('<?php echo IMG_WEB ?>/circles.png') center center; */
+                    background: #fff;
                     position: absolute;
                     top: 30vh;
                     right: 0px;
@@ -40,27 +41,79 @@
                     left: 0px;
                     opacity: 0.3;
                 }
-
                 .round-box {
-                    background-color: transparent;
-                    border: 3px solid transparent; 
-                    border-image: linear-gradient(34deg, 
-                                            #DDAEB5, 
-                                            #685A78, 
-                                            #D75993, 
-                                            #D992A9, 
-                                            #D0368B
-                                            ) 
-                                            1; 
+                    position: relative;
+                    border: 3px solid #CC0024; 
+                    box-shadow: 0px 4.5px 30px 3px #f7e1cdc6;
                     width: 85%;
                     max-width:600px;
-                    border-radius: 10px;
+                    border-radius: 7px;
+                    z-index: 3;
+                    padding-top: 30px; 
+                    background: #fff; 
+                }
+
+                .round-box::before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 100%;
+                    max-width: 600px;
+                    height: 70px; 
+                    background-image: url("<?php echo IMG_WEB ?>/christmasball.png");
+                    margin-top: -35px;
+                    margin-left: 20px;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: right top;
+
+                    animation: bounce 2.5s ease-in-out infinite;
+                    transform-origin: top center; 
+                }
+
+                #floorplan .round-box::before {
+                    background-image: url("<?php echo IMG_WEB ?>/christmasball2.png");
+                }
+
+                #food .round-box::before {
+                    background-image: url("<?php echo IMG_WEB ?>/christmasball1.png");
+                }
+
+                #reminders .round-box::before {
+                    background-image: url("<?php echo IMG_WEB ?>/christmasball2.png");
+                }
+
+                .round-box::after {
+                    content: "";
+                    position: absolute;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 100%;
+                    max-width: 600px;
+                    margin-bottom: -50px;
+                    margin-left: -45px;
+                    height: 150px;
+                    background-image: url("<?php echo IMG_WEB ?>/parol.png");
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: left bottom;
+
+                    animation: bounce 2.5s ease-in-out infinite;
+                    transform-origin: right left; 
+                }
+                @keyframes bounce {
+                    0%   { transform: translateX(-50%) rotate(-5deg); }
+                    50%  { transform: translateX(-50%) rotate(5deg); }
+                    100% { transform: translateX(-50%) rotate(-5deg); }
                 }
 
                 .frontpage {
                     position: relative;
                     height:100vh;
-                    background: url('<?php echo IMG_WEB ?>/makulay-ang-pasko-sa-mega-2025-pc-ncr.png') no-repeat center center;
+                    background: url('<?php echo IMG_WEB ?>/makulay-ang-pasko-sa-mega-2025-pc-ncrv2.png') no-repeat center center;
                     background-size: cover;
                     z-index: 1;
                     overflow: hidden;
@@ -82,7 +135,7 @@
                 }
     
                 label{
-                    font-size: 1.5em;
+                    font-size: 1em;
                     color: #000;
                 }
                 .idnum{
@@ -93,7 +146,8 @@
                     color: #000;
                 }
                 a, dt{
-                    color: #620036ff;
+                    /* color: #620036ff; */
+                    color: #CC0024;
                 }
                 dd{
                     margin-bottom: 15px;
@@ -101,7 +155,8 @@
                 .section-title{
                     font-size: 1.5em;
                     font-weight: bold; 
-                    color: #620036ff;
+                    /* color: #620036ff; */
+                    color: #CC0024;
         
                 }
                 .expand{
@@ -128,32 +183,11 @@
                     }
 
                     .frontpage {
-                        background: url('<?php echo IMG_WEB ?>/makulay-ang-pasko-sa-mega-2025-mobile-ncr.webp');
+                        background: url('<?php echo IMG_WEB ?>/makulay-ang-pasko-sa-mega-2025-mobile-ncrv2.png');
                         background-size: cover; 
                         background-position: center; 
                         background-repeat: no-repeat; 
                         padding: 10px;
-                    }
-
-                    .round-box {
-                        position: relative; 
-                        padding-top: 60px; 
-                    }
-
-                    .round-box::before {
-                        content: "";
-                        position: absolute;
-                        top: 0;
-                        left: 50%;
-                        transform: translateX(-50%);
-                        width: 100%;
-                        max-width: 600px;
-                        height: 100px;
-                        background-image: url("<?php echo IMG_WEB ?>/lanterns.png");
-                        background-size: cover;
-                        background-repeat: no-repeat;
-                        background-position: center top;
-                        pointer-events: none;
                     }
                 }
             </style>
@@ -225,7 +259,7 @@
                     </div>
                 </section>
                 <?php }?>
-                <section class="d-flex justify-content-center sec_marg">
+                <section id='floorplan' class="d-flex justify-content-center sec_marg">
                     <div class="card round-box p-5">
                         <div class="text-center">
                             <label class="text-center section-title fw-bold mt-3">FLOOR PLAN</label><br>
@@ -295,19 +329,22 @@
                             <dt class="text-center fw-bold">2:00 PM</dt>
                             <dd>REGISTRATION</dd>
                             <dt class="text-center fw-bold">4:00 PM</dt>
-                            <dd>START OF PROGRAM</dd>
+                            <dd>COUNTDOWN</dd>
                             <dd>DOXOLOGY</dd>
-                            <dd>MESSAGE OF ALT</dd>
+                            <dd>OPENING NUMBER</dd>
+                            <dd>CHAIRMAN'S MESSAGE</dd>
+                            <dd>MEGAWORLD FOUNDATION</dd>
                             <dd>RAFFLE</dd>
                             <dd>SERVICE AWARDS</dd>
                             <dd>RAFFLE</dd>
                             <dd>DINNER</dd>
-                            <dd>FRONT ACT - JOEY G.</dd>
+                            <dd>GUEST PERFORMER</dd>
+                            <dd>STAR OF THE NIGHT</dd>
+                            <dd>GUEST PERFORMER</dd>
                             <dd>RAFFLE</dd>
-                            <dd>MAIN ACT - SILENT SANCTUARY</dd>
-                            <dd>RAFFLE</dd>
-                            <dd>MESSAGE OF RASP </dd>
-                            <dd>CHRISTMAS PARTY SDE</dd>
+                            <dd>MESSAGE FROM THE CHIEF PEOPLE AND CULTURE OFFICER</dd>
+                            <dd>CHRISTMAS PARTY SAME DAY EDIT</dd>
+                            <dd>GUEST PERFORMER</dd>
                         </dl>
                     </div>
                 </section>
@@ -358,7 +395,7 @@
                     color: "transparent"
                 },
                 particles: {
-                    color: { value: "#ffffff" },
+                    color: { value: ["#fff200ff", "#faea74ff", "#ffdc2dff"] },
                     move: {
                         direction: "none",
                         enable: true,
@@ -392,7 +429,7 @@
                         type: "star"
                     },
                     size: {
-                        value: { min: 1, max: 2 }
+                        value: { min: 0.5, max: 1.7 }
                     },
                     life: {
                         duration: {
