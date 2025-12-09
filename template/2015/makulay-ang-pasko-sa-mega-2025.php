@@ -268,11 +268,14 @@
                                     <span>Your seat number is</span>
                                     <label class="mb-3"><strong><?php echo $my_registration[0]['registry_seat']?></strong></label><br>
                                 <?php }?>
+                                <div class="fw-bold">Ground Floor</div>
+                                <img src="<?php echo IMG_WEB ?>/floorplan-marriot-level1.png" alt="Ground Floor" class="imgView" style="width:90%;" data-image="floorplan-marriot-level1.png"><br>
+
                                 <div class="fw-bold">Main Hall</div>
-                                <img src="<?php echo IMG_WEB ?>/mgb-mainhall.png" alt="Main Hall" class="imgView" style="width:90%;" data-image="mgb-mainhall.png"><br>
+                                <img src="<?php echo IMG_WEB ?>/floorplan-marriot-level2.png" alt="Main Hall" class="imgView" style="width:90%;" data-image="floorplan-marriot-level2.png"><br>
 
                                 <div class="fw-bold">Sky Box</div>
-                                <img src="<?php echo IMG_WEB ?>/mgb-skybox.png" alt="Sky Box" class="imgView" style="width:90%;" data-image="mgb-skybox.png"><br>
+                                <img src="<?php echo IMG_WEB ?>/floorplan-marriot-level3.png" alt="Sky Box" class="imgView" style="width:90%;" data-image="floorplan-marriot-level3.png"><br>
                             </div>
                             <p class="mt-3">Note: For a clear view of the floor plan, please click on the image to enlarge it.</p><br>
                         </div>
@@ -282,44 +285,50 @@
                     <div class="text-center card round-box  p-5 m-3">
                         <label class="mb-5 text-center section-title fw-bold">FOOD MENU</label>
                         <dl>
-                            <dt class="text-center fw-bold">SALAD BAR</dt>
-                            <dd>Curly green, Iceberg, Lollo rosso, Romaine</dd>
-                            <dd>Carrot, Cucumber, Roma Tomatoes, Red beans</dd>
-                            <dd>Cheddar Cheese, Parmesan Cheese, Croutons, Lemon wedges</dd>
-                            <dd>Thousand Island dressing, Kalamansi Vinaigrette, Caesar Dressing</dd>
-                            <dd>Corn kernel, Curly green lettuce</dd>
-
-                            <dt class="text-center fw-bold">APPETIZER</dt>
-                            <dd>Beancurd Salad</dd>
-                            <dd>Thai Pomelo Salad with Shrimp</dd>
-                            <dd>Chinese Soy Chicken, BBQ Pork Asado</dd>
-
-                            <dt class="text-center fw-bold">(SERVED PER TABLE ON A PLATTER)</dt>
+                            <dt class="text-center fw-bold"><i>TO BE SERVED ON PLATTER PER TABLE</i></dt>
                             <dd>Christmas Rumball</dd>
-                            <dd>Casava Cake</dd>
+                            <dd>Cassava Cake</dd>
                             <dd>Bibingka Malagkit</dd>
                             <dd>Soft and Hard Roll, Butter</dd>
 
+                            <dt class="text-center fw-bold"><u>MANAGED BUFFET</u></dt>
+                            <dt class="text-center fw-bold">GARDEN FRESH SALAD BAR</dt>
+                            <dd>Sariwang Letsugas</dd>
+                            <dd>Curly Green, Iceberg, Lollo Rosso, Romaine</dd>
+                            <dd>Carrot, Cucumber, Tomatoes, Sweet Corn</dd>
+                            <dd>Parmesan Cheese, Croutons, Atchara</dd>
+                            <dd>Thousand Island Dressing, Calamansi Vinaigrette, Guimaras Mango & Cilantro Dressing</dd>
+
+                            <dt class="text-center fw-bold">APPETIZER</dt>
+                            <dd>Filipino-Style Chicken Macaroni Salad</dd>
+                            <dd>Poached Chicken, Diced Cheddar, Diced Pineapple, Raisins, Diced Carrots, Sweet Corn</dd>
+                            <dd>BBQ Pork Asado & Soy Chicken</dd>
+                            <dd>Mindoro Occidental Kilawing Barilis (Yellowfin Tuna Ceviche)</dd>
+
                             <dt class="text-center fw-bold">SOUP</dt>
-                            <dd>Pumpkin Soup</dd>
+                            <dd>Sinigang na Tiyan ng Salmon</dd>
+                            <dd>Salmon Belly in Tamarind Broth</dd>
+                            <dd>Served with Malunggay Soft Roll</dd>
 
                             <dt class="text-center fw-bold">MAIN COURSE</dt>
-                            <dd>Korean Marinated Meatball</dd>
-                            <dd>Lasagna</dd>
-                            <dd>Yuletide Roast Chicken</dd>
-                            <dd>With Lemon Butter, Rosemary and Basil</dd>
-                            <dd>Taiwanese Sticky Pork Riblets</dd>
-                            <dd>Steamed Rice</dd>
+                            <dd>Chicken Inasal (Grilled Chicken marinated in anato-lemongrass oil)</dd>
+                            <dd>Sweet & Sour Fish Fillet</dd>
+                            <dd>Beef Kare-Kare</dd>
+                            <dd>Aligue Barilla Penne Pasta</dd>
+                            <dd>Buttered Mixed Vegetables</dd>
+                            <dd>Pinasingawang Kanin sa Kasubha</dd>
 
                             <dt class="text-center fw-bold">CARVING</dt>
-                            <dd>Lechon Belly Roll</dd>
+                            <dd>Lechon Belly Porchetta in Tamarind Brine</dd>
+                            <dd>Roasted Rolled Pork belly with Lemongrass marinade and Tamarind brine</dd>
+                            <dd>Roasted root vegetables, Sautee Corn with Atsuete butter, Calamansi Soy Sauce and Liver sauce</dd>
 
                             <dt class="text-center fw-bold">DESSERTS</dt>
-                            <dd>Mango Sago</dd>
-                            <dd>Matcha Cheesecake</dd>
-                            <dd>Fresh Fruits</dd>
+                            <dd>Buko Pandan Salad</dd>
+                            <dd>Brazo de Mercedes</dd>
+                            <dd>Chocolate Yule Log</dd>
+                            <dd>Tropical Fresh Fruits</dd>
                         </dl>
-
                     </div>
                 </section>
                 <section id='programme' class="d-flex justify-content-center sec_marg">
