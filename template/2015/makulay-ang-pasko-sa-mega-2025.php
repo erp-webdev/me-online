@@ -73,16 +73,12 @@
                     transform-origin: top center; 
                 }
 
-                #floorplan .round-box::before {
+                .christmasball2 .round-box::before {
                     background-image: url("<?php echo IMG_WEB ?>/christmasball2.png");
                 }
 
-                #food .round-box::before {
+                .christmasball1 .round-box::before {
                     background-image: url("<?php echo IMG_WEB ?>/christmasball1.png");
-                }
-
-                #reminders .round-box::before {
-                    background-image: url("<?php echo IMG_WEB ?>/christmasball2.png");
                 }
 
                 .round-box::after {
@@ -259,7 +255,7 @@
                     </div>
                 </section>
                 <?php }?>
-                <section id='floorplan' class="d-flex justify-content-center sec_marg">
+                <section id='floorplan' class="d-flex justify-content-center sec_marg christmasball2">
                     <div class="card round-box p-5">
                         <div class="text-center">
                             <label class="text-center section-title fw-bold mt-3">FLOOR PLAN</label><br>
@@ -268,20 +264,14 @@
                                     <span>Your seat number is</span>
                                     <label class="mb-3"><strong><?php echo $my_registration[0]['registry_seat']?></strong></label><br>
                                 <?php }?>
-                                <div class="fw-bold">Ground Floor</div>
-                                <img src="<?php echo IMG_WEB ?>/floorplan-marriot-level1.png" alt="Ground Floor" class="imgView" style="width:90%;" data-image="floorplan-marriot-level1.png"><br>
-
                                 <div class="fw-bold">Main Hall</div>
                                 <img src="<?php echo IMG_WEB ?>/floorplan-marriot-level2.png" alt="Main Hall" class="imgView" style="width:90%;" data-image="floorplan-marriot-level2.png"><br>
-
-                                <div class="fw-bold">Sky Box</div>
-                                <img src="<?php echo IMG_WEB ?>/floorplan-marriot-level3.png" alt="Sky Box" class="imgView" style="width:90%;" data-image="floorplan-marriot-level3.png"><br>
                             </div>
                             <p class="mt-3">Note: For a clear view of the floor plan, please click on the image to enlarge it.</p><br>
                         </div>
                     </div>
                 </section>
-                <section id='food' class="d-flex justify-content-center sec_marg">
+                <section id='food' class="d-flex justify-content-center sec_marg christmasball1">
                     <div class="text-center card round-box  p-5 m-3">
                         <label class="mb-5 text-center section-title fw-bold">FOOD MENU</label>
                         <dl>
@@ -357,7 +347,7 @@
                         </dl>
                     </div>
                 </section>
-                <section id='reminders' class="d-flex justify-content-center sec_marg">
+                <section id='reminders' class="d-flex justify-content-center sec_marg christmasball2">
                     <div class="card round-box  p-5 m-3">
                         <label class="text-center section-title fw-bold">REMINDERS</label><br>
                         <div class="p-1 text-left">
