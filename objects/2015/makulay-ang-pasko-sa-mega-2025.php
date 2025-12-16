@@ -8,8 +8,10 @@ if ($logged == 1 && $profile_dbname != 'ECINEMA' && $profile_dbname != 'EPARKVIE
 		$page_title = "MAKULAY ANG PASKO SA MEGA 2025";
 		global $sroot, $profile_id, $unix3month;
 
+		$activity_id = $_GET['actid'];
+
 		$id = substr($id, 0, strlen($id) - 10);
-        $my_registration = $tblsql->get_registration($id, 0, 0, 0, $profile_id, $profile_dbname);
+        $my_registration = $tblsql->get_registration($id, 0, 0, 0, $profile_id, $profile_dbname, $activity_id);
         $company = $tblsql->get_company($profile_comp, $profile_dbname);
 
         //AUDIT TRAIL
