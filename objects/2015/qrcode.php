@@ -12,8 +12,10 @@ if ($logged == 1 && $profile_dbname != 'ECINEMA' && $profile_dbname != 'EPARKVIE
 
 		global $sroot, $profile_id, $unix3month;
 
+		$activity_id = $_GET['actid'];
+
 		$id = substr($id, 0, strlen($id) - 10);
-        $my_registration = $tblsql->get_registration($id, 0, 0, 0, $profile_id, $profile_dbname);
+        $my_registration = $tblsql->get_registration($id, 0, 0, 0, $profile_id, $profile_dbname, $activity_id);
 		
 		// $table_draw_query = "SELECT * FROM SUBSIDIARY.DBO.TABLEDRAW$ WHERE EmpID = '$profile_id' AND DBNAME = '$profile_dbname'";
 		// $table_draw = $mainsql->get_row($table_draw_query);

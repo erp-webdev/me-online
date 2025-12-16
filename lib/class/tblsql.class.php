@@ -869,7 +869,7 @@ class tblsql {
 		return $result;
     }
 
-    function get_registration($id = 0, $start = 0, $limit = 0, $count = 0, $uid = NULL, $db = NULL)
+    function get_registration($id = 0, $start = 0, $limit = 0, $count = 0, $uid = NULL, $db = NULL, $actid = NULL)
 	{
         $sql = "SELECT [outer].* FROM ( ";
         $sql .= " SELECT ROW_NUMBER() OVER(ORDER BY registry_date DESC) as ROW_NUMBER, ";
