@@ -68,6 +68,7 @@
                     background-size: contain;
                     background-repeat: no-repeat;
                     background-position: right top;
+                    pointer-events: none;
 
                     animation: bounce 2.5s ease-in-out infinite;
                     transform-origin: top center; 
@@ -96,6 +97,7 @@
                     background-size: contain;
                     background-repeat: no-repeat;
                     background-position: left bottom;
+                    pointer-events: none;
 
                     animation: bounce 2.5s ease-in-out infinite;
                     transform-origin: right left; 
@@ -274,102 +276,120 @@
                 <section id='food' class="d-flex justify-content-center sec_marg christmasball1">
                     <div class="text-center card round-box  p-5 m-3">
                         <label class="mb-5 text-center section-title fw-bold">FOOD MENU</label>
-                        <dl>
-                            <dt class="text-center fw-bold"><i>TO BE SERVED ON PLATTER PER TABLE</i></dt>
-                            <dd>Christmas Rumball</dd>
-                            <dd>Cassava Cake</dd>
-                            <dd>Bibingka Malagkit</dd>
-                            <dd>Soft and Hard Roll, Butter</dd>
+                        <?php if (0==1):?>
+                            <dl>
+                                <dt class="text-center fw-bold"><i>TO BE SERVED ON PLATTER PER TABLE</i></dt>
+                                <dd>Christmas Rumball</dd>
+                                <dd>Cassava Cake</dd>
+                                <dd>Bibingka Malagkit</dd>
+                                <dd>Soft and Hard Roll, Butter</dd>
 
-                            <dt class="text-center fw-bold"><u>MANAGED BUFFET</u></dt>
-                            <dt class="text-center fw-bold">GARDEN FRESH SALAD BAR</dt>
-                            <dd>Sariwang Letsugas</dd>
-                            <dd>Curly Green, Iceberg, Lollo Rosso, Romaine</dd>
-                            <dd>Carrot, Cucumber, Tomatoes, Sweet Corn</dd>
-                            <dd>Parmesan Cheese, Croutons, Atchara</dd>
-                            <dd>Thousand Island Dressing, Calamansi Vinaigrette, Guimaras Mango & Cilantro Dressing</dd>
+                                <dt class="text-center fw-bold"><u>MANAGED BUFFET</u></dt>
+                                <dt class="text-center fw-bold">GARDEN FRESH SALAD BAR</dt>
+                                <dd>Sariwang Letsugas</dd>
+                                <dd>Curly Green, Iceberg, Lollo Rosso, Romaine</dd>
+                                <dd>Carrot, Cucumber, Tomatoes, Sweet Corn</dd>
+                                <dd>Parmesan Cheese, Croutons, Atchara</dd>
+                                <dd>Thousand Island Dressing, Calamansi Vinaigrette, Guimaras Mango & Cilantro Dressing</dd>
 
-                            <dt class="text-center fw-bold">APPETIZER</dt>
-                            <dd>Filipino-Style Chicken Macaroni Salad</dd>
-                            <dd>Poached Chicken, Diced Cheddar, Diced Pineapple, Raisins, Diced Carrots, Sweet Corn</dd>
-                            <dd>BBQ Pork Asado & Soy Chicken</dd>
-                            <dd>Mindoro Occidental Kilawing Barilis (Yellowfin Tuna Ceviche)</dd>
+                                <dt class="text-center fw-bold">APPETIZER</dt>
+                                <dd>Filipino-Style Chicken Macaroni Salad</dd>
+                                <dd>Poached Chicken, Diced Cheddar, Diced Pineapple, Raisins, Diced Carrots, Sweet Corn</dd>
+                                <dd>BBQ Pork Asado & Soy Chicken</dd>
+                                <dd>Mindoro Occidental Kilawing Barilis (Yellowfin Tuna Ceviche)</dd>
 
-                            <dt class="text-center fw-bold">SOUP</dt>
-                            <dd>Sinigang na Tiyan ng Salmon</dd>
-                            <dd>Salmon Belly in Tamarind Broth</dd>
-                            <dd>Served with Malunggay Soft Roll</dd>
+                                <dt class="text-center fw-bold">SOUP</dt>
+                                <dd>Sinigang na Tiyan ng Salmon</dd>
+                                <dd>Salmon Belly in Tamarind Broth</dd>
+                                <dd>Served with Malunggay Soft Roll</dd>
 
-                            <dt class="text-center fw-bold">MAIN COURSE</dt>
-                            <dd>Chicken Inasal (Grilled Chicken marinated in anato-lemongrass oil)</dd>
-                            <dd>Sweet & Sour Fish Fillet</dd>
-                            <dd>Beef Kare-Kare</dd>
-                            <dd>Aligue Barilla Penne Pasta</dd>
-                            <dd>Buttered Mixed Vegetables</dd>
-                            <dd>Pinasingawang Kanin sa Kasubha</dd>
+                                <dt class="text-center fw-bold">MAIN COURSE</dt>
+                                <dd>Chicken Inasal (Grilled Chicken marinated in anato-lemongrass oil)</dd>
+                                <dd>Sweet & Sour Fish Fillet</dd>
+                                <dd>Beef Kare-Kare</dd>
+                                <dd>Aligue Barilla Penne Pasta</dd>
+                                <dd>Buttered Mixed Vegetables</dd>
+                                <dd>Pinasingawang Kanin sa Kasubha</dd>
 
-                            <dt class="text-center fw-bold">CARVING</dt>
-                            <dd>Lechon Belly Porchetta in Tamarind Brine</dd>
-                            <dd>Roasted Rolled Pork belly with Lemongrass marinade and Tamarind brine</dd>
-                            <dd>Roasted root vegetables, Sautee Corn with Atsuete butter, Calamansi Soy Sauce and Liver sauce</dd>
+                                <dt class="text-center fw-bold">CARVING</dt>
+                                <dd>Lechon Belly Porchetta in Tamarind Brine</dd>
+                                <dd>Roasted Rolled Pork belly with Lemongrass marinade and Tamarind brine</dd>
+                                <dd>Roasted root vegetables, Sautee Corn with Atsuete butter, Calamansi Soy Sauce and Liver sauce</dd>
 
-                            <dt class="text-center fw-bold">DESSERTS</dt>
-                            <dd>Buko Pandan Salad</dd>
-                            <dd>Brazo de Mercedes</dd>
-                            <dd>Chocolate Yule Log</dd>
-                            <dd>Tropical Fresh Fruits</dd>
-                        </dl>
+                                <dt class="text-center fw-bold">DESSERTS</dt>
+                                <dd>Buko Pandan Salad</dd>
+                                <dd>Brazo de Mercedes</dd>
+                                <dd>Chocolate Yule Log</dd>
+                                <dd>Tropical Fresh Fruits</dd>
+                            </dl>
+                        <?php else:?>
+                            <dl>
+                                <dd class="text-center fw-bold"><i>We’ll be sharing more details soon. Stay tuned!</i></dd>
+                            <dl>
+                        <?php endif; ?>
                     </div>
                 </section>
                 <section id='programme' class="d-flex justify-content-center sec_marg">
                     <div class="text-center card round-box  p-5 m-3">
                         <label class="mb-5 text-center section-title fw-bold">PROGRAMME</label>
-                        <dl>
-                            <dt class="text-center fw-bold">2:00 PM</dt>
-                            <dd>REGISTRATION</dd>
-                            <dt class="text-center fw-bold">4:00 PM</dt>
-                            <dd>COUNTDOWN</dd>
-                            <dd>DOXOLOGY</dd>
-                            <dd>OPENING NUMBER</dd>
-                            <dd>CHAIRMAN'S MESSAGE</dd>
-                            <dd>MEGAWORLD FOUNDATION</dd>
-                            <dd>RAFFLE</dd>
-                            <dd>SERVICE AWARDS</dd>
-                            <dd>RAFFLE</dd>
-                            <dd>DINNER</dd>
-                            <dd>GUEST PERFORMER</dd>
-                            <dd>STAR OF THE NIGHT</dd>
-                            <dd>GUEST PERFORMER</dd>
-                            <dd>RAFFLE</dd>
-                            <dd>MESSAGE FROM THE CHIEF PEOPLE AND CULTURE OFFICER</dd>
-                            <dd>CHRISTMAS PARTY SAME DAY EDIT</dd>
-                            <dd>GUEST PERFORMER</dd>
-                        </dl>
+                        <?php if (0==1):?>
+                            <dl>
+                                <dt class="text-center fw-bold">2:00 PM</dt>
+                                <dd>REGISTRATION</dd>
+                                <dt class="text-center fw-bold">4:00 PM</dt>
+                                <dd>COUNTDOWN</dd>
+                                <dd>DOXOLOGY</dd>
+                                <dd>OPENING NUMBER</dd>
+                                <dd>CHAIRMAN'S MESSAGE</dd>
+                                <dd>MEGAWORLD FOUNDATION</dd>
+                                <dd>RAFFLE</dd>
+                                <dd>SERVICE AWARDS</dd>
+                                <dd>RAFFLE</dd>
+                                <dd>DINNER</dd>
+                                <dd>GUEST PERFORMER</dd>
+                                <dd>STAR OF THE NIGHT</dd>
+                                <dd>GUEST PERFORMER</dd>
+                                <dd>RAFFLE</dd>
+                                <dd>MESSAGE FROM THE CHIEF PEOPLE AND CULTURE OFFICER</dd>
+                                <dd>CHRISTMAS PARTY SAME DAY EDIT</dd>
+                                <dd>GUEST PERFORMER</dd>
+                            </dl>
+                        <?php else:?>
+                            <dl>
+                                <dd class="text-center fw-bold"><i>Programme details will be posted here shortly, be sure to come back.</i></dd>
+                            <dl>
+                        <?php endif; ?>
                     </div>
                 </section>
                 <section id='reminders' class="d-flex justify-content-center sec_marg christmasball2">
                     <div class="card round-box  p-5 m-3">
                         <label class="text-center section-title fw-bold">REMINDERS</label><br>
-                        <div class="p-1 text-left">
-                            <ul>
-                                <li>Registration starts at 2:00pm.</li>
-                                <li>Do not forget your QR Code.</li>
-                                <li>Bring your Company ID.</li>
-                                <li>To all Service Awardees: 
-                                    <ul>
-                                        <li>Claiming of plaques and pins will take place from 2:00 to 4:00pm at Executive West 16 (15, 20, 25 & 30 years) and Executive East 19 (5 & 10 years).</li>
-                                        <li>Please be ready at around 4:45 PM (after Dr. Tan’s speech) on the right side of the stage.</li>
-                                    </ul>
-                                </li>
-                                <li>Company Bus to MGB first trip as follows:
-                                    <ul>
-                                        <li>AGT 1:00PM</li>
-                                        <li>TWS 1:15PM</li>
-                                        <li>GCP 12:00PM</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
+                        <?php if (0==1):?>
+                            <div class="p-1 text-left">
+                                <ul>
+                                    <li>Registration starts at 2:00pm.</li>
+                                    <li>Do not forget your QR Code.</li>
+                                    <li>Bring your Company ID.</li>
+                                    <li>To all Service Awardees: 
+                                        <ul>
+                                            <li>Claiming of plaques and pins will take place from 2:00 to 4:00pm at Executive West 16 (15, 20, 25 & 30 years) and Executive East 19 (5 & 10 years).</li>
+                                            <li>Please be ready at around 4:45 PM (after Dr. Tan’s speech) on the right side of the stage.</li>
+                                        </ul>
+                                    </li>
+                                    <li>Company Bus to MGB first trip as follows:
+                                        <ul>
+                                            <li>AGT 1:00PM</li>
+                                            <li>TWS 1:15PM</li>
+                                            <li>GCP 12:00PM</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        <?php else:?>
+                            <dl>
+                                <dd class="text-center fw-bold"><i>Important event reminders will be available soon. Check back later!</i></dd>
+                            <dl>
+                        <?php endif; ?>
                     </div>
                 </section>
         </body>
