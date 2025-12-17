@@ -340,7 +340,6 @@
                             <dd>DINNER</dd>
                             <dd>GUEST PERFORMER</dd>
                             <dd>RAFFLE</dd>
-                            <dd>GUEST PERFORMER</dd>
                             <dd>STAR OF THE NIGHT</dd>
                             <dd>GUEST PERFORMER</dd>
                             <dd>CHRISTMAS PARTY SAME DAY EDIT</dd>
