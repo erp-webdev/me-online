@@ -120,6 +120,17 @@
                     cancelButtonText: '<i class="fas fa-ban"></i> Cancel'
                 }).then((confirm) => {
                     if (confirm.isConfirmed) {
+                        Swal.fire({
+                            title: 'Thank you for your patience!', 
+                            text: 'Please wait while updating the documents...',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            allowEnterKey: false,
+                            didOpen: () => {
+                                Swal.showLoading()
+                            }
+                        });
+
                         let form = $('#RateeSignForm')[0];
                         let formData = new FormData(form);
                         
@@ -139,15 +150,16 @@
                                     title: response.type,
                                     icon: response.icon,
                                     text: response.message,
-                                    allowOutsideClick: true,
-                                    allowEscapeKey: true,
+                                    allowOutsideClick: false,
+                                    allowEscapeKey: false,
+                                    allowEnterKey: false,
                                     confirmButtonText: "Okay"
                                     }).then((result) => {
                                         if (result.isConfirmed) {
+                                            $('#RateeEsignatureModal').hide();
                                             location.reload();
                                         }
                                 });
-
                             },
                             error: function (xhr, status, error) {
                                 console.error('Error:', xhr.responseText || error);
@@ -330,7 +342,7 @@
 
                                         <div class="modal-footer">
                                             <button class="btn btn-light" data-dismiss="modal" id="CancelEsignBtn">Cancel</button>
-                                            <button type="button" class="btn btn-primary" id="signDocBtn"
+                                            <button type="button" class="btn btn-primary e-sign-button" id="signDocBtn"
                                                 data-title="Sign Post Evaluation Documents" 
                                                 data-desc="Are you sure you want to sign these post evaluation documents?">
                                                 Proceed
