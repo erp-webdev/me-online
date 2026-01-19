@@ -601,6 +601,9 @@
                             </div><!-- End of part 4 -->
                         </div>
                         
+                        <div class='warningMsg' ng-show="!is_approved && record.total_computed_score < 3">
+                            * This part is disabled because rating is below minimum requirement.
+                        </div>
                         <div ng-class="record.total_computed_score >= 3 ? '' : 'disabled-div'">
                             <div style="border:1px solid #fff;padding-left:5px;padding-right:5px;width:98%;">
                                 <h4>V. SETTING OBJECTIVES FOR NEXT REVIEW PERIOD</h4>
@@ -912,6 +915,9 @@
                             </tr>
                         </table><br />
 
+                        <div class='warningMsg' ng-show="!is_approved && record.total_computed_score < 3">
+                            * This part is disabled because rating is below minimum requirement.
+                        </div>
                         <div style="border:1px solid #fff;padding-left:5px;padding-right:5px;width:98%;" ng-class="record.total_computed_score >= 3 ? '' : 'disabled-div'">
                             <h4>VI. DEVELOPMENT PLAN</h4>
                             <div class='textareaGroup'>A. Key competencies to strengthen performance in current job (set by reviewing mgr):
