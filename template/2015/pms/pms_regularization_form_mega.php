@@ -864,7 +864,7 @@
                                 <textarea spellcheck="true" 
                                     id="EmployeeAccept" 
                                     class="checker" 
-                                    style="width:98.4%;min-height:100px;" 
+                                    style="width:710px;min-height:100px;" 
                                     ng-show="is_approved" 
                                     ng-hide="record.EmpComment != null"
                                     ng-class="record.EmpComment == null ? 'spellcheck' : '' "></textarea>
