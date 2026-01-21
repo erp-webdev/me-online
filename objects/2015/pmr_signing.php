@@ -34,6 +34,15 @@
                                 if(in_array($pmr_data['post_evaluation']['Status'], ['Post Evaluation Endorsed to Payroll', 'Post Evaluation Completed'])){
                                     $evaluation = $pmr_data['evaluation'];
                                     $post_evaluation = $pmr_data['post_evaluation'];
+                                    $post_evaluation_approval = $pmr_data['post_evaluation_approval'];
+                                    
+                                    $manual_approvals = array_filter($post_evaluation_approval, function($approval) {
+                                        return $approval['ApprovalType'] === 'Manual';
+                                    });
+
+                                    if($manual_approvals){
+                                        $error_message = "Digital signing is unavailable specifically for this evaluation due to its manual signing configuration. Please coordinate and contact your People Partner for assistance.";
+                                    }
                                 }
                                 else{
                                     $error_message = "You do not have permission yet to access this page. Please wait for further notice or you may contact your People Partner.";
