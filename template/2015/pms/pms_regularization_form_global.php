@@ -210,16 +210,29 @@
                     <br />
                 </div>
 
-                <div ng-show="is_approved && record.DateCompleted != null">
-                    <table style="width:100%;">
-                        <tr style="background-color:#fff;">
-                            <td colspan="7" style="text-align:center;font-weight:bold;color:#A70606;">
-                                <span ng-show="(record.hr_comments | filter:{ 
+                <div ng-show="is_approved && record.DateCompleted != null && (record.hr_comments | filter:{ 
                                         EvaluationID: record.EvaluationID,
                                         ReadAt: null, 
                                         AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length == 0">
+                    <table style="width:100%;">
+                        <tr style="background-color:#fff;">
+                            <td colspan="7" style="text-align:center;font-weight:bold;color:#A70606;">
+                                <span>
                                     This evaluation form has been completed.
                                 </span>
+                            </td>
+                        </tr>
+                    </table>
+                    <br />
+                </div>
+
+                <div ng-show="(record.hr_comments | filter:{ 
+                                        EvaluationID: record.EvaluationID,
+                                        ReadAt: null, 
+                                        AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length > 0">
+                    <table style="width:100%;">
+                        <tr style="background-color:#fff;">
+                            <td colspan="7" style="text-align:center;font-weight:bold;color:#A70606;">
                                 <span ng-show="(record.hr_comments | filter:{ 
                                         EvaluationID: record.EvaluationID,
                                         ReadAt: null, 
@@ -821,6 +834,7 @@
                                                                     AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length > 0"
                                                             ng-model="next_pcc.Description">
                                                         </textarea>
+                                                        <span>&nbsp;</span>
                                                     </td>
 
                                                     <td>
