@@ -256,8 +256,7 @@
                                         style="border:1px solid #f3f1f1ff; background: transparent; 
                                             margin-top: -100px;  
                                             clip-path: inset(100px 0 0 0);" 
-                                        allowtransparency="true"
-                                        scrolling="no">
+                                        allowtransparency="true">
                                     </iframe>
                                 <?php endforeach; ?>
                             <?php endif; ?>  
