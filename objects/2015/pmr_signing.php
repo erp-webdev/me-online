@@ -31,7 +31,7 @@
                     if (json_last_error() === JSON_ERROR_NONE) {
                         if($pmr_data['evaluation']['EmpID'] == $profile_idnum && $pmr_data['evaluation']['EmpDB'] == $profile_dbname){
                             if (isset($pmr_data['evaluation']) && !empty($pmr_data['evaluation'])) {
-                                if(in_array($pmr_data['post_evaluation']['Status'], ['Post Evaluation Endorsed to Payroll', 'Post Evaluation Completed'])){
+                                if(in_array($pmr_data['post_evaluation']['Status'], ['Post Evaluation Endorsed to Payroll', 'Post Evaluation End of Probationary', 'Post Evaluation Completed'])){
                                     $evaluation = $pmr_data['evaluation'];
                                     $post_evaluation = $pmr_data['post_evaluation'];
                                     $post_evaluation_approval = $pmr_data['post_evaluation_approval'];
