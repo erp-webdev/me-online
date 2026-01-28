@@ -84,13 +84,13 @@ if ($clearance)
                 $display = true;
                 $deadline = '2026-02-06';
                 $deadline_text = '';
-                $show_button_date = strtotime('2026-01-28 08:00:00');
+                $show_button_date = strtotime('2026-02-25 08:00:00');
                 $current_time = strtotime(date('Y-m-d H:i:s'));
 
                 switch ($profile_dbname) {
                     case 'ASIAAPMI':
                         $deadline = '2026-02-06';
-                        $show_button_date = strtotime('2026-01-28 08:00:00');
+                        $show_button_date = strtotime('2026-01-29 15:00:00');
 
                         $deadline_text = '<br><span class="smalltext">Please submit your signed ITR on or before February 06, 2026 using this <br><b><a target="_blank" href="https://forms.gle/F22t3yZUGHPkYaFu7" style="text-decoration: underline; color: blue">Form Link</a></b>.</span>';
                         break;
