@@ -88,8 +88,8 @@
                     type: "POST",
                     success: function (data) {
                         window.open(
-                            'https://www.megaworldcorp.com/investors/corporate-governance/about',
-                            '_blank' // <- This is what makes it open in a new window.
+                            'https://www.megaworldcorp.com/investors/corporate-governance',
+                            '_blank' 
                         );
                     }
                 })
