@@ -82,22 +82,31 @@ if ($clearance)
             <?php if (in_array($profile_dbname, ['ASIAAPMI', 'MREIT', 'ECOC', 'CITYLINK', 'ECINEMA', 'EREX', 'LCTM', 'MCTI', 'MLI', 'Rowenta', 'NCCAI', 'SIRUS', 'MEGAWORLD', 'GL', 'GLOBAL_HOTEL', 'TOWNSQUARE', 'LAFUERZA', 'NEWTOWN', 'MEGAPARK'])): ?>
                 <?php
                 $display = true;
-                $deadline = '2025-12-31';
+                $deadline = '2026-02-06';
                 $deadline_text = '';
+                $show_button_date = strtotime('2026-01-28 08:00:00');
+                $current_time = strtotime(date('Y-m-d H:i:s'));
 
                 switch ($profile_dbname) {
                     case 'ASIAAPMI':
-                        $deadline = '2025-01-31';
+                        $deadline = '2026-02-06';
+                        $show_button_date = strtotime('2026-01-28 08:00:00');
 
-                        $deadline_text = '<br><span class="smalltext">Please submit your signed ITR on or before Jan 31st using this <br><b><a target="_blank" href="https://forms.gle/fENWhwirwjqz4KUDA" style="text-decoration: underline; color: blue">Form Link</a></b>.</span>';
+                        $deadline_text = '<br><span class="smalltext">Please submit your signed ITR on or before February 06, 2026 using this <br><b><a target="_blank" href="https://forms.gle/F22t3yZUGHPkYaFu7" style="text-decoration: underline; color: blue">Form Link</a></b>.</span>';
                         break;
                 }
 
-                if (date('Y-m-d') <= date('Y-m-d', strtotime($deadline)))
+                if($current_time < $show_button_date){
                     $display = false;
+                }
+
+                if ($current_time >= strtotime($deadline . ' 00:00:00')){
+                    $display = false;
+                }
+
                 ?>
 
-                <?php if (!$display): ?>
+                <?php if ($display): ?>
                 <div id="mainnotification" class="centertalign whitetext marginbottom5" style="">
                     <a class="icon-btn" href="<?php echo WEB; ?>/itr">
                         <img src="<?php echo WEB; ?>/images/bir_2316_itr_icon.png" alt="BIR 2316 ITR"/>
