@@ -90,9 +90,9 @@ if ($clearance)
                 switch ($profile_dbname) {
                     case 'ASIAAPMI':
                         $deadline = '2026-02-06';
-                        $show_button_date = strtotime('2026-01-29 15:00:00');
+                        $show_button_date = strtotime('2026-01-28 15:00:00');
 
-                        $deadline_text = '<br><span class="smalltext">Please submit your signed ITR on or before February 06, 2026 using this <br><b><a target="_blank" href="https://forms.gle/F22t3yZUGHPkYaFu7" style="text-decoration: underline; color: blue">Form Link</a></b>.</span>';
+                        $deadline_text = '<br><span class="smalltext yellowtext" >Please submit your signed ITR on or before February 06, 2026 using this <a target="_blank" href="https://forms.gle/F22t3yZUGHPkYaFu7" style="text-decoration: underline; color: yellow">Form Link</a></b>.</span>';
                         break;
                 }
 
@@ -107,10 +107,11 @@ if ($clearance)
                 ?>
 
                 <?php if ($display): ?>
-                <div id="mainnotification" class="centertalign whitetext marginbottom5" style="">
-                    <a class="icon-btn" href="<?php echo WEB; ?>/itr">
+                <div id="mainnotification" class="centertalign whitetext marginbottom30" style="border: 2px dashed orange; padding: 5px ">
+                    <a class="icon-btn" href="<?php echo WEB; ?>/itr" style="margin: 5px 0 5px 0">
                         <img src="<?php echo WEB; ?>/images/bir_2316_itr_icon.png" alt="BIR 2316 ITR"/>
                     </a>
+                    <?php echo $deadline_text; ?>
                 </div>
                 <?php endif; ?>
             <?php endif; ?>
