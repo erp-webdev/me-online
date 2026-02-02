@@ -2,9 +2,9 @@
 
     $approvers = $mainsql->get_approvers($logname, 0, $dbname);
 
-    $COMPANY_NURSE_EMPID = "2024-09-1873";
-    $COMPANY_NURSE_DBNAME = "GL";
-    $COMPANY_NURSE_NAME = "MALVAROZA, MERELL VIJAR";
+    $COMPANY_NURSE_EMPID = "2013-08-N300";
+    $COMPANY_NURSE_DBNAME = "MEGAWORLD";
+    $COMPANY_NURSE_NAME = "ZAVALLA, MARIA PADAYAO";
     $COMPANY_NURSE_DBEXCLUDE = ['ASIAAPMI', 'GLOBAL_HOTEL'];
 
     foreach($approvers as $key => $value) :

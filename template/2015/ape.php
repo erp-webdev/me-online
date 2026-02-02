@@ -26,7 +26,7 @@
         </div>
     <?php } else { ?>  
         <div width="100%" height="300px" style="text-align: center; margin-top: 80px; font-size: 0.9rem;">
-            <i>Annual Physical Examination result is not yet available.<br>Please contact your company nurse.</i>
+            <i>Annual Physical Examination <?php echo date('Y'); ?> result is not yet available.<br>Please contact your company nurse.</i>
         </div>    
     <?php } ?>
 <?php } ?>
