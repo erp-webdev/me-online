@@ -44,7 +44,7 @@
             function initSignaturePad(){
                 const canvas = document.getElementById('signature-pad');
                 const ctx = canvas.getContext('2d');
-                ctx.lineWidth = 3;
+                ctx.lineWidth = 4;
                 ctx.lineCap = 'round';
                 ctx.lineJoin = 'round';
                 ctx.strokeStyle = 'black';
@@ -163,6 +163,17 @@
                             },
                             error: function (xhr, status, error) {
                                 console.error('Error:', xhr.responseText || error);
+                                var error_response = JSON.parse(xhr.responseText);
+
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Something went wrong',
+                                    text: error_response.message,
+                                    allowOutsideClick: false,
+                                    allowEscapeKey: false,
+                                    allowEnterKey: false,
+                                    confirmButtonText: "Okay"
+                                });
                             }
                         });
                     }
