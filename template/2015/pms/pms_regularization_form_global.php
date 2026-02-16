@@ -1,5 +1,5 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-<script type='text/javascript' src="<?php echo JS; ?>/JavaScriptSpellCheck/include.js" ></script>
+<link rel="stylesheet" href="<?php echo CSS; ?>/SpellChecker/spellcheck.css">
 <style>
     .loading-screen {
             position: absolute;
@@ -12,7 +12,7 @@
             text-align: center;
         }
 
-        .spinner {
+    .spinner {
         border: 4px solid rgba(0, 0, 0, 0.1);
         border-radius: 50%;
         border-top: 4px solid #3498db;
@@ -20,25 +20,168 @@
         height: 40px;
         animation: spin 1s linear infinite;
         margin: 0 auto;
-        }
+    }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
 
-        textarea.ng-invalid,
-        input.ng-invalid,
-        select.ng-invalid{
-            background-color: hsl(0deg 25% 50%);
-        }
+    textarea.ng-invalid,
+    input.ng-invalid,
+    select.ng-invalid{
+        background-color: hsl(0deg 25% 50%);
+    }
 
-        .warningMsg{
-            color: #ffb649; 
-            font-weight: bold;
-            /* background-color: #FFE57D;  */
-            padding: 5px;
-        }
+    .warningMsg{
+        color: #ffb649; 
+        font-weight: bold;
+        /* background-color: #FFE57D;  */
+        padding: 5px;
+    }
+
+    .disabled-div {
+        pointer-events: none;
+        opacity: 0.6;        
+        filter: grayscale(100%);
+    }
+
+    .feedback-trigger {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 10px;
+        font-weight: bold;
+        color: #4da3ff;   
+        cursor: pointer;
+        text-decoration: none;
+        padding: 4px 8px;
+        border-radius: 4px;
+        transition: background-color 0.2s ease;
+    }
+
+    .feedback-trigger:hover {
+        background-color: rgba(13, 110, 253, 0.1);
+        text-decoration: underline;
+    }
+
+    .floating-feedback {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        width: 360px;
+        height: auto;
+        max-height: 330px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.7);
+        background: #1e2a38; /* Dark blue-gray */
+        border-radius: 8px;
+        padding: 10px 0;
+        font-family: Arial, sans-serif;
+        z-index: 999;
+        color: #e6e6e6; /* Light text */
+        overflow: hidden;
+    }
+
+    .feedback-content {
+        height: 250px;
+        overflow: auto;
+    }
+
+    /* Scrollbar styling inside feedback-content */
+    .feedback-content::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    .feedback-content::-webkit-scrollbar-track {
+        background: #1e2a38;
+    }
+
+    .feedback-content::-webkit-scrollbar-thumb {
+        background-color: #3a4a5c;
+        border-radius: 5px;
+    }
+
+    .feedback-content::-webkit-scrollbar-thumb:hover {
+        background-color: #4d5f73;
+    }
+
+
+    .feedback-header-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #4da3f1; /* Accent blue */
+        padding: 10px 16px;
+        border-bottom: 1px solid #2d3b4b;
+    }
+
+    .feedback-item {
+        padding: 12px 16px;
+        border-bottom: 1px solid #2b3a49;
+    }
+
+    .feedback-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 6px;
+    }
+
+    .avatar {
+        width: 34px;
+        height: 34px;
+        background-color: #3a6ea5; /* Muted blue */
+        border-radius: 50%;
+        color: #fff;
+        font-size: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 10px;
+    }
+
+    .author {
+        font-size: 12px;
+        font-weight: bold;
+        display: block;
+        color: #ffffff;
+    }
+
+    .date {
+        color: #9fb3c9;
+    }
+
+    .remarks {
+        white-space: pre-wrap;
+        font-size: 14px;
+        margin-left: 45px;
+        color: #dcdcdc;
+    }
+
+    .resolve-btn {
+        display: inline-block;
+        margin: 7px;
+        padding: 6px 12px;
+        font-size: 13px;
+        background-color: #3a6ea5; /* Change as needed */
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        float: right;
+    }
+
+    .resolve-btn:hover {
+        background-color: #4b82c2;
+    }
+
+    .done{
+        color:#4b82c2;
+        float: right;
+        font-size: 12px;
+    }
+
+    .action-comment{
+        padding: 10px;
+    }
 </style>
 
 <div class="rightsplashtext lefttalign">
@@ -48,7 +191,6 @@
                 <div class="spinner"></div>
                 <p class="blacktext">Just a moment while we set things up</p>
             </div>
-
             <div id='evaluation-form-wrapper'>
                 <div ng-show="!loading && record == ''">
                     <table style="width:100%;">
@@ -68,10 +210,36 @@
                     <br />
                 </div>
 
-                <div ng-show="is_approved && record.DateCompleted != null">
+                <div ng-show="is_approved && record.DateCompleted != null && (record.hr_comments | filter:{ 
+                                        EvaluationID: record.EvaluationID,
+                                        ReadAt: null, 
+                                        AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length == 0">
                     <table style="width:100%;">
                         <tr style="background-color:#fff;">
-                            <td colspan="7" style="text-align:center;font-weight:bold;color:#A70606;">This evaluation form has been completed.</td>
+                            <td colspan="7" style="text-align:center;font-weight:bold;color:#A70606;">
+                                <span>
+                                    This evaluation form has been completed.
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                    <br />
+                </div>
+
+                <div ng-show="(record.hr_comments | filter:{ 
+                                        EvaluationID: record.EvaluationID,
+                                        ReadAt: null, 
+                                        AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length > 0">
+                    <table style="width:100%;">
+                        <tr style="background-color:#fff;">
+                            <td colspan="7" style="text-align:center;font-weight:bold;color:#A70606;">
+                                <span ng-show="(record.hr_comments | filter:{ 
+                                        EvaluationID: record.EvaluationID,
+                                        ReadAt: null, 
+                                        AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length > 0">
+                                    You have pending HR feedback. Click <i style="color:blue;">View Feedback</i> in any section that includes feedback to review and complete the required updates. The section will remain open until all items in that section are marked as done.
+                                </span>
+                            </td>
                         </tr>
                     </table>
                     <br />
@@ -124,8 +292,6 @@
                     <hr/>
 
                     <div class="print" style="overflow-x:none;overflow-y:scroll;max-height:514px;">
-                        
-
                         <div style="border:2px solid #fff;padding-left:5px;width:98%;">
                                 <p><b>Rating Scale:</b></p>
                                 <p>Use the following descriptions to rate the staff member's performance for each of the required competencies.</p>
@@ -167,20 +333,63 @@
                         <div style="border:1px solid #fff;padding:0 5px;width:98%;">
                             <h4>
                                 II. PERFORMANCE SUMMARY 
-                                <span style="font-size:10px;font-weight:normal;">(Written by Reviewing Manager)</span><br>
-                                <span  ng-show="record.for_approval_level == 1" style=" font-weight:normal; font-size:11px;">Note: When creating the performance summary for the ratee, <b>DO NOT include details about salary increases or promotions, as the ratee will have access to this information.</b></span> 
+                                <span style="font-size:10px;font-weight:normal;">(Written by Reviewing Manager) 
+                                    <a type="button"
+                                    class="add-comment-btn feedback-trigger"
+                                    ng-show="(record.hr_comments | filter:{ 
+                                        Section: 'PerformanceSummary', 
+                                        PartID: record.EvaluationID,
+                                        ReadAt: null, 
+                                        AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length > 0"
+                                    data-field="PerformanceSummary"
+                                    data-partid="{{ record.EvaluationID }}">View Feedback</a>
+                                </span><br>
+                                <span  ng-show="record.for_approval_level == 1 || (record.hr_comments | filter:{ 
+                                        Section: 'PerformanceSummary', 
+                                        PartID: record.EvaluationID,
+                                        ReadAt: null, 
+                                        AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length > 0" 
+                                        style=" font-weight:normal; font-size:11px;">Note: When creating the performance summary for the ratee, <b>DO NOT include details about salary increases or promotions, as the ratee will have access to this information.</b></span> 
                             </h4>
                             <h4><span ng-bind="record.Rater1FullName"></span></h4>
                             <p class='textareaGroup'>
-                                <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck='true' style="width:98.4%;min-height:100px;" class="perfsummary checker" rows="3" 
-                                    ng-model="record.PerformanceSummary" 
-                                    ng-show="record.for_approval_level == 1" ng-disabled="is_approved || record.for_approval_level > 1"
-                                    minlength='25' required>
+                                <textarea spellcheck='true' 
+                                        ng-class="record.for_approval_level == 1 
+                                              || (record.hr_comments | filter:{ 
+                                                Section: 'PerformanceSummary', 
+                                                PartID: record.EvaluationID,
+                                                ReadAt: null, 
+                                                AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length > 0 ? 
+                                                'spellcheck' : '' " 
+                                        style="width:710px; min-height:100px;" 
+                                        class="perfsummary checker" rows="3" 
+                                        ng-model="record.PerformanceSummary" 
+                                        ng-show="record.for_approval_level == 1 || (record.hr_comments | filter:{ 
+                                                        Section: 'PerformanceSummary',
+                                                        PartID: record.EvaluationID, 
+                                                        ReadAt: null, 
+                                                        AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length > 0" 
+                                        ng-disabled="(is_approved 
+                                                || record.for_approval_level > 1)
+                                                && (record.hr_comments | filter:{ 
+                                                        Section: 'PerformanceSummary', 
+                                                        PartID: record.EvaluationID,
+                                                        ReadAt: null, 
+                                                        AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length == 0"
+                                        minlength='25' required>
                                 </textarea><br>
                                 <small class='warningMsg' style="display:none;">
                                     * This is a required field. Must be at least 25 characters long.
                                 </small><br>
-                                <span ng-show="record.for_approval_level > 1 || is_approved" ng-bind="record.PerformanceSummary"></span>
+                                <span ng-bind="record.PerformanceSummary"
+                                    ng-show="(is_approved 
+                                            || record.for_approval_level > 1)
+                                            && (record.hr_comments | filter:{ 
+                                                    Section: 'PerformanceSummary', 
+                                                    PartID: record.EvaluationID,
+                                                    ReadAt: null, 
+                                                    AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length == 0">
+                                </span>
                             </p>
                         </div><!-- End of part 2 -->
                         <br />
@@ -209,10 +418,19 @@
                                     Minimum of 3 objective according the SMART goal definition, and carried over from the last review period. Results achieved to be stated by Job Holder and commented by Reviewing Mgr. An additional objective is added in case of staff management responsibilities as "PMS". Weight is the importance of each objective versus the others. Achievement % is the volume of the objective achieved, and the rating is the quality of what has been achieved. Examples can be found in PMS Guidelines.
                                 </div>
                                 <div style="clear:both;"></div>
-
                                 <div class="work-result-wrapper">
                                     <div ng-repeat="goal in record.goals">
-                                        <p style="text-decoration:underline;font-weight:bold;">OBJECTIVE <span ng-bind="$index+1"></span></p>
+                                        <p style="text-decoration:underline;font-weight:bold;">OBJECTIVE <span ng-bind="$index+1"></span> 
+                                            <a type="button"
+                                            class="add-comment-btn feedback-trigger"
+                                            ng-show="(record.hr_comments | filter:{ 
+                                                Section: 'current_goal', 
+                                                PartID: goal.id,
+                                                ReadAt: null, 
+                                                AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length > 0"
+                                            data-field="current_goal"
+                                            data-partid="{{ goal.id }}">View Feedback</a>
+                                        </p>
                                         <!-- objectives and ratings -->
                                         <div style="float:left;width:380px;">
                                             <div style="float:left;width:380px;">
@@ -237,58 +455,73 @@
                                             <span style="margin-left:46px;" ng-bind="goal.WeightedRating = round2((goal.Achievement * goal.Weight * goal.Rating) / 10000)"></span>
                                         </div>
 
-                                        <div style="clear:both;"></div>
-                                
-                                        <table>
-                                            <tr>
-                                                <td style="width: 100px">Results Achieved: </td>
-                                                <td  class='textareaGroup'>
-                                                    <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck='true' class="checker" cols="80" rows="2" 
-                                                            ng-model="goal.ResultsAchieved"
-                                                            ng-disabled="is_approved" 
-                                                            minlength='25' required>
-                                                    </textarea>
-                                                    <small class='warningMsg' style="display:none;">
-                                                        * This is a required field. Must be at least 25 characters long.
-                                                    </small>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 100px">Comments: </td>
-                                                <td  class='textareaGroup'>
-                                                    <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();"
-                                                            spellcheck='true' class="checker" cols="80" rows="2" 
-                                                            ng-model="goal.Comments" 
-                                                            ng-disabled="is_approved" 
-                                                            minlength='25' required>
-                                                    </textarea>
-                                                    <small class='warningMsg' style="display:none;">
-                                                        * This is a required field. Must be at least 25 characters long.
-                                                    </small>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                        <div style="clear:both;"></div>
-                                
-                                    </div>
-                                    <hr></hr>
-                                    <div style="padding:10px;margin-top:-15px;">
-                                        <table class="tdata" cellspacing="0" style="width:180px;float:right;font-size:9px;">
-                                            <tr>
-                                                <th>Final Weight</th>
-                                                <th style="text-align:center !important;">Final Weighted rating</th>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align:center;"><span ng-bind="totalGoalAchievement"></span>%</td>
-                                                <td style="text-align:center;"><span ng-bind="totalGoalWeightRating | number: 2"></span></td>
-                                            </tr>
-                                        </table>
-                                        <h4 style="float:right;margin-top:23px;margin-right:20px;">Overall Work Results</h4>
-                                        <div style="clear:both;"></div>
-                                    </div><!-- end of overall work result -->
+                                    <div style="clear:both;"></div>
+                            
+                                    <table>
+                                        <tr>
+                                            <td style="width: 100px">Results Achieved: </td>
+                                            <td  class='textareaGroup'>
+                                                <textarea spellcheck='true' ng-class="is_approved && (record.hr_comments | filter:{ 
+                                                            Section: 'current_goal', 
+                                                            PartID: goal.id,
+                                                            ReadAt: null, 
+                                                            AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length == 0 ? '' : 'spellcheck' " class="checker" cols="80" rows="2" 
+                                                        ng-model="goal.ResultsAchieved"
+                                                        ng-disabled="is_approved && (record.hr_comments | filter:{ 
+                                                            Section: 'current_goal', 
+                                                            PartID: goal.id,
+                                                            ReadAt: null, 
+                                                            AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length == 0" 
+                                                        minlength='25' required>
+                                                </textarea>
+                                                <small class='warningMsg' style="display:none;">
+                                                    * This is a required field. Must be at least 25 characters long.
+                                                </small>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 100px">Comments: </td>
+                                            <td  class='textareaGroup'>
+                                                <textarea spellcheck='true' ng-class="is_approved && (record.hr_comments | filter:{ 
+                                                            Section: 'current_goal', 
+                                                            PartID: goal.id,
+                                                            ReadAt: null, 
+                                                            AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length == 0  ? '' : 'spellcheck' " class="checker" cols="80" rows="2" 
+                                                        ng-model="goal.Comments" 
+                                                        ng-disabled="is_approved && (record.hr_comments | filter:{ 
+                                                            Section: 'current_goal', 
+                                                            PartID: goal.id,
+                                                            ReadAt: null, 
+                                                            AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length == 0" 
+                                                        minlength='25' required>
+                                                </textarea>
+                                                <small class='warningMsg' style="display:none;">
+                                                    * This is a required field. Must be at least 25 characters long.
+                                                </small>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <div style="clear:both;"></div>
+                            
                                 </div>
+                                <hr></hr>
+                                <div style="padding:10px;margin-top:-15px;">
+                                    <table class="tdata" cellspacing="0" style="width:180px;float:right;font-size:9px;">
+                                        <tr>
+                                            <th>Final Weight</th>
+                                            <th style="text-align:center !important;">Final Weighted rating</th>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:center;"><span ng-bind="totalGoalAchievement"></span>%</td>
+                                            <td style="text-align:center;"><span ng-bind="totalGoalWeightRating | number: 2"></span></td>
+                                        </tr>
+                                    </table>
+                                    <h4 style="float:right;margin-top:23px;margin-right:20px;">Overall Work Results</h4>
+                                    <div style="clear:both;"></div>
+                                </div><!-- end of overall work result -->
                             </div>
                         </div>
+                    </div>
 
                         <div ng-show="record.competencies.length == 0 || record.competencies == null">
                             <table style="width:100%;">
@@ -307,6 +540,15 @@
 
                                     <p style="text-decoration:underline;font-weight:bold;margin-bottom:-5px;">
                                         <span ng-bind="$index+1"></span>) <span ng-bind="competency.Competency"></span>
+                                        <a type="button"
+                                            class="add-comment-btn feedback-trigger"
+                                            ng-show="(record.hr_comments | filter:{ 
+                                                Section: 'current_competencies', 
+                                                PartID: competency.id,
+                                                ReadAt: null, 
+                                                AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length > 0"
+                                            data-field="current_competencies"
+                                            data-partid="{{ competency.id }}">View Feedback</a>
                                     </p>
                                     <!-- objectives and ratings -->
                                     <div style="float:left;width:400px;">
@@ -329,11 +571,20 @@
                                         <!-- comments and achievments textarea -->
                                         Comments:
                                         <span class="px" style="font-style:italic;margin-left:5px;font-size:10px;" ng-show="competency.Rating != 3">(*Required field, if your rating is greater than or less than 3 to justify your rating to this employee)</span>
-                                        <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck='true'  cols="90" rows="3" 
+                                        <textarea spellcheck='true' ng-class="is_approved && (record.hr_comments | filter:{ 
+                                                Section: 'current_competencies', 
+                                                PartID: competency.id,
+                                                ReadAt: null, 
+                                                AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length == 0 ? '' : 'spellcheck' "  cols="90" rows="3" 
                                                 class="checker" 
                                                 ng-model="competency.Remarks" 
-                                                ng-disabled="is_approved" 
-                                                ng-required="competency.Rating != 3"  ng-disabled="is_approved" ng-attr-minlength="{{competency.Rating != 3 ? 25 : 0}}" >
+                                                ng-disabled="is_approved && (record.hr_comments | filter:{ 
+                                                Section: 'current_competencies', 
+                                                PartID: competency.id,
+                                                ReadAt: null, 
+                                                AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length == 0" 
+                                                ng-required="competency.Rating != 3" 
+                                                ng-attr-minlength="{{competency.Rating != 3 ? 25 : 0}}" >
                                         </textarea>
                                         <br>
                                         <small class='warningMsg' style="display:none;">
@@ -363,69 +614,112 @@
                             </div><!-- End of part 4 -->
                         </div>
                         
-                        <div >
+                        <div class='warningMsg' ng-show="!is_approved && record.total_computed_score < 3">
+                            * This part is disabled because rating is below minimum requirement.
+                        </div>
+                        <div ng-class="record.total_computed_score >= 3 ? '' : 'disabled-div'">
                             <div style="border:1px solid #fff;padding-left:5px;padding-right:5px;width:98%;">
                                 <h4>V. SETTING OBJECTIVES FOR NEXT REVIEW PERIOD</h4>
                                 <p style="font-weight:bold;">WORK RESULTS <span style="font-weight:normal;">(Minimum 3 SMART objectives and potential PMS, set by Reviewing Manager)</span></p>
 
-                                <div class="work-result-wrapper" id="partvwrap">
-                                    <div id="partvwork">
-                                        <div ng-repeat="next_goal in record.goals_next">
-                                            <p style="text-decoration:underline;font-weight:bold;">
-                                                <a class="smlbtn" id="delrowv" style="background-color:#D20404;" ng-click="deleteNextGoal($index)" ng-show="!is_approved">Remove</a> 
-                                                OBJECTIVE <span ng-bind="$index+1"></span>
-                                            </p>
-                                            <div style="float:left;width:380px;"  class='textareaGroup'>
-                                                <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck='true' style="width:167%;" class="checker" cols="80" rows="2" 
-                                                        ng-model="next_goal.Objective" 
-                                                        ng-disabled="is_approved" 
-                                                        minlength='25' required>
-                                                </textarea>
-                                                <br>
-                                                <small class='warningMsg' style="display:none;">
-                                                    * This is a required field. Must be at least 25 characters long.
-                                                </small>
-                                            </div>
-                                            <div style="width:60px;float:right;font-size:9px;">
-                                                <p style="font-weight:bold;">Weight</p>
-                                                <input style="width:35px;" type="number" ng-model="next_goal.Weight" min="1" max="100" class="width25 smltxtbox p5w checker" ng-change="updateRecord()" required  ng-disabled="is_approved"  onkeypress="return (event.charCode >= 48 && event.charCode <= 57) || event.charCode==8" onKeyDown="if ((this.value.length == 2 || this.value.length == 3) && ((this.value >= 10 && this.value <= 100 && !(this.value == 10 && event.keyCode == 48)) && event.keyCode != 8))  return false;" onfocusin="(this.value == 0) ? this.value = '' : false" onfocusout="(this.value == '') ? this.value = 0 : false"> %
-                                            </div>
-                                            <div style="clear:both;"></div>
-                                            <div class='textareaGroup'>
-                                                <p> Measurement of accomplishment: </p>
-                                                <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck='true' style="width:90%;" class="checker" cols="80" rows="2" 
-                                                        ng-model="next_goal.MeasureOfSuccess" 
-                                                        ng-disabled="is_approved" 
-                                                        minlength='25' required>
-                                                </textarea><br>
-                                                <small class='warningMsg' style="display:none;">
-                                                    * This is a required field. Must be at least 25 characters long.
-                                                </small>
-                                            
-                                                <!-- <input type="text" style="margin-top:-8px;width:89%;" class="smltxtbox checker" ng-model="next_goal.MeasureOfSuccess" required  ng-disabled="is_approved" minlength="10"> -->
-                                                <div style="clear:both;"></div>
-                                            </div>
-                                            <hr/>
+                            <div class="work-result-wrapper" id="partvwrap">
+                                <div id="partvwork">
+                                    <div ng-repeat="next_goal in record.goals_next">
+                                        <p style="text-decoration:underline;font-weight:bold;">
+                                            <a class="smlbtn" id="delrowv" style="background-color:#D20404;" ng-click="deleteNextGoal($index)" ng-show="!is_approved">Remove</a> 
+                                            OBJECTIVE <span ng-bind="$index+1"></span>
+                                            <a type="button"
+                                            class="add-comment-btn feedback-trigger"
+                                            ng-show="(record.hr_comments | filter:{ 
+                                                Section: 'next_goal', 
+                                                PartID: next_goal.id,
+                                                ReadAt: null, 
+                                                AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length > 0"
+                                            data-field="next_goal"
+                                            data-partid="{{ next_goal.id }}">View Feedback</a>
+                                        </p>
+                                        <div class='textareaGroup'>
+                                            <textarea style="width:700px;" 
+                                                    spellcheck='true' ng-class="is_approved  && (record.hr_comments | filter:{ 
+                                                        Section: 'next_goal', 
+                                                        PartID: next_goal.id,
+                                                        ReadAt: null, 
+                                                        AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length == 0 ? '' : 'spellcheck' " class="checker" cols="80" rows="2" 
+                                                    ng-model="next_goal.Objective" 
+                                                    ng-disabled="is_approved && (record.hr_comments | filter:{ 
+                                                        Section: 'next_goal', 
+                                                        PartID: next_goal.id,
+                                                        ReadAt: null, 
+                                                        AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length == 0" 
+                                                    minlength='25' ng-required="record.total_computed_score >= 3">
+                                            </textarea>
+                                            <br>
+                                            <small class='warningMsg' style="display:none;">
+                                                * This is a required field. Must be at least 25 characters long.
+                                            </small>
                                         </div>
+                                        <div class='textareaGroup'>
+                                            <p> Measurement of accomplishment: </p>
+                                            <textarea style="width:700px;" 
+                                                    spellcheck='true' ng-class="is_approved && (record.hr_comments | filter:{ 
+                                                        Section: 'next_goal', 
+                                                        PartID: next_goal.id,
+                                                        ReadAt: null, 
+                                                        AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length == 0 ? '' : 'spellcheck' " class="checker" cols="80" rows="2" 
+                                                    ng-model="next_goal.MeasureOfSuccess" 
+                                                    ng-disabled="is_approved && (record.hr_comments | filter:{ 
+                                                        Section: 'next_goal', 
+                                                        PartID: next_goal.id,
+                                                        ReadAt: null, 
+                                                        AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length == 0"  
+                                                    minlength='25' ng-required="record.total_computed_score >= 3">
+                                            </textarea><br>
+                                            <small class='warningMsg' style="display:none;">
+                                                * This is a required field. Must be at least 25 characters long.
+                                            </small>
+                                        
+                                            <!-- <input type="text" style="margin-top:-8px;width:89%;" class="smltxtbox checker" ng-model="next_goal.MeasureOfSuccess" required  ng-disabled="is_approved" minlength="10"> -->
+                                        </div>
+                                        <div style="display: flex; justify-content: flex-end; align-items: center;">
+                                            <label style="font-weight: bold; margin-right: 5px;">Weight</label>
+                                            <input
+                                                style="width: 35px;"
+                                                type="number"
+                                                ng-model="next_goal.Weight"
+                                                ng-min="record.total_computed_score >= 3 ? 1 : 0"
+                                                max="100"
+                                                class="width25 smltxtbox p5w checker"
+                                                ng-change="updateRecord()"
+                                                ng-required="record.total_computed_score >= 3"
+                                                ng-disabled="is_approved"
+                                                onkeypress="return (event.charCode >= 48 && event.charCode <= 57) || event.charCode==8"
+                                                onkeydown="if ((this.value.length == 2 || this.value.length == 3) && ((this.value >= 10 && this.value <= 100 && !(this.value == 10 && event.keyCode == 48)) && event.keyCode != 8))  return false;"
+                                                onfocusin="(this.value == 0) ? this.value = '' : false"
+                                                onfocusout="(this.value == '') ? this.value = 0 : false"
+                                            >
+                                            %
+                                        </div>
+                                        <hr/>
                                     </div>
                                 </div>
-                                <a class="smlbtn" id="addrowv" style="background-color:#3EC2FB;" ng-click="addNextGoal()" ng-show="!is_approved">Add Objective</a>
-                                
-                                <div style="margin-top:-20px;" >
-                                    <table class="tdata" cellspacing="0" style="width:100px;float:right;font-size:9px;">
-                                        <tr>
-                                            <th>Total Weight %</th>
-                                        </tr>
-                                        <tr>
-                                            <td style="text-align:center;"><input type="number" class="width25 smltxtbox p5w checker" style="width:35px;" required min="100" max="100" ng-model="totalNextGoalWeight" readonly  ng-disabled="is_approved">
-                                        </tr>
-                                    </table>
-                                    <div style="clear:both;"></div>
-                                </div>
+                            </div>
+                            <a class="smlbtn" id="addrowv" style="background-color:#3EC2FB;" ng-click="addNextGoal()" ng-show="!is_approved">Add Objective</a>
                             
-                                <div>
-                                    <h4>PERSONAL CORE COMPETENCIES <span style="font-size:10px;font-weight:normal;">(Minimum of 5 items agreed by both parties)</span></h4>
-                                    <div class="pcc-main-wrapper">
+                            <div style="margin-top:-20px;" >
+                                <table class="tdata" cellspacing="0" style="width:100px;float:right;font-size:9px;">
+                                    <tr>
+                                        <th>Total Weight %</th>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:center;"><input type="number" class="width25 smltxtbox p5w checker" style="width:35px;" ng-min="record.total_computed_score >= 3 ? 1 : 0" max="100" ng-model="totalNextGoalWeight" readonly  ng-disabled="is_approved" ng-required="record.total_computed_score >= 3">
+                                    </tr>
+                                </table>
+                                <div style="clear:both;"></div>
+                            </div>
+                        
+                            <div>
+                                <h4>PERSONAL CORE COMPETENCIES <span style="font-size:10px;font-weight:normal;">(Minimum of 5 items agreed by both parties)</span></h4>
+                                <div class="pcc-main-wrapper">
 
                                         <div class="pcc-left-wrapper" style="float:left;width:100%;">
                                             <table class="tdata" cellspacing="5" style="width:100%;">
@@ -436,21 +730,133 @@
                                                 </thead>
                                                 <tr ng-repeat="next_pcc in record.competencies_next">
                                                     <td style="border:1px solid #fff;">
-                                                        <span ng-show="next_pcc.id != null" ng-bind="next_pcc.Competency"></span>
-                                                        <textarea spellcheck="true"   cols="15" rows="2" ng-show="next_pcc.id == null"  ng-model="next_pcc.Competency" width="100%" ng-disabled="is_approved"></textarea>
+                                                        <span ng-show="!((next_pcc.SeqOrder == 1 &&
+                                                                        ['DECISION MAKING',
+                                                                        'PLANNING AND ORGANIZATION',
+                                                                        'LEADERSHIP',
+                                                                        'CUSTOMER RESPONSIVENESS',
+                                                                        'FLEXIBILITY / AUTONOMY',
+                                                                        'SYNERGY',
+                                                                        'INNOVATION / LEARNING ABILITY',
+                                                                        'COMMUNICATION'].indexOf(next_pcc.Competency) === -1 &&
+                                                                        !is_approved) || (record.hr_comments | filter:{ 
+                                                                    Section: 'next_competencies', 
+                                                                    PartID: next_pcc.id,
+                                                                    ReadAt: null, 
+                                                                    AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length > 0)"
+                                                            ng-bind="next_pcc.Competency">
+                                                        </span>
+                                                        <textarea spellcheck="true" cols="15" rows="2"
+                                                            ng-class="(next_pcc.SeqOrder == 1 &&
+                                                                        ['DECISION MAKING',
+                                                                        'PLANNING AND ORGANIZATION',
+                                                                        'LEADERSHIP',
+                                                                        'CUSTOMER RESPONSIVENESS',
+                                                                        'FLEXIBILITY / AUTONOMY',
+                                                                        'SYNERGY',
+                                                                        'INNOVATION / LEARNING ABILITY',
+                                                                        'COMMUNICATION'].indexOf(next_pcc.Competency) === -1 &&
+                                                                        !is_approved) ? 'spellcheck' : ''"
+                                                            ng-show="(next_pcc.SeqOrder == 1 &&
+                                                                    ['DECISION MAKING',
+                                                                    'PLANNING AND ORGANIZATION',
+                                                                    'LEADERSHIP',
+                                                                    'CUSTOMER RESPONSIVENESS',
+                                                                    'FLEXIBILITY / AUTONOMY',
+                                                                    'SYNERGY',
+                                                                    'INNOVATION / LEARNING ABILITY',
+                                                                    'COMMUNICATION'].indexOf(next_pcc.Competency) === -1 &&
+                                                                    !is_approved) || (record.hr_comments | filter:{ 
+                                                                    Section: 'next_competencies', 
+                                                                    PartID: next_pcc.id,
+                                                                    ReadAt: null, 
+                                                                    AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length > 0"
+                                                            ng-model="next_pcc.Competency">
+                                                        </textarea>
+                                                        <a type="button"
+                                                        class="add-comment-btn feedback-trigger"
+                                                        ng-show="(record.hr_comments | filter:{ 
+                                                            Section: 'next_competencies', 
+                                                            PartID: next_pcc.id,
+                                                            ReadAt: null, 
+                                                            AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length > 0"
+                                                        data-field="next_competencies"
+                                                        data-partid="{{ next_pcc.id }}">View Feedback</a>
+                                                    </td>
 
-                                                        <!-- <input type="text" ng-show="next_pcc.Competency == ''" width="100%" ng-model="next_pcc.Competency" class="smltxtbox calcp5w checker" ng-disabled="is_approved"> -->
-                                                    </td>
                                                     <td style="border:1px solid #fff;">
-                                                        <span ng-show="next_pcc.id != null" ng-bind="next_pcc.Description"></span>
-                                                        <textarea spellcheck="true"  id="description" cols="60" rows="2" ng-show="next_pcc.id == null || ((next_pcc.Description == null || next_pcc.Description.length <=50) && !is_approved)" ng-model="next_pcc.Description" width="100%" ng-disabled="is_approved"></textarea>
+                                                        <span ng-show="!((next_pcc.SeqOrder == 1 &&
+                                                                        ['DECISION MAKING',
+                                                                        'PLANNING AND ORGANIZATION',
+                                                                        'LEADERSHIP',
+                                                                        'CUSTOMER RESPONSIVENESS',
+                                                                        'FLEXIBILITY / AUTONOMY',
+                                                                        'SYNERGY',
+                                                                        'INNOVATION / LEARNING ABILITY',
+                                                                        'COMMUNICATION'].indexOf(next_pcc.Competency) === -1 &&
+                                                                        !is_approved) || (record.hr_comments | filter:{ 
+                                                                    Section: 'next_competencies', 
+                                                                    PartID: next_pcc.id,
+                                                                    ReadAt: null, 
+                                                                    AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length > 0)"
+                                                            ng-bind="next_pcc.Description">
+                                                        </span>
+
+                                                        <textarea
+                                                            spellcheck="true"
+                                                            id="description"
+                                                            cols="80"
+                                                            rows="2"
+                                                            style="width:460px"
+                                                            ng-class="(next_pcc.SeqOrder == 1 &&
+                                                                        ['DECISION MAKING',
+                                                                        'PLANNING AND ORGANIZATION',
+                                                                        'LEADERSHIP',
+                                                                        'CUSTOMER RESPONSIVENESS',
+                                                                        'FLEXIBILITY / AUTONOMY',
+                                                                        'SYNERGY',
+                                                                        'INNOVATION / LEARNING ABILITY',
+                                                                        'COMMUNICATION'].indexOf(next_pcc.Competency) === -1 &&
+                                                                        !is_approved) ? 'spellcheck' : ''"
+                                                            ng-show="(next_pcc.SeqOrder == 1 &&
+                                                                    ['DECISION MAKING',
+                                                                    'PLANNING AND ORGANIZATION',
+                                                                    'LEADERSHIP',
+                                                                    'CUSTOMER RESPONSIVENESS',
+                                                                    'FLEXIBILITY / AUTONOMY',
+                                                                    'SYNERGY',
+                                                                    'INNOVATION / LEARNING ABILITY',
+                                                                    'COMMUNICATION'].indexOf(next_pcc.Competency) === -1 &&
+                                                                    !is_approved) || (record.hr_comments | filter:{ 
+                                                                    Section: 'next_competencies', 
+                                                                    PartID: next_pcc.id,
+                                                                    ReadAt: null, 
+                                                                    AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length > 0"
+                                                            ng-model="next_pcc.Description">
+                                                        </textarea>
+                                                        <span>&nbsp;</span>
                                                     </td>
-                                                    <td><input type="number" ng-model="next_pcc.Weight" min="0" max="100" class="smltxtbox calcp5w checker" style="width:35px;" ng-change="updateRecord()"  ng-disabled="is_approved"  onkeypress="return (event.charCode >= 48 && event.charCode <= 57) || event.charCode==8" onKeyDown="if ((this.value.length == 2 || this.value.length == 3) && ((this.value >= 10 && this.value <= 100 && !(this.value == 10 && event.keyCode == 48)) && event.keyCode != 8))  return false;" onfocusin="(this.value == 0) ? this.value = '' : false" onfocusout="(this.value == '') ? this.value = 0 : false" required></td>
+
+                                                    <td>
+                                                        <input type="number"
+                                                            ng-model="next_pcc.Weight"
+                                                            min="0" max="100"
+                                                            class="smltxtbox calcp5w checker"
+                                                            style="width:35px;"
+                                                            ng-change="updateRecord()"
+                                                            ng-disabled="is_approved"
+                                                            onkeypress="return (event.charCode >= 48 && event.charCode <= 57) || event.charCode==8"
+                                                            onkeydown="if ((this.value.length == 2 || this.value.length == 3) && ((this.value >= 10 && this.value <= 100 && !(this.value == 10 && event.keyCode == 48)) && event.keyCode != 8)) return false;"
+                                                            onfocusin="(this.value == 0) ? this.value = '' : false"
+                                                            onfocusout="(this.value == '') ? this.value = 0 : false"
+                                                            ng-required="record.total_computed_score >= 3">
+                                                    </td>
                                                 </tr>
+
                                                 <tr>
                                                     <td style="text-align: right"></td>
                                                     <td style="text-align: right">Total Weight %</td>
-                                                    <td><input type="number" id="inputtotalnextweight" class="width25 smltxtbox p5w checker" style="width:35px;" required min="100" max="100" ng-model="totalNextCompetencyWeight" readonly  ng-disabled="is_approved"></td>
+                                                    <td><input type="number" id="inputtotalnextweight" class="width25 smltxtbox p5w checker" style="width:35px;" ng-min="record.total_computed_score >= 3 ? 100 : 0" max="100" ng-model="totalNextCompetencyWeight" readonly  ng-disabled="is_approved" ng-required="record.total_computed_score >= 3"></td>
                                                 </tr>
                                             </table>
                                         </div>
@@ -466,8 +872,6 @@
                             <br />
                         </div>
                         <br />
-
-                    
 
                         <table style="border:1px solid #fff;width:99%;" >
                             <thead>
@@ -517,48 +921,102 @@
                                 <td style="text-align:center;background-color:#fff;font-weight:bold;color:#06A716;" colspan="4">
                                     <p class="note5 note" style="color:#06A716;" ng-show="record.total_computed_score == 5">(<i class="fa fa-thumbs-up"></i>) This Employee is Exceptional</p>
                                     <p class="note4 note" style="color:#06A716;" ng-show="record.total_computed_score < 5 && record.total_computed_score >= 4">(<i class="fa fa-thumbs-up"></i>) This Employee Exceeds Expectations</p>
-                                    <p class="note3 note" style="color:#06A716;" ng-show="record.total_computed_score < 4 && record.total_computed_score >= 3">(<i class="fa fa-thumbs-up"></i>) This Employee Meets Expectations</p>
-                                    <p class="note2 note" style="color:#06A716;" ng-show="record.total_computed_score < 3 && record.total_computed_score >= 2">(<i class="fa fa-thumbs-up"></i>) This Employee Needs Improvement</p>
+                                    <p class="note3 note" style="color:#17A2B8;" ng-show="record.total_computed_score < 4 && record.total_computed_score >= 3">(<i class="fa fa-thumbs-up"></i>) This Employee Meets Expectations</p>
+                                    <p class="note2 note" style="color:#FFA500;" ng-show="record.total_computed_score < 3 && record.total_computed_score >= 2">(<i class="fa fa-thumbs-up"></i>) This Employee Needs Improvement</p>
                                     <p class="note1 note" style="color:#A70606;" ng-show="record.total_computed_score < 2 && record.total_computed_score >= 1">(<i class="fa fa-thumbs-down"></i>) This Employee Does Not Meet Expectation</p>
-                                    <p class="note0 note" style="color:#06A716;" ng-show="record.total_computed_score == 0">No Performance Evaluation Score</p>
+                                    <p class="note0 note" style="color:#000;" ng-show="record.total_computed_score == 0">No Performance Evaluation Score</p>
                                 </td>
                             </tr>
                         </table><br />
 
-                        <div style="border:1px solid #fff;padding-left:5px;padding-right:5px;width:98%;">
+                        <div class='warningMsg' ng-show="!is_approved && record.total_computed_score < 3">
+                            * This part is disabled because rating is below minimum requirement.
+                        </div>
+                        <div style="border:1px solid #fff;padding-left:5px;padding-right:5px;width:98%;" ng-class="record.total_computed_score >= 3 ? '' : 'disabled-div'">
                             <h4>VI. DEVELOPMENT PLAN</h4>
-                            <p  class='textareaGroup'>A. Key competencies to strengthen performance in current job (set by reviewing mgr):
-                                <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck='true'  style="width:99%;" class="checker" rows="3" 
+                            <div class='textareaGroup'>A. Key competencies to strengthen performance in current job (set by reviewing mgr):
+                                <a type="button"
+                                    class="add-comment-btn feedback-trigger"
+                                    ng-show="(record.hr_comments | filter:{ 
+                                        Section: 'DevPlanA',
+                                        PartID: record.EvaluationID,
+                                        ReadAt: null, 
+                                        AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length > 0"
+                                    data-field="DevPlanA"
+                                    data-partid="{{ record.EvaluationID }}">View Feedback</a>
+                                <textarea ng-class="is_approved && (record.hr_comments | filter:{ 
+                                        Section: 'DevPlanA',
+                                        PartID: record.EvaluationID,
+                                        ReadAt: null, 
+                                        AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length == 0 ? '' : 'spellcheck' " class="checker" style="width:710px;"
                                         ng-model="record.DevPlanA" 
-                                        ng-disabled="is_approved" 
-                                        minlength='25' required>
+                                        ng-disabled="is_approved && (record.hr_comments | filter:{ 
+                                        Section: 'DevPlanA',
+                                        PartID: record.EvaluationID,
+                                        ReadAt: null, 
+                                        AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length == 0" 
+                                        minlength='25' ng-required="record.total_computed_score >= 3">
                                 </textarea><br>
                                 <small class='warningMsg' style="display:none;">
                                     * This is a required field. Must be at least 25 characters long.
                                 </small>
-                            </p>
+                            </div>
                             <!--<p>B. Employee desired career path within next 2 to 3 years (set by job holder):</p>
                             <textarea spellcheck="true"  style="width:99%;" class="smltxtbox"></textarea>-->
-                            <p  class='textareaGroup'>B. Key competencies needed to advance in employee desired career path (set by reviewing mgr):
-                                <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck='true'  style="width:99%;" class="checker" rows="3" 
+                            <div  class='textareaGroup'>B. Key competencies needed to advance in employee desired career path (set by reviewing mgr):
+                                <a type="button"
+                                    class="add-comment-btn feedback-trigger"
+                                    ng-show="(record.hr_comments | filter:{ 
+                                        Section: 'DevPlanB', 
+                                        PartID: record.EvaluationID,
+                                        ReadAt: null, 
+                                        AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length > 0"
+                                    data-field="DevPlanB"
+                                    data-partid="{{ record.EvaluationID }}">View Feedback</a>
+                                <textarea ng-class="is_approved && (record.hr_comments | filter:{ 
+                                        Section: 'DevPlanB',
+                                        PartID: record.EvaluationID,
+                                        ReadAt: null, 
+                                        AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length == 0 ? '' : 'spellcheck' " class="checker" cols="80" style="width:710px;" 
                                         ng-model="record.DevPlanB" 
-                                        ng-disabled="is_approved" 
-                                        minlength='25' required>
+                                        ng-disabled="is_approved && (record.hr_comments | filter:{ 
+                                        Section: 'DevPlanB',
+                                        PartID: record.EvaluationID,
+                                        ReadAt: null, 
+                                        AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length == 0" 
+                                        minlength='25' ng-required="record.total_computed_score >= 3">
                                 </textarea><br>
                                 <small class='warningMsg' style="display:none;">
                                     * This is a required field. Must be at least 25 characters long.
                                 </small>
-                            </p>
-                            <p  class='textareaGroup'>C. Planned development / training activities (agreed by reviewing mgr and as per the following priority / feasibility order):
-                                <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck='true'  style="width:99%;" class="checker" rows="3" 
+                            </div>
+                            <div  class='textareaGroup'>C. Planned development / training activities (agreed by reviewing mgr and as per the following priority / feasibility order):
+                                <a type="button"
+                                    class="add-comment-btn feedback-trigger"
+                                    ng-show="(record.hr_comments | filter:{ 
+                                        Section: 'DevPlanC',
+                                        PartID: record.EvaluationID, 
+                                        ReadAt: null, 
+                                        AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length > 0"
+                                    data-field="DevPlanC"
+                                    data-partid="{{ record.EvaluationID }}">View Feedback</a>
+                                <textarea ng-class="is_approved && (record.hr_comments | filter:{ 
+                                        Section: 'DevPlanC',
+                                        PartID: record.EvaluationID,
+                                        ReadAt: null, 
+                                        AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length == 0 ? '' : 'spellcheck' " class="checker" cols="80" style="width:710px;" 
                                         ng-model="record.DevPlanC" 
-                                        ng-disabled="is_approved" 
-                                        minlength='25' required>
+                                        ng-disabled="is_approved && (record.hr_comments | filter:{ 
+                                        Section: 'DevPlanC',
+                                        PartID: record.EvaluationID,
+                                        ReadAt: null, 
+                                        AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length == 0" 
+                                        minlength='25' ng-required="record.total_computed_score >= 3">
                                 </textarea><br>
                                 <small class='warningMsg' style="display:none;">
                                     * This is a required field. Must be at least 25 characters long.
                                 </small>
-                            </p>
+                            </div>
                         </div>
                         <br />
 
@@ -575,12 +1033,12 @@
                                 <h4><span ng-bind="record.Rater4FullName"></span>' Comment</h4>
                                 <p ng-bind="record.Rater4Comment"></p>
                             </div>
-                            <div ng-show="record.status == 'Incomplete' && !is_approved">
+                            <div ng-show=" !is_approved && record.for_approval_level > 1">
                                 <!-- <hr> -->
                                 <h4 ng-show="!is_approved">EVALUATION COMMENT</h4>
-                                <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck="true"  ng-model="record.Rater2Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 2 && !is_approved"  ng-disabled="is_approved" ></textarea>
-                                <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();"a spellcheck="true"  ng-model="record.Rater3Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 3 && !is_approved"  ng-disabled="is_approved" ></textarea>
-                                <textarea onfocus="$Spelling.SpellCheckAsYouType(this); this.focus();" spellcheck="true"  ng-model="record.Rater4Comment" class="checker" style="width:98.4%;min-height:100px;" ng-show="record.for_approval_level == 4 && !is_approved"  ng-disabled="is_approved" ></textarea>
+                                <textarea ng-class="record.for_approval_level == 2 && !is_approved ? 'spellcheck' : '' " style="width:710px; min-height:100px;" ng-model="record.Rater2Comment" class="checker" ng-show="record.for_approval_level == 2 && !is_approved"  ng-disabled="is_approved" ></textarea>
+                                <textarea ng-class="record.for_approval_level == 3 && !is_approved ? 'spellcheck' : '' " style="width:710px; min-height:100px;" ng-model="record.Rater3Comment" class="checker" ng-show="record.for_approval_level == 3 && !is_approved"  ng-disabled="is_approved" ></textarea>
+                                <textarea ng-class="record.for_approval_level == 4 && !is_approved ? 'spellcheck' : '' " style="width:710px; min-height:100px;" ng-model="record.Rater4Comment" class="checker" ng-show="record.for_approval_level == 4 && !is_approved"  ng-disabled="is_approved" ></textarea>
                                 <span ng-show="!is_approved" style="font-style:italic;margin-left:5px;font-size:10px;">Note: Salary increase will be based on the Overall Performance Rating.</span>
                             </div>
                         </div>
@@ -610,21 +1068,28 @@
 
 
 
-                    <button type="button" class="subapp smlbtn" id="submapp" style="float:right;margin-right:10px;"  ng-show="!is_approved">Submit Appraisal</button>
+                    <button type="button" class="subapp smlbtn btn-spellchecker" id="submapp" style="float:right;margin-right:10px;"  ng-show="!is_approved">Submit Appraisal</button>
                     <button type="button" class="saveapp smlbtn" id="saveapp" style="float:right;background-color:#3EC2FB;margin-right:10px;" ng-click="save()"  ng-show="!is_approved">Save Appraisal</button>
                     
                     <?php }else{ ?>
 
                         <div style="border:1px solid #fff;padding-left:5px;width:98.6%;">
                             <h4>Employee Comment </h4>
-                            <textarea spellcheck="true" id="EmployeeAccept" class="checker" style="width:98.4%;min-height:100px;" ng-show="is_approved" ng-hide="record.EmpComment != null"></textarea>
+                            <textarea spellcheck="true" 
+                                id="EmployeeAccept" 
+                                class="checker"
+                                style="width:710px;min-height:100px;" 
+                                ng-show="is_approved" 
+                                ng-hide="record.EmpComment != null"
+                                ng-class="record.EmpComment == null ? 'spellcheck' : '' ">
+                            </textarea>
                             <div ng-show="record.EmpComment != null && is_approved">
                                 <p ng-bind="record.EmpComment"></p>
                             </div>
                         </div>
                         <br>
                         <button type="button" class="subapp smlbtn" id="submapp" style="float:right;margin-right:10px;"  ng-show="is_approved && record.EmpComment == null" ng-click="accept()">Accept Evaluation</button>
-
+                        <button type="button" class="smlbtn" style="float:right;background-color:#3EC2FB;margin-right:10px;" ng-show="record.status == 'Completed' && record.group.EvaluationType == 'Regularization'" id='pmr_sign_doc'>Sign PMR Documents</button>
                     <?php } ?>
                     </div>
                 </div>
@@ -635,7 +1100,59 @@
 <script>
     $('#evaluation-form-wrapper').hide();
     var app = angular.module('myApp', []);
-    app.controller('myCtrl', function($scope, $http,  $sce) {
+    app.factory('spellCheckerService', ['$q', function($q) {
+        let spellCheckerModule = null; 
+        const SPELLCHECK_MODULE_PATH = '<?php echo JS; ?>/SpellChecker/spellcheck.js';
+
+        async function loadSpellCheckerModule() {
+            if (spellCheckerModule) {
+                return spellCheckerModule; 
+            }
+            try {
+                const module = await import(SPELLCHECK_MODULE_PATH);
+                spellCheckerModule = module;
+                console.log('SpellChecker module loaded successfully:', module);
+                return module;
+            } catch (error) {
+                console.error('Failed to load SpellChecker module:', error);
+                return $q.reject(error);
+            }
+        }
+
+        return {
+            initializeSpellingChecker: async function() {
+                try {
+                    const module = await loadSpellCheckerModule();
+                    if (module && typeof module.initializeSpellingChecker === 'function') {
+                        module.initializeSpellingChecker();
+                    } else {
+                        console.warn('initializeSpellingChecker function not found in the module.');
+                    }
+                } catch (error) {
+                    console.error('Error calling initializeSpellingChecker:', error);
+                }
+            },
+
+            
+            getSpellCheckerClass: async function() {
+                try {
+                    const module = await loadSpellCheckerModule();
+                    if (module && module.SpellChecker) {
+                        return module.SpellChecker;
+                    } else {
+                        console.warn('SpellChecker class not found in the module.');
+                        return null;
+                    }
+                } catch (error) {
+                    console.error('Error getting SpellChecker class:', error);
+                    return null;
+                }
+            }
+        };
+    }]);
+    
+    var allComments = [];
+    app.controller('myCtrl', function($scope, $http, $sce, spellCheckerService) {
         let apiUrl = '<?php echo MEWEB; ?>/peoplesedge/api/pmsv1/';
 
         $scope.record = [];
@@ -692,8 +1209,11 @@
                     }
                 }
 
+                allComments = $scope.record.hr_comments;
+
                 $scope.loading = false;
                 $('#evaluation-form-wrapper').show();
+                spellCheckerService.initializeSpellingChecker();
             },
             function errorCallback(response) {
                     // called asynchronously if an error occurs
@@ -945,28 +1465,23 @@
         $scope.validate = function(){
             if($scope.myForm.$invalid){
                 $('input.ng-invalid').first().focus();
-                $('textarea.ng-invalid').first().closest('.textareaGroup').find('.livespell_textarea').focus();
+                $('textarea.ng-invalid').first().focus();
                 $('select.ng-invalid').first().focus();
                 alert('Please check all required inputs!');
 
                 return false;
             }
-            // else if($scope.checkSpelling()){
-            //     $('span.livespell_redwiggle').closest('div').focus();
-            //     $('span.livespell_greenwiggle').closest('div').focus();
-            //     alert('Spelling errors found. Please review and correct the highlighted words before submitting the form. \n\nNote: To see suggestions, right click on misspelled word.');
+            else if($scope.checkSpelling()){
+                $('.editor-wrapper.invalid-spellcheck').find('textarea.spellcheck').first().focus();
+                alert('Spelling errors found. Please review and correct the highlighted words before submitting the form. \n\nNote: To see suggestions, click on misspelled word.');
 
-            //     return false;
-            // }
-
-           return true
+                return false;
+            }
+            return true
         };
 
         $scope.checkSpelling = function(){
-            if ($('span.livespell_redwiggle').length > 0){
-                return true;
-            }
-            else if ($('span.livespell_greenwiggle').length > 0){
+            if ($('.editor-wrapper.invalid-spellcheck').length > 0){
                 return true;
             }
 
@@ -981,10 +1496,139 @@
             return Math.round((num + 0.00000001) *100)/100;
         }
 
+        $scope.markAsDone = function(CommentID){
+            $scope.record.markAsDone = true;
+            $scope.record.CommentIDtoComplete = CommentID;
+
+            if($scope.validate()){
+                $scope.save();
+            }
+        }
+
+        $scope.markALLAsDone = function(Section, PartID){
+            $scope.record.markALLAsDone = true;
+            $scope.record.SectionToComplete = Section;
+            $scope.record.PartToComplete = PartID;
+
+            if($scope.validate()){
+                $scope.save();
+            }
+        }
+
+        $(document).on("click", ".add-comment-btn", function (event) {
+            event.stopPropagation();
+
+            let fieldId = $(this).data("field");
+            let partID = $(this).data("partid");
+            let $button = $(this);
+
+            $(".floating-feedback").remove();
+
+            if (allComments) {
+                let filteredComments = allComments
+                    .filter(c =>
+                        c.Section == fieldId &&
+                        c.PartID == partID &&
+                        c.ReadAt == null &&
+                        c.AssignedTo == '<?php echo $profile_idnum . '|' . $profile_dbname; ?>'
+                    )
+                    .map(c => {
+                        c.Username = c.CreatedBy.split(' - ')[1];
+                        return c;
+                    });
+
+                existingCommentsHTML = filteredComments.map(c =>
+                    `<li class="list-group-item feedback-item">
+                        <div class="feedback-header">
+                            <div class="avatar">${c.Username.charAt(0).toUpperCase()}</div>
+                            <div>
+                                <span class="author">${c.Username}</span>
+                                <span class="date">${ new Date(c.CreatedAt).toLocaleString('en-US', {
+                                    dateStyle: 'medium',
+                                    timeStyle: 'short',
+                                    hour12: true
+                                })}</span>
+                            </div>
+                        </div>
+                        <div class="remarks">${c.Remarks}</div>
+                        <div class='action-comment'><a href='#' class='done' data-id='${c.CommentID}'>Mark as Done</a></div>
+                    </li>`
+                ).join('');
+            }
+
+            let commentBox = $(`
+                <div class="floating-feedback">
+                    <div class="feedback-header-title">HR Feedback</div>
+                    <div class="feedback-content">
+                        <div class="feedback-list">
+                            ${existingCommentsHTML}
+                        </div>
+                    </div>
+                    <button class="resolve-btn">Mark All as Done</button>
+                </div>
+            `);
+
+            // Function to update box position
+            function updatePosition() {
+                let rect = $button[0].getBoundingClientRect();
+                let newTop = rect.top + window.scrollY;
+                let newLeft = rect.right + window.scrollX + 10;
+
+                // If the comment box goes above 350px from the top → remove it
+                if (newTop < 350) {
+                    commentBox.remove();
+                    $(document).off("click.closeCommentBox");
+                    $(window).off("scroll.updateCommentBox"); // or your scroll parent if different
+                    return;
+                }
+
+                // Otherwise, update position normally
+                commentBox.css({
+                    top: newTop,
+                    left: newLeft
+                });
+            }
+
+
+            // Initial position
+            $("body").append(commentBox);
+            updatePosition();
+
+            // Track scrolling on parent containers AND window
+            // Add scroll tracking
+            let $scrollParents = $button.parents().filter(function () {
+                return /(auto|scroll)/.test($(this).css("overflow") + $(this).css("overflow-y") + $(this).css("overflow-x"));
+            });
+            $scrollParents = $scrollParents.add($(window));
+
+            $scrollParents.on("scroll.updateCommentBox", updatePosition);
+
+            // Close if clicked outside
+            $(document).on("click.closeCommentBox", function (e) {
+                if (!commentBox.is(e.target) && commentBox.has(e.target).length === 0 && !$(e.target).is(".add-comment-btn")) {
+                    commentBox.remove();
+                    $(document).off("click.closeCommentBox");
+                    $scrollParents.off("scroll.updateCommentBox");
+                }
+            });
+
+            $(document).on("click.action-comment", ".done", function (e) {
+                e.preventDefault();
+                var id = $(this).data('id');
+                $scope.markAsDone(id);
+                $(".floating-feedback").remove();
+            });
+
+            $(document).on("click", ".resolve-btn", function (e) {
+                e.preventDefault();
+                $scope.markALLAsDone(fieldId, partID);
+            });
+        });
+
     });
 
-    $(document).on('input focusin', '.livespell_textarea', function() {
-        var content = $(this).text(); 
+    $(document).on('input focusin change', '.editor-wrapper', function() {
+        var content = $(this).find('textarea').val(); 
         var msg=$(this).closest('.textareaGroup').find('small.warningMsg');
 
         if(msg.length != 0){
@@ -1011,8 +1655,8 @@
     $(document).on('input change', '.pccrate', function() {
         var wrapper = $(this).closest('.work-result-wrapper');
         var rate = $(this).val(); 
-        var spell = wrapper.find('.livespell_textarea');  
-        var content = spell.text();
+        var spell = wrapper.find('.editor-wrapper');  
+        var content = spell.find('textarea').val();
         var msg = wrapper.find('small.warningMsg');
 
         if (msg.length !== 0) {
@@ -1045,7 +1689,6 @@
     });
 
     $('#submapp').on('click', function(e){
-        $Spelling.SpellCheckAsYouType($('.checker:visible'));
         $("#submitfloat").removeClass("invisible");
         $("#submitfloatnview").show({
             effect : 'slide',
@@ -1057,35 +1700,18 @@
         // $scope.submit();
     });
 
-    setInterval(() => {
-        let menu = document.querySelector("#livespell___contextmenu");
-        if (menu) {
-            let items = menu.querySelectorAll("li");
-            let arr = [
-                "JavaScriptSpellCheck",
-                "**Trial**",
-                "Please register online",
-                "javascriptspellcheck.com",
-                "*PHP Spellcheck Trial*",
-                "www.phpspellcheck.com"
-            ];
+    $(document).on('input change focus', 'textarea.spellcheck', function() {
+        this.style.height = 'auto';
+        this.style.height = this.scrollHeight + 'px';
+    });
 
-            items.forEach((item) => {
-                let text = item.innerText.trim();
-                if (arr.includes(text)) {
-                    item.remove();
-                }
-            });
+    $('#pmr_sign_doc').on('click', function(){
+        var userConfirmed = confirm('You will be redirected to another page for signing document. Would you like to continue?');
 
-            if(items.length==4){
-                let separators = menu.querySelectorAll("li.ls_hr");
-                separators.forEach((separator) => {
-                    separator.remove();
-                });
-            }
+        if(userConfirmed){
+            window.open("<?php echo WEB; ?>/pmr_signing?ratee=<?php echo $_GET['ratee']; ?>");
         }
-    }, 10);
-
+    });
  </script>
 
 <?php include('session.php'); ?>
