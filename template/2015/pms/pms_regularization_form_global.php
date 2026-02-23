@@ -1471,10 +1471,15 @@
                 return false;
             }
             else if($scope.checkSpelling()){
-                $('.editor-wrapper.invalid-spellcheck').find('textarea.spellcheck').first().focus();
-                alert('Spelling errors found. Please review and correct the highlighted words before submitting the form. \n\nNote: To see suggestions, click on misspelled word.');
+                let checkdate = new Date("2026-03-01");
+                let evaldate = new Date($scope.record.EvaluationDate);
 
-                return false;
+                if(resetTime(evaldate) >= resetTime(checkdate) && ($scope.record.EvaluationDate)){
+                    $('.editor-wrapper.invalid-spellcheck').find('textarea.spellcheck').first().focus();
+                    alert('Spelling errors found. Please review and correct the highlighted words before submitting the form. \n\nNote: To see suggestions, click on misspelled word.');
+
+                    return false;
+                }
             }
             return true
         };
@@ -1725,6 +1730,10 @@
             });
         }
     });
+
+    function resetTime(date) {
+        return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    }
  </script>
 
 <?php include('session.php'); ?>
