@@ -70,8 +70,7 @@
         bottom: 20px;
         right: 20px;
         width: 360px;
-        height: auto;
-        max-height: 330px;
+        height: 330px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.7);
         background: #1e2a38; /* Dark blue-gray */
         border-radius: 8px;
@@ -237,7 +236,7 @@
                                         EvaluationID: record.EvaluationID,
                                         ReadAt: null, 
                                         AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length > 0">
-                                    You have pending HR feedback. Click <i style="color:blue;">View Feedback</i> in any section that includes feedback to review and complete the required updates. The section will remain open until all items in that section are marked as done.
+                                    You have pending HR feedback. Click <a type="button" class='feedback-trigger' style='color:blue;' id="viewFeedback">View Feedback</a> in any section that includes feedback to review and complete the required updates. The section will remain open until all items in that section are marked as done.
                                 </span>
                             </td>
                         </tr>
@@ -1710,6 +1709,20 @@
 
         if(userConfirmed){
             window.open("<?php echo WEB; ?>/pmr_signing?ratee=<?php echo $_GET['ratee']; ?>");
+        }
+    });
+
+    $(document).on('click', '#viewFeedback', function(){
+        const $firstBtn = $('.add-comment-btn:visible').first();
+
+        if ($firstBtn.length) {
+            $('html, body').animate({
+                scrollTop: $firstBtn.offset().top - 500
+            }, 500, function() {
+                // After scroll, find its closest textarea and focus
+                $firstBtn.closest('span, div, td').find('textarea:visible').first().focus();
+                $firstBtn.click();
+            });
         }
     });
  </script>
