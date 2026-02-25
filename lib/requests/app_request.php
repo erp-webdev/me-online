@@ -2358,10 +2358,18 @@ switch ($sec) {
                     </script>
 
                     <script>
-                        flatpickr(".timepickerflat", {
-                            enableTime: true,
-                            noCalendar: true,
-                            dateFormat: "H:i",
+                        $(document).ready(function () {
+                            try {
+                                flatpickr(".timepickerflat", {
+                                    enableTime: true,
+                                    noCalendar: true,
+                                    dateFormat: "H:i",
+                                });
+                            } catch (e) {
+                                // Fallback to native time input if flatpickr fails
+                                $('.timepickerflat').attr('type', 'time');
+                                console.error('Flatpickr failed to initialize:', e);
+                            }
                         });
                     </script>
 
@@ -2372,7 +2380,7 @@ switch ($sec) {
                                 value="<?php echo $dates; ?>" class="obt_date<?php echo $key; ?> " />
                         </td>
                         <td class="centertalign">
-                            <input id="obt_timein<?php echo $key; ?>" type="text" name="obt_timein[<?php echo $key; ?>]" value=""
+                            <input id="obt_timein<?php echo $key; ?>" type="time" name="obt_timein[<?php echo $key; ?>]" value=""
                                 class="obt_timein<?php echo $key; ?> txtbox width95 timepickerflat" />
                         </td>
                         <td class="centertalign">
@@ -2380,8 +2388,8 @@ switch ($sec) {
                                 class="txtbox width95 obtdateout<?php echo $key; ?>" readonly />
                         </td>
                         <td class="centertalign">
-                            <input id="obt_timeout<?php echo $key; ?>" type="text" name="obt_timeout[<?php echo $key; ?>]" value=""
-                                class="obt_timeout<?php echo $key; ?> txtbox width95 timepickerflat" readonly />
+                            <input id="obt_timeout<?php echo $key; ?>" type="time" name="obt_timeout[<?php echo $key; ?>]" value=""
+                                class="obt_timeout<?php echo $key; ?> txtbox width95 timepickerflat" />
                             <input id="obt_hours<?php echo $key; ?>" type="hidden" name="obt_hours[<?php echo $key; ?>]"
                                 value="<?php echo $shiftsched2[0]['ShiftID'] ? $totaltime : 0; ?>"
                                 class="obt_hours<?php echo $key; ?>" />
