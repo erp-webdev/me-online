@@ -1117,7 +1117,7 @@
             params: {EmpID: $scope.ApproverEmpID, DB: $scope.ApproverEmpDB}
         }).then(function successCallback(response) {
                 // store the response data in a variable called `data`
-                $scope.record = response.data;
+                $scope.record = response.data || {};
                 
                 if($scope.record != ""){
                     $scope.record.ApproverEmpID = $scope.ApproverEmpID;
@@ -1415,7 +1415,7 @@
                 url: apiUrl + 'evaluation/save', 
                 data:  $scope.record
             }).then(function successCallback(response) {
-                    $scope.record = response.data;
+                    $scope.record = response.data || {};
                     console.log("Successfully saved record");
                     // refresh page
                     window.location.reload();
@@ -1592,16 +1592,15 @@
                 }
             });
 
-            $(document).on("click.action-comment", ".done", function (e) {
+            $(document).off("click.resolvBtn").on("click.resolvBtn", ".resolve-btn", function (e) {
                 e.preventDefault();
+                $scope.markALLAsDone(fieldId, partID);
+            });
+
+            $(document).off("click.action-comment").on("click.action-comment", ".done", function (e) {
                 var id = $(this).data('id');
                 $scope.markAsDone(id);
                 $(".floating-feedback").remove();
-            });
-
-            $(document).on("click", ".resolve-btn", function (e) {
-                e.preventDefault();
-                $scope.markALLAsDone(fieldId, partID);
             });
         });
 
