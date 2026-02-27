@@ -505,18 +505,22 @@
                                 </small>
                                 <span ng-show="record.for_approval_level > 1 || record.status == 'Completed'" ng-bind="record.PerformanceSummary"></span>
                             </p>
-                            <div ng-show="record.Rater2Comment != null && (record.for_approval_level > 2 || record.status == 'Completed')">
-                                <h4><span ng-bind="record.Rater2FullName"></span>' Comment</h4>
-                                <p ng-bind="record.Rater2Comment"></p>
-                            </div>
-                            <div ng-show="record.Rater3Comment != null && (record.for_approval_level > 3 || record.status == 'Completed')">
-                                <h4><span ng-bind="record.Rater3FullName"></span>' Comment</h4>
-                                <p ng-bind="record.Rater3Comment"></p>
-                            </div>
-                            <div ng-show="record.Rater4Comment != null && (record.for_approval_level > 4 || record.status == 'Completed')">
-                                <h4><span ng-bind="record.Rater4FullName"></span>' Comment</h4>
-                                <p ng-bind="record.Rater4Comment"></p>
-                            </div>
+                            <?php if(isset($_GET['page'])){
+                                if($_GET['page'] !== 'result') { ?>
+                                <div ng-show="record.Rater2Comment != null && (record.for_approval_level > 2 || record.status == 'Completed')">
+                                    <h4><span ng-bind="record.Rater2FullName"></span>' Comment</h4>
+                                    <p ng-bind="record.Rater2Comment"></p>
+                                </div>
+                                <div ng-show="record.Rater3Comment != null && (record.for_approval_level > 3 || record.status == 'Completed')">
+                                    <h4><span ng-bind="record.Rater3FullName"></span>' Comment</h4>
+                                    <p ng-bind="record.Rater3Comment"></p>
+                                </div>
+                                <div ng-show="record.Rater4Comment != null && (record.for_approval_level > 4 || record.status == 'Completed')">
+                                    <h4><span ng-bind="record.Rater4FullName"></span>' Comment</h4>
+                                    <p ng-bind="record.Rater4Comment"></p>
+                                </div>
+                                <?php }
+                            }?>
                             <div ng-show="record.status == 'Incomplete' && !is_approved">
                                 <div ng-show="record.for_approval_level == 2">
                                     <hr>
