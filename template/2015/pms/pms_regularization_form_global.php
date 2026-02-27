@@ -710,7 +710,7 @@
                                         <th>Total Weight %</th>
                                     </tr>
                                     <tr>
-                                        <td style="text-align:center;"><input type="number" class="width25 smltxtbox p5w checker" style="width:35px;" ng-min="record.total_computed_score >= 3 ? 1 : 0" max="100" ng-model="totalNextGoalWeight" readonly  ng-disabled="is_approved" ng-required="record.total_computed_score >= 3">
+                                        <td style="text-align:center;"><input type="number" class="width25 smltxtbox p5w checker" style="width:35px;" ng-min="record.total_computed_score >= 3 ? 100 : 0" max="100" ng-model="totalNextGoalWeight" readonly  ng-disabled="is_approved" ng-required="record.total_computed_score >= 3">
                                     </tr>
                                 </table>
                                 <div style="clear:both;"></div>
@@ -1020,25 +1020,170 @@
                         <br />
 
                         <div style="border:1px solid #fff;padding-left:5px;width:98.6%;">
-                            <div ng-show="record.Rater2Comment != null && (record.for_approval_level > 2 || is_approved)">
-                                <h4><span ng-bind="record.Rater2FullName"></span>' Comment</h4>
-                                <p ng-bind="record.Rater2Comment"></p>
+                            <div ng-show="record.Rater2FullName && (record.for_approval_level >= 2 || is_approved)">
+                                <h4>
+                                    <span ng-bind="record.Rater2FullName"></span>'s Comment
+                                    <a type="button"
+                                    class="add-comment-btn feedback-trigger"
+                                    ng-show="(record.hr_comments | filter:{ 
+                                        Section: 'Rater2Comment', 
+                                        PartID: record.EvaluationID,
+                                        ReadAt: null, 
+                                        AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length > 0"
+                                    data-field="Rater2Comment"
+                                    data-partid="{{ record.EvaluationID }}">View Feedback</a><br>
+                                    <span  ng-show="(!is_approved && record.for_approval_level == 2) || (record.hr_comments | filter:{ 
+                                            Section: 'Rater2Comment', 
+                                            PartID: record.EvaluationID,
+                                            ReadAt: null, 
+                                            AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length > 0" 
+                                            style="font-weight:normal; font-size:11px;">Note: Salary increase will be based on the Overall Performance Rating.</span> 
+                                </h4>
+                                <p class='textareaGroup'>
+                                    <textarea spellcheck='true' 
+                                            ng-class="(!is_approved && record.for_approval_level == 2)
+                                                || (record.hr_comments | filter:{ 
+                                                    Section: 'Rater2Comment', 
+                                                    PartID: record.EvaluationID,
+                                                    ReadAt: null, 
+                                                    AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length > 0 ? 
+                                                    'spellcheck' : '' " 
+                                            style="width:710px; min-height:100px;" 
+                                            class="checker" rows="3" 
+                                            ng-model="record.Rater2Comment" 
+                                            ng-show="(!is_approved && record.for_approval_level == 2) || (record.hr_comments | filter:{ 
+                                                            Section: 'Rater2Comment',
+                                                            PartID: record.EvaluationID, 
+                                                            ReadAt: null, 
+                                                            AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length > 0" 
+                                            ng-disabled="(is_approved 
+                                                    || record.for_approval_level > 2)
+                                                    && (record.hr_comments | filter:{ 
+                                                            Section: 'Rater2Comment', 
+                                                            PartID: record.EvaluationID,
+                                                            ReadAt: null, 
+                                                            AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length == 0">
+                                    </textarea><br>
+                                    <span ng-bind="record.Rater2Comment"
+                                        ng-show="(is_approved 
+                                                    || record.for_approval_level > 2)
+                                                && (record.hr_comments | filter:{ 
+                                                        Section: 'Rater2Comment', 
+                                                        PartID: record.EvaluationID,
+                                                        ReadAt: null, 
+                                                        AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length == 0">
+                                    </span>
+                                </p>
                             </div>
-                            <div ng-show="record.Rater3Comment != null && (record.for_approval_level > 3 || is_approved)">
-                                <h4><span ng-bind="record.Rater3FullName"></span>' Comment</h4>
-                                <p ng-bind="record.Rater3Comment"></p>
+                            <div ng-show="record.Rater3FullName && (record.for_approval_level >= 3 || is_approved)">
+                                <h4>
+                                    <span ng-bind="record.Rater3FullName"></span>'s Comment
+                                    <a type="button"
+                                    class="add-comment-btn feedback-trigger"
+                                    ng-show="(record.hr_comments | filter:{ 
+                                        Section: 'Rater3Comment', 
+                                        PartID: record.EvaluationID,
+                                        ReadAt: null, 
+                                        AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length > 0"
+                                    data-field="Rater3Comment"
+                                    data-partid="{{ record.EvaluationID }}">View Feedback</a><br>
+                                    <span  ng-show="(!is_approved && record.for_approval_level == 3) || (record.hr_comments | filter:{ 
+                                            Section: 'Rater3Comment', 
+                                            PartID: record.EvaluationID,
+                                            ReadAt: null, 
+                                            AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length > 0" 
+                                            style="font-weight:normal; font-size:11px;">Note: Salary increase will be based on the Overall Performance Rating.</span> 
+                                </h4>
+                                <p class='textareaGroup'>
+                                    <textarea spellcheck='true' 
+                                            ng-class="(!is_approved && record.for_approval_level == 3)
+                                                || (record.hr_comments | filter:{ 
+                                                    Section: 'Rater3Comment', 
+                                                    PartID: record.EvaluationID,
+                                                    ReadAt: null, 
+                                                    AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length > 0 ? 
+                                                    'spellcheck' : '' " 
+                                            style="width:710px; min-height:100px;" 
+                                            class="checker" rows="3" 
+                                            ng-model="record.Rater3Comment" 
+                                            ng-show="(!is_approved && record.for_approval_level == 3) || (record.hr_comments | filter:{ 
+                                                            Section: 'Rater3Comment',
+                                                            PartID: record.EvaluationID, 
+                                                            ReadAt: null, 
+                                                            AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length > 0" 
+                                            ng-disabled="(is_approved 
+                                                    || record.for_approval_level > 3)
+                                                    && (record.hr_comments | filter:{ 
+                                                            Section: 'Rater3Comment', 
+                                                            PartID: record.EvaluationID,
+                                                            ReadAt: null, 
+                                                            AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length == 0">
+                                    </textarea><br>
+                                    <span ng-bind="record.Rater3Comment"
+                                        ng-show="(is_approved 
+                                                    || record.for_approval_level > 3)
+                                                && (record.hr_comments | filter:{ 
+                                                        Section: 'Rater3Comment', 
+                                                        PartID: record.EvaluationID,
+                                                        ReadAt: null, 
+                                                        AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length == 0">
+                                    </span>
+                                </p>
                             </div>
-                            <div ng-show="record.Rater4Comment != null && (record.for_approval_level > 4 || is_approved)">
-                                <h4><span ng-bind="record.Rater4FullName"></span>' Comment</h4>
-                                <p ng-bind="record.Rater4Comment"></p>
-                            </div>
-                            <div ng-show=" !is_approved && record.for_approval_level > 1">
-                                <!-- <hr> -->
-                                <h4 ng-show="!is_approved">EVALUATION COMMENT</h4>
-                                <textarea ng-class="record.for_approval_level == 2 && !is_approved ? 'spellcheck' : '' " style="width:710px; min-height:100px;" ng-model="record.Rater2Comment" class="checker" ng-show="record.for_approval_level == 2 && !is_approved"  ng-disabled="is_approved" ></textarea>
-                                <textarea ng-class="record.for_approval_level == 3 && !is_approved ? 'spellcheck' : '' " style="width:710px; min-height:100px;" ng-model="record.Rater3Comment" class="checker" ng-show="record.for_approval_level == 3 && !is_approved"  ng-disabled="is_approved" ></textarea>
-                                <textarea ng-class="record.for_approval_level == 4 && !is_approved ? 'spellcheck' : '' " style="width:710px; min-height:100px;" ng-model="record.Rater4Comment" class="checker" ng-show="record.for_approval_level == 4 && !is_approved"  ng-disabled="is_approved" ></textarea>
-                                <span ng-show="!is_approved" style="font-style:italic;margin-left:5px;font-size:10px;">Note: Salary increase will be based on the Overall Performance Rating.</span>
+                            <div ng-show="record.Rater4FullName && (record.for_approval_level >= 4 || is_approved)">
+                                <h4>
+                                    <span ng-bind="record.Rater4FullName"></span>'s Comment
+                                    <a type="button"
+                                    class="add-comment-btn feedback-trigger"
+                                    ng-show="(record.hr_comments | filter:{ 
+                                        Section: 'Rater4Comment', 
+                                        PartID: record.EvaluationID,
+                                        ReadAt: null, 
+                                        AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length > 0"
+                                    data-field="Rater4Comment"
+                                    data-partid="{{ record.EvaluationID }}">View Feedback</a><br>
+                                    <span  ng-show="(!is_approved && record.for_approval_level == 4) || (record.hr_comments | filter:{ 
+                                            Section: 'Rater4Comment', 
+                                            PartID: record.EvaluationID,
+                                            ReadAt: null, 
+                                            AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length > 0" 
+                                            style="font-weight:normal; font-size:11px;">Note: Salary increase will be based on the Overall Performance Rating.</span> 
+                                </h4>
+                                <p class='textareaGroup'>
+                                    <textarea spellcheck='true' 
+                                            ng-class="(!is_approved && record.for_approval_level == 4)
+                                                || (record.hr_comments | filter:{ 
+                                                    Section: 'Rater4Comment', 
+                                                    PartID: record.EvaluationID,
+                                                    ReadAt: null, 
+                                                    AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length > 0 ? 
+                                                    'spellcheck' : '' " 
+                                            style="width:710px; min-height:100px;" 
+                                            class="checker" rows="3" 
+                                            ng-model="record.Rater4Comment" 
+                                            ng-show="(!is_approved && record.for_approval_level == 4) || (record.hr_comments | filter:{ 
+                                                            Section: 'Rater4Comment',
+                                                            PartID: record.EvaluationID, 
+                                                            ReadAt: null, 
+                                                            AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length > 0" 
+                                            ng-disabled="(is_approved 
+                                                    || record.for_approval_level > 4)
+                                                    && (record.hr_comments | filter:{ 
+                                                            Section: 'Rater4Comment', 
+                                                            PartID: record.EvaluationID,
+                                                            ReadAt: null, 
+                                                            AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length == 0">
+                                    </textarea><br>
+                                    <span ng-bind="record.Rater4Comment"
+                                        ng-show="(is_approved 
+                                                    || record.for_approval_level > 4) 
+                                                && (record.hr_comments | filter:{ 
+                                                        Section: 'Rater4Comment', 
+                                                        PartID: record.EvaluationID,
+                                                        ReadAt: null, 
+                                                        AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length == 0">
+                                    </span>
+                                </p>
                             </div>
                         </div>
                         <br>
@@ -1165,7 +1310,7 @@
             params: {EmpID: $scope.ApproverEmpID, DB: $scope.ApproverEmpDB}
         }).then(function successCallback(response) {
                 // store the response data in a variable called `data`
-                $scope.record = response.data;
+                $scope.record = response.data || {};
 
                 if($scope.record != ''){
                     $scope.record.ApproverEmpID = $scope.ApproverEmpID;
@@ -1431,7 +1576,7 @@
                 url: apiUrl + 'evaluation/save', 
                 data:  $scope.record
             }).then(function successCallback(response) {
-                    $scope.record = response.data;
+                    $scope.record = response.data || {}
                     console.log("Successfully saved record");
 
                     // refresh page
@@ -1616,16 +1761,15 @@
                 }
             });
 
-            $(document).on("click.action-comment", ".done", function (e) {
+            $(document).off("click.resolvBtn").on("click.resolvBtn", ".resolve-btn", function (e) {
                 e.preventDefault();
+                $scope.markALLAsDone(fieldId, partID);
+            });
+
+            $(document).off("click.action-comment").on("click.action-comment", ".done", function (e) {
                 var id = $(this).data('id');
                 $scope.markAsDone(id);
                 $(".floating-feedback").remove();
-            });
-
-            $(document).on("click", ".resolve-btn", function (e) {
-                e.preventDefault();
-                $scope.markALLAsDone(fieldId, partID);
             });
         });
 
