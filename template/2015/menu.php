@@ -166,7 +166,7 @@ if (in_array($profile_dbname, ['CITYLINK', 'ECOC', 'ECINEMA', 'EREX', 'LAFUERZA'
 <?php endif; ?>
 
 <?php //if ($profile_dbname != 'ECINEMA' && $profile_dbname != 'EPARKVIEW' && $profile_dbname != 'NEWTOWN') : ?>
-<?php if ($profile_dbname != 'EPARKVIEW' && $profile_dbname != 'NEWTOWN' && $profile_dbname != 'GLOBAL_HOTEL' && $profile_dbname != 'ASIAAPMI'): ?>
+<?php if ($profile_dbname != 'EPARKVIEW' && $profile_dbname != 'NEWTOWN' && $profile_dbname != 'ASIAAPMI' && ($profile_dbname != 'GLOBAL_HOTEL' || $profile_idnum == '2026-02-0282' )): ?>
     <a href="<?php echo WEB; ?>/pms" onclick="clickAndDisable(this);">
         <div<?php if (($section == "paf") || ($section == "pafevaluate") || ($section == "pafview")) { ?> class="dselected" <?php } ?>>Performance Management</div>
     </a>
