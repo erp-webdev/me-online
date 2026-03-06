@@ -38,6 +38,10 @@
                 let form = '&form=mega';
                 if(group.EvaluationForm == 'evaluation-form-2024-global')
                     form = '&form=global';
+                else if(group.EvaluationForm == 'evaluation-form-2026-global')
+                    form = '&form=global2026';
+                else if(group.EvaluationForm == 'evaluation-form-2026-mega')
+                    form = '&form=mega2026';
                 else if(group.EvaluationForm == 'regularization-form-2024-global')
                     form = '&form=regularization';
                 else if(group.EvaluationForm == 'regularization-form-2024-mega')
@@ -114,6 +118,10 @@
                             let form = '&form=mega';
                             if(group.EvaluationForm == 'evaluation-form-2024-global')
                                 form = '&form=global';
+                            else if(group.EvaluationForm == 'evaluation-form-2026-global')
+                                form = '&form=global2026';
+                            else if(group.EvaluationForm == 'evaluation-form-2026-mega')
+                                form = '&form=mega2026';
                             else if(group.EvaluationForm == 'regularization-form-2024-global')
                                 form = '&form=regularization';
                             else if(group.EvaluationForm == 'regularization-form-2024-mega')
