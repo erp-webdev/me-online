@@ -1083,6 +1083,15 @@
         // $scope.submit();
     });
 
+    $(document).on('paste', '.livespell_textarea', function(e) {
+        const $proxyDiv = $(this);
+        const $hiddenTextarea = $proxyDiv.closest('.textareaGroup').find('.checker:not([readonly]');
+
+        setTimeout(function() {
+            $hiddenTextarea.trigger('input').trigger('change').trigger('focus');
+        }, 100);
+    });
+
     $(".jobdesc-btn").hover(function(event) {
         var hoverElement = $(this);
         var popup = $(this).parent().find(".jobdesc-popup");
