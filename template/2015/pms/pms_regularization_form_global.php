@@ -863,9 +863,37 @@
                                         <div style="clear:both;"></div>
                                     </div> <!-- end of pcc main wrapper -->
                                     <hr></hr >
-                                    <h4 style="margin-top:5px;">Comments on next year's objectives :</h4>
-                                    <textarea spellcheck="true"  ng-model="record.NObjective" style="width:99%;"  ng-disabled="is_approved" class=" checker"></textarea>
-
+                                    <h4 style="margin-top:5px;">Comments on next year's objectives :
+                                        <a type="button"
+                                            class="add-comment-btn feedback-trigger"
+                                            ng-show="(record.hr_comments | filter:{ 
+                                                Section: 'NObjective', 
+                                                PartID: record.EvaluationID,
+                                                ReadAt: null, 
+                                                AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length > 0"
+                                            data-field="NObjective"
+                                            data-partid="{{ record.EvaluationID }}">
+                                            View Feedback
+                                        </a>
+                                    </h4>
+                                    <textarea spellcheck="true"
+                                        style="width:710px; min-height:100px;"  
+                                        ng-class="record.for_approval_level == 1 
+                                              || (record.hr_comments | filter:{ 
+                                                Section: 'NObjective', 
+                                                PartID: record.EvaluationID,
+                                                ReadAt: null, 
+                                                AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length > 0 ? 
+                                                'spellcheck' : '' " 
+                                        ng-disabled="(is_approved 
+                                                || (record.hr_comments | filter:{ 
+                                                        Section: 'NObjective', 
+                                                        PartID: record.EvaluationID,
+                                                        ReadAt: null, 
+                                                        AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length == 0"
+                                        ng-model="record.NObjective" 
+                                        class=" checker">
+                                    </textarea>
                                 </div>
                             </div>
                             <br />
