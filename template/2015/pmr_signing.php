@@ -259,16 +259,18 @@
                         <div class="<?php echo $with_available_doc ? '' : 'd-none'; ?>">
                             <?php if (!empty($documents)): ?>
                                 <?php foreach ($documents as $document): ?>
-                                    <h5 class="mt-3"><b><?php echo $document['Particulars']; ?></b></h5>
-                                    <iframe class="docframe"
-                                        src="<?php echo $document['ViewablePath']; ?>#zoom=120" 
-                                        width="100%" 
-                                        height="1000" 
-                                        style="border:1px solid #f3f1f1ff; background: transparent; 
-                                            margin-top: -100px;  
-                                            clip-path: inset(100px 0 0 0);" 
-                                        allowtransparency="true">
-                                    </iframe>
+                                    <?php if($document['Comments'] !== 'PMR Upload - Other Attachments'): ?>
+                                        <h5 class="mt-3"><b><?php echo $document['Particulars']; ?></b></h5>
+                                        <iframe class="docframe"
+                                            src="<?php echo $document['ViewablePath']; ?>#zoom=120" 
+                                            width="100%" 
+                                            height="1000" 
+                                            style="border:1px solid #f3f1f1ff; background: transparent; 
+                                                margin-top: -100px;  
+                                                clip-path: inset(100px 0 0 0);" 
+                                            allowtransparency="true">
+                                        </iframe>
+                                    <?php endif; ?>
                                 <?php endforeach; ?>
                             <?php endif; ?>  
                         </div>
