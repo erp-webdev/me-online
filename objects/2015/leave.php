@@ -352,9 +352,21 @@
                     $leavepost['REMARKS'] = "";
 
                     $add_leave = $mainsql->leave_action($leavepost, 'add');
-                    //var_dump($add_leave);
-                    if($add_leave) :
 
+                    $recheck_balance = $mainsql->get_leavebal_by_year($profile_idnum, $ltype, date('Y', strtotime($_POST['leave_to'])));
+                    $recheck_balanceval = (float)$recheck_balance[0]['BalanceHrs'];
+                    if($recheck_balanceval < 0){
+						$recheck_balanceval = 0;
+					}
+
+					if($recheck_balanceval < $backend_hours){
+                        $delete_leave = $mainsql->leave_delete($add_leave);
+
+						echo '{"success": false, "error": "Your leave with pay is greater than your leave balance."}';
+						exit();
+					}
+
+                    if($add_leave) :
                         for($i=1; $i<=5; $i++) :
 
                             //var_dump($_FILES['attachment'.$i]);
