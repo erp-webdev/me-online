@@ -3016,6 +3016,16 @@ class mainsql {
         }
     }
 
+    function leave_delete($reqnbr){
+        $sql = "DELETE FROM HRFrmApplyLeave WHERE LeaveRef = '$reqnbr';
+                DELETE FROM HRFrmApplyLeaveItem WHERE LeaveRef = '$reqnbr';
+                DELETE FROM Approval WHERE Reference = '$reqnbr';
+                DELETE FROM subsidiary.dbo.TED_VIEW_NOTIFICATION2 WHERE Reference = '$reqnbr';";
+                
+		$result = $this->get_execute($sql);			
+		return $result ? 1 : 0;
+    }
+
     function ot_action($value, $action, $id = 0)
 	{
         $val = array();
