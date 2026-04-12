@@ -82,7 +82,7 @@ if ($clearance)
             <?php if (in_array($profile_dbname, ['ASIAAPMI', 'MREIT', 'ECOC', 'CITYLINK', 'ECINEMA', 'EREX', 'LCTM', 'MCTI', 'MLI', 'Rowenta', 'NCCAI', 'SIRUS', 'MEGAWORLD', 'GL', 'GLOBAL_HOTEL', 'TOWNSQUARE', 'LAFUERZA', 'NEWTOWN', 'MEGAPARK'])): ?>
                 <?php
                 $display = true;
-                $deadline = '2026-03-30';
+                $deadline = '2026-12-31';
                 $deadline_text = '';
                 $show_button_date = strtotime('2026-02-01 08:00:00');
                 $current_time = strtotime(date('Y-m-d H:i:s'));
