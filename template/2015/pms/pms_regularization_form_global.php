@@ -886,7 +886,8 @@
                                                 AssignedTo: '<?php echo $profile_idnum.'|'.$profile_dbname; ?>' }).length > 0 ? 
                                                 'spellcheck' : '' " 
                                         ng-disabled="(is_approved 
-                                                || (record.hr_comments | filter:{ 
+                                                || record.for_approval_level > 1)
+                                                && (record.hr_comments | filter:{ 
                                                         Section: 'NObjective', 
                                                         PartID: record.EvaluationID,
                                                         ReadAt: null, 
@@ -1337,8 +1338,12 @@
             url: apiUrl + 'evaluation/show/<?php echo $_GET['ratee']; ?>',
             params: {EmpID: $scope.ApproverEmpID, DB: $scope.ApproverEmpDB}
         }).then(function successCallback(response) {
+                // set dictionary and ignored lints from response
+                localStorage.setItem('harperjs_custom_dictionary', response.data.cached_custom_dictionary);
+                localStorage.setItem('harperjs_ignored_lints', response.data.cached_ignored_lints);
+
                 // store the response data in a variable called `data`
-                $scope.record = response.data || {};
+                $scope.record = response.data.evaluation || {};
 
                 if($scope.record != ''){
                     $scope.record.ApproverEmpID = $scope.ApproverEmpID;
@@ -1596,15 +1601,27 @@
         $scope.save = function(){
             $scope.loading = true;
             $('#evaluation-form-wrapper').hide();
+            var cached_custom_dictionary = localStorage.getItem('harperjs_custom_dictionary');
+            var cached_ignored_lints = localStorage.getItem('harperjs_ignored_lints');
+
             if($scope.record.recommended_salary_increase == '' || $scope.record.recommended_salary_increase == null){
                 $scope.record.recommended_salary_increase = 0;
             }
+
+           var payload = angular.extend({}, $scope.record, {
+                custom_dictionary: cached_custom_dictionary,
+                ignored_lints: cached_ignored_lints
+            });
+
             $http({
                 method: 'POST',
-                url: apiUrl + 'evaluation/save', 
-                data:  $scope.record
+                url: apiUrl + 'evaluation/save',
+                data: payload,
             }).then(function successCallback(response) {
-                    $scope.record = response.data || {}
+                    localStorage.setItem('harperjs_custom_dictionary', response.data.cached_custom_dictionary);
+                    localStorage.setItem('harperjs_ignored_lints', response.data.cached_ignored_lints);
+
+                    $scope.record = response.data.evaluation || {};
                     console.log("Successfully saved record");
 
                     // refresh page

@@ -691,7 +691,7 @@
             params: {EmpID: $scope.ApproverEmpID, DB: $scope.ApproverEmpDB}
         }).then(function successCallback(response) {
                 // store the response data in a variable called `data`
-                $scope.record = response.data;
+                $scope.record = response.data.evaluation;
                 
                 if($scope.record != ""){
                     $scope.record.ApproverEmpID = $scope.ApproverEmpID;
@@ -982,7 +982,7 @@
                 url: apiUrl + 'evaluation/save', 
                 data:  $scope.record
             }).then(function successCallback(response) {
-                    $scope.record = response.data;
+                    $scope.record = response.data.evaluation;
                     console.log("Successfully saved record");
 
                     // refresh page
