@@ -196,10 +196,15 @@ class SpellChecker {
         ignoreItem.textContent = 'Ignore this suggestion';
         ignoreItem.addEventListener('click', () => {
             const expiry = Date.now() + this.IGNORE_DURATION_MS;
-            this.ignoredLints.set(this.getLintId(lint), expiry);
-            this.saveIgnoredLints(); // Persist the change
+
+            // Re-read from storage first to merge with any other instance's ignored lints
+            const fresh = this.loadIgnoredLints();
+            fresh.set(this.getLintId(lint), expiry);
+            this.ignoredLints = fresh;
+
+            this.saveIgnoredLints();
             this.hidePopover();
-            this.renderUI(); // Just re-render without re-linting
+            this.renderUI();
         });
         actionsList.appendChild(ignoreItem);
         this.popover.appendChild(actionsList);
@@ -255,11 +260,16 @@ class SpellChecker {
 
     async addWordToDictionary(word) {
         const wordLower = word.toLowerCase();
-        // Add to the linter's runtime dictionary
         await this.linter.importWords([wordLower]);
-        // Add to the persisted dictionary and save to localStorage
-        this.customDictionary.add(wordLower);
-        localStorage.setItem(this.CUSTOM_DICTIONARY_KEY, JSON.stringify(Array.from(this.customDictionary)));
+
+        const fresh = this.loadCustomDictionaryWords();
+        fresh.add(wordLower);
+        this.customDictionary = fresh;
+
+        localStorage.setItem(
+            this.CUSTOM_DICTIONARY_KEY,
+            JSON.stringify(Array.from(this.customDictionary))
+        );
     }
 
     saveIgnoredLints() {
