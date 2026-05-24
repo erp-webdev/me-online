@@ -2011,9 +2011,9 @@
 						<span>Prepared By:</span>
 						<br><br>
 						<?php if ($send_pdf): ?>
-							<span><img style="height: 60px" src="<?php echo IMG_WEB; ?>/coe/coe_ssaballo.png" /></span><br>
+							<span><img style="height: 60px" src="<?php echo IMG_WEB; ?>/coe/coe_carandang.png" /></span><br>
 						<?php else: ?>
-							<span>Shiena T. Saballo</span><br>
+							<span>Ma. Karen Hazel S. Carandang</span><br>
 							<span>Human Resources Officer</span>
 						<?php endif; ?>
 					</td>
