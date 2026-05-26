@@ -3226,6 +3226,7 @@ $(function() {
         odate = $("#ot_date").val();
         otype = $("#ot_type").val();
 
+        $("#btnotapply").addClass("invisible");
         if (odate) {
 
             $.ajax(
@@ -3285,6 +3286,7 @@ $(function() {
                         success: function(data) {
                             $("#othours").html(data);
                             $("#txtothours").val(data);
+                            $("#btnotapply").removeClass("invisible");
                         }
                     })
                 }
@@ -3297,6 +3299,7 @@ $(function() {
         odate = $("#ot_date").val();
         otype = $("#ot_type").val();
 
+        $("#btnotapply").addClass("invisible");
         if (odate) {
             $.ajax(
             {
@@ -3355,6 +3358,7 @@ $(function() {
                         success: function(data) {
                             $("#othours").html(data);
                             $("#txtothours").val(data);
+                            $("#btnotapply").removeClass("invisible");
                         }
                     })
                 }
@@ -3372,6 +3376,7 @@ $(function() {
         ofrom = $("#ot_from").val();
         oto = $("#ot_to").val();
 
+        $("#btnotapply").addClass("invisible");
         if (odate) {
 
             $.ajax(
@@ -3385,6 +3390,7 @@ $(function() {
                 success: function(data) {
                     $("#othours").html(data);
                     $("#txtothours").val(data);
+                    $("#btnotapply").removeClass("invisible");
                 }
             })
         }
@@ -3396,6 +3402,7 @@ $(function() {
         ofrom = $("#ot_from").val();
         oto = $("#ot_to").val();
 
+        $("#btnotapply").addClass("invisible");
         if (odate) {
 
             $.ajax(
@@ -3409,6 +3416,7 @@ $(function() {
                 success: function(data) {
                     $("#othours").html(data);
                     $("#txtothours").val(data);
+                    $("#btnotapply").removeClass("invisible");
                 }
             })
         }
