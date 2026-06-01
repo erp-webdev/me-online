@@ -3221,8 +3221,9 @@ $(function() {
     /* APPLICATION */
 
     // Overtime
-
+    var currentOvertimeRequestId = 0;
     $("#ot_date").change(function() {
+        currentOvertimeRequestId++;
         odate = $("#ot_date").val();
         otype = $("#ot_type").val();
 
@@ -3242,16 +3243,20 @@ $(function() {
 
                     if (obj.noinot == 1) {
                         alert("It is not possible to file an OT without time in on DTR");
+                        return;
                     }
                     else {
                         if (obj.holirest == 1) {
                             alert("This is not a regular day");
+                            return;
                         }
                         else if (obj.holirest == 2) {
                             alert("This is not a rest day");
+                            return;
                         }
                         else if (obj.holirest == 3) {
                             alert("This is not a holiday");
+                            return;
                         }
                     }
                     $("#invalid").val(obj.holirest);
@@ -3261,6 +3266,14 @@ $(function() {
 
                     ofrom = obj.otin;
                     oto = obj.otout;
+
+                    var requestsCompleted = 0;
+                    function checkReady() {
+                        requestsCompleted++;
+                        if (requestsCompleted === 2) {
+                            $("#btnotapply").removeClass("invisible").fadeIn(3000);
+                        }
+                    }
 
                     $.ajax(
                     {
@@ -3272,6 +3285,7 @@ $(function() {
                         },
                         success: function(data) {
                             $("#timeshift").html(data);
+                            checkReady();
                         }
                     })
 
@@ -3286,7 +3300,7 @@ $(function() {
                         success: function(data) {
                             $("#othours").html(data);
                             $("#txtothours").val(data);
-                            $("#btnotapply").removeClass("invisible");
+                            checkReady();
                         }
                     })
                 }
@@ -3296,6 +3310,7 @@ $(function() {
     });
 
     $("#ot_type").change(function() {
+        currentOvertimeRequestId++;
         odate = $("#ot_date").val();
         otype = $("#ot_type").val();
 
@@ -3314,16 +3329,20 @@ $(function() {
 
                     if (obj.noinot == 1) {
                         alert("It is not possible to file an OT without time in on DTR");
+                        return;
                     }
                     else {
                         if (obj.holirest == 1) {
                             alert("This is not a regular day");
+                            return;
                         }
                         else if (obj.holirest == 2) {
                             alert("This is not a rest day");
+                            return;
                         }
                         else if (obj.holirest == 3) {
                             alert("This is not a holiday");
+                            return;
                         }
                     }
                     $("#invalid").val(obj.holirest);
@@ -3333,6 +3352,14 @@ $(function() {
 
                     ofrom = obj.otin;
                     oto = obj.otout;
+
+                    var requestsCompleted = 0;
+                    function checkReady() {
+                        requestsCompleted++;
+                        if (requestsCompleted === 2) {
+                            $("#btnotapply").removeClass("invisible").fadeIn(3000);
+                        }
+                    }
 
                     $.ajax(
                     {
@@ -3344,6 +3371,7 @@ $(function() {
                         },
                         success: function(data) {
                             $("#timeshift").html(data);
+                            checkReady();
                         }
                     })
 
@@ -3358,7 +3386,7 @@ $(function() {
                         success: function(data) {
                             $("#othours").html(data);
                             $("#txtothours").val(data);
-                            $("#btnotapply").removeClass("invisible");
+                            checkReady();
                         }
                     })
                 }
@@ -3370,55 +3398,28 @@ $(function() {
         }
     });
 
-    $("#ot_from").change(function() {
+    $("#ot_from, #ot_to").change(function() {
         odate = $("#ot_date").val();
         otype = $("#ot_type").val();
         ofrom = $("#ot_from").val();
         oto = $("#ot_to").val();
 
+        var myRequestId = ++currentOvertimeRequestId;
         $("#btnotapply").addClass("invisible");
-        if (odate) {
 
-            $.ajax(
-            {
+        if (odate) {
+            $.ajax({
                 url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getovhour",
                 data: "odate=" + odate + "&otype=" + otype + "&ofrom=" + ofrom + "&oto=" + oto,
                 type: "POST",
-                complete: function(){
-                    $("#loading").hide();
-                },
+                complete: function(){ $("#loading").hide(); },
                 success: function(data) {
+                    if (myRequestId !== currentOvertimeRequestId) return;
                     $("#othours").html(data);
                     $("#txtothours").val(data);
-                    $("#btnotapply").removeClass("invisible");
+                    $("#btnotapply").removeClass("invisible").fadeIn(3000);
                 }
-            })
-        }
-    });
-
-    $("#ot_to").change(function() {
-        odate = $("#ot_date").val();
-        otype = $("#ot_type").val();
-        ofrom = $("#ot_from").val();
-        oto = $("#ot_to").val();
-
-        $("#btnotapply").addClass("invisible");
-        if (odate) {
-
-            $.ajax(
-            {
-                url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getovhour",
-                data: "odate=" + odate + "&otype=" + otype + "&ofrom=" + ofrom + "&oto=" + oto,
-                type: "POST",
-                complete: function(){
-                    $("#loading").hide();
-                },
-                success: function(data) {
-                    $("#othours").html(data);
-                    $("#txtothours").val(data);
-                    $("#btnotapply").removeClass("invisible");
-                }
-            })
+            });
         }
     });
 
