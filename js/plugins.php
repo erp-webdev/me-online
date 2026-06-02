@@ -3222,12 +3222,51 @@ $(function() {
 
     // Overtime
     var currentOvertimeRequestId = 0;
-    $("#ot_date").change(function() {
+    var overtimeComputationInProgress = false;
+
+    function setOvertimeSubmitState(isReady) {
+        if (isReady) {
+            $("#btnotapply").prop("disabled", false).removeClass("invisible");
+        }
+        else {
+            $("#btnotapply").prop("disabled", true).addClass("invisible");
+        }
+    }
+
+    function beginOvertimeComputation() {
+        overtimeComputationInProgress = true;
         currentOvertimeRequestId++;
+        setOvertimeSubmitState(false);
+        return currentOvertimeRequestId;
+    }
+
+    function finishOvertimeComputation(requestId, isReady) {
+        if (requestId !== currentOvertimeRequestId) {
+            return false;
+        }
+
+        overtimeComputationInProgress = false;
+        setOvertimeSubmitState(!!isReady);
+        return true;
+    }
+
+    setOvertimeSubmitState(true);
+
+    $("#frmapplyot").on("submit", function(e) {
+        if (overtimeComputationInProgress || $("#btnotapply").prop("disabled")) {
+            e.preventDefault();
+            return false;
+        }
+
+        // Prevent double-submit while request is being posted.
+        $("#btnotapply").prop("disabled", true);
+    });
+
+    $("#ot_date").change(function() {
+        var myRequestId = beginOvertimeComputation();
         odate = $("#ot_date").val();
         otype = $("#ot_type").val();
 
-        $("#btnotapply").addClass("invisible");
         if (odate) {
 
             $.ajax(
@@ -3239,23 +3278,29 @@ $(function() {
                     $("#loading").hide();
                 },
                 success: function(data) {
+                    if (myRequestId !== currentOvertimeRequestId) return;
+
                     var obj = $.parseJSON(data);
 
                     if (obj.noinot == 1) {
                         alert("It is not possible to file an OT without time in on DTR");
+                        finishOvertimeComputation(myRequestId, false);
                         return;
                     }
                     else {
                         if (obj.holirest == 1) {
                             alert("This is not a regular day");
+                            finishOvertimeComputation(myRequestId, false);
                             return;
                         }
                         else if (obj.holirest == 2) {
                             alert("This is not a rest day");
+                            finishOvertimeComputation(myRequestId, false);
                             return;
                         }
                         else if (obj.holirest == 3) {
                             alert("This is not a holiday");
+                            finishOvertimeComputation(myRequestId, false);
                             return;
                         }
                     }
@@ -3269,9 +3314,12 @@ $(function() {
 
                     var requestsCompleted = 0;
                     function checkReady() {
+                        if (myRequestId !== currentOvertimeRequestId) return;
+
                         requestsCompleted++;
                         if (requestsCompleted === 2) {
-                            $("#btnotapply").removeClass("invisible").fadeIn(3000);
+                            finishOvertimeComputation(myRequestId, true);
+                            $("#btnotapply").fadeIn(3000);
                         }
                     }
 
@@ -3284,6 +3332,7 @@ $(function() {
                             $("#loading").hide();
                         },
                         success: function(data) {
+                            if (myRequestId !== currentOvertimeRequestId) return;
                             $("#timeshift").html(data);
                             checkReady();
                         }
@@ -3298,6 +3347,7 @@ $(function() {
                             $("#loading").hide();
                         },
                         success: function(data) {
+                            if (myRequestId !== currentOvertimeRequestId) return;
                             $("#othours").html(data);
                             $("#txtothours").val(data);
                             checkReady();
@@ -3310,11 +3360,10 @@ $(function() {
     });
 
     $("#ot_type").change(function() {
-        currentOvertimeRequestId++;
+        var myRequestId = beginOvertimeComputation();
         odate = $("#ot_date").val();
         otype = $("#ot_type").val();
 
-        $("#btnotapply").addClass("invisible");
         if (odate) {
             $.ajax(
             {
@@ -3325,23 +3374,29 @@ $(function() {
                     $("#loading").hide();
                 },
                 success: function(data) {
+                    if (myRequestId !== currentOvertimeRequestId) return;
+
                     var obj = $.parseJSON(data);
 
                     if (obj.noinot == 1) {
                         alert("It is not possible to file an OT without time in on DTR");
+                        finishOvertimeComputation(myRequestId, false);
                         return;
                     }
                     else {
                         if (obj.holirest == 1) {
                             alert("This is not a regular day");
+                            finishOvertimeComputation(myRequestId, false);
                             return;
                         }
                         else if (obj.holirest == 2) {
                             alert("This is not a rest day");
+                            finishOvertimeComputation(myRequestId, false);
                             return;
                         }
                         else if (obj.holirest == 3) {
                             alert("This is not a holiday");
+                            finishOvertimeComputation(myRequestId, false);
                             return;
                         }
                     }
@@ -3355,9 +3410,12 @@ $(function() {
 
                     var requestsCompleted = 0;
                     function checkReady() {
+                        if (myRequestId !== currentOvertimeRequestId) return;
+
                         requestsCompleted++;
                         if (requestsCompleted === 2) {
-                            $("#btnotapply").removeClass("invisible").fadeIn(3000);
+                            finishOvertimeComputation(myRequestId, true);
+                            $("#btnotapply").fadeIn(3000);
                         }
                     }
 
@@ -3370,6 +3428,7 @@ $(function() {
                             $("#loading").hide();
                         },
                         success: function(data) {
+                            if (myRequestId !== currentOvertimeRequestId) return;
                             $("#timeshift").html(data);
                             checkReady();
                         }
@@ -3384,6 +3443,7 @@ $(function() {
                             $("#loading").hide();
                         },
                         success: function(data) {
+                            if (myRequestId !== currentOvertimeRequestId) return;
                             $("#othours").html(data);
                             $("#txtothours").val(data);
                             checkReady();
@@ -3404,8 +3464,7 @@ $(function() {
         ofrom = $("#ot_from").val();
         oto = $("#ot_to").val();
 
-        var myRequestId = ++currentOvertimeRequestId;
-        $("#btnotapply").addClass("invisible");
+        var myRequestId = beginOvertimeComputation();
 
         if (odate) {
             $.ajax({
@@ -3417,7 +3476,8 @@ $(function() {
                     if (myRequestId !== currentOvertimeRequestId) return;
                     $("#othours").html(data);
                     $("#txtothours").val(data);
-                    $("#btnotapply").removeClass("invisible").fadeIn(3000);
+                    finishOvertimeComputation(myRequestId, true);
+                    $("#btnotapply").fadeIn(3000);
                 }
             });
         }
