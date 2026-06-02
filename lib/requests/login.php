@@ -15,6 +15,7 @@
     else :
 
         $ip = $_SERVER['REMOTE_ADDR'];
+        $browser_agent = $_SERVER['HTTP_USER_AGENT'];
         $ip_exeptions = explode(',', RECAPTCHA_IP_EXCEPTIONS);
         $recaptcha_exceptions = array_filter($ip_exeptions, function ($exempted) use ($ip) {
             return strpos($ip, trim($exempted)) !== false; 
@@ -81,7 +82,7 @@
 
                         $is_hash = $getmem[0]['PasswordHash'] ? 1 : 0;
 
-                        $login_failed_attempt ?  $logsql->update_login_failed($username, 0, $getmem[0]['EmailAdd']) : $logsql->insert_user_activity($username, $getmem[0]['EmailAdd'], $is_hash);
+                        $login_failed_attempt ?  $logsql->update_login_failed($username, 0, $ip, $browser_agent, $getmem[0]['EmailAdd']) : $logsql->insert_user_activity($username, $getmem[0]['EmailAdd'], $is_hash);
 
                         $expire = time() + 60;
                         $_SESSION[$cookiename] = $username;
@@ -114,7 +115,7 @@
                     if($login_failed_attempt){
                         if($login_failed_attempt[0]['login_failed'] < MAX_FAILED_LOGIN){
                             $attempt = $login_failed_attempt[0]['login_failed'] + 1;
-                            $logsql->update_login_failed($username, $attempt);
+                            $logsql->update_login_failed($username, $attempt, $ip, $browser_agent);
 
                             $success = ($attempt==MAX_FAILED_LOGIN) ? 2 : 0;
                         }
