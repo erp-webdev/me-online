@@ -17,7 +17,9 @@
 
         $is_hash = $getmem[0]['PasswordHash'] ? 1 : 0;
         $login_failed_attempt = $logsql->check_login_user($username);
-        $login_failed_attempt ?  $logsql->update_login_failed($username, 0, $getmem[0]['EmailAdd']) : $logsql->insert_user_activity($username, $getmem[0]['EmailAdd'], $is_hash);
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $browser_agent = $_SERVER['HTTP_USER_AGENT'];
+        $login_failed_attempt ?  $logsql->update_login_failed($username, 0, $ip, $browser_agent, $getmem[0]['EmailAdd']) : $logsql->insert_user_activity($username, $getmem[0]['EmailAdd'], $is_hash);
 
         //AUDIT TRAIL
         $post['EMPID'] = $username;
