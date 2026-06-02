@@ -252,9 +252,9 @@ class logsql {
         $sp_result = $this->execute_sp_get_user($fieldnames, $values, $intFieldnames);
     }
 
-    public function update_login_failed($empid, $login_failed, $email = NULL){
-        $fieldnames = ['ACTION', 'EMPID', 'EMAILADD', 'LOGIN_FAILED'];
-        $values = [6, $empid, $email, $login_failed];
+    public function update_login_failed($empid, $login_failed, $ip, $agent, $email = NULL){
+        $fieldnames = ['ACTION', 'EMPID', 'EMAILADD', 'LOGIN_FAILED', 'IP_ADDRESS', 'AGENT'];
+        $values = [6, $empid, $email, $login_failed, $ip, $agent];
         $intFieldnames = ['ACTION', 'LOGIN_FAILED'];
 
         $sp_result = $this->execute_sp_get_user($fieldnames, $values, $intFieldnames);
