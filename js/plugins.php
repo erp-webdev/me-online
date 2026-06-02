@@ -3221,8 +3221,49 @@ $(function() {
     /* APPLICATION */
 
     // Overtime
+    var currentOvertimeRequestId = 0;
+    var overtimeComputationInProgress = false;
+
+    function setOvertimeSubmitState(isReady) {
+        if (isReady) {
+            $("#btnotapply").prop("disabled", false).removeClass("invisible");
+        }
+        else {
+            $("#btnotapply").prop("disabled", true).addClass("invisible");
+        }
+    }
+
+    function beginOvertimeComputation() {
+        overtimeComputationInProgress = true;
+        currentOvertimeRequestId++;
+        setOvertimeSubmitState(false);
+        return currentOvertimeRequestId;
+    }
+
+    function finishOvertimeComputation(requestId, isReady) {
+        if (requestId !== currentOvertimeRequestId) {
+            return false;
+        }
+
+        overtimeComputationInProgress = false;
+        setOvertimeSubmitState(!!isReady);
+        return true;
+    }
+
+    setOvertimeSubmitState(true);
+
+    $("#frmapplyot").on("submit", function(e) {
+        if (overtimeComputationInProgress || $("#btnotapply").prop("disabled")) {
+            e.preventDefault();
+            return false;
+        }
+
+        // Prevent double-submit while request is being posted.
+        $("#btnotapply").prop("disabled", true);
+    });
 
     $("#ot_date").change(function() {
+        var myRequestId = beginOvertimeComputation();
         odate = $("#ot_date").val();
         otype = $("#ot_type").val();
 
@@ -3237,20 +3278,30 @@ $(function() {
                     $("#loading").hide();
                 },
                 success: function(data) {
+                    if (myRequestId !== currentOvertimeRequestId) return;
+
                     var obj = $.parseJSON(data);
 
                     if (obj.noinot == 1) {
                         alert("It is not possible to file an OT without time in on DTR");
+                        finishOvertimeComputation(myRequestId, false);
+                        return;
                     }
                     else {
                         if (obj.holirest == 1) {
                             alert("This is not a regular day");
+                            finishOvertimeComputation(myRequestId, false);
+                            return;
                         }
                         else if (obj.holirest == 2) {
                             alert("This is not a rest day");
+                            finishOvertimeComputation(myRequestId, false);
+                            return;
                         }
                         else if (obj.holirest == 3) {
                             alert("This is not a holiday");
+                            finishOvertimeComputation(myRequestId, false);
+                            return;
                         }
                     }
                     $("#invalid").val(obj.holirest);
@@ -3261,6 +3312,17 @@ $(function() {
                     ofrom = obj.otin;
                     oto = obj.otout;
 
+                    var requestsCompleted = 0;
+                    function checkReady() {
+                        if (myRequestId !== currentOvertimeRequestId) return;
+
+                        requestsCompleted++;
+                        if (requestsCompleted === 2) {
+                            finishOvertimeComputation(myRequestId, true);
+                            $("#btnotapply").fadeIn(3000);
+                        }
+                    }
+
                     $.ajax(
                     {
                         url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getovshift",
@@ -3270,7 +3332,9 @@ $(function() {
                             $("#loading").hide();
                         },
                         success: function(data) {
+                            if (myRequestId !== currentOvertimeRequestId) return;
                             $("#timeshift").html(data);
+                            checkReady();
                         }
                     })
 
@@ -3283,8 +3347,10 @@ $(function() {
                             $("#loading").hide();
                         },
                         success: function(data) {
+                            if (myRequestId !== currentOvertimeRequestId) return;
                             $("#othours").html(data);
                             $("#txtothours").val(data);
+                            checkReady();
                         }
                     })
                 }
@@ -3294,6 +3360,7 @@ $(function() {
     });
 
     $("#ot_type").change(function() {
+        var myRequestId = beginOvertimeComputation();
         odate = $("#ot_date").val();
         otype = $("#ot_type").val();
 
@@ -3307,20 +3374,30 @@ $(function() {
                     $("#loading").hide();
                 },
                 success: function(data) {
+                    if (myRequestId !== currentOvertimeRequestId) return;
+
                     var obj = $.parseJSON(data);
 
                     if (obj.noinot == 1) {
                         alert("It is not possible to file an OT without time in on DTR");
+                        finishOvertimeComputation(myRequestId, false);
+                        return;
                     }
                     else {
                         if (obj.holirest == 1) {
                             alert("This is not a regular day");
+                            finishOvertimeComputation(myRequestId, false);
+                            return;
                         }
                         else if (obj.holirest == 2) {
                             alert("This is not a rest day");
+                            finishOvertimeComputation(myRequestId, false);
+                            return;
                         }
                         else if (obj.holirest == 3) {
                             alert("This is not a holiday");
+                            finishOvertimeComputation(myRequestId, false);
+                            return;
                         }
                     }
                     $("#invalid").val(obj.holirest);
@@ -3331,6 +3408,17 @@ $(function() {
                     ofrom = obj.otin;
                     oto = obj.otout;
 
+                    var requestsCompleted = 0;
+                    function checkReady() {
+                        if (myRequestId !== currentOvertimeRequestId) return;
+
+                        requestsCompleted++;
+                        if (requestsCompleted === 2) {
+                            finishOvertimeComputation(myRequestId, true);
+                            $("#btnotapply").fadeIn(3000);
+                        }
+                    }
+
                     $.ajax(
                     {
                         url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getovshift",
@@ -3340,7 +3428,9 @@ $(function() {
                             $("#loading").hide();
                         },
                         success: function(data) {
+                            if (myRequestId !== currentOvertimeRequestId) return;
                             $("#timeshift").html(data);
+                            checkReady();
                         }
                     })
 
@@ -3353,8 +3443,10 @@ $(function() {
                             $("#loading").hide();
                         },
                         success: function(data) {
+                            if (myRequestId !== currentOvertimeRequestId) return;
                             $("#othours").html(data);
                             $("#txtothours").val(data);
+                            checkReady();
                         }
                     })
                 }
@@ -3366,51 +3458,28 @@ $(function() {
         }
     });
 
-    $("#ot_from").change(function() {
+    $("#ot_from, #ot_to").change(function() {
         odate = $("#ot_date").val();
         otype = $("#ot_type").val();
         ofrom = $("#ot_from").val();
         oto = $("#ot_to").val();
 
-        if (odate) {
+        var myRequestId = beginOvertimeComputation();
 
-            $.ajax(
-            {
+        if (odate) {
+            $.ajax({
                 url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getovhour",
                 data: "odate=" + odate + "&otype=" + otype + "&ofrom=" + ofrom + "&oto=" + oto,
                 type: "POST",
-                complete: function(){
-                    $("#loading").hide();
-                },
+                complete: function(){ $("#loading").hide(); },
                 success: function(data) {
+                    if (myRequestId !== currentOvertimeRequestId) return;
                     $("#othours").html(data);
                     $("#txtothours").val(data);
+                    finishOvertimeComputation(myRequestId, true);
+                    $("#btnotapply").fadeIn(3000);
                 }
-            })
-        }
-    });
-
-    $("#ot_to").change(function() {
-        odate = $("#ot_date").val();
-        otype = $("#ot_type").val();
-        ofrom = $("#ot_from").val();
-        oto = $("#ot_to").val();
-
-        if (odate) {
-
-            $.ajax(
-            {
-                url: "<?php echo WEB; ?>/lib/requests/app_request.php?sec=getovhour",
-                data: "odate=" + odate + "&otype=" + otype + "&ofrom=" + ofrom + "&oto=" + oto,
-                type: "POST",
-                complete: function(){
-                    $("#loading").hide();
-                },
-                success: function(data) {
-                    $("#othours").html(data);
-                    $("#txtothours").val(data);
-                }
-            })
+            });
         }
     });
 

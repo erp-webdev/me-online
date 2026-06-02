@@ -61,7 +61,22 @@
                 $otpost['EMPID'] = $_POST['empid'];
                 $otpost['REQNBR'] = $_POST['reqnbr'];
                 $otpost['TRANS'] = "APPLY";
-                $otpost['APLYHRS'] = $_POST['txtothours'];
+
+                // Always recompute hours from submitted from/to to avoid stale UI values.
+                $ot_from_ts = strtotime($_POST['ot_from']);
+                $ot_to_ts = strtotime($_POST['ot_to']);
+                $computed_ot_hours = 0;
+
+                if ($ot_from_ts && $ot_to_ts && $ot_to_ts > $ot_from_ts) :
+                    $computed_ot_hours = floor(((($ot_to_ts - $ot_from_ts) / 3600) * 2)) / 2;
+                endif;
+
+                if ($computed_ot_hours <= 0) :
+                    echo '{"success": false, "error": "Invalid OT time range. Please update OT From/OT To and try again."}';
+                    exit();
+                endif;
+
+                $otpost['APLYHRS'] = $computed_ot_hours;
                 $otpost['APPROVEDHRS'] = 0;
                 $otpost['FROMDATE'] = $_POST['ot_from'];
                 $otpost['TODATE'] = $_POST['ot_to'];
