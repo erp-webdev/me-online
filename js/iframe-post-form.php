@@ -61,7 +61,6 @@ $(function ()
 				width,
 				html = '';
 
-
 			if (!response.success)
 			{
 				$('.adadd_msg').slideUp(function ()
@@ -162,6 +161,9 @@ $(function ()
 			var style,
 				width,
 				html = '';
+
+                        $('.btnregsub').show();
+                        $('.btnreg2').show();
 
 
 			if (!response.success)
@@ -466,12 +468,23 @@ $(function ()
 				html = '';
 
 
-			if (!response.success)
+                        if (!response.success)
 			{
+                        $('.btnregsub').show();
+                        $('.btnreg2').show();
+
                 if (response.details == 'not available') {
                     html += 'Registration denied. Maybe the event registration has been ended or slot is full.';
                 }else if (response.details == 'Registration is full on the selected cinema') {
                     html += 'Registration is full on the selected cinema';
+                }else if (response.details == 'You are already registered for this activity') {
+                    html += 'You are already registered for this activity.';
+                }else if (response.details == 'Invalid activity selected') {
+                    html += 'Invalid activity selected. Please refresh the page and try again.';
+                }else if (response.details == 'Invalid cinema location') {
+                    html += 'Invalid cinema location. Please select a valid cinema and try again.';
+                }else if (response.details == 'Please select a cinema location') {
+                    html += 'Please select a cinema location.';
                 }else {
 				    html += 'There was a problem on registering on activity';
                 }

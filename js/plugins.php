@@ -1569,6 +1569,23 @@ $(function() {
                     },
                     success: function(data) {
                         var obj = $.parseJSON(data);
+                          if (!window.defaultCinemaOptions) {
+                              window.defaultCinemaOptions = $("#registry_location").html();
+                          }
+
+                          if (obj.cinema_enabled == '1' && obj.cinema_locations && obj.cinema_locations.length) {
+                              var locationHtml = '';
+                              $.each(obj.cinema_locations, function(index, row) {
+                                  var fullText = row.full == 1 ? ' (Full)' : '';
+                                  var disabledAttr = row.full == 1 ? ' disabled' : '';
+                                  locationHtml += '<option value="' + row.name + '"' + disabledAttr + ' slots="' + row.capacity + '" reserved="' + row.reserved + '">' + row.name + fullText + '</option>';
+                              });
+                              $("#registry_location").html(locationHtml);
+                              $("#location").removeClass('invisible');
+                          } else if (window.defaultCinemaOptions) {
+                              $("#registry_location").html(window.defaultCinemaOptions);
+                          }
+
                         $("#registry_activityid").val(obj.activity_id);
                         $("#registry_activitytype").val(obj.activity_type);
                         $(".placedata").html(obj.activity_venue);
@@ -1617,6 +1634,28 @@ $(function() {
 
         return false;
     });
+
+      function toggleCinemaSetup(prefix) {
+          var isCinema = $("#" + prefix + "activity_is_cinema").is(":checked");
+          var sectionClass = (prefix == "u" ? ".uactivity-cinema-setup" : ".activity-cinema-setup");
+
+          if (isCinema) {
+              $(sectionClass).removeClass('invisible');
+          } else {
+              $(sectionClass).addClass('invisible');
+              $("#" + prefix + "activity_cinema_consolidate").prop('checked', false);
+              $("#" + prefix + "activity_cinema_poolcode").val('');
+              $("#" + prefix + "activity_cinema_capacity").val('');
+          }
+      }
+
+      $("#activity_is_cinema").change(function() {
+          toggleCinemaSetup('');
+      });
+
+      $("#uactivity_is_cinema").change(function() {
+          toggleCinemaSetup('u');
+      });
 
     $("#activity_type").change(function() {
         acttype = $("#activity_type option:selected").val();
@@ -1848,6 +1887,11 @@ $(function() {
         $(".actatt06").removeClass("invisible"); //offreg
         $(".actatt07").removeClass("invisible"); //disable reg
         $(".actatt08").removeClass("invisible"); //disable backout
+          $("#activity_is_cinema").prop('checked', false);
+          $("#activity_cinema_consolidate").prop('checked', false);
+          $("#activity_cinema_poolcode").val('');
+          $("#activity_cinema_capacity").val('');
+          toggleCinemaSetup('');
 		$("#actadd").show({
             effect : 'slide',
             easing : 'easeOutQuart',
@@ -1996,6 +2040,19 @@ $(function() {
                 } else {
                     $("#uactivity_backout").prop('checked', false);
                 }
+                  if (obj.activity_is_cinema == 1) {
+                      $("#uactivity_is_cinema").prop('checked', true);
+                  } else {
+                      $("#uactivity_is_cinema").prop('checked', false);
+                  }
+                  if (obj.activity_cinema_consolidate == 1) {
+                      $("#uactivity_cinema_consolidate").prop('checked', true);
+                  } else {
+                      $("#uactivity_cinema_consolidate").prop('checked', false);
+                  }
+                  $("#uactivity_cinema_poolcode").val(obj.activity_cinema_poolcode ? obj.activity_cinema_poolcode : '');
+                  $("#uactivity_cinema_capacity").val(obj.activity_cinema_capacity ? obj.activity_cinema_capacity : '');
+                  toggleCinemaSetup('u');
                 $("#uactivity_slots").val(obj.activity_slots);
                 $("#uactivity_filename").val(obj.activity_filename);
                 $("#uactivity_db").val(obj.activity_db);
