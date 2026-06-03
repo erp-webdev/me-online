@@ -847,19 +847,129 @@ class tblsql {
 		return $result;
 	}
 
-    function get_registered_location()
+    function get_registered_location($actid = 0, $db = NULL)
 	{
 
 		$sql="SELECT r.registry_location, COUNT(*) as total ";
 		$sql.=" FROM HREventRegistry r
-			WHERE r.registry_status >= 1  and registry_location is not null
-            AND r.registry_activityid in (3296, 3297)";
+            WHERE r.registry_status >= 1  and registry_location is not null";
+        if ($actid > 0) $sql .= " AND r.registry_activityid = ".intval($actid);
+        if ($db != NULL) $sql .= " AND r.registry_db = '".$db."'";
         $sql.=" GROUP BY r.registry_location";
         
 		$result = $this->get_row($sql, 1);
 
 		return $result;
 	}
+
+    function get_activity_cinema_setup($activity_id = 0, $db = NULL)
+    {
+        if (!$activity_id) return FALSE;
+
+        $check_table = $this->get_row("SELECT OBJECT_ID('HRActivityCinemaConfig') AS objid");
+        if (!$check_table || !$check_table[0]['objid']) return FALSE;
+
+        $sql = "SELECT TOP 1 activity_id, activity_db, is_cinema_screening, consolidate_pool, pool_code ";
+        $sql .= "FROM HRActivityCinemaConfig WHERE activity_id = ".intval($activity_id);
+        if ($db != NULL) $sql .= " AND activity_db = '".str_replace("'", "''", $db)."'";
+
+        $config = $this->get_row($sql);
+        if (!$config) return FALSE;
+
+        $setup = $config[0];
+        $pool_code = trim($setup['pool_code']);
+        if (!$pool_code) $pool_code = 'ACT-'.intval($activity_id);
+
+        $sql_locations = "SELECT cinema_name, MAX(seat_capacity) as seat_capacity FROM HRActivityCinemaCapacity WHERE 1=1 ";
+        if (intval($setup['consolidate_pool']) == 1) :
+            $sql_locations .= " AND pool_code = '".str_replace("'", "''", $pool_code)."'";
+        else :
+            $sql_locations .= " AND activity_id = ".intval($activity_id);
+        endif;
+        if ($db != NULL) $sql_locations .= " AND activity_db = '".str_replace("'", "''", $db)."'";
+        $sql_locations .= " GROUP BY cinema_name ORDER BY cinema_name ASC";
+
+        $setup['pool_code'] = $pool_code;
+        $setup['locations'] = $this->get_row($sql_locations);
+
+        return $setup;
+    }
+
+    function save_activity_cinema_setup($activity_id = 0, $db = NULL, $is_cinema = 0, $consolidate_pool = 0, $pool_code = NULL, $cinema_capacity_text = NULL)
+    {
+        if (!$activity_id) return FALSE;
+
+        $check_table = $this->get_row("SELECT OBJECT_ID('HRActivityCinemaConfig') AS objid");
+        if (!$check_table || !$check_table[0]['objid']) return TRUE;
+
+        $check_table2 = $this->get_row("SELECT OBJECT_ID('HRActivityCinemaCapacity') AS objid");
+        if (!$check_table2 || !$check_table2[0]['objid']) return TRUE;
+
+        $activity_id = intval($activity_id);
+        $db_safe = str_replace("'", "''", ($db != NULL ? $db : ''));
+        $is_cinema = intval($is_cinema) ? 1 : 0;
+        $consolidate_pool = intval($consolidate_pool) ? 1 : 0;
+
+        $pool_code = trim($pool_code);
+        if (!$pool_code) $pool_code = 'ACT-'.$activity_id;
+        $pool_code_safe = str_replace("'", "''", $pool_code);
+
+        $this->get_execute("DELETE FROM HRActivityCinemaConfig WHERE activity_id = ".$activity_id." AND activity_db = '".$db_safe."'");
+        $this->get_execute("DELETE FROM HRActivityCinemaCapacity WHERE activity_id = ".$activity_id." AND activity_db = '".$db_safe."'");
+
+        $sql_config = "INSERT INTO HRActivityCinemaConfig (activity_id, activity_db, is_cinema_screening, consolidate_pool, pool_code, updated_date) VALUES (";
+        $sql_config .= $activity_id.", '".$db_safe."', ".$is_cinema.", ".$consolidate_pool.", '".$pool_code_safe."', DATEDIFF(SECOND, '1970-01-01', GETDATE()))";
+        $save_config = $this->get_execute($sql_config);
+        if (!$save_config) return FALSE;
+
+        if (!$is_cinema) return TRUE;
+
+        $lines = preg_split("/\r\n|\n|\r/", (string)$cinema_capacity_text);
+        if (!$lines) return TRUE;
+
+        foreach ($lines as $line) :
+            $line = trim($line);
+            if (!$line) continue;
+
+            $parts = explode('|', $line);
+            $cinema_name = trim($parts[0]);
+            $seat_capacity = isset($parts[1]) ? intval(trim($parts[1])) : 0;
+
+            if (!$cinema_name || $seat_capacity <= 0) continue;
+
+            $cinema_name_safe = str_replace("'", "''", $cinema_name);
+            $sql_capacity = "INSERT INTO HRActivityCinemaCapacity (activity_id, activity_db, pool_code, cinema_name, seat_capacity, updated_date) VALUES (";
+            $sql_capacity .= $activity_id.", '".$db_safe."', '".$pool_code_safe."', '".$cinema_name_safe."', ".$seat_capacity.", DATEDIFF(SECOND, '1970-01-01', GETDATE()))";
+            $this->get_execute($sql_capacity);
+        endforeach;
+
+        return TRUE;
+    }
+
+    function get_cinema_registration_summary($activity_id = 0, $db = NULL)
+    {
+        $setup = $this->get_activity_cinema_setup($activity_id, $db);
+        if (!$setup || intval($setup['is_cinema_screening']) != 1) return FALSE;
+
+        $sql = "SELECT r.registry_location, COUNT(*) as total FROM HREventRegistry r WHERE r.registry_status >= 1 AND r.registry_location IS NOT NULL ";
+        if ($db != NULL) $sql .= " AND r.registry_db = '".str_replace("'", "''", $db)."'";
+
+        if (intval($setup['consolidate_pool']) == 1) :
+            $sql .= " AND r.registry_activityid IN (SELECT c.activity_id FROM HRActivityCinemaConfig c WHERE c.is_cinema_screening = 1 AND c.consolidate_pool = 1 ";
+            $sql .= " AND c.pool_code = '".str_replace("'", "''", $setup['pool_code'])."'";
+            if ($db != NULL) $sql .= " AND c.activity_db = '".str_replace("'", "''", $db)."'";
+            $sql .= ")";
+        else :
+            $sql .= " AND r.registry_activityid = ".intval($activity_id);
+        endif;
+
+        $sql .= " GROUP BY r.registry_location";
+
+        return array(
+            'setup' => $setup,
+            'taken' => $this->get_row($sql)
+        );
+    }
 
     function get_company($id, $dbname){
         $sql = "SELECT * FROM HRCompany WHERE CompanyID='" . $id . "' AND DBNAME = '" . $dbname . "'";
@@ -1748,11 +1858,11 @@ class tblsql {
 
                 $add_reg = $this->get_sp_data_status('SP_ADD_REGISTER', $val);
 
-                if($add_reg) {
-                    return $add_reg;
-                } else {
+                if($add_reg === FALSE || $add_reg === NULL || $add_reg === '') {
                     return FALSE;
                 }
+
+                return intval($add_reg);
 
 			break;
 

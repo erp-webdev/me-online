@@ -37,7 +37,6 @@
                                                     <td width="30%"><b>Registrant</b></td>
                                                     <td width="70%"><?php echo $profile_full.' ('.$profile_idnum.')'; ?></td>
                                                 </tr>
-                                                <?php /*
                                                 <tr id="location">
                                                     <td><b>Cinema</b></td>
                                                     <td>
@@ -93,7 +92,7 @@
                                                         </select>
                                                     </td>
                                                 </tr>
-                                                */ ?>
+                                                
                                                 <?php if(date('Y') == 2022) : ?>
                                                 <tr id="vaxcert">
                                                     <td><b>Vaccination Certificate / Card</b></td>
@@ -334,6 +333,34 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td>Cinema Screening</td>
+                                    <td>
+                                        <input id="activity_is_cinema" type="checkbox" name="activity_is_cinema" value="1" />
+                                        <label for="activity_is_cinema">Enable cinema setup</label>
+                                    </td>
+                                </tr>
+                                <tr class="activity-cinema-setup invisible">
+                                    <td>Consolidate Across Activities</td>
+                                    <td>
+                                        <input id="activity_cinema_consolidate" type="checkbox" name="activity_cinema_consolidate" value="1" />
+                                        <label for="activity_cinema_consolidate">Share seats with activities in the same pool code</label>
+                                    </td>
+                                </tr>
+                                <tr class="activity-cinema-setup invisible">
+                                    <td>Pool Code</td>
+                                    <td>
+                                        <input type="text" name="activity_cinema_poolcode" id="activity_cinema_poolcode" class="txtbox width300" placeholder="Example: ANNIV37-MOVIE" />
+                                        <br /><i>* required when consolidate is enabled</i>
+                                    </td>
+                                </tr>
+                                <tr class="activity-cinema-setup invisible">
+                                    <td>Cinema Capacities</td>
+                                    <td>
+                                        <textarea name="activity_cinema_capacity" id="activity_cinema_capacity" class="txtbox width350" rows="5" placeholder="One cinema per line:&#10;Uptown Cinemas|816&#10;Eastwood Cinemas|472"></textarea>
+                                        <br /><i>* format per line: Cinema Name|Seat Capacity</i>
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td>Image</td>
                                     <td>
                                         <input type="file" name="activity_attach" id="activity_attach" class="txtbox width200" class="txtbox" /><br /><i>* must be image (jpg, jpeg, gif, png) and less than or equal 10Mb</i>
@@ -441,6 +468,34 @@
                                             <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                                             <?php endfor; ?>
                                         </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Cinema Screening</td>
+                                    <td>
+                                        <input id="uactivity_is_cinema" type="checkbox" name="activity_is_cinema" value="1" />
+                                        <label for="uactivity_is_cinema">Enable cinema setup</label>
+                                    </td>
+                                </tr>
+                                <tr class="uactivity-cinema-setup invisible">
+                                    <td>Consolidate Across Activities</td>
+                                    <td>
+                                        <input id="uactivity_cinema_consolidate" type="checkbox" name="activity_cinema_consolidate" value="1" />
+                                        <label for="uactivity_cinema_consolidate">Share seats with activities in the same pool code</label>
+                                    </td>
+                                </tr>
+                                <tr class="uactivity-cinema-setup invisible">
+                                    <td>Pool Code</td>
+                                    <td>
+                                        <input type="text" name="activity_cinema_poolcode" id="uactivity_cinema_poolcode" class="txtbox width300" placeholder="Example: ANNIV37-MOVIE" />
+                                        <br /><i>* required when consolidate is enabled</i>
+                                    </td>
+                                </tr>
+                                <tr class="uactivity-cinema-setup invisible">
+                                    <td>Cinema Capacities</td>
+                                    <td>
+                                        <textarea name="activity_cinema_capacity" id="uactivity_cinema_capacity" class="txtbox width350" rows="5" placeholder="One cinema per line:&#10;Uptown Cinemas|816&#10;Eastwood Cinemas|472"></textarea>
+                                        <br /><i>* format per line: Cinema Name|Seat Capacity</i>
                                     </td>
                                 </tr>
                                 <tr>

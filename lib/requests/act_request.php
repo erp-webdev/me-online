@@ -728,8 +728,59 @@
                 $slot_remain = $value['activity_slots'] - $count_registry;
             
                 if ($slot_remain <= 0) : $disable_reg = 1; endif;
-    
-                echo '{"activity_id":"'.$value['activity_id'].'", "activity_type":"'.$value['activity_type'].'", "activity_title":"'.str_replace("'", "", $value['activity_title']).'", "activity_description":"'.$mainsql->cleannxtline($value['activity_description']).'", "activity_venue":"'.$value['activity_venue'].'", "activity_datein":"'.$dateinval.'", "activity_timein":"'.date('g:ia', $value['activity_datestart']).'", "activity_timeout":"'.date('g:ia', $value['activity_dateend']).'", "activity_approve":"'.$value['activity_approve'].'", "activity_guest":"'.$value['activity_guest'].'", "activity_dependent":"'.$value['activity_dependent'].'", "activity_endregister":"'.$value['activity_endregister'].'", "activity_cvehicle":"'.$value['activity_cvehicle'].'", "activity_ads":"'.$value['activity_ads'].'", "activity_feedback":"'.$value['activity_feedback'].'", "activity_offsite":"'.$value['activity_offsite'].'", "activity_slots":"'.$value['activity_slots'].'", "activity_available":"'.$count_registry.'", "disable_reg":"'.$disable_reg.'", "approve_reg":"'.$approve_reg.'"}';
+
+                $cinema_setup = $tblsql->get_activity_cinema_setup($act_id, $profile_dbname);
+                $cinema_summary = $tblsql->get_cinema_registration_summary($act_id, $profile_dbname);
+                $cinema_locations = array();
+
+                if ($cinema_setup && intval($cinema_setup['is_cinema_screening']) == 1 && $cinema_setup['locations']) :
+                    $taken_map = array();
+                    if ($cinema_summary && $cinema_summary['taken']) :
+                        foreach ($cinema_summary['taken'] as $taken_row) :
+                            $taken_map[$taken_row['registry_location']] = intval($taken_row['total']);
+                        endforeach;
+                    endif;
+
+                    foreach ($cinema_setup['locations'] as $setup_row) :
+                        $cname = trim($setup_row['cinema_name']);
+                        if (!$cname) continue;
+                        $capacity = intval($setup_row['seat_capacity']);
+                        $reserved = isset($taken_map[$cname]) ? intval($taken_map[$cname]) : 0;
+                        $cinema_locations[] = array(
+                            'name' => $cname,
+                            'capacity' => $capacity,
+                            'reserved' => $reserved,
+                            'full' => ($reserved >= $capacity ? 1 : 0)
+                        );
+                    endforeach;
+                endif;
+
+                $resp = array(
+                    'activity_id' => $value['activity_id'],
+                    'activity_type' => $value['activity_type'],
+                    'activity_title' => str_replace("'", "", $value['activity_title']),
+                    'activity_description' => $mainsql->cleannxtline($value['activity_description']),
+                    'activity_venue' => $value['activity_venue'],
+                    'activity_datein' => $dateinval,
+                    'activity_timein' => date('g:ia', $value['activity_datestart']),
+                    'activity_timeout' => date('g:ia', $value['activity_dateend']),
+                    'activity_approve' => $value['activity_approve'],
+                    'activity_guest' => $value['activity_guest'],
+                    'activity_dependent' => $value['activity_dependent'],
+                    'activity_endregister' => $value['activity_endregister'],
+                    'activity_cvehicle' => $value['activity_cvehicle'],
+                    'activity_ads' => $value['activity_ads'],
+                    'activity_feedback' => $value['activity_feedback'],
+                    'activity_offsite' => $value['activity_offsite'],
+                    'activity_slots' => $value['activity_slots'],
+                    'activity_available' => $count_registry,
+                    'disable_reg' => $disable_reg,
+                    'approve_reg' => $approve_reg,
+                    'cinema_enabled' => ($cinema_setup && intval($cinema_setup['is_cinema_screening']) == 1 ? 1 : 0),
+                    'cinema_locations' => $cinema_locations
+                );
+
+                echo json_encode($resp);
             
             endforeach; 
             
@@ -740,8 +791,43 @@
             $single_activity = $tblsql->get_activities($act_id);
         
             foreach ($single_activity as $key => $value) : 
-    
-                echo '{"activity_id":"'.$value['activity_id'].'", "activity_title":"'.str_replace("'", "", $value['activity_title']).'", "activity_type":"'.$value['activity_type'].'", "activity_venue":"'.$value['activity_venue'].'", "activity_description":"'.trim(preg_replace('/\s\s+/', ' ', $value['activity_description'])).'", "activity_dates":"'.date('Y-m-d', $value['activity_datestart']).'", "activity_timein":"'.date('g:ia', $value['activity_datestart']).'", "activity_timeout":"'.date('g:ia', $value['activity_dateend']).'", "activity_approve":"'.$value['activity_approve'].'", "activity_cvehicle":"'.$value['activity_cvehicle'].'", "activity_guest":"'.$value['activity_guest'].'", "activity_dependent":"'.$value['activity_dependent'].'", "activity_feedback":"'.$value['activity_feedback'].'", "activity_offsite":"'.$value['activity_offsite'].'", "activity_ads":"'.$value['activity_ads'].'", "activity_slots":"'.$value['activity_slots'].'", "activity_endregister":"'.$value['activity_endregister'].'", "activity_backout":"'.$value['activity_backout'].'", "activity_filename":"'.$value['activity_filename'].'", "activity_db":"'.$value['activity_db'].'"}';
+
+                $cinema_setup = $tblsql->get_activity_cinema_setup($act_id, $profile_dbname);
+                $cinema_capacity_lines = array();
+                if ($cinema_setup && $cinema_setup['locations']) :
+                    foreach ($cinema_setup['locations'] as $setup_row) :
+                        $cinema_capacity_lines[] = trim($setup_row['cinema_name']).'|'.intval($setup_row['seat_capacity']);
+                    endforeach;
+                endif;
+
+                $resp = array(
+                    'activity_id' => $value['activity_id'],
+                    'activity_title' => str_replace("'", "", $value['activity_title']),
+                    'activity_type' => $value['activity_type'],
+                    'activity_venue' => $value['activity_venue'],
+                    'activity_description' => trim(preg_replace('/\s\s+/', ' ', $value['activity_description'])),
+                    'activity_dates' => date('Y-m-d', $value['activity_datestart']),
+                    'activity_timein' => date('g:ia', $value['activity_datestart']),
+                    'activity_timeout' => date('g:ia', $value['activity_dateend']),
+                    'activity_approve' => $value['activity_approve'],
+                    'activity_cvehicle' => $value['activity_cvehicle'],
+                    'activity_guest' => $value['activity_guest'],
+                    'activity_dependent' => $value['activity_dependent'],
+                    'activity_feedback' => $value['activity_feedback'],
+                    'activity_offsite' => $value['activity_offsite'],
+                    'activity_ads' => $value['activity_ads'],
+                    'activity_slots' => $value['activity_slots'],
+                    'activity_endregister' => $value['activity_endregister'],
+                    'activity_backout' => $value['activity_backout'],
+                    'activity_filename' => $value['activity_filename'],
+                    'activity_db' => $value['activity_db'],
+                    'activity_is_cinema' => ($cinema_setup ? intval($cinema_setup['is_cinema_screening']) : 0),
+                    'activity_cinema_consolidate' => ($cinema_setup ? intval($cinema_setup['consolidate_pool']) : 0),
+                    'activity_cinema_poolcode' => ($cinema_setup ? $cinema_setup['pool_code'] : ''),
+                    'activity_cinema_capacity' => implode("\n", $cinema_capacity_lines)
+                );
+
+                echo json_encode($resp);
             
             endforeach; 
         break;
