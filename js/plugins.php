@@ -3257,9 +3257,6 @@ $(function() {
             e.preventDefault();
             return false;
         }
-
-        // Prevent double-submit while request is being posted.
-        $("#btnotapply").prop("disabled", true);
     });
 
     $("#ot_date").change(function() {
