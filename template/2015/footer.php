@@ -59,7 +59,8 @@
     <script type="text/javascript" src="<?php echo JSCRIPT; ?>/iframe-post-form.php"></script>
 
     <!-- LOCAL JAVASCRIPTS -->
-    <script type="text/javascript" src="<?php echo JSCRIPT; ?>/plugins.php"></script>
+    <?php $plugins_js_ver = @filemtime(DOCUMENT.'/js/plugins.php'); ?>
+    <script type="text/javascript" src="<?php echo JSCRIPT; ?>/plugins.php?v=<?php echo $plugins_js_ver ? $plugins_js_ver : time(); ?>"></script>
     <!--script type="text/javascript" src="<?php echo JSCRIPT; ?>/script.php"></script-->
 
     <script type="text/javascript" src="<?php echo JS; ?>/bootstrap-tour/js/jquery.min.js"></script>

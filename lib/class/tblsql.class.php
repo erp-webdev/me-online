@@ -881,12 +881,11 @@ class tblsql {
         if (!$pool_code) $pool_code = 'ACT-'.intval($activity_id);
 
         $sql_locations = "SELECT cinema_name, MAX(seat_capacity) as seat_capacity FROM HRActivityCinemaCapacity WHERE 1=1 ";
-        if (intval($setup['consolidate_pool']) == 1) :
-            $sql_locations .= " AND pool_code = '".str_replace("'", "''", $pool_code)."'";
+          if (intval($setup['consolidate_pool']) == 1) :
+              $sql_locations .= " AND pool_code = '".str_replace("'", "''", $pool_code)."'";
         else :
             $sql_locations .= " AND activity_id = ".intval($activity_id);
         endif;
-        if ($db != NULL) $sql_locations .= " AND activity_db = '".str_replace("'", "''", $db)."'";
         $sql_locations .= " GROUP BY cinema_name ORDER BY cinema_name ASC";
 
         $setup['pool_code'] = $pool_code;
@@ -951,15 +950,14 @@ class tblsql {
         $setup = $this->get_activity_cinema_setup($activity_id, $db);
         if (!$setup || intval($setup['is_cinema_screening']) != 1) return FALSE;
 
-        $sql = "SELECT r.registry_location, COUNT(*) as total FROM HREventRegistry r WHERE r.registry_status >= 1 AND r.registry_location IS NOT NULL ";
-        if ($db != NULL) $sql .= " AND r.registry_db = '".str_replace("'", "''", $db)."'";
+          $sql = "SELECT r.registry_location, COUNT(*) as total FROM HREventRegistry r WHERE r.registry_status >= 1 AND r.registry_location IS NOT NULL ";
 
-        if (intval($setup['consolidate_pool']) == 1) :
-            $sql .= " AND r.registry_activityid IN (SELECT c.activity_id FROM HRActivityCinemaConfig c WHERE c.is_cinema_screening = 1 AND c.consolidate_pool = 1 ";
-            $sql .= " AND c.pool_code = '".str_replace("'", "''", $setup['pool_code'])."'";
-            if ($db != NULL) $sql .= " AND c.activity_db = '".str_replace("'", "''", $db)."'";
+          if (intval($setup['consolidate_pool']) == 1) :
+              $sql .= " AND r.registry_activityid IN (SELECT c.activity_id FROM HRActivityCinemaConfig c WHERE c.is_cinema_screening = 1 AND c.consolidate_pool = 1 ";
+              $sql .= " AND c.pool_code = '".str_replace("'", "''", $setup['pool_code'])."'";
             $sql .= ")";
         else :
+              if ($db != NULL) $sql .= " AND r.registry_db = '".str_replace("'", "''", $db)."'";
             $sql .= " AND r.registry_activityid = ".intval($activity_id);
         endif;
 
