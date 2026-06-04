@@ -154,6 +154,60 @@ $(function() {
         $('.tooltip').tooltip();
     });
 
+    function parseViewdataPayload(rawData) {
+        var payload = rawData;
+        if (typeof rawData === 'string') {
+            try {
+                payload = $.parseJSON(rawData);
+            } catch (e) {
+                payload = null;
+            }
+        }
+        return payload;
+    }
+
+    function applyCinemaLocations(payload) {
+        if (!payload) {
+            return;
+        }
+
+        var $registryLocation = $("#regis_act select[name='registry_location'], #registry_location, select[name='registry_location']");
+        if (!$registryLocation.length) {
+            return;
+        }
+
+        if (!window.defaultCinemaOptions) {
+            window.defaultCinemaOptions = $registryLocation.html();
+        }
+
+        if (parseInt(payload.cinema_enabled, 10) === 1) {
+            var locationHtml = '';
+            if (payload.cinema_locations && payload.cinema_locations.length) {
+                $.each(payload.cinema_locations, function(index, row) {
+                    var fullText = row.full == 1 ? ' (Full)' : '';
+                    var disabledAttr = row.full == 1 ? ' disabled' : '';
+                    locationHtml += '<option value="' + row.name + '"' + disabledAttr + ' slots="' + row.capacity + '" reserved="' + row.reserved + '">' + row.name + fullText + '</option>';
+                });
+            } else {
+                locationHtml = '<option value="" disabled selected>No cinema configured</option>';
+            }
+            $registryLocation.html(locationHtml);
+            $("#location").removeClass('invisible');
+        } else if (window.defaultCinemaOptions) {
+            $registryLocation.html(window.defaultCinemaOptions);
+        }
+    }
+
+    // Fallback: enforce cinema options whenever viewdata returns, even if legacy handlers run.
+    $(document).ajaxSuccess(function(event, xhr, settings) {
+        var reqUrl = settings && settings.url ? settings.url : '';
+        if (reqUrl.indexOf('act_request.php') === -1 || reqUrl.indexOf('sec=viewdata') === -1) {
+            return;
+        }
+        var payload = parseViewdataPayload(xhr && xhr.responseText ? xhr.responseText : null);
+        applyCinemaLocations(payload);
+    });
+
 	/* MAIN NAVIGATION */
 
 	$("#subapp").hover(function() {
@@ -1568,23 +1622,11 @@ $(function() {
                         $("#loading").hide();
                     },
                     success: function(data) {
-                        var obj = $.parseJSON(data);
-                          if (!window.defaultCinemaOptions) {
-                              window.defaultCinemaOptions = $("#registry_location").html();
-                          }
-
-                          if (obj.cinema_enabled == '1' && obj.cinema_locations && obj.cinema_locations.length) {
-                              var locationHtml = '';
-                              $.each(obj.cinema_locations, function(index, row) {
-                                  var fullText = row.full == 1 ? ' (Full)' : '';
-                                  var disabledAttr = row.full == 1 ? ' disabled' : '';
-                                  locationHtml += '<option value="' + row.name + '"' + disabledAttr + ' slots="' + row.capacity + '" reserved="' + row.reserved + '">' + row.name + fullText + '</option>';
-                              });
-                              $("#registry_location").html(locationHtml);
-                              $("#location").removeClass('invisible');
-                          } else if (window.defaultCinemaOptions) {
-                              $("#registry_location").html(window.defaultCinemaOptions);
-                          }
+                        var obj = parseViewdataPayload(data);
+                        if (!obj) {
+                            return;
+                        }
+                        applyCinemaLocations(obj);
 
                         $("#registry_activityid").val(obj.activity_id);
                         $("#registry_activitytype").val(obj.activity_type);

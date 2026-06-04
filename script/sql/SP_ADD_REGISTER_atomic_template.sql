@@ -48,28 +48,69 @@ BEGIN
 
     DECLARE @cinema_capacity INT;
     DECLARE @cinema_occupied INT;
+    DECLARE @is_cinema_screening TINYINT;
+    DECLARE @consolidate_pool TINYINT;
+    DECLARE @pool_code VARCHAR(100);
 
     SET @STATUS = 0;
 
     BEGIN TRY
         BEGIN TRANSACTION;
 
-        SET @cinema_capacity = CASE @registry_location
-            WHEN 'Uptown Cinemas' THEN 816
-            WHEN 'Eastwood Cinemas' THEN 472
-            WHEN 'Venice Cineplex' THEN 904
-            WHEN 'Festivewalk Iloilo Cinemas' THEN 345
-            WHEN 'Newport Cinemas' THEN 336
-            WHEN 'Lucky Chinatown Cinemas' THEN 290
-            WHEN 'Southwoods Cinemas' THEN 319
-            ELSE NULL
-        END;
+        SET @cinema_capacity = NULL;
+        SET @cinema_occupied = 0;
+        SET @is_cinema_screening = 0;
+        SET @consolidate_pool = 0;
+        SET @pool_code = NULL;
 
-        IF @cinema_capacity IS NULL
+        SELECT TOP 1
+               @is_cinema_screening = ISNULL(c.is_cinema_screening, 0),
+               @consolidate_pool = ISNULL(c.consolidate_pool, 0),
+               @pool_code = LTRIM(RTRIM(ISNULL(c.pool_code, '')))
+        FROM dbo.HRActivityCinemaConfig c WITH (UPDLOCK, HOLDLOCK)
+        WHERE c.activity_id = @registry_activityid
+          AND ISNULL(c.activity_db, '') = ISNULL(@registry_db, '')
+                ORDER BY c.updated_date DESC, c.activity_id DESC;
+
+        IF @is_cinema_screening = 1
         BEGIN
-            ROLLBACK TRANSACTION;
-            SET @STATUS = -1;
-            RETURN;
+            IF ISNULL(@pool_code, '') = ''
+                SET @pool_code = 'ACT-' + CAST(@registry_activityid AS VARCHAR(20));
+
+            SELECT TOP 1
+                   @cinema_capacity = seat_capacity
+                        FROM dbo.HRActivityCinemaCapacity WITH (UPDLOCK, HOLDLOCK)
+                        WHERE pool_code = @pool_code
+              AND cinema_name = @registry_location
+            ORDER BY updated_date DESC, cinema_capacity_id DESC;
+
+            IF @cinema_capacity IS NULL
+            BEGIN
+                ROLLBACK TRANSACTION;
+                SET @STATUS = -1;
+                RETURN;
+            END;
+        END
+        ELSE
+        BEGIN
+            -- Legacy fallback for activities without cinema setup rows yet.
+            SET @cinema_capacity = CASE @registry_location
+                WHEN 'Uptown Cinemas' THEN 816
+                WHEN 'Eastwood Cinemas' THEN 472
+                WHEN 'Venice Cineplex' THEN 904
+                WHEN 'Festivewalk Iloilo Cinemas' THEN 345
+                WHEN 'Newport Cinemas' THEN 336
+                WHEN 'Lucky Chinatown Cinemas' THEN 290
+                WHEN 'Southwoods Cinemas' THEN 319
+                ELSE NULL
+            END;
+
+            IF @cinema_capacity IS NULL
+            BEGIN
+                ROLLBACK TRANSACTION;
+                SET @STATUS = -1;
+                RETURN;
+            END;
         END;
 
         IF EXISTS (
@@ -86,12 +127,29 @@ BEGIN
             RETURN;
         END;
 
-        SELECT @cinema_occupied = COUNT(*)
-        FROM [HREventRegistry] WITH (UPDLOCK, HOLDLOCK)
-        WHERE registry_status >= 1
-          AND registry_activityid = @registry_activityid
-          AND ISNULL(registry_db, '') = ISNULL(@registry_db, '')
-          AND registry_location = @registry_location;
+                IF @is_cinema_screening = 1 AND @consolidate_pool = 1
+                BEGIN
+                        SELECT @cinema_occupied = COUNT(*)
+                        FROM [HREventRegistry] r WITH (UPDLOCK, HOLDLOCK)
+                        WHERE r.registry_status >= 1
+                            AND r.registry_location = @registry_location
+                            AND r.registry_activityid IN (
+                                    SELECT c.activity_id
+                                    FROM dbo.HRActivityCinemaConfig c WITH (UPDLOCK, HOLDLOCK)
+                                    WHERE c.is_cinema_screening = 1
+                                        AND c.consolidate_pool = 1
+                                        AND ISNULL(LTRIM(RTRIM(c.pool_code)), '') = ISNULL(@pool_code, '')
+                            );
+                END
+                ELSE
+                BEGIN
+                        SELECT @cinema_occupied = COUNT(*)
+                        FROM [HREventRegistry] WITH (UPDLOCK, HOLDLOCK)
+                        WHERE registry_status >= 1
+                            AND registry_activityid = @registry_activityid
+                            AND ISNULL(registry_db, '') = ISNULL(@registry_db, '')
+                            AND registry_location = @registry_location;
+                END;
 
         IF @cinema_occupied >= @cinema_capacity
         BEGIN
