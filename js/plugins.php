@@ -1677,7 +1677,48 @@ $(function() {
         return false;
     });
 
-      function toggleCinemaSetup(prefix) {
+        function updateCinemaSlots(prefix) {
+            var isCinema = $("#" + prefix + "activity_is_cinema").is(":checked");
+            var isPooled = $("#" + prefix + "activity_cinema_consolidate").is(":checked");
+            var $slot = $("#" + prefix + "activity_slots");
+            var $capacity = $("#" + prefix + "activity_cinema_capacity");
+
+            if (!isCinema || !isPooled) {
+                $slot.prop("disabled", false);
+                return;
+            }
+
+            var total = 0;
+            var lines = ($capacity.val() || "").split(/\r\n|\n|\r/);
+            $.each(lines, function(index, line) {
+                var row = $.trim(line);
+                if (!row) {
+                    return;
+                }
+
+                var parts = row.split("|");
+                if (parts.length < 2) {
+                    return;
+                }
+
+                var cap = parseInt($.trim(parts[1]), 10);
+                if (!isNaN(cap) && cap > 0) {
+                    total += cap;
+                }
+            });
+
+            if (total > 0 && $slot.find("option[value='" + total + "']").length === 0) {
+                $slot.append('<option value="' + total + '">' + total + '</option>');
+            }
+
+            if (total > 0) {
+                $slot.val(String(total));
+            }
+
+            $slot.prop("disabled", true);
+        }
+
+        function toggleCinemaSetup(prefix) {
           var isCinema = $("#" + prefix + "activity_is_cinema").is(":checked");
           var sectionClass = (prefix == "u" ? ".uactivity-cinema-setup" : ".activity-cinema-setup");
 
@@ -1689,6 +1730,8 @@ $(function() {
               $("#" + prefix + "activity_cinema_poolcode").val('');
               $("#" + prefix + "activity_cinema_capacity").val('');
           }
+
+            updateCinemaSlots(prefix);
       }
 
       $("#activity_is_cinema").change(function() {
@@ -1698,6 +1741,26 @@ $(function() {
       $("#uactivity_is_cinema").change(function() {
           toggleCinemaSetup('u');
       });
+
+        $("#activity_cinema_consolidate, #uactivity_cinema_consolidate").change(function() {
+            if ($(this).attr("id") == "uactivity_cinema_consolidate") {
+                updateCinemaSlots('u');
+            } else {
+                updateCinemaSlots('');
+            }
+        });
+
+        $("#activity_cinema_capacity, #uactivity_cinema_capacity").on("input", function() {
+            if ($(this).attr("id") == "uactivity_cinema_capacity") {
+                updateCinemaSlots('u');
+            } else {
+                updateCinemaSlots('');
+            }
+        });
+
+        $("#create_act, #edit_act").on("submit", function() {
+            $("#activity_slots, #uactivity_slots").prop("disabled", false);
+        });
 
     $("#activity_type").change(function() {
         acttype = $("#activity_type option:selected").val();
@@ -2094,8 +2157,9 @@ $(function() {
                   }
                   $("#uactivity_cinema_poolcode").val(obj.activity_cinema_poolcode ? obj.activity_cinema_poolcode : '');
                   $("#uactivity_cinema_capacity").val(obj.activity_cinema_capacity ? obj.activity_cinema_capacity : '');
-                  toggleCinemaSetup('u');
-                $("#uactivity_slots").val(obj.activity_slots);
+                                        toggleCinemaSetup('u');
+                                    $("#uactivity_slots").val(obj.activity_slots);
+                                        updateCinemaSlots('u');
                 $("#uactivity_filename").val(obj.activity_filename);
                 $("#uactivity_db").val(obj.activity_db);
                 $("#uactivity_id").val(actid);
