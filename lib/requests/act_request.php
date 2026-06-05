@@ -649,13 +649,25 @@
 
                     $registrants_display_count = $countreg;
                     $cinema_summary_display = $tblsql->get_cinema_registration_summary($value['activity_id'], $profile_dbname);
+                    $total_slots_display = intval($value['activity_slots']);
                     if ($cinema_summary_display && intval($cinema_summary_display['setup']['is_cinema_screening']) == 1 && intval($cinema_summary_display['setup']['consolidate_pool']) == 1) :
                         $registrants_display_count = 0;
+                        $total_slots_display = 0;
+                        $taken_slots_pool = 0;
+                        if ($cinema_summary_display['setup']['locations']) :
+                            foreach ($cinema_summary_display['setup']['locations'] as $pool_loc) :
+                                $total_slots_display += intval($pool_loc['seat_capacity']);
+                            endforeach;
+                        endif;
                         if ($cinema_summary_display['taken']) :
                             foreach ($cinema_summary_display['taken'] as $pool_row) :
                                 $registrants_display_count += intval($pool_row['total']);
+                                $taken_slots_pool += intval($pool_row['total']);
                             endforeach;
                         endif;
+                        $slot_remain = $total_slots_display - $taken_slots_pool;
+                    else :
+                        $slot_remain = $total_slots_display - $countreg;
                     endif;
 
                     if ((strtotime(date("Y-m-d", $value['activity_datestart'])) <= date("U")) || $if_registered || $value['activity_endregister']) :
@@ -664,15 +676,19 @@
                         $disable_reg = 0;
                     endif;
 
+                    if ($slot_remain <= 0) :
+                        $slot_remain = 0;
+                        $disable_reg = 1;
+                    endif;
+
                 ?>
-                <?php $slot_remain = $value['activity_slots'] - $countreg; ?>
                 <tr class="trdata centertalign">
                     <td width="30%"<?php if ($key == 0) : ?> class="topborder"<?php endif; ?>><span attribute="<?php echo $value['activity_id']; ?>" attribute2="<?php echo $value['activity_title']; ?>" class="btnviewactivity"><img src="<?php echo WEB; ?>/uploads/<?php echo $value['activity_ads'] ? 'ads' : 'activity'; ?>/<?php echo $value['activity_filename']; ?>" class="activity_img cursorpoint" /></span></td>
                     <td width="70%" class="lefttalign<?php if ($key == 0) : ?> topborder<?php endif; ?>"><span class="btnviewactivity cursorpoint bold" attribute="<?php echo $value['activity_id']; ?>" attribute2="<?php echo $value['activity_title']; ?>"><?php echo $value['activity_title']; ?></span><?php echo $if_registered ? ' <span class="stamp spangreen">REGISTERED</span>' : ''; ?><br><?php echo date('F j, Y', $value['activity_datestart']); ?> | <?php echo date('g:ia', $value['activity_datestart']); ?> to <?php echo date('g:ia', $value['activity_dateend']); ?><br><?php echo $value['activity_venue']; ?>
 
                     <?php if(!$disable_reg) : ?>
                     <?php if ($value['activity_id'] != 218) : ?>
-                    <br /><br />Total Slots: <?php echo $value['activity_slots']; ?><br />
+                    <br /><br />Total Slots: <?php echo $total_slots_display; ?><br />
                     Slots Remaining: <?php echo $slot_remain <= 0 ? 0 : $slot_remain; ?><br />
                     <?php endif; ?>
                     <?php endif; ?>
@@ -1844,13 +1860,25 @@
 
                     $registrants_display_count = $countreg;
                     $cinema_summary_display = $tblsql->get_cinema_registration_summary($value['activity_id'], $profile_dbname);
+                    $total_slots_display = intval($value['activity_slots']);
                     if ($cinema_summary_display && intval($cinema_summary_display['setup']['is_cinema_screening']) == 1 && intval($cinema_summary_display['setup']['consolidate_pool']) == 1) :
                         $registrants_display_count = 0;
+                        $total_slots_display = 0;
+                        $taken_slots_pool = 0;
+                        if ($cinema_summary_display['setup']['locations']) :
+                            foreach ($cinema_summary_display['setup']['locations'] as $pool_loc) :
+                                $total_slots_display += intval($pool_loc['seat_capacity']);
+                            endforeach;
+                        endif;
                         if ($cinema_summary_display['taken']) :
                             foreach ($cinema_summary_display['taken'] as $pool_row) :
                                 $registrants_display_count += intval($pool_row['total']);
+                                $taken_slots_pool += intval($pool_row['total']);
                             endforeach;
                         endif;
+                        $slot_remain = $total_slots_display - $taken_slots_pool;
+                    else :
+                        $slot_remain = $total_slots_display - $countreg;
                     endif;
 
                     if ((strtotime(date("Y-m-d", $value['activity_datestart'])) <= date("U")) || $if_registered || $value['activity_endregister']) :
@@ -1859,15 +1887,19 @@
                         $disable_reg = 0;
                     endif;
 
+                    if ($slot_remain <= 0) :
+                        $slot_remain = 0;
+                        $disable_reg = 1;
+                    endif;
+
                 ?>
-                <?php $slot_remain = $value['activity_slots'] - $countreg; ?>
                 <tr class="trdata centertalign">
                     <td width="30%"<?php if ($key == 0) : ?> class="topborder"<?php endif; ?>><span attribute="<?php echo $value['activity_id']; ?>" attribute2="<?php echo $value['activity_title']; ?>" class="btnviewactivity"><img src="<?php echo WEB; ?>/uploads/<?php echo $value['activity_ads'] ? 'ads' : 'activity'; ?>/<?php echo $value['activity_filename']; ?>" class="activity_img cursorpoint" /></span></td>
                     <td width="70%" class="lefttalign<?php if ($key == 0) : ?> topborder<?php endif; ?>"><span class="btnviewactivity cursorpoint bold" attribute="<?php echo $value['activity_id']; ?>" attribute2="<?php echo $value['activity_title']; ?>"><?php echo $value['activity_title']; ?></span><?php echo $if_registered ? ' <span class="stamp spangreen">REGISTERED</span>' : ''; ?><br><?php echo date('F j, Y', $value['activity_datestart']); ?> | <?php echo date('g:ia', $value['activity_datestart']); ?> to <?php echo date('g:ia', $value['activity_dateend']); ?><br><?php echo $value['activity_venue']; ?>
 
                     <?php if(!$disable_reg) : ?>
                     <?php if ($value['activity_id'] != 218) : ?>
-                    <br /><br />Total Slots: <?php echo $value['activity_slots']; ?><br />
+                    <br /><br />Total Slots: <?php echo $total_slots_display; ?><br />
                     Slots Remaining: <?php echo $slot_remain <= 0 ? 0 : $slot_remain; ?><br />
                     <?php endif; ?>
                     <?php endif; ?>

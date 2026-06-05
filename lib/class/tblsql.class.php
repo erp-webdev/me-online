@@ -969,6 +969,103 @@ class tblsql {
         );
     }
 
+    function sync_activity_slots_from_cinema_pool($activity_id = 0, $db = NULL)
+    {
+        $activity_id = intval($activity_id);
+        if (!$activity_id) return FALSE;
+
+        $setup = $this->get_activity_cinema_setup($activity_id, $db);
+        if (!$setup || intval($setup['is_cinema_screening']) != 1) return TRUE;
+
+        $total_slots = 0;
+        if ($setup['locations']) {
+            foreach ($setup['locations'] as $loc) {
+                $total_slots += intval($loc['seat_capacity']);
+            }
+        }
+
+        if ($total_slots <= 0) return TRUE;
+
+        $sql = "UPDATE HRActivity SET activity_slots = ".intval($total_slots)." WHERE activity_id = ".$activity_id;
+        if ($db != NULL) $sql .= " AND activity_db = '".str_replace("'", "''", $db)."'";
+
+        return $this->get_execute($sql) ? TRUE : FALSE;
+    }
+
+    function get_activity_pool_activity_ids($activity_id = 0, $db = NULL)
+    {
+        $activity_id = intval($activity_id);
+        if (!$activity_id) return array();
+
+        $setup = $this->get_activity_cinema_setup($activity_id, $db);
+        if (!$setup || intval($setup['is_cinema_screening']) != 1 || intval($setup['consolidate_pool']) != 1) {
+            return array($activity_id);
+        }
+
+        $pool_code = trim($setup['pool_code']);
+        if (!$pool_code) {
+            return array($activity_id);
+        }
+
+        $sql = "SELECT DISTINCT activity_id FROM HRActivityCinemaConfig WHERE is_cinema_screening = 1 AND consolidate_pool = 1 ";
+        $sql .= "AND pool_code = '".str_replace("'", "''", $pool_code)."' ORDER BY activity_id ASC";
+        $rows = $this->get_row($sql);
+        if (!$rows) {
+            return array($activity_id);
+        }
+
+        $ids = array();
+        foreach ($rows as $row) {
+            $row_id = intval($row['activity_id']);
+            if ($row_id > 0) {
+                $ids[] = $row_id;
+            }
+        }
+
+        if (!count($ids)) {
+            $ids[] = $activity_id;
+        }
+
+        return array_values(array_unique($ids));
+    }
+
+    function get_registrant_by_activities($activity_ids = array(), $id = 0, $start = 0, $limit = 0, $count = 0)
+    {
+        if (!is_array($activity_ids) || !count($activity_ids)) return ($count ? 0 : array());
+
+        $clean_ids = array();
+        foreach ($activity_ids as $activity_id) {
+            $activity_id = intval($activity_id);
+            if ($activity_id > 0) {
+                $clean_ids[] = $activity_id;
+            }
+        }
+
+        if (!count($clean_ids)) return ($count ? 0 : array());
+
+        $sql = "SELECT [outer].* FROM ( ";
+        $sql .= " SELECT ROW_NUMBER() OVER(ORDER BY registry_date DESC) as ROW_NUMBER, ";
+        $sql .= " r.registry_id, r.registry_activityid, e.EmpID, e.LName, e.FName, e.EmailAdd,";
+        $sql .= " r.registry_uid, r.registry_godirectly, r.registry_details, r.registry_vrin, r.registry_vrout, ";
+        $sql .= " r.registry_platenum, r.registry_child, r.registry_guest, r.registry_dependent, r.registry_date, ";
+        $sql .= " r.registry_status, r.registry_hash, r.registry_location, e.CompanyID, HRDepartment.DeptDesc, registry_pickup_location";
+        $sql .= " FROM HREventRegistry r";
+        $sql .= " LEFT JOIN VIEWHREMPMASTER e ON r.registry_uid = e.EmpID and r.registry_db = e.DBNAME ";
+        $sql .= " LEFT JOIN HRDepartment ON e.DeptID = HRDepartment.DeptID AND e.DBNAME = HRDepartment.DBNAME";
+        $sql .= " WHERE r.registry_status >= 1 AND e.CompanyActive = 1 ";
+        if ($id != 0) $sql .= " AND r.registry_id = ".intval($id);
+        $sql .= " AND r.registry_activityid IN (".implode(',', $clean_ids).")";
+        $sql .= ") AS [outer] ";
+        if ($limit) {
+            $sql .= " WHERE [outer].[ROW_NUMBER] BETWEEN ".(intval($start) + 1)." AND ".intval($start + $limit)." ORDER BY [outer].[ROW_NUMBER] ";
+        }
+
+        if ($count != 0) $result = $this->get_numrow($sql);
+        else $result = $this->get_row($sql, 1);
+
+        return $result;
+    }
+
     function get_company($id, $dbname){
         $sql = "SELECT * FROM HRCompany WHERE CompanyID='" . $id . "' AND DBNAME = '" . $dbname . "'";
 

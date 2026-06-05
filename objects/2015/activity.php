@@ -403,6 +403,12 @@
                             echo '{"success": false, "details": "failed cinema setup"}';
                             exit();
                         endif;
+
+                        $sync_slots = $tblsql->sync_activity_slots_from_cinema_pool($add_act, $profile_dbname);
+                        if(!$sync_slots) :
+                            echo '{"success": false, "details": "failed slot sync"}';
+                            exit();
+                        endif;
         
                         //AUDIT TRAIL
                         $post['EMPID'] = $profile_idnum;
@@ -565,6 +571,12 @@
                 $save_cinema = $tblsql->save_activity_cinema_setup($_POST['activity_id'], $profile_dbname, $_POST['activity_is_cinema'], $_POST['activity_cinema_consolidate'], $_POST['activity_cinema_poolcode'], $_POST['activity_cinema_capacity']);
                 if(!$save_cinema) :
                     echo '{"success": false, "details": "failed cinema setup"}';
+                    exit();
+                endif;
+
+                $sync_slots = $tblsql->sync_activity_slots_from_cinema_pool($_POST['activity_id'], $profile_dbname);
+                if(!$sync_slots) :
+                    echo '{"success": false, "details": "failed slot sync"}';
                     exit();
                 endif;
         
