@@ -15,6 +15,34 @@
             object-fit: contain; /* Adjust to cover if you want full coverage */
         }
 
+        /* Keep long activity setup forms usable on smaller viewports. */
+        #actadd,
+        #actedit {
+            max-height: calc(100vh - 120px);
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        #actadd .closebutton,
+        #actedit .closebutton {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            float: none;
+            margin: 0;
+            z-index: 20;
+            padding: 0;
+            border-radius: 0;
+            background: transparent;
+            box-shadow: none;
+        }
+
+        #actadd .closebutton i,
+        #actedit .closebutton i {
+            color: #d71920 !important;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+        }
+
     </style>
     <!-- BODY -->
 
@@ -37,7 +65,6 @@
                                                     <td width="30%"><b>Registrant</b></td>
                                                     <td width="70%"><?php echo $profile_full.' ('.$profile_idnum.')'; ?></td>
                                                 </tr>
-                                                <?php /*
                                                 <tr id="location">
                                                     <td><b>Cinema</b></td>
                                                     <td>
@@ -93,7 +120,7 @@
                                                         </select>
                                                     </td>
                                                 </tr>
-                                                */ ?>
+                                                
                                                 <?php if(date('Y') == 2022) : ?>
                                                 <tr id="vaxcert">
                                                     <td><b>Vaccination Certificate / Card</b></td>
@@ -334,6 +361,34 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td>Cinema Screening</td>
+                                    <td>
+                                        <input id="activity_is_cinema" type="checkbox" name="activity_is_cinema" value="1" />
+                                        <label for="activity_is_cinema">Enable cinema setup</label>
+                                    </td>
+                                </tr>
+                                <tr class="activity-cinema-setup invisible">
+                                    <td>Consolidate Across Activities</td>
+                                    <td>
+                                        <input id="activity_cinema_consolidate" type="checkbox" name="activity_cinema_consolidate" value="1" />
+                                        <label for="activity_cinema_consolidate">Share seats with activities in the same pool code</label>
+                                    </td>
+                                </tr>
+                                <tr class="activity-cinema-setup invisible">
+                                    <td>Pool Code</td>
+                                    <td>
+                                        <input type="text" name="activity_cinema_poolcode" id="activity_cinema_poolcode" class="txtbox width300" placeholder="Example: ANNIV37-MOVIE" />
+                                        <br /><i>* required when consolidate is enabled</i>
+                                    </td>
+                                </tr>
+                                <tr class="activity-cinema-setup invisible">
+                                    <td>Cinema Capacities</td>
+                                    <td>
+                                        <textarea name="activity_cinema_capacity" id="activity_cinema_capacity" class="txtbox width350" rows="5" placeholder="One cinema per line:&#10;Uptown Cinemas|816&#10;Eastwood Cinemas|472"></textarea>
+                                        <br /><i>* format per line: Cinema Name|Seat Capacity</i>
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td>Image</td>
                                     <td>
                                         <input type="file" name="activity_attach" id="activity_attach" class="txtbox width200" class="txtbox" /><br /><i>* must be image (jpg, jpeg, gif, png) and less than or equal 10Mb</i>
@@ -444,6 +499,34 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td>Cinema Screening</td>
+                                    <td>
+                                        <input id="uactivity_is_cinema" type="checkbox" name="activity_is_cinema" value="1" />
+                                        <label for="uactivity_is_cinema">Enable cinema setup</label>
+                                    </td>
+                                </tr>
+                                <tr class="uactivity-cinema-setup invisible">
+                                    <td>Consolidate Across Activities</td>
+                                    <td>
+                                        <input id="uactivity_cinema_consolidate" type="checkbox" name="activity_cinema_consolidate" value="1" />
+                                        <label for="uactivity_cinema_consolidate">Share seats with activities in the same pool code</label>
+                                    </td>
+                                </tr>
+                                <tr class="uactivity-cinema-setup invisible">
+                                    <td>Pool Code</td>
+                                    <td>
+                                        <input type="text" name="activity_cinema_poolcode" id="uactivity_cinema_poolcode" class="txtbox width300" placeholder="Example: ANNIV37-MOVIE" />
+                                        <br /><i>* required when consolidate is enabled</i>
+                                    </td>
+                                </tr>
+                                <tr class="uactivity-cinema-setup invisible">
+                                    <td>Cinema Capacities</td>
+                                    <td>
+                                        <textarea name="activity_cinema_capacity" id="uactivity_cinema_capacity" class="txtbox width350" rows="5" placeholder="One cinema per line:&#10;Uptown Cinemas|816&#10;Eastwood Cinemas|472"></textarea>
+                                        <br /><i>* format per line: Cinema Name|Seat Capacity</i>
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td>Image</td>
                                     <td>
                                         <input type="file" name="activity_attach" id="uactivity_attach" class="txtbox width200" class="txtbox" /><br /><i>* must be image (jpg, jpeg, gif, png) and less than or equal 10Mb</i>
@@ -535,26 +618,53 @@
                                             $countreg = count($regdata);
                                         endif;
 
+                                        $registrants_display_count = $countreg;
+                                        $cinema_summary_display = $tblsql->get_cinema_registration_summary($value['activity_id'], $profile_dbname);
+                                        $total_slots_display = intval($value['activity_slots']);
+                                        if ($cinema_summary_display && intval($cinema_summary_display['setup']['is_cinema_screening']) == 1 && intval($cinema_summary_display['setup']['consolidate_pool']) == 1) :
+                                            $registrants_display_count = 0;
+                                            $total_slots_display = 0;
+                                            $taken_slots_pool = 0;
+                                            if ($cinema_summary_display['setup']['locations']) :
+                                                foreach ($cinema_summary_display['setup']['locations'] as $pool_loc) :
+                                                    $total_slots_display += intval($pool_loc['seat_capacity']);
+                                                endforeach;
+                                            endif;
+                                            if ($cinema_summary_display['taken']) :
+                                                foreach ($cinema_summary_display['taken'] as $pool_row) :
+                                                    $registrants_display_count += intval($pool_row['total']);
+                                                    $taken_slots_pool += intval($pool_row['total']);
+                                                endforeach;
+                                            endif;
+                                            $slot_remain = $total_slots_display - $taken_slots_pool;
+                                        else :
+                                            $slot_remain = $total_slots_display - $countreg;
+                                        endif;
+
                                         if ((strtotime(date("Y-m-d", $value['activity_datestart'])) <= date("U")) || $if_registered || $value['activity_endregister']) :
                                             $disable_reg = 1;
                                         else :
                                             $disable_reg = 0;
                                         endif;
 
+                                        if ($slot_remain <= 0) :
+                                            $slot_remain = 0;
+                                            $disable_reg = 1;
+                                        endif;
+
                                     ?>
-                                    <?php $slot_remain = $value['activity_slots'] - $countreg; ?>
                                     <tr class="trdata centertalign topborder">
                                         <td width="30%"<?php if ($key == 0) : ?> <?php endif; ?>><span attribute="<?php echo $value['activity_id']; ?>" attribute2="<?php echo $value['activity_title']; ?>" class="btnviewactivity image-container"><img data-src="<?php echo WEB; ?>/uploads/<?php echo $value['activity_ads'] ? 'ads' : 'activity'; ?>/<?php echo $value['activity_filename']; ?>" class=" cursorpoint lozad centered-image" style="left: 0 !important; object-fit: contain !important;" /></span></td>
                                         <td width="70%" class="lefttalign<?php if ($key == 0) : ?> topborder<?php endif; ?>"><span class="btnviewactivity cursorpoint bold" attribute="<?php echo $value['activity_id']; ?>" attribute2="<?php echo $value['activity_title']; ?>"><?php echo $value['activity_title']; ?></span><?php echo $if_registered ? ' <span class="stamp spangreen">REGISTERED</span>' : ''; ?><br><?php echo date('F j, Y', $value['activity_datestart']); ?> | <?php echo date('g:ia', $value['activity_datestart']); ?> to <?php echo date('g:ia', $value['activity_dateend']); ?><br><?php echo $value['activity_venue']; ?>
 
                                         <?php if(!$disable_reg) : ?>
                                         <?php if ($value['activity_id'] != 218) : ?>
-                                        <br /><br />Total Slots: <?php echo $value['activity_slots']; ?><br />
+                                        <br /><br />Total Slots: <?php echo $total_slots_display; ?><br />
                                         Slots Remaining: <?php echo $slot_remain <= 0 ? 0 : $slot_remain; ?><br />
                                         <?php endif; ?>
                                         <?php endif; ?>
 
-                                        <?php if ($slot_remain > 0) : ?><?php echo $disable_reg ? '' : '<br><span class="btnregactivity cursorpoint" attribute="'.$value['activity_id'].'" attribute2="'.$value['activity_title'].'">Register</span>'; ?><?php endif; ?><?php if ($accessman->hasAccess($profile_idnum, $profile_comp, $profile_dbname, 'activities')) : ?><?php echo $disable_reg ? '<br>' : ' | '; ?><span onClick="location.href='<?php echo WEB; ?>/registrant?id=<?php echo $value['activity_id']; ?>'" class="cursorpoint">Registrants (<?php echo $countreg; ?>)</span> | <span class="btneditactivity cursorpoint" attribute="<?php echo $value['activity_id']; ?>">Edit</span> | <span class="btndelactivity cursorpoint" attribute="<?php echo $value['activity_id']; ?>">Delete</span><?php endif; ?></td>
+                                        <?php if ($slot_remain > 0) : ?><?php echo $disable_reg ? '' : '<br><span class="btnregactivity cursorpoint" attribute="'.$value['activity_id'].'" attribute2="'.$value['activity_title'].'">Register</span>'; ?><?php endif; ?><?php if ($accessman->hasAccess($profile_idnum, $profile_comp, $profile_dbname, 'activities')) : ?><?php echo $disable_reg ? '<br>' : ' | '; ?><span onClick="location.href='<?php echo WEB; ?>/registrant?id=<?php echo $value['activity_id']; ?>'" class="cursorpoint">Registrants (<?php echo $registrants_display_count; ?>)</span> | <span class="btneditactivity cursorpoint" attribute="<?php echo $value['activity_id']; ?>">Edit</span> | <span class="btndelactivity cursorpoint" attribute="<?php echo $value['activity_id']; ?>">Delete</span><?php endif; ?></td>
                                     </tr>
                                     <?php endforeach; ?>
                                     <?php if ($pages) : ?>
@@ -575,6 +685,54 @@
                     </div>
 					<script>
 						$(document).ready(function(){
+                            function applyCinemaFromViewdata(rawData) {
+                                var payload = rawData;
+
+                                if (typeof rawData === 'string') {
+                                    try {
+                                        payload = $.parseJSON(rawData);
+                                    } catch (e) {
+                                        payload = null;
+                                    }
+                                }
+
+                                if (!payload) {
+                                    return;
+                                }
+
+                                var $registryLocation = $("#regis_act select[name='registry_location'], #registry_location, select[name='registry_location']");
+                                if (!$registryLocation.length) {
+                                    return;
+                                }
+
+                                if (parseInt(payload.cinema_enabled, 10) !== 1) {
+                                    return;
+                                }
+
+                                var locationHtml = '';
+                                if (payload.cinema_locations && payload.cinema_locations.length) {
+                                    $.each(payload.cinema_locations, function(index, row) {
+                                        var fullText = row.full == 1 ? ' (Full)' : '';
+                                        var disabledAttr = row.full == 1 ? ' disabled' : '';
+                                        locationHtml += '<option value="' + row.name + '"' + disabledAttr + ' slots="' + row.capacity + '" reserved="' + row.reserved + '">' + row.name + fullText + '</option>';
+                                    });
+                                } else {
+                                    locationHtml = '<option value="" disabled selected>No cinema configured</option>';
+                                }
+
+                                $registryLocation.html(locationHtml);
+                            }
+
+                            $(document).ajaxSuccess(function(event, xhr, settings) {
+                                var reqUrl = settings && settings.url ? settings.url : '';
+                                if (reqUrl.indexOf('act_request.php') === -1 || reqUrl.indexOf('sec=viewdata') === -1) {
+                                    return;
+                                }
+
+                                var responsePayload = xhr && xhr.responseText ? xhr.responseText : null;
+                                applyCinemaFromViewdata(responsePayload);
+                            });
+
 							$(".btnregsub").show();
 							$(".btnreg2").show();
 

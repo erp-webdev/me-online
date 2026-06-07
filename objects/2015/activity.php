@@ -29,10 +29,20 @@
             $_POST['searchactivity'] = NULL;
         }   
 
-        $registered_location = $tblsql->get_registered_location();
+        $registered_location = $tblsql->get_registered_location(0, $profile_dbname);
+
+        $cinema_locations = [
+            'Uptown Cinemas' => 'uptown',
+            'Eastwood Cinemas' => 'eastwood',
+            'Venice Cineplex' => 'mckinley',
+            'Festivewalk Iloilo Cinemas' => 'iloilo',
+            'Newport Cinemas' => 'newport',
+            'Lucky Chinatown Cinemas' => 'lctm',
+            'Southwoods Cinemas' => 'southwood',
+        ];
 
         $reserved_slots =  [
-            'uptown' => 816,
+            'uptown' => 1,
             'eastwood' => 472,
             'mckinley' => 904,
             'iloilo' => 345,
@@ -44,73 +54,95 @@
         // REGISTER ACTIVITY
         if ($_POST['btnregsub'] || $_POST['btnregsub_x']) :
 
-            // if(isset($_POST['registry_location']) && !empty($_POST['registry_location'])){
-            //     $locations = [
-            //         'uptown' => 0,
-            //         'eastwood' => 0,
-            //         'mckinley' => 0,
-            //         'iloilo' => 0,
-            //         'newport' => 0,
-            //         'lctm' => 0,
-            //         'southwood' => 0,
-            //     ];
+            $registry_activityid = isset($_POST['registry_activityid']) ? (int)$_POST['registry_activityid'] : 0;
+            $selected_location = isset($_POST['registry_location']) ? trim($_POST['registry_location']) : '';
 
-            //     if(isset($registered_location)){
-            //         if(count($registered_location) > 0){
-            //             foreach($registered_location as $loc){
-            //                 switch ($loc['registry_location']) {
-            //                     case 'Uptown Cinemas':
-            //                         $locations['uptown'] = $loc['total'];
-            //                         break;
-            //                     case 'Eastwood Cinemas':
-            //                         $locations['eastwood'] = $loc['total'];
-            //                         break;
-            //                     case 'Venice Cineplex':
-            //                         $locations['mckinley'] = $loc['total'];
-            //                         break;
-            //                     case 'Festivewalk Iloilo Cinemas':
-            //                         $locations['iloilo'] = $loc['total'];
-            //                         break;
-            //                     case 'Newport Cinemas':
-            //                         $locations['newport'] = $loc['total'];
-            //                         break;
-            //                     case 'Lucky Chinatown Cinemas':
-            //                         $locations['lctm'] = $loc['total'];
-            //                         break;
-            //                     case 'Southwoods Cinemas':
-            //                         $locations['southwood'] = $loc['total'];
-            //                         break;
-            //                 }
-            //             }
-            //         }
-            //     }
+            if ($registry_activityid <= 0) {
+                echo '{"success": false, "details": "Invalid activity selected"}';
+                exit();
+            }
 
-            //     if($_POST['registry_location'] == 'Uptown Cinemas' && $locations['uptown'] >= $reserved_slots['uptown']){
-            //         echo '{"success": false, "details": "Registration is full on the selected cinema"}';
-            //         exit();
-            //     }elseif($_POST['registry_location'] == 'Eastwood Cinemas' && $locations['eastwood'] >= $reserved_slots['eastwood']){
-            //         echo '{"success": false, "details": "Registration is full on the selected cinema"}';
-            //         exit();
-            //     }elseif($_POST['registry_location'] == 'Venice Cineplex' && $locations['mckinley'] >= $reserved_slots['mckinley']){
-            //         echo '{"success": false, "details": "Registration is full on the selected cinema"}';
-            //         exit();
-            //     }elseif($_POST['registry_location'] == 'Festivewalk Iloilo Cinemas' && $locations['iloilo'] >= $reserved_slots['iloilo']){
-            //         echo '{"success": false, "details": "Registration is full on the selected cinema"}';
-            //         exit();
-            //     }elseif($_POST['registry_location'] == 'Newport Cinemas' && $locations['newport'] >= $reserved_slots['newport']){
-            //         echo '{"success": false, "details": "Registration is full on the selected cinema"}';
-            //         exit();
-            //     }elseif($_POST['registry_location'] == 'Lucky Chinatown Cinemas' && $locations['lctm'] >= $reserved_slots['lctm']){
-            //         echo '{"success": false, "details": "Registration is full on the selected cinema"}';
-            //         exit();
-            //     }elseif($_POST['registry_location'] == 'Southwoods Cinemas' && $locations['southwood'] >= $reserved_slots['southwood']){
-            //         echo '{"success": false, "details": "Registration is full on the selected cinema"}';
-            //         exit();
-            //     }
-            // }else{
-            //     echo '{"success": false, "details": "Please select a cinema location"}';
-            //     exit();
-            // }
+            $if_registered = $tblsql->chk_registered($registry_activityid, $profile_idnum);
+            if ($if_registered) {
+                echo '{"success": false, "details": "You are already registered for this activity"}';
+                exit();
+            }
+
+            if(isset($selected_location) && !empty($selected_location)){
+                $cinema_summary = $tblsql->get_cinema_registration_summary($registry_activityid, $profile_dbname);
+
+                if ($cinema_summary && intval($cinema_summary['setup']['is_cinema_screening']) == 1) {
+                    $cinema_locations = [];
+                    $reserved_slots = [];
+                    $locations = [];
+
+                    if ($cinema_summary['setup']['locations']) {
+                        foreach ($cinema_summary['setup']['locations'] as $loc_setup) {
+                            $loc_name = trim($loc_setup['cinema_name']);
+                            if (!$loc_name) continue;
+                            $cinema_locations[$loc_name] = $loc_name;
+                            $reserved_slots[$loc_name] = intval($loc_setup['seat_capacity']);
+                            $locations[$loc_name] = 0;
+                        }
+                    }
+
+                    if (!isset($cinema_locations[$selected_location])) {
+                        echo '{"success": false, "details": "Invalid cinema location"}';
+                        exit();
+                    }
+
+                    if ($cinema_summary['taken']) {
+                        foreach ($cinema_summary['taken'] as $loc_taken) {
+                            $taken_name = trim($loc_taken['registry_location']);
+                            if (isset($locations[$taken_name])) {
+                                $locations[$taken_name] = intval($loc_taken['total']);
+                            }
+                        }
+                    }
+
+                    if($locations[$selected_location] >= $reserved_slots[$selected_location]){
+                        echo '{"success": false, "details": "Registration is full on the selected cinema"}';
+                        exit();
+                    }
+                } else {
+                    if (!isset($cinema_locations[$selected_location])) {
+                        echo '{"success": false, "details": "Invalid cinema location"}';
+                        exit();
+                    }
+
+                    $registered_location_by_activity = $tblsql->get_registered_location($registry_activityid, $profile_dbname);
+
+                    $locations = [
+                        'uptown' => 0,
+                        'eastwood' => 0,
+                        'mckinley' => 0,
+                        'iloilo' => 0,
+                        'newport' => 0,
+                        'lctm' => 0,
+                        'southwood' => 0,
+                    ];
+
+                    if(isset($registered_location_by_activity)){
+                        if(count($registered_location_by_activity) > 0){
+                            foreach($registered_location_by_activity as $loc){
+                                if (isset($cinema_locations[$loc['registry_location']])) {
+                                    $location_key = $cinema_locations[$loc['registry_location']];
+                                    $locations[$location_key] = (int)$loc['total'];
+                                }
+                            }
+                        }
+                    }
+
+                    $selected_location_key = $cinema_locations[$selected_location];
+                    if($locations[$selected_location_key] >= $reserved_slots[$selected_location_key]){
+                        echo '{"success": false, "details": "Registration is full on the selected cinema"}';
+                        exit();
+                    }
+                }
+            }else{
+                echo '{"success": false, "details": "Please select a cinema location"}';
+                exit();
+            }
 
             $activity_data = $tblsql->get_activities($_POST['registry_activityid']);
         
@@ -215,8 +247,38 @@
 
                 //endif;
 
+                // Final pre-insert cinema recheck to reduce race-window overbooking.
+                $cinema_summary = $tblsql->get_cinema_registration_summary($registry_activityid, $profile_dbname);
+                if ($cinema_summary && intval($cinema_summary['setup']['is_cinema_screening']) == 1) {
+                    $reserved_slots = [];
+                    $locations = [];
+
+                    if ($cinema_summary['setup']['locations']) {
+                        foreach ($cinema_summary['setup']['locations'] as $loc_setup) {
+                            $loc_name = trim($loc_setup['cinema_name']);
+                            if (!$loc_name) continue;
+                            $reserved_slots[$loc_name] = intval($loc_setup['seat_capacity']);
+                            $locations[$loc_name] = 0;
+                        }
+                    }
+
+                    if ($cinema_summary['taken']) {
+                        foreach ($cinema_summary['taken'] as $loc_taken) {
+                            $taken_name = trim($loc_taken['registry_location']);
+                            if (isset($locations[$taken_name])) {
+                                $locations[$taken_name] = intval($loc_taken['total']);
+                            }
+                        }
+                    }
+
+                    if (!isset($locations[$selected_location]) || $locations[$selected_location] >= $reserved_slots[$selected_location]) {
+                        echo '{"success": false, "details": "Registration is full on the selected cinema"}';
+                        exit();
+                    }
+                }
+
                 $reg_activity = $tblsql->register_action($_POST, 'add');			
-                if($reg_activity) : 
+                if(is_numeric($reg_activity) && intval($reg_activity) > 0) : 
 
                     //SEND EMAIL
                     $registrator = $tblsql->get_employee_byid($_POST['registry_uid'], 0, 0, 0, $profile_dbname);
@@ -267,7 +329,20 @@
 
                     exit();
                 else :
-                    echo '{"success": false, "details": "error on registration"}';
+                    $error_details = 'error on registration';
+                    if (is_numeric($reg_activity)) {
+                        if (intval($reg_activity) === -1) {
+                            $error_details = 'Invalid cinema location';
+                        } elseif (intval($reg_activity) === -2) {
+                            $error_details = 'You are already registered for this activity';
+                        } elseif (intval($reg_activity) === -3) {
+                            $error_details = 'Registration is full on the selected cinema';
+                        } elseif (intval($reg_activity) === -4) {
+                            $error_details = 'error on registration';
+                        }
+                    }
+
+                    echo '{"success": false, "details": "'.$error_details.'"}';
                     exit();
                 endif;
         
@@ -314,10 +389,26 @@
                 $_POST['activity_status'] = 1;
                 $_POST['activity_date'] = date('U'); 
                 $_POST['activity_db'] = $profile_dbname;
+                $_POST['activity_is_cinema'] = $_POST['activity_is_cinema'] ? 1 : 0;
+                $_POST['activity_cinema_consolidate'] = $_POST['activity_cinema_consolidate'] ? 1 : 0;
+                $_POST['activity_cinema_poolcode'] = trim($_POST['activity_cinema_poolcode']);
+                $_POST['activity_cinema_capacity'] = $_POST['activity_cinema_capacity'] ? $_POST['activity_cinema_capacity'] : '';
         
                 if($filemove) :
                     $add_act = $tblsql->activity_action($_POST, 'add');			
                     if($add_act) : 
+
+                        $save_cinema = $tblsql->save_activity_cinema_setup($add_act, $profile_dbname, $_POST['activity_is_cinema'], $_POST['activity_cinema_consolidate'], $_POST['activity_cinema_poolcode'], $_POST['activity_cinema_capacity']);
+                        if(!$save_cinema) :
+                            echo '{"success": false, "details": "failed cinema setup"}';
+                            exit();
+                        endif;
+
+                        $sync_slots = $tblsql->sync_activity_slots_from_cinema_pool($add_act, $profile_dbname);
+                        if(!$sync_slots) :
+                            echo '{"success": false, "details": "failed slot sync"}';
+                            exit();
+                        endif;
         
                         //AUDIT TRAIL
                         $post['EMPID'] = $profile_idnum;
@@ -469,9 +560,25 @@
             $_POST['activity_endregister'] = $_POST['activity_endregister'] ? 1 : 0;
             $_POST['activity_backout'] = $_POST['activity_backout'] ? 1 : 0;
             $_POST['activity_date'] = date('U'); 
+            $_POST['activity_is_cinema'] = $_POST['activity_is_cinema'] ? 1 : 0;
+            $_POST['activity_cinema_consolidate'] = $_POST['activity_cinema_consolidate'] ? 1 : 0;
+            $_POST['activity_cinema_poolcode'] = trim($_POST['activity_cinema_poolcode']);
+            $_POST['activity_cinema_capacity'] = $_POST['activity_cinema_capacity'] ? $_POST['activity_cinema_capacity'] : '';
 
             $update_act = $tblsql->activity_action($_POST, 'update', $_POST['activity_id']);			
             if($update_act) : 
+
+                $save_cinema = $tblsql->save_activity_cinema_setup($_POST['activity_id'], $profile_dbname, $_POST['activity_is_cinema'], $_POST['activity_cinema_consolidate'], $_POST['activity_cinema_poolcode'], $_POST['activity_cinema_capacity']);
+                if(!$save_cinema) :
+                    echo '{"success": false, "details": "failed cinema setup"}';
+                    exit();
+                endif;
+
+                $sync_slots = $tblsql->sync_activity_slots_from_cinema_pool($_POST['activity_id'], $profile_dbname);
+                if(!$sync_slots) :
+                    echo '{"success": false, "details": "failed slot sync"}';
+                    exit();
+                endif;
         
                 //AUDIT TRAIL
                 $post['EMPID'] = $profile_idnum;

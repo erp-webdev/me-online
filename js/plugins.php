@@ -154,6 +154,60 @@ $(function() {
         $('.tooltip').tooltip();
     });
 
+    function parseViewdataPayload(rawData) {
+        var payload = rawData;
+        if (typeof rawData === 'string') {
+            try {
+                payload = $.parseJSON(rawData);
+            } catch (e) {
+                payload = null;
+            }
+        }
+        return payload;
+    }
+
+    function applyCinemaLocations(payload) {
+        if (!payload) {
+            return;
+        }
+
+        var $registryLocation = $("#regis_act select[name='registry_location'], #registry_location, select[name='registry_location']");
+        if (!$registryLocation.length) {
+            return;
+        }
+
+        if (!window.defaultCinemaOptions) {
+            window.defaultCinemaOptions = $registryLocation.html();
+        }
+
+        if (parseInt(payload.cinema_enabled, 10) === 1) {
+            var locationHtml = '';
+            if (payload.cinema_locations && payload.cinema_locations.length) {
+                $.each(payload.cinema_locations, function(index, row) {
+                    var fullText = row.full == 1 ? ' (Full)' : '';
+                    var disabledAttr = row.full == 1 ? ' disabled' : '';
+                    locationHtml += '<option value="' + row.name + '"' + disabledAttr + ' slots="' + row.capacity + '" reserved="' + row.reserved + '">' + row.name + fullText + '</option>';
+                });
+            } else {
+                locationHtml = '<option value="" disabled selected>No cinema configured</option>';
+            }
+            $registryLocation.html(locationHtml);
+            $("#location").removeClass('invisible');
+        } else if (window.defaultCinemaOptions) {
+            $registryLocation.html(window.defaultCinemaOptions);
+        }
+    }
+
+    // Fallback: enforce cinema options whenever viewdata returns, even if legacy handlers run.
+    $(document).ajaxSuccess(function(event, xhr, settings) {
+        var reqUrl = settings && settings.url ? settings.url : '';
+        if (reqUrl.indexOf('act_request.php') === -1 || reqUrl.indexOf('sec=viewdata') === -1) {
+            return;
+        }
+        var payload = parseViewdataPayload(xhr && xhr.responseText ? xhr.responseText : null);
+        applyCinemaLocations(payload);
+    });
+
 	/* MAIN NAVIGATION */
 
 	$("#subapp").hover(function() {
@@ -1568,7 +1622,12 @@ $(function() {
                         $("#loading").hide();
                     },
                     success: function(data) {
-                        var obj = $.parseJSON(data);
+                        var obj = parseViewdataPayload(data);
+                        if (!obj) {
+                            return;
+                        }
+                        applyCinemaLocations(obj);
+
                         $("#registry_activityid").val(obj.activity_id);
                         $("#registry_activitytype").val(obj.activity_type);
                         $(".placedata").html(obj.activity_venue);
@@ -1617,6 +1676,91 @@ $(function() {
 
         return false;
     });
+
+        function updateCinemaSlots(prefix) {
+            var isCinema = $("#" + prefix + "activity_is_cinema").is(":checked");
+            var isPooled = $("#" + prefix + "activity_cinema_consolidate").is(":checked");
+            var $slot = $("#" + prefix + "activity_slots");
+            var $capacity = $("#" + prefix + "activity_cinema_capacity");
+
+            if (!isCinema || !isPooled) {
+                $slot.prop("disabled", false);
+                return;
+            }
+
+            var total = 0;
+            var lines = ($capacity.val() || "").split(/\r\n|\n|\r/);
+            $.each(lines, function(index, line) {
+                var row = $.trim(line);
+                if (!row) {
+                    return;
+                }
+
+                var parts = row.split("|");
+                if (parts.length < 2) {
+                    return;
+                }
+
+                var cap = parseInt($.trim(parts[1]), 10);
+                if (!isNaN(cap) && cap > 0) {
+                    total += cap;
+                }
+            });
+
+            if (total > 0 && $slot.find("option[value='" + total + "']").length === 0) {
+                $slot.append('<option value="' + total + '">' + total + '</option>');
+            }
+
+            if (total > 0) {
+                $slot.val(String(total));
+            }
+
+            $slot.prop("disabled", true);
+        }
+
+        function toggleCinemaSetup(prefix) {
+          var isCinema = $("#" + prefix + "activity_is_cinema").is(":checked");
+          var sectionClass = (prefix == "u" ? ".uactivity-cinema-setup" : ".activity-cinema-setup");
+
+          if (isCinema) {
+              $(sectionClass).removeClass('invisible');
+          } else {
+              $(sectionClass).addClass('invisible');
+              $("#" + prefix + "activity_cinema_consolidate").prop('checked', false);
+              $("#" + prefix + "activity_cinema_poolcode").val('');
+              $("#" + prefix + "activity_cinema_capacity").val('');
+          }
+
+            updateCinemaSlots(prefix);
+      }
+
+      $("#activity_is_cinema").change(function() {
+          toggleCinemaSetup('');
+      });
+
+      $("#uactivity_is_cinema").change(function() {
+          toggleCinemaSetup('u');
+      });
+
+        $("#activity_cinema_consolidate, #uactivity_cinema_consolidate").change(function() {
+            if ($(this).attr("id") == "uactivity_cinema_consolidate") {
+                updateCinemaSlots('u');
+            } else {
+                updateCinemaSlots('');
+            }
+        });
+
+        $("#activity_cinema_capacity, #uactivity_cinema_capacity").on("input", function() {
+            if ($(this).attr("id") == "uactivity_cinema_capacity") {
+                updateCinemaSlots('u');
+            } else {
+                updateCinemaSlots('');
+            }
+        });
+
+        $("#create_act, #edit_act").on("submit", function() {
+            $("#activity_slots, #uactivity_slots").prop("disabled", false);
+        });
 
     $("#activity_type").change(function() {
         acttype = $("#activity_type option:selected").val();
@@ -1848,6 +1992,11 @@ $(function() {
         $(".actatt06").removeClass("invisible"); //offreg
         $(".actatt07").removeClass("invisible"); //disable reg
         $(".actatt08").removeClass("invisible"); //disable backout
+          $("#activity_is_cinema").prop('checked', false);
+          $("#activity_cinema_consolidate").prop('checked', false);
+          $("#activity_cinema_poolcode").val('');
+          $("#activity_cinema_capacity").val('');
+          toggleCinemaSetup('');
 		$("#actadd").show({
             effect : 'slide',
             easing : 'easeOutQuart',
@@ -1996,7 +2145,21 @@ $(function() {
                 } else {
                     $("#uactivity_backout").prop('checked', false);
                 }
-                $("#uactivity_slots").val(obj.activity_slots);
+                  if (obj.activity_is_cinema == 1) {
+                      $("#uactivity_is_cinema").prop('checked', true);
+                  } else {
+                      $("#uactivity_is_cinema").prop('checked', false);
+                  }
+                  if (obj.activity_cinema_consolidate == 1) {
+                      $("#uactivity_cinema_consolidate").prop('checked', true);
+                  } else {
+                      $("#uactivity_cinema_consolidate").prop('checked', false);
+                  }
+                  $("#uactivity_cinema_poolcode").val(obj.activity_cinema_poolcode ? obj.activity_cinema_poolcode : '');
+                  $("#uactivity_cinema_capacity").val(obj.activity_cinema_capacity ? obj.activity_cinema_capacity : '');
+                                        toggleCinemaSetup('u');
+                                    $("#uactivity_slots").val(obj.activity_slots);
+                                        updateCinemaSlots('u');
                 $("#uactivity_filename").val(obj.activity_filename);
                 $("#uactivity_db").val(obj.activity_db);
                 $("#uactivity_id").val(actid);

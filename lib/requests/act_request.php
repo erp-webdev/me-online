@@ -195,7 +195,42 @@
                                     $("#loading").hide();
                                 },
                                 success: function(data) {
-                                    var obj = $.parseJSON(data);
+                                    var obj = data;
+                                    if (typeof data === 'string') {
+                                        try {
+                                            obj = $.parseJSON(data);
+                                        } catch (e) {
+                                            return;
+                                        }
+                                    }
+                                    if (!obj) {
+                                        return;
+                                    }
+
+                                    var $registryLocation = $("#regis_act select[name='registry_location'], #registry_location, select[name='registry_location']");
+                                    if (!window.defaultCinemaOptions) {
+                                        window.defaultCinemaOptions = $registryLocation.html();
+                                    }
+
+                                    if (parseInt(obj.cinema_enabled, 10) === 1) {
+                                        var locationHtml = '';
+
+                                        if (obj.cinema_locations && obj.cinema_locations.length) {
+                                            $.each(obj.cinema_locations, function(index, row) {
+                                                var fullText = row.full == 1 ? ' (Full)' : '';
+                                                var disabledAttr = row.full == 1 ? ' disabled' : '';
+                                                locationHtml += '<option value="' + row.name + '"' + disabledAttr + ' slots="' + row.capacity + '" reserved="' + row.reserved + '">' + row.name + fullText + '</option>';
+                                            });
+                                        } else {
+                                            locationHtml = '<option value="" disabled selected>No cinema configured</option>';
+                                        }
+
+                                        $registryLocation.html(locationHtml);
+                                        $("#location").removeClass('invisible');
+                                    } else if (window.defaultCinemaOptions) {
+                                        $registryLocation.html(window.defaultCinemaOptions);
+                                    }
+
                                     $("#registry_activityid").val(obj.activity_id);
                                     $("#registry_activitytype").val(obj.activity_type);
                                     $(".placedata").html(obj.activity_venue);
@@ -293,7 +328,42 @@
                                     $("#loading").hide();
                                 },
                                 success: function(data) {
-                                    var obj = $.parseJSON(data);
+                                    var obj = data;
+                                    if (typeof data === 'string') {
+                                        try {
+                                            obj = $.parseJSON(data);
+                                        } catch (e) {
+                                            return;
+                                        }
+                                    }
+                                    if (!obj) {
+                                        return;
+                                    }
+
+                                    var $registryLocation = $("#regis_act select[name='registry_location'], #registry_location, select[name='registry_location']");
+                                    if (!window.defaultCinemaOptions) {
+                                        window.defaultCinemaOptions = $registryLocation.html();
+                                    }
+
+                                    if (parseInt(obj.cinema_enabled, 10) === 1) {
+                                        var locationHtml = '';
+
+                                        if (obj.cinema_locations && obj.cinema_locations.length) {
+                                            $.each(obj.cinema_locations, function(index, row) {
+                                                var fullText = row.full == 1 ? ' (Full)' : '';
+                                                var disabledAttr = row.full == 1 ? ' disabled' : '';
+                                                locationHtml += '<option value="' + row.name + '"' + disabledAttr + ' slots="' + row.capacity + '" reserved="' + row.reserved + '">' + row.name + fullText + '</option>';
+                                            });
+                                        } else {
+                                            locationHtml = '<option value="" disabled selected>No cinema configured</option>';
+                                        }
+
+                                        $registryLocation.html(locationHtml);
+                                        $("#location").removeClass('invisible');
+                                    } else if (window.defaultCinemaOptions) {
+                                        $registryLocation.html(window.defaultCinemaOptions);
+                                    }
+
                                     $("#registry_activityid").val(obj.activity_id);
                                     $("#registry_activitytype").val(obj.activity_type);
                                     $(".placedata").html(obj.activity_venue);
@@ -577,26 +647,53 @@
                         $countreg = count($regdata);
                     endif;
 
+                    $registrants_display_count = $countreg;
+                    $cinema_summary_display = $tblsql->get_cinema_registration_summary($value['activity_id'], $profile_dbname);
+                    $total_slots_display = intval($value['activity_slots']);
+                    if ($cinema_summary_display && intval($cinema_summary_display['setup']['is_cinema_screening']) == 1 && intval($cinema_summary_display['setup']['consolidate_pool']) == 1) :
+                        $registrants_display_count = 0;
+                        $total_slots_display = 0;
+                        $taken_slots_pool = 0;
+                        if ($cinema_summary_display['setup']['locations']) :
+                            foreach ($cinema_summary_display['setup']['locations'] as $pool_loc) :
+                                $total_slots_display += intval($pool_loc['seat_capacity']);
+                            endforeach;
+                        endif;
+                        if ($cinema_summary_display['taken']) :
+                            foreach ($cinema_summary_display['taken'] as $pool_row) :
+                                $registrants_display_count += intval($pool_row['total']);
+                                $taken_slots_pool += intval($pool_row['total']);
+                            endforeach;
+                        endif;
+                        $slot_remain = $total_slots_display - $taken_slots_pool;
+                    else :
+                        $slot_remain = $total_slots_display - $countreg;
+                    endif;
+
                     if ((strtotime(date("Y-m-d", $value['activity_datestart'])) <= date("U")) || $if_registered || $value['activity_endregister']) :
                         $disable_reg = 1;
                     else :
                         $disable_reg = 0;
                     endif;
 
+                    if ($slot_remain <= 0) :
+                        $slot_remain = 0;
+                        $disable_reg = 1;
+                    endif;
+
                 ?>
-                <?php $slot_remain = $value['activity_slots'] - $countreg; ?>
                 <tr class="trdata centertalign">
                     <td width="30%"<?php if ($key == 0) : ?> class="topborder"<?php endif; ?>><span attribute="<?php echo $value['activity_id']; ?>" attribute2="<?php echo $value['activity_title']; ?>" class="btnviewactivity"><img src="<?php echo WEB; ?>/uploads/<?php echo $value['activity_ads'] ? 'ads' : 'activity'; ?>/<?php echo $value['activity_filename']; ?>" class="activity_img cursorpoint" /></span></td>
                     <td width="70%" class="lefttalign<?php if ($key == 0) : ?> topborder<?php endif; ?>"><span class="btnviewactivity cursorpoint bold" attribute="<?php echo $value['activity_id']; ?>" attribute2="<?php echo $value['activity_title']; ?>"><?php echo $value['activity_title']; ?></span><?php echo $if_registered ? ' <span class="stamp spangreen">REGISTERED</span>' : ''; ?><br><?php echo date('F j, Y', $value['activity_datestart']); ?> | <?php echo date('g:ia', $value['activity_datestart']); ?> to <?php echo date('g:ia', $value['activity_dateend']); ?><br><?php echo $value['activity_venue']; ?>
 
                     <?php if(!$disable_reg) : ?>
                     <?php if ($value['activity_id'] != 218) : ?>
-                    <br /><br />Total Slots: <?php echo $value['activity_slots']; ?><br />
+                    <br /><br />Total Slots: <?php echo $total_slots_display; ?><br />
                     Slots Remaining: <?php echo $slot_remain <= 0 ? 0 : $slot_remain; ?><br />
                     <?php endif; ?>
                     <?php endif; ?>
 
-                    <?php if ($slot_remain > 0) : ?><?php echo $disable_reg ? '' : '<br><span class="btnregactivity cursorpoint" attribute="'.$value['activity_id'].'" attribute2="'.$value['activity_title'].'">Register</span>'; ?><?php endif; ?><?php if ($accessman->hasAccess($profile_idnum, $profile_comp, $profile_dbname, 'activities')) : ?><?php echo $disable_reg ? '<br>' : ' | '; ?><span onClick="location.href='<?php echo WEB; ?>/registrant?id=<?php echo $value['activity_id']; ?>'" class="cursorpoint">Registrants (<?php echo $countreg; ?>)</span> | <span class="btneditactivity cursorpoint" attribute="<?php echo $value['activity_id']; ?>">Edit</span> | <span class="btndelactivity cursorpoint" attribute="<?php echo $value['activity_id']; ?>">Delete</span><?php endif; ?></td>
+                    <?php if ($slot_remain > 0) : ?><?php echo $disable_reg ? '' : '<br><span class="btnregactivity cursorpoint" attribute="'.$value['activity_id'].'" attribute2="'.$value['activity_title'].'">Register</span>'; ?><?php endif; ?><?php if ($accessman->hasAccess($profile_idnum, $profile_comp, $profile_dbname, 'activities')) : ?><?php echo $disable_reg ? '<br>' : ' | '; ?><span onClick="location.href='<?php echo WEB; ?>/registrant?id=<?php echo $value['activity_id']; ?>'" class="cursorpoint">Registrants (<?php echo $registrants_display_count; ?>)</span> | <span class="btneditactivity cursorpoint" attribute="<?php echo $value['activity_id']; ?>">Edit</span> | <span class="btndelactivity cursorpoint" attribute="<?php echo $value['activity_id']; ?>">Delete</span><?php endif; ?></td>
                 </tr>
                 <?php endforeach; ?>
                 <?php if ($pages) : ?>
@@ -728,8 +825,59 @@
                 $slot_remain = $value['activity_slots'] - $count_registry;
             
                 if ($slot_remain <= 0) : $disable_reg = 1; endif;
-    
-                echo '{"activity_id":"'.$value['activity_id'].'", "activity_type":"'.$value['activity_type'].'", "activity_title":"'.str_replace("'", "", $value['activity_title']).'", "activity_description":"'.$mainsql->cleannxtline($value['activity_description']).'", "activity_venue":"'.$value['activity_venue'].'", "activity_datein":"'.$dateinval.'", "activity_timein":"'.date('g:ia', $value['activity_datestart']).'", "activity_timeout":"'.date('g:ia', $value['activity_dateend']).'", "activity_approve":"'.$value['activity_approve'].'", "activity_guest":"'.$value['activity_guest'].'", "activity_dependent":"'.$value['activity_dependent'].'", "activity_endregister":"'.$value['activity_endregister'].'", "activity_cvehicle":"'.$value['activity_cvehicle'].'", "activity_ads":"'.$value['activity_ads'].'", "activity_feedback":"'.$value['activity_feedback'].'", "activity_offsite":"'.$value['activity_offsite'].'", "activity_slots":"'.$value['activity_slots'].'", "activity_available":"'.$count_registry.'", "disable_reg":"'.$disable_reg.'", "approve_reg":"'.$approve_reg.'"}';
+
+                $cinema_setup = $tblsql->get_activity_cinema_setup($act_id, $profile_dbname);
+                $cinema_summary = $tblsql->get_cinema_registration_summary($act_id, $profile_dbname);
+                $cinema_locations = array();
+
+                if ($cinema_setup && intval($cinema_setup['is_cinema_screening']) == 1 && $cinema_setup['locations']) :
+                    $taken_map = array();
+                    if ($cinema_summary && $cinema_summary['taken']) :
+                        foreach ($cinema_summary['taken'] as $taken_row) :
+                            $taken_map[$taken_row['registry_location']] = intval($taken_row['total']);
+                        endforeach;
+                    endif;
+
+                    foreach ($cinema_setup['locations'] as $setup_row) :
+                        $cname = trim($setup_row['cinema_name']);
+                        if (!$cname) continue;
+                        $capacity = intval($setup_row['seat_capacity']);
+                        $reserved = isset($taken_map[$cname]) ? intval($taken_map[$cname]) : 0;
+                        $cinema_locations[] = array(
+                            'name' => $cname,
+                            'capacity' => $capacity,
+                            'reserved' => $reserved,
+                            'full' => ($reserved >= $capacity ? 1 : 0)
+                        );
+                    endforeach;
+                endif;
+
+                $resp = array(
+                    'activity_id' => $value['activity_id'],
+                    'activity_type' => $value['activity_type'],
+                    'activity_title' => str_replace("'", "", $value['activity_title']),
+                    'activity_description' => $mainsql->cleannxtline($value['activity_description']),
+                    'activity_venue' => $value['activity_venue'],
+                    'activity_datein' => $dateinval,
+                    'activity_timein' => date('g:ia', $value['activity_datestart']),
+                    'activity_timeout' => date('g:ia', $value['activity_dateend']),
+                    'activity_approve' => $value['activity_approve'],
+                    'activity_guest' => $value['activity_guest'],
+                    'activity_dependent' => $value['activity_dependent'],
+                    'activity_endregister' => $value['activity_endregister'],
+                    'activity_cvehicle' => $value['activity_cvehicle'],
+                    'activity_ads' => $value['activity_ads'],
+                    'activity_feedback' => $value['activity_feedback'],
+                    'activity_offsite' => $value['activity_offsite'],
+                    'activity_slots' => $value['activity_slots'],
+                    'activity_available' => $count_registry,
+                    'disable_reg' => $disable_reg,
+                    'approve_reg' => $approve_reg,
+                    'cinema_enabled' => ($cinema_setup && intval($cinema_setup['is_cinema_screening']) == 1 ? 1 : 0),
+                    'cinema_locations' => $cinema_locations
+                );
+
+                echo json_encode($resp);
             
             endforeach; 
             
@@ -740,8 +888,43 @@
             $single_activity = $tblsql->get_activities($act_id);
         
             foreach ($single_activity as $key => $value) : 
-    
-                echo '{"activity_id":"'.$value['activity_id'].'", "activity_title":"'.str_replace("'", "", $value['activity_title']).'", "activity_type":"'.$value['activity_type'].'", "activity_venue":"'.$value['activity_venue'].'", "activity_description":"'.trim(preg_replace('/\s\s+/', ' ', $value['activity_description'])).'", "activity_dates":"'.date('Y-m-d', $value['activity_datestart']).'", "activity_timein":"'.date('g:ia', $value['activity_datestart']).'", "activity_timeout":"'.date('g:ia', $value['activity_dateend']).'", "activity_approve":"'.$value['activity_approve'].'", "activity_cvehicle":"'.$value['activity_cvehicle'].'", "activity_guest":"'.$value['activity_guest'].'", "activity_dependent":"'.$value['activity_dependent'].'", "activity_feedback":"'.$value['activity_feedback'].'", "activity_offsite":"'.$value['activity_offsite'].'", "activity_ads":"'.$value['activity_ads'].'", "activity_slots":"'.$value['activity_slots'].'", "activity_endregister":"'.$value['activity_endregister'].'", "activity_backout":"'.$value['activity_backout'].'", "activity_filename":"'.$value['activity_filename'].'", "activity_db":"'.$value['activity_db'].'"}';
+
+                $cinema_setup = $tblsql->get_activity_cinema_setup($act_id, $profile_dbname);
+                $cinema_capacity_lines = array();
+                if ($cinema_setup && $cinema_setup['locations']) :
+                    foreach ($cinema_setup['locations'] as $setup_row) :
+                        $cinema_capacity_lines[] = trim($setup_row['cinema_name']).'|'.intval($setup_row['seat_capacity']);
+                    endforeach;
+                endif;
+
+                $resp = array(
+                    'activity_id' => $value['activity_id'],
+                    'activity_title' => str_replace("'", "", $value['activity_title']),
+                    'activity_type' => $value['activity_type'],
+                    'activity_venue' => $value['activity_venue'],
+                    'activity_description' => trim(preg_replace('/\s\s+/', ' ', $value['activity_description'])),
+                    'activity_dates' => date('Y-m-d', $value['activity_datestart']),
+                    'activity_timein' => date('g:ia', $value['activity_datestart']),
+                    'activity_timeout' => date('g:ia', $value['activity_dateend']),
+                    'activity_approve' => $value['activity_approve'],
+                    'activity_cvehicle' => $value['activity_cvehicle'],
+                    'activity_guest' => $value['activity_guest'],
+                    'activity_dependent' => $value['activity_dependent'],
+                    'activity_feedback' => $value['activity_feedback'],
+                    'activity_offsite' => $value['activity_offsite'],
+                    'activity_ads' => $value['activity_ads'],
+                    'activity_slots' => $value['activity_slots'],
+                    'activity_endregister' => $value['activity_endregister'],
+                    'activity_backout' => $value['activity_backout'],
+                    'activity_filename' => $value['activity_filename'],
+                    'activity_db' => $value['activity_db'],
+                    'activity_is_cinema' => ($cinema_setup ? intval($cinema_setup['is_cinema_screening']) : 0),
+                    'activity_cinema_consolidate' => ($cinema_setup ? intval($cinema_setup['consolidate_pool']) : 0),
+                    'activity_cinema_poolcode' => ($cinema_setup ? $cinema_setup['pool_code'] : ''),
+                    'activity_cinema_capacity' => implode("\n", $cinema_capacity_lines)
+                );
+
+                echo json_encode($resp);
             
             endforeach; 
         break;
@@ -1222,7 +1405,42 @@
                                     $("#loading").hide();
                                 },
                                 success: function(data) {
-                                    var obj = $.parseJSON(data);
+                                    var obj = data;
+                                    if (typeof data === 'string') {
+                                        try {
+                                            obj = $.parseJSON(data);
+                                        } catch (e) {
+                                            return;
+                                        }
+                                    }
+                                    if (!obj) {
+                                        return;
+                                    }
+
+                                    var $registryLocation = $("#regis_act select[name='registry_location'], #registry_location, select[name='registry_location']");
+                                    if (!window.defaultCinemaOptions) {
+                                        window.defaultCinemaOptions = $registryLocation.html();
+                                    }
+
+                                    if (parseInt(obj.cinema_enabled, 10) === 1) {
+                                        var locationHtml = '';
+
+                                        if (obj.cinema_locations && obj.cinema_locations.length) {
+                                            $.each(obj.cinema_locations, function(index, row) {
+                                                var fullText = row.full == 1 ? ' (Full)' : '';
+                                                var disabledAttr = row.full == 1 ? ' disabled' : '';
+                                                locationHtml += '<option value="' + row.name + '"' + disabledAttr + ' slots="' + row.capacity + '" reserved="' + row.reserved + '">' + row.name + fullText + '</option>';
+                                            });
+                                        } else {
+                                            locationHtml = '<option value="" disabled selected>No cinema configured</option>';
+                                        }
+
+                                        $registryLocation.html(locationHtml);
+                                        $("#location").removeClass('invisible');
+                                    } else if (window.defaultCinemaOptions) {
+                                        $registryLocation.html(window.defaultCinemaOptions);
+                                    }
+
                                     $("#registry_activityid").val(obj.activity_id);
                                     $("#registry_activitytype").val(obj.activity_type);
                                     $(".placedata").html(obj.activity_venue);
@@ -1320,7 +1538,42 @@
                                     $("#loading").hide();
                                 },
                                 success: function(data) {
-                                    var obj = $.parseJSON(data);
+                                    var obj = data;
+                                    if (typeof data === 'string') {
+                                        try {
+                                            obj = $.parseJSON(data);
+                                        } catch (e) {
+                                            return;
+                                        }
+                                    }
+                                    if (!obj) {
+                                        return;
+                                    }
+
+                                    var $registryLocation = $("#regis_act select[name='registry_location'], #registry_location, select[name='registry_location']");
+                                    if (!window.defaultCinemaOptions) {
+                                        window.defaultCinemaOptions = $registryLocation.html();
+                                    }
+
+                                    if (parseInt(obj.cinema_enabled, 10) === 1) {
+                                        var locationHtml = '';
+
+                                        if (obj.cinema_locations && obj.cinema_locations.length) {
+                                            $.each(obj.cinema_locations, function(index, row) {
+                                                var fullText = row.full == 1 ? ' (Full)' : '';
+                                                var disabledAttr = row.full == 1 ? ' disabled' : '';
+                                                locationHtml += '<option value="' + row.name + '"' + disabledAttr + ' slots="' + row.capacity + '" reserved="' + row.reserved + '">' + row.name + fullText + '</option>';
+                                            });
+                                        } else {
+                                            locationHtml = '<option value="" disabled selected>No cinema configured</option>';
+                                        }
+
+                                        $registryLocation.html(locationHtml);
+                                        $("#location").removeClass('invisible');
+                                    } else if (window.defaultCinemaOptions) {
+                                        $registryLocation.html(window.defaultCinemaOptions);
+                                    }
+
                                     $("#registry_activityid").val(obj.activity_id);
                                     $("#registry_activitytype").val(obj.activity_type);
                                     $(".placedata").html(obj.activity_venue);
@@ -1605,26 +1858,53 @@
                         $countreg = count($regdata);
                     endif;
 
+                    $registrants_display_count = $countreg;
+                    $cinema_summary_display = $tblsql->get_cinema_registration_summary($value['activity_id'], $profile_dbname);
+                    $total_slots_display = intval($value['activity_slots']);
+                    if ($cinema_summary_display && intval($cinema_summary_display['setup']['is_cinema_screening']) == 1 && intval($cinema_summary_display['setup']['consolidate_pool']) == 1) :
+                        $registrants_display_count = 0;
+                        $total_slots_display = 0;
+                        $taken_slots_pool = 0;
+                        if ($cinema_summary_display['setup']['locations']) :
+                            foreach ($cinema_summary_display['setup']['locations'] as $pool_loc) :
+                                $total_slots_display += intval($pool_loc['seat_capacity']);
+                            endforeach;
+                        endif;
+                        if ($cinema_summary_display['taken']) :
+                            foreach ($cinema_summary_display['taken'] as $pool_row) :
+                                $registrants_display_count += intval($pool_row['total']);
+                                $taken_slots_pool += intval($pool_row['total']);
+                            endforeach;
+                        endif;
+                        $slot_remain = $total_slots_display - $taken_slots_pool;
+                    else :
+                        $slot_remain = $total_slots_display - $countreg;
+                    endif;
+
                     if ((strtotime(date("Y-m-d", $value['activity_datestart'])) <= date("U")) || $if_registered || $value['activity_endregister']) :
                         $disable_reg = 1;
                     else :
                         $disable_reg = 0;
                     endif;
 
+                    if ($slot_remain <= 0) :
+                        $slot_remain = 0;
+                        $disable_reg = 1;
+                    endif;
+
                 ?>
-                <?php $slot_remain = $value['activity_slots'] - $countreg; ?>
                 <tr class="trdata centertalign">
                     <td width="30%"<?php if ($key == 0) : ?> class="topborder"<?php endif; ?>><span attribute="<?php echo $value['activity_id']; ?>" attribute2="<?php echo $value['activity_title']; ?>" class="btnviewactivity"><img src="<?php echo WEB; ?>/uploads/<?php echo $value['activity_ads'] ? 'ads' : 'activity'; ?>/<?php echo $value['activity_filename']; ?>" class="activity_img cursorpoint" /></span></td>
                     <td width="70%" class="lefttalign<?php if ($key == 0) : ?> topborder<?php endif; ?>"><span class="btnviewactivity cursorpoint bold" attribute="<?php echo $value['activity_id']; ?>" attribute2="<?php echo $value['activity_title']; ?>"><?php echo $value['activity_title']; ?></span><?php echo $if_registered ? ' <span class="stamp spangreen">REGISTERED</span>' : ''; ?><br><?php echo date('F j, Y', $value['activity_datestart']); ?> | <?php echo date('g:ia', $value['activity_datestart']); ?> to <?php echo date('g:ia', $value['activity_dateend']); ?><br><?php echo $value['activity_venue']; ?>
 
                     <?php if(!$disable_reg) : ?>
                     <?php if ($value['activity_id'] != 218) : ?>
-                    <br /><br />Total Slots: <?php echo $value['activity_slots']; ?><br />
+                    <br /><br />Total Slots: <?php echo $total_slots_display; ?><br />
                     Slots Remaining: <?php echo $slot_remain <= 0 ? 0 : $slot_remain; ?><br />
                     <?php endif; ?>
                     <?php endif; ?>
 
-                    <?php if ($slot_remain > 0) : ?><?php echo $disable_reg ? '' : '<br><span class="btnregactivity cursorpoint" attribute="'.$value['activity_id'].'" attribute2="'.$value['activity_title'].'">Register</span>'; ?><?php endif; ?><?php if ($accessman->hasAccess($profile_idnum, $profile_comp, $profile_dbname, 'activities')) : ?><?php echo $disable_reg ? '<br>' : ' | '; ?><span onClick="location.href='<?php echo WEB; ?>/registrant?id=<?php echo $value['activity_id']; ?>'" class="cursorpoint">Registrants (<?php echo $countreg; ?>)</span> | <span class="btneditactivity cursorpoint" attribute="<?php echo $value['activity_id']; ?>">Edit</span> | <span class="btndelactivity cursorpoint" attribute="<?php echo $value['activity_id']; ?>">Delete</span><?php endif; ?></td>
+                    <?php if ($slot_remain > 0) : ?><?php echo $disable_reg ? '' : '<br><span class="btnregactivity cursorpoint" attribute="'.$value['activity_id'].'" attribute2="'.$value['activity_title'].'">Register</span>'; ?><?php endif; ?><?php if ($accessman->hasAccess($profile_idnum, $profile_comp, $profile_dbname, 'activities')) : ?><?php echo $disable_reg ? '<br>' : ' | '; ?><span onClick="location.href='<?php echo WEB; ?>/registrant?id=<?php echo $value['activity_id']; ?>'" class="cursorpoint">Registrants (<?php echo $registrants_display_count; ?>)</span> | <span class="btneditactivity cursorpoint" attribute="<?php echo $value['activity_id']; ?>">Edit</span> | <span class="btndelactivity cursorpoint" attribute="<?php echo $value['activity_id']; ?>">Delete</span><?php endif; ?></td>
                 </tr>
                 <?php endforeach; ?>
                 <?php if ($pages) : ?>
