@@ -35,8 +35,10 @@
         
         endif;
         
-        $registrants = $tblsql->get_registrant(0, 0, 0, 0, $id);
         $activity_title = $tblsql->get_activities($id);
+        $activity_db = ($activity_title && isset($activity_title[0]['activity_db'])) ? $activity_title[0]['activity_db'] : NULL;
+        $activity_scope_ids = $tblsql->get_activity_pool_activity_ids($id, $activity_db);
+        $registrants = $tblsql->get_registrant_by_activities($activity_scope_ids, 0, 0, 0, 0);
 
         if(isset($_GET['export'])){
             $filename = 'registrants_'.$activity_title[0]['activity_title'].'.csv';
