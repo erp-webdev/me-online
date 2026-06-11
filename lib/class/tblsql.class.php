@@ -866,6 +866,12 @@ class tblsql {
     {
         if (!$activity_id) return FALSE;
 
+        if ($db != NULL) :
+            if ($db == 'MLI' || $db == 'CITYLINK' || $db == 'ECOC' || $db == 'EREX' || $db == 'LCTM' || $db == 'NCCAI' || $db == 'SUNSTRUST' || $db == 'TOWNSQUARE') :
+                $db = 'MEGAWORLD';
+            endif;
+        endif;
+
         $check_table = $this->get_row("SELECT OBJECT_ID('HRActivityCinemaConfig') AS objid");
         if (!$check_table || !$check_table[0]['objid']) return FALSE;
 
