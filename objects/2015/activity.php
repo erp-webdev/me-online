@@ -32,23 +32,23 @@
         $registered_location = $tblsql->get_registered_location(0, $profile_dbname);
 
         $cinema_locations = [
-            'Uptown Cinemas' => 'uptown',
-            'Eastwood Cinemas' => 'eastwood',
-            'Venice Cineplex' => 'mckinley',
-            'Festivewalk Iloilo Cinemas' => 'iloilo',
-            'Newport Cinemas' => 'newport',
-            'Lucky Chinatown Cinemas' => 'lctm',
-            'Southwoods Cinemas' => 'southwood',
+            // 'Uptown Cinemas' => 'uptown',
+            // 'Eastwood Cinemas' => 'eastwood',
+            // 'Venice Cineplex' => 'mckinley',
+            // 'Festivewalk Iloilo Cinemas' => 'iloilo',
+            // 'Newport Cinemas' => 'newport',
+            // 'Lucky Chinatown Cinemas' => 'lctm',
+            // 'Southwoods Cinemas' => 'southwood',
         ];
 
         $reserved_slots =  [
-            'uptown' => 1,
-            'eastwood' => 472,
-            'mckinley' => 904,
-            'iloilo' => 345,
-            'newport' => 336,
-            'lctm' => 290,
-            'southwood' => 319,
+            'uptown' => 0,
+            'eastwood' => 0,
+            'mckinley' => 0,
+            'iloilo' => 0,
+            'newport' => 0,
+            'lctm' => 0,
+            'southwood' => 0,
         ];
 
         // REGISTER ACTIVITY
