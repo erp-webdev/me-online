@@ -1317,7 +1317,7 @@
                 </tr>
                 <?php
                     foreach ($appmd_data as $key => $value) :
-                        $shifts2 = $mainsql->get_shift($value['NewShiftDesc']);
+                        $shifts2 = $mainsql->get_shift($value['ShiftID']);
                         ?>
                         <tr>
                             <?php $timearray = preg_split('/\s+/', trim($value['TimeIn'])); $timearray2 = preg_split('/\s+/', trim($value['TimeOUt'])); ?>
@@ -8652,7 +8652,7 @@
                                     $appmd_count = count($appmd_data);
 
                                     foreach ($appmd_data as $key => $value) :
-                                        $shifts2 = $mainsql->get_shift($value['NewShiftDesc']);
+                                        $shifts2 = $mainsql->get_shift($value['ShiftID']);
                                         $chkmditem = $mainsql->check_appexpire_by_attpostdate($dbname, $value['DTRDate']);
                                         if ($chkmditem) : $chkexpiremd++; endif;
                                         ?>
@@ -10294,7 +10294,7 @@
                                     $appmd_count = count($appmd_data);
 
                                     foreach ($appmd_data as $key => $value) :
-                                        $shifts2 = $mainsql->get_shift($value['NewShiftDesc']);
+                                        $shifts2 = $mainsql->get_shift($value['ShiftID']);
                                         $chkmditem = $mainsql->check_appexpire_by_attpostdate($dbname, $value['DTRDate']);
                                         if ($chkmditem) : $chkexpiremd++; endif;
                                         ?>
