@@ -1658,7 +1658,7 @@ class tblsql {
 
     function get_mdtrdata($mdtrref = NULL)
     {
-        $sql = "SELECT Day, DTRDate, ShiftDesc, TimeIn, TimeOUt, Status, NewShiftDesc, Activities FROM HRFrmManualDTRItem ";
+        $sql = "SELECT Day, DTRDate, ShiftDesc, TimeIn, TimeOUt, Status, NewShiftDesc, Activities, ShiftID FROM HRFrmManualDTRItem ";
         if ($mdtrref != NULL) : $sql .= " WHERE ReqNbr = '".$mdtrref."' AND Status != 'CANCELLED' "; endif;
 		$result = $this->get_row($sql);
 		return $result;
