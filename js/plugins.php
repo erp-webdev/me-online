@@ -6072,11 +6072,17 @@ $(function() {
         $("#username").val(($("#username").val()).toUpperCase());
     });
 
+	function resetCloudflareTurnstile() {
+	    if (typeof turnstile !== 'undefined' && typeof turnstile.reset === 'function') {
+	        turnstile.reset();
+	    }
+	}
+
 	$("#username").on("keypress", function(e) {
         if (e.keyCode == 13) {
             username = $("#username").val();
 			password = $("#password").val();
-            var grecaptcharesponse = $("#g-recaptcha-response").val();
+            var cfturnstileresponse = $("input[name='cf-turnstile-response']").val();
 
             /*password = password.replace("&", "");
             password = password.replace("+", "");
@@ -6091,7 +6097,7 @@ $(function() {
             {
                 url: "<?php echo WEB; ?>/lib/requests/login.php",
                 //data: "username=" + username + "&password=" + password + "&company=" + company,
-                data: {username: username, password: password,  grecaptcharesponse:  grecaptcharesponse },
+                data: {username: username, password: password,  "cf-turnstile-response":  cfturnstileresponse },
 	            type: "POST",
 		        complete: function(){
 		        	$("#loading").hide();
@@ -6101,6 +6107,9 @@ $(function() {
                         //$('#errortd').html('<span class="redtext mediumtext2 bold">Access denied</span>');
                         $('.mainsplashlog').css({'margin-right' : '0px'});
                         $('.mainsplashlog').effect('shake', {times: 3, distance: 20}, 420);
+                        setTimeout(function() {
+                            resetCloudflareTurnstile();
+                        }, 1000);
                     }
                     else if (data == 1) {
                         window.location.href='<?php echo WEB; ?>';
@@ -6110,7 +6119,7 @@ $(function() {
                         window.location.href='<?php echo WEB; ?>/forgot_password';
                     }
                     else if (data == 3) {
-                        alert('reCAPTCHA verification is required upon log in.');
+                        alert('Please verify you are not a robot.');
                     }
                     else {
                         $('#floatdiv').removeClass('invisible');
@@ -6127,7 +6136,7 @@ $(function() {
             username = $("#username").val();
             username = username.toUpperCase();
 			password = $("#password").val();
-            var grecaptcharesponse = $("#g-recaptcha-response").val();
+            var cfturnstileresponse = $("input[name='cf-turnstile-response']").val();
 
             /*password = password.replace("&", "");
             password = password.replace("+", "");
@@ -6141,7 +6150,7 @@ $(function() {
             {
                 url: "<?php echo WEB; ?>/lib/requests/login.php",
                 //data: "username=" + username + "&password=" + password + "&company=" + company,
-                data: {username: username, password: password,  grecaptcharesponse:  grecaptcharesponse },
+                data: {username: username, password: password,  "cf-turnstile-response":  cfturnstileresponse },
 	            type: "POST",
 		        complete: function(){
 		        	$("#loading").hide();
@@ -6151,6 +6160,9 @@ $(function() {
                         //$('#errortd').html('<span class="redtext mediumtext2 bold">Access denied</span>');
                         $('.mainsplashlog').css({'margin-right' : '0px'});
                         $('.mainsplashlog').effect('shake', {times: 3, distance: 20}, 420);
+                        setTimeout(function() {
+                            resetCloudflareTurnstile();
+                        }, 1000);
                     }
                     else if (data == 1) {
                         window.location.href='<?php echo WEB; ?>';
@@ -6160,7 +6172,7 @@ $(function() {
                         window.location.href='<?php echo WEB; ?>/forgot_password';
                     }
                     else if (data == 3) {
-                        alert('reCAPTCHA verification is required upon log in.');
+                        alert('Please verify you are not a robot.');
                     }
                     else {
                         $('#floatdiv').removeClass('invisible');
@@ -6175,7 +6187,7 @@ $(function() {
 	$("#btnlogin").on("click", function() {
 		username = $("#username").val();
 		password = $("#password").val();
-        var grecaptcharesponse = $("#g-recaptcha-response").val();
+        var cfturnstileresponse = $("input[name='cf-turnstile-response']").val();
 
         /*password = password.replace("&", "");
         password = password.replace("+", "");
@@ -6189,7 +6201,7 @@ $(function() {
 	    {
 	        url: "<?php echo WEB; ?>/lib/requests/login.php",
             //data: "username=" + username + "&password=" + password + "&company=" + company,
-            data: {username: username, password: password,  grecaptcharesponse:  grecaptcharesponse },
+            data: {username: username, password: password,  "cf-turnstile-response":  cfturnstileresponse },
             type: "POST",
 	        complete: function(){
 	        	$("#loading").hide();
@@ -6199,6 +6211,10 @@ $(function() {
 	        		//$('#errortd').html('<span class="redtext mediumtext2 bold">Access denied</span>');
                     $('.mainsplashlog').css({'margin-right' : '0px'});
 		            $('.mainsplashlog').effect('shake', {times: 3, distance: 20}, 420);
+                    setTimeout(function() {
+                            resetCloudflareTurnstile();
+                        }, 1000);
+                    
 	        	}
                 else if (data == 1) {
                     window.location.href='<?php echo WEB; ?>';
@@ -6208,7 +6224,7 @@ $(function() {
                     window.location.href='<?php echo WEB; ?>/forgot_password';
                 }
                 else if (data == 3) {
-                    alert('reCAPTCHA verification is required upon log in.');
+                    alert('Please verify you are not a robot.');
                 }
 	        	else {
 	        		$('#floatdiv').removeClass('invisible');
@@ -6236,6 +6252,10 @@ $(function() {
                 if (data == 0) {
                     $('.mainsplashlog').css({'margin-right' : '0px'});
 		            $('.mainsplashlog').effect('shake', {times: 3, distance: 20}, 420);
+                    setTimeout(function() {
+                            resetCloudflareTurnstile();
+                        }, 1000);
+                    
 	        	}
                 else {
                     window.location.href='<?php echo WEB; ?>';

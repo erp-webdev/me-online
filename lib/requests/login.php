@@ -4,6 +4,37 @@
 
     extract($_POST);
 
+    function validateTurnstile($token, $secret, $remoteip = null) {
+        $url = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
+
+        $data = [
+            'secret' => $secret,
+            'response' => $token
+        ];
+
+        if ($remoteip) {
+            $data['remoteip'] = $remoteip;
+        }
+
+        $options = [
+            'http' => [
+                'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method' => 'POST',
+                'content' => http_build_query($data)
+            ]
+        ];
+
+        $context = stream_context_create($options);
+        $response = file_get_contents($url, false, $context);
+
+        if ($response === FALSE) {
+            return ['success' => false, 'error-codes' => ['internal-error']];
+        }
+
+        return json_decode($response, true);
+
+    }
+
     if ($admin) :
 
         $expire = time() + 60;
@@ -13,53 +44,20 @@
         $success = $_SESSION['megasubs_admin'];
 
     else :
+        $proceed_login = false;
 
-        $ip = $_SERVER['REMOTE_ADDR'];
-        $browser_agent = $_SERVER['HTTP_USER_AGENT'];
-        $ip_exeptions = explode(',', RECAPTCHA_IP_EXCEPTIONS);
-        $recaptcha_exceptions = array_filter($ip_exeptions, function ($exempted) use ($ip) {
-            return strpos($ip, trim($exempted)) !== false; 
-        });
-
-        if(ENABLE_RECAPTCHA && empty($recaptcha_exceptions)){
+        if(ENABLE_CAPTCHA){
+            $secret_key = CF_TURNSTILE_SECRET_KEY;
+            $token = $_POST['cf-turnstile-response'] ? $_POST['cf-turnstile-response'] : '';
+            $remoteip = $_SERVER['HTTP_CF_CONNECTING_IP'] ? $_SERVER['HTTP_CF_CONNECTING_IP'] : ($_SERVER['HTTP_X_FORWARDED_FOR'] ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR']);
+           
+            $validation = validateTurnstile($token, $secret_key, $remoteip);
             
-            $grecaptcharesponse = $_POST['grecaptcharesponse'];
-            if ($grecaptcharesponse) {
+            if ($validation['success']) {
+                $proceed_login = true;
+            } 
 
-                $recaptchaResponse = $grecaptcharesponse;
-                $secretKey = RECAPTCHA_SECRET_KEY;
-                $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secretKey&response=$recaptchaResponse");
-                $responseKeys = json_decode($response, true);
-                
-                if($responseKeys['success'])
-                    $proceed_login = $responseKeys["success"];
-                else{
-                    
-                    if(isset($responseKeys['error-codes'])){
-                        // TODO: HANDLE QOUTA LIMIT
-                        // TEMPORARY EXCEPTIONS: IF QOUTA LIMIT, PROCEED LOGIN
-                        $error_codes = $responseKeys['error-codes'];
-                        $qouta = 'Over Enterprise free quota.';
-                        $qouta_error = array_filter($error_codes, function ($error) use ($qouta) {
-
-                            return strpos($error, trim($qouta)) !== false; 
-                        });
-
-                        if(!empty($qouta_error))
-                            $proceed_login = true;
-
-                    }else{
-                        $proceed_login = $responseKeys["success"];
-                    }
-                    
-                }
-        
-            } else {
-                $proceed_login = false;
-                $success = 3;
-            }
-        }
-        else{
+        }else{
             $proceed_login = true;
         }
 

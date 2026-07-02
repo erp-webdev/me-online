@@ -1,81 +1,66 @@
 	<?php 
     
         include(TEMP."/header.php"); 
-        $ip = $_SERVER['REMOTE_ADDR'];
-        $ip_exeptions = explode(',', RECAPTCHA_IP_EXCEPTIONS);
-        $recaptcha_exceptions = array_filter($ip_exeptions, function ($exempted) use ($ip) {
-            return strpos($ip, trim($exempted)) !== false; 
-        });
-
     ?>
+    <link rel="preconnect" href="https://challenges.cloudflare.com" />
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?compat=recaptcha" async defer ></script>
 
-    <!-- BODY -->
+    <div id="floatdiv" class="floatdiv invisible">
+        <div id="fdbname" class="fview invisible">
+            <div id="noti_title" class="noti_title robotobold cattext dbluetext">Choose Company</div>
+            <div id="noti_data">
+                <br>
+                <select id="txtlogdbname" name="txtlogdbname" class="txtbox">
+                </select>
+                <button id="btnlogdbname" name="btnlogdbname" value="1" class="btn">Submit</button>
+                <button id="btnlogdbcancel" name="btnlogdbcancel" value="1" class="redbtn">Cancel</button>
+            </div>
+        </div>
+    </div>
 
-                    <div id="floatdiv" class="floatdiv invisible">
-                        <!-- VIEW NOTIFICATION - BEGIN -->
-                        <div id="fdbname" class="fview invisible">
-                            <div id="noti_title" class="noti_title robotobold cattext dbluetext">Choose Company</div>
-                            <div id="noti_data">
-                                <br>
-                                <select id="txtlogdbname" name="txtlogdbname" class="txtbox">
-                                </select>
-                                <button id="btnlogdbname" name="btnlogdbname" value="1" class="btn">Submit</button>
-                                <button id="btnlogdbcancel" name="btnlogdbcancel" value="1" class="redbtn">Cancel</button>
-                            </div>
-                        </div>
-                        <!-- VIEW NOTIFICATION - END -->
-                    </div>
-
-                    <div id="mainsplashlog" class="mainsplashlog lefttalign">
-                        <div id="ltitle" class="lowerlist robotobold cattext whitetext centertalign"><?php echo WELCOME; ?></div>
-                        <div class="whitetext">The online <?php echo $profile_nadd; ?> self-service employees' portal for <?php echo COMPNAME; ?> employees. It is your electronic ingress for timekeeping application such as leave, OBT, etc. Manage your DTR and payslips.</div>
-                        <table class="margintop15 centertalign vsmalltext" width="100%" border="0" cellpadding="0" cellspacing="0">
-                            <!--tr>
-                                <td><div class="curvebox centermargin">
-                                    <select name="company" id="company" class="txtbox width95">
-                                        <option value="2" selected>Global One</option>
-                                        <option value="3">Luxury Global Malls</option>
-                                    </select>
-                                </div></td>
-                            </tr-->
-                            <tr>
-                                <td><div class="curvebox centermargin"><input type="text" name="username" id="username" placeholder="Employee ID" class="txtbox width95" /></div></td>
-                            </tr>
-                            <tr>
-                                <td><div class="curvebox centermargin"><input type="password" name="password" id="password" placeholder="Password" class="txtbox width95" /></div></td>
-                            </tr>
-                            <?php if(ENABLE_RECAPTCHA && empty($recaptcha_exceptions)): ?>
-                            <tr>
-                                <td style="display: flex; justify-content: center;"><div class="g-recaptcha" data-sitekey="<?php echo RECAPTCHA_SITE_KEY; ?>"></div></td>
-                            </tr>
-                            <?php endif; ?>
-                            <tr>
-                                <td>
-                                    <input type="submit" name="btnlogin" id="btnlogin" value="LOGIN" class="bigbtn btnlogin" style="width: 50%;border-radius: 15px;"/>
-                                    
-                                    <?php 
-                                    /*<br><span class="lgraytext">or</span><br>
-                                    <br><a href="<?php echo htmlspecialchars(GOOGLE_LOGIN_URL); ?>" style="display: inline-flex;
-                                                    align-items: center;
-                                                    justify-content: center;
-                                                    background-color: #ffffff;
-                                                    border: 1px solid #dcdcdc;
-                                                    border-radius: 15px;
-                                                    padding: 10px 10px;
-                                                    font-size: 14px;
-                                                    cursor: pointer;
-                                                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                                                    width: 45%;">
-                                        <img style="margin-right: 10px;" width="20" height="20" src="<?php echo IMG_WEB; ?>/google-icon.png" alt="Google logo">
-                                        Sign in with Google
-                                    </a>*/
-                                    ?>
-                                    <br><br><a href="<?php echo WEB; ?>/forgot_password" class="lgraytext">Forgot password</a>
-                                    <br><span id="errortd" class="redtext"></span>  
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
+    <div id="mainsplashlog" class="mainsplashlog lefttalign">
+        <div id="ltitle" class="lowerlist robotobold cattext whitetext centertalign"><?php echo WELCOME; ?></div>
+        <div class="whitetext">The online <?php echo $profile_nadd; ?> self-service employees' portal for <?php echo COMPNAME; ?> employees. It is your electronic ingress for timekeeping application such as leave, OBT, etc. Manage your DTR and payslips.</div>
+        <table class="margintop15 centertalign vsmalltext" width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td><div class="curvebox centermargin"><input type="text" name="username" id="username" placeholder="Employee ID" class="txtbox width95" /></div></td>
+            </tr>
+            <tr>
+                <td><div class="curvebox centermargin"><input type="password" name="password" id="password" placeholder="Password" class="txtbox width95" /></div></td>
+            </tr>
+            <?php if(ENABLE_CAPTCHA): ?>
+            <tr>
+                <td style="display: flex; justify-content: center;">
+                    <div class="cf-turnstile" data-sitekey="<?php echo CF_TURNSTILE_SITE_KEY; ?>" data-theme="light"></div>
+                </td>
+            </tr>
+            <?php endif; ?>
+            <tr>
+                <td>
+                    <input type="submit" name="btnlogin" id="btnlogin" value="LOGIN" class="bigbtn btnlogin" style="width: 50%;border-radius: 15px;"/>
                     
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+                    <?php 
+                    /*<br><span class="lgraytext">or</span><br>
+                    <br><a href="<?php echo htmlspecialchars(GOOGLE_LOGIN_URL); ?>" style="display: inline-flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    background-color: #ffffff;
+                                    border: 1px solid #dcdcdc;
+                                    border-radius: 15px;
+                                    padding: 10px 10px;
+                                    font-size: 14px;
+                                    cursor: pointer;
+                                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                                    width: 45%;">
+                        <img style="margin-right: 10px;" width="20" height="20" src="<?php echo IMG_WEB; ?>/google-icon.png" alt="Google logo">
+                        Sign in with Google
+                    </a>*/
+                    ?>
+                    <br><br><a href="<?php echo WEB; ?>/forgot_password" class="lgraytext">Forgot password</a>
+                    <br><span id="errortd" class="redtext"></span>  
+                </td>
+            </tr>
+        </table>
+    </div>
+
     <?php include(TEMP."/footer.php"); ?>
