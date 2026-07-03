@@ -2,7 +2,7 @@
     
         include(TEMP."/header.php"); 
         $ip = $_SERVER['REMOTE_ADDR'];
-        $ip_exeptions = explode(',', RECAPTCHA_IP_EXCEPTIONS);
+        $ip_exeptions = $hcaptcha_ip_whitelist;
         $for_hcaptcha = false;
         if(in_array($ip, $ip_exeptions)){
             $for_hcaptcha = true;
@@ -31,7 +31,7 @@
     </div>
 
     <div id="mainsplashlog" class="mainsplashlog lefttalign">
-        <div id="ltitle" class="lowerlist robotobold cattext whitetext centertalign"><?php echo WELCOME; ?></div>
+        <div id="ltitle" class="lowerlist robotobold cattext whitetext centertalign"><?php echo WELCOME; ?> </div>
         <div class="whitetext">The online <?php echo $profile_nadd; ?> self-service employees' portal for <?php echo COMPNAME; ?> employees. It is your electronic ingress for timekeeping application such as leave, OBT, etc. Manage your DTR and payslips.</div>
         <table class="margintop15 centertalign vsmalltext" width="100%" border="0" cellpadding="0" cellspacing="0">
             <tr>
