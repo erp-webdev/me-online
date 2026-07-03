@@ -79,7 +79,6 @@
 
         if(ENABLE_CAPTCHA){
             $ip = $_SERVER['REMOTE_ADDR'];
-            $ip = '218.66.169.201';
             $ip_exeptions = explode(',', RECAPTCHA_IP_EXCEPTIONS);
             $for_hcaptcha = false;
             if(in_array($ip, $ip_exeptions)){
