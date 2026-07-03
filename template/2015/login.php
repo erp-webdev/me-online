@@ -1,9 +1,22 @@
 	<?php 
     
         include(TEMP."/header.php"); 
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $ip = '218.66.169.201';
+        $ip_exeptions = explode(',', RECAPTCHA_IP_EXCEPTIONS);
+        $for_hcaptcha = false;
+        if(in_array($ip, $ip_exeptions)){
+            $for_hcaptcha = true;
+        }
+
     ?>
-    <link rel="preconnect" href="https://challenges.cloudflare.com" />
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?compat=recaptcha" async defer ></script>
+    <?php if($for_hcaptcha): ?>
+        <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+    <?php else: ?>
+        <link rel="preconnect" href="https://challenges.cloudflare.com" />
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer ></script>
+    <?php endif; ?>
+    
 
     <div id="floatdiv" class="floatdiv invisible">
         <div id="fdbname" class="fview invisible">
@@ -31,7 +44,16 @@
             <?php if(ENABLE_CAPTCHA): ?>
             <tr>
                 <td style="display: flex; justify-content: center;">
-                    <div class="cf-turnstile" data-sitekey="<?php echo CF_TURNSTILE_SITE_KEY; ?>" data-theme="light"></div>
+                    <?php if($for_hcaptcha): ?>
+                        <div class="h-captcha" data-sitekey="<?php echo HCAPTCHA_SITE_KEY; ?>" data-callback="onCaptchaCompleted"></div>
+                    <?php else: ?>  
+                        <div class="cf-turnstile" data-sitekey="<?php echo CF_TURNSTILE_SITE_KEY; ?>" data-theme="light"></div>
+                    <?php endif; ?>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="hidden" name="captcha_response" id="captcha_response" value="" />
                 </td>
             </tr>
             <?php endif; ?>

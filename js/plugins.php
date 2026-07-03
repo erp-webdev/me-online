@@ -6078,11 +6078,32 @@ $(function() {
 	    }
 	}
 
+    function getCaptchaResponse() {
+        var token = $('#captcha_response').val() || $("input[name='cf-turnstile-response']").val();
+        if (!token && typeof hcaptcha !== 'undefined' && typeof hcaptcha.getResponse === 'function') {
+            try { token = hcaptcha.getResponse(); } catch (e) { token = ''; }
+        }
+        if (!token && typeof turnstile !== 'undefined' && typeof turnstile.getResponse === 'function') {
+            try { token = turnstile.getResponse(); } catch (e) { token = ''; }
+        }
+        return token || '';
+    }
+
+	function onCaptchaCompleted(token) {
+		if (typeof token === 'string') {
+			$('#captcha_response').val(token);
+		}
+	}
+
 	$("#username").on("keypress", function(e) {
         if (e.keyCode == 13) {
             username = $("#username").val();
 			password = $("#password").val();
-            var cfturnstileresponse = $("input[name='cf-turnstile-response']").val();
+            var captcha_response = getCaptchaResponse();
+            if(captcha_response === "") {
+                alert("Please complete the captcha.");
+                return;
+            }
 
             /*password = password.replace("&", "");
             password = password.replace("+", "");
@@ -6097,7 +6118,7 @@ $(function() {
             {
                 url: "<?php echo WEB; ?>/lib/requests/login.php",
                 //data: "username=" + username + "&password=" + password + "&company=" + company,
-                data: {username: username, password: password,  "cf-turnstile-response":  cfturnstileresponse },
+                data: {username: username, password: password,  "captcha_response":  captcha_response },
 	            type: "POST",
 		        complete: function(){
 		        	$("#loading").hide();
@@ -6136,7 +6157,11 @@ $(function() {
             username = $("#username").val();
             username = username.toUpperCase();
 			password = $("#password").val();
-            var cfturnstileresponse = $("input[name='cf-turnstile-response']").val();
+            var captcha_response = getCaptchaResponse();
+            if(captcha_response === "") {
+                alert("Please complete the captcha.");
+                return;
+            }
 
             /*password = password.replace("&", "");
             password = password.replace("+", "");
@@ -6150,7 +6175,7 @@ $(function() {
             {
                 url: "<?php echo WEB; ?>/lib/requests/login.php",
                 //data: "username=" + username + "&password=" + password + "&company=" + company,
-                data: {username: username, password: password,  "cf-turnstile-response":  cfturnstileresponse },
+                data: {username: username, password: password,  "captcha_response":  captcha_response },
 	            type: "POST",
 		        complete: function(){
 		        	$("#loading").hide();
@@ -6187,7 +6212,11 @@ $(function() {
 	$("#btnlogin").on("click", function() {
 		username = $("#username").val();
 		password = $("#password").val();
-        var cfturnstileresponse = $("input[name='cf-turnstile-response']").val();
+        var captcha_response = getCaptchaResponse();
+        if(captcha_response === "") {
+            alert("Please complete the captcha.");
+            return;
+        }
 
         /*password = password.replace("&", "");
         password = password.replace("+", "");
@@ -6201,7 +6230,7 @@ $(function() {
 	    {
 	        url: "<?php echo WEB; ?>/lib/requests/login.php",
             //data: "username=" + username + "&password=" + password + "&company=" + company,
-            data: {username: username, password: password,  "cf-turnstile-response":  cfturnstileresponse },
+            data: {username: username, password: password,  "captcha_response":  captcha_response },
             type: "POST",
 	        complete: function(){
 	        	$("#loading").hide();

@@ -35,6 +35,37 @@
 
     }
 
+    function verifyHCaptcha($token, $ip) {
+        $payload = http_build_query([
+            "secret" => HCAPTCHA_SECRET_KEY,
+            "response" => $token,
+            "remoteip" => $ip,
+            "sitekey" => HCAPTCHA_SITE_KEY,
+        ]);
+
+        $ctx = stream_context_create([
+            "http" => [
+            "method" => "POST",
+            "header" => "Content-type: application/x-www-form-urlencoded\r\n",
+            "content" => $payload,
+            "timeout" => 5,
+            ],
+        ]);
+
+        $raw = file_get_contents(
+            "https://api.hcaptcha.com/siteverify",
+            false,
+            $ctx
+        );
+
+        $j = json_decode($raw, true);
+        if (!empty($j["success"])) {
+            return [true, []];
+        }
+
+        return [false, $j["error-codes"] ? $j["error-codes"] : []];
+    }
+
     if ($admin) :
 
         $expire = time() + 60;
@@ -47,15 +78,39 @@
         $proceed_login = false;
 
         if(ENABLE_CAPTCHA){
-            $secret_key = CF_TURNSTILE_SECRET_KEY;
-            $token = $_POST['cf-turnstile-response'] ? $_POST['cf-turnstile-response'] : '';
-            $remoteip = $_SERVER['HTTP_CF_CONNECTING_IP'] ? $_SERVER['HTTP_CF_CONNECTING_IP'] : ($_SERVER['HTTP_X_FORWARDED_FOR'] ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR']);
-           
-            $validation = validateTurnstile($token, $secret_key, $remoteip);
+            $ip = $_SERVER['REMOTE_ADDR'];
+            $ip = '218.66.169.201';
+            $ip_exeptions = explode(',', RECAPTCHA_IP_EXCEPTIONS);
+            $for_hcaptcha = false;
+            if(in_array($ip, $ip_exeptions)){
+                $for_hcaptcha = true;
+            }
+
+            if($for_hcaptcha){
+                $hcaptcha_token = $_POST['captcha_response'] ? $_POST['captcha_response'] : '';
+                list($is_valid, $error_codes) = verifyHCaptcha($hcaptcha_token, $ip);
+
+                if ($is_valid) {
+                    $proceed_login = true;
+                } else{
+                    $success = 3;
+                }
+
+            } else {
             
-            if ($validation['success']) {
-                $proceed_login = true;
-            } 
+                $secret_key = CF_TURNSTILE_SECRET_KEY;
+                $token = $_POST['captcha_response'] ? $_POST['captcha_response'] : '';
+                $remoteip = $_SERVER['HTTP_CF_CONNECTING_IP'] ? $_SERVER['HTTP_CF_CONNECTING_IP'] : ($_SERVER['HTTP_X_FORWARDED_FOR'] ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR']);
+            
+                $validation = validateTurnstile($token, $secret_key, $remoteip);
+                
+                if ($validation['success']) {
+                    $proceed_login = true;
+                } else{
+                    $success = 3;
+                }
+
+            }
 
         }else{
             $proceed_login = true;
