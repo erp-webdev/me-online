@@ -1,17 +1,17 @@
 // We can import `harper.js` using native ECMAScript syntax.
 import { WorkerLinter, BinaryModule, Dialect, binaryInlinedUrl } from './harper.js/dist/harper.js';
 
+const sharedBinary = new BinaryModule(binaryInlinedUrl);
+const sharedLinter = new WorkerLinter({ binary: sharedBinary, dialect: Dialect.American });
+
 class SpellChecker {
-    constructor(textarea) {
+    constructor(textarea, linter) {
         this.textarea = textarea;
-        // The linter needs to be initialized with the wasm binary and a dialect.
-        const binary = new BinaryModule(binaryInlinedUrl);
-        this.linter = new WorkerLinter({ binary, dialect: Dialect.American });
+        this.linter = linter; // Use the shared instance!
         this.allLints = [];
 
-        // Shared state for ignored lints across all instances
         this.IGNORED_LINTS_STORAGE_KEY = 'harperjs_ignored_lints';
-        this.IGNORE_DURATION_MS = 24 * 60 * 60 * 1000; // 24 hours
+        this.IGNORE_DURATION_MS = 24 * 60 * 60 * 1000;
         this.ignoredLints = this.loadIgnoredLints();
         this.CUSTOM_DICTIONARY_KEY = 'harperjs_custom_dictionary';
         this.customDictionary = this.loadCustomDictionaryWords();
@@ -308,16 +308,16 @@ class SpellChecker {
  * @param {HTMLTextAreaElement} textarea
  */
 const initSpellChecker = (textarea) => {
-    // Prevent double-initialization
     if (textarea.dataset.spellcheckerInitialized) return;
     textarea.dataset.spellcheckerInitialized = 'true';
-    new SpellChecker(textarea);
+    
+    // 3. Pass the shared linter into the new instance
+    new SpellChecker(textarea, sharedLinter);
 };
 
 export function initializeSpellingChecker() { 
     document.querySelectorAll('textarea.spellcheck').forEach(initSpellChecker);
 
-    // Observe the body for new textareas being added dynamically
     const observer = new MutationObserver((mutationsList) => {
         for (const mutation of mutationsList) {
             if (mutation.type === 'childList') {
