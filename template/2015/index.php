@@ -1,6 +1,6 @@
 <?php include(TEMP . "/header.php"); ?>
 <?php include(TEMP . "/ape_modal.php"); ?>
-<?php if(date('Y-m-d') <= '2025-04-13'): ?>
+<?php if (date('Y-m-d') <= '2025-04-13'): ?>
     <?php include(TEMP . "/holy-week-2025.php"); ?>
 <?php endif; ?>
 
@@ -12,20 +12,25 @@
         padding: 0;
         cursor: pointer;
         outline: none;
-        transition: transform 0.15s cubic-bezier(.4,2,.6,1);
+        transition: transform 0.15s cubic-bezier(.4, 2, .6, 1);
     }
+
     .icon-btn:active {
         transform: scale(0.93);
     }
-    .icon-btn:hover, .icon-btn:focus {
+
+    .icon-btn:hover,
+    .icon-btn:focus {
         transform: scale(1.07);
-        box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.10);
     }
+
     .icon-btn img {
         width: 200px;
         transition: filter 0.2s;
-        filter: drop-shadow(0 2px 8px rgba(0,0,0,0.08));
+        filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.08));
     }
+
     .icon-btn:focus img {
         filter: brightness(1.1);
     }
@@ -96,37 +101,37 @@ if ($clearance)
                         break;
                 }
 
-                if($current_time < $show_button_date){
+                if ($current_time < $show_button_date) {
                     $display = false;
                 }
 
-                if ($current_time >= strtotime($deadline . ' 00:00:00')){
+                if ($current_time >= strtotime($deadline . ' 00:00:00')) {
                     $display = false;
                 }
 
                 ?>
 
                 <?php if ($display): ?>
-                <div id="mainnotification" class="centertalign whitetext marginbottom30" style="border: 2px dashed orange; padding: 5px ">
-                    <a class="icon-btn" href="<?php echo WEB; ?>/itr" style="margin: 5px 0 5px 0">
-                        <img src="<?php echo WEB; ?>/images/bir_2316_itr_icon.png" alt="BIR 2316 ITR"/>
-                    </a>
-                    <?php echo $deadline_text; ?>
-                </div>
+                    <div id="mainnotification" class="centertalign whitetext marginbottom30" style="border: 2px dashed orange; padding: 5px ">
+                        <a class="icon-btn" href="<?php echo WEB; ?>/itr" style="margin: 5px 0 5px 0">
+                            <img src="<?php echo WEB; ?>/images/bir_2316_itr_icon.png" alt="BIR 2316 ITR" />
+                        </a>
+                        <?php echo $deadline_text; ?>
+                    </div>
                 <?php endif; ?>
             <?php endif; ?>
 
             <?php if (!in_array($profile_dbname, ['ASIAAPMI',  'GLOBAL_HOTEL', 'NEWTOWN'])): ?>
                 <?php
-                    $viewingDate = '2025-04-25';
-                    $displayAPE = (date('Y-m-d') < $viewingDate);
+                $viewingDate = '2025-04-25';
+                $displayAPE = (date('Y-m-d') < $viewingDate);
                 ?>
                 <?php if (!$displayAPE): ?>
-                <div id="mainnotification" class="centertalign whitetext marginbottom5" style="">
-                    <button id="btnAPE" class="icon-btn">
-                        <img src="<?php echo WEB; ?>/images/ape_result_icon.png" alt="APE Result"/>
-                    </button>
-                </div>
+                    <div id="mainnotification" class="centertalign whitetext marginbottom5" style="">
+                        <button id="btnAPE" class="icon-btn">
+                            <img src="<?php echo WEB; ?>/images/ape_result_icon.png" alt="APE Result" />
+                        </button>
+                    </div>
                 <?php endif; ?>
             <?php endif; ?>
 
@@ -145,74 +150,91 @@ You have <a href="<?php echo WEB; ?>/memo" class="bold whitetext"><?php echo $un
 */ ?>
 
             <?php endif; ?>
-            <div id="mainnotification" class="centertalign whitetext marginbottom5" >
+            <div id="mainnotification" class="centertalign whitetext marginbottom5">
                 <?php if (in_array($profile_dbname, ['GL', 'MCTI'])): ?>
-                    <button class="icon-btn" 
-                        onclick="openfile('<?php echo WEB; ?>/lib/requests/download.php?type=a&file=GLEmployeeHandbook.pdf', 'Employee`s Handbook')" 
+                    <button class="icon-btn"
+                        onclick="openfile('<?php echo WEB; ?>/lib/requests/download.php?type=a&file=GLEmployeeHandbook.pdf', 'Employee`s Handbook')"
                         aria-label="Download Employee`s Handbook">
-                        <img src="<?php echo WEB; ?>/images/gl_handbook_icon.png" alt="GL: Employee`s Handbook"/>
+                        <img src="<?php echo WEB; ?>/images/gl_handbook_icon.png" alt="GL: Employee`s Handbook" />
                     </button>
                 <?php elseif (in_array($profile_dbname, ['ASIAAPMI'])): ?>
-                    <button class="icon-btn" 
-                        onclick="openfile('<?php echo WEB; ?>/lib/requests/download.php?type=a&file=ASIAAPMIHANDBOOK.pdf', 'Employee`s Handbook')" 
+                    <button class="icon-btn"
+                        onclick="openfile('<?php echo WEB; ?>/lib/requests/download.php?type=a&file=ASIAAPMIHANDBOOK.pdf', 'Employee`s Handbook')"
                         aria-label="Download Employee`s Handbook">
-                        <img src="<?php echo WEB; ?>/images/asiaapmi_handbook_icon.png" alt="ASIAAPMI: Employee`s Handbook"/>
+                        <img src="<?php echo WEB; ?>/images/asiaapmi_handbook_icon.png" alt="ASIAAPMI: Employee`s Handbook" />
                     </button>
                 <?php else: ?>
                     <?php if ($profile_dbname != 'ECINEMA' && $profile_dbname != 'EPARKVIEW' && $profile_dbname != 'NEWTOWN' && $profile_dbname != 'LAFUERZA'): ?>
-                        <button class="icon-btn" 
-                            onclick="openfile('<?php echo WEB; ?>/lib/requests/download.php?type=a&file=EmployeeHandbook.pdf', 'Employee`s Handbook')" 
+                        <button class="icon-btn"
+                            onclick="openfile('<?php echo WEB; ?>/lib/requests/download.php?type=a&file=EmployeeHandbook.pdf', 'Employee`s Handbook')"
                             aria-label="Download Employee`s Handbook">
-                            <img src="<?php echo WEB; ?>/images/mw_handbook.png" alt="MW: Employee`s Handbook"/>
+                            <img src="<?php echo WEB; ?>/images/mw_handbook.png" alt="MW: Employee`s Handbook" />
                         </button>
                     <?php endif; ?>
                 <?php endif; ?>
-            </div><?php // end of handbook ?>
+            </div><?php // end of handbook 
+                    ?>
 
             <div id="mainnotification" class="centertalign whitetext marginbottom5" style="">
                 <?php if (in_array($profile_dbname, ['GL', 'MCTI'])): ?>
-                   
+
                 <?php elseif (in_array($profile_dbname, ['ASIAAPMI'])): ?>
-                    <button class="icon-btn" 
-                        onclick="openfile('<?php echo WEB; ?>/lib/requests/download.php?type=a&file=ASIAAPMI_CODE_OF_CONDUCT.pdf', 'Code of Conduct')" 
+                    <button class="icon-btn"
+                        onclick="openfile('<?php echo WEB; ?>/lib/requests/download.php?type=a&file=ASIAAPMI_CODE_OF_CONDUCT.pdf', 'Code of Conduct')"
                         aria-label="Download Code of Conduct">
-                        <img src="<?php echo WEB; ?>/images/asiaapmi_code_of_conduct_icon.png" alt="ASIAAPMI: Code of Conduct"/>
+                        <img src="<?php echo WEB; ?>/images/asiaapmi_code_of_conduct_icon.png" alt="ASIAAPMI: Code of Conduct" />
                     </button>
                 <?php else: ?>
-                   
+
                 <?php endif; ?>
-            </div><?php // end of code of conduct ?>
+            </div><?php // end of code of conduct 
+                    ?>
+            <div id="mainnotification" class="centertalign whitetext marginbottom5" style="">
+                <?php if (in_array($profile_dbname, ['GL', 'MCTI'])): ?>
+
+                <?php elseif (in_array($profile_dbname, ['ASIAAPMI'])): ?>
+                    <button class="icon-btn"
+                        onclick="location.href = 'https://docs.google.com/forms/d/e/1FAIpQLSfKq-ihIxJJ7BdVfH1IHYneKZvYBf9PaGWsaDtx_vQiWSnxWQ/viewform'"
+                        aria-label="Contact IT Helpdesk">
+                        <img src="<?php echo WEB; ?>/images/asiaapmi_it_helpdesk.png" alt="ASIAAPMI: IT Helpdesk" />
+                    </button>
+                <?php else: ?>
+
+                <?php endif; ?>
+            </div>
 
             <div id="mainnotification" class="centertalign whitetext marginbottom5" style="">
                 <?php if (in_array($profile_dbname, ['GL', 'MCTI'])): ?>
-                    <button class="icon-btn" 
-                        onclick="openfile('<?php echo WEB; ?>/lib/requests/download.php?type=a&file=GLDPA.pdf', 'Data Privacy Act Manual')" 
+                    <button class="icon-btn"
+                        onclick="openfile('<?php echo WEB; ?>/lib/requests/download.php?type=a&file=GLDPA.pdf', 'Data Privacy Act Manual')"
                         aria-label="Download Data Privacy Act Manual">
-                        <img src="<?php echo WEB; ?>/images/gl_dpa_icon.png" alt="Data Privacy Act Manual"/>
+                        <img src="<?php echo WEB; ?>/images/gl_dpa_icon.png" alt="Data Privacy Act Manual" />
                     </button>
                 <?php else: ?>
                     <?php if ($profile_dbname != 'ECINEMA' && $profile_dbname != 'EPARKVIEW' && $profile_dbname != 'NEWTOWN' && $profile_dbname != 'LAFUERZA'): ?>
-                    <button class="icon-btn" 
-                        onclick="openfile('<?php echo WEB; ?>/lib/requests/download.php?type=a&file=MWDPA.pdf', 'Data Privacy Act Manual')" 
-                        aria-label="Download Data Privacy Act Manual">
-                        <img src="<?php echo WEB; ?>/images/mw_dpa_icon.png" alt="Data Privacy Act Manual"/>
-                    </button>
+                        <button class="icon-btn"
+                            onclick="openfile('<?php echo WEB; ?>/lib/requests/download.php?type=a&file=MWDPA.pdf', 'Data Privacy Act Manual')"
+                            aria-label="Download Data Privacy Act Manual">
+                            <img src="<?php echo WEB; ?>/images/mw_dpa_icon.png" alt="Data Privacy Act Manual" />
+                        </button>
                     <?php endif; ?>
                 <?php endif; ?>
-            </div> <?php // end of dpa ?>
+            </div> <?php // end of dpa 
+                    ?>
 
-             <div id="mainnotification" class="centertalign whitetext marginbottom5" style="">
-                <button class="icon-btn" 
-                    target="_blank" 
-                    onclick="create_log('corporate_governance')" 
+            <div id="mainnotification" class="centertalign whitetext marginbottom5" style="">
+                <button class="icon-btn"
+                    target="_blank"
+                    onclick="create_log('corporate_governance')"
                     aria-label="View Corporate Governance">
-                    <img src="<?php echo WEB; ?>/images/mw_corporate_governance_icon.png" alt="View Corporate Governance"/>
+                    <img src="<?php echo WEB; ?>/images/mw_corporate_governance_icon.png" alt="View Corporate Governance" />
                 </button>
-            </div> <?php // end of corp gov ?>
+            </div> <?php // end of corp gov 
+                    ?>
 
             <div id="mainnotification" class="centertalign whitetext marginbottom5" style="">
                 <button target="_blank" class="icon-btn btnviewads-quality-policy">
-                    <img src="<?php echo WEB; ?>/images/mw_quality_policy.png" alt="MW Quality Policy"/>
+                    <img src="<?php echo WEB; ?>/images/mw_quality_policy.png" alt="MW Quality Policy" />
                 </button>
             </div>
 
@@ -221,7 +243,7 @@ You have <a href="<?php echo WEB; ?>/memo" class="bold whitetext"><?php echo $un
                     <a href="https://docs.google.com/forms/d/e/1FAIpQLSeZ3HHajc62Dvas0CL7O5mN1QGPX8K1CWmMZOybhjhYFowWHw/viewform?authuser=3"
                         target="_blank"
                         class="icon-btn">
-                        <img src="<?php echo WEB; ?>/images/traf_icon.png" alt="Training Request & Accreditation Form"/>
+                        <img src="<?php echo WEB; ?>/images/traf_icon.png" alt="Training Request & Accreditation Form" />
                     </a>
                 </div>
             <?php endif; ?>
@@ -231,7 +253,8 @@ You have <a href="<?php echo WEB; ?>/memo" class="bold whitetext"><?php echo $un
                     <img src="<?php echo WEB; ?>/images/mw_club_access_icon.png" />
                 </a>
             </div>
-            <?php // end of club access ?>
+            <?php // end of club access 
+            ?>
 
         </div>
 
