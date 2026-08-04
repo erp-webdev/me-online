@@ -183,6 +183,14 @@
                         endif;
                     endif;
 
+                    // VAWC Required attachment
+                    if ($_POST['leave_type'] == "L16") :
+                        if (!$_FILES['attachment1']['name']) :
+                            echo '{"success": false, "error": "Attachment is required for VAWC leave"}';
+                            exit();
+                        endif;
+                    endif;
+
                     $errorfile = 0;
                     for($i=1; $i<=5; $i++) :
 
