@@ -1,0 +1,28 @@
+stages:
+  - deploy
+
+deploy_to_production:
+  stage: deploy
+  image: alpine:latest
+  environment:
+    name: production
+  before_script:
+    # Install standard SSH and file transfer tools in the container
+    - apk add --no-cache openssh-client rsync
+    # Start the SSH agent and load the private key from GitLab Variables
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY_PORTAL_PROD" | tr -d '\r' | ssh-add -
+    # Configure SSH to trust your production server's IP
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan $SERVER_IP_PROD_PORTAL >> ~/.ssh/known_hosts
+  script:
+    - echo "Preparing to transfer files..."
+    # Rsync syncs the repository files to your server.
+    - rsync -avz --exclude='.git' ./ $USER_PROD_PORTAL@$SERVER_IP_PROD_PORTAL:/var/webfiles/portal.megaworldcorp.com/me
+    # (Optional) Run commands on the server after transfer, like restarting a service
+    # - ssh $USER_PROD_PORTAL@$SERVER_IP_PROD_PORTAL "sudo systemctl restart my-web-app"
+    - echo "Deployment successfully completed!"
+  rules:
+    # This ensures the pipeline ONLY runs when code lands on the main branch
+    - if: '$CI_COMMIT_BRANCH == "main"'
