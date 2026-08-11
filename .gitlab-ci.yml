@@ -5,7 +5,7 @@ deploy_to_production:
   stage: deploy
   image: alpine:latest
   environment:
-    name: production
+    name: production-portal
   before_script:
     # Install standard SSH and file transfer tools in the container
     - apk add --no-cache openssh-client rsync
