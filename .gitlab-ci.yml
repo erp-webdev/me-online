@@ -1,6 +1,10 @@
 stages:
   - deploy
 
+default:
+  tags:
+    - production-portal
+
 deploy_to_production:
   stage: deploy
   image: alpine:latest
