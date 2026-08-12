@@ -15,7 +15,7 @@ deploy_to_production:
     - apk add --no-cache openssh-client rsync
     # Start the SSH agent and load the private key from GitLab Variables
     - eval $(ssh-agent -s)
-    - echo "$SSH_PRIVATE_KEY_PORTAL_PROD" | base64 -d | ssh-add -
+    - echo "$SSH_PRIVATE_KEY_PORTAL_PROD" | tr -d '\r' | ssh-add -
     # Configure SSH to trust your production server's IP
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
