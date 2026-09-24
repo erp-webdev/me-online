@@ -834,6 +834,44 @@
             }
         });
 
+        $(".btnrlcancel").on("click", function() {
+
+            reqnbr = $(this).attr("attribute");
+            dtrdate = $(this).attr("attribute2");
+            seqid = $(this).attr("attribute3");
+            status = 0;
+
+            var r = confirm("This action is cannot be UNDONE. Are you sure you want to cancel this dated Reliever?");
+            if (r == true)
+            {
+                $.ajax(
+                {
+                    url: "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=relievercancel",
+                    data: "seqid=" + seqid,
+                    type: "POST",
+                    complete: function(){
+                        $("#loading").hide();
+                    },
+                    success: function(data) {
+
+                        $.ajax(
+                        {
+                            url: "<?php echo WEB; ?>/lib/requests/notification_request.php?sec=relievertable",
+                            data: "reqnbr=" + reqnbr,
+                            type: "POST",
+                            complete: function(){
+                                $("#loading").hide();
+                            },
+                            success: function(data) {
+                                $(".divrldata").html(data);
+                            }
+                        })
+
+                    }
+                })
+            }
+        });
+
         $(".btnmdcancel").on("click", function() {
 
             reqnbr = $(this).attr("attribute");
@@ -1009,6 +1047,9 @@
             else if (doctype == 'WC') {
                     title = "WFH Clearance Application #";
             }
+            else if (doctype == 'RL') {
+                    title = "Reliever Application #";
+            }
 
             $("#noti_title").html(title + ' ' + refnum);
             $(".floatdiv").removeClass("invisible");
@@ -1071,6 +1112,9 @@
             }
             else if (doctype == 'WC') {
                 title = "WFH Clearance #";
+            }
+            else if (doctype == 'RL') {
+                title = "Reliever #";
             }
 
             $("#pend_title").html(title + ' ' + refnum);
@@ -1173,6 +1217,29 @@
             }
 
             echo $obcancel_request;
+
+        break;
+
+        case 'relievercancel':
+            $relieverpost['SEQID'] = $_POST['seqid'];
+            $relievercancel_request = $mainsql->reliever_action($relieverpost, 'relieveritemcancel');
+
+            if($relievercancel_request){
+                //AUDIT TRAIL
+                $post['EMPID'] = $profile_id;
+                $post['TASKS'] = "CANCELLED RELIEVER ITEM";
+                $audit_data = [
+                                'EmpID' => $profile_id,
+                                'DBName' => $profile_dbname,
+                                'RefNo'=> $_POST['reqnbr'],
+                                'DTRDate' => $_POST['dtrdate'],
+                            ];
+                $post['DATA'] = json_encode($audit_data);
+                $post['DATE'] = date("m/d/Y H:i:s.000");
+                $log = $logsql->log_action($post, 'add');
+            }
+
+            echo $relievercancel_request;
 
         break;
 
@@ -1286,6 +1353,31 @@
                     <td><?php echo date("M j, Y g:ia", strtotime($value['ObTimeInDate'])); ?></td>
                     <td><?php echo date("M j, Y g:ia", strtotime($value['ObTimeOutDate'])); ?></td>
                     <td class="centertalign"><?php if ($appobt_count > 1) : ?><i class="btnobcancel fa fa-times redtext cursorpoint" attribute="<?php echo $refnum; ?>" attribute2="<?php echo date('Y-m-d', strtotime($value['ObTimeInDate'])); ?>" attribute3="<?php echo $value['SeqID']; ?>"></i><?php endif; ?></td>
+                </tr>
+                <?php endforeach; ?>
+            </table>
+            <?php
+        break;
+
+        case 'relievertable':
+            $refnum = $_POST['reqnbr'];
+            $appreliever_data = $tblsql->get_relieverdata($refnum);
+
+            ?>
+            <table class="tdatablk">
+                <tr>
+                    <th>Absent Shift Schedule</th>
+                    <th>In</th>
+                    <th>Out</th>
+                    <th>Cancel</th>
+                </tr>
+                <?php $appreliever_count = count($appreliever_data); ?>
+                <?php foreach($appreliever_data as $key => $value) : ?>
+                <tr>
+                    <td><?php echo $value['AbsentShift']; ?></td>
+                    <td><?php echo date("M j, Y", strtotime($value['TimeInDate'])); ?> <?php echo date("g:ia", strtotime($value['TimeIn'])); ?></td>
+                    <td><?php echo date("M j, Y", strtotime($value['TimeOutDate'])); ?> <?php echo date("g:ia", strtotime($value['TimeOut'])); ?></td>
+                    <td class="centertalign"><?php if ($appreliever_count > 1 && $notification_data[0]['IsCancellable'] == 'YES') : ?><i class="btnrlcancel fa fa-times redtext cursorpoint" attribute="<?php echo $refnum; ?>" attribute2="<?php echo date('Y-m-d', strtotime($value['TimeInDate'])); ?>" attribute3="<?php echo $value['SeqID']; ?>"></i><?php endif; ?></td>
                 </tr>
                 <?php endforeach; ?>
             </table>
@@ -1471,6 +1563,8 @@
                         $typestat = "CHANGE SCHEDULE APPLICATION from ";
                     elseif ($value['DocType'] == 'TS') :
                         $typestat = "SCHEDULE CHANGE APPLICATION from ";
+                    elseif ($value['DocType'] == 'RL') :
+                        $typestat = "RELIEVER APPLICATION from ";
                     endif;
 
                     //var_dump($value['Signatory06']);
@@ -2369,6 +2463,8 @@
                         $typestat = "SCHEDULE CHANGE APPLICATION from ";
 										elseif ($value['DocType'] == 'WH') :
                         $typestat = "WORK FROM HOME APPLICATION from ";
+                    elseif ($value['DocType'] == 'RL') :
+                        $typestat = "RELIEVER APPLICATION from ";
                     endif;
 
                     //var_dump($value['Signatory06']);
@@ -2838,6 +2934,7 @@
 				elseif ($value['DocType'] == 'SC') : $typestat = "CHANGE SCHEDULE APPLICATION from ";
                 elseif ($value['DocType'] == 'WH') : $typestat = "WORK FROM HOME from ";
                 elseif ($value['DocType'] == 'WC') : $typestat = "WFH CLEARANCE from ";
+                elseif ($value['DocType'] == 'RL') : $typestat = "RELIEVER from ";
                 endif;
 
                 $displaychk = 0;
@@ -3287,6 +3384,10 @@
                     $apppost['REASON'] = '';
 
                     $app_request = $mainsql->wfc_action($apppost, 'approve');
+            elseif ($doctype == 'RL') :
+                $reqtype = 12;
+                $reqdesc = "Reliever";
+                $app_request = $mainsql->reliever_action($apppost, 'approve');
             endif;
 
             if ($_POST['trans'] == 'CANCEL') :
@@ -7887,19 +7988,20 @@
             <table class="tdataform2 rightmargin margintop10 vsmalltext" width="100%" border="0" cellpadding="0" cellspacing="0">
 
             <?php
-            //var_dump($notification_data);
-            //if ($notification_data[0]['EmpID'] != $profile_idnum) :
-                ?>
+            $requested_by_label = "Requested by";
+            if ($doctype == 'RL') :
+                $requested_by_label = "Reliever Employee";
+            endif;
+            ?>
 
-                    <tr>
-                        <td width="25%"><b>Requested by</b></td>
-                        <td width="25%"><?php echo $requestor_data[0]['FName'].' '.$requestor_data[0]['LName'].' ('.$notification_data[0]['EmpID'].')'; ?>
-                            <input type="hidden" id="dbname" name="dbname" value="<?php echo $dbname ?>" />
-                        </td>
-                    </tr>
+            <tr>
+                <td width="25%"><b><?php echo $requested_by_label; ?></b></td>
+                <td width="25%"><?php echo $requestor_data[0]['FName'].' '.$requestor_data[0]['LName'].' ('.$notification_data[0]['EmpID'].')'; ?>
+                    <input type="hidden" id="dbname" name="dbname" value="<?php echo $dbname ?>" />
+                </td>
+            </tr>
 
-                <?php
-            //endif;
+            <?php
             if ($doctype == 'OT') :
                 $application_data = $tblsql->get_nrequest(1, $refnum);
 
@@ -8832,6 +8934,111 @@
                 $pdtrfrom = strtotime($application_data[0]['DtrDate']);
                 $pdtrto = strtotime($application_data[0]['DtrDate']);
 
+            elseif ($doctype == 'RL') :
+                $application_data = $tblsql->get_nrequest(12, $refnum);
+                $appreliever_data = $tblsql->get_relieverdata($refnum);
+
+                $chkexpire = $mainsql->check_appexpire_by_attpostdate($dbname, $application_data[0]['DateFrom'], $application_data[0]['DateTo']);
+
+                ?>
+                    <?php if ($attachment_data) : ?>
+                    <tr>
+                        <td width="25%"><b>Attachment/s</b></td>
+                        <td width="75%"><?php
+                            foreach ($attachment_data as $key => $value) :
+                                echo '<a href="'.($dbname == 'MARKETING' ? 'https://www.marketingsalesagents.com' : WEB).'/uploads/ob/'.$value['AttachFile'].'" target="_blank">'.$value['AttachFile'].'</a><br>';
+                            endforeach;
+                        ?>
+                        </td>
+                    </tr>
+                    <?php endif; ?>
+                    <tr>
+                        <td width="25%"><b>Status</b></td>
+                        <td width="75%"><?php
+                            if ($notification_data[0]['Approved'] == 2) :
+                                echo "<span class='redtext'>REJECTED</span>";
+                            elseif ($notification_data[0]['Approved'] == 1) :
+                                echo "<span class='greentext'>APPROVED</span>";
+                            elseif ($notification_data[0]['Approved'] == 3) :
+                                echo "<span class='redtext'>CANCELLED</span>";
+                            else :
+                                echo "FOR APPROVAL";
+                            endif;
+                            ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Date Applied</b></td>
+                        <td><?php echo date('F j, Y | g:ia', strtotime($application_data[0]['DateFiled'])); ?></td>
+                    </tr>
+                    <tr>
+                        <td><b>From</b></td>
+                        <td><?php echo date('F j, Y', strtotime($application_data[0]['DateFrom'])); ?></td>
+                    </tr>
+                    <tr>
+                        <td><b>To</b></td>
+                        <td><?php echo date('F j, Y', strtotime($application_data[0]['DateTo'])); ?></td>
+                    </tr>
+                    <tr>
+                        <td><b>Absent Employee</b></td>
+                        <td><?php echo $application_data[0]['AbsentEmployee'] . ' (' .$application_data[0]['AbsentEmpID'] . ')'; ?></td>
+                    </tr>
+                    <tr>
+                        <td><b>Reason</b></td>
+                        <td><?php echo stripslashes($application_data[0]['Reason']); ?></td>
+                    </tr>
+                    <tr>
+                        <td><b>Reliever Time Entry</b></td>
+                        <td>
+                            <div class="divrldata width100per notidatadiv">
+                            <table class="tdatablk">
+                                <tr>
+                                    <th>Absent Shift Schedule</th>
+                                    <th>In</th>
+                                    <th>Out</th>
+                                    <th>Cancel</th>
+                                </tr>
+                                <?php $appreliever_count = count($appreliever_data); ?>
+                                <?php foreach($appreliever_data as $key => $value) : ?>
+                                <tr>
+                                    <td><?php echo $value['AbsentShift']; ?></td>
+                                    <td><?php echo date("M j, Y", strtotime($value['TimeInDate'])); ?> <?php echo date("g:ia", strtotime($value['TimeIn'])); ?></td>
+                                    <td><?php echo date("M j, Y", strtotime($value['TimeOutDate'])); ?> <?php echo date("g:ia", strtotime($value['TimeOut'])); ?></td>
+                                    <td class="centertalign"><?php if ($appreliever_count > 1 && $notification_data[0]['IsCancellable'] == 'YES') : ?><i class="btnrlcancel fa fa-times redtext cursorpoint" attribute="<?php echo $refnum; ?>" attribute2="<?php echo date('Y-m-d', strtotime($value['TimeInDate'])); ?>" attribute3="<?php echo $value['SeqID']; ?>"></i><?php endif; ?></td>
+                                </tr>
+                                <?php endforeach; ?>
+                            </table>
+                            </div>
+                        </td>
+                    </tr>
+                        <tr>
+                        <td><b>Biometric Time Entry</b></td>
+                        <td>
+                            <div class="width100per notidatadiv">
+                            <table class="tdatablk">
+                                <tr>
+                                    <th>In</th>
+                                    <th>Out</th>
+                                </tr>
+                                <?php foreach($appreliever_data as $key => $value) : ?>
+                                <tr>
+                                    <td><?php if(!empty($value['BiometricDateTimeIn'])) echo date("M j, Y g:ia", strtotime($value['BiometricDateTimeIn'])); else echo 'No Biometric Entry'; ?></td>
+                                    <td><?php if(!empty($value['BiometricDateTimeOut'])) echo date("M j, Y g:ia", strtotime($value['BiometricDateTimeOut'])); else echo 'No Biometric Entry'; ?></td>
+                                </tr>
+                                <?php endforeach; ?>
+                            </table>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Days</b></td>
+                        <td><?php echo $application_data[0]['Days']; ?></td>
+                    </tr>
+
+                <?php
+                $pdtrfrom = strtotime($application_data[0]['DateFrom']);
+                $pdtrto = strtotime($application_data[0]['DateTo']);
+
             endif;
 
             ?>
@@ -9683,16 +9890,18 @@
             <table class="tdataform2 rightmargin margintop10 vsmalltext" width="100%" border="0" cellpadding="0" cellspacing="0">
 
             <?php
-            //var_dump($notification_data);
-            //if ($notification_data[0]['EmpID'] != $profile_idnum) :
-                ?>
+            $requested_by_label = "Requested by";
+            if ($doctype == 'RL') :
+                $requested_by_label = "Reliever Employee";
+            endif;
+            ?>
 
-                    <tr>
-                        <td width="25%"><b>Requested by</b></td>
-                        <td width="75%"><?php echo $requestor_data[0]['FName'].' '.$requestor_data[0]['LName'].' ('.$notification_data[0]['EmpID'].')'; ?>
-                        <input type="hidden" id="dbname" name="dbname" value="<?php echo $notification_data[0]['DBNAME'] ?>" attribute="<?php echo $attachment_data; ?>" />
-                        </td>
-                    </tr>
+            <tr>
+                <td width="25%"><b><?php echo $requested_by_label; ?></b></td>
+                <td width="25%"><?php echo $requestor_data[0]['FName'].' '.$requestor_data[0]['LName'].' ('.$notification_data[0]['EmpID'].')'; ?>
+                    <input type="hidden" id="dbname" name="dbname" value="<?php echo $dbname ?>" />
+                </td>
+            </tr>
 
             <?php if ($doctype == 'WH') : //WFH HERE
                 $application_data = $tblsql->get_mrequest(10, $refnum);
@@ -10529,8 +10738,112 @@
                 $pdtrfrom = strtotime($application_data[0]['DtrDate']);
                 $pdtrto = strtotime($application_data[0]['DtrDate']);
 
-            endif;
+            elseif ($doctype == 'RL') :
+                $application_data = $tblsql->get_nrequest(12, $refnum);
+                $appreliever_data = $tblsql->get_relieverdata($refnum);
 
+                $chkexpire = $mainsql->check_appexpire_by_attpostdate($dbname, $application_data[0]['DateFrom'], $application_data[0]['DateTo']);
+
+                ?>
+                    <?php if ($attachment_data) : ?>
+                    <tr>
+                        <td width="25%"><b>Attachment/s</b></td>
+                        <td width="75%"><?php
+                            foreach ($attachment_data as $key => $value) :
+                                echo '<a href="'.($dbname == 'MARKETING' ? 'https://www.marketingsalesagents.com' : WEB).'/uploads/ob/'.$value['AttachFile'].'" target="_blank">'.$value['AttachFile'].'</a><br>';
+                            endforeach;
+                        ?>
+                        </td>
+                    </tr>
+                    <?php endif; ?>
+                    <tr>
+                        <td width="25%"><b>Status</b></td>
+                        <td width="75%"><?php
+                            if ($notification_data[0]['Approved'] == 2) :
+                                echo "<span class='redtext'>REJECTED</span>";
+                            elseif ($notification_data[0]['Approved'] == 1) :
+                                echo "<span class='greentext'>APPROVED</span>";
+                            elseif ($notification_data[0]['Approved'] == 3) :
+                                echo "<span class='redtext'>CANCELLED</span>";
+                            else :
+                                echo "FOR APPROVAL";
+                            endif;
+                            ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Date Applied</b></td>
+                        <td><?php echo date('F j, Y | g:ia', strtotime($application_data[0]['DateFiled'])); ?></td>
+                    </tr>
+                    <tr>
+                        <td><b>From</b></td>
+                        <td><?php echo date('F j, Y', strtotime($application_data[0]['DateFrom'])); ?></td>
+                    </tr>
+                    <tr>
+                        <td><b>To</b></td>
+                        <td><?php echo date('F j, Y', strtotime($application_data[0]['DateTo'])); ?></td>
+                    </tr>
+                    <tr>
+                        <td><b>Absent Employee</b></td>
+                        <td><?php echo $application_data[0]['AbsentEmployee'] . ' (' .$application_data[0]['AbsentEmpID'] . ')'; ?></td>
+                    </tr>
+                    <tr>
+                        <td><b>Reason</b></td>
+                        <td><?php echo stripslashes($application_data[0]['Reason']); ?></td>
+                    </tr>
+                    <tr>
+                        <td><b>Reliever Time Entry</b></td>
+                        <td>
+                            <div class="divrldata width100per notidatadiv">
+                            <table class="tdatablk">
+                                <tr>
+                                    <th>Absent Shift Schedule</th>
+                                    <th>In</th>
+                                    <th>Out</th>
+                                    <th>Cancel</th>
+                                </tr>
+                                <?php $appreliever_count = count($appreliever_data); ?>
+                                <?php foreach($appreliever_data as $key => $value) : ?>
+                                <tr>
+                                    <td><?php echo $value['AbsentShift']; ?></td>
+                                    <td><?php echo date("M j, Y", strtotime($value['TimeInDate'])); ?> <?php echo date("g:ia", strtotime($value['TimeIn'])); ?></td>
+                                    <td><?php echo date("M j, Y", strtotime($value['TimeOutDate'])); ?> <?php echo date("g:ia", strtotime($value['TimeOut'])); ?></td>
+                                    <td class="centertalign"><?php if ($appreliever_count > 1 && $notification_data[0]['IsCancellable'] == 'YES') : ?><i class="btnrlcancel fa fa-times redtext cursorpoint" attribute="<?php echo $refnum; ?>" attribute2="<?php echo date('Y-m-d', strtotime($value['TimeInDate'])); ?>" attribute3="<?php echo $value['SeqID']; ?>"></i><?php endif; ?></td>
+                                </tr>
+                                <?php endforeach; ?>
+                            </table>
+                            </div>
+                        </td>
+                    </tr>
+                        <tr>
+                        <td><b>Biometric Time Entry</b></td>
+                        <td>
+                            <div class="width100per notidatadiv">
+                            <table class="tdatablk">
+                                <tr>
+                                    <th>In</th>
+                                    <th>Out</th>
+                                </tr>
+                                <?php foreach($appreliever_data as $key => $value) : ?>
+                                <tr>
+                                    <td><?php if(!empty($value['BiometricDateTimeIn'])) echo date("M j, Y g:ia", strtotime($value['BiometricDateTimeIn'])); else echo 'No Biometric Entry'; ?></td>
+                                    <td><?php if(!empty($value['BiometricDateTimeOut'])) echo date("M j, Y g:ia", strtotime($value['BiometricDateTimeOut'])); else echo 'No Biometric Entry'; ?></td>
+                                </tr>
+                                <?php endforeach; ?>
+                            </table>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Days</b></td>
+                        <td><?php echo $application_data[0]['Days']; ?></td>
+                    </tr>
+
+                <?php
+                $pdtrfrom = strtotime($application_data[0]['DateFrom']);
+                $pdtrto = strtotime($application_data[0]['DateTo']);
+
+            endif;
             ?>
 
                     <?php
