@@ -1120,8 +1120,21 @@ class mainsql
         return $result;
     }
 
-    function get_leavebal_by_year($empid, $leaveid, $year)
+    function get_leavebal_by_year($empid, $leaveid, $year, $yearFrom = null, $yearTo = null)
     {
+        if(empty(trim($yearFrom)) && empty(trim($yearTo))){
+            $yearFrom = $year;
+            $yearTo =  $year;
+        }
+
+        if(empty(trim($yearFrom)) && !empty(trim($yearTo))){
+            $yearFrom = $yearTo;
+        }
+
+        if(!empty(trim($yearFrom)) && empty(trim($yearTo))){
+            $yearTo = $yearFrom;
+        }
+        
         $sql = "SELECT 
                     A.LeaveID, 
                     A.PRYear, 
@@ -1132,7 +1145,7 @@ class mainsql
                 FROM  viewSLVL_Ledger A
                 LEFT JOIN HREmpLBalance B ON A.LeaveID = B.LeaveID AND A.EmpID = B.EmpID
                 WHERE A.EmpID = '$empid' AND A.LeaveID = '$leaveid' 
-                AND A.PRYear = '$year'
+                AND (A.PRYear = '$year' OR A.PRYear BETWEEN '$yearFrom' AND '$yearTo')
                 AND B.DateEffect <= GETDATE()
                 GROUP BY A.LeaveID, A.PRYear, B.DateEffect";
         $result = $this->get_row($sql);

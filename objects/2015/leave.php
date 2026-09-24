@@ -361,7 +361,7 @@
 
                     $add_leave = $mainsql->leave_action($leavepost, 'add');
 
-                    $recheck_balance = $mainsql->get_leavebal_by_year($profile_idnum, $ltype, date('Y', strtotime($_POST['leave_to'])));
+                    $recheck_balance = $mainsql->get_leavebal_by_year($profile_idnum, $ltype, date('Y', strtotime($_POST['leave_to'])), date('Y', strtotime($_POST['leave_from'])),  date('Y', strtotime($_POST['leave_to'])));
                     $recheck_balanceval = (float)$recheck_balance[0]['BalanceHrs'];
                     if($recheck_balanceval < 0){
 						$recheck_balanceval = 0;
