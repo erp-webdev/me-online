@@ -32,7 +32,7 @@
                                                 <option value="NP"<?php echo $_SESSION['pendtype'] == 'NP' ? ' selected' : ''; ?>>Non-Punching Authorization</option>
                                                 <option value="MD"<?php echo $_SESSION['pendtype'] == 'MD' ? ' selected' : ''; ?>>Manual DTR</option>
 												<option value="SC"<?php echo $_SESSION['pendtype'] == 'SC' ? ' selected' : ''; ?>>Time Scheduler</option>
-												
+												<option value="RL"<?php echo $_SESSION['pendtype'] == 'RL' ? ' selected' : ''; ?>>Reliever</option>
 												<option value="WH"<?php echo $_SESSION['pendtype'] == 'WH' ? ' selected' : ''; ?>>Work from Home</option>
 
                                                 <option value="WC"<?php echo $_SESSION['pendtype'] == 'WC' ? ' selected' : ''; ?>>WFH Clearance</option>
@@ -90,6 +90,8 @@
                                             $typestat = "WORK FROM HOME APPLICATION from ";
                                         elseif ($value['DocType'] == 'WC') :
                                             $typestat = "WFH CLEARANCE APPLICATION from ";
+                                        elseif ($value['DocType'] == 'RL') :
+                                            $typestat = "RELIEVER APPLICATION from ";
                                         endif;
 
                                         //var_dump($value['Signatory06']);

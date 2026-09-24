@@ -768,6 +768,42 @@ class tblsql {
                 endif;
             break;
 
+            case 12: // RELIEVER
+                $notif_sql = "SELECT DBName FROM TED_VIEW_NOTIFICATION2 WHERE Reference = '$id'";
+                $notif = $this->get_row($notif_sql);
+                $employe_dbname = $notif[0]['DBName'];
+
+                $sql  = "SELECT [outer].* FROM ( ";
+                $sql .= " SELECT ROW_NUMBER() OVER(ORDER BY H.ReqDate DESC) as ROW_NUMBER, ";
+                $sql .= " H.ReqNbr, H.ReqDate AS DateFiled, H.RelieverEmpID, H.DateCovered, H.Reason, ";
+                $sql .= "(SELECT FullName FROM $employe_dbname.dbo.VIEWHREMPMASTER WHERE EmpID = H.AbsentEmpID) AS AbsentEmployee, H.AbsentEmpID, ";
+                $sql .= " MIN(I.DTRDate) AS DateFrom, MAX(I.DTRDate) AS DateTo, COUNT(I.SeqID) AS TotalDays, ";
+                $sql .= " A.Approved ";
+                $sql .= " FROM $employe_dbname.dbo.HRFrmApplyReliever H ";
+                $sql .= " INNER JOIN $employe_dbname.dbo.HRFrmApplyRelieverItem I ON I.ReqNbr = H.ReqNbr ";
+                $sql .= " LEFT JOIN $employe_dbname.dbo.Approval A ON A.Reference = H.ReqNbr AND A.DocType = 'RL' ";
+                $sql .= " WHERE H.SeqID != 0 ";
+                if ($id != NULL) : $sql .= " AND H.ReqNbr = '" . $id . "'"; endif;
+                if ($search != NULL) : $sql .= " AND H.ReqNbr LIKE '%" . $search . "%' "; endif;
+                if ($empid != NULL) : $sql .= " AND H.RelieverEmpID = '" . $empid . "' "; endif;
+                if ($status != 0) : $sql .= " AND A.Approved = '" . $status . "' "; endif;
+                if ($from && $to) :
+                    $sql .= " AND H.ReqDate BETWEEN '" . $from . "' AND '" . $to . "' ";
+                endif;
+                $sql .= " GROUP BY H.ReqNbr, H.ReqDate, H.AbsentEmpID, H.RelieverEmpID, H.DateCovered, H.Reason, A.Approved";
+                $sql .= ") AS [outer] ";
+                if ($limit) :
+                    $sql .= " WHERE [outer].[ROW_NUMBER] BETWEEN " . (intval($start) + 1) . " AND " . intval($start + $limit) . " ORDER BY [outer].[ROW_NUMBER] ";
+                endif;
+
+                if ($count) : $result = $this->get_numrow($sql);
+                else : $result = $this->get_row($sql);
+                endif;
+
+                return $result;
+
+            break;
+
         }
 
 		return $result;
@@ -1679,6 +1715,44 @@ class tblsql {
         $sql .= " AND Status != 'CANCELLED'";
 		$result = $this->get_row($sql);
 		return $result;
+    }
+
+    function get_relieverdata($relieverref = NULL)
+    {
+        $sql = "SELECT SeqID, 
+                    ShiftID, 
+                    TimeInDate, 
+                    TimeIn, 
+                    TimeOutDate, 
+                    TimeOut, 
+                    Status, 
+                    BiometricDateTimeIn, 
+                    BiometricDateTimeOut,
+                    DBNAME
+                FROM HRFrmApplyRelieverItem
+                WHERE Status != 'CANCELLED'";
+    
+        if ($relieverref != NULL) :
+            $sql .= "AND ReqNbr = '" . $relieverref . "' ";
+        endif;
+    
+        $results = $this->get_row($sql);
+    
+        foreach ($results as $index => $result) {
+            $dbname  = $result['DBNAME'];
+            $shiftid = $result['ShiftID'];
+    
+            if (!empty($shiftid)) {
+                $shift_sql = "SELECT ShiftDesc FROM $dbname.dbo.HRShift WHERE ShiftID = '" . $shiftid . "'";
+                $shift     = $this->get_row($shift_sql);
+    
+                $results[$index]['AbsentShift'] = isset($shift[0]['ShiftDesc']) ? $shift[0]['ShiftDesc'] : null;
+            } else {
+                $results[$index]['AbsentShift'] = null;
+            }
+        }
+    
+        return $results;
     }
 
     function get_tsdata($tsref = NULL)

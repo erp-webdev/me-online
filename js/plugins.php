@@ -1014,6 +1014,9 @@ $(function() {
         else if (doctype == 'WC') {
             title = "WFH Clearance Application #";
         }
+        else if (doctype == 'RL') {
+            title = "Reliever Application #";
+        }
 
         $("#pend_title").html(title + ' ' + refnum);
         $(".floatdiv").removeClass("invisible");

@@ -1690,6 +1690,31 @@ class mainsql
                 endif;
 
                 break;
+            case 12: // Reliever
+
+                $sql = "SELECT [outer].* FROM ( ";
+                $sql .= " SELECT ROW_NUMBER() OVER(ORDER BY ReqDate DESC) as ROW_NUMBER, ";
+                $sql .= " ReqNbr, RelieverEmpID, ReqDate, DateCovered, Posted, PostedDate FROM HRFrmApplyReliever ";
+                $sql .= " WHERE SeqID != 0 ";
+                if ($id != NULL) : $sql .= " AND ReqNbr = '" . $id . "' ";
+                endif;
+                if ($search != NULL) : $sql .= " AND ReqNbr LIKE '%" . $search . "%' ";
+                endif;
+                if ($empid != NULL) : $sql .= " AND RelieverEmpIDEmpID = '" . $empid . "' ";
+                endif;
+                if ($from && $to) :
+                    $sql .= " AND ReqDate BETWEEN '" . $from . " 00:00:00.000' AND '" . $to . " 23:59:59.000' ";
+                endif;
+                $sql .= ") AS [outer] ";
+                if ($limit) :
+                    $sql .= " WHERE [outer].[ROW_NUMBER] BETWEEN " . (intval($start) + 1) . " AND " . intval($start + $limit) . " ORDER BY [outer].[ROW_NUMBER] ";
+                endif;
+
+                if ($count) : $result = $this->get_numrow($sql);
+                else : $result = $this->get_row($sql);
+                endif;
+
+                break;    
         }
 
         return $result;
@@ -3955,6 +3980,54 @@ class mainsql
                 } else {
                     return 0;
                 }
+
+                break;
+        }
+    }
+
+    function reliever_action($value, $action, $id = 0)
+    {
+        $val = array();
+
+        switch ($action) {
+            case 'approve':
+
+                $dbname = $value['DBNAME'];
+
+                $accepted_field = array('REQNBR', 'TRANS', 'USER', 'EMPID', 'REMARKS');
+
+                $knum = 0;
+                foreach ($value as $key => $value) :
+                    if (in_array($key, $accepted_field)) :
+                        $val[$knum]['field_name'] = $key;
+                        $val[$knum]['field_value'] = $value;
+                        $val[$knum]['field_type'] = SQLVARCHAR;
+                        $val[$knum]['field_isoutput'] = false;
+                        $val[$knum]['field_isnull'] = false;
+                        $val[$knum]['field_maxlen'] = 512;
+                        $knum++;
+                    endif;
+                endforeach;
+
+                $approve_ob = $this->get_sp_data('SP_INSERT_APPLY_RL', $val, $dbname);
+
+                if ($approve_ob) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+
+                break;
+
+            case 'relieveritemcancel':
+
+                $seqid = $value['SEQID'];
+
+                $sql = "UPDATE HRFrmApplyRelieverItem ";
+                $sql .= " SET Status = 'CANCELLED' ";
+                $sql .= " WHERE SeqID = '" . $seqid . "' ";
+                $result = $this->get_execute($sql);
+                return $result ? 1 : 0;
 
                 break;
         }
